@@ -187,8 +187,8 @@ footer{max-width:1170px;margin:15px auto;padding:20px;color:var(--dim);font-size
     const saved = !!(record && record.first_answer);
     show("postAttempt", saved);
     $("saveFirst").disabled = saved || !persistOK;
-    $("predictInput").disabled = saved || !persistOK;
-    $("attemptInput").disabled = saved || !persistOK;
+    $("predictInput").disabled = saved;
+    $("attemptInput").disabled = saved;
     if (saved) {
       write("savedFirst", "First response · " + record.first_answer.saved_at +
         "\nPrediction: " + record.first_answer.prediction +
@@ -221,7 +221,7 @@ footer{max-width:1170px;margin:15px auto;padding:20px;color:var(--dim);font-size
         if (stored) {
           const parsed = JSON.parse(stored);
           if (parsed.content_revision === revision &&
-              parsed.task_id === current.id && parsed.first_answer) record = parsed;
+              parsed.task_id === current.id && Array.isArray(parsed.help_exposure)) record = parsed;
         }
       } catch (_) {persistOK = false;}
     }
@@ -289,7 +289,7 @@ footer{max-width:1170px;margin:15px auto;padding:20px;color:var(--dim);font-size
     }
   }
   $("saveFirst").addEventListener("click", () => {
-    if (!current || record) return;
+    if (!current || (record && record.first_answer)) return;
     const answer = $("attemptInput").value.trim();
     const prediction = $("predictInput").value.trim();
     if (!answer || !prediction) {write("saveStatus", "Write both a prediction and your own reasoning first.");return;}
@@ -297,7 +297,7 @@ footer{max-width:1170px;margin:15px auto;padding:20px;color:var(--dim);font-size
       schema: "g9v41-ph01-first-attempt/v1",task_id: current.id,
       content_revision: revision,
       first_answer: {prediction, answer, saved_at: now()},
-      help_exposure: [], diagnosis_notes: [], revisions: [], boundary_attempts: [],
+      help_exposure: record ? record.help_exposure : [], diagnosis_notes: [], revisions: [], boundary_attempts: [],
       mastery_status: "UNASSESSED"
     };
     if (persist(next)) renderSaved();
@@ -330,15 +330,26 @@ footer{max-width:1170px;margin:15px auto;padding:20px;color:var(--dim);font-size
     if (record && record.boundary_attempts.length && exposure("BOUNDARY_MODEL")) renderSaved();
   });
   $("textbookLink").addEventListener("click", (event) => {
-    if (current && !record) {
+    if (!current) return;
+    if (record && record.first_answer) {
+      if (!exposure("TEXTBOOK_AFTER_FIRST")) {
+        event.preventDefault();
+        say("Cannot record linked-help exposure. Copy your attempt before leaving.");
+      }
+    } else {
+      const exposureList = record && Array.isArray(record.help_exposure)
+        ? record.help_exposure : [];
       const ok = persistOK && persist({
         schema: "g9v41-ph01-exposure-pre-first/v1",task_id: current.id,
         content_revision: revision, first_answer: null,
-        help_exposure: [{kind: "TEXTBOOK_BEFORE_FIRST",opened_at:now()}],
+        help_exposure: exposureList.some(x => x.kind === "TEXTBOOK_BEFORE_FIRST")
+          ? exposureList : [...exposureList, {kind: "TEXTBOOK_BEFORE_FIRST",opened_at:now()}],
         diagnosis_notes: [], revisions: [], boundary_attempts: [], mastery_status: "UNASSESSED"
       });
-      // In this candidate, prevent untracked context change when storage is blocked.
-      if (!ok) {event.preventDefault();say("Cannot record linked-help exposure. Open the textbook separately outside this protected activity.");}
+      if (!ok) {
+        event.preventDefault();
+        say("Cannot record linked-help exposure. Open the textbook separately outside this protected activity.");
+      }
     }
   });
   load();
