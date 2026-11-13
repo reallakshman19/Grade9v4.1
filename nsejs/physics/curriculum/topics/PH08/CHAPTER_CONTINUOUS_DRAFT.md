@@ -104,4 +104,4 @@ Quantitative Doppler shifts, general standing-wave harmonics and resonant air-co
 
 ---
 
-**What is still missing:** This manuscript is a **continuous author draft** joining PH08's teaching foundations. It is not a qualified page-by-page canonical C05 package for all 13 subtopics, does not include interactive reviewed graphics, and is not an independently validated Class IX/NSEJS final textbook. In the native C01–C08 register, only PH08-08 has a fully structured lead package and protected Core1B specification.
+**What is still missing:** This manuscript is a **continuous author draft** joining PH08's teaching foundations. It is not a qualified page-by-page canonical C05 package for all 13 subtopics, does not include interactive reviewed graphics, and is not an independently validated Class IX/NSEJS final textbook. In the native C01–C08 register, PH08-08 and PH08-05 have native candidate packages and protected Core1B specifications; independent learning and academic qualification remain untested.

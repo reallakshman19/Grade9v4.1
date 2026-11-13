@@ -104,6 +104,6 @@ The chapter's common language is **system, thermal state, transfer pathway, cond
 
 Three independent advanced reasoning targets are EXPLAIN (trace a causal heat-transfer mechanism), MODEL (select the valid physical transfer mechanism and state its limits), and REPRESENT or SYNTHESIZE (read a time–temperature graph or combine radiation, storage and airflow in the right order).
 
-**Chapter exit investigations:** Explain why an insulated metal flask still can cool; devise a fair evaporation experiment; interpret a temperature plateau without claiming a latent heat value; and show why an idealized sea-breeze model can fail under a strong background wind. The corresponding protected Core1B lead currently exists only for PH07-05; other subtopics require reviewed native cycles.
+**Chapter exit investigations:** Explain why an insulated metal flask still can cool; devise a fair evaporation experiment; interpret a temperature plateau without claiming a latent heat value; and show why an idealized sea-breeze model can fail under a strong background wind. Protected Core1B candidate records now cover PH07-05 and PH07-07; other subtopics still require reviewed native cycles.
 
 **Academic boundary:** All chapter sections are original teaching drafts. They require source-specific scientific review, original reviewed diagrams and native C05/C06 binding before a chapter-complete claim.

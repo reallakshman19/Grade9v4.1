@@ -96,6 +96,6 @@ A ray diagram has to preserve real propagation directions, surface normals and s
 
 The three chapter-wide cognitive targets are EXPLAIN (why a virtual image appears), REPRESENT (preserve axes and ray directions), and MODEL/JUSTIFY (choose a valid mirror relation and defend image bounds). A fourth advanced transfer can combine object and mirror motion with a changing observer coordinate, but its D4 band remains unqualified until exact-task review.
 
-**Exit investigations:** Derive the plane mirror relation \(x_i=2m-x_o\); show where a virtual image appears in a concave mirror when its object crosses the focus; explain why the convex mirror cannot form a real screen image of a real object within the paraxial approximation; and construct a reflected ray when the surface is rotated. The existing native Core1B lead covers only PH09-08.
+**Exit investigations:** Derive the plane mirror relation \(x_i=2m-x_o\); show where a virtual image appears in a concave mirror when its object crosses the focus; explain why the convex mirror cannot form a real screen image of a real object within the paraxial approximation; and construct a reflected ray when the surface is rotated. Native Core1B candidate records cover PH09-08 and PH09-02.
 
 **Academic boundary:** These are original author-exposed explanations, not accepted source-linked Core1A for each subtopic. Further figure science QA, sign convention audit, native C05 binding and B1–B7 review remain necessary.
