@@ -1,0 +1,491 @@
+{
+  "schema": "g9v41-nsejs-physics-topic-package/v1",
+  "subject_id": "PHYSICS",
+  "academic_track": "NSEJS",
+  "topic_id": "PH07",
+  "owner_agent": "AGENT_2",
+  "version": "0.3.0-b01.3",
+  "status": "DRAFT_AUTHOR_EXPOSED",
+  "pins": {
+    "contracts_version": "1.0.0",
+    "blueprint": {
+      "version": "0.2.0",
+      "git_blob_sha": "700dafcbe86d76442637bcf214eeb544497cf4ea"
+    },
+    "shared_qrt_28": {
+      "version": "1.0.0",
+      "git_blob_sha": "e2409aef11ae7d98444593bfbe1a38eb00c97cef"
+    },
+    "topic_adapter_version": "0.3.0-b01.3"
+  },
+  "syllabus_references": [
+    {
+      "reference_id": "PH07-NCERT6-THERMOMETRY",
+      "locator": "https://ncert.nic.in/textbook/pdf/fecu107.pdf — Curiosity Grade 6 chapter 7; official URL fetch unavailable; corroborated chapter metadata and text at https://www.ncertbooks.net/textbook/pdf/fecu107.pdf",
+      "authority": "NCERT_CBSE",
+      "scope_status": "CANDIDATE"
+    },
+    {
+      "reference_id": "PH07-CBSE",
+      "locator": "https://cbseacademic.nic.in/web_material/CurriculumMain27/SecPart1/ScienceSt_SecP1_2026-27.pdf — thermal foundations and energy transfer; cross-topic power balance is authored enrichment",
+      "authority": "OFFICIAL_SYLLABUS",
+      "scope_status": "CANDIDATE"
+    }
+  ],
+  "subtopics": [
+    {
+      "id": "PH07-04",
+      "title": "Convection in fluids: buoyancy, circulation and model selection",
+      "scope_role": "PREREQUISITE_BRIDGE",
+      "syllabus_reference_ids": [
+        "PH07-NCERT6-THERMOMETRY",
+        "PH07-CBSE"
+      ],
+      "prerequisite_ids": [
+        "PH07-02"
+      ],
+      "science_ref_ids": [
+        "PH07-04-SCI-01"
+      ],
+      "learning_goal": "Natural convection arises when buoyancy acts on density variations and geometry permits fluid motion; stable layering and forced flow alter the transport model.",
+      "textbook_chapter_ref": "nsejs/physics/curriculum/topics/PH07/b01/PH07-04/core1a.html",
+      "qrt_targets": [
+        {
+          "id": "PH07-04-B01-D3-EXPLAIN-01",
+          "task_identity": "G9-B01-PH07-04-EXPLAIN-R1",
+          "band": "D3",
+          "primary_operation": "EXPLAIN",
+          "blueprint_cell": "D3.2",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Explain contrasting circulation through actual density, buoyancy and mass continuity, including an exception where temperature alone gives the wrong direction.",
+          "decisive_route": "Tank A has warm lower fluid density 990 and cool upper fluid density 1000 kg/m³. Tank B has a warm salty lower layer density 1010 and a cool upper layer density 1000. Predict which arrangement develops buoyancy-driven mixing, describe return flow, and explain why equal heating labels are insufficient. Shortest valid route: A is unstable: lighter lower fluid rises and denser upper fluid descends. B has denser lower fluid and is stable against small vertical exchange; warmth does not override composition-dependent density. In a closed tank upward mass flux has compensating downward flux.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "Choose density-based rather than hot-rises model."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "Connect layer positions and parcel displacement to flow paths."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Density comparison leads to buoyancy, stability and return flow."
+            },
+            "algebra_computational_load": {
+              "score": 0,
+              "evidence": "No material arithmetic."
+            },
+            "trap_exception_sensitivity": {
+              "score": 2,
+              "evidence": "Composition or anomalous density changes invalidate a temperature-only rule."
+            }
+          }
+        },
+        {
+          "id": "PH07-04-B01-D3-MODEL-01",
+          "task_identity": "G9-B01-PH07-04-MODEL-R1",
+          "band": "D3",
+          "primary_operation": "MODEL",
+          "blueprint_cell": "D3.4",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Choose a natural, forced or nonconvective heat-transfer explanation from controlled temperature and flow observations rather than merely fit cooling rate.",
+          "decisive_route": "Three identical dry warm plates at matched temperature require 18 W (still air, warm face upward), 10 W (still air, warm face downward) and 28 W (downward face with fan) to hold steady. Flow tracing shows upward plumes in the first and forced airflow in the third. Compare net losses and assess the convection models; what cannot be inferred from powers alone? Shortest valid route: First exceeds second by 8 W; third exceeds second by 18 W. Flow evidence supports natural plume in first and forced convection in third. Powers alone do not isolate radiation/conduction; orientation and boundary conditions can alter other paths.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "Competing mechanisms: natural, forced and nonconvective."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "Use observed flow and energy-rate data to distinguish them."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Compare controlled cases, identify changed paths and limits."
+            },
+            "algebra_computational_load": {
+              "score": 1,
+              "evidence": "Material power differences."
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "Confounder of radiation/conduction remains."
+            }
+          }
+        },
+        {
+          "id": "PH07-04-B01-D3-JUSTIFY-01",
+          "task_identity": "G9-B01-PH07-04-JUSTIFY-R1",
+          "band": "D3",
+          "primary_operation": "JUSTIFY",
+          "blueprint_cell": "D3.7",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Judge whether a measured temperature or cooling difference identifies a convection mechanism, using counterexamples and a discriminating control.",
+          "decisive_route": "A student observes that a covered warm vessel cools more slowly than an uncovered one and concludes the lid eliminates convection entirely. Critique this conclusion and propose observations or controls separating internal fluid circulation, evaporation and heat transfer to the surroundings. Shortest valid route: Lid may reduce evaporation and air exchange while fluid still circulates inside. Compare mass loss, use temperature-matched dry/covered controls and flow tracer; measure power required at matched temperature. No complete elimination follows from cooling alone.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "Separate heat-transfer mechanisms and density regimes."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "Translate a proposed claim into testable observations."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Refute with controlled counterexamples and specify independent evidence."
+            },
+            "algebra_computational_load": {
+              "score": 0,
+              "evidence": "No substantive calculation."
+            },
+            "trap_exception_sensitivity": {
+              "score": 2,
+              "evidence": "Temperature-only and rate-only claims are underdetermined."
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "science_records": [
+    {
+      "id": "PH07-04-SCI-01",
+      "claim": "Natural convection arises when buoyancy acts on density variations and geometry permits fluid motion; stable layering and forced flow alter the transport model.",
+      "law_or_model": "ρ=m/V; buoyancy F_b=ρ_surroundings gV; net upward buoyancy relative to parcel weight=(ρ_surroundings−ρ_parcel)gV",
+      "assumptions": [
+        "Ordinary fluid expands with warming only over the specified regime; water near 4 °C and composition gradients require actual density data.",
+        "Parcel buoyancy assumes local hydrostatic surroundings and a small parcel; drag, boundaries and pressure fields affect flow."
+      ],
+      "conditions_and_limits": [
+        "Ordinary fluid expands with warming only over the specified regime; water near 4 °C and composition gradients require actual density data.",
+        "Parcel buoyancy assumes local hydrostatic surroundings and a small parcel; drag, boundaries and pressure fields affect flow.",
+        "Natural convection needs gravity, a destabilizing density arrangement and freedom to move; forced convection need not.",
+        "Heat loss may combine multiple paths; rate comparisons require controlled area, temperature and environment."
+      ],
+      "units_and_signs": "density in kg/m³, volume in m³, g in m/s², force in N; heat transfer in W or J.",
+      "source_refs": [
+        "PH07-NCERT6-THERMOMETRY",
+        "PH07-CBSE"
+      ],
+      "qualification_status": "HOLD"
+    }
+  ],
+  "topic_adapter": {
+    "adapter_id": "PHYS-TOPIC-PH07",
+    "topic_id": "PH07",
+    "version": "0.3.0-b01.3",
+    "for_blueprint": "PHYS-QRT-BLUEPRINT 0.2.0",
+    "status": "CANDIDATE_ONLY",
+    "cells": [
+      {
+        "cell_id": "D3.2",
+        "instance_ids": [
+          "PH07-04-B01-D3-EXPLAIN-01"
+        ]
+      },
+      {
+        "cell_id": "D3.4",
+        "instance_ids": [
+          "PH07-04-B01-D3-MODEL-01"
+        ]
+      },
+      {
+        "cell_id": "D3.7",
+        "instance_ids": [
+          "PH07-04-B01-D3-JUSTIFY-01"
+        ]
+      }
+    ]
+  },
+  "core1a": [
+    {
+      "id": "PH07-04-B01-CORE1A-R1",
+      "subtopic_id": "PH07-04",
+      "covered_qrt_ids": [
+        "PH07-04-B01-D3-EXPLAIN-01",
+        "PH07-04-B01-D3-MODEL-01",
+        "PH07-04-B01-D3-JUSTIFY-01"
+      ],
+      "phenomenon": "A fluid heated from below can circulate, while comparable heating from above may produce stable layering.",
+      "scientific_narrative": "Conduction transfers energy through microscopic interactions without a bulk flow of matter. Convection transfers energy by the motion of fluid parcels. A fluid parcel that is warmer than neighbouring fluid often expands at approximately the local pressure, making its density smaller. In a gravitational field the surrounding fluid exerts a buoyant force equal to the weight of displaced fluid. When that force exceeds the parcel's weight, an upward tendency results. A cooler denser parcel may tend downward. This is a model of natural convection; it depends on the equation of state, gravity and surrounding density, not on a universal slogan that every hot object rises.\n\nImagine two layers of the same ordinary fluid. If the lower layer is warmed and becomes less dense than the upper layer, a small upward displacement can allow it to continue rising; denser fluid replaces it below. A return flow is needed because matter is conserved in a closed container. If the lighter layer already lies above the denser layer, small vertical displacements instead tend to be opposed by buoyancy. This stable arrangement can reduce natural convection even when the layers have different temperatures. Heat can still transfer by conduction or radiation.\n\nA fan or pump can drive flow even without the density contrast that sustains natural convection. This is forced convection. When moving air passes a warm surface, energy can be transferred between the surface and air, then carried away. Faster flow often increases heat loss under comparable conditions, but an observation of faster cooling alone cannot identify the exact mechanism: evaporation, area, radiation or initial temperatures might differ. The existing Core2 fuse candidate assumes lateral heat loss and neglects end conduction. Treat that as a conditional model; this unit teaches the convection prerequisite and a separate experimental reasoning construction.\n\nFor a small parcel of volume V surrounded by fluid of density ρ_s, the simplified net vertical force relative to weight is (ρ_s−ρ_p)gV upward, before drag or other constraints. Do not turn this into a terminal-speed prediction without resistance and geometry. In water close to 4 °C the ordinary monotonic density-temperature relation can fail, and mixtures can have salinity or composition gradients. Establish which layer is actually denser. A credible explanation identifies the energy path, the density contrast, the buoyancy direction, the return path and the limits of the model.",
+      "prerequisites": [
+        "PH07-02"
+      ],
+      "derivation_steps": [
+        {
+          "action": "Compare actual density of a parcel with its surroundings at the same level.",
+          "why_valid": "Buoyant force follows displaced fluid weight, not temperature alone.",
+          "science_ref_id": "PH07-04-SCI-01"
+        },
+        {
+          "action": "Determine direction of net buoyancy and stability of layer arrangement.",
+          "why_valid": "A displaced parcel rises if lighter than its surroundings and sinks if heavier.",
+          "science_ref_id": "PH07-04-SCI-01"
+        },
+        {
+          "action": "Close the flow path and trace energy transported with matter.",
+          "why_valid": "Mass is conserved in a closed vessel; rising flow requires compensating return flow.",
+          "science_ref_id": "PH07-04-SCI-01"
+        },
+        {
+          "action": "Distinguish natural and forced convection and test alternative heat-loss paths.",
+          "why_valid": "A pump adds mechanical forcing; conduction and radiation can persist without circulation.",
+          "science_ref_id": "PH07-04-SCI-01"
+        }
+      ],
+      "model_limits": [
+        "Ordinary fluid expands with warming only over the specified regime; water near 4 °C and composition gradients require actual density data.",
+        "Parcel buoyancy assumes local hydrostatic surroundings and a small parcel; drag, boundaries and pressure fields affect flow.",
+        "Natural convection needs gravity, a destabilizing density arrangement and freedom to move; forced convection need not.",
+        "Heat loss may combine multiple paths; rate comparisons require controlled area, temperature and environment."
+      ],
+      "progressive_examples": [
+        {
+          "id": "PH07-04-B01-EX1",
+          "tier": "FOUNDATION",
+          "problem": "A parcel of volume 0.002 m³ has density 980 kg/m³; its surroundings have density 1000 kg/m³. Use g=10 m/s². Find net buoyancy.",
+          "reasoning": "(1000−980)×10×0.002=0.4 N upward before drag.",
+          "independent_check": "Parcel weight 19.6 N; buoyant force 20 N."
+        },
+        {
+          "id": "PH07-04-B01-EX2",
+          "tier": "CONNECTED",
+          "problem": "A vessel contains a lighter upper layer and denser lower layer. An identical vessel has the lighter layer below. Which is more susceptible to natural mixing?",
+          "reasoning": "The second: lighter fluid tends to rise and heavier fluid descends. First is stable against small vertical displacements.",
+          "independent_check": "Swap a parcel mentally across the interface and check its restoring or destabilizing buoyancy."
+        },
+        {
+          "id": "PH07-04-B01-EX3",
+          "tier": "ADVANCED",
+          "problem": "Two equal dry warm plates cool in still air and fan-driven air. Initial temperatures, areas and surroundings match. Fan-driven plate needs 30 W more input to remain at the same temperature. What follows?",
+          "reasoning": "Net extra loss is 30 W under steady balance. Forced convection is a plausible cause, but separate radiation and any changing conductive path before assigning the whole difference.",
+          "independent_check": "An independent fan-off repeat or heat-flux measurement can test reproducibility."
+        }
+      ],
+      "figures": [
+        {
+          "id": "PH07-04-FIG-01",
+          "reasoning_step": "Stable versus unstable density layers",
+          "scene_description": "Light layer above heavy layer is stable; the inverted arrangement permits rising light parcels and descending heavy parcels. Original inline SVG, not source examination figure.",
+          "source_or_authorship": "ORIGINAL_B01_SVG_INLINE"
+        }
+      ],
+      "misconception": {
+        "wrong_model": "Warm fluid always rises regardless of surrounding density; every faster cooling observation proves convection.",
+        "diagnostic": "A warm parcel is denser than its surroundings because of dissolved material. Which way does buoyancy act?",
+        "repair": "Use measured densities and separate mechanisms through controls."
+      },
+      "exit_check": {
+        "task": "A parcel is 1.5 kg/m³ less dense than neighbouring air and has volume 0.04 m³, g=10 m/s². What is its simplified net buoyancy?",
+        "answer": "0.6 N upward.",
+        "reasoning": "Density difference × volume × g; no prediction of terminal speed without drag."
+      },
+      "authorship_status": "DRAFT_AUTHOR_EXPOSED"
+    }
+  ],
+  "core1b": [
+    {
+      "id": "PH07-04-B01-MAIN-EXPLAIN-R1",
+      "kind": "MAIN",
+      "subtopic_id": "PH07-04",
+      "qrt_target_id": "PH07-04-B01-D3-EXPLAIN-01",
+      "fresh_task": "Two vertical vessels have identical bottom heating. In one the lower liquid density becomes 960 and upper density 980; in the other dissolved solute keeps lower density 1000 and upper 980 kg/m³. Explain different circulation tendencies and specify the physical observation needed to check the model.",
+      "protected_work": "Explain contrasting circulation through actual density, buoyancy and mass continuity, including an exception where temperature alone gives the wrong direction.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Record your initial interpretation and confidence before viewing support.",
+        "attempt": "Two vertical vessels have identical bottom heating. In one the lower liquid density becomes 960 and upper density 980; in the other dissolved solute keeps lower density 1000 and upper 980 kg/m³. Explain different circulation tendencies and specify the physical observation needed to check the model.",
+        "reconstruct": "First lower layer is lighter and unstable; second heavier below is stable against small displacements. Observe density at matched depth or trace parcels and return flow. Heating direction alone is not sufficient.",
+        "diagnose": "Compare your reasoning with the reconstruction. Test this task-specific misconception: A warm parcel is denser than its surroundings because of dissolved material. Which way does buoyancy act? Identify the first unsupported inference in your own attempt.",
+        "repair": "Rebuild the relevant model using the stated conditions: Use measured densities and separate mechanisms through controls. Check your reconstruction against the original task data.",
+        "boundary_test": "If the density gradient reverses after prolonged heating, how would the expected circulation change?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH07-04-B01-INSTANCE-EXPLAIN-R1",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH07-04",
+      "qrt_target_id": "PH07-04-B01-D3-EXPLAIN-01",
+      "fresh_task": "Tank A has warm lower fluid density 990 and cool upper fluid density 1000 kg/m³. Tank B has a warm salty lower layer density 1010 and a cool upper layer density 1000. Predict which arrangement develops buoyancy-driven mixing, describe return flow, and explain why equal heating labels are insufficient.",
+      "protected_work": "Explain contrasting circulation through actual density, buoyancy and mass continuity, including an exception where temperature alone gives the wrong direction.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Record your initial interpretation and confidence before viewing support.",
+        "attempt": "Tank A has warm lower fluid density 990 and cool upper fluid density 1000 kg/m³. Tank B has a warm salty lower layer density 1010 and a cool upper layer density 1000. Predict which arrangement develops buoyancy-driven mixing, describe return flow, and explain why equal heating labels are insufficient.",
+        "reconstruct": "A is unstable: lighter lower fluid rises and denser upper fluid descends. B has denser lower fluid and is stable against small vertical exchange; warmth does not override composition-dependent density. In a closed tank upward mass flux has compensating downward flux.",
+        "diagnose": "Compare your reasoning with the reconstruction. Test this task-specific misconception: A warm parcel is denser than its surroundings because of dissolved material. Which way does buoyancy act? Identify the first unsupported inference in your own attempt.",
+        "repair": "Rebuild the relevant model using the stated conditions: Use measured densities and separate mechanisms through controls. Check your reconstruction against the original task data.",
+        "boundary_test": "If a pump circulates B, does that disprove the stability explanation?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH07-04-B01-MAIN-MODEL-R1",
+      "kind": "MAIN",
+      "subtopic_id": "PH07-04",
+      "qrt_target_id": "PH07-04-B01-D3-MODEL-01",
+      "fresh_task": "A dry heated surface stays at a fixed temperature with 12 W in an enclosure. A fan raises needed input to 20 W; rotating the surface with fan off raises it to 15 W. Tracer motion appears only during the latter two observations. Evaluate the explanations and design a control.",
+      "protected_work": "Choose a natural, forced or nonconvective heat-transfer explanation from controlled temperature and flow observations rather than merely fit cooling rate.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Record your initial interpretation and confidence before viewing support.",
+        "attempt": "A dry heated surface stays at a fixed temperature with 12 W in an enclosure. A fan raises needed input to 20 W; rotating the surface with fan off raises it to 15 W. Tracer motion appears only during the latter two observations. Evaluate the explanations and design a control.",
+        "reconstruct": "Steady losses 12,20,15 W. Fan adds 8 W and rotation adds 3 W relative to baseline, with flow evidence supporting forced/natural convection respectively. Radiation or support conduction may still change; match surface surroundings, supports and emissivity.",
+        "diagnose": "Compare your reasoning with the reconstruction. Test this task-specific misconception: A warm parcel is denser than its surroundings because of dissolved material. Which way does buoyancy act? Identify the first unsupported inference in your own attempt.",
+        "repair": "Rebuild the relevant model using the stated conditions: Use measured densities and separate mechanisms through controls. Check your reconstruction against the original task data.",
+        "boundary_test": "What if the surface is wet and evaporation changes when the fan runs?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH07-04-B01-INSTANCE-MODEL-R1",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH07-04",
+      "qrt_target_id": "PH07-04-B01-D3-MODEL-01",
+      "fresh_task": "Three identical dry warm plates at matched temperature require 18 W (still air, warm face upward), 10 W (still air, warm face downward) and 28 W (downward face with fan) to hold steady. Flow tracing shows upward plumes in the first and forced airflow in the third. Compare net losses and assess the convection models; what cannot be inferred from powers alone?",
+      "protected_work": "Choose a natural, forced or nonconvective heat-transfer explanation from controlled temperature and flow observations rather than merely fit cooling rate.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Record your initial interpretation and confidence before viewing support.",
+        "attempt": "Three identical dry warm plates at matched temperature require 18 W (still air, warm face upward), 10 W (still air, warm face downward) and 28 W (downward face with fan) to hold steady. Flow tracing shows upward plumes in the first and forced airflow in the third. Compare net losses and assess the convection models; what cannot be inferred from powers alone?",
+        "reconstruct": "First exceeds second by 8 W; third exceeds second by 18 W. Flow evidence supports natural plume in first and forced convection in third. Powers alone do not isolate radiation/conduction; orientation and boundary conditions can alter other paths.",
+        "diagnose": "Compare your reasoning with the reconstruction. Test this task-specific misconception: A warm parcel is denser than its surroundings because of dissolved material. Which way does buoyancy act? Identify the first unsupported inference in your own attempt.",
+        "repair": "Rebuild the relevant model using the stated conditions: Use measured densities and separate mechanisms through controls. Check your reconstruction against the original task data.",
+        "boundary_test": "If a vacuum replaces air and the plate supports remain unchanged, which heat-transfer path is removed?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH07-04-B01-MAIN-JUSTIFY-R1",
+      "kind": "MAIN",
+      "subtopic_id": "PH07-04",
+      "qrt_target_id": "PH07-04-B01-D3-JUSTIFY-01",
+      "fresh_task": "Two warm water tanks cool at different rates. One is stirred, one is not. The stirred tank has a larger exposed surface and starts hotter. A report says forced convection alone explains the difference. Assess identifiability and propose a fair experiment.",
+      "protected_work": "Judge whether a measured temperature or cooling difference identifies a convection mechanism, using counterexamples and a discriminating control.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Record your initial interpretation and confidence before viewing support.",
+        "attempt": "Two warm water tanks cool at different rates. One is stirred, one is not. The stirred tank has a larger exposed surface and starts hotter. A report says forced convection alone explains the difference. Assess identifiability and propose a fair experiment.",
+        "reconstruct": "Multiple confounds (temperature difference, exposed area, evaporation, stirring). Match mass, area, initial temperature, surroundings and cover; vary stirring only, measure temperature/time and mass loss or steady input. Stirring can alter internal transfer but alone not established.",
+        "diagnose": "Compare your reasoning with the reconstruction. Test this task-specific misconception: A warm parcel is denser than its surroundings because of dissolved material. Which way does buoyancy act? Identify the first unsupported inference in your own attempt.",
+        "repair": "Rebuild the relevant model using the stated conditions: Use measured densities and separate mechanisms through controls. Check your reconstruction against the original task data.",
+        "boundary_test": "If the controlled trials agree in cooling rate, does that prove no internal convection exists?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH07-04-B01-INSTANCE-JUSTIFY-R1",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH07-04",
+      "qrt_target_id": "PH07-04-B01-D3-JUSTIFY-01",
+      "fresh_task": "A student observes that a covered warm vessel cools more slowly than an uncovered one and concludes the lid eliminates convection entirely. Critique this conclusion and propose observations or controls separating internal fluid circulation, evaporation and heat transfer to the surroundings.",
+      "protected_work": "Judge whether a measured temperature or cooling difference identifies a convection mechanism, using counterexamples and a discriminating control.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Record your initial interpretation and confidence before viewing support.",
+        "attempt": "A student observes that a covered warm vessel cools more slowly than an uncovered one and concludes the lid eliminates convection entirely. Critique this conclusion and propose observations or controls separating internal fluid circulation, evaporation and heat transfer to the surroundings.",
+        "reconstruct": "Lid may reduce evaporation and air exchange while fluid still circulates inside. Compare mass loss, use temperature-matched dry/covered controls and flow tracer; measure power required at matched temperature. No complete elimination follows from cooling alone.",
+        "diagnose": "Compare your reasoning with the reconstruction. Test this task-specific misconception: A warm parcel is denser than its surroundings because of dissolved material. Which way does buoyancy act? Identify the first unsupported inference in your own attempt.",
+        "repair": "Rebuild the relevant model using the stated conditions: Use measured densities and separate mechanisms through controls. Check your reconstruction against the original task data.",
+        "boundary_test": "If the interior is motionless but the outside air flows, which convection path can remain?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    }
+  ],
+  "core2_sources": [
+    {
+      "item_id": "NSEJS-FND-CIRC-04",
+      "source_role": "PREREQUISITE_BRIDGE",
+      "locator": "nsejs/physics/index.html?topic=circuits&q=NSEJS-FND-CIRC-04#NSEJS-FND-CIRC-04; existing foundation fuse candidate; observed display digest only, not original source digest; supporting prerequisite for PH07-04",
+      "stem_sha256": "1fdcffaa02d1441a2cea832002471a25d62912036bcee0215aa321d4435bc9c5",
+      "figure_status": "NOT_APPLICABLE",
+      "key_status": "HOLD",
+      "academic_status": "HOLD"
+    }
+  ],
+  "acceptance": {
+    "b1_b7": {
+      "B1": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B2": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B3": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B4": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B5": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B6": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B7": {
+        "status": "HOLD",
+        "evidence_refs": []
+      }
+    },
+    "gates": {
+      "source_authenticity": "HOLD",
+      "content_correctness": "HOLD",
+      "cognitive_qualification": "HOLD",
+      "teaching_sufficiency": "HOLD",
+      "assessment_validity": "HOLD",
+      "implementation": "NOT_RUN",
+      "release_authority": "HOLD"
+    },
+    "release": "HOLD",
+    "acceptance_note": "Dedicated B01 subtopic slice; existing Core2 candidate is supporting PREREQUISITE_BRIDGE, producer D2 and source/QRT HOLD. New advanced tasks AUTHORED_TRANSFER; no direct exam admission. Per-target MAIN placeholders remain pending approved tile MAIN design. No academic approval inferred from software validation."
+  }
+}
