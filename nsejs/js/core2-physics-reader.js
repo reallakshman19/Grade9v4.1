@@ -2,12 +2,12 @@
 (function () {
   "use strict";
   const TOPICS = [
-    ["optics","OPTICS","Optics"],
-    ["electrostatics","ELECTROSTATICS","Electrostatics"],
-    ["circuits","CURRENT_ELECTRICITY","Circuits"],
-    ["magnetism","MAGNETISM_AND_EMI","Magnetism & EMI"],
-    ["mechanics","MECHANICS","Mechanics"],
-    ["fluids","FLUIDS_AND_SOUND","Fluids & Sound"]
+    ["optics","OPTICS","Optics","🔭",10],
+    ["electrostatics","ELECTROSTATICS","Electrostatics","⚡",10],
+    ["circuits","CURRENT_ELECTRICITY","Circuits","🔌",10],
+    ["magnetism","MAGNETISM_AND_EMI","Magnetism & EMI","🧲",10],
+    ["mechanics","MECHANICS","Mechanics","⚙️",11],
+    ["fluids","FLUIDS_AND_SOUND","Fluids & Sound","🌊",2]
   ];
   const status = document.getElementById("status");
   const target = document.getElementById("questions");
@@ -220,12 +220,27 @@
   }
   async function load() {
     const topic=TOPICS.find(t=>t[0]===selectedTopic);
+    nav.className = "topic-nav-container";
+    nav.replaceChildren();
     TOPICS.forEach(t=>{
       const a=document.createElement("a");
       a.href="question-bank.html?topic="+encodeURIComponent(t[0]);
-      a.textContent=t[2];
-      a.style.cssText="display:inline-block;padding:10px;border:1px solid #8caeba;border-radius:7px;background:"+(t[0]===selectedTopic?"#d5eff0":"white");
-      if(t[0]===selectedTopic)a.setAttribute("aria-current","page");
+      a.className="topic-pill-btn" + (t[0]===selectedTopic ? " active" : "");
+      
+      const icon = document.createElement("span");
+      icon.className = "pill-icon";
+      icon.textContent = t[3];
+      
+      const name = document.createElement("span");
+      name.className = "pill-name";
+      name.textContent = t[2];
+      
+      const count = document.createElement("span");
+      count.className = "pill-count";
+      count.textContent = t[4];
+      
+      a.append(icon, " ", name, " ", count);
+      if(t[0]===selectedTopic) a.setAttribute("aria-current","page");
       nav.append(a);
     });
     const [manifestResponse,response,evidenceResponse]=await Promise.all([

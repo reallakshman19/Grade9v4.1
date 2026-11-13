@@ -125,6 +125,32 @@
     const route = accepted;
     const cards = ROOT.querySelectorAll("article.card[data-question-uid]");
     for (const card of cards) {
+      if (card.dataset.questionUid === "g9:PHYSICS:PHYS-NSEJS-FLUID-01" && !card.querySelector("#nsejs-route-fluid-01")) {
+        const holder = document.createElement("div");
+        holder.id = "nsejs-route-fluid-01";
+        holder.className = "nsejs-learning-route";
+        const label = document.createElement("p");
+        label.textContent = "Core 1A → Core 1B authored Fluid Mechanics: learn effective gravity scaling and relative buoyant acceleration in an accelerating frame. Technical preview; academic HOLD.";
+        const link = document.createElement("a");
+        link.textContent = "▶ Open 3-Stage Fluids Learning Journey →";
+        link.className = "nsejs-learning-touch-link";
+        link.href = "core1/nsejs-fluids-sound-r1/index.html";
+        holder.append(label, link);
+        card.append(holder);
+      }
+      if (card.dataset.questionUid === "g9:PHYSICS:PHYS-NSEJS-FLUID-04" && !card.querySelector("#nsejs-route-fluid-04")) {
+        const holder = document.createElement("div");
+        holder.id = "nsejs-route-fluid-04";
+        holder.className = "nsejs-learning-route";
+        const label = document.createElement("p");
+        label.textContent = "Core 1A → Core 1B authored Fluid Mechanics: learn droplet coalescence and surface energy release. Technical preview; academic HOLD.";
+        const link = document.createElement("a");
+        link.textContent = "▶ Open 3-Stage Surface Energy Learning Journey →";
+        link.className = "nsejs-learning-touch-link";
+        link.href = "core1/nsejs-fluids-surface-energy-d3-r1/index.html";
+        holder.append(label, link);
+        card.append(holder);
+      }
       if (card.dataset.questionUid !== UID) continue;
       if (card.dataset.contentRevision !== route.content_revision_sha256) {
         if (returnRequested) block("Source card revision does not match the requested lesson");

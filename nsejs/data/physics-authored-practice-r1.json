@@ -1,6 +1,6 @@
 {
   "schema_version": "nsejs-authored-practice/v1",
-  "collection_id": "grade9-physics-authored-mechanics-r1",
+  "collection_id": "grade9-physics-authored-r1",
   "academic_release": "HOLD",
   "source_claim": "AUTHORED_PRACTICE_NOT_OFFICIAL_EXAM",
   "questions": [
@@ -52,6 +52,108 @@
       "crux_move_ref": "G9-AUTH-MECH-001-M2",
       "family_ref": "PHYS-MECHANICS-COLLISION-AND-FRICTION",
       "primary_capability_ref": "PHYS-MECH-SYNTHESIZE-TRANSFER"
+    },
+    {
+      "id": "PHYS-NSEJS-FLUID-01",
+      "source_id": "PHYS-NSEJS-FLUID-01",
+      "source_name": "Fluid Mechanics — Buoyancy in Accelerating Frames",
+      "category": "AUTHORED_PRACTICE",
+      "origin": "GRADE9_ORIGINAL_AUTHORING_NOT_EXAM",
+      "topic": "FLUIDS_AND_SOUND",
+      "batch": "Buoyant tension & relative acceleration in an elevator",
+      "question_type": "single_correct_mcq",
+      "stem": "A solid block of density $\\rho_s = 600\\text{ kg/m}^3$ and mass $m = 3.0\\text{ kg}$ is tied to the bottom of a container filled with water ($\\rho_w = 1000\\text{ kg/m}^3$) by a light inextensible cord. The entire container is placed inside an elevator accelerating vertically upwards with constant acceleration $a = 2.0\\text{ m/s}^2$. Taking $g = 10.0\\text{ m/s}^2$:\n\nDetermine the tension $T$ in the cord during upward acceleration, and the initial upward acceleration $a_{\\text{rel}}$ of the block relative to the container immediately after the cord is severed.",
+      "options": [
+        "A: T = 18.0 N, a_rel = 6.0 m/s²",
+        "B: T = 24.0 N, a_rel = 8.0 m/s²",
+        "C: T = 20.0 N, a_rel = 6.67 m/s²",
+        "D: T = 30.0 N, a_rel = 10.0 m/s²"
+      ],
+      "answer": "B: T = 24.0 N, a_rel = 8.0 m/s²",
+      "steps": [
+        "1. In the upward accelerating elevator frame, effective gravity is g_eff = g + a = 10.0 + 2.0 = 12.0 m/s².",
+        "2. Block volume V = m / ρ_s = 3.0 / 600 = 0.0050 m³. Buoyant force F_B = ρ_w * V * g_eff = 1000 * 0.0050 * 12.0 = 60.0 N.",
+        "3. Effective weight W_eff = m * g_eff = 3.0 * 12.0 = 36.0 N.",
+        "4. Equilibrium gives tension T = F_B - W_eff = 60.0 - 36.0 = 24.0 N.",
+        "5. Immediately after cord is cut, net upward force F_net = 24.0 N; relative acceleration a_rel = F_net / m = 24.0 / 3.0 = 8.0 m/s²."
+      ],
+      "check": "Limiting check: as elevator acceleration a -> -g (free fall), g_eff -> 0, giving T = 0 N and a_rel = 0 m/s².",
+      "source_figures": [],
+      "figure_note": "",
+      "hints": [],
+      "op": "MODEL",
+      "band": "D2",
+      "score": 4,
+      "components": {
+        "concept_model_selection": 2,
+        "representation_translation": 1,
+        "reasoning_chain_length": 1,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 0
+      },
+      "qrt_adjudication": "HOLD",
+      "science_review": "HOLD",
+      "key_state": "AUTHOR_CALCULATED_UNREVIEWED",
+      "review_state": "NOT_ADMITTED",
+      "flags": [
+        "AUTHOR_ORIGIN_NOT_EXAM",
+        "QRT_D2_NOMINATION_ONLY",
+        "REQUIRES_DISTINCT_PHYSICS_REVIEW"
+      ],
+      "crux_move_ref": "PHYS-NSEJS-FLUID-01-M2",
+      "family_ref": "PHYS-FLUID-BUOYANCY-ACCELERATED",
+      "primary_capability_ref": "PHYS-FLUID-MODEL-01"
+    },
+    {
+      "id": "PHYS-NSEJS-FLUID-04",
+      "source_id": "PHYS-NSEJS-FLUID-04",
+      "source_name": "Fluid Mechanics — Droplet Coalescence & Surface Energy Release",
+      "category": "AUTHORED_PRACTICE",
+      "origin": "GRADE9_ORIGINAL_AUTHORING_NOT_EXAM",
+      "topic": "FLUIDS_AND_SOUND",
+      "batch": "Non-linear geometric scaling & surface energy release",
+      "question_type": "single_correct_mcq",
+      "stem": "1000 identical spherical water droplets, each of radius $r = 1.0 \\times 10^{-4}\\text{ m}$, coalesce into a single spherical drop. The surface tension of water is $T = 0.075\\text{ N/m}$.\n\nCalculate the net decrease in total surface area and the surface energy released during coalescence.",
+      "options": [
+        "A: Delta U = 8.48 x 10^-6 J",
+        "B: Delta U = 9.42 x 10^-6 J",
+        "C: Delta U = 1.05 x 10^-5 J",
+        "D: Delta U = 7.50 x 10^-6 J"
+      ],
+      "answer": "A: Delta U = 8.48 x 10^-6 J",
+      "steps": [
+        "1. Volume conservation: (4/3)πR³ = 1000 * (4/3)πr³ => R = 10r = 1.0 × 10⁻³ m.",
+        "2. Initial surface area A_i = 1000 * 4πr² = 4000πr².",
+        "3. Final surface area A_f = 4πR² = 4π(10r)² = 400πr².",
+        "4. Area reduction ΔA = A_i - A_f = 3600πr² = 3.6π × 10⁻⁵ m² ≈ 1.131 × 10⁻⁴ m².",
+        "5. Released surface energy ΔU = T * ΔA = 0.075 * 1.131 × 10⁻⁴ ≈ 8.48 × 10⁻⁶ J."
+      ],
+      "check": "Limiting fraction: ΔU / U_i = 1 - N^(-1/3) = 1 - 0.1 = 90% of surface energy released.",
+      "source_figures": [],
+      "figure_note": "",
+      "hints": [],
+      "op": "MODEL",
+      "band": "D3",
+      "score": 6,
+      "components": {
+        "concept_model_selection": 2,
+        "representation_translation": 1,
+        "reasoning_chain_length": 2,
+        "algebra_computational_load": 1,
+        "trap_exception_sensitivity": 0
+      },
+      "qrt_adjudication": "HOLD",
+      "science_review": "HOLD",
+      "key_state": "AUTHOR_CALCULATED_UNREVIEWED",
+      "review_state": "NOT_ADMITTED",
+      "flags": [
+        "AUTHOR_ORIGIN_NOT_EXAM",
+        "QRT_D3_NOMINATION_ONLY",
+        "REQUIRES_DISTINCT_PHYSICS_REVIEW"
+      ],
+      "crux_move_ref": "PHYS-NSEJS-FLUID-04-M2",
+      "family_ref": "PHYS-FLUID-SURFACE-TENSION-COALESCENCE",
+      "primary_capability_ref": "PHYS-FLUID-MODEL-04"
     }
   ]
 }
