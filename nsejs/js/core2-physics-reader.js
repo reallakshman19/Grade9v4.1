@@ -305,15 +305,32 @@
   let combinedQuestions = [];
   let integrityMap = null;
 
-  function renderTopicView(slug) {
-    const grid = document.getElementById("topicsGrid");
-    const workspace = document.getElementById("topicWorkspace") || document.getElementById("topic-view");
-    const titleEl = document.getElementById("workspace-title");
-    
-    // Update active pill
+  const filterState = {
+    q: query.get("q") || "",
+    topic: TOPICS.some(t => t[0] === query.get("topic")) ? query.get("topic") : "all",
+    difficulty: query.get("difficulty") || "",
+    exam: query.get("exam") || "",
+    sort: query.get("sort") || "canonical"
+  };
+
+  let searchDebounceTimer = null;
+
+  function updateFilterControls() {
+    const qbSearch = document.getElementById("qbSearch");
+    const qbTopicSelect = document.getElementById("qbTopicSelect");
+    const qbDifficulty = document.getElementById("qbDifficulty");
+    const qbExam = document.getElementById("qbExam");
+    const qbSort = document.getElementById("qbSort");
+
+    if (qbSearch && qbSearch.value !== filterState.q) qbSearch.value = filterState.q;
+    if (qbTopicSelect && qbTopicSelect.value !== filterState.topic) qbTopicSelect.value = filterState.topic;
+    if (qbDifficulty && qbDifficulty.value !== filterState.difficulty) qbDifficulty.value = filterState.difficulty;
+    if (qbExam && qbExam.value !== filterState.exam) qbExam.value = filterState.exam;
+    if (qbSort && qbSort.value !== filterState.sort) qbSort.value = filterState.sort;
+
     if (nav) {
       nav.querySelectorAll(".topic-pill-btn").forEach(btn => {
-        if (btn.dataset.topic === slug) {
+        if (btn.dataset.topic === filterState.topic) {
           btn.classList.add("active");
           btn.setAttribute("aria-current", "page");
         } else {
@@ -322,12 +339,101 @@
         }
       });
     }
+  }
 
-    if (slug === "all") {
+  function applyFilters(shouldScrollToTarget) {
+    updateFilterControls();
+
+    const grid = document.getElementById("topicsGrid");
+    const workspace = document.getElementById("topicWorkspace") || document.getElementById("topic-view");
+    const titleEl = document.getElementById("workspace-title");
+    const qbCount = document.getElementById("qbResultCount");
+
+    // 1. Topic filtering
+    let filtered = combinedQuestions.slice();
+    let topicObj = null;
+    if (filterState.topic !== "all") {
+      topicObj = TOPICS.find(t => t[0] === filterState.topic);
+      if (topicObj) {
+        filtered = filtered.filter(q => q.topic === topicObj[1]);
+      }
+    }
+
+    // 2. Difficulty / Demand Band filtering
+    if (filterState.difficulty) {
+      const diff = filterState.difficulty.toUpperCase();
+      filtered = filtered.filter(q => {
+        const b = (q.band || "").toUpperCase();
+        const metaB = (q.integrity_meta && q.integrity_meta.producer_qrt_band || "").toUpperCase();
+        return b === diff || metaB === diff;
+      });
+    }
+
+    // 3. Exam / Year filtering
+    if (filterState.exam) {
+      const ex = filterState.exam.toLowerCase();
+      filtered = filtered.filter(q => {
+        if (ex === "authored") return q.category === "AUTHORED_PRACTICE";
+        const yr = q.integrity_meta && String(q.integrity_meta.official_paper_year);
+        const qid = (q.id || "").toLowerCase();
+        return yr === ex || qid.includes(ex);
+      });
+    }
+
+    // 4. Text Search filtering
+    const rawQ = filterState.q.trim();
+    if (rawQ) {
+      const qLower = rawQ.toLowerCase();
+      const tokens = qLower.split(/\s+/).filter(Boolean);
+      filtered = filtered.filter(q => {
+        const idLower = (q.id || "").toLowerCase();
+        const srcLower = (q.source_id || "").toLowerCase();
+        const stemLower = (q.stem || "").toLowerCase();
+        const ansLower = (q.answer || "").toLowerCase();
+        const optsLower = (q.options || []).map(o => String(o).toLowerCase()).join(" ");
+        const stepsLower = (q.steps || []).map(s => String(s).toLowerCase()).join(" ");
+        const full = `${idLower} ${srcLower} ${stemLower} ${ansLower} ${optsLower} ${stepsLower}`;
+        return full.includes(qLower) || tokens.every(tok => full.includes(tok));
+      });
+    }
+
+    // 5. Sorting
+    if (filterState.sort === "id") {
+      filtered.sort((a, b) => (a.source_id || a.id).localeCompare(b.source_id || b.id));
+    } else if (filterState.sort === "demand-asc") {
+      filtered.sort((a, b) => (a.score || 0) - (b.score || 0) || (a.source_id || a.id).localeCompare(b.source_id || b.id));
+    } else if (filterState.sort === "demand-desc") {
+      filtered.sort((a, b) => (b.score || 0) - (a.score || 0) || (a.source_id || a.id).localeCompare(b.source_id || b.id));
+    }
+
+    // Dynamic result count display
+    const totalSubject = combinedQuestions.length;
+    let countMsg = "";
+    if (filterState.topic === "all") {
+      if (rawQ || filterState.difficulty || filterState.exam) {
+        countMsg = `Showing ${filtered.length} of ${totalSubject} questions across all topics`;
+      } else {
+        countMsg = `Showing ${totalSubject} candidate questions across 6 topics`;
+      }
+    } else {
+      const topicName = topicObj ? topicObj[2] : filterState.topic;
+      const topicTotal = topicObj ? topicObj[4] : filtered.length;
+      if (rawQ || filterState.difficulty || filterState.exam) {
+        countMsg = `Showing ${filtered.length} of ${topicTotal} ${topicName} questions`;
+      } else {
+        countMsg = `Showing all ${topicTotal} ${topicName} questions`;
+      }
+    }
+    if (rawQ) countMsg += ` matching "${rawQ}"`;
+    if (qbCount) qbCount.textContent = countMsg;
+
+    // View toggling: Overview Grid vs Deep-Dive Workspace
+    const isFiltered = Boolean(rawQ || filterState.difficulty || filterState.exam);
+    if (filterState.topic === "all" && !isFiltered) {
       if (grid) grid.style.display = "grid";
       if (workspace) workspace.style.display = "none";
-      if (history.pushState && location.search) {
-        history.pushState(null, "", "index.html");
+      if (history.replaceState) {
+        history.replaceState(null, "", "index.html");
       }
       return;
     }
@@ -335,38 +441,192 @@
     if (grid) grid.style.display = "none";
     if (workspace) workspace.style.display = "block";
 
-    const topic = TOPICS.find(t => t[0] === slug);
-    if (!topic) return;
-
-    if (titleEl) titleEl.textContent = topic[3] + " " + topic[2] + " (" + topic[4] + " Questions)";
-
-    const questions = combinedQuestions.filter(q => q.topic === topic[1]);
-    if (status) status.textContent = topic[2] + ": " + questions.length + " candidate records · source and QRT admission HOLD.";
-
-    if (target) {
-      target.replaceChildren();
-      const ribbon = createRibbon(slug);
-      if (ribbon) target.append(ribbon);
-
-      if (questions.length === 0) {
-        target.append(text("p", "No source-backed candidate question bank is available for this topic. Do not infer coverage."));
+    if (titleEl) {
+      if (filterState.topic !== "all" && topicObj) {
+        titleEl.textContent = `${topicObj[3]} ${topicObj[2]} (${filtered.length} Questions)`;
       } else {
-        for (let i = 0; i < questions.length; i++) {
-          createCard(questions[i], i).then(card => {
-            target.append(card);
-            renderMath(card);
-          });
-        }
+        titleEl.textContent = `🔍 Filtered Physics Questions (${filtered.length} Questions)`;
       }
     }
 
-    if (history.pushState) {
-      history.pushState(null, "", "index.html?topic=" + encodeURIComponent(slug));
+    if (status) {
+      status.textContent = `${countMsg} · source and QRT admission HOLD.`;
+    }
+
+    if (target) {
+      target.replaceChildren();
+      if (filterState.topic !== "all") {
+        const ribbon = createRibbon(filterState.topic);
+        if (ribbon) target.append(ribbon);
+      }
+
+      if (filtered.length === 0) {
+        const emptyBox = text("div", "", "no-match-box");
+        emptyBox.style.cssText = "padding:28px 20px;text-align:center;background:#f8fafc;border:1.5px dashed #cbd5e1;border-radius:12px;margin:20px 0;";
+        const p = text("p", "No physics questions matched your active filters.", "meta");
+        p.style.cssText = "font-size:15px;font-weight:700;color:#64748b;margin-bottom:14px;";
+        const rBtn = text("button", "✕ Reset Search & Filters", "qb-clear");
+        rBtn.type = "button";
+        rBtn.style.cssText = "min-height:44px;padding:8px 18px;cursor:pointer;display:inline-block;";
+        rBtn.onclick = () => window.resetFilters();
+        emptyBox.append(p, rBtn);
+        target.append(emptyBox);
+      } else {
+        filtered.forEach((q, i) => {
+          createCard(q, i).then(card => {
+            target.append(card);
+            renderMath(card);
+          });
+        });
+      }
+    }
+
+    // Synchronize URL parameters
+    const params = new URLSearchParams();
+    if (filterState.topic && filterState.topic !== "all") params.set("topic", filterState.topic);
+    if (filterState.q) params.set("q", filterState.q);
+    if (filterState.difficulty) params.set("difficulty", filterState.difficulty);
+    if (filterState.exam) params.set("exam", filterState.exam);
+    if (filterState.sort && filterState.sort !== "canonical") params.set("sort", filterState.sort);
+
+    const qs = params.toString() ? "?" + params.toString() : "";
+    const hash = window.location.hash || "";
+    if (history.replaceState) {
+      history.replaceState(null, "", "index.html" + qs + hash);
+    }
+
+    // Anchor scrolling & highlight
+    if (shouldScrollToTarget) {
+      setTimeout(() => {
+        let el = null;
+        if (hash) {
+          const rawHash = decodeURIComponent(hash.replace(/^#/, ""));
+          el = document.getElementById(rawHash) ||
+               document.getElementById("question-" + rawHash) ||
+               document.querySelector(`[data-qid="${rawHash}"]`) ||
+               document.querySelector(`[data-source-id="${rawHash}"]`);
+        }
+        if (!el && rawQ) {
+          el = document.getElementById("question-" + encodeURIComponent(rawQ)) ||
+               document.querySelector(`[data-qid="${rawQ}"]`) ||
+               document.querySelector(`[data-source-id="${rawQ}"]`);
+        }
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+          el.classList.add("card-highlight");
+        }
+      }, 350);
     }
   }
 
+  function initFilterBar() {
+    const qbSearch = document.getElementById("qbSearch");
+    const qbTopicSelect = document.getElementById("qbTopicSelect");
+    const qbDifficulty = document.getElementById("qbDifficulty");
+    const qbExam = document.getElementById("qbExam");
+    const qbSort = document.getElementById("qbSort");
+    const qbClear = document.getElementById("qbClear");
+
+    // Populate topics dropdown
+    if (qbTopicSelect) {
+      qbTopicSelect.replaceChildren();
+      const allOpt = document.createElement("option");
+      allOpt.value = "all";
+      allOpt.textContent = `★ All Topics Overview (${TOPICS.length} Topics · ${combinedQuestions.length} Qs)`;
+      qbTopicSelect.appendChild(allOpt);
+
+      TOPICS.forEach(t => {
+        const opt = document.createElement("option");
+        opt.value = t[0];
+        const count = combinedQuestions.filter(q => q.topic === t[1]).length;
+        opt.textContent = `${t[3]} ${t[2]} (${count} Qs)`;
+        qbTopicSelect.appendChild(opt);
+      });
+      qbTopicSelect.value = filterState.topic;
+    }
+
+    // Populate exams dropdown
+    if (qbExam) {
+      const examsSet = new Set();
+      combinedQuestions.forEach(q => {
+        if (q.category === "AUTHORED_PRACTICE") examsSet.add("Authored Practice");
+        else if (q.integrity_meta && q.integrity_meta.official_paper_year) examsSet.add(String(q.integrity_meta.official_paper_year));
+        else if (q.id) {
+          const m = q.id.match(/20\d\d/);
+          if (m) examsSet.add(m[0]);
+        }
+      });
+      const sortedExams = Array.from(examsSet).sort().reverse();
+      sortedExams.forEach(yr => {
+        const opt = document.createElement("option");
+        opt.value = yr.toLowerCase();
+        opt.textContent = yr.includes("Authored") ? yr : `NSEJS ${yr}`;
+        qbExam.appendChild(opt);
+      });
+      qbExam.value = filterState.exam;
+    }
+
+    // Wire event listeners
+    if (qbSearch) {
+      qbSearch.value = filterState.q;
+      qbSearch.addEventListener("input", e => {
+        clearTimeout(searchDebounceTimer);
+        searchDebounceTimer = setTimeout(() => {
+          filterState.q = e.target.value;
+          applyFilters(false);
+        }, 150);
+      });
+    }
+
+    if (qbTopicSelect) {
+      qbTopicSelect.addEventListener("change", e => {
+        filterState.topic = e.target.value;
+        applyFilters(false);
+      });
+    }
+
+    if (qbDifficulty) {
+      qbDifficulty.value = filterState.difficulty;
+      qbDifficulty.addEventListener("change", e => {
+        filterState.difficulty = e.target.value;
+        applyFilters(false);
+      });
+    }
+
+    if (qbExam) {
+      qbExam.addEventListener("change", e => {
+        filterState.exam = e.target.value;
+        applyFilters(false);
+      });
+    }
+
+    if (qbSort) {
+      qbSort.value = filterState.sort;
+      qbSort.addEventListener("change", e => {
+        filterState.sort = e.target.value;
+        applyFilters(false);
+      });
+    }
+
+    if (qbClear) {
+      qbClear.addEventListener("click", () => {
+        window.resetFilters();
+      });
+    }
+  }
+
+  window.resetFilters = function() {
+    filterState.q = "";
+    filterState.topic = "all";
+    filterState.difficulty = "";
+    filterState.exam = "";
+    filterState.sort = "canonical";
+    applyFilters(false);
+  };
+
   window.selectPhysicsTopic = function(slug) {
-    renderTopicView(slug);
+    filterState.topic = slug;
+    applyFilters(false);
   };
 
   async function load() {
@@ -424,7 +684,7 @@
       allBtn.className = "topic-pill-btn";
       allBtn.dataset.topic = "all";
       allBtn.innerHTML = '<span class="pill-icon">★</span> <span class="pill-name">All Topics Overview</span> <span class="pill-count">6</span>';
-      allBtn.onclick = () => renderTopicView("all");
+      allBtn.onclick = () => window.selectPhysicsTopic("all");
       nav.append(allBtn);
 
       TOPICS.forEach(t => {
@@ -433,18 +693,27 @@
         btn.className = "topic-pill-btn";
         btn.dataset.topic = t[0];
         btn.innerHTML = `<span class="pill-icon">${t[3]}</span> <span class="pill-name">${t[2]}</span> <span class="pill-count">${t[4]} Qs</span>`;
-        btn.onclick = () => renderTopicView(t[0]);
+        btn.onclick = () => window.selectPhysicsTopic(t[0]);
         nav.append(btn);
       });
     }
 
-    // Determine initial view from query param or default to all
-    const initialTopic = query.get("topic");
-    if (initialTopic && TOPICS.some(t => t[0] === initialTopic)) {
-      renderTopicView(initialTopic);
-    } else {
-      renderTopicView("all");
+    // Initialize Question Bank Search & Filter Bar (Search 2)
+    initFilterBar();
+
+    // Check if query or hash references a specific question to auto-focus
+    const initialQ = filterState.q;
+    const initialHash = (window.location.hash || "").replace(/^#/, "");
+    if (initialHash && filterState.topic === "all") {
+      const matchQ = combinedQuestions.find(q => q.id === initialHash || q.source_id === initialHash);
+      if (matchQ) {
+        const matchTopic = TOPICS.find(t => t[1] === matchQ.topic);
+        if (matchTopic) filterState.topic = matchTopic[0];
+      }
     }
+
+    // Execute initial filter evaluation and handle anchor navigation
+    applyFilters(Boolean(initialHash || initialQ));
   }
   load().catch(function(e){status.textContent="Core2 bank unavailable: "+e.message;status.className="error";});
 })();
