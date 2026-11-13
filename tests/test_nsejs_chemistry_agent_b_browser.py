@@ -8,7 +8,7 @@ import subprocess
 import time
 import urllib.request
 import pytest
-from playwright.sync_api import sync_playwright
+sync_playwright = pytest.importorskip("playwright.sync_api", reason="Dedicated Chromium workflow installs Playwright").sync_playwright
 
 ROOT=Path(__file__).resolve().parents[1]
 PORT=8765
@@ -143,6 +143,8 @@ def test_c09_figures_and_keyboard_focus(browser):
         page.locator("#sections button").nth(5).click()
         page.locator('img[src*="C09-phosphorus-connectivity.svg"]').wait_for()
         assert page.locator('img[src*="C09-phosphorus-connectivity.svg"]').evaluate("(el)=>el.complete && el.naturalWidth>0")
+        page.get_by_role("button",name="Core1B independent practice").click()
+        page.get_by_role("heading",name="Stage 1 — Predict").wait_for()
         page.locator("#unit-select").focus()
         assert page.evaluate("document.activeElement.id")=="unit-select"
         page.keyboard.press("Tab")
