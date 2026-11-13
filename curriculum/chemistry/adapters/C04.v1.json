@@ -1,7 +1,7 @@
 {
   "schema": "g9v41-chem-topic-adapter/v1",
   "adapter_id": "CHEM-C04",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "subject": "CHEMISTRY",
   "unit_id": "C04",
   "blueprint_ref": "CHEM-QRT-BLUEPRINT@0.1.0",
@@ -45,9 +45,9 @@
           ],
           "slots": {
             "X": "Explain the difference between 0.25 mol O₂ molecules and 0.25 mol O atoms.",
-            "Y": "What does 'one mole' mean, and why should chemists need a counting unit larger than a dozen? The mole is a counting unit; changing the counted object changes the relationship between chemical amounts.",
+            "Y": "Chemistry warrant: The mole is a counting unit; changing the counted object changes the relationship between chemical amounts. Prior basis: Define the entity before counting: atoms, molecules, ions or formula units are different choices.",
             "Z": "0.20 mol of O₂ molecules contains 0.40 mol of oxygen atoms because each molecule contains two O atoms.",
-            "W": "Learner independently performs the decisive EXPLAIN inference required by: Explain the difference between 0.25 mol O₂ molecules and 0.25 mol O atoms."
+            "W": "Without the answer or decisive strategy supplied in advance, derive the causal explanation for this new task: \"Explain the difference between 0.25 mol O₂ molecules and 0.25 mol O atoms.\" A valid independent result must satisfy: Count atom multiplicity explicitly."
           },
           "student_task": "Explain the difference between 0.25 mol O₂ molecules and 0.25 mol O atoms.",
           "wrong_idea": "A mole means exactly one gram of any substance.",
@@ -73,9 +73,9 @@
           ],
           "slots": {
             "X": "What number of chloride ions is present in 0.20 mol CaCl₂ formula units in an ideal ionic accounting?",
-            "Y": "What does 'one mole' mean, and why should chemists need a counting unit larger than a dozen? Translate amount of a specified chemical entity to an integer-scale microscopic population without changing entity identity.",
+            "Y": "Chemistry warrant: Translate amount of a specified chemical entity to an integer-scale microscopic population without changing entity identity. Prior basis: Define the entity before counting: atoms, molecules, ions or formula units are different choices.",
             "Z": "0.10 mol H₂O represents ~6.022×10²² molecules and twice that many H atoms.",
-            "W": "Learner independently performs the decisive REPRESENT inference required by: What number of chloride ions is present in 0.20 mol CaCl₂ formula units in an ideal ionic accounting?"
+            "W": "Without the answer or decisive strategy supplied in advance, construct and validate the requested chemical representation for this new task: \"What number of chloride ions is present in 0.20 mol CaCl₂ formula units in an ideal ionic accounting?\" A valid independent result must satisfy: Carry units 'formula units' and 'ions'."
           },
           "student_task": "What number of chloride ions is present in 0.20 mol CaCl₂ formula units in an ideal ionic accounting?",
           "wrong_idea": "A mole means exactly one gram of any substance.",
@@ -101,9 +101,9 @@
           ],
           "slots": {
             "X": "Someone claims 0.10 mol of any solute always yields 0.20 mol dissolved ions. Evaluate with at least two substances.",
-            "Y": "What does 'one mole' mean, and why should chemists need a counting unit larger than a dozen? A stated mole amount does not uniquely specify measured electrical carriers without knowing dissociation and the environment.",
+            "Y": "Chemistry warrant: A stated mole amount does not uniquely specify measured electrical carriers without knowing dissociation and the environment. Prior basis: Define the entity before counting: atoms, molecules, ions or formula units are different choices.",
             "Z": "0.10 mol undissociated molecular solute has a different ideal ion count than 0.10 mol fully dissociated NaCl.",
-            "W": "Learner independently performs the decisive JUSTIFY inference required by: Someone claims 0.10 mol of any solute always yields 0.20 mol dissolved ions. Evaluate with at least two substances."
+            "W": "Without the answer or decisive strategy supplied in advance, identify decisive evidence or a counterexample and delimit the claim for this new task: \"Someone claims 0.10 mol of any solute always yields 0.20 mol dissolved ions. Evaluate with at least two substances.\" A valid independent result must satisfy: State conditions and chemical species."
           },
           "student_task": "Someone claims 0.10 mol of any solute always yields 0.20 mol dissolved ions. Evaluate with at least two substances.",
           "wrong_idea": "A mole means exactly one gram of any substance.",
@@ -145,14 +145,14 @@
           ],
           "slots": {
             "X": "How many molecules are in 8.8 g CO₂ (M=44 g/mol)?",
-            "Y": "If a tiny number of water molecules weighs almost nothing, why does a mole of them weigh about 18 grams? Two conversions are connected by amount n; the formula mass is the required bridge.",
+            "Y": "Chemistry warrant: Two conversions are connected by amount n; the formula mass is the required bridge. Prior basis: Read the exact formula and calculate its molar mass by summing each atomic contribution.",
             "Z": "4.4 g CO₂ with M=44 g/mol is 0.10 mol and about 6.02×10²² molecules.",
-            "W": "Learner independently performs the decisive APPLY inference required by: How many molecules are in 8.8 g CO₂ (M=44 g/mol)?"
+            "W": "Without the answer or decisive strategy supplied in advance, choose and execute the relevant chemical relation for this new task: \"How many molecules are in 8.8 g CO₂ (M=44 g/mol)?\" A valid independent result must satisfy: Separate molecular count from atom count."
           },
           "student_task": "How many molecules are in 8.8 g CO₂ (M=44 g/mol)?",
           "wrong_idea": "Use water's formula mass 18 as the number of molecules in one gram.",
           "replacement_rule": "Write the full unit alongside each numerical value.",
-          "visual_job": "One mole ladder with arrows g / (g mol⁻¹) → mol and mol × (entities mol⁻¹) → entities. Specify masses are approximate when using rounded atomic masses.",
+          "visual_job": "Use figures/c04-mole-bridge.svg only as prerequisite explanatory evidence, not an annotated answer to C04-04-APPLY-D3. One mole ladder with arrows g / (g mol⁻¹) → mol and mol × (entities mol⁻¹) → entities. Specify masses are approximate when using rounded atomic masses.",
           "independent_check": "Separate molecular count from atom count.",
           "source_bindings": [
             {
@@ -173,14 +173,14 @@
           ],
           "slots": {
             "X": "A sealed bottle contains 0.50 mol O₂. What is the oxygen gas mass, and why is 8 g an incorrect answer?",
-            "Y": "If a tiny number of water molecules weighs almost nothing, why does a mole of them weigh about 18 grams? The same element symbol can denote atom O, diatomic molecule O₂ or oxide ion O²⁻; molar-mass choice depends on specified species.",
+            "Y": "Chemistry warrant: The same element symbol can denote atom O, diatomic molecule O₂ or oxide ion O²⁻; molar-mass choice depends on specified species. Prior basis: Read the exact formula and calculate its molar mass by summing each atomic contribution.",
             "Z": "One mole O₂ molecules weighs ~32 g; one mole O atoms weighs ~16 g.",
-            "W": "Learner independently performs the decisive MODEL inference required by: A sealed bottle contains 0.50 mol O₂. What is the oxygen gas mass, and why is 8 g an incorrect answer?"
+            "W": "Without the answer or decisive strategy supplied in advance, choose and test a scientific model for this new task: \"A sealed bottle contains 0.50 mol O₂. What is the oxygen gas mass, and why is 8 g an incorrect answer?\" A valid independent result must satisfy: Read subscripts before choosing M."
           },
           "student_task": "A sealed bottle contains 0.50 mol O₂. What is the oxygen gas mass, and why is 8 g an incorrect answer?",
           "wrong_idea": "Use water's formula mass 18 as the number of molecules in one gram.",
           "replacement_rule": "Write the full unit alongside each numerical value.",
-          "visual_job": "One mole ladder with arrows g / (g mol⁻¹) → mol and mol × (entities mol⁻¹) → entities. Specify masses are approximate when using rounded atomic masses.",
+          "visual_job": "Use figures/c04-mole-bridge.svg only as prerequisite explanatory evidence, not an annotated answer to C04-05-MODEL-D3. One mole ladder with arrows g / (g mol⁻¹) → mol and mol × (entities mol⁻¹) → entities. Specify masses are approximate when using rounded atomic masses.",
           "independent_check": "Read subscripts before choosing M.",
           "source_bindings": [
             {
@@ -201,14 +201,14 @@
           ],
           "slots": {
             "X": "A sample contains 3.011×10²² molecules and weighs 2.2 g. Infer its molar mass and suggest a compatible simple gas.",
-            "Y": "If a tiny number of water molecules weighs almost nothing, why does a mole of them weigh about 18 grams? Molar mass inferred independently from m and N may constrain molecular identity but not prove a unique structure.",
+            "Y": "Chemistry warrant: Molar mass inferred independently from m and N may constrain molecular identity but not prove a unique structure. Prior basis: Read the exact formula and calculate its molar mass by summing each atomic contribution.",
             "Z": "A gas sample 0.20 mol with mass 6.4 g has molar mass 32 g/mol, consistent with O₂ among simple gases.",
-            "W": "Learner independently performs the decisive SYNTHESIZE inference required by: A sample contains 3.011×10²² molecules and weighs 2.2 g. Infer its molar mass and suggest a compatible simple gas."
+            "W": "Without the answer or decisive strategy supplied in advance, combine the independent chemical constraints in the correct dependency order for this new task: \"A sample contains 3.011×10²² molecules and weighs 2.2 g. Infer its molar mass and suggest a compatible simple gas.\" A valid independent result must satisfy: Distinguish mass-derived M from complete identity."
           },
           "student_task": "A sample contains 3.011×10²² molecules and weighs 2.2 g. Infer its molar mass and suggest a compatible simple gas.",
           "wrong_idea": "Use water's formula mass 18 as the number of molecules in one gram.",
           "replacement_rule": "Write the full unit alongside each numerical value.",
-          "visual_job": "One mole ladder with arrows g / (g mol⁻¹) → mol and mol × (entities mol⁻¹) → entities. Specify masses are approximate when using rounded atomic masses.",
+          "visual_job": "Use figures/c04-mole-bridge.svg only as prerequisite explanatory evidence, not an annotated answer to C04-06-SYNTHESIZE-D4. One mole ladder with arrows g / (g mol⁻¹) → mol and mol × (entities mol⁻¹) → entities. Specify masses are approximate when using rounded atomic masses.",
           "independent_check": "Distinguish mass-derived M from complete identity.",
           "source_bindings": [
             {
@@ -245,9 +245,9 @@
           ],
           "slots": {
             "X": "Why can 3 mol O₂ react with 6 mol H₂ to give 6 mol H₂O under complete combustion?",
-            "Y": "Why must coefficients change when balancing a chemical equation, but subscripts must not? Coefficients satisfy the atom ledger and then become ratios of amount of substance.",
+            "Y": "Chemistry warrant: Coefficients satisfy the atom ledger and then become ratios of amount of substance. Prior basis: Verify the actual reactant and product chemical identities before balancing.",
             "Z": "2H₂ + O₂ →2H₂O has a 2:1:2 molecule or mole ratio, not 2:1:1 by mass.",
-            "W": "Learner independently performs the decisive EXPLAIN inference required by: Why can 3 mol O₂ react with 6 mol H₂ to give 6 mol H₂O under complete combustion?"
+            "W": "Without the answer or decisive strategy supplied in advance, derive the causal explanation for this new task: \"Why can 3 mol O₂ react with 6 mol H₂ to give 6 mol H₂O under complete combustion?\" A valid independent result must satisfy: Check mass separately with molar masses."
           },
           "student_task": "Why can 3 mol O₂ react with 6 mol H₂ to give 6 mol H₂O under complete combustion?",
           "wrong_idea": "Change product Al₂O₃ into AlO to make smaller coefficients.",
@@ -273,9 +273,9 @@
           ],
           "slots": {
             "X": "Balance C₂H₆ + O₂ → CO₂ + H₂O using integer coefficients.",
-            "Y": "Why must coefficients change when balancing a chemical equation, but subscripts must not? A valid representation must conserve each element and preserve chemical formulas.",
+            "Y": "Chemistry warrant: A valid representation must conserve each element and preserve chemical formulas. Prior basis: Verify the actual reactant and product chemical identities before balancing.",
             "Z": "For iron oxide formation: 4Fe + 3O₂ → 2Fe₂O₃ conserves Fe4, O6.",
-            "W": "Learner independently performs the decisive REPRESENT inference required by: Balance C₂H₆ + O₂ → CO₂ + H₂O using integer coefficients."
+            "W": "Without the answer or decisive strategy supplied in advance, construct and validate the requested chemical representation for this new task: \"Balance C₂H₆ + O₂ → CO₂ + H₂O using integer coefficients.\" A valid independent result must satisfy: Atom counts of every element must agree."
           },
           "student_task": "Balance C₂H₆ + O₂ → CO₂ + H₂O using integer coefficients.",
           "wrong_idea": "Change product Al₂O₃ into AlO to make smaller coefficients.",
@@ -301,9 +301,9 @@
           ],
           "slots": {
             "X": "A closed vessel begins with 3 mol H₂ and 2 mol O₂. Assuming complete H₂ combustion, find final H₂O and unreacted O₂ amounts.",
-            "Y": "Why must coefficients change when balancing a chemical equation, but subscripts must not? Stoichiometric ratios describe consumed amounts, not initial amounts. A limiting-reagent question adds an inventory constraint.",
+            "Y": "Chemistry warrant: Stoichiometric ratios describe consumed amounts, not initial amounts. A limiting-reagent question adds an inventory constraint. Prior basis: Verify the actual reactant and product chemical identities before balancing.",
             "Z": "With 5 mol H₂ and 2 mol O₂, oxygen can consume only 4 mol H₂, leaving 1 mol H₂.",
-            "W": "Learner independently performs the decisive SYNTHESIZE inference required by: A closed vessel begins with 3 mol H₂ and 2 mol O₂. Assuming complete H₂ combustion, find final H₂O and unreacted O₂ amounts."
+            "W": "Without the answer or decisive strategy supplied in advance, combine the independent chemical constraints in the correct dependency order for this new task: \"A closed vessel begins with 3 mol H₂ and 2 mol O₂. Assuming complete H₂ combustion, find final H₂O and unreacted O₂ amounts.\" A valid independent result must satisfy: Account for all initial species."
           },
           "student_task": "A closed vessel begins with 3 mol H₂ and 2 mol O₂. Assuming complete H₂ combustion, find final H₂O and unreacted O₂ amounts.",
           "wrong_idea": "Change product Al₂O₃ into AlO to make smaller coefficients.",
@@ -345,9 +345,9 @@
           ],
           "slots": {
             "X": "If 16 g O₂ reacts completely with enough H₂, what mass of H₂O forms?",
-            "Y": "Why do two grams of hydrogen gas and sixteen grams of oxygen gas not necessarily make eighteen grams of water? Chemistry converts grams to moles before applying equation ratios.",
+            "Y": "Chemistry warrant: Chemistry converts grams to moles before applying equation ratios. Prior basis: Convert each starting mass to moles using the appropriate substance's molar mass.",
             "Z": "2 g H₂ is 1 mol and needs 0.5 mol O₂ =16 g to produce 1 mol H₂O =18 g.",
-            "W": "Learner independently performs the decisive APPLY inference required by: If 16 g O₂ reacts completely with enough H₂, what mass of H₂O forms?"
+            "W": "Without the answer or decisive strategy supplied in advance, choose and execute the relevant chemical relation for this new task: \"If 16 g O₂ reacts completely with enough H₂, what mass of H₂O forms?\" A valid independent result must satisfy: Verify mass conservation."
           },
           "student_task": "If 16 g O₂ reacts completely with enough H₂, what mass of H₂O forms?",
           "wrong_idea": "Simply add reagent masses and assign the sum to product even when one reagent is in excess.",
@@ -373,9 +373,9 @@
           ],
           "slots": {
             "X": "A student mixes 4 g H₂ and 16 g O₂. Which reagent controls H₂O production?",
-            "Y": "Why do two grams of hydrogen gas and sixteen grams of oxygen gas not necessarily make eighteen grams of water? Initial masses must be compared after normalising to stoichiometric quantities.",
+            "Y": "Chemistry warrant: Initial masses must be compared after normalising to stoichiometric quantities. Prior basis: Convert each starting mass to moles using the appropriate substance's molar mass.",
             "Z": "4 g H₂ needs 32 g O₂. If only 16 g O₂ exists, oxygen is limiting.",
-            "W": "Learner independently performs the decisive MODEL inference required by: A student mixes 4 g H₂ and 16 g O₂. Which reagent controls H₂O production?"
+            "W": "Without the answer or decisive strategy supplied in advance, choose and test a scientific model for this new task: \"A student mixes 4 g H₂ and 16 g O₂. Which reagent controls H₂O production?\" A valid independent result must satisfy: Compute both limiting extents."
           },
           "student_task": "A student mixes 4 g H₂ and 16 g O₂. Which reagent controls H₂O production?",
           "wrong_idea": "Simply add reagent masses and assign the sum to product even when one reagent is in excess.",
@@ -401,9 +401,9 @@
           ],
           "slots": {
             "X": "A reaction produces 54 g H₂O from H₂ + O₂, with sufficient reactants. Determine masses consumed of each gas.",
-            "Y": "Why do two grams of hydrogen gas and sixteen grams of oxygen gas not necessarily make eighteen grams of water? Observed product mass can determine reacted amounts if reaction and conditions are known; excess reagent requires a second measurement.",
+            "Y": "Chemistry warrant: Observed product mass can determine reacted amounts if reaction and conditions are known; excess reagent requires a second measurement. Prior basis: Convert each starting mass to moles using the appropriate substance's molar mass.",
             "Z": "36 g H₂O signals 2 mol water and thus 2 mol H₂ consumed, 1 mol O₂ consumed under ideal equation.",
-            "W": "Learner independently performs the decisive SYNTHESIZE inference required by: A reaction produces 54 g H₂O from H₂ + O₂, with sufficient reactants. Determine masses consumed of each gas."
+            "W": "Without the answer or decisive strategy supplied in advance, combine the independent chemical constraints in the correct dependency order for this new task: \"A reaction produces 54 g H₂O from H₂ + O₂, with sufficient reactants. Determine masses consumed of each gas.\" A valid independent result must satisfy: Check element and mass balances."
           },
           "student_task": "A reaction produces 54 g H₂O from H₂ + O₂, with sufficient reactants. Determine masses consumed of each gas.",
           "wrong_idea": "Simply add reagent masses and assign the sum to product even when one reagent is in excess.",
@@ -445,14 +445,14 @@
           ],
           "slots": {
             "X": "For 3A+2B→C, starting nA=6 mol and nB=3 mol, identify limiting reactant.",
-            "Y": "What makes a reagent limiting, and why isn't the one with fewer grams necessarily the limiting one? Compare available moles per reaction set, not raw counts.",
+            "Y": "Chemistry warrant: Compare available moles per reaction set, not raw counts. Prior basis: Write available reagent amounts in moles and divide each by its coefficient in the balanced equation.",
             "Z": "For 2A+B→products, nA=3, nB=2 gives extents 1.5 and 2; A is limiting.",
-            "W": "Learner independently performs the decisive APPLY inference required by: For 3A+2B→C, starting nA=6 mol and nB=3 mol, identify limiting reactant."
+            "W": "Without the answer or decisive strategy supplied in advance, choose and execute the relevant chemical relation for this new task: \"For 3A+2B→C, starting nA=6 mol and nB=3 mol, identify limiting reactant.\" A valid independent result must satisfy: Use the reaction extent method."
           },
           "student_task": "For 3A+2B→C, starting nA=6 mol and nB=3 mol, identify limiting reactant.",
           "wrong_idea": "The reactant with the smaller initial mole amount is always limiting.",
           "replacement_rule": "Normalize each initial amount by its balanced coefficient.",
-          "visual_job": "Use a two-column ledger of available moles/coefficient for reactants and a product yield arrow determined by the smaller extent.",
+          "visual_job": "Use figures/c04-reagent-ledger.svg only as prerequisite explanatory evidence, not an annotated answer to C04-13-APPLY-D3. Use a two-column ledger of available moles/coefficient for reactants and a product yield arrow determined by the smaller extent.",
           "independent_check": "Use the reaction extent method.",
           "source_bindings": [
             {
@@ -473,14 +473,14 @@
           ],
           "slots": {
             "X": "A + 2B → 3C starts with A=2 mol and B=3 mol. Predict maximum C and leftover A.",
-            "Y": "What makes a reagent limiting, and why isn't the one with fewer grams necessarily the limiting one? The extent fixes every amount consumed or produced in a single specified reaction.",
+            "Y": "Chemistry warrant: The extent fixes every amount consumed or produced in a single specified reaction. Prior basis: Write available reagent amounts in moles and divide each by its coefficient in the balanced equation.",
             "Z": "In 2H₂+O₂→2H₂O with nH₂=5 and nO₂=2, extent=2 gives 4 mol water, leaves 1 mol H₂.",
-            "W": "Learner independently performs the decisive MODEL inference required by: A + 2B → 3C starts with A=2 mol and B=3 mol. Predict maximum C and leftover A."
+            "W": "Without the answer or decisive strategy supplied in advance, choose and test a scientific model for this new task: \"A + 2B → 3C starts with A=2 mol and B=3 mol. Predict maximum C and leftover A.\" A valid independent result must satisfy: Declare the single-reaction idealisation."
           },
           "student_task": "A + 2B → 3C starts with A=2 mol and B=3 mol. Predict maximum C and leftover A.",
           "wrong_idea": "The reactant with the smaller initial mole amount is always limiting.",
           "replacement_rule": "Normalize each initial amount by its balanced coefficient.",
-          "visual_job": "Use a two-column ledger of available moles/coefficient for reactants and a product yield arrow determined by the smaller extent.",
+          "visual_job": "Use figures/c04-reagent-ledger.svg only as prerequisite explanatory evidence, not an annotated answer to C04-14-MODEL-D3. Use a two-column ledger of available moles/coefficient for reactants and a product yield arrow determined by the smaller extent.",
           "independent_check": "Declare the single-reaction idealisation.",
           "source_bindings": [
             {
@@ -501,14 +501,14 @@
           ],
           "slots": {
             "X": "A completed ideal H₂/O₂ reaction produces 2 mol H₂O, leaves 1 mol O₂ and no H₂. Find both starting mole amounts.",
-            "Y": "What makes a reagent limiting, and why isn't the one with fewer grams necessarily the limiting one? A product count plus leftover data can constrain initial composition; deductions depend on correct reaction identity.",
+            "Y": "Chemistry warrant: A product count plus leftover data can constrain initial composition; deductions depend on correct reaction identity. Prior basis: Write available reagent amounts in moles and divide each by its coefficient in the balanced equation.",
             "Z": "Given a completed 2H₂+O₂ reaction, water amount 4 mol and leftover H₂ 1 mol imply initial H₂=5 mol, O₂ at least 2 mol; without leftover O₂ measurement its initial amount is not uniquely fixed.",
-            "W": "Learner independently performs the decisive SYNTHESIZE inference required by: A completed ideal H₂/O₂ reaction produces 2 mol H₂O, leaves 1 mol O₂ and no H₂. Find both starting mole amounts."
+            "W": "Without the answer or decisive strategy supplied in advance, combine the independent chemical constraints in the correct dependency order for this new task: \"A completed ideal H₂/O₂ reaction produces 2 mol H₂O, leaves 1 mol O₂ and no H₂. Find both starting mole amounts.\" A valid independent result must satisfy: Explicit identifiability and mole balance."
           },
           "student_task": "A completed ideal H₂/O₂ reaction produces 2 mol H₂O, leaves 1 mol O₂ and no H₂. Find both starting mole amounts.",
           "wrong_idea": "The reactant with the smaller initial mole amount is always limiting.",
           "replacement_rule": "Normalize each initial amount by its balanced coefficient.",
-          "visual_job": "Use a two-column ledger of available moles/coefficient for reactants and a product yield arrow determined by the smaller extent.",
+          "visual_job": "Use figures/c04-reagent-ledger.svg only as prerequisite explanatory evidence, not an annotated answer to C04-15-SYNTHESIZE-D4. Use a two-column ledger of available moles/coefficient for reactants and a product yield arrow determined by the smaller extent.",
           "independent_check": "Explicit identifiability and mole balance.",
           "source_bindings": [
             {
@@ -545,9 +545,9 @@
           ],
           "slots": {
             "X": "A 16 g theoretical sample gives 12 g dry purified product. Find percent yield.",
-            "Y": "If the balanced equation predicts 10 g product, why might an experiment recover only 7 g? An actual/theoretical comparison requires compatible chemical identity and purity bases.",
+            "Y": "Chemistry warrant: An actual/theoretical comparison requires compatible chemical identity and purity bases. Prior basis: Use the balanced reaction and limiting reactant to determine the maximum target product under ideal conditions.",
             "Z": "If 20 g theoretical and 15 g pure actual, yield 75%. A wet product measured at 18 g can overstate recovered pure mass.",
-            "W": "Learner independently performs the decisive APPLY inference required by: A 16 g theoretical sample gives 12 g dry purified product. Find percent yield."
+            "W": "Without the answer or decisive strategy supplied in advance, choose and execute the relevant chemical relation for this new task: \"A 16 g theoretical sample gives 12 g dry purified product. Find percent yield.\" A valid independent result must satisfy: Use purified mass."
           },
           "student_task": "A 16 g theoretical sample gives 12 g dry purified product. Find percent yield.",
           "wrong_idea": "Any lower mass proves the chemistry failed completely.",
@@ -573,9 +573,9 @@
           ],
           "slots": {
             "X": "A 10 g theoretical experiment isolates 7 g. Does the measurement alone prove 30% unreacted reactant?",
-            "Y": "If the balanced equation predicts 10 g product, why might an experiment recover only 7 g? Two pathways can lower isolated yield: conversion inefficiency and collection inefficiency. Data from only final mass may not distinguish them.",
+            "Y": "Chemistry warrant: Two pathways can lower isolated yield: conversion inefficiency and collection inefficiency. Data from only final mass may not distinguish them. Prior basis: Use the balanced reaction and limiting reactant to determine the maximum target product under ideal conditions.",
             "Z": "A reaction could produce 10 g target but lose 3 g on filtration, or chemically produce 7 g and collect all; final 7 g is shared.",
-            "W": "Learner independently performs the decisive MODEL inference required by: A 10 g theoretical experiment isolates 7 g. Does the measurement alone prove 30% unreacted reactant?"
+            "W": "Without the answer or decisive strategy supplied in advance, choose and test a scientific model for this new task: \"A 10 g theoretical experiment isolates 7 g. Does the measurement alone prove 30% unreacted reactant?\" A valid independent result must satisfy: Do not claim mechanism from net yield alone."
           },
           "student_task": "A 10 g theoretical experiment isolates 7 g. Does the measurement alone prove 30% unreacted reactant?",
           "wrong_idea": "Any lower mass proves the chemistry failed completely.",
@@ -601,9 +601,9 @@
           ],
           "slots": {
             "X": "An ideal route could give 25 g final product from initial input. Stage 1 operates at 80% and stage 2 at 60% of its stage-specific theoretical outcome. Under proportional assumptions, what final mass is expected?",
-            "Y": "If the balanced equation predicts 10 g product, why might an experiment recover only 7 g? Sequential stages with independent proportional retention multiply their yield fractions; this is a conditional model.",
+            "Y": "Chemistry warrant: Sequential stages with independent proportional retention multiply their yield fractions; this is a conditional model. Prior basis: Use the balanced reaction and limiting reactant to determine the maximum target product under ideal conditions.",
             "Z": "If stage 1 yields 80% of theoretical and stage 2 converts 50% of stage-1 available material to a mass-scaled target, overall fraction is 0.8×0.5=0.4 relative to the appropriate theoretical baseline.",
-            "W": "Learner independently performs the decisive SYNTHESIZE inference required by: An ideal route could give 25 g final product from initial input. Stage 1 operates at 80% and stage 2 at 60% of its stage-specific theoretical outcome. Under proportional assumptions, what final mass is expected?"
+            "W": "Without the answer or decisive strategy supplied in advance, combine the independent chemical constraints in the correct dependency order for this new task: \"An ideal route could give 25 g final product from initial input. Stage 1 operates at 80% and stage 2 at 60% of its stage-specific theoretical outcome. Under proportional assumptions, what final mass is expected?\" A valid independent result must satisfy: Check dimensional basis and factor multiplication."
           },
           "student_task": "An ideal route could give 25 g final product from initial input. Stage 1 operates at 80% and stage 2 at 60% of its stage-specific theoretical outcome. Under proportional assumptions, what final mass is expected?",
           "wrong_idea": "Any lower mass proves the chemistry failed completely.",
@@ -632,6 +632,19 @@
       "version": "0.1.0",
       "kind": "INITIAL",
       "reason": "Full Stage2 draft topic-adapter bindings to authored C01–C07 Core1A/B content; unchanged shared 28 QRT authority",
+      "affected_subtopic_ids": [
+        "CHEM-C04.01",
+        "CHEM-C04.02",
+        "CHEM-C04.03",
+        "CHEM-C04.04",
+        "CHEM-C04.05",
+        "CHEM-C04.06"
+      ]
+    },
+    {
+      "version": "0.2.0",
+      "kind": "AMEND",
+      "reason": "Complete author-draft textbook concept evidence; make all X/Y/Z/W slots task-specific, preserving source and shared QRT IDs and held academic status",
       "affected_subtopic_ids": [
         "CHEM-C04.01",
         "CHEM-C04.02",
