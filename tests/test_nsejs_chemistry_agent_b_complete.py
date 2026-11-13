@@ -127,3 +127,70 @@ def test_all_reader_json_have_bounded_source_claims():
         for row in reader["sections"]:
             if row["scope"] in ("EXTENSION","ENRICHMENT"):
                 assert row["id"] in {"CHEM-C09.06","CHEM-C12.02","CHEM-C12.05","CHEM-C13.03","CHEM-C13.04","CHEM-C13.05"}
+
+
+def test_all_qrt_capstones_and_exact_source_scope_fail_closed():
+    import re
+    scope=load(B/"sources"/"C08-C14_PRIMARY_SCOPE_REGISTER_R2.json")
+    assert len(scope["rows"])==40
+    assert scope["counts"]["authenticated_exam_questions"]==0
+    assert all(r["status"]=="CANDIDATE_PAGE_SECTION_MAPPED_NOT_INDEPENDENTLY_REVIEWED"
+               and r["source_question_ids_verified"]==0 for r in scope["rows"])
+    scopes={r["subtopic_id"]:r for r in scope["rows"]}
+    expected_advanced={"CHEM-C09.06":"EXTENSION","CHEM-C12.02":"EXTENSION",
+        "CHEM-C12.05":"ENRICHMENT","CHEM-C13.03":"EXTENSION",
+        "CHEM-C13.04":"EXTENSION","CHEM-C13.05":"ENRICHMENT"}
+    for ref,classification in expected_advanced.items():
+        assert scopes[ref]["chemistry_source_support"]==classification
+    manifest=load(B/"qrt"/"D3D4_EVIDENCE_MANIFEST_R2.json")
+    assert manifest["policy"]["candidate_QRT_bindings"]==120
+    assert manifest["policy"]["qualified_QRT_bindings"]==0
+    assert manifest["policy"]["independent_review"]=="DEFERRED_BY_OWNER"
+    total=0
+    unique=set()
+    for unit in UNITS:
+        cap=load(B/"qrt"/f"{unit}-D3D4-capstone-evidence.v0.1.0.json")
+        assert cap["status"]=="DRAFT_HOLD"
+        assert cap["policy"]["academic_release"]=="HOLD"
+        assert len(cap["tasks"])==(12 if unit=="C09" else 2)
+        for t in cap["tasks"]:
+            assert t["task_id"] not in unique
+            unique.add(t["task_id"])
+            assert t["subtopic_id"] in scopes and t["subtopic_id"].startswith("CHEM-"+unit+".")
+            assert t["author_task_type"]=="AUTHORED_TRANSFER"
+            assert t["source_question_ref"] is None
+            assert t["original_exam_claim"]=="NONE"
+            assert t["academic_review"]=="HOLD"
+            assert len(t["prompt"])>100 and len(t["post_commit_worked_answer"])>130
+            assert t["template_ref"]==f'QRT-{t["primary_operation"]}-{t["band_candidate"]}'
+            vector=t["self_score_proposal"]
+            assert vector["status"]=="AUTHOR_PROPOSAL_NOT_INDEPENDENT"
+            assert len(vector["scores"])==5
+            assert all(0<=score<=2 for score in vector["scores"].values())
+            assert sum(vector["scores"].values())==vector["total"]
+            lo,hi={"D3":(6,7),"D4":(8,10)}[t["band_candidate"]]
+            assert lo<=vector["total"]<=hi
+            total+=1
+    assert total==24
+
+def test_all_eight_original_scientific_figures_and_reader_bindings():
+    expected={
+        "C08":"C08-reaction-atom-ledger.svg",
+        "C09":"C09-neutralisation.svg",
+        "C10":"C10-ionic-mobility.svg",
+        "C11":"C11-bond-order-hydrogens.svg",
+        "C12":"C12-gas-phase-ledger.svg",
+        "C13":"C13-electron-charge-ledger.svg",
+        "C14":"C14-water-test-limits.svg"
+    }
+    for unit,filename in expected.items():
+        book=load(B/"learner"/f"{unit}.reader.v0.1.0.json")
+        refs=[x for s in book["sections"] for x in s.get("figures",[])]
+        assert any(filename in x for x in refs)
+        fig=(B/"figures"/filename)
+        assert fig.exists()
+        txt=fig.read_text(encoding="utf-8")
+        assert '<svg ' in txt and '<title id="t">' in txt
+        assert '<desc id="d">' in txt and '</svg>' in txt
+        assert "<script" not in txt
+    assert (B/"figures"/"C09-phosphorus-connectivity.svg").exists()

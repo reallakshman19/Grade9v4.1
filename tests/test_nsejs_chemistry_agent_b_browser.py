@@ -151,3 +151,25 @@ def test_c09_figures_and_keyboard_focus(browser):
         assert page.evaluate("document.activeElement.id")=="task-select"
     finally:
         ctx.close()
+
+
+@pytest.mark.parametrize("unit,section,filename",[
+    ("C08",0,"C08-reaction-atom-ledger.svg"),
+    ("C10",2,"C10-ionic-mobility.svg"),
+    ("C11",2,"C11-bond-order-hydrogens.svg"),
+    ("C12",3,"C12-gas-phase-ledger.svg"),
+    ("C13",2,"C13-electron-charge-ledger.svg"),
+    ("C14",1,"C14-water-test-limits.svg")
+])
+def test_all_additional_diagram_assets_decode_in_browser(browser,unit,section,filename):
+    ctx,page=open_page(browser,unit=unit,width=1000,height=1600)
+    try:
+        page.locator("#sections button").nth(section).click()
+        page.wait_for_function(
+            "(name) => Array.from(document.images).some(el => el.src.includes(name) && el.complete && el.naturalWidth>0)",
+            arg=filename
+        )
+        assert page.locator("article .figure").count()>=1
+        assert page.evaluate("document.documentElement.scrollWidth <= innerWidth + 3")
+    finally:
+        ctx.close()
