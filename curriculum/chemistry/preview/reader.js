@@ -8,6 +8,32 @@ function el(tag, cls, text){const x=document.createElement(tag);if(cls)x.classNa
 function add(parent,child){parent.appendChild(child);return child}
 function p(parent,text,cls=""){add(parent,el("p",cls,text))}
 function section(parent,title,cls){const v=add(parent,el("section",cls));add(v,el("h3","",title));return v}
+function list(parent,items){const ol=add(parent,el("ol"));for(const item of items)add(ol,el("li","",item));return ol}
+function renderSpine(parent,book){
+ const spine=book.chapter_spine;if(!spine)return;
+ const box=add(parent,el("section","chapter-spine"));add(box,el("h2","","The chapter's central question"));p(box,spine.central_question,"bridge");
+ const layout=add(box,el("div","spine-columns"));
+ const prep=add(layout,el("div"));add(prep,el("h3","","What you need first"));list(prep,spine.prior_knowledge);
+ const journey=add(layout,el("div"));add(journey,el("h3","","How the understanding grows"));list(journey,spine.journey);
+ const terms=add(box,el("details","glossary"));add(terms,el("summary","","Key vocabulary — open when needed"));
+ const termList=add(terms,el("dl","terms"));
+ for(const [term,definition] of Object.entries(spine.key_terms)){add(termList,el("dt","",term));add(termList,el("dd","",definition))}
+}
+function renderDive(article,s){
+ const dive=s.deep_dive;if(!dive)return;
+ const idea=add(article,el("aside","big-idea"));add(idea,el("h3","","The big idea"));p(idea,dive.big_idea);
+ const path=section(article,"Build the reasoning, one link at a time","reasoning-path");list(path,dive.reasoning_path);
+ const activity=section(article,"Investigate the idea","investigation");
+ add(activity,el("h4","",dive.discovery.title));
+ p(activity,dive.discovery.setup);
+ const predict=add(activity,el("div","predict-question"));add(predict,el("strong","","Before you uncover the explanation"));p(predict,dive.discovery.predict);
+ const detail=add(activity,el("details","investigation-answer"));add(detail,el("summary","","Reveal the observation, interpretation and limits"));
+ p(detail,"Observation: "+dive.discovery.observation);
+ p(detail,"Interpretation: "+dive.discovery.interpretation);
+ p(detail,"Limit of this investigation: "+dive.discovery.limits);
+ const bridge=add(article,el("p","concept-bridge","Connection to the next idea: "+dive.connection));
+}
+
 function safeId(x){return String(x).replace(/[^a-z0-9-]/gi,"-").toLowerCase()}
 function stored(key){try{return localStorage.getItem(key)}catch(e){return memory.get(key)||null}}
 function persist(key,value){try{localStorage.setItem(key,value);return true}catch(e){memory.set(key,value);return false}}
@@ -19,8 +45,8 @@ function showDemand(parent,d,unit,subId,version){
  p(wrap,"Independent check: "+d.independent_check,"mini");
  const form=add(wrap,el("div","attempt"));add(form,el("h4","","Core1B — reconstruct the idea"));
  p(form,"Predict: "+d.core1b.predict);
- const label=add(form,el("label","", "Write your first attempt before the model answer appears."));const field=add(form,el("textarea"));field.setAttribute("aria-label",d.title+" first attempt");label.htmlFor="response-"+safeId(d.instance_id);field.id=label.htmlFor;
- p(form,d.core1b.attempt);
+ p(form,d.core1b.attempt,"learner-task");
+ const label=add(form,el("label","", "Write your first reasoning attempt before revealing the reconstruction."));const field=add(form,el("textarea"));field.setAttribute("aria-label",d.title+" first attempt");label.htmlFor="response-"+safeId(d.instance_id);field.id=label.htmlFor;
  for(let i=0;i<d.hints.length;i++){const dt=add(form,el("details"));add(dt,el("summary","","Hint "+(i+1)));p(dt,d.hints[i])}
  const key="g9chem-first-attempt:"+unit+":"+version+":"+subId+":"+d.instance_id;
  const submit=add(form,el("button","", "Save first attempt and reveal reconstruction"));
@@ -34,6 +60,7 @@ function draw(book){
  root.replaceChildren();
  const hero=add(root,el("header","hero"));add(hero,el("div","eyebrow","NSEJS Chemistry · Draft Core1A + Core1B textbook"));add(hero,el("h1","",book.title));p(hero,book.introduction);p(hero,"Academic status: "+book.academic_status+" · Scope: "+book.scope_note,"meta");
  const notice=add(hero,el("p","note","Authored curriculum candidate, not a reviewed official textbook or authenticated NSEJS question. Do not use these draft solutions as evidence of academic approval."));
+ renderSpine(root,book);
  const layout=add(root,el("div","textbook-layout"));const toc=add(layout,el("nav","toc"));toc.setAttribute("aria-label","Chapter contents");add(toc,el("h3","","Contents"));
  const area=add(layout,el("main"));
  book.subtopics.forEach((s,i)=>{
@@ -41,7 +68,9 @@ function draw(book){
   const article=add(area,el("article","lesson"));article.id=slug;
   add(article,el("div","eyebrow",s.id+" · "+s.scope));add(article,el("h2","",s.title));
   p(article,s.entry_question,"bridge");
-  for(const paragraph of s.core1a_paragraphs)p(article,paragraph);
+  renderDive(article,s);
+  const chapterText=section(article,"The connected scientific explanation","core1a-prose");
+  for(const paragraph of s.core1a_paragraphs)p(chapterText,paragraph);
   if(s.representation){const v=section(article,"Represent it faithfully","worked");if(s.figure_ref){const fig=add(v,el("figure","chem-figure"));const img=add(fig,el("img"));img.src=s.figure_ref;img.alt=s.figure_alt||s.title;img.loading="lazy";img.decoding="async";img.style.width="100%";img.style.height="auto";img.style.borderRadius="10px";add(fig,el("figcaption","mini",s.figure_alt||"Chemistry representation"));}p(v,s.representation)}
   if(s.worked_example){const w=section(article,"Worked example — all steps visible","worked");p(w,s.worked_example.problem);const list=add(w,el("ol"));for(const step of s.worked_example.steps)add(list,el("li","",step));p(w,"Result: "+s.worked_example.result);p(w,"Independent check: "+s.worked_example.check,"mini")}
   if(s.misconception){const m=section(article,"A tempting wrong route — and its repair","misconception");p(m,"Wrong: "+s.misconception.wrong);p(m,"Why it fails: "+s.misconception.why);p(m,"Repair: "+s.misconception.repair)}
@@ -49,6 +78,7 @@ function draw(book){
   for(const d of s.demands)showDemand(article,d,book.unit_id,s.id,book.content_sha256);
   if(s.source_notes){const sn=section(article,"Sources and limitations","source");p(sn,s.source_notes)}
  });
+ if(book.chapter_spine){const close=add(root,el("section","chapter-closure"));add(close,el("h2","","Chapter synthesis"));p(close,book.chapter_spine.chapter_closure);p(close,"Before beginning the next unit, explain this chapter's main claim without looking at the worked examples, then test it against one new observation.","mini")}
  add(root,el("footer","foot","Grade9v4.1 Chemistry draft · No academic approval inferred from software validation. Core1A explanations precede Core1B protected decisions. All tasks are authored practice unless a separately verified source identity is supplied."));
 }
 fetch(source,{cache:"no-store"}).then(async r=>{if(!r.ok)throw Error("HTTP "+r.status);if(!crypto || !crypto.subtle)throw Error("SHA-256 content revision binding unavailable");const raw=await r.text();const dig=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(raw));const revision=[...new Uint8Array(dig)].map(b=>b.toString(16).padStart(2,"0")).join("");const book=JSON.parse(raw);book.content_sha256=revision;return book}).then(draw).catch(e=>{root.replaceChildren();const err=add(root,el("div","hero"));add(err,el("h2","","Unable to load textbook candidate"));p(err,String(e)+". Serve the repository over HTTP; local file:// fetch is unsupported.")});
