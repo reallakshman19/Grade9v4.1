@@ -99,3 +99,21 @@ def test_worked_physics_anchor_arithmetic() -> None:
     assert (6 * 3) / (6 + 3) == 2
     # A co-located 0.60-s echo at 340 m/s gives a wall 102 m away.
     assert 340 * 0.60 / 2 == 102
+
+
+@pytest.mark.parametrize("topic,section_min,word_min", [
+    ("PH08", 13, 1750),
+    ("PH10", 17, 1750),
+])
+def test_continuous_textbook_pilots_are_present_but_unqualified(
+    topic: str, section_min: int, word_min: int
+) -> None:
+    chapter = (CURRICULUM / "topics" / topic / "CHAPTER_CONTINUOUS_DRAFT.md").read_text(encoding="utf-8")
+    assert len(chapter.split()) >= word_min
+    assert sum(line.startswith("### ") for line in chapter.splitlines()) >= section_min
+    assert "AUTHOR_EXPOSED_DRAFT" in chapter
+    assert "NOT A PUBLISHED TEXTBOOK" in chapter
+    assert "EXTENSION" in chapter
+    figure = CURRICULUM / "topics" / topic / "figures" / "lead-concept.svg"
+    drawing = figure.read_text(encoding="utf-8")
+    assert "<svg" in drawing and "<title" in drawing and "<desc" in drawing
