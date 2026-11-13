@@ -4,7 +4,7 @@
   "owner_agent": "AGENT_2",
   "topic_id": "PH10",
   "subtopic_id": "PH10-04",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "base_commit": "de3d55e05a35150b1111f25aee3ba8acd4ef47e5",
   "source_role": "AUTHORED_TRANSFER",
   "source_scope": "ADVANCED_APPLICATION_CANDIDATE",
@@ -17,7 +17,7 @@
       "primary_operation": "MODEL",
       "source_role": "AUTHORED_TRANSFER",
       "difficulty_status": "UNCLASSIFIED_PENDING_FIVE_FACTOR_REVIEW",
-      "content_revision": "0.1.0",
+      "content_revision": "0.1.1",
       "fresh_task": "A mark 24 cm below a glass surface n=1.6 is viewed from air near normal; another observer receives a ray at θ_glass=30°. Find paraxial depth and explain how to calculate the second.",
       "protected_work": "Select exact or paraxial geometry based on observer angle and medium.",
       "stages": {
@@ -44,7 +44,7 @@
       "primary_operation": "MODEL",
       "source_role": "AUTHORED_TRANSFER",
       "difficulty_status": "UNCLASSIFIED_PENDING_FIVE_FACTOR_REVIEW",
-      "content_revision": "0.1.0",
+      "content_revision": "0.1.1",
       "fresh_task": "A mark 12 cm below a water surface n=4/3 is viewed paraxially from a liquid above with n=1.2. Find apparent depth.",
       "protected_work": "Select exact or paraxial geometry based on observer angle and medium.",
       "stages": {
@@ -64,23 +64,23 @@
       "runtime_verification": "NOT_RUN"
     },
     {
-      "id": "PH10-04-B02-REPRESENT-MAIN-R1",
+      "id": "PH10-04-B02-REPRESENT-MAIN-R2",
       "kind": "MAIN",
       "subtopic_id": "PH10-04",
       "qrt_target_id": "PH10-04-REPRESENT-UNCLASSIFIED",
       "primary_operation": "REPRESENT",
       "source_role": "AUTHORED_TRANSFER",
       "difficulty_status": "UNCLASSIFIED_PENDING_FIVE_FACTOR_REVIEW",
-      "content_revision": "0.1.0",
-      "fresh_task": "A point lies at (0,−10 cm) below a horizontal surface. A ray meets surface at x=5 cm and refracts into air farther from normal. Draw the virtual intercept on axis and compare with real depth.",
-      "protected_work": "Draw actual refraction and backward projection with correct depth coordinates.",
+      "content_revision": "0.1.1",
+      "fresh_task": "A point is 12 cm below a flat interface in a transparent medium of refractive index 4/3, with air above. Two rays reach the interface 3 cm and 9 cm horizontally from the vertical through the point. On one scaled coordinate diagram construct both actual refracted rays and backward extensions; determine their axial intercepts and decide whether they locate the same virtual point.",
+      "protected_work": "Construct two physically consistent refracted-ray representations and compare their backward axial intercepts without assuming a universal apparent point.",
       "stages": {
         "predict": "State your expected result, direction or relationship before solving. Record uncertainty if needed.",
-        "attempt": "A point lies at (0,−10 cm) below a horizontal surface. A ray meets surface at x=5 cm and refracts into air farther from normal. Draw the virtual intercept on axis and compare with real depth.",
-        "reconstruct": "Actual ray bends away; extend outgoing ray backward below surface to x=0. Its intercept lies between point and interface because tanθ₂>tanθ₁.",
-        "diagnose": "Only if your saved answer demonstrates this error: Drawing the apparent position by extending the incident ray. Otherwise record insufficient evidence; compare your actual reasoning with the reconstruction.",
-        "repair": "Back-project the final refracted ray, not its incident segment.",
-        "boundary_test": "For normal incidence alone, can a single ray locate the depth uniquely?"
+        "attempt": "A point is 12 cm below a flat interface in a transparent medium of refractive index 4/3, with air above. Two rays reach the interface 3 cm and 9 cm horizontally from the vertical through the point. On one scaled coordinate diagram construct both actual refracted rays and backward extensions; determine their axial intercepts and decide whether they locate the same virtual point.",
+        "reconstruct": "Draw point (0,−12) and interface z=0. For horizontal offsets 3,9, incidence angles are arctan(x/d)=14.04° and 36.87°. Snell gives refracted angles 18.87° and 53.13°. Extend each actual refracted ray backward from its interface crossing; d′=x/tan r gives 8.78 cm and 6.75 cm. Mark both intercepts on vertical axis and distinguish solid physical rays from dashed extensions. They are unequal; a universal virtual point is not exact for these off-axis rays.",
+        "diagnose": "If your saved drawing extends the incident ray instead of the emergent ray, or puts both intercepts at d/n despite different angles, compare it with the constructed geometry. Otherwise record insufficient evidence.",
+        "repair": "Plot each actual transmitted ray using its own normal angle; back-project to the vertical axis and label its intercept separately.",
+        "boundary_test": "Repeat conceptually for offsets approaching zero. What common limiting depth do the intercepts approach?"
       },
       "attempt_policy": {
         "save_first_answer_before_hint": true,
@@ -91,23 +91,23 @@
       "runtime_verification": "NOT_RUN"
     },
     {
-      "id": "PH10-04-B02-REPRESENT-INSTANCE-R1",
+      "id": "PH10-04-B02-REPRESENT-INSTANCE-R2",
       "kind": "INSTANCE",
       "subtopic_id": "PH10-04",
       "qrt_target_id": "PH10-04-REPRESENT-UNCLASSIFIED",
       "primary_operation": "REPRESENT",
       "source_role": "AUTHORED_TRANSFER",
       "difficulty_status": "UNCLASSIFIED_PENDING_FIVE_FACTOR_REVIEW",
-      "content_revision": "0.1.0",
-      "fresh_task": "For light from air below a transparent liquid layer (higher n) above, construct analogous ray; compare apparent axial intercept with true point.",
-      "protected_work": "Draw actual refraction and backward projection with correct depth coordinates.",
+      "content_revision": "0.1.1",
+      "fresh_task": "A point is 10 cm below a flat interface in a transparent medium of refractive index 1.5, with air above. Two rays reach the interface 2 cm and 6 cm horizontally from the vertical through the point. On one scaled coordinate diagram construct both actual refracted rays and backward extensions; determine their axial intercepts and decide whether they locate the same virtual point.",
+      "protected_work": "Construct two physically consistent refracted-ray representations and compare their backward axial intercepts without assuming a universal apparent point.",
       "stages": {
         "predict": "State your expected result, direction or relationship before solving. Record uncertainty if needed.",
-        "attempt": "For light from air below a transparent liquid layer (higher n) above, construct analogous ray; compare apparent axial intercept with true point.",
-        "reconstruct": "Ray bends toward normal, tanθ₂<tanθ₁, so backward intercept lies deeper than true point. No physical ray crosses at virtual intercept.",
-        "diagnose": "Only if your saved answer demonstrates this error: Drawing the apparent position by extending the incident ray. Otherwise record insufficient evidence; compare your actual reasoning with the reconstruction.",
-        "repair": "Back-project the final refracted ray, not its incident segment.",
-        "boundary_test": "For normal incidence alone, can a single ray locate the depth uniquely?"
+        "attempt": "A point is 10 cm below a flat interface in a transparent medium of refractive index 1.5, with air above. Two rays reach the interface 2 cm and 6 cm horizontally from the vertical through the point. On one scaled coordinate diagram construct both actual refracted rays and backward extensions; determine their axial intercepts and decide whether they locate the same virtual point.",
+        "reconstruct": "Draw point (0,−10) and interface z=0. For horizontal offsets 2,6, incidence angles are arctan(x/d)=11.31° and 30.96°. Snell gives refracted angles 17.11° and 50.51°. Extend each actual refracted ray backward from its interface crossing; d′=x/tan r gives 6.50 cm and 4.94 cm. Mark both intercepts on vertical axis and distinguish solid physical rays from dashed extensions. They are unequal; a universal virtual point is not exact for these off-axis rays.",
+        "diagnose": "If your saved drawing extends the incident ray instead of the emergent ray, or puts both intercepts at d/n despite different angles, compare it with the constructed geometry. Otherwise record insufficient evidence.",
+        "repair": "Plot each actual transmitted ray using its own normal angle; back-project to the vertical axis and label its intercept separately.",
+        "boundary_test": "Repeat conceptually for offsets approaching zero. What common limiting depth do the intercepts approach?"
       },
       "attempt_policy": {
         "save_first_answer_before_hint": true,
@@ -125,7 +125,7 @@
       "primary_operation": "JUSTIFY",
       "source_role": "AUTHORED_TRANSFER",
       "difficulty_status": "UNCLASSIFIED_PENDING_FIVE_FACTOR_REVIEW",
-      "content_revision": "0.1.0",
+      "content_revision": "0.1.1",
       "fresh_task": "A learner insists the apparent depth of a pool is exactly d/n for every viewing angle. Refute using a ray at θ_water=30° in n=4/3.",
       "protected_work": "Show why a paraxial shortcut fails when angle dependence becomes significant.",
       "stages": {
@@ -152,7 +152,7 @@
       "primary_operation": "JUSTIFY",
       "source_role": "AUTHORED_TRANSFER",
       "difficulty_status": "UNCLASSIFIED_PENDING_FIVE_FACTOR_REVIEW",
-      "content_revision": "0.1.0",
+      "content_revision": "0.1.1",
       "fresh_task": "A transparent slab n=1.5 is viewed from air. Compare the intercept ratio for near-normal rays and an internal angle of 35°; justify why the latter is not d/n.",
       "protected_work": "Show why a paraxial shortcut fails when angle dependence becomes significant.",
       "stages": {
