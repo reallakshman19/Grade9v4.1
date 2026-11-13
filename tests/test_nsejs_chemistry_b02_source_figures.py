@@ -43,7 +43,8 @@ def test_b02_original_scientific_figure_per_subtopic():
         assert len(b["sections"])==n
         for sec in b["sections"]:
             assert len(sec["figures"])==1
-            p=ROOT/sec["figures"][9:]
+            p=(ROOT/"nsejs/chemistry/textbook"/sec["figures"][0]).resolve()
+            assert p.is_relative_to(B/"figures")
             assert p.exists()
             svg=ET.parse(p).getroot()
             assert svg.find("svg:title",ns) is not None
