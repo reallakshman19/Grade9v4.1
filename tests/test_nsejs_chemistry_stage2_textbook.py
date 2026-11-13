@@ -186,3 +186,122 @@ def test_scope_hold_and_no_auto_approval(materials):
     assert materials["blueprint"]["status"] == "DRAFT_OWNER_ACADEMIC_REVIEW"
     assert all(b["academic_status"] == "ACADEMIC_HOLD_AUTHOR_DRAFT" for b in materials["books"].values())
     assert all(a["status"] == "CANDIDATE" for a in materials["adapters"].values())
+
+
+def test_complete_concept_first_textbook(materials):
+    """Each of 44 subtopics must contain a connected scientific construction."""
+    for unit, book in materials["books"].items():
+        spine = book["chapter_spine"]
+        assert len(spine["central_question"]) > 50, unit
+        assert len(spine["journey"]) >= 4, unit
+        assert len(spine["prior_knowledge"]) >= 2, unit
+        assert len(spine["key_terms"]) >= 4, unit
+        assert len(spine["chapter_closure"]) >= 80, unit
+        for s in book["subtopics"]:
+            dive = s["deep_dive"]
+            assert len(dive["big_idea"]) >= 190, s["id"]
+            assert len(dive["reasoning_path"]) >= 4, s["id"]
+            assert all(len(x) >= 75 for x in dive["reasoning_path"]), s["id"]
+            assert len(dive["connection"]) >= 65, s["id"]
+            investigation = dive["discovery"]
+            assert set(investigation) == {
+                "title", "setup", "predict", "observation", "interpretation", "limits"
+            }, s["id"]
+            assert len(investigation["setup"]) > 80, s["id"]
+            assert all(len(investigation[x]) > 40
+                       for x in ("predict", "observation", "interpretation", "limits")), s["id"]
+
+
+def test_all_sixteen_scientific_figures_have_accessible_content(materials):
+    from xml.etree import ElementTree
+    figures = [
+        (unit, s)
+        for unit, book in materials["books"].items()
+        for s in book["subtopics"]
+        if s.get("figure_ref")
+    ]
+    assert len(figures) == 16
+    assert {unit for unit, _ in figures} == set(UNITS)
+    for unit, sub in figures:
+        path = CHEM / "preview" / sub["figure_ref"]
+        assert path.is_file(), sub["id"]
+        root = ElementTree.parse(path).getroot()
+        svg_ns = "{http://www.w3.org/2000/svg}"
+        assert root.tag == svg_ns + "svg"
+        assert len(root.findall(svg_ns + "title")) >= 1
+        assert len(root.findall(svg_ns + "desc")) >= 1
+        assert root.attrib["role"] == "img"
+        assert len(sub["figure_alt"]) > 50
+        assert all("script" not in n.tag.lower() for n in root.iter())
+
+
+def test_author_qrt_dossier_has_all_tasks_and_no_fabricated_review(materials):
+    chunks = (
+        load("reviews/qrt-author-evidence-C01-C03.v0.1.0.json"),
+        load("reviews/qrt-author-evidence-C04-C07.v0.1.0.json"),
+    )
+    entries = [e for chunk in chunks for e in chunk["entries"]]
+    assert len(entries) == 132
+    by_id = {e["instance_id"]: e for e in entries}
+    assert len(by_id) == 132
+    canonical_ids = {
+        d["instance_id"]
+        for book in materials["books"].values()
+        for s in book["subtopics"] for d in s["demands"]
+    }
+    assert canonical_ids == set(by_id)
+    for e in entries:
+        assert e["exact_difficulty_scores"] is None
+        assert e["academic_status"] == "HOLD"
+        assert e["b1_b7_status"] == "NOT_REVIEWED"
+        assert e["d3_d4_claim"] == "AUTHOR_PROPOSAL_NOT_ADJUDICATED"
+        assert set(e["reviewer_evidence_slots"]) == {
+            "H1","H2","H3","S1","S2","S3","P1","P2","P3","M1","M2","M3"
+        }
+        assert all(x["status"] == "PENDING_INDEPENDENT_REVIEW"
+                   for x in e["reviewer_evidence_slots"].values())
+        assert set(e["x_y_z_w"]) == {"X","Y","Z","W"}
+
+
+def test_exact_source_pins_and_task_specific_protected_W(materials):
+    registry = materials["concepts"]
+    book_shas = {
+        unit: next(e["content_git_blob_sha"] for e in registry["concepts"] if e["unit_id"] == unit)
+        for unit in UNITS
+    }
+    for unit, adapter in materials["adapters"].items():
+        assert adapter["version"] == "0.2.0"
+        assert adapter["change_log"][-1]["kind"] == "AMEND"
+        for s in adapter["subtopics"]:
+            for q in s["qrt_instances"]:
+                decisive = q["slots"]["W"]
+                assert q["student_task"] in decisive
+                assert "Without" in decisive
+                assert "Learner independently performs the decisive" not in decisive
+        dossier_name = ("C01-C03" if unit in {"C01","C02","C03"} else "C04-C07")
+        evidence = load(f"reviews/qrt-author-evidence-{dossier_name}.v0.1.0.json")
+        for e in evidence["entries"]:
+            if e["unit_id"] == unit:
+                assert e["authored_source_blob_sha"] == book_shas[unit]
+
+
+def test_ownership_registry_reflects_completed_authoring_only(materials):
+    index = load("registry/topic-adapter-index.v0.1.0.json")
+    assert index["version"] == "0.2.0"
+    assert len(index["units"]) == 14
+    for u in index["units"]:
+        if u["owner_agent"] == "A":
+            assert u["adapter_status"] == "AUTHOR_COMPLETE_ACADEMIC_HOLD"
+            assert u["adapter_version"] == "0.2.0"
+            assert (ROOT / u["preview_path"]).is_file()
+        else:
+            assert u["adapter_status"] == "NOT_AUTHORED"
+
+
+def test_rendered_textbook_engine_has_protected_revision_and_inquiry():
+    reader = (CHEM / "preview" / "reader.js").read_text(encoding="utf-8")
+    for required in ("renderSpine(root,book)", "renderDive(article,s)",
+                     "investigation-answer", "chapter-closure",
+                     'crypto.subtle.digest("SHA-256"', "post.hidden=true",
+                     "field.disabled=true"):
+        assert required in reader
