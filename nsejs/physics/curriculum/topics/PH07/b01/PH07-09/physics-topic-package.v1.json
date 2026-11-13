@@ -1,0 +1,481 @@
+{
+  "schema": "g9v41-nsejs-physics-topic-package/v1",
+  "subject_id": "PHYSICS",
+  "academic_track": "NSEJS",
+  "topic_id": "PH07",
+  "owner_agent": "AGENT_2",
+  "version": "0.3.2-b01.7.ph07-09",
+  "status": "DRAFT_AUTHOR_EXPOSED",
+  "pins": {
+    "contracts_version": "1.0.0",
+    "blueprint": {
+      "version": "0.2.0",
+      "git_blob_sha": "700dafcbe86d76442637bcf214eeb544497cf4ea"
+    },
+    "shared_qrt_28": {
+      "version": "1.0.0",
+      "git_blob_sha": "e2409aef11ae7d98444593bfbe1a38eb00c97cef"
+    },
+    "topic_adapter_version": "0.3.2-b01.7.ph07-09"
+  },
+  "syllabus_references": [
+    {
+      "reference_id": "PH07-CBSE",
+      "locator": "https://cbseacademic.nic.in/web_material/CurriculumMain27/SecPart1/ScienceSt_SecP1_2026-27.pdf",
+      "authority": "OFFICIAL_SYLLABUS",
+      "scope_status": "CANDIDATE"
+    },
+    {
+      "reference_id": "PH07-NCERT-HIST",
+      "locator": "https://sathee.iitk.ac.in/ncert-books/class-09/nb-science-09/sci-09-chapter-1-matter-in-our-surroundings/",
+      "authority": "NCERT_CBSE",
+      "scope_status": "CANDIDATE"
+    }
+  ],
+  "subtopics": [
+    {
+      "id": "PH07-09",
+      "title": "Thermal expansion: gaps, constraints and relative motion",
+      "scope_role": "PREREQUISITE_BRIDGE",
+      "syllabus_reference_ids": [
+        "PH07-CBSE",
+        "PH07-NCERT-HIST"
+      ],
+      "prerequisite_ids": [
+        "PH07-02"
+      ],
+      "science_ref_ids": [
+        "PH07-09-SCI-01"
+      ],
+      "learning_goal": "Unconstrained dimensions of many materials increase when heated, but actual motion and possible stress depend on anchoring, geometry, temperature change and material response.",
+      "textbook_chapter_ref": "nsejs/physics/curriculum/topics/PH07/b01/PH07-09/core1a.html",
+      "qrt_targets": [
+        {
+          "id": "PH07-09-B01-D3-EXPLAIN-01",
+          "task_identity": "G9-B01-PH07-09-EXPLAIN-R1",
+          "band": "D3",
+          "primary_operation": "EXPLAIN",
+          "blueprint_cell": "D3.2",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Explain contrasting expansion observations by separating free geometry from mechanical constraint and using relative motion rather than a material-only rule.",
+          "decisive_route": "A ring and a plug of different materials are heated freely, and the plug may become tighter despite the hole enlarging. Explain how both can occur. Shortest valid route: Both may expand, but plug diameter can increase more than hole diameter; compare relative changes.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "Free expansion and constrained deformation are competing explanations."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "Interpret anchor/geometry information."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Trace temperature change, free length change, relative edge motion and possible contact."
+            },
+            "algebra_computational_load": {
+              "score": 0,
+              "evidence": "No material arithmetic."
+            },
+            "trap_exception_sensitivity": {
+              "score": 2,
+              "evidence": "A hole and a fixed stop invalidate the naive 'expands inward' rule."
+            }
+          }
+        },
+        {
+          "id": "PH07-09-B01-D3-MODEL-01",
+          "task_identity": "G9-B01-PH07-09-MODEL-R1",
+          "band": "D3",
+          "primary_operation": "MODEL",
+          "blueprint_cell": "D3.4",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Choose an endpoint-motion model for a mixed anchored geometry and identify the first contact temperature rather than extrapolate a negative gap.",
+          "decisive_route": "A 1 m end-fixed rod and 2 m centre-fixed rod have α=20×10⁻⁶/K and face a 1.6 mm gap. Find ΔT for first contact. Shortest valid route: Advances 0.02 and 0.02 mm/K; gap closes at 40 K.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "Select full-end versus half-end expansion."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "Map rods and anchors to signed edge advances."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Calculate gap closure threshold and distinguish post-contact regime."
+            },
+            "algebra_computational_load": {
+              "score": 1,
+              "evidence": "Routine unit and coefficient arithmetic."
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "Contact changes model validity."
+            }
+          }
+        },
+        {
+          "id": "PH07-09-B01-D3-JUSTIFY-01",
+          "task_identity": "G9-B01-PH07-09-JUSTIFY-R1",
+          "band": "D3",
+          "primary_operation": "JUSTIFY",
+          "blueprint_cell": "D3.7",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Assess whether observed expansion or curvature uniquely identifies a material property; construct geometrically or mechanically distinct counterexamples.",
+          "decisive_route": "Equal right-end movements of two rods are reported as proof of equal α. Give a counterexample. Shortest valid route: Different lengths or anchor positions can compensate for different α; measure ΔT and free total ΔL at known L.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "Distinguish material coefficient from constraint and temperature effects."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "Use displacement observations as conditional rather than direct evidence."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Construct counterexamples and specify discriminating measurements."
+            },
+            "algebra_computational_load": {
+              "score": 0,
+              "evidence": "Arithmetic incidental."
+            },
+            "trap_exception_sensitivity": {
+              "score": 2,
+              "evidence": "Same motion can result from different geometry/temperature/constraints."
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "science_records": [
+    {
+      "id": "PH07-09-SCI-01",
+      "claim": "Unconstrained dimensions of many materials increase when heated, but actual motion and possible stress depend on anchoring, geometry, temperature change and material response.",
+      "law_or_model": "ΔL≈αL₀ΔT for uniform small free linear expansion; gap change is the signed relative displacement of its edges. Quantitative coefficients are authored enrichment.",
+      "assumptions": [
+        "Uniform temperature and material, small strain, approximately constant α for free expansion.",
+        "Fixed anchors and specified supports; actual displacement depends on constraint geometry."
+      ],
+      "conditions_and_limits": [
+        "Uniform temperature and material, small strain, approximately constant α for free expansion.",
+        "Fixed anchors and specified supports; actual displacement depends on constraint geometry.",
+        "After contact, the free-expansion model no longer predicts physical interpenetration or stress.",
+        "Bimetal bending direction assumes bonded layers and a suitable unconstrained strip; curvature needs mechanical data."
+      ],
+      "units_and_signs": "L and ΔL in m or mm with consistent units, α in K⁻¹, ΔT in K or °C difference; signed expansion/contraction.",
+      "source_refs": [
+        "PH07-CBSE",
+        "PH07-NCERT-HIST"
+      ],
+      "qualification_status": "HOLD"
+    }
+  ],
+  "topic_adapter": {
+    "adapter_id": "PHYS-TOPIC-PH07",
+    "topic_id": "PH07",
+    "version": "0.3.2-b01.7.ph07-09",
+    "for_blueprint": "PHYS-QRT-BLUEPRINT 0.2.0",
+    "status": "CANDIDATE_ONLY",
+    "cells": [
+      {
+        "cell_id": "D3.2",
+        "instance_ids": [
+          "PH07-09-B01-D3-EXPLAIN-01"
+        ]
+      },
+      {
+        "cell_id": "D3.4",
+        "instance_ids": [
+          "PH07-09-B01-D3-MODEL-01"
+        ]
+      },
+      {
+        "cell_id": "D3.7",
+        "instance_ids": [
+          "PH07-09-B01-D3-JUSTIFY-01"
+        ]
+      }
+    ]
+  },
+  "core1a": [
+    {
+      "id": "PH07-09-B01-CORE1A-R1",
+      "subtopic_id": "PH07-09",
+      "covered_qrt_ids": [
+        "PH07-09-B01-D3-EXPLAIN-01",
+        "PH07-09-B01-D3-MODEL-01",
+        "PH07-09-B01-D3-JUSTIFY-01"
+      ],
+      "phenomenon": "A bridge needs clearance to expand without forcing its supports to move.",
+      "scientific_narrative": "Heating generally changes the average separation of particles in a solid. Many solids expand when warmed and contract when cooled, although some materials and temperature ranges behave differently. Temperature is a state variable; expansion is a change of geometry. A hole in a freely heated uniform plate normally enlarges as though the missing material had expanded with the rest of the plate. It is not correct to imagine material expanding only into the hole while its outer boundary is fixed unless that is a stated mechanical constraint.\n\nFor small temperature changes in a uniform freely expanding rod, the approximate change in length is ΔL=αL₀ΔT. This is an optional quantitative model. The coefficient α depends on material and temperature, and a rod with twice the initial length expands twice as much for the same α and ΔT under the model. A negative ΔT gives a negative change in length when α is positive. Convert metres to millimetres before comparing an expansion with a small clearance.\n\nA change in length does not specify the position of either end. A rod anchored at its left end moves its right end by ΔL. If anchored at its right end, the left end moves in the opposite direction. A symmetrically supported rod whose centre is fixed moves each end by half its total change. For two rods facing each other across a gap, draw both anchors and free ends. If both ends move into the gap, add their advances when calculating the reduction in clearance. If both ends move in the same direction, the change in gap depends on their relative displacement. A signed coordinate diagram is more reliable than a universal instruction to subtract or add expansions.\n\nThe free-expansion equation predicts an unconstrained change. Once a gap closes against a rigid stop, that free movement is no longer available. Continuing to calculate a negative physical gap would be a model error; additional heating can produce stress, deformation or buckling depending on the system. Quantitative stress requires stiffness, constraint and material data that are not supplied by α alone. Similarly, a bimetallic strip bends because bonded layers would undergo different free expansions; the detailed curvature depends on geometry and stiffness, not merely the larger expansion coefficient. A freely heated uniform plate and a constrained layered strip require different mechanical models.\n\nTo solve a clearance problem, sketch the cold geometry, define positive direction, compute unconstrained changes, locate the moving edges, and find the temperature at which contact first becomes possible. Check the model separately before and after that boundary. This subtopic is a thermal foundation with authored advanced transfer; no matching exact Core2 item has been established in the inspected bank.",
+      "prerequisites": [
+        "PH07-02"
+      ],
+      "derivation_steps": [
+        {
+          "action": "Identify initial geometry, free edges and anchors.",
+          "why_valid": "Length change alone does not specify end displacement.",
+          "science_ref_id": "PH07-09-SCI-01"
+        },
+        {
+          "action": "Compute signed free change using the supplied coefficient and temperature interval.",
+          "why_valid": "Positive expansion coefficient and positive ΔT imply increased free length.",
+          "science_ref_id": "PH07-09-SCI-01"
+        },
+        {
+          "action": "Translate each edge motion into a common gap coordinate.",
+          "why_valid": "Clearance is the difference between edge positions.",
+          "science_ref_id": "PH07-09-SCI-01"
+        },
+        {
+          "action": "Find the contact threshold and state the mechanical model limit.",
+          "why_valid": "Once clearance reaches zero, constraints change the physical situation.",
+          "science_ref_id": "PH07-09-SCI-01"
+        }
+      ],
+      "model_limits": [
+        "Uniform temperature and material, small strain, approximately constant α for free expansion.",
+        "Fixed anchors and specified supports; actual displacement depends on constraint geometry.",
+        "After contact, the free-expansion model no longer predicts physical interpenetration or stress.",
+        "Bimetal bending direction assumes bonded layers and a suitable unconstrained strip; curvature needs mechanical data."
+      ],
+      "progressive_examples": [
+        {
+          "id": "PH07-09-B01-EX1",
+          "tier": "FOUNDATION",
+          "problem": "A freely expanding 2 m rod has α=10×10⁻⁶ K⁻¹ and warms 50 K. Find its change in length.",
+          "reasoning": "0.001 m = 1 mm.",
+          "independent_check": "The fractional change is 0.0005."
+        },
+        {
+          "id": "PH07-09-B01-EX2",
+          "tier": "CONNECTED",
+          "problem": "Two rods facing each other expand 0.8 and 1.2 mm into a 3 mm gap. What clearance remains?",
+          "reasoning": "1 mm.",
+          "independent_check": "The gap reduction is the sum 2 mm because both advances point into it."
+        },
+        {
+          "id": "PH07-09-B01-EX3",
+          "tier": "ADVANCED",
+          "problem": "A centre-fixed rod expands 2 mm in total next to a rigid stop 0.7 mm from its right end. Can the unconstrained prediction be realized?",
+          "reasoning": "No: right end would advance 1 mm, exceeding clearance. Contact happens at 0.7 mm end advance; later stress needs another model.",
+          "independent_check": "Free total expansion at first contact is 1.4 mm."
+        }
+      ],
+      "figures": [
+        {
+          "id": "PH07-09-FIG-01",
+          "reasoning_step": "Expansion and the contact threshold",
+          "scene_description": "Opposing anchors make the free ends advance into a clearance; a closed gap changes the model. Original inline SVG.",
+          "source_or_authorship": "ORIGINAL_B01_SVG_INLINE"
+        }
+      ],
+      "misconception": {
+        "wrong_model": "Every rod end moves by its whole length change, and negative calculated clearance is a real physical gap.",
+        "diagnostic": "Where is the anchor? What prevents two solids from occupying the same place after contact?",
+        "repair": "Draw signed endpoint motions, calculate first contact, and distinguish free expansion from constrained response."
+      },
+      "exit_check": {
+        "task": "Two end-fixed rods advance 0.4 mm and 0.7 mm into a 1.5 mm gap. Find remaining clearance.",
+        "answer": "0.4 mm.",
+        "reasoning": "Subtract the two advances from the initial gap."
+      },
+      "authorship_status": "DRAFT_AUTHOR_EXPOSED"
+    }
+  ],
+  "core1b": [
+    {
+      "id": "PH07-09-B01-MAIN-EXPLAIN-R2",
+      "kind": "MAIN",
+      "subtopic_id": "PH07-09",
+      "qrt_target_id": "PH07-09-B01-D3-EXPLAIN-01",
+      "fresh_task": "A metal plate with a circular hole is heated freely, while a second plate is clamped against a rigid frame. Explain why the free plate's hole can enlarge and why the same hole-size prediction is unsafe for the clamped plate.",
+      "protected_work": "Explain contrasting expansion observations by separating free geometry from mechanical constraint and using relative motion rather than a material-only rule.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether both holes must behave identically because the plates are made of the same metal.",
+        "attempt": "A metal plate with a circular hole is heated freely, while a second plate is clamped against a rigid frame. Explain why the free plate's hole can enlarge and why the same hole-size prediction is unsafe for the clamped plate.",
+        "reconstruct": "Uniform free scaling enlarges outer and inner dimensions. Frame constraints change deformation and may produce stress; hole response requires geometry/mechanical data.",
+        "diagnose": "Check whether the explanation treats change of total length as the same as the movement of every edge.",
+        "repair": "Locate anchors and free boundaries; trace the free dimensional change and identify what a constraint changes.",
+        "boundary_test": "If the free plate is cooled instead and α>0, what happens to the hole?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH07-09-B01-INSTANCE-EXPLAIN-R2",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH07-09",
+      "qrt_target_id": "PH07-09-B01-D3-EXPLAIN-01",
+      "fresh_task": "Two identical positive-expansion rods are heated equally. One is fixed at its left end, the other at its centre. Explain how the right-end displacements compare and why neither measurement by itself proves different material expansion.",
+      "protected_work": "Explain contrasting expansion observations by separating free geometry from mechanical constraint and using relative motion rather than a material-only rule.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether the two right ends move equally before drawing their anchors.",
+        "attempt": "Two identical positive-expansion rods are heated equally. One is fixed at its left end, the other at its centre. Explain how the right-end displacements compare and why neither measurement by itself proves different material expansion.",
+        "reconstruct": "Equal free length change; right end moves full ΔL for left anchor, half ΔL for centre anchor. Different displacement is due to reference constraint.",
+        "diagnose": "Check whether the explanation treats change of total length as the same as the movement of every edge.",
+        "repair": "Locate anchors and free boundaries; trace the free dimensional change and identify what a constraint changes.",
+        "boundary_test": "If the centre-fixed rod contacts a stop, can the free half-expansion continue?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH07-09-B01-MAIN-MODEL-R2",
+      "kind": "MAIN",
+      "subtopic_id": "PH07-09",
+      "qrt_target_id": "PH07-09-B01-D3-MODEL-01",
+      "fresh_task": "An end-fixed 2 m rod with α=12×10⁻⁶/K and a centre-fixed 2 m rod with α=18×10⁻⁶/K face a 2.1 mm gap. Both warm uniformly. Find first contact ΔT and clearance after 30 K.",
+      "protected_work": "Choose an endpoint-motion model for a mixed anchored geometry and identify the first contact temperature rather than extrapolate a negative gap.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether the two rods' contributions to closure are equal, then estimate whether contact occurs by 30 K.",
+        "attempt": "An end-fixed 2 m rod with α=12×10⁻⁶/K and a centre-fixed 2 m rod with α=18×10⁻⁶/K face a 2.1 mm gap. Both warm uniformly. Find first contact ΔT and clearance after 30 K.",
+        "reconstruct": "Advances 0.024 and 0.018 mm/K, sum 0.042. Contact at 50 K. At 30 K gap 2.1−1.26=0.84 mm.",
+        "diagnose": "Inspect the direction and anchor factor for each edge, including the different temperature rises; identify if contact was ignored.",
+        "repair": "Calculate free endpoint advances in one coordinate, solve for zero gap, and check whether the requested temperature is in the free regime.",
+        "boundary_test": "At 60 K, should the model report −0.42 mm actual clearance?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH07-09-B01-INSTANCE-MODEL-R2",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH07-09",
+      "qrt_target_id": "PH07-09-B01-D3-MODEL-01",
+      "fresh_task": "Two rods extend from opposite fixed walls toward a 1.8 mm gap. A is 1.5 m, α=16×10⁻⁶/K; B is 0.8 m, α=20×10⁻⁶/K. A warms by twice B's temperature rise. Find B's rise at first contact and the gap if B warms 20 K.",
+      "protected_work": "Choose an endpoint-motion model for a mixed anchored geometry and identify the first contact temperature rather than extrapolate a negative gap.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether A or B contributes more to gap closure, and record your initial reasoning.",
+        "attempt": "Two rods extend from opposite fixed walls toward a 1.8 mm gap. A is 1.5 m, α=16×10⁻⁶/K; B is 0.8 m, α=20×10⁻⁶/K. A warms by twice B's temperature rise. Find B's rise at first contact and the gap if B warms 20 K.",
+        "reconstruct": "A advance 0.048 mm per K of B, B 0.016; total 0.064. Contact 28.125 K of B. At 20 K remaining 0.52 mm.",
+        "diagnose": "Inspect the direction and anchor factor for each edge, including the different temperature rises; identify if contact was ignored.",
+        "repair": "Calculate free endpoint advances in one coordinate, solve for zero gap, and check whether the requested temperature is in the free regime.",
+        "boundary_test": "If B cools while A warms twice that magnitude, what is the new closure rate per K of |ΔT_B|?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH07-09-B01-MAIN-JUSTIFY-R2",
+      "kind": "MAIN",
+      "subtopic_id": "PH07-09",
+      "qrt_target_id": "PH07-09-B01-D3-JUSTIFY-01",
+      "fresh_task": "Two rods show the same right-end advance in a heating test. One is twice as long as the other and has its centre fixed; the short rod is left-fixed. A report claims equal movements prove equal expansion coefficients for all materials. Assess and describe the conditions needed.",
+      "protected_work": "Assess whether observed expansion or curvature uniquely identifies a material property; construct geometrically or mechanically distinct counterexamples.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Would you accept the report as a general proof of equal coefficients, or only as a conditional inference?",
+        "attempt": "Two rods show the same right-end advance in a heating test. One is twice as long as the other and has its centre fixed; the short rod is left-fixed. A report claims equal movements prove equal expansion coefficients for all materials. Assess and describe the conditions needed.",
+        "reconstruct": "For matched ΔT in these particular geometries the effective free expansion length is equal, so equal motions support equal α under the model. Without matched ΔT, free conditions and known anchors, conclusion not general.",
+        "diagnose": "Identify an unmeasured geometry, temperature or mechanical variable that your inference silently fixed.",
+        "repair": "Give two physically compatible explanations or conditions, then name an independent measurement that distinguishes them.",
+        "boundary_test": "If the long rod actually has its left end fixed, what coefficient relation would produce equal motions at equal ΔT?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH07-09-B01-INSTANCE-JUSTIFY-R2",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH07-09",
+      "qrt_target_id": "PH07-09-B01-D3-JUSTIFY-01",
+      "fresh_task": "A freely heated bonded strip bends. A technician claims the curvature alone gives the ratio of the layers' thermal expansion coefficients. Explain why different layer stiffnesses or thicknesses could yield different curvature for the same coefficients; propose a discriminating experiment.",
+      "protected_work": "Assess whether observed expansion or curvature uniquely identifies a material property; construct geometrically or mechanically distinct counterexamples.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether a single curvature measurement uniquely fixes the coefficient ratio.",
+        "attempt": "A freely heated bonded strip bends. A technician claims the curvature alone gives the ratio of the layers' thermal expansion coefficients. Explain why different layer stiffnesses or thicknesses could yield different curvature for the same coefficients; propose a discriminating experiment.",
+        "reconstruct": "Differential free strain drives bending but curvature depends on stiffness/thickness and bond/constraint; measure free expansion of separate samples at matched ΔT and lengths, plus geometry/mechanical properties if curvature required.",
+        "diagnose": "Identify an unmeasured geometry, temperature or mechanical variable that your inference silently fixed.",
+        "repair": "Give two physically compatible explanations or conditions, then name an independent measurement that distinguishes them.",
+        "boundary_test": "If both layers have identical α and the same uniform ΔT, does the differential-expansion mechanism alone predict bending?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    }
+  ],
+  "core2_sources": [],
+  "acceptance": {
+    "b1_b7": {
+      "B1": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B2": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B3": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B4": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B5": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B6": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B7": {
+        "status": "HOLD",
+        "evidence_refs": []
+      }
+    },
+    "gates": {
+      "source_authenticity": "HOLD",
+      "content_correctness": "HOLD",
+      "cognitive_qualification": "HOLD",
+      "teaching_sufficiency": "HOLD",
+      "assessment_validity": "HOLD",
+      "implementation": "NOT_RUN",
+      "release_authority": "HOLD"
+    },
+    "release": "HOLD",
+    "acceptance_note": "Isolated author-exposed candidate. No matched exact Core2 item in inspectable bank; all targets AUTHORED_TRANSFER. Unique version and R2 cycle convention; no canonical C04 selection. Separate stage criteria in B01 author handoff, not implemented runtime. Full JSON is author-exposed; B5 HOLD. Per-target MAIN provisional pending C06 adoption. No academic approval inferred from software validation."
+  }
+}

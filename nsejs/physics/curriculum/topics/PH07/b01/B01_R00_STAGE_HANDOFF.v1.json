@@ -3,7 +3,7 @@
   "status": "PROPOSED_PLATFORM_DEPENDENCY",
   "review_id": 5896632580,
   "pinned_prediction_head": "ad109e0f77fd34a9f7e818e3314885c52e7d85b8",
-  "scope": "48 exact-cycle response criteria: Increment 4 and Increment 5. Other 48 prior B01 cycles retain task-specific predictions and author stage prompts; exact boundary-response rubrics still outstanding.",
+  "scope": "72 exact-cycle response criteria: Increments 4, 5 and 6. Other 48 prior B01 cycles retain task-specific predictions and author stage prompts; exact boundary-response rubrics still outstanding.",
   "authority": "P00 owns shared runtime and protection; R01 owns independent academic review; Owner adopts contracts",
   "stage_order": [
     "PREDICT",
@@ -939,6 +939,438 @@
         "BOUNDARY_TEST": "No; common offset inherits the reference uncertainty even with exact gaps."
       },
       "boundary_prompt": "If the fourth measurement has ±0.5 mm uncertainty, can the other displacements be known exactly?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-09",
+      "target_id": "PH07-09-B01-D3-EXPLAIN-01",
+      "cycle_id": "PH07-09-B01-MAIN-EXPLAIN-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.7.ph07-09",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "Uniform free scaling enlarges outer and inner dimensions. Frame constraints change deformation and may produce stress; hole response requires geometry/mechanical data.",
+        "RECONSTRUCT": "Compare the saved route with this case's reconstructed result: Uniform free scaling enlarges outer and inner dimensions. Frame constraints change deformation and may produce stress; hole response requires geometry/mechanical data. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Check whether the explanation treats change of total length as the same as the movement of every edge.",
+        "REPAIR": "Locate anchors and free boundaries; trace the free dimensional change and identify what a constraint changes. Expected case-specific result: Uniform free scaling enlarges outer and inner dimensions. Frame constraints change deformation and may produce stress; hole response requires geometry/mechanical data.",
+        "BOUNDARY_TEST": "Its diameter decreases under free uniform contraction."
+      },
+      "boundary_prompt": "If the free plate is cooled instead and α>0, what happens to the hole?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-09",
+      "target_id": "PH07-09-B01-D3-EXPLAIN-01",
+      "cycle_id": "PH07-09-B01-INSTANCE-EXPLAIN-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.7.ph07-09",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "Equal free length change; right end moves full ΔL for left anchor, half ΔL for centre anchor. Different displacement is due to reference constraint.",
+        "RECONSTRUCT": "Compare the saved route with this case's reconstructed result: Equal free length change; right end moves full ΔL for left anchor, half ΔL for centre anchor. Different displacement is due to reference constraint. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Check whether the explanation treats change of total length as the same as the movement of every edge.",
+        "REPAIR": "Locate anchors and free boundaries; trace the free dimensional change and identify what a constraint changes. Expected case-specific result: Equal free length change; right end moves full ΔL for left anchor, half ΔL for centre anchor. Different displacement is due to reference constraint.",
+        "BOUNDARY_TEST": "No; after contact a new constrained mechanical model is required."
+      },
+      "boundary_prompt": "If the centre-fixed rod contacts a stop, can the free half-expansion continue?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-09",
+      "target_id": "PH07-09-B01-D3-MODEL-01",
+      "cycle_id": "PH07-09-B01-MAIN-MODEL-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.7.ph07-09",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "Advances 0.024 and 0.018 mm/K, sum 0.042. Contact at 50 K. At 30 K gap 2.1−1.26=0.84 mm.",
+        "RECONSTRUCT": "Compare the saved route with this case's reconstructed result: Advances 0.024 and 0.018 mm/K, sum 0.042. Contact at 50 K. At 30 K gap 2.1−1.26=0.84 mm. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Inspect the direction and anchor factor for each edge, including the different temperature rises; identify if contact was ignored.",
+        "REPAIR": "Calculate free endpoint advances in one coordinate, solve for zero gap, and check whether the requested temperature is in the free regime. Expected case-specific result: Advances 0.024 and 0.018 mm/K, sum 0.042. Contact at 50 K. At 30 K gap 2.1−1.26=0.84 mm.",
+        "BOUNDARY_TEST": "No; free prediction exceeds clearance by 0.42 mm, so contact/constraint requires a different model."
+      },
+      "boundary_prompt": "At 60 K, should the model report −0.42 mm actual clearance?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-09",
+      "target_id": "PH07-09-B01-D3-MODEL-01",
+      "cycle_id": "PH07-09-B01-INSTANCE-MODEL-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.7.ph07-09",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "A advance 0.048 mm per K of B, B 0.016; total 0.064. Contact 28.125 K of B. At 20 K remaining 0.52 mm.",
+        "RECONSTRUCT": "Compare the saved route with this case's reconstructed result: A advance 0.048 mm per K of B, B 0.016; total 0.064. Contact 28.125 K of B. At 20 K remaining 0.52 mm. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Inspect the direction and anchor factor for each edge, including the different temperature rises; identify if contact was ignored.",
+        "REPAIR": "Calculate free endpoint advances in one coordinate, solve for zero gap, and check whether the requested temperature is in the free regime. Expected case-specific result: A advance 0.048 mm per K of B, B 0.016; total 0.064. Contact 28.125 K of B. At 20 K remaining 0.52 mm.",
+        "BOUNDARY_TEST": "0.048−0.016=0.032 mm/K; contact at 56.25 K under the stated geometry."
+      },
+      "boundary_prompt": "If B cools while A warms twice that magnitude, what is the new closure rate per K of |ΔT_B|?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-09",
+      "target_id": "PH07-09-B01-D3-JUSTIFY-01",
+      "cycle_id": "PH07-09-B01-MAIN-JUSTIFY-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.7.ph07-09",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "For matched ΔT in these particular geometries the effective free expansion length is equal, so equal motions support equal α under the model. Without matched ΔT, free conditions and known anchors, conclusion not general.",
+        "RECONSTRUCT": "Compare the saved route with this case's reconstructed result: For matched ΔT in these particular geometries the effective free expansion length is equal, so equal motions support equal α under the model. Without matched ΔT, free conditions and known anchors, conclusion not general. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Identify an unmeasured geometry, temperature or mechanical variable that your inference silently fixed.",
+        "REPAIR": "Give two physically compatible explanations or conditions, then name an independent measurement that distinguishes them. Expected case-specific result: For matched ΔT in these particular geometries the effective free expansion length is equal, so equal motions support equal α under the model. Without matched ΔT, free conditions and known anchors, conclusion not general.",
+        "BOUNDARY_TEST": "Its α would be half the short rod's α."
+      },
+      "boundary_prompt": "If the long rod actually has its left end fixed, what coefficient relation would produce equal motions at equal ΔT?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-09",
+      "target_id": "PH07-09-B01-D3-JUSTIFY-01",
+      "cycle_id": "PH07-09-B01-INSTANCE-JUSTIFY-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.7.ph07-09",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "Differential free strain drives bending but curvature depends on stiffness/thickness and bond/constraint; measure free expansion of separate samples at matched ΔT and lengths, plus geometry/mechanical properties if curvature required.",
+        "RECONSTRUCT": "Compare the saved route with this case's reconstructed result: Differential free strain drives bending but curvature depends on stiffness/thickness and bond/constraint; measure free expansion of separate samples at matched ΔT and lengths, plus geometry/mechanical properties if curvature required. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Identify an unmeasured geometry, temperature or mechanical variable that your inference silently fixed.",
+        "REPAIR": "Give two physically compatible explanations or conditions, then name an independent measurement that distinguishes them. Expected case-specific result: Differential free strain drives bending but curvature depends on stiffness/thickness and bond/constraint; measure free expansion of separate samples at matched ΔT and lengths, plus geometry/mechanical properties if curvature required.",
+        "BOUNDARY_TEST": "No under free homogeneous heating; other gradients or residual stresses could still bend it."
+      },
+      "boundary_prompt": "If both layers have identical α and the same uniform ΔT, does the differential-expansion mechanism alone predict bending?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-03",
+      "target_id": "PH08-03-B01-D3-EXPLAIN-01",
+      "cycle_id": "PH08-03-B01-MAIN-EXPLAIN-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.7.ph08-03",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "Contact can transmit elastic vibration through mount/wall; interrupt contact while independently verifying source motion and chamber pressure. Residual gas and sensor pickup must be controlled.",
+        "RECONSTRUCT": "Compare the saved route with this case's reconstructed result: Contact can transmit elastic vibration through mount/wall; interrupt contact while independently verifying source motion and chamber pressure. Residual gas and sensor pickup must be controlled. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Locate where you inferred a medium from a signal without checking the available mechanical connection.",
+        "REPAIR": "Trace each plausible route and use a controlled intervention plus source/detector checks to discriminate. Expected case-specific result: Contact can transmit elastic vibration through mount/wall; interrupt contact while independently verifying source motion and chamber pressure. Residual gas and sensor pickup must be controlled.",
+        "BOUNDARY_TEST": "No; source excitation changes too, so independent motion measurement is necessary."
+      },
+      "boundary_prompt": "If the source stops vibrating when the mount is removed, can that comparison isolate the path?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-03",
+      "target_id": "PH08-03-B01-D3-EXPLAIN-01",
+      "cycle_id": "PH08-03-B01-INSTANCE-EXPLAIN-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.7.ph08-03",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "Solid elastic route plausibly gives early arrival and air route later; inlet intervention supports air contribution but coupling and calibration matter. Independently vary pipe contact or air path.",
+        "RECONSTRUCT": "Compare the saved route with this case's reconstructed result: Solid elastic route plausibly gives early arrival and air route later; inlet intervention supports air contribution but coupling and calibration matter. Independently vary pipe contact or air path. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Locate where you inferred a medium from a signal without checking the available mechanical connection.",
+        "REPAIR": "Trace each plausible route and use a controlled intervention plus source/detector checks to discriminate. Expected case-specific result: Solid elastic route plausibly gives early arrival and air route later; inlet intervention supports air contribution but coupling and calibration matter. Independently vary pipe contact or air path.",
+        "BOUNDARY_TEST": "Structure-borne vibration through the mounting."
+      },
+      "boundary_prompt": "If the microphone is physically bolted to the pipe, what alternative path could affect its reading?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-03",
+      "target_id": "PH08-03-B01-D3-REPRESENT-01",
+      "cycle_id": "PH08-03-B01-MAIN-REPRESENT-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.7.ph08-03",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "A 1 ms to interface, then 2 ms, arrival 3 ms. B 1 ms arrival; first is B, gap 2 ms. Total path and internal event distinct.",
+        "RECONSTRUCT": "Compare the saved route with this case's reconstructed result: A 1 ms to interface, then 2 ms, arrival 3 ms. B 1 ms arrival; first is B, gap 2 ms. Total path and internal event distinct. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Check whether you added alternative-route times together or treated an interface crossing as a detector arrival.",
+        "REPAIR": "Draw separate complete routes, add only sequential times within each, then plot final arrivals with a common zero. Expected case-specific result: A 1 ms to interface, then 2 ms, arrival 3 ms. B 1 ms arrival; first is B, gap 2 ms. Total path and internal event distinct.",
+        "BOUNDARY_TEST": "Only B at 1 ms, assuming B and source/detection unchanged."
+      },
+      "boundary_prompt": "If A's air segment is blocked, which arrivals remain in this two-route model?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-03",
+      "target_id": "PH08-03-B01-D3-REPRESENT-01",
+      "cycle_id": "PH08-03-B01-INSTANCE-REPRESENT-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.7.ph08-03",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "X first segment 3 ms, second 2 ms, total 5 ms. Y 2 ms arrives first; separation 3 ms. X interface 3 ms is not a receiver arrival.",
+        "RECONSTRUCT": "Compare the saved route with this case's reconstructed result: X first segment 3 ms, second 2 ms, total 5 ms. Y 2 ms arrives first; separation 3 ms. X interface 3 ms is not a receiver arrival. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Check whether you added alternative-route times together or treated an interface crossing as a detector arrival.",
+        "REPAIR": "Draw separate complete routes, add only sequential times within each, then plot final arrivals with a common zero. Expected case-specific result: X first segment 3 ms, second 2 ms, total 5 ms. Y 2 ms arrives first; separation 3 ms. X interface 3 ms is not a receiver arrival.",
+        "BOUNDARY_TEST": "Yes, Y becomes 4 ms, still before X at 5 ms."
+      },
+      "boundary_prompt": "If Y's length is doubled at unchanged speed, does it still arrive before X?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-03",
+      "target_id": "PH08-03-B01-D3-MODEL-01",
+      "cycle_id": "PH08-03-B01-MAIN-MODEL-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.7.ph08-03",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "Air shift 3 ms matches later arrival 8→11; early unchanged compatible with solid or another unchanged route. Timing supports dependency, not unique material identity without route control.",
+        "RECONSTRUCT": "Compare the saved route with this case's reconstructed result: Air shift 3 ms matches later arrival 8→11; early unchanged compatible with solid or another unchanged route. Timing supports dependency, not unique material identity without route control. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Check if you identified a route from its time alone instead of the predicted effect of the intervention.",
+        "REPAIR": "Calculate the controlled delay change, compare each candidate's prediction with both traces, and state what independent evidence would settle remaining ambiguity. Expected case-specific result: Air shift 3 ms matches later arrival 8→11; early unchanged compatible with solid or another unchanged route. Timing supports dependency, not unique material identity without route control.",
+        "BOUNDARY_TEST": "Common trigger delay or both routes sharing changed segment; independent timing/coupling control needed."
+      },
+      "boundary_prompt": "If both arrivals move by 3 ms after the change, what additional model must be considered?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-03",
+      "target_id": "PH08-03-B01-D3-MODEL-01",
+      "cycle_id": "PH08-03-B01-INSTANCE-MODEL-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.7.ph08-03",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "Expected solid delay 2 ms, so early arrival shift supports solid-dependent route; later unchanged supports separate path. Interrupt solid contact or vary air path with matched trigger to test; unknown common delays still possible.",
+        "RECONSTRUCT": "Compare the saved route with this case's reconstructed result: Expected solid delay 2 ms, so early arrival shift supports solid-dependent route; later unchanged supports separate path. Interrupt solid contact or vary air path with matched trigger to test; unknown common delays still possible. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Check if you identified a route from its time alone instead of the predicted effect of the intervention.",
+        "REPAIR": "Calculate the controlled delay change, compare each candidate's prediction with both traces, and state what independent evidence would settle remaining ambiguity. Expected case-specific result: Expected solid delay 2 ms, so early arrival shift supports solid-dependent route; later unchanged supports separate path. Interrupt solid contact or vary air path with matched trigger to test; unknown common delays still possible.",
+        "BOUNDARY_TEST": "No; it may be below detector threshold. Check detection sensitivity or independent sensor."
+      },
+      "boundary_prompt": "If the early pulse is no longer detected after reducing its amplitude, can you conclude that its propagation path vanished?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-09",
+      "target_id": "PH08-09-B01-D3-EXPLAIN-01",
+      "cycle_id": "PH08-09-B01-MAIN-EXPLAIN-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.7.ph08-09",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "Fixed path delays; longer pulses overlap or leave too small a quiet gap, producing blended persistence. Separability also depends on threshold and strength.",
+        "RECONSTRUCT": "Compare the saved route with this case's reconstructed result: Fixed path delays; longer pulses overlap or leave too small a quiet gap, producing blended persistence. Separability also depends on threshold and strength. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Identify whether you treated echo timing alone as a complete description of clarity or assumed a missing signal means no path.",
+        "REPAIR": "Compare physical path delays, pulse intervals, amplitude and detection conditions; explain which changed and which did not. Expected case-specific result: Fixed path delays; longer pulses overlap or leave too small a quiet gap, producing blended persistence. Separability also depends on threshold and strength.",
+        "BOUNDARY_TEST": "No; detectability still matters."
+      },
+      "boundary_prompt": "If the longer pulse is replaced by a short one but reflections are too weak, must separate echoes be heard?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-09",
+      "target_id": "PH08-09-B01-D3-EXPLAIN-01",
+      "cycle_id": "PH08-09-B01-INSTANCE-EXPLAIN-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.7.ph08-09",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "Absorption reduces reflected energy/amplitudes and late persistence without substantially changing geometry/travel times. Measure decay/late energy as well as timing.",
+        "RECONSTRUCT": "Compare the saved route with this case's reconstructed result: Absorption reduces reflected energy/amplitudes and late persistence without substantially changing geometry/travel times. Measure decay/late energy as well as timing. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Identify whether you treated echo timing alone as a complete description of clarity or assumed a missing signal means no path.",
+        "REPAIR": "Compare physical path delays, pulse intervals, amplitude and detection conditions; explain which changed and which did not. Expected case-specific result: Absorption reduces reflected energy/amplitudes and late persistence without substantially changing geometry/travel times. Measure decay/late energy as well as timing.",
+        "BOUNDARY_TEST": "Yes; path lengths may change, so fixed timing assumption must be checked."
+      },
+      "boundary_prompt": "If a panel also moves the effective reflecting boundary, can arrival times change?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-09",
+      "target_id": "PH08-09-B01-D4-MODEL-01",
+      "cycle_id": "PH08-09-B01-MAIN-MODEL-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.7.ph08-09",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "Initially both detect0,9,38 and group0–23,38–52. Short duration at old threshold separates0,9,38 (gaps6,26); both still fit. Lower threshold exposes21 only in B; all gaps≥4 after 3 ms. B fits three traces; duration resolves existing overlap, threshold exposes weak path. Not proof no further subthreshold paths.",
+        "RECONSTRUCT": "Compare the saved route with this case's reconstructed result: Initially both detect0,9,38 and group0–23,38–52. Short duration at old threshold separates0,9,38 (gaps6,26); both still fit. Lower threshold exposes21 only in B; all gaps≥4 after 3 ms. B fits three traces; duration resolves existing overlap, threshold exposes weak path. Not proof no further subthreshold paths. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Find where a weak return was incorrectly discarded as nonexistent, or a group was incorrectly counted as one path; recompute interval ends after each intervention.",
+        "REPAIR": "Apply threshold first, form intervals for surviving pulses, group using latest cluster end and required gap, and compare all trials before selecting a model. Expected case-specific result: Initially both detect0,9,38 and group0–23,38–52. Short duration at old threshold separates0,9,38 (gaps6,26); both still fit. Lower threshold exposes21 only in B; all gaps≥4 after 3 ms. B fits three traces; duration resolves existing overlap, threshold exposes weak path. Not proof no further subthreshold paths.",
+        "BOUNDARY_TEST": "One: intervals 0–14,9–23,21–35,38–52; final gap3 ms <4, so all form one unresolved group."
+      },
+      "boundary_prompt": "If the third run instead keeps duration 14 ms but lowers threshold0.1, how many groups does B predict?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-09",
+      "target_id": "PH08-09-B01-D4-MODEL-01",
+      "cycle_id": "PH08-09-B01-INSTANCE-MODEL-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.7.ph08-09",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "Initial both fit. At threshold0.2, Y detects28–46, overlaps early0–30; gap to48=2<6, one group. X remains two, rejected. Final 4 ms intervals at0,12,28,48 have quiet gaps8,12,16, so all separate. Y supported among stated models, not exhaustive physical path count.",
+        "RECONSTRUCT": "Compare the saved route with this case's reconstructed result: Initial both fit. At threshold0.2, Y detects28–46, overlaps early0–30; gap to48=2<6, one group. X remains two, rejected. Final 4 ms intervals at0,12,28,48 have quiet gaps8,12,16, so all separate. Y supported among stated models, not exhaustive physical path count. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Find where a weak return was incorrectly discarded as nonexistent, or a group was incorrectly counted as one path; recompute interval ends after each intervention.",
+        "REPAIR": "Apply threshold first, form intervals for surviving pulses, group using latest cluster end and required gap, and compare all trials before selecting a model. Expected case-specific result: Initial both fit. At threshold0.2, Y detects28–46, overlaps early0–30; gap to48=2<6, one group. X remains two, rejected. Final 4 ms intervals at0,12,28,48 have quiet gaps8,12,16, so all separate. Y supported among stated models, not exhaustive physical path count.",
+        "BOUNDARY_TEST": "Three: first two have quiet gap8<10 and group; gaps to28 and48 are12,16, separate."
+      },
+      "boundary_prompt": "If the required quiet gap in the final run increases to10 ms, how many groups are reported?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-09",
+      "target_id": "PH08-09-B01-D3-JUSTIFY-01",
+      "cycle_id": "PH08-09-B01-MAIN-JUSTIFY-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.7.ph08-09",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "One detected return at30 produces interval30–50. Another compatible situation includes additional weak subthreshold reflection, e.g. at35; recorded group same. Lower threshold and shorten duration enough to resolve candidate; cannot infer physical surface count from visible group alone.",
+        "RECONSTRUCT": "Compare the saved route with this case's reconstructed result: One detected return at30 produces interval30–50. Another compatible situation includes additional weak subthreshold reflection, e.g. at35; recorded group same. Lower threshold and shorten duration enough to resolve candidate; cannot infer physical surface count from visible group alone. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Locate the unsupported inference from an observed group or arrival time to a unique physical path or energy conclusion.",
+        "REPAIR": "Construct two distinct scenarios consistent with the record and propose an observation giving different predictions. Expected case-specific result: One detected return at30 produces interval30–50. Another compatible situation includes additional weak subthreshold reflection, e.g. at35; recorded group same. Lower threshold and shorten duration enough to resolve candidate; cannot infer physical surface count from visible group alone.",
+        "BOUNDARY_TEST": "No; exactly coincident starts remain coincident; change geometry or another observable."
+      },
+      "boundary_prompt": "If two detectable paths have exactly equal arrival time, will shortening the pulse distinguish them by timing alone?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-09",
+      "target_id": "PH08-09-B01-D3-JUSTIFY-01",
+      "cycle_id": "PH08-09-B01-INSTANCE-JUSTIFY-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.7.ph08-09",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "Same path length can produce same time but reduced reflected energy; panel can reduce late amplitudes or suppress other returns. Measure calibrated decay/late energy at matched excitation, not timing alone.",
+        "RECONSTRUCT": "Compare the saved route with this case's reconstructed result: Same path length can produce same time but reduced reflected energy; panel can reduce late amplitudes or suppress other returns. Measure calibrated decay/late energy at matched excitation, not timing alone. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Locate the unsupported inference from an observed group or arrival time to a unique physical path or energy conclusion.",
+        "REPAIR": "Construct two distinct scenarios consistent with the record and propose an observation giving different predictions. Expected case-specific result: Same path length can produce same time but reduced reflected energy; panel can reduce late amplitudes or suppress other returns. Measure calibrated decay/late energy at matched excitation, not timing alone.",
+        "BOUNDARY_TEST": "Normalize or match source/direct response and detector calibration; separate input/coupling change."
+      },
+      "boundary_prompt": "If the direct pulse amplitude also decreases after treatment, what control is needed for comparing reflected energy?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-10",
+      "target_id": "PH08-10-B01-D3-APPLY-01",
+      "cycle_id": "PH08-10-B01-MAIN-APPLY-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.7.ph08-10",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "Propagation32 ms; first layer12 ms round trip; remaining20 ms, x=12 m; total21 m. Check3+12+20=35 ms.",
+        "RECONSTRUCT": "Compare the saved route with this case's reconstructed result: Propagation32 ms; first layer12 ms round trip; remaining20 ms, x=12 m; total21 m. Check3+12+20=35 ms. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Check whether the corrected time is positive and sufficient to traverse the known layer twice; identify any missing factor of two.",
+        "REPAIR": "Subtract the measured delay, budget each round-trip segment, solve the remaining distance and substitute into the original time account. Expected case-specific result: Propagation32 ms; first layer12 ms round trip; remaining20 ms, x=12 m; total21 m. Check3+12+20=35 ms.",
+        "BOUNDARY_TEST": "No: corrected time10 ms is less than first layer's12 ms round trip."
+      },
+      "boundary_prompt": "If the reported return were 13 ms instead, could it be the stated target beyond the first layer?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-10",
+      "target_id": "PH08-10-B01-D3-APPLY-01",
+      "cycle_id": "PH08-10-B01-INSTANCE-APPLY-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.7.ph08-10",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "Reference τ=2 ms. Target propagation22 ms; first layer10 ms, second12 ms; x=9 m, total14 m. Check2+10+12=24.",
+        "RECONSTRUCT": "Compare the saved route with this case's reconstructed result: Reference τ=2 ms. Target propagation22 ms; first layer10 ms, second12 ms; x=9 m, total14 m. Check2+10+12=24. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Check whether the corrected time is positive and sufficient to traverse the known layer twice; identify any missing factor of two.",
+        "REPAIR": "Subtract the measured delay, budget each round-trip segment, solve the remaining distance and substitute into the original time account. Expected case-specific result: Reference τ=2 ms. Target propagation22 ms; first layer10 ms, second12 ms; x=9 m, total14 m. Check2+10+12=24.",
+        "BOUNDARY_TEST": "11 m; first5 m plus6 m second, equivalently uniform 1000×0.022/2."
+      },
+      "boundary_prompt": "If the second-medium speed were 1000 m/s, what total range would follow from the same times?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-10",
+      "target_id": "PH08-10-B01-D3-MODEL-01",
+      "cycle_id": "PH08-10-B01-MAIN-MODEL-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.7.ph08-10",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "v=1500 m/s; τ=2 ms. Third predicted54 ms. Unknown corrected72 ms, d=54 m.",
+        "RECONSTRUCT": "Compare the saved route with this case's reconstructed result: v=1500 m/s; τ=2 ms. Third predicted54 ms. Unknown corrected72 ms, d=54 m. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Identify whether you fitted all observations without an independent check or treated raw time as pure propagation.",
+        "REPAIR": "Fit speed and offset using two independent known distances, predict the unused reference, and distinguish a conditional estimate from validated calibration. Expected case-specific result: v=1500 m/s; τ=2 ms. Third predicted54 ms. Unknown corrected72 ms, d=54 m.",
+        "BOUNDARY_TEST": "One common speed/offset model fails; do not use it unquestioned for unknown target."
+      },
+      "boundary_prompt": "If the third known target instead gives58 ms with exact measurements, what is established?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-10",
+      "target_id": "PH08-10-B01-D3-MODEL-01",
+      "cycle_id": "PH08-10-B01-INSTANCE-MODEL-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.7.ph08-10",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "v=1500 m/s, τ=3 ms; predicted third43 ms, not44. Model fails exact third; conditional range24 m from32 ms, not qualified without resolving discrepancy.",
+        "RECONSTRUCT": "Compare the saved route with this case's reconstructed result: v=1500 m/s, τ=3 ms; predicted third43 ms, not44. Model fails exact third; conditional range24 m from32 ms, not qualified without resolving discrepancy. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Identify whether you fitted all observations without an independent check or treated raw time as pure propagation.",
+        "REPAIR": "Fit speed and offset using two independent known distances, predict the unused reference, and distinguish a conditional estimate from validated calibration. Expected case-specific result: v=1500 m/s, τ=3 ms; predicted third43 ms, not44. Model fails exact third; conditional range24 m from32 ms, not qualified without resolving discrepancy.",
+        "BOUNDARY_TEST": "No; predicted43 ms lies within stated interval, subject to uncertainty model."
+      },
+      "boundary_prompt": "If third reading is 44±1 ms while first two exact, does the third alone reject the prediction?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-10",
+      "target_id": "PH08-10-B01-D4-SYNTHESIZE-01",
+      "cycle_id": "PH08-10-B01-MAIN-SYNTHESIZE-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.7.ph08-10",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "τ=2 ms. Ranges5 and9 m. Subtract x²+y²=25 and (x−10)²+y²=81: x=2.2; y=±√20.16≈±4.49 m. Upper side selects (2.2,4.49). Check ranges and delay.",
+        "RECONSTRUCT": "Compare the saved route with this case's reconstructed result: τ=2 ms. Ranges5 and9 m. Subtract x²+y²=25 and (x−10)²+y²=81: x=2.2; y=±√20.16≈±4.49 m. Upper side selects (2.2,4.49). Check ranges and delay. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Check whether you ignored common delay, assumed one circle intersection, or accepted an independent time merely because it is closer to a candidate.",
+        "REPAIR": "Calibrate timing, solve both range equations, retain both mirror candidates, calculate the independent sensor prediction for each, and reject inconsistent records. Expected case-specific result: τ=2 ms. Ranges5 and9 m. Subtract x²+y²=25 and (x−10)²+y²=81: x=2.2; y=±√20.16≈±4.49 m. Upper side selects (2.2,4.49). Check ranges and delay.",
+        "BOUNDARY_TEST": "No; distances to any baseline point are equal for mirror targets; use an off-baseline sensor or side observation."
+      },
+      "boundary_prompt": "If the camera is unavailable, can another observation from a sensor on the same baseline distinguish the mirror points?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-10",
+      "target_id": "PH08-10-B01-D4-SYNTHESIZE-01",
+      "cycle_id": "PH08-10-B01-INSTANCE-SYNTHESIZE-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.7.ph08-10",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "τ=2 ms. A/B ranges6 m; x=4, y=±√20≈±4.472. C range for upper √(16+(4.472−6)²)≈4.282 m, time≈7.709 ms; lower range≈11.21 m, time≈16.95 ms. The stated 7.508 ms is inconsistent with both exact candidates, so no exact location under model; upper is closer but not accepted without uncertainty.",
+        "RECONSTRUCT": "Compare the saved route with this case's reconstructed result: τ=2 ms. A/B ranges6 m; x=4, y=±√20≈±4.472. C range for upper √(16+(4.472−6)²)≈4.282 m, time≈7.709 ms; lower range≈11.21 m, time≈16.95 ms. The stated 7.508 ms is inconsistent with both exact candidates, so no exact location under model; upper is closer but not accepted without uncertainty. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Check whether you ignored common delay, assumed one circle intersection, or accepted an independent time merely because it is closer to a candidate.",
+        "REPAIR": "Calibrate timing, solve both range equations, retain both mirror candidates, calculate the independent sensor prediction for each, and reject inconsistent records. Expected case-specific result: τ=2 ms. A/B ranges6 m; x=4, y=±√20≈±4.472. C range for upper √(16+(4.472−6)²)≈4.282 m, time≈7.709 ms; lower range≈11.21 m, time≈16.95 ms. The stated 7.508 ms is inconsistent with both exact candidates, so no exact location under model; upper is closer but not accepted without uncertainty.",
+        "BOUNDARY_TEST": "Upper (4,√20) m, within rounding; lower predicts much later time."
+      },
+      "boundary_prompt": "If C instead reports 7.709 ms to three decimals, which candidate is supported?",
       "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
       "runtime_status": "NOT_IMPLEMENTED"
     }

@@ -1,0 +1,475 @@
+{
+  "schema": "g9v41-nsejs-physics-topic-package/v1",
+  "subject_id": "PHYSICS",
+  "academic_track": "NSEJS",
+  "topic_id": "PH08",
+  "owner_agent": "AGENT_2",
+  "version": "0.3.2-b01.7.ph08-10",
+  "status": "DRAFT_AUTHOR_EXPOSED",
+  "pins": {
+    "contracts_version": "1.0.0",
+    "blueprint": {
+      "version": "0.2.0",
+      "git_blob_sha": "700dafcbe86d76442637bcf214eeb544497cf4ea"
+    },
+    "shared_qrt_28": {
+      "version": "1.0.0",
+      "git_blob_sha": "e2409aef11ae7d98444593bfbe1a38eb00c97cef"
+    },
+    "topic_adapter_version": "0.3.2-b01.7.ph08-10"
+  },
+  "syllabus_references": [
+    {
+      "reference_id": "PH08-CBSE-2026-SOUND",
+      "locator": "https://cbseacademic.nic.in/web_material/CurriculumMain27/SecPart1/ScienceSt_SecP1_2026-27.pdf — Class IX Science 086, Sound, pp. 17–18 (PDF pages 17–18)",
+      "authority": "OFFICIAL_SYLLABUS",
+      "scope_status": "CANDIDATE"
+    }
+  ],
+  "subtopics": [
+    {
+      "id": "PH08-10",
+      "title": "Echolocation and SONAR: calibrated inverse ranging",
+      "scope_role": "SYLLABUS_CORE_CANDIDATE",
+      "syllabus_reference_ids": [
+        "PH08-CBSE-2026-SOUND"
+      ],
+      "prerequisite_ids": [
+        "PH08-08",
+        "PH08-05"
+      ],
+      "science_ref_ids": [
+        "PH08-10-SCI-01"
+      ],
+      "learning_goal": "Pulse-echo range follows total propagation path; calibrated timing, medium speed, geometry and independent constraints determine whether an inferred target location is unique.",
+      "textbook_chapter_ref": "nsejs/physics/curriculum/topics/PH08/b01/PH08-10/core1a.html",
+      "qrt_targets": [
+        {
+          "id": "PH08-10-B01-D3-APPLY-01",
+          "task_identity": "G9-B01-PH08-10-APPLY-R1",
+          "band": "D3",
+          "primary_operation": "APPLY",
+          "blueprint_cell": "D3.3",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Use calibrated round-trip timing through successive media to recover a physically valid target range and check the inferred path.",
+          "decisive_route": "A normal sonar route crosses 6 m at 1200 m/s and then x m at 1500 m/s. Observed time 26 ms, instrument delay2 ms. Find x and total range. Shortest valid route: Propagation24 ms; first layer round trip10 ms, remainder14 ms, x10.5 m; total16.5 m.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 1,
+              "evidence": "Select specified normal-return and layered model."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "Translate route lengths and instrument delay into a time account."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Remove delay, calculate known segment times, solve unknown segment and total range."
+            },
+            "algebra_computational_load": {
+              "score": 2,
+              "evidence": "Multiple time conversions and calculations."
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "Layer interface and double traversal must be included."
+            }
+          }
+        },
+        {
+          "id": "PH08-10-B01-D3-MODEL-01",
+          "task_identity": "G9-B01-PH08-10-MODEL-R1",
+          "band": "D3",
+          "primary_operation": "MODEL",
+          "blueprint_cell": "D3.4",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Choose a common speed-plus-delay calibration rather than an uncorrected range model, using an unused observation to test the assumptions.",
+          "decisive_route": "References 10 m and25 m return in 17 and37 ms. Third 40 m gives57 ms. Fit speed/delay and check. Shortest valid route: v=1500 m/s; τ≈3.667 ms; third predicts57 ms.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "Competing zero-delay and common-delay models."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "Map known range/time observations to slope and intercept."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Infer v and τ, test independent reference and target."
+            },
+            "algebra_computational_load": {
+              "score": 1,
+              "evidence": "Routine coupled arithmetic."
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "Repeated reference range cannot establish slope; changed timing invalidates calibration."
+            }
+          }
+        },
+        {
+          "id": "PH08-10-B01-D4-SYNTHESIZE-01",
+          "task_identity": "G9-B01-PH08-10-SYNTHESIZE-R1",
+          "band": "D4",
+          "primary_operation": "SYNTHESIZE",
+          "blueprint_cell": "D4.6",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Combine timing calibration and independent range geometry to reconstruct a target locus, reject a rival location using an additional physical constraint, and verify all observations.",
+          "decisive_route": "Two colocated pulse-echo units at A=(0,0), B=(6,0) m use v=1000 m/s and common delay2 ms. Target returns 12 ms at A and12 ms at B. Determine candidate coordinates; target y>0. Shortest valid route: Both ranges5 m; x=3, y=±4; upper side gives (3,4). Verify both range equations.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "Choose calibrated round-trip range and geometric intersection rather than direct conversion."
+            },
+            "representation_translation": {
+              "score": 2,
+              "evidence": "Coordinate reference timing, two range loci and side constraint."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Calibrate delay, infer ranges, solve intersection, enumerate mirror alternatives and verify coordinates."
+            },
+            "algebra_computational_load": {
+              "score": 1,
+              "evidence": "Multi-step range and geometric algebra."
+            },
+            "trap_exception_sensitivity": {
+              "score": 2,
+              "evidence": "Two range circles can have two intersections; physical side or another observation is decisive."
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "science_records": [
+    {
+      "id": "PH08-10-SCI-01",
+      "claim": "Pulse-echo range follows total propagation path; calibrated timing, medium speed, geometry and independent constraints determine whether an inferred target location is unique.",
+      "law_or_model": "For stationary colocated normal return, t=2d/v; with fixed instrument delay τ, t_obs=τ+2d/v. In a prescribed layered normal path, t=2Σ(L_i/v_i).",
+      "assumptions": [
+        "Stationary colocated transmitter/receiver and normal same-path reflection for t=2d/v; not passive listening or arbitrary geometry.",
+        "Common additive delay and unchanged speed for reference calibration; verify unused reference and physical ranges."
+      ],
+      "conditions_and_limits": [
+        "Stationary colocated transmitter/receiver and normal same-path reflection for t=2d/v; not passive listening or arbitrary geometry.",
+        "Common additive delay and unchanged speed for reference calibration; verify unused reference and physical ranges.",
+        "Layered model assumes known normal path with no mislabelled interface returns; no refraction/multipath unless stated.",
+        "A range does not give bearing; multiple range intersections or uncertain sound speed may prevent uniqueness."
+      ],
+      "units_and_signs": "Range and layer thickness m, sound speed m/s, time s; τ is an additive timing offset.",
+      "source_refs": [
+        "PH08-CBSE-2026-SOUND"
+      ],
+      "qualification_status": "HOLD"
+    }
+  ],
+  "topic_adapter": {
+    "adapter_id": "PHYS-TOPIC-PH08",
+    "topic_id": "PH08",
+    "version": "0.3.2-b01.7.ph08-10",
+    "for_blueprint": "PHYS-QRT-BLUEPRINT 0.2.0",
+    "status": "CANDIDATE_ONLY",
+    "cells": [
+      {
+        "cell_id": "D3.3",
+        "instance_ids": [
+          "PH08-10-B01-D3-APPLY-01"
+        ]
+      },
+      {
+        "cell_id": "D3.4",
+        "instance_ids": [
+          "PH08-10-B01-D3-MODEL-01"
+        ]
+      },
+      {
+        "cell_id": "D4.6",
+        "instance_ids": [
+          "PH08-10-B01-D4-SYNTHESIZE-01"
+        ]
+      }
+    ]
+  },
+  "core1a": [
+    {
+      "id": "PH08-10-B01-CORE1A-R1",
+      "subtopic_id": "PH08-10",
+      "covered_qrt_ids": [
+        "PH08-10-B01-D3-APPLY-01",
+        "PH08-10-B01-D3-MODEL-01",
+        "PH08-10-B01-D4-SYNTHESIZE-01"
+      ],
+      "phenomenon": "A pulse-echo instrument estimates range from return time, but a timing offset or uncertain speed can bias the estimate.",
+      "scientific_narrative": "Echolocation uses emitted sound and reflected signals to infer something about the surroundings. Bats and some other animals use biological sound emission and hearing; sonar instruments transmit acoustic pulses and analyse returns. An active sonar system uses its own transmitted signal, while passive listening does not have a known emission time and cannot simply use the same round-trip formula. Ultrasound has frequency above the usual human hearing range, but its speed still depends on the medium rather than being set by frequency alone.\n\nIn the simplest active pulse-echo geometry, transmitter and receiver occupy the same position and a stationary reflector returns a normal pulse. The disturbance travels to the target and back, so range d=vt/2. The measured time must be the elapsed propagation time from emission to return. A clock offset or fixed electronic/transducer delay can add a time τ. If the instrument reports t_obs=τ+2d/v, interpreting all reported time as propagation overestimates range when τ>0. An independently timed reference reflector can calibrate the delay when speed is known.\n\nIf both speed and delay are unknown but fixed across measurements, two reference reflectors at known distances give two independent equations. Subtract them to remove the common delay: v=2(d₂−d₁)/(t₂−t₁), provided the distances and times differ and the path is the same kind. Then τ=t₁−2d₁/v. Use an unused reference to test the model, rather than assume all observations follow the calibration. A reference at the same range provides repeatability information but no independent equation for the slope. A negative or physically implausible inferred delay may reveal an inconsistent model or timing reference.\n\nFor a known normal route through two layers, the sound travels each segment on both outward and return legs. If a layer of thickness h has speed v₁ and the target lies a further distance x into a second layer of speed v₂, propagation time is 2h/v₁+2x/v₂. Deduct the calibrated instrument delay before solving. A uniform-speed assumption can bias the inferred depth. Interfaces may themselves produce reflections, so identify the actual return path using the stated geometry and independent evidence. This model assumes normal paths and stationary targets; oblique paths, moving reflectors and refraction need additional modelling.\n\nA single monostatic return in a homogeneous medium determines a range, not a unique direction: many targets at the same distance fit the time. For a target restricted to a known line or plane, extra independent range observations may narrow its location; multiple geometric intersections can remain without a side constraint. In a two-sensor problem, draw the locus of each measured range, intersect them, and state which assumed region selects a solution. Distinguish target geometry from instrument calibration and timing uncertainty. No exact SONAR question was established in the inspectable Core2 bank. The constructions here are original transfer, not authenticated exam items.",
+      "prerequisites": [
+        "PH08-08",
+        "PH08-05"
+      ],
+      "derivation_steps": [
+        {
+          "action": "Identify emission time, return path and instrument delay.",
+          "why_valid": "Range requires the actual acoustic travel time, not raw clock reading.",
+          "science_ref_id": "PH08-10-SCI-01"
+        },
+        {
+          "action": "Calibrate unknown speed/delay with independent known distances or given data.",
+          "why_valid": "Subtracting independent references removes the common offset.",
+          "science_ref_id": "PH08-10-SCI-01"
+        },
+        {
+          "action": "Compute target range or segmented path under the stated geometry.",
+          "why_valid": "Return distance contains both outward and inward legs.",
+          "science_ref_id": "PH08-10-SCI-01"
+        },
+        {
+          "action": "Check independent data, physical location and uniqueness.",
+          "why_valid": "A scalar range constrains a locus; side or additional ranges may be needed.",
+          "science_ref_id": "PH08-10-SCI-01"
+        }
+      ],
+      "model_limits": [
+        "Stationary colocated transmitter/receiver and normal same-path reflection for t=2d/v; not passive listening or arbitrary geometry.",
+        "Common additive delay and unchanged speed for reference calibration; verify unused reference and physical ranges.",
+        "Layered model assumes known normal path with no mislabelled interface returns; no refraction/multipath unless stated.",
+        "A range does not give bearing; multiple range intersections or uncertain sound speed may prevent uniqueness."
+      ],
+      "progressive_examples": [
+        {
+          "id": "PH08-10-B01-EX1",
+          "tier": "FOUNDATION",
+          "problem": "A stationary sonar receives a normal return after 0.080 s at 1500 m/s. Find range.",
+          "reasoning": "60 m.",
+          "independent_check": "Total path120 m, half is range."
+        },
+        {
+          "id": "PH08-10-B01-EX2",
+          "tier": "CONNECTED",
+          "problem": "Known target at 15 m returns after 22 ms; speed1500 m/s. Find delay; unknown target return 42 ms.",
+          "reasoning": "Reference propagation20 ms, delay2 ms. Unknown propagation40 ms, range30 m.",
+          "independent_check": "2×30/1500+0.002=0.042 s."
+        },
+        {
+          "id": "PH08-10-B01-EX3",
+          "tier": "ADVANCED",
+          "problem": "Two references at 12 and27 m return at 18 and38 ms. Infer v and τ; target at 58 ms.",
+          "reasoning": "v=2×15/0.020=1500 m/s; τ=2 ms. Target range42 m.",
+          "independent_check": "At27 m propagation36 ms plus2 ms gives38 ms."
+        }
+      ],
+      "figures": [
+        {
+          "id": "PH08-10-FIG-01",
+          "reasoning_step": "Calibrated round-trip ranging",
+          "scene_description": "Instrument time includes a delay plus acoustic outbound and return propagation. Original inline SVG.",
+          "source_or_authorship": "ORIGINAL_B01_SVG_INLINE"
+        }
+      ],
+      "misconception": {
+        "wrong_model": "Every return time uniquely identifies a target location, and electronic delay can always be ignored.",
+        "diagnostic": "Does a single range determine direction? Could a fixed clock offset mimic a farther target?",
+        "repair": "Calibrate the time model, trace the actual round trip, then test geometric uniqueness with independent information."
+      },
+      "exit_check": {
+        "task": "A known 10 m target at v=1000 m/s returns at 23 ms. Another return at 43 ms comes from a normal target. Find range after calibration.",
+        "answer": "20 m.",
+        "reasoning": "τ=3 ms; propagation40 ms, half of40 m."
+      },
+      "authorship_status": "DRAFT_AUTHOR_EXPOSED"
+    }
+  ],
+  "core1b": [
+    {
+      "id": "PH08-10-B01-MAIN-APPLY-R2",
+      "kind": "MAIN",
+      "subtopic_id": "PH08-10",
+      "qrt_target_id": "PH08-10-B01-D3-APPLY-01",
+      "fresh_task": "A colocated sonar uses a normal path through 9 m of liquid at 1500 m/s then an unknown depth in another medium at 1200 m/s. A fixed delay is 3 ms. Observed return is 35 ms. Find the second depth and total range; verify timing.",
+      "protected_work": "Use calibrated round-trip timing through successive media to recover a physically valid target range and check the inferred path.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether the second layer contributes more or less of the observed time than the first, before calculating.",
+        "attempt": "A colocated sonar uses a normal path through 9 m of liquid at 1500 m/s then an unknown depth in another medium at 1200 m/s. A fixed delay is 3 ms. Observed return is 35 ms. Find the second depth and total range; verify timing.",
+        "reconstruct": "Propagation32 ms; first layer12 ms round trip; remaining20 ms, x=12 m; total21 m. Check3+12+20=35 ms.",
+        "diagnose": "Check whether the corrected time is positive and sufficient to traverse the known layer twice; identify any missing factor of two.",
+        "repair": "Subtract the measured delay, budget each round-trip segment, solve the remaining distance and substitute into the original time account.",
+        "boundary_test": "If the reported return were 13 ms instead, could it be the stated target beyond the first layer?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH08-10-B01-INSTANCE-APPLY-R2",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH08-10",
+      "qrt_target_id": "PH08-10-B01-D3-APPLY-01",
+      "fresh_task": "A pulse-echo detector reports a reference at 4 m in uniform medium speed1000 m/s after 10 ms. A normal target beyond a 5 m first layer at1000 m/s and a second medium at1500 m/s returns after 24 ms. Same fixed delay. Find target distance.",
+      "protected_work": "Use calibrated round-trip timing through successive media to recover a physically valid target range and check the inferred path.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether ignoring the reference calibration would make the inferred target farther or nearer.",
+        "attempt": "A pulse-echo detector reports a reference at 4 m in uniform medium speed1000 m/s after 10 ms. A normal target beyond a 5 m first layer at1000 m/s and a second medium at1500 m/s returns after 24 ms. Same fixed delay. Find target distance.",
+        "reconstruct": "Reference τ=2 ms. Target propagation22 ms; first layer10 ms, second12 ms; x=9 m, total14 m. Check2+10+12=24.",
+        "diagnose": "Check whether the corrected time is positive and sufficient to traverse the known layer twice; identify any missing factor of two.",
+        "repair": "Subtract the measured delay, budget each round-trip segment, solve the remaining distance and substitute into the original time account.",
+        "boundary_test": "If the second-medium speed were 1000 m/s, what total range would follow from the same times?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH08-10-B01-MAIN-MODEL-R2",
+      "kind": "MAIN",
+      "subtopic_id": "PH08-10",
+      "qrt_target_id": "PH08-10-B01-D3-MODEL-01",
+      "fresh_task": "Known targets at 9 and24 m give observed times 14 and34 ms. A third known target at39 m gives54 ms. Determine common v and τ, test the third, then find range for observed 74 ms.",
+      "protected_work": "Choose a common speed-plus-delay calibration rather than an uncorrected range model, using an unused observation to test the assumptions.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether dividing each known range by half its observed time yields a consistent speed.",
+        "attempt": "Known targets at 9 and24 m give observed times 14 and34 ms. A third known target at39 m gives54 ms. Determine common v and τ, test the third, then find range for observed 74 ms.",
+        "reconstruct": "v=1500 m/s; τ=2 ms. Third predicted54 ms. Unknown corrected72 ms, d=54 m.",
+        "diagnose": "Identify whether you fitted all observations without an independent check or treated raw time as pure propagation.",
+        "repair": "Fit speed and offset using two independent known distances, predict the unused reference, and distinguish a conditional estimate from validated calibration.",
+        "boundary_test": "If the third known target instead gives58 ms with exact measurements, what is established?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH08-10-B01-INSTANCE-MODEL-R2",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH08-10",
+      "qrt_target_id": "PH08-10-B01-D3-MODEL-01",
+      "fresh_task": "Known normal reflectors at 6 and18 m return at 11 and27 ms. At 30 m an independent return is44 ms. Fit common speed/delay and assess the exact third observation; give conditional range for a 35 ms return if the first model were used.",
+      "protected_work": "Choose a common speed-plus-delay calibration rather than an uncorrected range model, using an unused observation to test the assumptions.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether the third reference will support the same calibration as the first two.",
+        "attempt": "Known normal reflectors at 6 and18 m return at 11 and27 ms. At 30 m an independent return is44 ms. Fit common speed/delay and assess the exact third observation; give conditional range for a 35 ms return if the first model were used.",
+        "reconstruct": "v=1500 m/s, τ=3 ms; predicted third43 ms, not44. Model fails exact third; conditional range24 m from32 ms, not qualified without resolving discrepancy.",
+        "diagnose": "Identify whether you fitted all observations without an independent check or treated raw time as pure propagation.",
+        "repair": "Fit speed and offset using two independent known distances, predict the unused reference, and distinguish a conditional estimate from validated calibration.",
+        "boundary_test": "If third reading is 44±1 ms while first two exact, does the third alone reject the prediction?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH08-10-B01-MAIN-SYNTHESIZE-R2",
+      "kind": "MAIN",
+      "subtopic_id": "PH08-10",
+      "qrt_target_id": "PH08-10-B01-D4-SYNTHESIZE-01",
+      "fresh_task": "Two pulse-echo units A=(0,0), B=(10,0) m share v=1000 m/s and fixed unknown delay. A calibration reflector 5 m from A gives12 ms. Unknown target gives12 ms at A and20 ms at B. Determine all compatible coordinates in the plane; an independent camera shows target lies above the baseline. Select location and check all times.",
+      "protected_work": "Combine timing calibration and independent range geometry to reconstruct a target locus, reject a rival location using an additional physical constraint, and verify all observations.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether the two calibrated return times alone determine one target position or several.",
+        "attempt": "Two pulse-echo units A=(0,0), B=(10,0) m share v=1000 m/s and fixed unknown delay. A calibration reflector 5 m from A gives12 ms. Unknown target gives12 ms at A and20 ms at B. Determine all compatible coordinates in the plane; an independent camera shows target lies above the baseline. Select location and check all times.",
+        "reconstruct": "τ=2 ms. Ranges5 and9 m. Subtract x²+y²=25 and (x−10)²+y²=81: x=2.2; y=±√20.16≈±4.49 m. Upper side selects (2.2,4.49). Check ranges and delay.",
+        "diagnose": "Check whether you ignored common delay, assumed one circle intersection, or accepted an independent time merely because it is closer to a candidate.",
+        "repair": "Calibrate timing, solve both range equations, retain both mirror candidates, calculate the independent sensor prediction for each, and reject inconsistent records.",
+        "boundary_test": "If the camera is unavailable, can another observation from a sensor on the same baseline distinguish the mirror points?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH08-10-B01-INSTANCE-SYNTHESIZE-R2",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH08-10",
+      "qrt_target_id": "PH08-10-B01-D4-SYNTHESIZE-01",
+      "fresh_task": "Two pulse-echo units A=(0,0), B=(8,0) m share known speed1500 m/s and common unknown delay. A known 3 m reflector returns at6 ms. The same stationary unknown target returns at 10 ms from both A and B. A third calibrated unit C=(0,6) records a return at approximately7.508 ms with same delay. Determine the target candidates from A/B, then use C to select and verify the location.",
+      "protected_work": "Combine timing calibration and independent range geometry to reconstruct a target locus, reject a rival location using an additional physical constraint, and verify all observations.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether the third observation must select one of the two A/B candidates, or could instead reject both.",
+        "attempt": "Two pulse-echo units A=(0,0), B=(8,0) m share known speed1500 m/s and common unknown delay. A known 3 m reflector returns at6 ms. The same stationary unknown target returns at 10 ms from both A and B. A third calibrated unit C=(0,6) records a return at approximately7.508 ms with same delay. Determine the target candidates from A/B, then use C to select and verify the location.",
+        "reconstruct": "τ=2 ms. A/B ranges6 m; x=4, y=±√20≈±4.472. C range for upper √(16+(4.472−6)²)≈4.282 m, time≈7.709 ms; lower range≈11.21 m, time≈16.95 ms. The stated 7.508 ms is inconsistent with both exact candidates, so no exact location under model; upper is closer but not accepted without uncertainty.",
+        "diagnose": "Check whether you ignored common delay, assumed one circle intersection, or accepted an independent time merely because it is closer to a candidate.",
+        "repair": "Calibrate timing, solve both range equations, retain both mirror candidates, calculate the independent sensor prediction for each, and reject inconsistent records.",
+        "boundary_test": "If C instead reports 7.709 ms to three decimals, which candidate is supported?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    }
+  ],
+  "core2_sources": [],
+  "acceptance": {
+    "b1_b7": {
+      "B1": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B2": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B3": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B4": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B5": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B6": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B7": {
+        "status": "HOLD",
+        "evidence_refs": []
+      }
+    },
+    "gates": {
+      "source_authenticity": "HOLD",
+      "content_correctness": "HOLD",
+      "cognitive_qualification": "HOLD",
+      "teaching_sufficiency": "HOLD",
+      "assessment_validity": "HOLD",
+      "implementation": "NOT_RUN",
+      "release_authority": "HOLD"
+    },
+    "release": "HOLD",
+    "acceptance_note": "Isolated author-exposed candidate. No matched exact Core2 item in inspectable bank; all targets AUTHORED_TRANSFER. Unique version and R2 cycle convention; no canonical C04 selection. Separate stage criteria in B01 author handoff, not implemented runtime. Full JSON is author-exposed; B5 HOLD. Per-target MAIN provisional pending C06 adoption. No academic approval inferred from software validation."
+  }
+}
