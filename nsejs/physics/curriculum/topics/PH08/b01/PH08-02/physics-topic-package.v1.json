@@ -4,7 +4,7 @@
   "academic_track": "NSEJS",
   "topic_id": "PH08",
   "owner_agent": "AGENT_2",
-  "version": "0.3.2-b01.6.ph08-02",
+  "version": "0.3.3-b01.6.ph08-02",
   "status": "DRAFT_AUTHOR_EXPOSED",
   "pins": {
     "contracts_version": "1.0.0",
@@ -16,7 +16,7 @@
       "version": "1.0.0",
       "git_blob_sha": "e2409aef11ae7d98444593bfbe1a38eb00c97cef"
     },
-    "topic_adapter_version": "0.3.2-b01.6.ph08-02"
+    "topic_adapter_version": "0.3.3-b01.6.ph08-02"
   },
   "syllabus_references": [
     {
@@ -110,11 +110,11 @@
           }
         },
         {
-          "id": "PH08-02-B01-D4-JUSTIFY-01",
+          "id": "PH08-02-B01-D3-JUSTIFY-01",
           "task_identity": "G9-B01-PH08-02-JUSTIFY-R1",
-          "band": "D4",
+          "band": "D3",
           "primary_operation": "JUSTIFY",
-          "blueprint_cell": "D4.7",
+          "blueprint_cell": "D3.7",
           "source_role": "AUTHORED_TRANSFER",
           "qrt_status": "PROPOSED",
           "protected_work": "Establish what a compression/pressure record can and cannot uniquely determine about particle displacement, using countermodels and an independent reference constraint.",
@@ -125,8 +125,8 @@
               "evidence": "Competing absolute-position and relative-spacing inverse models."
             },
             "representation_translation": {
-              "score": 2,
-              "evidence": "Translate pressure evidence into neighbour displacement differences."
+              "score": 1,
+              "evidence": "Translate measured gaps into adjacent displacement differences; no difficult representation change is necessary."
             },
             "reasoning_chain_length": {
               "score": 2,
@@ -170,7 +170,7 @@
   "topic_adapter": {
     "adapter_id": "PHYS-TOPIC-PH08",
     "topic_id": "PH08",
-    "version": "0.3.2-b01.6.ph08-02",
+    "version": "0.3.3-b01.6.ph08-02",
     "for_blueprint": "PHYS-QRT-BLUEPRINT 0.2.0",
     "status": "CANDIDATE_ONLY",
     "cells": [
@@ -187,9 +187,9 @@
         ]
       },
       {
-        "cell_id": "D4.7",
+        "cell_id": "D3.7",
         "instance_ids": [
-          "PH08-02-B01-D4-JUSTIFY-01"
+          "PH08-02-B01-D3-JUSTIFY-01"
         ]
       }
     ]
@@ -201,7 +201,7 @@
       "covered_qrt_ids": [
         "PH08-02-B01-D3-EXPLAIN-01",
         "PH08-02-B01-D3-REPRESENT-01",
-        "PH08-02-B01-D4-JUSTIFY-01"
+        "PH08-02-B01-D3-JUSTIFY-01"
       ],
       "phenomenon": "A compression can move along a row of air particles while each particle only oscillates around its equilibrium position.",
       "scientific_narrative": "In a longitudinal wave, particles oscillate parallel to the direction of propagation. A compression is a region where particles are temporarily closer together than in their equilibrium arrangement; a rarefaction is a region where they are farther apart. In a sound wave, the disturbance and energy propagate through a medium while particles move locally. A diagram with a wavy line above a horizontal axis need not depict transverse particle motion: it may show the value of a longitudinal displacement or pressure field as a function of position.\n\nImagine equilibrium positions x₁ and x₂ separated by Δx. At a snapshot, their positions become x₁+ξ₁ and x₂+ξ₂. Their new separation is Δx+ξ₂−ξ₁. If the second displacement is smaller than the first, the spacing decreases and the region is compressed. If the second displacement is larger, the spacing increases and it is rarefied. If both displacements are equal, their separation is unchanged even if both have moved far from equilibrium. Thus a displacement maximum is not automatically a compression maximum.\n\nFor a small smooth displacement field ξ(x), the fractional change in spacing is approximately ∂ξ/∂x. Conservation of mass gives fractional density change approximately −∂ξ/∂x; in a linear acoustic model excess pressure is proportional to compression, p′=−B∂ξ/∂x, where B is the appropriate bulk modulus. These derivative relations are optional authored enrichment; the finite-neighbour argument is sufficient for qualitative reasoning. A sinusoidal displacement crest has locally zero gradient; compression peaks near the downward zero crossing and rarefaction near the upward crossing, given the stated coordinate convention. The sign of a displacement itself does not tell whether neighbouring particles are compressed.\n\nA spatial graph at one time describes field values along x. A time trace at one fixed detector describes how one measured field varies with time. Their slopes have different units and meanings. In a progressive sinusoidal wave the time trace may be related to the spatial trace if direction and wave speed are known. Do not infer spatial compression directly from a temporal displacement slope without the travelling-wave model and direction. For a right-moving profile ξ(x−vt), the temporal derivative equals −v times the spatial derivative; reversing direction changes the sign relation.\n\nWhen constructing a graph, label equilibrium coordinate, particle displacement or excess pressure, and physical units. Draw the actual positions of a few particles to check the inferred compression. In an inverse problem, a pressure snapshot constrains differences in displacement, not the common offset of every displacement; a boundary or displacement reference supplies missing information. A uniform offset added to all positions leaves spacing unchanged. This is a model ambiguity, not bulk transport by the sound wave. The existing Core2 wave snapshot uses displacement graphs, but no separate matching question has been established for this exact subtopic; the new constructions are authored transfer rather than direct exam evidence.",
@@ -378,10 +378,10 @@
       "runtime_verification": "NOT_RUN"
     },
     {
-      "id": "PH08-02-B01-MAIN-JUSTIFY-R2",
+      "id": "PH08-02-B01-MAIN-JUSTIFY-R3",
       "kind": "MAIN",
       "subtopic_id": "PH08-02",
-      "qrt_target_id": "PH08-02-B01-D4-JUSTIFY-01",
+      "qrt_target_id": "PH08-02-B01-D3-JUSTIFY-01",
       "fresh_task": "Four particles at equilibrium positions 0,20,40,60 mm have measured actual neighbour gaps 18,21,21 mm. A student claims these gaps uniquely determine every signed displacement. Construct two distinct profiles with the same gaps, then show how measuring the third particle's displacement as +1 mm changes identifiability.",
       "protected_work": "Establish what a compression/pressure record can and cannot uniquely determine about particle displacement, using countermodels and an independent reference constraint.",
       "differs_from_worked_anchor": true,
@@ -402,10 +402,10 @@
       "runtime_verification": "NOT_RUN"
     },
     {
-      "id": "PH08-02-B01-INSTANCE-JUSTIFY-R2",
+      "id": "PH08-02-B01-INSTANCE-JUSTIFY-R3",
       "kind": "INSTANCE",
       "subtopic_id": "PH08-02",
-      "qrt_target_id": "PH08-02-B01-D4-JUSTIFY-01",
+      "qrt_target_id": "PH08-02-B01-D3-JUSTIFY-01",
       "fresh_task": "Five equilibrium particles spaced 10 mm apart have measured gaps 11,9,8,12 mm. A report gives displacement [0,1,0,−2,0] mm as the only solution. Construct a different compatible profile, identify the missing constraint, and recover the profile if the fourth particle is known at displacement +1 mm.",
       "protected_work": "Establish what a compression/pressure record can and cannot uniquely determine about particle displacement, using countermodels and an independent reference constraint.",
       "differs_from_worked_anchor": true,
@@ -468,6 +468,6 @@
       "release_authority": "HOLD"
     },
     "release": "HOLD",
-    "acceptance_note": "Isolated author-exposed candidate. No matched Core2 item in inspectable bank; all targets AUTHORED_TRANSFER. Unique version and R2 cycle convention; no canonical C04 selection. Separate stage criteria in B01 author handoff, not implemented runtime. Full JSON is author-exposed; B5 HOLD. Per-target MAIN provisional pending C06 adoption. No academic approval inferred from software validation."
+    "acceptance_note": "Isolated author-exposed candidate. No matched Core2 item in inspectable bank; all targets AUTHORED_TRANSFER. Unique version and R2 cycle convention; no canonical C04 selection. Separate stage criteria in B01 author handoff, not implemented runtime. Full JSON is author-exposed; B5 HOLD. Per-target MAIN provisional pending C06 adoption. No academic approval inferred from software validation. Author calibration pass before reconciliation: JUSTIFY reduced from provisional D4 to D3 (score 7); earlier D4 proposal remains historical, not a selected target. Still subject to R01."
   }
 }

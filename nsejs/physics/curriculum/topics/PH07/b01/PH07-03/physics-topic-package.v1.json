@@ -4,7 +4,7 @@
   "academic_track": "NSEJS",
   "topic_id": "PH07",
   "owner_agent": "AGENT_2",
-  "version": "0.3.2-b01.6.ph07-03",
+  "version": "0.3.3-b01.6.ph07-03",
   "status": "DRAFT_AUTHOR_EXPOSED",
   "pins": {
     "contracts_version": "1.0.0",
@@ -16,7 +16,7 @@
       "version": "1.0.0",
       "git_blob_sha": "e2409aef11ae7d98444593bfbe1a38eb00c97cef"
     },
-    "topic_adapter_version": "0.3.2-b01.6.ph07-03"
+    "topic_adapter_version": "0.3.3-b01.6.ph07-03"
   },
   "syllabus_references": [
     {
@@ -124,7 +124,7 @@
           "blueprint_cell": "D4.4",
           "source_role": "AUTHORED_TRANSFER",
           "qrt_status": "PROPOSED",
-          "protected_work": "Discriminate competing contact-resistance and parallel-leak models using a changed-layer experiment and an independent junction measurement.",
+          "protected_work": "Discriminate a changed effective slab resistance from a fixed independent bypass using a changed-thickness experiment and an independent prediction.",
           "decisive_route": "At ΔT=24 K, an insulation layer R=4 K/W loses 8 W total. Model A assumes layer R is actually 3; model B keeps R=4 and adds a fixed bypass. Doubling thickness gives 5 W. Test models. Shortest valid route: A predicts 24/6=4 W. B needs bypass 2 W, R_b=12; doubled layer gives 3+2=5 W. Supports B under assumptions.",
           "factor_evidence": {
             "concept_model_selection": {
@@ -132,8 +132,8 @@
               "evidence": "Two competing network models fit a single total power."
             },
             "representation_translation": {
-              "score": 2,
-              "evidence": "Translate geometry change and junction observation into different network predictions."
+              "score": 1,
+              "evidence": "Translate the stated thickness change into a resistance change in two explicit path models."
             },
             "reasoning_chain_length": {
               "score": 2,
@@ -145,7 +145,7 @@
             },
             "trap_exception_sensitivity": {
               "score": 2,
-              "evidence": "One total power is underdetermined; internal observation can falsify a route."
+              "evidence": "One total power is underdetermined; the fixed-bypass assumption can fail under another thickness observation."
             }
           }
         }
@@ -178,7 +178,7 @@
   "topic_adapter": {
     "adapter_id": "PHYS-TOPIC-PH07",
     "topic_id": "PH07",
-    "version": "0.3.2-b01.6.ph07-03",
+    "version": "0.3.3-b01.6.ph07-03",
     "for_blueprint": "PHYS-QRT-BLUEPRINT 0.2.0",
     "status": "CANDIDATE_ONLY",
     "cells": [
@@ -386,12 +386,12 @@
       "runtime_verification": "NOT_RUN"
     },
     {
-      "id": "PH07-03-B01-MAIN-MODEL-R2",
+      "id": "PH07-03-B01-MAIN-MODEL-R3",
       "kind": "MAIN",
       "subtopic_id": "PH07-03",
       "qrt_target_id": "PH07-03-B01-D4-MODEL-01",
       "fresh_task": "At ΔT=30 K, a wall with nominal layer R=5 K/W loses 9 W. Model A says effective layer R scales with thickness but differs from nominal; model B keeps nominal layer and adds a fixed independent bypass. Triple the layer thickness: measured loss 5 W. Determine which model fits and predict loss with doubled thickness.",
-      "protected_work": "Discriminate competing contact-resistance and parallel-leak models using a changed-layer experiment and an independent junction measurement.",
+      "protected_work": "Discriminate a changed effective slab resistance from a fixed independent bypass using a changed-thickness experiment and an independent prediction.",
       "differs_from_worked_anchor": true,
       "stages": {
         "predict": "Predict whether the tripled-thickness observation can distinguish the two proposed explanations. State an initial judgement.",
@@ -410,12 +410,12 @@
       "runtime_verification": "NOT_RUN"
     },
     {
-      "id": "PH07-03-B01-INSTANCE-MODEL-R2",
+      "id": "PH07-03-B01-INSTANCE-MODEL-R3",
       "kind": "INSTANCE",
       "subtopic_id": "PH07-03",
       "qrt_target_id": "PH07-03-B01-D4-MODEL-01",
       "fresh_task": "At fixed ΔT=20 K a nominal 4 K/W slab with an unknown extra path loses 7 W. Model A uses a changed effective slab resistance proportional to thickness. Model B retains nominal R with a fixed bypass. Doubling thickness gives 4.5 W. Test both, infer the bypass if supported, then predict total loss when thickness is quadrupled.",
-      "protected_work": "Discriminate competing contact-resistance and parallel-leak models using a changed-layer experiment and an independent junction measurement.",
+      "protected_work": "Discriminate a changed effective slab resistance from a fixed independent bypass using a changed-thickness experiment and an independent prediction.",
       "differs_from_worked_anchor": true,
       "stages": {
         "predict": "Before fitting, predict whether a single altered-slab model or an extra-path model will better fit the doubled-thickness measurement.",
@@ -476,6 +476,6 @@
       "release_authority": "HOLD"
     },
     "release": "HOLD",
-    "acceptance_note": "Isolated author-exposed candidate. No matched Core2 item in inspectable bank; all targets AUTHORED_TRANSFER. Unique version and R2 cycle convention; no canonical C04 selection. Separate stage criteria in B01 author handoff, not implemented runtime. Full JSON is author-exposed; B5 HOLD. Per-target MAIN provisional pending C06 adoption. No academic approval inferred from software validation."
+    "acceptance_note": "Isolated author-exposed candidate. No matched Core2 item in inspectable bank; all targets AUTHORED_TRANSFER. Unique version and R2 cycle convention; no canonical C04 selection. Separate stage criteria in B01 author handoff, not implemented runtime. Full JSON is author-exposed; B5 HOLD. Per-target MAIN provisional pending C06 adoption. No academic approval inferred from software validation. Author calibration pass before reconciliation: D4 MODEL score reduced to 8; protected work now matches changed-thickness discrimination. Still subject to R01."
   }
 }
