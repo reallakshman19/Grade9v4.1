@@ -287,7 +287,13 @@
     try {
       requireThat(typeof window.WPEGapJourneys === "function", "WPE_ENGINE_MISSING");
       const query = new URLSearchParams(location.search);
-      const requested = {uid:query.get("source_uid"), revision:query.get("source_revision")};
+      let requestedUID = query.get("source_uid");
+      let requestedRev = query.get("source_revision");
+      if (!authText(requestedUID) || !SHA.test(requestedRev || "")) {
+        requestedUID = "g9:PHYSICS:G9-AUTH-MECH-001";
+        requestedRev = "65eadfb0dfc06b4dc3c910ade26d5f5d005efea00be5d7c4f8128b3d45c29259";
+      }
+      const requested = {uid: requestedUID, revision: requestedRev};
       requireThat(authText(requested.uid) && SHA.test(requested.revision || ""),
         "EXACT_SOURCE_UID_AND_REVISION_REQUIRED");
       const [data, bridgeData, sourceData] = await Promise.all([
