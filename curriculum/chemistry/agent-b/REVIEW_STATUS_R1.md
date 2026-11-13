@@ -1,3 +1,5 @@
+> Superseded by FINAL_IMPLEMENTATION_STATUS_R2.md (R1 is preserved as a historical partial-authoring receipt; all seven units are now authored candidates). Academic HOLD remains unchanged.
+
 # Agent B R1 — bounded implementation / qualification report
 
 **Task** `G9V41-NSEJS-CHEM-B-C08-C14-R1` · **Status** DRAFT / FAIL CLOSED / NOT MERGED.
