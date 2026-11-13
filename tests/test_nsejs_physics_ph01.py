@@ -163,3 +163,18 @@ def test_chapter_does_not_embed_third_party_papers():
     html = CHAPTER_PATH.read_text(encoding="utf-8")
     assert "This page is reading material and contains no authenticated examination answer key." in html
     assert "<iframe" not in html
+
+
+def test_standalone_adapter_matches_authoring_package_exactly():
+    adapter_path = PKG_PATH.parent / "topic-adapter.PH01.v0.1.0.json"
+    adapter = json.loads(adapter_path.read_text(encoding="utf-8"))
+    assert adapter == package()["topic_adapter"]
+    assert adapter["status"] == "CANDIDATE_ONLY"
+
+
+def test_contract_gap_c06_main_join_is_open_and_release_holds():
+    gap = json.loads((PKG_PATH.parent / "contract-gap-C06-MAIN-join.v1.json").read_text(encoding="utf-8"))
+    assert gap["oracle_decision"] == "PENDING"
+    assert gap["status"] == "OPEN_AUTHOR_EXPOSED__NOT_APPROVED"
+    assert package()["acceptance"]["b1_b7"]["B4"]["status"] == "HOLD"
+    assert package()["acceptance"]["b1_b7"]["B6"]["status"] == "HOLD"
