@@ -1,0 +1,483 @@
+{
+  "schema": "g9v41-nsejs-physics-topic-package/v1",
+  "subject_id": "PHYSICS",
+  "academic_track": "NSEJS",
+  "topic_id": "PH07",
+  "owner_agent": "AGENT_2",
+  "version": "0.3.2-b01.8.ph07-11",
+  "status": "DRAFT_AUTHOR_EXPOSED",
+  "pins": {
+    "contracts_version": "1.0.0",
+    "blueprint": {
+      "version": "0.2.0",
+      "git_blob_sha": "700dafcbe86d76442637bcf214eeb544497cf4ea"
+    },
+    "shared_qrt_28": {
+      "version": "1.0.0",
+      "git_blob_sha": "e2409aef11ae7d98444593bfbe1a38eb00c97cef"
+    },
+    "topic_adapter_version": "0.3.2-b01.8.ph07-11"
+  },
+  "syllabus_references": [
+    {
+      "reference_id": "PH07-CBSE",
+      "locator": "https://cbseacademic.nic.in/web_material/CurriculumMain27/SecPart1/ScienceSt_SecP1_2026-27.pdf",
+      "authority": "OFFICIAL_SYLLABUS",
+      "scope_status": "CANDIDATE"
+    },
+    {
+      "reference_id": "PH07-NCERT-HIST",
+      "locator": "https://sathee.iitk.ac.in/ncert-books/class-09/nb-science-09/sci-09-chapter-1-matter-in-our-surroundings/",
+      "authority": "NCERT_CBSE",
+      "scope_status": "CANDIDATE"
+    }
+  ],
+  "subtopics": [
+    {
+      "id": "PH07-11",
+      "title": "Specific heat and calorimetry: energy-balance inverse problems",
+      "scope_role": "EXTENSION",
+      "syllabus_reference_ids": [
+        "PH07-CBSE",
+        "PH07-NCERT-HIST"
+      ],
+      "prerequisite_ids": [
+        "PH07-02",
+        "PH07-08"
+      ],
+      "science_ref_ids": [
+        "PH07-11-SCI-01"
+      ],
+      "learning_goal": "Under a fixed-phase, constant-specific-heat model, energy balance determines equilibrium temperature or unknown heat capacity when independent constraints suffice.",
+      "textbook_chapter_ref": "nsejs/physics/curriculum/topics/PH07/b01/PH07-11/core1a.html",
+      "qrt_targets": [
+        {
+          "id": "PH07-11-B01-D4-MODEL-01",
+          "task_identity": "G9-B01-PH07-11-MODEL-R1",
+          "band": "D4",
+          "primary_operation": "MODEL",
+          "blueprint_cell": "D4.4",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Separate unknown vessel capacity and common energy leakage using independent calibration balances and reject a model that fails a reserved observation.",
+          "decisive_route": "Residual hot energy after liquid gain is 700 J at vessel rise5 K and1100 J at9 K. Third at7 K gives950 J. Fit C_v and common loss. Shortest valid route: C_v=100 J/K, loss200 J; third predicts900 J, exact model fails.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "Competing vessel absorption and loss explanations."
+            },
+            "representation_translation": {
+              "score": 2,
+              "evidence": "Translate calibration energy residuals into capacity–temperature equations."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Solve two unknowns, check physical admissibility and predict third observation."
+            },
+            "algebra_computational_load": {
+              "score": 1,
+              "evidence": "Coupled linear calculations."
+            },
+            "trap_exception_sensitivity": {
+              "score": 2,
+              "evidence": "Common leakage assumption and independent evidence decisive."
+            }
+          }
+        },
+        {
+          "id": "PH07-11-B01-D3-APPLY-01",
+          "task_identity": "G9-B01-PH07-11-APPLY-R1",
+          "band": "D3",
+          "primary_operation": "APPLY",
+          "blueprint_cell": "D3.3",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Apply signed multi-body energy balance with a specified vessel and external loss, verify temperature and each energy term.",
+          "decisive_route": "Hot C=200 at80, liquid C=400 and vessel C=100 at20 °C; loss600 J. Find T_f. Shortest valid route: (16000+8000+2000−600)/700=36.286 °C.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 1,
+              "evidence": "Select explicit no-phase balance."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "Map multiple initial states and capacities into signed terms."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Calculate weighted equilibrium and verify lost/gained energy."
+            },
+            "algebra_computational_load": {
+              "score": 2,
+              "evidence": "Several products and divisions."
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "Vessel and leakage are separate terms."
+            }
+          }
+        },
+        {
+          "id": "PH07-11-B01-D4-SYNTHESIZE-01",
+          "task_identity": "G9-B01-PH07-11-SYNTHESIZE-R1",
+          "band": "D4",
+          "primary_operation": "SYNTHESIZE",
+          "blueprint_cell": "D4.6",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Combine an independent electrical-energy calibration with a mixing observation and a reserved prediction to recover unknown specific heat and test the no-loss model.",
+          "decisive_route": "A vessel alone receives1200 J and warms6 K. A hot sample at80 °C of mass0.1 kg enters a 20 °C vessel plus liquid C=400; equilibrium30 °C. Find sample c. Shortest valid route: Vessel C=200; cold total600 gains6000; sample C=120; c1200 J/kg K.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "Choose linked calorimeter calibration and mixing models."
+            },
+            "representation_translation": {
+              "score": 2,
+              "evidence": "Coordinate supplied energy, measured temperature and capacities."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Recover vessel capacity, unknown material capacity and specific heat, then predict a changed mixing trial."
+            },
+            "algebra_computational_load": {
+              "score": 1,
+              "evidence": "Several routine coupled calculations."
+            },
+            "trap_exception_sensitivity": {
+              "score": 2,
+              "evidence": "Calibration conditions and loss/phase assumptions govern inference."
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "science_records": [
+    {
+      "id": "PH07-11-SCI-01",
+      "claim": "Under a fixed-phase, constant-specific-heat model, energy balance determines equilibrium temperature or unknown heat capacity when independent constraints suffice.",
+      "law_or_model": "Q=mcΔT=CΔT; C=mc; Σ C_i(T_f−T_i)=E_external for a complete isolated-or-accounted-for system with no phase change.",
+      "assumptions": [
+        "Explicit EXTENSION; CBSE higher-level comparison only, not a compulsory syllabus or exam claim.",
+        "Fixed masses, no phase change, positive approximately constant capacities; negligible other work unless accounted for."
+      ],
+      "conditions_and_limits": [
+        "Explicit EXTENSION; CBSE higher-level comparison only, not a compulsory syllabus or exam claim.",
+        "Fixed masses, no phase change, positive approximately constant capacities; negligible other work unless accounted for.",
+        "Uniform final equilibrium temperature and complete list of participating bodies.",
+        "Common loss between calibration runs is a stated hypothesis, not generally true."
+      ],
+      "units_and_signs": "m in kg, c in J/(kg K), C in J/K, Q in J; ΔT signed in K or °C difference.",
+      "source_refs": [
+        "PH07-CBSE",
+        "PH07-NCERT-HIST"
+      ],
+      "qualification_status": "HOLD"
+    }
+  ],
+  "topic_adapter": {
+    "adapter_id": "PHYS-TOPIC-PH07",
+    "topic_id": "PH07",
+    "version": "0.3.2-b01.8.ph07-11",
+    "for_blueprint": "PHYS-QRT-BLUEPRINT 0.2.0",
+    "status": "CANDIDATE_ONLY",
+    "cells": [
+      {
+        "cell_id": "D4.4",
+        "instance_ids": [
+          "PH07-11-B01-D4-MODEL-01"
+        ]
+      },
+      {
+        "cell_id": "D3.3",
+        "instance_ids": [
+          "PH07-11-B01-D3-APPLY-01"
+        ]
+      },
+      {
+        "cell_id": "D4.6",
+        "instance_ids": [
+          "PH07-11-B01-D4-SYNTHESIZE-01"
+        ]
+      }
+    ]
+  },
+  "core1a": [
+    {
+      "id": "PH07-11-B01-CORE1A-R1",
+      "subtopic_id": "PH07-11",
+      "covered_qrt_ids": [
+        "PH07-11-B01-D4-MODEL-01",
+        "PH07-11-B01-D3-APPLY-01",
+        "PH07-11-B01-D4-SYNTHESIZE-01"
+      ],
+      "phenomenon": "Equal masses of different materials can require different energy to warm by the same temperature interval.",
+      "scientific_narrative": "EXTENSION — quantitative calorimetry is higher-level enrichment, not established compulsory NSEJS material. Heat is transferred energy; temperature is a state variable. Specific heat capacity c describes how much energy per unit mass changes temperature by one kelvin under specified conditions and within one phase. The heat capacity C of a particular sample equals mc when c is approximately constant. Two samples of the same material can have different capacities because their masses differ. For an unchanged-phase sample, ΔU≈mcΔT when other work and energy stores are appropriately accounted for.\n\nIn an ideal insulated mixing experiment, the hotter body transfers energy to the cooler body until they reach a common equilibrium temperature. If no energy crosses the system boundary and no phase change occurs, the sum of their signed energy changes is zero. For two bodies with capacities C₁ and C₂, C₁(T_f−T₁)+C₂(T_f−T₂)=0, so T_f=(C₁T₁+C₂T₂)/(C₁+C₂). The result is capacity-weighted, not necessarily the arithmetic mean. It must lie between the initial temperatures when all capacities are positive and there is no external input or phase change. This check is not sufficient by itself to prove the model.\n\nA calorimeter can absorb energy too. Include its own capacity and initial temperature rather than silently assign all transferred energy to the liquid. If the system loses E_loss to surroundings, the sum of signed changes is −E_loss. A temperature measurement alone may not separate unknown heat capacity from unknown energy loss. In a calibration experiment use a known energy input, or a known hot and cold body, and independently check leakage or repeat at changed conditions. Two independent experiments can solve two unknown parameters if their equations are genuinely independent; an extra experiment tests whether the proposed common parameters remain valid.\n\nFor a model with an unknown vessel capacity C_v and unknown constant energy loss E_loss, a known hot sample supplies energy H and a known liquid absorbs L. The difference H−L equals C_vΔT_v+E_loss. Plot that difference against the vessel's temperature rise: the slope is C_v, intercept E_loss, under the stipulated common-loss model. A negative inferred capacity is physically impossible for the ordinary positive-capacity model; a negative inferred loss could indicate net external input, a sign error or failed assumptions. Changes in duration and temperature can change loss; constant E_loss is a hypothetical comparison model, not a general law.\n\nUse a system boundary and sign convention. Draw initial and final states, list every participating body, and check that energy lost equals energy gained plus accounted losses. If the result crosses a transition temperature, the no-phase model is invalid; PH07-12 develops the piecewise extension. The planning register also names an unbound PH04 prerequisite; this unit supplies its own elementary energy-accounting bridge without claiming PH04 qualification. No matching exact Core2 item is available in the inspected bank.",
+      "prerequisites": [
+        "PH07-02",
+        "PH07-08"
+      ],
+      "derivation_steps": [
+        {
+          "action": "Draw the system boundary and identify each body's initial and final state.",
+          "why_valid": "Energy conservation requires all participating components.",
+          "science_ref_id": "PH07-11-SCI-01"
+        },
+        {
+          "action": "Write a signed term C_i(T_f−T_i) for each unchanged-phase component.",
+          "why_valid": "Positive sign means internal energy increases under the model.",
+          "science_ref_id": "PH07-11-SCI-01"
+        },
+        {
+          "action": "Include external energy and solve the balance; test temperature bounds.",
+          "why_valid": "A weighted mean is valid only for a closed no-phase system.",
+          "science_ref_id": "PH07-11-SCI-01"
+        },
+        {
+          "action": "Use independent calibration observations to distinguish capacity and heat leak.",
+          "why_valid": "Independent equations and a physical check are necessary for inverse identification.",
+          "science_ref_id": "PH07-11-SCI-01"
+        }
+      ],
+      "model_limits": [
+        "Explicit EXTENSION; CBSE higher-level comparison only, not a compulsory syllabus or exam claim.",
+        "Fixed masses, no phase change, positive approximately constant capacities; negligible other work unless accounted for.",
+        "Uniform final equilibrium temperature and complete list of participating bodies.",
+        "Common loss between calibration runs is a stated hypothesis, not generally true."
+      ],
+      "progressive_examples": [
+        {
+          "id": "PH07-11-B01-EX1",
+          "tier": "FOUNDATION",
+          "problem": "0.2 kg of a liquid has c=4000 J/(kg K). Find energy for a 5 K rise.",
+          "reasoning": "4000 J.",
+          "independent_check": "C=800 J/K, times5 K."
+        },
+        {
+          "id": "PH07-11-B01-EX2",
+          "tier": "CONNECTED",
+          "problem": "Bodies C=300 and600 J/K at80 and20 °C mix ideally. Find T_f.",
+          "reasoning": "40 °C.",
+          "independent_check": "Hot loses12000 J; cold gains12000 J."
+        },
+        {
+          "id": "PH07-11-B01-EX3",
+          "tier": "ADVANCED",
+          "problem": "A hot body loses 1800 J. Liquid gains 1200 J and vessel warms by 4 K. Negligible leakage. Find vessel capacity.",
+          "reasoning": "150 J/K.",
+          "independent_check": "Remaining600 J divided by4 K."
+        }
+      ],
+      "figures": [
+        {
+          "id": "PH07-11-FIG-01",
+          "reasoning_step": "Calorimeter energy accounting",
+          "scene_description": "A hot specimen, cold liquid and vessel approach a common temperature; leakage is a separate path. Original inline SVG.",
+          "source_or_authorship": "ORIGINAL_B01_SVG_INLINE"
+        }
+      ],
+      "misconception": {
+        "wrong_model": "Final mixing temperature is always the average, and an insulated cup has zero capacity.",
+        "diagnostic": "Would a tiny hot body and a large cold body reach their arithmetic mean? Can the cup warm too?",
+        "repair": "Weight by capacities, include all components and verify the signed energy balance."
+      },
+      "exit_check": {
+        "task": "A body C=200 J/K at70 °C is mixed with C=400 J/K at25 °C, no leakage. Find T_f.",
+        "answer": "40 °C.",
+        "reasoning": "Hot loss6000 J equals cold gain6000 J."
+      },
+      "authorship_status": "DRAFT_AUTHOR_EXPOSED"
+    }
+  ],
+  "core1b": [
+    {
+      "id": "PH07-11-B01-MAIN-MODEL-R2",
+      "kind": "MAIN",
+      "subtopic_id": "PH07-11",
+      "qrt_target_id": "PH07-11-B01-D4-MODEL-01",
+      "fresh_task": "Three calibrated mixing runs give hot loss minus liquid gain 900 J at vessel rise4 K, 1500 J at8 K, and 1200 J at6 K. Fit vessel capacity and common loss with first two runs; test third and explain uniqueness.",
+      "protected_work": "Separate unknown vessel capacity and common energy leakage using independent calibration balances and reject a model that fails a reserved observation.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether the three residuals support one common vessel capacity and leakage.",
+        "attempt": "Three calibrated mixing runs give hot loss minus liquid gain 900 J at vessel rise4 K, 1500 J at8 K, and 1200 J at6 K. Fit vessel capacity and common loss with first two runs; test third and explain uniqueness.",
+        "reconstruct": "C_v=(1500−900)/4=150 J/K; E_loss=300 J; third predicts1200 J, supports model. One run allows a family; two independent rises identify under assumptions.",
+        "diagnose": "Check whether you conflated vessel absorption with leakage, fitted the reserved observation, or assumed an unphysical parameter.",
+        "repair": "Write one residual equation per calibration, solve from two independent rises, then test the third and compare uncertainty.",
+        "boundary_test": "If the third run lasts much longer, why might a changed residual not refute the original matched-duration model?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH07-11-B01-INSTANCE-MODEL-R2",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH07-11",
+      "qrt_target_id": "PH07-11-B01-D4-MODEL-01",
+      "fresh_task": "Hot-minus-liquid energy residuals are 500 J at vessel rise3 K and 900 J at7 K. A third at5 K gives760 J. Fit first two, test unused run, and determine whether the exact data justify one common model.",
+      "protected_work": "Separate unknown vessel capacity and common energy leakage using independent calibration balances and reject a model that fails a reserved observation.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether the unused 5 K observation will agree with a single common model.",
+        "attempt": "Hot-minus-liquid energy residuals are 500 J at vessel rise3 K and 900 J at7 K. A third at5 K gives760 J. Fit first two, test unused run, and determine whether the exact data justify one common model.",
+        "reconstruct": "C_v=100 J/K, loss200 J; third prediction700 J; residual60 J, exact model fails. Cannot uniquely attribute failure.",
+        "diagnose": "Check whether you conflated vessel absorption with leakage, fitted the reserved observation, or assumed an unphysical parameter.",
+        "repair": "Write one residual equation per calibration, solve from two independent rises, then test the third and compare uncertainty.",
+        "boundary_test": "If the third residual is 760±70 J, can its interval alone reject the prediction?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH07-11-B01-MAIN-APPLY-R2",
+      "kind": "MAIN",
+      "subtopic_id": "PH07-11",
+      "qrt_target_id": "PH07-11-B01-D3-APPLY-01",
+      "fresh_task": "Hot specimen C=300 J/K at90 °C mixes with liquid C=600 and vessel C=100 J/K at20 °C. External loss is1000 J, no phase change. Find T_f and verify energy.",
+      "protected_work": "Apply signed multi-body energy balance with a specified vessel and external loss, verify temperature and each energy term.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether including the vessel and loss raises or lowers the final temperature relative to the two-body insulated result.",
+        "attempt": "Hot specimen C=300 J/K at90 °C mixes with liquid C=600 and vessel C=100 J/K at20 °C. External loss is1000 J, no phase change. Find T_f and verify energy.",
+        "reconstruct": "T_f=(27000+12000+2000−1000)/1000=40 °C. Hot loses15000 J, liquid gains12000, vessel2000, external1000.",
+        "diagnose": "Find a missing component, incorrect sign or incorrect final-temperature weight in your balance.",
+        "repair": "Write each signed term independently, solve the common T, substitute back and confirm external loss and temperature bounds.",
+        "boundary_test": "If loss is zero, what is the new final temperature?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH07-11-B01-INSTANCE-APPLY-R2",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH07-11",
+      "qrt_target_id": "PH07-11-B01-D3-APPLY-01",
+      "fresh_task": "A hot solid C=400 J/K at75 °C enters liquid C=500 and vessel C=100 at15 °C. External loss1200 J. Determine final equilibrium T and audit all energy terms.",
+      "protected_work": "Apply signed multi-body energy balance with a specified vessel and external loss, verify temperature and each energy term.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether the equilibrium is nearer 15 °C or 75 °C before calculating.",
+        "attempt": "A hot solid C=400 J/K at75 °C enters liquid C=500 and vessel C=100 at15 °C. External loss1200 J. Determine final equilibrium T and audit all energy terms.",
+        "reconstruct": "T_f=(30000+7500+1500−1200)/1000=37.8 °C. Hot loss14880 J; liquid gain11400; vessel2280; loss1200.",
+        "diagnose": "Find a missing component, incorrect sign or incorrect final-temperature weight in your balance.",
+        "repair": "Write each signed term independently, solve the common T, substitute back and confirm external loss and temperature bounds.",
+        "boundary_test": "If the liquid begins at 20 °C while vessel remains15 °C, what is final T?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH07-11-B01-MAIN-SYNTHESIZE-R2",
+      "kind": "MAIN",
+      "subtopic_id": "PH07-11",
+      "qrt_target_id": "PH07-11-B01-D4-SYNTHESIZE-01",
+      "fresh_task": "A vessel receives1500 J independently and warms10 K. A liquid C=450 J/K and vessel begin at20 °C; a 0.2 kg solid at80 °C is inserted; final T=35 °C. Infer c_s, then predict equilibrium if the same solid starts at65 °C under identical no-loss conditions.",
+      "protected_work": "Combine an independent electrical-energy calibration with a mixing observation and a reserved prediction to recover unknown specific heat and test the no-loss model.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether the vessel calibration and one mixing observation are enough to recover the solid's specific heat under the stated conditions.",
+        "attempt": "A vessel receives1500 J independently and warms10 K. A liquid C=450 J/K and vessel begin at20 °C; a 0.2 kg solid at80 °C is inserted; final T=35 °C. Infer c_s, then predict equilibrium if the same solid starts at65 °C under identical no-loss conditions.",
+        "reconstruct": "C_v=150; cold total600, gains9000 J; hot drop45 K, C_s=200; c=1000 J/(kg K). Changed equilibrium (200×65+600×20)/800=31.25 °C.",
+        "diagnose": "Inspect where you assumed vessel capacity or fitted the second mixing observation instead of reserving it.",
+        "repair": "Use calibration first, then the mixing energy balance to determine solid capacity, and independently predict changed initial-state equilibrium.",
+        "boundary_test": "If the independent second trial gives 30 °C exactly, what can be inferred?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH07-11-B01-INSTANCE-SYNTHESIZE-R2",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH07-11",
+      "qrt_target_id": "PH07-11-B01-D4-SYNTHESIZE-01",
+      "fresh_task": "A vessel calibration transfers800 J and raises T by8 K. In mixing, vessel and liquid C=300 J/K start25 °C; a 0.1 kg solid starts85 °C; final T=35 °C. A second mixing run with solid at95 °C gives final T=37 °C. Infer c from first run, predict second and assess consistency.",
+      "protected_work": "Combine an independent electrical-energy calibration with a mixing observation and a reserved prediction to recover unknown specific heat and test the no-loss model.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether the second run can independently test the parameters obtained from calibration and first mixing.",
+        "attempt": "A vessel calibration transfers800 J and raises T by8 K. In mixing, vessel and liquid C=300 J/K start25 °C; a 0.1 kg solid starts85 °C; final T=35 °C. A second mixing run with solid at95 °C gives final T=37 °C. Infer c from first run, predict second and assess consistency.",
+        "reconstruct": "C_v=100; cold400 gains4000 J; hot drop50 K, C_s=80; c=800 J/(kg K). Second prediction (80×95+400×25)/480=36.667 °C, not37 exact. Need uncertainty or changed conditions.",
+        "diagnose": "Inspect where you assumed vessel capacity or fitted the second mixing observation instead of reserving it.",
+        "repair": "Use calibration first, then the mixing energy balance to determine solid capacity, and independently predict changed initial-state equilibrium.",
+        "boundary_test": "If second reading is 37±0.5 °C, does it exclude the prediction?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    }
+  ],
+  "core2_sources": [],
+  "acceptance": {
+    "b1_b7": {
+      "B1": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B2": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B3": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B4": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B5": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B6": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B7": {
+        "status": "HOLD",
+        "evidence_refs": []
+      }
+    },
+    "gates": {
+      "source_authenticity": "HOLD",
+      "content_correctness": "HOLD",
+      "cognitive_qualification": "HOLD",
+      "teaching_sufficiency": "HOLD",
+      "assessment_validity": "HOLD",
+      "implementation": "NOT_RUN",
+      "release_authority": "HOLD"
+    },
+    "release": "HOLD",
+    "acceptance_note": "Isolated author-exposed candidate. No matched exact Core2 item in inspectable bank; all targets AUTHORED_TRANSFER. Unique version and R2 cycle convention; no canonical C04 selection. Separate stage criteria in B01 author handoff, not implemented runtime. Full JSON is author-exposed; B5 HOLD. Per-target MAIN provisional pending C06 adoption. No academic approval inferred from software validation. Explicit EXTENSION only: higher-level comparison and supplied ideal models, no compulsory NSEJS scope warrant; independent source/scope review pending."
+  }
+}

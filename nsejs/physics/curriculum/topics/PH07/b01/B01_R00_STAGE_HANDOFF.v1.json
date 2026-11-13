@@ -3,7 +3,7 @@
   "status": "PROPOSED_PLATFORM_DEPENDENCY",
   "review_id": 5896632580,
   "pinned_prediction_head": "ad109e0f77fd34a9f7e818e3314885c52e7d85b8",
-  "scope": "72 exact-cycle response criteria: Increments 4, 5 and 6. Other 48 prior B01 cycles retain task-specific predictions and author stage prompts; exact boundary-response rubrics still outstanding.",
+  "scope": "102 exact-cycle response criteria: Increments 4 through 7. Other 48 prior B01 cycles retain task-specific predictions and author stage prompts; exact boundary-response rubrics still outstanding.",
   "authority": "P00 owns shared runtime and protection; R01 owns independent academic review; Owner adopts contracts",
   "stage_order": [
     "PREDICT",
@@ -1371,6 +1371,546 @@
         "BOUNDARY_TEST": "Upper (4,√20) m, within rounding; lower predicts much later time."
       },
       "boundary_prompt": "If C instead reports 7.709 ms to three decimals, which candidate is supported?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-10",
+      "target_id": "PH07-10-B01-D4-MODEL-01",
+      "cycle_id": "PH07-10-B01-MAIN-MODEL-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.8.ph07-10",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "B−A=6 W, Y−X=4 W; B/Y predicted24 W, fits. Only conditional support; not material conductivity or absence of all interactions.",
+        "RECONSTRUCT": "Compare saved reasoning with the case-specific reconstruction: B−A=6 W, Y−X=4 W; B/Y predicted24 W, fits. Only conditional support; not material conductivity or absence of all interactions. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Find the missing independent cell or a confounded treatment/location contrast; did you interpret a residual as a unique cause?",
+        "REPAIR": "Compute matched differences, predict the unused cell under additivity, compare residual with uncertainty and propose an independent control. Expected case-specific result: B−A=6 W, Y−X=4 W; B/Y predicted24 W, fits. Only conditional support; not material conductivity or absence of all interactions.",
+        "BOUNDARY_TEST": "Residual +3 W; exact additive model fails, not unique cause."
+      },
+      "boundary_prompt": "If B/Y instead needs 27 W, quantify the discrepancy and explain its significance.",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-10",
+      "target_id": "PH07-10-B01-D4-MODEL-01",
+      "cycle_id": "PH07-10-B01-INSTANCE-MODEL-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.8.ph07-10",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "Effects +6 W at X, +4 W at Y; additive prediction21 W, residual −2 W. Exact additivity fails. Repeat with randomized order and matched ambient flow or measure location-specific leakage.",
+        "RECONSTRUCT": "Compare saved reasoning with the case-specific reconstruction: Effects +6 W at X, +4 W at Y; additive prediction21 W, residual −2 W. Exact additivity fails. Repeat with randomized order and matched ambient flow or measure location-specific leakage. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Find the missing independent cell or a confounded treatment/location contrast; did you interpret a residual as a unique cause?",
+        "REPAIR": "Compute matched differences, predict the unused cell under additivity, compare residual with uncertainty and propose an independent control. Expected case-specific result: Effects +6 W at X, +4 W at Y; additive prediction21 W, residual −2 W. Exact additivity fails. Repeat with randomized order and matched ambient flow or measure location-specific leakage.",
+        "BOUNDARY_TEST": "The interaction difference is −2 W with worst-case ±2 W; zero is just within bounds, so not strictly ruled out by those bounds."
+      },
+      "boundary_prompt": "If each power reading has a possible independent ±0.5 W error, can a zero interaction be ruled out by bounds alone?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-10",
+      "target_id": "PH07-10-B01-D3-REPRESENT-01",
+      "cycle_id": "PH07-10-B01-MAIN-REPRESENT-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.8.ph07-10",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "A losses20 then13.33 W; B26.67 then26.67 W. A initially has steeper slope but B loses more energy per time.",
+        "RECONSTRUCT": "Compare saved reasoning with the case-specific reconstruction: A losses20 then13.33 W; B26.67 then26.67 W. A initially has steeper slope but B loses more energy per time. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Check interval durations, capacity factors and whether your calculated power was net or gross outward transfer.",
+        "REPAIR": "Plot measured temperatures first; compute each interval's signed energy change and account for any independent heater input. Expected case-specific result: A losses20 then13.33 W; B26.67 then26.67 W. A initially has steeper slope but B loses more energy per time.",
+        "BOUNDARY_TEST": "A20 W, B13.33 W; A larger."
+      },
+      "boundary_prompt": "If both capacities were 200 J/K, how would first-interval loss ordering change?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-10",
+      "target_id": "PH07-10-B01-D3-REPRESENT-01",
+      "cycle_id": "PH07-10-B01-INSTANCE-REPRESENT-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.8.ph07-10",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "A first30 W, second15 W, total900 J; B first45 W, second30 W, total1500 J. Plot aligned intervals.",
+        "RECONSTRUCT": "Compare saved reasoning with the case-specific reconstruction: A first30 W, second15 W, total900 J; B first45 W, second30 W, total1500 J. Plot aligned intervals. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Check interval durations, capacity factors and whether your calculated power was net or gross outward transfer.",
+        "REPAIR": "Plot measured temperatures first; compute each interval's signed energy change and account for any independent heater input. Expected case-specific result: A first30 W, second15 W, total900 J; B first45 W, second30 W, total1500 J. Plot aligned intervals.",
+        "BOUNDARY_TEST": "55 W and40 W; heater input adds to inferred outward loss."
+      },
+      "boundary_prompt": "If B receives a constant 10 W heater, but follows the same trace, what are its actual mean outward losses?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-10",
+      "target_id": "PH07-10-B01-D3-JUSTIFY-01",
+      "cycle_id": "PH07-10-B01-MAIN-JUSTIFY-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.8.ph07-10",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "Different heat capacity and evaporation can produce difference; match mass/vessel geometry, cover, ambient and initial temperature; vary only wall treatment, measure steady power and mass loss where relevant.",
+        "RECONSTRUCT": "Compare saved reasoning with the case-specific reconstruction: Different heat capacity and evaporation can produce difference; match mass/vessel geometry, cover, ambient and initial temperature; vary only wall treatment, measure steady power and mass loss where relevant. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Identify the assumption about matched variables or measurement certainty that the claim requires.",
+        "REPAIR": "Give a compatible alternative or overlapping values; design a control and specify what the resulting observation would establish. Expected case-specific result: Different heat capacity and evaporation can produce difference; match mass/vessel geometry, cover, ambient and initial temperature; vary only wall treatment, measure steady power and mass loss where relevant.",
+        "BOUNDARY_TEST": "Effective capacities, calibration/response, and unmatched conditions before inferring insulation."
+      },
+      "boundary_prompt": "If the steady power is equal but probe cooling slopes differ, what should be checked?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-10",
+      "target_id": "PH07-10-B01-D3-JUSTIFY-01",
+      "cycle_id": "PH07-10-B01-INSTANCE-JUSTIFY-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.8.ph07-10",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "Intervals 13–19 and17–23 overlap; strict ordering not established by these bounds. Repetition may reduce random error but not bias; calibrate power and temperature, improve uncertainty and swap locations.",
+        "RECONSTRUCT": "Compare saved reasoning with the case-specific reconstruction: Intervals 13–19 and17–23 overlap; strict ordering not established by these bounds. Repetition may reduce random error but not bias; calibrate power and temperature, improve uncertainty and swap locations. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Identify the assumption about matched variables or measurement certainty that the claim requires.",
+        "REPAIR": "Give a compatible alternative or overlapping values; design a control and specify what the resulting observation would establish. Expected case-specific result: Intervals 13–19 and17–23 overlap; strict ordering not established by these bounds. Repetition may reduce random error but not bias; calibrate power and temperature, improve uncertainty and swap locations.",
+        "BOUNDARY_TEST": "Yes, upper A17 < lower B19, conditional on valid bounds and matching."
+      },
+      "boundary_prompt": "If improved bounds are A=16±1 W and B=20±1 W, is ordering established under the interval model?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-11",
+      "target_id": "PH07-11-B01-D4-MODEL-01",
+      "cycle_id": "PH07-11-B01-MAIN-MODEL-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.8.ph07-11",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "C_v=(1500−900)/4=150 J/K; E_loss=300 J; third predicts1200 J, supports model. One run allows a family; two independent rises identify under assumptions.",
+        "RECONSTRUCT": "Compare saved reasoning with the case-specific reconstruction: C_v=(1500−900)/4=150 J/K; E_loss=300 J; third predicts1200 J, supports model. One run allows a family; two independent rises identify under assumptions. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Check whether you conflated vessel absorption with leakage, fitted the reserved observation, or assumed an unphysical parameter.",
+        "REPAIR": "Write one residual equation per calibration, solve from two independent rises, then test the third and compare uncertainty. Expected case-specific result: C_v=(1500−900)/4=150 J/K; E_loss=300 J; third predicts1200 J, supports model. One run allows a family; two independent rises identify under assumptions.",
+        "BOUNDARY_TEST": "Leakage may depend on time/temperature history; common loss was conditional."
+      },
+      "boundary_prompt": "If the third run lasts much longer, why might a changed residual not refute the original matched-duration model?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-11",
+      "target_id": "PH07-11-B01-D4-MODEL-01",
+      "cycle_id": "PH07-11-B01-INSTANCE-MODEL-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.8.ph07-11",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "C_v=100 J/K, loss200 J; third prediction700 J; residual60 J, exact model fails. Cannot uniquely attribute failure.",
+        "RECONSTRUCT": "Compare saved reasoning with the case-specific reconstruction: C_v=100 J/K, loss200 J; third prediction700 J; residual60 J, exact model fails. Cannot uniquely attribute failure. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Check whether you conflated vessel absorption with leakage, fitted the reserved observation, or assumed an unphysical parameter.",
+        "REPAIR": "Write one residual equation per calibration, solve from two independent rises, then test the third and compare uncertainty. Expected case-specific result: C_v=100 J/K, loss200 J; third prediction700 J; residual60 J, exact model fails. Cannot uniquely attribute failure.",
+        "BOUNDARY_TEST": "No; 700 J is inside 690–830 J."
+      },
+      "boundary_prompt": "If the third residual is 760±70 J, can its interval alone reject the prediction?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-11",
+      "target_id": "PH07-11-B01-D3-APPLY-01",
+      "cycle_id": "PH07-11-B01-MAIN-APPLY-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.8.ph07-11",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "T_f=(27000+12000+2000−1000)/1000=40 °C. Hot loses15000 J, liquid gains12000, vessel2000, external1000.",
+        "RECONSTRUCT": "Compare saved reasoning with the case-specific reconstruction: T_f=(27000+12000+2000−1000)/1000=40 °C. Hot loses15000 J, liquid gains12000, vessel2000, external1000. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Find a missing component, incorrect sign or incorrect final-temperature weight in your balance.",
+        "REPAIR": "Write each signed term independently, solve the common T, substitute back and confirm external loss and temperature bounds. Expected case-specific result: T_f=(27000+12000+2000−1000)/1000=40 °C. Hot loses15000 J, liquid gains12000, vessel2000, external1000.",
+        "BOUNDARY_TEST": "41 °C."
+      },
+      "boundary_prompt": "If loss is zero, what is the new final temperature?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-11",
+      "target_id": "PH07-11-B01-D3-APPLY-01",
+      "cycle_id": "PH07-11-B01-INSTANCE-APPLY-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.8.ph07-11",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "T_f=(30000+7500+1500−1200)/1000=37.8 °C. Hot loss14880 J; liquid gain11400; vessel2280; loss1200.",
+        "RECONSTRUCT": "Compare saved reasoning with the case-specific reconstruction: T_f=(30000+7500+1500−1200)/1000=37.8 °C. Hot loss14880 J; liquid gain11400; vessel2280; loss1200. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Find a missing component, incorrect sign or incorrect final-temperature weight in your balance.",
+        "REPAIR": "Write each signed term independently, solve the common T, substitute back and confirm external loss and temperature bounds. Expected case-specific result: T_f=(30000+7500+1500−1200)/1000=37.8 °C. Hot loss14880 J; liquid gain11400; vessel2280; loss1200.",
+        "BOUNDARY_TEST": "40.3 °C (extra2500 J divided by1000 J/K)."
+      },
+      "boundary_prompt": "If the liquid begins at 20 °C while vessel remains15 °C, what is final T?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-11",
+      "target_id": "PH07-11-B01-D4-SYNTHESIZE-01",
+      "cycle_id": "PH07-11-B01-MAIN-SYNTHESIZE-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.8.ph07-11",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "C_v=150; cold total600, gains9000 J; hot drop45 K, C_s=200; c=1000 J/(kg K). Changed equilibrium (200×65+600×20)/800=31.25 °C.",
+        "RECONSTRUCT": "Compare saved reasoning with the case-specific reconstruction: C_v=150; cold total600, gains9000 J; hot drop45 K, C_s=200; c=1000 J/(kg K). Changed equilibrium (200×65+600×20)/800=31.25 °C. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Inspect where you assumed vessel capacity or fitted the second mixing observation instead of reserving it.",
+        "REPAIR": "Use calibration first, then the mixing energy balance to determine solid capacity, and independently predict changed initial-state equilibrium. Expected case-specific result: C_v=150; cold total600, gains9000 J; hot drop45 K, C_s=200; c=1000 J/(kg K). Changed equilibrium (200×65+600×20)/800=31.25 °C.",
+        "BOUNDARY_TEST": "Predicted31.25; common no-loss constant-capacity model fails, not unique cause."
+      },
+      "boundary_prompt": "If the independent second trial gives 30 °C exactly, what can be inferred?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-11",
+      "target_id": "PH07-11-B01-D4-SYNTHESIZE-01",
+      "cycle_id": "PH07-11-B01-INSTANCE-SYNTHESIZE-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.8.ph07-11",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "C_v=100; cold400 gains4000 J; hot drop50 K, C_s=80; c=800 J/(kg K). Second prediction (80×95+400×25)/480=36.667 °C, not37 exact. Need uncertainty or changed conditions.",
+        "RECONSTRUCT": "Compare saved reasoning with the case-specific reconstruction: C_v=100; cold400 gains4000 J; hot drop50 K, C_s=80; c=800 J/(kg K). Second prediction (80×95+400×25)/480=36.667 °C, not37 exact. Need uncertainty or changed conditions. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Inspect where you assumed vessel capacity or fitted the second mixing observation instead of reserving it.",
+        "REPAIR": "Use calibration first, then the mixing energy balance to determine solid capacity, and independently predict changed initial-state equilibrium. Expected case-specific result: C_v=100; cold400 gains4000 J; hot drop50 K, C_s=80; c=800 J/(kg K). Second prediction (80×95+400×25)/480=36.667 °C, not37 exact. Need uncertainty or changed conditions.",
+        "BOUNDARY_TEST": "No, 36.667 lies within the given interval."
+      },
+      "boundary_prompt": "If second reading is 37±0.5 °C, does it exclude the prediction?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-12",
+      "target_id": "PH07-12-B01-D4-MODEL-01",
+      "cycle_id": "PH07-12-B01-MAIN-MODEL-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.8.ph07-12",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "Available20000 J, melt15000 J; all ice melts, surplus5000 J warms total C=1000 J/K, final5 °C. Check original warm bodies lose16000 J, ice melts15000 and warms1000.",
+        "RECONSTRUCT": "Compare saved reasoning with the case-specific reconstruction: Available20000 J, melt15000 J; all ice melts, surplus5000 J warms total C=1000 J/K, final5 °C. Check original warm bodies lose16000 J, ice melts15000 and warms1000. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Identify whether you assumed the final phase before comparing energy available with latent requirement.",
+        "REPAIR": "Evaluate the zero-degree energy budget first, select the valid regime, solve melt mass or liquid warming, and check conservation. Expected case-specific result: Available20000 J, melt15000 J; all ice melts, surplus5000 J warms total C=1000 J/K, final5 °C. Check original warm bodies lose16000 J, ice melts15000 and warms1000.",
+        "BOUNDARY_TEST": "Need24000 J; only20000 available; 0.06667 kg melts, 0.01333 remains at0 °C."
+      },
+      "boundary_prompt": "If ice mass is increased to0.08 kg, what final state follows?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-12",
+      "target_id": "PH07-12-B01-D4-MODEL-01",
+      "cycle_id": "PH07-12-B01-INSTANCE-MODEL-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.8.ph07-12",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "Available12000 J, need15000; melt0.04 kg, remain0.01 kg; final0 °C. Critical temperature25 °C.",
+        "RECONSTRUCT": "Compare saved reasoning with the case-specific reconstruction: Available12000 J, need15000; melt0.04 kg, remain0.01 kg; final0 °C. Critical temperature25 °C. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Identify whether you assumed the final phase before comparing energy available with latent requirement.",
+        "REPAIR": "Evaluate the zero-degree energy budget first, select the valid regime, solve melt mass or liquid warming, and check conservation. Expected case-specific result: Available12000 J, need15000; melt0.04 kg, remain0.01 kg; final0 °C. Critical temperature25 °C.",
+        "BOUNDARY_TEST": "All melt; surplus3000 J; total capacity800; final3.75 °C."
+      },
+      "boundary_prompt": "If initial warm-body T=30 °C, find final equilibrium temperature.",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-12",
+      "target_id": "PH07-12-B01-D4-SYNTHESIZE-01",
+      "cycle_id": "PH07-12-B01-MAIN-SYNTHESIZE-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.8.ph07-12",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "η25%, rejection15000 J, captured12000 J; melt0.04 kg, remains0.01; observation implies10500 J, residual1500 J. Exact model inconsistent, not unique cause.",
+        "RECONSTRUCT": "Compare saved reasoning with the case-specific reconstruction: η25%, rejection15000 J, captured12000 J; melt0.04 kg, remains0.01; observation implies10500 J, residual1500 J. Exact model inconsistent, not unique cause. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Check whether engine work was counted as rejected heat, whether captured fraction was applied, and whether the final phase was chosen correctly.",
+        "REPAIR": "Balance the engine over a cycle, trace only the stated heat capture to the calorimeter, calculate the phase budget, and test the unused observation. Expected case-specific result: η25%, rejection15000 J, captured12000 J; melt0.04 kg, remains0.01; observation implies10500 J, residual1500 J. Exact model inconsistent, not unique cause.",
+        "BOUNDARY_TEST": "Yes:10500 J /300000=0.035 kg, assuming no other loss."
+      },
+      "boundary_prompt": "If capture fraction instead is70%, does the observed melt agree?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-12",
+      "target_id": "PH07-12-B01-D4-SYNTHESIZE-01",
+      "cycle_id": "PH07-12-B01-INSTANCE-SYNTHESIZE-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.8.ph07-12",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "Work6000 J, η1/3; delivered9000 J, melt6000 J, surplus3000 J, water capacity80 J/K, final37.5 °C. Measured20 °C requires7600 J total, inconsistent with exact delivery; need loss/fraction data.",
+        "RECONSTRUCT": "Compare saved reasoning with the case-specific reconstruction: Work6000 J, η1/3; delivered9000 J, melt6000 J, surplus3000 J, water capacity80 J/K, final37.5 °C. Measured20 °C requires7600 J total, inconsistent with exact delivery; need loss/fraction data. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Check whether engine work was counted as rejected heat, whether captured fraction was applied, and whether the final phase was chosen correctly.",
+        "REPAIR": "Balance the engine over a cycle, trace only the stated heat capture to the calorimeter, calculate the phase budget, and test the unused observation. Expected case-specific result: Work6000 J, η1/3; delivered9000 J, melt6000 J, surplus3000 J, water capacity80 J/K, final37.5 °C. Measured20 °C requires7600 J total, inconsistent with exact delivery; need loss/fraction data.",
+        "BOUNDARY_TEST": "Delivered8000 J; surplus2000; final25 °C."
+      },
+      "boundary_prompt": "If only two-thirds of rejected heat is delivered, what final T is predicted?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-12",
+      "target_id": "PH07-12-B01-D3-JUSTIFY-01",
+      "cycle_id": "PH07-12-B01-MAIN-JUSTIFY-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.8.ph07-12",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "Different amounts of ice can melt at the same T; e.g. 0.01 vs0.02 kg converted at same L. Measure initial and remaining phase masses and losses.",
+        "RECONSTRUCT": "Compare saved reasoning with the case-specific reconstruction: Different amounts of ice can melt at the same T; e.g. 0.01 vs0.02 kg converted at same L. Measure initial and remaining phase masses and losses. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Locate the inference from a necessary energy balance to a unique phase state or physically possible cyclic process.",
+        "REPAIR": "State the appropriate system and additional phase/thermodynamic condition; provide a counterexample or explicit missing observation. Expected case-specific result: Different amounts of ice can melt at the same T; e.g. 0.01 vs0.02 kg converted at same L. Measure initial and remaining phase masses and losses.",
+        "BOUNDARY_TEST": "No; matched complete phase conversion has same latent requirement."
+      },
+      "boundary_prompt": "If both samples are fully liquid at0 °C with identical initial ice masses and states and no leakage, can required energy differ under the model?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-12",
+      "target_id": "PH07-12-B01-D3-JUSTIFY-01",
+      "cycle_id": "PH07-12-B01-INSTANCE-JUSTIFY-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.8.ph07-12",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "First-law equality is necessary but not sufficient; a cyclic engine cannot have sole effect of extracting heat from one reservoir and converting it entirely into work. Need rejected heat/other effects and second-law feasibility, not merely bookkeeping.",
+        "RECONSTRUCT": "Compare saved reasoning with the case-specific reconstruction: First-law equality is necessary but not sufficient; a cyclic engine cannot have sole effect of extracting heat from one reservoir and converting it entirely into work. Need rejected heat/other effects and second-law feasibility, not merely bookkeeping. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Locate the inference from a necessary energy balance to a unique phase state or physically possible cyclic process.",
+        "REPAIR": "State the appropriate system and additional phase/thermodynamic condition; provide a counterexample or explicit missing observation. Expected case-specific result: First-law equality is necessary but not sufficient; a cyclic engine cannot have sole effect of extracting heat from one reservoir and converting it entirely into work. Need rejected heat/other effects and second-law feasibility, not merely bookkeeping.",
+        "BOUNDARY_TEST": "1500 J; efficiency25%. This alone does not prove second-law feasibility."
+      },
+      "boundary_prompt": "If an engine receives2000 J and delivers500 J work, what does first-law cyclic balance require for net heat rejected in the stated two-transfer model?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-11",
+      "target_id": "PH08-11-B01-D3-EXPLAIN-01",
+      "cycle_id": "PH08-11-B01-MAIN-EXPLAIN-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.8.ph08-11",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "Coupling/radiation changes can strengthen output; equal period supports same fundamental. Measure actual displacement independently, control microphone and position.",
+        "RECONSTRUCT": "Compare saved reasoning with the case-specific reconstruction: Coupling/radiation changes can strengthen output; equal period supports same fundamental. Measure actual displacement independently, control microphone and position. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Check whether you used receiver loudness to infer source frequency or ignored a changed acoustic boundary.",
+        "REPAIR": "Trace vibration, mode frequency and coupling separately, then identify a direct observation for each inference. Expected case-specific result: Coupling/radiation changes can strengthen output; equal period supports same fundamental. Measure actual displacement independently, control microphone and position.",
+        "BOUNDARY_TEST": "No; tension may shift frequency, so measure it or period."
+      },
+      "boundary_prompt": "If the body changes string tension, can the same pitch prediction be assumed?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-11",
+      "target_id": "PH08-11-B01-D3-EXPLAIN-01",
+      "cycle_id": "PH08-11-B01-INSTANCE-EXPLAIN-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.8.ph08-11",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "Opening hole can shorten effective acoustic length and raise resonance; output amplitude depends on excitation and coupling, not frequency alone. Boundary details need control.",
+        "RECONSTRUCT": "Compare saved reasoning with the case-specific reconstruction: Opening hole can shorten effective acoustic length and raise resonance; output amplitude depends on excitation and coupling, not frequency alone. Boundary details need control. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Check whether you used receiver loudness to infer source frequency or ignored a changed acoustic boundary.",
+        "REPAIR": "Trace vibration, mode frequency and coupling separately, then identify a direct observation for each inference. Expected case-specific result: Opening hole can shorten effective acoustic length and raise resonance; output amplitude depends on excitation and coupling, not frequency alone. Boundary details need control.",
+        "BOUNDARY_TEST": "No; boundary conditions alter allowed modes and effective length."
+      },
+      "boundary_prompt": "If opening the hole changes the boundary type as well as length, is a simple inverse-length comparison sufficient?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-11",
+      "target_id": "PH08-11-B01-D3-MODEL-01",
+      "cycle_id": "PH08-11-B01-MAIN-MODEL-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.8.ph08-11",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "Length-only predicts400; combined predicts200, fits. Restored tension at half length gives400 Hz under model.",
+        "RECONSTRUCT": "Compare saved reasoning with the case-specific reconstruction: Length-only predicts400; combined predicts200, fits. Restored tension at half length gives400 Hz under model. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Find whether your frequency prediction ignored a changed parameter or used an untested idealization as proof.",
+        "REPAIR": "Compute the separate length and tension factors, compare model predictions with measured frequency, and reserve a new condition to test. Expected case-specific result: Length-only predicts400; combined predicts200, fits. Restored tension at half length gives400 Hz under model.",
+        "BOUNDARY_TEST": "400/√2≈282.8 Hz."
+      },
+      "boundary_prompt": "If μ also doubles during the final modification, what frequency follows?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-11",
+      "target_id": "PH08-11-B01-D3-MODEL-01",
+      "cycle_id": "PH08-11-B01-INSTANCE-MODEL-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.8.ph08-11",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "Length factor4/3, tension factor3/2, combined2→240 fits. Length-only160 fails. Restored tension predicts160 Hz.",
+        "RECONSTRUCT": "Compare saved reasoning with the case-specific reconstruction: Length factor4/3, tension factor3/2, combined2→240 fits. Length-only160 fails. Restored tension predicts160 Hz. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Find whether your frequency prediction ignored a changed parameter or used an untested idealization as proof.",
+        "REPAIR": "Compute the separate length and tension factors, compare model predictions with measured frequency, and reserve a new condition to test. Expected case-specific result: Length factor4/3, tension factor3/2, combined2→240 fits. Length-only160 fails. Restored tension predicts160 Hz.",
+        "BOUNDARY_TEST": "Exact simple common model fails for that trial; check effective length, μ, tension or measurement."
+      },
+      "boundary_prompt": "If restored-tension measurement gives150 Hz exactly, what can be concluded?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-11",
+      "target_id": "PH08-11-B01-D3-JUSTIFY-01",
+      "cycle_id": "PH08-11-B01-MAIN-JUSTIFY-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.8.ph08-11",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "Equal fundamental suggests same pitch, not identical timbre; spectral strengths and envelope differ. Match level, microphone and playback conditions; compare calibrated spectra and envelopes.",
+        "RECONSTRUCT": "Compare saved reasoning with the case-specific reconstruction: Equal fundamental suggests same pitch, not identical timbre; spectral strengths and envelope differ. Match level, microphone and playback conditions; compare calibrated spectra and envelopes. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Identify whether you treated a detected component as the guaranteed fundamental or a fundamental as a unique source signature.",
+        "REPAIR": "Construct compatible alternate sources, then specify a broader calibrated measurement and the exact conclusion it can support. Expected case-specific result: Equal fundamental suggests same pitch, not identical timbre; spectral strengths and envelope differ. Match level, microphone and playback conditions; compare calibrated spectra and envelopes.",
+        "BOUNDARY_TEST": "No; component phases and attack/decay may differ, among other factors."
+      },
+      "boundary_prompt": "If full steady-state magnitude spectra match, does that alone establish identical time-domain signals?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-11",
+      "target_id": "PH08-11-B01-D3-JUSTIFY-01",
+      "cycle_id": "PH08-11-B01-INSTANCE-JUSTIFY-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.8.ph08-11",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "400 Hz could be fundamental of one and second harmonic of a 200 Hz source whose fundamental is filtered/weak. Different instruments can share components. Use calibrated broadband time/spectrum and source observations.",
+        "RECONSTRUCT": "Compare saved reasoning with the case-specific reconstruction: 400 Hz could be fundamental of one and second harmonic of a 200 Hz source whose fundamental is filtered/weak. Different instruments can share components. Use calibrated broadband time/spectrum and source observations. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Identify whether you treated a detected component as the guaranteed fundamental or a fundamental as a unique source signature.",
+        "REPAIR": "Construct compatible alternate sources, then specify a broader calibrated measurement and the exact conclusion it can support. Expected case-specific result: 400 Hz could be fundamental of one and second harmonic of a 200 Hz source whose fundamental is filtered/weak. Different instruments can share components. Use calibrated broadband time/spectrum and source observations.",
+        "BOUNDARY_TEST": "A repetition frequency400 Hz for the recorded periodic signal; instrument identity still not unique."
+      },
+      "boundary_prompt": "If a calibrated broadband trace establishes full periodic repetition every2.5 ms, what is supported?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-13",
+      "target_id": "PH08-13-B01-D4-MODEL-01",
+      "cycle_id": "PH08-13-B01-MAIN-MODEL-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.8.ph08-13",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "Moving source u=68; recession340²/(408)=283.333 Hz. Moving observer u=85; recession255 Hz. Source model fits rounded measurement. Only stated models compared.",
+        "RECONSTRUCT": "Compare saved reasoning with the case-specific reconstruction: Moving source u=68; recession340²/(408)=283.333 Hz. Moving observer u=85; recession255 Hz. Source model fits rounded measurement. Only stated models compared. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Locate where you applied one formula to both cases or assumed the same inferred physical speed from the same frequency shift.",
+        "REPAIR": "Derive front spacing for source motion and encounter rate for observer motion, fit each approach result, then predict recession independently. Expected case-specific result: Moving source u=68; recession340²/(408)=283.333 Hz. Moving observer u=85; recession255 Hz. Source model fits rounded measurement. Only stated models compared.",
+        "BOUNDARY_TEST": "Moving observer at85 m/s."
+      },
+      "boundary_prompt": "If the recession frequency were instead255 Hz, which stated model would fit?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-13",
+      "target_id": "PH08-13-B01-D4-MODEL-01",
+      "cycle_id": "PH08-13-B01-INSTANCE-MODEL-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.8.ph08-13",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "Source u=82.5 m/s, recession264 Hz; observer u=110 m/s, recession220 Hz. Observer model fits. A single approach value did not distinguish them.",
+        "RECONSTRUCT": "Compare saved reasoning with the case-specific reconstruction: Source u=82.5 m/s, recession264 Hz; observer u=110 m/s, recession220 Hz. Observer model fits. A single approach value did not distinguish them. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Locate where you applied one formula to both cases or assumed the same inferred physical speed from the same frequency shift.",
+        "REPAIR": "Derive front spacing for source motion and encounter rate for observer motion, fit each approach result, then predict recession independently. Expected case-specific result: Source u=82.5 m/s, recession264 Hz; observer u=110 m/s, recession220 Hz. Observer model fits. A single approach value did not distinguish them.",
+        "BOUNDARY_TEST": "Not without independent reversal speed or more constraints; each could fit changed speeds."
+      },
+      "boundary_prompt": "If the reversal changes speed magnitude unknown, can the second reading still distinguish the original models uniquely?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-13",
+      "target_id": "PH08-13-B01-D3-REPRESENT-01",
+      "cycle_id": "PH08-13-B01-MAIN-REPRESENT-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.8.ph08-13",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "Open-open f=300,600 Hz, displacement antinodes at ends. Closed-open f=150,450 Hz, displacement node closed end, antinode open end. Draw half-wave and full-wave vs quarter and three-quarter wavelengths.",
+        "RECONSTRUCT": "Compare saved reasoning with the case-specific reconstruction: Open-open f=300,600 Hz, displacement antinodes at ends. Closed-open f=150,450 Hz, displacement node closed end, antinode open end. Draw half-wave and full-wave vs quarter and three-quarter wavelengths. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Check node type, end boundary and whether you assigned all integer harmonics to a closed-open tube.",
+        "REPAIR": "Sketch the allowable quarter/half wave patterns with explicit end conditions, then derive each spectral line from wavelength. Expected case-specific result: Open-open f=300,600 Hz, displacement antinodes at ends. Closed-open f=150,450 Hz, displacement node closed end, antinode open end. Draw half-wave and full-wave vs quarter and three-quarter wavelengths.",
+        "BOUNDARY_TEST": "Pressure nodes at ideal open ends and antinode at closed end; allowed frequencies unchanged."
+      },
+      "boundary_prompt": "If the diagrams instead show pressure variation, what changes at the ends?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-13",
+      "target_id": "PH08-13-B01-D3-REPRESENT-01",
+      "cycle_id": "PH08-13-B01-INSTANCE-REPRESENT-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.8.ph08-13",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "Both f_1=200 Hz. Open-open second400; closed-open second600. End displacement conditions differ despite equal fundamental.",
+        "RECONSTRUCT": "Compare saved reasoning with the case-specific reconstruction: Both f_1=200 Hz. Open-open second400; closed-open second600. End displacement conditions differ despite equal fundamental. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Check node type, end boundary and whether you assigned all integer harmonics to a closed-open tube.",
+        "REPAIR": "Sketch the allowable quarter/half wave patterns with explicit end conditions, then derive each spectral line from wavelength. Expected case-specific result: Both f_1=200 Hz. Open-open second400; closed-open second600. End displacement conditions differ despite equal fundamental.",
+        "BOUNDARY_TEST": "100 Hz under ideal boundary model."
+      },
+      "boundary_prompt": "If the open-open tube is closed at one end at unchanged length, find its new fundamental.",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-13",
+      "target_id": "PH08-13-B01-D4-SYNTHESIZE-01",
+      "cycle_id": "PH08-13-B01-MAIN-SYNTHESIZE-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.8.ph08-13",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "Doppler factor340/272=1.25, frequencies300 and600. Both fundamental300; open-open allows600; closed-open allows300,900,… . Strong modal response at600 supports open-open among stated ideal models; check excitation and actual boundaries.",
+        "RECONSTRUCT": "Compare saved reasoning with the case-specific reconstruction: Doppler factor340/272=1.25, frequencies300 and600. Both fundamental300; open-open allows600; closed-open allows300,900,… . Strong modal response at600 supports open-open among stated ideal models; check excitation and actual boundaries. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Identify whether you compared emitted instead of received frequency with resonant modes, or assumed missing response proves a forbidden mode.",
+        "REPAIR": "Compute medium-frame received frequencies first, enumerate modes for each boundary, compare independent observations and state residual uncertainty. Expected case-specific result: Doppler factor340/272=1.25, frequencies300 and600. Both fundamental300; open-open allows600; closed-open allows300,900,… . Strong modal response at600 supports open-open among stated ideal models; check excitation and actual boundaries.",
+        "BOUNDARY_TEST": "No; open-open mode may be weakly excited or detected, damping matters. Independent boundary/mode evidence needed."
+      },
+      "boundary_prompt": "If strong response at600 is absent, does that alone prove closed-open?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-13",
+      "target_id": "PH08-13-B01-D4-SYNTHESIZE-01",
+      "cycle_id": "PH08-13-B01-INSTANCE-SYNTHESIZE-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.8.ph08-13",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "Doppler factor320/240=4/3; received300 then600. Both fundamental300; A second600 and antinodes both ends. B next900 and closed end node. Both independent observations support A under stated model.",
+        "RECONSTRUCT": "Compare saved reasoning with the case-specific reconstruction: Doppler factor320/240=4/3; received300 then600. Both fundamental300; A second600 and antinodes both ends. B next900 and closed end node. Both independent observations support A under stated model. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Identify whether you compared emitted instead of received frequency with resonant modes, or assumed missing response proves a forbidden mode.",
+        "REPAIR": "Compute medium-frame received frequencies first, enumerate modes for each boundary, compare independent observations and state residual uncertainty. Expected case-specific result: Doppler factor320/240=4/3; received300 then600. Both fundamental300; A second600 and antinodes both ends. B next900 and closed end node. Both independent observations support A under stated model.",
+        "BOUNDARY_TEST": "Both ideal candidate resonators remain compatible; no unique boundary inference."
+      },
+      "boundary_prompt": "If only the 300 Hz response were observed and end information unavailable, what remains?",
       "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
       "runtime_status": "NOT_IMPLEMENTED"
     }
