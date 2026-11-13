@@ -1,0 +1,118 @@
+{
+  "schema": "g9v41-ph01-core1b-support/v1",
+  "status": "AUTHOR_EXPOSED_CANDIDATE__ACADEMIC_HOLD",
+  "topic_id": "PH01",
+  "package_version": "0.2.0",
+  "purpose": "Post-attempt support after protected first answer is saved; no machine-diagnosis or independent QRT admission",
+  "hints_policy": "H1 CLARIFY, H2 CORRELATE, H3 OPEN_THE_WAY; candidate texts require separate protected-W content review. All hints remain locked until first answer persists in the current runtime.",
+  "cycles": [
+    {
+      "cycle_id": "PH01-MAIN-D3.4-R2",
+      "hints": {
+        "H1": "Name the coordinate frame, the unit on each axis and what changes at each recorded time.",
+        "H2": "Separate slope-derived velocity, time-averaged speed and the velocity law after the last record.",
+        "H3": "Make one candidate model for each interval and check every proposed meeting time against its interval."
+      },
+      "boundary_solution": "After t=5, cart A has xA=8+3(t−5)=3t−7 and cart B retains xB=25−t. Equality gives t=8 s, x=17 m. Since 8≥5 this is a valid post-t5 meeting, unlike the westbound scenario."
+    },
+    {
+      "cycle_id": "PH01-MAIN-D3.5-R2",
+      "hints": {
+        "H1": "Identify which records describe positions rather than velocities, and whose reference frame is used.",
+        "H2": "Compute the signed position change divided by elapsed time for each segment in the ground frame.",
+        "H3": "Describe the observer's motion in the same signed frame; preserve signed areas when converting representations."
+      },
+      "boundary_solution": "With observer velocity −2 m/s, cart velocities relative to O become +5, +2 and −1 m/s over the three intervals. Ground displacement remains −3 m and ground distance remains 15 m. Relative displacement is +13 m, equal to −3−(−16)."
+    },
+    {
+      "cycle_id": "PH01-MAIN-D3.6-R2",
+      "hints": {
+        "H1": "Mark the instant when the first cyclist's velocity law changes; write the global time interval beside each law.",
+        "H2": "Use the common ground coordinate and a single clock for both cyclists, then test a candidate time against its stage.",
+        "H3": "After a velocity change, reconstruct position from the boundary position before checking the later meeting."
+      },
+      "boundary_solution": "For B moving west at 1 m/s, its first-stage meeting candidate is t=30/(4+1)=6 s, invalid after t=3. After reversal, A has x=15−t and B x=30−t, parallel with constant 15 m separation. They do not meet in the later stage."
+    },
+    {
+      "cycle_id": "PH01-M03-QRT-MODEL-D3-INSTANCE-R2",
+      "hints": {
+        "H1": "Ask what total duration includes the stopped interval.",
+        "H2": "Create separate totals for path length and signed displacement.",
+        "H3": "Choose the numerator demanded by each average; divide both by the same total elapsed time."
+      },
+      "boundary_solution": "Replacing the 12 m west leg by 24 m west makes total path length 24+24=48 m over 12 s, so average speed=4 m/s. Signed displacement is 24−24=0 and average velocity becomes 0. Speed changes; velocity becomes zero."
+    },
+    {
+      "cycle_id": "PH01-M03-QRT-REPRESENT-D3-INSTANCE-R2",
+      "hints": {
+        "H1": "Mark x=0 and east-positive before plotting the first leg.",
+        "H2": "The table gives leg changes, not absolute positions; keep cumulative position after each leg.",
+        "H3": "Each straight segment's slope preserves the signed velocity; test your endpoint against net displacement."
+      },
+      "boundary_solution": "Shifting origin to initial position −5 m moves all cumulative positions down by 5 m: −5, +4, 0 and +7 m. The signed slopes are unchanged (+3, −2 and +7 m/s). Displacement stays +12 m."
+    },
+    {
+      "cycle_id": "PH01-M03-QRT-SYNTHESIZE-D3-INSTANCE-R2",
+      "hints": {
+        "H1": "Which statement counts both legs positively and which measures their net direction?",
+        "H2": "Write a distance equation and a signed displacement equation with two unknown lengths.",
+        "H3": "Solve the two relationships jointly and verify the recovered numbers satisfy both constraints."
+      },
+      "boundary_solution": "Impossible. For any journey, |net displacement|≤total distance; here 100 m exceeds the proposed 90 m path. Solving E+W=90 and E−W=100 gives W=−5 m, not a physically valid nonnegative westward leg length."
+    },
+    {
+      "cycle_id": "PH01-M05-QRT-MODEL-D3-INSTANCE-R2",
+      "hints": {
+        "H1": "Identify the quantity on the vertical axis and its unit.",
+        "H2": "Review what a horizontal segment means for position rather than velocity.",
+        "H3": "Choose the graph operation whose output has the unit of velocity, and apply it to the requested interval."
+      },
+      "boundary_solution": "An additive +20 m shift to every x-value changes position graph height but not any Δx/Δt slope. The velocity at t=5 s remains zero."
+    },
+    {
+      "cycle_id": "PH01-M05-QRT-REPRESENT-D3-INSTANCE-R2",
+      "hints": {
+        "H1": "Keep the starting position; do not assume it is zero.",
+        "H2": "Compute the signed slope separately for each pair of consecutive samples.",
+        "H3": "Translate those slopes into time segments; back-check the signed area against endpoint displacement."
+      },
+      "boundary_solution": "Doubling every timestamp doubles each duration without changing the position increments, so velocities halve: 0, −1 and +1 m/s. Net displacement remains −4 m, and total distance remains 12 m."
+    },
+    {
+      "cycle_id": "PH01-M05-QRT-SYNTHESIZE-D3-INSTANCE-R2",
+      "hints": {
+        "H1": "Separate each time interval before using its velocity.",
+        "H2": "Represent the unknown segment by its signed area and let the total displacement constrain it.",
+        "H3": "Solve the missing segment, check its sign, then compute total path length independently."
+      },
+      "boundary_solution": "The first two intervals contribute +12−4=+8 m. A total +14 m requires +6 m in the last 3 seconds, so last velocity becomes +2 m/s, reversing from the original westward −1 m/s."
+    },
+    {
+      "cycle_id": "PH01-M07-INSTANCE-1",
+      "hints": {
+        "H1": "Name shore-relative and water-relative velocities separately.",
+        "H2": "Put each craft's velocity on the same signed shore-axis.",
+        "H3": "Use separation and relative closing velocity, checking whether the rear craft actually gains ground."
+      },
+      "boundary_solution": "With kayak shore velocity +3 m/s and rear craft shore velocity +2 m/s, the rear craft is slower and its 24 m initial gap grows. Overtaking does not occur under these constant velocities."
+    },
+    {
+      "cycle_id": "PH01-M07-INSTANCE-2",
+      "hints": {
+        "H1": "The input is a position table with a nonzero initial height.",
+        "H2": "Calculate the signed slope of every segment including the stationary segment.",
+        "H3": "After drawing the velocity representation, back-integrate signed areas to recover the endpoint."
+      },
+      "boundary_solution": "Adding +10 m to all elevator positions changes the graph's height, not its slopes. Velocities remain −2, 0, +2 m/s; net displacement remains −2 m and path distance remains 10 m."
+    },
+    {
+      "cycle_id": "PH01-M07-INSTANCE-3",
+      "hints": {
+        "H1": "Only use the correct global time for every body.",
+        "H2": "Write a separate stationary and moving model for the body whose departure is delayed.",
+        "H3": "Check the meeting root against the moving interval and substitute into both positions."
+      },
+      "boundary_solution": "If B stays at x=30 m forever, cyclist A at xA=4t reaches it at t=7.5 s. This is a different constant-position model from B's delayed-departure expression xB=36−3t; the earlier expression must be replaced entirely."
+    }
+  ]
+}
