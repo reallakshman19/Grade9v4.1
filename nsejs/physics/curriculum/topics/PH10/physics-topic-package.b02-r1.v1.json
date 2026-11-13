@@ -1,0 +1,1216 @@
+{
+  "schema": "g9v41-nsejs-physics-topic-package/v1",
+  "subject_id": "PHYSICS",
+  "academic_track": "NSEJS",
+  "topic_id": "PH10",
+  "owner_agent": "AGENT_2",
+  "version": "0.3.0",
+  "status": "DRAFT_AUTHOR_EXPOSED",
+  "pins": {
+    "contracts_version": "1.0.0",
+    "blueprint": {
+      "version": "0.2.0",
+      "git_blob_sha": "700dafcbe86d76442637bcf214eeb544497cf4ea"
+    },
+    "shared_qrt_28": {
+      "version": "1.0.0",
+      "git_blob_sha": "e2409aef11ae7d98444593bfbe1a38eb00c97cef"
+    },
+    "topic_adapter_version": "0.3.0"
+  },
+  "syllabus_references": [
+    {
+      "reference_id": "PH10-CBSE",
+      "locator": "https://cbseacademic.nic.in/web_material/CurriculumMain27/SecPart1/Science_SecP1_2026-27.pdf",
+      "authority": "OFFICIAL_SYLLABUS",
+      "scope_status": "CANDIDATE"
+    },
+    {
+      "reference_id": "PH10-B02-APPARENT-DEPTH-BACKGROUND",
+      "locator": "nsejs/physics/curriculum/topics/PH10/subtopics/PH10-04/core1a.html",
+      "authority": "AUTHOR_BACKGROUND",
+      "scope_status": "CANDIDATE"
+    }
+  ],
+  "subtopics": [
+    {
+      "id": "PH10-09",
+      "title": "Lens displacement: conjugate images and limiting geometry",
+      "scope_role": "SYLLABUS_CORE_CANDIDATE",
+      "syllabus_reference_ids": [
+        "PH10-CBSE"
+      ],
+      "prerequisite_ids": [
+        "PH10-07",
+        "PH10-08"
+      ],
+      "science_ref_ids": [
+        "PH10-SCI-LEAD-01"
+      ],
+      "learning_goal": "Derive, defend and check lens displacement: conjugate images and limiting geometry using the actual model conditions instead of pattern matching.",
+      "textbook_chapter_ref": "nsejs/physics/curriculum/topics/PH10/CHAPTER_LEAD_DRAFT.md",
+      "qrt_targets": [
+        {
+          "id": "PH10-LEAD-MODEL-D3",
+          "task_identity": "G9-AUTH-PH10-MODEL-001",
+          "band": "D3",
+          "primary_operation": "MODEL",
+          "blueprint_cell": "D3.4",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Choose the constrained thin-lens model and defend its assumptions rather than applying an unrelated focal-length shortcut.",
+          "decisive_route": "Learner independently: A lens is moved along a track while the real object and screen stay fixed. Decide whether changing one conjugate distance leaves the other independent. Under thin converging lens under paraxial conditions, check at d=4f there is one double root, not two distinct lens positions.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "The exact MODEL task tests the applicability of Paraxial thin-lens imaging and constrained object-screen geometry; learner must distinguish relevant and irrelevant conditions."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "The MODEL task requires translating Object-screen-line and quadratic discriminant; thin-lens/paraxial assumptions into a precise representation with labeled givens."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "The MODEL task links at least two warranted reasoning moves: Let x denote object-to-lens distance and D-x lens-to-screen distance. Then Use 1/f=1/x+1/(D-x) and rearrange to x²-Dx+fD=0."
+            },
+            "algebra_computational_load": {
+              "score": 0,
+              "evidence": "The authored MODEL task uses no mandatory computation as its decisive act; the number of arithmetic steps is not counted as reasoning depth."
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "The MODEL task includes a near-neighbour or boundary: At D=4f there is one double root, not two distinct lens positions"
+            }
+          }
+        },
+        {
+          "id": "PH10-LEAD-SYNTHESIZE-D3",
+          "task_identity": "G9-AUTH-PH10-SYNTHESIZE-001",
+          "band": "D3",
+          "primary_operation": "SYNTHESIZE",
+          "blueprint_cell": "D3.6",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Synthesize the conjugate lens equation, fixed-distance geometry and root structure to determine image positions.",
+          "decisive_route": "Learner independently: For D=100 cm and f=24 cm, compute physically allowed x values and the two-position separation. Under thin converging lens under paraxial conditions, check at d=4f there is one double root, not two distinct lens positions.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 1,
+              "evidence": "The exact SYNTHESIZE task tests the applicability of Paraxial thin-lens imaging and constrained object-screen geometry; learner must distinguish relevant and irrelevant conditions."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "The SYNTHESIZE task requires translating Object-screen-line and quadratic discriminant; thin-lens/paraxial assumptions into a precise representation with labeled givens."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "The SYNTHESIZE task links at least two warranted reasoning moves: Let x denote object-to-lens distance and D-x lens-to-screen distance. Then Use 1/f=1/x+1/(D-x) and rearrange to x²-Dx+fD=0."
+            },
+            "algebra_computational_load": {
+              "score": 1,
+              "evidence": "The authored SYNTHESIZE task uses a concrete numerical or symbolic execution step where meaningful; the number of arithmetic steps is not counted as reasoning depth."
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "The SYNTHESIZE task includes a near-neighbour or boundary: For D<4f no positive real screen-image lens positions exist in the thin-lens model"
+            }
+          }
+        },
+        {
+          "id": "PH10-LEAD-JUSTIFY-D3",
+          "task_identity": "G9-AUTH-PH10-JUSTIFY-001",
+          "band": "D3",
+          "primary_operation": "JUSTIFY",
+          "blueprint_cell": "D3.7",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Justify a general inequality and refute the assertion that equality gives two distinct images.",
+          "decisive_route": "Learner independently: A claim says a fixed object-screen track with D=4f always has two different usable lens positions. Prove or refute it from first principles. Under thin converging lens under paraxial conditions, check at d=4f there is one double root, not two distinct lens positions.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 1,
+              "evidence": "The exact JUSTIFY task tests the applicability of Paraxial thin-lens imaging and constrained object-screen geometry; learner must distinguish relevant and irrelevant conditions."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "The JUSTIFY task requires translating Object-screen-line and quadratic discriminant; thin-lens/paraxial assumptions into a precise representation with labeled givens."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "The JUSTIFY task links at least two warranted reasoning moves: Let x denote object-to-lens distance and D-x lens-to-screen distance. Then Use 1/f=1/x+1/(D-x) and rearrange to x²-Dx+fD=0."
+            },
+            "algebra_computational_load": {
+              "score": 0,
+              "evidence": "The authored JUSTIFY task uses no mandatory computation as its decisive act; the number of arithmetic steps is not counted as reasoning depth."
+            },
+            "trap_exception_sensitivity": {
+              "score": 2,
+              "evidence": "The JUSTIFY task includes a near-neighbour or boundary: Scattering, aberration or a thick-lens principal-plane shift can invalidate numerical use of a thin-lens approximation"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "PH10-13",
+      "title": "Myopia, hypermetropia and eye focusing correction",
+      "scope_role": "SYLLABUS_CORE_CANDIDATE",
+      "syllabus_reference_ids": [
+        "PH10-CBSE"
+      ],
+      "prerequisite_ids": [],
+      "science_ref_ids": [
+        "PH10-SCI-SECOND-01"
+      ],
+      "learning_goal": "Explain and reason about myopia, hypermetropia and eye focusing correction with valid conditions and independent checks.",
+      "textbook_chapter_ref": "nsejs/physics/curriculum/topics/PH10/CHAPTER_CONTINUOUS_DRAFT.md",
+      "qrt_targets": [
+        {
+          "id": "PH10-13-D3-EXPLAIN-02",
+          "task_identity": "G9-AUTH-PH10-13-EXPLAIN-002",
+          "band": "D3",
+          "primary_operation": "EXPLAIN",
+          "blueprint_cell": "D3.2",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Explain the optical cause of blurred distant vision in a myopic eye and the correction's effect.",
+          "decisive_route": "First discriminate the physical mechanism: Draw incoming ray geometry for distant and nearby objects and mark the retina.; then apply conditions and test a model boundary.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 1,
+              "evidence": "The EXPLAIN task distinguishes actual applicability of Converging/diverging lens correction of retinal focus from a tempting alternative."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "The EXPLAIN task translates the physical setup into Corrective lens power dioptres for optional numeric work; focal length in metres and sign convention declared. with a declared reference."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "The EXPLAIN task needs two warranted inferences: Draw incoming ray geometry for distant and nearby objects and mark the retina. Then Compare the uncorrected focus location with the retinal plane in the stated optical defect."
+            },
+            "algebra_computational_load": {
+              "score": 0,
+              "evidence": "The EXPLAIN task has no mandatory computation as its decisive reasoning move."
+            },
+            "trap_exception_sensitivity": {
+              "score": 2,
+              "evidence": "The EXPLAIN task has an explicit limit: Different eye conditions can cause similar symptoms; this is not clinical diagnosis"
+            }
+          }
+        },
+        {
+          "id": "PH10-13-D3-MODEL-02",
+          "task_identity": "G9-AUTH-PH10-13-MODEL-002",
+          "band": "D3",
+          "primary_operation": "MODEL",
+          "blueprint_cell": "D3.4",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Select the appropriate corrective lens from the uncorrected focus location without using a defect-name keyword.",
+          "decisive_route": "First discriminate the physical mechanism: Draw incoming ray geometry for distant and nearby objects and mark the retina.; then apply conditions and test a model boundary.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "The MODEL task distinguishes actual applicability of Converging/diverging lens correction of retinal focus from a tempting alternative."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "The MODEL task translates the physical setup into Corrective lens power dioptres for optional numeric work; focal length in metres and sign convention declared. with a declared reference."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "The MODEL task needs two warranted inferences: Draw incoming ray geometry for distant and nearby objects and mark the retina. Then Compare the uncorrected focus location with the retinal plane in the stated optical defect."
+            },
+            "algebra_computational_load": {
+              "score": 0,
+              "evidence": "The MODEL task has no mandatory computation as its decisive reasoning move."
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "The MODEL task has an explicit limit: Accommodation range and eye-lens geometry are not fixed across people"
+            }
+          }
+        },
+        {
+          "id": "PH10-13-D3-JUSTIFY-02",
+          "task_identity": "G9-AUTH-PH10-13-JUSTIFY-002",
+          "band": "D3",
+          "primary_operation": "JUSTIFY",
+          "blueprint_cell": "D3.7",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Justify why the correcting lens's effect must be based on the entire optical system, not on a single ray.",
+          "decisive_route": "First discriminate the physical mechanism: Draw incoming ray geometry for distant and nearby objects and mark the retina.; then apply conditions and test a model boundary.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 1,
+              "evidence": "The JUSTIFY task distinguishes actual applicability of Converging/diverging lens correction of retinal focus from a tempting alternative."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "The JUSTIFY task translates the physical setup into Corrective lens power dioptres for optional numeric work; focal length in metres and sign convention declared. with a declared reference."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "The JUSTIFY task needs two warranted inferences: Draw incoming ray geometry for distant and nearby objects and mark the retina. Then Compare the uncorrected focus location with the retinal plane in the stated optical defect."
+            },
+            "algebra_computational_load": {
+              "score": 0,
+              "evidence": "The JUSTIFY task has no mandatory computation as its decisive reasoning move."
+            },
+            "trap_exception_sensitivity": {
+              "score": 2,
+              "evidence": "The JUSTIFY task has an explicit limit: An outside lens changes vergence; a diagram of one ray alone is insufficient to locate focus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "PH10-04",
+      "title": "Apparent depth and observer-dependent image position",
+      "scope_role": "EXTENSION",
+      "syllabus_reference_ids": [
+        "PH10-CBSE",
+        "PH10-B02-APPARENT-DEPTH-BACKGROUND"
+      ],
+      "prerequisite_ids": [
+        "PH10-01",
+        "PH10-02"
+      ],
+      "science_ref_ids": [
+        "PH10-SCI-B02-04"
+      ],
+      "learning_goal": "Construct and compare angle-dependent apparent-depth intercepts and justify when paraxial shortcut applies.",
+      "textbook_chapter_ref": "nsejs/physics/curriculum/topics/PH10/subtopics/PH10-04/core1a.html",
+      "qrt_targets": [
+        {
+          "id": "PH10-04-B02-MODEL-D3-R1",
+          "task_identity": "PH10-04-B02-MODEL-MAIN-R1",
+          "band": "D3",
+          "primary_operation": "MODEL",
+          "blueprint_cell": "D3.4",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Select exact or paraxial geometry based on observer angle and medium.",
+          "decisive_route": "Near normal d'=24/1.6=15 cm. For θ_glass=30°, sinθ_air=.8, θ_air≈53.13°; d'=24 tan30/tan53.13≈10.39 cm.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 1,
+              "evidence": "Choose paraxial estimate for near normal and exact Snell/tangent for second observer"
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "Translate angle data to axial intercept"
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Compute near estimate, exact refracted angle, then intercept"
+            },
+            "algebra_computational_load": {
+              "score": 1,
+              "evidence": "Routine trigonometric sequence"
+            },
+            "trap_exception_sensitivity": {
+              "score": 2,
+              "evidence": "Angle-dependent intercept invalidates universal d/n shortcut"
+            }
+          }
+        },
+        {
+          "id": "PH10-04-B02-REPRESENT-D3-R1",
+          "task_identity": "PH10-04-B02-REPRESENT-MAIN-R2",
+          "band": "D3",
+          "primary_operation": "REPRESENT",
+          "blueprint_cell": "D3.5",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Construct two physically consistent refracted-ray representations and compare their backward axial intercepts without assuming a universal apparent point.",
+          "decisive_route": "Draw point (0,−12) and interface z=0. For horizontal offsets 3,9, incidence angles are arctan(x/d)=14.04° and 36.87°. Snell gives refracted angles 18.87° and 53.13°. Extend each actual refracted ray backward from its interface crossing; d′=x/tan r gives 8.78 cm and 6.75 cm. Mark both intercepts on vertical axis and distinguish solid physical rays from dashed extensions. They are unequal; a universal virtual point is not exact for these off-axis rays.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 1,
+              "evidence": "Select Snell and backward ray construction"
+            },
+            "representation_translation": {
+              "score": 2,
+              "evidence": "Build two scaled ray representations with distinct axial intercepts and arrow meanings"
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Recover two incidence angles from coordinates, compute refractions, project both intercepts and compare"
+            },
+            "algebra_computational_load": {
+              "score": 1,
+              "evidence": "Material routine trigonometric calculations for both rays"
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "Must extend outgoing rather than incident ray; unequal intercepts matter"
+            }
+          }
+        },
+        {
+          "id": "PH10-04-B02-JUSTIFY-D3-R1",
+          "task_identity": "PH10-04-B02-JUSTIFY-MAIN-R1",
+          "band": "D3",
+          "primary_operation": "JUSTIFY",
+          "blueprint_cell": "D3.7",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Show why a paraxial shortcut fails when angle dependence becomes significant.",
+          "decisive_route": "Snell gives θ_air≈41.81°; d'/d=tan30/tan41.81≈0.6455 rather than 0.75. Small-angle approximation caused the difference.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 1,
+              "evidence": "Choose exact rather than paraxial geometry"
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "Translate claimed ratio into comparison with angle-dependent intercept"
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Apply Snell then tangent geometry then compare exact and approximate ratios"
+            },
+            "algebra_computational_load": {
+              "score": 1,
+              "evidence": "Routine sine, inverse sine, tangent arithmetic"
+            },
+            "trap_exception_sensitivity": {
+              "score": 2,
+              "evidence": "Universal apparent-depth claim fails at non-small angles"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "science_records": [
+    {
+      "id": "PH10-SCI-LEAD-01",
+      "claim": "For a thin converging lens and a fixed real object-screen separation D, a sharp real image occurs at lens locations x satisfying x(D-x)=fD; two distinct lens locations exist only when D>4f.",
+      "law_or_model": "Paraxial thin-lens imaging and constrained object-screen geometry",
+      "assumptions": [
+        "Thin converging lens under paraxial conditions",
+        "Real object and screen fixed with D>0",
+        "Image sharpness can be idealized as a real conjugate image on the screen"
+      ],
+      "conditions_and_limits": [
+        "At D=4f there is one double root, not two distinct lens positions",
+        "For D<4f no positive real screen-image lens positions exist in the thin-lens model",
+        "Scattering, aberration or a thick-lens principal-plane shift can invalidate numerical use of a thin-lens approximation"
+      ],
+      "units_and_signs": "Distances f, x, D, d in consistent lengths; magnification dimensionless. Domain 0<x<D.",
+      "source_refs": [
+        "PH10-CBSE"
+      ],
+      "qualification_status": "HOLD"
+    },
+    {
+      "id": "PH10-SCI-SECOND-01",
+      "claim": "Correction for myopic distance focus uses a diverging lens to reduce incoming convergence, whereas hypermetropic near focus can use a converging lens to reduce accommodation demand, under a simplified paraxial eye model.",
+      "law_or_model": "Converging/diverging lens correction of retinal focus",
+      "assumptions": [
+        "Simplified paraxial eye model with fixed retinal target",
+        "Defect stated as focus in front of or behind the retina",
+        "Corrective lens placed in front of the eye and distance/near observation regime specified"
+      ],
+      "conditions_and_limits": [
+        "Different eye conditions can cause similar symptoms; this is not clinical diagnosis",
+        "Accommodation range and eye-lens geometry are not fixed across people",
+        "An outside lens changes vergence; a diagram of one ray alone is insufficient to locate focus"
+      ],
+      "units_and_signs": "Corrective lens power dioptres for optional numeric work; focal length in metres and sign convention declared.",
+      "source_refs": [
+        "PH10-CBSE"
+      ],
+      "qualification_status": "HOLD"
+    },
+    {
+      "id": "PH10-SCI-B02-04",
+      "claim": "For a point at true depth d below a flat boundary, a transmitted ray's backward axial intercept obeys d′=d tanθ₁/tanθ₂, with n₁sinθ₁=n₂sinθ₂. Paraxially d′≈d n₂/n₁.",
+      "law_or_model": "Snell refraction and right-triangle ray geometry; small-angle sine/tangent limits.",
+      "assumptions": [
+        "Geometric optics, homogeneous isotropic transparent media",
+        "Flat stationary interface",
+        "Angles measured from normal and a point on the chosen vertical axis"
+      ],
+      "conditions_and_limits": [
+        "Flat stationary interface between homogeneous isotropic media and a point object.",
+        "Only angles admitting a propagating transmitted ray; near-normal approximation d′≈d n₂/n₁ requires small angles.",
+        "At large angles different backward axial intercepts need not define one virtual image point; curved interfaces require another model."
+      ],
+      "units_and_signs": "d,d′ positive depth magnitudes in consistent length units; indices dimensionless; θ₁,θ₂ measured from normal.",
+      "source_refs": [
+        "PH10-CBSE",
+        "PH10-B02-APPARENT-DEPTH-BACKGROUND"
+      ],
+      "qualification_status": "HOLD"
+    }
+  ],
+  "topic_adapter": {
+    "adapter_id": "PHYS-TOPIC-PH10",
+    "topic_id": "PH10",
+    "version": "0.3.0",
+    "for_blueprint": "PHYS-QRT-BLUEPRINT 0.2.0",
+    "status": "CANDIDATE_ONLY",
+    "cells": [
+      {
+        "cell_id": "D3.4",
+        "instance_ids": [
+          "PH10-LEAD-MODEL-D3",
+          "PH10-13-D3-MODEL-02",
+          "PH10-04-B02-MODEL-D3-R1"
+        ]
+      },
+      {
+        "cell_id": "D3.6",
+        "instance_ids": [
+          "PH10-LEAD-SYNTHESIZE-D3"
+        ]
+      },
+      {
+        "cell_id": "D3.7",
+        "instance_ids": [
+          "PH10-LEAD-JUSTIFY-D3",
+          "PH10-13-D3-JUSTIFY-02",
+          "PH10-04-B02-JUSTIFY-D3-R1"
+        ]
+      },
+      {
+        "cell_id": "D3.2",
+        "instance_ids": [
+          "PH10-13-D3-EXPLAIN-02"
+        ]
+      },
+      {
+        "cell_id": "D3.5",
+        "instance_ids": [
+          "PH10-04-B02-REPRESENT-D3-R1"
+        ]
+      }
+    ]
+  },
+  "core1a": [
+    {
+      "id": "PH10-LEAD-CORE1A-01",
+      "subtopic_id": "PH10-09",
+      "covered_qrt_ids": [
+        "PH10-LEAD-MODEL-D3",
+        "PH10-LEAD-SYNTHESIZE-D3",
+        "PH10-LEAD-JUSTIFY-D3"
+      ],
+      "phenomenon": "With an illuminated object and fixed screen, moving a convex lens can produce two separate sharp-image positions.",
+      "scientific_narrative": "Place a real object and a screen a fixed distance D apart. A converging thin lens forms a sharp real image only if the object and image distances satisfy its conjugate relation. When we slide the lens, increasing its object distance simultaneously decreases its distance to the screen. This constraint is the key to the two-position effect, not a memorized formula. Let x be the object-to-lens distance, so the lens-to-screen distance is D-x. Substitution into 1/f=1/x+1/(D-x) produces x(D-x)=fD. The left-hand side is a concave quadratic with maximum D²/4 at the midpoint. Thus a real focus exists only if D≥4f. At equality the two locations coincide. When D>4f, two distinct solutions x1 and x2 add to D. One gives a larger inverted image and the other a smaller inverted image. Measuring the distance d between lens positions permits an inverse determination of f, but only with careful definition of D and d and within the thin-lens approximations.",
+      "prerequisites": [
+        "PH10-07",
+        "PH10-08"
+      ],
+      "derivation_steps": [
+        {
+          "action": "Let x denote object-to-lens distance and D-x lens-to-screen distance.",
+          "why_valid": "The object and screen are fixed, so their lens distances sum to D.",
+          "science_ref_id": "PH10-SCI-LEAD-01"
+        },
+        {
+          "action": "Use 1/f=1/x+1/(D-x) and rearrange to x²-Dx+fD=0.",
+          "why_valid": "The thin-lens law holds for paraxial real conjugate imaging in the adopted positive-distance convention.",
+          "science_ref_id": "PH10-SCI-LEAD-01"
+        },
+        {
+          "action": "Require a nonnegative discriminant D²-4fD and distinguish equality from two distinct roots.",
+          "why_valid": "Real positions require nonnegative discriminant; two distinct positions require it to be positive.",
+          "science_ref_id": "PH10-SCI-LEAD-01"
+        },
+        {
+          "action": "Use d=|x2-x1| and x1+x2=D to derive f=(D²-d²)/(4D).",
+          "why_valid": "Root sum/product identities preserve the two-position geometry and yield the inverse focal-length relation.",
+          "science_ref_id": "PH10-SCI-LEAD-01"
+        }
+      ],
+      "model_limits": [
+        "At D=4f there is one double root, not two distinct lens positions",
+        "For D<4f no positive real screen-image lens positions exist in the thin-lens model",
+        "Scattering, aberration or a thick-lens principal-plane shift can invalidate numerical use of a thin-lens approximation"
+      ],
+      "progressive_examples": [
+        {
+          "id": "PH10-EX-1",
+          "tier": "FOUNDATION",
+          "problem": "Object and screen are 90 cm apart and f=20 cm. Find all sharp-image lens positions.",
+          "reasoning": "Solve x²-90x+1800=0, giving x=30 cm and x=60 cm.",
+          "independent_check": "Both yield 1/20=1/30+1/60; separation d=30 cm."
+        },
+        {
+          "id": "PH10-EX-2",
+          "tier": "CONNECTED",
+          "problem": "The object-screen separation is 80 cm, and the two distinct lens positions are 40 cm apart. Estimate f.",
+          "reasoning": "f=(80²-40²)/(4*80)=(6400-1600)/320=15 cm.",
+          "independent_check": "D>4f is 80>60, consistent with two positions."
+        },
+        {
+          "id": "PH10-EX-3",
+          "tier": "ADVANCED",
+          "problem": "A technician fixes D=60 cm for a lens with f=15 cm and expects two distinct image positions.",
+          "reasoning": "D=4f: only one position at x=D/2=30 cm, a double root.",
+          "independent_check": "The discriminant vanishes; having two equal algebraic roots is not two distinct lens settings."
+        }
+      ],
+      "figures": [
+        {
+          "id": "PH10-FIG-LEAD-01",
+          "reasoning_step": "Let x denote object-to-lens distance and D-x lens-to-screen distance.",
+          "scene_description": "Original to-scale object–lens–screen track with adjustable x, fixed D, two candidate lens positions, and separate ray sketches for enlarged/reduced inverted images.",
+          "source_or_authorship": "ORIGINAL_AUTHOR_FIGURE_SPEC__NOT_YET_RENDERED"
+        }
+      ],
+      "misconception": {
+        "wrong_model": "The fixed object-screen distance guarantees two sharp-image lens positions for any converging lens.",
+        "diagnostic": "What happens at D=4f? Do two equal quadratic roots represent separate settings?",
+        "repair": "Interpret the discriminant and physical position domain; D=4f has one position, D<4f has none."
+      },
+      "exit_check": {
+        "task": "A converging lens has f=18 cm; a fixed object-screen separation is D=70 cm. Are sharp-image positions possible?",
+        "answer": "No sharp real image positions under this thin-lens model.",
+        "reasoning": "4f=72 cm is greater than D, so the discriminant is negative."
+      },
+      "authorship_status": "DRAFT_AUTHOR_EXPOSED"
+    },
+    {
+      "id": "PH10-13-CORE1A-SECOND-01",
+      "subtopic_id": "PH10-13",
+      "covered_qrt_ids": [
+        "PH10-13-D3-EXPLAIN-02",
+        "PH10-13-D3-MODEL-02",
+        "PH10-13-D3-JUSTIFY-02"
+      ],
+      "phenomenon": "A student sees nearby text clearly but distant classroom writing blurred, while another struggles with close print.",
+      "scientific_narrative": "The cornea and crystalline lens combine to focus incoming light onto the retina. For a distant object, the incoming rays are approximately parallel; for nearby objects they diverge before entering the eye. The eye's accommodation changes focusing ability over a limited range. In the simplified myopic case, rays from a distant target would converge before the retina and spread again at the retinal plane. A diverging corrective lens reduces the effective convergence, moving the focus back toward the retina. In a hypermetropic near-vision case, the eye lacks sufficient convergence for close objects; a converging lens can lessen the accommodation needed. The distinction is about the location of focus under specified viewing conditions, not a mnemonic alone, and it does not diagnose a real person from a textbook sketch.",
+      "prerequisites": [
+        "Simplified paraxial eye model with fixed retinal target",
+        "Defect stated as focus in front of or behind the retina",
+        "Corrective lens placed in front of the eye and distance/near observation regime specified"
+      ],
+      "derivation_steps": [
+        {
+          "action": "Draw incoming ray geometry for distant and nearby objects and mark the retina.",
+          "why_valid": "Distant objects produce nearly parallel incident rays; near objects send more divergent rays.",
+          "science_ref_id": "PH10-SCI-SECOND-01"
+        },
+        {
+          "action": "Compare the uncorrected focus location with the retinal plane in the stated optical defect.",
+          "why_valid": "The optical system must focus onto the retina for a sharp retinal image.",
+          "science_ref_id": "PH10-SCI-SECOND-01"
+        },
+        {
+          "action": "Choose the correction lens whose effect shifts the focal position toward the retina and check whether the image becomes viewable.",
+          "why_valid": "A diverging lens reduces ray convergence, while a converging lens adds convergence under the model.",
+          "science_ref_id": "PH10-SCI-SECOND-01"
+        }
+      ],
+      "model_limits": [
+        "Different eye conditions can cause similar symptoms; this is not clinical diagnosis",
+        "Accommodation range and eye-lens geometry are not fixed across people",
+        "An outside lens changes vergence; a diagram of one ray alone is insufficient to locate focus"
+      ],
+      "progressive_examples": [
+        {
+          "id": "PH10-13-EX-1",
+          "tier": "FOUNDATION",
+          "problem": "An idealized eye focuses a distant sign in front of the retina. Which correction type is appropriate?",
+          "reasoning": "A diverging lens can move the distant focus toward the retinal plane.",
+          "independent_check": "Trace two near-axis rays rather than trusting the defect name."
+        },
+        {
+          "id": "PH10-13-EX-2",
+          "tier": "CONNECTED",
+          "problem": "A student can focus distant objects but struggles with nearby text because the eye cannot add enough convergence. Select a lens.",
+          "reasoning": "A converging corrective lens can reduce the near focusing demand.",
+          "independent_check": "Check that corrected near-object rays reach the retina under the model."
+        },
+        {
+          "id": "PH10-13-EX-3",
+          "tier": "ADVANCED",
+          "problem": "A sketch labels a person's lens positive because the pupil looks large. Does this determine a corrective prescription?",
+          "reasoning": "No. The prescription is linked to focus location and viewing conditions, not pupil size.",
+          "independent_check": "State the missing optical and clinical observations before claiming a numerical power."
+        }
+      ],
+      "figures": [],
+      "misconception": {
+        "wrong_model": "A diverging lens is used to increase convergence for myopia.",
+        "diagnostic": "If the uncorrected eye focuses in front of the retina, what change in incoming ray convergence is needed?",
+        "repair": "A diverging corrective lens reduces convergence before the eye so the combined focus moves back to the retina."
+      },
+      "exit_check": {
+        "task": "Which lens type is used in the simple school myopia model and why?",
+        "answer": "Diverging lens.",
+        "reasoning": "It reduces the net convergence so a distant image that would focus in front of the retina can focus on it."
+      },
+      "authorship_status": "DRAFT_AUTHOR_EXPOSED"
+    },
+    {
+      "id": "PH10-04-B02-CORE1A-R1",
+      "subtopic_id": "PH10-04",
+      "covered_qrt_ids": [
+        "PH10-04-B02-MODEL-D3-R1",
+        "PH10-04-B02-REPRESENT-D3-R1",
+        "PH10-04-B02-JUSTIFY-D3-R1"
+      ],
+      "phenomenon": "A point at the bottom of a pool appears raised when viewed from above; its apparent position can change with viewing angle.",
+      "scientific_narrative": "Consider a point at true depth d below a flat interface. A ray meets the boundary a horizontal distance x from the point's vertical axis. With θ₁ measured from the normal in the incident medium, x=d tanθ₁. Snell's relation n₁ sinθ₁=n₂ sinθ₂ determines the outgoing ray when the transmitted sine is physically allowed. The eye receives that outgoing ray; extend it backward as a dashed line, not as an actual ray returning to the source medium. Its intersection with the original vertical axis has depth d′=x/tanθ₂=d tanθ₁/tanθ₂. At small angles, sin and tan both approach the angle in radians, so d′≈d n₂/n₁. Off axis, the ratio generally changes with θ₁, so distinct rays need not have one common virtual intercept. Changing observer medium changes the paraxial ratio; a curved interface requires different geometry.",
+      "prerequisites": [
+        "PH10-01",
+        "PH10-02"
+      ],
+      "derivation_steps": [
+        {
+          "action": "Draw the point, interface, normal and horizontal ray offset x=d tanθ₁.",
+          "why_valid": "Right-triangle geometry with true depth and incidence angle.",
+          "science_ref_id": "PH10-SCI-B02-04"
+        },
+        {
+          "action": "Use Snell to find θ₂, checking |sinθ₂|≤1.",
+          "why_valid": "Tangential optical phase condition at stationary isotropic interface; propagating transmission only within sine domain.",
+          "science_ref_id": "PH10-SCI-B02-04"
+        },
+        {
+          "action": "Back-project transmitted ray to axis: d′=x/tanθ₂.",
+          "why_valid": "The outgoing direction determines apparent intercept, not the incoming ray.",
+          "science_ref_id": "PH10-SCI-B02-04"
+        },
+        {
+          "action": "For θ₁,θ₂ near zero, take tanθ≈sinθ≈θ to obtain d′≈d n₂/n₁.",
+          "why_valid": "Small-angle limits; not valid indiscriminately for oblique rays.",
+          "science_ref_id": "PH10-SCI-B02-04"
+        }
+      ],
+      "model_limits": [
+        "Flat stationary interface between homogeneous isotropic media and a point object.",
+        "Only angles admitting a propagating transmitted ray; near-normal approximation d′≈d n₂/n₁ requires small angles.",
+        "At large angles different backward axial intercepts need not define one virtual image point; curved interfaces require another model."
+      ],
+      "progressive_examples": [
+        {
+          "id": "PH10-04-B02-EX-1",
+          "tier": "FOUNDATION",
+          "problem": "A point lies 15 cm under a flat water surface n=4/3, viewed from air near normal. Estimate depth.",
+          "reasoning": "d′≈15/(4/3)=11.25 cm.",
+          "independent_check": "Higher-to-lower refraction makes it appear shallower."
+        },
+        {
+          "id": "PH10-04-B02-EX-2",
+          "tier": "CONNECTED",
+          "problem": "Water n=4/3, true depth 18 cm; a ray has θ_water=30°. Find exact axial intercept.",
+          "reasoning": "sinθ_air=2/3, θ_air≈41.81°, d′=18 tan30°/tan41.81°≈11.62 cm.",
+          "independent_check": "Less than paraxial 13.5 cm; transmitted sine below 1."
+        },
+        {
+          "id": "PH10-04-B02-EX-3",
+          "tier": "ADVANCED",
+          "problem": "True depth 16 cm in n=1.5 viewed from medium n=1.2 near normal. Compare with viewing from air.",
+          "reasoning": "In n=1.2, d′≈16×1.2/1.5=12.8 cm; air gives ≈10.67 cm.",
+          "independent_check": "Observer index matters; both are paraxial, not exact off-axis."
+        }
+      ],
+      "figures": [
+        {
+          "id": "PH10-04-B02-FIG-01",
+          "reasoning_step": "Back-project refracted ray to original vertical axis.",
+          "scene_description": "Original diagram of water point 18 cm deep, θ_water=30°, actual transmitted ray and dashed axial intercept; subtopics/PH10-04/reasoning.svg.",
+          "source_or_authorship": "ORIGINAL_AUTHOR_SVG__ACADEMIC_HOLD"
+        }
+      ],
+      "misconception": {
+        "wrong_model": "Apparent depth always equals true depth divided by source medium index, independent of observer medium and angle.",
+        "diagnostic": "Two rays leave the same submerged point at different finite angles; must backward extensions meet at d/n?",
+        "repair": "Use each ray's exact Snell angle and tangent projection. Only near normal do intercepts approach d n₂/n₁."
+      },
+      "exit_check": {
+        "task": "20 cm below a flat interface in n=1.5, air observer near normal. Estimate apparent depth.",
+        "answer": "About 13.33 cm.",
+        "reasoning": "Paraxial d′≈d n_air/n_source=20/1.5, conditioned on small angles."
+      },
+      "authorship_status": "DRAFT_AUTHOR_EXPOSED"
+    }
+  ],
+  "core1b": [
+    {
+      "id": "PH10-MAIN-MODEL-01",
+      "kind": "MAIN",
+      "subtopic_id": "PH10-09",
+      "qrt_target_id": "PH10-LEAD-MODEL-D3",
+      "fresh_task": "For D=75 cm and proposed f=20 cm, choose between free object-image imaging and fixed-total-distance imaging before predicting focus.",
+      "protected_work": "Choose the constrained thin-lens model and defend its assumptions rather than applying an unrelated focal-length shortcut.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Before any help, predict the qualitative outcome: Choose the constrained thin-lens model and defend its assumptions rather than applying an unrelated focal-length shortcut.",
+        "attempt": "For D=75 cm and proposed f=20 cm, choose between free object-image imaging and fixed-total-distance imaging before predicting focus.",
+        "reconstruct": "After committing the first answer, reconstruct the reasoning with Let x denote object-to-lens distance and D-x lens-to-screen distance. -> Use 1/f=1/x+1/(D-x) and rearrange to x²-Dx+fD=0. -> Require a nonnegative discriminant D²-4fD and distinguish equality from two distinct roots. -> Use d=|x2-x1| and x1+x2=D to derive f=(D²-d²)/(4D). and compare assumptions.",
+        "diagnose": "Contrast an incorrect route (The fixed object-screen distance guarantees two sharp-image lens positions for any converging lens.) with your saved first answer; do not infer misconception without discriminating evidence.",
+        "repair": "Use the replacement principle: Interpret the discriminant and physical position domain; D=4f has one position, D<4f has none. Rebuild the inference, not merely the final answer.",
+        "boundary_test": "Replace the thin lens with a thick lens whose principal-plane separation is unknown. State what new calibration is required."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH10-INSTANCE-MODEL-01",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH10-09",
+      "qrt_target_id": "PH10-LEAD-MODEL-D3",
+      "fresh_task": "A lens is moved along a track while the real object and screen stay fixed. Decide whether changing one conjugate distance leaves the other independent.",
+      "protected_work": "Choose the constrained thin-lens model and defend its assumptions rather than applying an unrelated focal-length shortcut.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Before any help, predict the qualitative outcome: Choose the constrained thin-lens model and defend its assumptions rather than applying an unrelated focal-length shortcut.",
+        "attempt": "A lens is moved along a track while the real object and screen stay fixed. Decide whether changing one conjugate distance leaves the other independent.",
+        "reconstruct": "After committing the first answer, reconstruct the reasoning with Let x denote object-to-lens distance and D-x lens-to-screen distance. -> Use 1/f=1/x+1/(D-x) and rearrange to x²-Dx+fD=0. -> Require a nonnegative discriminant D²-4fD and distinguish equality from two distinct roots. -> Use d=|x2-x1| and x1+x2=D to derive f=(D²-d²)/(4D). and compare assumptions.",
+        "diagnose": "Contrast an incorrect route (The fixed object-screen distance guarantees two sharp-image lens positions for any converging lens.) with your saved first answer; do not infer misconception without discriminating evidence.",
+        "repair": "Use the replacement principle: Interpret the discriminant and physical position domain; D=4f has one position, D<4f has none. Rebuild the inference, not merely the final answer.",
+        "boundary_test": "Replace the thin lens with a thick lens whose principal-plane separation is unknown. State what new calibration is required."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH10-MAIN-SYNTHESIZE-01",
+      "kind": "MAIN",
+      "subtopic_id": "PH10-09",
+      "qrt_target_id": "PH10-LEAD-SYNTHESIZE-D3",
+      "fresh_task": "For D=84 cm and f=20 cm, derive both lens positions without memorizing the lens-displacement formula.",
+      "protected_work": "Synthesize the conjugate lens equation, fixed-distance geometry and root structure to determine image positions.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Before any help, predict the qualitative outcome: Synthesize the conjugate lens equation, fixed-distance geometry and root structure to determine image positions.",
+        "attempt": "For D=84 cm and f=20 cm, derive both lens positions without memorizing the lens-displacement formula.",
+        "reconstruct": "After committing the first answer, reconstruct the reasoning with Let x denote object-to-lens distance and D-x lens-to-screen distance. -> Use 1/f=1/x+1/(D-x) and rearrange to x²-Dx+fD=0. -> Require a nonnegative discriminant D²-4fD and distinguish equality from two distinct roots. -> Use d=|x2-x1| and x1+x2=D to derive f=(D²-d²)/(4D). and compare assumptions.",
+        "diagnose": "Contrast an incorrect route (The fixed object-screen distance guarantees two sharp-image lens positions for any converging lens.) with your saved first answer; do not infer misconception without discriminating evidence.",
+        "repair": "Use the replacement principle: Interpret the discriminant and physical position domain; D=4f has one position, D<4f has none. Rebuild the inference, not merely the final answer.",
+        "boundary_test": "Place the screen closer until D=4f; predict how the two positions merge."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH10-INSTANCE-SYNTHESIZE-01",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH10-09",
+      "qrt_target_id": "PH10-LEAD-SYNTHESIZE-D3",
+      "fresh_task": "For D=100 cm and f=24 cm, compute physically allowed x values and the two-position separation.",
+      "protected_work": "Synthesize the conjugate lens equation, fixed-distance geometry and root structure to determine image positions.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Before any help, predict the qualitative outcome: Synthesize the conjugate lens equation, fixed-distance geometry and root structure to determine image positions.",
+        "attempt": "For D=100 cm and f=24 cm, compute physically allowed x values and the two-position separation.",
+        "reconstruct": "After committing the first answer, reconstruct the reasoning with Let x denote object-to-lens distance and D-x lens-to-screen distance. -> Use 1/f=1/x+1/(D-x) and rearrange to x²-Dx+fD=0. -> Require a nonnegative discriminant D²-4fD and distinguish equality from two distinct roots. -> Use d=|x2-x1| and x1+x2=D to derive f=(D²-d²)/(4D). and compare assumptions.",
+        "diagnose": "Contrast an incorrect route (The fixed object-screen distance guarantees two sharp-image lens positions for any converging lens.) with your saved first answer; do not infer misconception without discriminating evidence.",
+        "repair": "Use the replacement principle: Interpret the discriminant and physical position domain; D=4f has one position, D<4f has none. Rebuild the inference, not merely the final answer.",
+        "boundary_test": "Place the screen closer until D=4f; predict how the two positions merge."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH10-MAIN-JUSTIFY-01",
+      "kind": "MAIN",
+      "subtopic_id": "PH10-09",
+      "qrt_target_id": "PH10-LEAD-JUSTIFY-D3",
+      "fresh_task": "Given a measured separation d and D, show symbolically why 0≤d<D and f=(D²-d²)/(4D).",
+      "protected_work": "Justify a general inequality and refute the assertion that equality gives two distinct images.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Before any help, predict the qualitative outcome: Justify a general inequality and refute the assertion that equality gives two distinct images.",
+        "attempt": "Given a measured separation d and D, show symbolically why 0≤d<D and f=(D²-d²)/(4D).",
+        "reconstruct": "After committing the first answer, reconstruct the reasoning with Let x denote object-to-lens distance and D-x lens-to-screen distance. -> Use 1/f=1/x+1/(D-x) and rearrange to x²-Dx+fD=0. -> Require a nonnegative discriminant D²-4fD and distinguish equality from two distinct roots. -> Use d=|x2-x1| and x1+x2=D to derive f=(D²-d²)/(4D). and compare assumptions.",
+        "diagnose": "Contrast an incorrect route (The fixed object-screen distance guarantees two sharp-image lens positions for any converging lens.) with your saved first answer; do not infer misconception without discriminating evidence.",
+        "repair": "Use the replacement principle: Interpret the discriminant and physical position domain; D=4f has one position, D<4f has none. Rebuild the inference, not merely the final answer.",
+        "boundary_test": "A measured D<4f is reported with two sharp lens positions. Identify which assumption or measurement must be questioned."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH10-INSTANCE-JUSTIFY-01",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH10-09",
+      "qrt_target_id": "PH10-LEAD-JUSTIFY-D3",
+      "fresh_task": "A claim says a fixed object-screen track with D=4f always has two different usable lens positions. Prove or refute it from first principles.",
+      "protected_work": "Justify a general inequality and refute the assertion that equality gives two distinct images.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Before any help, predict the qualitative outcome: Justify a general inequality and refute the assertion that equality gives two distinct images.",
+        "attempt": "A claim says a fixed object-screen track with D=4f always has two different usable lens positions. Prove or refute it from first principles.",
+        "reconstruct": "After committing the first answer, reconstruct the reasoning with Let x denote object-to-lens distance and D-x lens-to-screen distance. -> Use 1/f=1/x+1/(D-x) and rearrange to x²-Dx+fD=0. -> Require a nonnegative discriminant D²-4fD and distinguish equality from two distinct roots. -> Use d=|x2-x1| and x1+x2=D to derive f=(D²-d²)/(4D). and compare assumptions.",
+        "diagnose": "Contrast an incorrect route (The fixed object-screen distance guarantees two sharp-image lens positions for any converging lens.) with your saved first answer; do not infer misconception without discriminating evidence.",
+        "repair": "Use the replacement principle: Interpret the discriminant and physical position domain; D=4f has one position, D<4f has none. Rebuild the inference, not merely the final answer.",
+        "boundary_test": "A measured D<4f is reported with two sharp lens positions. Identify which assumption or measurement must be questioned."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH10-13-MAIN-EXPLAIN-02",
+      "kind": "MAIN",
+      "subtopic_id": "PH10-13",
+      "qrt_target_id": "PH10-13-D3-EXPLAIN-02",
+      "fresh_task": "An eye correction diagram moves the image still farther in front of the retina; explain which causal step is wrong.",
+      "protected_work": "Explain the optical cause of blurred distant vision in a myopic eye and the correction's effect.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict the physical outcome or model regime before hints: Explain the optical cause of blurred distant vision in a myopic eye and the correction's effect.",
+        "attempt": "An eye correction diagram moves the image still farther in front of the retina; explain which causal step is wrong.",
+        "reconstruct": "After saving first attempt, reconstruct: Draw incoming ray geometry for distant and nearby objects and mark the retina. -> Compare the uncorrected focus location with the retinal plane in the stated optical defect. -> Choose the correction lens whose effect shifts the focal position toward the retina and check whether the image becomes viewable.. Verify the model assumptions.",
+        "diagnose": "Compare your first saved route with this wrong idea: A diverging lens is used to increase convergence for myopia.",
+        "repair": "Rebuild the reasoning with the principle: A diverging corrective lens reduces convergence before the eye so the combined focus moves back to the retina.",
+        "boundary_test": "Change from distant to near viewing, allowing accommodation; explain why the outcome may change."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH10-13-INSTANCE-EXPLAIN-02",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH10-13",
+      "qrt_target_id": "PH10-13-D3-EXPLAIN-02",
+      "fresh_task": "Draw two rays from a distant streetlamp entering an idealized myopic eye and explain the misplaced focus and its repair.",
+      "protected_work": "Explain the optical cause of blurred distant vision in a myopic eye and the correction's effect.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict the physical outcome or model regime before hints: Explain the optical cause of blurred distant vision in a myopic eye and the correction's effect.",
+        "attempt": "Draw two rays from a distant streetlamp entering an idealized myopic eye and explain the misplaced focus and its repair.",
+        "reconstruct": "After saving first attempt, reconstruct: Draw incoming ray geometry for distant and nearby objects and mark the retina. -> Compare the uncorrected focus location with the retinal plane in the stated optical defect. -> Choose the correction lens whose effect shifts the focal position toward the retina and check whether the image becomes viewable.. Verify the model assumptions.",
+        "diagnose": "Compare your first saved route with this wrong idea: A diverging lens is used to increase convergence for myopia.",
+        "repair": "Rebuild the reasoning with the principle: A diverging corrective lens reduces convergence before the eye so the combined focus moves back to the retina.",
+        "boundary_test": "Change from distant to near viewing, allowing accommodation; explain why the outcome may change."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH10-13-MAIN-MODEL-02",
+      "kind": "MAIN",
+      "subtopic_id": "PH10-13",
+      "qrt_target_id": "PH10-13-D3-MODEL-02",
+      "fresh_task": "A model eye focuses far objects behind the retinal plane; independently select and justify a correction direction.",
+      "protected_work": "Select the appropriate corrective lens from the uncorrected focus location without using a defect-name keyword.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict the physical outcome or model regime before hints: Select the appropriate corrective lens from the uncorrected focus location without using a defect-name keyword.",
+        "attempt": "A model eye focuses far objects behind the retinal plane; independently select and justify a correction direction.",
+        "reconstruct": "After saving first attempt, reconstruct: Draw incoming ray geometry for distant and nearby objects and mark the retina. -> Compare the uncorrected focus location with the retinal plane in the stated optical defect. -> Choose the correction lens whose effect shifts the focal position toward the retina and check whether the image becomes viewable.. Verify the model assumptions.",
+        "diagnose": "Compare your first saved route with this wrong idea: A diverging lens is used to increase convergence for myopia.",
+        "repair": "Rebuild the reasoning with the principle: A diverging corrective lens reduces convergence before the eye so the combined focus moves back to the retina.",
+        "boundary_test": "Increase accommodation range; determine which original inference becomes conditional."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH10-13-INSTANCE-MODEL-02",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH10-13",
+      "qrt_target_id": "PH10-13-D3-MODEL-02",
+      "fresh_task": "A diagram shows rays converging beyond the retina for a near object in an idealized eye. Choose the lens needed and give the physical criterion.",
+      "protected_work": "Select the appropriate corrective lens from the uncorrected focus location without using a defect-name keyword.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict the physical outcome or model regime before hints: Select the appropriate corrective lens from the uncorrected focus location without using a defect-name keyword.",
+        "attempt": "A diagram shows rays converging beyond the retina for a near object in an idealized eye. Choose the lens needed and give the physical criterion.",
+        "reconstruct": "After saving first attempt, reconstruct: Draw incoming ray geometry for distant and nearby objects and mark the retina. -> Compare the uncorrected focus location with the retinal plane in the stated optical defect. -> Choose the correction lens whose effect shifts the focal position toward the retina and check whether the image becomes viewable.. Verify the model assumptions.",
+        "diagnose": "Compare your first saved route with this wrong idea: A diverging lens is used to increase convergence for myopia.",
+        "repair": "Rebuild the reasoning with the principle: A diverging corrective lens reduces convergence before the eye so the combined focus moves back to the retina.",
+        "boundary_test": "Increase accommodation range; determine which original inference becomes conditional."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH10-13-MAIN-JUSTIFY-02",
+      "kind": "MAIN",
+      "subtopic_id": "PH10-13",
+      "qrt_target_id": "PH10-13-D3-JUSTIFY-02",
+      "fresh_task": "A student uses pupil diameter to claim a negative lens prescription. Reject the argument using the optical conditions.",
+      "protected_work": "Justify why the correcting lens's effect must be based on the entire optical system, not on a single ray.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict the physical outcome or model regime before hints: Justify why the correcting lens's effect must be based on the entire optical system, not on a single ray.",
+        "attempt": "A student uses pupil diameter to claim a negative lens prescription. Reject the argument using the optical conditions.",
+        "reconstruct": "After saving first attempt, reconstruct: Draw incoming ray geometry for distant and nearby objects and mark the retina. -> Compare the uncorrected focus location with the retinal plane in the stated optical defect. -> Choose the correction lens whose effect shifts the focal position toward the retina and check whether the image becomes viewable.. Verify the model assumptions.",
+        "diagnose": "Compare your first saved route with this wrong idea: A diverging lens is used to increase convergence for myopia.",
+        "repair": "Rebuild the reasoning with the principle: A diverging corrective lens reduces convergence before the eye so the combined focus moves back to the retina.",
+        "boundary_test": "A different condition such as astigmatism is introduced; identify why the two spherical-lens model no longer suffices."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH10-13-INSTANCE-JUSTIFY-02",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH10-13",
+      "qrt_target_id": "PH10-13-D3-JUSTIFY-02",
+      "fresh_task": "Prove from the diagram of multiple incoming rays why simply drawing one central ray cannot establish retinal focus.",
+      "protected_work": "Justify why the correcting lens's effect must be based on the entire optical system, not on a single ray.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict the physical outcome or model regime before hints: Justify why the correcting lens's effect must be based on the entire optical system, not on a single ray.",
+        "attempt": "Prove from the diagram of multiple incoming rays why simply drawing one central ray cannot establish retinal focus.",
+        "reconstruct": "After saving first attempt, reconstruct: Draw incoming ray geometry for distant and nearby objects and mark the retina. -> Compare the uncorrected focus location with the retinal plane in the stated optical defect. -> Choose the correction lens whose effect shifts the focal position toward the retina and check whether the image becomes viewable.. Verify the model assumptions.",
+        "diagnose": "Compare your first saved route with this wrong idea: A diverging lens is used to increase convergence for myopia.",
+        "repair": "Rebuild the reasoning with the principle: A diverging corrective lens reduces convergence before the eye so the combined focus moves back to the retina.",
+        "boundary_test": "A different condition such as astigmatism is introduced; identify why the two spherical-lens model no longer suffices."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH10-04-B02-MODEL-MAIN-R1",
+      "kind": "MAIN",
+      "subtopic_id": "PH10-04",
+      "qrt_target_id": "PH10-04-B02-MODEL-D3-R1",
+      "fresh_task": "A mark 24 cm below a glass surface n=1.6 is viewed from air near normal; another observer receives a ray at θ_glass=30°. Find paraxial depth and explain how to calculate the second.",
+      "protected_work": "Select exact or paraxial geometry based on observer angle and medium.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "State your expected result, direction or relationship before solving. Record uncertainty if needed.",
+        "attempt": "A mark 24 cm below a glass surface n=1.6 is viewed from air near normal; another observer receives a ray at θ_glass=30°. Find paraxial depth and explain how to calculate the second.",
+        "reconstruct": "Near normal d'=24/1.6=15 cm. For θ_glass=30°, sinθ_air=.8, θ_air≈53.13°; d'=24 tan30/tan53.13≈10.39 cm.",
+        "diagnose": "Only if your saved answer demonstrates this error: Using d/n regardless of observer medium and angle. Otherwise record insufficient evidence; compare your actual reasoning with the reconstruction.",
+        "repair": "Start with geometry d tanθ₁=d' tanθ₂ and Snell; simplify only for small angles.",
+        "boundary_test": "If n₁=n₂, what happens to apparent depth at all transmitted angles?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH10-04-B02-MODEL-INSTANCE-R1",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH10-04",
+      "qrt_target_id": "PH10-04-B02-MODEL-D3-R1",
+      "fresh_task": "A mark 12 cm below a water surface n=4/3 is viewed paraxially from a liquid above with n=1.2. Find apparent depth.",
+      "protected_work": "Select exact or paraxial geometry based on observer angle and medium.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "State your expected result, direction or relationship before solving. Record uncertainty if needed.",
+        "attempt": "A mark 12 cm below a water surface n=4/3 is viewed paraxially from a liquid above with n=1.2. Find apparent depth.",
+        "reconstruct": "d'≈12×1.2/(4/3)=10.8 cm; observer index is not automatically 1.",
+        "diagnose": "Only if your saved answer demonstrates this error: Using d/n regardless of observer medium and angle. Otherwise record insufficient evidence; compare your actual reasoning with the reconstruction.",
+        "repair": "Start with geometry d tanθ₁=d' tanθ₂ and Snell; simplify only for small angles.",
+        "boundary_test": "If n₁=n₂, what happens to apparent depth at all transmitted angles?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH10-04-B02-REPRESENT-MAIN-R2",
+      "kind": "MAIN",
+      "subtopic_id": "PH10-04",
+      "qrt_target_id": "PH10-04-B02-REPRESENT-D3-R1",
+      "fresh_task": "A point is 12 cm below a flat interface in a transparent medium of refractive index 4/3, with air above. Two rays reach the interface 3 cm and 9 cm horizontally from the vertical through the point. On one scaled coordinate diagram construct both actual refracted rays and backward extensions; determine their axial intercepts and decide whether they locate the same virtual point.",
+      "protected_work": "Construct two physically consistent refracted-ray representations and compare their backward axial intercepts without assuming a universal apparent point.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "State your expected result, direction or relationship before solving. Record uncertainty if needed.",
+        "attempt": "A point is 12 cm below a flat interface in a transparent medium of refractive index 4/3, with air above. Two rays reach the interface 3 cm and 9 cm horizontally from the vertical through the point. On one scaled coordinate diagram construct both actual refracted rays and backward extensions; determine their axial intercepts and decide whether they locate the same virtual point.",
+        "reconstruct": "Draw point (0,−12) and interface z=0. For horizontal offsets 3,9, incidence angles are arctan(x/d)=14.04° and 36.87°. Snell gives refracted angles 18.87° and 53.13°. Extend each actual refracted ray backward from its interface crossing; d′=x/tan r gives 8.78 cm and 6.75 cm. Mark both intercepts on vertical axis and distinguish solid physical rays from dashed extensions. They are unequal; a universal virtual point is not exact for these off-axis rays.",
+        "diagnose": "If your saved drawing extends the incident ray instead of the emergent ray, or puts both intercepts at d/n despite different angles, compare it with the constructed geometry. Otherwise record insufficient evidence.",
+        "repair": "Plot each actual transmitted ray using its own normal angle; back-project to the vertical axis and label its intercept separately.",
+        "boundary_test": "Repeat conceptually for offsets approaching zero. What common limiting depth do the intercepts approach?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH10-04-B02-REPRESENT-INSTANCE-R2",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH10-04",
+      "qrt_target_id": "PH10-04-B02-REPRESENT-D3-R1",
+      "fresh_task": "A point is 10 cm below a flat interface in a transparent medium of refractive index 1.5, with air above. Two rays reach the interface 2 cm and 6 cm horizontally from the vertical through the point. On one scaled coordinate diagram construct both actual refracted rays and backward extensions; determine their axial intercepts and decide whether they locate the same virtual point.",
+      "protected_work": "Construct two physically consistent refracted-ray representations and compare their backward axial intercepts without assuming a universal apparent point.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "State your expected result, direction or relationship before solving. Record uncertainty if needed.",
+        "attempt": "A point is 10 cm below a flat interface in a transparent medium of refractive index 1.5, with air above. Two rays reach the interface 2 cm and 6 cm horizontally from the vertical through the point. On one scaled coordinate diagram construct both actual refracted rays and backward extensions; determine their axial intercepts and decide whether they locate the same virtual point.",
+        "reconstruct": "Draw point (0,−10) and interface z=0. For horizontal offsets 2,6, incidence angles are arctan(x/d)=11.31° and 30.96°. Snell gives refracted angles 17.11° and 50.51°. Extend each actual refracted ray backward from its interface crossing; d′=x/tan r gives 6.50 cm and 4.94 cm. Mark both intercepts on vertical axis and distinguish solid physical rays from dashed extensions. They are unequal; a universal virtual point is not exact for these off-axis rays.",
+        "diagnose": "If your saved drawing extends the incident ray instead of the emergent ray, or puts both intercepts at d/n despite different angles, compare it with the constructed geometry. Otherwise record insufficient evidence.",
+        "repair": "Plot each actual transmitted ray using its own normal angle; back-project to the vertical axis and label its intercept separately.",
+        "boundary_test": "Repeat conceptually for offsets approaching zero. What common limiting depth do the intercepts approach?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH10-04-B02-JUSTIFY-MAIN-R1",
+      "kind": "MAIN",
+      "subtopic_id": "PH10-04",
+      "qrt_target_id": "PH10-04-B02-JUSTIFY-D3-R1",
+      "fresh_task": "A learner insists the apparent depth of a pool is exactly d/n for every viewing angle. Refute using a ray at θ_water=30° in n=4/3.",
+      "protected_work": "Show why a paraxial shortcut fails when angle dependence becomes significant.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "State your expected result, direction or relationship before solving. Record uncertainty if needed.",
+        "attempt": "A learner insists the apparent depth of a pool is exactly d/n for every viewing angle. Refute using a ray at θ_water=30° in n=4/3.",
+        "reconstruct": "Snell gives θ_air≈41.81°; d'/d=tan30/tan41.81≈0.6455 rather than 0.75. Small-angle approximation caused the difference.",
+        "diagnose": "Only if your saved answer demonstrates this error: Treating small-angle sine and tangent as identical at all angles. Otherwise record insufficient evidence; compare your actual reasoning with the reconstruction.",
+        "repair": "Use exact Snell and tangent geometry, then take the small-angle limit.",
+        "boundary_test": "What happens to the backward intercept as the transmitted ray approaches grazing?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH10-04-B02-JUSTIFY-INSTANCE-R1",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH10-04",
+      "qrt_target_id": "PH10-04-B02-JUSTIFY-D3-R1",
+      "fresh_task": "A transparent slab n=1.5 is viewed from air. Compare the intercept ratio for near-normal rays and an internal angle of 35°; justify why the latter is not d/n.",
+      "protected_work": "Show why a paraxial shortcut fails when angle dependence becomes significant.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "State your expected result, direction or relationship before solving. Record uncertainty if needed.",
+        "attempt": "A transparent slab n=1.5 is viewed from air. Compare the intercept ratio for near-normal rays and an internal angle of 35°; justify why the latter is not d/n.",
+        "reconstruct": "Near normal ratio 2/3; sinθ_air≈0.860, tanθ_air≈1.69; tan35≈0.700, ratio≈0.415, different. Exact ratio is angle dependent.",
+        "diagnose": "Only if your saved answer demonstrates this error: Treating small-angle sine and tangent as identical at all angles. Otherwise record insufficient evidence; compare your actual reasoning with the reconstruction.",
+        "repair": "Use exact Snell and tangent geometry, then take the small-angle limit.",
+        "boundary_test": "What happens to the backward intercept as the transmitted ray approaches grazing?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    }
+  ],
+  "core2_sources": [],
+  "acceptance": {
+    "b1_b7": {
+      "B1": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B2": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B3": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B4": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B5": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B6": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B7": {
+        "status": "HOLD",
+        "evidence_refs": []
+      }
+    },
+    "gates": {
+      "source_authenticity": "HOLD",
+      "content_correctness": "HOLD",
+      "cognitive_qualification": "HOLD",
+      "teaching_sufficiency": "HOLD",
+      "assessment_validity": "HOLD",
+      "implementation": "NOT_RUN",
+      "release_authority": "HOLD"
+    },
+    "release": "HOLD",
+    "acceptance_note": "B02 v0.3.0 preserves two legacy native candidates and adds PH10-04 as extension/advanced-application candidate. Scope remains source HOLD; no claim of official required coverage. All gates HOLD or NOT_RUN; exact native validator and independent review outstanding."
+  }
+}
