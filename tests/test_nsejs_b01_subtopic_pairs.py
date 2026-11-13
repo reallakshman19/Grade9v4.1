@@ -13,7 +13,7 @@ import pytest
 ROOT = Path(__file__).resolve().parents[1]
 CURRICULUM = ROOT / "nsejs" / "physics" / "curriculum"
 VALIDATOR = runpy.run_path(str(CURRICULUM / "contracts/tools/validate_physics_contracts.py"))["inspect_package"]
-SLICES = ("PH07-01", "PH07-02", "PH08-04", "PH08-07")
+SLICES = ("PH07-01", "PH07-02", "PH07-04", "PH07-05", "PH08-04", "PH08-05", "PH08-06", "PH08-07")
 
 
 class Links(HTMLParser):
@@ -42,7 +42,7 @@ def test_subtopic_contract_and_dedicated_pair(sid):
     targets = data["subtopics"][0]["qrt_targets"]
     assert len({q["primary_operation"] for q in targets}) == 3
     assert all(q["source_role"] == "AUTHORED_TRANSFER" for q in targets)
-    expected = {"PH07-01": [], "PH07-02": ["NSEJS-FND-CIRC-04"], "PH08-04": ["NSEJS-24-MECH-07"], "PH08-07": ["NSEJS-24-MECH-07"]}
+    expected = {sid: [] if sid == "PH07-01" else ["NSEJS-FND-CIRC-04"] if sid.startswith("PH07") else ["NSEJS-24-MECH-07"] for sid in SLICES}
     assert [q["item_id"] for q in data["core2_sources"]] == expected[sid]
     assert all(q["source_role"] == "PREREQUISITE_BRIDGE" and q["academic_status"] == "HOLD" for q in data["core2_sources"])
     assert len(data["core1b"]) == 6
@@ -101,7 +101,7 @@ def test_25_subtopic_crosswalk_is_not_exam_admission():
     m = json.loads(p.read_text(encoding="utf-8"))
     assert len(m["rows"]) == len({r["subtopic_id"] for r in m["rows"]}) == 25
     assert sum(r["relation"] == "PRIMARY_RELATED_CANDIDATE_HOLD" for r in m["rows"]) == 2
-    assert sum(r["native_candidate"] == "B01_DEDICATED_PAIR" for r in m["rows"]) == 4
+    assert sum(r["native_candidate"] == "B01_DEDICATED_PAIR" for r in m["rows"]) == 8
     assert m["audit"]["qualified_direct_exam_items"] == m["audit"]["qualified_d3_d4_exam_items"] == 0
     for row in m["rows"]:
         assert row["direct_exam_admission"] == "HOLD"
@@ -118,3 +118,33 @@ def test_inverse_wave_model_and_thermal_power_checks():
     assert 4 ** 1.5 == 8
     assert 9 ** 1.5 == 27
     assert (2 * 2 ** 3) ** 0.5 == 4
+
+
+@pytest.mark.parametrize("sid,op", (("PH07-05","MODEL"), ("PH08-05","SYNTHESIZE"), ("PH08-06","JUSTIFY")))
+def test_increment3_d4_proposals_remain_authored(sid, op):
+    p = CURRICULUM / "topics" / sid[:4] / "b01" / sid / "physics-topic-package.v1.json"
+    d = json.loads(p.read_text(encoding="utf-8"))
+    target, = [t for t in d["subtopics"][0]["qrt_targets"] if t["primary_operation"] == op]
+    assert target["band"] == "D4"
+    assert 8 <= sum(v["score"] for v in target["factor_evidence"].values()) <= 10
+    assert target["source_role"] == "AUTHORED_TRANSFER"
+    assert target["qrt_status"] == "PROPOSED"
+    assert d["acceptance"]["release"] == "HOLD"
+
+
+def test_increment3_author_model_arithmetic():
+    # Layered propagation: fixed-delay reference and independent check.
+    delay = 0.0056 - 2/500
+    x = (0.0072 - delay - 2/500)/(1/300 - 1/500)
+    assert delay == pytest.approx(0.0016)
+    assert x == pytest.approx(1.2)
+    assert 1/300 + delay == pytest.approx(0.0049333333333)
+    # Pressure comparison under different impedances.
+    assert 2**2 / 8 == 0.5
+    # Radiative absorption and loss fitted to two short-interval slopes.
+    alpha = 300*(0.16-0.08)/(150-90)
+    loss = 90*alpha-300*0.08
+    assert alpha == pytest.approx(0.4)
+    assert loss == pytest.approx(12)
+    assert (120*alpha-loss)/300 == pytest.approx(0.12)
+    assert (120*alpha-loss)/300 != pytest.approx(0.10)
