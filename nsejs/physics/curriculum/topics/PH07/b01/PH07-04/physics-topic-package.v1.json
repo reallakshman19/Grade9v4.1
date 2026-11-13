@@ -301,8 +301,8 @@
         "predict": "Record your initial interpretation and confidence before viewing support.",
         "attempt": "Two vertical vessels have identical bottom heating. In one the lower liquid density becomes 960 and upper density 980; in the other dissolved solute keeps lower density 1000 and upper 980 kg/m³. Explain different circulation tendencies and specify the physical observation needed to check the model.",
         "reconstruct": "First lower layer is lighter and unstable; second heavier below is stable against small displacements. Observe density at matched depth or trace parcels and return flow. Heating direction alone is not sufficient.",
-        "diagnose": "Compare your reasoning with the reconstruction. Test this task-specific misconception: A warm parcel is denser than its surroundings because of dissolved material. Which way does buoyancy act? Identify the first unsupported inference in your own attempt.",
-        "repair": "Rebuild the relevant model using the stated conditions: Use measured densities and separate mechanisms through controls. Check your reconstruction against the original task data.",
+        "diagnose": "If you inferred flow from temperature alone, compare the actual lower and upper densities. Which displacement is self-reinforcing, and where must displaced fluid return?",
+        "repair": "Reconstruct the density comparison, buoyancy direction and mass-continuity path. Then check whether an externally driven flow changes the conclusion about natural stability.",
         "boundary_test": "If the density gradient reverses after prolonged heating, how would the expected circulation change?"
       },
       "attempt_policy": {
@@ -325,8 +325,8 @@
         "predict": "Record your initial interpretation and confidence before viewing support.",
         "attempt": "Tank A has warm lower fluid density 990 and cool upper fluid density 1000 kg/m³. Tank B has a warm salty lower layer density 1010 and a cool upper layer density 1000. Predict which arrangement develops buoyancy-driven mixing, describe return flow, and explain why equal heating labels are insufficient.",
         "reconstruct": "A is unstable: lighter lower fluid rises and denser upper fluid descends. B has denser lower fluid and is stable against small vertical exchange; warmth does not override composition-dependent density. In a closed tank upward mass flux has compensating downward flux.",
-        "diagnose": "Compare your reasoning with the reconstruction. Test this task-specific misconception: A warm parcel is denser than its surroundings because of dissolved material. Which way does buoyancy act? Identify the first unsupported inference in your own attempt.",
-        "repair": "Rebuild the relevant model using the stated conditions: Use measured densities and separate mechanisms through controls. Check your reconstruction against the original task data.",
+        "diagnose": "If you inferred flow from temperature alone, compare the actual lower and upper densities. Which displacement is self-reinforcing, and where must displaced fluid return?",
+        "repair": "Reconstruct the density comparison, buoyancy direction and mass-continuity path. Then check whether an externally driven flow changes the conclusion about natural stability.",
         "boundary_test": "If a pump circulates B, does that disprove the stability explanation?"
       },
       "attempt_policy": {
@@ -349,8 +349,8 @@
         "predict": "Record your initial interpretation and confidence before viewing support.",
         "attempt": "A dry heated surface stays at a fixed temperature with 12 W in an enclosure. A fan raises needed input to 20 W; rotating the surface with fan off raises it to 15 W. Tracer motion appears only during the latter two observations. Evaluate the explanations and design a control.",
         "reconstruct": "Steady losses 12,20,15 W. Fan adds 8 W and rotation adds 3 W relative to baseline, with flow evidence supporting forced/natural convection respectively. Radiation or support conduction may still change; match surface surroundings, supports and emissivity.",
-        "diagnose": "Compare your reasoning with the reconstruction. Test this task-specific misconception: A warm parcel is denser than its surroundings because of dissolved material. Which way does buoyancy act? Identify the first unsupported inference in your own attempt.",
-        "repair": "Rebuild the relevant model using the stated conditions: Use measured densities and separate mechanisms through controls. Check your reconstruction against the original task data.",
+        "diagnose": "Check whether your model uses steady net input as a measure of total loss, or incorrectly identifies all loss as convection. Which observation distinguishes flow from the other paths?",
+        "repair": "Compare energy rates at matched temperatures and trace the observed fluid motion. Treat uncontrolled radiation, evaporation or conduction as alternative explanations until controlled.",
         "boundary_test": "What if the surface is wet and evaporation changes when the fan runs?"
       },
       "attempt_policy": {
@@ -373,8 +373,8 @@
         "predict": "Record your initial interpretation and confidence before viewing support.",
         "attempt": "Three identical dry warm plates at matched temperature require 18 W (still air, warm face upward), 10 W (still air, warm face downward) and 28 W (downward face with fan) to hold steady. Flow tracing shows upward plumes in the first and forced airflow in the third. Compare net losses and assess the convection models; what cannot be inferred from powers alone?",
         "reconstruct": "First exceeds second by 8 W; third exceeds second by 18 W. Flow evidence supports natural plume in first and forced convection in third. Powers alone do not isolate radiation/conduction; orientation and boundary conditions can alter other paths.",
-        "diagnose": "Compare your reasoning with the reconstruction. Test this task-specific misconception: A warm parcel is denser than its surroundings because of dissolved material. Which way does buoyancy act? Identify the first unsupported inference in your own attempt.",
-        "repair": "Rebuild the relevant model using the stated conditions: Use measured densities and separate mechanisms through controls. Check your reconstruction against the original task data.",
+        "diagnose": "Check whether your model uses steady net input as a measure of total loss, or incorrectly identifies all loss as convection. Which observation distinguishes flow from the other paths?",
+        "repair": "Compare energy rates at matched temperatures and trace the observed fluid motion. Treat uncontrolled radiation, evaporation or conduction as alternative explanations until controlled.",
         "boundary_test": "If a vacuum replaces air and the plate supports remain unchanged, which heat-transfer path is removed?"
       },
       "attempt_policy": {
@@ -397,8 +397,8 @@
         "predict": "Record your initial interpretation and confidence before viewing support.",
         "attempt": "Two warm water tanks cool at different rates. One is stirred, one is not. The stirred tank has a larger exposed surface and starts hotter. A report says forced convection alone explains the difference. Assess identifiability and propose a fair experiment.",
         "reconstruct": "Multiple confounds (temperature difference, exposed area, evaporation, stirring). Match mass, area, initial temperature, surroundings and cover; vary stirring only, measure temperature/time and mass loss or steady input. Stirring can alter internal transfer but alone not established.",
-        "diagnose": "Compare your reasoning with the reconstruction. Test this task-specific misconception: A warm parcel is denser than its surroundings because of dissolved material. Which way does buoyancy act? Identify the first unsupported inference in your own attempt.",
-        "repair": "Rebuild the relevant model using the stated conditions: Use measured densities and separate mechanisms through controls. Check your reconstruction against the original task data.",
+        "diagnose": "Locate any causal claim that uses the observed cooling rate alone. Can a separate process produce the same observation while circulation persists?",
+        "repair": "Build a counterexample, then propose a matched comparison changing only the target fluid motion and recording mass loss or input power as appropriate.",
         "boundary_test": "If the controlled trials agree in cooling rate, does that prove no internal convection exists?"
       },
       "attempt_policy": {
@@ -421,8 +421,8 @@
         "predict": "Record your initial interpretation and confidence before viewing support.",
         "attempt": "A student observes that a covered warm vessel cools more slowly than an uncovered one and concludes the lid eliminates convection entirely. Critique this conclusion and propose observations or controls separating internal fluid circulation, evaporation and heat transfer to the surroundings.",
         "reconstruct": "Lid may reduce evaporation and air exchange while fluid still circulates inside. Compare mass loss, use temperature-matched dry/covered controls and flow tracer; measure power required at matched temperature. No complete elimination follows from cooling alone.",
-        "diagnose": "Compare your reasoning with the reconstruction. Test this task-specific misconception: A warm parcel is denser than its surroundings because of dissolved material. Which way does buoyancy act? Identify the first unsupported inference in your own attempt.",
-        "repair": "Rebuild the relevant model using the stated conditions: Use measured densities and separate mechanisms through controls. Check your reconstruction against the original task data.",
+        "diagnose": "Locate any causal claim that uses the observed cooling rate alone. Can a separate process produce the same observation while circulation persists?",
+        "repair": "Build a counterexample, then propose a matched comparison changing only the target fluid motion and recording mass loss or input power as appropriate.",
         "boundary_test": "If the interior is motionless but the outside air flows, which convection path can remain?"
       },
       "attempt_policy": {
