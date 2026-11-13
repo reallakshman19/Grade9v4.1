@@ -1,10 +1,10 @@
 # Checkpoint — 13 November 2026
 
-**Observed:** 2026-11-13T14:33:00+04:00 (Asia/Dubai)  
+**Observed:** 2026-11-13T14:52:00+04:00 (Asia/Dubai)  
 **Repository Working Directory:** `D:\CodeD\g9v4`  
 **Active Branch:** `main`  
 **Tracking Remote:** `origin` -> `https://github.com/reallakshman19/Grade9v4.1.git`  
-**Head Commit:** `8308e68` (`docs(architecture): add review and audit guide page and wire universal navigation`)  
+**Head Commit:** `2916eb9` (`fix(physics/core1): remediate SVG answer leakage, typography and B4 transfer twin; hold unvalidated label per Rule 13`)  
 **Upstream Remote:** `upstream-v4.0` -> `https://github.com/reallakshman19/Grade9v4.0.git`  
 **Localhost Server:** Running at `http://localhost:8000` (Python HTTP server)
 
@@ -99,6 +99,23 @@
       - Section 09: Standard 5-Part Review & Delivery Receipt Form.
     - Updated navigation links across [architecture/index.html](architecture/index.html), [architecture/pipeline-flowchart.html](architecture/pipeline-flowchart.html), and [architecture/guidebook.html](architecture/guidebook.html).
     - Verified live on localhost:8000 (HTTP 200). Committed and pushed to `origin/main` (`8308e68`).
+16. **Disciplinary Peer-Review Audit Completed**:
+    - Conducted comprehensive academic, pedagogical, and technical peer-review across 6 Physics domains, candidate banks, and representative Core 1 modules (`fluids-sound`, `fluids-surface-energy`, `optics-displacement`, `learn-mechanics`, `circuits-cube`).
+    - Produced complete gate-by-gate scorecard across B1–B7 and 12.7" tablet ergonomic benchmarks.
+    - Issued formal verdict `HOLD: ACADEMIC_ADMISSION` due to identified vector diagram answer leaks, isomorphic transfer twin in fluids, and <14px typography.
+17. **Surgical Remediation of Audit Defects**:
+    - **Tab 1 Vector SVG Answer Leaks Remediated**:
+      - In `nsejs-fluids-sound-r1/index.html`: removed post-derivation values `F_B = 60 N`, `W_eff = 36 N`, `T = 24 N`; replaced with symbolic force labels $\vec{F}_B$, $\vec{W}_{\text{eff}}$, and $\vec{T}$.
+      - In `nsejs-optics-displacement-d3-r1/index.html`: removed `u₁ = 30`, `u₂ = 60`, `h₁ = 2h₀`, `h₂ = 0.5h₀`; replaced with generic conjugate lens/image position indicators.
+    - **Gate B4 Fresh Transfer Twin Remediated**:
+      - In `nsejs-fluids-sound-r1/index.html`: replaced verbatim copy of Core 2 with an altered physical system (sensor canister in paraffin oil inside an accelerated rocket frame with altered density ratio $\rho_f / \rho_s = 2.0$ and $a = 4.0\text{ m/s}^2$).
+    - **Gate B6 Diagnostic Misconception Catalog Added**:
+      - Upgraded Stage 4 diagnosis with structured failure mode classification (Traps M1, M2, M3).
+    - **Vector Typography Standard Remediated**:
+      - Enlarged all SVG text labels in `optics-displacement` to $\ge 14\text{px}$ ($14\text{px}$ and $15\text{px}$).
+    - **Rule 13 Fail-Closed Governance Upheld**:
+      - `{Unvalidated}` badges and Rule 13 `HOLD: ACADEMIC_ADMISSION` warning banners strictly preserved per Rule 6, Rule 8, and Rule 13 of `AGENTS.md`. Automated AI agents cannot remove academic hold labels without an external cryptographically signed human review receipt.
+    - Verified live at `http://localhost:8000` (HTTP 200). Committed and pushed to `origin/main` (`2916eb9`).
 
 ---
 
@@ -124,7 +141,7 @@
 RESTORE DIRECTIVE:
 - Working Directory: D:\CodeD\g9v4
 - Active Branch: main (synced with https://github.com/reallakshman19/Grade9v4.1.git)
-- Pinned commit: 8308e68 (plus checkpoint commit)
+- Pinned commit: 2916eb9
 - Localhost Preview Server: http://localhost:8000
 - Staged / Active Trees:
   - nsejs/ (NSEJS Hub, 53 Core 2 candidate questions, 17 Core 1 master learning modules)
