@@ -3828,16 +3828,16 @@
       "instance_qrt_ids": [
         "PH01-M06-QRT-APPLY-D3-R43"
       ],
-      "fresh_task": "A test rig has constant acceleration −3 m/s² and initial velocity +12 m/s at x=0. Use v²=u²+2aΔx and v=u+at. For stations x=+18 m, +24 m and +30 m, calculate every real signed velocity and corresponding nonnegative passage time while the model remains valid from t=0 to t=7 s. A report claims the rig crosses every station twice. Test it and substitute one valid root into x=ut+½at².",
+      "fresh_task": "A test rig has constant acceleration −5 m/s² and initial velocity +15 m/s at x=0. Use v²=u²+2aΔx and v=u+at. For stations x=+20 m, +22.5 m and +27.5 m, calculate every real signed velocity and corresponding nonnegative passage time while the model remains valid from t=0 to t=5 s. A report claims the rig crosses every station twice. Test it and substitute one valid root into x=ut+½at².",
       "protected_work": "Execute specified displacement relation with signed quantities, then test the physical root against direction and time.",
       "differs_from_worked_anchor": true,
       "stages": {
         "predict": "Predict the sign, size or validity of the result before executing the procedure.",
-        "attempt": "A test rig has constant acceleration −3 m/s² and initial velocity +12 m/s at x=0. Use v²=u²+2aΔx and v=u+at. For stations x=+18 m, +24 m and +30 m, calculate every real signed velocity and corresponding nonnegative passage time while the model remains valid from t=0 to t=7 s. A report claims the rig crosses every station twice. Test it and substitute one valid root into x=ut+½at².",
-        "reconstruct": "x18: v²=36, v=+6 at t2 and −6 at t6. x24: v²=0, t4 unique tangent/turn; not two distinct crossings. x30: v²=−36, no real velocity or event. Check x(6)=72−54=18. At t7 x10.5, so both x18 events valid. Square-root sign and domain determine valid events.",
+        "attempt": "A test rig has constant acceleration −5 m/s² and initial velocity +15 m/s at x=0. Use v²=u²+2aΔx and v=u+at. For stations x=+20 m, +22.5 m and +27.5 m, calculate every real signed velocity and corresponding nonnegative passage time while the model remains valid from t=0 to t=5 s. A report claims the rig crosses every station twice. Test it and substitute one valid root into x=ut+½at².",
+        "reconstruct": "x20: v²=225−200=25, v=+5 at t2 and −5 at t4. x22.5: v²=0, t3 is a single turn event, not two distinct crossings. x27.5: v²=−50, no real velocity or event. Check x(4)=60−40=20. Both x20 times fall in [0,5].",
         "diagnose": "Identify the first wrong condition, signed symbol mapping, unit or execution step in your saved answer.",
         "repair": "Execute specified displacement relation with signed quantities, then test the physical root against direction and time.",
-        "boundary_test": "If observation ends at t=5 s, which events remain?"
+        "boundary_test": "If observation ends at t=3.5 s, which events remain?"
       },
       "attempt_policy": {
         "save_first_answer_before_hint": true,
