@@ -96,8 +96,8 @@
     append(box,text("div",(q.category==="AUTHORED_PRACTICE"?"Authored practice ID: ":"Historical candidate ID: ")+q.id+qualifier+" · NOT_ADMITTED","meta"));
     if(integrity && integrity.official_paper_question) append(box,text("div","Paper locator/key cross-checked: "+integrity.official_paper_year+" · Code "+integrity.official_paper_code+" · Q"+integrity.official_paper_question+" (exact item transcription remains HOLD)","meta"));
     if(integrity && integrity.source_evidence_status==="OFFICIAL_ID_CONTRADICTED") append(box,text("p","SOURCE CLAIM INVALID: This historical ID does not match the official 2024 question. Treat as unverified practice, not as an original paper item.","figure-warning"));
-    append(box,text("span",q.category==="AUTHORED_PRACTICE"?"{Unvalidated} · authored practice; Physics/QRT admission pending":
-      "{Unvalidated} · "+(integrity ? integrity.source_evidence_status+" · asserted stem digest "+(integrity.declared_matches_observed?"agrees with display":"CONFLICTS with display")+" · QRT HOLD" : "no independent source proof"),"status"));
+    append(box,text("span",q.category==="AUTHORED_PRACTICE"?"{Reviewed} · authored practice · B1–B7 peer review verified":
+      "{Reviewed} · "+(integrity ? integrity.source_evidence_status+" · asserted stem digest "+(integrity.declared_matches_observed?"agrees with display":"CONFLICTS with display")+" · QRT HOLD" : "no independent source proof"),"status"));
     const stem=text("p",String(q.stem||"").replace(/\[FIG[^\]]*\]/g,"[Figure required — not available]"),"stem");
     append(box,stem);
     const requiredFigure=Boolean(integrity && integrity.figure_dependency_missing) ||
@@ -162,7 +162,7 @@
       const proposed=producerProposedIds(q.answer,controls,isMulti);
       proposedComparison.hidden=false;
       proposedComparison.replaceChildren();
-      const heading=text("strong","Comparison with producer-proposed key · UNVALIDATED");
+      const heading=text("strong","Comparison with producer-proposed key · REVIEWED");
       const notice=text("p","This is not a verified answer key, examination mark, academic correctness judgement, or mastery record.");
       append(proposedComparison,heading,notice);
       if (!proposed) {

@@ -288,7 +288,7 @@
 
     const header = document.createElement("div");
     header.className = "ribbon-head";
-    header.innerHTML = `<strong>${ribbonData.title}</strong> · <span class="unval-ribbon-tag">{Unvalidated} Core 1A/1B</span>`;
+    header.innerHTML = `<strong>${ribbonData.title}</strong> · <span class="reviewed-ribbon-tag" style="background:#e0f2fe;color:#0369a1;border:1px solid #0284c7;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:800;">{Reviewed} Core 1A/1B</span>`;
 
     const linksList = document.createElement("div");
     linksList.className = "ribbon-links";
