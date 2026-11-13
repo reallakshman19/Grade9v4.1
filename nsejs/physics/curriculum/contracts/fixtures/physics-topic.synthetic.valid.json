@@ -1,0 +1,454 @@
+{
+  "schema": "g9v41-nsejs-physics-topic-package/v1",
+  "subject_id": "PHYSICS",
+  "academic_track": "NSEJS",
+  "topic_id": "PH01",
+  "owner_agent": "AGENT_1",
+  "version": "0.1.0",
+  "status": "DRAFT_AUTHOR_EXPOSED",
+  "pins": {
+    "contracts_version": "1.0.0",
+    "blueprint": {
+      "version": "0.2.0",
+      "git_blob_sha": "700dafcbe86d76442637bcf214eeb544497cf4ea"
+    },
+    "shared_qrt_28": {
+      "version": "1.0.0",
+      "git_blob_sha": "e2409aef11ae7d98444593bfbe1a38eb00c97cef"
+    },
+    "topic_adapter_version": "0.1.0"
+  },
+  "syllabus_references": [
+    {
+      "reference_id": "SYN-NOTE-001",
+      "locator": "SYNTHETIC-ONLY:NO-PUBLIC-EXAM-SOURCE",
+      "authority": "AUTHOR_BACKGROUND",
+      "scope_status": "CANDIDATE"
+    }
+  ],
+  "subtopics": [
+    {
+      "id": "PH01-KIN-01",
+      "title": "Kinematics reference-frame foundations — synthetic contract fixture",
+      "scope_role": "SYLLABUS_CORE_CANDIDATE",
+      "syllabus_reference_ids": [
+        "SYN-NOTE-001"
+      ],
+      "prerequisite_ids": [
+        "PH00-MEAS-01"
+      ],
+      "science_ref_ids": [
+        "SCI-KIN-01"
+      ],
+      "learning_goal": "Explain how velocity and displacement signs depend on explicitly declared coordinate axes.",
+      "textbook_chapter_ref": "SYNTHETIC-NOT-A-PUBLISHED-CHAPTER",
+      "qrt_targets": [
+        {
+          "id": "PH01-KIN-SYN-1",
+          "task_identity": "AUTHORED-SYNTHETIC-KIN-1",
+          "band": "D3",
+          "primary_operation": "EXPLAIN",
+          "blueprint_cell": "D3.2",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Construct and defend a two-step causal explanation without a worked bridge.",
+          "decisive_route": "Candidate only: use the stated assumptions, choose the representation/model and check the limiting case.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 1,
+              "evidence": "Synthetic fixture: choose one of two elementary idealized motion models."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "Synthetic fixture: transform an observer statement or graph into signs."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Synthetic fixture: two dependent transitions; not a reviewed task."
+            },
+            "algebra_computational_load": {
+              "score": 1,
+              "evidence": "Synthetic fixture: a short two-quantity computation, not a calculator count."
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "Synthetic fixture: a sign/condition check needed."
+            }
+          }
+        },
+        {
+          "id": "PH01-KIN-SYN-2",
+          "task_identity": "AUTHORED-SYNTHETIC-KIN-2",
+          "band": "D3",
+          "primary_operation": "MODEL",
+          "blueprint_cell": "D3.4",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Select and defend the appropriate relative-motion frame before calculating.",
+          "decisive_route": "Candidate only: use the stated assumptions, choose the representation/model and check the limiting case.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 1,
+              "evidence": "Synthetic fixture: choose one of two elementary idealized motion models."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "Synthetic fixture: transform an observer statement or graph into signs."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Synthetic fixture: two dependent transitions; not a reviewed task."
+            },
+            "algebra_computational_load": {
+              "score": 1,
+              "evidence": "Synthetic fixture: a short two-quantity computation, not a calculator count."
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "Synthetic fixture: a sign/condition check needed."
+            }
+          }
+        },
+        {
+          "id": "PH01-KIN-SYN-3",
+          "task_identity": "AUTHORED-SYNTHETIC-KIN-3",
+          "band": "D3",
+          "primary_operation": "REPRESENT",
+          "blueprint_cell": "D3.5",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Translate a changing velocity pattern into a signed graph without copying the sketch.",
+          "decisive_route": "Candidate only: use the stated assumptions, choose the representation/model and check the limiting case.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 1,
+              "evidence": "Synthetic fixture: choose one of two elementary idealized motion models."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "Synthetic fixture: transform an observer statement or graph into signs."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Synthetic fixture: two dependent transitions; not a reviewed task."
+            },
+            "algebra_computational_load": {
+              "score": 1,
+              "evidence": "Synthetic fixture: a short two-quantity computation, not a calculator count."
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "Synthetic fixture: a sign/condition check needed."
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "science_records": [
+    {
+      "id": "SCI-KIN-01",
+      "claim": "Under constant acceleration along one axis, the velocity difference equals acceleration multiplied by elapsed time.",
+      "law_or_model": "one-dimensional constant-acceleration kinematic model",
+      "assumptions": [
+        "Fixed inertial reference frame",
+        "Constant signed acceleration",
+        "Same coordinate direction and units throughout"
+      ],
+      "conditions_and_limits": [
+        "Do not apply the constant-acceleration relation to an interval with varying acceleration without integrating or subdividing it."
+      ],
+      "units_and_signs": "Choose +x first; v in m/s, a in m/s², t in s. Signs change with frame orientation.",
+      "source_refs": [
+        "SYN-NOTE-001"
+      ],
+      "qualification_status": "HOLD"
+    }
+  ],
+  "topic_adapter": {
+    "adapter_id": "PHYS-TOPIC-PH01",
+    "topic_id": "PH01",
+    "version": "0.1.0",
+    "for_blueprint": "PHYS-QRT-BLUEPRINT 0.2.0",
+    "status": "CANDIDATE_ONLY",
+    "cells": [
+      {
+        "cell_id": "D3.2",
+        "instance_ids": [
+          "PH01-KIN-SYN-1"
+        ]
+      },
+      {
+        "cell_id": "D3.4",
+        "instance_ids": [
+          "PH01-KIN-SYN-2"
+        ]
+      },
+      {
+        "cell_id": "D3.5",
+        "instance_ids": [
+          "PH01-KIN-SYN-3"
+        ]
+      }
+    ]
+  },
+  "core1a": [
+    {
+      "id": "PH01-KIN-CORE1A-SYN",
+      "subtopic_id": "PH01-KIN-01",
+      "covered_qrt_ids": [
+        "PH01-KIN-SYN-1",
+        "PH01-KIN-SYN-2",
+        "PH01-KIN-SYN-3"
+      ],
+      "phenomenon": "Observers travelling in opposite directions report different signed velocities for the same physical movement.",
+      "scientific_narrative": "A motion measurement is not merely a number. It has a declared coordinate direction, a frame of observation, and a time interval. A positive reading means that displacement points along the chosen positive axis; it does not mean the object is moving faster. The learner constructs velocity from observations, checks constant-acceleration assumptions, and then connects verbal statements with signed motion graphs.",
+      "prerequisites": [
+        "Read a number line",
+        "Understand units of distance and time"
+      ],
+      "derivation_steps": [
+        {
+          "action": "Declare +x and the observer before comparing positions at two times.",
+          "why_valid": "Displacement is signed relative to the chosen axis; its sign is meaningless without this convention.",
+          "science_ref_id": "SCI-KIN-01"
+        }
+      ],
+      "model_limits": [
+        "This single-axis constant-acceleration introduction does not apply directly to changing accelerations or rotating observers."
+      ],
+      "progressive_examples": [
+        {
+          "id": "BASIC-1",
+          "tier": "FOUNDATION",
+          "problem": "A walker goes 5 m east. Set east positive; determine displacement.",
+          "reasoning": "East aligns with the positive axis, so the signed displacement is +5 m.",
+          "independent_check": "Reversing the chosen positive axis gives -5 m."
+        },
+        {
+          "id": "CONNECTED-1",
+          "tier": "CONNECTED",
+          "problem": "A cart changes velocity from +2 to +6 m/s in 2 s with constant acceleration.",
+          "reasoning": "Acceleration is the velocity change, +4 m/s, divided by 2 s, giving +2 m/s².",
+          "independent_check": "Units and substitution recover +6 m/s."
+        },
+        {
+          "id": "ADVANCED-1",
+          "tier": "ADVANCED",
+          "problem": "Two observers choose opposite positive axes for the same cart; compare velocity-time plots.",
+          "reasoning": "Reverse all signed velocities and accelerations but preserve elapsed time and underlying physical motion.",
+          "independent_check": "The plot can be transformed back to its original axis choice."
+        }
+      ],
+      "figures": [
+        {
+          "id": "FIG-SYN-KIN-01",
+          "reasoning_step": "Declare direction before graph conversion",
+          "scene_description": "Two aligned number lines with opposite +x arrows and one moving cart.",
+          "source_or_authorship": "AUTHORED_SYNTHETIC_FIXTURE"
+        }
+      ],
+      "misconception": {
+        "wrong_model": "Positive velocity is always faster than negative velocity.",
+        "diagnostic": "Compare +2 m/s and -6 m/s speeds under the same axis.",
+        "repair": "Speed is the magnitude of velocity; the sign denotes direction."
+      },
+      "exit_check": {
+        "task": "Explain why reversing the +x direction changes signs but not measured speed.",
+        "answer": "The new axis reverses component direction while preserving magnitude.",
+        "reasoning": "A coordinate reversal is a representation change, not a physical change."
+      },
+      "authorship_status": "DRAFT_AUTHOR_EXPOSED"
+    }
+  ],
+  "core1b": [
+    {
+      "id": "PH01-KIN-MAIN-PH01-KIN-SYN-1",
+      "kind": "MAIN",
+      "subtopic_id": "PH01-KIN-01",
+      "qrt_target_id": "PH01-KIN-SYN-1",
+      "fresh_task": "Synthetic MAIN exercise for EXPLAIN: two couriers move along a straight track during different intervals. Independently determine the defining model, a signed representation, and the relevant check without reusing the teaching examples.",
+      "protected_work": "Construct and defend a two-step causal explanation without a worked bridge.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Commit to the expected sign or qualitative motion before any hints.",
+        "attempt": "Write the reasoning route and calculation for a fresh synthetic track situation.",
+        "reconstruct": "Compare the saved attempt with a complete source-neutral derivation and checks.",
+        "diagnose": "Explain whether the first divergent step was a frame choice or a sign slip.",
+        "repair": "Correct the selected model or representation and say why the replacement is valid.",
+        "boundary_test": "Reverse the reference direction; independently predict which quantities change sign."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH01-KIN-INSTANCE-PH01-KIN-SYN-1",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH01-KIN-01",
+      "qrt_target_id": "PH01-KIN-SYN-1",
+      "fresh_task": "Synthetic INSTANCE exercise for EXPLAIN: two couriers move along a straight track during different intervals. Independently determine the defining model, a signed representation, and the relevant check without reusing the teaching examples.",
+      "protected_work": "Construct and defend a two-step causal explanation without a worked bridge.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Commit to the expected sign or qualitative motion before any hints.",
+        "attempt": "Write the reasoning route and calculation for a fresh synthetic track situation.",
+        "reconstruct": "Compare the saved attempt with a complete source-neutral derivation and checks.",
+        "diagnose": "Explain whether the first divergent step was a frame choice or a sign slip.",
+        "repair": "Correct the selected model or representation and say why the replacement is valid.",
+        "boundary_test": "Reverse the reference direction; independently predict which quantities change sign."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH01-KIN-MAIN-PH01-KIN-SYN-2",
+      "kind": "MAIN",
+      "subtopic_id": "PH01-KIN-01",
+      "qrt_target_id": "PH01-KIN-SYN-2",
+      "fresh_task": "Synthetic MAIN exercise for MODEL: two couriers move along a straight track during different intervals. Independently determine the defining model, a signed representation, and the relevant check without reusing the teaching examples.",
+      "protected_work": "Select and defend the appropriate relative-motion frame before calculating.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Commit to the expected sign or qualitative motion before any hints.",
+        "attempt": "Write the reasoning route and calculation for a fresh synthetic track situation.",
+        "reconstruct": "Compare the saved attempt with a complete source-neutral derivation and checks.",
+        "diagnose": "Explain whether the first divergent step was a frame choice or a sign slip.",
+        "repair": "Correct the selected model or representation and say why the replacement is valid.",
+        "boundary_test": "Reverse the reference direction; independently predict which quantities change sign."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH01-KIN-INSTANCE-PH01-KIN-SYN-2",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH01-KIN-01",
+      "qrt_target_id": "PH01-KIN-SYN-2",
+      "fresh_task": "Synthetic INSTANCE exercise for MODEL: two couriers move along a straight track during different intervals. Independently determine the defining model, a signed representation, and the relevant check without reusing the teaching examples.",
+      "protected_work": "Select and defend the appropriate relative-motion frame before calculating.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Commit to the expected sign or qualitative motion before any hints.",
+        "attempt": "Write the reasoning route and calculation for a fresh synthetic track situation.",
+        "reconstruct": "Compare the saved attempt with a complete source-neutral derivation and checks.",
+        "diagnose": "Explain whether the first divergent step was a frame choice or a sign slip.",
+        "repair": "Correct the selected model or representation and say why the replacement is valid.",
+        "boundary_test": "Reverse the reference direction; independently predict which quantities change sign."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH01-KIN-MAIN-PH01-KIN-SYN-3",
+      "kind": "MAIN",
+      "subtopic_id": "PH01-KIN-01",
+      "qrt_target_id": "PH01-KIN-SYN-3",
+      "fresh_task": "Synthetic MAIN exercise for REPRESENT: two couriers move along a straight track during different intervals. Independently determine the defining model, a signed representation, and the relevant check without reusing the teaching examples.",
+      "protected_work": "Translate a changing velocity pattern into a signed graph without copying the sketch.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Commit to the expected sign or qualitative motion before any hints.",
+        "attempt": "Write the reasoning route and calculation for a fresh synthetic track situation.",
+        "reconstruct": "Compare the saved attempt with a complete source-neutral derivation and checks.",
+        "diagnose": "Explain whether the first divergent step was a frame choice or a sign slip.",
+        "repair": "Correct the selected model or representation and say why the replacement is valid.",
+        "boundary_test": "Reverse the reference direction; independently predict which quantities change sign."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH01-KIN-INSTANCE-PH01-KIN-SYN-3",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH01-KIN-01",
+      "qrt_target_id": "PH01-KIN-SYN-3",
+      "fresh_task": "Synthetic INSTANCE exercise for REPRESENT: two couriers move along a straight track during different intervals. Independently determine the defining model, a signed representation, and the relevant check without reusing the teaching examples.",
+      "protected_work": "Translate a changing velocity pattern into a signed graph without copying the sketch.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Commit to the expected sign or qualitative motion before any hints.",
+        "attempt": "Write the reasoning route and calculation for a fresh synthetic track situation.",
+        "reconstruct": "Compare the saved attempt with a complete source-neutral derivation and checks.",
+        "diagnose": "Explain whether the first divergent step was a frame choice or a sign slip.",
+        "repair": "Correct the selected model or representation and say why the replacement is valid.",
+        "boundary_test": "Reverse the reference direction; independently predict which quantities change sign."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    }
+  ],
+  "core2_sources": [],
+  "acceptance": {
+    "b1_b7": {
+      "B1": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B2": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B3": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B4": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B5": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B6": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B7": {
+        "status": "HOLD",
+        "evidence_refs": []
+      }
+    },
+    "gates": {
+      "source_authenticity": "HOLD",
+      "content_correctness": "HOLD",
+      "cognitive_qualification": "HOLD",
+      "teaching_sufficiency": "HOLD",
+      "assessment_validity": "HOLD",
+      "implementation": "NOT_RUN",
+      "release_authority": "HOLD"
+    },
+    "release": "HOLD",
+    "acceptance_note": "Synthetic schema and semantic contract control only. It is not an exam item, QRT admission, evaluated textbook, browser-tested learner task, or academic receipt."
+  }
+}
