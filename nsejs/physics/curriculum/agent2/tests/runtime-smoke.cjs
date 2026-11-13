@@ -43,7 +43,7 @@ function boot({ map = new Map(), storageBlocked = false, corrupt = false, packag
 async function settle() { for (let n=0; n<5; n++) await new Promise(setImmediate); }
 async function main() {
   const learner = boot(); await settle(); const e = learner.elements;
-  assert.equal(e['task-select'].children.length, 6);
+  assert.equal(e['task-select'].children.length, 12);
   assert.equal(e.reveal.disabled, true, 'Reconstruction must start locked');
   assert.equal(e.lesson.hidden, false);
   e['first-predict'].value='Prediction: the current splits';

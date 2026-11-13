@@ -40,8 +40,8 @@ def test_lead_coverage_is_specific_and_source_neutral(topic: str) -> None:
     assert all(t["source_role"] == "AUTHORED_TRANSFER" for s in data["subtopics"] for t in s["qrt_targets"])
     assert all(t["qrt_status"] == "PROPOSED" for s in data["subtopics"] for t in s["qrt_targets"])
     assert data["acceptance"]["release"] == "HOLD"
-    assert len(data["core1a"]) == 1, "Only one lead section is authored per topic in this slice"
-    assert len(data["core1b"]) == 6
+    assert len(data["core1a"]) == 2, "Two candidate constructions per topic are in this slice"
+    assert len(data["core1b"]) == 12
     assert all(c["runtime_verification"] == "NOT_RUN" for c in data["core1b"])
     assert all("APPROVED" not in str(v) for v in data["acceptance"]["gates"].values())
 
