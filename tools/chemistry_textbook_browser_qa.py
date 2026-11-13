@@ -35,6 +35,15 @@ def check_chapter(page, unit, n, scene):
     page.locator("article.lesson").first.wait_for(timeout=20000)
     check(page.locator("article.lesson").count() == n, f"{unit} section count")
     check(page.locator("section.demand").count() == 3 * n, f"{unit} three operations/subtopic")
+    check(page.locator(".chapter-spine").count() == 1, f"{unit} connected chapter spine")
+    check(page.locator(".big-idea").count() == n, f"{unit} original big idea per subtopic")
+    check(page.locator(".reasoning-path").count() == n, f"{unit} causal chains")
+    check(page.locator(".investigation").count() == n, f"{unit} investigations")
+    check(page.locator(".chapter-closure").count() == 1, f"{unit} chapter synthesis")
+    details = page.locator(".investigation .investigation-answer").first
+    check(not details.evaluate("(e) => e.open"), f"{unit} inquiry analysis initially hidden")
+    details.locator("summary").click()
+    check(details.evaluate("(e) => e.open"), f"{unit} inquiry can be explored by learner")
     check(page.locator("section.demand .attempt").count() == 3 * n, f"{unit} Core1B cycles")
     check(page.locator(".note").inner_text().lower().find("academic") >= 0,
           f"{unit} academic HOLD notice")
@@ -44,14 +53,15 @@ def check_chapter(page, unit, n, scene):
     minheight = page.locator(".attempt button").first.evaluate(
         "e => parseFloat(getComputedStyle(e).minHeight)")
     check(minheight >= 54, f"{unit} touch button height {minheight}")
+    images = page.locator("figure.chem-figure img")
+    expected_figures = 4 if unit == "C07" else 2
+    check(images.count() == expected_figures, f"{unit}: expected {expected_figures} explanatory diagrams")
+    for i in range(expected_figures):
+        images.nth(i).scroll_into_view_if_needed()
+        page.wait_for_function("""i => { const e = document.querySelectorAll("figure.chem-figure img")[i]; return !!e && e.complete && e.naturalWidth > 0; }""", arg=i, timeout=12000)
+    check(all(images.nth(i).evaluate("(e) => e.naturalWidth > 0") for i in range(expected_figures)),
+          f"{unit} all figures load")
     if unit == "C07":
-        images = page.locator("figure.chem-figure img")
-        check(images.count() == 4, "Four C07 diagrams")
-        for i in range(4):
-            images.nth(i).scroll_into_view_if_needed()
-            page.wait_for_function("""i => { const e = document.querySelectorAll("figure.chem-figure img")[i]; return !!e && e.complete && e.naturalWidth > 0; }""", arg=i, timeout=12000)
-        check(all(images.nth(i).evaluate("(e) => e.naturalWidth > 0") for i in range(4)),
-              "All four C07 figures load")
         page.screenshot(path=str(OUT / f"C07-{scene}.png"), full_page=False)
 
 
@@ -126,10 +136,10 @@ def main():
                 check_storage_disabled(browser)
             finally:
                 browser.close()
-        print("PASS: 14 HTTP tablet views (7 units x 2 orientations), 44 subtopics, "
-              "132 three-demand Core1B cycles, C07 diagrams, protected first attempt, "
-              "refresh readback, disabled-storage disclosure and no overflow. "
-              "No academic approval inferred from software validation.")
+        print("PASS: 14 HTTP tablet views (7 units x 2 orientations), 44 complete inquiries, "
+              "132 three-demand Core1B cycles, 16 science figures across seven chapters, "
+              "protected first attempt, refresh readback, disabled-storage disclosure "
+              "and no overflow. No academic approval inferred from software validation.")
     finally:
         server.terminate()
         server.wait(timeout=8)
