@@ -1,10 +1,10 @@
 # Checkpoint — 13 November 2026
 
-**Observed:** 2026-11-13T14:17:00+04:00 (Asia/Dubai)  
+**Observed:** 2026-11-13T14:28:00+04:00 (Asia/Dubai)  
 **Repository Working Directory:** `D:\CodeD\g9v4`  
 **Active Branch:** `main`  
 **Tracking Remote:** `origin` -> `https://github.com/reallakshman19/Grade9v4.1.git`  
-**Head Commit:** `7e9a81a` (`feat(optics): populate Core 2 reference target problem, vector SVG, and derivation in lens displacement module`)  
+**Head Commit:** `11b0d78` (`docs(architecture): update pipeline flowchart with Stage 8 academic release gate and V4.1 lessons`)  
 **Upstream Remote:** `upstream-v4.0` -> `https://github.com/reallakshman19/Grade9v4.0.git`  
 **Localhost Server:** Running at `http://localhost:8000` (Python HTTP server, PID/task-60)
 
@@ -92,6 +92,12 @@
       - 4-step mathematical derivation & invariant proof (system formulation, conjugate roots $f = (D^2-d^2)/(4D) = 20.0\text{ cm}$, height ratio $h_1/h_2 = 4.0$, boundary condition $D > 4f$) revealed after commitment.
     - Verified live with 0 console errors and 0px overflow via host screenshot `final_step_70.png`.
     - Pushed to `origin/main` (commit `7e9a81a`).
+15. **Pipeline Flowchart & Benchmarks Synchronized with V4.1 Lessons ([architecture/pipeline-flowchart.html](file:///D:/CodeD/g9v4/architecture/pipeline-flowchart.html))**:
+    - **Added Stage 8 (`Stage 08 (Final Gate)`)**: Documented the definitive 4 Non-Compensatory Conditions to remove `{Unvalidated}` and Rule 13 HOLD banners (Human Scientific Review, Signed B1–B7 Ledger, Rights Clearance, and Signed Cryptographic Review Receipt).
+    - **Updated Stage 5 & Stage 6 Invariants**: Mandated the bi-directional learning bridge ribbons/buttons, $\ge 48\text{px}$ touch targets, and full Tab 1 question rendering (forbidding empty disclaimer placeholders).
+    - **Added V4.1 Lessons & Architecture Table**: Documented operational challenges, legacy V4.0 vulnerabilities, and V4.1 invariant architecture standards.
+    - Verified live with 0 console errors and 0px overflow via host screenshot `final_step_96.png`.
+    - Pushed to `origin/main` (commit `11b0d78`).
 
 ---
 
