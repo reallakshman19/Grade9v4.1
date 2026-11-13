@@ -570,33 +570,26 @@
       </div>
     </section>
 
-    <!-- Pill-Based Quick Filter Bar -->
-    <nav class="filter-bar-wrapper" aria-label="Filter physics topics">
-      <span class="filter-bar-label">Filter:</span>
-      <button class="filter-pill active" data-filter="all" onclick="filterTopics('all')">
-        ★ All Topics <span class="pill-count">6</span>
-      </button>
-      <button class="filter-pill" data-filter="optics" onclick="filterTopics('optics')">
-        🔭 Optics <span class="pill-count">10 Qs</span>
-      </button>
-      <button class="filter-pill" data-filter="mechanics" onclick="filterTopics('mechanics')">
-        🚀 Mechanics <span class="pill-count">11 Qs</span>
-      </button>
-      <button class="filter-pill" data-filter="circuits" onclick="filterTopics('circuits')">
-        ⚡ Circuits <span class="pill-count">10 Qs</span>
-      </button>
-      <button class="filter-pill" data-filter="electrostatics" onclick="filterTopics('electrostatics')">
-        ⚛️ Electrostatics <span class="pill-count">10 Qs</span>
-      </button>
-      <button class="filter-pill" data-filter="magnetism" onclick="filterTopics('magnetism')">
-        🧲 Magnetism <span class="pill-count">10 Qs</span>
-      </button>
-      <button class="filter-pill" data-filter="fluids" onclick="filterTopics('fluids')">
-        🌊 Fluids <span class="pill-count">2 Qs</span>
-      </button>
-    </nav>
+    <!-- Single Master Topic Navigation Bar -->
+    <nav id="topicNav" class="master-topic-nav" aria-label="Physics curriculum topics"></nav>
 
     <!-- 6 Physics Topic Cards (12.7" Tablet Ergonomic Grid) -->
+        <!-- Active Topic Deep-Dive Workspace (shown when a topic is selected) -->
+    <section id="topicWorkspace" class="topic-workspace" style="display:none; margin: 20px 0 36px; padding: 28px 26px; border: 2px solid #7dd3fc; border-radius: 18px; background: #ffffff; box-shadow: 0 4px 16px rgba(2,132,199,0.06);">
+      <div id="topic-view"></div>
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:16px;">
+        <div>
+          <span style="font-size:12px;font-weight:800;text-transform:uppercase;color:#0284c7;letter-spacing:0.07em;">Topic Deep-Dive &amp; Practice</span>
+          <h2 id="workspace-title" style="font-size:24px;font-weight:800;margin:4px 0;color:#0f172a;"></h2>
+        </div>
+        <button type="button" onclick="window.selectPhysicsTopic('all')" style="min-height:44px;padding:8px 16px;border-radius:8px;background:#f1f5f9;color:#334155;border:1.5px solid #cbd5e1;font-weight:750;font-size:13.5px;cursor:pointer;">
+          ← Back to All Topics Overview
+        </button>
+      </div>
+      <p id="status" role="status" style="font-size:14px;color:#64748b;margin:10px 0;">Loading candidate questions…</p>
+      <section id="questions" aria-label="Physics candidate questions"></section>
+    </section>
+
     <div class="topics-grid-12-7" id="topicsGrid">
       
       <!-- TOPIC 1: RAY OPTICS -->
@@ -614,7 +607,7 @@
         <p class="topic-desc">Spherical mirrors, thin lens formula, prism minimum deviation, magnification, mirror-lens combinations, and conjugate focus shifts.</p>
         
         <div class="progression-deck">
-          <a class="prog-item prog-item-link" href="#topic-view">
+          <a class="prog-item prog-item-link" href="javascript:void(0)" onclick="window.selectPhysicsTopic('optics')">
             <span class="prog-left"><span class="prog-dot dot-ready"></span> Core 2 Candidate Bank</span>
             <span class="prog-badge badge-ready">10 Qs Available →</span>
           </a>
@@ -622,14 +615,14 @@
             <span class="prog-left"><span class="prog-dot dot-authored"></span> Core 1A Master Lesson</span>
             <span class="prog-badge badge-authored">Lens Displacement →</span>
           </a>
-          <a class="prog-item prog-item-link" href="core1/index.html#optics">
+          <a class="prog-item prog-item-link" href="core1/recovery/ioqjs-optics-conjugate-d3-r1/index.html">
             <span class="prog-left"><span class="prog-dot dot-authored"></span> Core 1B Fresh Transfer</span>
             <span class="prog-badge badge-authored">5 Transfer Journeys →</span>
           </a>
         </div>
 
         <div class="topic-btn-row">
-          <button class="primary-topic-btn" onclick="window.location.hash=\'#topic-view\';">
+          <button class="primary-topic-btn" onclick="window.selectPhysicsTopic('optics')">
             ▶ Open Candidate Bank (10 Qs) →
           </button>
           <a class="secondary-topic-btn" href="core1/nsejs-optics-displacement-d3-r1/index.html">
@@ -665,7 +658,7 @@
         <p class="topic-desc">1D/2D kinematics, piecewise acceleration, Newton's laws of motion, momentum conservation, gravitational orbital motion, and mass balance.</p>
         
         <div class="progression-deck">
-          <a class="prog-item prog-item-link" href="#topic-view">
+          <a class="prog-item prog-item-link" href="javascript:void(0)" onclick="window.selectPhysicsTopic('mechanics')">
             <span class="prog-left"><span class="prog-dot dot-ready"></span> Core 2 Candidate Bank</span>
             <span class="prog-badge badge-ready">11 Qs Available →</span>
           </a>
@@ -680,7 +673,7 @@
         </div>
 
         <div class="topic-btn-row">
-          <button class="primary-topic-btn" onclick="window.location.hash=\'#topic-view\';">
+          <button class="primary-topic-btn" onclick="window.selectPhysicsTopic('mechanics')">
             ▶ Open Candidate Bank (11 Qs) →
           </button>
           <a class="secondary-topic-btn" href="learn-mechanics.html?source_uid=g9:PHYSICS:G9-AUTH-MECH-001&amp;source_revision=65eadfb0dfc06b4dc3c910ade26d5f5d005efea00be5d7c4f8128b3d45c29259">
@@ -712,7 +705,7 @@
         <p class="topic-desc">Ohm's law, Kirchhoff's network laws, resistor cube networks, infinite ladders, power dissipation in resistive combinations, and non-ideal meters.</p>
         
         <div class="progression-deck">
-          <a class="prog-item prog-item-link" href="#topic-view">
+          <a class="prog-item prog-item-link" href="javascript:void(0)" onclick="window.selectPhysicsTopic('circuits')">
             <span class="prog-left"><span class="prog-dot dot-ready"></span> Core 2 Candidate Bank</span>
             <span class="prog-badge badge-ready">10 Qs Available →</span>
           </a>
@@ -727,7 +720,7 @@
         </div>
 
         <div class="topic-btn-row">
-          <button class="primary-topic-btn" onclick="window.location.hash=\'#topic-view\';">
+          <button class="primary-topic-btn" onclick="window.selectPhysicsTopic('circuits')">
             ▶ Open Candidate Bank (10 Qs) →
           </button>
           <a class="secondary-topic-btn" href="core1/recovery/nsejs-circuits-cube-d3-r1/index.html">
@@ -760,7 +753,7 @@
         <p class="topic-desc">Coulomb's law, superposition principle, electric field mapping, transverse deflection of charged particles, equipotential surfaces, and charge ratios.</p>
         
         <div class="progression-deck">
-          <a class="prog-item prog-item-link" href="#topic-view">
+          <a class="prog-item prog-item-link" href="javascript:void(0)" onclick="window.selectPhysicsTopic('electrostatics')">
             <span class="prog-left"><span class="prog-dot dot-ready"></span> Core 2 Candidate Bank</span>
             <span class="prog-badge badge-ready">10 Qs Available →</span>
           </a>
@@ -775,7 +768,7 @@
         </div>
 
         <div class="topic-btn-row">
-          <button class="primary-topic-btn" onclick="window.location.hash=\'#topic-view\';">
+          <button class="primary-topic-btn" onclick="window.selectPhysicsTopic('electrostatics')">
             ▶ Open Candidate Bank (10 Qs) →
           </button>
           <a class="secondary-topic-btn" href="core1/recovery/nsejs-electrostatics-r1/index.html">
@@ -807,7 +800,7 @@
         <p class="topic-desc">Biot-Savart field patterns, long solenoid central B-fields, Lorentz force, right-hand rules, Faraday induction, Lenz rule, and motional damping.</p>
         
         <div class="progression-deck">
-          <a class="prog-item prog-item-link" href="#topic-view">
+          <a class="prog-item prog-item-link" href="javascript:void(0)" onclick="window.selectPhysicsTopic('magnetism')">
             <span class="prog-left"><span class="prog-dot dot-ready"></span> Core 2 Candidate Bank</span>
             <span class="prog-badge badge-ready">10 Qs Available →</span>
           </a>
@@ -822,7 +815,7 @@
         </div>
 
         <div class="topic-btn-row">
-          <button class="primary-topic-btn" onclick="window.location.hash=\'#topic-view\';">
+          <button class="primary-topic-btn" onclick="window.selectPhysicsTopic('magnetism')">
             ▶ Open Candidate Bank (10 Qs) →
           </button>
           <a class="secondary-topic-btn" href="core1/recovery/nsejs-magnetism-r1/index.html">
@@ -854,7 +847,7 @@
         <p class="topic-desc">Hydrostatic pressure, buoyant flotation, droplet coalescence surface energy release, acoustics, echo timing, and temperature-dependent sound velocity.</p>
         
         <div class="progression-deck">
-          <a class="prog-item prog-item-link" href="#topic-view">
+          <a class="prog-item prog-item-link" href="javascript:void(0)" onclick="window.selectPhysicsTopic('fluids')">
             <span class="prog-left"><span class="prog-dot dot-ready"></span> Core 2 Candidate Bank</span>
             <span class="prog-badge badge-ready">2 Qs (Source Held) →</span>
           </a>
@@ -869,7 +862,7 @@
         </div>
 
         <div class="topic-btn-row">
-          <button class="primary-topic-btn" onclick="window.location.hash=\'#topic-view\';">
+          <button class="primary-topic-btn" onclick="window.selectPhysicsTopic('fluids')">
             ▶ Open Candidate Bank (2 Qs) →
           </button>
           <a class="secondary-topic-btn" href="core1/nsejs-fluids-sound-r1/index.html">
@@ -888,20 +881,7 @@
 
     </div>
 
-            <!-- Interactive Disciplinary Topic Workspace: Core 1A/1B Lessons + Core 2 Questions -->
-    <section id="topic-view" class="topic-workspace" style="margin: 40px 0 32px; padding: 28px 26px; border: 2px solid #7dd3fc; border-radius: 18px; background: #ffffff; box-shadow: 0 4px 16px rgba(2,132,199,0.06); scroll-margin-top: 24px;">
-      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:16px;">
-        <div>
-          <span style="font-size:12px;font-weight:800;text-transform:uppercase;color:#0284c7;letter-spacing:0.07em;">Topic Deep-Dive &amp; Practice</span>
-          <h2 style="font-size:22px;font-weight:800;margin:2px 0 0;color:#0f172a;">Topic Practice &amp; Core 1 Master Lessons</h2>
-        </div>
-        <span style="font-size:12px;font-weight:800;background:#e0f2fe;color:#0369a1;padding:5px 12px;border-radius:999px;border:1px solid #7dd3fc;">
-          Structure: Subject → Topic → Questions &amp; Lessons
-        </span>
-      </div>
-      <nav id="topicNav" aria-label="Physics curriculum topics" style="display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 20px 0;"></nav>
-      <p id="status" role="status" style="font-size:14px;color:#64748b;margin:10px 0;">Loading candidate questions from physics-core2-candidates.v1.json…</p>
-      <section id="questions" aria-label="Physics candidate questions"></section>
+            
     </section>
 
     <!-- Bottom 3-Card Supplementary Resources Deck -->

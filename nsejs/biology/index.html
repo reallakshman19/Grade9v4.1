@@ -515,30 +515,26 @@
       </div>
     </section>
 
-    <!-- Pill-Based Quick Filter Bar -->
-    <nav class="filter-bar-wrapper" aria-label="Filter biology topics">
-      <span class="filter-bar-label">Filter:</span>
-      <button class="filter-pill active" data-filter="all" onclick="filterTopics('all')">
-        ★ All Topics <span class="pill-count">5</span>
-      </button>
-      <button class="filter-pill" data-filter="cell" onclick="filterTopics('cell')">
-        🧬 Cell Genetics
-      </button>
-      <button class="filter-pill" data-filter="life" onclick="filterTopics('life')">
-        🌱 Life Processes
-      </button>
-      <button class="filter-pill" data-filter="coordination" onclick="filterTopics('coordination')">
-        🧠 Coordination
-      </button>
-      <button class="filter-pill" data-filter="heredity" onclick="filterTopics('heredity')">
-        🥚 Heredity
-      </button>
-      <button class="filter-pill" data-filter="ecology" onclick="filterTopics('ecology')">
-        🌍 Ecology
-      </button>
-    </nav>
+    <!-- Single Master Topic Navigation Bar -->
+    <nav id="topicNav" class="master-topic-nav" aria-label="Biology curriculum topics"></nav>
 
     <!-- 5 Biology Topic Cards (12.7" Tablet Ergonomic Grid) -->
+        <!-- Active Topic Deep-Dive Workspace (shown when a topic is selected) -->
+    <section id="topicWorkspace" class="topic-workspace" style="display:none; margin: 20px 0 36px; padding: 28px 26px; border: 2px solid #86efac; border-radius: 18px; background: #ffffff; box-shadow: 0 4px 16px rgba(22,163,74,0.06);">
+      <div id="topic-view"></div>
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:16px;">
+        <div>
+          <span style="font-size:12px;font-weight:800;text-transform:uppercase;color:#16a34a;letter-spacing:0.07em;">Topic Deep-Dive &amp; Practice</span>
+          <h2 id="workspace-title" style="font-size:24px;font-weight:800;margin:4px 0;color:#0f172a;"></h2>
+        </div>
+        <button type="button" onclick="window.selectBiologyTopic('all')" style="min-height:44px;padding:8px 16px;border-radius:8px;background:#f1f5f9;color:#334155;border:1.5px solid #cbd5e1;font-weight:750;font-size:13.5px;cursor:pointer;">
+          ← Back to All Topics Overview
+        </button>
+      </div>
+      <p id="status" role="status" style="font-size:14px;color:#64748b;margin:10px 0;">Loading candidate questions…</p>
+      <section id="questions" aria-label="Biology candidate questions"></section>
+    </section>
+
     <div class="topics-grid-12-7" id="topicsGrid">
       
       <!-- TOPIC 1: CELL BIOLOGY & GENETICS -->
@@ -556,10 +552,10 @@
         <p class="topic-desc">Endomembrane systems, mitochondria, nucleic acid architecture, central dogma of molecular genetics, viral capsids, envelope glycoproteins, and Baltimore replication schemes.</p>
         
         <div class="progression-deck">
-          <div class="prog-item">
+          <a class="prog-item prog-item-link" href="javascript:void(0)" onclick="window.selectBiologyTopic(\'living_world\')">
             <span class="prog-left"><span class="prog-dot dot-ready"></span> Core 2 Question Bank</span>
-            <span class="prog-badge badge-ready">2 Modules Indexed</span>
-          </div>
+            <span class="prog-badge badge-ready">2 Modules Indexed →</span>
+          </a>
           <div class="prog-item">
             <span class="prog-left"><span class="prog-dot dot-ready"></span> Core 1A Master Lesson</span>
             <span class="prog-badge badge-ready">Authored Lesson Live</span>
@@ -598,10 +594,10 @@
         <p class="topic-desc">C3/C4 photosynthesis pathways, cellular respiration (glycolysis, Krebs), xylem/phloem vascular transport, human cardiac cycles, and nephron excretion.</p>
         
         <div class="progression-deck">
-          <div class="prog-item">
+          <a class="prog-item prog-item-link" href="javascript:void(0)" onclick="window.selectBiologyTopic(\'life_processes\')">
             <span class="prog-left"><span class="prog-dot dot-ready"></span> Core 2 Question Bank</span>
-            <span class="prog-badge badge-ready">2 Modules Indexed</span>
-          </div>
+            <span class="prog-badge badge-ready">2 Modules Indexed →</span>
+          </a>
           <div class="prog-item">
             <span class="prog-left"><span class="prog-dot dot-ready"></span> Core 1A Master Lesson</span>
             <span class="prog-badge badge-ready">Authored Lesson Live</span>
@@ -640,10 +636,10 @@
         <p class="topic-desc">Action potentials, synaptic transmission, reflex arcs, plant phytohormones (auxin, gibberellin, ABA), and pituitary-hypothalamic endocrine feedback axes.</p>
         
         <div class="progression-deck">
-          <div class="prog-item">
+          <a class="prog-item prog-item-link" href="javascript:void(0)" onclick="window.selectBiologyTopic(\'coordination\')">
             <span class="prog-left"><span class="prog-dot dot-ready"></span> Core 2 Question Bank</span>
-            <span class="prog-badge badge-ready">Candidate Record</span>
-          </div>
+            <span class="prog-badge badge-ready">Candidate Record →</span>
+          </a>
           <div class="prog-item">
             <span class="prog-left"><span class="prog-dot dot-ready"></span> Core 1A Master Lesson</span>
             <span class="prog-badge badge-ready">Authored Lesson Live</span>
@@ -681,10 +677,10 @@
         <p class="topic-desc">Mitosis, meiosis, Mendel's monohybrid/dihybrid ratios, law of segregation, sex determination, sex-linked recessive traits, and pedigree charting.</p>
         
         <div class="progression-deck">
-          <div class="prog-item">
+          <a class="prog-item prog-item-link" href="javascript:void(0)" onclick="window.selectBiologyTopic(\'genetics\')">
             <span class="prog-left"><span class="prog-dot dot-ready"></span> Core 2 Question Bank</span>
-            <span class="prog-badge badge-ready">Candidate Record</span>
-          </div>
+            <span class="prog-badge badge-ready">Candidate Record →</span>
+          </a>
           <div class="prog-item">
             <span class="prog-left"><span class="prog-dot dot-review"></span> Core 1A Master Lesson</span>
             <span class="prog-badge badge-review">⏳ Academic Review</span>
@@ -722,10 +718,10 @@
         <p class="topic-desc">Food chains, 10% ecological efficiency, inverted marine biomass pyramids, biomagnification, biogeochemical carbon/nitrogen cycles, and biodiversity conservation.</p>
         
         <div class="progression-deck">
-          <div class="prog-item">
+          <a class="prog-item prog-item-link" href="javascript:void(0)" onclick="window.selectBiologyTopic(\'environment\')">
             <span class="prog-left"><span class="prog-dot dot-ready"></span> Core 2 Question Bank</span>
-            <span class="prog-badge badge-ready">Candidate Record</span>
-          </div>
+            <span class="prog-badge badge-ready">Candidate Record →</span>
+          </a>
           <div class="prog-item">
             <span class="prog-left"><span class="prog-dot dot-review"></span> Core 1A Master Lesson</span>
             <span class="prog-badge badge-review">⏳ Academic Review</span>
@@ -750,20 +746,7 @@
 
     </div>
 
-            <!-- Interactive Disciplinary Topic Workspace: Core 1A/1B Lessons + Core 2 Questions -->
-    <section id="topic-view" class="topic-workspace" style="margin: 40px 0 32px; padding: 28px 26px; border: 2px solid #86efac; border-radius: 18px; background: #ffffff; box-shadow: 0 4px 16px rgba(22,163,74,0.06); scroll-margin-top: 24px;">
-      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:16px;">
-        <div>
-          <span style="font-size:12px;font-weight:800;text-transform:uppercase;color:#16a34a;letter-spacing:0.07em;">Topic Deep-Dive &amp; Practice</span>
-          <h2 style="font-size:22px;font-weight:800;margin:2px 0 0;color:#0f172a;">Topic Practice &amp; Core 1 Master Lessons</h2>
-        </div>
-        <span style="font-size:12px;font-weight:800;background:#dcfce7;color:#15803d;padding:5px 12px;border-radius:999px;border:1px solid #86efac;">
-          Structure: Subject → Topic → Questions &amp; Lessons
-        </span>
-      </div>
-      <nav id="topicNav" aria-label="Biology curriculum topics" style="display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 20px 0;"></nav>
-      <p id="status" role="status" style="font-size:14px;color:#64748b;margin:10px 0;">Loading candidate questions from biology-core2-candidates.v1.json…</p>
-      <section id="questions" aria-label="Biology candidate questions"></section>
+            
     </section>
 
     <!-- Bottom 3-Card Supplementary Resources Deck -->

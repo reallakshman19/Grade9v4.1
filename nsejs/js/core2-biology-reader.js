@@ -226,47 +226,49 @@
     return box;
   }
 
-  async function loadData() {
-    try {
-      status.textContent = "Loading candidate questions from biology-core2-candidates.v1.json…";
-      const resp = await fetch("../data/biology-core2-candidates.v1.json");
-      if (!resp.ok) throw new Error("HTTP " + resp.status + " while loading Biology question bank data.");
-      const data = await resp.json();
-      const allQuestions = data.questions || [];
+    let allBiologyQuestions = [];
+  let bioCounts = {};
 
-      // Calculate topic counts
-      const counts = {};
-      TOPICS.forEach(t => {
-        const topicKey = t[1];
-        counts[t[0]] = allQuestions.filter(q => q.topic === topicKey).length;
+  function renderTopicView(slug) {
+    const grid = document.getElementById("topicsGrid");
+    const workspace = document.getElementById("topicWorkspace") || document.getElementById("topic-view");
+    const titleEl = document.getElementById("workspace-title");
+
+    if (nav) {
+      nav.querySelectorAll(".topic-pill-btn").forEach(btn => {
+        if (btn.dataset.topic === slug) {
+          btn.classList.add("active");
+          btn.setAttribute("aria-current", "page");
+        } else {
+          btn.classList.remove("active");
+          btn.removeAttribute("aria-current");
+        }
       });
+    }
 
-      // Build topicNav pills
-      nav.replaceChildren();
-      TOPICS.forEach(t => {
-        const slug = t[0];
-        const label = t[2];
-        const icon = t[3];
-        const count = counts[slug] || 0;
-        const btn = text("a", "", "topic-pill-btn");
-        btn.href = "index.html?topic=" + encodeURIComponent(slug) + "#topic-view";
-        if (slug === selectedSlug) btn.classList.add("active");
-        append(btn,
-          text("span", icon, "pill-icon"),
-          text("span", label, "pill-name"),
-          text("span", String(count), "pill-count")
-        );
-        nav.appendChild(btn);
-      });
+    if (slug === "all") {
+      if (grid) grid.style.display = "grid";
+      if (workspace) workspace.style.display = "none";
+      if (history.pushState && location.search) {
+        history.pushState(null, "", "index.html");
+      }
+      return;
+    }
 
-      // Filter questions for the selected topic
-      const activeTopicKey = TOPICS.find(t => t[0] === selectedSlug)?.[1] || "GENETICS_AND_HEREDITY";
-      const activeQuestions = allQuestions.filter(q => q.topic === activeTopicKey);
+    if (grid) grid.style.display = "none";
+    if (workspace) workspace.style.display = "block";
 
+    const topic = TOPICS.find(t => t[0] === slug);
+    if (!topic) return;
+
+    if (titleEl) titleEl.textContent = topic[3] + " " + topic[2] + " (" + (bioCounts[slug] || 0) + " Questions)";
+
+    const activeQuestions = allBiologyQuestions.filter(q => q.topic === topic[1]);
+    if (status) status.textContent = "Showing " + activeQuestions.length + " questions for " + topic[2] + " (Total candidate items in Biology bank: " + allBiologyQuestions.length + ").";
+
+    if (target) {
       target.replaceChildren();
-
-      // Insert ribbon if available
-      const ribbon = createRibbon(selectedSlug);
+      const ribbon = createRibbon(slug);
       if (ribbon) target.appendChild(ribbon);
 
       if (activeQuestions.length === 0) {
@@ -277,12 +279,70 @@
           target.appendChild(card);
         });
       }
-
-      status.textContent = "Showing " + activeQuestions.length + " questions for " + (TOPICS.find(t => t[0] === selectedSlug)?.[2] || "Biology") + " (Total candidate items in Biology bank: " + allQuestions.length + ").";
       renderMath(target);
+    }
+
+    if (history.pushState) {
+      history.pushState(null, "", "index.html?topic=" + encodeURIComponent(slug));
+    }
+  }
+
+  window.selectBiologyTopic = function(slug) {
+    renderTopicView(slug);
+  };
+
+  async function loadData() {
+    try {
+      if (status) status.textContent = "Loading candidate questions from biology-core2-candidates.v1.json…";
+      const resp = await fetch("../data/biology-core2-candidates.v1.json");
+      if (!resp.ok) throw new Error("HTTP " + resp.status + " while loading Biology question bank data.");
+      const data = await resp.json();
+      allBiologyQuestions = data.questions || [];
+
+      // Calculate topic counts
+      TOPICS.forEach(t => {
+        const topicKey = t[1];
+        bioCounts[t[0]] = allBiologyQuestions.filter(q => q.topic === topicKey).length;
+      });
+
+      // Build Single Master Topic Navigation Bar
+      if (nav) {
+        nav.className = "topic-nav-container master-topic-nav";
+        nav.replaceChildren();
+
+        // All Topics Overview Pill
+        const allBtn = document.createElement("button");
+        allBtn.type = "button";
+        allBtn.className = "topic-pill-btn";
+        allBtn.dataset.topic = "all";
+        allBtn.innerHTML = '<span class="pill-icon">★</span> <span class="pill-name">All Topics Overview</span> <span class="pill-count">5</span>';
+        allBtn.onclick = () => renderTopicView("all");
+        nav.append(allBtn);
+
+        TOPICS.forEach(t => {
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "topic-pill-btn";
+          btn.dataset.topic = t[0];
+          const count = bioCounts[t[0]] || 0;
+          btn.innerHTML = `<span class="pill-icon">${t[3]}</span> <span class="pill-name">${t[2]}</span> <span class="pill-count">${count} Qs</span>`;
+          btn.onclick = () => renderTopicView(t[0]);
+          nav.append(btn);
+        });
+      }
+
+      // Determine initial view from query param or default to all
+      const initialTopic = query.get("topic");
+      if (initialTopic && TOPICS.some(t => t[0] === initialTopic)) {
+        renderTopicView(initialTopic);
+      } else {
+        renderTopicView("all");
+      }
     } catch (err) {
-      status.textContent = "Error loading Biology question bank: " + err.message;
-      status.className = "error";
+      if (status) {
+        status.textContent = "Error loading Biology question bank: " + err.message;
+        status.className = "error";
+      }
     }
   }
 

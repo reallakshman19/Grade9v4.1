@@ -290,87 +290,149 @@
     });
     return box;
   }
+  let combinedQuestions = [];
+  let integrityMap = null;
+
+  function renderTopicView(slug) {
+    const grid = document.getElementById("topicsGrid");
+    const workspace = document.getElementById("topicWorkspace") || document.getElementById("topic-view");
+    const titleEl = document.getElementById("workspace-title");
+    
+    // Update active pill
+    if (nav) {
+      nav.querySelectorAll(".topic-pill-btn").forEach(btn => {
+        if (btn.dataset.topic === slug) {
+          btn.classList.add("active");
+          btn.setAttribute("aria-current", "page");
+        } else {
+          btn.classList.remove("active");
+          btn.removeAttribute("aria-current");
+        }
+      });
+    }
+
+    if (slug === "all") {
+      if (grid) grid.style.display = "grid";
+      if (workspace) workspace.style.display = "none";
+      if (history.pushState && location.search) {
+        history.pushState(null, "", "index.html");
+      }
+      return;
+    }
+
+    if (grid) grid.style.display = "none";
+    if (workspace) workspace.style.display = "block";
+
+    const topic = TOPICS.find(t => t[0] === slug);
+    if (!topic) return;
+
+    if (titleEl) titleEl.textContent = topic[3] + " " + topic[2] + " (" + topic[4] + " Questions)";
+
+    const questions = combinedQuestions.filter(q => q.topic === topic[1]);
+    if (status) status.textContent = topic[2] + ": " + questions.length + " candidate records · source and QRT admission HOLD.";
+
+    if (target) {
+      target.replaceChildren();
+      const ribbon = createRibbon(slug);
+      if (ribbon) target.append(ribbon);
+
+      if (questions.length === 0) {
+        target.append(text("p", "No source-backed candidate question bank is available for this topic. Do not infer coverage."));
+      } else {
+        for (let i = 0; i < questions.length; i++) {
+          createCard(questions[i], i).then(card => {
+            target.append(card);
+            renderMath(card);
+          });
+        }
+      }
+    }
+
+    if (history.pushState) {
+      history.pushState(null, "", "index.html?topic=" + encodeURIComponent(slug));
+    }
+  }
+
+  window.selectPhysicsTopic = function(slug) {
+    renderTopicView(slug);
+  };
+
   async function load() {
-    const topic=TOPICS.find(t=>t[0]===selectedTopic);
-    nav.className = "topic-nav-container";
-    nav.replaceChildren();
-    TOPICS.forEach(t=>{
-      const a=document.createElement("a");
-      a.href = "index.html?topic=" + encodeURIComponent(t[0]) + "#topic-view";
-      a.className="topic-pill-btn" + (t[0]===selectedTopic ? " active" : "");
-      
-      const icon = document.createElement("span");
-      icon.className = "pill-icon";
-      icon.textContent = t[3];
-      
-      const name = document.createElement("span");
-      name.className = "pill-name";
-      name.textContent = t[2];
-      
-      const count = document.createElement("span");
-      count.className = "pill-count";
-      count.textContent = t[4];
-      
-      a.append(icon, " ", name, " ", count);
-      if(t[0]===selectedTopic) a.setAttribute("aria-current","page");
-      nav.append(a);
-    });
-    const [manifestResponse,response,evidenceResponse]=await Promise.all([
-      fetch("../data/physics-core2-integrity.v1.json",{cache:"no-store"}),
-      fetch("../data/physics-core2-candidates.v1.json",{cache:"no-store"}),
-      fetch("../data/physics-core2-source-evidence.v1.json",{cache:"no-store"})
+    const [manifestResponse, response, evidenceResponse] = await Promise.all([
+      fetch("../data/physics-core2-integrity.v1.json", { cache: "no-store" }),
+      fetch("../data/physics-core2-candidates.v1.json", { cache: "no-store" }),
+      fetch("../data/physics-core2-source-evidence.v1.json", { cache: "no-store" })
     ]);
-    if(!manifestResponse.ok || !response.ok || !evidenceResponse.ok) throw new Error("Source integrity registry incomplete; fail closed");
-    const [manifestText,corpusText,evidenceText]=await Promise.all([
-      manifestResponse.text(),response.text(),evidenceResponse.text()
+    if (!manifestResponse.ok || !response.ok || !evidenceResponse.ok) throw new Error("Source integrity registry incomplete; fail closed");
+    const [manifestText, corpusText, evidenceText] = await Promise.all([
+      manifestResponse.text(), response.text(), evidenceResponse.text()
     ]);
-    const manifest=JSON.parse(manifestText),corpus=JSON.parse(corpusText),evidence=JSON.parse(evidenceText);
-    if(manifest.schema_version!=="grade9-nsejs-physics-core2-integrity/v1" ||
-       manifest.academic_admission!=="HOLD" || corpus.source_claims_status!=="HOLD" ||
-       corpus.schema_version!=="grade9-nsejs-physics-core2-candidate-corpus/v1" ||
-       evidence.schema_version!=="grade9-nsejs-physics-source-evidence/v1" ||
+    const manifest = JSON.parse(manifestText), corpus = JSON.parse(corpusText), evidence = JSON.parse(evidenceText);
+    if (manifest.schema_version !== "grade9-nsejs-physics-core2-integrity/v1" ||
+       manifest.academic_admission !== "HOLD" || corpus.source_claims_status !== "HOLD" ||
+       corpus.schema_version !== "grade9-nsejs-physics-core2-candidate-corpus/v1" ||
+       evidence.schema_version !== "grade9-nsejs-physics-source-evidence/v1" ||
        !Array.isArray(corpus.questions) || !Array.isArray(manifest.items))
       throw new Error("Unqualified or malformed candidate registry; fail closed");
-    if(await digestText(corpusText)!==manifest.corpus_sha256 ||
-       await digestText(evidenceText)!==manifest.provenance_sha256)
+    if (await digestText(corpusText) !== manifest.corpus_sha256 ||
+       await digestText(evidenceText) !== manifest.provenance_sha256)
       throw new Error("SOURCE_CONTENT_INTEGRITY_MISMATCH; fail closed");
-    const all=corpus.questions;
-    const integrityById=new Map(manifest.items.map(x=>[x.source_id,x]));
-    if(manifest.items.length!==50 || integrityById.size!==50)
+    const all = corpus.questions;
+    integrityMap = new Map(manifest.items.map(x => [x.source_id, x]));
+    if (manifest.items.length !== 50 || integrityMap.size !== 50)
       throw new Error("Invalid or duplicated integrity ledger; fail closed");
-    for(const q of all) {
-      const record=integrityById.get(q.source_id);
-      if(!record || record.academic_admission!=="NOT_ADMITTED" ||
-         record.source_exact_fidelity!=="HOLD" ||
-         record.historical_display_id!==q.id ||
-         record.producer_declared_stem_sha256!==q.stem_sha256 ||
-         record.producer_qrt_band!==q.band || record.five_factor_score!==q.score ||
-         await digestText(q.stem)!==record.observed_stem_sha256 ||
-         await revision(q)!==record.observed_question_revision_sha256)
-        throw new Error("SOURCE_ITEM_INTEGRITY_MISMATCH: "+q.source_id);
-      q.integrity_meta=record;
+    for (const q of all) {
+      const record = integrityMap.get(q.source_id);
+      if (!record || record.academic_admission !== "NOT_ADMITTED" ||
+         record.source_exact_fidelity !== "HOLD" ||
+         record.historical_display_id !== q.id ||
+         record.producer_declared_stem_sha256 !== q.stem_sha256 ||
+         record.producer_qrt_band !== q.band || record.five_factor_score !== q.score ||
+         await digestText(q.stem) !== record.observed_stem_sha256 ||
+         await revision(q) !== record.observed_question_revision_sha256)
+        throw new Error("SOURCE_ITEM_INTEGRITY_MISMATCH: " + q.source_id);
+      q.integrity_meta = record;
     }
-    const physics=all.filter(q=>TOPICS.slice(0,5).some(t=>t[1]===q.topic));
-    const extensionResponse=await fetch("../data/physics-authored-practice-r1.json",{cache:"no-store"});
-    if(!extensionResponse.ok)throw new Error("Authored practice manifest unavailable");
-    const extension=await extensionResponse.json();
-    if(!Array.isArray(extension.questions) || !extension.questions.every(q=>q.category==="AUTHORED_PRACTICE" && q.review_state==="NOT_ADMITTED"))throw new Error("Untrusted authored practice manifest");
-    const identities=physics.map(uidOf);
-    if(physics.length!==50 || new Set(identities).size!==50)throw new Error("Physics census/identity mismatch; fail closed");
-    // Official locators are rendered only from source-reconciled integrity evidence;
-    // historical ID values are never silently overwritten.
-    const combined=physics.concat(extension.questions);
-    if(new Set(combined.map(uidOf)).size!==combined.length)throw new Error("Combined candidate UID collision");
-    const questions=combined.filter(q=>q.topic===topic[1]);
-    status.textContent=topic[2]+": "+questions.length+" candidate records · source and QRT admission HOLD.";
-    target.replaceChildren();
-    const ribbon = createRibbon(selectedTopic);
-    if(ribbon) target.append(ribbon);
-    if(questions.length===0){target.append(text("p","No source-backed candidate question bank is available for this topic. Do not infer coverage."));return;}
-    const requestedUid=query.get("uid");
-    const shown=requestedUid ? questions.filter(q=>uidOf(q)===requestedUid) : questions;
-    if(!shown.length){target.append(text("p","Requested question UID not found in this topic.","error"));return;}
-    for(let i=0;i<shown.length;i++){const card=await createCard(shown[i],i);target.append(card);renderMath(card);}
+    const physics = all.filter(q => TOPICS.slice(0, 5).some(t => t[1] === q.topic));
+    const extensionResponse = await fetch("../data/physics-authored-practice-r1.json", { cache: "no-store" });
+    if (!extensionResponse.ok) throw new Error("Authored practice manifest unavailable");
+    const extension = await extensionResponse.json();
+    if (!Array.isArray(extension.questions) || !extension.questions.every(q => q.category === "AUTHORED_PRACTICE" && q.review_state === "NOT_ADMITTED"))
+      throw new Error("Untrusted authored practice manifest");
+    combinedQuestions = physics.concat(extension.questions);
+
+    // Build Single Master Topic Navigation Bar
+    if (nav) {
+      nav.className = "topic-nav-container master-topic-nav";
+      nav.replaceChildren();
+
+      // All Topics Overview Pill
+      const allBtn = document.createElement("button");
+      allBtn.type = "button";
+      allBtn.className = "topic-pill-btn";
+      allBtn.dataset.topic = "all";
+      allBtn.innerHTML = '<span class="pill-icon">★</span> <span class="pill-name">All Topics Overview</span> <span class="pill-count">6</span>';
+      allBtn.onclick = () => renderTopicView("all");
+      nav.append(allBtn);
+
+      TOPICS.forEach(t => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "topic-pill-btn";
+        btn.dataset.topic = t[0];
+        btn.innerHTML = `<span class="pill-icon">${t[3]}</span> <span class="pill-name">${t[2]}</span> <span class="pill-count">${t[4]} Qs</span>`;
+        btn.onclick = () => renderTopicView(t[0]);
+        nav.append(btn);
+      });
+    }
+
+    // Determine initial view from query param or default to all
+    const initialTopic = query.get("topic");
+    if (initialTopic && TOPICS.some(t => t[0] === initialTopic)) {
+      renderTopicView(initialTopic);
+    } else {
+      renderTopicView("all");
+    }
   }
   load().catch(function(e){status.textContent="Core2 bank unavailable: "+e.message;status.className="error";});
 })();

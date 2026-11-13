@@ -515,33 +515,26 @@
       </div>
     </section>
 
-    <!-- Pill-Based Quick Filter Bar -->
-    <nav class="filter-bar-wrapper" aria-label="Filter chemistry topics">
-      <span class="filter-bar-label">Filter:</span>
-      <button class="filter-pill active" data-filter="all" onclick="filterTopics('all')">
-        ★ All Topics <span class="pill-count">6</span>
-      </button>
-      <button class="filter-pill" data-filter="matter" onclick="filterTopics('matter')">
-        ⚖️ Mole Concept
-      </button>
-      <button class="filter-pill" data-filter="reactions" onclick="filterTopics('reactions')">
-        🧪 Reactions
-      </button>
-      <button class="filter-pill" data-filter="atomic" onclick="filterTopics('atomic')">
-        🔬 Atomic/Bonding
-      </button>
-      <button class="filter-pill" data-filter="acids" onclick="filterTopics('acids')">
-        🏺 Oxyacids
-      </button>
-      <button class="filter-pill" data-filter="redox" onclick="filterTopics('redox')">
-        🔄 Redox
-      </button>
-      <button class="filter-pill" data-filter="eudiometry" onclick="filterTopics('eudiometry')">
-        💨 Eudiometry
-      </button>
-    </nav>
+    <!-- Single Master Topic Navigation Bar -->
+    <nav id="topicNav" class="master-topic-nav" aria-label="Chemistry curriculum topics"></nav>
 
     <!-- 6 Chemistry Topic Cards (12.7" Tablet Ergonomic Grid) -->
+        <!-- Active Topic Deep-Dive Workspace (shown when a topic is selected) -->
+    <section id="topicWorkspace" class="topic-workspace" style="display:none; margin: 20px 0 36px; padding: 28px 26px; border: 2px solid #5eead4; border-radius: 18px; background: #ffffff; box-shadow: 0 4px 16px rgba(13,148,136,0.06);">
+      <div id="topic-view"></div>
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:16px;">
+        <div>
+          <span style="font-size:12px;font-weight:800;text-transform:uppercase;color:#0d9488;letter-spacing:0.07em;">Topic Deep-Dive &amp; Practice</span>
+          <h2 id="workspace-title" style="font-size:24px;font-weight:800;margin:4px 0;color:#0f172a;"></h2>
+        </div>
+        <button type="button" onclick="window.selectChemistryTopic('all')" style="min-height:44px;padding:8px 16px;border-radius:8px;background:#f1f5f9;color:#334155;border:1.5px solid #cbd5e1;font-weight:750;font-size:13.5px;cursor:pointer;">
+          ← Back to All Topics Overview
+        </button>
+      </div>
+      <p id="status" role="status" style="font-size:14px;color:#64748b;margin:10px 0;">Loading candidate questions…</p>
+      <section id="questions" aria-label="Chemistry candidate questions"></section>
+    </section>
+
     <div class="topics-grid-12-7" id="topicsGrid">
       
       <!-- TOPIC 1: MATTER & MOLE CONCEPT -->
@@ -559,10 +552,10 @@
         <p class="topic-desc">Laws of chemical combination, Avogadro's hypothesis, molar mass, stoichiometry, empirical &amp; molecular formulas, and limiting reagents.</p>
         
         <div class="progression-deck">
-          <div class="prog-item">
+          <a class="prog-item prog-item-link" href="javascript:void(0)" onclick="window.selectChemistryTopic(\'mole_concept\')">
             <span class="prog-left"><span class="prog-dot dot-ready"></span> Core 2 Question Bank</span>
-            <span class="prog-badge badge-ready">Candidate Record</span>
-          </div>
+            <span class="prog-badge badge-ready">Candidate Record →</span>
+          </a>
           <div class="prog-item">
             <span class="prog-left"><span class="prog-dot dot-ready"></span> Core 1A Master Lesson</span>
             <span class="prog-badge badge-ready">Skill Repair Live</span>
@@ -600,10 +593,10 @@
         <p class="topic-desc">Reaction classifications (combination, thermal decomposition, displacement, precipitation), reactivity series, and chemical equilibria.</p>
         
         <div class="progression-deck">
-          <div class="prog-item">
+          <a class="prog-item prog-item-link" href="javascript:void(0)" onclick="window.selectChemistryTopic(\'reactions\')">
             <span class="prog-left"><span class="prog-dot dot-ready"></span> Core 2 Question Bank</span>
-            <span class="prog-badge badge-ready">Candidate Record</span>
-          </div>
+            <span class="prog-badge badge-ready">Candidate Record →</span>
+          </a>
           <div class="prog-item">
             <span class="prog-left"><span class="prog-dot dot-ready"></span> Core 1A Master Lesson</span>
             <span class="prog-badge badge-ready">Skill Repair Live</span>
@@ -641,10 +634,10 @@
         <p class="topic-desc">Bohr subshells, quantum configurations, periodic trends (radii, ionization energy, electronegativity), ionic &amp; covalent Lewis lattices.</p>
         
         <div class="progression-deck">
-          <div class="prog-item">
+          <a class="prog-item prog-item-link" href="javascript:void(0)" onclick="window.selectChemistryTopic(\'atomic_structure\')">
             <span class="prog-left"><span class="prog-dot dot-ready"></span> Core 2 Question Bank</span>
-            <span class="prog-badge badge-ready">3 Modules Indexed</span>
-          </div>
+            <span class="prog-badge badge-ready">3 Modules Indexed →</span>
+          </a>
           <div class="prog-item">
             <span class="prog-left"><span class="prog-dot dot-ready"></span> Core 1A Master Lesson</span>
             <span class="prog-badge badge-ready">Authored Lesson Live</span>
@@ -684,10 +677,10 @@
         <p class="topic-desc">Arrhenius/Brønsted acid-base concepts, pH scale, salt hydrolysis, and structural basicity of phosphorus oxyacids (H3PO2, H3PO3, H3PO4).</p>
         
         <div class="progression-deck">
-          <div class="prog-item">
+          <a class="prog-item prog-item-link" href="javascript:void(0)" onclick="window.selectChemistryTopic(\'bonding\')">
             <span class="prog-left"><span class="prog-dot dot-ready"></span> Core 2 Question Bank</span>
-            <span class="prog-badge badge-ready">Candidate Record</span>
-          </div>
+            <span class="prog-badge badge-ready">Candidate Record →</span>
+          </a>
           <div class="prog-item">
             <span class="prog-left"><span class="prog-dot dot-ready"></span> Core 1A Master Lesson</span>
             <span class="prog-badge badge-ready">Authored Lesson Live</span>
@@ -725,10 +718,10 @@
         <p class="topic-desc">Oxidation numbers, balancing redox by ion-electron methods, equivalent weights, and volumetric permanganate/dichromate titrations.</p>
         
         <div class="progression-deck">
-          <div class="prog-item">
+          <a class="prog-item prog-item-link" href="javascript:void(0)" onclick="window.selectChemistryTopic(\'redox\')">
             <span class="prog-left"><span class="prog-dot dot-ready"></span> Core 2 Question Bank</span>
-            <span class="prog-badge badge-ready">Candidate Record</span>
-          </div>
+            <span class="prog-badge badge-ready">Candidate Record →</span>
+          </a>
           <div class="prog-item">
             <span class="prog-left"><span class="prog-dot dot-ready"></span> Core 1A Master Lesson</span>
             <span class="prog-badge badge-ready">Skill Repair Live</span>
@@ -766,10 +759,10 @@
         <p class="topic-desc">Explosive eudiometer hydrocarbon combustions, contraction on cooling to STP, alkaline pyrogallol residual O2 absorption, and formula deduction.</p>
         
         <div class="progression-deck">
-          <div class="prog-item">
+          <a class="prog-item prog-item-link" href="javascript:void(0)" onclick="window.selectChemistryTopic(\'eudiometry\')">
             <span class="prog-left"><span class="prog-dot dot-ready"></span> Core 2 Question Bank</span>
-            <span class="prog-badge badge-ready">Candidate Record</span>
-          </div>
+            <span class="prog-badge badge-ready">Candidate Record →</span>
+          </a>
           <div class="prog-item">
             <span class="prog-left"><span class="prog-dot dot-ready"></span> Core 1A Master Lesson</span>
             <span class="prog-badge badge-ready">Skill Repair Live</span>
@@ -794,20 +787,7 @@
 
     </div>
 
-            <!-- Interactive Disciplinary Topic Workspace: Core 1A/1B Lessons + Core 2 Questions -->
-    <section id="topic-view" class="topic-workspace" style="margin: 40px 0 32px; padding: 28px 26px; border: 2px solid #5eead4; border-radius: 18px; background: #ffffff; box-shadow: 0 4px 16px rgba(13,148,136,0.06); scroll-margin-top: 24px;">
-      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:16px;">
-        <div>
-          <span style="font-size:12px;font-weight:800;text-transform:uppercase;color:#0d9488;letter-spacing:0.07em;">Topic Deep-Dive &amp; Practice</span>
-          <h2 style="font-size:22px;font-weight:800;margin:2px 0 0;color:#0f172a;">Topic Practice &amp; Core 1 Master Lessons</h2>
-        </div>
-        <span style="font-size:12px;font-weight:800;background:#ccfbf1;color:#0f766e;padding:5px 12px;border-radius:999px;border:1px solid #5eead4;">
-          Structure: Subject → Topic → Questions &amp; Lessons
-        </span>
-      </div>
-      <nav id="topicNav" aria-label="Chemistry curriculum topics" style="display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 20px 0;"></nav>
-      <p id="status" role="status" style="font-size:14px;color:#64748b;margin:10px 0;">Loading candidate questions from chemistry-core2-candidates.v1.json…</p>
-      <section id="questions" aria-label="Chemistry candidate questions"></section>
+            
     </section>
 
     <!-- Bottom 3-Card Supplementary Resources Deck -->
