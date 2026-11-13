@@ -47,7 +47,7 @@ def main():
                         a=BASE+"textbook/PH01/"+sub+"/index.html"
                         b=BASE+"core1/ph01-"+sub.lower()+"-r31/index.html"
                         page.goto(origin+a)
-                        assert "PH01-"+sub in page.locator("header").inner_text()
+                        assert "PH01-"+sub in page.locator("header.mast").inner_text()
                         assert page.locator("svg[role=img]").count()==1
                         assert page.locator(".example").count()==3
                         assert page.evaluate("document.documentElement.scrollWidth <= innerWidth+1")
