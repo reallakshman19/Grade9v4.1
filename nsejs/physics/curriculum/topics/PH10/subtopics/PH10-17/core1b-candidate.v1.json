@@ -1,0 +1,182 @@
+{
+  "schema": "g9v41-b02-subtopic-preview/v1",
+  "status": "DRAFT_AUTHOR_EXPOSED",
+  "owner_agent": "AGENT_2",
+  "topic_id": "PH10",
+  "subtopic_id": "PH10-17",
+  "version": "0.1.0",
+  "base_commit": "de3d55e05a35150b1111f25aee3ba8acd4ef47e5",
+  "source_role": "AUTHORED_TRANSFER",
+  "source_scope": "EXTENSION",
+  "core1b": [
+    {
+      "id": "PH10-17-B02-EXPLAIN-MAIN-R1",
+      "kind": "MAIN",
+      "subtopic_id": "PH10-17",
+      "qrt_target_id": "PH10-17-EXPLAIN-UNCLASSIFIED",
+      "primary_operation": "EXPLAIN",
+      "source_role": "AUTHORED_TRANSFER",
+      "difficulty_status": "UNCLASSIFIED_PENDING_FIVE_FACTOR_REVIEW",
+      "content_revision": "0.1.0",
+      "fresh_task": "A glass block in air reflects some rays and transmits others at the same exit surface. Explain why total internal reflection occurs only for some incidence angles.",
+      "protected_work": "Explain why both index ordering and angle threshold are necessary.",
+      "stages": {
+        "predict": "State your expected result, direction or relationship before solving. Record uncertainty if needed.",
+        "attempt": "A glass block in air reflects some rays and transmits others at the same exit surface. Explain why total internal reflection occurs only for some incidence angles.",
+        "reconstruct": "Glass→air higher-to-lower n permits critical angle. Below i_c Snell has propagating r and partial reflection; above i_c no propagating transmitted ray, ideal TIR.",
+        "diagnose": "Only if your saved answer demonstrates this error: Assuming high incidence alone guarantees TIR regardless of direction. Otherwise record insufficient evidence; compare your actual reasoning with the reconstruction.",
+        "repair": "Check n_incident>n_transmitted and i>i_c.",
+        "boundary_test": "At exactly i=i_c, what is the limiting transmitted direction?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH10-17-B02-EXPLAIN-INSTANCE-R1",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH10-17",
+      "qrt_target_id": "PH10-17-EXPLAIN-UNCLASSIFIED",
+      "primary_operation": "EXPLAIN",
+      "source_role": "AUTHORED_TRANSFER",
+      "difficulty_status": "UNCLASSIFIED_PENDING_FIVE_FACTOR_REVIEW",
+      "content_revision": "0.1.0",
+      "fresh_task": "A light ray enters glass from air at a very large incidence angle. Explain whether that interface can produce TIR for this direction.",
+      "protected_work": "Explain why both index ordering and angle threshold are necessary.",
+      "stages": {
+        "predict": "State your expected result, direction or relationship before solving. Record uncertainty if needed.",
+        "attempt": "A light ray enters glass from air at a very large incidence angle. Explain whether that interface can produce TIR for this direction.",
+        "reconstruct": "No for ideal air→glass lower-to-higher n: n₁/n₂<1, calculated sin r≤1 for all i. Partial reflection may still occur.",
+        "diagnose": "Only if your saved answer demonstrates this error: Assuming high incidence alone guarantees TIR regardless of direction. Otherwise record insufficient evidence; compare your actual reasoning with the reconstruction.",
+        "repair": "Check n_incident>n_transmitted and i>i_c.",
+        "boundary_test": "At exactly i=i_c, what is the limiting transmitted direction?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH10-17-B02-MODEL-MAIN-R1",
+      "kind": "MAIN",
+      "subtopic_id": "PH10-17",
+      "qrt_target_id": "PH10-17-MODEL-UNCLASSIFIED",
+      "primary_operation": "MODEL",
+      "source_role": "AUTHORED_TRANSFER",
+      "difficulty_status": "UNCLASSIFIED_PENDING_FIVE_FACTOR_REVIEW",
+      "content_revision": "0.1.0",
+      "fresh_task": "Core n=1.6, cladding n=1.2. A ray strikes boundary at i=55°. Will TIR occur? Then replace cladding with n=1.4.",
+      "protected_work": "Calculate critical-angle admissibility and apply it to a changed surrounding medium.",
+      "stages": {
+        "predict": "State your expected result, direction or relationship before solving. Record uncertainty if needed.",
+        "attempt": "Core n=1.6, cladding n=1.2. A ray strikes boundary at i=55°. Will TIR occur? Then replace cladding with n=1.4.",
+        "reconstruct": "i_c=arcsin(.75)≈48.6°, so yes initially. New i_c=arcsin(.875)≈61.0°, 55° below threshold, no TIR.",
+        "diagnose": "Only if your saved answer demonstrates this error: Using sin i_c=n₁/n₂ or comparing angle to surface. Otherwise record insufficient evidence; compare your actual reasoning with the reconstruction.",
+        "repair": "Use n_lower/n_higher and incidence to normal, then test strict inequality.",
+        "boundary_test": "If cladding index equals core index, can TIR guide rays at the boundary?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH10-17-B02-MODEL-INSTANCE-R1",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH10-17",
+      "qrt_target_id": "PH10-17-MODEL-UNCLASSIFIED",
+      "primary_operation": "MODEL",
+      "source_role": "AUTHORED_TRANSFER",
+      "difficulty_status": "UNCLASSIFIED_PENDING_FIVE_FACTOR_REVIEW",
+      "content_revision": "0.1.0",
+      "fresh_task": "A glass-air ray has i=45° and n_glass=1.4. Is there TIR? What if glass n=1.5?",
+      "protected_work": "Calculate critical-angle admissibility and apply it to a changed surrounding medium.",
+      "stages": {
+        "predict": "State your expected result, direction or relationship before solving. Record uncertainty if needed.",
+        "attempt": "A glass-air ray has i=45° and n_glass=1.4. Is there TIR? What if glass n=1.5?",
+        "reconstruct": "For 1.4, i_c≈45.58°, 45 below; for 1.5 i_c≈41.81°, 45 above, TIR.",
+        "diagnose": "Only if your saved answer demonstrates this error: Using sin i_c=n₁/n₂ or comparing angle to surface. Otherwise record insufficient evidence; compare your actual reasoning with the reconstruction.",
+        "repair": "Use n_lower/n_higher and incidence to normal, then test strict inequality.",
+        "boundary_test": "If cladding index equals core index, can TIR guide rays at the boundary?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH10-17-B02-JUSTIFY-MAIN-R1",
+      "kind": "MAIN",
+      "subtopic_id": "PH10-17",
+      "qrt_target_id": "PH10-17-JUSTIFY-UNCLASSIFIED",
+      "primary_operation": "JUSTIFY",
+      "source_role": "AUTHORED_TRANSFER",
+      "difficulty_status": "UNCLASSIFIED_PENDING_FIVE_FACTOR_REVIEW",
+      "content_revision": "0.1.0",
+      "fresh_task": "A student says TIR occurs whenever sin i≥n₂/n₁ for any pair of media. Derive and qualify the statement.",
+      "protected_work": "Derive critical boundary and reject incorrect strictness or applicability claims.",
+      "stages": {
+        "predict": "State your expected result, direction or relationship before solving. Record uncertainty if needed.",
+        "attempt": "A student says TIR occurs whenever sin i≥n₂/n₁ for any pair of media. Derive and qualify the statement.",
+        "reconstruct": "Snell gives sin r=(n₁/n₂)sin i. Need n₁>n₂ for sub-90° critical. Strict i>i_c gives no propagating transmitted ray; equality is grazing limiting direction. Ideal assumptions matter.",
+        "diagnose": "Only if your saved answer demonstrates this error: Treating index ordering as sufficient or critical equality as ordinary above-threshold case. Otherwise record insufficient evidence; compare your actual reasoning with the reconstruction.",
+        "repair": "Derive sine domain and compare both conditions.",
+        "boundary_test": "What changes when the incident side is air and outgoing side glass?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH10-17-B02-JUSTIFY-INSTANCE-R1",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH10-17",
+      "qrt_target_id": "PH10-17-JUSTIFY-UNCLASSIFIED",
+      "primary_operation": "JUSTIFY",
+      "source_role": "AUTHORED_TRANSFER",
+      "difficulty_status": "UNCLASSIFIED_PENDING_FIVE_FACTOR_REVIEW",
+      "content_revision": "0.1.0",
+      "fresh_task": "A ray hits glass-air at incidence 30° and a student calls it total reflection because glass is optically denser. For n=1.5, justify the correct classification.",
+      "protected_work": "Derive critical boundary and reject incorrect strictness or applicability claims.",
+      "stages": {
+        "predict": "State your expected result, direction or relationship before solving. Record uncertainty if needed.",
+        "attempt": "A ray hits glass-air at incidence 30° and a student calls it total reflection because glass is optically denser. For n=1.5, justify the correct classification.",
+        "reconstruct": "sin r=1.5×.5=.75≤1, transmitted angle≈48.6°, so not TIR; some reflection may occur. Need i>41.81°.",
+        "diagnose": "Only if your saved answer demonstrates this error: Treating index ordering as sufficient or critical equality as ordinary above-threshold case. Otherwise record insufficient evidence; compare your actual reasoning with the reconstruction.",
+        "repair": "Derive sine domain and compare both conditions.",
+        "boundary_test": "What changes when the incident side is air and outgoing side glass?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    }
+  ],
+  "acceptance": {
+    "release": "HOLD",
+    "academic": "HOLD",
+    "native_contract": "NOT_VALIDATED",
+    "implementation": "NOT_RUN"
+  },
+  "note": "Dedicated per-subtopic runtime preview, not a C01-C08 native topic package. Legacy packages remain unchanged; P00 runtime acceptance pending."
+}
