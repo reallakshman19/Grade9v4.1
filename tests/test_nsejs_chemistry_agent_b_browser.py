@@ -139,10 +139,10 @@ def test_c09_figures_and_keyboard_focus(browser):
     try:
         page.locator("#sections button").nth(1).click()
         page.locator('img[src*="C09-neutralisation.svg"]').wait_for()
-        page.wait_for_function("document.querySelector('img[src*=C09-neutralisation.svg]')?.naturalWidth > 0")
+        page.wait_for_function("Array.from(document.images).some(el => el.src.includes('C09-neutralisation.svg') && el.complete && el.naturalWidth > 0)")
         page.locator("#sections button").nth(5).click()
         page.locator('img[src*="C09-phosphorus-connectivity.svg"]').wait_for()
-        page.wait_for_function("document.querySelector('img[src*=C09-phosphorus-connectivity.svg]')?.naturalWidth > 0")
+        page.wait_for_function("Array.from(document.images).some(el => el.src.includes('C09-phosphorus-connectivity.svg') && el.complete && el.naturalWidth > 0)")
         page.get_by_role("button",name="Core1B independent practice").click()
         page.get_by_role("heading",name="Stage 1 — Predict").wait_for()
         page.locator("#unit-select").focus()
