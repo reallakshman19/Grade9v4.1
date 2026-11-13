@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 380" width="100%" height="100%" style="background:#ffffff; border:1px solid #cbd5e1; border-radius:8px;">
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.1"/>
+    </filter>
+  </defs>
+
+  <!-- Title & Context -->
+  <text x="230" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700" fill="#0f172a" text-anchor="middle">Regular Tetrahedron Resistor Network</text>
+  <text x="230" y="52" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#64748b" text-anchor="middle">All 6 Edges: R = 12 &#937; &middot; Terminals at A and B</text>
+
+  <!-- Tetrahedron 2D Isometric Projection -->
+  <!-- Vertices: Top A (230, 80), Left B (90, 290), Right C (370, 290), Center-Down D (230, 240) -->
+
+  <!-- Outer Triangle Edges -->
+  <!-- A to B -->
+  <line x1="230" y1="80" x2="90" y2="290" stroke="#2563eb" stroke-width="3"/>
+  <!-- A to C -->
+  <line x1="230" y1="80" x2="370" y2="290" stroke="#2563eb" stroke-width="3"/>
+  <!-- B to C -->
+  <line x1="90" y1="290" x2="370" y2="290" stroke="#2563eb" stroke-width="3"/>
+
+  <!-- Interior Edges to Center Vertex D -->
+  <!-- A to D -->
+  <line x1="230" y1="80" x2="230" y2="240" stroke="#2563eb" stroke-width="3"/>
+  <!-- B to D -->
+  <line x1="90" y1="290" x2="230" y2="240" stroke="#2563eb" stroke-width="3"/>
+  <!-- C to D (Equipotential line V_C = V_D) -->
+  <line x1="370" y1="290" x2="230" y2="240" stroke="#0ea5e9" stroke-width="3" stroke-dasharray="6,4"/>
+
+  <!-- Resistor Labels (font-size >= 14px) -->
+  <!-- Edge AB (R) -->
+  <rect x="120" y="165" width="70" height="24" rx="4" fill="#eff6ff" stroke="#93c5fd" stroke-width="1"/>
+  <text x="155" y="182" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#1e40af" text-anchor="middle">R = 12 &#937;</text>
+
+  <!-- Edge AC (R) -->
+  <rect x="270" y="165" width="70" height="24" rx="4" fill="#eff6ff" stroke="#93c5fd" stroke-width="1"/>
+  <text x="305" y="182" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#1e40af" text-anchor="middle">R = 12 &#937;</text>
+
+  <!-- Edge BC (R) -->
+  <rect x="195" y="300" width="70" height="24" rx="4" fill="#eff6ff" stroke="#93c5fd" stroke-width="1"/>
+  <text x="230" y="317" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#1e40af" text-anchor="middle">R = 12 &#937;</text>
+
+  <!-- Edge AD (R) -->
+  <rect x="180" y="125" width="50" height="22" rx="4" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="205" y="141" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#334155" text-anchor="middle">R</text>
+
+  <!-- Edge BD (R) -->
+  <rect x="135" y="245" width="50" height="22" rx="4" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="160" y="261" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#334155" text-anchor="middle">R</text>
+
+  <!-- Edge CD (R) -->
+  <rect x="275" y="245" width="50" height="22" rx="4" fill="#f0fdf4" stroke="#86efac" stroke-width="1"/>
+  <text x="300" y="261" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#166534" text-anchor="middle">R</text>
+
+  <!-- Vertices / Nodes -->
+  <!-- Vertex A (Input Terminal) -->
+  <circle cx="230" cy="80" r="10" fill="#dc2626" stroke="#991b1b" stroke-width="2"/>
+  <text x="230" y="65" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="800" fill="#dc2626" text-anchor="middle">A (Terminal 1)</text>
+
+  <!-- Vertex B (Output Terminal) -->
+  <circle cx="90" cy="290" r="10" fill="#16a34a" stroke="#14532d" stroke-width="2"/>
+  <text x="65" y="325" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="800" fill="#16a34a" text-anchor="middle">B (Terminal 2)</text>
+
+  <!-- Vertex C -->
+  <circle cx="370" cy="290" r="8" fill="#475569" stroke="#1e293b" stroke-width="2"/>
+  <text x="395" y="305" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700" fill="#334155" text-anchor="middle">C</text>
+
+  <!-- Vertex D -->
+  <circle cx="230" cy="240" r="8" fill="#475569" stroke="#1e293b" stroke-width="2"/>
+  <text x="250" y="235" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700" fill="#334155" text-anchor="middle">D</text>
+
+  <!-- Annotation Note -->
+  <text x="230" y="358" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#64748b" text-anchor="middle">Symmetry plane AB &rArr; V_C = V_D &rArr; Resistor CD carries zero current</text>
+</svg>

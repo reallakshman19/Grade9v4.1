@@ -303,6 +303,18 @@
           - Site-wide static audit: 43/43 pages pass with 0 broken links.
           - Core test suite: 41/41 tests pass.
 
+    29. **Chemistry Core 2 Technical Remediation & Zero-Defect Sealing**:
+        - **Eradicated ID Collisions**: Disambiguated duplicate IDs across 119 questions. Re-indexed `CHEM-NSEJS-ATOM-01..10` at indices 10..19 to `CHEM-NSEJS-BOND-01..10`, resulting in 100% unique IDs across all 6 chemistry topics.
+        - **Bit-for-Bit SHA-256 Invariance**: Fixed all 28 stem SHA mismatches and eliminated dummy placeholder hashes (`chem_atom_02_sha`..`09`). Every single question stem now bit-for-bit matches its declared SHA-256 hash (0 mismatches), eradicating all `asserted stem digest CONFLICTS with display` warnings.
+        - **W3C SVG Asset Authoring**: Authored and committed all 3 missing diagrams in both `nsejs/assets/` and `nsejs/chemistry/assets/` with responsive viewBoxes and typography $\ge 14\text{px}$:
+          - `fig_chem_bohr_energy_levels.svg`: Bohr stationary energy levels & photon emission transitions ($3 \to 1$, $2 \to 1$, $\text{He}^+ 4 \to 2$).
+          - `fig_chem_partial_pressure.svg`: Dalton's partial pressures with rigid chamber $\text{CH}_4 + \text{CO}_2$ and mercury manometer.
+          - `fig_chem_amphoteric_reaction.svg`: Dual-path amphoteric dissolution of $M_2\text{O}_3$ in aqueous $\text{NaOH}$ and $\text{HCl}$.
+        - **Complete 3-Tier Progressive Hint Scaffolding**: Added full H1 (`CLARIFY`), H2 (`CORRELATE`), and H3 (`OPEN_THE_WAY`) scaffolds for all 9 incomplete questions (`ATOM-02` through `ATOM-10`), strictly protecting crux move $W$.
+        - **Interactive Chemistry Reader Upgrade**: Enhanced [`nsejs/js/core2-chemistry-reader.js`](nsejs/js/core2-chemistry-reader.js) to render candidate figures inline with error fallbacks, display `{Reviewed} · B1–B7 peer review verified · Rule 13 HOLD`, and render collapsible data integrity details.
+        - **Automated Verification Suite**: Authored [`tests/test_chemistry_core2.py`](tests/test_chemistry_core2.py) with 8 comprehensive unit tests. Core test suite expanded to 49/49 passing tests.
+        - **Rebuilt Search Index**: Re-indexed 344 documents via `tools/build_search_index.py`, updating manifests with new SHA-256 digest (`2913fddef280d899092a92164f6b3642215d34bdccd016bd84461ef0364b6e80`).
+
 
 ---
 

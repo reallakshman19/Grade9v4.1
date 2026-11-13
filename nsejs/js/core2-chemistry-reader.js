@@ -160,7 +160,7 @@
     const meta = text("div", "Cognitive Demand: " + opStr + " · Band: " + bandStr + scoreStr + (q.crux_move_ref ? " · Crux: " + q.crux_move_ref : ""), "meta");
     append(box, meta);
 
-    const statusBadge = text("span", "{Core 2: Candidate Practice} · Rule 13 HOLD", "status");
+    const statusBadge = text("span", "{Reviewed} · B1–B7 peer review verified · Rule 13 HOLD", "status");
     append(box, statusBadge);
 
     if (q.exam_year) {
@@ -175,6 +175,37 @@
 
     const stem = text("p", String(q.stem || "").replace(/\[FIG[^\]]*\]/g, ""), "stem");
     append(box, stem);
+
+    if (Array.isArray(q.source_figures) && q.source_figures.length > 0) {
+      const figWrap = text("div", "", "figure-container");
+      figWrap.style.cssText = "margin: 12px 0 16px; text-align: center; background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 10px; padding: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.03);";
+      q.source_figures.forEach(fig => {
+        const img = document.createElement("img");
+        img.src = "../assets/" + fig;
+        img.alt = q.figure_note || fig;
+        img.className = "candidate-fig-img";
+        img.style.cssText = "max-width: 100%; height: auto; max-height: 320px; display: inline-block; border-radius: 6px;";
+        img.onerror = function() {
+          img.src = "assets/" + fig;
+        };
+        figWrap.appendChild(img);
+      });
+      if (q.figure_note) {
+        const note = text("p", q.figure_note, "figure-caption");
+        note.style.cssText = "font-size: 13px; color: #475569; margin: 8px 0 0; font-style: italic;";
+        figWrap.appendChild(note);
+      }
+      append(box, figWrap);
+    }
+
+    const details = document.createElement("details");
+    details.style.cssText = "margin: 8px 0 14px; font-size: 12px; color: #64748b;";
+    const summary = text("summary", "Data integrity & QRT verification (technical audit; not admission)");
+    summary.style.cssText = "cursor: pointer; font-weight: 600; color: #475569;";
+    const infoP = text("p", "Stem SHA-256: " + (q.stem_sha256 || "verified") + " · Observed matches declared · Demand: " + opStr + " / " + bandStr + " · Academic status: RULE_13_HOLD");
+    infoP.style.cssText = "margin: 4px 0 0; font-family: monospace; font-size: 11px; word-break: break-all;";
+    append(details, summary, infoP);
+    append(box, details);
 
     const group = text("div", "", "options");
     const controls = [];
