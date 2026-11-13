@@ -1,6 +1,6 @@
 {
   "schema": "g9v41-chem-b02-source-targeted-transfer/v1",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "source_head": "48cc083d58863038d9f71d4dbaea328688fe61c2",
   "status": "AUTHOR_DRAFT_SOURCE_AND_RUNTIME_HOLD",
   "counts": {
@@ -393,7 +393,7 @@
       "academic_status": "HOLD"
     },
     {
-      "task_id": "B02-ISOMERS-COMBUSTION-MAIN-R1",
+      "task_id": "B02-ISOMERS-COMBUSTION-MAIN-R2",
       "kind": "MAIN",
       "subtopic_id": "CHEM-C11.04",
       "source_candidate_id": "CHEM-NSEJS-REACT-07",
@@ -406,51 +406,53 @@
       "operation": "SYNTHESIZE",
       "band_author": "D4",
       "slots": {
-        "X": "A pure acyclic alkane has molar mass 72 g/mol. Enumerate all distinct chain skeletons and compute the ideal O₂ volume for 3.60 g at stated conditions 24.0 L/mol. Determine whether the gas measurement can distinguish the skeletons.",
+        "X": "An equimolar mixture contains two pure acyclic alkanes whose carbon counts differ by one. Complete combustion of 0.040 mol total fuel gives 0.180 mol CO₂. Infer both molecular formulas, enumerate all chain skeletons of the smaller alkane, compute oxygen volume at 24.0 L/mol and explain why combustion cannot determine the smaller component's particular skeleton.",
         "Y": "Chain isomers have identical elemental formula, so their ideal complete combustion requires the same oxygen per mole despite different connectivity. Example: an acyclic alkane of molar mass 86 has 14n+2=86, so C₆H₁₄. Its complete combustion is 2C₆H₁₄+19O₂→12CO₂+14H₂O. Every C₆H₁₄ chain isomer uses 9.5 mol O₂ per mole under this model. Enumerate structures separately by longest-chain length and symmetry; oxygen demand cannot identify the individual isomer.",
-        "Z": "14n+2=72 → C₅H₁₂. Pentane, 2-methylbutane, 2,2-dimethylpropane; exhaustive by chain length 5,4,3. C₅H₁₂+8O₂→5CO₂+6H₂O. .050 mol fuel uses .400 mol O₂ =9.60 L. Same formula gives same demand for all three, so cannot identify isomer.",
-        "W": "Combine formula inference, exhaustive connectivity and independent complete-combustion balance."
+        "Z": "Each alkane .020 mol. Carbon ledger .020n+.020(n+1)=.180 -> 2n+1=9 -> n=4. C₄H₁₀ and C₅H₁₂; smaller: butane and 2-methylpropane (longest chain four or three). O₂ demand .020×6.5+.020×8=.290 mol=6.96 L; H₂O .020×5+.020×6=.220 mol. Both smaller skeletons have same formula and complete-combustion demand; connectivity not identified.",
+        "W": "Infer two adjacent alkane formulas from mixture combustion, enumerate the smaller component and check independent oxygen balance."
       },
       "predict": {
-        "prompt": "State an initial model and the assumption you will test."
+        "prompt": "Predict whether the observed average corresponds to one molecule or a mixture before computing.",
+        "defensible_answer": "It is a mixture average, not a fractional molecular carbon count."
       },
       "attempt": {
-        "prompt": "A pure acyclic alkane has molar mass 72 g/mol. Enumerate all distinct chain skeletons and compute the ideal O₂ volume for 3.60 g at stated conditions 24.0 L/mol. Determine whether the gas measurement can distinguish the skeletons.",
-        "protected_W": "Combine formula inference, exhaustive connectivity and independent complete-combustion balance.",
+        "prompt": "An equimolar mixture contains two pure acyclic alkanes whose carbon counts differ by one. Complete combustion of 0.040 mol total fuel gives 0.180 mol CO₂. Infer both molecular formulas, enumerate all chain skeletons of the smaller alkane, compute oxygen volume at 24.0 L/mol and explain why combustion cannot determine the smaller component's particular skeleton.",
+        "protected_W": "Infer two adjacent alkane formulas from mixture combustion, enumerate the smaller component and check independent oxygen balance.",
         "first_attempt_must_be_saved_before_feedback": true,
         "initial_answer_visibility": "HIDDEN",
         "hints": [
           {
             "id": "H1",
-            "text": "Use the acyclic saturated formula to relate mass to carbon number."
+            "text": "Identify the mixture constraints and distinguish total fuel from each component amount."
           },
           {
             "id": "H2",
-            "text": "Classify candidate skeletons by longest chain and use symmetry to eliminate duplicates."
+            "text": "Relate CO₂ amount to total carbon atoms; the adjacent carbon counts can be represented by unknown integers."
           },
           {
             "id": "H3",
-            "text": "Balance combustion for the inferred formula and convert fuel mass to oxygen volume. Decide if the amount depends on connectivity."
+            "text": "Make a two-component atom ledger with unknown carbon counts, then use the inferred formulas for oxygen demand and structural enumeration."
           }
         ],
         "post_commit_closure": {
-          "model_response": "14n+2=72 → C₅H₁₂. Pentane, 2-methylbutane, 2,2-dimethylpropane; exhaustive by chain length 5,4,3. C₅H₁₂+8O₂→5CO₂+6H₂O. .050 mol fuel uses .400 mol O₂ =9.60 L. Same formula gives same demand for all three, so cannot identify isomer."
+          "model_response": "Each alkane .020 mol. Carbon ledger .020n+.020(n+1)=.180 -> 2n+1=9 -> n=4. C₄H₁₀ and C₅H₁₂; smaller: butane and 2-methylpropane (longest chain four or three). O₂ demand .020×6.5+.020×8=.290 mol=6.96 L; H₂O .020×5+.020×6=.220 mol. Both smaller skeletons have same formula and complete-combustion demand; connectivity not identified."
         }
       },
       "reconstruct": {
-        "prompt": "Rebuild the calculation and check the independent conserved quantity.",
-        "model_response": "14n+2=72 → C₅H₁₂. Pentane, 2-methylbutane, 2,2-dimethylpropane; exhaustive by chain length 5,4,3. C₅H₁₂+8O₂→5CO₂+6H₂O. .050 mol fuel uses .400 mol O₂ =9.60 L. Same formula gives same demand for all three, so cannot identify isomer."
+        "prompt": "Rebuild the mixture carbon ledger, then independently check oxygen and water balances.",
+        "model_response": "Each alkane .020 mol. Carbon ledger .020n+.020(n+1)=.180 -> 2n+1=9 -> n=4. C₄H₁₀ and C₅H₁₂; smaller: butane and 2-methylpropane (longest chain four or three). O₂ demand .020×6.5+.020×8=.290 mol=6.96 L; H₂O .020×5+.020×6=.220 mol. Both smaller skeletons have same formula and complete-combustion demand; connectivity not identified."
       },
       "diagnose": {
-        "prompt": "Compare the saved response with the model; identify a specific unsupported assumption or arithmetic/representation error, or record insufficient evidence."
+        "prompt": "Could a single alkane have 4.5 carbon atoms per molecule, or is that an average of a mixture?",
+        "wrong_idea": "Treat the average carbon count as a molecular formula or infer a specific isomer from oxygen demand."
       },
       "repair": {
-        "prompt": "Recompute with a complete species or amount ledger, checking assumptions.",
+        "prompt": "Separate mixture averages from molecular formulas, then construct both component ledgers.",
         "core1a_ref": "curriculum/chemistry/agent-b/textbook/C11.core1a.md"
       },
       "boundary_test": {
-        "prompt": "If oxygen supply is only 8.0 L, can the ideal complete-combustion model consume all fuel?",
-        "answer": "No; under stated conditions 8.0 L is below 9.60 L; actual products require evidence."
+        "prompt": "If equimolarity is removed, does the same CO₂ measurement uniquely determine the adjacent formulas and proportions?",
+        "answer": "With exact adjacent integer counts and mean 4.5, only C4/C5 with equal amounts fits positive fractions; if the adjacency assumption is also removed, multiple mixtures fit. Thus equimolarity is redundant here, but adjacency matters."
       },
       "author_demand": {
         "scores": {
@@ -464,11 +466,11 @@
         "reason": "Exact task: model selection, translation to formula/ledger, linked inference, required quantitative operations and changed-assumption trap. R02 must verify shortest path.",
         "independent": "NOT_RUN",
         "factor_evidence": {
-          "concept_model_selection": "Choose acyclic saturated formula and complete oxidation model.",
-          "representation_translation": "Translate formula to graphs and balanced reaction.",
-          "reasoning_chain_length": "Infer formula, enumerate all skeletons, compute gas demand and test nonuniqueness.",
-          "algebra_computational_load": "Algebra, molar conversion and enumeration.",
-          "trap_exception_sensitivity": "Isomer identity cannot be inferred from equal oxygen demand."
+          "concept_model_selection": "Choose adjacent-alkane mixture inverse model",
+          "representation_translation": "Translate gas amount to carbon-count equations and skeletons",
+          "reasoning_chain_length": "Infer formulas, enumerate and compute oxygen independently",
+          "algebra_computational_load": "Linked integer/molar/volume calculations",
+          "trap_exception_sensitivity": "Average not molecular identity; adjacency constraint"
         }
       },
       "reviews": {

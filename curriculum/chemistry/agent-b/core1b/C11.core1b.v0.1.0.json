@@ -1,6 +1,6 @@
 {
   "schema": "g9v41-chem-core1b-six-stage-cycles/v1",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "unit_id": "C11",
   "status": "CANDIDATE_UNREVIEWED_NO_BROWSER_TEST",
   "textbook_ref": "curriculum/chemistry/agent-b/textbook/C11.core1a.md",
@@ -346,82 +346,82 @@
       }
     },
     {
-      "cycle_id": "CORE1B-C11-02-1-B02-R2",
+      "cycle_id": "CORE1B-C11-02-1-B02-R4",
       "unit_id": "C11",
       "subtopic_ref": "CHEM-C11.02",
       "concept_ref": "CHEM-C11.02-CONCEPT",
       "operation": "REPRESENT",
-      "qrt_instance_ref": "C11-02-REPRESENT-D3-B02-R2",
+      "qrt_instance_ref": "C11-02-REPRESENT-D3-B02-R4",
       "qrt_template_ref": "QRT-REPRESENT-D3",
       "band_proposal": "D3",
       "source_role": "AUTHORED_PRACTICE",
       "source_exam_question_id": null,
       "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
       "predict": {
-        "prompt": "Make a provisional prediction and state its assumption before solving: Two ideal carbon network fragments have 12 carbon atoms each with periodic boundaries. Model A has four neighbours per carbon; B has three in-plane neighbours per carbon. Draw the local arrangements, count distinct nearest-neighbour links in each model and connect the diagrams to direction-dependent transport without treating link count as bond strength.",
-        "defensible_answer": "A tetrahedral 3D network, B trigonal planar in sheets. Each link counted twice: A=24, B=18. B has delocalised electrons in layers, A normally lacks mobile carriers. Link count is topology, not bond energy or conductivity magnitude. Periodic boundary idealisation avoids edge effects."
+        "prompt": "Before solving, identify which claim or model you need to test: A schematic carbon fragment A has eight vertices; six have three bonded neighbours and two have two. Fragment B has six vertices; four have four neighbours and two have two. Calculate distinct links for each, then explain whether either count proves a complete graphite or diamond lattice. Sketch a local three-neighbour planar arrangement and a four-neighbour spatial arrangement; show why boundary vertices invalidate the periodic count rule.",
+        "defensible_answer": "A degree sum 6×3+2×2=22, 11 links; B=4×4+2×2=20, 10 links. Counts alone do not establish allotrope: boundary coordination, geometry and electronic structure matter. Graphite local trigonal planar arrangement, diamond local tetrahedral arrangement; edge vertices have lower coordination so uniform periodic degree assumption fails. Link count does not measure bond strength."
       },
       "attempt": {
-        "prompt": "Two ideal carbon network fragments have 12 carbon atoms each with periodic boundaries. Model A has four neighbours per carbon; B has three in-plane neighbours per carbon. Draw the local arrangements, count distinct nearest-neighbour links in each model and connect the diagrams to direction-dependent transport without treating link count as bond strength.",
-        "produces": "Translate coordination into local geometry, network link counts and transport interpretation.",
-        "protected_W": "Translate coordination into local geometry, network link counts and transport interpretation.",
+        "prompt": "A schematic carbon fragment A has eight vertices; six have three bonded neighbours and two have two. Fragment B has six vertices; four have four neighbours and two have two. Calculate distinct links for each, then explain whether either count proves a complete graphite or diamond lattice. Sketch a local three-neighbour planar arrangement and a four-neighbour spatial arrangement; show why boundary vertices invalidate the periodic count rule.",
+        "produces": "Translate nonuniform coordination into link counts and distinguish local geometry from global lattice identity.",
+        "protected_W": "Translate nonuniform coordination into link counts and distinguish local geometry from global lattice identity.",
         "first_attempt_must_be_saved_before_feedback": true,
         "initial_answer_visibility": "HIDDEN",
         "hints": [
           {
             "id": "H1",
             "verb": "CLARIFY",
-            "text": "Separate local coordination from global geometry."
+            "text": "List each coordination class with its population."
           },
           {
             "id": "H2",
             "verb": "CORRELATE",
-            "text": "Count each carbon–carbon link from both endpoints and then correct for double counting."
+            "text": "A shared link contributes at both ends; do not assume uniform coordination."
           },
           {
             "id": "H3",
             "verb": "OPEN_THE_WAY",
-            "text": "Draw local 3D versus in-plane arrangements and connect carrier mobility to their geometry, not to link count alone."
+            "text": "Make a degree-frequency table and sketch only the two local geometries; decide whether the counts establish a bulk lattice."
           }
         ],
         "post_commit_closure": {
-          "model_response": "A tetrahedral 3D network, B trigonal planar in sheets. Each link counted twice: A=24, B=18. B has delocalised electrons in layers, A normally lacks mobile carriers. Link count is topology, not bond energy or conductivity magnitude. Periodic boundary idealisation avoids edge effects.",
+          "model_response": "A degree sum 6×3+2×2=22, 11 links; B=4×4+2×2=20, 10 links. Counts alone do not establish allotrope: boundary coordination, geometry and electronic structure matter. Graphite local trigonal planar arrangement, diamond local tetrahedral arrangement; edge vertices have lower coordination so uniform periodic degree assumption fails. Link count does not measure bond strength.",
           "rubric": [
-            "Translate coordination into local geometry, network link counts and transport interpretation.",
-            "Justify the model and verify conservation or evidence limits.",
-            "Complete independent boundary reasoning."
+            "Translate nonuniform coordination into link counts and distinguish local geometry from global lattice identity.",
+            "Verify the scientific conditions and independent constraint.",
+            "Explain the changed-condition check."
           ]
         }
       },
       "reconstruct": {
         "asks": [
           {
-            "ask": "What model and conditions matter here?",
-            "why_this_ask": "Establish scientific conditions before conclusion.",
+            "ask": "What evidence and scientific conditions restrict this case?",
+            "why_this_ask": "Identify the applicable conditions before deciding.",
             "model_response": "Coordination is the number of nearest bonded neighbours, not bond order or isolated bond strength. In an ideal periodic network each link is shared by two atoms; graphite has delocalised electrons in layers."
           },
           {
-            "ask": "How is the decisive inference constructed?",
-            "why_this_ask": "Compare with committed reasoning.",
-            "model_response": "A tetrahedral 3D network, B trigonal planar in sheets. Each link counted twice: A=24, B=18. B has delocalised electrons in layers, A normally lacks mobile carriers. Link count is topology, not bond energy or conductivity magnitude. Periodic boundary idealisation avoids edge effects."
+            "ask": "How do the independent constraints determine or limit the conclusion?",
+            "why_this_ask": "Reconstruct the decisive step after committing.",
+            "model_response": "A degree sum 6×3+2×2=22, 11 links; B=4×4+2×2=20, 10 links. Counts alone do not establish allotrope: boundary coordination, geometry and electronic structure matter. Graphite local trigonal planar arrangement, diamond local tetrahedral arrangement; edge vertices have lower coordination so uniform periodic degree assumption fails. Link count does not measure bond strength."
           }
         ],
-        "full_reconstruction": "A tetrahedral 3D network, B trigonal planar in sheets. Each link counted twice: A=24, B=18. B has delocalised electrons in layers, A normally lacks mobile carriers. Link count is topology, not bond energy or conductivity magnitude. Periodic boundary idealisation avoids edge effects."
+        "full_reconstruction": "A degree sum 6×3+2×2=22, 11 links; B=4×4+2×2=20, 10 links. Counts alone do not establish allotrope: boundary coordination, geometry and electronic structure matter. Graphite local trigonal planar arrangement, diamond local tetrahedral arrangement; edge vertices have lower coordination so uniform periodic degree assumption fails. Link count does not measure bond strength."
       },
       "diagnose": {
-        "wrong_idea": "More neighbours automatically means better electrical conduction.",
-        "diagnostic_prompt": "Check whether this wrong route is evidenced in your original response; otherwise mark insufficient evidence.",
+        "wrong_idea": "Every vertex has the bulk coordination, even at edges.",
+        "diagnostic_prompt": "Why would multiplying all eight vertices by three overcount A's actual coordination?",
         "model_response": "Coordination is the number of nearest bonded neighbours, not bond order or isolated bond strength. In an ideal periodic network each link is shared by two atoms; graphite has delocalised electrons in layers."
       },
       "repair": {
-        "action": "Rebuild your own reasoning with corrected model and independent check.",
+        "action": "Rebuild the specific comparison or conservation ledger and test the diagnostic question before retrying.",
         "explanation": "Coordination is the number of nearest bonded neighbours, not bond order or isolated bond strength. In an ideal periodic network each link is shared by two atoms; graphite has delocalised electrons in layers.",
         "core1a_ref": "curriculum/chemistry/agent-b/textbook/C11.core1a.md (section C11.02)"
       },
       "boundary_test": {
-        "prompt": "If the fragment has open edges, is the same count guaranteed?",
-        "answer": "No; edge coordination differs and must be counted explicitly.",
-        "confirms": "Changed-condition transfer; authored practice."
+        "prompt": "If one link is added between two existing vertices, by how much does degree sum increase?",
+        "answer": "Two, regardless of the vertex types, provided it is a new distinct link.",
+        "confirms": "Changed-condition transfer, author candidate."
       },
       "reviews": {
         "H1": "UNREVIEWED",
@@ -449,92 +449,92 @@
           "trap_exception_sensitivity": 1
         },
         "factor_evidence": {
-          "concept_model_selection": "Select network representation",
-          "representation_translation": "Translate coordination and geometry",
-          "reasoning_chain_length": "Count links and connect transport",
-          "algebra_computational_load": "Double counting calculation",
-          "trap_exception_sensitivity": "Periodic edge assumption"
+          "concept_model_selection": "Choose nonuniform graph model",
+          "representation_translation": "Translate degree populations to links and local diagrams",
+          "reasoning_chain_length": "Compute counts, compare with periodic assumption",
+          "algebra_computational_load": "Weighted count and division",
+          "trap_exception_sensitivity": "Boundary vertices invalidate bulk inference"
         },
         "total": 7
       }
     },
     {
-      "cycle_id": "CORE1B-C11-02-2-B02-R2",
+      "cycle_id": "CORE1B-C11-02-2-B02-R4",
       "unit_id": "C11",
       "subtopic_ref": "CHEM-C11.02",
       "concept_ref": "CHEM-C11.02-CONCEPT",
       "operation": "SYNTHESIZE",
-      "qrt_instance_ref": "C11-02-SYNTHESIZE-D3-B02-R2",
+      "qrt_instance_ref": "C11-02-SYNTHESIZE-D3-B02-R4",
       "qrt_template_ref": "QRT-SYNTHESIZE-D3",
       "band_proposal": "D3",
       "source_role": "AUTHORED_PRACTICE",
       "source_exam_question_id": null,
       "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
       "predict": {
-        "prompt": "Make a provisional prediction and state its assumption before solving: A layered carbon film shows high current along its plane, low current perpendicular to it and easy cleavage parallel to layers. After compression, perpendicular current increases but the in-plane response remains similar. Construct a model explaining both the original and changed observations and propose a discriminating measurement against a metallic-contamination hypothesis.",
-        "defensible_answer": "Graphitic layers offer in-plane delocalised carriers and weaker interlayer interactions; compression may improve interlayer electronic coupling/contact while preserving layers. Increased perpendicular current does not prove changed allotrope. Contamination or contact change alternatives require structural/composition and controlled contact measurements. No unique quantitative prediction."
+        "prompt": "Before solving, identify which claim or model you need to test: A carbon laminate is electrically measured in two directions. Rotating the sample by 90° relative to fixed electrodes exchanges the high and low readings; replacing the electrodes with different contacts changes both readings similarly. Cleavage is easy along visible planes. Combine the evidence to distinguish orientation-dependent material transport from contact resistance alone, and specify an independent measurement that would challenge the layered model.",
+        "defensible_answer": "Rotation-dependent exchange tracks the sample axes and supports intrinsic anisotropy, whereas common shifts with changed contacts indicate measurement contribution. Easy cleavage along planes supports layered structure. A contact-only hypothesis may still involve orientation-dependent contact geometry; control geometry and use four-probe direction-resolved measurement and structural diffraction. Neither reading proves composition or unique allotrope."
       },
       "attempt": {
-        "prompt": "A layered carbon film shows high current along its plane, low current perpendicular to it and easy cleavage parallel to layers. After compression, perpendicular current increases but the in-plane response remains similar. Construct a model explaining both the original and changed observations and propose a discriminating measurement against a metallic-contamination hypothesis.",
-        "produces": "Integrate network transport, mechanical response and perturbation evidence, distinguishing competing causes.",
-        "protected_W": "Integrate network transport, mechanical response and perturbation evidence, distinguishing competing causes.",
+        "prompt": "A carbon laminate is electrically measured in two directions. Rotating the sample by 90° relative to fixed electrodes exchanges the high and low readings; replacing the electrodes with different contacts changes both readings similarly. Cleavage is easy along visible planes. Combine the evidence to distinguish orientation-dependent material transport from contact resistance alone, and specify an independent measurement that would challenge the layered model.",
+        "produces": "Combine rotated-sample and changed-contact evidence to distinguish competing causes.",
+        "protected_W": "Combine rotated-sample and changed-contact evidence to distinguish competing causes.",
         "first_attempt_must_be_saved_before_feedback": true,
         "initial_answer_visibility": "HIDDEN",
         "hints": [
           {
             "id": "H1",
             "verb": "CLARIFY",
-            "text": "Group observations into transport direction, mechanical cleavage and compression."
+            "text": "Separate what was rotated from what was replaced."
           },
           {
             "id": "H2",
             "verb": "CORRELATE",
-            "text": "Identify what structural features might change under compression without changing the chemical identity."
+            "text": "Ask which observations should follow material axes and which should follow apparatus."
           },
           {
             "id": "H3",
             "verb": "OPEN_THE_WAY",
-            "text": "Compare a layered-coupling model and a contact/contamination model; choose one independent measurement to discriminate."
+            "text": "Make a two-hypothesis prediction table for rotation and contact replacement; compare it with all observations."
           }
         ],
         "post_commit_closure": {
-          "model_response": "Graphitic layers offer in-plane delocalised carriers and weaker interlayer interactions; compression may improve interlayer electronic coupling/contact while preserving layers. Increased perpendicular current does not prove changed allotrope. Contamination or contact change alternatives require structural/composition and controlled contact measurements. No unique quantitative prediction.",
+          "model_response": "Rotation-dependent exchange tracks the sample axes and supports intrinsic anisotropy, whereas common shifts with changed contacts indicate measurement contribution. Easy cleavage along planes supports layered structure. A contact-only hypothesis may still involve orientation-dependent contact geometry; control geometry and use four-probe direction-resolved measurement and structural diffraction. Neither reading proves composition or unique allotrope.",
           "rubric": [
-            "Integrate network transport, mechanical response and perturbation evidence, distinguishing competing causes.",
-            "Justify the model and verify conservation or evidence limits.",
-            "Complete independent boundary reasoning."
+            "Combine rotated-sample and changed-contact evidence to distinguish competing causes.",
+            "Verify the scientific conditions and independent constraint.",
+            "Explain the changed-condition check."
           ]
         }
       },
       "reconstruct": {
         "asks": [
           {
-            "ask": "What model and conditions matter here?",
-            "why_this_ask": "Establish scientific conditions before conclusion.",
+            "ask": "What evidence and scientific conditions restrict this case?",
+            "why_this_ask": "Identify the applicable conditions before deciding.",
             "model_response": "Structure–property reasoning may involve geometry, carrier paths, interlayer interaction and contact effects. A change in a single reading does not establish a phase transition or unique material identity."
           },
           {
-            "ask": "How is the decisive inference constructed?",
-            "why_this_ask": "Compare with committed reasoning.",
-            "model_response": "Graphitic layers offer in-plane delocalised carriers and weaker interlayer interactions; compression may improve interlayer electronic coupling/contact while preserving layers. Increased perpendicular current does not prove changed allotrope. Contamination or contact change alternatives require structural/composition and controlled contact measurements. No unique quantitative prediction."
+            "ask": "How do the independent constraints determine or limit the conclusion?",
+            "why_this_ask": "Reconstruct the decisive step after committing.",
+            "model_response": "Rotation-dependent exchange tracks the sample axes and supports intrinsic anisotropy, whereas common shifts with changed contacts indicate measurement contribution. Easy cleavage along planes supports layered structure. A contact-only hypothesis may still involve orientation-dependent contact geometry; control geometry and use four-probe direction-resolved measurement and structural diffraction. Neither reading proves composition or unique allotrope."
           }
         ],
-        "full_reconstruction": "Graphitic layers offer in-plane delocalised carriers and weaker interlayer interactions; compression may improve interlayer electronic coupling/contact while preserving layers. Increased perpendicular current does not prove changed allotrope. Contamination or contact change alternatives require structural/composition and controlled contact measurements. No unique quantitative prediction."
+        "full_reconstruction": "Rotation-dependent exchange tracks the sample axes and supports intrinsic anisotropy, whereas common shifts with changed contacts indicate measurement contribution. Easy cleavage along planes supports layered structure. A contact-only hypothesis may still involve orientation-dependent contact geometry; control geometry and use four-probe direction-resolved measurement and structural diffraction. Neither reading proves composition or unique allotrope."
       },
       "diagnose": {
-        "wrong_idea": "A change in conductivity proves new chemical bonds formed.",
-        "diagnostic_prompt": "Check whether this wrong route is evidenced in your original response; otherwise mark insufficient evidence.",
+        "wrong_idea": "Every change in current is caused by a change in the carbon structure.",
+        "diagnostic_prompt": "Which result would follow the sample rather than the instrument if anisotropy were intrinsic?",
         "model_response": "Structure–property reasoning may involve geometry, carrier paths, interlayer interaction and contact effects. A change in a single reading does not establish a phase transition or unique material identity."
       },
       "repair": {
-        "action": "Rebuild your own reasoning with corrected model and independent check.",
+        "action": "Rebuild the specific comparison or conservation ledger and test the diagnostic question before retrying.",
         "explanation": "Structure–property reasoning may involve geometry, carrier paths, interlayer interaction and contact effects. A change in a single reading does not establish a phase transition or unique material identity.",
         "core1a_ref": "curriculum/chemistry/agent-b/textbook/C11.core1a.md (section C11.02)"
       },
       "boundary_test": {
-        "prompt": "If compression changes electrode contact alone, could current increase without altering carbon structure?",
-        "answer": "Yes; use controlled contacts and independent structural evidence.",
-        "confirms": "Changed-condition transfer; authored practice."
+        "prompt": "If rotating the sample does not change the directional pattern but rotating the electrode setup does, what alternative gains support?",
+        "answer": "Instrument/contact geometry becomes a stronger explanation; structure still needs independent evidence.",
+        "confirms": "Changed-condition transfer, author candidate."
       },
       "reviews": {
         "H1": "UNREVIEWED",
@@ -562,11 +562,11 @@
           "trap_exception_sensitivity": 2
         },
         "factor_evidence": {
-          "concept_model_selection": "Compare layered and contamination models",
-          "representation_translation": "Translate anisotropic data into paths",
-          "reasoning_chain_length": "Link original and perturbation evidence",
+          "concept_model_selection": "Compare intrinsic and contact models",
+          "representation_translation": "Translate interventions into predictions",
+          "reasoning_chain_length": "Integrate rotation, contacts and cleavage",
           "algebra_computational_load": "No calculation",
-          "trap_exception_sensitivity": "Contact vs intrinsic structure"
+          "trap_exception_sensitivity": "Apparatus effects can mimic structure"
         },
         "total": 7
       }
@@ -685,82 +685,82 @@
       }
     },
     {
-      "cycle_id": "CORE1B-C11-03-1-B02-R3",
+      "cycle_id": "CORE1B-C11-03-1-B02-R4",
       "unit_id": "C11",
       "subtopic_ref": "CHEM-C11.03",
       "concept_ref": "CHEM-C11.03-CONCEPT",
       "operation": "REPRESENT",
-      "qrt_instance_ref": "C11-03-REPRESENT-D3-B02-R3",
+      "qrt_instance_ref": "C11-03-REPRESENT-D3-B02-R4",
       "qrt_template_ref": "QRT-REPRESENT-D3",
       "band_proposal": "D3",
       "source_role": "AUTHORED_PRACTICE",
       "source_exam_question_id": null,
       "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
       "predict": {
-        "prompt": "Predict your likely model or outcome before solving: A neutral connected hydrocarbon C₅H₈ is claimed to contain exactly one C=C, no rings and no other multiple bonds. Test claim by valence counting and construct two valid structures with different ring/multiple-bond allocations; verify both formulas.",
-        "defensible_answer": "C₅H₁₂ saturated acyclic; missing 4 H corresponds to two unsaturation units. One double gives C₅H₁₀. Pent-1-yne HC≡C–CH₂–CH₂–CH₃ has 8 H; cyclopentene has one ring and one double, two CH and three CH₂=8 H. Formula cannot determine connectivity."
+        "prompt": "Before solving, identify which claim or model you need to test: Two proposed connected hydrocarbons have six carbons. A is acyclic with two C=C bonds; B has one ring and one C≡C bond. A student labels both C₆H₁₀. Construct valid explicit examples, count hydrogens from bond orders, correct the labels, and decide whether ideal multiple-bond hydrogenation (rings unchanged) makes the products have equal formulas.",
+        "defensible_answer": "A: hexa-1,3-diene CH₂=CH–CH=CH–CH₂–CH₃, C₆H₁₀. B: ethynylcyclobutane, C₄H₇–C≡CH, C₆H₈; the ring contributes one deficit and triple two. A adds 2H₂→C₆H₁₄; B adds 2H₂→C₆H₁₂ (ring remains), under stated model. Not equal. Check carbon valence and H counts: B has one ring CH, three ring CH₂ and one terminal alkyne H."
       },
       "attempt": {
-        "prompt": "A neutral connected hydrocarbon C₅H₈ is claimed to contain exactly one C=C, no rings and no other multiple bonds. Test claim by valence counting and construct two valid structures with different ring/multiple-bond allocations; verify both formulas.",
-        "produces": "Build two valid structures and reject incompatible hydrogen count.",
-        "protected_W": "Build two valid structures and reject incompatible hydrogen count.",
+        "prompt": "Two proposed connected hydrocarbons have six carbons. A is acyclic with two C=C bonds; B has one ring and one C≡C bond. A student labels both C₆H₁₀. Construct valid explicit examples, count hydrogens from bond orders, correct the labels, and decide whether ideal multiple-bond hydrogenation (rings unchanged) makes the products have equal formulas.",
+        "produces": "Translate structural constraints to two valid graphs and compare independent atom counts before and after reaction.",
+        "protected_W": "Translate structural constraints to two valid graphs and compare independent atom counts before and after reaction.",
         "first_attempt_must_be_saved_before_feedback": true,
         "initial_answer_visibility": "HIDDEN",
         "hints": [
           {
             "id": "H1",
             "verb": "CLARIFY",
-            "text": "Record the carbon and hydrogen totals, and distinguish a ring from a multiple bond."
+            "text": "List the constraints for A and B separately, including which feature persists."
           },
           {
             "id": "H2",
             "verb": "CORRELATE",
-            "text": "Compare the given formula with the hydrogen count for an acyclic saturated skeleton of the same carbon number."
+            "text": "Use typical carbon bond-order sum four to count attached H; a triple uses three bond units."
           },
           {
             "id": "H3",
             "verb": "OPEN_THE_WAY",
-            "text": "Allocate the missing hydrogen pairs among rings and bond orders in two different ways; draw your own skeletons and check each carbon's valence before deciding whether the reported claim fits."
+            "text": "Sketch a valid graph for each and build a before/after atom ledger for ideal hydrogenation; check every carbon."
           }
         ],
         "post_commit_closure": {
-          "model_response": "C₅H₁₂ saturated acyclic; missing 4 H corresponds to two unsaturation units. One double gives C₅H₁₀. Pent-1-yne HC≡C–CH₂–CH₂–CH₃ has 8 H; cyclopentene has one ring and one double, two CH and three CH₂=8 H. Formula cannot determine connectivity.",
+          "model_response": "A: hexa-1,3-diene CH₂=CH–CH=CH–CH₂–CH₃, C₆H₁₀. B: ethynylcyclobutane, C₄H₇–C≡CH, C₆H₈; the ring contributes one deficit and triple two. A adds 2H₂→C₆H₁₄; B adds 2H₂→C₆H₁₂ (ring remains), under stated model. Not equal. Check carbon valence and H counts: B has one ring CH, three ring CH₂ and one terminal alkyne H.",
           "rubric": [
-            "Build two valid structures and reject incompatible hydrogen count.",
-            "State assumptions and verify the relationships.",
-            "Check changed conditions independently."
+            "Translate structural constraints to two valid graphs and compare independent atom counts before and after reaction.",
+            "Verify the scientific conditions and independent constraint.",
+            "Explain the changed-condition check."
           ]
         }
       },
       "reconstruct": {
         "asks": [
           {
-            "ask": "Which evidence and constraints are relevant?",
-            "why_this_ask": "Establish the model conditions.",
+            "ask": "What evidence and scientific conditions restrict this case?",
+            "why_this_ask": "Identify the applicable conditions before deciding.",
             "model_response": "For typical neutral connected hydrocarbons, a ring or double bond reduces hydrogen count by two relative to acyclic saturation; triple reduces by four. Hydrogen-deficiency formula is extension context; formula alone does not identify structure."
           },
           {
-            "ask": "How do those constraints determine the outcome?",
-            "why_this_ask": "Reconstruct protected reasoning after commitment.",
-            "model_response": "C₅H₁₂ saturated acyclic; missing 4 H corresponds to two unsaturation units. One double gives C₅H₁₀. Pent-1-yne HC≡C–CH₂–CH₂–CH₃ has 8 H; cyclopentene has one ring and one double, two CH and three CH₂=8 H. Formula cannot determine connectivity."
+            "ask": "How do the independent constraints determine or limit the conclusion?",
+            "why_this_ask": "Reconstruct the decisive step after committing.",
+            "model_response": "A: hexa-1,3-diene CH₂=CH–CH=CH–CH₂–CH₃, C₆H₁₀. B: ethynylcyclobutane, C₄H₇–C≡CH, C₆H₈; the ring contributes one deficit and triple two. A adds 2H₂→C₆H₁₄; B adds 2H₂→C₆H₁₂ (ring remains), under stated model. Not equal. Check carbon valence and H counts: B has one ring CH, three ring CH₂ and one terminal alkyne H."
           }
         ],
-        "full_reconstruction": "C₅H₁₂ saturated acyclic; missing 4 H corresponds to two unsaturation units. One double gives C₅H₁₀. Pent-1-yne HC≡C–CH₂–CH₂–CH₃ has 8 H; cyclopentene has one ring and one double, two CH and three CH₂=8 H. Formula cannot determine connectivity."
+        "full_reconstruction": "A: hexa-1,3-diene CH₂=CH–CH=CH–CH₂–CH₃, C₆H₁₀. B: ethynylcyclobutane, C₄H₇–C≡CH, C₆H₈; the ring contributes one deficit and triple two. A adds 2H₂→C₆H₁₄; B adds 2H₂→C₆H₁₂ (ring remains), under stated model. Not equal. Check carbon valence and H counts: B has one ring CH, three ring CH₂ and one terminal alkyne H."
       },
       "diagnose": {
-        "wrong_idea": "Hydrogen deficiency uniquely specifies a double bond.",
-        "diagnostic_prompt": "Compare your saved response to this possible wrong route. If not evidenced, record insufficient evidence.",
+        "wrong_idea": "Each ring or multiple bond removes the same number of hydrogens, including a triple bond.",
+        "diagnostic_prompt": "Does a triple bond remove the same number of H as a ring relative to the saturated reference?",
         "model_response": "For typical neutral connected hydrocarbons, a ring or double bond reduces hydrogen count by two relative to acyclic saturation; triple reduces by four. Hydrogen-deficiency formula is extension context; formula alone does not identify structure."
       },
       "repair": {
-        "action": "Rewrite the reasoning using the appropriate evidence or species ledger and check the decisive condition.",
+        "action": "Rebuild the specific comparison or conservation ledger and test the diagnostic question before retrying.",
         "explanation": "For typical neutral connected hydrocarbons, a ring or double bond reduces hydrogen count by two relative to acyclic saturation; triple reduces by four. Hydrogen-deficiency formula is extension context; formula alone does not identify structure.",
         "core1a_ref": "curriculum/chemistry/agent-b/textbook/C11.core1a.md (section C11.03)"
       },
       "boundary_test": {
-        "prompt": "Can C₅H₈ have one ring plus a triple bond?",
-        "answer": "No; three unsaturation units require C₅H₆.",
-        "confirms": "Changed-condition transfer; no original exam claim."
+        "prompt": "If B loses the ring constraint by adding two H in a hypothetical ring-opening step, what saturated formula follows?",
+        "answer": "C₆H₁₄, provided all multiple bonds are already reduced and no atoms lost.",
+        "confirms": "Changed-condition transfer, author candidate."
       },
       "reviews": {
         "H1": "UNREVIEWED",
@@ -788,11 +788,11 @@
           "trap_exception_sensitivity": 1
         },
         "factor_evidence": {
-          "concept_model_selection": "Select valence/deficiency model",
-          "representation_translation": "Translate formula to distinct structures",
-          "reasoning_chain_length": "Test claim, construct and verify",
-          "algebra_computational_load": "Hydrogen count",
-          "trap_exception_sensitivity": "Ring versus multiple bond ambiguity"
+          "concept_model_selection": "Select valence and ring-preservation model",
+          "representation_translation": "Translate graph constraints to formulas and transformations",
+          "reasoning_chain_length": "Construct, correct labels, compare products",
+          "algebra_computational_load": "Hydrogen accounting",
+          "trap_exception_sensitivity": "Triple and ring contribute different deficits"
         },
         "total": 7
       }
@@ -1250,82 +1250,82 @@
       }
     },
     {
-      "cycle_id": "CORE1B-C11-04-3-B02-R2",
+      "cycle_id": "CORE1B-C11-04-3-B02-R4",
       "unit_id": "C11",
       "subtopic_ref": "CHEM-C11.04",
       "concept_ref": "CHEM-C11.04-CONCEPT",
       "operation": "JUSTIFY",
-      "qrt_instance_ref": "C11-04-JUSTIFY-D3-B02-R2",
+      "qrt_instance_ref": "C11-04-JUSTIFY-D3-B02-R4",
       "qrt_template_ref": "QRT-JUSTIFY-D3",
       "band_proposal": "D3",
       "source_role": "AUTHORED_PRACTICE",
       "source_exam_question_id": null,
       "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
       "predict": {
-        "prompt": "Make a provisional prediction and state its assumption before solving: Three drawings are CH₃CH(OH)CH₂CH₃, CH₃CH₂CH(OH)CH₃ and CH₃CH₂OCH₂CH₃. A report counts three different constitutional alcohols. Evaluate it by tracing connectivity, formula and functional groups; give a fourth drawing that is a genuinely distinct alcohol with the same formula.",
-        "defensible_answer": "First and second are butan-2-ol with reversed numbering, same connectivity. Third diethyl ether shares C₄H₁₀O but is not alcohol. Only one constitutional alcohol among three. Butan-1-ol CH₃CH₂CH₂CH₂OH is distinct, same formula. Ignore stereochemistry unless specified."
+        "prompt": "Before solving, identify which claim or model you need to test: Three C₄H₁₀O candidates are butan-1-ol, butan-2-ol and 2-methylpropan-2-ol. A model labels each carbon by the number of carbon neighbours and reports that the OH-bearing carbon has exactly one carbon neighbour. A student says this identifies butan-1-ol uniquely among all acyclic saturated monohydric alcohols. Test the claim by drawing an omitted constitutional candidate and explaining why numbering reversal cannot create it.",
+        "defensible_answer": "Butan-1-ol OH carbon degree 1; butan-2-ol degree 2; 2-methylpropan-2-ol degree 3. Omitted 2-methylpropan-1-ol (CH₃)₂CHCH₂OH also degree 1 and C₄H₁₀O. Its carbon graph is branched, unlike butan-1-ol; reversal cannot change vertex degree distribution. Measurement supports two candidates, not unique identity; need branching evidence."
       },
       "attempt": {
-        "prompt": "Three drawings are CH₃CH(OH)CH₂CH₃, CH₃CH₂CH(OH)CH₃ and CH₃CH₂OCH₂CH₃. A report counts three different constitutional alcohols. Evaluate it by tracing connectivity, formula and functional groups; give a fourth drawing that is a genuinely distinct alcohol with the same formula.",
-        "produces": "Reject duplicate and functional-group errors using connectivity and symmetry, then give witness.",
-        "protected_W": "Reject duplicate and functional-group errors using connectivity and symmetry, then give witness.",
+        "prompt": "Three C₄H₁₀O candidates are butan-1-ol, butan-2-ol and 2-methylpropan-2-ol. A model labels each carbon by the number of carbon neighbours and reports that the OH-bearing carbon has exactly one carbon neighbour. A student says this identifies butan-1-ol uniquely among all acyclic saturated monohydric alcohols. Test the claim by drawing an omitted constitutional candidate and explaining why numbering reversal cannot create it.",
+        "produces": "Refute an inverse structural identification with a valid omitted witness and graph invariant.",
+        "protected_W": "Refute an inverse structural identification with a valid omitted witness and graph invariant.",
         "first_attempt_must_be_saved_before_feedback": true,
         "initial_answer_visibility": "HIDDEN",
         "hints": [
           {
             "id": "H1",
             "verb": "CLARIFY",
-            "text": "Mark the C–O bonds and OH connectivity in each drawing."
+            "text": "Separate the local OH-bearing carbon condition from the complete carbon skeleton."
           },
           {
             "id": "H2",
             "verb": "CORRELATE",
-            "text": "Reverse carbon numbering where possible and test whether the bond graph changes."
+            "text": "Draw the candidates and count carbon neighbours, not all bonded atoms."
           },
           {
             "id": "H3",
             "verb": "OPEN_THE_WAY",
-            "text": "Group drawings into equivalence classes and construct a new alcohol from a nonequivalent OH position."
+            "text": "Search the allowed skeleton classes for an omitted witness and compare an invariant under numbering reversal."
           }
         ],
         "post_commit_closure": {
-          "model_response": "First and second are butan-2-ol with reversed numbering, same connectivity. Third diethyl ether shares C₄H₁₀O but is not alcohol. Only one constitutional alcohol among three. Butan-1-ol CH₃CH₂CH₂CH₂OH is distinct, same formula. Ignore stereochemistry unless specified.",
+          "model_response": "Butan-1-ol OH carbon degree 1; butan-2-ol degree 2; 2-methylpropan-2-ol degree 3. Omitted 2-methylpropan-1-ol (CH₃)₂CHCH₂OH also degree 1 and C₄H₁₀O. Its carbon graph is branched, unlike butan-1-ol; reversal cannot change vertex degree distribution. Measurement supports two candidates, not unique identity; need branching evidence.",
           "rubric": [
-            "Reject duplicate and functional-group errors using connectivity and symmetry, then give witness.",
-            "Justify the model and verify conservation or evidence limits.",
-            "Complete independent boundary reasoning."
+            "Refute an inverse structural identification with a valid omitted witness and graph invariant.",
+            "Verify the scientific conditions and independent constraint.",
+            "Explain the changed-condition check."
           ]
         }
       },
       "reconstruct": {
         "asks": [
           {
-            "ask": "What model and conditions matter here?",
-            "why_this_ask": "Establish scientific conditions before conclusion.",
+            "ask": "What evidence and scientific conditions restrict this case?",
+            "why_this_ask": "Identify the applicable conditions before deciding.",
             "model_response": "Constitutional identity depends on which atoms are bonded, not direction of drawing. An ether has C–O–C; alcohol has C–O–H. Formula alone does not establish group."
           },
           {
-            "ask": "How is the decisive inference constructed?",
-            "why_this_ask": "Compare with committed reasoning.",
-            "model_response": "First and second are butan-2-ol with reversed numbering, same connectivity. Third diethyl ether shares C₄H₁₀O but is not alcohol. Only one constitutional alcohol among three. Butan-1-ol CH₃CH₂CH₂CH₂OH is distinct, same formula. Ignore stereochemistry unless specified."
+            "ask": "How do the independent constraints determine or limit the conclusion?",
+            "why_this_ask": "Reconstruct the decisive step after committing.",
+            "model_response": "Butan-1-ol OH carbon degree 1; butan-2-ol degree 2; 2-methylpropan-2-ol degree 3. Omitted 2-methylpropan-1-ol (CH₃)₂CHCH₂OH also degree 1 and C₄H₁₀O. Its carbon graph is branched, unlike butan-1-ol; reversal cannot change vertex degree distribution. Measurement supports two candidates, not unique identity; need branching evidence."
           }
         ],
-        "full_reconstruction": "First and second are butan-2-ol with reversed numbering, same connectivity. Third diethyl ether shares C₄H₁₀O but is not alcohol. Only one constitutional alcohol among three. Butan-1-ol CH₃CH₂CH₂CH₂OH is distinct, same formula. Ignore stereochemistry unless specified."
+        "full_reconstruction": "Butan-1-ol OH carbon degree 1; butan-2-ol degree 2; 2-methylpropan-2-ol degree 3. Omitted 2-methylpropan-1-ol (CH₃)₂CHCH₂OH also degree 1 and C₄H₁₀O. Its carbon graph is branched, unlike butan-1-ol; reversal cannot change vertex degree distribution. Measurement supports two candidates, not unique identity; need branching evidence."
       },
       "diagnose": {
-        "wrong_idea": "Different written order guarantees a new constitutional isomer.",
-        "diagnostic_prompt": "Check whether this wrong route is evidenced in your original response; otherwise mark insufficient evidence.",
+        "wrong_idea": "A single local carbon environment uniquely identifies the complete molecular graph.",
+        "diagnostic_prompt": "Can reversing a chain turn a degree-three carbon into a degree-two carbon?",
         "model_response": "Constitutional identity depends on which atoms are bonded, not direction of drawing. An ether has C–O–C; alcohol has C–O–H. Formula alone does not establish group."
       },
       "repair": {
-        "action": "Rebuild your own reasoning with corrected model and independent check.",
+        "action": "Rebuild the specific comparison or conservation ledger and test the diagnostic question before retrying.",
         "explanation": "Constitutional identity depends on which atoms are bonded, not direction of drawing. An ether has C–O–C; alcohol has C–O–H. Formula alone does not establish group.",
         "core1a_ref": "curriculum/chemistry/agent-b/textbook/C11.core1a.md (section C11.04)"
       },
       "boundary_test": {
-        "prompt": "Could two drawings with same connectivity be distinct stereoisomers?",
-        "answer": "Yes if spatial configuration differs; connectivity alone does not resolve stereochemistry, which is excluded here.",
-        "confirms": "Changed-condition transfer; authored practice."
+        "prompt": "Would evidence that no carbon has three carbon neighbours distinguish the two degree-one candidates?",
+        "answer": "Yes within the stated candidates: straight butan-1-ol has maximum carbon degree two; branched alternative has a degree-three carbon.",
+        "confirms": "Changed-condition transfer, author candidate."
       },
       "reviews": {
         "H1": "UNREVIEWED",
@@ -1353,11 +1353,11 @@
           "trap_exception_sensitivity": 2
         },
         "factor_evidence": {
-          "concept_model_selection": "Choose constitutional vs functional class",
-          "representation_translation": "Translate drawings to connectivity",
-          "reasoning_chain_length": "Identify equivalent pair, ether and new witness",
-          "algebra_computational_load": "No calculation",
-          "trap_exception_sensitivity": "Stereochemistry boundary"
+          "concept_model_selection": "Select local vs global connectivity",
+          "representation_translation": "Translate local measurement to graph constraints",
+          "reasoning_chain_length": "Test claim with omitted witness and discriminator",
+          "algebra_computational_load": "No numerical calculation",
+          "trap_exception_sensitivity": "Local feature not unique global identity"
         },
         "total": 7
       }
@@ -1476,82 +1476,82 @@
       }
     },
     {
-      "cycle_id": "CORE1B-C11-05-2-B02-R2",
+      "cycle_id": "CORE1B-C11-05-2-B02-R4",
       "unit_id": "C11",
       "subtopic_ref": "CHEM-C11.05",
       "concept_ref": "CHEM-C11.05-CONCEPT",
       "operation": "SYNTHESIZE",
-      "qrt_instance_ref": "C11-05-SYNTHESIZE-D3-B02-R2",
+      "qrt_instance_ref": "C11-05-SYNTHESIZE-D3-B02-R4",
       "qrt_template_ref": "QRT-SYNTHESIZE-D3",
       "band_proposal": "D3",
       "source_role": "AUTHORED_PRACTICE",
       "source_exam_question_id": null,
       "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
       "predict": {
-        "prompt": "Make a provisional prediction and state its assumption before solving: A pure neutral C₂H₆O sample is either ethanol or methoxymethane. It shows O–H absorption in a hypothetical independently calibrated spectrum and yields C₂H₄O₂ on complete selective oxidation that preserves the carbon skeleton. Combine the observations to identify the supported model and explain why molecular mass alone is inadequate.",
-        "defensible_answer": "Ethanol CH₃CH₂OH contains O–H, can oxidise via ethanal to ethanoic acid CH₃COOH while preserving carbon skeleton; ether CH₃OCH₃ lacks O–H and does not fit stated selective pathway. Both C₂H₆O mass 46. Observations jointly support ethanol within two pure candidates; mixture or nonselective oxidation breaks inference. Spectral context enrichment."
+        "prompt": "Before solving, identify which claim or model you need to test: An unknown pure neutral C₃H₈O compound is one of propan-1-ol, propan-2-ol or methoxyethane. A calibrated O–H signal is present. A specified selective oxidation preserves the carbon skeleton and produces C₃H₆O, but the product could be an aldehyde or ketone. Which initial models remain? Construct two product structures and select one additional structural observation to distinguish them.",
+        "defensible_answer": "O–H supports either alcohol, excludes ether within pure candidates. Propan-1-ol→propanal CH₃CH₂CHO; propan-2-ol→propanone CH₃COCH₃ under stated selective oxidation. Both C₃H₆O, so formula insufficient. Identify carbonyl carbon bonded to H (aldehyde) vs two carbon groups (ketone) using structural evidence, not just carbonyl presence. Conditions and purity matter."
       },
       "attempt": {
-        "prompt": "A pure neutral C₂H₆O sample is either ethanol or methoxymethane. It shows O–H absorption in a hypothetical independently calibrated spectrum and yields C₂H₄O₂ on complete selective oxidation that preserves the carbon skeleton. Combine the observations to identify the supported model and explain why molecular mass alone is inadequate.",
-        "produces": "Combine connectivity, independent structural evidence and reaction sequence.",
-        "protected_W": "Combine connectivity, independent structural evidence and reaction sequence.",
+        "prompt": "An unknown pure neutral C₃H₈O compound is one of propan-1-ol, propan-2-ol or methoxyethane. A calibrated O–H signal is present. A specified selective oxidation preserves the carbon skeleton and produces C₃H₆O, but the product could be an aldehyde or ketone. Which initial models remain? Construct two product structures and select one additional structural observation to distinguish them.",
+        "produces": "Combine positive O–H evidence and nonunique product formula; construct competing pathways and decisive observation.",
+        "protected_W": "Combine positive O–H evidence and nonunique product formula; construct competing pathways and decisive observation.",
         "first_attempt_must_be_saved_before_feedback": true,
         "initial_answer_visibility": "HIDDEN",
         "hints": [
           {
             "id": "H1",
             "verb": "CLARIFY",
-            "text": "Write both candidate structures and compare bonds to oxygen."
+            "text": "Identify what the O–H observation excludes and what it leaves open."
           },
           {
             "id": "H2",
             "verb": "CORRELATE",
-            "text": "Translate the spectrum observation into a structural constraint, and consider carbon conservation in oxidation."
+            "text": "Compare possible carbonyl connectivity patterns on the same carbon skeleton."
           },
           {
             "id": "H3",
             "verb": "OPEN_THE_WAY",
-            "text": "Construct a candidate/evidence matrix for both observations and note which purity assumption is required."
+            "text": "Build a candidate-to-product matrix and look for an additional observation distinguishing the remaining rows."
           }
         ],
         "post_commit_closure": {
-          "model_response": "Ethanol CH₃CH₂OH contains O–H, can oxidise via ethanal to ethanoic acid CH₃COOH while preserving carbon skeleton; ether CH₃OCH₃ lacks O–H and does not fit stated selective pathway. Both C₂H₆O mass 46. Observations jointly support ethanol within two pure candidates; mixture or nonselective oxidation breaks inference. Spectral context enrichment.",
+          "model_response": "O–H supports either alcohol, excludes ether within pure candidates. Propan-1-ol→propanal CH₃CH₂CHO; propan-2-ol→propanone CH₃COCH₃ under stated selective oxidation. Both C₃H₆O, so formula insufficient. Identify carbonyl carbon bonded to H (aldehyde) vs two carbon groups (ketone) using structural evidence, not just carbonyl presence. Conditions and purity matter.",
           "rubric": [
-            "Combine connectivity, independent structural evidence and reaction sequence.",
-            "Justify the model and verify conservation or evidence limits.",
-            "Complete independent boundary reasoning."
+            "Combine positive O–H evidence and nonunique product formula; construct competing pathways and decisive observation.",
+            "Verify the scientific conditions and independent constraint.",
+            "Explain the changed-condition check."
           ]
         }
       },
       "reconstruct": {
         "asks": [
           {
-            "ask": "What model and conditions matter here?",
-            "why_this_ask": "Establish scientific conditions before conclusion.",
+            "ask": "What evidence and scientific conditions restrict this case?",
+            "why_this_ask": "Identify the applicable conditions before deciding.",
             "model_response": "An alcohol and ether can share molecular formula but differ in O–H bond and selective reaction behaviour. A calibrated structural observation plus a defined reaction model can discriminate candidates."
           },
           {
-            "ask": "How is the decisive inference constructed?",
-            "why_this_ask": "Compare with committed reasoning.",
-            "model_response": "Ethanol CH₃CH₂OH contains O–H, can oxidise via ethanal to ethanoic acid CH₃COOH while preserving carbon skeleton; ether CH₃OCH₃ lacks O–H and does not fit stated selective pathway. Both C₂H₆O mass 46. Observations jointly support ethanol within two pure candidates; mixture or nonselective oxidation breaks inference. Spectral context enrichment."
+            "ask": "How do the independent constraints determine or limit the conclusion?",
+            "why_this_ask": "Reconstruct the decisive step after committing.",
+            "model_response": "O–H supports either alcohol, excludes ether within pure candidates. Propan-1-ol→propanal CH₃CH₂CHO; propan-2-ol→propanone CH₃COCH₃ under stated selective oxidation. Both C₃H₆O, so formula insufficient. Identify carbonyl carbon bonded to H (aldehyde) vs two carbon groups (ketone) using structural evidence, not just carbonyl presence. Conditions and purity matter."
           }
         ],
-        "full_reconstruction": "Ethanol CH₃CH₂OH contains O–H, can oxidise via ethanal to ethanoic acid CH₃COOH while preserving carbon skeleton; ether CH₃OCH₃ lacks O–H and does not fit stated selective pathway. Both C₂H₆O mass 46. Observations jointly support ethanol within two pure candidates; mixture or nonselective oxidation breaks inference. Spectral context enrichment."
+        "full_reconstruction": "O–H supports either alcohol, excludes ether within pure candidates. Propan-1-ol→propanal CH₃CH₂CHO; propan-2-ol→propanone CH₃COCH₃ under stated selective oxidation. Both C₃H₆O, so formula insufficient. Identify carbonyl carbon bonded to H (aldehyde) vs two carbon groups (ketone) using structural evidence, not just carbonyl presence. Conditions and purity matter."
       },
       "diagnose": {
-        "wrong_idea": "Molecular formula plus one positive observation always proves purity.",
-        "diagnostic_prompt": "Check whether this wrong route is evidenced in your original response; otherwise mark insufficient evidence.",
+        "wrong_idea": "An oxidation product formula identifies the starting alcohol uniquely.",
+        "diagnostic_prompt": "Would detecting only a C=O bond in the product distinguish an aldehyde from a ketone?",
         "model_response": "An alcohol and ether can share molecular formula but differ in O–H bond and selective reaction behaviour. A calibrated structural observation plus a defined reaction model can discriminate candidates."
       },
       "repair": {
-        "action": "Rebuild your own reasoning with corrected model and independent check.",
+        "action": "Rebuild the specific comparison or conservation ledger and test the diagnostic question before retrying.",
         "explanation": "An alcohol and ether can share molecular formula but differ in O–H bond and selective reaction behaviour. A calibrated structural observation plus a defined reaction model can discriminate candidates.",
         "core1a_ref": "curriculum/chemistry/agent-b/textbook/C11.core1a.md (section C11.05)"
       },
       "boundary_test": {
-        "prompt": "If a mixture contains a trace alcohol, does an O–H signal prove all sample molecules are ethanol?",
-        "answer": "No. Signal could arise from minor component; quantitative composition needed.",
-        "confirms": "Changed-condition transfer; authored practice."
+        "prompt": "If product is independently identified as propanone, which starting candidate fits the stipulated pathway?",
+        "answer": "Propan-2-ol under the given selective, skeleton-preserving model.",
+        "confirms": "Changed-condition transfer, author candidate."
       },
       "reviews": {
         "H1": "UNREVIEWED",
@@ -1579,11 +1579,11 @@
           "trap_exception_sensitivity": 1
         },
         "factor_evidence": {
-          "concept_model_selection": "Select two connectivity and reaction models",
-          "representation_translation": "Translate spectrum and product formula",
-          "reasoning_chain_length": "Combine independent constraints",
-          "algebra_computational_load": "No arithmetic required",
-          "trap_exception_sensitivity": "Mixture/nonselective model"
+          "concept_model_selection": "Compare primary/secondary alcohol and ether",
+          "representation_translation": "Translate product formula to alternative structures",
+          "reasoning_chain_length": "Integrate evidence and choose discriminating observation",
+          "algebra_computational_load": "No computation",
+          "trap_exception_sensitivity": "Nonunique product formula"
         },
         "total": 7
       }
@@ -1702,82 +1702,82 @@
       }
     },
     {
-      "cycle_id": "CORE1B-C11-06-1-B02-R2",
+      "cycle_id": "CORE1B-C11-06-1-B02-R4",
       "unit_id": "C11",
       "subtopic_ref": "CHEM-C11.06",
       "concept_ref": "CHEM-C11.06-CONCEPT",
       "operation": "REPRESENT",
-      "qrt_instance_ref": "C11-06-REPRESENT-D3-B02-R2",
+      "qrt_instance_ref": "C11-06-REPRESENT-D3-B02-R4",
       "qrt_template_ref": "QRT-REPRESENT-D3",
       "band_proposal": "D3",
       "source_role": "AUTHORED_PRACTICE",
       "source_exam_question_id": null,
       "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
       "predict": {
-        "prompt": "Make a provisional prediction and state its assumption before solving: An ideal 0.10 mol methane sample burns completely with excess O₂. A second 0.10 mol sample is assumed to yield only CO and H₂O, with all methane consumed. Write balanced equations, compute oxygen requirements and compare carbon-containing products. State why these two models do not establish actual restricted-oxygen product proportions.",
-        "defensible_answer": "CH₄+2O₂→CO₂+2H₂O: .20 mol O₂, .10 mol CO₂. 2CH₄+3O₂→2CO+4H₂O: .15 mol O₂, .10 mol CO. Both .20 mol H₂O. Restricted oxygen may yield CO₂, CO, soot, unreacted fuel; actual proportions need data. Models theoretical only."
+        "prompt": "Before solving, identify which claim or model you need to test: A theoretical combustion record for 0.10 mol methane contains 0.06 mol CO₂, 0.04 mol CO and 0.20 mol H₂O. Represent it as a single balanced equation using the smallest integer coefficients, calculate oxygen consumption, and compare with the all-CO₂ model. Explain what would fail if soot were also present but unmeasured.",
+        "defensible_answer": "Per .10 mol CH₄, oxygen atoms .12+.04+.20=.36 mol, O₂=.18 mol. Ratio multiplying by 50: 5CH₄+9O₂→3CO₂+2CO+10H₂O. All CO₂ uses .20 mol O₂. Carbon ledger .06+.04=.10; if additional soot present at same measured gas amounts, carbon conservation fails unless record/inputs differ. Model only, not experiment."
       },
       "attempt": {
-        "prompt": "An ideal 0.10 mol methane sample burns completely with excess O₂. A second 0.10 mol sample is assumed to yield only CO and H₂O, with all methane consumed. Write balanced equations, compute oxygen requirements and compare carbon-containing products. State why these two models do not establish actual restricted-oxygen product proportions.",
-        "produces": "Translate alternative product assumptions into balanced equations and comparative mole ledger.",
-        "protected_W": "Translate alternative product assumptions into balanced equations and comparative mole ledger.",
+        "prompt": "A theoretical combustion record for 0.10 mol methane contains 0.06 mol CO₂, 0.04 mol CO and 0.20 mol H₂O. Represent it as a single balanced equation using the smallest integer coefficients, calculate oxygen consumption, and compare with the all-CO₂ model. Explain what would fail if soot were also present but unmeasured.",
+        "produces": "Translate mixed product measurements into balanced integer equation and verify independent atom conservation.",
+        "protected_W": "Translate mixed product measurements into balanced integer equation and verify independent atom conservation.",
         "first_attempt_must_be_saved_before_feedback": true,
         "initial_answer_visibility": "HIDDEN",
         "hints": [
           {
             "id": "H1",
             "verb": "CLARIFY",
-            "text": "Separate the assumed carbon-containing product for each reaction."
+            "text": "List measured carbon- and hydrogen-containing products separately."
           },
           {
             "id": "H2",
             "verb": "CORRELATE",
-            "text": "Balance C and H first, then calculate O atoms required."
+            "text": "Use atom conservation to find oxygen atoms on the product side before converting to O₂."
           },
           {
             "id": "H3",
             "verb": "OPEN_THE_WAY",
-            "text": "Construct a mole table for both equations and compare their predictions; identify which real product data remain missing."
+            "text": "Construct a species mole ledger, scale all coefficients together to integers, then check carbon independently."
           }
         ],
         "post_commit_closure": {
-          "model_response": "CH₄+2O₂→CO₂+2H₂O: .20 mol O₂, .10 mol CO₂. 2CH₄+3O₂→2CO+4H₂O: .15 mol O₂, .10 mol CO. Both .20 mol H₂O. Restricted oxygen may yield CO₂, CO, soot, unreacted fuel; actual proportions need data. Models theoretical only.",
+          "model_response": "Per .10 mol CH₄, oxygen atoms .12+.04+.20=.36 mol, O₂=.18 mol. Ratio multiplying by 50: 5CH₄+9O₂→3CO₂+2CO+10H₂O. All CO₂ uses .20 mol O₂. Carbon ledger .06+.04=.10; if additional soot present at same measured gas amounts, carbon conservation fails unless record/inputs differ. Model only, not experiment.",
           "rubric": [
-            "Translate alternative product assumptions into balanced equations and comparative mole ledger.",
-            "Justify the model and verify conservation or evidence limits.",
-            "Complete independent boundary reasoning."
+            "Translate mixed product measurements into balanced integer equation and verify independent atom conservation.",
+            "Verify the scientific conditions and independent constraint.",
+            "Explain the changed-condition check."
           ]
         }
       },
       "reconstruct": {
         "asks": [
           {
-            "ask": "What model and conditions matter here?",
-            "why_this_ask": "Establish scientific conditions before conclusion.",
+            "ask": "What evidence and scientific conditions restrict this case?",
+            "why_this_ask": "Identify the applicable conditions before deciding.",
             "model_response": "Combustion product assumptions determine oxygen demand. Carbon and hydrogen conservation hold under both models; incomplete combustion products require evidence."
           },
           {
-            "ask": "How is the decisive inference constructed?",
-            "why_this_ask": "Compare with committed reasoning.",
-            "model_response": "CH₄+2O₂→CO₂+2H₂O: .20 mol O₂, .10 mol CO₂. 2CH₄+3O₂→2CO+4H₂O: .15 mol O₂, .10 mol CO. Both .20 mol H₂O. Restricted oxygen may yield CO₂, CO, soot, unreacted fuel; actual proportions need data. Models theoretical only."
+            "ask": "How do the independent constraints determine or limit the conclusion?",
+            "why_this_ask": "Reconstruct the decisive step after committing.",
+            "model_response": "Per .10 mol CH₄, oxygen atoms .12+.04+.20=.36 mol, O₂=.18 mol. Ratio multiplying by 50: 5CH₄+9O₂→3CO₂+2CO+10H₂O. All CO₂ uses .20 mol O₂. Carbon ledger .06+.04=.10; if additional soot present at same measured gas amounts, carbon conservation fails unless record/inputs differ. Model only, not experiment."
           }
         ],
-        "full_reconstruction": "CH₄+2O₂→CO₂+2H₂O: .20 mol O₂, .10 mol CO₂. 2CH₄+3O₂→2CO+4H₂O: .15 mol O₂, .10 mol CO. Both .20 mol H₂O. Restricted oxygen may yield CO₂, CO, soot, unreacted fuel; actual proportions need data. Models theoretical only."
+        "full_reconstruction": "Per .10 mol CH₄, oxygen atoms .12+.04+.20=.36 mol, O₂=.18 mol. Ratio multiplying by 50: 5CH₄+9O₂→3CO₂+2CO+10H₂O. All CO₂ uses .20 mol O₂. Carbon ledger .06+.04=.10; if additional soot present at same measured gas amounts, carbon conservation fails unless record/inputs differ. Model only, not experiment."
       },
       "diagnose": {
-        "wrong_idea": "Restricted oxygen always gives pure CO.",
-        "diagnostic_prompt": "Check whether this wrong route is evidenced in your original response; otherwise mark insufficient evidence.",
+        "wrong_idea": "Use a pure CO or pure CO₂ equation for a mixed product record.",
+        "diagnostic_prompt": "Can a hidden soot term be added when all measured carbon products already account for the fuel carbon?",
         "model_response": "Combustion product assumptions determine oxygen demand. Carbon and hydrogen conservation hold under both models; incomplete combustion products require evidence."
       },
       "repair": {
-        "action": "Rebuild your own reasoning with corrected model and independent check.",
+        "action": "Rebuild the specific comparison or conservation ledger and test the diagnostic question before retrying.",
         "explanation": "Combustion product assumptions determine oxygen demand. Carbon and hydrogen conservation hold under both models; incomplete combustion products require evidence.",
         "core1a_ref": "curriculum/chemistry/agent-b/textbook/C11.core1a.md (section C11.06)"
       },
       "boundary_test": {
-        "prompt": "If all carbon becomes soot and all hydrogen becomes water, what O₂ amount for .10 mol CH₄?",
-        "answer": "CH₄+O₂→C+2H₂O, .10 mol O₂ under stated ideal model.",
-        "confirms": "Changed-condition transfer; authored practice."
+        "prompt": "If CO₂ and CO amounts are .05 mol each with same fuel and water, what O₂ amount is implied?",
+        "answer": "(.10+.05+.20)/2=.175 mol O₂.",
+        "confirms": "Changed-condition transfer, author candidate."
       },
       "reviews": {
         "H1": "UNREVIEWED",
@@ -1805,11 +1805,11 @@
           "trap_exception_sensitivity": 1
         },
         "factor_evidence": {
-          "concept_model_selection": "Choose alternative combustion models",
-          "representation_translation": "Translate assumptions to equations",
-          "reasoning_chain_length": "Balance and compare products",
-          "algebra_computational_load": "Mole ratios",
-          "trap_exception_sensitivity": "Model not measured proportions"
+          "concept_model_selection": "Select mixed-product conservation model",
+          "representation_translation": "Translate observed amounts to integer equation",
+          "reasoning_chain_length": "Balance, compare and check hidden soot",
+          "algebra_computational_load": "Molar atom arithmetic",
+          "trap_exception_sensitivity": "Unmeasured products can violate ledger"
         },
         "total": 7
       }
@@ -1928,82 +1928,82 @@
       }
     },
     {
-      "cycle_id": "CORE1B-C11-06-3-B02-R2",
+      "cycle_id": "CORE1B-C11-06-3-B02-R4",
       "unit_id": "C11",
       "subtopic_ref": "CHEM-C11.06",
       "concept_ref": "CHEM-C11.06-CONCEPT",
       "operation": "JUSTIFY",
-      "qrt_instance_ref": "C11-06-JUSTIFY-D4-B02-R2",
+      "qrt_instance_ref": "C11-06-JUSTIFY-D4-B02-R4",
       "qrt_template_ref": "QRT-JUSTIFY-D4",
       "band_proposal": "D4",
       "source_role": "AUTHORED_PRACTICE",
       "source_exam_question_id": null,
       "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
       "predict": {
-        "prompt": "Make a provisional prediction and state its assumption before solving: A theoretical methane substitution model allows CH₃Cl and CH₂Cl₂ only, plus HCl. From 0.10 mol completely reacted methane, 0.14 mol HCl is recorded. A student claims all carbon product is CH₃Cl. Test claim, infer product amounts under model and explain why a real product mixture might not be uniquely identified from HCl alone.",
-        "defensible_answer": "Let x CH₃Cl and y CH₂Cl₂; x+y=.10, x+2y=.14 from HCl. y=.04, x=.06 mol. All CH₃Cl gives .10 mol HCl, contradicts stated model. Further substitutions or unreacted material add unknowns; HCl alone then insufficient. Theoretical accounting, no procedure."
+        "prompt": "Before solving, identify which claim or model you need to test: A theoretical methane substitution record has 0.10 mol completely reacted methane and 0.18 mol HCl. The only carbon products are CH₃Cl, CH₂Cl₂ and CHCl₃. A separate measurement gives 0.04 mol CH₂Cl₂. Derive all three amounts, check the average substitutions, and justify whether the two original totals without the separate measurement would uniquely identify the products.",
+        "defensible_answer": "Let x,y,z be mono/di/tri amounts. x+y+z=.10; x+2y+3z=.18; y=.04. x+z=.06; x+3z=.10 -> z=.02,x=.04. Check .04+.08+.06=.18; average 1.8. Without y measurement, e.g. x=.06,y=0,z=.04 or x=.02,y=.08,z=0 both fit. Thus two totals insufficient; third independent constraint resolves."
       },
       "attempt": {
-        "prompt": "A theoretical methane substitution model allows CH₃Cl and CH₂Cl₂ only, plus HCl. From 0.10 mol completely reacted methane, 0.14 mol HCl is recorded. A student claims all carbon product is CH₃Cl. Test claim, infer product amounts under model and explain why a real product mixture might not be uniquely identified from HCl alone.",
-        "produces": "Reject exclusive product claim using atom/stoichiometric constraints, solve and test model limits.",
-        "protected_W": "Reject exclusive product claim using atom/stoichiometric constraints, solve and test model limits.",
+        "prompt": "A theoretical methane substitution record has 0.10 mol completely reacted methane and 0.18 mol HCl. The only carbon products are CH₃Cl, CH₂Cl₂ and CHCl₃. A separate measurement gives 0.04 mol CH₂Cl₂. Derive all three amounts, check the average substitutions, and justify whether the two original totals without the separate measurement would uniquely identify the products.",
+        "produces": "Justify identifiability by solving an augmented three-product ledger and constructing two countermodels without the extra measurement.",
+        "protected_W": "Justify identifiability by solving an augmented three-product ledger and constructing two countermodels without the extra measurement.",
         "first_attempt_must_be_saved_before_feedback": true,
         "initial_answer_visibility": "HIDDEN",
         "hints": [
           {
             "id": "H1",
             "verb": "CLARIFY",
-            "text": "Write an atom ledger for carbon-containing products."
+            "text": "Identify the three unknown amounts and the independent measurements."
           },
           {
             "id": "H2",
             "verb": "CORRELATE",
-            "text": "Relate each substituted hydrogen to the ideal HCl count."
+            "text": "Use carbon conservation and number of substitutions per molecule to formulate aggregate constraints."
           },
           {
             "id": "H3",
             "verb": "OPEN_THE_WAY",
-            "text": "Set up carbon and substitution-count equations for the two unknown products; test whether adding a third product leaves the result unique."
+            "text": "Compare the number of independent constraints with unknowns; try alternative nonnegative distributions before deciding uniqueness."
           }
         ],
         "post_commit_closure": {
-          "model_response": "Let x CH₃Cl and y CH₂Cl₂; x+y=.10, x+2y=.14 from HCl. y=.04, x=.06 mol. All CH₃Cl gives .10 mol HCl, contradicts stated model. Further substitutions or unreacted material add unknowns; HCl alone then insufficient. Theoretical accounting, no procedure.",
+          "model_response": "Let x,y,z be mono/di/tri amounts. x+y+z=.10; x+2y+3z=.18; y=.04. x+z=.06; x+3z=.10 -> z=.02,x=.04. Check .04+.08+.06=.18; average 1.8. Without y measurement, e.g. x=.06,y=0,z=.04 or x=.02,y=.08,z=0 both fit. Thus two totals insufficient; third independent constraint resolves.",
           "rubric": [
-            "Reject exclusive product claim using atom/stoichiometric constraints, solve and test model limits.",
-            "Justify the model and verify conservation or evidence limits.",
-            "Complete independent boundary reasoning."
+            "Justify identifiability by solving an augmented three-product ledger and constructing two countermodels without the extra measurement.",
+            "Verify the scientific conditions and independent constraint.",
+            "Explain the changed-condition check."
           ]
         }
       },
       "reconstruct": {
         "asks": [
           {
-            "ask": "What model and conditions matter here?",
-            "why_this_ask": "Establish scientific conditions before conclusion.",
+            "ask": "What evidence and scientific conditions restrict this case?",
+            "why_this_ask": "Identify the applicable conditions before deciding.",
             "model_response": "Substitution replaces H by another atom; successive net substitutions produce additional HCl. Product distribution cannot be inferred from the first balanced equation alone."
           },
           {
-            "ask": "How is the decisive inference constructed?",
-            "why_this_ask": "Compare with committed reasoning.",
-            "model_response": "Let x CH₃Cl and y CH₂Cl₂; x+y=.10, x+2y=.14 from HCl. y=.04, x=.06 mol. All CH₃Cl gives .10 mol HCl, contradicts stated model. Further substitutions or unreacted material add unknowns; HCl alone then insufficient. Theoretical accounting, no procedure."
+            "ask": "How do the independent constraints determine or limit the conclusion?",
+            "why_this_ask": "Reconstruct the decisive step after committing.",
+            "model_response": "Let x,y,z be mono/di/tri amounts. x+y+z=.10; x+2y+3z=.18; y=.04. x+z=.06; x+3z=.10 -> z=.02,x=.04. Check .04+.08+.06=.18; average 1.8. Without y measurement, e.g. x=.06,y=0,z=.04 or x=.02,y=.08,z=0 both fit. Thus two totals insufficient; third independent constraint resolves."
           }
         ],
-        "full_reconstruction": "Let x CH₃Cl and y CH₂Cl₂; x+y=.10, x+2y=.14 from HCl. y=.04, x=.06 mol. All CH₃Cl gives .10 mol HCl, contradicts stated model. Further substitutions or unreacted material add unknowns; HCl alone then insufficient. Theoretical accounting, no procedure."
+        "full_reconstruction": "Let x,y,z be mono/di/tri amounts. x+y+z=.10; x+2y+3z=.18; y=.04. x+z=.06; x+3z=.10 -> z=.02,x=.04. Check .04+.08+.06=.18; average 1.8. Without y measurement, e.g. x=.06,y=0,z=.04 or x=.02,y=.08,z=0 both fit. Thus two totals insufficient; third independent constraint resolves."
       },
       "diagnose": {
-        "wrong_idea": "First substitution equation proves sole product.",
-        "diagnostic_prompt": "Check whether this wrong route is evidenced in your original response; otherwise mark insufficient evidence.",
+        "wrong_idea": "Two aggregate balances uniquely fix three product quantities.",
+        "diagnostic_prompt": "Can two different nonnegative product distributions yield identical carbon and HCl totals? Show one pair.",
         "model_response": "Substitution replaces H by another atom; successive net substitutions produce additional HCl. Product distribution cannot be inferred from the first balanced equation alone."
       },
       "repair": {
-        "action": "Rebuild your own reasoning with corrected model and independent check.",
+        "action": "Rebuild the specific comparison or conservation ledger and test the diagnostic question before retrying.",
         "explanation": "Substitution replaces H by another atom; successive net substitutions produce additional HCl. Product distribution cannot be inferred from the first balanced equation alone.",
         "core1a_ref": "curriculum/chemistry/agent-b/textbook/C11.core1a.md (section C11.06)"
       },
       "boundary_test": {
-        "prompt": "If CHCl₃ is allowed, do the same two measured quantities uniquely determine three amounts?",
-        "answer": "No; three unknowns with two independent equations, subject to nonnegative constraints.",
-        "confirms": "Changed-condition transfer; authored practice."
+        "prompt": "If reported y=.10 mol, can the given HCl amount .18 be consistent?",
+        "answer": "No; all carbon would be dichlorinated and HCl=.20 mol.",
+        "confirms": "Changed-condition transfer, author candidate."
       },
       "reviews": {
         "H1": "UNREVIEWED",
@@ -2031,11 +2031,11 @@
           "trap_exception_sensitivity": 1
         },
         "factor_evidence": {
-          "concept_model_selection": "Select sequential substitution model",
-          "representation_translation": "Translate product amounts to equations",
-          "reasoning_chain_length": "Refute, solve and test underdetermination",
-          "algebra_computational_load": "Two simultaneous balances",
-          "trap_exception_sensitivity": "Additional products"
+          "concept_model_selection": "Choose three-product inverse model",
+          "representation_translation": "Translate totals to independent constraints",
+          "reasoning_chain_length": "Solve with third observation and prove nonuniqueness without it",
+          "algebra_computational_load": "Three-variable balances",
+          "trap_exception_sensitivity": "Nonnegative countermodels"
         },
         "total": 8
       }
@@ -2154,82 +2154,82 @@
       }
     },
     {
-      "cycle_id": "CORE1B-C11-07-2-B02-R3",
+      "cycle_id": "CORE1B-C11-07-2-B02-R4",
       "unit_id": "C11",
       "subtopic_ref": "CHEM-C11.07",
       "concept_ref": "CHEM-C11.07-CONCEPT",
       "operation": "SYNTHESIZE",
-      "qrt_instance_ref": "C11-07-SYNTHESIZE-D4-B02-R3",
+      "qrt_instance_ref": "C11-07-SYNTHESIZE-D4-B02-R4",
       "qrt_template_ref": "QRT-SYNTHESIZE-D4",
       "band_proposal": "D4",
       "source_role": "AUTHORED_PRACTICE",
       "source_exam_question_id": null,
       "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
       "predict": {
-        "prompt": "Predict your likely model or outcome before solving: A hypothetical soap contains 0.012 mol RCOO⁻. Water contains 0.003 mol Ca²⁺ and 0.001 mol Mg²⁺; both precipitate quantitatively as (RCOO)₂M. Calculate lost and remaining soap, compare 0.004 mol Na⁺ alone, and explain why remaining amount does not uniquely predict foam height; propose detergent control.",
-        "defensible_answer": "Divalent ions consume 2(0.003+0.001)=0.008 mol carboxylate; 0.004 remains. Na⁺ does not form analogous insoluble divalent salt in model, though ionic strength can change solubility. Foam depends on formulation, concentration, agitation and temperature; compare equal active concentrations, volumes, hardness. Detergents are not universally immune."
+        "prompt": "Before solving, identify which claim or model you need to test: Two water samples each receive 0.014 mol soap ions in a hypothetical quantitative precipitation model. Sample A contains 0.004 mol Ca²⁺ and unknown Mg²⁺; 0.002 mol soap remains. Sample B contains the same total divalent-ion amount but starts with only half as much soap. Infer A's Mg²⁺ amount, decide whether B removes all hardness, and propose a discriminating measurement if foam heights happen to match.",
+        "defensible_answer": "A consumes .012 mol soap, total divalent .006 mol; Mg=.002 mol. B starts .007 mol soap, precipitates at most .0035 mol divalent, leaving .0025 mol divalent and zero free soap under model. Composition of remaining Ca/Mg not determined without selectivity data. Matched foam does not establish equal residual hardness; independently measure residual ions/free surfactant under controlled conditions."
       },
       "attempt": {
-        "prompt": "A hypothetical soap contains 0.012 mol RCOO⁻. Water contains 0.003 mol Ca²⁺ and 0.001 mol Mg²⁺; both precipitate quantitatively as (RCOO)₂M. Calculate lost and remaining soap, compare 0.004 mol Na⁺ alone, and explain why remaining amount does not uniquely predict foam height; propose detergent control.",
-        "produces": "Combine ion stoichiometry, competing salt effects and fair experimental comparison.",
-        "protected_W": "Combine ion stoichiometry, competing salt effects and fair experimental comparison.",
+        "prompt": "Two water samples each receive 0.014 mol soap ions in a hypothetical quantitative precipitation model. Sample A contains 0.004 mol Ca²⁺ and unknown Mg²⁺; 0.002 mol soap remains. Sample B contains the same total divalent-ion amount but starts with only half as much soap. Infer A's Mg²⁺ amount, decide whether B removes all hardness, and propose a discriminating measurement if foam heights happen to match.",
+        "produces": "Infer hidden hardness from residual soap then change limiting reagent and distinguish remaining ion identity from total.",
+        "protected_W": "Infer hidden hardness from residual soap then change limiting reagent and distinguish remaining ion identity from total.",
         "first_attempt_must_be_saved_before_feedback": true,
         "initial_answer_visibility": "HIDDEN",
         "hints": [
           {
             "id": "H1",
             "verb": "CLARIFY",
-            "text": "List the amounts of each metal ion and the amount of singly charged soap ion; distinguish precipitation from foam."
+            "text": "Separate initial soap from residual soap and identify unknown hardness."
           },
           {
             "id": "H2",
             "verb": "CORRELATE",
-            "text": "Use charge neutrality of the stated divalent precipitate to infer how many carboxylates accompany one metal ion."
+            "text": "Use charge-neutral precipitate stoichiometry to connect removed soap and total divalent ions."
           },
           {
             "id": "H3",
             "verb": "OPEN_THE_WAY",
-            "text": "Build an ion-consumption ledger and compare it with the starting soap amount. Treat the sodium case and the foam measurement as separate models; finish the quantities and experimental conclusion yourself."
+            "text": "Build initial/consumed/remaining ledgers for A and B separately; check which reagent runs out in each before interpreting foam."
           }
         ],
         "post_commit_closure": {
-          "model_response": "Divalent ions consume 2(0.003+0.001)=0.008 mol carboxylate; 0.004 remains. Na⁺ does not form analogous insoluble divalent salt in model, though ionic strength can change solubility. Foam depends on formulation, concentration, agitation and temperature; compare equal active concentrations, volumes, hardness. Detergents are not universally immune.",
+          "model_response": "A consumes .012 mol soap, total divalent .006 mol; Mg=.002 mol. B starts .007 mol soap, precipitates at most .0035 mol divalent, leaving .0025 mol divalent and zero free soap under model. Composition of remaining Ca/Mg not determined without selectivity data. Matched foam does not establish equal residual hardness; independently measure residual ions/free surfactant under controlled conditions.",
           "rubric": [
-            "Combine ion stoichiometry, competing salt effects and fair experimental comparison.",
-            "State assumptions and verify the relationships.",
-            "Check changed conditions independently."
+            "Infer hidden hardness from residual soap then change limiting reagent and distinguish remaining ion identity from total.",
+            "Verify the scientific conditions and independent constraint.",
+            "Explain the changed-condition check."
           ]
         }
       },
       "reconstruct": {
         "asks": [
           {
-            "ask": "Which evidence and constraints are relevant?",
-            "why_this_ask": "Establish the model conditions.",
+            "ask": "What evidence and scientific conditions restrict this case?",
+            "why_this_ask": "Identify the applicable conditions before deciding.",
             "model_response": "Soap has ionic carboxylate heads and hydrophobic tails. Ca²⁺/Mg²⁺ can form sparingly soluble salts, removing active soap. Synthetic detergent response depends on formulation. Distinguish precipitation, micelles and foam measurements."
           },
           {
-            "ask": "How do those constraints determine the outcome?",
-            "why_this_ask": "Reconstruct protected reasoning after commitment.",
-            "model_response": "Divalent ions consume 2(0.003+0.001)=0.008 mol carboxylate; 0.004 remains. Na⁺ does not form analogous insoluble divalent salt in model, though ionic strength can change solubility. Foam depends on formulation, concentration, agitation and temperature; compare equal active concentrations, volumes, hardness. Detergents are not universally immune."
+            "ask": "How do the independent constraints determine or limit the conclusion?",
+            "why_this_ask": "Reconstruct the decisive step after committing.",
+            "model_response": "A consumes .012 mol soap, total divalent .006 mol; Mg=.002 mol. B starts .007 mol soap, precipitates at most .0035 mol divalent, leaving .0025 mol divalent and zero free soap under model. Composition of remaining Ca/Mg not determined without selectivity data. Matched foam does not establish equal residual hardness; independently measure residual ions/free surfactant under controlled conditions."
           }
         ],
-        "full_reconstruction": "Divalent ions consume 2(0.003+0.001)=0.008 mol carboxylate; 0.004 remains. Na⁺ does not form analogous insoluble divalent salt in model, though ionic strength can change solubility. Foam depends on formulation, concentration, agitation and temperature; compare equal active concentrations, volumes, hardness. Detergents are not universally immune."
+        "full_reconstruction": "A consumes .012 mol soap, total divalent .006 mol; Mg=.002 mol. B starts .007 mol soap, precipitates at most .0035 mol divalent, leaving .0025 mol divalent and zero free soap under model. Composition of remaining Ca/Mg not determined without selectivity data. Matched foam does not establish equal residual hardness; independently measure residual ions/free surfactant under controlled conditions."
       },
       "diagnose": {
-        "wrong_idea": "All dissolved salts consume soap identically; foam height measures cleaning directly.",
-        "diagnostic_prompt": "Compare your saved response to this possible wrong route. If not evidenced, record insufficient evidence.",
+        "wrong_idea": "Equal total hardness guarantees all hardness is removed or equal foam proves equal remaining soap.",
+        "diagnostic_prompt": "Does knowing total remaining divalent ions tell which metal ion remains if precipitation selectivity is unspecified?",
         "model_response": "Soap has ionic carboxylate heads and hydrophobic tails. Ca²⁺/Mg²⁺ can form sparingly soluble salts, removing active soap. Synthetic detergent response depends on formulation. Distinguish precipitation, micelles and foam measurements."
       },
       "repair": {
-        "action": "Rewrite the reasoning using the appropriate evidence or species ledger and check the decisive condition.",
+        "action": "Rebuild the specific comparison or conservation ledger and test the diagnostic question before retrying.",
         "explanation": "Soap has ionic carboxylate heads and hydrophobic tails. Ca²⁺/Mg²⁺ can form sparingly soluble salts, removing active soap. Synthetic detergent response depends on formulation. Distinguish precipitation, micelles and foam measurements.",
         "core1a_ref": "curriculum/chemistry/agent-b/textbook/C11.core1a.md (section C11.07)"
       },
       "boundary_test": {
-        "prompt": "0.007 mol Ca²⁺ instead, with no Mg²⁺: can all Ca²⁺ be removed?",
-        "answer": "No; 0.012 mol soap binds at most 0.006 mol Ca²⁺, leaving 0.001 mol Ca²⁺ and no free soap in ideal model.",
-        "confirms": "Changed-condition transfer; no original exam claim."
+        "prompt": "If A had .004 mol soap left instead, what total divalent amount would its record imply?",
+        "answer": "(.014−.004)/2=.005 mol under complete precipitation; Mg=.001 mol with given Ca.",
+        "confirms": "Changed-condition transfer, author candidate."
       },
       "reviews": {
         "H1": "UNREVIEWED",
@@ -2257,11 +2257,11 @@
           "trap_exception_sensitivity": 2
         },
         "factor_evidence": {
-          "concept_model_selection": "Select precipitation and ionic-strength models",
-          "representation_translation": "Translate amounts to carboxylate equivalents",
-          "reasoning_chain_length": "Compute loss, compare Na and interpret foam",
-          "algebra_computational_load": "Routine limiting amount",
-          "trap_exception_sensitivity": "Formulation and foam proxy limits"
+          "concept_model_selection": "Select inverse precipitation and limiting-reactant models",
+          "representation_translation": "Translate residual amount to hardness ledger",
+          "reasoning_chain_length": "Infer unknown, change limiting reagent, discriminate evidence",
+          "algebra_computational_load": "Molar difference and ratio",
+          "trap_exception_sensitivity": "Total residual vs individual ion and foam ambiguity"
         },
         "total": 8
       }

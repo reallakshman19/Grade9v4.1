@@ -363,44 +363,44 @@
     },
     {
       "subtopic_id": "CHEM-C10.04",
-      "cycle_id": "CORE1B-C10-04-2-B02-R2",
-      "qrt_instance_id": "C10-04-MODEL-D4-B02-R2",
+      "cycle_id": "CORE1B-C10-04-2-B02-R4",
+      "qrt_instance_id": "C10-04-MODEL-D4-B02-R4",
       "template_ref": "QRT-MODEL-D4",
       "band": "D4",
       "primary_operation": "MODEL",
-      "exact_task": "An ideal ore contains 0.12 mol ZnS and 0.08 mol ZnCO₃. Choose a pathway that converts each to ZnO, then reduce all ZnO assuming CO is sole carbon reduction product. Balance the equations, determine separate SO₂, CO₂ and CO amounts and explain why a total gas amount alone cannot identify ore composition.",
-      "protected_W": "Select parallel ore conversions and common reduction; test inverse composition uniqueness.",
-      "worked_answer": "2ZnS+3O₂→2ZnO+2SO₂, ZnCO₃→ZnO+CO₂, ZnO+C→Zn+CO. SO₂ .12, CO₂ .08, CO .20 mol; Zn .20 mol. Total .40 mol gas (excluding reactant oxygen) depends on total Zn feed here; many mixtures give same total. Speciate gas or measure separate stages. Theoretical model only.",
-      "boundary_prompt": "If CO₂ in conversion stage is 0.05 mol with total ZnO .20 mol, infer ZnS under model.",
-      "boundary_answer": "0.15 mol ZnS; .05 mol ZnCO₃.",
+      "exact_task": "Two ore feeds contain only ZnS, ZnCO₃ and inert quartz. Feed P yields 0.18 mol ZnO after complete conversion; its conversion gases contain 0.06 mol SO₂. Feed Q yields the same total gas amount but contains twice as much carbonate as P. Can Q have the same total ZnO under these assumptions? Infer P composition, construct Q's implied composition or demonstrate impossibility, then select the measurement that distinguishes the feeds.",
+      "protected_W": "Select a feasible inverse ore-composition model, test nonnegative amounts and reject inconsistent data.",
+      "worked_answer": "For P: ZnS=.06 mol; ZnCO₃=.18−.06=.12 mol. Each precursor yields one conversion gas per ZnO: total .18 mol. Q carbonate=.24 mol, exceeding total .18 mol available; Q would require negative sulfide (−.06 mol), impossible. Hence the records cannot all hold. Independently measure CO₂ or total ZnO and verify completeness; quartz is inert by assumption. Equations 2ZnS+3O₂→2ZnO+2SO₂; ZnCO₃→ZnO+CO₂.",
+      "boundary_prompt": "Can a Q feed with .09 mol carbonate and total .18 mol conversion gas fit?",
+      "boundary_answer": "Yes: .09 mol ZnS and .09 mol ZnCO₃, .18 mol ZnO; distinct gas compositions.",
       "score": 8,
       "factors": {
         "concept_model_selection": {
           "score": 2,
-          "evidence": "Select appropriate ore reactions"
+          "evidence": "Select inverse feasibility model rather than forward recipe"
         },
         "representation_translation": {
           "score": 2,
-          "evidence": "Translate parallel pathways to equations"
+          "evidence": "Convert gas species and total into two ledgers"
         },
         "reasoning_chain_length": {
           "score": 2,
-          "evidence": "Combine feed conversion and common reduction; inverse ambiguity"
+          "evidence": "Infer P then test Q's consistency and choose discriminator"
         },
         "algebra_computational_load": {
           "score": 1,
-          "evidence": "Mole ratios"
+          "evidence": "Simple molar arithmetic"
         },
         "trap_exception_sensitivity": {
           "score": 1,
-          "evidence": "Total gas nonuniqueness"
+          "evidence": "Nonnegative species constraint"
         }
       },
       "hint_evidence": {
-        "H1": "List the sulphur and carbonate carbon atoms separately before selecting reactions.",
-        "H2": "Track each feed to a common ZnO intermediate and identify its distinct conversion gas.",
-        "H3": "Construct separate feed–gas rows and a combined oxide reduction row; balance and calculate, then test if another mixture could give the same total.",
-        "author_non_disclosure_check": "H3 supplies a scaffold, not the completed conclusion/ledger. Independent review pending."
+        "H1": "Separate feed P's measured species from Q's comparison.",
+        "H2": "Use one balanced conversion equation per precursor and identify a conserved total.",
+        "H3": "Sketch an unknown-amount ledger for each feed; test whether the implied entries could be physically possible before drawing a conclusion.",
+        "author_non_disclosure_check": "Author scaffold leaves decisive result; blind review HOLD."
       },
       "source_ids_related": [
         "CHEM-NSEJS-REACT-01",
@@ -558,29 +558,29 @@
     },
     {
       "subtopic_id": "CHEM-C10.06",
-      "cycle_id": "CORE1B-C10-06-2-B02-R2",
-      "qrt_instance_id": "C10-06-MODEL-D3-B02-R2",
+      "cycle_id": "CORE1B-C10-06-2-B02-R4",
+      "qrt_instance_id": "C10-06-MODEL-D3-B02-R4",
       "template_ref": "QRT-MODEL-D3",
       "band": "D3",
       "primary_operation": "MODEL",
-      "exact_task": "Bare iron, painted iron with a scratch, iron joined electrically to zinc with a scratch, and iron separated electrically from zinc are in matched wet oxygenated conditions. Select a mechanism for each, predict which can retain protection at a scratch and identify a measurement distinguishing a physical barrier from sacrificial protection.",
-      "protected_W": "Choose barrier vs galvanic mechanism and predict contact-dependence.",
-      "worked_answer": "Bare iron accessible; paint is barrier and scratch exposes iron. Connected zinc can oxidise preferentially and deliver electrons to exposed iron via contact, with ionic path, while separated zinc cannot provide galvanic protection. Compare equal exposed area and measure zinc loss/electrical contact or potential; exact corrosion rates not implied.",
-      "boundary_prompt": "If the zinc layer is consumed while the scratch stays wet, what changes?",
-      "boundary_answer": "Sacrificial protection is no longer sustained; exposed iron may corrode.",
+      "exact_task": "Two scratched iron specimens carry different conductive coatings. Coating X is electrically connected to iron and loses mass while exposed iron corrodes little; Y is connected and remains almost unchanged while corrosion concentrates at the iron scratch. A third specimen has X physically nearby but insulated from iron. Choose barrier or galvanic models for each, predict the insulated specimen, and identify a control that distinguishes sacrificial protection from a noble coating.",
+      "protected_W": "Infer which electrode is sacrificial from contrasting mass-loss patterns, then test electronic continuity.",
+      "worked_answer": "X fits preferential oxidation supplying electrons to iron; Y may be a more noble coating with exposed iron anodic, not protective at a scratch. A nearby insulated X cannot provide electronic galvanic protection, though other environmental effects are possible. Compare equal exposed area, electrolyte and contact; measure coating mass loss and electrode potential/current direction. No rate guarantee from observations alone.",
+      "boundary_prompt": "If a noble coating is completely intact, can it still protect as a barrier?",
+      "boundary_answer": "Yes, intact coverage may exclude reactants; scratch exposes a different galvanic situation.",
       "score": 7,
       "factors": {
         "concept_model_selection": {
           "score": 2,
-          "evidence": "Choose barrier/galvanic mechanisms"
+          "evidence": "Select barrier versus two galvanic models"
         },
         "representation_translation": {
           "score": 1,
-          "evidence": "Translate setups to path diagrams"
+          "evidence": "Translate mass loss to electrode roles"
         },
         "reasoning_chain_length": {
           "score": 2,
-          "evidence": "Predict scratch and contact response"
+          "evidence": "Infer mechanism, predict insulation, choose control"
         },
         "algebra_computational_load": {
           "score": 0,
@@ -588,14 +588,14 @@
         },
         "trap_exception_sensitivity": {
           "score": 2,
-          "evidence": "Electrical isolation and exhausted zinc"
+          "evidence": "Conductive noble coating may accelerate exposed iron"
         }
       },
       "hint_evidence": {
-        "H1": "Separate physical coverage from electrical connection in each setup.",
-        "H2": "Ask whether a second metal can supply electrons to the exposed iron through a continuous path.",
-        "H3": "Draw a barrier-only and an electrically coupled model; use the disconnected sample as the discriminator and predict each case.",
-        "author_non_disclosure_check": "H3 supplies a scaffold, not the completed conclusion/ledger. Independent review pending."
+        "H1": "Distinguish where material loss occurs in the two connected samples.",
+        "H2": "Consider the direction of electron flow if either coating or iron oxidises.",
+        "H3": "Draw separate metal/contact/electrolyte paths for X and Y; use the insulated case to test your chosen mechanism.",
+        "author_non_disclosure_check": "Author scaffold leaves decisive result; blind review HOLD."
       },
       "source_ids_related": [],
       "source_role": "AUTHORED_PRACTICE",
@@ -663,10 +663,12 @@
     {
       "subtopic_id": "CHEM-C10.04",
       "old_cycle_id": "CORE1B-C10-04-2",
-      "new_cycle_id": "CORE1B-C10-04-2-B02-R2",
+      "new_cycle_id": "CORE1B-C10-04-2-B02-R4",
       "old_qrt_instance": "C10-04-MODEL-D3",
-      "new_qrt_instance": "C10-04-MODEL-D4-B02-R2",
-      "old_attempt_policy": "Keep prior key intact; no automatic migration."
+      "new_qrt_instance": "C10-04-MODEL-D4-B02-R4",
+      "old_attempt_policy": "Keep prior key intact; no automatic migration.",
+      "previous_revision_cycle_id": "CORE1B-C10-04-2-B02-R2",
+      "previous_revision_qrt_instance": "C10-04-MODEL-D4-B02-R2"
     },
     {
       "subtopic_id": "CHEM-C10.05",
@@ -695,10 +697,12 @@
     {
       "subtopic_id": "CHEM-C10.06",
       "old_cycle_id": "CORE1B-C10-06-2",
-      "new_cycle_id": "CORE1B-C10-06-2-B02-R2",
+      "new_cycle_id": "CORE1B-C10-06-2-B02-R4",
       "old_qrt_instance": "C10-06-MODEL-D3",
-      "new_qrt_instance": "C10-06-MODEL-D3-B02-R2",
-      "old_attempt_policy": "Keep prior key intact; no automatic migration."
+      "new_qrt_instance": "C10-06-MODEL-D3-B02-R4",
+      "old_attempt_policy": "Keep prior key intact; no automatic migration.",
+      "previous_revision_cycle_id": "CORE1B-C10-06-2-B02-R2",
+      "previous_revision_qrt_instance": "C10-06-MODEL-D3-B02-R2"
     }
   ]
 }

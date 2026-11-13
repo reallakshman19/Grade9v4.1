@@ -410,37 +410,37 @@
     },
     {
       "subtopic_id": "CHEM-C11.03",
-      "cycle_id": "CORE1B-C11-03-1-B02-R3",
-      "qrt_instance_id": "C11-03-REPRESENT-D3-B02-R3",
+      "cycle_id": "CORE1B-C11-03-1-B02-R4",
+      "qrt_instance_id": "C11-03-REPRESENT-D3-B02-R4",
       "template_ref": "QRT-REPRESENT-D3",
       "band": "D3",
       "primary_operation": "REPRESENT",
-      "exact_task": "A neutral connected hydrocarbon C₅H₈ is claimed to contain exactly one C=C, no rings and no other multiple bonds. Test claim by valence counting and construct two valid structures with different ring/multiple-bond allocations; verify both formulas.",
-      "protected_W": "Build two valid structures and reject incompatible hydrogen count.",
-      "worked_answer": "C₅H₁₂ saturated acyclic; missing 4 H corresponds to two unsaturation units. One double gives C₅H₁₀. Pent-1-yne HC≡C–CH₂–CH₂–CH₃ has 8 H; cyclopentene has one ring and one double, two CH and three CH₂=8 H. Formula cannot determine connectivity.",
-      "boundary_prompt": "Can C₅H₈ have one ring plus a triple bond?",
-      "boundary_answer": "No; three unsaturation units require C₅H₆.",
+      "exact_task": "Two proposed connected hydrocarbons have six carbons. A is acyclic with two C=C bonds; B has one ring and one C≡C bond. A student labels both C₆H₁₀. Construct valid explicit examples, count hydrogens from bond orders, correct the labels, and decide whether ideal multiple-bond hydrogenation (rings unchanged) makes the products have equal formulas.",
+      "protected_W": "Translate structural constraints to two valid graphs and compare independent atom counts before and after reaction.",
+      "worked_answer": "A: hexa-1,3-diene CH₂=CH–CH=CH–CH₂–CH₃, C₆H₁₀. B: ethynylcyclobutane, C₄H₇–C≡CH, C₆H₈; the ring contributes one deficit and triple two. A adds 2H₂→C₆H₁₄; B adds 2H₂→C₆H₁₂ (ring remains), under stated model. Not equal. Check carbon valence and H counts: B has one ring CH, three ring CH₂ and one terminal alkyne H.",
+      "boundary_prompt": "If B loses the ring constraint by adding two H in a hypothetical ring-opening step, what saturated formula follows?",
+      "boundary_answer": "C₆H₁₄, provided all multiple bonds are already reduced and no atoms lost.",
       "score": 7,
       "factors": {
         "concept_model_selection": {
           "score": 1,
-          "evidence": "Select valence/deficiency model"
+          "evidence": "Select valence and ring-preservation model"
         },
         "representation_translation": {
           "score": 2,
-          "evidence": "Translate formula to distinct structures"
+          "evidence": "Translate graph constraints to formulas and transformations"
         },
         "reasoning_chain_length": {
           "score": 2,
-          "evidence": "Test claim, construct and verify"
+          "evidence": "Construct, correct labels, compare products"
         },
         "algebra_computational_load": {
           "score": 1,
-          "evidence": "Hydrogen count"
+          "evidence": "Hydrogen accounting"
         },
         "trap_exception_sensitivity": {
           "score": 1,
-          "evidence": "Ring versus multiple bond ambiguity"
+          "evidence": "Triple and ring contribute different deficits"
         }
       },
       "source_ids_related": [
@@ -455,10 +455,10 @@
       "independent_review": "NOT_RUN",
       "academic_status": "HOLD",
       "hint_evidence": {
-        "H1": "Record the carbon and hydrogen totals, and distinguish a ring from a multiple bond.",
-        "H2": "Compare the given formula with the hydrogen count for an acyclic saturated skeleton of the same carbon number.",
-        "H3": "Allocate the missing hydrogen pairs among rings and bond orders in two different ways; draw your own skeletons and check each carbon's valence before deciding whether the reported claim fits.",
-        "author_non_disclosure_check": "H3 supplies an organising representation or equation setup, not the final task-specific conclusion, calculated values or completed structure. Independent review pending."
+        "H1": "List the constraints for A and B separately, including which feature persists.",
+        "H2": "Use typical carbon bond-order sum four to count attached H; a triple uses three bond units.",
+        "H3": "Sketch a valid graph for each and build a before/after atom ledger for ideal hydrogenation; check every carbon.",
+        "author_non_disclosure_check": "Author scaffold leaves decisive result; blind review HOLD."
       }
     },
     {
@@ -619,37 +619,37 @@
     },
     {
       "subtopic_id": "CHEM-C11.07",
-      "cycle_id": "CORE1B-C11-07-2-B02-R3",
-      "qrt_instance_id": "C11-07-SYNTHESIZE-D4-B02-R3",
+      "cycle_id": "CORE1B-C11-07-2-B02-R4",
+      "qrt_instance_id": "C11-07-SYNTHESIZE-D4-B02-R4",
       "template_ref": "QRT-SYNTHESIZE-D4",
       "band": "D4",
       "primary_operation": "SYNTHESIZE",
-      "exact_task": "A hypothetical soap contains 0.012 mol RCOO⁻. Water contains 0.003 mol Ca²⁺ and 0.001 mol Mg²⁺; both precipitate quantitatively as (RCOO)₂M. Calculate lost and remaining soap, compare 0.004 mol Na⁺ alone, and explain why remaining amount does not uniquely predict foam height; propose detergent control.",
-      "protected_W": "Combine ion stoichiometry, competing salt effects and fair experimental comparison.",
-      "worked_answer": "Divalent ions consume 2(0.003+0.001)=0.008 mol carboxylate; 0.004 remains. Na⁺ does not form analogous insoluble divalent salt in model, though ionic strength can change solubility. Foam depends on formulation, concentration, agitation and temperature; compare equal active concentrations, volumes, hardness. Detergents are not universally immune.",
-      "boundary_prompt": "0.007 mol Ca²⁺ instead, with no Mg²⁺: can all Ca²⁺ be removed?",
-      "boundary_answer": "No; 0.012 mol soap binds at most 0.006 mol Ca²⁺, leaving 0.001 mol Ca²⁺ and no free soap in ideal model.",
+      "exact_task": "Two water samples each receive 0.014 mol soap ions in a hypothetical quantitative precipitation model. Sample A contains 0.004 mol Ca²⁺ and unknown Mg²⁺; 0.002 mol soap remains. Sample B contains the same total divalent-ion amount but starts with only half as much soap. Infer A's Mg²⁺ amount, decide whether B removes all hardness, and propose a discriminating measurement if foam heights happen to match.",
+      "protected_W": "Infer hidden hardness from residual soap then change limiting reagent and distinguish remaining ion identity from total.",
+      "worked_answer": "A consumes .012 mol soap, total divalent .006 mol; Mg=.002 mol. B starts .007 mol soap, precipitates at most .0035 mol divalent, leaving .0025 mol divalent and zero free soap under model. Composition of remaining Ca/Mg not determined without selectivity data. Matched foam does not establish equal residual hardness; independently measure residual ions/free surfactant under controlled conditions.",
+      "boundary_prompt": "If A had .004 mol soap left instead, what total divalent amount would its record imply?",
+      "boundary_answer": "(.014−.004)/2=.005 mol under complete precipitation; Mg=.001 mol with given Ca.",
       "score": 8,
       "factors": {
         "concept_model_selection": {
           "score": 2,
-          "evidence": "Select precipitation and ionic-strength models"
+          "evidence": "Select inverse precipitation and limiting-reactant models"
         },
         "representation_translation": {
           "score": 1,
-          "evidence": "Translate amounts to carboxylate equivalents"
+          "evidence": "Translate residual amount to hardness ledger"
         },
         "reasoning_chain_length": {
           "score": 2,
-          "evidence": "Compute loss, compare Na and interpret foam"
+          "evidence": "Infer unknown, change limiting reagent, discriminate evidence"
         },
         "algebra_computational_load": {
           "score": 1,
-          "evidence": "Routine limiting amount"
+          "evidence": "Molar difference and ratio"
         },
         "trap_exception_sensitivity": {
           "score": 2,
-          "evidence": "Formulation and foam proxy limits"
+          "evidence": "Total residual vs individual ion and foam ambiguity"
         }
       },
       "source_ids_related": [
@@ -664,10 +664,10 @@
       "independent_review": "NOT_RUN",
       "academic_status": "HOLD",
       "hint_evidence": {
-        "H1": "List the amounts of each metal ion and the amount of singly charged soap ion; distinguish precipitation from foam.",
-        "H2": "Use charge neutrality of the stated divalent precipitate to infer how many carboxylates accompany one metal ion.",
-        "H3": "Build an ion-consumption ledger and compare it with the starting soap amount. Treat the sodium case and the foam measurement as separate models; finish the quantities and experimental conclusion yourself.",
-        "author_non_disclosure_check": "H3 supplies an organising representation or equation setup, not the final task-specific conclusion, calculated values or completed structure. Independent review pending."
+        "H1": "Separate initial soap from residual soap and identify unknown hardness.",
+        "H2": "Use charge-neutral precipitate stoichiometry to connect removed soap and total divalent ions.",
+        "H3": "Build initial/consumed/remaining ledgers for A and B separately; check which reagent runs out in each before interpreting foam.",
+        "author_non_disclosure_check": "Author scaffold leaves decisive result; blind review HOLD."
       }
     }
   ],
@@ -763,13 +763,15 @@
     {
       "subtopic_id": "CHEM-C11.03",
       "old_cycle_id": "CORE1B-C11-03-1",
-      "new_cycle_id": "CORE1B-C11-03-1-B02-R3",
+      "new_cycle_id": "CORE1B-C11-03-1-B02-R4",
       "old_qrt_instance": "C11-03-REPRESENT-D3",
-      "new_qrt_instance": "C11-03-REPRESENT-D3-B02-R3",
+      "new_qrt_instance": "C11-03-REPRESENT-D3-B02-R4",
       "old_attempt_policy": "Old localStorage key remains untouched; no automatic migration.",
       "baseline_head": "b8e4f6f99a9bb8000fb243ee6a2a2765fc5d2509",
       "intermediate_cycle_id": "CORE1B-C11-03-1-B02-R2",
-      "intermediate_qrt_instance": "C11-03-REPRESENT-D3-B02-R2"
+      "intermediate_qrt_instance": "C11-03-REPRESENT-D3-B02-R2",
+      "previous_revision_cycle_id": "CORE1B-C11-03-1-B02-R3",
+      "previous_revision_qrt_instance": "C11-03-REPRESENT-D3-B02-R3"
     },
     {
       "subtopic_id": "CHEM-C11.04",
@@ -807,13 +809,15 @@
     {
       "subtopic_id": "CHEM-C11.07",
       "old_cycle_id": "CORE1B-C11-07-2",
-      "new_cycle_id": "CORE1B-C11-07-2-B02-R3",
+      "new_cycle_id": "CORE1B-C11-07-2-B02-R4",
       "old_qrt_instance": "C11-07-SYNTHESIZE-D3",
-      "new_qrt_instance": "C11-07-SYNTHESIZE-D4-B02-R3",
+      "new_qrt_instance": "C11-07-SYNTHESIZE-D4-B02-R4",
       "old_attempt_policy": "Old localStorage key remains untouched; no automatic migration.",
       "baseline_head": "b8e4f6f99a9bb8000fb243ee6a2a2765fc5d2509",
       "intermediate_cycle_id": "CORE1B-C11-07-2-B02-R2",
-      "intermediate_qrt_instance": "C11-07-SYNTHESIZE-D4-B02-R2"
+      "intermediate_qrt_instance": "C11-07-SYNTHESIZE-D4-B02-R2",
+      "previous_revision_cycle_id": "CORE1B-C11-07-2-B02-R3",
+      "previous_revision_qrt_instance": "C11-07-SYNTHESIZE-D4-B02-R3"
     }
   ],
   "hint_revision_history": [

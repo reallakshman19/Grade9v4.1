@@ -1,6 +1,6 @@
 {
   "schema": "g9v41-chem-core1b-six-stage-cycles/v1",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "unit_id": "C10",
   "status": "CANDIDATE_UNREVIEWED_NO_BROWSER_TEST",
   "textbook_ref": "curriculum/chemistry/agent-b/textbook/C10.core1a.md",
@@ -1137,82 +1137,82 @@
       }
     },
     {
-      "cycle_id": "CORE1B-C10-04-2-B02-R2",
+      "cycle_id": "CORE1B-C10-04-2-B02-R4",
       "unit_id": "C10",
       "subtopic_ref": "CHEM-C10.04",
       "concept_ref": "CHEM-C10.04-CONCEPT",
       "operation": "MODEL",
-      "qrt_instance_ref": "C10-04-MODEL-D4-B02-R2",
+      "qrt_instance_ref": "C10-04-MODEL-D4-B02-R4",
       "qrt_template_ref": "QRT-MODEL-D4",
       "band_proposal": "D4",
       "source_role": "AUTHORED_PRACTICE",
       "source_exam_question_id": null,
       "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
       "predict": {
-        "prompt": "Make a provisional prediction and state its assumption before solving: An ideal ore contains 0.12 mol ZnS and 0.08 mol ZnCO₃. Choose a pathway that converts each to ZnO, then reduce all ZnO assuming CO is sole carbon reduction product. Balance the equations, determine separate SO₂, CO₂ and CO amounts and explain why a total gas amount alone cannot identify ore composition.",
-        "defensible_answer": "2ZnS+3O₂→2ZnO+2SO₂, ZnCO₃→ZnO+CO₂, ZnO+C→Zn+CO. SO₂ .12, CO₂ .08, CO .20 mol; Zn .20 mol. Total .40 mol gas (excluding reactant oxygen) depends on total Zn feed here; many mixtures give same total. Speciate gas or measure separate stages. Theoretical model only."
+        "prompt": "Before solving, identify which claim or model you need to test: Two ore feeds contain only ZnS, ZnCO₃ and inert quartz. Feed P yields 0.18 mol ZnO after complete conversion; its conversion gases contain 0.06 mol SO₂. Feed Q yields the same total gas amount but contains twice as much carbonate as P. Can Q have the same total ZnO under these assumptions? Infer P composition, construct Q's implied composition or demonstrate impossibility, then select the measurement that distinguishes the feeds.",
+        "defensible_answer": "For P: ZnS=.06 mol; ZnCO₃=.18−.06=.12 mol. Each precursor yields one conversion gas per ZnO: total .18 mol. Q carbonate=.24 mol, exceeding total .18 mol available; Q would require negative sulfide (−.06 mol), impossible. Hence the records cannot all hold. Independently measure CO₂ or total ZnO and verify completeness; quartz is inert by assumption. Equations 2ZnS+3O₂→2ZnO+2SO₂; ZnCO₃→ZnO+CO₂."
       },
       "attempt": {
-        "prompt": "An ideal ore contains 0.12 mol ZnS and 0.08 mol ZnCO₃. Choose a pathway that converts each to ZnO, then reduce all ZnO assuming CO is sole carbon reduction product. Balance the equations, determine separate SO₂, CO₂ and CO amounts and explain why a total gas amount alone cannot identify ore composition.",
-        "produces": "Select parallel ore conversions and common reduction; test inverse composition uniqueness.",
-        "protected_W": "Select parallel ore conversions and common reduction; test inverse composition uniqueness.",
+        "prompt": "Two ore feeds contain only ZnS, ZnCO₃ and inert quartz. Feed P yields 0.18 mol ZnO after complete conversion; its conversion gases contain 0.06 mol SO₂. Feed Q yields the same total gas amount but contains twice as much carbonate as P. Can Q have the same total ZnO under these assumptions? Infer P composition, construct Q's implied composition or demonstrate impossibility, then select the measurement that distinguishes the feeds.",
+        "produces": "Select a feasible inverse ore-composition model, test nonnegative amounts and reject inconsistent data.",
+        "protected_W": "Select a feasible inverse ore-composition model, test nonnegative amounts and reject inconsistent data.",
         "first_attempt_must_be_saved_before_feedback": true,
         "initial_answer_visibility": "HIDDEN",
         "hints": [
           {
             "id": "H1",
             "verb": "CLARIFY",
-            "text": "List the sulphur and carbonate carbon atoms separately before selecting reactions."
+            "text": "Separate feed P's measured species from Q's comparison."
           },
           {
             "id": "H2",
             "verb": "CORRELATE",
-            "text": "Track each feed to a common ZnO intermediate and identify its distinct conversion gas."
+            "text": "Use one balanced conversion equation per precursor and identify a conserved total."
           },
           {
             "id": "H3",
             "verb": "OPEN_THE_WAY",
-            "text": "Construct separate feed–gas rows and a combined oxide reduction row; balance and calculate, then test if another mixture could give the same total."
+            "text": "Sketch an unknown-amount ledger for each feed; test whether the implied entries could be physically possible before drawing a conclusion."
           }
         ],
         "post_commit_closure": {
-          "model_response": "2ZnS+3O₂→2ZnO+2SO₂, ZnCO₃→ZnO+CO₂, ZnO+C→Zn+CO. SO₂ .12, CO₂ .08, CO .20 mol; Zn .20 mol. Total .40 mol gas (excluding reactant oxygen) depends on total Zn feed here; many mixtures give same total. Speciate gas or measure separate stages. Theoretical model only.",
+          "model_response": "For P: ZnS=.06 mol; ZnCO₃=.18−.06=.12 mol. Each precursor yields one conversion gas per ZnO: total .18 mol. Q carbonate=.24 mol, exceeding total .18 mol available; Q would require negative sulfide (−.06 mol), impossible. Hence the records cannot all hold. Independently measure CO₂ or total ZnO and verify completeness; quartz is inert by assumption. Equations 2ZnS+3O₂→2ZnO+2SO₂; ZnCO₃→ZnO+CO₂.",
           "rubric": [
-            "Select parallel ore conversions and common reduction; test inverse composition uniqueness.",
-            "Justify the model and verify conservation or evidence limits.",
-            "Complete the independent boundary reasoning."
+            "Select a feasible inverse ore-composition model, test nonnegative amounts and reject inconsistent data.",
+            "Verify the scientific conditions and independent constraint.",
+            "Explain the changed-condition check."
           ]
         }
       },
       "reconstruct": {
         "asks": [
           {
-            "ask": "What model and conditions matter here?",
-            "why_this_ask": "Establish scientific conditions before conclusion.",
+            "ask": "What evidence and scientific conditions restrict this case?",
+            "why_this_ask": "Identify the applicable conditions before deciding.",
             "model_response": "Sulphide and carbonate feedstocks require different conversion reactions but can share a common oxide intermediate. Species-specific data distinguish parallel pathways."
           },
           {
-            "ask": "How is the decisive inference constructed?",
-            "why_this_ask": "Compare with the committed reasoning.",
-            "model_response": "2ZnS+3O₂→2ZnO+2SO₂, ZnCO₃→ZnO+CO₂, ZnO+C→Zn+CO. SO₂ .12, CO₂ .08, CO .20 mol; Zn .20 mol. Total .40 mol gas (excluding reactant oxygen) depends on total Zn feed here; many mixtures give same total. Speciate gas or measure separate stages. Theoretical model only."
+            "ask": "How do the independent constraints determine or limit the conclusion?",
+            "why_this_ask": "Reconstruct the decisive step after committing.",
+            "model_response": "For P: ZnS=.06 mol; ZnCO₃=.18−.06=.12 mol. Each precursor yields one conversion gas per ZnO: total .18 mol. Q carbonate=.24 mol, exceeding total .18 mol available; Q would require negative sulfide (−.06 mol), impossible. Hence the records cannot all hold. Independently measure CO₂ or total ZnO and verify completeness; quartz is inert by assumption. Equations 2ZnS+3O₂→2ZnO+2SO₂; ZnCO₃→ZnO+CO₂."
           }
         ],
-        "full_reconstruction": "2ZnS+3O₂→2ZnO+2SO₂, ZnCO₃→ZnO+CO₂, ZnO+C→Zn+CO. SO₂ .12, CO₂ .08, CO .20 mol; Zn .20 mol. Total .40 mol gas (excluding reactant oxygen) depends on total Zn feed here; many mixtures give same total. Speciate gas or measure separate stages. Theoretical model only."
+        "full_reconstruction": "For P: ZnS=.06 mol; ZnCO₃=.18−.06=.12 mol. Each precursor yields one conversion gas per ZnO: total .18 mol. Q carbonate=.24 mol, exceeding total .18 mol available; Q would require negative sulfide (−.06 mol), impossible. Hence the records cannot all hold. Independently measure CO₂ or total ZnO and verify completeness; quartz is inert by assumption. Equations 2ZnS+3O₂→2ZnO+2SO₂; ZnCO₃→ZnO+CO₂."
       },
       "diagnose": {
-        "wrong_idea": "Total gas volume uniquely identifies mixed ore composition.",
-        "diagnostic_prompt": "Check whether this wrong route is evidenced in your original response; otherwise mark insufficient evidence.",
+        "wrong_idea": "A total conversion-gas measurement determines every component, or a negative calculated amount can be accepted.",
+        "diagnostic_prompt": "What does a negative calculated sulphide amount mean: a physical component or a failed model/data combination?",
         "model_response": "Sulphide and carbonate feedstocks require different conversion reactions but can share a common oxide intermediate. Species-specific data distinguish parallel pathways."
       },
       "repair": {
-        "action": "Rebuild your own reasoning with the corrected model and an independent check.",
+        "action": "Rebuild the specific comparison or conservation ledger and test the diagnostic question before retrying.",
         "explanation": "Sulphide and carbonate feedstocks require different conversion reactions but can share a common oxide intermediate. Species-specific data distinguish parallel pathways.",
         "core1a_ref": "curriculum/chemistry/agent-b/textbook/C10.core1a.md (section C10.04)"
       },
       "boundary_test": {
-        "prompt": "If CO₂ in conversion stage is 0.05 mol with total ZnO .20 mol, infer ZnS under model.",
-        "answer": "0.15 mol ZnS; .05 mol ZnCO₃.",
-        "confirms": "Changed-condition transfer; authored practice."
+        "prompt": "Can a Q feed with .09 mol carbonate and total .18 mol conversion gas fit?",
+        "answer": "Yes: .09 mol ZnS and .09 mol ZnCO₃, .18 mol ZnO; distinct gas compositions.",
+        "confirms": "Changed-condition transfer, author candidate."
       },
       "reviews": {
         "H1": "UNREVIEWED",
@@ -1240,11 +1240,11 @@
           "trap_exception_sensitivity": 1
         },
         "factor_evidence": {
-          "concept_model_selection": "Select appropriate ore reactions",
-          "representation_translation": "Translate parallel pathways to equations",
-          "reasoning_chain_length": "Combine feed conversion and common reduction; inverse ambiguity",
-          "algebra_computational_load": "Mole ratios",
-          "trap_exception_sensitivity": "Total gas nonuniqueness"
+          "concept_model_selection": "Select inverse feasibility model rather than forward recipe",
+          "representation_translation": "Convert gas species and total into two ledgers",
+          "reasoning_chain_length": "Infer P then test Q's consistency and choose discriminator",
+          "algebra_computational_load": "Simple molar arithmetic",
+          "trap_exception_sensitivity": "Nonnegative species constraint"
         },
         "total": 8
       }
@@ -1815,82 +1815,82 @@
       }
     },
     {
-      "cycle_id": "CORE1B-C10-06-2-B02-R2",
+      "cycle_id": "CORE1B-C10-06-2-B02-R4",
       "unit_id": "C10",
       "subtopic_ref": "CHEM-C10.06",
       "concept_ref": "CHEM-C10.06-CONCEPT",
       "operation": "MODEL",
-      "qrt_instance_ref": "C10-06-MODEL-D3-B02-R2",
+      "qrt_instance_ref": "C10-06-MODEL-D3-B02-R4",
       "qrt_template_ref": "QRT-MODEL-D3",
       "band_proposal": "D3",
       "source_role": "AUTHORED_PRACTICE",
       "source_exam_question_id": null,
       "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
       "predict": {
-        "prompt": "Make a provisional prediction and state its assumption before solving: Bare iron, painted iron with a scratch, iron joined electrically to zinc with a scratch, and iron separated electrically from zinc are in matched wet oxygenated conditions. Select a mechanism for each, predict which can retain protection at a scratch and identify a measurement distinguishing a physical barrier from sacrificial protection.",
-        "defensible_answer": "Bare iron accessible; paint is barrier and scratch exposes iron. Connected zinc can oxidise preferentially and deliver electrons to exposed iron via contact, with ionic path, while separated zinc cannot provide galvanic protection. Compare equal exposed area and measure zinc loss/electrical contact or potential; exact corrosion rates not implied."
+        "prompt": "Before solving, identify which claim or model you need to test: Two scratched iron specimens carry different conductive coatings. Coating X is electrically connected to iron and loses mass while exposed iron corrodes little; Y is connected and remains almost unchanged while corrosion concentrates at the iron scratch. A third specimen has X physically nearby but insulated from iron. Choose barrier or galvanic models for each, predict the insulated specimen, and identify a control that distinguishes sacrificial protection from a noble coating.",
+        "defensible_answer": "X fits preferential oxidation supplying electrons to iron; Y may be a more noble coating with exposed iron anodic, not protective at a scratch. A nearby insulated X cannot provide electronic galvanic protection, though other environmental effects are possible. Compare equal exposed area, electrolyte and contact; measure coating mass loss and electrode potential/current direction. No rate guarantee from observations alone."
       },
       "attempt": {
-        "prompt": "Bare iron, painted iron with a scratch, iron joined electrically to zinc with a scratch, and iron separated electrically from zinc are in matched wet oxygenated conditions. Select a mechanism for each, predict which can retain protection at a scratch and identify a measurement distinguishing a physical barrier from sacrificial protection.",
-        "produces": "Choose barrier vs galvanic mechanism and predict contact-dependence.",
-        "protected_W": "Choose barrier vs galvanic mechanism and predict contact-dependence.",
+        "prompt": "Two scratched iron specimens carry different conductive coatings. Coating X is electrically connected to iron and loses mass while exposed iron corrodes little; Y is connected and remains almost unchanged while corrosion concentrates at the iron scratch. A third specimen has X physically nearby but insulated from iron. Choose barrier or galvanic models for each, predict the insulated specimen, and identify a control that distinguishes sacrificial protection from a noble coating.",
+        "produces": "Infer which electrode is sacrificial from contrasting mass-loss patterns, then test electronic continuity.",
+        "protected_W": "Infer which electrode is sacrificial from contrasting mass-loss patterns, then test electronic continuity.",
         "first_attempt_must_be_saved_before_feedback": true,
         "initial_answer_visibility": "HIDDEN",
         "hints": [
           {
             "id": "H1",
             "verb": "CLARIFY",
-            "text": "Separate physical coverage from electrical connection in each setup."
+            "text": "Distinguish where material loss occurs in the two connected samples."
           },
           {
             "id": "H2",
             "verb": "CORRELATE",
-            "text": "Ask whether a second metal can supply electrons to the exposed iron through a continuous path."
+            "text": "Consider the direction of electron flow if either coating or iron oxidises."
           },
           {
             "id": "H3",
             "verb": "OPEN_THE_WAY",
-            "text": "Draw a barrier-only and an electrically coupled model; use the disconnected sample as the discriminator and predict each case."
+            "text": "Draw separate metal/contact/electrolyte paths for X and Y; use the insulated case to test your chosen mechanism."
           }
         ],
         "post_commit_closure": {
-          "model_response": "Bare iron accessible; paint is barrier and scratch exposes iron. Connected zinc can oxidise preferentially and deliver electrons to exposed iron via contact, with ionic path, while separated zinc cannot provide galvanic protection. Compare equal exposed area and measure zinc loss/electrical contact or potential; exact corrosion rates not implied.",
+          "model_response": "X fits preferential oxidation supplying electrons to iron; Y may be a more noble coating with exposed iron anodic, not protective at a scratch. A nearby insulated X cannot provide electronic galvanic protection, though other environmental effects are possible. Compare equal exposed area, electrolyte and contact; measure coating mass loss and electrode potential/current direction. No rate guarantee from observations alone.",
           "rubric": [
-            "Choose barrier vs galvanic mechanism and predict contact-dependence.",
-            "Justify the model and verify conservation or evidence limits.",
-            "Complete the independent boundary reasoning."
+            "Infer which electrode is sacrificial from contrasting mass-loss patterns, then test electronic continuity.",
+            "Verify the scientific conditions and independent constraint.",
+            "Explain the changed-condition check."
           ]
         }
       },
       "reconstruct": {
         "asks": [
           {
-            "ask": "What model and conditions matter here?",
-            "why_this_ask": "Establish scientific conditions before conclusion.",
+            "ask": "What evidence and scientific conditions restrict this case?",
+            "why_this_ask": "Identify the applicable conditions before deciding.",
             "model_response": "A protective coating can block reactants or alter electrochemical reactions. Sacrificial protection needs electronic connection, an electrolyte and sufficient sacrificial material."
           },
           {
-            "ask": "How is the decisive inference constructed?",
-            "why_this_ask": "Compare with the committed reasoning.",
-            "model_response": "Bare iron accessible; paint is barrier and scratch exposes iron. Connected zinc can oxidise preferentially and deliver electrons to exposed iron via contact, with ionic path, while separated zinc cannot provide galvanic protection. Compare equal exposed area and measure zinc loss/electrical contact or potential; exact corrosion rates not implied."
+            "ask": "How do the independent constraints determine or limit the conclusion?",
+            "why_this_ask": "Reconstruct the decisive step after committing.",
+            "model_response": "X fits preferential oxidation supplying electrons to iron; Y may be a more noble coating with exposed iron anodic, not protective at a scratch. A nearby insulated X cannot provide electronic galvanic protection, though other environmental effects are possible. Compare equal exposed area, electrolyte and contact; measure coating mass loss and electrode potential/current direction. No rate guarantee from observations alone."
           }
         ],
-        "full_reconstruction": "Bare iron accessible; paint is barrier and scratch exposes iron. Connected zinc can oxidise preferentially and deliver electrons to exposed iron via contact, with ionic path, while separated zinc cannot provide galvanic protection. Compare equal exposed area and measure zinc loss/electrical contact or potential; exact corrosion rates not implied."
+        "full_reconstruction": "X fits preferential oxidation supplying electrons to iron; Y may be a more noble coating with exposed iron anodic, not protective at a scratch. A nearby insulated X cannot provide electronic galvanic protection, though other environmental effects are possible. Compare equal exposed area, electrolyte and contact; measure coating mass loss and electrode potential/current direction. No rate guarantee from observations alone."
       },
       "diagnose": {
-        "wrong_idea": "Any nearby metal protects iron, regardless of contact.",
-        "diagnostic_prompt": "Check whether this wrong route is evidenced in your original response; otherwise mark insufficient evidence.",
+        "wrong_idea": "All electrically conductive coatings protect a scratch equally.",
+        "diagnostic_prompt": "Does electrical contact alone prove that the coating, rather than iron, is the electron source?",
         "model_response": "A protective coating can block reactants or alter electrochemical reactions. Sacrificial protection needs electronic connection, an electrolyte and sufficient sacrificial material."
       },
       "repair": {
-        "action": "Rebuild your own reasoning with the corrected model and an independent check.",
+        "action": "Rebuild the specific comparison or conservation ledger and test the diagnostic question before retrying.",
         "explanation": "A protective coating can block reactants or alter electrochemical reactions. Sacrificial protection needs electronic connection, an electrolyte and sufficient sacrificial material.",
         "core1a_ref": "curriculum/chemistry/agent-b/textbook/C10.core1a.md (section C10.06)"
       },
       "boundary_test": {
-        "prompt": "If the zinc layer is consumed while the scratch stays wet, what changes?",
-        "answer": "Sacrificial protection is no longer sustained; exposed iron may corrode.",
-        "confirms": "Changed-condition transfer; authored practice."
+        "prompt": "If a noble coating is completely intact, can it still protect as a barrier?",
+        "answer": "Yes, intact coverage may exclude reactants; scratch exposes a different galvanic situation.",
+        "confirms": "Changed-condition transfer, author candidate."
       },
       "reviews": {
         "H1": "UNREVIEWED",
@@ -1918,11 +1918,11 @@
           "trap_exception_sensitivity": 2
         },
         "factor_evidence": {
-          "concept_model_selection": "Choose barrier/galvanic mechanisms",
-          "representation_translation": "Translate setups to path diagrams",
-          "reasoning_chain_length": "Predict scratch and contact response",
+          "concept_model_selection": "Select barrier versus two galvanic models",
+          "representation_translation": "Translate mass loss to electrode roles",
+          "reasoning_chain_length": "Infer mechanism, predict insulation, choose control",
           "algebra_computational_load": "No calculation",
-          "trap_exception_sensitivity": "Electrical isolation and exhausted zinc"
+          "trap_exception_sensitivity": "Conductive noble coating may accelerate exposed iron"
         },
         "total": 7
       }
