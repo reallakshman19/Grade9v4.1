@@ -46,7 +46,8 @@ def test_r32_numeric_checks():
     assert (-13+4*4)==3
     assert F(5,3)<4 and 7-4==3
     assert 12*2-F(3,2)*4==18 and 12*6-F(3,2)*36==18
-    assert F(23,2)-F(1,2)==11
+    assert F(9,4)+F(9,4)+6==F(21,2)
+    assert sum([-3,-1,1,3,8])==8 and sum(map(abs,[-3,-1,1,3,8]))==16
     assert 2*9+2*F(-3,2)==15 and 4*9+8*F(-3,2)==24
     assert F(106,7)==8+F(32,7)+F(18,7)
     assert F(24,16)==F(3,2)

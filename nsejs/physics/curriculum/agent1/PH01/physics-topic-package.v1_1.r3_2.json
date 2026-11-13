@@ -583,16 +583,16 @@
           "blueprint_cell": "D3.5",
           "source_role": "AUTHORED_TRANSFER",
           "qrt_status": "PROPOSED",
-          "protected_work": "Translate a curved then straight position law into signed velocity and acceleration graphs and check areas.",
-          "decisive_route": "Obtain the velocity slope law from the given quadratic segment, join the later straight segment, and distinguish distance from displacement.",
+          "protected_work": "Translate a piecewise-linear velocity graph into acceleration, position and cumulative-distance representations, using signed areas rather than an unintroduced motion equation.",
+          "decisive_route": "Find slopes and the zero crossing on the supplied v–t graph; add signed areas for positions and absolute areas for path length, then sketch the x–t curve with matching slopes.",
           "factor_evidence": {
             "concept_model_selection": {
               "score": 1,
-              "evidence": "Select quadratic versus linear motion representation."
+              "evidence": "Select slopes and signed areas appropriate to v–t."
             },
             "representation_translation": {
               "score": 2,
-              "evidence": "Translate x–t laws to v–t and a–t."
+              "evidence": "Translate v–t into a–t, x–t and distance ledger."
             },
             "reasoning_chain_length": {
               "score": 2,
@@ -600,7 +600,7 @@
             },
             "algebra_computational_load": {
               "score": 1,
-              "evidence": "Simple polynomial evaluation."
+              "evidence": "Calculate signed trapezoid and triangle areas at specified times."
             },
             "trap_exception_sensitivity": {
               "score": 1,
@@ -1221,7 +1221,8 @@
       "conditions_and_limits": [
         "Whole-revolution displacement is zero but speed is not.",
         "Average velocity is the vector displacement divided by elapsed time; not the average of speed magnitudes.",
-        "Quantitative centripetal acceleration/force is an extension; no force law is needed here."
+        "Quantitative centripetal acceleration/force is an extension; no force law is needed here.",
+        "A uniform circular motion velocity vector changes direction; the instantaneous acceleration is inward even though the speed is constant."
       ],
       "units_and_signs": "r in m, T in s; speed m/s; x and y east/north in m.",
       "source_refs": [
@@ -1599,7 +1600,7 @@
         "PH01-M05-QRT-SYNTHESIZE-D3"
       ],
       "phenomenon": "A vehicle's recorded position can pause, rise or fall while time keeps increasing; the slopes tell its signed motion.",
-      "scientific_narrative": "To read a motion graph, first name both axes. The height of an x–t graph is position, not speed. A horizontal x–t segment means that position is temporarily unchanged, whereas an upward slope means positive signed velocity and a downward slope means negative signed velocity. To obtain a velocity–time graph from a piecewise linear position record, compute the slope for every valid interval and place that signed velocity on the corresponding time segment. Conversely, the signed area under a velocity–time curve reconstructs each position increment, so the endpoint is independently checkable. For distance, however, the magnitudes of areas are added. Crossing the horizontal position axis does not necessarily mean the vehicle has stopped; the slope at that crossing decides velocity. Changing the coordinate origin shifts the whole x–t graph vertically without changing any velocity–time segment. This is a core representation-invariance check. A finite position table alone does not determine instantaneous slopes or hidden reversals: explicitly state linear interpolation or another valid motion model.",
+      "scientific_narrative": "To read a motion graph, first name both axes. The height of an x–t graph is position, not speed. A horizontal x–t segment means that position is temporarily unchanged, whereas an upward slope means positive signed velocity and a downward slope means negative signed velocity. To obtain a velocity–time graph from a piecewise linear position record, compute the slope for every valid interval and place that signed velocity on the corresponding time segment. Conversely, the signed area under a velocity–time curve reconstructs each position increment, so the endpoint is independently checkable. For distance, however, the magnitudes of areas are added. Crossing the horizontal position axis does not necessarily mean the vehicle has stopped; the slope at that crossing decides velocity. Changing the coordinate origin shifts the whole x–t graph vertically without changing any velocity–time segment. This is a core representation-invariance check. A finite position table alone does not determine instantaneous slopes or hidden reversals: explicitly state linear interpolation or another valid motion model. On a straight velocity–time segment, find area using a rectangle, triangle or trapezoid; if the segment crosses zero, split at that instant for the distance ledger. For a position sketch, velocity at each instant supplies its tangent slope. This area-based construction prepares the constant-acceleration equations taught in M06.",
       "prerequisites": [
         "PH01-M01 graph axes and scaled measurements",
         "PH01-M03 distinction between distance and displacement",
@@ -1776,6 +1777,11 @@
           "science_ref_id": "PH01-SCI-RELATIVE"
         },
         {
+          "action": "Subtract the observer's coordinate at the same instant: x_rel=x−x_O. For a uniformly moving observer, subtract its signed velocity from the object's velocity.",
+          "why_valid": "Subtracting simultaneous coordinates gives relative position, and subtracting their rates gives relative velocity.",
+          "science_ref_id": "PH01-SCI-RELATIVE"
+        },
+        {
           "action": "Translate each position segment into a signed velocity (slope) and verify by graph area.",
           "why_valid": "Velocity is the rate of position change; integrating a constant signed velocity across a segment gives that segment's displacement.",
           "science_ref_id": "PH01-SCI-GRAPH"
@@ -1796,7 +1802,7 @@
         "A graph's signed area gives displacement, not necessarily total distance.",
         "Relative velocity subtraction requires consistent frames and sign conventions.",
         "A valid equation root still requires the event to fall within that equation's physical interval.",
-        "An object's displacement and distance generally depend on the observer's motion; only simultaneous separation and a shared meeting event are invariant under a common translating frame."
+        "An object's displacement and distance generally depend on the observer's motion; simultaneous separation and a shared meeting event are invariant under a common translating frame."
       ],
       "progressive_examples": [
         {
@@ -1850,7 +1856,7 @@
         "PH01-M08-QRT-SYNTHESIZE-D3"
       ],
       "phenomenon": "A rider on a merry-go-round has a constant speedometer reading but changes direction continuously.",
-      "scientific_narrative": "A circular path differs from a straight line because direction changes even when the speed is fixed. Take a circle with radius r, centre at the origin and east/north axes. A full revolution covers circumference 2πr; dividing by the period T gives constant speed. For a fraction f of a revolution, arc length is f(2πr), but displacement is the straight vector from initial to final point. Velocity at every point is tangent, perpendicular to the radius; for counterclockwise travel the tangent turns counterclockwise as the radius does. After one complete revolution the vector displacement and average velocity are zero, though the distance and speed remain positive. The changing velocity direction means acceleration exists. At this elementary level the direction is inward by symmetry; quantitative centripetal acceleration and forces are enrichment or PH02 material, not required to solve these tasks.",
+      "scientific_narrative": "A circular path differs from a straight line because direction changes even when the speed is fixed. Take a circle with radius r, centre at the origin and east/north axes. A full revolution covers circumference 2πr; dividing by the period T gives constant speed. For a fraction f of a revolution, arc length is f(2πr), but displacement is the straight vector from initial to final point. Velocity at every point is tangent, perpendicular to the radius; for counterclockwise travel the tangent turns counterclockwise as the radius does. After one complete revolution the vector displacement and average velocity are zero, though the distance and speed remain positive. The changing velocity direction means acceleration exists. To see the direction of acceleration, draw two equal-length tangent velocity arrows at neighbouring points, with their tails together. Their vector difference points approximately toward the centre at the midpoint of the short arc. As the time interval shrinks, this direction approaches the inward radius at the current point; quantitative centripetal acceleration and forces are enrichment or PH02 material, not required to solve these tasks.",
       "prerequisites": [
         "PH01-M01",
         "PH01-M02",
@@ -2570,16 +2576,16 @@
       "instance_qrt_ids": [
         "PH01-M05-QRT-REPRESENT-D3"
       ],
-      "fresh_task": "A cart has x=2−4t+t² m for 0≤t≤4 s and x=2+4(t−4) m for 4≤t≤6 s. Construct v–t and a–t descriptions, label the reversal, and use signed velocity areas to verify net displacement and distance.",
-      "protected_work": "Translate a curved then straight position law into signed velocity and acceleration graphs and check areas.",
+      "fresh_task": "A cart begins at x=2 m. Its velocity–time graph is a straight segment from −4 m/s at t=0 to +4 m/s at t=4 s, then stays at +4 m/s to t=6 s. Construct the acceleration–time graph, a position–time sketch with coordinates at t=0,1,2,3,4,6 s, and the cumulative distance at those times. Explain the shape and slopes of the position graph and verify the total displacement and distance. Use graph areas; no constant-acceleration position formula is needed.",
+      "protected_work": "Translate a piecewise-linear velocity graph into acceleration, position and cumulative-distance representations, using signed areas rather than an unintroduced motion equation.",
       "differs_from_worked_anchor": true,
       "stages": {
         "predict": "Predict whether the cart's position at t=4 equals its initial position.",
-        "attempt": "A cart has x=2−4t+t² m for 0≤t≤4 s and x=2+4(t−4) m for 4≤t≤6 s. Construct v–t and a–t descriptions, label the reversal, and use signed velocity areas to verify net displacement and distance.",
-        "reconstruct": "First v=−4+2t (a=+2), second v=+4 (a=0); turn at t=2, x=−2 m. At t=4 x=2, at t=6 x=10. First signed areas −4,+4, second +8; Δx=+8 m, D=16 m. Velocity continuous at 4; acceleration changes there.",
+        "attempt": "A cart begins at x=2 m. Its velocity–time graph is a straight segment from −4 m/s at t=0 to +4 m/s at t=4 s, then stays at +4 m/s to t=6 s. Construct the acceleration–time graph, a position–time sketch with coordinates at t=0,1,2,3,4,6 s, and the cumulative distance at those times. Explain the shape and slopes of the position graph and verify the total displacement and distance. Use graph areas; no constant-acceleration position formula is needed.",
+        "reconstruct": "The v–t slope is +2 m/s² for 0–4 s, then 0 for 4–6 s. Velocities at 0,1,2,3,4,6 are −4,−2,0,+2,+4,+4 m/s. Signed areas over consecutive intervals are −3,−1,+1,+3,+8 m. Positions are 2,−1,−2,−1,2,10 m. Cumulative distances are 0,3,4,5,8,16 m. x–t has increasingly positive slope until t=4, horizontal tangent at t=2, and a straight positive-slope segment afterward. Net displacement +8 m and distance 16 m. Velocity is continuous at t=4; acceleration changes there.",
         "diagnose": "Locate the first divergence in the model, signed quantities, representation, interval constraint or independent check; do not diagnose a misconception from the final answer alone.",
-        "repair": "Obtain the velocity slope law from the given quadratic segment, join the later straight segment, and distinguish distance from displacement.",
-        "boundary_test": "If the straight segment continues at +4 m/s to t=8 instead, give the new displacement and distance."
+        "repair": "Find slopes and the zero crossing on the supplied v–t graph; add signed areas for positions and absolute areas for path length, then sketch the x–t curve with matching slopes.",
+        "boundary_test": "If the constant +4 m/s segment continues until t=8 rather than t=6, extend the position and distance graphs, giving the final position, displacement and total distance."
       },
       "attempt_policy": {
         "save_first_answer_before_hint": true,

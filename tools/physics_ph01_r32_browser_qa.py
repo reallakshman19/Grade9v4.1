@@ -8,6 +8,11 @@ ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/"review-artifacts/physics-core1b/r32"
 BASE="/nsejs/physics/"
 def ready(p): p.wait_for_function("document.querySelector('#runtimeStatus').textContent.includes('Candidate task loaded')")
+def storage_record(page, cid):
+    return page.evaluate("""cid => {
+      const k = Object.keys(localStorage).find(k => k.endsWith(":"+cid) && k.startsWith("G9V41:PH01:"));
+      return k ? JSON.parse(localStorage.getItem(k)) : null;
+    }""", cid)
 def main():
     OUT.mkdir(parents=True,exist_ok=True)
     routes=json.loads((ROOT/"nsejs/physics/curriculum/agent1/PH01/ph01-subtopic-routes.r3_2.json").read_text(encoding="utf-8"))
@@ -57,20 +62,45 @@ def main():
                         assert page.locator("#saveFirst").is_disabled()
                         first=page.locator("#savedFirst").inner_text()
                         assert "Original reasoning for "+m in first
+                        initial=storage_record(page,ids[0])
+                        assert initial["first_answer"]["answer"]=="Original reasoning for "+m
+                        assert "TEXTBOOK_BEFORE_FIRST" in {x["kind"] for x in initial["help_exposure"]}
+                        assert page.get_by_role("button",name="Open H2").is_disabled()
                         page.get_by_role("button",name="Open H1").click()
+                        page.get_by_role("button",name="Open H2").click()
+                        page.get_by_role("button",name="Open H3").click()
                         page.locator("#showReconstruct").click()
                         assert page.locator("#reconstructAnswer").is_visible()
+                        page.locator("#diagnoseInput").fill("My first divergence.")
+                        page.locator("#saveDiagnose").click()
+                        page.locator("#repairInput").fill("My revised reasoning.")
+                        page.locator("#saveRepair").click()
                         assert page.locator("#showBoundary").is_disabled()
                         page.locator("#boundaryInput").fill("Changed condition reasoning.")
                         page.locator("#saveBoundary").click(); page.locator("#showBoundary").click()
                         assert page.locator("#boundaryAnswer").is_visible()
                         page.reload(); ready(page)
                         assert page.locator("#savedFirst").inner_text()==first
+                        current=storage_record(page,ids[0])
+                        assert current["first_answer"]==initial["first_answer"]
+                        assert len(current["diagnosis_notes"])==len(current["revisions"])==len(current["boundary_attempts"])==1
+                        assert {"TEXTBOOK_BEFORE_FIRST","H1","H2","H3","RECONSTRUCT","BOUNDARY_MODEL"} <= {x["kind"] for x in current["help_exposure"]}
+                        assert current["mastery_status"]=="UNASSESSED"
                         assert page.evaluate("document.documentElement.scrollWidth <= innerWidth+1")
                         page.screenshot(path=str(OUT/f"{m}-core1b-{w}x{h}.png"),full_page=True)
                         receipt["tests"].append({"unit":m,"viewport":f"{w}x{h}","three_instances":True,"status":"PASS"})
                     page.goto(origin+"/"+routes["integrated_main"]["path"]);ready(page)
                     assert set(page.locator("#cycleSelect option").evaluate_all("(xs)=>xs.map(x=>x.value)"))==set(routes["integrated_main"]["cycle_ids"])
+                    for cid in routes["integrated_main"]["cycle_ids"]:
+                        page.locator("#cycleSelect").select_option(cid)
+                        assert page.locator("#postAttempt").is_hidden()
+                        page.locator("#predictInput").fill("Initial chapter synthesis prediction.")
+                        page.locator("#attemptInput").fill("First chapter synthesis reasoning.")
+                        page.locator("#saveFirst").click()
+                        assert page.locator("#saveFirst").is_disabled()
+                        page.locator("#showReconstruct").click()
+                        assert page.locator("#reconstructAnswer").is_visible()
+                        assert page.locator("#showBoundary").is_disabled()
                     assert not errors,errors
                     receipt["tests"].append({"unit":"MAIN","viewport":f"{w}x{h}","three_main_only":True,"status":"PASS"})
                     ctx.close()
