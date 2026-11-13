@@ -215,10 +215,22 @@
         - `2022_Set_51.pdf` (13.4 MB) | SHA-256 `b85c4635...` & `2022_Final_Answer_Key.pdf` (413 KB) | SHA-256 `1807ddca...`
         - `2021_IOQJS_Part_I.pdf` (1.38 MB) | SHA-256 `c3a8e860...` & `2021_IOQJS_Part_I_Answer_Key.pdf` (606 KB) | SHA-256 `f6324a38...`
         - `2020_IOQJS_Part_I.pdf` (4.61 MB) | SHA-256 `8b7f09e6...` & `2020_IOQJS_Part_I_Answer_Key.pdf` (195 KB) | SHA-256 `977509eb...`
-      - **Chemistry Candidate Question Bank ([nsejs/chemistry/question-bank.html](http://localhost:8000/nsejs/chemistry/question-bank.html))**: Upgraded to full 12.7" tablet candidate reader (`core2-chemistry-reader.js`) indexing 119 questions across 9 topic/exam pills (Atomic Structure: 10, Bonding: 10, Mole Concept: 10, Reactions: 10, 2024: 20, 2023: 20, 2022: 20, 2021: 11, 2020: 8).
-      - **Biology Candidate Question Bank ([nsejs/biology/question-bank.html](http://localhost:8000/nsejs/biology/question-bank.html))**: Upgraded to full 12.7" tablet candidate reader (`core2-biology-reader.js`) indexing 119 questions across 9 topic/exam pills (Genetics: 10, Living World: 10, Life Processes: 10, Environment: 10, 2024: 20, 2023: 20, 2022: 20, 2021: 11, 2020: 8).
+      - **Chemistry Candidate Question Bank ([nsejs/chemistry/question-bank.html](http://localhost:8000/nsejs/chemistry/question-bank.html))**: Upgraded to full 12.7" tablet candidate reader (`core2-chemistry-reader.js`) indexing 119 questions across 9 topic/exam pills.
+      - **Biology Candidate Question Bank ([nsejs/biology/question-bank.html](http://localhost:8000/nsejs/biology/question-bank.html))**: Upgraded to full 12.7" tablet candidate reader (`core2-biology-reader.js`) indexing 119 questions across 9 topic/exam pills.
       - **Official Sources Verification Dossier ([nsejs/official-sources.html](http://localhost:8000/nsejs/official-sources.html))**: Upgraded with local download badges, byte counts, 64-char SHA-256 fingerprints, and direct links to practice cards.
-      - **Dual-Engine Automated & Browser Verification**: 43/43 pages passed static audit (836 internal links verified, 0 broken). Browser subagent confirmed 0 console errors and interactive cards rendering across Chemistry, Biology, and Official Sources.
+
+    - **Milestone 24 — Core 1 Recovery Decommissioning & Universal Subject Topic Mapping**:
+      - **Decommissioned `nsejs/core1-recovery.html`**: Converted standalone recovery dashboard to an instant meta-refresh redirect (`<meta http-equiv="refresh" content="0; url=index.html">`) and clean redirect card to `index.html`.
+      - **Decoupled Recovery Breadcrumb Navigation (18 Modules)**:
+        - Updated all 5 Chemistry recovery modules (`nsejs/chemistry/core1/recovery/*/index.html`) to replace legacy links pointing to `core1-recovery.html` with direct subject links: `← Back to Core 1 Lessons` (`../../index.html`) and `📚 Chem Q-Bank` (`../../../question-bank.html`).
+        - Updated all 13 Physics recovery modules (`nsejs/physics/core1/recovery/*/index.html`) to replace legacy links pointing to `core1-recovery.html` with direct subject links: `← Back to Core 1 Lessons` (`../../index.html`) and `📚 Physics Q-Bank` (`../../../question-bank.html`).
+      - **Updated NSEJS Hub Ledger ([nsejs/index.html](http://localhost:8000/nsejs/index.html))**:
+        - Section `#core1-recovery-ledger`: replaced single CTA pointing to `core1-recovery.html` with dual subject-level buttons (`Explore Physics Lessons (16) →` and `Explore Chemistry Lessons (7) →`).
+        - Section `#official-iapt-links`: upgraded heading to `📁 Official IAPT Source Downloads (10/10 Downloaded & SHA-256 Verified)` with byte-locked custody badges.
+      - **Provenance Protection (.gitignore)**: Added `workspace/` to `.gitignore` to protect copyright provenance of downloaded exam papers and answer keys.
+      - **Dual-Engine Automated & Browser Verification**:
+        - 43/43 pages passed static audit (806 internal links verified, 0 broken).
+        - Browser subagent confirmed clean instant redirect from `core1-recovery.html` to `index.html`, 0 references to `core1-recovery.html` across recovery DOMs, touch targets $\ge 48$px, and 0 console errors across all audited pages.
 
 ---
 

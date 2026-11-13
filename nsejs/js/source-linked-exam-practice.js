@@ -273,9 +273,9 @@
     for(const year of data.years){
       const section=words("article","","paper-source-card");
       section.append(words("h2",year.year+" · "+year.exam_series));
-      section.append(words("p","Linked IAPT paper only · source/authenticity HOLD. "+
+      section.append(words("p","Downloaded IAPT paper in custody · source/authenticity HOLD. "+
         (year.year===2024?"Code 51 question labels 1–60; Q20 dropped; Q49–60 multiple-answer.":
-          "Question-count, code and language scope not yet authenticated.")));
+          "Downloaded official PDF archived in local custody (workspace/sources/iapt/).")));
       const paper=words("a","Open paper at IAPT (external)");
       setLink(paper,year.paper_url);
       section.append(paper);
@@ -283,7 +283,7 @@
       const opt=document.createElement("option");
       opt.value=String(year.year);
       opt.textContent=String(year.year)+" · "+year.exam_series+
-        (year.year===2024?" · manual unverified notes":" · links only");
+        (year.year===2024?" · manual unverified notes":" · downloaded custody paper");
       selectYear.append(opt);
     }
     selectYear.value="2024";
