@@ -1,0 +1,109 @@
+# PH07 — Heat and Thermal Physics
+## Continuous Core1A textbook manuscript · R2 author candidate
+
+**Status:** AUTHOR_EXPOSED_DRAFT · SCIENCE_REVIEW_HOLD · NOT A PUBLISHED TEXTBOOK.  
+**Curriculum:** lower-class thermal foundations and CBSE IX differential surface heating. Quantitative heat capacities, calorimeters and engines are optional **EXTENSION**, not compulsory NSEJS requirements. All original examples below are authored teaching tasks, not authenticated examination questions.
+
+### 1. Touch is not a thermometer
+
+Metal and wood in the same room may feel different temperatures to the hand even when a thermometer gives the same reading. The skin senses heat exchange as well as surface temperature. Metal often transfers thermal energy faster than wood because of their different thermal conductivities, so a hand initially warmer than either surface loses energy more quickly to metal. This explains why a single tactile impression cannot establish which object has the lower temperature.
+
+A thermometer supplies an operational measurement. The measuring device must reach a suitable thermal condition with the object; its scale must be calibrated and its resolution reported. The numbers 20 and 30 have no thermal meaning without a scale and unit. Celsius and kelvin differences have the same numerical magnitude, but their zero points differ. A fair scientific statement is “the room sensor reads 24 °C at this location after stabilization,” not “the room is always warm.”
+
+**Mini-investigation:** Put a wooden ruler and a metal spoon beside one another for a long period. Predict the readings of a contact thermometer after equilibration, then compare them with subjective touch. Explain why the two observations can be consistent.
+
+### 2. Heat is transferred energy; temperature is a state variable
+
+A cup of hot tea loses energy to a cooler room. The thermal transfer has a direction in the ordinary spontaneous process: from the hotter body toward the cooler surroundings. Temperature is a measure associated with the thermal state of the substance; it is not a label for “amount of heat stored.” A large bath of moderately warm water can contain more thermal internal energy than a small, hotter cup. The comparison depends on masses, substances and reference states.
+
+Thermal equilibrium means there is no net macroscopic heat transfer attributable solely to a temperature difference between bodies in thermal contact. Equilibrium need not mean that all microscopic motion has stopped. The particles continue to move. We can draw a simple energy-transfer diagram with a warmer body, cooler body and arrow; for several bodies, deciding the exchange route requires the relevant contact and environment information.
+
+**Check:** If objects A and B have the same measured temperature but different masses, is A necessarily carrying more “heat”? No: heat is an energy transfer, not a stored substance, and the thermal energy comparison is underdetermined without more properties.
+
+### 3. Conduction follows a temperature difference
+
+A metal pan handle becomes hot when part of it contacts a hot cooking vessel. Energy passes through the handle by microscopic interactions in the material, with conduction often faster in good thermal conductors. An insulator reduces conduction rather than making all energy transfer impossible. Multiple materials in a wall form a heat-transfer pathway; the warm side, cool side, contact quality, thickness and exposed surfaces determine how useful an insulating design will be.
+
+Do not simply say “thicker is always better” without specifying the heat-transfer geometry. A wall with an insulation layer but large unsealed gaps may leak heat through those gaps. A test needs the same indoor/outdoor conditions, exposed area and measurement interval.
+
+**Worked reasoning:** Two mugs contain equally hot water. Mug A has an insulating sleeve; mug B is bare. If all else is comparable, predict which mug is more likely to cool slowly through its side wall. The sleeve can reduce conduction, but an uncovered opening still permits evaporation and convection. The prediction is conditional rather than a universal guarantee of a measured temperature after a fixed time.
+
+### 4. Convection is not conduction with a different name
+
+When a fluid is heated unevenly, warmer and cooler regions can change density and flow. In a suitable gravitational and pressure environment, a warmer parcel of air may rise and cooler surrounding air may replace it, establishing circulation. Heat travels with the moving fluid; this is convection. The thermal state and the fluid dynamics are coupled.
+
+Draw a clear container with a region heated at its base. Mark a candidate rising region and a compensating return flow. If the container is heated uniformly throughout, the same arrow pattern does not automatically follow. Likewise, a sealed layer of trapped air in an insulating material may suppress large-scale convection even though heat can still conduct through it.
+
+**Counterexample:** “Warm air always rises” is not a complete account of wind near a coastline. Pressure structure, background flow and location matter. D3 scientific explanation must state the physical conditions that create or prevent a circulation.
+
+### 5. Radiation reaches bodies without a conducting material path
+
+Thermal radiation is electromagnetic energy emitted by matter and can cross an evacuated space. This is why radiation from the Sun reaches Earth even though ordinary conduction and convection cannot carry energy through space in the same way. Absorption and emission depend on surface properties and wavelength; “black is always hotter” is an oversimplification because wind, water, thermal capacity and geometry affect the resulting temperature.
+
+Two equally exposed surfaces with different reflectance may absorb different amounts of light. A temperature record alone is insufficient to calculate absorption without considering energy losses. For a useful experiment, compare similar containers under comparable sunlight and swap their positions to reduce location bias.
+
+**Exit test:** A metallic vacuum bottle has a reflective inner wall and an evacuated gap. Explain which modes of heat transfer are reduced by each feature. The evacuated region suppresses ordinary conduction through gas and convection; reflective surfaces can reduce radiative exchange. The solid supports still conduct some heat.
+
+### 6. Land and water can heat at different rates
+
+A summer daytime shoreline is a connected heat-transfer problem. Sunlight delivers radiative energy, land and water store and exchange that energy differently, and nearby air responds. In simplified daytime conditions, land may warm faster than adjacent water. Air warmed by land can rise and help establish a pressure-driven surface breeze from the sea. But coast geometry and prevailing weather matter; a sea breeze is not a guaranteed consequence of one dark patch of ground.
+
+The causal order should be reconstructed: radiation and energy balance → temperature contrast → air-density/pressure response → possible airflow. A sketch that starts with a horizontal arrow without explaining the preceding links skips the scientific work.
+
+**Advanced model boundary:** At night, water may remain warmer than land, changing the expected thermal contrast. A persistent strong background wind may override the idealized circulation. Ask which inference ceases to be supported by the stated information.
+
+### 7. Melting and boiling are state changes, not just hotter readings
+
+Ice can melt while its temperature remains near its melting point under suitable pressure. Energy transfers into the material without a corresponding rise in its temperature during a pure-material phase transition at fixed pressure. The energy is involved in changing the physical state and molecular organization, not merely in increasing the average kinetic energy reflected by temperature.
+
+A heating graph for a substance can show a sloping segment, then a nearly flat segment during a change of phase, then another sloping segment. The slope and plateau durations also depend on heating power and losses. A horizontal graph segment by itself is not proof of a particular latent heat value unless power and mass are established.
+
+**Worked reasoning:** Two containers begin with ice and liquid water at 0 °C. Both are warmed gently. Why may a thermometer initially show little rise in the ice-water mixture while the liquid-only container warms? The mixture can use energy to melt remaining ice; the liquid-only sample may increase its temperature if net energy is retained.
+
+### 8. Evaporation differs from boiling
+
+Evaporation can occur at the surface of a liquid below its boiling point. Relatively energetic surface molecules escape, and energy is required to sustain evaporation. This often produces cooling when escaping molecules and evaporation take energy from the remaining liquid and surroundings. Boiling involves vapor formation within the liquid under suitable pressure and temperature conditions.
+
+A fan can increase the evaporation rate by removing humid air near the surface. Increased surface area, ambient temperature and humidity also affect evaporation. These influences must be studied with controlled comparisons; a windy sample cooled more rapidly may also experience enhanced convective heat exchange.
+
+**D3 diagnostic:** Two wet cloths dry at different rates, but one was placed under stronger sunshine. Can the difference be attributed to airflow alone? No. The comparison has multiple changed variables. Design a repeat experiment holding illumination and starting water content approximately constant.
+
+### 9. Thermal expansion and the importance of constraints
+
+Many materials expand when their temperature rises. Railway gaps, expansion joints and loosely mounted components accommodate changes in dimensions. The qualitative insight is that a solid's length, area and volume can change with its thermal state. If expansion is constrained, mechanical stress may develop even though the object cannot move freely.
+
+The size of expansion depends on material, geometry and temperature change; uniform-temperature simple approximations should not be applied indiscriminately to composite systems. A metal ring heated uniformly may enlarge its central hole along with its outer diameter, contrary to the intuitive idea that expansion “fills in” empty space.
+
+**Transfer:** A bridge expansion joint closes some of its gap during a hot afternoon. Predict the direction of change if the bridge cools overnight, and explain why a photograph of one joint without a temperature history is not sufficient to quantify the expansion.
+
+### 10. Experiments need controlled inputs and honest uncertainty
+
+Comparing thermal conductors requires more than observing which sample feels hot. State the quantity to measure (for example, end temperature after the same heating interval), the properties held fixed (length, cross-sectional area, heat input, initial temperature), and the obvious alternative explanations (contact quality, sensor lag, airflow).
+
+An experimental graph should preserve the meanings of axes. In a temperature–time plot, a steeper slope may indicate more rapid heating under the particular conditions; it does not automatically mean greater specific heat capacity. That inference requires comparable energy rates and masses.
+
+**Worked investigation:** Students compare two identical lidded containers, one with a wool sleeve and one without, for 12 minutes. They measure a smaller temperature fall with the sleeve. That supports the sleeve reducing net cooling in this setup. It does not uniquely identify how much conduction, convection and radiation contributed.
+
+### 11. A useful boundary for quantitative calorimetry
+
+Some advanced tasks use \(Q=mc\Delta T\). This is a valid simplified *sensible-heating* relationship for a defined mass and suitable approximately constant specific heat, with no phase transition in the interval. It is not a universal formula for all thermal energy exchanges. A heating curve crossing a phase change must be treated in separate stages.
+
+Suppose 0.20 kg of water is heated from 20 to 30 °C, taking \(c\approx 4200\) J/(kg·K). Under an idealized no-loss constant-\(c\) model, \(Q=0.20\times4200\times10=8400\) J. In a real uncovered cup additional energy may be lost to the environment. This illustrative calculation is **EXTENSION**, not evidence that detailed calorimetry is mandated in the current NSEJS Class X boundary.
+
+The higher-level reasoning task is to decide *whether* a constant-\(c\) model can be used, not to multiply three numbers with no conditions.
+
+### 12. Heat capacity, latent heat and thermal engines: enrichment gate
+
+Quantitative heat capacities, phase-change energy accounting, composite calorimeters, gas thermodynamics and heat engines belong in the separately reviewed **EXTENSION** register here. They may provide useful optional Olympiad transfer if an authentic syllabus/application justification exists. Their presence in a coaching note or a candidate question bank is not enough to classify them as required school syllabus.
+
+For example, ice-water mixing is an inherently piecewise physical problem: the system may first warm ice, melt some or all of it, and then warm liquid water. One cannot assume that the final state is liquid water or that the final temperature is the average of two thermometer readings. The correct first decision is a phase/energy feasibility check, which is a MODEL operation.
+
+### 13. Put the ideas together
+
+The chapter's common language is **system, thermal state, transfer pathway, conditions and evidence**. A student should be able to identify when conduction, convection and radiation are active together, explain why a phase transition may have no temperature rise, and decide which variables a fair thermal experiment must hold fixed.
+
+Three independent advanced reasoning targets are EXPLAIN (trace a causal heat-transfer mechanism), MODEL (select the valid physical transfer mechanism and state its limits), and REPRESENT or SYNTHESIZE (read a time–temperature graph or combine radiation, storage and airflow in the right order).
+
+**Chapter exit investigations:** Explain why an insulated metal flask still can cool; devise a fair evaporation experiment; interpret a temperature plateau without claiming a latent heat value; and show why an idealized sea-breeze model can fail under a strong background wind. The corresponding protected Core1B lead currently exists only for PH07-05; other subtopics require reviewed native cycles.
+
+**Academic boundary:** All chapter sections are original teaching drafts. They require source-specific scientific review, original reviewed diagrams and native C05/C06 binding before a chapter-complete claim.
