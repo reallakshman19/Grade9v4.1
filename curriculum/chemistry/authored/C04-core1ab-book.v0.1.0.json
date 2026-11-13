@@ -288,7 +288,7 @@
             "attempt": "Balance C₂H₆ + O₂ → CO₂ + H₂O using integer coefficients.",
             "reconstruct": "Recreate the amount-of-substance ledger and explain every conversion or reaction relation.",
             "diagnose": "Assess whether this tempting approach would fail: It is acceptable to change ethane C₂H₆ into C₂H₄ when balancing",
-            "repair": "Only coefficients can vary.",
+            "repair": "Change the stoichiometric coefficients while preserving each reactant and product chemical formula unchanged.",
             "boundary": "Verify oxygen count as the final independent step.",
             "model_response": "2C₂H₆ + 7O₂ → 4CO₂ + 6H₂O. C=4, H=12, O=14 on both sides."
           }
@@ -340,7 +340,7 @@
           "No unreacted reagent remains in the ideal model."
         ],
         "result": "36 g H₂O.",
-        "check": "4 g +32 g=36 g."
+        "check": "4 g H₂ + 32 g O₂ = 36 g H₂O, consistent with mass conservation for the closed reaction."
       },
       "misconception": {
         "wrong": "Simply add reagent masses and assign the sum to product even when one reagent is in excess.",
@@ -368,7 +368,7 @@
             "reconstruct": "Recreate the amount-of-substance ledger and explain every conversion or reaction relation.",
             "diagnose": "Assess whether this tempting approach would fail: Use H₂/O₂ gram ratio 2:1 because equation coefficients are 2:1",
             "repair": "Use moles, not coefficient mass ratios.",
-            "boundary": "Check 16+2=18 g.",
+            "boundary": "Check that 16 g oxygen plus 2 g hydrogen equals 18 g product and identify the closed-system assumption.",
             "model_response": "16 g O₂=0.50 mol, consumes 1 mol H₂ (2 g), produces 1 mol H₂O (18 g)."
           }
         },
@@ -471,7 +471,7 @@
             "reconstruct": "Recreate the amount-of-substance ledger and explain every conversion or reaction relation.",
             "diagnose": "Assess whether this tempting approach would fail: Less A than B automatically means A limits",
             "repair": "Divide each reactant amount by its own coefficient.",
-            "boundary": "Would B still limit if nB=5?",
+            "boundary": "Would B still be limiting if its initial amount were 5 mol rather than 3 mol? Recompute both normalized extents.",
             "model_response": "A allows 6/3=2 units; B allows 3/2=1.5 units. B limits, so 1.5 mol C can form in the ideal equation."
           }
         },
