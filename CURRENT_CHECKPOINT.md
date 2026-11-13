@@ -286,6 +286,23 @@
         - Styled with high-contrast, responsive CSS (`css/site-search.css`) honoring 12.7" tablet touch ergonomics.
         - Created unit test suite `tests/test_search_engine.py` (7 tests, 100% pass, SHA-256 fingerprint verified).
 
+    28. **In-Page Question Bank Search & Filter Bar (Search 2) & Direct Anchor Deep-Linking**:
+        - **Full Two-Search Parity Achieved**: Brought Search 2 from v3.5 to full parity across all subject question bank readers ([nsejs/physics/index.html](file:///d:/CodeD/g9v4/nsejs/physics/index.html), [nsejs/chemistry/index.html](file:///d:/CodeD/g9v4/nsejs/chemistry/index.html), [nsejs/biology/index.html](file:///d:/CodeD/g9v4/nsejs/biology/index.html)):
+          - Embedded `.qb-filter-panel` with `#qbSearch`, `#qbTopicSelect`, `#qbDifficulty`, `#qbExam`, `#qbSort`, `#qbClear`, and `#qbResultCount`.
+          - Instant, real-time debounced query filtering across stems, option texts, steps, IDs, and crux moves.
+          - Demand band filtering (`D1 · Foundational`, `D2 · Standard Core`, `D3 · Olympiad Challenge`).
+          - Exam year filtering (dynamically extracted from candidate bank data, e.g. NSEJS 2024–2020).
+          - Multi-order sorting (`canonical`, `id`, `demand-asc`, `demand-desc`).
+          - Live count status badge (e.g. `Showing 3 of 10 Optics questions matching "mirror"`).
+        - **Seamless All-Topics Search Transition**: When on "All Topics Overview", typing in `#qbSearch` or setting a filter automatically activates the workspace and presents matching questions across all subject topics.
+        - **Search 1 → Search 2 Direct Deep-Linking & Anchor Pulse**:
+          - Embedded question anchor elements (`.qb-card-anchor`) and `data-qid` across cards.
+          - Bridging from Search 1 via `?q=...#question-...` automatically opens the reader, sets the search/topic state, smoothly scrolls to the matched card, and triggers a visual pulse highlight (`.card-highlight`).
+        - **Automated Verification**:
+          - Added unit test suite [`tests/test_qb_inline_filter.py`](tests/test_qb_inline_filter.py) (10/10 tests pass).
+          - Site-wide static audit: 43/43 pages pass with 0 broken links.
+          - Core test suite: 41/41 tests pass.
+
 
 ---
 
