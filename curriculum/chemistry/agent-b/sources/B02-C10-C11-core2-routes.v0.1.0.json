@@ -1,6 +1,6 @@
 {
   "schema": "g9v41-chem-b02-core2-route-register/v1",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "workpack": "B02",
   "base_head": "b8e4f6f99a9bb8000fb243ee6a2a2765fc5d2509",
   "source_corpus_blob": "a38ecd43c556a37e0f4c984c3387b132b900a6b4",
@@ -11,9 +11,22 @@
     "subtopics": 13,
     "related_records": 33,
     "producer_D3_D4": 0,
-    "blocked_dropped": 1,
+    "blocked_dropped": 3,
     "subtopics_with_candidate": 12,
-    "authenticated": 0
+    "authenticated": 0,
+    "source_audit": {
+      "BLOCKED_SCIENCE": 3,
+      "TARGETED_TRANSFER_NEEDED": 4,
+      "CROSS_UNIT_PREREQUISITE": 8,
+      "NATIVE_TRANSFER_CANDIDATE": 4,
+      "BLOCKED_DROPPED_KEY": 3,
+      "SCOPE_REVIEW": 4,
+      "BLOCKED_CONVENTION": 2,
+      "BLOCKED_SOURCE_WORKED_MISMATCH": 1,
+      "BLOCKED_MISSING_FIGURE": 3,
+      "BLOCKED_AMBIGUOUS_LABEL": 1
+    },
+    "learner_admitted": 0
   },
   "rows": [
     {
@@ -562,7 +575,16 @@
       "related_refined_cycle_id": "CORE1B-C10-02-3-B02-R3",
       "related_refined_qrt_instance": "C10-02-SYNTHESIZE-D4-B02-R3",
       "related_transfer_band_author": "D4",
-      "route_fit": "SUBTOPIC_RELATED_NOT_EXACT_ITEM_CLOSURE"
+      "route_fit": "AUDIT_ONLY",
+      "source_audit_status": "BLOCKED_SCIENCE",
+      "source_specific_W": "Build a displacement partial order; distinguish thermodynamic tendency from rate in acid.",
+      "audit_reason": "Order follows the directed comparisons; most vigorous H₂ evolution cannot be inferred from order alone without acid/surface/kinetic controls. No full item closure.",
+      "observed_record_origin": "OLYMPIAD_FOUNDATION_ARCHIVE",
+      "observed_bank_answer_marker": "Official Key: (A) Q > P > S > R; Metal Q",
+      "observed_bank_blob": "a38ecd43c556a37e0f4c984c3387b132b900a6b4",
+      "native_transfer_candidate": null,
+      "native_transfer_qrt": null,
+      "learner_route_admission": "HOLD"
     },
     {
       "source_id": "CHEM-NSEJS-REACT-01",
@@ -592,7 +614,16 @@
       "related_refined_cycle_id": "CORE1B-C10-05-2-B02-R3",
       "related_refined_qrt_instance": "C10-05-MODEL-D4-B02-R3",
       "related_transfer_band_author": "D4",
-      "route_fit": "SUBTOPIC_RELATED_NOT_EXACT_ITEM_CLOSURE"
+      "route_fit": "SUBTOPIC_RELATED_NOT_EXACT_ITEM_CLOSURE",
+      "source_audit_status": "TARGETED_TRANSFER_NEEDED",
+      "source_specific_W": "Use oxide-to-anhydrous-product mass change to infer metal mass and calculate acid equivalents.",
+      "audit_reason": "Native cycle starts from acid consumption, not product mass. Need inverse product-mass bridge and explicit aqueous isolation assumption; figure custody pending.",
+      "observed_record_origin": "OLYMPIAD_FOUNDATION_ARCHIVE",
+      "observed_bank_answer_marker": "Official Key: (B) M = Al, volume of HCl = 120 mL",
+      "observed_bank_blob": "a38ecd43c556a37e0f4c984c3387b132b900a6b4",
+      "native_transfer_candidate": "CORE1B-C10-05-2-B02-R3",
+      "native_transfer_qrt": "C10-05-MODEL-D4-B02-R3",
+      "learner_route_admission": "HOLD"
     },
     {
       "source_id": "CHEM-NSEJS-REACT-03",
@@ -620,7 +651,16 @@
       "related_refined_cycle_id": "CORE1B-C10-02-3-B02-R3",
       "related_refined_qrt_instance": "C10-02-SYNTHESIZE-D4-B02-R3",
       "related_transfer_band_author": "D4",
-      "route_fit": "SUBTOPIC_RELATED_NOT_EXACT_ITEM_CLOSURE"
+      "route_fit": "SUBTOPIC_RELATED_NOT_EXACT_ITEM_CLOSURE",
+      "source_audit_status": "CROSS_UNIT_PREREQUISITE",
+      "source_specific_W": "Balance electron transfer and nitrate reduction; count all equation coefficients.",
+      "audit_reason": "C13 owns redox balance; B02 supports electron ledger, not nitrate-specific pathway. Oxidizing acid exception.",
+      "observed_record_origin": "OLYMPIAD_FOUNDATION_ARCHIVE",
+      "observed_bank_answer_marker": "Official Key: (B) Ratio = 3 : 2; Sum = 20",
+      "observed_bank_blob": "a38ecd43c556a37e0f4c984c3387b132b900a6b4",
+      "native_transfer_candidate": "CORE1B-C10-02-1-B02-R2",
+      "native_transfer_qrt": "C10-02-EXPLAIN-D3-B02-R2",
+      "learner_route_admission": "HOLD"
     },
     {
       "source_id": "CHEM-NSEJS-MOLE-10",
@@ -648,7 +688,16 @@
       "related_refined_cycle_id": "CORE1B-C10-04-3-B02-R3",
       "related_refined_qrt_instance": "C10-04-SYNTHESIZE-D3-B02-R3",
       "related_transfer_band_author": "D3",
-      "route_fit": "SUBTOPIC_RELATED_NOT_EXACT_ITEM_CLOSURE"
+      "route_fit": "AUTHOR_W_ALIGNMENT_CANDIDATE_NOT_QUALIFIED",
+      "source_audit_status": "NATIVE_TRANSFER_CANDIDATE",
+      "source_specific_W": "Convert carbonate feed to oxide and one mole gas per mole carbonate.",
+      "audit_reason": "Native sequential balance includes carbonate decomposition; C04 molar mass and C12 gas-volume conversion remain prerequisites.",
+      "observed_record_origin": "OLYMPIAD_FOUNDATION_ARCHIVE",
+      "observed_bank_answer_marker": "Official Key: (B) 2.24 L",
+      "observed_bank_blob": "a38ecd43c556a37e0f4c984c3387b132b900a6b4",
+      "native_transfer_candidate": "CORE1B-C10-04-3-B02-R3",
+      "native_transfer_qrt": "C10-04-SYNTHESIZE-D3-B02-R3",
+      "learner_route_admission": "HOLD"
     },
     {
       "source_id": "NSEJS-2021-C-Q11",
@@ -676,7 +725,16 @@
       "related_refined_cycle_id": "CORE1B-C10-04-3-B02-R3",
       "related_refined_qrt_instance": "C10-04-SYNTHESIZE-D3-B02-R3",
       "related_transfer_band_author": "D3",
-      "route_fit": "SUBTOPIC_RELATED_NOT_EXACT_ITEM_CLOSURE"
+      "route_fit": "SUBTOPIC_RELATED_NOT_EXACT_ITEM_CLOSURE",
+      "source_audit_status": "TARGETED_TRANSFER_NEEDED",
+      "source_specific_W": "Infer initial carbonate/oxide mixture from selective gas mass loss.",
+      "audit_reason": "Existing ore task starts from known composition. Add inverse mass-loss bridge with a different metal carbonate.",
+      "observed_record_origin": "IAPT_NSEJS_OFFICIAL",
+      "observed_bank_answer_marker": "Official Key: (A)",
+      "observed_bank_blob": "a38ecd43c556a37e0f4c984c3387b132b900a6b4",
+      "native_transfer_candidate": "CORE1B-C10-04-2-B02-R2",
+      "native_transfer_qrt": "C10-04-MODEL-D4-B02-R2",
+      "learner_route_admission": "HOLD"
     },
     {
       "source_id": "NSEJS-2022-C-Q54",
@@ -694,7 +752,7 @@
       "supporting_subtopics": [
         "CHEM-C10.04"
       ],
-      "route_role": "FOUNDATION_BRIDGE",
+      "route_role": "BLOCKED_DROPPED_KEY",
       "protected_work_candidate": "Alumina amphoterism used in purification; distinguish processing and electrolysis.",
       "source_admission": "HOLD",
       "independent_qrt": "NOT_RUN",
@@ -703,10 +761,19 @@
       "native_reader": "nsejs/chemistry/textbook/index.html?unit=C10",
       "native_subtopic_selector": "CHEM-C10.05",
       "learner_link_status": "P00_SUBTOPIC_DEEP_LINK_AND_REVISION_GUARD_PENDING",
-      "related_refined_cycle_id": "CORE1B-C10-05-2-B02-R3",
-      "related_refined_qrt_instance": "C10-05-MODEL-D4-B02-R3",
-      "related_transfer_band_author": "D4",
-      "route_fit": "SUBTOPIC_RELATED_NOT_EXACT_ITEM_CLOSURE"
+      "related_refined_cycle_id": null,
+      "related_refined_qrt_instance": null,
+      "related_transfer_band_author": null,
+      "route_fit": "AUDIT_ONLY",
+      "source_audit_status": "BLOCKED_DROPPED_KEY",
+      "source_specific_W": "Audit only: distinguish purification and extraction processes.",
+      "audit_reason": "Bank key says DROP. Do not route learners to scored item.",
+      "observed_record_origin": "IAPT_NSEJS_OFFICIAL",
+      "observed_bank_answer_marker": "Official Key: (DROP)",
+      "observed_bank_blob": "a38ecd43c556a37e0f4c984c3387b132b900a6b4",
+      "native_transfer_candidate": null,
+      "native_transfer_qrt": null,
+      "learner_route_admission": "HOLD"
     },
     {
       "source_id": "NSEJS-2024-C-Q20",
@@ -736,7 +803,16 @@
       "related_refined_cycle_id": null,
       "related_refined_qrt_instance": null,
       "related_transfer_band_author": null,
-      "route_fit": "AUDIT_ONLY"
+      "route_fit": "AUDIT_ONLY",
+      "source_audit_status": "BLOCKED_DROPPED_KEY",
+      "source_specific_W": "Audit only: classify oxides using reactions not group-name shorthand.",
+      "audit_reason": "Bank stem and worked record explicitly report DROP; D is status marker, not scored chemistry choice.",
+      "observed_record_origin": "IAPT_NSEJS_OFFICIAL",
+      "observed_bank_answer_marker": "Official Key: (D)",
+      "observed_bank_blob": "a38ecd43c556a37e0f4c984c3387b132b900a6b4",
+      "native_transfer_candidate": null,
+      "native_transfer_qrt": null,
+      "learner_route_admission": "HOLD"
     },
     {
       "source_id": "NSEJS-2020-C-Q10",
@@ -764,7 +840,16 @@
       "related_refined_cycle_id": "CORE1B-C10-02-3-B02-R3",
       "related_refined_qrt_instance": "C10-02-SYNTHESIZE-D4-B02-R3",
       "related_transfer_band_author": "D4",
-      "route_fit": "SUBTOPIC_RELATED_NOT_EXACT_ITEM_CLOSURE"
+      "route_fit": "AUDIT_ONLY",
+      "source_audit_status": "BLOCKED_SCIENCE",
+      "source_specific_W": "Compare displacement capacity with competing aqueous reactions.",
+      "audit_reason": "Calcium reacts with water; other metals can reduce Cu²⁺; available stoichiometric capacity does not prove main pathway. Require source/conditions review.",
+      "observed_record_origin": "IAPT_NSEJS_OFFICIAL",
+      "observed_bank_answer_marker": "Official Key: (B)",
+      "observed_bank_blob": "a38ecd43c556a37e0f4c984c3387b132b900a6b4",
+      "native_transfer_candidate": null,
+      "native_transfer_qrt": null,
+      "learner_route_admission": "HOLD"
     },
     {
       "source_id": "NSEJS-2022-C-Q28",
@@ -792,7 +877,16 @@
       "related_refined_cycle_id": "CORE1B-C10-01-2-B02-R3",
       "related_refined_qrt_instance": "C10-01-MODEL-D3-B02-R3",
       "related_transfer_band_author": "D3",
-      "route_fit": "SUBTOPIC_RELATED_NOT_EXACT_ITEM_CLOSURE"
+      "route_fit": "SUBTOPIC_RELATED_NOT_EXACT_ITEM_CLOSURE",
+      "source_audit_status": "SCOPE_REVIEW",
+      "source_specific_W": "Distinguish adsorption on surface from bulk material properties.",
+      "audit_reason": "Specific metal adsorption fact not reconstructed by existing carrier tasks. Enrichment, no direct match.",
+      "observed_record_origin": "IAPT_NSEJS_OFFICIAL",
+      "observed_bank_answer_marker": "Official Key: (C)",
+      "observed_bank_blob": "a38ecd43c556a37e0f4c984c3387b132b900a6b4",
+      "native_transfer_candidate": "CORE1B-C10-01-2-B02-R3",
+      "native_transfer_qrt": "C10-01-MODEL-D3-B02-R3",
+      "learner_route_admission": "HOLD"
     },
     {
       "source_id": "NSEJS-2021-C-Q12",
@@ -820,7 +914,16 @@
       "related_refined_cycle_id": "CORE1B-C10-01-2-B02-R3",
       "related_refined_qrt_instance": "C10-01-MODEL-D3-B02-R3",
       "related_transfer_band_author": "D3",
-      "route_fit": "SUBTOPIC_RELATED_NOT_EXACT_ITEM_CLOSURE"
+      "route_fit": "SUBTOPIC_RELATED_NOT_EXACT_ITEM_CLOSURE",
+      "source_audit_status": "CROSS_UNIT_PREREQUISITE",
+      "source_specific_W": "Order metallic character by periodic trends.",
+      "audit_reason": "C06 primary; B02 explains properties not periodic ranking.",
+      "observed_record_origin": "IAPT_NSEJS_OFFICIAL",
+      "observed_bank_answer_marker": "Official Key: (C)",
+      "observed_bank_blob": "a38ecd43c556a37e0f4c984c3387b132b900a6b4",
+      "native_transfer_candidate": "CORE1B-C10-01-1-B02-R2",
+      "native_transfer_qrt": "C10-01-EXPLAIN-D3-B02-R2",
+      "learner_route_admission": "HOLD"
     },
     {
       "source_id": "CHEM-NSEJS-ATOM-10",
@@ -848,7 +951,16 @@
       "related_refined_cycle_id": "CORE1B-C10-03-2-B02-R3",
       "related_refined_qrt_instance": "C10-03-MODEL-D3-B02-R3",
       "related_transfer_band_author": "D3",
-      "route_fit": "SUBTOPIC_RELATED_NOT_EXACT_ITEM_CLOSURE"
+      "route_fit": "AUDIT_ONLY",
+      "source_audit_status": "BLOCKED_CONVENTION",
+      "source_specific_W": "Construct signed thermochemical cycle with lattice formation/dissociation convention.",
+      "audit_reason": "Positive 788 is dissociation direction; companion BOND-06 reports negative formation. Source wording ambiguous. C07/C08 owner; no direct closure.",
+      "observed_record_origin": "OLYMPIAD_FOUNDATION_ARCHIVE",
+      "observed_bank_answer_marker": "Official Key: (B) +788 kJ/mol",
+      "observed_bank_blob": "a38ecd43c556a37e0f4c984c3387b132b900a6b4",
+      "native_transfer_candidate": null,
+      "native_transfer_qrt": null,
+      "learner_route_admission": "HOLD"
     },
     {
       "source_id": "CHEM-NSEJS-BOND-06",
@@ -876,7 +988,16 @@
       "related_refined_cycle_id": "CORE1B-C10-03-2-B02-R3",
       "related_refined_qrt_instance": "C10-03-MODEL-D3-B02-R3",
       "related_transfer_band_author": "D3",
-      "route_fit": "SUBTOPIC_RELATED_NOT_EXACT_ITEM_CLOSURE"
+      "route_fit": "AUDIT_ONLY",
+      "source_audit_status": "BLOCKED_CONVENTION",
+      "source_specific_W": "Construct signed thermochemical cycle with lattice formation/dissociation convention.",
+      "audit_reason": "Negative formation convention versus positive companion dissociation. Explicit direction required; C07/C08 owner.",
+      "observed_record_origin": "OLYMPIAD_FOUNDATION_ARCHIVE",
+      "observed_bank_answer_marker": "Official Key: (A) U_lattice = -787 kJ/mol",
+      "observed_bank_blob": "a38ecd43c556a37e0f4c984c3387b132b900a6b4",
+      "native_transfer_candidate": null,
+      "native_transfer_qrt": null,
+      "learner_route_admission": "HOLD"
     },
     {
       "source_id": "NSEJS-2022-C-Q32",
@@ -904,7 +1025,16 @@
       "related_refined_cycle_id": "CORE1B-C10-03-2-B02-R3",
       "related_refined_qrt_instance": "C10-03-MODEL-D3-B02-R3",
       "related_transfer_band_author": "D3",
-      "route_fit": "SUBTOPIC_RELATED_NOT_EXACT_ITEM_CLOSURE"
+      "route_fit": "SUBTOPIC_RELATED_NOT_EXACT_ITEM_CLOSURE",
+      "source_audit_status": "CROSS_UNIT_PREREQUISITE",
+      "source_specific_W": "Distinguish solvent passage from ion transport across ideal membrane.",
+      "audit_reason": "No reaction follows from impermeability to solutes, not merely ion count. C02/C12 membrane model prerequisite.",
+      "observed_record_origin": "IAPT_NSEJS_OFFICIAL",
+      "observed_bank_answer_marker": "Official Key: (D)",
+      "observed_bank_blob": "a38ecd43c556a37e0f4c984c3387b132b900a6b4",
+      "native_transfer_candidate": "CORE1B-C10-03-2-B02-R3",
+      "native_transfer_qrt": "C10-03-MODEL-D3-B02-R3",
+      "learner_route_admission": "HOLD"
     },
     {
       "source_id": "NSEJS-2023-C-Q26",
@@ -934,7 +1064,16 @@
       "related_refined_cycle_id": "CORE1B-C11-01-1-B02-R3",
       "related_refined_qrt_instance": "C11-01-REPRESENT-D4-B02-R3",
       "related_transfer_band_author": "D4",
-      "route_fit": "SUBTOPIC_RELATED_NOT_EXACT_ITEM_CLOSURE"
+      "route_fit": "AUDIT_ONLY",
+      "source_audit_status": "BLOCKED_SOURCE_WORKED_MISMATCH",
+      "source_specific_W": "Derive global maximum terminal methyl count and exhibit a valid graph.",
+      "audit_reason": "Stem C11H24; worked steps discuss C6H14 and four methyl groups. Option text also includes trailing unrelated material. Correct graph bound in author audit: n1=n3+2n4+2, n2=9−2n3−3n4≥0; max 8, achieved by path of three quaternary carbons with 3+2+3 leaves. Hold original until owner fixes source.",
+      "observed_record_origin": "IAPT_NSEJS_OFFICIAL",
+      "observed_bank_answer_marker": "Official Key: (C)",
+      "observed_bank_blob": "a38ecd43c556a37e0f4c984c3387b132b900a6b4",
+      "native_transfer_candidate": null,
+      "native_transfer_qrt": null,
+      "learner_route_admission": "HOLD"
     },
     {
       "source_id": "CHEM-NSEJS-REACT-07",
@@ -965,7 +1104,16 @@
       "related_refined_cycle_id": "CORE1B-C11-04-2-B02-R3",
       "related_refined_qrt_instance": "C11-04-SYNTHESIZE-D3-B02-R3",
       "related_transfer_band_author": "D3",
-      "route_fit": "SUBTOPIC_RELATED_NOT_EXACT_ITEM_CLOSURE"
+      "route_fit": "SUBTOPIC_RELATED_NOT_EXACT_ITEM_CLOSURE",
+      "source_audit_status": "TARGETED_TRANSFER_NEEDED",
+      "source_specific_W": "Infer alkane formula, enumerate chain isomers, independently compute combustion demand.",
+      "audit_reason": "Existing enumeration cycle and C11.06 combustion each cover a component; add one combined fresh transfer.",
+      "observed_record_origin": "OLYMPIAD_FOUNDATION_ARCHIVE",
+      "observed_bank_answer_marker": "Official Key: (A) 2 isomers; Volume of O2 = 14.56 L",
+      "observed_bank_blob": "a38ecd43c556a37e0f4c984c3387b132b900a6b4",
+      "native_transfer_candidate": "CORE1B-C11-04-2-B02-R3",
+      "native_transfer_qrt": "C11-04-SYNTHESIZE-D3-B02-R3",
+      "learner_route_admission": "HOLD"
     },
     {
       "source_id": "CHEM-NSEJS-MOLE-04",
@@ -995,7 +1143,16 @@
       "related_refined_cycle_id": "CORE1B-C11-03-1-B02-R3",
       "related_refined_qrt_instance": "C11-03-REPRESENT-D3-B02-R3",
       "related_transfer_band_author": "D3",
-      "route_fit": "SUBTOPIC_RELATED_NOT_EXACT_ITEM_CLOSURE"
+      "route_fit": "SUBTOPIC_RELATED_NOT_EXACT_ITEM_CLOSURE",
+      "source_audit_status": "CROSS_UNIT_PREREQUISITE",
+      "source_specific_W": "Infer empirical ratio and molecular scale from composition and vapour density.",
+      "audit_reason": "C04 owns empirical/molecular formula and reference-gas assumption; B02 handles structural ambiguity after formula.",
+      "observed_record_origin": "OLYMPIAD_FOUNDATION_ARCHIVE",
+      "observed_bank_answer_marker": "Official Key: (C) C4H8",
+      "observed_bank_blob": "a38ecd43c556a37e0f4c984c3387b132b900a6b4",
+      "native_transfer_candidate": "CORE1B-C11-03-1-B02-R3",
+      "native_transfer_qrt": "C11-03-REPRESENT-D3-B02-R3",
+      "learner_route_admission": "HOLD"
     },
     {
       "source_id": "NSEJS-2022-C-Q27",
@@ -1025,7 +1182,16 @@
       "related_refined_cycle_id": "CORE1B-C11-03-1-B02-R3",
       "related_refined_qrt_instance": "C11-03-REPRESENT-D3-B02-R3",
       "related_transfer_band_author": "D3",
-      "route_fit": "SUBTOPIC_RELATED_NOT_EXACT_ITEM_CLOSURE"
+      "route_fit": "AUTHOR_W_ALIGNMENT_CANDIDATE_NOT_QUALIFIED",
+      "source_audit_status": "NATIVE_TRANSFER_CANDIDATE",
+      "source_specific_W": "Allocate hydrogen deficiency to rings and double/triple bonds; reject impossible feature.",
+      "audit_reason": "Native C5H8 structure task and boundary use the same invariant and require explicit valid witnesses; original source not authenticated.",
+      "observed_record_origin": "IAPT_NSEJS_OFFICIAL",
+      "observed_bank_answer_marker": "Official Key: (A)",
+      "observed_bank_blob": "a38ecd43c556a37e0f4c984c3387b132b900a6b4",
+      "native_transfer_candidate": "CORE1B-C11-03-1-B02-R3",
+      "native_transfer_qrt": "C11-03-REPRESENT-D3-B02-R3",
+      "learner_route_admission": "HOLD"
     },
     {
       "source_id": "NSEJS-2024-C-Q27",
@@ -1056,7 +1222,16 @@
       "related_refined_cycle_id": "CORE1B-C11-04-2-B02-R3",
       "related_refined_qrt_instance": "C11-04-SYNTHESIZE-D3-B02-R3",
       "related_transfer_band_author": "D3",
-      "route_fit": "SUBTOPIC_RELATED_NOT_EXACT_ITEM_CLOSURE"
+      "route_fit": "SUBTOPIC_RELATED_NOT_EXACT_ITEM_CLOSURE",
+      "source_audit_status": "CROSS_UNIT_PREREQUISITE",
+      "source_specific_W": "Compare cis/trans symmetry, molecular polarity and observed boiling points.",
+      "audit_reason": "C07 geometry/polarity owner; source explanation is a trend/model, not universal boiling-point law. B02 isomer distinction only.",
+      "observed_record_origin": "IAPT_NSEJS_OFFICIAL",
+      "observed_bank_answer_marker": "Official Key: (A)",
+      "observed_bank_blob": "a38ecd43c556a37e0f4c984c3387b132b900a6b4",
+      "native_transfer_candidate": "CORE1B-C11-04-3-B02-R2",
+      "native_transfer_qrt": "C11-04-JUSTIFY-D3-B02-R2",
+      "learner_route_admission": "HOLD"
     },
     {
       "source_id": "NSEJS-2024-C-Q19",
@@ -1084,7 +1259,16 @@
       "related_refined_cycle_id": "CORE1B-C11-01-1-B02-R3",
       "related_refined_qrt_instance": "C11-01-REPRESENT-D4-B02-R3",
       "related_transfer_band_author": "D4",
-      "route_fit": "SUBTOPIC_RELATED_NOT_EXACT_ITEM_CLOSURE"
+      "route_fit": "SUBTOPIC_RELATED_NOT_EXACT_ITEM_CLOSURE",
+      "source_audit_status": "CROSS_UNIT_PREREQUISITE",
+      "source_specific_W": "Compute chord distance from bond lengths and angle.",
+      "audit_reason": "C07 geometry and mathematical cosine law prerequisite; graph valence does not teach metric geometry.",
+      "observed_record_origin": "IAPT_NSEJS_OFFICIAL",
+      "observed_bank_answer_marker": "Official Key: (D)",
+      "observed_bank_blob": "a38ecd43c556a37e0f4c984c3387b132b900a6b4",
+      "native_transfer_candidate": "CORE1B-C11-01-1-B02-R3",
+      "native_transfer_qrt": "C11-01-REPRESENT-D4-B02-R3",
+      "learner_route_admission": "HOLD"
     },
     {
       "source_id": "NSEJS-2024-C-Q28",
@@ -1112,7 +1296,16 @@
       "related_refined_cycle_id": "CORE1B-C11-02-3-B02-R3",
       "related_refined_qrt_instance": "C11-02-JUSTIFY-D3-B02-R3",
       "related_transfer_band_author": "D3",
-      "route_fit": "SUBTOPIC_RELATED_NOT_EXACT_ITEM_CLOSURE"
+      "route_fit": "SUBTOPIC_RELATED_NOT_EXACT_ITEM_CLOSURE",
+      "source_audit_status": "SCOPE_REVIEW",
+      "source_specific_W": "Distinguish tensile strength, hardness and material geometry.",
+      "audit_reason": "Intrinsic monolayer comparison requires measurement context; native allotrope task does not rank numerical tensile strengths.",
+      "observed_record_origin": "IAPT_NSEJS_OFFICIAL",
+      "observed_bank_answer_marker": "Official Key: (C)",
+      "observed_bank_blob": "a38ecd43c556a37e0f4c984c3387b132b900a6b4",
+      "native_transfer_candidate": "CORE1B-C11-02-3-B02-R3",
+      "native_transfer_qrt": "C11-02-JUSTIFY-D3-B02-R3",
+      "learner_route_admission": "HOLD"
     },
     {
       "source_id": "NSEJS-2023-C-Q31",
@@ -1140,7 +1333,16 @@
       "related_refined_cycle_id": "CORE1B-C11-02-3-B02-R3",
       "related_refined_qrt_instance": "C11-02-JUSTIFY-D3-B02-R3",
       "related_transfer_band_author": "D3",
-      "route_fit": "SUBTOPIC_RELATED_NOT_EXACT_ITEM_CLOSURE"
+      "route_fit": "SUBTOPIC_RELATED_NOT_EXACT_ITEM_CLOSURE",
+      "source_audit_status": "CROSS_UNIT_PREREQUISITE",
+      "source_specific_W": "Convert diamond mass to elemental carbon atom count.",
+      "audit_reason": "C04 mass/mole/Avogadro owns calculation; B02 supports elemental identity.",
+      "observed_record_origin": "IAPT_NSEJS_OFFICIAL",
+      "observed_bank_answer_marker": "Official Key: (C)",
+      "observed_bank_blob": "a38ecd43c556a37e0f4c984c3387b132b900a6b4",
+      "native_transfer_candidate": "CORE1B-C11-02-3-B02-R3",
+      "native_transfer_qrt": "C11-02-JUSTIFY-D3-B02-R3",
+      "learner_route_admission": "HOLD"
     },
     {
       "source_id": "NSEJS-2022-C-Q17",
@@ -1170,7 +1372,16 @@
       "related_refined_cycle_id": "CORE1B-C11-05-3-B02-R3",
       "related_refined_qrt_instance": "C11-05-JUSTIFY-D3-B02-R3",
       "related_transfer_band_author": "D3",
-      "route_fit": "SUBTOPIC_RELATED_NOT_EXACT_ITEM_CLOSURE"
+      "route_fit": "AUDIT_ONLY",
+      "source_audit_status": "BLOCKED_MISSING_FIGURE",
+      "source_specific_W": "Identify acidic O–H in carboxyl group from labelled structure.",
+      "audit_reason": "Missing labelled figure prevents option fidelity; model structure teaching may proceed without source link.",
+      "observed_record_origin": "IAPT_NSEJS_OFFICIAL",
+      "observed_bank_answer_marker": "Official Key: (D)",
+      "observed_bank_blob": "a38ecd43c556a37e0f4c984c3387b132b900a6b4",
+      "native_transfer_candidate": null,
+      "native_transfer_qrt": null,
+      "learner_route_admission": "HOLD"
     },
     {
       "source_id": "NSEJS-2023-C-Q24",
@@ -1200,7 +1411,16 @@
       "related_refined_cycle_id": "CORE1B-C11-05-3-B02-R3",
       "related_refined_qrt_instance": "C11-05-JUSTIFY-D3-B02-R3",
       "related_transfer_band_author": "D3",
-      "route_fit": "SUBTOPIC_RELATED_NOT_EXACT_ITEM_CLOSURE"
+      "route_fit": "AUDIT_ONLY",
+      "source_audit_status": "BLOCKED_MISSING_FIGURE",
+      "source_specific_W": "Infer first bond disruption from labelled structure and acidic conditions.",
+      "audit_reason": "Missing figure prevents identification; mechanism is advanced.",
+      "observed_record_origin": "IAPT_NSEJS_OFFICIAL",
+      "observed_bank_answer_marker": "Official Key: (B)",
+      "observed_bank_blob": "a38ecd43c556a37e0f4c984c3387b132b900a6b4",
+      "native_transfer_candidate": null,
+      "native_transfer_qrt": null,
+      "learner_route_admission": "HOLD"
     },
     {
       "source_id": "NSEJS-2022-C-Q26",
@@ -1230,7 +1450,16 @@
       "related_refined_cycle_id": "CORE1B-C11-06-2-B02-R3",
       "related_refined_qrt_instance": "C11-06-SYNTHESIZE-D4-B02-R3",
       "related_transfer_band_author": "D4",
-      "route_fit": "SUBTOPIC_RELATED_NOT_EXACT_ITEM_CLOSURE"
+      "route_fit": "AUDIT_ONLY",
+      "source_audit_status": "BLOCKED_MISSING_FIGURE",
+      "source_specific_W": "Compare radical substitution sites from actual labelled structure.",
+      "audit_reason": "Missing figure and advanced mechanism; source option cannot be verified.",
+      "observed_record_origin": "IAPT_NSEJS_OFFICIAL",
+      "observed_bank_answer_marker": "Official Key: (C)",
+      "observed_bank_blob": "a38ecd43c556a37e0f4c984c3387b132b900a6b4",
+      "native_transfer_candidate": null,
+      "native_transfer_qrt": null,
+      "learner_route_admission": "HOLD"
     },
     {
       "source_id": "NSEJS-2020-C-Q09",
@@ -1261,7 +1490,16 @@
       "related_refined_cycle_id": "CORE1B-C11-06-2-B02-R3",
       "related_refined_qrt_instance": "C11-06-SYNTHESIZE-D4-B02-R3",
       "related_transfer_band_author": "D4",
-      "route_fit": "SUBTOPIC_RELATED_NOT_EXACT_ITEM_CLOSURE"
+      "route_fit": "SUBTOPIC_RELATED_NOT_EXACT_ITEM_CLOSURE",
+      "source_audit_status": "SCOPE_REVIEW",
+      "source_specific_W": "Infer precursor from specified cleavage products and dehydration model.",
+      "audit_reason": "Advanced ozonolysis and possible rearrangement; bank multi-key needs source verification. Existing addition/combustion does not teach this inverse mechanism.",
+      "observed_record_origin": "IAPT_NSEJS_OFFICIAL",
+      "observed_bank_answer_marker": "Official Key: (AORB)",
+      "observed_bank_blob": "a38ecd43c556a37e0f4c984c3387b132b900a6b4",
+      "native_transfer_candidate": "CORE1B-C11-06-2-B02-R3",
+      "native_transfer_qrt": "C11-06-SYNTHESIZE-D4-B02-R3",
+      "learner_route_admission": "HOLD"
     },
     {
       "source_id": "NSEJS-2024-C-Q32",
@@ -1291,7 +1529,16 @@
       "related_refined_cycle_id": "CORE1B-C11-07-2-B02-R3",
       "related_refined_qrt_instance": "C11-07-SYNTHESIZE-D4-B02-R3",
       "related_transfer_band_author": "D4",
-      "route_fit": "SUBTOPIC_RELATED_NOT_EXACT_ITEM_CLOSURE"
+      "route_fit": "AUDIT_ONLY",
+      "source_audit_status": "BLOCKED_AMBIGUOUS_LABEL",
+      "source_specific_W": "Trace individually labelled carbonyl, hydroxyl and alcohol oxygens under stated mechanism.",
+      "audit_reason": "'Carboxyl oxygen' is ambiguous; acid-catalysed exchange can scramble label. Need positional label and exchange conditions. No source answer endorsed.",
+      "observed_record_origin": "IAPT_NSEJS_OFFICIAL",
+      "observed_bank_answer_marker": "Official Key: (B)",
+      "observed_bank_blob": "a38ecd43c556a37e0f4c984c3387b132b900a6b4",
+      "native_transfer_candidate": null,
+      "native_transfer_qrt": null,
+      "learner_route_admission": "HOLD"
     },
     {
       "source_id": "CHEM-NSEJS-REACT-08",
@@ -1321,7 +1568,16 @@
       "related_refined_cycle_id": "CORE1B-C11-07-2-B02-R3",
       "related_refined_qrt_instance": "C11-07-SYNTHESIZE-D4-B02-R3",
       "related_transfer_band_author": "D4",
-      "route_fit": "SUBTOPIC_RELATED_NOT_EXACT_ITEM_CLOSURE"
+      "route_fit": "SUBTOPIC_RELATED_NOT_EXACT_ITEM_CLOSURE",
+      "source_audit_status": "TARGETED_TRANSFER_NEEDED",
+      "source_specific_W": "Find limiting reactant, theoretical ester mass and isolated yield.",
+      "audit_reason": "Native conversion task uses equal moles; add unequal feed and distinction between isolated yield and conversion.",
+      "observed_record_origin": "OLYMPIAD_FOUNDATION_ARCHIVE",
+      "observed_bank_answer_marker": "Official Key: (B) 6.60 g",
+      "observed_bank_blob": "a38ecd43c556a37e0f4c984c3387b132b900a6b4",
+      "native_transfer_candidate": "CORE1B-C11-07-3-B02-R2",
+      "native_transfer_qrt": "C11-07-JUSTIFY-D4-B02-R2",
+      "learner_route_admission": "HOLD"
     },
     {
       "source_id": "NSEJS-2023-C-Q32",
@@ -1349,7 +1605,16 @@
       "related_refined_cycle_id": "CORE1B-C11-07-2-B02-R3",
       "related_refined_qrt_instance": "C11-07-SYNTHESIZE-D4-B02-R3",
       "related_transfer_band_author": "D4",
-      "route_fit": "SUBTOPIC_RELATED_NOT_EXACT_ITEM_CLOSURE"
+      "route_fit": "AUTHOR_W_ALIGNMENT_CANDIDATE_NOT_QUALIFIED",
+      "source_audit_status": "NATIVE_TRANSFER_CANDIDATE",
+      "source_specific_W": "Distinguish soap precipitation from suitable detergent performance in hard water.",
+      "audit_reason": "Native precipitation/foam comparison trains mechanism; bank absolute claims about detergents require formulation limits, no universal solubility.",
+      "observed_record_origin": "IAPT_NSEJS_OFFICIAL",
+      "observed_bank_answer_marker": "Official Key: (C)",
+      "observed_bank_blob": "a38ecd43c556a37e0f4c984c3387b132b900a6b4",
+      "native_transfer_candidate": "CORE1B-C11-07-2-B02-R3",
+      "native_transfer_qrt": "C11-07-SYNTHESIZE-D4-B02-R3",
+      "learner_route_admission": "HOLD"
     },
     {
       "source_id": "NSEJS-2021-C-Q30",
@@ -1377,7 +1642,16 @@
       "related_refined_cycle_id": "CORE1B-C11-07-2-B02-R3",
       "related_refined_qrt_instance": "C11-07-SYNTHESIZE-D4-B02-R3",
       "related_transfer_band_author": "D4",
-      "route_fit": "SUBTOPIC_RELATED_NOT_EXACT_ITEM_CLOSURE"
+      "route_fit": "AUTHOR_W_ALIGNMENT_CANDIDATE_NOT_QUALIFIED",
+      "source_audit_status": "NATIVE_TRANSFER_CANDIDATE",
+      "source_specific_W": "Compare calcium-specific precipitation with sodium ionic-strength effects and controlled soap/detergent test.",
+      "audit_reason": "Native quantitative comparison trains discriminatory mechanism; original NaCl concentration unspecified, salting-out assumption needs review.",
+      "observed_record_origin": "IAPT_NSEJS_OFFICIAL",
+      "observed_bank_answer_marker": "Official Key: (B)",
+      "observed_bank_blob": "a38ecd43c556a37e0f4c984c3387b132b900a6b4",
+      "native_transfer_candidate": "CORE1B-C11-07-2-B02-R3",
+      "native_transfer_qrt": "C11-07-SYNTHESIZE-D4-B02-R3",
+      "learner_route_admission": "HOLD"
     },
     {
       "source_id": "NSEJS-2020-C-Q11",
@@ -1395,7 +1669,7 @@
       "supporting_subtopics": [
         "CHEM-C11.07"
       ],
-      "route_role": "FIGURE_REVIEW_HOLD",
+      "route_role": "BLOCKED_DROPPED_KEY",
       "protected_work_candidate": "Functional-group recognition in labelled complex molecule; no health efficacy claim.",
       "source_admission": "HOLD",
       "independent_qrt": "NOT_RUN",
@@ -1404,10 +1678,19 @@
       "native_reader": "nsejs/chemistry/textbook/index.html?unit=C11",
       "native_subtopic_selector": "CHEM-C11.05",
       "learner_link_status": "P00_SUBTOPIC_DEEP_LINK_AND_REVISION_GUARD_PENDING",
-      "related_refined_cycle_id": "CORE1B-C11-05-3-B02-R3",
-      "related_refined_qrt_instance": "C11-05-JUSTIFY-D3-B02-R3",
-      "related_transfer_band_author": "D3",
-      "route_fit": "SUBTOPIC_RELATED_NOT_EXACT_ITEM_CLOSURE"
+      "related_refined_cycle_id": null,
+      "related_refined_qrt_instance": null,
+      "related_transfer_band_author": null,
+      "route_fit": "AUDIT_ONLY",
+      "source_audit_status": "BLOCKED_DROPPED_KEY",
+      "source_specific_W": "Audit only: mass/volume concentration and molecular count.",
+      "audit_reason": "Bank key says DROP; prior mapping as figure-based organic identification was incorrect. C02/C04 own quantitative concept.",
+      "observed_record_origin": "IAPT_NSEJS_OFFICIAL",
+      "observed_bank_answer_marker": "Official Key: (DROP)",
+      "observed_bank_blob": "a38ecd43c556a37e0f4c984c3387b132b900a6b4",
+      "native_transfer_candidate": null,
+      "native_transfer_qrt": null,
+      "learner_route_admission": "HOLD"
     },
     {
       "source_id": "NSEJS-2022-C-Q24",
@@ -1435,7 +1718,16 @@
       "related_refined_cycle_id": "CORE1B-C11-06-2-B02-R3",
       "related_refined_qrt_instance": "C11-06-SYNTHESIZE-D4-B02-R3",
       "related_transfer_band_author": "D4",
-      "route_fit": "SUBTOPIC_RELATED_NOT_EXACT_ITEM_CLOSURE"
+      "route_fit": "SUBTOPIC_RELATED_NOT_EXACT_ITEM_CLOSURE",
+      "source_audit_status": "CROSS_UNIT_PREREQUISITE",
+      "source_specific_W": "Use charge neutrality to obtain sum of formal carbon oxidation states.",
+      "audit_reason": "C13 owns oxidation-number rules; B02 supports hydrocarbon formula conservation, not individual oxidation states.",
+      "observed_record_origin": "IAPT_NSEJS_OFFICIAL",
+      "observed_bank_answer_marker": "Official Key: (D)",
+      "observed_bank_blob": "a38ecd43c556a37e0f4c984c3387b132b900a6b4",
+      "native_transfer_candidate": "CORE1B-C11-06-1-B02-R2",
+      "native_transfer_qrt": "C11-06-REPRESENT-D3-B02-R2",
+      "learner_route_admission": "HOLD"
     },
     {
       "source_id": "NSEJS-2020-C-Q28",
@@ -1463,7 +1755,16 @@
       "related_refined_cycle_id": "CORE1B-C10-02-3-B02-R3",
       "related_refined_qrt_instance": "C10-02-SYNTHESIZE-D4-B02-R3",
       "related_transfer_band_author": "D4",
-      "route_fit": "SUBTOPIC_RELATED_NOT_EXACT_ITEM_CLOSURE"
+      "route_fit": "AUDIT_ONLY",
+      "source_audit_status": "BLOCKED_SCIENCE",
+      "source_specific_W": "Distinguish acid strength, observed gas rate and oxidising acid pathway.",
+      "audit_reason": "HNO3 gas products are condition-dependent, not automatically H2. Rate ranking not established solely by acid concentration; review source.",
+      "observed_record_origin": "IAPT_NSEJS_OFFICIAL",
+      "observed_bank_answer_marker": "Official Key: (B,C)",
+      "observed_bank_blob": "a38ecd43c556a37e0f4c984c3387b132b900a6b4",
+      "native_transfer_candidate": null,
+      "native_transfer_qrt": null,
+      "learner_route_admission": "HOLD"
     },
     {
       "source_id": "NSEJS-2022-C-Q18",
@@ -1491,7 +1792,16 @@
       "related_refined_cycle_id": "CORE1B-C11-01-1-B02-R3",
       "related_refined_qrt_instance": "C11-01-REPRESENT-D4-B02-R3",
       "related_transfer_band_author": "D4",
-      "route_fit": "SUBTOPIC_RELATED_NOT_EXACT_ITEM_CLOSURE"
+      "route_fit": "SUBTOPIC_RELATED_NOT_EXACT_ITEM_CLOSURE",
+      "source_audit_status": "SCOPE_REVIEW",
+      "source_specific_W": "Distinguish catenation ability from empirical counts of known compounds.",
+      "audit_reason": "Ranking depends on database, definition and date; cannot derive from valence alone. No exact closure.",
+      "observed_record_origin": "IAPT_NSEJS_OFFICIAL",
+      "observed_bank_answer_marker": "Official Key: (B)",
+      "observed_bank_blob": "a38ecd43c556a37e0f4c984c3387b132b900a6b4",
+      "native_transfer_candidate": "CORE1B-C11-01-1-B02-R3",
+      "native_transfer_qrt": "C11-01-REPRESENT-D4-B02-R3",
+      "learner_route_admission": "HOLD"
     }
   ],
   "notes": [
@@ -1499,6 +1809,7 @@
     "Links are a mapping register, not an active bidirectional integration. Shared bank/reader remain untouched.",
     "Question bank has no D3/D4 producer nomination directly mapped here; higher demand must be constructed as authored transfer, not relabelled original.",
     "Cycle references point to related subtopic constructions, not necessarily an exact source question's decisive W. Source-specific closure and active bidirectional card binding remain outstanding.",
-    "All 39 current authored cycle IDs are available by subtopic; no direct source-specific closure implied. P00 route integration remains HOLD."
+    "All 39 current authored cycle IDs are available by subtopic; no direct source-specific closure implied. P00 route integration remains HOLD.",
+    "R3 author audit of exact bank text, options, worked steps and producer key labels. Producer VERIFIED_IAPT_KEY is not independent authentication. See exact status counts; no active source link. All audit-only rows withheld; native transfer candidates train a related warrant only."
   ]
 }
