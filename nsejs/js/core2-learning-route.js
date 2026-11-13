@@ -120,38 +120,214 @@
     catch (_) { return null; }
   }
 
+  const CORE1_ROUTES = {
+    // Mechanics
+    "g9:PHYSICS:NSEJS-24-MECH-01": {
+      tag: "Core 1A → Core 1B Master Lesson · Mechanics",
+      desc: "Learn decoupled kinematics, piecewise velocity, and average speed without false arithmetic averaging. Technical preview; academic HOLD.",
+      href: "core1/recovery/nsejs-mechanics-r1/index.html",
+      btnText: "▶ Open 6-Stage Mechanics Master Lesson →"
+    },
+    // Fluids
+    "g9:PHYSICS:PHYS-NSEJS-FLUID-01": {
+      tag: "Core 1A → Core 1B authored Fluid Mechanics",
+      desc: "Learn effective gravity scaling (g_eff = g + a) and relative buoyant acceleration in an accelerating frame. Technical preview; academic HOLD.",
+      href: "core1/nsejs-fluids-sound-r1/index.html",
+      btnText: "▶ Open 3-Stage Fluids Learning Journey →"
+    },
+    "g9:PHYSICS:PHYS-NSEJS-FLUID-04": {
+      tag: "Core 1A → Core 1B authored Fluid Mechanics",
+      desc: "Learn droplet coalescence, volume conservation (r^3) vs surface area reduction (r^2), and surface energy release. Technical preview; academic HOLD.",
+      href: "core1/nsejs-fluids-surface-energy-d3-r1/index.html",
+      btnText: "▶ Open 3-Stage Surface Energy Learning Journey →"
+    },
+    // Optics
+    "g9:PHYSICS:NSEJS-24-OPT-01": {
+      tag: "Core 1A → Core 1B Master Lesson · Optics",
+      desc: "Learn thin-lens conjugate focus shifts, symmetric object-image constraints, and sign conventions. Technical preview; academic HOLD.",
+      href: "core1/recovery/ioqjs-optics-conjugate-d3-r1/index.html",
+      btnText: "▶ Open Conjugate Optics Master Lesson →"
+    },
+    "g9:PHYSICS:IOQJS-21-OPT-01": {
+      tag: "Core 1A → Core 1B Master Lesson · Optics",
+      desc: "Coupled conjugate-distance constraints and thin-lens magnification. Technical preview; academic HOLD.",
+      href: "core1/recovery/ioqjs-optics-conjugate-d3-r1/index.html",
+      btnText: "▶ Open Conjugate Optics Master Lesson →"
+    },
+    "g9:PHYSICS:NSEJS-23-OPT-01": {
+      tag: "Core 1A → Core 1B Master Lesson · Optics",
+      desc: "Convex spherical mirror signs and limiting virtual image position. Technical preview; academic HOLD.",
+      href: "core1/recovery/nsejs-optics-r1/index.html",
+      btnText: "▶ Open Convex Mirrors Master Lesson →"
+    },
+    "g9:PHYSICS:NSEJS-22-OPT-01": {
+      tag: "Core 1A → Core 1B Master Lesson · Optics",
+      desc: "Silvered prism discrete internal reflection geometry and ray re-tracing. Technical preview; academic HOLD.",
+      href: "core1/recovery/nsejs-optics-prism-d3-r1/index.html",
+      btnText: "▶ Open Silvered Prisms Master Lesson →"
+    },
+    "g9:PHYSICS:NSEJS-22-OPT-02": {
+      tag: "Core 1A → Core 1B Master Lesson · Optics",
+      desc: "Lens image formation followed by plane-mirror reflection. Technical preview; academic HOLD.",
+      href: "core1/recovery/nsejs-optics-lens-mirror-d3-r1/index.html",
+      btnText: "▶ Open Lens-Mirror Master Lesson →"
+    },
+    "g9:PHYSICS:NSEJS-19-OPT-01": {
+      tag: "Core 1A → Core 1B Master Lesson · Optics",
+      desc: "Differential screw pitch coupled with lens magnification dynamics. Technical preview; academic HOLD.",
+      href: "core1/recovery/nsejs-optics-screw-lens-d3-r1/index.html",
+      btnText: "▶ Open Screw-Lens Master Lesson →"
+    },
+    // Circuits
+    "g9:PHYSICS:NSEJS-24-CIRC-01": {
+      tag: "Core 1A → Core 1B Master Lesson · Circuits",
+      desc: "Resistor tetrahedron symmetry and equipotential vertex node grouping. Technical preview; academic HOLD.",
+      href: "core1/recovery/nsejs-circuits-r1/index.html",
+      btnText: "▶ Open Tetrahedron Resistors Master Lesson →"
+    },
+    "g9:PHYSICS:NSEJS-FND-CIRC-01": {
+      tag: "Core 1A → Core 1B Master Lesson · Circuits",
+      desc: "Infinite resistive ladders, recurrence relations, and quadratic roots. Technical preview; academic HOLD.",
+      href: "core1/recovery/nsejs-circuits-ladder-d3-r1/index.html",
+      btnText: "▶ Open Infinite Ladders Master Lesson →"
+    },
+    "g9:PHYSICS:NSEJS-FND-CIRC-02": {
+      tag: "Core 1A → Core 1B Master Lesson · Circuits",
+      desc: "Cube resistor networks by equipotential node groups across body and face diagonals. Technical preview; academic HOLD.",
+      href: "core1/recovery/nsejs-circuits-cube-d3-r1/index.html",
+      btnText: "▶ Open Resistor Cube Master Lesson →"
+    },
+    // Electrostatics
+    "g9:PHYSICS:NSEJS-24-ELEC-01": {
+      tag: "Core 1A → Core 1B Master Lesson · Electrostatics",
+      desc: "Coulomb force and fundamental charge quantization scale (q = n·e). Technical preview; academic HOLD.",
+      href: "core1/recovery/nsejs-electrostatics-r1/index.html",
+      btnText: "▶ Open Coulomb Quantization Master Lesson →"
+    },
+    "g9:PHYSICS:NSEJS-FND-ELEC-04": {
+      tag: "Core 1A → Core 1B Master Lesson · Electrostatics",
+      desc: "Transverse deflection and parabolic trajectories of charged particles in uniform E-fields. Technical preview; academic HOLD.",
+      href: "core1/recovery/nsejs-electrostatics-deflection-d3-r1/index.html",
+      btnText: "▶ Open Electrostatic Deflection Master Lesson →"
+    },
+    // Magnetism
+    "g9:PHYSICS:NSEJS-24-MAG-01": {
+      tag: "Core 1A → Core 1B Master Lesson · Magnetism & EMI",
+      desc: "Lenz's law: test flux change direction before determining induced loop current. Technical preview; academic HOLD.",
+      href: "core1/recovery/nsejs-magnetism-r1/index.html",
+      btnText: "▶ Open Lenz's Law Master Lesson →"
+    },
+    "g9:PHYSICS:NSEJS-18-MAG-01": {
+      tag: "Core 1A → Core 1B Master Lesson · Magnetism & EMI",
+      desc: "Falling conductive rod, motional EMF, and asymptotic terminal magnetic damping. Technical preview; academic HOLD.",
+      href: "core1/recovery/nsejs-magnetism-terminal-d3-r1/index.html",
+      btnText: "▶ Open Magnetic Damping Master Lesson →"
+    }
+  };
+
+  const TOPIC_RIBBONS = {
+    optics: {
+      title: "🔭 Ray Optics · Connected Core 1 Master Lessons",
+      links: [
+        { name: "Thin Lens Displacement", href: "core1/nsejs-optics-displacement-d3-r1/index.html" },
+        { name: "Conjugate Foci", href: "core1/recovery/ioqjs-optics-conjugate-d3-r1/index.html" },
+        { name: "Silvered Prisms", href: "core1/recovery/nsejs-optics-prism-d3-r1/index.html" },
+        { name: "All 6 Optics Lessons →", href: "core1/index.html#optics" }
+      ]
+    },
+    mechanics: {
+      title: "🚀 Mechanics · Connected Core 1 Master Lessons",
+      links: [
+        { name: "Collisions & Momentum (6-Stage)", href: "learn-mechanics.html" },
+        { name: "Decoupled Kinematics (6-Stage)", href: "core1/recovery/nsejs-mechanics-r1/index.html" },
+        { name: "All Mechanics Lessons →", href: "core1/index.html#mechanics" }
+      ]
+    },
+    circuits: {
+      title: "⚡ Current Electricity · Connected Core 1 Master Lessons",
+      links: [
+        { name: "Resistor Cube Networks", href: "core1/recovery/nsejs-circuits-cube-d3-r1/index.html" },
+        { name: "Infinite Ladders", href: "core1/recovery/nsejs-circuits-ladder-d3-r1/index.html" },
+        { name: "Resistor Tetrahedrons", href: "core1/recovery/nsejs-circuits-r1/index.html" },
+        { name: "All Circuit Lessons →", href: "core1/index.html#circuits" }
+      ]
+    },
+    electrostatics: {
+      title: "⚛️ Electrostatics · Connected Core 1 Master Lessons",
+      links: [
+        { name: "Coulomb Quantization Scale", href: "core1/recovery/nsejs-electrostatics-r1/index.html" },
+        { name: "Transverse E-Field Deflection", href: "core1/recovery/nsejs-electrostatics-deflection-d3-r1/index.html" },
+        { name: "All Electrostatics Lessons →", href: "core1/index.html#electrostatics" }
+      ]
+    },
+    magnetism: {
+      title: "🧲 Magnetism & EMI · Connected Core 1 Master Lessons",
+      links: [
+        { name: "Lenz's Law Flux Direction", href: "core1/recovery/nsejs-magnetism-r1/index.html" },
+        { name: "Terminal Magnetic Damping", href: "core1/recovery/nsejs-magnetism-terminal-d3-r1/index.html" },
+        { name: "All Magnetism Lessons →", href: "core1/index.html#magnetism" }
+      ]
+    },
+    fluids: {
+      title: "🌊 Fluid Mechanics · Connected Core 1 Master Lessons",
+      links: [
+        { name: "Elevator Buoyancy (g_eff = g+a)", href: "core1/nsejs-fluids-sound-r1/index.html" },
+        { name: "Droplet Surface Energy Release", href: "core1/nsejs-fluids-surface-energy-d3-r1/index.html" },
+        { name: "All Fluids Lessons →", href: "core1/index.html#fluids" }
+      ]
+    }
+  };
+
+  function renderTopicRibbon(topic) {
+    const ribbonData = TOPIC_RIBBONS[topic];
+    if (!ribbonData || document.getElementById("topic-core1-ribbon")) return;
+    const ribbon = document.createElement("aside");
+    ribbon.id = "topic-core1-ribbon";
+    ribbon.className = "nsejs-topic-ribbon";
+    ribbon.setAttribute("aria-label", "Core 1 Master Learning Links for this Topic");
+
+    const header = document.createElement("div");
+    header.className = "ribbon-head";
+    header.innerHTML = `<strong>${ribbonData.title}</strong> · <span class="unval-ribbon-tag">{Unvalidated} Core 1A/1B</span>`;
+
+    const linksList = document.createElement("div");
+    linksList.className = "ribbon-links";
+    ribbonData.links.forEach(item => {
+      const a = document.createElement("a");
+      a.className = "ribbon-btn";
+      a.textContent = "▶ " + item.name;
+      a.href = item.href;
+      linksList.appendChild(a);
+    });
+
+    ribbon.append(header, linksList);
+    ROOT.prepend(ribbon);
+  }
+
   function reconcile() {
-    if (!accepted) return;
-    const route = accepted;
+    const currentTopic = params.get("topic") || "optics";
+    renderTopicRibbon(currentTopic);
+
     const cards = ROOT.querySelectorAll("article.card[data-question-uid]");
     for (const card of cards) {
-      if (card.dataset.questionUid === "g9:PHYSICS:PHYS-NSEJS-FLUID-01" && !card.querySelector("#nsejs-route-fluid-01")) {
+      const qUid = card.dataset.questionUid;
+      const routeInfo = CORE1_ROUTES[qUid];
+      if (routeInfo && !card.querySelector(`.core1-route-${qUid.replace(/[^a-zA-Z0-9]/g, "-")}`)) {
         const holder = document.createElement("div");
-        holder.id = "nsejs-route-fluid-01";
-        holder.className = "nsejs-learning-route";
+        holder.className = `nsejs-learning-route core1-route-${qUid.replace(/[^a-zA-Z0-9]/g, "-")}`;
         const label = document.createElement("p");
-        label.textContent = "Core 1A → Core 1B authored Fluid Mechanics: learn effective gravity scaling and relative buoyant acceleration in an accelerating frame. Technical preview; academic HOLD.";
+        label.innerHTML = `<strong>${routeInfo.tag}</strong>: ${routeInfo.desc}`;
         const link = document.createElement("a");
-        link.textContent = "▶ Open 3-Stage Fluids Learning Journey →";
+        link.textContent = routeInfo.btnText;
         link.className = "nsejs-learning-touch-link";
-        link.href = "core1/nsejs-fluids-sound-r1/index.html";
+        link.href = routeInfo.href;
         holder.append(label, link);
         card.append(holder);
       }
-      if (card.dataset.questionUid === "g9:PHYSICS:PHYS-NSEJS-FLUID-04" && !card.querySelector("#nsejs-route-fluid-04")) {
-        const holder = document.createElement("div");
-        holder.id = "nsejs-route-fluid-04";
-        holder.className = "nsejs-learning-route";
-        const label = document.createElement("p");
-        label.textContent = "Core 1A → Core 1B authored Fluid Mechanics: learn droplet coalescence and surface energy release. Technical preview; academic HOLD.";
-        const link = document.createElement("a");
-        link.textContent = "▶ Open 3-Stage Surface Energy Learning Journey →";
-        link.className = "nsejs-learning-touch-link";
-        link.href = "core1/nsejs-fluids-surface-energy-d3-r1/index.html";
-        holder.append(label, link);
-        card.append(holder);
-      }
+
       if (card.dataset.questionUid !== UID) continue;
+      if (!accepted) continue;
+      const route = accepted;
       if (card.dataset.contentRevision !== route.content_revision_sha256) {
         if (returnRequested) block("Source card revision does not match the requested lesson");
         continue;
@@ -172,7 +348,8 @@
       holder.append(label,link);
       card.append(holder);
     }
-    if (once || !returnRequested) return;
+    if (once || !returnRequested || !accepted) return;
+    const route = accepted;
     const returnedUID = params.get("source_uid");
     const returnedRevision = params.get("source_revision");
     if (returnedUID !== UID || returnedRevision !== route.content_revision_sha256 ||

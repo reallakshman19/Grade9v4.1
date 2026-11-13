@@ -148,6 +148,56 @@
       letter-spacing: 0.05em;
     }
 
+    .topic-btn-row {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 4px;
+    }
+    .secondary-topic-btn {
+      min-height: 46px;
+      padding: 10px 18px;
+      border-radius: 10px;
+      background: #f0fdf4;
+      color: #166534;
+      border: 1.5px solid #86efac;
+      font-weight: 750;
+      font-size: 14px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+      transition: background 0.15s, border-color 0.15s, transform 0.1s;
+      touch-action: manipulation;
+    }
+    .secondary-topic-btn:hover {
+      background: #dcfce7;
+      border-color: #4ade80;
+      transform: translateY(-1px);
+    }
+    .prog-item-link {
+      text-decoration: none;
+      padding: 5px 8px;
+      border-radius: 8px;
+      transition: background 0.15s;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      color: inherit;
+    }
+    .prog-item-link:hover {
+      background: #e2e8f0;
+    }
+    .dot-authored { background: #16a34a; }
+    .badge-authored {
+      background: #dcfce7;
+      color: #15803d;
+      border: 1px solid #bbf7d0;
+    }
+
     /* Filter Pills Bar (Ergonomic Tablet Touch Targets >= 44px) */
     .filter-bar-wrapper {
       background: white;
@@ -564,33 +614,38 @@
         <p class="topic-desc">Spherical mirrors, thin lens formula, prism minimum deviation, magnification, mirror-lens combinations, and conjugate focus shifts.</p>
         
         <div class="progression-deck">
-          <div class="prog-item">
-            <span class="prog-left"><span class="prog-dot dot-ready"></span> Core 2 Question Bank</span>
-            <span class="prog-badge badge-ready">10 Qs Available</span>
-          </div>
-          <div class="prog-item">
-            <span class="prog-left"><span class="prog-dot dot-review"></span> Core 1A Master Lesson</span>
-            <span class="prog-badge badge-review">⏳ Academic Review</span>
-          </div>
-          <div class="prog-item">
-            <span class="prog-left"><span class="prog-dot dot-review"></span> Core 1B Fresh Transfer</span>
-            <span class="prog-badge badge-review">⏳ Academic Review</span>
-          </div>
+          <a class="prog-item prog-item-link" href="question-bank.html?topic=optics">
+            <span class="prog-left"><span class="prog-dot dot-ready"></span> Core 2 Candidate Bank</span>
+            <span class="prog-badge badge-ready">10 Qs Available →</span>
+          </a>
+          <a class="prog-item prog-item-link" href="core1/nsejs-optics-displacement-d3-r1/index.html">
+            <span class="prog-left"><span class="prog-dot dot-authored"></span> Core 1A Master Lesson</span>
+            <span class="prog-badge badge-authored">Lens Displacement →</span>
+          </a>
+          <a class="prog-item prog-item-link" href="core1/index.html#optics">
+            <span class="prog-left"><span class="prog-dot dot-authored"></span> Core 1B Fresh Transfer</span>
+            <span class="prog-badge badge-authored">5 Transfer Journeys →</span>
+          </a>
         </div>
 
-        <button class="primary-topic-btn" onclick="openTopicQBank('optics')">
-          ▶ Open Ray Optics Practice (10 Qs) →
-        </button>
+        <div class="topic-btn-row">
+          <button class="primary-topic-btn" onclick="openTopicQBank('optics')">
+            ▶ Open Candidate Bank (10 Qs) →
+          </button>
+          <a class="secondary-topic-btn" href="core1/nsejs-optics-displacement-d3-r1/index.html">
+            🎓 Open Optics Master Lesson (Core 1) →
+          </a>
+        </div>
 
         <details class="source-drawer">
           <summary>▾ View 6 underlying source modules</summary>
           <ul>
-            <li><a href="../core2/question-map.html#module-ioqjs-optics-conjugate-d3-r1">ioqjs optics conjugate d3 r1</a></li>
-            <li><a href="../core2/question-map.html#module-nsejs-optics-displacement-d3-r1">nsejs optics displacement d3 r1</a></li>
-            <li><a href="../core2/question-map.html#module-nsejs-optics-lens-mirror-d3-r1">nsejs optics lens mirror d3 r1</a></li>
-            <li><a href="../core2/question-map.html#module-nsejs-optics-prism-d3-r1">nsejs optics prism d3 r1</a></li>
-            <li><a href="../core2/question-map.html#module-nsejs-optics-r1">nsejs optics r1</a></li>
-            <li><a href="../core2/question-map.html#module-nsejs-optics-screw-lens-d3-r1">nsejs optics screw lens d3 r1</a></li>
+            <li><a href="core1/recovery/ioqjs-optics-conjugate-d3-r1/index.html">ioqjs optics conjugate d3 r1</a></li>
+            <li><a href="core1/nsejs-optics-displacement-d3-r1/index.html">nsejs optics displacement d3 r1</a></li>
+            <li><a href="core1/recovery/nsejs-optics-lens-mirror-d3-r1/index.html">nsejs optics lens mirror d3 r1</a></li>
+            <li><a href="core1/recovery/nsejs-optics-prism-d3-r1/index.html">nsejs optics prism d3 r1</a></li>
+            <li><a href="core1/recovery/nsejs-optics-r1/index.html">nsejs optics r1</a></li>
+            <li><a href="core1/recovery/nsejs-optics-screw-lens-d3-r1/index.html">nsejs optics screw lens d3 r1</a></li>
           </ul>
         </details>
       </article>
@@ -610,29 +665,34 @@
         <p class="topic-desc">1D/2D kinematics, piecewise acceleration, Newton's laws of motion, momentum conservation, gravitational orbital motion, and mass balance.</p>
         
         <div class="progression-deck">
-          <div class="prog-item">
-            <span class="prog-left"><span class="prog-dot dot-ready"></span> Core 2 Question Bank</span>
-            <span class="prog-badge badge-ready">11 Qs Available</span>
-          </div>
-          <div class="prog-item">
-            <span class="prog-left"><span class="prog-dot dot-review"></span> Core 1A Master Lesson</span>
-            <span class="prog-badge badge-review">⏳ Academic Review</span>
-          </div>
-          <div class="prog-item">
-            <span class="prog-left"><span class="prog-dot dot-review"></span> Core 1B Fresh Transfer</span>
-            <span class="prog-badge badge-review">⏳ Academic Review</span>
-          </div>
+          <a class="prog-item prog-item-link" href="question-bank.html?topic=mechanics">
+            <span class="prog-left"><span class="prog-dot dot-ready"></span> Core 2 Candidate Bank</span>
+            <span class="prog-badge badge-ready">11 Qs Available →</span>
+          </a>
+          <a class="prog-item prog-item-link" href="learn-mechanics.html">
+            <span class="prog-left"><span class="prog-dot dot-authored"></span> Core 1A Master Lesson</span>
+            <span class="prog-badge badge-authored">Collisions vs Friction →</span>
+          </a>
+          <a class="prog-item prog-item-link" href="core1/recovery/nsejs-mechanics-r1/index.html">
+            <span class="prog-left"><span class="prog-dot dot-authored"></span> Core 1B Fresh Transfer</span>
+            <span class="prog-badge badge-authored">Decoupled Kinematics →</span>
+          </a>
         </div>
 
-        <button class="primary-topic-btn" onclick="openTopicQBank('mechanics')">
-          ▶ Open Mechanics Practice (11 Qs) →
-        </button>
+        <div class="topic-btn-row">
+          <button class="primary-topic-btn" onclick="openTopicQBank('mechanics')">
+            ▶ Open Candidate Bank (11 Qs) →
+          </button>
+          <a class="secondary-topic-btn" href="learn-mechanics.html">
+            🎓 Open Mechanics 6-Stage Master Learner →
+          </a>
+        </div>
 
         <details class="source-drawer">
-          <summary>▾ View underlying source module</summary>
+          <summary>▾ View underlying source modules</summary>
           <ul>
-            <li><a href="../core2/question-map.html#module-nsejs-mechanics-r1">nsejs mechanics r1 (1 candidate)</a></li>
-            <li><a href="learn-mechanics.html">Authored Mechanics 6-Stage Transfer Learner</a></li>
+            <li><a href="core1/recovery/nsejs-mechanics-r1/index.html">nsejs mechanics r1 (Decoupled Kinematics)</a></li>
+            <li><a href="learn-mechanics.html">Authored Mechanics 6-Stage Transfer Learner (Collisions)</a></li>
           </ul>
         </details>
       </article>
@@ -652,30 +712,35 @@
         <p class="topic-desc">Ohm's law, Kirchhoff's network laws, resistor cube networks, infinite ladders, power dissipation in resistive combinations, and non-ideal meters.</p>
         
         <div class="progression-deck">
-          <div class="prog-item">
-            <span class="prog-left"><span class="prog-dot dot-ready"></span> Core 2 Question Bank</span>
-            <span class="prog-badge badge-ready">10 Qs Available</span>
-          </div>
-          <div class="prog-item">
-            <span class="prog-left"><span class="prog-dot dot-review"></span> Core 1A Master Lesson</span>
-            <span class="prog-badge badge-review">⏳ Academic Review</span>
-          </div>
-          <div class="prog-item">
-            <span class="prog-left"><span class="prog-dot dot-review"></span> Core 1B Fresh Transfer</span>
-            <span class="prog-badge badge-review">⏳ Academic Review</span>
-          </div>
+          <a class="prog-item prog-item-link" href="question-bank.html?topic=circuits">
+            <span class="prog-left"><span class="prog-dot dot-ready"></span> Core 2 Candidate Bank</span>
+            <span class="prog-badge badge-ready">10 Qs Available →</span>
+          </a>
+          <a class="prog-item prog-item-link" href="core1/recovery/nsejs-circuits-cube-d3-r1/index.html">
+            <span class="prog-left"><span class="prog-dot dot-authored"></span> Core 1A Master Lesson</span>
+            <span class="prog-badge badge-authored">3D Cube Symmetry →</span>
+          </a>
+          <a class="prog-item prog-item-link" href="core1/recovery/nsejs-circuits-ladder-d3-r1/index.html">
+            <span class="prog-left"><span class="prog-dot dot-authored"></span> Core 1B Fresh Transfer</span>
+            <span class="prog-badge badge-authored">Infinite Ladders →</span>
+          </a>
         </div>
 
-        <button class="primary-topic-btn" onclick="openTopicQBank('circuits')">
-          ▶ Open Circuits Practice (10 Qs) →
-        </button>
+        <div class="topic-btn-row">
+          <button class="primary-topic-btn" onclick="openTopicQBank('circuits')">
+            ▶ Open Candidate Bank (10 Qs) →
+          </button>
+          <a class="secondary-topic-btn" href="core1/recovery/nsejs-circuits-cube-d3-r1/index.html">
+            🎓 Open Resistor Networks Master Lesson →
+          </a>
+        </div>
 
         <details class="source-drawer">
           <summary>▾ View 3 underlying source modules</summary>
           <ul>
-            <li><a href="../core2/question-map.html#module-nsejs-circuits-r1">nsejs circuits r1</a></li>
-            <li><a href="../core2/question-map.html#module-nsejs-circuits-cube-d3-r1">nsejs circuits cube d3 r1</a></li>
-            <li><a href="../core2/question-map.html#module-nsejs-circuits-ladder-d3-r1">nsejs circuits ladder d3 r1</a></li>
+            <li><a href="core1/recovery/nsejs-circuits-r1/index.html">nsejs circuits r1 (Resistor Tetrahedron)</a></li>
+            <li><a href="core1/recovery/nsejs-circuits-cube-d3-r1/index.html">nsejs circuits cube d3 r1 (Resistor Cube)</a></li>
+            <li><a href="core1/recovery/nsejs-circuits-ladder-d3-r1/index.html">nsejs circuits ladder d3 r1 (Infinite Ladder)</a></li>
           </ul>
         </details>
       </article>
@@ -695,29 +760,34 @@
         <p class="topic-desc">Coulomb's law, superposition principle, electric field mapping, transverse deflection of charged particles, equipotential surfaces, and charge ratios.</p>
         
         <div class="progression-deck">
-          <div class="prog-item">
-            <span class="prog-left"><span class="prog-dot dot-ready"></span> Core 2 Question Bank</span>
-            <span class="prog-badge badge-ready">10 Qs Available</span>
-          </div>
-          <div class="prog-item">
-            <span class="prog-left"><span class="prog-dot dot-review"></span> Core 1A Master Lesson</span>
-            <span class="prog-badge badge-review">⏳ Academic Review</span>
-          </div>
-          <div class="prog-item">
-            <span class="prog-left"><span class="prog-dot dot-review"></span> Core 1B Fresh Transfer</span>
-            <span class="prog-badge badge-review">⏳ Academic Review</span>
-          </div>
+          <a class="prog-item prog-item-link" href="question-bank.html?topic=electrostatics">
+            <span class="prog-left"><span class="prog-dot dot-ready"></span> Core 2 Candidate Bank</span>
+            <span class="prog-badge badge-ready">10 Qs Available →</span>
+          </a>
+          <a class="prog-item prog-item-link" href="core1/recovery/nsejs-electrostatics-r1/index.html">
+            <span class="prog-left"><span class="prog-dot dot-authored"></span> Core 1A Master Lesson</span>
+            <span class="prog-badge badge-authored">Coulomb Quantization →</span>
+          </a>
+          <a class="prog-item prog-item-link" href="core1/recovery/nsejs-electrostatics-deflection-d3-r1/index.html">
+            <span class="prog-left"><span class="prog-dot dot-authored"></span> Core 1B Fresh Transfer</span>
+            <span class="prog-badge badge-authored">E-Field Deflection →</span>
+          </a>
         </div>
 
-        <button class="primary-topic-btn" onclick="openTopicQBank('electrostatics')">
-          ▶ Open Electrostatics Practice (10 Qs) →
-        </button>
+        <div class="topic-btn-row">
+          <button class="primary-topic-btn" onclick="openTopicQBank('electrostatics')">
+            ▶ Open Candidate Bank (10 Qs) →
+          </button>
+          <a class="secondary-topic-btn" href="core1/recovery/nsejs-electrostatics-r1/index.html">
+            🎓 Open Electrostatics Master Lesson →
+          </a>
+        </div>
 
         <details class="source-drawer">
           <summary>▾ View 2 underlying source modules</summary>
           <ul>
-            <li><a href="../core2/question-map.html#module-nsejs-electrostatics-r1">nsejs electrostatics r1</a></li>
-            <li><a href="../core2/question-map.html#module-nsejs-electrostatics-deflection-d3-r1">nsejs electrostatics deflection d3 r1</a></li>
+            <li><a href="core1/recovery/nsejs-electrostatics-r1/index.html">nsejs electrostatics r1 (Charge Quantization)</a></li>
+            <li><a href="core1/recovery/nsejs-electrostatics-deflection-d3-r1/index.html">nsejs electrostatics deflection d3 r1 (Transverse E-Field)</a></li>
           </ul>
         </details>
       </article>
@@ -737,29 +807,34 @@
         <p class="topic-desc">Biot-Savart field patterns, long solenoid central B-fields, Lorentz force, right-hand rules, Faraday induction, Lenz rule, and motional damping.</p>
         
         <div class="progression-deck">
-          <div class="prog-item">
-            <span class="prog-left"><span class="prog-dot dot-ready"></span> Core 2 Question Bank</span>
-            <span class="prog-badge badge-ready">10 Qs Available</span>
-          </div>
-          <div class="prog-item">
-            <span class="prog-left"><span class="prog-dot dot-review"></span> Core 1A Master Lesson</span>
-            <span class="prog-badge badge-review">⏳ Academic Review</span>
-          </div>
-          <div class="prog-item">
-            <span class="prog-left"><span class="prog-dot dot-review"></span> Core 1B Fresh Transfer</span>
-            <span class="prog-badge badge-review">⏳ Academic Review</span>
-          </div>
+          <a class="prog-item prog-item-link" href="question-bank.html?topic=magnetism">
+            <span class="prog-left"><span class="prog-dot dot-ready"></span> Core 2 Candidate Bank</span>
+            <span class="prog-badge badge-ready">10 Qs Available →</span>
+          </a>
+          <a class="prog-item prog-item-link" href="core1/recovery/nsejs-magnetism-r1/index.html">
+            <span class="prog-left"><span class="prog-dot dot-authored"></span> Core 1A Master Lesson</span>
+            <span class="prog-badge badge-authored">Lenz's Law Flux →</span>
+          </a>
+          <a class="prog-item prog-item-link" href="core1/recovery/nsejs-magnetism-terminal-d3-r1/index.html">
+            <span class="prog-left"><span class="prog-dot dot-authored"></span> Core 1B Fresh Transfer</span>
+            <span class="prog-badge badge-authored">Terminal Damping →</span>
+          </a>
         </div>
 
-        <button class="primary-topic-btn" onclick="openTopicQBank('magnetism')">
-          ▶ Open Magnetism Practice (10 Qs) →
-        </button>
+        <div class="topic-btn-row">
+          <button class="primary-topic-btn" onclick="openTopicQBank('magnetism')">
+            ▶ Open Candidate Bank (10 Qs) →
+          </button>
+          <a class="secondary-topic-btn" href="core1/recovery/nsejs-magnetism-r1/index.html">
+            🎓 Open Magnetism &amp; Induction Master Lesson →
+          </a>
+        </div>
 
         <details class="source-drawer">
           <summary>▾ View 2 underlying source modules</summary>
           <ul>
-            <li><a href="../core2/question-map.html#module-nsejs-magnetism-r1">nsejs magnetism r1</a></li>
-            <li><a href="../core2/question-map.html#module-nsejs-magnetism-terminal-d3-r1">nsejs magnetism terminal d3 r1</a></li>
+            <li><a href="core1/recovery/nsejs-magnetism-r1/index.html">nsejs magnetism r1 (Lenz Law Induced Current)</a></li>
+            <li><a href="core1/recovery/nsejs-magnetism-terminal-d3-r1/index.html">nsejs magnetism terminal d3 r1 (Falling Rod Terminal Damping)</a></li>
           </ul>
         </details>
       </article>
@@ -779,29 +854,34 @@
         <p class="topic-desc">Hydrostatic pressure, buoyant flotation, droplet coalescence surface energy release, acoustics, echo timing, and temperature-dependent sound velocity.</p>
         
         <div class="progression-deck">
-          <div class="prog-item">
-            <span class="prog-left"><span class="prog-dot dot-ready"></span> Core 2 Question Bank</span>
-            <span class="prog-badge badge-ready">2 Qs (Source Held)</span>
-          </div>
-          <div class="prog-item">
-            <span class="prog-left"><span class="prog-dot dot-review"></span> Core 1A Master Lesson</span>
-            <span class="prog-badge badge-review">⏳ Academic Review</span>
-          </div>
-          <div class="prog-item">
-            <span class="prog-left"><span class="prog-dot dot-review"></span> Core 1B Fresh Transfer</span>
-            <span class="prog-badge badge-review">⏳ Academic Review</span>
-          </div>
+          <a class="prog-item prog-item-link" href="question-bank.html?topic=fluids">
+            <span class="prog-left"><span class="prog-dot dot-ready"></span> Core 2 Candidate Bank</span>
+            <span class="prog-badge badge-ready">2 Qs (Source Held) →</span>
+          </a>
+          <a class="prog-item prog-item-link" href="core1/nsejs-fluids-sound-r1/index.html">
+            <span class="prog-left"><span class="prog-dot dot-authored"></span> Core 1A Master Lesson</span>
+            <span class="prog-badge badge-authored">Buoyancy in Elevators →</span>
+          </a>
+          <a class="prog-item prog-item-link" href="core1/nsejs-fluids-surface-energy-d3-r1/index.html">
+            <span class="prog-left"><span class="prog-dot dot-authored"></span> Core 1B Fresh Transfer</span>
+            <span class="prog-badge badge-authored">Droplet Surface Energy →</span>
+          </a>
         </div>
 
-        <a class="primary-topic-btn" href="core1/nsejs-fluids-sound-r1/index.html">
-          ▶ Open Fluids &amp; Sound Lesson →
-        </a>
+        <div class="topic-btn-row">
+          <button class="primary-topic-btn" onclick="openTopicQBank('fluids')">
+            ▶ Open Candidate Bank (2 Qs) →
+          </button>
+          <a class="secondary-topic-btn" href="core1/nsejs-fluids-sound-r1/index.html">
+            🎓 Open Fluids &amp; Buoyancy Master Lesson →
+          </a>
+        </div>
 
         <details class="source-drawer">
           <summary>▾ View 2 underlying source modules</summary>
           <ul>
-            <li><a href="../core2/question-map.html#module-nsejs-fluids-sound-r1">nsejs fluids sound r1</a></li>
-            <li><a href="../core2/question-map.html#module-nsejs-fluids-surface-energy-d3-r1">nsejs fluids surface energy d3 r1</a></li>
+            <li><a href="core1/nsejs-fluids-sound-r1/index.html">nsejs fluids sound r1 (Elevator Buoyancy)</a></li>
+            <li><a href="core1/nsejs-fluids-surface-energy-d3-r1/index.html">nsejs fluids surface energy d3 r1 (Droplet Coalescence)</a></li>
           </ul>
         </details>
       </article>
@@ -812,8 +892,8 @@
     <section class="bottom-resource-grid" aria-label="Supplementary learning and official source links">
       <div class="resource-box">
         <h3>Authored Core 1A/1B Lessons</h3>
-        <p>Three candidate learning modules authored to test cognitive sufficiency without leaking original answer keys.</p>
-        <a class="resource-btn btn-secondary" href="core1/index.html">Open 3 Authored Modules →</a>
+        <p>17 candidate learning modules and 6-stage transfer journeys across all 6 physics domains, authored to test cognitive sufficiency without leaking original answer keys.</p>
+        <a class="resource-btn btn-secondary" href="core1/index.html">Open 17 Core 1 Lessons →</a>
       </div>
       <div class="resource-box">
         <h3>Mechanics Six-Stage Learner</h3>
