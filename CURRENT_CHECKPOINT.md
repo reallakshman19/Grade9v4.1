@@ -1,10 +1,10 @@
 # Checkpoint — 13 November 2026
 
-**Observed:** 2026-11-13T14:06:00+04:00 (Asia/Dubai)  
+**Observed:** 2026-11-13T14:17:00+04:00 (Asia/Dubai)  
 **Repository Working Directory:** `D:\CodeD\g9v4`  
 **Active Branch:** `main`  
 **Tracking Remote:** `origin` -> `https://github.com/reallakshman19/Grade9v4.1.git`  
-**Head Commit:** `dcc7d91` (`feat(core1): bridge all 17 Core 1 master lessons to Physics topic hub and question bank`)  
+**Head Commit:** `7e9a81a` (`feat(optics): populate Core 2 reference target problem, vector SVG, and derivation in lens displacement module`)  
 **Upstream Remote:** `upstream-v4.0` -> `https://github.com/reallakshman19/Grade9v4.0.git`  
 **Localhost Server:** Running at `http://localhost:8000` (Python HTTP server, PID/task-60)
 
@@ -84,6 +84,14 @@
       - Every lesson features a high-contrast `▶ Launch ... Journey →` button leading to its interactive module without any disabled placeholders.
     - **Host Browser Verification**: Passed with 0 console errors and 0px horizontal scroll overflow (verified via host screenshot `final_step_66.png`).
     - **Committed & Pushed**: Commit `dcc7d91` pushed to `origin/main`.
+14. **Populated Core 2 Target Problem in Lens Displacement Master Module**:
+    - Replaced placeholder disclaimer in Tab 1 ("1. Core 2 Target Problem") of [nsejs-optics-displacement-d3-r1/index.html](file:///D:/CodeD/g9v4/nsejs/physics/core1/nsejs-optics-displacement-d3-r1/index.html) with:
+      - Full problem statement: Convex Lens Displacement Method on fixed optical bench ($D = 90.0\text{ cm}$, $d = 30.0\text{ cm}$).
+      - Vector SVG optical diagram illustrating the optical axis, object ($h_0$), fixed screen, conjugate lens positions 1 & 2 ($u_1 = 30\text{ cm}$, $u_2 = 60\text{ cm}$), magnified/diminished images ($I_1, I_2$), displacement $d$, and total separation $D$.
+      - Interactive option commit box (Options A, B, C, D) with unassisted attempt commitment.
+      - 4-step mathematical derivation & invariant proof (system formulation, conjugate roots $f = (D^2-d^2)/(4D) = 20.0\text{ cm}$, height ratio $h_1/h_2 = 4.0$, boundary condition $D > 4f$) revealed after commitment.
+    - Verified live with 0 console errors and 0px overflow via host screenshot `final_step_70.png`.
+    - Pushed to `origin/main` (commit `7e9a81a`).
 
 ---
 
