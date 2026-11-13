@@ -208,6 +208,22 @@
   $("showBoundary").addEventListener("click", () => {
     if (record && record.boundary_attempts.length && exposure("BOUNDARY_MODEL")) renderSaved();
   });
+  // Source links contain identities only. Opening any source/bridge during a task is recorded as textbook/help exposure by the existing handler.
+  const ph01SourceSection = document.createElement("section");
+  ph01SourceSection.className = "panel";
+  ph01SourceSection.id = "core2-return";
+  const ph01Heading = document.createElement("h2");
+  ph01Heading.textContent = "Return to existing Core2 question records";
+  ph01SourceSection.appendChild(ph01Heading);
+  const ph01Text = document.createElement("p");
+  ph01Text.textContent = "Finish independent practice first. These are candidate preparation links; source and academic HOLD.";
+  ph01SourceSection.appendChild(ph01Text);
+  const ph01MapLink = document.createElement("a");
+  ph01MapLink.href = "../../textbook/PH01/core2-links/index.html";
+  ph01MapLink.dataset.textbookHelp = "";
+  ph01MapLink.textContent = "PH01 Core2 question-to-construction map";
+  ph01SourceSection.appendChild(ph01MapLink);
+  document.querySelector("main").appendChild(ph01SourceSection);
   for (const link of document.querySelectorAll("[data-textbook-help]")) link.addEventListener("click", (event) => {
     if (!current) {event.preventDefault(); say("Wait until a candidate task is loaded before opening linked help."); return;}
     if (record && record.first_answer) {
