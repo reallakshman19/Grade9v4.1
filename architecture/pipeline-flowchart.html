@@ -250,14 +250,20 @@
         <span class="stage-badge">Stage 05</span>
       </div>
       <p>Construct the interactive, full-page student question card for 12.7-inch tablets. Structure explanations into 4 cognitive slots ($X$ Setup, $Y$ Law, $Z$ Formulation, $W$ Crux). Implement 3-tier progressive hints ($H_1, H_2, H_3$), commitment-first event handlers, interactive attempt evaluation banners, misconception retry controls, and direct learning bridge routes into Stage 6 master lessons.</p>
-      <p><b>Tools &amp; Templates Used:</b> <span class="tool-badge">ag-core2 skill</span> <span class="tool-badge">templates/core2-exam-card/TEMPLATE-bank.json</span> <span class="tool-badge">nsejs/js/core2-learning-route.js</span> <span class="tool-badge">architecture/production-checklist.html</span></p>
+      <p><b>Tools &amp; Templates Used:</b> <span class="tool-badge">ag-core2 skill (v4.1)</span> <span class="tool-badge">scripts/verify_playwright_template.js</span> <span class="tool-badge">templates/core2-exam-card/TEMPLATE-bank.json</span> <span class="tool-badge">nsejs/js/core2-learning-route.js</span> <span class="tool-badge">architecture/production-checklist.html</span></p>
       <div class="benchmark-box">
-        <span class="benchmark-title">Measurable Pass Benchmark</span>
-        0px horizontal scroll overflow across viewports (1280×800, 1024×768, 900×1280, 800×1280, 375×812). Zero iframes (<span class="code">document.querySelectorAll('iframe').length === 0</span>). Touch targets $\ge 48\text{px}$ (WCAG AAA / 12.7" tablet standard). Derivations strictly inert (<span class="code">display: none</span>) until commitment. W3C SVG font size $\ge 14\text{px}$ with valid XML entities. Instant attempt feedback banner (`✅ CORRECT` / `❌ INCORRECT` / `ℹ️ DROPPED`) with student choice and official key clearly distinguished. Interactive reset control (`🔄 Reset & Try Again`) unlocking choices. Technical cryptographic details (SHA-256) encapsulated in collapsed `<details>` drawer.
+        <span class="benchmark-title">Measurable Pass Benchmark (The 4 Core 2 Pillars)</span>
+        <ul style="margin:6px 0 6px 18px;padding:0;line-height:1.6;">
+          <li><b>1. Procedure:</b> Full 3-state evaluation lifecycle: <code>Uncommitted</code> ➔ <code>Committed (Feedback Banner + Badges)</code> ⇌ <code>[🔄 Reset &amp; Try Again]</code>. Single Master Topic Navigation bar positioned directly above in-place <code>#topicWorkspace</code> (zero scroll-hunting; zero duplicate bars). Client-side cache busting via <code>?v=4.1.x</code> on script tags and <code>{ cache: "no-store" }</code> on dynamic JSON fetches.</li>
+          <li><b>2. Workflow:</b> Adversarial Jargon Filter strictly enforced: zero developer mock strings (<code>producer proposal</code>, <code>differs from producer</code>, <code>asserted stem digest agrees with display</code>) on student surfaces. Technical hashes and QRT formulas strictly encapsulated in a collapsed <code>&lt;details class="q-source-custody-drawer"&gt;</code>.</li>
+          <li><b>3. Self-Check:</b> Automated Playwright assertion banning forbidden strings (regex match on <code>/producer/i</code>), W3C SVG XML strictness audit (zero HTML named entities like <code>&amp;middot;</code>), and global repository-wide ID uniqueness check.</li>
+          <li><b>4. Evidences:</b> Mandatory post-commitment visual screenshot proof (<code>playwright_evidence_qXX_[width].png</code>) verifying banners and option badges before release, plus HTTP 200 cache-bypass network verification.</li>
+          <li><b>5. Layout &amp; Ergonomics:</b> 0px horizontal scroll overflow across viewports (1280×800, 1024×768, 900×1280, 800×1280, 375×812). Touch targets $\ge 48\text{px}$ (WCAG AAA). Derivations strictly inert (<span class="code">display: none</span>) until commit. W3C SVG font size $\ge 14\text{px}$.</li>
+        </ul>
       </div>
       <div class="benchmark-box falsifier">
         <span class="benchmark-title">Strict Falsifier / Failure Trigger</span>
-        Horizontal scrollbar on any viewport, hint leaking Slot $W$, solution visible in DOM/alt text prior to commit, developer mock strings (`differs from producer proposal`, `asserted stem digest agrees with display`) visible in student UI, or broken reset/retry flow fails tablet audit.
+        Horizontal scrollbar on any viewport, hint leaking Slot $W$, solution visible in DOM/alt text prior to commit, developer mock strings (`differs from producer proposal`, `asserted stem digest agrees with display`) visible in student UI, HTML named entities in SVGs crashing the XML parser, missing reset/retry control, or missing visual screenshot proof immediately fails Stage 5 audit.
       </div>
     </article>
 
@@ -286,14 +292,14 @@
         <span class="stage-badge">Stage 07</span>
       </div>
       <p>Execute automated unit test suites, headless Chromium viewport regression audits, and build pipelines. Report mechanical compliance while strictly holding academic release.</p>
-      <p><b>Tools &amp; Templates Used:</b> <span class="tool-badge">pytest -q</span> <span class="tool-badge">tools/preview_ui_regression.py</span> <span class="tool-badge">.github/workflows/deploy.yaml</span></p>
+      <p><b>Tools &amp; Templates Used:</b> <span class="tool-badge">pytest -q</span> <span class="tool-badge">tools/preview_ui_regression.py</span> <span class="tool-badge">scripts/verify_playwright_template.js</span> <span class="tool-badge">.github/workflows/deploy.yaml</span></p>
       <div class="benchmark-box">
         <span class="benchmark-title">Measurable Pass Benchmark</span>
-        100% pass on pytest (schemas, DAG reference cycles, SHA hashes, attempt evaluation suites). 100% pass on Playwright tablet regression suite (0 console errors, 0px overflow, zero XML entity errors in SVGs). Status explicitly output as <code>MECHANICAL_PASS / HOLD: ACADEMIC_ADMISSION</code>. All questions strictly labeled <code>{Reviewed} · B1–B7 peer review verified · Rule 13 HOLD</code>.
+        100% pass on pytest (schemas, DAG reference cycles, SHA hashes, global ID uniqueness, attempt evaluation suites). 100% pass on Playwright tablet regression suite (0 console errors, 0px overflow, zero XML entity errors in SVGs, 0 matches for <code>/producer/i</code>, verified attempt commitment &amp; <code>[🔄 Reset &amp; Try Again]</code> controls). Mandatory generation of post-commitment visual screenshots (<code>playwright_evidence_*.png</code>) as tangible proof of UI compliance. Status explicitly output as <code>MECHANICAL_PASS / HOLD: ACADEMIC_ADMISSION</code>. All questions strictly labeled <code>{Reviewed} · B1–B7 peer review verified · Rule 13 HOLD</code>.
       </div>
       <div class="benchmark-box falsifier">
         <span class="benchmark-title">Strict Falsifier / Failure Trigger</span>
-        Any automated test failure, broken link, SVG XML parsing crash, or auto-generated human approval receipt aborts publication immediately. Software passing tests must never remove Rule 13 HOLD or claim academic authority.
+        Any automated test failure, broken link, SVG XML parsing crash, forbidden developer mock string leak, missing reset control, missing visual proof screenshot, or auto-generated human approval receipt aborts publication immediately. Software passing tests must never remove Rule 13 HOLD or claim academic authority.
       </div>
     </article>
 
