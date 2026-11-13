@@ -48,3 +48,9 @@ Mechanical validation requires exact pins, valid references, >=3 distinct propos
 - `topics/PH10/CHAPTER_CONTINUOUS_DRAFT.md`: connected Refraction/Lenses/Human Eye manuscript spanning 17 teaching sections, with a geometric lens-position diagram `topics/PH10/figures/lead-concept.svg`.
 
 These manuscripts introduce the wider curriculum narrative but **are not** yet native C05/C06 accepted constructions for all listed subtopics. They require scientific and pedagogy review, native data binding and complete learner-runtime QA. Do not count their headings as an accepted chapter-completeness tally.
+
+## Second native construction round — candidate v0.2.0
+
+A separate authoring increment added another original, science-specific Core1A + C03/C04 + Core1B construction to every topic: PH07-07 evaporation, PH08-05 wave speed, PH09-02 plane mirrors, PH10-13 vision correction, PH11-10 Joule heating and PH12-06 transverse magnetic force. Each added three independent candidate primary operations and six MAIN/INSTANCE task specifications. The total is **12 native candidate subtopics of 83**, **36 proposed D3 operations**, and **72 browser-local Core1B preview task specifications**. **71 native subtopics remain unauthored**, regardless of connected chapter prose.
+
+The candidate package and adapter versions were incremented to `0.2.0`; **this does not alter or approve** the Shared QRT 28 or Physics Blueprint v0.2.0. Independent physics review, QRT scoring review, native B1–B7 review, real 12.7-inch Chromium acceptance and source fidelity remain HOLD. The provisional browser-local state does not constitute tamper-resistant first-attempt custody. No academic approval inferred from software validation.
