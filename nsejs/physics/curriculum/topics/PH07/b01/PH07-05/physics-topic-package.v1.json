@@ -1,0 +1,493 @@
+{
+  "schema": "g9v41-nsejs-physics-topic-package/v1",
+  "subject_id": "PHYSICS",
+  "academic_track": "NSEJS",
+  "topic_id": "PH07",
+  "owner_agent": "AGENT_2",
+  "version": "0.3.0-b01.3",
+  "status": "DRAFT_AUTHOR_EXPOSED",
+  "pins": {
+    "contracts_version": "1.0.0",
+    "blueprint": {
+      "version": "0.2.0",
+      "git_blob_sha": "700dafcbe86d76442637bcf214eeb544497cf4ea"
+    },
+    "shared_qrt_28": {
+      "version": "1.0.0",
+      "git_blob_sha": "e2409aef11ae7d98444593bfbe1a38eb00c97cef"
+    },
+    "topic_adapter_version": "0.3.0-b01.3"
+  },
+  "syllabus_references": [
+    {
+      "reference_id": "PH07-NCERT6-THERMOMETRY",
+      "locator": "https://ncert.nic.in/textbook/pdf/fecu107.pdf — Curiosity Grade 6 chapter 7; official URL fetch unavailable; corroborated chapter metadata and text at https://www.ncertbooks.net/textbook/pdf/fecu107.pdf",
+      "authority": "NCERT_CBSE",
+      "scope_status": "CANDIDATE"
+    },
+    {
+      "reference_id": "PH07-CBSE",
+      "locator": "https://cbseacademic.nic.in/web_material/CurriculumMain27/SecPart1/ScienceSt_SecP1_2026-27.pdf — thermal foundations and energy transfer; cross-topic power balance is authored enrichment",
+      "authority": "OFFICIAL_SYLLABUS",
+      "scope_status": "CANDIDATE"
+    }
+  ],
+  "subtopics": [
+    {
+      "id": "PH07-05",
+      "title": "Radiation, surface absorption and differential heating",
+      "scope_role": "SYLLABUS_CORE_CANDIDATE",
+      "syllabus_reference_ids": [
+        "PH07-NCERT6-THERMOMETRY",
+        "PH07-CBSE"
+      ],
+      "prerequisite_ids": [
+        "PH07-02",
+        "PH07-04"
+      ],
+      "science_ref_ids": [
+        "PH07-05-SCI-01"
+      ],
+      "learning_goal": "Radiation can transfer energy without a material medium; net heating is determined by absorbed power, losses and effective thermal capacity, not surface appearance alone.",
+      "textbook_chapter_ref": "nsejs/physics/curriculum/topics/PH07/b01/PH07-05/core1a.html",
+      "qrt_targets": [
+        {
+          "id": "PH07-05-B01-D3-EXPLAIN-01",
+          "task_identity": "G9-B01-PH07-05-EXPLAIN-R1",
+          "band": "D3",
+          "primary_operation": "EXPLAIN",
+          "blueprint_cell": "D3.2",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Explain differential heating and conditional circulation using the linked energy-storage, density and flow mechanisms rather than appearance or a single temperature label.",
+          "decisive_route": "Two shores receive equal solar power. Shore X has lower effective thermal capacity and warms faster despite similar absorption. Near-surface air above X warms more than above Y; background wind is negligible. Explain a possible circulation and why equal irradiation does not imply equal surface temperature. Identify when the inference could fail. Shortest valid route: For comparable losses, lower C gives faster warming. Air over X can become lighter and rise; pressure adjustment and return flow can bring near-surface air from Y toward X. Need actual loss rates, density and pressure conditions; strong background wind or stable layering can change result.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "Distinguish absorption-only from coupled energy/flow model."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "Interpret observed surface and air differences as causal chain."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Net energy, capacity, air warming, density, buoyancy and circulation links."
+            },
+            "algebra_computational_load": {
+              "score": 0,
+              "evidence": "No material arithmetic."
+            },
+            "trap_exception_sensitivity": {
+              "score": 2,
+              "evidence": "Background flow and differing heat capacity can defeat a simple directional inference."
+            }
+          }
+        },
+        {
+          "id": "PH07-05-B01-D4-MODEL-01",
+          "task_identity": "G9-B01-PH07-05-MODEL-R1",
+          "band": "D4",
+          "primary_operation": "MODEL",
+          "blueprint_cell": "D4.4",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Discriminate absorption, thermal capacity and fixed-loss models using matched energy-rate data; recover parameters only when independent constraints establish identifiability.",
+          "decisive_route": "A dry plate is independently measured to have C=300 J/K. At the same initial temperature its warming rates are 0.08 and 0.16 K/s for incident powers 90 and 150 W. A third trial at 120 W gives 0.10 K/s. Assume α and loss fixed across trials. Infer parameters from first two trials, test the third and explain whether a unique physical model survives. Shortest valid route: Net powers 24,48 W; α=24/60=0.4; loss=36−24=12 W. Third predicted (48−12)/300=0.12 K/s, not 0.10. Exact data refute one common α/loss model; need uncertainty or altered loss/absorption measurement. Two trials identify parameters only under assumptions.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "Competing absorption-only, variable capacity and loss models."
+            },
+            "representation_translation": {
+              "score": 2,
+              "evidence": "Translate measured temperature slopes and incident powers into energy equations across controls."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Use independent C measurement, solve parameters, check third datum and assess changed conditions."
+            },
+            "algebra_computational_load": {
+              "score": 1,
+              "evidence": "Material coupled linear calculations."
+            },
+            "trap_exception_sensitivity": {
+              "score": 2,
+              "evidence": "A single slope or unknown C leaves a family; unphysical α or changed loss falsifies model."
+            }
+          }
+        },
+        {
+          "id": "PH07-05-B01-D3-SYNTHESIZE-01",
+          "task_identity": "G9-B01-PH07-05-SYNTHESIZE-R1",
+          "band": "D3",
+          "primary_operation": "SYNTHESIZE",
+          "blueprint_cell": "D3.6",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Combine absorption, loss and storage models to predict a changed heating order and test the decisive parameter threshold.",
+          "decisive_route": "Plate A absorbs 75 W, loses 15 W and has C=600 J/K. B absorbs 50 W, loses 10 W and has unknown C. Find the capacity threshold below which B initially warms faster, and predict the result for C=300 J/K. What assumption limits the comparison? Shortest valid route: A rate 60/600=0.10 K/s. B rate 40/C; faster if C<400 J/K. At 300, rate≈0.133 K/s, so B faster. Fixed phase and initial loss/absorption model required.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "Select net-power/capacity model rather than absorption ranking."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "Translate multiple power and capacity givens into comparable rates."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Compute each net rate, derive crossover and test change."
+            },
+            "algebra_computational_load": {
+              "score": 1,
+              "evidence": "Routine arithmetic and inequality."
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "Higher absorption can still yield slower warming."
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "science_records": [
+    {
+      "id": "PH07-05-SCI-01",
+      "claim": "Radiation can transfer energy without a material medium; net heating is determined by absorbed power, losses and effective thermal capacity, not surface appearance alone.",
+      "law_or_model": "P_abs=αP_inc; ΔU=(P_abs−P_loss)Δt; CΔT=(P_abs−P_loss)Δt under fixed-state constant-rate approximation",
+      "assumptions": [
+        "Opaque surface assumption only where stated; absorption/emission depend on spectrum and surface.",
+        "Constant C, fixed phase and approximately constant loss are short-interval model assumptions."
+      ],
+      "conditions_and_limits": [
+        "Opaque surface assumption only where stated; absorption/emission depend on spectrum and surface.",
+        "Constant C, fixed phase and approximately constant loss are short-interval model assumptions.",
+        "Steady power balance excludes net energy accumulation only if system state is unchanged.",
+        "Land/sea-breeze model is qualitative and conditional on background weather and local density/pressure response."
+      ],
+      "units_and_signs": "α dimensionless absorptivity in [0,1]; P in W; C in J/K; ΔT in K or °C difference.",
+      "source_refs": [
+        "PH07-NCERT6-THERMOMETRY",
+        "PH07-CBSE"
+      ],
+      "qualification_status": "HOLD"
+    }
+  ],
+  "topic_adapter": {
+    "adapter_id": "PHYS-TOPIC-PH07",
+    "topic_id": "PH07",
+    "version": "0.3.0-b01.3",
+    "for_blueprint": "PHYS-QRT-BLUEPRINT 0.2.0",
+    "status": "CANDIDATE_ONLY",
+    "cells": [
+      {
+        "cell_id": "D3.2",
+        "instance_ids": [
+          "PH07-05-B01-D3-EXPLAIN-01"
+        ]
+      },
+      {
+        "cell_id": "D4.4",
+        "instance_ids": [
+          "PH07-05-B01-D4-MODEL-01"
+        ]
+      },
+      {
+        "cell_id": "D3.6",
+        "instance_ids": [
+          "PH07-05-B01-D3-SYNTHESIZE-01"
+        ]
+      }
+    ]
+  },
+  "core1a": [
+    {
+      "id": "PH07-05-B01-CORE1A-R1",
+      "subtopic_id": "PH07-05",
+      "covered_qrt_ids": [
+        "PH07-05-B01-D3-EXPLAIN-01",
+        "PH07-05-B01-D4-MODEL-01",
+        "PH07-05-B01-D3-SYNTHESIZE-01"
+      ],
+      "phenomenon": "Surfaces under equal illumination can warm at different rates and drive different heat exchanges.",
+      "scientific_narrative": "Thermal radiation is electromagnetic energy transfer. It does not require matter between source and receiver; sunlight crosses space. A surface absorbs some of the incident radiation, reflects some and, if not opaque, may transmit some. In an idealized opaque case the absorbed fraction α and reflected fraction sum to one. Visible colour alone does not fix absorption or emission at every wavelength. Surface properties, the spectrum of illumination and geometry matter.\n\nA body's temperature changes when energy accumulates in it. At fixed phase and approximately constant effective heat capacity C, internal-energy change is CΔT. If incident power P_inc is steady, absorbed power is αP_inc, and other losses are approximately constant over a short interval, the initial warming rate is (αP_inc−P_loss)/C. This makes a crucial distinction: a faster warming surface might absorb more power, have smaller thermal capacity, lose less energy, or combine these factors. Equal incident radiation does not establish equal absorbed radiation; equal absorbed power does not establish equal warming rate. At a steady temperature, absorbed power balances outward losses (and other transfers if present).\n\nRadiative exchange can coexist with convection and conduction. In a model comparison, change one mechanism at a time, measure input and output if possible, and check whether any assumed constant rate remains reasonable. Thermal emission and radiative cooling can depend strongly on surface temperature, so a fixed loss over a large range is generally unjustified. The thermal component of the existing Core2 fuse question uses a fixed-temperature surface-loss assumption. This unit is a supporting thermal bridge, not a direct authenticated exam link.\n\nLand and sea illustrate coupled surface heating and convection. Under simplified daytime conditions land may warm faster than water because effective thermal capacities, mixing, evaporation and energy exchange differ. Air near the warmer surface may warm, become less dense and rise; a pressure distribution and return flow can then sustain a near-surface breeze from cooler sea toward warmer land. At night land may cool more quickly, reversing the thermal contrast and potentially the local circulation. Real winds also depend on weather, pressure gradients and geography. A difference in surface temperature alone does not determine wind speed or guarantee the direction in an arbitrary situation.\n\nTo reason from measurements, separate the radiation absorbed from the net energy retained. Two warm-up observations at different incident powers can distinguish a fixed-loss model from a pure absorption model if C is independently known, or infer α and loss under stated assumptions. A further observation tests the fit. Without enough independent measurements, multiple models remain compatible; explicitly identify the missing variable rather than assigning causation to colour.",
+      "prerequisites": [
+        "PH07-02",
+        "PH07-04"
+      ],
+      "derivation_steps": [
+        {
+          "action": "Identify incident, reflected, absorbed and outgoing energy paths.",
+          "why_valid": "Conservation distinguishes incident power from retained energy.",
+          "science_ref_id": "PH07-05-SCI-01"
+        },
+        {
+          "action": "Write a short-interval temperature-rate model with a stated thermal capacity.",
+          "why_valid": "Net power accumulates as internal energy under unchanged phase and constant C.",
+          "science_ref_id": "PH07-05-SCI-01"
+        },
+        {
+          "action": "Use independent observations to separate absorption and losses rather than identify them from one rate.",
+          "why_valid": "A single temperature slope supplies one constraint on multiple unknowns.",
+          "science_ref_id": "PH07-05-SCI-01"
+        },
+        {
+          "action": "Connect surface heating to local density-driven motion only under the stated atmospheric conditions.",
+          "why_valid": "Convection and pressure gradients require more information than surface temperature alone.",
+          "science_ref_id": "PH07-05-SCI-01"
+        }
+      ],
+      "model_limits": [
+        "Opaque surface assumption only where stated; absorption/emission depend on spectrum and surface.",
+        "Constant C, fixed phase and approximately constant loss are short-interval model assumptions.",
+        "Steady power balance excludes net energy accumulation only if system state is unchanged.",
+        "Land/sea-breeze model is qualitative and conditional on background weather and local density/pressure response."
+      ],
+      "progressive_examples": [
+        {
+          "id": "PH07-05-B01-EX1",
+          "tier": "FOUNDATION",
+          "problem": "An opaque plate absorbs 60% of 100 W incident radiation. What is absorbed and reflected power?",
+          "reasoning": "60 W absorbed, 40 W reflected.",
+          "independent_check": "Sum equals incident 100 W."
+        },
+        {
+          "id": "PH07-05-B01-EX2",
+          "tier": "CONNECTED",
+          "problem": "Two plates each absorb 40 W and lose 10 W initially. Capacities are 300 and 600 J/K. Find rises in 20 s.",
+          "reasoning": "Net energy 600 J, rises 2 K and 1 K. Equal absorption does not give equal warming.",
+          "independent_check": "CΔT=600 J for both."
+        },
+        {
+          "id": "PH07-05-B01-EX3",
+          "tier": "ADVANCED",
+          "problem": "A plate with C=200 J/K warms initially at 0.10 K/s with 80 W incident and 0.20 K/s with 120 W incident. Assume fixed loss and α. Infer α and loss.",
+          "reasoning": "Net powers 20 and 40 W. Difference 20=40α, α=0.5. Loss=40−20=20 W. Predict 0.15 K/s at 100 W.",
+          "independent_check": "At 120 W, 60−20=40 W agrees."
+        }
+      ],
+      "figures": [
+        {
+          "id": "PH07-05-FIG-01",
+          "reasoning_step": "Incident radiation and net energy balance",
+          "scene_description": "Incoming radiation splits into reflected and absorbed power; conduction, convection and emission remove energy from the surface. Original inline SVG, not source examination figure.",
+          "source_or_authorship": "ORIGINAL_B01_SVG_INLINE"
+        }
+      ],
+      "misconception": {
+        "wrong_model": "The darker object must heat faster solely because it absorbs more radiation.",
+        "diagnostic": "A plate absorbs more power but also has a larger thermal capacity. What quantity actually predicts initial temperature rise?",
+        "repair": "Compare net power divided by capacity and test assumptions independently."
+      },
+      "exit_check": {
+        "task": "A surface absorbs 36 W and initially loses 12 W. C=240 J/K. Find its initial warming rate.",
+        "answer": "0.10 K/s.",
+        "reasoning": "Net power 24 W divided by 240 J/K."
+      },
+      "authorship_status": "DRAFT_AUTHOR_EXPOSED"
+    }
+  ],
+  "core1b": [
+    {
+      "id": "PH07-05-B01-MAIN-EXPLAIN-R1",
+      "kind": "MAIN",
+      "subtopic_id": "PH07-05",
+      "qrt_target_id": "PH07-05-B01-D3-EXPLAIN-01",
+      "fresh_task": "A paved courtyard and adjacent lake absorb similar radiation, but measured pavement warms faster and air above it is warmer. Explain the energy and fluid links needed for a local circulation, and state why its speed cannot be deduced from these observations alone.",
+      "protected_work": "Explain differential heating and conditional circulation using the linked energy-storage, density and flow mechanisms rather than appearance or a single temperature label.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Record your initial interpretation and confidence before viewing support.",
+        "attempt": "A paved courtyard and adjacent lake absorb similar radiation, but measured pavement warms faster and air above it is warmer. Explain the energy and fluid links needed for a local circulation, and state why its speed cannot be deduced from these observations alone.",
+        "reconstruct": "Differences in effective C, water mixing and losses can produce different net temperature changes. Warmer adjacent air may become less dense and rise, leading to pressure-driven return flow under favourable conditions. Speed also depends on pressure gradient, geometry, drag and weather.",
+        "diagnose": "Compare your reasoning with the reconstruction. Test this task-specific misconception: A plate absorbs more power but also has a larger thermal capacity. What quantity actually predicts initial temperature rise? Identify the first unsupported inference in your own attempt.",
+        "repair": "Rebuild the relevant model using the stated conditions: Compare net power divided by capacity and test assumptions independently. Check your reconstruction against the original task data.",
+        "boundary_test": "If forced wind from the courtyard to the lake dominates, can the observed surface temperatures alone prove natural circulation direction?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH07-05-B01-INSTANCE-EXPLAIN-R1",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH07-05",
+      "qrt_target_id": "PH07-05-B01-D3-EXPLAIN-01",
+      "fresh_task": "Two shores receive equal solar power. Shore X has lower effective thermal capacity and warms faster despite similar absorption. Near-surface air above X warms more than above Y; background wind is negligible. Explain a possible circulation and why equal irradiation does not imply equal surface temperature. Identify when the inference could fail.",
+      "protected_work": "Explain differential heating and conditional circulation using the linked energy-storage, density and flow mechanisms rather than appearance or a single temperature label.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Record your initial interpretation and confidence before viewing support.",
+        "attempt": "Two shores receive equal solar power. Shore X has lower effective thermal capacity and warms faster despite similar absorption. Near-surface air above X warms more than above Y; background wind is negligible. Explain a possible circulation and why equal irradiation does not imply equal surface temperature. Identify when the inference could fail.",
+        "reconstruct": "For comparable losses, lower C gives faster warming. Air over X can become lighter and rise; pressure adjustment and return flow can bring near-surface air from Y toward X. Need actual loss rates, density and pressure conditions; strong background wind or stable layering can change result.",
+        "diagnose": "Compare your reasoning with the reconstruction. Test this task-specific misconception: A plate absorbs more power but also has a larger thermal capacity. What quantity actually predicts initial temperature rise? Identify the first unsupported inference in your own attempt.",
+        "repair": "Rebuild the relevant model using the stated conditions: Compare net power divided by capacity and test assumptions independently. Check your reconstruction against the original task data.",
+        "boundary_test": "If X cools below Y at night, what conditional reversal becomes plausible?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH07-05-B01-MAIN-MODEL-R1",
+      "kind": "MAIN",
+      "subtopic_id": "PH07-05",
+      "qrt_target_id": "PH07-05-B01-D4-MODEL-01",
+      "fresh_task": "A surface has independently measured C=250 J/K. At matched initial temperature, incident powers 100 and 180 W produce rates 0.12 and 0.28 K/s. At 140 W the observed rate is 0.20 K/s. Estimate absorption and loss, test the third trial, then assess whether the same model can be extrapolated to a much higher surface temperature.",
+      "protected_work": "Discriminate absorption, thermal capacity and fixed-loss models using matched energy-rate data; recover parameters only when independent constraints establish identifiability.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Record your initial interpretation and confidence before viewing support.",
+        "attempt": "A surface has independently measured C=250 J/K. At matched initial temperature, incident powers 100 and 180 W produce rates 0.12 and 0.28 K/s. At 140 W the observed rate is 0.20 K/s. Estimate absorption and loss, test the third trial, then assess whether the same model can be extrapolated to a much higher surface temperature.",
+        "reconstruct": "Net powers 30 and 70 W; α=40/80=0.5, loss=20 W. Third (70−20)/250=0.20 K/s fits. Independent data support this local model, not extrapolation to changed emission/convection. α lies in [0,1].",
+        "diagnose": "Compare your reasoning with the reconstruction. Test this task-specific misconception: A plate absorbs more power but also has a larger thermal capacity. What quantity actually predicts initial temperature rise? Identify the first unsupported inference in your own attempt.",
+        "repair": "Rebuild the relevant model using the stated conditions: Compare net power divided by capacity and test assumptions independently. Check your reconstruction against the original task data.",
+        "boundary_test": "If one trial were at a different initial temperature, why might subtraction cease to isolate α?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH07-05-B01-INSTANCE-MODEL-R1",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH07-05",
+      "qrt_target_id": "PH07-05-B01-D4-MODEL-01",
+      "fresh_task": "A dry plate is independently measured to have C=300 J/K. At the same initial temperature its warming rates are 0.08 and 0.16 K/s for incident powers 90 and 150 W. A third trial at 120 W gives 0.10 K/s. Assume α and loss fixed across trials. Infer parameters from first two trials, test the third and explain whether a unique physical model survives.",
+      "protected_work": "Discriminate absorption, thermal capacity and fixed-loss models using matched energy-rate data; recover parameters only when independent constraints establish identifiability.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Record your initial interpretation and confidence before viewing support.",
+        "attempt": "A dry plate is independently measured to have C=300 J/K. At the same initial temperature its warming rates are 0.08 and 0.16 K/s for incident powers 90 and 150 W. A third trial at 120 W gives 0.10 K/s. Assume α and loss fixed across trials. Infer parameters from first two trials, test the third and explain whether a unique physical model survives.",
+        "reconstruct": "Net powers 24,48 W; α=24/60=0.4; loss=36−24=12 W. Third predicted (48−12)/300=0.12 K/s, not 0.10. Exact data refute one common α/loss model; need uncertainty or altered loss/absorption measurement. Two trials identify parameters only under assumptions.",
+        "diagnose": "Compare your reasoning with the reconstruction. Test this task-specific misconception: A plate absorbs more power but also has a larger thermal capacity. What quantity actually predicts initial temperature rise? Identify the first unsupported inference in your own attempt.",
+        "repair": "Rebuild the relevant model using the stated conditions: Compare net power divided by capacity and test assumptions independently. Check your reconstruction against the original task data.",
+        "boundary_test": "If C had not been measured, which combinations of parameters would the first two slopes constrain?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH07-05-B01-MAIN-SYNTHESIZE-R1",
+      "kind": "MAIN",
+      "subtopic_id": "PH07-05",
+      "qrt_target_id": "PH07-05-B01-D3-SYNTHESIZE-01",
+      "fresh_task": "Surface X absorbs 90 W and loses 30 W, C=400 J/K. Y absorbs 80 W with C=300 J/K. Determine maximum initial loss Y can have and still warm strictly faster than X. Then classify a measured loss of 40 W.",
+      "protected_work": "Combine absorption, loss and storage models to predict a changed heating order and test the decisive parameter threshold.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Record your initial interpretation and confidence before viewing support.",
+        "attempt": "Surface X absorbs 90 W and loses 30 W, C=400 J/K. Y absorbs 80 W with C=300 J/K. Determine maximum initial loss Y can have and still warm strictly faster than X. Then classify a measured loss of 40 W.",
+        "reconstruct": "X rate=0.15 K/s. Y faster if (80−L)/300>0.15, so L<35 W. At 40 W, Y rate≈0.133 K/s, slower.",
+        "diagnose": "Compare your reasoning with the reconstruction. Test this task-specific misconception: A plate absorbs more power but also has a larger thermal capacity. What quantity actually predicts initial temperature rise? Identify the first unsupported inference in your own attempt.",
+        "repair": "Rebuild the relevant model using the stated conditions: Compare net power divided by capacity and test assumptions independently. Check your reconstruction against the original task data.",
+        "boundary_test": "If X and Y start at different temperatures, what independent measurements would be needed before assigning the difference to absorption?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH07-05-B01-INSTANCE-SYNTHESIZE-R1",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH07-05",
+      "qrt_target_id": "PH07-05-B01-D3-SYNTHESIZE-01",
+      "fresh_task": "Plate A absorbs 75 W, loses 15 W and has C=600 J/K. B absorbs 50 W, loses 10 W and has unknown C. Find the capacity threshold below which B initially warms faster, and predict the result for C=300 J/K. What assumption limits the comparison?",
+      "protected_work": "Combine absorption, loss and storage models to predict a changed heating order and test the decisive parameter threshold.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Record your initial interpretation and confidence before viewing support.",
+        "attempt": "Plate A absorbs 75 W, loses 15 W and has C=600 J/K. B absorbs 50 W, loses 10 W and has unknown C. Find the capacity threshold below which B initially warms faster, and predict the result for C=300 J/K. What assumption limits the comparison?",
+        "reconstruct": "A rate 60/600=0.10 K/s. B rate 40/C; faster if C<400 J/K. At 300, rate≈0.133 K/s, so B faster. Fixed phase and initial loss/absorption model required.",
+        "diagnose": "Compare your reasoning with the reconstruction. Test this task-specific misconception: A plate absorbs more power but also has a larger thermal capacity. What quantity actually predicts initial temperature rise? Identify the first unsupported inference in your own attempt.",
+        "repair": "Rebuild the relevant model using the stated conditions: Compare net power divided by capacity and test assumptions independently. Check your reconstruction against the original task data.",
+        "boundary_test": "If B's losses increase as it warms, can the initial ranking be assumed throughout?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    }
+  ],
+  "core2_sources": [
+    {
+      "item_id": "NSEJS-FND-CIRC-04",
+      "source_role": "PREREQUISITE_BRIDGE",
+      "locator": "nsejs/physics/index.html?topic=circuits&q=NSEJS-FND-CIRC-04#NSEJS-FND-CIRC-04; existing foundation fuse candidate; observed display digest only, not original source digest; supporting prerequisite for PH07-05",
+      "stem_sha256": "1fdcffaa02d1441a2cea832002471a25d62912036bcee0215aa321d4435bc9c5",
+      "figure_status": "NOT_APPLICABLE",
+      "key_status": "HOLD",
+      "academic_status": "HOLD"
+    }
+  ],
+  "acceptance": {
+    "b1_b7": {
+      "B1": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B2": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B3": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B4": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B5": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B6": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B7": {
+        "status": "HOLD",
+        "evidence_refs": []
+      }
+    },
+    "gates": {
+      "source_authenticity": "HOLD",
+      "content_correctness": "HOLD",
+      "cognitive_qualification": "HOLD",
+      "teaching_sufficiency": "HOLD",
+      "assessment_validity": "HOLD",
+      "implementation": "NOT_RUN",
+      "release_authority": "HOLD"
+    },
+    "release": "HOLD",
+    "acceptance_note": "Dedicated B01 subtopic slice; existing Core2 candidate is supporting PREREQUISITE_BRIDGE, producer D2 and source/QRT HOLD. New advanced tasks AUTHORED_TRANSFER; no direct exam admission. Per-target MAIN placeholders remain pending approved tile MAIN design. No academic approval inferred from software validation."
+  }
+}
