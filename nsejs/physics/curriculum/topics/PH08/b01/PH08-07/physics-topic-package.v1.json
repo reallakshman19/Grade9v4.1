@@ -1,0 +1,489 @@
+{
+  "schema": "g9v41-nsejs-physics-topic-package/v1",
+  "subject_id": "PHYSICS",
+  "academic_track": "NSEJS",
+  "topic_id": "PH08",
+  "owner_agent": "AGENT_2",
+  "version": "0.3.0-b01.2",
+  "status": "DRAFT_AUTHOR_EXPOSED",
+  "pins": {
+    "contracts_version": "1.0.0",
+    "blueprint": {
+      "version": "0.2.0",
+      "git_blob_sha": "700dafcbe86d76442637bcf214eeb544497cf4ea"
+    },
+    "shared_qrt_28": {
+      "version": "1.0.0",
+      "git_blob_sha": "e2409aef11ae7d98444593bfbe1a38eb00c97cef"
+    },
+    "topic_adapter_version": "0.3.0-b01.2"
+  },
+  "syllabus_references": [
+    {
+      "reference_id": "PH08-CBSE-2026-SOUND",
+      "locator": "https://cbseacademic.nic.in/web_material/CurriculumMain27/SecPart1/ScienceSt_SecP1_2026-27.pdf — Class IX Science 086, Sound, pp. 17–18 (PDF pages 17–18)",
+      "authority": "OFFICIAL_SYLLABUS",
+      "scope_status": "CANDIDATE"
+    }
+  ],
+  "subtopics": [
+    {
+      "id": "PH08-07",
+      "title": "Wave graphs: signed phase translation and inverse timing",
+      "scope_role": "SYLLABUS_CORE_CANDIDATE",
+      "syllabus_reference_ids": [
+        "PH08-CBSE-2026-SOUND"
+      ],
+      "prerequisite_ids": [
+        "PH08-02",
+        "PH08-04",
+        "PH08-05"
+      ],
+      "science_ref_ids": [
+        "PH08-07-SCI-01"
+      ],
+      "learning_goal": "Interpret spatial displacement snapshots, translate phase patterns, and resolve or prove ambiguity in inverse timing.",
+      "textbook_chapter_ref": "nsejs/physics/curriculum/topics/PH08/b01/PH08-07/core1a.html",
+      "qrt_targets": [
+        {
+          "id": "PH08-07-B01-D3-REPRESENT-01",
+          "task_identity": "G9-B01-PH08-07-REPRESENT-R1",
+          "band": "D3",
+          "primary_operation": "REPRESENT",
+          "blueprint_cell": "D3.5",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Translate the signed spatial displacement field through a noninteger number of wavelengths while retaining the fixed-coordinate particle reading.",
+          "decisive_route": "A right-moving sinusoidal displacement wave has λ=0.60 m and amplitude 4 mm; at t=0 a crest lies at x=0.15 m. Its speed is 250 m/s. Draw the profile on 0≤x≤1.2 m at t=0 and t=3 ms, label extrema and zero crossings, and state the displacement at x=0.15 m at the later instant. Shortest valid route: Shift=+0.75 m, equivalent to +0.15 m. Later crests are x=0.30,0.90 m; troughs 0,0.60,1.20 m; zero crossings 0.15,0.45,0.75,1.05 m. At x=0.15 displacement is zero. Initial crests 0.15,0.75; troughs 0.45,1.05; zeros at 0,0.30,0.60,0.90,1.20.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 1,
+              "evidence": "Recognize the travelling field as opposed to particle motion."
+            },
+            "representation_translation": {
+              "score": 2,
+              "evidence": "Coordinate two scaled profiles and a fixed-coordinate value."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Convert time, determine shift, reduce modulo wavelength, locate extrema and read fixed coordinate."
+            },
+            "algebra_computational_load": {
+              "score": 1,
+              "evidence": "Material unit conversion and interval calculations."
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "Direction and quarter-cycle phase shift are decisive checks."
+            }
+          }
+        },
+        {
+          "id": "PH08-07-B01-D4-MODEL-01",
+          "task_identity": "G9-B01-PH08-07-MODEL-R1",
+          "band": "D4",
+          "primary_operation": "MODEL",
+          "blueprint_cell": "D4.4",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Choose a periodic alias model rather than nearest-feature tracking, enumerate signed velocities and use independent timing evidence to resolve the ambiguity.",
+          "decisive_route": "Three snapshots of one uniform sinusoidal wave have wavelength 0.80 m. At t=0 a crest set is x=0. At 5 ms it is x=0.20 m modulo 0.80 m. The magnitude of velocity is between 100 and 500 m/s. At 1.5 ms the crest set is x=0.54 m modulo 0.80 m. Infer direction, speed and period; establish uniqueness within the stated bounds. Shortest valid route: u=(0.20+0.80n)/0.005. Allowed n=−3,−2,−1,1,2 produce −440,−280,−120,200,360 m/s. Predicted offsets at 1.5 ms modulo 0.80: 0.14,0.38,0.62,0.30,0.54 m. Only +360 fits. T=0.80/360≈2.22 ms. The nearest marker alone would suggest +40 m/s, excluded.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "Nearest-crest versus full periodic family are plausible competing models; selection determines solvability."
+            },
+            "representation_translation": {
+              "score": 2,
+              "evidence": "Translate phase sets at three times into signed shift constraints and compare modulo λ."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Enumerate bounded integer candidates, test independent observation, then calculate period and uniqueness."
+            },
+            "algebra_computational_load": {
+              "score": 1,
+              "evidence": "Multi-case arithmetic is material; no advanced algebra required."
+            },
+            "trap_exception_sensitivity": {
+              "score": 2,
+              "evidence": "Unobserved full cycles and both velocity signs make the first pair nonunique."
+            }
+          }
+        },
+        {
+          "id": "PH08-07-B01-D3-JUSTIFY-01",
+          "task_identity": "G9-B01-PH08-07-JUSTIFY-R1",
+          "band": "D3",
+          "primary_operation": "JUSTIFY",
+          "blueprint_cell": "D3.7",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Establish what identical periodic snapshots do and do not prove about pattern propagation, using counterexamples and independent evidence.",
+          "decisive_route": "Two spatial snapshots of an extended sinusoidal wave with λ=0.48 m, separated by 4 ms, agree at every x. A technician claims the disturbance did not propagate; another claims that all particles moved by 0.48 m. Given that |u| is between 100 and 300 m/s, assess both claims, enumerate compatible velocities and state a measurement that would resolve them. Shortest valid route: Identical profiles imply uΔt=nλ, so u=120n m/s. Bounds allow ±120 and ±240; neither no propagation nor bulk displacement follows. Individual displacement is bounded by amplitude. Independent direction plus a speed measurement, or a third snapshot at a nonredundant time, can resolve candidates; e.g. 1 ms offsets 0.12,0.24,0.36,0.24 distinguish some but not both ±240, so choose 0.5 ms giving distinct offsets 0.06,0.12,0.42,0.36 m.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "Distinguish stationary pattern, periodic translation and material displacement as competing explanations."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "Translate identical graphs into integer-wavelength condition."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Derive candidate family, filter bounds, evaluate claims, propose discriminating evidence."
+            },
+            "algebra_computational_load": {
+              "score": 0,
+              "evidence": "Arithmetic is incidental to the logical argument."
+            },
+            "trap_exception_sensitivity": {
+              "score": 2,
+              "evidence": "Identical observations do not imply no motion; periodic alias is decisive."
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "science_records": [
+    {
+      "id": "PH08-07-SCI-01",
+      "claim": "A uniform travelling wave translates its spatial field by signed velocity times elapsed time; periodic phase markers are defined modulo wavelength.",
+      "law_or_model": "D(x,t)=D(x−ut,0); crest positions x0+ut+nλ; u=(Δx+nλ)/Δt",
+      "assumptions": [
+        "Uniform stationary medium; one stable travelling sinusoidal field",
+        "Snapshot times, phase identity and wavelength known"
+      ],
+      "conditions_and_limits": [
+        "Uniform stationary medium, one stable travelling sinusoidal displacement wave; signed pattern velocity is constant in each task.",
+        "The vertical graph coordinate is longitudinal displacement along the propagation axis, not a transverse particle path; pressure and displacement profiles are different fields.",
+        "A periodic snapshot identifies shifts only modulo the wavelength; a unique speed requires additional information.",
+        "A stationary sensor's time trace and a spatial snapshot are not interchangeable; no bulk particle transport is inferred.",
+        "Phase shift convention: positive signed shift is toward increasing x. Only a uniform repeating pattern returns after whole wavelengths."
+      ],
+      "units_and_signs": "D and x in m (D often mm); u signed in m/s; t in s; λ positive in m; f=|u|/λ.",
+      "source_refs": [
+        "PH08-CBSE-2026-SOUND"
+      ],
+      "qualification_status": "HOLD"
+    }
+  ],
+  "topic_adapter": {
+    "adapter_id": "PHYS-TOPIC-PH08",
+    "topic_id": "PH08",
+    "version": "0.3.0-b01.2",
+    "for_blueprint": "PHYS-QRT-BLUEPRINT 0.2.0",
+    "status": "CANDIDATE_ONLY",
+    "cells": [
+      {
+        "cell_id": "D3.5",
+        "instance_ids": [
+          "PH08-07-B01-D3-REPRESENT-01"
+        ]
+      },
+      {
+        "cell_id": "D4.4",
+        "instance_ids": [
+          "PH08-07-B01-D4-MODEL-01"
+        ]
+      },
+      {
+        "cell_id": "D3.7",
+        "instance_ids": [
+          "PH08-07-B01-D3-JUSTIFY-01"
+        ]
+      }
+    ]
+  },
+  "core1a": [
+    {
+      "id": "PH08-07-B01-CORE1A-R1",
+      "subtopic_id": "PH08-07",
+      "covered_qrt_ids": [
+        "PH08-07-B01-D3-REPRESENT-01",
+        "PH08-07-B01-D4-MODEL-01",
+        "PH08-07-B01-D3-JUSTIFY-01"
+      ],
+      "phenomenon": "A travelling periodic profile may look unchanged at a later time although energy propagates.",
+      "scientific_narrative": "A snapshot of a travelling longitudinal sound wave can display each particle's signed displacement from equilibrium against its equilibrium position x. The vertical coordinate is a graph value, not the physical vertical position of the particle. A pressure snapshot instead records excess pressure. They are not the same physical quantity and their extrema need not coincide. Both may be periodic in the simple sinusoidal model; select the variable before interpreting any graph. The amplitude of a displacement wave is its maximum absolute displacement from equilibrium. Peak-to-peak distance on the vertical scale is twice that amplitude. Horizontal spacing of matching phase points determines wavelength; a crest and neighbouring trough are half a wavelength apart.\n\nA useful way to reason is to imagine a transparent tracing of the snapshot. If a pattern moves right at constant speed v, after time t the tracing has shifted right by vt; if the signed velocity u is negative, shift left. The field value at a fixed coordinate x is the value originally at x−ut. Thus D(x,t)=D(x−ut,0). This is a statement about propagation of a pattern; one parcel of air does not travel at the wave speed. For example, a wave pattern can move metres while the local displacement amplitude is millimetres. In a sinusoidal profile, a crest initially at x0 has equivalent crests at x0+nλ, where n is any integer; after t their coordinates are x0+ut+nλ. This construction separates the travelling pattern from local oscillation.\n\nAn integer-wavelength translation reproduces the same graph at every coordinate. That does not mean the wave stopped. A half-wavelength shift changes a sinusoid's sign; a quarter-wavelength shift moves zero crossings to extrema. If a right-moving wave advances 1.5 wavelengths, the observable snapshot shift can be represented by half a wavelength, although the actual propagation distance was larger. A finite isolated pulse does not have this periodic ambiguity: its unique labelled feature can be followed directly.\n\nThe inverse problem is harder. Two snapshots showing equivalent phase markers at x1 and x2 give possible signed shifts x2−x1+nλ, not necessarily the smallest visible separation. For a time interval Δt, possible velocities are (x2−x1+nλ)/Δt. A declared speed range excludes candidates that violate it. An independent third snapshot at a different time tests the remaining candidates: compute where the same phase set would be and compare with the observation modulo λ. If more than one remains, report the ambiguity instead of guessing. A fixed detector's known period or an independently measured direction may also constrain the solution. Measurement uncertainty broadens the possible ranges and may prevent unique identification. These inverse constructions extend, rather than copy, a currently available Core2 wave-snapshot candidate.\n\nIn a laboratory, label axes and units, identify same-phase features, record propagation direction if known, and distinguish measured intervals from assumed numbers of cycles. A complete solution checks the sign of translation, units of distance and time, and the relevant periodic boundary. An independent check uses another phase marker or time observation, not repetition of the same arithmetic.",
+      "prerequisites": [
+        "PH08-02",
+        "PH08-04",
+        "PH08-05"
+      ],
+      "derivation_steps": [
+        {
+          "action": "Identify field and same-phase spatial interval.",
+          "why_valid": "The graph axes distinguish longitudinal displacement from physical geometry; repeated phase establishes λ.",
+          "science_ref_id": "PH08-07-SCI-01"
+        },
+        {
+          "action": "Translate all phase families by the signed pattern shift uΔt.",
+          "why_valid": "A travelling field is D(x,t)=D(x−ut,0), not a particle trajectory.",
+          "science_ref_id": "PH08-07-SCI-01"
+        },
+        {
+          "action": "For an inverse problem enumerate shifts differing by nλ and apply the speed range.",
+          "why_valid": "Periodic repetition makes all those shifts observationally equivalent in two snapshots.",
+          "science_ref_id": "PH08-07-SCI-01"
+        },
+        {
+          "action": "Test remaining candidates against an independent observation and report nonuniqueness if necessary.",
+          "why_valid": "An additional time or phase constraint may reject aliases; it does not guarantee uniqueness.",
+          "science_ref_id": "PH08-07-SCI-01"
+        }
+      ],
+      "model_limits": [
+        "Uniform stationary medium, one stable travelling sinusoidal displacement wave; signed pattern velocity is constant in each task.",
+        "The vertical graph coordinate is longitudinal displacement along the propagation axis, not a transverse particle path; pressure and displacement profiles are different fields.",
+        "A periodic snapshot identifies shifts only modulo the wavelength; a unique speed requires additional information.",
+        "A stationary sensor's time trace and a spatial snapshot are not interchangeable; no bulk particle transport is inferred.",
+        "Phase shift convention: positive signed shift is toward increasing x. Only a uniform repeating pattern returns after whole wavelengths."
+      ],
+      "progressive_examples": [
+        {
+          "id": "PH08-07-B01-EX1",
+          "tier": "FOUNDATION",
+          "problem": "A displacement snapshot has a crest at x=0.12 m, the adjacent trough at x=0.32 m, and maximum displacement 3 mm. Give λ and peak-to-peak displacement.",
+          "reasoning": "λ=2(0.32−0.12)=0.40 m. Peak-to-peak displacement=6 mm.",
+          "independent_check": "The next crest is at 0.52 m; the two crest positions differ by 0.40 m."
+        },
+        {
+          "id": "PH08-07-B01-EX2",
+          "tier": "CONNECTED",
+          "problem": "A sinusoidal pattern with λ=0.50 m moves left at 300 m/s. A crest starts at x=0.10 m. After 2.5 ms, list crest coordinates in 0≤x<1 m.",
+          "reasoning": "Shift is −0.75 m, so the crest family is −0.65+0.50n m; visible crests are 0.35 and 0.85 m.",
+          "independent_check": "The shift modulo λ is −0.25 m (equivalent to +0.25); original crests at 0.10 and 0.60 become 0.35 and 0.85."
+        },
+        {
+          "id": "PH08-07-B01-EX3",
+          "tier": "ADVANCED",
+          "problem": "A periodic snapshot has λ=0.50 m. After 4 ms the crest set appears displaced +0.10 m modulo λ. A speed instrument bounds |u| between 80 and 300 m/s. After 1 ms the crest offset is +0.40 m modulo λ. Find u.",
+          "reasoning": "Candidates from first pair: (0.10+0.50n)/0.004; n=1 gives 150, n=2 gives 275, n=−1 gives −100, n=−2 gives −225 m/s; n=0 gives 25 outside range. At 1 ms the respective offsets modulo 0.50 are 0.15, 0.275, 0.40, 0.275. Only −100 matches.",
+          "independent_check": "At 4 ms −100×0.004=−0.40 m, equivalent to +0.10; at 1 ms −0.10 m is equivalent to +0.40."
+        }
+      ],
+      "figures": [
+        {
+          "id": "PH08-07-FIG-SHIFT",
+          "reasoning_step": "Coordinate periodic spatial profiles at successive times and expose the translation ambiguity.",
+          "scene_description": "Original phase-shift graph; not an exam figure. Inline SVG in Core1A.",
+          "source_or_authorship": "ORIGINAL_B01_SVG_INLINE"
+        }
+      ],
+      "misconception": {
+        "wrong_model": "The same snapshot implies a stationary wave pattern; the nearest crest identifies the same physical particle.",
+        "diagnostic": "Can a periodic profile reproduce itself while a disturbance continues to propagate? What would a marked particle do?",
+        "repair": "Use a signed translation of the field and a family of equivalent phase positions. A marked particle oscillates locally; additional observations may be needed to determine the pattern shift."
+      },
+      "exit_check": {
+        "task": "A wave with λ=0.60 m has identical profiles 3 ms apart. If its rightward speed is between 150 and 500 m/s, what speeds remain possible?",
+        "answer": "200 and 400 m/s.",
+        "reasoning": "u(0.003)=n(0.60), so u=200n m/s, with n=1 or 2 under the given bounds."
+      },
+      "authorship_status": "DRAFT_AUTHOR_EXPOSED"
+    }
+  ],
+  "core1b": [
+    {
+      "id": "PH08-07-B01-MAIN-REPRESENT-R1",
+      "kind": "MAIN",
+      "subtopic_id": "PH08-07",
+      "qrt_target_id": "PH08-07-B01-D3-REPRESENT-01",
+      "fresh_task": "A left-moving sinusoidal wave has λ=0.80 m, amplitude 6 mm, initial crest x=0.20 m and speed 200 m/s. Sketch t=0 and t=3 ms over 0≤x≤1.6 m and state the later displacement at x=0.20 m.",
+      "protected_work": "Translate the signed spatial displacement field through a noninteger number of wavelengths while retaining the fixed-coordinate particle reading.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Record your initial interpretation and confidence before viewing any support.",
+        "attempt": "A left-moving sinusoidal wave has λ=0.80 m, amplitude 6 mm, initial crest x=0.20 m and speed 200 m/s. Sketch t=0 and t=3 ms over 0≤x≤1.6 m and state the later displacement at x=0.20 m.",
+        "reconstruct": "Shift −0.60 m ≡ +0.20 m. Later crests 0.40,1.20; troughs 0,0.80,1.60; zeros 0.20,0.60,1.00,1.40. Later displacement at x=0.20 is zero. Initial crests 0.20,1.00; troughs 0.60,1.40; zeros 0,0.40,0.80,1.20,1.60.",
+        "diagnose": "Inspect the sign of the shift, the interval between phase markers, and the fixed-coordinate reading; identify the first inconsistency.",
+        "repair": "Shift every phase marker by the signed propagation distance, then use periodic repetition to place the field in the viewing window. Read the value at the specified coordinate.",
+        "boundary_test": "If the speed were 800/3 m/s at the same elapsed time, what would the later profile look like?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH08-07-B01-INSTANCE-REPRESENT-R1",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH08-07",
+      "qrt_target_id": "PH08-07-B01-D3-REPRESENT-01",
+      "fresh_task": "A left-moving periodic sinusoidal displacement pattern with λ=0.40 m, amplitude 2 mm and initial trough x=0.10 m has speed 300 m/s. Construct two profiles on 0≤x≤0.80 m separated by 1 ms; identify the later value at x=0.10 m.",
+      "protected_work": "Translate the signed spatial displacement field through a noninteger number of wavelengths while retaining the fixed-coordinate particle reading.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Record your initial interpretation and confidence before viewing any support.",
+        "attempt": "A left-moving periodic sinusoidal displacement pattern with λ=0.40 m, amplitude 2 mm and initial trough x=0.10 m has speed 300 m/s. Construct two profiles on 0≤x≤0.80 m separated by 1 ms; identify the later value at x=0.10 m.",
+        "reconstruct": "Shift −0.30 m ≡ +0.10 m. Later troughs 0.20,0.60; crests 0,0.40,0.80; zeros 0.10,0.30,0.50,0.70. At x=0.10 value is zero. Initial troughs 0.10,0.50; crests 0.30,0.70; zeros 0,0.20,0.40,0.60,0.80.",
+        "diagnose": "Inspect the sign of the shift, the interval between phase markers, and the fixed-coordinate reading; identify the first inconsistency.",
+        "repair": "Shift every phase marker by the signed propagation distance, then use periodic repetition to place the field in the viewing window. Read the value at the specified coordinate.",
+        "boundary_test": "If the graph instead shows pressure, what changes in the interpretation of its vertical scale?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH08-07-B01-MAIN-MODEL-R1",
+      "kind": "MAIN",
+      "subtopic_id": "PH08-07",
+      "qrt_target_id": "PH08-07-B01-D4-MODEL-01",
+      "fresh_task": "A displacement wave has λ=0.60 m. At 4 ms its crest set appears shifted +0.10 m modulo λ from the initial snapshot. A speed measurement bounds |u| to 100–400 m/s. An independent snapshot at 1.5 ms shows shift +0.1875 m modulo λ. Determine the velocity and establish whether any alternative is consistent.",
+      "protected_work": "Choose a periodic alias model rather than nearest-feature tracking, enumerate signed velocities and use independent timing evidence to resolve the ambiguity.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Record your initial interpretation and confidence before viewing any support.",
+        "attempt": "A displacement wave has λ=0.60 m. At 4 ms its crest set appears shifted +0.10 m modulo λ from the initial snapshot. A speed measurement bounds |u| to 100–400 m/s. An independent snapshot at 1.5 ms shows shift +0.1875 m modulo λ. Determine the velocity and establish whether any alternative is consistent.",
+        "reconstruct": "u=(0.10+0.60n)/0.004 gives −275,−125,175,325 m/s. At 1.5 ms the offsets modulo λ are 0.1875,0.4125,0.2625,0.4875 m. Only −275 fits; period 0.60/275≈2.18 ms if needed.",
+        "diagnose": "Did your model rule out additional full cycles or negative velocities without evidence? List one omitted candidate and test it against the independent snapshot.",
+        "repair": "Enumerate the signed integer family within bounds; predict each candidate's independent phase observation and retain exactly those that agree.",
+        "boundary_test": "If the independent snapshot instead were at 8 ms with offset +0.20 m, would it distinguish these candidates?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH08-07-B01-INSTANCE-MODEL-R1",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH08-07",
+      "qrt_target_id": "PH08-07-B01-D4-MODEL-01",
+      "fresh_task": "A periodic pressure wave has λ=1.00 m. At 5 ms a second snapshot has its maxima displaced +0.25 m modulo λ. The speed lies from 100 to 450 m/s inclusive, direction unknown. At 2 ms the maxima have moved +0.30 m modulo λ. Recover signed velocity and justify uniqueness.",
+      "protected_work": "Choose a periodic alias model rather than nearest-feature tracking, enumerate signed velocities and use independent timing evidence to resolve the ambiguity.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Record your initial interpretation and confidence before viewing any support.",
+        "attempt": "A periodic pressure wave has λ=1.00 m. At 5 ms a second snapshot has its maxima displaced +0.25 m modulo λ. The speed lies from 100 to 450 m/s inclusive, direction unknown. At 2 ms the maxima have moved +0.30 m modulo λ. Recover signed velocity and justify uniqueness.",
+        "reconstruct": "Possible u: −350,−150,250,450 m/s. At 2 ms their offsets modulo 1 m are 0.30,0.70,0.50,0.90. Only −350 m/s fits; f=350 Hz if required.",
+        "diagnose": "Did your model rule out additional full cycles or negative velocities without evidence? List one omitted candidate and test it against the independent snapshot.",
+        "repair": "Enumerate the signed integer family within bounds; predict each candidate's independent phase observation and retain exactly those that agree.",
+        "boundary_test": "Suppose the third snapshot is unavailable but the direction is known to be left. Is the solution unique? List the survivors."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH08-07-B01-MAIN-JUSTIFY-R1",
+      "kind": "MAIN",
+      "subtopic_id": "PH08-07",
+      "qrt_target_id": "PH08-07-B01-D3-JUSTIFY-01",
+      "fresh_task": "A wave with λ=0.72 m has identical displacement snapshots 6 ms apart. A learner claims that the wave speed must be 120 m/s to the right. The magnitude is known to be 100–300 m/s. Evaluate uniqueness and propose a single additional time snapshot that would distinguish all survivors.",
+      "protected_work": "Establish what identical periodic snapshots do and do not prove about pattern propagation, using counterexamples and independent evidence.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Record your initial interpretation and confidence before viewing any support.",
+        "attempt": "A wave with λ=0.72 m has identical displacement snapshots 6 ms apart. A learner claims that the wave speed must be 120 m/s to the right. The magnitude is known to be 100–300 m/s. Evaluate uniqueness and propose a single additional time snapshot that would distinguish all survivors.",
+        "reconstruct": "u=120n; allowed ±120,±240 m/s. Identical snapshots do not fix direction or cycle count. At 1 ms offsets modulo 0.72 are 0.12,0.24,0.60,0.48 m for +120,+240,−120,−240 respectively; distinct observations resolve them.",
+        "diagnose": "Find whether your argument assumes an identical snapshot means no propagation or uniquely fixes a cycle count; construct a counterexample.",
+        "repair": "Separate pattern velocity from particle displacement, retain all admissible shifts, and propose a genuinely discriminating observation.",
+        "boundary_test": "If a nonperiodic isolated pulse rather than a sinusoid has identical snapshots, why is the integer-wavelength argument inapplicable?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH08-07-B01-INSTANCE-JUSTIFY-R1",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH08-07",
+      "qrt_target_id": "PH08-07-B01-D3-JUSTIFY-01",
+      "fresh_task": "A sinusoidal displacement wave with λ=0.90 m produces the same spatial profile at times separated by 5 ms. A report concludes the material has travelled at 180 m/s. A separate instrument bounds propagation speed to 150–400 m/s. Reject or defend the report and identify every compatible signed propagation velocity.",
+      "protected_work": "Establish what identical periodic snapshots do and do not prove about pattern propagation, using counterexamples and independent evidence.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Record your initial interpretation and confidence before viewing any support.",
+        "attempt": "A sinusoidal displacement wave with λ=0.90 m produces the same spatial profile at times separated by 5 ms. A report concludes the material has travelled at 180 m/s. A separate instrument bounds propagation speed to 150–400 m/s. Reject or defend the report and identify every compatible signed propagation velocity.",
+        "reconstruct": "u=180n, so ±180,±360 m/s. The pattern propagates; local material displacement is not the pattern displacement. At a suitably chosen additional time, e.g. 1 ms, offsets 0.18,0.36,0.72,0.54 m distinguish the four.",
+        "diagnose": "Find whether your argument assumes an identical snapshot means no propagation or uniquely fixes a cycle count; construct a counterexample.",
+        "repair": "Separate pattern velocity from particle displacement, retain all admissible shifts, and propose a genuinely discriminating observation.",
+        "boundary_test": "Does a measurement of amplitude alone distinguish the four velocities? Explain."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    }
+  ],
+  "core2_sources": [
+    {
+      "item_id": "NSEJS-24-MECH-07",
+      "source_role": "PREREQUISITE_BRIDGE",
+      "locator": "nsejs/physics/index.html?topic=mechanics&q=NSEJS-24-MECH-07#NSEJS-24-MECH-07; existing candidate NSEJS-2024-P-Q34; observed display digest only, not original source digest; official locator 2024 paper code 51 Q34 (ledger claim)",
+      "stem_sha256": "fd0236063fd9371219472f7769cdffa9a8b78d0acfff0b309b268dc5c1dca893",
+      "figure_status": "HOLD",
+      "key_status": "HOLD",
+      "academic_status": "HOLD"
+    }
+  ],
+  "acceptance": {
+    "b1_b7": {
+      "B1": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B2": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B3": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B4": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B5": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B6": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B7": {
+        "status": "HOLD",
+        "evidence_refs": []
+      }
+    },
+    "gates": {
+      "source_authenticity": "HOLD",
+      "content_correctness": "HOLD",
+      "cognitive_qualification": "HOLD",
+      "teaching_sufficiency": "HOLD",
+      "assessment_validity": "HOLD",
+      "implementation": "NOT_RUN",
+      "release_authority": "HOLD"
+    },
+    "release": "HOLD",
+    "acceptance_note": "B01 source-related isolated slice. Existing candidate Q34 is a D2-labelled, source-HOLD prerequisite/return link, not direct exam evidence or proof of D3/D4 coverage. Three authored advanced proposals including D4 inverse phase model. C06 v1 per-target MAIN placeholders pending cross-instance tile design. No academic approval inferred from software validation."
+  }
+}
