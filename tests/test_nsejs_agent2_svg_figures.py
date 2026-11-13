@@ -19,4 +19,4 @@ def test_draft_science_figure_is_original_accessible_valid_svg(topic):
     assert len(root.findall("{http://www.w3.org/2000/svg}desc"))==1
     page=(folder/"index.html").read_text(encoding="utf-8")
     assert 'src="figures/lead-concept.svg"' in page
-    assert "figure review" in page or "science/figure review" in page
+    assert "review HOLD" in page or "review pending" in page
