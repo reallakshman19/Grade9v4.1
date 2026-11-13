@@ -144,4 +144,4 @@ The first target is **REPRESENT**: preserve the correct meaning while translatin
 
 ---
 
-**What remains:** This is an original continuous **draft**, not a fully qualified 17-subtopic C05 chapter package or a source-authenticated paper reproduction. PH10-09 has the linked native lead package. Other PH10 subtopics remain Phase 0 proposals awaiting individual C02/C03/C05 review. Existing historical lens/prism reconstruction identities are not silently promoted or replaced.
+**What remains:** This is an original continuous **draft**, not a fully qualified 17-subtopic C05 chapter package or a source-authenticated paper reproduction. PH10-09 and PH10-13 have linked native candidate packages. Other PH10 subtopics remain Phase 0 proposals awaiting individual C02/C03/C05 review. Existing historical lens/prism reconstruction identities are not silently promoted or replaced.

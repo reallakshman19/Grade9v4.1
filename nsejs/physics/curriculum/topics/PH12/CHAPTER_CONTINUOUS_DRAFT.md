@@ -118,6 +118,6 @@ The chapter begins with representations of static magnetic fields, then fields p
 
 The chapter's first QRT targets are REPRESENT (translate 3D direction into a coherent diagram), EXPLAIN (trace why motion/change may cause a transient signal), and MODEL (choose between static-field, force-on-conductor and induction accounts). A separate SYNTHESIZE target can connect electrical and mechanical energy, but nontrivial D4 electromechanical calculations stay **EXTENSION/HOLD** until reviewed.
 
-**Exit investigations:** Draw a magnetic field around a straight current carrying wire with the observer viewpoint explicit; explain a motor coil's continuing turning tendency; distinguish an open loop's induced EMF from current; and show why induced response can support an external field direction when linked flux is decreasing. The current native Core1B lead covers only PH12-09.
+**Exit investigations:** Draw a magnetic field around a straight current carrying wire with the observer viewpoint explicit; explain a motor coil's continuing turning tendency; distinguish an open loop's induced EMF from current; and show why induced response can support an external field direction when linked flux is decreasing. Native Core1B candidate records cover PH12-09 and PH12-06.
 
 **Academic boundary:** This is an original chapter author draft. It has not satisfied source-specific science review, all-subtopic native C05/C06 binding, real first-attempt browser tests or B1–B7 admission.
