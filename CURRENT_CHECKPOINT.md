@@ -256,6 +256,25 @@
         - Navigation leak audit (`tools/audit_navigation_leaks.py`): 43/43 pages checked, 0 flags, 0 broken references.
         - Hierarchy audit (`tools/audit_hierarchy_issues.py`): 43/43 pages checked, 0 silo issues.
         - Tablet browser subagent verification (1366 × 854): 0 console errors, instant topic pill switching, verified redirect traversal, and touch targets $\ge 48$px.
+    26. **Converged Discovery Search Engine & Comprehensive Indexing**:
+        - Copied, modernized, and expanded the search engine from v3.5 to Grade9 v4.0.
+        - Built comprehensive indexing script `tools/build_search_index.py` indexing 334 documents across:
+          - Questions: 279 questions (Physics: 50 candidates + 3 authored; Chemistry: 119 candidates; Biology: 119 candidates) with full stems, worked steps, options, and hints.
+          - Tablets & Lessons: 29 interactive modules (17 Physics, 7 Chemistry, 3 Biology, WPE Pilot).
+          - Curriculum Topics: 13 major disciplinary topic hubs.
+          - Portal & Verification Hubs: 13 top-level hubs, question banks, and official source dossiers.
+        - Implemented smart search logic in `js/site-search.js`:
+          - Multi-token boolean matching, word stemming, and prefix-matching.
+          - Keyword synonyms & domain thesaurus expansion (`data/keyword-synonyms.v1.json`).
+          - Intelligent multi-factor relevance ranking (exact ID: +30,000, scope boost: +5,000, title match: +15,000).
+          - Customizable Scoping: instant toggle between `🌐 All Portals`, `⭐ NSEJS Only`, `⚛️ Physics`, `🧪 Chemistry`, `🧬 Biology`.
+          - Inline scope prefixes: `nsejs:`, `phy:`, `chem:`, `bio:`, `math:`, `d3:`, `d2:`.
+          - Dynamic facet category tabs with real-time live counts.
+          - Direct Question Bank Bridge linking queries straight into question banks.
+          - Universal `Ctrl/Cmd + K` and `Esc` keyboard shortcut support across all pages.
+        - Styled with high-contrast, responsive CSS (`css/site-search.css`) honoring 12.7" tablet touch ergonomics.
+        - Created unit test suite `tests/test_search_engine.py` (7 tests, 100% pass, SHA-256 fingerprint verified).
+
 
 ---
 
