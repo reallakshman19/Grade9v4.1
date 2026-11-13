@@ -1,0 +1,159 @@
+"""B01 author-side regression evidence for R00. Not independent QRT/academic approval."""
+import hashlib
+import json
+from pathlib import Path
+from fractions import Fraction as F
+import pytest
+
+ROOT = Path(__file__).resolve().parents[1]
+TOPICS = ROOT / "nsejs/physics/curriculum/topics"
+DIR = TOPICS / "PH07/b01"
+REG = json.loads((DIR / "B01_ADAPTER_RECONCILIATION.v1.json").read_text(encoding="utf-8"))
+HANDOFF = json.loads((DIR / "B01_R00_STAGE_HANDOFF.v1.json").read_text(encoding="utf-8"))
+
+def read_package(pin):
+    raw = (ROOT / pin["path"]).read_bytes()
+    blob = hashlib.sha1(b"blob " + str(len(raw)).encode() + b"\0" + raw).hexdigest()
+    assert blob == pin["blob"], pin["path"]
+    p = json.loads(raw)
+    assert p["version"] == pin["version"]
+    assert p["topic_adapter"]["adapter_id"] == pin["adapter_id"]
+    assert p["topic_adapter"]["version"] == pin["adapter_version"]
+    return p
+
+def test_additive_reconciliation_does_not_select_canonical_adapter():
+    assert REG["status"] == "PROPOSAL_ONLY_INTEGRATION_BLOCKED"
+    assert REG["selection"]["canonical_topic_adapter"] is None
+    assert REG["selection"]["automatic_supersession"] is False
+    assert REG["selection"]["cross_instance_compatibility"] == "NOT_QUALIFIED"
+    pins = REG["legacy_packages"] + REG["isolated_slices"]
+    ids, identities, cycle_ids, cell_bindings = set(), set(), set(), set()
+    versions = set()
+    for pin in pins:
+        p = read_package(pin)
+        if pin in REG["isolated_slices"]:
+            assert p["version"] not in versions
+            versions.add(p["version"])
+        for s in p["subtopics"]:
+            for t in s["qrt_targets"]:
+                assert t["id"] not in ids
+                assert t["task_identity"] not in identities
+                ids.add(t["id"])
+                identities.add(t["task_identity"])
+                cell_bindings.add((p["topic_adapter"]["adapter_id"]+"/"+t["blueprint_cell"], t["id"], pin["blob"]))
+        for c in p["core1b"]:
+            assert c["id"] not in cycle_ids
+            cycle_ids.add(c["id"])
+    assert len(ids) == 48 and len(cycle_ids) == 96
+    assert len(versions) == 12
+    assert cell_bindings == {(k, t["target_id"], t["package_blob"]) for k,v in REG["cell_candidates"].items() for t in v}
+    assert {r["subtopic_id"] for r in REG["overlapping_subtopics"]} == {"PH07-05","PH07-07","PH08-05","PH08-08"}
+    r, = [r for r in REG["overlapping_subtopics"] if r["subtopic_id"]=="PH07-07"]
+    m, = [r for r in r["relations"] if r["legacy_target"]=="PH07-07-D3-MODEL-02"]
+    assert m["legacy_cell"] == "D3.4"
+    assert m["proposed_same_operation"] == [{"target":"PH07-07-B01-D4-MODEL-01","cell":"D4.4","relation":"DISTINCT_TASK_NOT_EQUIVALENT_NOT_RECLASSIFICATION"}]
+
+def test_all_72_prediction_revisions_are_task_specific_and_not_literal_w():
+    prompts = set()
+    for pin in REG["isolated_slices"]:
+        p = read_package(pin)
+        assert p["acceptance"]["b1_b7"]["B5"]["status"] == "HOLD"
+        assert p["acceptance"]["release"] == "HOLD"
+        for c in p["core1b"]:
+            assert c["id"].endswith("-R2")
+            assert c["stages"]["predict"] not in prompts
+            prompts.add(c["stages"]["predict"])
+            assert c["protected_work"] not in c["stages"]["predict"]
+            assert c["stages"]["predict"] != c["fresh_task"]
+            assert c["stages"]["attempt"] == c["fresh_task"]
+            assert c["runtime_verification"] == "NOT_RUN"
+    assert len(prompts) == 72
+
+def test_stage_handoff_is_bound_to_increment4_not_runtime_approval():
+    assert HANDOFF["stage_order"] == ["PREDICT","ATTEMPT","RECONSTRUCT","DIAGNOSE","REPAIR","BOUNDARY_TEST"]
+    assert HANDOFF["status"] == "PROPOSED_PLATFORM_DEPENDENCY"
+    assert len(HANDOFF["criteria"]) == 24
+    packages = {p["subtopics"][0]["id"]:read_package(p) for p in REG["isolated_slices"]}
+    seen = set()
+    for row in HANDOFF["criteria"]:
+        p = packages[row["subtopic_id"]]
+        c, = [c for c in p["core1b"] if c["id"] == row["cycle_id"]]
+        assert c["id"] not in seen
+        seen.add(c["id"])
+        assert row["package_version"] == p["version"]
+        assert row["target_id"] == c["qrt_target_id"]
+        assert row["boundary_prompt"] == c["stages"]["boundary_test"]
+        assert set(row["stage_response_criteria"]) == set(HANDOFF["stage_order"])
+        assert all(row["stage_response_criteria"].values())
+        assert row["runtime_status"] == "NOT_IMPLEMENTED"
+        assert row["academic_status"] == "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED"
+
+def test_wave_alias_model_oracle():
+    # Enumerate integer shifts using exact rational arithmetic, not the authored answer string.
+    lam, t1, offset = F(4,5), F(5,1000), F(1,5)
+    velocities = [(offset+n*lam)/t1 for n in range(-10,11)]
+    valid = [u for u in velocities if 100<=abs(u)<=500]
+    assert len(valid)==5
+    assert [u for u in valid if (u*F(15,10000))%lam==F(54,100)] == [360]
+    # A measurement at twice t1 is redundant for every admissible velocity.
+    assert len({(u*2*t1)%lam for u in valid})==1
+
+def test_absorption_model_counterexample_oracle():
+    C=300
+    fits=[(F(a,100), loss) for a in range(101) for loss in range(31)
+          if 90*F(a,100)-loss==C*F(8,100) and 150*F(a,100)-loss==C*F(16,100)]
+    assert fits==[(F(2,5),12)]
+    assert all((120*a-loss)/C!=F(10,100) for a,loss in fits)
+    # Same two slopes without C: scaling C, alpha, loss by 1/2 remains admissible.
+    assert (90*F(1,5)-6)/150==F(8,100)
+
+def test_layered_path_model_oracle():
+    # Exhaustively recover admissible mixed length on 0.1m grid; all-B fixes delay.
+    delay=F(56,10000)-F(2,500)
+    candidates=[F(i,10) for i in range(21)]
+    fit=[x for x in candidates if delay+x/300+(2-x)/500==F(72,10000)]
+    assert fit==[F(6,5)]
+    assert delay+F(1,300)==F(37,7500)
+    # Same medium speed makes all fractions observationally equivalent.
+    assert len({x/500+(2-x)/500 for x in candidates})==1
+
+def test_intensity_countermodel_oracle():
+    # Fixed pressure ratio 2, impedance ratio variable; intensity ordering can reverse.
+    assert [4/F(z) for z in [2,4,8]]==[2,1,F(1,2)]
+    # With displacement ratio 2 and frequency ratio 1/2, impedance alone controls ratio.
+    assert [(F(2)*F(1,2))**2*Z for Z in [F(1,2),1,2]]==[F(1,2),1,2]
+
+def test_evaporation_residual_and_uncertainty_oracle():
+    dry,wet=(12,20),(18,32)
+    observed=[w-d for w,d in zip(wet,dry)]
+    predicted=[2400*r for r in [F(25,10000),F(40,10000)]]
+    assert [o-p for o,p in zip(observed,predicted)]==[0,F(12,5)]
+    assert abs(observed[1]-predicted[1])<=2400*F(1,1000)
+
+def echo_orders(a,b,v):
+    # Trace actual legs for both initial directions instead of using the closed-form result.
+    out={}
+    for direction,first,last in [("L",a,b),("R",b,a)]:
+        for order in range(1,4):
+            distance=first+(order-1)*(a+b)+(first if order%2 else last)
+            out[direction+str(order)]=F(distance,v)
+    return out
+
+def test_echo_inverse_displaced_model_oracle():
+    v=250
+    # 56 ms common second arrival and 16 ms identified first arrival.
+    candidates=[(a,7-a) for a in range(1,7) if F(16,1000) in [F(2*a,v),F(2*(7-a),v)]]
+    assert candidates==[(2,5),(5,2)]
+    fit=[(a,b) for a,b in candidates if sorted([F(2*(a+1),v),F(2*(b-1),v)])==[F(24,1000),F(32,1000)]]
+    assert fit==[(2,5)]
+    o=echo_orders(2,5,v)
+    assert sorted([o["L3"],o["R3"]])==[F(72,1000),F(96,1000)]
+    assert o["L2"]==o["R2"]==F(56,1000)
+
+def test_echo_countermodel_oracle():
+    centered=echo_orders(F(9,2),F(9,2),300)
+    offset=echo_orders(3,6,300)
+    assert centered["L2"]==offset["L2"]==F(60,1000)
+    assert centered["L1"]==centered["R1"]==F(30,1000)
+    assert sorted([offset["L1"],offset["R1"]])==[F(20,1000),F(40,1000)]
+    assert set(centered.values())!=set(offset.values())
