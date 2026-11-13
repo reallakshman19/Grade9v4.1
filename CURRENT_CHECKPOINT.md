@@ -4,7 +4,7 @@
 **Repository Working Directory:** `D:\CodeD\g9v4`  
 **Active Branch:** `main`  
 **Tracking Remote:** `origin` -> `https://github.com/reallakshman19/Grade9v4.1.git`  
-**Head Commit:** `2916eb9` (`fix(physics/core1): remediate SVG answer leakage, typography and B4 transfer twin; hold unvalidated label per Rule 13`)  
+**Head Commit:** `40e8a5b` (`docs(architecture): update review-guide.html with Stage 8 release authority, vector zero-leakage and anti-isomorphism benchmarks`)  
 **Upstream Remote:** `upstream-v4.0` -> `https://github.com/reallakshman19/Grade9v4.0.git`  
 **Localhost Server:** Running at `http://localhost:8000` (Python HTTP server)
 
@@ -116,6 +116,17 @@
     - **Rule 13 Fail-Closed Governance Upheld**:
       - `{Unvalidated}` badges and Rule 13 `HOLD: ACADEMIC_ADMISSION` warning banners strictly preserved per Rule 6, Rule 8, and Rule 13 of `AGENTS.md`. Automated AI agents cannot remove academic hold labels without an external cryptographically signed human review receipt.
     - Verified live at `http://localhost:8000` (HTTP 200). Committed and pushed to `origin/main` (`2916eb9`).
+
+14. **Site-Wide Navigation Audit & Uniform Masthead/Breadcrumb Remediation Across All 94 Pages**:
+    - Performed comprehensive audit (`scripts/audit_site_nav.py`) scanning all 94 published HTML pages across the repository for navigation bars, breadcrumb trails, and back links.
+    - Remediated all 43 previously unnavigated or broken modules:
+      - **Target Core 1 Standalone Modules**: `nsejs-optics-displacement-d3-r1` (user screenshot), `nsejs-fluids-sound-r1`, `nsejs-fluids-surface-energy-d3-r1`, `chem-electronic-structure-d3-r1`, `chem-phosphorus-oxyacids-d3-r1`, `bio-genetics-coordination-r1`, `bio-immunology-defense-d3-r1`, `bio-viral-genetics-d3-r1` now feature full `<header class="mast">` + breadcrumb bars with $\ge 48\text{px}$ touch buttons (`← Back to Core 1 Lessons`, `📚 Question Bank`).
+      - **Subject Hubs & Question Banks**: `nsejs/physics/question-bank.html`, `nsejs/physics/core1/index.html`, `nsejs/chemistry/question-bank.html`, `nsejs/chemistry/core1/index.html`, `nsejs/biology/question-bank.html`, `nsejs/biology/core1/index.html`, `nsejs/physics/learn-mechanics.html`, `nsejs/chemistry/authored-practice.html`, `nsejs/biology/authored-practice.html` upgraded to unified masthead navigation.
+      - **Core 2 Central Hub & Question Map**: `nsejs/core2/index.html`, `nsejs/core2/question-map.html` (267 items), `nsejs/core1-recovery.html`, `nsejs/official-sources.html` upgraded to unified masthead navigation.
+      - **All 18 Independent Recovery Lessons**: 13 Physics and 5 Chemistry recovery pages upgraded with linked `site.css`, `tablet-12-7.css`, masthead navigation, and quick-return breadcrumbs.
+      - **Concept & Review Pages**: `WPE_Source_to_Core1A_Concept/index.html`, `golden-fixtures.html`, `architecture/review-guide.html`, and `physics/wpe/question-bank.html` upgraded.
+      - **Universal Navigation Fallback (`site-nav.js`)**: Updated to de-duplicate against static `<header class="mast">`, added `Core 1 Lessons` shortcut to NSEJS navigation, and implemented dynamic multi-subject breadcrumbs.
+      - **Headless Browser Subagent Verification**: Verified across `http://localhost:8000/` routes with 0 console errors, 0px horizontal scroll overflow, and verified link traversal.
 
 ---
 
