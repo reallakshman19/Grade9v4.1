@@ -1,0 +1,704 @@
+{
+  "schema": "g9v41-chem-b02-exact-task-evidence/v1",
+  "version": "0.4.0",
+  "status": "AUTHOR_PROPOSED__ACADEMIC_HOLD",
+  "baseline_head": "129e9e911ef198365b67e4e5d7fa925e9076ce25",
+  "counts": {
+    "revised": 12,
+    "D3": 9,
+    "D4": 3,
+    "qualified": 0
+  },
+  "records": [
+    {
+      "subtopic_id": "CHEM-C10.01",
+      "cycle_id": "CORE1B-C10-01-1-B02-R2",
+      "qrt_instance_id": "C10-01-EXPLAIN-D3-B02-R2",
+      "template_ref": "QRT-EXPLAIN-D3",
+      "band": "D3",
+      "primary_operation": "EXPLAIN",
+      "exact_task": "A copper strip, graphite sheet and crystalline salt all transmit current in at least one tested state. Copper conducts when solid, graphite much better along the sheet than across stacked layers, and salt only after melting. Explain the different carrier mechanisms and why an identical current reading is not evidence of identical bonding.",
+      "protected_W": "Connect three distinct microscopic carrier mechanisms to state/direction evidence and reject the equal-current inference.",
+      "worked_answer": "Copper: mobile electrons through metallic structure. Graphite: delocalised electrons within covalent layers, anisotropic transport. Salt: ions fixed in ordinary lattice, mobile after melting. Equal readings can arise from distinct carrier types and depend on sample geometry and contacts. The shared observable is charge transport, not bond identity.",
+      "boundary_prompt": "Could a dry salt conduct weakly through defects? Explain why this would not automatically establish metallic bonding.",
+      "boundary_answer": "Yes, defects can permit ionic motion in some solids. Carrier identity requires independent evidence, not a binary conductivity test.",
+      "score": 7,
+      "factors": {
+        "concept_model_selection": {
+          "score": 2,
+          "evidence": "Compare three carrier mechanisms"
+        },
+        "representation_translation": {
+          "score": 1,
+          "evidence": "Translate state/direction evidence"
+        },
+        "reasoning_chain_length": {
+          "score": 2,
+          "evidence": "Connect carriers, structures and common response"
+        },
+        "algebra_computational_load": {
+          "score": 0,
+          "evidence": "No quantitative calculation"
+        },
+        "trap_exception_sensitivity": {
+          "score": 2,
+          "evidence": "Equal current/defect conduction counterexamples"
+        }
+      },
+      "hint_evidence": {
+        "H1": "Sort the observations by material, physical state and direction.",
+        "H2": "Ask what charged species could move in each structure, not whether the material looks shiny.",
+        "H3": "Construct a carrier–structure–observation chain for each material; compare what an equal instrument reading does and does not constrain.",
+        "author_non_disclosure_check": "H3 supplies a scaffold, not the completed conclusion/ledger. Independent review pending."
+      },
+      "source_ids_related": [
+        "NSEJS-2022-C-Q28",
+        "NSEJS-2021-C-Q12"
+      ],
+      "source_role": "AUTHORED_PRACTICE",
+      "independent_review": "NOT_RUN",
+      "academic_status": "HOLD"
+    },
+    {
+      "subtopic_id": "CHEM-C10.01",
+      "cycle_id": "CORE1B-C10-01-3-B02-R2",
+      "qrt_instance_id": "C10-01-SYNTHESIZE-D3-B02-R2",
+      "template_ref": "QRT-SYNTHESIZE-D3",
+      "band": "D3",
+      "primary_operation": "SYNTHESIZE",
+      "exact_task": "In a hypothetical survey, dry X and dry Y are electrical insulators. X dissolves to yield equal amounts of positive and negative monovalent ions and conducts; Y reacts with water to yield equal amounts of ions and also conducts. A report identifies both original solids as ionic because the solutions have the same ion concentration. Combine the particle and experimental evidence to evaluate this conclusion and propose a way to distinguish the initial materials.",
+      "protected_W": "Integrate before/after species inventories and independent solid evidence, explaining the underdetermination.",
+      "worked_answer": "Both final liquids have mobile ions; X may be an ionic solid whose pre-existing ions separate, while Y may be molecular and form ions by reaction with water. The equal concentrations do not determine original structures or identical conductivity (mobility matters). Distinguish initial solid by structural/composition evidence or a suitable nonreactive-solvent/melt test where feasible. Do not infer initial bonding solely from final ions.",
+      "boundary_prompt": "If Y forms ions only in water, would lack of conductivity in a nonreactive solvent uniquely prove covalent bonding?",
+      "boundary_answer": "No. Insolubility and limited dissociation could also make an ionic compound nonconducting in that solvent.",
+      "score": 7,
+      "factors": {
+        "concept_model_selection": {
+          "score": 2,
+          "evidence": "Compare dissociation/ionisation pathways"
+        },
+        "representation_translation": {
+          "score": 1,
+          "evidence": "Translate before/after species evidence"
+        },
+        "reasoning_chain_length": {
+          "score": 2,
+          "evidence": "Integrate alternative histories and independent test"
+        },
+        "algebra_computational_load": {
+          "score": 0,
+          "evidence": "No arithmetic"
+        },
+        "trap_exception_sensitivity": {
+          "score": 2,
+          "evidence": "Nonunique inverse inference"
+        }
+      },
+      "hint_evidence": {
+        "H1": "Make separate before-water and after-water evidence columns.",
+        "H2": "Distinguish ions already in the solid from ions created by reaction; consider mobility separately.",
+        "H3": "Sketch two possible particle histories ending in the same ion inventory. Identify which missing measurement would separate them.",
+        "author_non_disclosure_check": "H3 supplies a scaffold, not the completed conclusion/ledger. Independent review pending."
+      },
+      "source_ids_related": [
+        "NSEJS-2022-C-Q28",
+        "NSEJS-2021-C-Q12"
+      ],
+      "source_role": "AUTHORED_PRACTICE",
+      "independent_review": "NOT_RUN",
+      "academic_status": "HOLD"
+    },
+    {
+      "subtopic_id": "CHEM-C10.02",
+      "cycle_id": "CORE1B-C10-02-1-B02-R2",
+      "qrt_instance_id": "C10-02-EXPLAIN-D3-B02-R2",
+      "template_ref": "QRT-EXPLAIN-D3",
+      "band": "D3",
+      "primary_operation": "EXPLAIN",
+      "exact_task": "A clean iron strip is immersed in a Cu²⁺ solution. In a simplified record 0.040 mol Fe²⁺ forms, 0.030 mol Cu is recovered and no other products are measured. Explain how the two half-reactions couple, whether the recorded copper amount accounts for all electron transfer, and why the blue colour fading alone is insufficient.",
+      "protected_W": "Explain coupled electron transfer and independently reconcile the observed species amounts.",
+      "worked_answer": "Fe→Fe²⁺+2e⁻ supplies 0.080 mol electrons; Cu²⁺+2e⁻→Cu consumes 0.060 mol. 0.020 mol electrons unaccounted if measurements exact. Incomplete Cu recovery, another electron acceptor or measurement error are alternatives; colour changes alone do not identify or quantify products. Sulfate is spectator if present.",
+      "boundary_prompt": "If Fe instead forms Fe³⁺ and Cu is the sole acceptor, how much Cu is formed per 0.020 mol Fe?",
+      "boundary_answer": "0.060 mol e⁻ /2=0.030 mol Cu.",
+      "score": 7,
+      "factors": {
+        "concept_model_selection": {
+          "score": 1,
+          "evidence": "Select coupled half-reaction model"
+        },
+        "representation_translation": {
+          "score": 2,
+          "evidence": "Translate species into half-reactions"
+        },
+        "reasoning_chain_length": {
+          "score": 2,
+          "evidence": "Explain transfer, ledger discrepancy and observation limit"
+        },
+        "algebra_computational_load": {
+          "score": 1,
+          "evidence": "Molar electron accounting"
+        },
+        "trap_exception_sensitivity": {
+          "score": 1,
+          "evidence": "Recovery vs formation"
+        }
+      },
+      "hint_evidence": {
+        "H1": "Write the initial and final species for each metal.",
+        "H2": "Use oxidation-state changes to determine electrons transferred per metal atom.",
+        "H3": "Set up an electron ledger using the recorded amounts; compare totals and distinguish recovered material from formed material.",
+        "author_non_disclosure_check": "H3 supplies a scaffold, not the completed conclusion/ledger. Independent review pending."
+      },
+      "source_ids_related": [
+        "CHEM-NSEJS-REACT-02",
+        "CHEM-NSEJS-REACT-03",
+        "NSEJS-2020-C-Q10",
+        "NSEJS-2020-C-Q28"
+      ],
+      "source_role": "AUTHORED_PRACTICE",
+      "independent_review": "NOT_RUN",
+      "academic_status": "HOLD"
+    },
+    {
+      "subtopic_id": "CHEM-C10.02",
+      "cycle_id": "CORE1B-C10-02-2-B02-R2",
+      "qrt_instance_id": "C10-02-MODEL-D3-B02-R2",
+      "template_ref": "QRT-MODEL-D3",
+      "band": "D3",
+      "primary_operation": "MODEL",
+      "exact_task": "Clean A displaces B²⁺; clean B displaces C²⁺; clean D displaces B²⁺. A coated D strip gives no deposit in A²⁺. Draw the supported partial order, list unresolved pairs, and choose the smallest additional controlled comparison needed to decide the most reactive metal.",
+      "protected_W": "Select a partial-order graph and identify the missing edge controlling the maximal element.",
+      "worked_answer": "Edges A>B, B>C, D>B; transitivity gives A>C and D>C under comparable conditions. A vs D unresolved; coated negative does not resolve it. These are the two possible maximal metals. A controlled clean A/D comparison with suitable verification can decide which is above; reciprocal test if negative is ambiguous. No ranking of rates.",
+      "boundary_prompt": "If clean A displaces D²⁺, what total order follows under assumptions?",
+      "boundary_answer": "A>D>B>C.",
+      "score": 7,
+      "factors": {
+        "concept_model_selection": {
+          "score": 2,
+          "evidence": "Choose partial-order rather than total ranking"
+        },
+        "representation_translation": {
+          "score": 2,
+          "evidence": "Translate tests to graph"
+        },
+        "reasoning_chain_length": {
+          "score": 2,
+          "evidence": "Infer transitive edges and minimal discrimination"
+        },
+        "algebra_computational_load": {
+          "score": 0,
+          "evidence": "No arithmetic"
+        },
+        "trap_exception_sensitivity": {
+          "score": 1,
+          "evidence": "Coated negative not decisive"
+        }
+      },
+      "hint_evidence": {
+        "H1": "Separate positive tests from the coated result.",
+        "H2": "Draw directed edges from each displacing metal to the displaced metal.",
+        "H3": "Trace paths through the graph and find nodes with no incoming edge; leave their ordering undecided until you select a controlled test.",
+        "author_non_disclosure_check": "H3 supplies a scaffold, not the completed conclusion/ledger. Independent review pending."
+      },
+      "source_ids_related": [
+        "CHEM-NSEJS-REACT-02",
+        "CHEM-NSEJS-REACT-03",
+        "NSEJS-2020-C-Q10",
+        "NSEJS-2020-C-Q28"
+      ],
+      "source_role": "AUTHORED_PRACTICE",
+      "independent_review": "NOT_RUN",
+      "academic_status": "HOLD"
+    },
+    {
+      "subtopic_id": "CHEM-C10.03",
+      "cycle_id": "CORE1B-C10-03-1-B02-R2",
+      "qrt_instance_id": "C10-03-EXPLAIN-D3-B02-R2",
+      "template_ref": "QRT-EXPLAIN-D3",
+      "band": "D3",
+      "primary_operation": "EXPLAIN",
+      "exact_task": "An ideal salt L contains L²⁺ and X⁻. A dry crystal gives negligible current; molten sample conducts; aqueous solution of the same nominal mass gives lower current than a more dilute solution of a different salt. Explain all three observations without claiming that nominal mass or ion count alone controls conductivity.",
+      "protected_W": "Explain phase-dependent transport and distinguish nominal amount from carrier mobility and concentration.",
+      "worked_answer": "LX₂ formula neutral; ions in ordinary crystal confined, mobile in melt. Dissolved ions are mobile but different salts may differ in actual concentration, degree of dissociation, carrier charge/mobility, temperature and geometry. Nominal mass not number of ions. Compare matched geometry/temperature, concentration and species before ranking.",
+      "boundary_prompt": "If both solutions have equal ion concentration, must conductivity be equal?",
+      "boundary_answer": "No; mobilities, charge magnitudes and interactions differ.",
+      "score": 7,
+      "factors": {
+        "concept_model_selection": {
+          "score": 1,
+          "evidence": "Select phase-dependent ionic transport"
+        },
+        "representation_translation": {
+          "score": 1,
+          "evidence": "Translate formula/phase evidence"
+        },
+        "reasoning_chain_length": {
+          "score": 2,
+          "evidence": "Explain three observations and reject comparison"
+        },
+        "algebra_computational_load": {
+          "score": 1,
+          "evidence": "Mass-to-amount relationship"
+        },
+        "trap_exception_sensitivity": {
+          "score": 2,
+          "evidence": "Mobility and concentration not interchangeable"
+        }
+      },
+      "hint_evidence": {
+        "H1": "Identify which phases contain potentially mobile ions.",
+        "H2": "Check what mass can tell you without molar mass or dissolved fraction.",
+        "H3": "Connect each phase to carrier mobility and list controlled variables for the two solution readings.",
+        "author_non_disclosure_check": "H3 supplies a scaffold, not the completed conclusion/ledger. Independent review pending."
+      },
+      "source_ids_related": [
+        "CHEM-NSEJS-ATOM-10",
+        "CHEM-NSEJS-BOND-06",
+        "NSEJS-2022-C-Q32"
+      ],
+      "source_role": "AUTHORED_PRACTICE",
+      "independent_review": "NOT_RUN",
+      "academic_status": "HOLD"
+    },
+    {
+      "subtopic_id": "CHEM-C10.03",
+      "cycle_id": "CORE1B-C10-03-3-B02-R2",
+      "qrt_instance_id": "C10-03-SYNTHESIZE-D4-B02-R2",
+      "template_ref": "QRT-SYNTHESIZE-D4",
+      "band": "D4",
+      "primary_operation": "SYNTHESIZE",
+      "exact_task": "Two ideal salts A₂X₃ and BY₂ dissociate completely; A is 3+, X is 2−, B is 2+, Y is 1−. Equal volumes contain 0.010 mol of each salt. Construct a charge-and-particle ledger before mixing, then after mixing if only B²⁺ and X²⁻ precipitate quantitatively as BX. Find the remaining dissolved amounts and explain why current cannot be calculated from charge balance alone.",
+      "protected_W": "Integrate formula-unit dissociation, precipitation and independent charge check.",
+      "worked_answer": "Initial A³⁺ .020, X²⁻ .030, B²⁺ .010, Y⁻ .020 mol. BX precipitates .010 mol, leaving X²⁻ .020, A³⁺ .020, Y⁻ .020, B²⁺ 0. Charge equivalents +.060 and −(.040+.020)=−.060. Conductivity depends on mobility, concentration/volume and interactions, not neutrality alone.",
+      "boundary_prompt": "If 0.040 mol BY₂ is mixed instead, how much B²⁺ remains after complete BX precipitation?",
+      "boundary_answer": "0.010 mol B²⁺ remains; .030 mol X²⁻ limits.",
+      "score": 8,
+      "factors": {
+        "concept_model_selection": {
+          "score": 1,
+          "evidence": "Select dissociation and selective precipitation"
+        },
+        "representation_translation": {
+          "score": 2,
+          "evidence": "Translate formulas to species ledger"
+        },
+        "reasoning_chain_length": {
+          "score": 2,
+          "evidence": "Combine reaction, limiting species and charge check"
+        },
+        "algebra_computational_load": {
+          "score": 2,
+          "evidence": "Linked mole and charge calculations"
+        },
+        "trap_exception_sensitivity": {
+          "score": 1,
+          "evidence": "Neutrality vs conductivity"
+        }
+      },
+      "hint_evidence": {
+        "H1": "Expand each salt formula into a before-mixing ion inventory.",
+        "H2": "Identify which two ions form the neutral precipitate and determine their consumption ratio.",
+        "H3": "Make initial/change/final rows for every ion; check positive and negative charge equivalents after the reaction.",
+        "author_non_disclosure_check": "H3 supplies a scaffold, not the completed conclusion/ledger. Independent review pending."
+      },
+      "source_ids_related": [
+        "CHEM-NSEJS-ATOM-10",
+        "CHEM-NSEJS-BOND-06",
+        "NSEJS-2022-C-Q32"
+      ],
+      "source_role": "AUTHORED_PRACTICE",
+      "independent_review": "NOT_RUN",
+      "academic_status": "HOLD"
+    },
+    {
+      "subtopic_id": "CHEM-C10.04",
+      "cycle_id": "CORE1B-C10-04-1-B02-R2",
+      "qrt_instance_id": "C10-04-EXPLAIN-D3-B02-R2",
+      "template_ref": "QRT-EXPLAIN-D3",
+      "band": "D3",
+      "primary_operation": "EXPLAIN",
+      "exact_task": "A proposal treats two hypothetical oxide feeds M₂O and NO identically with carbon because both equations can be balanced. M is sodium-like and N zinc-like. Explain why balanced stoichiometry is necessary but insufficient, compare plausible extraction mechanisms and identify what additional evidence is required before predicting actual recovery.",
+      "protected_W": "Explain difference between formal balance, energetic feasibility and recovery for two ore models.",
+      "worked_answer": "Atom balance describes amounts, not thermodynamic feasibility or rates. Highly reactive M typically needs electrolysis of a suitable molten salt; less reactive N oxide may be reduced by carbon/CO in appropriate conditions. Electrolysis supplies external electrical energy; chemical reduction transfers electrons from reductant. Need oxide stability/conditions, separation, side reaction and recovery evidence. No practical procedure implied.",
+      "boundary_prompt": "A molten-salt electrolysis equation is balanced; does that prove all deposited metal is recovered?",
+      "boundary_answer": "No. Side reactions and recovery losses may occur.",
+      "score": 7,
+      "factors": {
+        "concept_model_selection": {
+          "score": 2,
+          "evidence": "Select extraction mechanism by reactivity"
+        },
+        "representation_translation": {
+          "score": 1,
+          "evidence": "Translate balanced proposal into mechanism"
+        },
+        "reasoning_chain_length": {
+          "score": 2,
+          "evidence": "Distinguish stoichiometry, feasibility and recovery"
+        },
+        "algebra_computational_load": {
+          "score": 0,
+          "evidence": "No computation"
+        },
+        "trap_exception_sensitivity": {
+          "score": 2,
+          "evidence": "Feasibility/recovery trap"
+        }
+      },
+      "hint_evidence": {
+        "H1": "Separate the written equation from the observation that a metal is actually obtained.",
+        "H2": "Compare where electrons come from in a chemical reductant versus electrolysis.",
+        "H3": "Build two causal chains from ore stability to reduction and collection; specify what information each chain lacks.",
+        "author_non_disclosure_check": "H3 supplies a scaffold, not the completed conclusion/ledger. Independent review pending."
+      },
+      "source_ids_related": [
+        "CHEM-NSEJS-REACT-01",
+        "CHEM-NSEJS-MOLE-10",
+        "NSEJS-2021-C-Q11",
+        "NSEJS-2022-C-Q54"
+      ],
+      "source_role": "AUTHORED_PRACTICE",
+      "independent_review": "NOT_RUN",
+      "academic_status": "HOLD"
+    },
+    {
+      "subtopic_id": "CHEM-C10.04",
+      "cycle_id": "CORE1B-C10-04-2-B02-R2",
+      "qrt_instance_id": "C10-04-MODEL-D4-B02-R2",
+      "template_ref": "QRT-MODEL-D4",
+      "band": "D4",
+      "primary_operation": "MODEL",
+      "exact_task": "An ideal ore contains 0.12 mol ZnS and 0.08 mol ZnCO₃. Choose a pathway that converts each to ZnO, then reduce all ZnO assuming CO is sole carbon reduction product. Balance the equations, determine separate SO₂, CO₂ and CO amounts and explain why a total gas amount alone cannot identify ore composition.",
+      "protected_W": "Select parallel ore conversions and common reduction; test inverse composition uniqueness.",
+      "worked_answer": "2ZnS+3O₂→2ZnO+2SO₂, ZnCO₃→ZnO+CO₂, ZnO+C→Zn+CO. SO₂ .12, CO₂ .08, CO .20 mol; Zn .20 mol. Total .40 mol gas (excluding reactant oxygen) depends on total Zn feed here; many mixtures give same total. Speciate gas or measure separate stages. Theoretical model only.",
+      "boundary_prompt": "If CO₂ in conversion stage is 0.05 mol with total ZnO .20 mol, infer ZnS under model.",
+      "boundary_answer": "0.15 mol ZnS; .05 mol ZnCO₃.",
+      "score": 8,
+      "factors": {
+        "concept_model_selection": {
+          "score": 2,
+          "evidence": "Select appropriate ore reactions"
+        },
+        "representation_translation": {
+          "score": 2,
+          "evidence": "Translate parallel pathways to equations"
+        },
+        "reasoning_chain_length": {
+          "score": 2,
+          "evidence": "Combine feed conversion and common reduction; inverse ambiguity"
+        },
+        "algebra_computational_load": {
+          "score": 1,
+          "evidence": "Mole ratios"
+        },
+        "trap_exception_sensitivity": {
+          "score": 1,
+          "evidence": "Total gas nonuniqueness"
+        }
+      },
+      "hint_evidence": {
+        "H1": "List the sulphur and carbonate carbon atoms separately before selecting reactions.",
+        "H2": "Track each feed to a common ZnO intermediate and identify its distinct conversion gas.",
+        "H3": "Construct separate feed–gas rows and a combined oxide reduction row; balance and calculate, then test if another mixture could give the same total.",
+        "author_non_disclosure_check": "H3 supplies a scaffold, not the completed conclusion/ledger. Independent review pending."
+      },
+      "source_ids_related": [
+        "CHEM-NSEJS-REACT-01",
+        "CHEM-NSEJS-MOLE-10",
+        "NSEJS-2021-C-Q11",
+        "NSEJS-2022-C-Q54"
+      ],
+      "source_role": "AUTHORED_PRACTICE",
+      "independent_review": "NOT_RUN",
+      "academic_status": "HOLD"
+    },
+    {
+      "subtopic_id": "CHEM-C10.05",
+      "cycle_id": "CORE1B-C10-05-1-B02-R2",
+      "qrt_instance_id": "C10-05-EXPLAIN-D3-B02-R2",
+      "template_ref": "QRT-EXPLAIN-D3",
+      "band": "D3",
+      "primary_operation": "EXPLAIN",
+      "exact_task": "Two pure white oxides X and Y both react with acid; only X forms a soluble anionic hydroxo species in strong aqueous base. Explain the difference using ZnO as a model for X and MgO for Y. Write the appropriate acid and base equations, and explain why using excess base rather than weak alkali matters.",
+      "protected_W": "Explain two acid/base mechanisms through phase-appropriate species and evidence.",
+      "worked_answer": "ZnO+2H⁺→Zn²⁺+H₂O; ZnO+2OH⁻+H₂O→[Zn(OH)₄]²⁻. MgO+2H⁺→Mg²⁺+H₂O; no analogous simple strong-base dissolution expected under stated ordinary model. Amphoterism requires both reagent contexts, sufficient conditions and product evidence; a negative weak-base observation is insufficient.",
+      "boundary_prompt": "Would acid dissolution of CaO alone identify an amphoteric oxide?",
+      "boundary_answer": "No; it supports basic behaviour but not reaction with base.",
+      "score": 7,
+      "factors": {
+        "concept_model_selection": {
+          "score": 2,
+          "evidence": "Select basic vs amphoteric models"
+        },
+        "representation_translation": {
+          "score": 2,
+          "evidence": "Translate products to ionic equations"
+        },
+        "reasoning_chain_length": {
+          "score": 2,
+          "evidence": "Link both reaction contexts to classification"
+        },
+        "algebra_computational_load": {
+          "score": 0,
+          "evidence": "No calculation beyond balance"
+        },
+        "trap_exception_sensitivity": {
+          "score": 1,
+          "evidence": "Negative weak-base evidence"
+        }
+      },
+      "hint_evidence": {
+        "H1": "Identify which observation the two oxides share and which differs.",
+        "H2": "For acid, track H⁺ and oxide oxygen; for base, use the stated hydroxo species model.",
+        "H3": "Balance atoms and charge in each candidate equation, then use the observed product to explain the classification.",
+        "author_non_disclosure_check": "H3 supplies a scaffold, not the completed conclusion/ledger. Independent review pending."
+      },
+      "source_ids_related": [
+        "CHEM-NSEJS-REACT-01",
+        "NSEJS-2022-C-Q54"
+      ],
+      "source_role": "AUTHORED_PRACTICE",
+      "independent_review": "NOT_RUN",
+      "academic_status": "HOLD"
+    },
+    {
+      "subtopic_id": "CHEM-C10.05",
+      "cycle_id": "CORE1B-C10-05-3-B02-R2",
+      "qrt_instance_id": "C10-05-SYNTHESIZE-D4-B02-R2",
+      "template_ref": "QRT-SYNTHESIZE-D4",
+      "band": "D4",
+      "primary_operation": "SYNTHESIZE",
+      "exact_task": "A hypothetical mixture contains only MgO and ZnO. Excess acid consumes 0.100 mol H⁺; under an ideal selective strong-base model ZnO alone consumes 0.040 mol OH⁻ forming [Zn(OH)₄]²⁻. Determine the amounts of each oxide, predict total mass using MgO=40 and ZnO=81 g/mol, and explain what would invalidate this inference.",
+      "protected_W": "Integrate two selective reaction ledgers with independent mass check.",
+      "worked_answer": "Both oxides consume 2 H⁺ per mole so total .050 mol. ZnO consumes 2 OH⁻ per mole => .020 mol ZnO and .030 mol MgO. Mass .020×81+.030×40=2.82 g. Assumes complete separate reactions, selective base dissolution, no other acid/base-consuming species; measured mass is an independent check.",
+      "boundary_prompt": "If actual mass is 3.00 g, is the model proven correct by titrant amounts alone?",
+      "boundary_answer": "No. Investigate impurity, incomplete reaction or measurement error; independent mass disagrees.",
+      "score": 8,
+      "factors": {
+        "concept_model_selection": {
+          "score": 2,
+          "evidence": "Choose acid/base selective mixture model"
+        },
+        "representation_translation": {
+          "score": 1,
+          "evidence": "Translate amounts into two equations"
+        },
+        "reasoning_chain_length": {
+          "score": 2,
+          "evidence": "Solve amounts and cross-check mass"
+        },
+        "algebra_computational_load": {
+          "score": 2,
+          "evidence": "Two equations and mass balance"
+        },
+        "trap_exception_sensitivity": {
+          "score": 1,
+          "evidence": "Selectivity/impurity assumption"
+        }
+      },
+      "hint_evidence": {
+        "H1": "Write separate acid-equivalent relationships for both oxides.",
+        "H2": "Use the stated selective base reaction to obtain an independent relationship.",
+        "H3": "Set up two equations in the unknown oxide amounts, then compare the calculated total mass with an independent measurement.",
+        "author_non_disclosure_check": "H3 supplies a scaffold, not the completed conclusion/ledger. Independent review pending."
+      },
+      "source_ids_related": [
+        "CHEM-NSEJS-REACT-01",
+        "NSEJS-2022-C-Q54"
+      ],
+      "source_role": "AUTHORED_PRACTICE",
+      "independent_review": "NOT_RUN",
+      "academic_status": "HOLD"
+    },
+    {
+      "subtopic_id": "CHEM-C10.06",
+      "cycle_id": "CORE1B-C10-06-1-B02-R2",
+      "qrt_instance_id": "C10-06-EXPLAIN-D3-B02-R2",
+      "template_ref": "QRT-EXPLAIN-D3",
+      "band": "D3",
+      "primary_operation": "EXPLAIN",
+      "exact_task": "In matched iron coupons, A is wet and oxygenated, B is wet and deoxygenated, C is dry with oxygen, and D is wet and oxygenated but has poor ionic conductivity. Explain why electron transfer requires two coupled processes and predict which comparison isolates oxygen, moisture and ionic transport; distinguish observation from guaranteed rate.",
+      "protected_W": "Connect local half-reactions to three controlled comparisons and limit rate prediction.",
+      "worked_answer": "A vs B tests oxygen; A vs C tests moisture if other conditions matched; A vs D tests ionic transport. Fe oxidation releases electrons, oxygen reduction consumes them in ordinary neutral aerated rusting; water enables ionic transport. D may corrode more slowly but exact rate needs measurements. Other acceptors can enable corrosion without oxygen.",
+      "boundary_prompt": "Can oxygen-free acidic water corrode iron through a different cathodic reaction?",
+      "boundary_answer": "Yes; H⁺ reduction can be a cathodic process under suitable conditions, so no oxygen does not mean all corrosion impossible.",
+      "score": 7,
+      "factors": {
+        "concept_model_selection": {
+          "score": 2,
+          "evidence": "Select coupled electrochemical model"
+        },
+        "representation_translation": {
+          "score": 1,
+          "evidence": "Translate four observations to comparisons"
+        },
+        "reasoning_chain_length": {
+          "score": 2,
+          "evidence": "Explain reaction coupling and controlled inference"
+        },
+        "algebra_computational_load": {
+          "score": 0,
+          "evidence": "No calculation"
+        },
+        "trap_exception_sensitivity": {
+          "score": 2,
+          "evidence": "Other cathodic reactions and rate uncertainty"
+        }
+      },
+      "hint_evidence": {
+        "H1": "Make a variable table for the four coupons.",
+        "H2": "Identify a source of electrons and a possible electron-consuming process.",
+        "H3": "Connect the electron path and ionic path, then choose paired comparisons changing one variable at a time.",
+        "author_non_disclosure_check": "H3 supplies a scaffold, not the completed conclusion/ledger. Independent review pending."
+      },
+      "source_ids_related": [],
+      "source_role": "AUTHORED_PRACTICE",
+      "independent_review": "NOT_RUN",
+      "academic_status": "HOLD"
+    },
+    {
+      "subtopic_id": "CHEM-C10.06",
+      "cycle_id": "CORE1B-C10-06-2-B02-R2",
+      "qrt_instance_id": "C10-06-MODEL-D3-B02-R2",
+      "template_ref": "QRT-MODEL-D3",
+      "band": "D3",
+      "primary_operation": "MODEL",
+      "exact_task": "Bare iron, painted iron with a scratch, iron joined electrically to zinc with a scratch, and iron separated electrically from zinc are in matched wet oxygenated conditions. Select a mechanism for each, predict which can retain protection at a scratch and identify a measurement distinguishing a physical barrier from sacrificial protection.",
+      "protected_W": "Choose barrier vs galvanic mechanism and predict contact-dependence.",
+      "worked_answer": "Bare iron accessible; paint is barrier and scratch exposes iron. Connected zinc can oxidise preferentially and deliver electrons to exposed iron via contact, with ionic path, while separated zinc cannot provide galvanic protection. Compare equal exposed area and measure zinc loss/electrical contact or potential; exact corrosion rates not implied.",
+      "boundary_prompt": "If the zinc layer is consumed while the scratch stays wet, what changes?",
+      "boundary_answer": "Sacrificial protection is no longer sustained; exposed iron may corrode.",
+      "score": 7,
+      "factors": {
+        "concept_model_selection": {
+          "score": 2,
+          "evidence": "Choose barrier/galvanic mechanisms"
+        },
+        "representation_translation": {
+          "score": 1,
+          "evidence": "Translate setups to path diagrams"
+        },
+        "reasoning_chain_length": {
+          "score": 2,
+          "evidence": "Predict scratch and contact response"
+        },
+        "algebra_computational_load": {
+          "score": 0,
+          "evidence": "No calculation"
+        },
+        "trap_exception_sensitivity": {
+          "score": 2,
+          "evidence": "Electrical isolation and exhausted zinc"
+        }
+      },
+      "hint_evidence": {
+        "H1": "Separate physical coverage from electrical connection in each setup.",
+        "H2": "Ask whether a second metal can supply electrons to the exposed iron through a continuous path.",
+        "H3": "Draw a barrier-only and an electrically coupled model; use the disconnected sample as the discriminator and predict each case.",
+        "author_non_disclosure_check": "H3 supplies a scaffold, not the completed conclusion/ledger. Independent review pending."
+      },
+      "source_ids_related": [],
+      "source_role": "AUTHORED_PRACTICE",
+      "independent_review": "NOT_RUN",
+      "academic_status": "HOLD"
+    }
+  ],
+  "migrations": [
+    {
+      "subtopic_id": "CHEM-C10.01",
+      "old_cycle_id": "CORE1B-C10-01-1",
+      "new_cycle_id": "CORE1B-C10-01-1-B02-R2",
+      "old_qrt_instance": "C10-01-EXPLAIN-D3",
+      "new_qrt_instance": "C10-01-EXPLAIN-D3-B02-R2",
+      "old_attempt_policy": "Keep prior key intact; no automatic migration."
+    },
+    {
+      "subtopic_id": "CHEM-C10.01",
+      "old_cycle_id": "CORE1B-C10-01-3",
+      "new_cycle_id": "CORE1B-C10-01-3-B02-R2",
+      "old_qrt_instance": "C10-01-SYNTHESIZE-D3",
+      "new_qrt_instance": "C10-01-SYNTHESIZE-D3-B02-R2",
+      "old_attempt_policy": "Keep prior key intact; no automatic migration."
+    },
+    {
+      "subtopic_id": "CHEM-C10.02",
+      "old_cycle_id": "CORE1B-C10-02-1",
+      "new_cycle_id": "CORE1B-C10-02-1-B02-R2",
+      "old_qrt_instance": "C10-02-EXPLAIN-D3",
+      "new_qrt_instance": "C10-02-EXPLAIN-D3-B02-R2",
+      "old_attempt_policy": "Keep prior key intact; no automatic migration."
+    },
+    {
+      "subtopic_id": "CHEM-C10.02",
+      "old_cycle_id": "CORE1B-C10-02-2",
+      "new_cycle_id": "CORE1B-C10-02-2-B02-R2",
+      "old_qrt_instance": "C10-02-MODEL-D3",
+      "new_qrt_instance": "C10-02-MODEL-D3-B02-R2",
+      "old_attempt_policy": "Keep prior key intact; no automatic migration."
+    },
+    {
+      "subtopic_id": "CHEM-C10.03",
+      "old_cycle_id": "CORE1B-C10-03-1",
+      "new_cycle_id": "CORE1B-C10-03-1-B02-R2",
+      "old_qrt_instance": "C10-03-EXPLAIN-D3",
+      "new_qrt_instance": "C10-03-EXPLAIN-D3-B02-R2",
+      "old_attempt_policy": "Keep prior key intact; no automatic migration."
+    },
+    {
+      "subtopic_id": "CHEM-C10.03",
+      "old_cycle_id": "CORE1B-C10-03-3",
+      "new_cycle_id": "CORE1B-C10-03-3-B02-R2",
+      "old_qrt_instance": "C10-03-SYNTHESIZE-D3",
+      "new_qrt_instance": "C10-03-SYNTHESIZE-D4-B02-R2",
+      "old_attempt_policy": "Keep prior key intact; no automatic migration."
+    },
+    {
+      "subtopic_id": "CHEM-C10.04",
+      "old_cycle_id": "CORE1B-C10-04-1",
+      "new_cycle_id": "CORE1B-C10-04-1-B02-R2",
+      "old_qrt_instance": "C10-04-EXPLAIN-D3",
+      "new_qrt_instance": "C10-04-EXPLAIN-D3-B02-R2",
+      "old_attempt_policy": "Keep prior key intact; no automatic migration."
+    },
+    {
+      "subtopic_id": "CHEM-C10.04",
+      "old_cycle_id": "CORE1B-C10-04-2",
+      "new_cycle_id": "CORE1B-C10-04-2-B02-R2",
+      "old_qrt_instance": "C10-04-MODEL-D3",
+      "new_qrt_instance": "C10-04-MODEL-D4-B02-R2",
+      "old_attempt_policy": "Keep prior key intact; no automatic migration."
+    },
+    {
+      "subtopic_id": "CHEM-C10.05",
+      "old_cycle_id": "CORE1B-C10-05-1",
+      "new_cycle_id": "CORE1B-C10-05-1-B02-R2",
+      "old_qrt_instance": "C10-05-EXPLAIN-D3",
+      "new_qrt_instance": "C10-05-EXPLAIN-D3-B02-R2",
+      "old_attempt_policy": "Keep prior key intact; no automatic migration."
+    },
+    {
+      "subtopic_id": "CHEM-C10.05",
+      "old_cycle_id": "CORE1B-C10-05-3",
+      "new_cycle_id": "CORE1B-C10-05-3-B02-R2",
+      "old_qrt_instance": "C10-05-SYNTHESIZE-D3",
+      "new_qrt_instance": "C10-05-SYNTHESIZE-D4-B02-R2",
+      "old_attempt_policy": "Keep prior key intact; no automatic migration."
+    },
+    {
+      "subtopic_id": "CHEM-C10.06",
+      "old_cycle_id": "CORE1B-C10-06-1",
+      "new_cycle_id": "CORE1B-C10-06-1-B02-R2",
+      "old_qrt_instance": "C10-06-EXPLAIN-D3",
+      "new_qrt_instance": "C10-06-EXPLAIN-D3-B02-R2",
+      "old_attempt_policy": "Keep prior key intact; no automatic migration."
+    },
+    {
+      "subtopic_id": "CHEM-C10.06",
+      "old_cycle_id": "CORE1B-C10-06-2",
+      "new_cycle_id": "CORE1B-C10-06-2-B02-R2",
+      "old_qrt_instance": "C10-06-MODEL-D3",
+      "new_qrt_instance": "C10-06-MODEL-D3-B02-R2",
+      "old_attempt_policy": "Keep prior key intact; no automatic migration."
+    }
+  ]
+}
