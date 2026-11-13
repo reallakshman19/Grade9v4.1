@@ -47,8 +47,9 @@ def check_chapter(page, unit, n, scene):
     if unit == "C07":
         images = page.locator("figure.chem-figure img")
         check(images.count() == 4, "Four C07 diagrams")
-        images.first.scroll_into_view_if_needed()
-        page.wait_for_function("() => [...document.images].every(x => x.complete)", timeout=12000)
+        for i in range(4):
+            images.nth(i).scroll_into_view_if_needed()
+            page.wait_for_function("""i => { const e = document.querySelectorAll("figure.chem-figure img")[i]; return !!e && e.complete && e.naturalWidth > 0; }""", arg=i, timeout=12000)
         check(all(images.nth(i).evaluate("(e) => e.naturalWidth > 0") for i in range(4)),
               "All four C07 figures load")
         page.screenshot(path=str(OUT / f"C07-{scene}.png"), full_page=False)
