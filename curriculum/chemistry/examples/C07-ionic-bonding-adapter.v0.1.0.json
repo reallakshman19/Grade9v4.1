@@ -1,0 +1,119 @@
+{
+  "schema": "g9v41-chem-topic-adapter/v1",
+  "adapter_id": "CHEM-C07-IONIC-BONDING",
+  "version": "0.1.0",
+  "subject": "CHEMISTRY",
+  "unit_id": "C07",
+  "blueprint_ref": "CHEM-QRT-BLUEPRINT@0.1.0",
+  "syllabus_ref": "chemistry-syllabus.v1.json@0.1.0",
+  "status": "CANDIDATE",
+  "canonical_truth_status": "PLANNED",
+  "sources": [
+    {
+      "ref": "CBSE-IX-2026",
+      "classification": "CBSE_SCOPE",
+      "review_status": "CANDIDATE"
+    },
+    {
+      "ref": "CBSE-X-2026",
+      "classification": "CBSE_SCOPE",
+      "review_status": "CANDIDATE"
+    }
+  ],
+  "subtopics": [
+    {
+      "subtopic_id": "CHEM-C07.02",
+      "title": "Ionic bonding: transfer, lattice and properties",
+      "scope": "CORE_CANDIDATE",
+      "canonical_truth_status": "PLANNED",
+      "canonical_concept_refs": [
+        "CHEM-C07-VALENCE-ION-FORMATION",
+        "CHEM-C07-IONIC-LATTICE-PROPERTIES"
+      ],
+      "missing_prerequisite_refs": [
+        "CHEM-C05.03-BOHR-SHELLS",
+        "CHEM-C03.04-FORMULAE-VALENCY"
+      ],
+      "qrt_instances": [
+        {
+          "instance_id": "C07-IONIC-EXPLAIN-D3",
+          "primary_operation": "EXPLAIN",
+          "band": "D3",
+          "template_ref": "QRT-EXPLAIN-D3",
+          "canonical_concept_refs": [
+            "CHEM-C07-VALENCE-ION-FORMATION"
+          ],
+          "slots": {
+            "X": "Which electron-transfer events produce the observed ion charges?",
+            "Y": "Shell arrangement and valency of two elements",
+            "Z": "Connect charges, electrostatic attraction and resulting formula",
+            "W": "Learner constructs the causal bridge from electron transfer to stable charge balance"
+          },
+          "student_task": "Explain why the simple Mg and Cl bonding model leads to MgCl2, without merely citing criss-cross valency.",
+          "wrong_idea": "Magnesium loses one electron because chlorine needs one",
+          "replacement_rule": "Calculate ion charge by electron conservation and satisfy overall electroneutrality",
+          "visual_job": "Shell diagrams for Mg and Cl with electron counts, but no completed ionic formula",
+          "independent_check": "Count donated/accepted electrons and verify net charge is zero",
+          "status": "CANDIDATE"
+        },
+        {
+          "instance_id": "C07-IONIC-MODEL-D3",
+          "primary_operation": "MODEL",
+          "band": "D3",
+          "template_ref": "QRT-MODEL-D3",
+          "canonical_concept_refs": [
+            "CHEM-C07-IONIC-LATTICE-PROPERTIES"
+          ],
+          "slots": {
+            "X": "What kind of model explains high melting point and conduction in a molten but not solid sample?",
+            "Y": "Mobile charge carrier condition and ionic lattice constraints",
+            "Z": "Compare particle models before choosing",
+            "W": "Learner chooses a model and checks its assumptions against two observations"
+          },
+          "student_task": "Given measured conductivity and melting properties, decide whether a lattice of ions is a defensible model and identify missing corroboration.",
+          "wrong_idea": "Electrical conduction alone proves a compound is ionic",
+          "replacement_rule": "Compare charge carriers, state and melting behavior; reject model from one observation",
+          "visual_job": "Solid/molten particle diagrams with anonymous species and no highlighted preferred model",
+          "independent_check": "Check both states and an alternate source of mobile charges",
+          "status": "CANDIDATE"
+        },
+        {
+          "instance_id": "C07-IONIC-JUSTIFY-D4",
+          "primary_operation": "JUSTIFY",
+          "band": "D4",
+          "template_ref": "QRT-JUSTIFY-D4",
+          "canonical_concept_refs": [
+            "CHEM-C07-IONIC-LATTICE-PROPERTIES"
+          ],
+          "slots": {
+            "X": "Can one conductivity observation establish ionic bonding uniquely?",
+            "Y": "Comparison of solid state, aqueous state, concentration and chemical reaction possibilities",
+            "Z": "Build claim/evidence/warrant/counterexample argument",
+            "W": "Learner identifies a decisive counterexample and limits the inference"
+          },
+          "student_task": "A sample gives a conducting aqueous solution but nonconducting solid. Evaluate whether that alone proves the original solid was an ionic compound.",
+          "wrong_idea": "Any aqueous conductor must have been ionic in its original state",
+          "replacement_rule": "Test whether an initially molecular substance can form ions by reacting with water; request additional evidence",
+          "visual_job": "Evidence chart showing observations and unfilled competing hypothesis columns",
+          "independent_check": "Produce a chemically plausible counterexample and specify a discriminating experiment",
+          "status": "CANDIDATE"
+        }
+      ],
+      "academic_notes": [
+        "Illustrative Stage1 adapter demonstrates contract shape only; scientific concepts are planned refs, not independently reviewed canonical records.",
+        "Do not publish textbook/learner pages from this pilot; D4 score and counterexamples are unadjudicated."
+      ],
+      "status": "ACADEMIC_HOLD"
+    }
+  ],
+  "change_log": [
+    {
+      "version": "0.1.0",
+      "kind": "INITIAL",
+      "reason": "Contract-conformance example for Stage 1, not a completed Core1A/1B lesson",
+      "affected_subtopic_ids": [
+        "CHEM-C07.02"
+      ]
+    }
+  ]
+}
