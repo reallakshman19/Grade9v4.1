@@ -13,7 +13,7 @@ import pytest
 ROOT = Path(__file__).resolve().parents[1]
 CURRICULUM = ROOT / "nsejs" / "physics" / "curriculum"
 VALIDATOR = runpy.run_path(str(CURRICULUM / "contracts/tools/validate_physics_contracts.py"))["inspect_package"]
-SLICES = ("PH07-01", "PH07-02", "PH07-03", "PH07-04", "PH07-05", "PH07-06", "PH07-07", "PH07-08", "PH07-09", "PH08-01", "PH08-02", "PH08-03", "PH08-04", "PH08-05", "PH08-06", "PH08-07", "PH08-08", "PH08-09", "PH08-10", "PH08-12")
+SLICES = ("PH07-01", "PH07-02", "PH07-03", "PH07-04", "PH07-05", "PH07-06", "PH07-07", "PH07-08", "PH07-09", "PH07-10", "PH07-11", "PH07-12", "PH08-01", "PH08-02", "PH08-03", "PH08-04", "PH08-05", "PH08-06", "PH08-07", "PH08-08", "PH08-09", "PH08-10", "PH08-11", "PH08-12", "PH08-13")
 
 
 class Links(HTMLParser):
@@ -42,7 +42,7 @@ def test_subtopic_contract_and_dedicated_pair(sid):
     targets = data["subtopics"][0]["qrt_targets"]
     assert len({q["primary_operation"] for q in targets}) == 3
     assert all(q["source_role"] == "AUTHORED_TRANSFER" for q in targets)
-    expected = {sid: [] if sid in {"PH07-01", "PH07-03", "PH07-07", "PH07-08", "PH07-09", "PH08-01", "PH08-02", "PH08-03", "PH08-08", "PH08-09", "PH08-10", "PH08-12"} else ["NSEJS-FND-CIRC-04"] if sid.startswith("PH07") else ["NSEJS-24-MECH-07"] for sid in SLICES}
+    expected = {sid: [] if sid in {"PH07-01", "PH07-03", "PH07-07", "PH07-08", "PH07-09", "PH07-10", "PH07-11", "PH07-12", "PH08-01", "PH08-02", "PH08-03", "PH08-08", "PH08-09", "PH08-10", "PH08-11", "PH08-12", "PH08-13"} else ["NSEJS-FND-CIRC-04"] if sid.startswith("PH07") else ["NSEJS-24-MECH-07"] for sid in SLICES}
     assert [q["item_id"] for q in data["core2_sources"]] == expected[sid]
     assert all(q["source_role"] == "PREREQUISITE_BRIDGE" and q["academic_status"] == "HOLD" for q in data["core2_sources"])
     assert len(data["core1b"]) == 6
@@ -101,7 +101,7 @@ def test_25_subtopic_crosswalk_is_not_exam_admission():
     m = json.loads(p.read_text(encoding="utf-8"))
     assert len(m["rows"]) == len({r["subtopic_id"] for r in m["rows"]}) == 25
     assert sum(r["relation"] == "PRIMARY_RELATED_CANDIDATE_HOLD" for r in m["rows"]) == 2
-    assert sum(r["native_candidate"] == "B01_DEDICATED_PAIR" for r in m["rows"]) == 20
+    assert sum(r["native_candidate"] == "B01_DEDICATED_PAIR" for r in m["rows"]) == 25
     assert m["audit"]["qualified_direct_exam_items"] == m["audit"]["qualified_d3_d4_exam_items"] == 0
     for row in m["rows"]:
         assert row["direct_exam_admission"] == "HOLD"

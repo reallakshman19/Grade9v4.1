@@ -44,8 +44,8 @@ def test_additive_reconciliation_does_not_select_canonical_adapter():
         for c in p["core1b"]:
             assert c["id"] not in cycle_ids
             cycle_ids.add(c["id"])
-    assert len(ids) == 72 and len(cycle_ids) == 144
-    assert len(versions) == 20
+    assert len(ids) == 87 and len(cycle_ids) == 174
+    assert len(versions) == 25
     assert cell_bindings == {(k, t["target_id"], t["package_blob"]) for k,v in REG["cell_candidates"].items() for t in v}
     assert {r["subtopic_id"] for r in REG["overlapping_subtopics"]} == {"PH07-05","PH07-07","PH08-05","PH08-08"}
     r, = [r for r in REG["overlapping_subtopics"] if r["subtopic_id"]=="PH07-07"]
@@ -53,7 +53,7 @@ def test_additive_reconciliation_does_not_select_canonical_adapter():
     assert m["legacy_cell"] == "D3.4"
     assert m["proposed_same_operation"] == [{"target":"PH07-07-B01-D4-MODEL-01","cell":"D4.4","relation":"DISTINCT_TASK_NOT_EQUIVALENT_NOT_RECLASSIFICATION"}]
 
-def test_all_120_prediction_revisions_are_task_specific_and_not_literal_w():
+def test_all_150_prediction_revisions_are_task_specific_and_not_literal_w():
     prompts = set()
     for pin in REG["isolated_slices"]:
         p = read_package(pin)
@@ -67,12 +67,12 @@ def test_all_120_prediction_revisions_are_task_specific_and_not_literal_w():
             assert c["stages"]["predict"] != c["fresh_task"]
             assert c["stages"]["attempt"] == c["fresh_task"]
             assert c["runtime_verification"] == "NOT_RUN"
-    assert len(prompts) == 120
+    assert len(prompts) == 150
 
-def test_stage_handoff_is_bound_to_increment4_5_and_6_not_runtime_approval():
+def test_stage_handoff_covers_all_25_pairs_not_runtime_approval():
     assert HANDOFF["stage_order"] == ["PREDICT","ATTEMPT","RECONSTRUCT","DIAGNOSE","REPAIR","BOUNDARY_TEST"]
     assert HANDOFF["status"] == "PROPOSED_PLATFORM_DEPENDENCY"
-    assert len(HANDOFF["criteria"]) == 72
+    assert len(HANDOFF["criteria"]) == 150
     packages = {p["subtopics"][0]["id"]:read_package(p) for p in REG["isolated_slices"]}
     seen = set()
     for row in HANDOFF["criteria"]:
@@ -263,3 +263,96 @@ def test_increment6_paused_retrieve_not_silently_activated():
     p=read_package(pin)
     assert {t["primary_operation"] for t in p["subtopics"][0]["qrt_targets"]}=={"EXPLAIN","REPRESENT","MODEL"}
     assert "D3.1 is paused" in p["acceptance"]["acceptance_note"]
+
+
+def test_final_25_pairs_and_distinct_target_exemplars():
+    ids=set()
+    tasks=set()
+    all_targets=[]
+    extensions=set()
+    for pin in REG["isolated_slices"]:
+        p=read_package(pin)
+        s,=p["subtopics"]
+        ids.add(s["id"])
+        all_targets.extend(s["qrt_targets"])
+        if s["scope_role"]=="EXTENSION":
+            extensions.add(s["id"])
+            assert "EXTENSION" in p["acceptance"]["acceptance_note"]
+            assert not p["core2_sources"]
+        for c in p["core1b"]:
+            assert c["fresh_task"] not in tasks
+            tasks.add(c["fresh_task"])
+            assert all(c["fresh_task"] not in t["decisive_route"] for t in s["qrt_targets"])
+            assert all(c["fresh_task"] != e["problem"] for e in p["core1a"][0]["progressive_examples"])
+    assert ids=={f"PH07-{i:02d}" for i in range(1,13)} | {f"PH08-{i:02d}" for i in range(1,14)}
+    assert len(tasks)==150
+    assert extensions=={"PH07-11","PH07-12","PH08-13"}
+    assert sum(t["band"]=="D3" for t in all_targets)==57
+    assert sum(t["band"]=="D4" for t in all_targets)==18
+    assert {c["cycle_id"] for c in HANDOFF["criteria"]}=={c for pin in REG["isolated_slices"] for s in pin["subtopics"] for t in s["targets"] for c in t["cycle_ids"]}
+
+def test_increment7_fair_experiment_oracle():
+    assert 17-11==6
+    assert 19-15==4
+    assert (19-15)-(17-11)==-2
+    assert 15+17-11==21
+    assert 150*4/20==30
+    assert 300*3/20==45
+    assert 150*(45-39)==900
+    assert 300*(45-40)==1500
+
+def test_increment7_calorimeter_inverse_oracle():
+    # Independent exact enumeration of capacity and common loss.
+    fits=[(c,l) for c in range(1,201) for l in range(0,501)
+          if 3*c+l==500 and 7*c+l==900]
+    assert fits==[(100,200)]
+    assert 5*fits[0][0]+fits[0][1]==700!=760
+    assert F(400*75+500*15+100*15-1200,1000)==F(189,5)
+    vessel=F(800,8)
+    solid=(vessel+300)*F(35-25,85-35)
+    assert solid==80
+    assert (solid*95+(vessel+300)*25)/(solid+vessel+300)==F(110,3)
+
+def ice_state(capacity,initial,mass,latent=300000,c=4000):
+    available=capacity*initial
+    needed=mass*latent
+    if available<needed:
+        return (F(0), mass-available/latent)
+    return ((available-needed)/(capacity+mass*c),F(0))
+
+def test_increment7_phase_and_engine_oracle():
+    assert ice_state(F(800),25,F(5,100))==(F(5),F(0))
+    assert ice_state(F(600),20,F(5,100))==(F(0),F(1,100))
+    assert ice_state(F(600),30,F(5,100))==(F(15,4),F(0))
+    assert F(5000,20000)==F(1,4)
+    captured=(20000-5000)*F(8,10)
+    assert captured/300000==F(4,100)
+    assert captured-F(35,1000)*300000==1500
+    assert (12000*F(3,4)-F(2,100)*300000)/(F(2,100)*4000)==F(75,2)
+
+def test_increment7_doppler_and_resonance_oracle():
+    v=F(340); fs=F(340); approach=F(425)
+    u_s=v-v*fs/approach
+    u_o=v*(approach/fs-1)
+    assert (u_s,u_o)==(68,85)
+    assert v*fs/(v+u_s)==F(850,3)
+    assert fs*(v-u_o)/v==255
+    v=F(320); u=F(80)
+    f1=v*225/(v-u); f2=v*450/(v-u)
+    assert (f1,f2)==(300,600)
+    l_a=v/600;l_b=v/1200
+    assert v/(2*l_a)==v/(4*l_b)==300
+    assert 600 in [n*v/(2*l_a) for n in range(1,4)]
+    assert 600 not in [(2*n-1)*v/(4*l_b) for n in range(1,4)]
+
+def test_increment7_phase_marker_clarification_and_historical_pins():
+    pin,=[p for p in REG["isolated_slices"] if p["subtopics"][0]["id"]=="PH08-04"]
+    p=read_package(pin)
+    reps=[c for c in p["core1b"] if "REPRESENT" in c["qrt_target_id"]]
+    assert all(c["id"].endswith("-R3") and "successive" in c["fresh_task"] for c in reps)
+    assert "immediately adjacent" in reps[0]["stages"]["boundary_test"]
+    assert len(REG["increment7"]["historical_revised_pins"])==5
+    for old in REG["increment7"]["historical_revised_pins"]:
+        current,=[x for x in REG["isolated_slices"] if x["path"]==old["path"]]
+        assert old["blob"]!=current["blob"]
+        assert old["version"]!=current["version"]
