@@ -428,7 +428,8 @@
       "science_ref_ids": [
         "PH01-SCI-DISPLACEMENT",
         "PH01-SCI-SPEED-AVERAGES",
-        "PH01-SCI-PIECEWISE-AVG"
+        "PH01-SCI-PIECEWISE-AVG",
+        "PH01-SCI-RECIPROCAL-TIME"
       ],
       "learning_goal": "Choose, represent and invert distance/displacement and speed/velocity distinctions in multi-leg motion.",
       "textbook_chapter_ref": "nsejs/physics/textbook/PH01/M03/index.html",
@@ -647,7 +648,8 @@
         "PH01-M03"
       ],
       "science_ref_ids": [
-        "PH01-SCI-SIGNED-ACCELERATION"
+        "PH01-SCI-SIGNED-ACCELERATION",
+        "PH01-SCI-SHARED-DEPTH"
       ],
       "learning_goal": "Infer signed acceleration, detect reversals and distinguish velocity change from speed change.",
       "textbook_chapter_ref": "nsejs/physics/textbook/PH01/M04/index.html",
@@ -1190,7 +1192,8 @@
         "PH01-M05"
       ],
       "science_ref_ids": [
-        "PH01-SCI-CONSTANT-ACCEL"
+        "PH01-SCI-CONSTANT-ACCEL",
+        "PH01-SCI-CONSTRAINED-INTERCEPT"
       ],
       "learning_goal": "Derive, select and validate constant-acceleration laws, including root and reversal conditions.",
       "textbook_chapter_ref": "nsejs/physics/textbook/PH01/M06/index.html",
@@ -1636,7 +1639,8 @@
       ],
       "science_ref_ids": [
         "PH01-SCI-UNIFORM-CIRCULAR",
-        "PH01-SCI-NOSLIP-ROTATION"
+        "PH01-SCI-NOSLIP-ROTATION",
+        "PH01-SCI-PERIODIC-ENCOUNTER"
       ],
       "learning_goal": "Connect period and arc length with vector position, tangential direction and interval-average motion.",
       "textbook_chapter_ref": "nsejs/physics/textbook/PH01/M08/index.html",
@@ -2125,6 +2129,70 @@
         "CBSE-IX-MOTION-REF"
       ],
       "qualification_status": "HOLD"
+    },
+    {
+      "id": "PH01-SCI-CONSTRAINED-INTERCEPT",
+      "claim": "For a pursuer released with positive initial gap D, a constant-speed contact at elapsed s>0 with a uniformly accelerating target requires U=D/s+V+As/2; the admissible domain determines the minimum.",
+      "law_or_model": "Signed position equality, constrained minimum",
+      "assumptions": [
+        "One straight noninteracting track, common clock, constant target acceleration A>0, constant pursuer speed and D>0."
+      ],
+      "conditions_and_limits": [
+        "An unrestricted tangency need not lie in a permitted time window. A disconnected registration domain needs separate minima. Do not claim registered contact outside the allowed windows."
+      ],
+      "units_and_signs": "D m, V,U m/s, A m/s², s seconds.",
+      "source_refs": [
+        "CBSE-IX-MOTION-REF"
+      ],
+      "qualification_status": "HOLD"
+    },
+    {
+      "id": "PH01-SCI-PERIODIC-ENCOUNTER",
+      "claim": "On one fixed oriented closed track of circumference L, coincident positions occur iff unwrapped arc coordinates differ by an integer multiple of L.",
+      "law_or_model": "Periodic signed arc coordinate and piecewise relative velocity",
+      "assumptions": [
+        "Point markers on same track, fixed circumference, a shared orientation and continuous unwrapped coordinates."
+      ],
+      "conditions_and_limits": [
+        "A switch changes the subsequent rate, not the already accumulated coordinate. The first positive meeting is the earliest admissible modular root, not necessarily zero difference."
+      ],
+      "units_and_signs": "L and arc coordinate m, signed rates m/s, time s.",
+      "source_refs": [
+        "CBSE-IX-MOTION-REF"
+      ],
+      "qualification_status": "HOLD"
+    },
+    {
+      "id": "PH01-SCI-SHARED-DEPTH",
+      "claim": "Two trajectories reaching a common level satisfy the same signed displacement equation H=u_i t_i+gt_i²/2 when each has the same constant downward acceleration.",
+      "law_or_model": "Paired constant-acceleration histories",
+      "assumptions": [
+        "One downward-positive axis, common launch level, no drag, g constant and sensor below launch."
+      ],
+      "conditions_and_limits": [
+        "The opposite-equal-speed shortcut fails for unequal magnitudes; verify elapsed time and velocity signs for each event."
+      ],
+      "units_and_signs": "H m, signed u_i m/s, g m/s², t_i seconds.",
+      "source_refs": [
+        "CBSE-IX-MOTION-REF"
+      ],
+      "qualification_status": "HOLD"
+    },
+    {
+      "id": "PH01-SCI-RECIPROCAL-TIME",
+      "claim": "Equal out-and-return distances d at water-relative speed v and uniform current c have moving time 2dv/(v²−c²) for 0≤c<v; dwell adds to elapsed time.",
+      "law_or_model": "Classical relative velocity and equal-distance time ledger",
+      "assumptions": [
+        "Constant additive water-relative speed, equal path distances, collinear uniform current, stationary dock dwell."
+      ],
+      "conditions_and_limits": [
+        "A return needs v−c>0. Negative squared current or c≥v is inconsistent. The model is not a general law of wind propulsion."
+      ],
+      "units_and_signs": "d m, v,c m/s, times seconds.",
+      "source_refs": [
+        "CBSE-IX-MOTION-REF"
+      ],
+      "qualification_status": "HOLD"
     }
   ],
   "topic_adapter": {
@@ -2461,7 +2529,7 @@
         {
           "action": "For equal out-and-return distances d at constant water-relative speed v and current c, the ground speeds are v+c and v−c. A return requires 0≤c<v. Moving time is d/(v+c)+d/(v−c)=2dv/(v²−c²); elapsed time includes any dwell. Worked anchor: d=120 m, v=4 m/s, c=2 m/s gives moving times 20 s and 60 s, total 80 s. A 10 s wait makes 90 s elapsed; average speed is 240/90, not (6+2)/2. To infer c from a clock, subtract dwell first and reject nonreal or domain-invalid results. This is a current/relative-velocity model, not a general law of wind-driven boats.",
           "why_valid": "The stated signed position/time laws are applied only within their physical domains; independent substitution checks the event or observation.",
-          "science_ref_id": "PH01-SCI-SPEED-AVERAGES"
+          "science_ref_id": "PH01-SCI-RECIPROCAL-TIME"
         }
       ],
       "model_limits": [
@@ -2583,7 +2651,7 @@
         {
           "action": "For two projectiles launched from one height with the same constant g, choose one downward-positive axis and use H=u_i t_i+gt_i²/2 for each. Equal depth is an equation, not permission to equate launch speeds. Worked anchor: one starts at rest, reaches a lower sensor at 3 s with g=8 m/s², so H=36 m. Another launched upward at 5 m/s reaches that depth when −5t+4t²=36; retain the positive root and check it follows the turn. The shortcut u=g(t₂−t₁)/2 holds only for equal opposite magnitudes.",
           "why_valid": "The stated signed position/time laws are applied only within their physical domains; independent substitution checks the event or observation.",
-          "science_ref_id": "PH01-SCI-SIGNED-ACCELERATION"
+          "science_ref_id": "PH01-SCI-SHARED-DEPTH"
         }
       ],
       "model_limits": [
@@ -2812,7 +2880,7 @@
         {
           "action": "For delayed interception, reset elapsed time at the pursuer's start. If target position relative to the start is D+Vs+As²/2, constant pursuer speed required for contact is D/s+V+As/2 for s>0. An unrestricted minimum for D,A>0 occurs at s=√(2D/A), but a finite time window may exclude it. Compare required speeds over the actual domain; endpoint contact can be optimal. Worked anchor: D=9 m, V=1 m/s, A=2 m/s² gives required speed 1+s+9/s, minimum 7 m/s at s=3 s when allowed; with a 2 s window the smallest speed is 7.5 m/s at closure. Check the interval before interpreting a double root.",
           "why_valid": "The stated signed position/time laws are applied only within their physical domains; independent substitution checks the event or observation.",
-          "science_ref_id": "PH01-SCI-CONSTANT-ACCEL"
+          "science_ref_id": "PH01-SCI-CONSTRAINED-INTERCEPT"
         }
       ],
       "model_limits": [
@@ -3029,7 +3097,7 @@
         {
           "action": "On a closed track of circumference L, two signed unwrapped arc coordinates sA,sB denote the same point exactly when sA−sB=kL for integer k. Keep each velocity regime and its time domain. Worked anchor: L=40 m, A starts at 0 with +3 m/s, B at 10 with −1 m/s. Relative coordinate −10+4t reaches 0 at 2.5 s and 40 at 12.5 s. If a direction switch occurs, carry the relative coordinate continuously to the switch and search multiples separately. A first positive contact may occur at k≠0.",
           "why_valid": "The stated signed position/time laws are applied only within their physical domains; independent substitution checks the event or observation.",
-          "science_ref_id": "PH01-SCI-UNIFORM-CIRCULAR"
+          "science_ref_id": "PH01-SCI-PERIODIC-ENCOUNTER"
         }
       ],
       "model_limits": [
