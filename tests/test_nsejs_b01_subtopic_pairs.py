@@ -2,6 +2,8 @@
 from __future__ import annotations
 
 import json
+import hashlib
+from urllib.parse import urlsplit, parse_qs
 import runpy
 from pathlib import Path
 from html.parser import HTMLParser
@@ -11,7 +13,7 @@ import pytest
 ROOT = Path(__file__).resolve().parents[1]
 CURRICULUM = ROOT / "nsejs" / "physics" / "curriculum"
 VALIDATOR = runpy.run_path(str(CURRICULUM / "contracts/tools/validate_physics_contracts.py"))["inspect_package"]
-SLICES = ("PH07-01", "PH08-04")
+SLICES = ("PH07-01", "PH07-02", "PH08-04", "PH08-07")
 
 
 class Links(HTMLParser):
@@ -24,7 +26,7 @@ class Links(HTMLParser):
         self.iframes += tag == "iframe"
         for key, val in attrs:
             if key in ("href", "src", "data-package") and val and not val.startswith(("http:", "https:", "#")):
-                self.paths.append(val.split("#")[0])
+                self.paths.append(urlsplit(val).path)
 
 
 @pytest.mark.parametrize("sid", SLICES)
@@ -40,7 +42,9 @@ def test_subtopic_contract_and_dedicated_pair(sid):
     targets = data["subtopics"][0]["qrt_targets"]
     assert len({q["primary_operation"] for q in targets}) == 3
     assert all(q["source_role"] == "AUTHORED_TRANSFER" for q in targets)
-    assert not data["core2_sources"]
+    expected = {"PH07-01": [], "PH07-02": ["NSEJS-FND-CIRC-04"], "PH08-04": ["NSEJS-24-MECH-07"], "PH08-07": ["NSEJS-24-MECH-07"]}
+    assert [q["item_id"] for q in data["core2_sources"]] == expected[sid]
+    assert all(q["source_role"] == "PREREQUISITE_BRIDGE" and q["academic_status"] == "HOLD" for q in data["core2_sources"])
     assert len(data["core1b"]) == 6
     assert len({c["fresh_task"] for c in data["core1b"]}) == 6
     for c in data["core1b"]:
@@ -67,3 +71,50 @@ def test_author_arithmetic_regression():
     assert (5.16 - 0.40) / 4 / ((29.2 - 1.2) / 8 / 1000) == pytest.approx(340)
     assert 1.02 / 0.003 == pytest.approx(340)
     assert (4.36 - 0.40) / 6 / ((19 - 5) / 7 / 1000) == pytest.approx(330)
+
+
+@pytest.mark.parametrize("sid", ("PH07-02", "PH08-07"))
+def test_exact_existing_core2_candidate_binding(sid):
+    folder = CURRICULUM / "topics" / sid[:4] / "b01" / sid
+    meta = json.loads((folder / "core2-link.v1.json").read_text(encoding="utf-8"))
+    candidate = meta["candidate"]
+    bank = json.loads((ROOT / candidate["path"]).read_text(encoding="utf-8"))
+    ledger = json.loads((ROOT / "nsejs/data/physics-core2-integrity.v1.json").read_text(encoding="utf-8"))
+    question, = [q for q in bank["questions"] if q["source_id"] == candidate["source_id"]]
+    record, = [q for q in ledger["items"] if q["source_id"] == candidate["source_id"]]
+    assert question["id"] == candidate["id"]
+    assert question["band"] == candidate["producer_band"] == "D2"
+    assert record["observed_question_revision_sha256"] == candidate["observed_question_revision_sha256"]
+    assert hashlib.sha256(question["stem"].replace("\r\n", "\n").encode()).hexdigest() == candidate["observed_stem_sha256"]
+    assert record["figure_dependency_missing"] == candidate["figure_dependency_missing"]
+    assert meta["academic_status"] == "HOLD"
+    route = urlsplit(meta["core2_return"])
+    assert (ROOT / route.path).is_file()
+    assert parse_qs(route.query)["q"] == [candidate["source_id"]]
+    assert route.fragment == candidate["source_id"]
+    for name in ("core1a.html", "core1b.html"):
+        assert candidate["source_id"] in (folder / name).read_text(encoding="utf-8")
+
+
+def test_25_subtopic_crosswalk_is_not_exam_admission():
+    p = CURRICULUM / "topics/PH07/b01/B01_CORE2_COVERAGE.v1.json"
+    m = json.loads(p.read_text(encoding="utf-8"))
+    assert len(m["rows"]) == len({r["subtopic_id"] for r in m["rows"]}) == 25
+    assert sum(r["relation"] == "PRIMARY_RELATED_CANDIDATE_HOLD" for r in m["rows"]) == 2
+    assert sum(r["native_candidate"] == "B01_DEDICATED_PAIR" for r in m["rows"]) == 4
+    assert m["audit"]["qualified_direct_exam_items"] == m["audit"]["qualified_d3_d4_exam_items"] == 0
+    for row in m["rows"]:
+        assert row["direct_exam_admission"] == "HOLD"
+        if row["core1a"]:
+            assert (ROOT / row["core1a"]).is_file() and (ROOT / row["core1b"]).is_file()
+
+
+def test_inverse_wave_model_and_thermal_power_checks():
+    candidates = [(0.20 + 0.80*n)/0.005 for n in range(-10,11)]
+    candidates = [u for u in candidates if 100 <= abs(u) <= 500]
+    assert sorted(candidates) == pytest.approx([-440,-280,-120,200,360])
+    survivors = [u for u in candidates if abs((u*0.0015)%0.80 - 0.54) < 1e-9]
+    assert survivors == pytest.approx([360])
+    assert 4 ** 1.5 == 8
+    assert 9 ** 1.5 == 27
+    assert (2 * 2 ** 3) ** 0.5 == 4
