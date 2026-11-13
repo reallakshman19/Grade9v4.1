@@ -1,6 +1,6 @@
 {
   "schema": "g9v41-chem-b02-source-targeted-transfer/v1",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "source_head": "48cc083d58863038d9f71d4dbaea328688fe61c2",
   "status": "AUTHOR_DRAFT_SOURCE_AND_RUNTIME_HOLD",
   "counts": {
@@ -82,7 +82,14 @@
         },
         "total": 8,
         "reason": "Exact task: model selection, translation to formula/ledger, linked inference, required quantitative operations and changed-assumption trap. R02 must verify shortest path.",
-        "independent": "NOT_RUN"
+        "independent": "NOT_RUN",
+        "factor_evidence": {
+          "concept_model_selection": "Choose inverse dry-product mass balance instead of direct acid titre.",
+          "representation_translation": "Translate formulas to mass-gain ledger and acid equation.",
+          "reasoning_chain_length": "Infer oxide amount, molar mass, metal mass and independently compute acid volume.",
+          "algebra_computational_load": "Two divisions, molar mass algebra and concentration conversion.",
+          "trap_exception_sensitivity": "Dry isolation versus aqueous species or mass loss changes inference."
+        }
       },
       "reviews": {
         "H1": "UNREVIEWED",
@@ -170,7 +177,14 @@
         },
         "total": 8,
         "reason": "Exact task: model selection, translation to formula/ledger, linked inference, required quantitative operations and changed-assumption trap. R02 must verify shortest path.",
-        "independent": "NOT_RUN"
+        "independent": "NOT_RUN",
+        "factor_evidence": {
+          "concept_model_selection": "Select same inverse model, then test alternative isolation loss.",
+          "representation_translation": "Use formula-mass difference and separate acid sample.",
+          "reasoning_chain_length": "Infer atomic mass and acid volume; reason direction of mass-loss bias.",
+          "algebra_computational_load": "Linked mass, amount and volume calculations.",
+          "trap_exception_sensitivity": "Zero/negative observed gain and isolation failure defeat model."
+        }
       },
       "reviews": {
         "H1": "UNREVIEWED",
@@ -258,7 +272,14 @@
         },
         "total": 7,
         "reason": "Exact task: model selection, translation to formula/ledger, linked inference, required quantitative operations and changed-assumption trap. R02 must verify shortest path.",
-        "independent": "NOT_RUN"
+        "independent": "NOT_RUN",
+        "factor_evidence": {
+          "concept_model_selection": "Choose complete selective carbonate decomposition.",
+          "representation_translation": "Translate gas loss into initial and final species inventories.",
+          "reasoning_chain_length": "Infer composition and independently reconstruct residue.",
+          "algebra_computational_load": "Molar mass and mole-to-mass conversion.",
+          "trap_exception_sensitivity": "Partial conversion introduces unknown extent."
+        }
       },
       "reviews": {
         "H1": "UNREVIEWED",
@@ -346,7 +367,14 @@
         },
         "total": 7,
         "reason": "Exact task: model selection, translation to formula/ledger, linked inference, required quantitative operations and changed-assumption trap. R02 must verify shortest path.",
-        "independent": "NOT_RUN"
+        "independent": "NOT_RUN",
+        "factor_evidence": {
+          "concept_model_selection": "Choose residue difference as selective CO₂ mass.",
+          "representation_translation": "Translate initial and residue masses into two-component ledger.",
+          "reasoning_chain_length": "Infer carbonate and oxide percentage, cross-check final mass.",
+          "algebra_computational_load": "Moles, mass, percentage.",
+          "trap_exception_sensitivity": "Additional volatile species bias inverse inference."
+        }
       },
       "reviews": {
         "H1": "UNREVIEWED",
@@ -434,7 +462,14 @@
         },
         "total": 8,
         "reason": "Exact task: model selection, translation to formula/ledger, linked inference, required quantitative operations and changed-assumption trap. R02 must verify shortest path.",
-        "independent": "NOT_RUN"
+        "independent": "NOT_RUN",
+        "factor_evidence": {
+          "concept_model_selection": "Choose acyclic saturated formula and complete oxidation model.",
+          "representation_translation": "Translate formula to graphs and balanced reaction.",
+          "reasoning_chain_length": "Infer formula, enumerate all skeletons, compute gas demand and test nonuniqueness.",
+          "algebra_computational_load": "Algebra, molar conversion and enumeration.",
+          "trap_exception_sensitivity": "Isomer identity cannot be inferred from equal oxygen demand."
+        }
       },
       "reviews": {
         "H1": "UNREVIEWED",
@@ -522,7 +557,14 @@
         },
         "total": 8,
         "reason": "Exact task: model selection, translation to formula/ledger, linked inference, required quantitative operations and changed-assumption trap. R02 must verify shortest path.",
-        "independent": "NOT_RUN"
+        "independent": "NOT_RUN",
+        "factor_evidence": {
+          "concept_model_selection": "Choose acyclic saturated formula and atom conservation.",
+          "representation_translation": "Translate molar mass to five connectivity classes and equation.",
+          "reasoning_chain_length": "Exhaust by longest chain, calculate gas volume and refute branching claim.",
+          "algebra_computational_load": "Integer enumeration, stoichiometric ratios and volume.",
+          "trap_exception_sensitivity": "Rate versus total stoichiometric demand."
+        }
       },
       "reviews": {
         "H1": "UNREVIEWED",
@@ -610,7 +652,14 @@
         },
         "total": 8,
         "reason": "Exact task: model selection, translation to formula/ledger, linked inference, required quantitative operations and changed-assumption trap. R02 must verify shortest path.",
-        "independent": "NOT_RUN"
+        "independent": "NOT_RUN",
+        "factor_evidence": {
+          "concept_model_selection": "Select limiting-reagent and isolated-yield model, not equal feed or complete conversion.",
+          "representation_translation": "Translate masses into a separate theoretical/isolated-product ledger.",
+          "reasoning_chain_length": "Identify limiting reactant, compute collection and distinguish unknown residual acid.",
+          "algebra_computational_load": "Molar mass and yield arithmetic with limiting comparison.",
+          "trap_exception_sensitivity": "Yield alone does not determine conversion or recovery."
+        }
       },
       "reviews": {
         "H1": "UNREVIEWED",
@@ -698,7 +747,14 @@
         },
         "total": 8,
         "reason": "Exact task: model selection, translation to formula/ledger, linked inference, required quantitative operations and changed-assumption trap. R02 must verify shortest path.",
-        "independent": "NOT_RUN"
+        "independent": "NOT_RUN",
+        "factor_evidence": {
+          "concept_model_selection": "Select limiting reactant and two-stage conversion/recovery model.",
+          "representation_translation": "Translate measured mass and proposed fractions into amount ledger.",
+          "reasoning_chain_length": "Infer limiting amount and yield; independently test reported conversion/recovery.",
+          "algebra_computational_load": "Ratio calculations and multiplication.",
+          "trap_exception_sensitivity": "Recovery constraint and nonunique inverse fit."
+        }
       },
       "reviews": {
         "H1": "UNREVIEWED",
