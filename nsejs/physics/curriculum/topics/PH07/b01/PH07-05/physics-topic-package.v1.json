@@ -4,7 +4,7 @@
   "academic_track": "NSEJS",
   "topic_id": "PH07",
   "owner_agent": "AGENT_2",
-  "version": "0.3.2-b01.5.ph07-05",
+  "version": "0.3.3-b01.8.ph07-05",
   "status": "DRAFT_AUTHOR_EXPOSED",
   "pins": {
     "contracts_version": "1.0.0",
@@ -16,7 +16,7 @@
       "version": "1.0.0",
       "git_blob_sha": "e2409aef11ae7d98444593bfbe1a38eb00c97cef"
     },
-    "topic_adapter_version": "0.3.2-b01.5.ph07-05"
+    "topic_adapter_version": "0.3.3-b01.8.ph07-05"
   },
   "syllabus_references": [
     {
@@ -53,14 +53,14 @@
       "qrt_targets": [
         {
           "id": "PH07-05-B01-D3-EXPLAIN-01",
-          "task_identity": "G9-B01-PH07-05-EXPLAIN-R1",
+          "task_identity": "G9-B01-PH07-05-EXPLAIN-R2",
           "band": "D3",
           "primary_operation": "EXPLAIN",
           "blueprint_cell": "D3.2",
           "source_role": "AUTHORED_TRANSFER",
           "qrt_status": "PROPOSED",
           "protected_work": "Explain differential heating and conditional circulation using the linked energy-storage, density and flow mechanisms rather than appearance or a single temperature label.",
-          "decisive_route": "Two shores receive equal solar power. Shore X has lower effective thermal capacity and warms faster despite similar absorption. Near-surface air above X warms more than above Y; background wind is negligible. Explain a possible circulation and why equal irradiation does not imply equal surface temperature. Identify when the inference could fail. Shortest valid route: For comparable losses, lower C gives faster warming. Air over X can become lighter and rise; pressure adjustment and return flow can bring near-surface air from Y toward X. Need actual loss rates, density and pressure conditions; strong background wind or stable layering can change result.",
+          "decisive_route": "Two adjacent fields absorb equal shortwave power per area. A shallow dry surface warms faster than a deep wet surface; the nearby air also warms differently. Explain a possible near-surface flow under weak background wind, and state why the measured temperature difference alone cannot establish flow speed. Shortest valid route: comparable losses with lower effective heat capacity can produce faster warming; warmer air may expand and become less dense, rise and generate pressure differences/return flow; speed also depends on drag, geometry and atmospheric conditions. Evaporation and mixing may differ.",
           "factor_evidence": {
             "concept_model_selection": {
               "score": 2,
@@ -86,14 +86,14 @@
         },
         {
           "id": "PH07-05-B01-D4-MODEL-01",
-          "task_identity": "G9-B01-PH07-05-MODEL-R1",
+          "task_identity": "G9-B01-PH07-05-MODEL-R2",
           "band": "D4",
           "primary_operation": "MODEL",
           "blueprint_cell": "D4.4",
           "source_role": "AUTHORED_TRANSFER",
           "qrt_status": "PROPOSED",
           "protected_work": "Discriminate absorption, thermal capacity and fixed-loss models using matched energy-rate data; recover parameters only when independent constraints establish identifiability.",
-          "decisive_route": "A dry plate is independently measured to have C=300 J/K. At the same initial temperature its warming rates are 0.08 and 0.16 K/s for incident powers 90 and 150 W. A third trial at 120 W gives 0.10 K/s. Assume α and loss fixed across trials. Infer parameters from first two trials, test the third and explain whether a unique physical model survives. Shortest valid route: Net powers 24,48 W; α=24/60=0.4; loss=36−24=12 W. Third predicted (48−12)/300=0.12 K/s, not 0.10. Exact data refute one common α/loss model; need uncertainty or altered loss/absorption measurement. Two trials identify parameters only under assumptions.",
+          "decisive_route": "An independently measured surface capacity is 400 J/K. At matched initial temperature, incident powers 80 and 160 W give warming slopes 0.05 and 0.15 K/s. A reserved trial at 120 W gives 0.08 K/s. Fit a constant absorptivity and loss model and test the unused observation; explain why slopes alone without known capacity cannot establish both quantities. Shortest valid route: net powers20 and60 W, absorptivity0.5, loss20 W; third prediction (60−20)/400=0.10 K/s disagrees. Exact model fails; without C only absorptivity/C and loss/C determined.",
           "factor_evidence": {
             "concept_model_selection": {
               "score": 2,
@@ -119,14 +119,14 @@
         },
         {
           "id": "PH07-05-B01-D3-SYNTHESIZE-01",
-          "task_identity": "G9-B01-PH07-05-SYNTHESIZE-R1",
+          "task_identity": "G9-B01-PH07-05-SYNTHESIZE-R2",
           "band": "D3",
           "primary_operation": "SYNTHESIZE",
           "blueprint_cell": "D3.6",
           "source_role": "AUTHORED_TRANSFER",
           "qrt_status": "PROPOSED",
           "protected_work": "Combine absorption, loss and storage models to predict a changed heating order and test the decisive parameter threshold.",
-          "decisive_route": "Plate A absorbs 75 W, loses 15 W and has C=600 J/K. B absorbs 50 W, loses 10 W and has unknown C. Find the capacity threshold below which B initially warms faster, and predict the result for C=300 J/K. What assumption limits the comparison? Shortest valid route: A rate 60/600=0.10 K/s. B rate 40/C; faster if C<400 J/K. At 300, rate≈0.133 K/s, so B faster. Fixed phase and initial loss/absorption model required.",
+          "decisive_route": "Panel A absorbs 64 W, loses 16 W and has C=480 J/K. Panel B absorbs 54 W, loses 18 W and has unknown capacity. Find B's capacity threshold for faster initial warming and classify C=300 J/K. Explain why the ranking may later change. Shortest valid route: A slope0.10 K/s; B slope36/C; B faster for C<360 J/K; at300 slope0.12 K/s. Temperature-dependent losses or changing capacity can reverse ranking.",
           "factor_evidence": {
             "concept_model_selection": {
               "score": 2,
@@ -179,7 +179,7 @@
   "topic_adapter": {
     "adapter_id": "PHYS-TOPIC-PH07",
     "topic_id": "PH07",
-    "version": "0.3.2-b01.5.ph07-05",
+    "version": "0.3.3-b01.8.ph07-05",
     "for_blueprint": "PHYS-QRT-BLUEPRINT 0.2.0",
     "status": "CANDIDATE_ONLY",
     "cells": [
@@ -292,7 +292,7 @@
   ],
   "core1b": [
     {
-      "id": "PH07-05-B01-MAIN-EXPLAIN-R2",
+      "id": "PH07-05-B01-MAIN-EXPLAIN-R3",
       "kind": "MAIN",
       "subtopic_id": "PH07-05",
       "qrt_target_id": "PH07-05-B01-D3-EXPLAIN-01",
@@ -316,7 +316,7 @@
       "runtime_verification": "NOT_RUN"
     },
     {
-      "id": "PH07-05-B01-INSTANCE-EXPLAIN-R2",
+      "id": "PH07-05-B01-INSTANCE-EXPLAIN-R3",
       "kind": "INSTANCE",
       "subtopic_id": "PH07-05",
       "qrt_target_id": "PH07-05-B01-D3-EXPLAIN-01",
@@ -340,7 +340,7 @@
       "runtime_verification": "NOT_RUN"
     },
     {
-      "id": "PH07-05-B01-MAIN-MODEL-R2",
+      "id": "PH07-05-B01-MAIN-MODEL-R3",
       "kind": "MAIN",
       "subtopic_id": "PH07-05",
       "qrt_target_id": "PH07-05-B01-D4-MODEL-01",
@@ -364,7 +364,7 @@
       "runtime_verification": "NOT_RUN"
     },
     {
-      "id": "PH07-05-B01-INSTANCE-MODEL-R2",
+      "id": "PH07-05-B01-INSTANCE-MODEL-R3",
       "kind": "INSTANCE",
       "subtopic_id": "PH07-05",
       "qrt_target_id": "PH07-05-B01-D4-MODEL-01",
@@ -388,7 +388,7 @@
       "runtime_verification": "NOT_RUN"
     },
     {
-      "id": "PH07-05-B01-MAIN-SYNTHESIZE-R2",
+      "id": "PH07-05-B01-MAIN-SYNTHESIZE-R3",
       "kind": "MAIN",
       "subtopic_id": "PH07-05",
       "qrt_target_id": "PH07-05-B01-D3-SYNTHESIZE-01",
@@ -412,7 +412,7 @@
       "runtime_verification": "NOT_RUN"
     },
     {
-      "id": "PH07-05-B01-INSTANCE-SYNTHESIZE-R2",
+      "id": "PH07-05-B01-INSTANCE-SYNTHESIZE-R3",
       "kind": "INSTANCE",
       "subtopic_id": "PH07-05",
       "qrt_target_id": "PH07-05-B01-D3-SYNTHESIZE-01",
@@ -488,6 +488,6 @@
       "release_authority": "HOLD"
     },
     "release": "HOLD",
-    "acceptance_note": "Dedicated B01 subtopic slice; existing Core2 candidate is supporting PREREQUISITE_BRIDGE, producer D2 and source/QRT HOLD. New advanced tasks AUTHORED_TRANSFER; no direct exam admission. Per-target MAIN placeholders remain pending approved tile MAIN design. No academic approval inferred from software validation. R00 correction: all six predictions revised for exact tasks; cycle IDs R2 and uniquely versioned isolated slice (0.3.0-b01.3 history retained at reviewed commit). No final stage implementation or protected custody implied; inherited runtime still groups post-attempt stages. B5 HOLD."
+    "acceptance_note": "Dedicated B01 subtopic slice; existing Core2 candidate is supporting PREREQUISITE_BRIDGE, producer D2 and source/QRT HOLD. New advanced tasks AUTHORED_TRANSFER; no direct exam admission. Per-target MAIN placeholders remain pending approved tile MAIN design. No academic approval inferred from software validation. R00 correction: all six predictions revised for exact tasks; cycle IDs R2 and uniquely versioned isolated slice (0.3.0-b01.3 history retained at reviewed commit). No final stage implementation or protected custody implied; inherited runtime still groups post-attempt stages. B5 HOLD. Increment 7 freshness correction: all three target anchor tasks revised to distinct authored cases, task_identity R2; unchanged fresh learner prompts bound to R3 cycle identities and new package version. Previous anchor duplication retained in historical commits; semantic equivalence and true unseen assessment still require R01/P00."
   }
 }

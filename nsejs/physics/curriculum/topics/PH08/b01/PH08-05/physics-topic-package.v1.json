@@ -4,7 +4,7 @@
   "academic_track": "NSEJS",
   "topic_id": "PH08",
   "owner_agent": "AGENT_2",
-  "version": "0.3.2-b01.5.ph08-05",
+  "version": "0.3.3-b01.8.ph08-05",
   "status": "DRAFT_AUTHOR_EXPOSED",
   "pins": {
     "contracts_version": "1.0.0",
@@ -16,7 +16,7 @@
       "version": "1.0.0",
       "git_blob_sha": "e2409aef11ae7d98444593bfbe1a38eb00c97cef"
     },
-    "topic_adapter_version": "0.3.2-b01.5.ph08-05"
+    "topic_adapter_version": "0.3.3-b01.8.ph08-05"
   },
   "syllabus_references": [
     {
@@ -45,14 +45,14 @@
       "qrt_targets": [
         {
           "id": "PH08-05-B01-D3-MODEL-01",
-          "task_identity": "G9-B01-PH08-05-MODEL-R1",
+          "task_identity": "G9-B01-PH08-05-MODEL-R2",
           "band": "D3",
           "primary_operation": "MODEL",
           "blueprint_cell": "D3.4",
           "source_role": "AUTHORED_TRANSFER",
           "qrt_status": "PROPOSED",
           "protected_work": "Separate constant detector delay from physical propagation by testing an affine time–distance model against an independent observation.",
-          "decisive_route": "A pulse arrives after 5.5 ms at 1.05 m and 9.5 ms at 2.45 m using one apparatus. A third distance of 3.50 m gives 12.5 ms. Find speed and offset and decide whether the readings support the fixed-delay model. Shortest valid route: v=1.40/0.004=350 m/s; τ=5.5−3=2.5 ms. Third predicted 10+2.5=12.5 ms agrees.",
+          "decisive_route": "A pulse is detected at distance 0.84 m after 4 ms and at 2.24 m after 8 ms. A reserved observation at 3.5 m reports 12 ms. Infer speed and constant detection delay from first two; assess third. Shortest valid route: speed1.4/0.004=350 m/s, delay1.6 ms. Third predicts11.6 ms; exact 12 ms fails common model, so investigate uncertainty or changed delay/path. Do not infer speed from raw time alone.",
           "factor_evidence": {
             "concept_model_selection": {
               "score": 2,
@@ -78,14 +78,14 @@
         },
         {
           "id": "PH08-05-B01-D3-REPRESENT-01",
-          "task_identity": "G9-B01-PH08-05-REPRESENT-R1",
+          "task_identity": "G9-B01-PH08-05-REPRESENT-R2",
           "band": "D3",
           "primary_operation": "REPRESENT",
           "blueprint_cell": "D3.5",
           "source_role": "AUTHORED_TRANSFER",
           "qrt_status": "PROPOSED",
           "protected_work": "Construct a piecewise time–distance graph from local wavelength data and preserve the distinction between transit time and period.",
-          "decisive_route": "A steady source of 400 Hz sends sound across a 0.9 m section with λ=0.75 m followed by 0.6 m with λ=1.25 m. Sketch cumulative travel time versus path distance at all three boundaries and infer overall speed. Shortest valid route: Local speeds 300 and 500 m/s. Graph points (0,0), (0.9,3 ms), (1.5,4.2 ms); effective speed≈357.14 m/s. First slope steeper.",
+          "decisive_route": "A steady 300 Hz wave crosses 0.6 m in medium with wavelength1.0 m, then 1.2 m in medium with wavelength2.0 m. Construct cumulative travel-time vs path-distance graph, indicate interface, compare slopes and find effective speed. Shortest valid route: local speeds300 and600 m/s; points (0,0),(0.6,2 ms),(1.8,4 ms). First slope steeper, overall speed450 m/s. This is not a local pressure-time graph.",
           "factor_evidence": {
             "concept_model_selection": {
               "score": 1,
@@ -111,14 +111,14 @@
         },
         {
           "id": "PH08-05-B01-D4-SYNTHESIZE-01",
-          "task_identity": "G9-B01-PH08-05-SYNTHESIZE-R1",
+          "task_identity": "G9-B01-PH08-05-SYNTHESIZE-R2",
           "band": "D4",
           "primary_operation": "SYNTHESIZE",
           "blueprint_cell": "D4.6",
           "source_role": "AUTHORED_TRANSFER",
           "qrt_status": "PROPOSED",
           "protected_work": "Resolve the unknown path composition and common timing offset from two independent paths, and establish which measurements determine a unique solution.",
-          "decisive_route": "A 2 m direct path contains unknown length x in medium A and the rest in B. A 500 Hz source has λA=0.60 m and λB=1.00 m. The apparatus reports 7.2 ms through the mixed path and 5.6 ms through 2 m entirely in B. Both have the same unknown delay. A separate 1 m path entirely in A reports 4.933 ms (rounded). Find x and delay, and assess consistency. Shortest valid route: vA=300, vB=500 m/s. All B propagation 4 ms, τ=1.6 ms. Mixed propagation 5.6 ms; extra 1.6 ms=x(1/300−1/500), so x=1.2 m. Third predicts 3.333+1.6=4.933 ms. Physically admissible x.",
+          "decisive_route": "A 3 m mixed path contains x metres in A at speed250 m/s and remainder in B at500 m/s. A 500 Hz source has local wavelengths0.5 and1 m. Common unknown delay is present. Mixed arrival is10 ms; a 3 m all-B path arrives7 ms; an independent 1 m all-A path arrives5 ms. Determine x and delay and test uniqueness. Shortest valid route: all-B propagation6 ms, delay1 ms. Mixed propagation9 ms =6 ms+2x ms/m, so x=1.5 m. All-A 1 m gives4+1=5 ms. Independent nonidentical speeds and known reference constrain unique physical length.",
           "factor_evidence": {
             "concept_model_selection": {
               "score": 2,
@@ -170,7 +170,7 @@
   "topic_adapter": {
     "adapter_id": "PHYS-TOPIC-PH08",
     "topic_id": "PH08",
-    "version": "0.3.2-b01.5.ph08-05",
+    "version": "0.3.3-b01.8.ph08-05",
     "for_blueprint": "PHYS-QRT-BLUEPRINT 0.2.0",
     "status": "CANDIDATE_ONLY",
     "cells": [
@@ -282,7 +282,7 @@
   ],
   "core1b": [
     {
-      "id": "PH08-05-B01-MAIN-MODEL-R2",
+      "id": "PH08-05-B01-MAIN-MODEL-R3",
       "kind": "MAIN",
       "subtopic_id": "PH08-05",
       "qrt_target_id": "PH08-05-B01-D3-MODEL-01",
@@ -306,7 +306,7 @@
       "runtime_verification": "NOT_RUN"
     },
     {
-      "id": "PH08-05-B01-INSTANCE-MODEL-R2",
+      "id": "PH08-05-B01-INSTANCE-MODEL-R3",
       "kind": "INSTANCE",
       "subtopic_id": "PH08-05",
       "qrt_target_id": "PH08-05-B01-D3-MODEL-01",
@@ -330,7 +330,7 @@
       "runtime_verification": "NOT_RUN"
     },
     {
-      "id": "PH08-05-B01-MAIN-REPRESENT-R2",
+      "id": "PH08-05-B01-MAIN-REPRESENT-R3",
       "kind": "MAIN",
       "subtopic_id": "PH08-05",
       "qrt_target_id": "PH08-05-B01-D3-REPRESENT-01",
@@ -354,7 +354,7 @@
       "runtime_verification": "NOT_RUN"
     },
     {
-      "id": "PH08-05-B01-INSTANCE-REPRESENT-R2",
+      "id": "PH08-05-B01-INSTANCE-REPRESENT-R3",
       "kind": "INSTANCE",
       "subtopic_id": "PH08-05",
       "qrt_target_id": "PH08-05-B01-D3-REPRESENT-01",
@@ -378,7 +378,7 @@
       "runtime_verification": "NOT_RUN"
     },
     {
-      "id": "PH08-05-B01-MAIN-SYNTHESIZE-R2",
+      "id": "PH08-05-B01-MAIN-SYNTHESIZE-R3",
       "kind": "MAIN",
       "subtopic_id": "PH08-05",
       "qrt_target_id": "PH08-05-B01-D4-SYNTHESIZE-01",
@@ -402,7 +402,7 @@
       "runtime_verification": "NOT_RUN"
     },
     {
-      "id": "PH08-05-B01-INSTANCE-SYNTHESIZE-R2",
+      "id": "PH08-05-B01-INSTANCE-SYNTHESIZE-R3",
       "kind": "INSTANCE",
       "subtopic_id": "PH08-05",
       "qrt_target_id": "PH08-05-B01-D4-SYNTHESIZE-01",
@@ -478,6 +478,6 @@
       "release_authority": "HOLD"
     },
     "release": "HOLD",
-    "acceptance_note": "Dedicated B01 subtopic slice; existing Core2 candidate is supporting PREREQUISITE_BRIDGE, producer D2 and source/QRT HOLD. New advanced tasks AUTHORED_TRANSFER; no direct exam admission. Per-target MAIN placeholders remain pending approved tile MAIN design. No academic approval inferred from software validation. R00 correction: all six predictions revised for exact tasks; cycle IDs R2 and uniquely versioned isolated slice (0.3.0-b01.3 history retained at reviewed commit). No final stage implementation or protected custody implied; inherited runtime still groups post-attempt stages. B5 HOLD."
+    "acceptance_note": "Dedicated B01 subtopic slice; existing Core2 candidate is supporting PREREQUISITE_BRIDGE, producer D2 and source/QRT HOLD. New advanced tasks AUTHORED_TRANSFER; no direct exam admission. Per-target MAIN placeholders remain pending approved tile MAIN design. No academic approval inferred from software validation. R00 correction: all six predictions revised for exact tasks; cycle IDs R2 and uniquely versioned isolated slice (0.3.0-b01.3 history retained at reviewed commit). No final stage implementation or protected custody implied; inherited runtime still groups post-attempt stages. B5 HOLD. Increment 7 freshness correction: all three target anchor tasks revised to distinct authored cases, task_identity R2; unchanged fresh learner prompts bound to R3 cycle identities and new package version. Previous anchor duplication retained in historical commits; semantic equivalence and true unseen assessment still require R01/P00."
   }
 }
