@@ -1,0 +1,24 @@
+name: Chemistry Agent B HTTP Chromium qualification checks (technical only)
+on:
+  push:
+    branches: [feat/nsejs-chem-b-c08-c14-r1]
+  workflow_dispatch:
+jobs:
+  chromium:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install pytest and Chromium browser automation
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install "pytest>=8,<10" "playwright>=1.49,<2"
+          python -m playwright install --with-deps chromium
+      - name: Run exact-head Chemistry author preview HTTP browser tests
+        run: python -m pytest -q tests/test_nsejs_chemistry_agent_b_browser.py
+      - name: Academic governance reminder
+        if: always()
+        run: echo "Browser tests are technical only. Scientific/QRT/source qualification and learner release remain on HOLD."
