@@ -1,0 +1,1562 @@
+{
+  "schema": "g9v41-chem-core1b-six-stage-cycles/v1",
+  "version": "0.1.0",
+  "unit_id": "C14",
+  "status": "CANDIDATE_UNREVIEWED_NO_BROWSER_TEST",
+  "textbook_ref": "curriculum/chemistry/agent-b/textbook/C14.core1a.md",
+  "blueprint_ref": "CHEM-QRT-BLUEPRINT@0.1.0",
+  "cycles": [
+    {
+      "cycle_id": "CORE1B-C14-01-1",
+      "unit_id": "C14",
+      "subtopic_ref": "CHEM-C14.01",
+      "concept_ref": "CHEM-C14.01-CONCEPT",
+      "operation": "EXPLAIN",
+      "qrt_instance_ref": "C14-01-EXPLAIN-D3",
+      "qrt_template_ref": "QRT-EXPLAIN-D3",
+      "band_proposal": "D3",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Decide which missing evidence or environmental boundary may matter: Explain why two streets with similar traffic can have different NO₂ readings and name two controls.",
+        "defensible_answer": "Air is a mixture dominated by nitrogen and oxygen with argon, carbon dioxide, variable water vapour and many trace species. Chemical identity matters more than the vague label 'gas': molecular oxygen is essential to life, carbon dioxide participates in carbon cycling and climate, sulfur dioxide and nitrogen oxides can transform into secondary pollutants. Whether a trace constituent is a pollutant depends on concentration, exposure, context and effects; small concentration alone is not a sufficient definition."
+      },
+      "attempt": {
+        "prompt": "Explain why two streets with similar traffic can have different NO₂ readings and name two controls.",
+        "produces": "A causal model that separates chemical identity, observation, measurement, confounders and a defensible independent check.",
+        "protected_W": "The learner independently completes the causal bridge, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Separate observation, source, transformation and measured outcome for Air composition, pollutants and chemical evidence."
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Relevant concept: Air pollutant concentration depends on chemical identity, emissions, transport and transformation; correlation alone does not prove cause."
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Propose two plausible causal accounts and a controlled discriminator; do not reveal which account is supported."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "Wind, dilution, street geometry, time, sunlight and other sources alter concentration. Compare calibrated sensors at same time with wind and background data; emission level does not uniquely fix ambient concentration.",
+          "rubric": [
+            "Identify substances, system boundary and relevant chemical transformations.",
+            "Build a warranted causal or competing-model explanation.",
+            "Specify a control, counterexample or conservation check that tests the inference."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "What was observed, and which chemical identities are actually established?",
+            "why_this_ask": "Avoid treating a correlation as source identity.",
+            "model_response": "Two neighbourhood sensors report different nitrogen dioxide values even though traffic counts are nearly identical. Does that mean one sensor is defective—or that a pollutant's journey through the atmosphere matters?"
+          },
+          {
+            "ask": "What chemical process, transport or separation assumptions matter?",
+            "why_this_ask": "Make hidden system boundaries explicit.",
+            "model_response": "Emissions become measured concentrations after transport, dilution, deposition and chemical reaction. Vehicle emissions can contain nitrogen oxides; sunlight and other reactive species participate in formation of ground-level ozone under suitable conditions. Ozone high in the stratosphere absorbs harmful ultraviolet radiation, while elevated ozone near the ground is a respiratory pollutant. A learner must not confuse identical molecular formula O₃ with identical environmental role independent of location."
+          },
+          {
+            "ask": "What conclusion is warranted and what remains untested?",
+            "why_this_ask": "Separate evidence from overclaim.",
+            "model_response": "Wind, dilution, street geometry, time, sunlight and other sources alter concentration. Compare calibrated sensors at same time with wind and background data; emission level does not uniquely fix ambient concentration."
+          }
+        ],
+        "full_reconstruction": "Wind, dilution, street geometry, time, sunlight and other sources alter concentration. Compare calibrated sensors at same time with wind and background data; emission level does not uniquely fix ambient concentration."
+      },
+      "diagnose": {
+        "wrong_idea": "Wrong path: 'Equal traffic means equal pollutant concentration' or 'every ozone molecule is harmful regardless of altitude.' Repair by separating production, transport, conversion and exposure conditions.",
+        "diagnostic_prompt": "Which omitted control or model assumption makes this inference unreliable? Wrong path: 'Equal traffic means equal pollutant concentration' or 'every ozone molecule is harmful regardless of altitude.' Repair by separating production, transport, conversion and exposure conditions.",
+        "model_response": "A rise after a factory opens is temporal evidence, not a causal proof without comparison locations and weather controls."
+      },
+      "repair": {
+        "action": "Redraw a source–transport–transformation–measurement map and add the missing controls or flow ledger.",
+        "explanation": "Wrong path: 'Equal traffic means equal pollutant concentration' or 'every ozone molecule is harmful regardless of altitude.' Repair by separating production, transport, conversion and exposure conditions.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C14.core1a.md (section C14.01)"
+      },
+      "boundary_test": {
+        "prompt": "Can identical vehicle counts prove identical nitrogen oxide emissions?",
+        "answer": "No. Vehicle type, operation and fuel conditions also matter.",
+        "confirms": "Different environmental conditions, transport or boundaries alter the inference."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D3",
+        "adjudication": "NOT_RUN",
+        "note": "QRT instance candidate only, independent exact-task adjudication pending."
+      }
+    },
+    {
+      "cycle_id": "CORE1B-C14-01-2",
+      "unit_id": "C14",
+      "subtopic_ref": "CHEM-C14.01",
+      "concept_ref": "CHEM-C14.01-CONCEPT",
+      "operation": "MODEL",
+      "qrt_instance_ref": "C14-01-MODEL-D3",
+      "qrt_template_ref": "QRT-MODEL-D3",
+      "band_proposal": "D3",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Decide which missing evidence or environmental boundary may matter: Choose a chemical and transport model for local NO₂ measurements versus downwind ozone changes.",
+        "defensible_answer": "Air is a mixture dominated by nitrogen and oxygen with argon, carbon dioxide, variable water vapour and many trace species. Chemical identity matters more than the vague label 'gas': molecular oxygen is essential to life, carbon dioxide participates in carbon cycling and climate, sulfur dioxide and nitrogen oxides can transform into secondary pollutants. Whether a trace constituent is a pollutant depends on concentration, exposure, context and effects; small concentration alone is not a sufficient definition."
+      },
+      "attempt": {
+        "prompt": "Choose a chemical and transport model for local NO₂ measurements versus downwind ozone changes.",
+        "produces": "A causal model that separates chemical identity, observation, measurement, confounders and a defensible independent check.",
+        "protected_W": "The learner independently completes the warranted model choice, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Separate observation, source, transformation and measured outcome for Air composition, pollutants and chemical evidence."
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Relevant concept: Air pollutant concentration depends on chemical identity, emissions, transport and transformation; correlation alone does not prove cause."
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Propose two plausible causal accounts and a controlled discriminator; do not reveal which account is supported."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "NOₓ emissions and sunlight-driven atmospheric chemistry can support secondary ground-level ozone formation; downwind transport and meteorology matter. Direct emission and secondary product concentrations need different explanatory routes.",
+          "rubric": [
+            "Identify substances, system boundary and relevant chemical transformations.",
+            "Build a warranted causal or competing-model explanation.",
+            "Specify a control, counterexample or conservation check that tests the inference."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "What was observed, and which chemical identities are actually established?",
+            "why_this_ask": "Avoid treating a correlation as source identity.",
+            "model_response": "Two neighbourhood sensors report different nitrogen dioxide values even though traffic counts are nearly identical. Does that mean one sensor is defective—or that a pollutant's journey through the atmosphere matters?"
+          },
+          {
+            "ask": "What chemical process, transport or separation assumptions matter?",
+            "why_this_ask": "Make hidden system boundaries explicit.",
+            "model_response": "Emissions become measured concentrations after transport, dilution, deposition and chemical reaction. Vehicle emissions can contain nitrogen oxides; sunlight and other reactive species participate in formation of ground-level ozone under suitable conditions. Ozone high in the stratosphere absorbs harmful ultraviolet radiation, while elevated ozone near the ground is a respiratory pollutant. A learner must not confuse identical molecular formula O₃ with identical environmental role independent of location."
+          },
+          {
+            "ask": "What conclusion is warranted and what remains untested?",
+            "why_this_ask": "Separate evidence from overclaim.",
+            "model_response": "NOₓ emissions and sunlight-driven atmospheric chemistry can support secondary ground-level ozone formation; downwind transport and meteorology matter. Direct emission and secondary product concentrations need different explanatory routes."
+          }
+        ],
+        "full_reconstruction": "NOₓ emissions and sunlight-driven atmospheric chemistry can support secondary ground-level ozone formation; downwind transport and meteorology matter. Direct emission and secondary product concentrations need different explanatory routes."
+      },
+      "diagnose": {
+        "wrong_idea": "Wrong path: 'Equal traffic means equal pollutant concentration' or 'every ozone molecule is harmful regardless of altitude.' Repair by separating production, transport, conversion and exposure conditions.",
+        "diagnostic_prompt": "Which omitted control or model assumption makes this inference unreliable? Wrong path: 'Equal traffic means equal pollutant concentration' or 'every ozone molecule is harmful regardless of altitude.' Repair by separating production, transport, conversion and exposure conditions.",
+        "model_response": "A rise after a factory opens is temporal evidence, not a causal proof without comparison locations and weather controls."
+      },
+      "repair": {
+        "action": "Redraw a source–transport–transformation–measurement map and add the missing controls or flow ledger.",
+        "explanation": "Wrong path: 'Equal traffic means equal pollutant concentration' or 'every ozone molecule is harmful regardless of altitude.' Repair by separating production, transport, conversion and exposure conditions.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C14.core1a.md (section C14.01)"
+      },
+      "boundary_test": {
+        "prompt": "Is ozone in the stratosphere environmentally equivalent to ozone in inhaled ground-level air?",
+        "answer": "No. Altitude and exposure give different roles despite the same molecule.",
+        "confirms": "Different environmental conditions, transport or boundaries alter the inference."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D3",
+        "adjudication": "NOT_RUN",
+        "note": "QRT instance candidate only, independent exact-task adjudication pending."
+      }
+    },
+    {
+      "cycle_id": "CORE1B-C14-01-3",
+      "unit_id": "C14",
+      "subtopic_ref": "CHEM-C14.01",
+      "concept_ref": "CHEM-C14.01-CONCEPT",
+      "operation": "JUSTIFY",
+      "qrt_instance_ref": "C14-01-JUSTIFY-D3",
+      "qrt_template_ref": "QRT-JUSTIFY-D3",
+      "band_proposal": "D3",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Decide which missing evidence or environmental boundary may matter: A new factory opens and nearby pollution rises; justify why that correlation alone does not prove the factory caused the entire increase.",
+        "defensible_answer": "Air is a mixture dominated by nitrogen and oxygen with argon, carbon dioxide, variable water vapour and many trace species. Chemical identity matters more than the vague label 'gas': molecular oxygen is essential to life, carbon dioxide participates in carbon cycling and climate, sulfur dioxide and nitrogen oxides can transform into secondary pollutants. Whether a trace constituent is a pollutant depends on concentration, exposure, context and effects; small concentration alone is not a sufficient definition."
+      },
+      "attempt": {
+        "prompt": "A new factory opens and nearby pollution rises; justify why that correlation alone does not prove the factory caused the entire increase.",
+        "produces": "A causal model that separates chemical identity, observation, measurement, confounders and a defensible independent check.",
+        "protected_W": "The learner independently completes the decisive warrant or failing boundary, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Separate observation, source, transformation and measured outcome for Air composition, pollutants and chemical evidence."
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Relevant concept: Air pollutant concentration depends on chemical identity, emissions, transport and transformation; correlation alone does not prove cause."
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Propose two plausible causal accounts and a controlled discriminator; do not reveal which account is supported."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "Other sources, wind, weather, sensor change and background trends can confound the correlation. Compare upwind/downwind and pre/post conditions with controls and chemical markers.",
+          "rubric": [
+            "Identify substances, system boundary and relevant chemical transformations.",
+            "Build a warranted causal or competing-model explanation.",
+            "Specify a control, counterexample or conservation check that tests the inference."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "What was observed, and which chemical identities are actually established?",
+            "why_this_ask": "Avoid treating a correlation as source identity.",
+            "model_response": "Two neighbourhood sensors report different nitrogen dioxide values even though traffic counts are nearly identical. Does that mean one sensor is defective—or that a pollutant's journey through the atmosphere matters?"
+          },
+          {
+            "ask": "What chemical process, transport or separation assumptions matter?",
+            "why_this_ask": "Make hidden system boundaries explicit.",
+            "model_response": "Emissions become measured concentrations after transport, dilution, deposition and chemical reaction. Vehicle emissions can contain nitrogen oxides; sunlight and other reactive species participate in formation of ground-level ozone under suitable conditions. Ozone high in the stratosphere absorbs harmful ultraviolet radiation, while elevated ozone near the ground is a respiratory pollutant. A learner must not confuse identical molecular formula O₃ with identical environmental role independent of location."
+          },
+          {
+            "ask": "What conclusion is warranted and what remains untested?",
+            "why_this_ask": "Separate evidence from overclaim.",
+            "model_response": "Other sources, wind, weather, sensor change and background trends can confound the correlation. Compare upwind/downwind and pre/post conditions with controls and chemical markers."
+          }
+        ],
+        "full_reconstruction": "Other sources, wind, weather, sensor change and background trends can confound the correlation. Compare upwind/downwind and pre/post conditions with controls and chemical markers."
+      },
+      "diagnose": {
+        "wrong_idea": "Wrong path: 'Equal traffic means equal pollutant concentration' or 'every ozone molecule is harmful regardless of altitude.' Repair by separating production, transport, conversion and exposure conditions.",
+        "diagnostic_prompt": "Which omitted control or model assumption makes this inference unreliable? Wrong path: 'Equal traffic means equal pollutant concentration' or 'every ozone molecule is harmful regardless of altitude.' Repair by separating production, transport, conversion and exposure conditions.",
+        "model_response": "A rise after a factory opens is temporal evidence, not a causal proof without comparison locations and weather controls."
+      },
+      "repair": {
+        "action": "Redraw a source–transport–transformation–measurement map and add the missing controls or flow ledger.",
+        "explanation": "Wrong path: 'Equal traffic means equal pollutant concentration' or 'every ozone molecule is harmful regardless of altitude.' Repair by separating production, transport, conversion and exposure conditions.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C14.core1a.md (section C14.01)"
+      },
+      "boundary_test": {
+        "prompt": "If a second distant site also rises, does that uniquely refute a factory contribution?",
+        "answer": "No. Transport can affect distant sites; investigate origin and air movement.",
+        "confirms": "Different environmental conditions, transport or boundaries alter the inference."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D3",
+        "adjudication": "NOT_RUN",
+        "note": "QRT instance candidate only, independent exact-task adjudication pending."
+      }
+    },
+    {
+      "cycle_id": "CORE1B-C14-02-1",
+      "unit_id": "C14",
+      "subtopic_ref": "CHEM-C14.02",
+      "concept_ref": "CHEM-C14.02-CONCEPT",
+      "operation": "EXPLAIN",
+      "qrt_instance_ref": "C14-02-EXPLAIN-D3",
+      "qrt_template_ref": "QRT-EXPLAIN-D3",
+      "band_proposal": "D3",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Decide which missing evidence or environmental boundary may matter: Explain why an ordinary filter can make muddy water clear without decreasing conductivity caused by dissolved salt.",
+        "defensible_answer": "Water can carry suspended particles, dissolved salts, dissolved gases and living microorganisms. Filtration through paper or sand can remove many suspended solids, but dissolved ions pass through ordinary filters. Boiling may inactivate many microbes but does not reliably remove dissolved salts; evaporation can even concentrate them. Distillation separates a volatile water fraction from many nonvolatile solutes, but it does not automatically guarantee removal of every volatile contaminant or microbial safety after collection."
+      },
+      "attempt": {
+        "prompt": "Explain why an ordinary filter can make muddy water clear without decreasing conductivity caused by dissolved salt.",
+        "produces": "A causal model that separates chemical identity, observation, measurement, confounders and a defensible independent check.",
+        "protected_W": "The learner independently completes the causal bridge, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Separate observation, source, transformation and measured outcome for Water quality, separation and actual safety."
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Relevant concept: Clear water can contain dissolved salts and microorganisms; treatment choice must depend on contaminant class."
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Propose two plausible causal accounts and a controlled discriminator; do not reveal which account is supported."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "A filter removes suspended particles by size/retention, but small Na⁺ and Cl⁻ ions remain dissolved. Clarity and conductivity describe different aspects of composition.",
+          "rubric": [
+            "Identify substances, system boundary and relevant chemical transformations.",
+            "Build a warranted causal or competing-model explanation.",
+            "Specify a control, counterexample or conservation check that tests the inference."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "What was observed, and which chemical identities are actually established?",
+            "why_this_ask": "Avoid treating a correlation as source identity.",
+            "model_response": "A glass of water looks clear after filtration, but its measured electrical conductivity remains high. Has the filter failed, or is the test measuring a different class of material?"
+          },
+          {
+            "ask": "What chemical process, transport or separation assumptions matter?",
+            "why_this_ask": "Make hidden system boundaries explicit.",
+            "model_response": "Turbidity, conductivity, acidity and microbiological tests measure different features. Clear water is an aesthetic observation, not a certificate of drinking-water safety. A scientifically sound treatment design identifies the contaminant class before choosing sedimentation, filtration, adsorption, suitable disinfection, ion removal or distillation. Each process has operating limits and may introduce new risks if handled poorly."
+          },
+          {
+            "ask": "What conclusion is warranted and what remains untested?",
+            "why_this_ask": "Separate evidence from overclaim.",
+            "model_response": "A filter removes suspended particles by size/retention, but small Na⁺ and Cl⁻ ions remain dissolved. Clarity and conductivity describe different aspects of composition."
+          }
+        ],
+        "full_reconstruction": "A filter removes suspended particles by size/retention, but small Na⁺ and Cl⁻ ions remain dissolved. Clarity and conductivity describe different aspects of composition."
+      },
+      "diagnose": {
+        "wrong_idea": "Wrong path: 'Transparent water is chemically pure and safe to drink.' Repair with separate suspended, dissolved and microbial evidence and controls.",
+        "diagnostic_prompt": "Which omitted control or model assumption makes this inference unreliable? Wrong path: 'Transparent water is chemically pure and safe to drink.' Repair with separate suspended, dissolved and microbial evidence and controls.",
+        "model_response": "Some dissolved toxic chemicals do not strongly affect conductivity; a low reading does not guarantee absence of contaminants."
+      },
+      "repair": {
+        "action": "Redraw a source–transport–transformation–measurement map and add the missing controls or flow ledger.",
+        "explanation": "Wrong path: 'Transparent water is chemically pure and safe to drink.' Repair with separate suspended, dissolved and microbial evidence and controls.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C14.core1a.md (section C14.02)"
+      },
+      "boundary_test": {
+        "prompt": "Can clear water still contain microbes?",
+        "answer": "Yes. Clarity does not certify microbial safety.",
+        "confirms": "Different environmental conditions, transport or boundaries alter the inference."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D3",
+        "adjudication": "NOT_RUN",
+        "note": "QRT instance candidate only, independent exact-task adjudication pending."
+      }
+    },
+    {
+      "cycle_id": "CORE1B-C14-02-2",
+      "unit_id": "C14",
+      "subtopic_ref": "CHEM-C14.02",
+      "concept_ref": "CHEM-C14.02-CONCEPT",
+      "operation": "MODEL",
+      "qrt_instance_ref": "C14-02-MODEL-D3",
+      "qrt_template_ref": "QRT-MODEL-D3",
+      "band_proposal": "D3",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Decide which missing evidence or environmental boundary may matter: Choose a treatment sequence for water containing suspended soil and dissolved sodium chloride, while distinguishing microbial control.",
+        "defensible_answer": "Water can carry suspended particles, dissolved salts, dissolved gases and living microorganisms. Filtration through paper or sand can remove many suspended solids, but dissolved ions pass through ordinary filters. Boiling may inactivate many microbes but does not reliably remove dissolved salts; evaporation can even concentrate them. Distillation separates a volatile water fraction from many nonvolatile solutes, but it does not automatically guarantee removal of every volatile contaminant or microbial safety after collection."
+      },
+      "attempt": {
+        "prompt": "Choose a treatment sequence for water containing suspended soil and dissolved sodium chloride, while distinguishing microbial control.",
+        "produces": "A causal model that separates chemical identity, observation, measurement, confounders and a defensible independent check.",
+        "protected_W": "The learner independently completes the warranted model choice, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Separate observation, source, transformation and measured outcome for Water quality, separation and actual safety."
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Relevant concept: Clear water can contain dissolved salts and microorganisms; treatment choice must depend on contaminant class."
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Propose two plausible causal accounts and a controlled discriminator; do not reveal which account is supported."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "Use sedimentation/filtration for solids, suitable desalination technology for dissolved salts, and validated microbial treatment if needed. Each method targets a different contaminant class and has limitations.",
+          "rubric": [
+            "Identify substances, system boundary and relevant chemical transformations.",
+            "Build a warranted causal or competing-model explanation.",
+            "Specify a control, counterexample or conservation check that tests the inference."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "What was observed, and which chemical identities are actually established?",
+            "why_this_ask": "Avoid treating a correlation as source identity.",
+            "model_response": "A glass of water looks clear after filtration, but its measured electrical conductivity remains high. Has the filter failed, or is the test measuring a different class of material?"
+          },
+          {
+            "ask": "What chemical process, transport or separation assumptions matter?",
+            "why_this_ask": "Make hidden system boundaries explicit.",
+            "model_response": "Turbidity, conductivity, acidity and microbiological tests measure different features. Clear water is an aesthetic observation, not a certificate of drinking-water safety. A scientifically sound treatment design identifies the contaminant class before choosing sedimentation, filtration, adsorption, suitable disinfection, ion removal or distillation. Each process has operating limits and may introduce new risks if handled poorly."
+          },
+          {
+            "ask": "What conclusion is warranted and what remains untested?",
+            "why_this_ask": "Separate evidence from overclaim.",
+            "model_response": "Use sedimentation/filtration for solids, suitable desalination technology for dissolved salts, and validated microbial treatment if needed. Each method targets a different contaminant class and has limitations."
+          }
+        ],
+        "full_reconstruction": "Use sedimentation/filtration for solids, suitable desalination technology for dissolved salts, and validated microbial treatment if needed. Each method targets a different contaminant class and has limitations."
+      },
+      "diagnose": {
+        "wrong_idea": "Wrong path: 'Transparent water is chemically pure and safe to drink.' Repair with separate suspended, dissolved and microbial evidence and controls.",
+        "diagnostic_prompt": "Which omitted control or model assumption makes this inference unreliable? Wrong path: 'Transparent water is chemically pure and safe to drink.' Repair with separate suspended, dissolved and microbial evidence and controls.",
+        "model_response": "Some dissolved toxic chemicals do not strongly affect conductivity; a low reading does not guarantee absence of contaminants."
+      },
+      "repair": {
+        "action": "Redraw a source–transport–transformation–measurement map and add the missing controls or flow ledger.",
+        "explanation": "Wrong path: 'Transparent water is chemically pure and safe to drink.' Repair with separate suspended, dissolved and microbial evidence and controls.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C14.core1a.md (section C14.02)"
+      },
+      "boundary_test": {
+        "prompt": "Would boiling alone remove the NaCl?",
+        "answer": "No. Dissolved salt remains and may become more concentrated.",
+        "confirms": "Different environmental conditions, transport or boundaries alter the inference."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D3",
+        "adjudication": "NOT_RUN",
+        "note": "QRT instance candidate only, independent exact-task adjudication pending."
+      }
+    },
+    {
+      "cycle_id": "CORE1B-C14-02-3",
+      "unit_id": "C14",
+      "subtopic_ref": "CHEM-C14.02",
+      "concept_ref": "CHEM-C14.02-CONCEPT",
+      "operation": "JUSTIFY",
+      "qrt_instance_ref": "C14-02-JUSTIFY-D3",
+      "qrt_template_ref": "QRT-JUSTIFY-D3",
+      "band_proposal": "D3",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Decide which missing evidence or environmental boundary may matter: Two samples are equally clear, but one has high conductivity. Justify what can be inferred and what additional test is necessary before consumption.",
+        "defensible_answer": "Water can carry suspended particles, dissolved salts, dissolved gases and living microorganisms. Filtration through paper or sand can remove many suspended solids, but dissolved ions pass through ordinary filters. Boiling may inactivate many microbes but does not reliably remove dissolved salts; evaporation can even concentrate them. Distillation separates a volatile water fraction from many nonvolatile solutes, but it does not automatically guarantee removal of every volatile contaminant or microbial safety after collection."
+      },
+      "attempt": {
+        "prompt": "Two samples are equally clear, but one has high conductivity. Justify what can be inferred and what additional test is necessary before consumption.",
+        "produces": "A causal model that separates chemical identity, observation, measurement, confounders and a defensible independent check.",
+        "protected_W": "The learner independently completes the decisive warrant or failing boundary, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Separate observation, source, transformation and measured outcome for Water quality, separation and actual safety."
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Relevant concept: Clear water can contain dissolved salts and microorganisms; treatment choice must depend on contaminant class."
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Propose two plausible causal accounts and a controlled discriminator; do not reveal which account is supported."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "The conductivity difference may indicate more dissolved ions, but not exact ion identity or whether the water is safe. Require chemical and microbiological tests to evaluate potable quality.",
+          "rubric": [
+            "Identify substances, system boundary and relevant chemical transformations.",
+            "Build a warranted causal or competing-model explanation.",
+            "Specify a control, counterexample or conservation check that tests the inference."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "What was observed, and which chemical identities are actually established?",
+            "why_this_ask": "Avoid treating a correlation as source identity.",
+            "model_response": "A glass of water looks clear after filtration, but its measured electrical conductivity remains high. Has the filter failed, or is the test measuring a different class of material?"
+          },
+          {
+            "ask": "What chemical process, transport or separation assumptions matter?",
+            "why_this_ask": "Make hidden system boundaries explicit.",
+            "model_response": "Turbidity, conductivity, acidity and microbiological tests measure different features. Clear water is an aesthetic observation, not a certificate of drinking-water safety. A scientifically sound treatment design identifies the contaminant class before choosing sedimentation, filtration, adsorption, suitable disinfection, ion removal or distillation. Each process has operating limits and may introduce new risks if handled poorly."
+          },
+          {
+            "ask": "What conclusion is warranted and what remains untested?",
+            "why_this_ask": "Separate evidence from overclaim.",
+            "model_response": "The conductivity difference may indicate more dissolved ions, but not exact ion identity or whether the water is safe. Require chemical and microbiological tests to evaluate potable quality."
+          }
+        ],
+        "full_reconstruction": "The conductivity difference may indicate more dissolved ions, but not exact ion identity or whether the water is safe. Require chemical and microbiological tests to evaluate potable quality."
+      },
+      "diagnose": {
+        "wrong_idea": "Wrong path: 'Transparent water is chemically pure and safe to drink.' Repair with separate suspended, dissolved and microbial evidence and controls.",
+        "diagnostic_prompt": "Which omitted control or model assumption makes this inference unreliable? Wrong path: 'Transparent water is chemically pure and safe to drink.' Repair with separate suspended, dissolved and microbial evidence and controls.",
+        "model_response": "Some dissolved toxic chemicals do not strongly affect conductivity; a low reading does not guarantee absence of contaminants."
+      },
+      "repair": {
+        "action": "Redraw a source–transport–transformation–measurement map and add the missing controls or flow ledger.",
+        "explanation": "Wrong path: 'Transparent water is chemically pure and safe to drink.' Repair with separate suspended, dissolved and microbial evidence and controls.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C14.core1a.md (section C14.02)"
+      },
+      "boundary_test": {
+        "prompt": "Does low conductivity prove absence of all toxic organic pollutants?",
+        "answer": "No. Some contaminants are weakly ionic or nonionic.",
+        "confirms": "Different environmental conditions, transport or boundaries alter the inference."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D3",
+        "adjudication": "NOT_RUN",
+        "note": "QRT instance candidate only, independent exact-task adjudication pending."
+      }
+    },
+    {
+      "cycle_id": "CORE1B-C14-03-1",
+      "unit_id": "C14",
+      "subtopic_ref": "CHEM-C14.03",
+      "concept_ref": "CHEM-C14.03-CONCEPT",
+      "operation": "EXPLAIN",
+      "qrt_instance_ref": "C14-03-EXPLAIN-D3",
+      "qrt_template_ref": "QRT-EXPLAIN-D3",
+      "band_proposal": "D3",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Decide which missing evidence or environmental boundary may matter: Explain why a village without factories may have sulfate-associated acidic rain.",
+        "defensible_answer": "Ordinary rain is naturally somewhat acidic because atmospheric carbon dioxide dissolves and participates in weak carbonic-acid equilibria. In environmental chemistry, enhanced acidic deposition can occur when sulfur dioxide and nitrogen oxides emitted from combustion undergo atmospheric oxidation and hydration to form acidic species. The detailed reactions depend on conditions, sunlight, oxidants and droplets; a single direct equation is a simplified net model, not a full atmospheric mechanism."
+      },
+      "attempt": {
+        "prompt": "Explain why a village without factories may have sulfate-associated acidic rain.",
+        "produces": "A causal model that separates chemical identity, observation, measurement, confounders and a defensible independent check.",
+        "protected_W": "The learner independently completes the causal bridge, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Separate observation, source, transformation and measured outcome for Combustion gases, acid deposition and causality."
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Relevant concept: Acid deposition can result from sulfur/nitrogen oxide transformations and long-range transport; controls are needed."
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Propose two plausible causal accounts and a controlled discriminator; do not reveal which account is supported."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "SO₂ or related sulfur species can be transported from distant sources, transform into acidic species and deposit in rain. Local absence of industry does not exclude long-range transport.",
+          "rubric": [
+            "Identify substances, system boundary and relevant chemical transformations.",
+            "Build a warranted causal or competing-model explanation.",
+            "Specify a control, counterexample or conservation check that tests the inference."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "What was observed, and which chemical identities are actually established?",
+            "why_this_ask": "Avoid treating a correlation as source identity.",
+            "model_response": "Rainfall near a remote mountain is acidic although there is no nearby factory. Does this disprove the idea that combustion pollutants can affect rain chemistry?"
+          },
+          {
+            "ask": "What chemical process, transport or separation assumptions matter?",
+            "why_this_ask": "Make hidden system boundaries explicit.",
+            "model_response": "Pollutants can travel considerable distances before chemical transformation and deposition. The absence of a local factory therefore does not disprove an upwind source. Conversely, acidic rain near a factory does not prove that factory is solely responsible without atmospheric data. Compare background rain acidity, wind trajectories, emission inventories, wet/dry deposition and controls at other sites."
+          },
+          {
+            "ask": "What conclusion is warranted and what remains untested?",
+            "why_this_ask": "Separate evidence from overclaim.",
+            "model_response": "SO₂ or related sulfur species can be transported from distant sources, transform into acidic species and deposit in rain. Local absence of industry does not exclude long-range transport."
+          }
+        ],
+        "full_reconstruction": "SO₂ or related sulfur species can be transported from distant sources, transform into acidic species and deposit in rain. Local absence of industry does not exclude long-range transport."
+      },
+      "diagnose": {
+        "wrong_idea": "Wrong path: 'Any rain below pH 7 proves industrial acid rain from the nearest chimney.' Repair by accounting for natural dissolved CO₂, regional transport and multiple potential acidic species.",
+        "diagnostic_prompt": "Which omitted control or model assumption makes this inference unreliable? Wrong path: 'Any rain below pH 7 proves industrial acid rain from the nearest chimney.' Repair by accounting for natural dissolved CO₂, regional transport and multiple potential acidic species.",
+        "model_response": "Rain chemistry can vary over time and geography; a pH value without ionic composition and controls rarely proves one mechanism."
+      },
+      "repair": {
+        "action": "Redraw a source–transport–transformation–measurement map and add the missing controls or flow ledger.",
+        "explanation": "Wrong path: 'Any rain below pH 7 proves industrial acid rain from the nearest chimney.' Repair by accounting for natural dissolved CO₂, regional transport and multiple potential acidic species.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C14.core1a.md (section C14.03)"
+      },
+      "boundary_test": {
+        "prompt": "Would pH below 7 alone demonstrate industrial acid deposition?",
+        "answer": "No. Natural dissolved CO₂ can make ordinary rain mildly acidic.",
+        "confirms": "Different environmental conditions, transport or boundaries alter the inference."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D3",
+        "adjudication": "NOT_RUN",
+        "note": "QRT instance candidate only, independent exact-task adjudication pending."
+      }
+    },
+    {
+      "cycle_id": "CORE1B-C14-03-2",
+      "unit_id": "C14",
+      "subtopic_ref": "CHEM-C14.03",
+      "concept_ref": "CHEM-C14.03-CONCEPT",
+      "operation": "MODEL",
+      "qrt_instance_ref": "C14-03-MODEL-D3",
+      "qrt_template_ref": "QRT-MODEL-D3",
+      "band_proposal": "D3",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Decide which missing evidence or environmental boundary may matter: Choose a model to interpret low rain pH and elevated nitrate with shifting wind direction, distinguishing transport from local emission.",
+        "defensible_answer": "Ordinary rain is naturally somewhat acidic because atmospheric carbon dioxide dissolves and participates in weak carbonic-acid equilibria. In environmental chemistry, enhanced acidic deposition can occur when sulfur dioxide and nitrogen oxides emitted from combustion undergo atmospheric oxidation and hydration to form acidic species. The detailed reactions depend on conditions, sunlight, oxidants and droplets; a single direct equation is a simplified net model, not a full atmospheric mechanism."
+      },
+      "attempt": {
+        "prompt": "Choose a model to interpret low rain pH and elevated nitrate with shifting wind direction, distinguishing transport from local emission.",
+        "produces": "A causal model that separates chemical identity, observation, measurement, confounders and a defensible independent check.",
+        "protected_W": "The learner independently completes the warranted model choice, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Separate observation, source, transformation and measured outcome for Combustion gases, acid deposition and causality."
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Relevant concept: Acid deposition can result from sulfur/nitrogen oxide transformations and long-range transport; controls are needed."
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Propose two plausible causal accounts and a controlled discriminator; do not reveal which account is supported."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "NOₓ from combustion or other sources can transform and deposit after transport; interpret with atmospheric trajectory, pollutant/ion evidence and controls before assigning origin. A transport model may fit a remote site.",
+          "rubric": [
+            "Identify substances, system boundary and relevant chemical transformations.",
+            "Build a warranted causal or competing-model explanation.",
+            "Specify a control, counterexample or conservation check that tests the inference."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "What was observed, and which chemical identities are actually established?",
+            "why_this_ask": "Avoid treating a correlation as source identity.",
+            "model_response": "Rainfall near a remote mountain is acidic although there is no nearby factory. Does this disprove the idea that combustion pollutants can affect rain chemistry?"
+          },
+          {
+            "ask": "What chemical process, transport or separation assumptions matter?",
+            "why_this_ask": "Make hidden system boundaries explicit.",
+            "model_response": "Pollutants can travel considerable distances before chemical transformation and deposition. The absence of a local factory therefore does not disprove an upwind source. Conversely, acidic rain near a factory does not prove that factory is solely responsible without atmospheric data. Compare background rain acidity, wind trajectories, emission inventories, wet/dry deposition and controls at other sites."
+          },
+          {
+            "ask": "What conclusion is warranted and what remains untested?",
+            "why_this_ask": "Separate evidence from overclaim.",
+            "model_response": "NOₓ from combustion or other sources can transform and deposit after transport; interpret with atmospheric trajectory, pollutant/ion evidence and controls before assigning origin. A transport model may fit a remote site."
+          }
+        ],
+        "full_reconstruction": "NOₓ from combustion or other sources can transform and deposit after transport; interpret with atmospheric trajectory, pollutant/ion evidence and controls before assigning origin. A transport model may fit a remote site."
+      },
+      "diagnose": {
+        "wrong_idea": "Wrong path: 'Any rain below pH 7 proves industrial acid rain from the nearest chimney.' Repair by accounting for natural dissolved CO₂, regional transport and multiple potential acidic species.",
+        "diagnostic_prompt": "Which omitted control or model assumption makes this inference unreliable? Wrong path: 'Any rain below pH 7 proves industrial acid rain from the nearest chimney.' Repair by accounting for natural dissolved CO₂, regional transport and multiple potential acidic species.",
+        "model_response": "Rain chemistry can vary over time and geography; a pH value without ionic composition and controls rarely proves one mechanism."
+      },
+      "repair": {
+        "action": "Redraw a source–transport–transformation–measurement map and add the missing controls or flow ledger.",
+        "explanation": "Wrong path: 'Any rain below pH 7 proves industrial acid rain from the nearest chimney.' Repair by accounting for natural dissolved CO₂, regional transport and multiple potential acidic species.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C14.core1a.md (section C14.03)"
+      },
+      "boundary_test": {
+        "prompt": "Can rain pH by itself identify the dominant acid species?",
+        "answer": "No. Measure ionic composition or related chemical markers.",
+        "confirms": "Different environmental conditions, transport or boundaries alter the inference."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D3",
+        "adjudication": "NOT_RUN",
+        "note": "QRT instance candidate only, independent exact-task adjudication pending."
+      }
+    },
+    {
+      "cycle_id": "CORE1B-C14-03-3",
+      "unit_id": "C14",
+      "subtopic_ref": "CHEM-C14.03",
+      "concept_ref": "CHEM-C14.03-CONCEPT",
+      "operation": "JUSTIFY",
+      "qrt_instance_ref": "C14-03-JUSTIFY-D3",
+      "qrt_template_ref": "QRT-JUSTIFY-D3",
+      "band_proposal": "D3",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Decide which missing evidence or environmental boundary may matter: A village blames the nearest plant after one acidic rainfall. Refute the certainty and design an evidence-based attribution study.",
+        "defensible_answer": "Ordinary rain is naturally somewhat acidic because atmospheric carbon dioxide dissolves and participates in weak carbonic-acid equilibria. In environmental chemistry, enhanced acidic deposition can occur when sulfur dioxide and nitrogen oxides emitted from combustion undergo atmospheric oxidation and hydration to form acidic species. The detailed reactions depend on conditions, sunlight, oxidants and droplets; a single direct equation is a simplified net model, not a full atmospheric mechanism."
+      },
+      "attempt": {
+        "prompt": "A village blames the nearest plant after one acidic rainfall. Refute the certainty and design an evidence-based attribution study.",
+        "produces": "A causal model that separates chemical identity, observation, measurement, confounders and a defensible independent check.",
+        "protected_W": "The learner independently completes the decisive warrant or failing boundary, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Separate observation, source, transformation and measured outcome for Combustion gases, acid deposition and causality."
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Relevant concept: Acid deposition can result from sulfur/nitrogen oxide transformations and long-range transport; controls are needed."
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Propose two plausible causal accounts and a controlled discriminator; do not reveal which account is supported."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "Collect repeated pH and sulfate/nitrate data at upwind/downwind and background sites, compare emission inventories, wind patterns and other sources. A single observation cannot establish unique cause.",
+          "rubric": [
+            "Identify substances, system boundary and relevant chemical transformations.",
+            "Build a warranted causal or competing-model explanation.",
+            "Specify a control, counterexample or conservation check that tests the inference."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "What was observed, and which chemical identities are actually established?",
+            "why_this_ask": "Avoid treating a correlation as source identity.",
+            "model_response": "Rainfall near a remote mountain is acidic although there is no nearby factory. Does this disprove the idea that combustion pollutants can affect rain chemistry?"
+          },
+          {
+            "ask": "What chemical process, transport or separation assumptions matter?",
+            "why_this_ask": "Make hidden system boundaries explicit.",
+            "model_response": "Pollutants can travel considerable distances before chemical transformation and deposition. The absence of a local factory therefore does not disprove an upwind source. Conversely, acidic rain near a factory does not prove that factory is solely responsible without atmospheric data. Compare background rain acidity, wind trajectories, emission inventories, wet/dry deposition and controls at other sites."
+          },
+          {
+            "ask": "What conclusion is warranted and what remains untested?",
+            "why_this_ask": "Separate evidence from overclaim.",
+            "model_response": "Collect repeated pH and sulfate/nitrate data at upwind/downwind and background sites, compare emission inventories, wind patterns and other sources. A single observation cannot establish unique cause."
+          }
+        ],
+        "full_reconstruction": "Collect repeated pH and sulfate/nitrate data at upwind/downwind and background sites, compare emission inventories, wind patterns and other sources. A single observation cannot establish unique cause."
+      },
+      "diagnose": {
+        "wrong_idea": "Wrong path: 'Any rain below pH 7 proves industrial acid rain from the nearest chimney.' Repair by accounting for natural dissolved CO₂, regional transport and multiple potential acidic species.",
+        "diagnostic_prompt": "Which omitted control or model assumption makes this inference unreliable? Wrong path: 'Any rain below pH 7 proves industrial acid rain from the nearest chimney.' Repair by accounting for natural dissolved CO₂, regional transport and multiple potential acidic species.",
+        "model_response": "Rain chemistry can vary over time and geography; a pH value without ionic composition and controls rarely proves one mechanism."
+      },
+      "repair": {
+        "action": "Redraw a source–transport–transformation–measurement map and add the missing controls or flow ledger.",
+        "explanation": "Wrong path: 'Any rain below pH 7 proves industrial acid rain from the nearest chimney.' Repair by accounting for natural dissolved CO₂, regional transport and multiple potential acidic species.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C14.core1a.md (section C14.03)"
+      },
+      "boundary_test": {
+        "prompt": "If the factory reduces sulfur emissions, must rainfall pH change immediately and monotonically?",
+        "answer": "Not necessarily. Atmospheric transport, mixed pollutant sources and chemistry create delays and variation.",
+        "confirms": "Different environmental conditions, transport or boundaries alter the inference."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D3",
+        "adjudication": "NOT_RUN",
+        "note": "QRT instance candidate only, independent exact-task adjudication pending."
+      }
+    },
+    {
+      "cycle_id": "CORE1B-C14-04-1",
+      "unit_id": "C14",
+      "subtopic_ref": "CHEM-C14.04",
+      "concept_ref": "CHEM-C14.04-CONCEPT",
+      "operation": "EXPLAIN",
+      "qrt_instance_ref": "C14-04-EXPLAIN-D3",
+      "qrt_template_ref": "QRT-EXPLAIN-D3",
+      "band_proposal": "D3",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Decide which missing evidence or environmental boundary may matter: Explain how a carbon atom can move from atmospheric CO₂ to organic matter and return without being created or destroyed.",
+        "defensible_answer": "Photosynthesis transfers carbon from CO₂ into organic matter under light-driven biological chemistry; respiration, decomposition and combustion can transfer organic carbon back to CO₂. These pathways are linked through chemical transformations and physical reservoirs. The total elemental carbon in a suitably closed accounting system is conserved, although individual reservoirs rise or fall with inputs and outputs. A cycle diagram is a simplified stock-and-flow model, not a claim that all pathways have identical speed or form one direct one-step reaction."
+      },
+      "attempt": {
+        "prompt": "Explain how a carbon atom can move from atmospheric CO₂ to organic matter and return without being created or destroyed.",
+        "produces": "A causal model that separates chemical identity, observation, measurement, confounders and a defensible independent check.",
+        "protected_W": "The learner independently completes the causal bridge, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Separate observation, source, transformation and measured outcome for Carbon and nitrogen cycles as chemical ledgers."
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Relevant concept: Carbon and nitrogen atoms cycle through reservoirs and chemical species; a diagram is not a measured rate ledger."
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Propose two plausible causal accounts and a controlled discriminator; do not reveal which account is supported."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "Photosynthetic fixation incorporates atmospheric carbon into organic molecules; respiration/decomposition/combustion can return it as CO₂. Elemental carbon is conserved although chemical species and reservoirs change.",
+          "rubric": [
+            "Identify substances, system boundary and relevant chemical transformations.",
+            "Build a warranted causal or competing-model explanation.",
+            "Specify a control, counterexample or conservation check that tests the inference."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "What was observed, and which chemical identities are actually established?",
+            "why_this_ask": "Avoid treating a correlation as source identity.",
+            "model_response": "Carbon atoms in atmospheric carbon dioxide become part of a tree and later appear in soil or another organism. No carbon atom has been manufactured by the tree. How can a diagram show this without confusing flow with chemical reaction?"
+          },
+          {
+            "ask": "What chemical process, transport or separation assumptions matter?",
+            "why_this_ask": "Make hidden system boundaries explicit.",
+            "model_response": "Nitrogen chemistry is more varied. Atmospheric N₂ is abundant but often not directly accessible for plant growth; biological nitrogen fixation can convert N₂ into reduced nitrogen forms. Nitrification by suitable microbes can convert ammonium to nitrite and nitrate, while denitrification converts suitable nitrogen oxides/nitrate forms toward gaseous nitrogen species under particular conditions. Plant uptake and food webs move nitrogen into organic compounds. These transformations require distinct chemical species and environments."
+          },
+          {
+            "ask": "What conclusion is warranted and what remains untested?",
+            "why_this_ask": "Separate evidence from overclaim.",
+            "model_response": "Photosynthetic fixation incorporates atmospheric carbon into organic molecules; respiration/decomposition/combustion can return it as CO₂. Elemental carbon is conserved although chemical species and reservoirs change."
+          }
+        ],
+        "full_reconstruction": "Photosynthetic fixation incorporates atmospheric carbon into organic molecules; respiration/decomposition/combustion can return it as CO₂. Elemental carbon is conserved although chemical species and reservoirs change."
+      },
+      "diagnose": {
+        "wrong_idea": "Wrong path: 'A cycle diagram by itself proves a reaction rate or that the environmental system is in steady state.' Repair with separate reservoirs, flux measurements and known or unknown sinks.",
+        "diagnostic_prompt": "Which omitted control or model assumption makes this inference unreliable? Wrong path: 'A cycle diagram by itself proves a reaction rate or that the environmental system is in steady state.' Repair with separate reservoirs, flux measurements and known or unknown sinks.",
+        "model_response": "An ecosystem can accumulate carbon even while individual atoms are conserved; total system inventory depends on where boundaries are drawn."
+      },
+      "repair": {
+        "action": "Redraw a source–transport–transformation–measurement map and add the missing controls or flow ledger.",
+        "explanation": "Wrong path: 'A cycle diagram by itself proves a reaction rate or that the environmental system is in steady state.' Repair with separate reservoirs, flux measurements and known or unknown sinks.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C14.core1a.md (section C14.04)"
+      },
+      "boundary_test": {
+        "prompt": "Does conservation imply the concentration of CO₂ in air must be constant?",
+        "answer": "No. Atmospheric fluxes can be unbalanced.",
+        "confirms": "Different environmental conditions, transport or boundaries alter the inference."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D3",
+        "adjudication": "NOT_RUN",
+        "note": "QRT instance candidate only, independent exact-task adjudication pending."
+      }
+    },
+    {
+      "cycle_id": "CORE1B-C14-04-2",
+      "unit_id": "C14",
+      "subtopic_ref": "CHEM-C14.04",
+      "concept_ref": "CHEM-C14.04-CONCEPT",
+      "operation": "MODEL",
+      "qrt_instance_ref": "C14-04-MODEL-D3",
+      "qrt_template_ref": "QRT-MODEL-D3",
+      "band_proposal": "D3",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Decide which missing evidence or environmental boundary may matter: Choose a nitrogen-cycle model consistent with plant uptake of nitrate and atmospheric N₂ availability.",
+        "defensible_answer": "Photosynthesis transfers carbon from CO₂ into organic matter under light-driven biological chemistry; respiration, decomposition and combustion can transfer organic carbon back to CO₂. These pathways are linked through chemical transformations and physical reservoirs. The total elemental carbon in a suitably closed accounting system is conserved, although individual reservoirs rise or fall with inputs and outputs. A cycle diagram is a simplified stock-and-flow model, not a claim that all pathways have identical speed or form one direct one-step reaction."
+      },
+      "attempt": {
+        "prompt": "Choose a nitrogen-cycle model consistent with plant uptake of nitrate and atmospheric N₂ availability.",
+        "produces": "A causal model that separates chemical identity, observation, measurement, confounders and a defensible independent check.",
+        "protected_W": "The learner independently completes the warranted model choice, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Separate observation, source, transformation and measured outcome for Carbon and nitrogen cycles as chemical ledgers."
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Relevant concept: Carbon and nitrogen atoms cycle through reservoirs and chemical species; a diagram is not a measured rate ledger."
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Propose two plausible causal accounts and a controlled discriminator; do not reveal which account is supported."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "Nitrogen fixation/nitrification can generate plant-available forms; plants use suitable nitrate/ammonium sources, while denitrification can return nitrogen-containing gases. N₂ abundance does not make it directly bioavailable to all plants.",
+          "rubric": [
+            "Identify substances, system boundary and relevant chemical transformations.",
+            "Build a warranted causal or competing-model explanation.",
+            "Specify a control, counterexample or conservation check that tests the inference."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "What was observed, and which chemical identities are actually established?",
+            "why_this_ask": "Avoid treating a correlation as source identity.",
+            "model_response": "Carbon atoms in atmospheric carbon dioxide become part of a tree and later appear in soil or another organism. No carbon atom has been manufactured by the tree. How can a diagram show this without confusing flow with chemical reaction?"
+          },
+          {
+            "ask": "What chemical process, transport or separation assumptions matter?",
+            "why_this_ask": "Make hidden system boundaries explicit.",
+            "model_response": "Nitrogen chemistry is more varied. Atmospheric N₂ is abundant but often not directly accessible for plant growth; biological nitrogen fixation can convert N₂ into reduced nitrogen forms. Nitrification by suitable microbes can convert ammonium to nitrite and nitrate, while denitrification converts suitable nitrogen oxides/nitrate forms toward gaseous nitrogen species under particular conditions. Plant uptake and food webs move nitrogen into organic compounds. These transformations require distinct chemical species and environments."
+          },
+          {
+            "ask": "What conclusion is warranted and what remains untested?",
+            "why_this_ask": "Separate evidence from overclaim.",
+            "model_response": "Nitrogen fixation/nitrification can generate plant-available forms; plants use suitable nitrate/ammonium sources, while denitrification can return nitrogen-containing gases. N₂ abundance does not make it directly bioavailable to all plants."
+          }
+        ],
+        "full_reconstruction": "Nitrogen fixation/nitrification can generate plant-available forms; plants use suitable nitrate/ammonium sources, while denitrification can return nitrogen-containing gases. N₂ abundance does not make it directly bioavailable to all plants."
+      },
+      "diagnose": {
+        "wrong_idea": "Wrong path: 'A cycle diagram by itself proves a reaction rate or that the environmental system is in steady state.' Repair with separate reservoirs, flux measurements and known or unknown sinks.",
+        "diagnostic_prompt": "Which omitted control or model assumption makes this inference unreliable? Wrong path: 'A cycle diagram by itself proves a reaction rate or that the environmental system is in steady state.' Repair with separate reservoirs, flux measurements and known or unknown sinks.",
+        "model_response": "An ecosystem can accumulate carbon even while individual atoms are conserved; total system inventory depends on where boundaries are drawn."
+      },
+      "repair": {
+        "action": "Redraw a source–transport–transformation–measurement map and add the missing controls or flow ledger.",
+        "explanation": "Wrong path: 'A cycle diagram by itself proves a reaction rate or that the environmental system is in steady state.' Repair with separate reservoirs, flux measurements and known or unknown sinks.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C14.core1a.md (section C14.04)"
+      },
+      "boundary_test": {
+        "prompt": "If nitrification is suppressed, must all nitrogen-cycle processes stop?",
+        "answer": "No. Other pathways and reservoirs may continue.",
+        "confirms": "Different environmental conditions, transport or boundaries alter the inference."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D3",
+        "adjudication": "NOT_RUN",
+        "note": "QRT instance candidate only, independent exact-task adjudication pending."
+      }
+    },
+    {
+      "cycle_id": "CORE1B-C14-04-3",
+      "unit_id": "C14",
+      "subtopic_ref": "CHEM-C14.04",
+      "concept_ref": "CHEM-C14.04-CONCEPT",
+      "operation": "JUSTIFY",
+      "qrt_instance_ref": "C14-04-JUSTIFY-D3",
+      "qrt_template_ref": "QRT-JUSTIFY-D3",
+      "band_proposal": "D3",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Decide which missing evidence or environmental boundary may matter: A reservoir graph shows carbon increasing with no recorded inflow. Justify what conservation demands and which measurements are missing.",
+        "defensible_answer": "Photosynthesis transfers carbon from CO₂ into organic matter under light-driven biological chemistry; respiration, decomposition and combustion can transfer organic carbon back to CO₂. These pathways are linked through chemical transformations and physical reservoirs. The total elemental carbon in a suitably closed accounting system is conserved, although individual reservoirs rise or fall with inputs and outputs. A cycle diagram is a simplified stock-and-flow model, not a claim that all pathways have identical speed or form one direct one-step reaction."
+      },
+      "attempt": {
+        "prompt": "A reservoir graph shows carbon increasing with no recorded inflow. Justify what conservation demands and which measurements are missing.",
+        "produces": "A causal model that separates chemical identity, observation, measurement, confounders and a defensible independent check.",
+        "protected_W": "The learner independently completes the decisive warrant or failing boundary, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Separate observation, source, transformation and measured outcome for Carbon and nitrogen cycles as chemical ledgers."
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Relevant concept: Carbon and nitrogen atoms cycle through reservoirs and chemical species; a diagram is not a measured rate ledger."
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Propose two plausible causal accounts and a controlled discriminator; do not reveal which account is supported."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "The graph must represent a previously omitted input, in-reservoir chemical reclassification, measurement error or boundary mismatch. Determine actual fluxes and stocks; mass cannot appear from nowhere.",
+          "rubric": [
+            "Identify substances, system boundary and relevant chemical transformations.",
+            "Build a warranted causal or competing-model explanation.",
+            "Specify a control, counterexample or conservation check that tests the inference."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "What was observed, and which chemical identities are actually established?",
+            "why_this_ask": "Avoid treating a correlation as source identity.",
+            "model_response": "Carbon atoms in atmospheric carbon dioxide become part of a tree and later appear in soil or another organism. No carbon atom has been manufactured by the tree. How can a diagram show this without confusing flow with chemical reaction?"
+          },
+          {
+            "ask": "What chemical process, transport or separation assumptions matter?",
+            "why_this_ask": "Make hidden system boundaries explicit.",
+            "model_response": "Nitrogen chemistry is more varied. Atmospheric N₂ is abundant but often not directly accessible for plant growth; biological nitrogen fixation can convert N₂ into reduced nitrogen forms. Nitrification by suitable microbes can convert ammonium to nitrite and nitrate, while denitrification converts suitable nitrogen oxides/nitrate forms toward gaseous nitrogen species under particular conditions. Plant uptake and food webs move nitrogen into organic compounds. These transformations require distinct chemical species and environments."
+          },
+          {
+            "ask": "What conclusion is warranted and what remains untested?",
+            "why_this_ask": "Separate evidence from overclaim.",
+            "model_response": "The graph must represent a previously omitted input, in-reservoir chemical reclassification, measurement error or boundary mismatch. Determine actual fluxes and stocks; mass cannot appear from nowhere."
+          }
+        ],
+        "full_reconstruction": "The graph must represent a previously omitted input, in-reservoir chemical reclassification, measurement error or boundary mismatch. Determine actual fluxes and stocks; mass cannot appear from nowhere."
+      },
+      "diagnose": {
+        "wrong_idea": "Wrong path: 'A cycle diagram by itself proves a reaction rate or that the environmental system is in steady state.' Repair with separate reservoirs, flux measurements and known or unknown sinks.",
+        "diagnostic_prompt": "Which omitted control or model assumption makes this inference unreliable? Wrong path: 'A cycle diagram by itself proves a reaction rate or that the environmental system is in steady state.' Repair with separate reservoirs, flux measurements and known or unknown sinks.",
+        "model_response": "An ecosystem can accumulate carbon even while individual atoms are conserved; total system inventory depends on where boundaries are drawn."
+      },
+      "repair": {
+        "action": "Redraw a source–transport–transformation–measurement map and add the missing controls or flow ledger.",
+        "explanation": "Wrong path: 'A cycle diagram by itself proves a reaction rate or that the environmental system is in steady state.' Repair with separate reservoirs, flux measurements and known or unknown sinks.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C14.core1a.md (section C14.04)"
+      },
+      "boundary_test": {
+        "prompt": "Would a constant carbon stock mean every individual flux is zero?",
+        "answer": "No. Equal inflow and outflow can maintain a steady stock.",
+        "confirms": "Different environmental conditions, transport or boundaries alter the inference."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D3",
+        "adjudication": "NOT_RUN",
+        "note": "QRT instance candidate only, independent exact-task adjudication pending."
+      }
+    },
+    {
+      "cycle_id": "CORE1B-C14-05-1",
+      "unit_id": "C14",
+      "subtopic_ref": "CHEM-C14.05",
+      "concept_ref": "CHEM-C14.05-CONCEPT",
+      "operation": "EXPLAIN",
+      "qrt_instance_ref": "C14-05-EXPLAIN-D3",
+      "qrt_template_ref": "QRT-EXPLAIN-D3",
+      "band_proposal": "D3",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Decide which missing evidence or environmental boundary may matter: Explain why a biodegradable bag does not necessarily have lower total environmental impact than a recyclable bag.",
+        "defensible_answer": "An applied chemical decision compares alternatives across defined system boundaries: raw-material extraction, manufacture, transport, use, collection, recycling/disposal and the emissions or waste from each stage. A biodegradable material can break down under suitable conditions, but degradation rates and products depend on oxygen, moisture, temperature and treatment. A recyclable material can be recovered in principle, but collection rates and recycling energy matter. Neither label alone establishes a complete environmental outcome."
+      },
+      "attempt": {
+        "prompt": "Explain why a biodegradable bag does not necessarily have lower total environmental impact than a recyclable bag.",
+        "produces": "A causal model that separates chemical identity, observation, measurement, confounders and a defensible independent check.",
+        "protected_W": "The learner independently completes the causal bridge, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Separate observation, source, transformation and measured outcome for Applied decisions, lifecycle boundaries and uncertainty."
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Relevant concept: Sustainability comparisons depend on system boundaries, hazards, resources and evidence, not a green label."
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Propose two plausible causal accounts and a controlled discriminator; do not reveal which account is supported."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "Manufacturing, transport, degradation conditions, actual collection and pollution products matter across the lifecycle. Biodegradability alone describes a property under conditions, not all impacts.",
+          "rubric": [
+            "Identify substances, system boundary and relevant chemical transformations.",
+            "Build a warranted causal or competing-model explanation.",
+            "Specify a control, counterexample or conservation check that tests the inference."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "What was observed, and which chemical identities are actually established?",
+            "why_this_ask": "Avoid treating a correlation as source identity.",
+            "model_response": "One packaging material is labelled biodegradable, another recyclable. Which one is more sustainable? Without defining the environmental goal and the whole product life cycle, the question cannot be decided."
+          },
+          {
+            "ask": "What chemical process, transport or separation assumptions matter?",
+            "why_this_ask": "Make hidden system boundaries explicit.",
+            "model_response": "Choose measurable criteria—energy consumed, greenhouse-gas emissions, water use, persistent pollutants, toxic byproducts, resource scarcity and uncertainty. Specify functional equivalence: two water treatments must deliver comparable quality before energy impacts are compared. Mixing unequal units or comparing a single production step with a whole lifecycle is a boundary error. A careful science answer states assumptions and the conditions under which its preference might reverse."
+          },
+          {
+            "ask": "What conclusion is warranted and what remains untested?",
+            "why_this_ask": "Separate evidence from overclaim.",
+            "model_response": "Manufacturing, transport, degradation conditions, actual collection and pollution products matter across the lifecycle. Biodegradability alone describes a property under conditions, not all impacts."
+          }
+        ],
+        "full_reconstruction": "Manufacturing, transport, degradation conditions, actual collection and pollution products matter across the lifecycle. Biodegradability alone describes a property under conditions, not all impacts."
+      },
+      "diagnose": {
+        "wrong_idea": "Wrong path: 'Biodegradable automatically means best, or the lowest-energy unit operation means lowest total impact.' Repair by defining the functional unit, performance threshold, lifecycle boundary and measured chemical waste.",
+        "diagnostic_prompt": "Which omitted control or model assumption makes this inference unreliable? Wrong path: 'Biodegradable automatically means best, or the lowest-energy unit operation means lowest total impact.' Repair by defining the functional unit, performance threshold, lifecycle boundary and measured chemical waste.",
+        "model_response": "Changing the environmental endpoint (e.g., water contamination versus climate emissions) can reverse the preferred option. State the criterion before announcing a winner."
+      },
+      "repair": {
+        "action": "Redraw a source–transport–transformation–measurement map and add the missing controls or flow ledger.",
+        "explanation": "Wrong path: 'Biodegradable automatically means best, or the lowest-energy unit operation means lowest total impact.' Repair by defining the functional unit, performance threshold, lifecycle boundary and measured chemical waste.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C14.core1a.md (section C14.05)"
+      },
+      "boundary_test": {
+        "prompt": "Would biodegradation occur at the same rate in cold dry landfill and warm moist compost?",
+        "answer": "No. Conditions alter decomposition.",
+        "confirms": "Different environmental conditions, transport or boundaries alter the inference."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D3",
+        "adjudication": "NOT_RUN",
+        "note": "QRT instance candidate only, independent exact-task adjudication pending."
+      }
+    },
+    {
+      "cycle_id": "CORE1B-C14-05-2",
+      "unit_id": "C14",
+      "subtopic_ref": "CHEM-C14.05",
+      "concept_ref": "CHEM-C14.05-CONCEPT",
+      "operation": "MODEL",
+      "qrt_instance_ref": "C14-05-MODEL-D3",
+      "qrt_template_ref": "QRT-MODEL-D3",
+      "band_proposal": "D3",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Decide which missing evidence or environmental boundary may matter: Choose between water treatments A and B when an explicit removal threshold is 95%, and explain why energy alone is insufficient.",
+        "defensible_answer": "An applied chemical decision compares alternatives across defined system boundaries: raw-material extraction, manufacture, transport, use, collection, recycling/disposal and the emissions or waste from each stage. A biodegradable material can break down under suitable conditions, but degradation rates and products depend on oxygen, moisture, temperature and treatment. A recyclable material can be recovered in principle, but collection rates and recycling energy matter. Neither label alone establishes a complete environmental outcome."
+      },
+      "attempt": {
+        "prompt": "Choose between water treatments A and B when an explicit removal threshold is 95%, and explain why energy alone is insufficient.",
+        "produces": "A causal model that separates chemical identity, observation, measurement, confounders and a defensible independent check.",
+        "protected_W": "The learner independently completes the warranted model choice, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Separate observation, source, transformation and measured outcome for Applied decisions, lifecycle boundaries and uncertainty."
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Relevant concept: Sustainability comparisons depend on system boundaries, hazards, resources and evidence, not a green label."
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Propose two plausible causal accounts and a controlled discriminator; do not reveal which account is supported."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "A removes 90% and fails the constraint; B removes 99% and satisfies it. Energy cannot be compared as the sole decision measure unless both provide equivalent required quality. Additional stages alter the full accounting.",
+          "rubric": [
+            "Identify substances, system boundary and relevant chemical transformations.",
+            "Build a warranted causal or competing-model explanation.",
+            "Specify a control, counterexample or conservation check that tests the inference."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "What was observed, and which chemical identities are actually established?",
+            "why_this_ask": "Avoid treating a correlation as source identity.",
+            "model_response": "One packaging material is labelled biodegradable, another recyclable. Which one is more sustainable? Without defining the environmental goal and the whole product life cycle, the question cannot be decided."
+          },
+          {
+            "ask": "What chemical process, transport or separation assumptions matter?",
+            "why_this_ask": "Make hidden system boundaries explicit.",
+            "model_response": "Choose measurable criteria—energy consumed, greenhouse-gas emissions, water use, persistent pollutants, toxic byproducts, resource scarcity and uncertainty. Specify functional equivalence: two water treatments must deliver comparable quality before energy impacts are compared. Mixing unequal units or comparing a single production step with a whole lifecycle is a boundary error. A careful science answer states assumptions and the conditions under which its preference might reverse."
+          },
+          {
+            "ask": "What conclusion is warranted and what remains untested?",
+            "why_this_ask": "Separate evidence from overclaim.",
+            "model_response": "A removes 90% and fails the constraint; B removes 99% and satisfies it. Energy cannot be compared as the sole decision measure unless both provide equivalent required quality. Additional stages alter the full accounting."
+          }
+        ],
+        "full_reconstruction": "A removes 90% and fails the constraint; B removes 99% and satisfies it. Energy cannot be compared as the sole decision measure unless both provide equivalent required quality. Additional stages alter the full accounting."
+      },
+      "diagnose": {
+        "wrong_idea": "Wrong path: 'Biodegradable automatically means best, or the lowest-energy unit operation means lowest total impact.' Repair by defining the functional unit, performance threshold, lifecycle boundary and measured chemical waste.",
+        "diagnostic_prompt": "Which omitted control or model assumption makes this inference unreliable? Wrong path: 'Biodegradable automatically means best, or the lowest-energy unit operation means lowest total impact.' Repair by defining the functional unit, performance threshold, lifecycle boundary and measured chemical waste.",
+        "model_response": "Changing the environmental endpoint (e.g., water contamination versus climate emissions) can reverse the preferred option. State the criterion before announcing a winner."
+      },
+      "repair": {
+        "action": "Redraw a source–transport–transformation–measurement map and add the missing controls or flow ledger.",
+        "explanation": "Wrong path: 'Biodegradable automatically means best, or the lowest-energy unit operation means lowest total impact.' Repair by defining the functional unit, performance threshold, lifecycle boundary and measured chemical waste.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C14.core1a.md (section C14.05)"
+      },
+      "boundary_test": {
+        "prompt": "If A adds a second treatment stage to meet 95%, can its original energy total still be used?",
+        "answer": "No. Count the added process and verify its outcome.",
+        "confirms": "Different environmental conditions, transport or boundaries alter the inference."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D3",
+        "adjudication": "NOT_RUN",
+        "note": "QRT instance candidate only, independent exact-task adjudication pending."
+      }
+    },
+    {
+      "cycle_id": "CORE1B-C14-05-3",
+      "unit_id": "C14",
+      "subtopic_ref": "CHEM-C14.05",
+      "concept_ref": "CHEM-C14.05-CONCEPT",
+      "operation": "JUSTIFY",
+      "qrt_instance_ref": "C14-05-JUSTIFY-D3",
+      "qrt_template_ref": "QRT-JUSTIFY-D3",
+      "band_proposal": "D3",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Decide which missing evidence or environmental boundary may matter: A low-carbon factory advertises a new process but sends untreated waste offsite. Justify why the boundary can reverse the environmental conclusion.",
+        "defensible_answer": "An applied chemical decision compares alternatives across defined system boundaries: raw-material extraction, manufacture, transport, use, collection, recycling/disposal and the emissions or waste from each stage. A biodegradable material can break down under suitable conditions, but degradation rates and products depend on oxygen, moisture, temperature and treatment. A recyclable material can be recovered in principle, but collection rates and recycling energy matter. Neither label alone establishes a complete environmental outcome."
+      },
+      "attempt": {
+        "prompt": "A low-carbon factory advertises a new process but sends untreated waste offsite. Justify why the boundary can reverse the environmental conclusion.",
+        "produces": "A causal model that separates chemical identity, observation, measurement, confounders and a defensible independent check.",
+        "protected_W": "The learner independently completes the decisive warrant or failing boundary, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Separate observation, source, transformation and measured outcome for Applied decisions, lifecycle boundaries and uncertainty."
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Relevant concept: Sustainability comparisons depend on system boundaries, hazards, resources and evidence, not a green label."
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Propose two plausible causal accounts and a controlled discriminator; do not reveal which account is supported."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "An omitted downstream waste-treatment burden transfers pollution rather than removing it. Expand the system boundary to include transport, treatment, emissions and product function, and compare matched data with uncertainty.",
+          "rubric": [
+            "Identify substances, system boundary and relevant chemical transformations.",
+            "Build a warranted causal or competing-model explanation.",
+            "Specify a control, counterexample or conservation check that tests the inference."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "What was observed, and which chemical identities are actually established?",
+            "why_this_ask": "Avoid treating a correlation as source identity.",
+            "model_response": "One packaging material is labelled biodegradable, another recyclable. Which one is more sustainable? Without defining the environmental goal and the whole product life cycle, the question cannot be decided."
+          },
+          {
+            "ask": "What chemical process, transport or separation assumptions matter?",
+            "why_this_ask": "Make hidden system boundaries explicit.",
+            "model_response": "Choose measurable criteria—energy consumed, greenhouse-gas emissions, water use, persistent pollutants, toxic byproducts, resource scarcity and uncertainty. Specify functional equivalence: two water treatments must deliver comparable quality before energy impacts are compared. Mixing unequal units or comparing a single production step with a whole lifecycle is a boundary error. A careful science answer states assumptions and the conditions under which its preference might reverse."
+          },
+          {
+            "ask": "What conclusion is warranted and what remains untested?",
+            "why_this_ask": "Separate evidence from overclaim.",
+            "model_response": "An omitted downstream waste-treatment burden transfers pollution rather than removing it. Expand the system boundary to include transport, treatment, emissions and product function, and compare matched data with uncertainty."
+          }
+        ],
+        "full_reconstruction": "An omitted downstream waste-treatment burden transfers pollution rather than removing it. Expand the system boundary to include transport, treatment, emissions and product function, and compare matched data with uncertainty."
+      },
+      "diagnose": {
+        "wrong_idea": "Wrong path: 'Biodegradable automatically means best, or the lowest-energy unit operation means lowest total impact.' Repair by defining the functional unit, performance threshold, lifecycle boundary and measured chemical waste.",
+        "diagnostic_prompt": "Which omitted control or model assumption makes this inference unreliable? Wrong path: 'Biodegradable automatically means best, or the lowest-energy unit operation means lowest total impact.' Repair by defining the functional unit, performance threshold, lifecycle boundary and measured chemical waste.",
+        "model_response": "Changing the environmental endpoint (e.g., water contamination versus climate emissions) can reverse the preferred option. State the criterion before announcing a winner."
+      },
+      "repair": {
+        "action": "Redraw a source–transport–transformation–measurement map and add the missing controls or flow ledger.",
+        "explanation": "Wrong path: 'Biodegradable automatically means best, or the lowest-energy unit operation means lowest total impact.' Repair by defining the functional unit, performance threshold, lifecycle boundary and measured chemical waste.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C14.core1a.md (section C14.05)"
+      },
+      "boundary_test": {
+        "prompt": "Would lower greenhouse emissions alone prove total environmental superiority in every criterion?",
+        "answer": "No. Toxicity, water use, resource depletion and other impacts can differ.",
+        "confirms": "Different environmental conditions, transport or boundaries alter the inference."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D3",
+        "adjudication": "NOT_RUN",
+        "note": "QRT instance candidate only, independent exact-task adjudication pending."
+      }
+    }
+  ],
+  "release": {
+    "scientific_review": "HOLD",
+    "source_exam_admission": "HOLD",
+    "qrt_adjudication": "HOLD",
+    "runtime_first_attempt_validation": "NOT_RUN",
+    "deployment": "NOT_AUTHORIZED"
+  }
+}
