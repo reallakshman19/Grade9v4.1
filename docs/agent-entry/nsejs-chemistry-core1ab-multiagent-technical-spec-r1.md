@@ -149,7 +149,7 @@ For every author PR, require:
 - Each subtopic must include three distinct operations, paired explanatory Core1A, a novel W, six-stage Core1B, three progressive hints, complete model answer, independent check, misconception/boundary and source review state.
 - Adapter passes the pinned JSON schema, IDs join, QRT template refs are canonical; count QRT **instances** and unique **template cells** separately.
 - Run unchanged repository Python QA in Python 3.11/3.12 and real HTTP Chromium at 1000×1600 portrait and 1600×1000 landscape, touching every chapter, figures, keyboard, hints, first attempt, refresh, stale revisions and disabled storage. Attach screenshots/logs and exact-head results.
-- Author self-review B1–B7 witness and 12 QRT criterion entries are submitted as **candidates only**. Independent academic reviewers independently validate content, source, exam/figure fidelity and depth. R00 checks technical integration but cannot certify own authored C01–C07 as cold review.
+- Author self-review B1–B7 witness and 12 QRT criterion entries are submitted as **candidates only**. Independent academic reviewers independently validate content, source, exam/figure fidelity and depth. R00 checks technical integration but cannot certify its own previously authored C08–C14 as cold review; a separately appointed R01 must evaluate academic correctness across all 14 units.
 - No merge, release or deployment merely because tests pass. If evidence is missing, say HOLD and retain the draft.
 
 ### R00 review disposition vocabulary
