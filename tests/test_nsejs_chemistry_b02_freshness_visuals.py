@@ -20,7 +20,9 @@ def test_b02_freshness_revisions_join_current_witnesses_and_stages():
         old=m.get("old_cycle_id",m.get("old_task_id"))
         new=m.get("new_cycle_id",m.get("new_task_id"))
         assert old not in tasks and new in tasks
-    assert len(v["records"])==11 and v["counts"]["other_tasks_without_exact_stages"]==36
+    assert len(v["records"])==47 and v["counts"]["other_tasks_without_exact_stages"]==0
+    assert {r["task_id"] for r in v["records"]}==set(tasks)
+    assert sum(r.get("batch")=="B02-INCREMENT-6" for r in v["records"])==36
     files=set()
     for r in v["records"]:
         assert r["task_id"] in tasks
@@ -35,5 +37,20 @@ def test_b02_freshness_revisions_join_current_witnesses_and_stages():
             assert witness["qrt_criteria"][a["id"]]["candidate_evidence"]==a["path"]
             assert a["independent_status"]=="UNREVIEWED"
             files.add(p)
-    assert len(files)==33
+    assert len(files)==141
     assert all(wr["witnesses"]["B1"]["task"]==tasks[wr["task_id"]]["attempt"]["prompt"] for wr in w["records"])
+
+
+def test_b02_stage_blob_pins_and_no_active_release():
+    import hashlib
+    v=read(B/"qrt/B02-C10-C11-staged-visuals.v0.7.0.json")
+    for r in v["records"]:
+        assert r["protected_work_guard"] and r["status"]=="AUTHOR_VISUAL_CANDIDATE_RUNTIME_HOLD"
+        for a in r["stages"]:
+            raw=(ROOT/a["path"]).read_bytes()
+            git_blob=hashlib.sha1(f"blob {len(raw)}\0".encode()+raw).hexdigest()
+            assert git_blob==a["git_blob"]
+            assert a["exposure"]=="P00_SEQUENCED_OPTIONAL_PRE_ATTEMPT_HOLD"
+            root=ET.fromstring(raw)
+            assert root.find(".//{http://www.w3.org/2000/svg}script") is None
+    assert v["counts"]["qualified"]==0
