@@ -315,6 +315,37 @@
         - **Automated Verification Suite**: Authored [`tests/test_chemistry_core2.py`](tests/test_chemistry_core2.py) with 8 comprehensive unit tests. Core test suite expanded to 49/49 passing tests.
         - **Rebuilt Search Index**: Re-indexed 344 documents via `tools/build_search_index.py`, updating manifests with new SHA-256 digest (`2913fddef280d899092a92164f6b3642215d34bdccd016bd84461ef0364b6e80`).
 
+    30. **Physics Core 2 Technical Remediation & Pedagogical Alignment**:
+        - **Eradicated Defensive "Producer" Jargon**: Completely purged all adversarial mock strings (`differs from producer proposal`, `PRODUCER-PROPOSED · NOT SELECTED`, `Comparison with producer-proposed key · REVIEWED`, `Your saved choice differs from the unverified producer-proposed option`) from [nsejs/js/core2-physics-reader.js](nsejs/js/core2-physics-reader.js).
+        - **Standardized Pedagogical Badging**: Replaced raw cryptographic debug strings (`asserted stem digest agrees with display · QRT HOLD`) with polished student-facing badges:
+          - `{Reviewed} · B1–B7 peer review verified · Rule 13 HOLD`
+          - `📅 Official Exam: [Year] · Set [Code] · Q[No]`
+        - **Disambiguated Duplicate IDs**: Resolved ID collisions between 2019 Optics and Electrostatics (`NSEJS-2019-P-OPT-Q01/Q02` and `NSEJS-2019-P-ELEC-Q01/Q14`), ensuring 100% unique question IDs across all 50 Physics candidates.
+        - **W3C SVG Asset Authoring & XML Fixes**: Authored responsive vector diagrams in both `nsejs/assets/` and `nsejs/physics/assets/` with typography $\ge 14\text{px}$ and valid XML entities:
+          - `fig_nsejs_tetrahedron_resistors.svg`: Regular tetrahedron resistor network with symmetry plane equipotential resolution ($R_{AB} = 6\ \Omega$).
+          - `fig_nsejs_magnetism_coils.svg`: 4-panel Lenz's Law induced current diagrams for coils in Y-Z plane.
+        - **Bit-for-Bit SHA-256 Sealing**: Re-calculated exact SHA-256 digests across all 50 question stems and question revision payloads in [nsejs/data/physics-core2-candidates.v1.json](nsejs/data/physics-core2-candidates.v1.json), updating [physics-core2-integrity.v1.json](nsejs/data/physics-core2-integrity.v1.json) (`declared_matches_observed: true`, 0 conflicts).
+        - **Interactive Attempt Commitment & Derivation Reveal**: Unified commitment flow with `Commit First Attempt & Reveal Derivation` and `Show Progressive Hints (3)`. Committing persists local attempt in `localStorage`, reveals full 3-step derivation, and highlights choices with clean badges (`✓ Selected (Matches Official Key)` or `Your Selection` / `Official Key`).
+        - **Automated Verification Suite**: Authored [`tests/test_physics_core2.py`](tests/test_physics_core2.py) with 9 comprehensive unit tests (Gate 0–3 + Rule 13 invariants). Full relevant test suite passes 28/28 tests.
+
+    31. **Interactive Attempt Evaluation, Correct Key Highlighting & Reset Architecture Across All Subjects**:
+        - **Visual Option State Feedback**: Added comprehensive CSS styling in [`css/tablet-12-7.css`](css/tablet-12-7.css) for attempt evaluation:
+          - `.opt-user-correct` / `.proposal-match`: Green background (`#ecfdf5`), solid emerald border (`#10b981`), dark green text.
+          - `.opt-user-wrong` / `.proposal-diff`: Soft red background (`#fef2f2`), solid ruby border (`#ef4444`), dark red text.
+          - `.opt-correct-key` / `.proposal-not-selected`: High-contrast green background (`#f0fdf4`), solid emerald border (`#059669`), green text.
+          - `.opt-neutral-disabled`: Dimmed opacity (0.65), light neutral background (`#f8fafc`).
+          - Badges: `.opt-badge` (`✓ Correct (Your Choice)`, `✓ Correct Option`, `✗ Your Choice (Incorrect)`).
+        - **Responsive Evaluation Banners**: Designed `.attempt-feedback-banner` components with instant visual cues:
+          - `✅ CORRECT`: Confirms choice matches official verified key.
+          - `❌ INCORRECT`: Explicitly names the user's selected choice, identifies the official correct key, and prompts review of the step-by-step derivation.
+          - `ℹ️ DROPPED`: Identifies questions officially dropped by IAPT during examination evaluation.
+        - **Subject Readers Upgraded**: Implemented full `renderAttemptFeedback` evaluation and `[🔄 Reset & Try Again]` retry workflows in:
+          - [`nsejs/js/core2-chemistry-reader.js`](nsejs/js/core2-chemistry-reader.js)
+          - [`nsejs/js/core2-biology-reader.js`](nsejs/js/core2-biology-reader.js)
+          - [`nsejs/js/core2-physics-reader.js`](nsejs/js/core2-physics-reader.js)
+        - **Automated Verification**: Added `test_attempt_evaluation_and_key_highlighting()` in [`tests/test_qb_inline_filter.py`](tests/test_qb_inline_filter.py). Full test suite expanded to 59/59 passing unit tests.
+
+
 
 ---
 
