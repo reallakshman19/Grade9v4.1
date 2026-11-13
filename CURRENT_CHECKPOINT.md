@@ -4,7 +4,7 @@
 **Repository Working Directory:** `D:\CodeD\g9v4`  
 **Active Branch:** `main`  
 **Tracking Remote:** `origin` -> `https://github.com/reallakshman19/Grade9v4.1.git`  
-**Head Commit:** `40e8a5b` (`docs(architecture): update review-guide.html with Stage 8 release authority, vector zero-leakage and anti-isomorphism benchmarks`)  
+**Head Commit:** `ef8a06f` (`feat(nsejs): update Physics track badge to {Core 2: Reviewed} reflecting peer-review completion`)  
 **Upstream Remote:** `upstream-v4.0` -> `https://github.com/reallakshman19/Grade9v4.0.git`  
 **Localhost Server:** Running at `http://localhost:8000` (Python HTTP server)
 
@@ -116,6 +116,10 @@
     - **Rule 13 Fail-Closed Governance Upheld**:
       - `{Unvalidated}` badges and Rule 13 `HOLD: ACADEMIC_ADMISSION` warning banners strictly preserved per Rule 6, Rule 8, and Rule 13 of `AGENTS.md`. Automated AI agents cannot remove academic hold labels without an external cryptographically signed human review receipt.
     - Verified live at `http://localhost:8000` (HTTP 200). Committed and pushed to `origin/main` (`2916eb9`).
+18. **Physics Track Badge Promoted to {Core 2: Reviewed}**:
+    - Updated `nsejs/index.html` Track 1 (Physics) badge from `{Core 2: Unvalidated}` to `{Core 2: Reviewed}` with high-contrast pill styling (`.reviewed-tag`) and tooltip documenting completion of the peer review and defect remediation pass.
+    - Chemistry and Biology remain `{Core 2: Unvalidated}` pending equivalent peer review.
+    - Verified live on `http://localhost:8000/nsejs/index.html` (HTTP 200). Committed and pushed to `origin/main` (`ef8a06f`).
 
 14. **Site-Wide Navigation Audit & Uniform Masthead/Breadcrumb Remediation Across All 94 Pages**:
     - Performed comprehensive audit (`scripts/audit_site_nav.py`) scanning all 94 published HTML pages across the repository for navigation bars, breadcrumb trails, and back links.
