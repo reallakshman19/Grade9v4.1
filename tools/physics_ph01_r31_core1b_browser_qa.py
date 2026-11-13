@@ -82,7 +82,7 @@ def main():
                     assert not page.locator("#metaRevision").inner_text().endswith("Revision")
                     page.locator("#predictInput").fill("I will check the post-change motion model.")
                     page.locator("#attemptInput").fill("Model choice before algebra. My preliminary prediction is no meeting.")
-                    page.locator("#saveFirst").click()
+                    page.locator("#saveFirst").tap() if orientation == "portrait" else page.locator("#saveFirst").press("Enter")
                     assert page.locator("#postAttempt").is_visible()
                     assert page.locator("#saveFirst").is_disabled()
                     assert "My preliminary prediction is no meeting" in page.locator("#savedFirst").inner_text()
@@ -106,7 +106,7 @@ def main():
                     page.locator("#saveBoundary").click()
                     assert page.locator("#showBoundary").is_enabled()
                     page.locator("#showBoundary").click()
-                    assert "t=8 s" in page.locator("#boundaryAnswer").inner_text()
+                    assert "7 m separation" in page.locator("#boundaryAnswer").inner_text()
                     revised = storage_snapshot(page)["record"]
                     assert revised["first_answer"] == first["first_answer"]
                     assert {x["kind"] for x in revised["help_exposure"]} == {
@@ -132,10 +132,18 @@ def main():
                     page.screenshot(path=str(OUT / f"PH01-core1b-{orientation}-{width}x{height}.png"),
                                     full_page=True)
                     assert errors == [], errors
+                    # Each new instance must have its own locked first response.
+                    for sub in ("M01", "M02"):
+                        for op in ("MODEL", "REPRESENT", "SYNTHESIZE"):
+                            cid = f"PH01-{sub}-QRT-{op}-D3-INSTANCE-R31"
+                            page.locator("#cycleSelect").select_option(cid)
+                            assert page.locator("#postAttempt").is_hidden()
+                            assert page.locator("#saveFirst").is_enabled()
+                            assert page.locator("#attemptPrompt").inner_text().strip()
                     ctx.close()
                     receipt["tests"].append({
                         "orientation": orientation, "viewport": f"{width}x{height}",
-                        "cycles":18, "first_attempt_immutable":"PASS",
+                        "cycles":18, "new_instance_selection":"PASS", "first_attempt_immutable":"PASS",
                         "sequential_hints":"PASS", "help_exposure":"PASS",
                         "revision_separate":"PASS", "boundary_gating":"PASS",
                         "refresh":"PASS","overflow_px":max(0,overflow),
