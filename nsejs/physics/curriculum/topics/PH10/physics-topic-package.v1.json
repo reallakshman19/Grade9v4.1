@@ -1,0 +1,474 @@
+{
+  "schema": "g9v41-nsejs-physics-topic-package/v1",
+  "subject_id": "PHYSICS",
+  "academic_track": "NSEJS",
+  "topic_id": "PH10",
+  "owner_agent": "AGENT_2",
+  "version": "0.1.0",
+  "status": "DRAFT_AUTHOR_EXPOSED",
+  "pins": {
+    "contracts_version": "1.0.0",
+    "blueprint": {
+      "version": "0.2.0",
+      "git_blob_sha": "700dafcbe86d76442637bcf214eeb544497cf4ea"
+    },
+    "shared_qrt_28": {
+      "version": "1.0.0",
+      "git_blob_sha": "e2409aef11ae7d98444593bfbe1a38eb00c97cef"
+    },
+    "topic_adapter_version": "0.1.0"
+  },
+  "syllabus_references": [
+    {
+      "reference_id": "PH10-CBSE",
+      "locator": "https://cbseacademic.nic.in/web_material/CurriculumMain27/SecPart1/Science_SecP1_2026-27.pdf",
+      "authority": "CBSE_2026_27_CURRICULUM",
+      "scope_status": "CANDIDATE"
+    }
+  ],
+  "subtopics": [
+    {
+      "id": "PH10-09",
+      "title": "Lens displacement: conjugate images and limiting geometry",
+      "scope_role": "SYLLABUS_CORE_CANDIDATE",
+      "syllabus_reference_ids": [
+        "PH10-CBSE"
+      ],
+      "prerequisite_ids": [
+        "PH10-07",
+        "PH10-08"
+      ],
+      "science_ref_ids": [
+        "PH10-SCI-LEAD-01"
+      ],
+      "learning_goal": "Derive, defend and check lens displacement: conjugate images and limiting geometry using the actual model conditions instead of pattern matching.",
+      "textbook_chapter_ref": "nsejs/physics/curriculum/topics/PH10/CHAPTER_LEAD_DRAFT.md",
+      "qrt_targets": [
+        {
+          "id": "PH10-LEAD-MODEL-D3",
+          "task_identity": "G9-AUTH-PH10-MODEL-001",
+          "band": "D3",
+          "primary_operation": "MODEL",
+          "blueprint_cell": "D3.4",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Choose the constrained thin-lens model and defend its assumptions rather than applying an unrelated focal-length shortcut.",
+          "decisive_route": "Learner independently: A lens is moved along a track while the real object and screen stay fixed. Decide whether changing one conjugate distance leaves the other independent. Under thin converging lens under paraxial conditions, check at d=4f there is one double root, not two distinct lens positions.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "The exact MODEL task tests the applicability of Paraxial thin-lens imaging and constrained object-screen geometry; learner must distinguish relevant and irrelevant conditions."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "The MODEL task requires translating Object-screen-line and quadratic discriminant; thin-lens/paraxial assumptions into a precise representation with labeled givens."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "The MODEL task links at least two warranted reasoning moves: Let x denote object-to-lens distance and D-x lens-to-screen distance. Then Use 1/f=1/x+1/(D-x) and rearrange to x²-Dx+fD=0."
+            },
+            "algebra_computational_load": {
+              "score": 0,
+              "evidence": "The authored MODEL task uses no mandatory computation as its decisive act; the number of arithmetic steps is not counted as reasoning depth."
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "The MODEL task includes a near-neighbour or boundary: At D=4f there is one double root, not two distinct lens positions"
+            }
+          }
+        },
+        {
+          "id": "PH10-LEAD-SYNTHESIZE-D3",
+          "task_identity": "G9-AUTH-PH10-SYNTHESIZE-001",
+          "band": "D3",
+          "primary_operation": "SYNTHESIZE",
+          "blueprint_cell": "D3.6",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Synthesize the conjugate lens equation, fixed-distance geometry and root structure to determine image positions.",
+          "decisive_route": "Learner independently: For D=100 cm and f=24 cm, compute physically allowed x values and the two-position separation. Under thin converging lens under paraxial conditions, check at d=4f there is one double root, not two distinct lens positions.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 1,
+              "evidence": "The exact SYNTHESIZE task tests the applicability of Paraxial thin-lens imaging and constrained object-screen geometry; learner must distinguish relevant and irrelevant conditions."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "The SYNTHESIZE task requires translating Object-screen-line and quadratic discriminant; thin-lens/paraxial assumptions into a precise representation with labeled givens."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "The SYNTHESIZE task links at least two warranted reasoning moves: Let x denote object-to-lens distance and D-x lens-to-screen distance. Then Use 1/f=1/x+1/(D-x) and rearrange to x²-Dx+fD=0."
+            },
+            "algebra_computational_load": {
+              "score": 1,
+              "evidence": "The authored SYNTHESIZE task uses a concrete numerical or symbolic execution step where meaningful; the number of arithmetic steps is not counted as reasoning depth."
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "The SYNTHESIZE task includes a near-neighbour or boundary: For D<4f no positive real screen-image lens positions exist in the thin-lens model"
+            }
+          }
+        },
+        {
+          "id": "PH10-LEAD-JUSTIFY-D3",
+          "task_identity": "G9-AUTH-PH10-JUSTIFY-001",
+          "band": "D3",
+          "primary_operation": "JUSTIFY",
+          "blueprint_cell": "D3.7",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Justify a general inequality and refute the assertion that equality gives two distinct images.",
+          "decisive_route": "Learner independently: A claim says a fixed object-screen track with D=4f always has two different usable lens positions. Prove or refute it from first principles. Under thin converging lens under paraxial conditions, check at d=4f there is one double root, not two distinct lens positions.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 1,
+              "evidence": "The exact JUSTIFY task tests the applicability of Paraxial thin-lens imaging and constrained object-screen geometry; learner must distinguish relevant and irrelevant conditions."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "The JUSTIFY task requires translating Object-screen-line and quadratic discriminant; thin-lens/paraxial assumptions into a precise representation with labeled givens."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "The JUSTIFY task links at least two warranted reasoning moves: Let x denote object-to-lens distance and D-x lens-to-screen distance. Then Use 1/f=1/x+1/(D-x) and rearrange to x²-Dx+fD=0."
+            },
+            "algebra_computational_load": {
+              "score": 0,
+              "evidence": "The authored JUSTIFY task uses no mandatory computation as its decisive act; the number of arithmetic steps is not counted as reasoning depth."
+            },
+            "trap_exception_sensitivity": {
+              "score": 2,
+              "evidence": "The JUSTIFY task includes a near-neighbour or boundary: Scattering, aberration or a thick-lens principal-plane shift can invalidate numerical use of a thin-lens approximation"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "science_records": [
+    {
+      "id": "PH10-SCI-LEAD-01",
+      "claim": "For a thin converging lens and a fixed real object-screen separation D, a sharp real image occurs at lens locations x satisfying x(D-x)=fD; two distinct lens locations exist only when D>4f.",
+      "law_or_model": "Paraxial thin-lens imaging and constrained object-screen geometry",
+      "assumptions": [
+        "Thin converging lens under paraxial conditions",
+        "Real object and screen fixed with D>0",
+        "Image sharpness can be idealized as a real conjugate image on the screen"
+      ],
+      "conditions_and_limits": [
+        "At D=4f there is one double root, not two distinct lens positions",
+        "For D<4f no positive real screen-image lens positions exist in the thin-lens model",
+        "Scattering, aberration or a thick-lens principal-plane shift can invalidate numerical use of a thin-lens approximation"
+      ],
+      "units_and_signs": "Distances f, x, D, d in consistent lengths; magnification dimensionless. Domain 0<x<D.",
+      "source_refs": [
+        "PH10-CBSE"
+      ],
+      "qualification_status": "HOLD"
+    }
+  ],
+  "topic_adapter": {
+    "adapter_id": "PHYS-TOPIC-PH10",
+    "topic_id": "PH10",
+    "version": "0.1.0",
+    "for_blueprint": "PHYS-QRT-BLUEPRINT 0.2.0",
+    "status": "CANDIDATE_ONLY",
+    "cells": [
+      {
+        "cell_id": "D3.4",
+        "instance_ids": [
+          "PH10-LEAD-MODEL-D3"
+        ]
+      },
+      {
+        "cell_id": "D3.6",
+        "instance_ids": [
+          "PH10-LEAD-SYNTHESIZE-D3"
+        ]
+      },
+      {
+        "cell_id": "D3.7",
+        "instance_ids": [
+          "PH10-LEAD-JUSTIFY-D3"
+        ]
+      }
+    ]
+  },
+  "core1a": [
+    {
+      "id": "PH10-LEAD-CORE1A-01",
+      "subtopic_id": "PH10-09",
+      "covered_qrt_ids": [
+        "PH10-LEAD-MODEL-D3",
+        "PH10-LEAD-SYNTHESIZE-D3",
+        "PH10-LEAD-JUSTIFY-D3"
+      ],
+      "phenomenon": "With an illuminated object and fixed screen, moving a convex lens can produce two separate sharp-image positions.",
+      "scientific_narrative": "Place a real object and a screen a fixed distance D apart. A converging thin lens forms a sharp real image only if the object and image distances satisfy its conjugate relation. When we slide the lens, increasing its object distance simultaneously decreases its distance to the screen. This constraint is the key to the two-position effect, not a memorized formula. Let x be the object-to-lens distance, so the lens-to-screen distance is D-x. Substitution into 1/f=1/x+1/(D-x) produces x(D-x)=fD. The left-hand side is a concave quadratic with maximum D²/4 at the midpoint. Thus a real focus exists only if D≥4f. At equality the two locations coincide. When D>4f, two distinct solutions x1 and x2 add to D. One gives a larger inverted image and the other a smaller inverted image. Measuring the distance d between lens positions permits an inverse determination of f, but only with careful definition of D and d and within the thin-lens approximations.",
+      "prerequisites": [
+        "PH10-07",
+        "PH10-08"
+      ],
+      "derivation_steps": [
+        {
+          "action": "Let x denote object-to-lens distance and D-x lens-to-screen distance.",
+          "why_valid": "The object and screen are fixed, so their lens distances sum to D.",
+          "science_ref_id": "PH10-SCI-LEAD-01"
+        },
+        {
+          "action": "Use 1/f=1/x+1/(D-x) and rearrange to x²-Dx+fD=0.",
+          "why_valid": "The thin-lens law holds for paraxial real conjugate imaging in the adopted positive-distance convention.",
+          "science_ref_id": "PH10-SCI-LEAD-01"
+        },
+        {
+          "action": "Require a nonnegative discriminant D²-4fD and distinguish equality from two distinct roots.",
+          "why_valid": "Real positions require nonnegative discriminant; two distinct positions require it to be positive.",
+          "science_ref_id": "PH10-SCI-LEAD-01"
+        },
+        {
+          "action": "Use d=|x2-x1| and x1+x2=D to derive f=(D²-d²)/(4D).",
+          "why_valid": "Root sum/product identities preserve the two-position geometry and yield the inverse focal-length relation.",
+          "science_ref_id": "PH10-SCI-LEAD-01"
+        }
+      ],
+      "model_limits": [
+        "At D=4f there is one double root, not two distinct lens positions",
+        "For D<4f no positive real screen-image lens positions exist in the thin-lens model",
+        "Scattering, aberration or a thick-lens principal-plane shift can invalidate numerical use of a thin-lens approximation"
+      ],
+      "progressive_examples": [
+        {
+          "id": "PH10-EX-1",
+          "tier": "FOUNDATION",
+          "problem": "Object and screen are 90 cm apart and f=20 cm. Find all sharp-image lens positions.",
+          "reasoning": "Solve x²-90x+1800=0, giving x=30 cm and x=60 cm.",
+          "independent_check": "Both yield 1/20=1/30+1/60; separation d=30 cm."
+        },
+        {
+          "id": "PH10-EX-2",
+          "tier": "CONNECTED",
+          "problem": "The object-screen separation is 80 cm, and the two distinct lens positions are 40 cm apart. Estimate f.",
+          "reasoning": "f=(80²-40²)/(4*80)=(6400-1600)/320=15 cm.",
+          "independent_check": "D>4f is 80>60, consistent with two positions."
+        },
+        {
+          "id": "PH10-EX-3",
+          "tier": "ADVANCED",
+          "problem": "A technician fixes D=60 cm for a lens with f=15 cm and expects two distinct image positions.",
+          "reasoning": "D=4f: only one position at x=D/2=30 cm, a double root.",
+          "independent_check": "The discriminant vanishes; having two equal algebraic roots is not two distinct lens settings."
+        }
+      ],
+      "figures": [
+        {
+          "id": "PH10-FIG-LEAD-01",
+          "reasoning_step": "Let x denote object-to-lens distance and D-x lens-to-screen distance.",
+          "scene_description": "Original to-scale object–lens–screen track with adjustable x, fixed D, two candidate lens positions, and separate ray sketches for enlarged/reduced inverted images.",
+          "source_or_authorship": "ORIGINAL_AUTHOR_FIGURE_SPEC__NOT_YET_RENDERED"
+        }
+      ],
+      "misconception": {
+        "wrong_model": "The fixed object-screen distance guarantees two sharp-image lens positions for any converging lens.",
+        "diagnostic": "What happens at D=4f? Do two equal quadratic roots represent separate settings?",
+        "repair": "Interpret the discriminant and physical position domain; D=4f has one position, D<4f has none."
+      },
+      "exit_check": {
+        "task": "A converging lens has f=18 cm; a fixed object-screen separation is D=70 cm. Are sharp-image positions possible?",
+        "answer": "No sharp real image positions under this thin-lens model.",
+        "reasoning": "4f=72 cm is greater than D, so the discriminant is negative."
+      },
+      "authorship_status": "DRAFT_AUTHOR_EXPOSED"
+    }
+  ],
+  "core1b": [
+    {
+      "id": "PH10-MAIN-MODEL-01",
+      "kind": "MAIN",
+      "subtopic_id": "PH10-09",
+      "qrt_target_id": "PH10-LEAD-MODEL-D3",
+      "fresh_task": "For D=75 cm and proposed f=20 cm, choose between free object-image imaging and fixed-total-distance imaging before predicting focus.",
+      "protected_work": "Choose the constrained thin-lens model and defend its assumptions rather than applying an unrelated focal-length shortcut.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Before any help, predict the qualitative outcome: Choose the constrained thin-lens model and defend its assumptions rather than applying an unrelated focal-length shortcut.",
+        "attempt": "For D=75 cm and proposed f=20 cm, choose between free object-image imaging and fixed-total-distance imaging before predicting focus.",
+        "reconstruct": "After committing the first answer, reconstruct the reasoning with Let x denote object-to-lens distance and D-x lens-to-screen distance. -> Use 1/f=1/x+1/(D-x) and rearrange to x²-Dx+fD=0. -> Require a nonnegative discriminant D²-4fD and distinguish equality from two distinct roots. -> Use d=|x2-x1| and x1+x2=D to derive f=(D²-d²)/(4D). and compare assumptions.",
+        "diagnose": "Contrast an incorrect route (The fixed object-screen distance guarantees two sharp-image lens positions for any converging lens.) with your saved first answer; do not infer misconception without discriminating evidence.",
+        "repair": "Use the replacement principle: Interpret the discriminant and physical position domain; D=4f has one position, D<4f has none. Rebuild the inference, not merely the final answer.",
+        "boundary_test": "Replace the thin lens with a thick lens whose principal-plane separation is unknown. State what new calibration is required."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH10-INSTANCE-MODEL-01",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH10-09",
+      "qrt_target_id": "PH10-LEAD-MODEL-D3",
+      "fresh_task": "A lens is moved along a track while the real object and screen stay fixed. Decide whether changing one conjugate distance leaves the other independent.",
+      "protected_work": "Choose the constrained thin-lens model and defend its assumptions rather than applying an unrelated focal-length shortcut.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Before any help, predict the qualitative outcome: Choose the constrained thin-lens model and defend its assumptions rather than applying an unrelated focal-length shortcut.",
+        "attempt": "A lens is moved along a track while the real object and screen stay fixed. Decide whether changing one conjugate distance leaves the other independent.",
+        "reconstruct": "After committing the first answer, reconstruct the reasoning with Let x denote object-to-lens distance and D-x lens-to-screen distance. -> Use 1/f=1/x+1/(D-x) and rearrange to x²-Dx+fD=0. -> Require a nonnegative discriminant D²-4fD and distinguish equality from two distinct roots. -> Use d=|x2-x1| and x1+x2=D to derive f=(D²-d²)/(4D). and compare assumptions.",
+        "diagnose": "Contrast an incorrect route (The fixed object-screen distance guarantees two sharp-image lens positions for any converging lens.) with your saved first answer; do not infer misconception without discriminating evidence.",
+        "repair": "Use the replacement principle: Interpret the discriminant and physical position domain; D=4f has one position, D<4f has none. Rebuild the inference, not merely the final answer.",
+        "boundary_test": "Replace the thin lens with a thick lens whose principal-plane separation is unknown. State what new calibration is required."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH10-MAIN-SYNTHESIZE-01",
+      "kind": "MAIN",
+      "subtopic_id": "PH10-09",
+      "qrt_target_id": "PH10-LEAD-SYNTHESIZE-D3",
+      "fresh_task": "For D=84 cm and f=20 cm, derive both lens positions without memorizing the lens-displacement formula.",
+      "protected_work": "Synthesize the conjugate lens equation, fixed-distance geometry and root structure to determine image positions.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Before any help, predict the qualitative outcome: Synthesize the conjugate lens equation, fixed-distance geometry and root structure to determine image positions.",
+        "attempt": "For D=84 cm and f=20 cm, derive both lens positions without memorizing the lens-displacement formula.",
+        "reconstruct": "After committing the first answer, reconstruct the reasoning with Let x denote object-to-lens distance and D-x lens-to-screen distance. -> Use 1/f=1/x+1/(D-x) and rearrange to x²-Dx+fD=0. -> Require a nonnegative discriminant D²-4fD and distinguish equality from two distinct roots. -> Use d=|x2-x1| and x1+x2=D to derive f=(D²-d²)/(4D). and compare assumptions.",
+        "diagnose": "Contrast an incorrect route (The fixed object-screen distance guarantees two sharp-image lens positions for any converging lens.) with your saved first answer; do not infer misconception without discriminating evidence.",
+        "repair": "Use the replacement principle: Interpret the discriminant and physical position domain; D=4f has one position, D<4f has none. Rebuild the inference, not merely the final answer.",
+        "boundary_test": "Place the screen closer until D=4f; predict how the two positions merge."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH10-INSTANCE-SYNTHESIZE-01",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH10-09",
+      "qrt_target_id": "PH10-LEAD-SYNTHESIZE-D3",
+      "fresh_task": "For D=100 cm and f=24 cm, compute physically allowed x values and the two-position separation.",
+      "protected_work": "Synthesize the conjugate lens equation, fixed-distance geometry and root structure to determine image positions.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Before any help, predict the qualitative outcome: Synthesize the conjugate lens equation, fixed-distance geometry and root structure to determine image positions.",
+        "attempt": "For D=100 cm and f=24 cm, compute physically allowed x values and the two-position separation.",
+        "reconstruct": "After committing the first answer, reconstruct the reasoning with Let x denote object-to-lens distance and D-x lens-to-screen distance. -> Use 1/f=1/x+1/(D-x) and rearrange to x²-Dx+fD=0. -> Require a nonnegative discriminant D²-4fD and distinguish equality from two distinct roots. -> Use d=|x2-x1| and x1+x2=D to derive f=(D²-d²)/(4D). and compare assumptions.",
+        "diagnose": "Contrast an incorrect route (The fixed object-screen distance guarantees two sharp-image lens positions for any converging lens.) with your saved first answer; do not infer misconception without discriminating evidence.",
+        "repair": "Use the replacement principle: Interpret the discriminant and physical position domain; D=4f has one position, D<4f has none. Rebuild the inference, not merely the final answer.",
+        "boundary_test": "Place the screen closer until D=4f; predict how the two positions merge."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH10-MAIN-JUSTIFY-01",
+      "kind": "MAIN",
+      "subtopic_id": "PH10-09",
+      "qrt_target_id": "PH10-LEAD-JUSTIFY-D3",
+      "fresh_task": "Given a measured separation d and D, show symbolically why 0≤d<D and f=(D²-d²)/(4D).",
+      "protected_work": "Justify a general inequality and refute the assertion that equality gives two distinct images.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Before any help, predict the qualitative outcome: Justify a general inequality and refute the assertion that equality gives two distinct images.",
+        "attempt": "Given a measured separation d and D, show symbolically why 0≤d<D and f=(D²-d²)/(4D).",
+        "reconstruct": "After committing the first answer, reconstruct the reasoning with Let x denote object-to-lens distance and D-x lens-to-screen distance. -> Use 1/f=1/x+1/(D-x) and rearrange to x²-Dx+fD=0. -> Require a nonnegative discriminant D²-4fD and distinguish equality from two distinct roots. -> Use d=|x2-x1| and x1+x2=D to derive f=(D²-d²)/(4D). and compare assumptions.",
+        "diagnose": "Contrast an incorrect route (The fixed object-screen distance guarantees two sharp-image lens positions for any converging lens.) with your saved first answer; do not infer misconception without discriminating evidence.",
+        "repair": "Use the replacement principle: Interpret the discriminant and physical position domain; D=4f has one position, D<4f has none. Rebuild the inference, not merely the final answer.",
+        "boundary_test": "A measured D<4f is reported with two sharp lens positions. Identify which assumption or measurement must be questioned."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH10-INSTANCE-JUSTIFY-01",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH10-09",
+      "qrt_target_id": "PH10-LEAD-JUSTIFY-D3",
+      "fresh_task": "A claim says a fixed object-screen track with D=4f always has two different usable lens positions. Prove or refute it from first principles.",
+      "protected_work": "Justify a general inequality and refute the assertion that equality gives two distinct images.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Before any help, predict the qualitative outcome: Justify a general inequality and refute the assertion that equality gives two distinct images.",
+        "attempt": "A claim says a fixed object-screen track with D=4f always has two different usable lens positions. Prove or refute it from first principles.",
+        "reconstruct": "After committing the first answer, reconstruct the reasoning with Let x denote object-to-lens distance and D-x lens-to-screen distance. -> Use 1/f=1/x+1/(D-x) and rearrange to x²-Dx+fD=0. -> Require a nonnegative discriminant D²-4fD and distinguish equality from two distinct roots. -> Use d=|x2-x1| and x1+x2=D to derive f=(D²-d²)/(4D). and compare assumptions.",
+        "diagnose": "Contrast an incorrect route (The fixed object-screen distance guarantees two sharp-image lens positions for any converging lens.) with your saved first answer; do not infer misconception without discriminating evidence.",
+        "repair": "Use the replacement principle: Interpret the discriminant and physical position domain; D=4f has one position, D<4f has none. Rebuild the inference, not merely the final answer.",
+        "boundary_test": "A measured D<4f is reported with two sharp lens positions. Identify which assumption or measurement must be questioned."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    }
+  ],
+  "core2_sources": [],
+  "acceptance": {
+    "b1_b7": {
+      "B1": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B2": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B3": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B4": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B5": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B6": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B7": {
+        "status": "HOLD",
+        "evidence_refs": []
+      }
+    },
+    "gates": {
+      "source_authenticity": "HOLD",
+      "content_correctness": "HOLD",
+      "cognitive_qualification": "HOLD",
+      "teaching_sufficiency": "HOLD",
+      "assessment_validity": "HOLD",
+      "implementation": "NOT_RUN",
+      "release_authority": "HOLD"
+    },
+    "release": "HOLD",
+    "acceptance_note": "Six independent authored lead constructions only; 83-subtopic inventory remains planning. No exam claim, science/independent QRT approval, actual learner attempt runtime, or release. Academic review and B1–B7 HOLD."
+  }
+}
