@@ -1,0 +1,105 @@
+{
+  "schema": "g9v41-b02-subtopic-preview/v1",
+  "status": "DRAFT_AUTHOR_EXPOSED",
+  "owner_agent": "AGENT_2",
+  "topic_id": "PH10",
+  "subtopic_id": "PH10-08",
+  "version": "0.1.0",
+  "source_question_uid": "g9:PHYSICS:NSEJS-19-OPT-02",
+  "source_revision_sha256": "feceb2144124c1807830baf8f09047dbaf51ec9aa570c449e1e09cb1e0bf57a4",
+  "source_role": "AUTHORED_TRANSFER",
+  "source_return": "nsejs/physics/index.html?topic=optics&q=NSEJS-19-OPT-02#question-NSEJS-19-OPT-02",
+  "core1b": [
+    {
+      "id": "PH10-08-CORE2-SCREW-MAIN-R1",
+      "kind": "MAIN",
+      "subtopic_id": "PH10-08",
+      "qrt_target_id": "PH10-08-CORE2-SCREW-SYNTHESIZE-R1",
+      "primary_operation": "SYNTHESIZE",
+      "source_role": "AUTHORED_TRANSFER",
+      "difficulty_status": "AUTHOR_NOMINATION__INDEPENDENT_HOLD",
+      "content_revision": "0.1.0",
+      "fresh_task": "An optical adjustment screw of pitch 0.8 mm/turn changes object–lens separation; the thin lens has F=48 mm. A real screen image changes from four times to twice object height. Calculate the number of complete turns and required relative screen travel; decide whether a screen rigidly fixed to the lens could stay sharp throughout.",
+      "protected_work": "Infer relative conjugate distances from magnification, convert mechanical pitch into travel and test the screen constraint.",
+      "stages": {
+        "predict": "State the expected relationship or outcome and your uncertainty before solving.",
+        "attempt": "An optical adjustment screw of pitch 0.8 mm/turn changes object–lens separation; the thin lens has F=48 mm. A real screen image changes from four times to twice object height. Calculate the number of complete turns and required relative screen travel; decide whether a screen rigidly fixed to the lens could stay sharp throughout.",
+        "reconstruct": "p₁=48(1+1/4)=60 mm, p₂=48(1+1/2)=72 mm; Δp=12 mm, N=15 turns. q₁=48(1+4)=240 mm, q₂=48(1+2)=144 mm; Δq=−96 mm. A screen fixed relative to lens cannot satisfy both sharp conjugates.",
+        "diagnose": "Only if your saved answer exhibits this error: Using magnification as a linear mechanical displacement or assuming one fixed screen stays conjugate. Otherwise record insufficient evidence.",
+        "repair": "Compute p and q independently from the measured M; translate only Δp via screw pitch and verify Δq.",
+        "boundary_test": "What changes if the screw moves lens and screen together rather than changing only object–lens separation?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH10-08-CORE2-SCREW-INSTANCE-R1",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH10-08",
+      "qrt_target_id": "PH10-08-CORE2-SCREW-SYNTHESIZE-R1",
+      "primary_operation": "SYNTHESIZE",
+      "source_role": "AUTHORED_TRANSFER",
+      "difficulty_status": "INSTANCE_UNSCORED",
+      "content_revision": "0.1.0",
+      "fresh_task": "A 75 mm lens makes a real image with |m| changing from 5 to 3. Pitch is 0.5 mm/turn. Find relative object travel and turns, and state what must be done with the screen.",
+      "protected_work": "Infer relative conjugate distances from magnification, convert mechanical pitch into travel and test the screen constraint.",
+      "stages": {
+        "predict": "State the expected relationship or outcome and your uncertainty before solving.",
+        "attempt": "A 75 mm lens makes a real image with |m| changing from 5 to 3. Pitch is 0.5 mm/turn. Find relative object travel and turns, and state what must be done with the screen.",
+        "reconstruct": "p₁=90 mm, p₂=100 mm; travel 10 mm, 20 turns. q₁=450 mm, q₂=300 mm, so screen must move −150 mm relative to lens to restore focus.",
+        "diagnose": "Only if your saved answer exhibits this error: Using magnification as a linear mechanical displacement or assuming one fixed screen stays conjugate. Otherwise record insufficient evidence.",
+        "repair": "Compute p and q independently from the measured M; translate only Δp via screw pitch and verify Δq.",
+        "boundary_test": "What changes if the screw moves lens and screen together rather than changing only object–lens separation?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    }
+  ],
+  "author_main_assessment": {
+    "primary_operation": "SYNTHESIZE",
+    "band_candidate": "D3",
+    "blueprint_cell": "D3.6",
+    "factor_evidence": {
+      "concept_model_selection": {
+        "score": 1,
+        "evidence": "Choose the governing model: Infer relative conjugate distances from magnification, convert mechanical pitch into travel and test the screen constraint."
+      },
+      "representation_translation": {
+        "score": 1,
+        "evidence": "Translate the given geometry/measurements to the required representation: An optical adjustment screw of pitch 0.8 mm/turn changes object–lens separation; the thin lens has F=48 mm. A real screen image changes from four times to twice object height. Calculate the number of complete turns and required relative screen travel; decide whether a screen rigidly fixed to the lens could stay sharp throughout."
+      },
+      "reasoning_chain_length": {
+        "score": 2,
+        "evidence": "Coordinate dependent reasoning moves: p₁=48(1+1/4)=60 mm, p₂=48(1+1/2)=72 mm; Δp=12 mm, N=15 turns. q₁=48(1+4)=240 mm, q₂=48(1+2)=144 mm; Δq=−96 mm. A screen fixed relative to lens cannot satisfy both sharp conjugates."
+      },
+      "algebra_computational_load": {
+        "score": 1,
+        "evidence": "Material routine multi-step arithmetic or algebra required in the exact MAIN; no extra score for solution length."
+      },
+      "trap_exception_sensitivity": {
+        "score": 2,
+        "evidence": "Test the applicable boundary: What changes if the screw moves lens and screen together rather than changing only object–lens separation?"
+      }
+    },
+    "total": 7,
+    "disposition": "AUTHOR_PROPOSED_NOT_INDEPENDENT",
+    "instance_band": "NOT_SCORED"
+  },
+  "acceptance": {
+    "release": "HOLD",
+    "academic": "HOLD",
+    "native_contract": "NOT_VALIDATED",
+    "implementation": "NOT_RUN"
+  },
+  "note": "Fresh source-related authored transfer. This is not a verified examination or independent cognitive qualification."
+}

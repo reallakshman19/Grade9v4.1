@@ -1,0 +1,105 @@
+{
+  "schema": "g9v41-b02-subtopic-preview/v1",
+  "status": "DRAFT_AUTHOR_EXPOSED",
+  "owner_agent": "AGENT_2",
+  "topic_id": "PH10",
+  "subtopic_id": "PH10-09",
+  "version": "0.1.0",
+  "source_question_uid": "g9:pcb:physics:nsejs-optics-displacement-d3-r1:001",
+  "source_revision_sha256": "da9126e0f1f7a3e6d145e44faf03b6b2131ea92227778ce0491730bfae203d3f",
+  "source_role": "AUTHORED_TRANSFER",
+  "source_return": "nsejs/physics/core1/nsejs-optics-displacement-d3-r1/index.html",
+  "core1b": [
+    {
+      "id": "PH10-09-CORE2-DISPLACEMENT-MAIN-R1",
+      "kind": "MAIN",
+      "subtopic_id": "PH10-09",
+      "qrt_target_id": "PH10-09-CORE2-DISPLACEMENT-SYNTHESIZE-R1",
+      "primary_operation": "SYNTHESIZE",
+      "source_role": "AUTHORED_TRANSFER",
+      "difficulty_status": "AUTHOR_NOMINATION__INDEPENDENT_HOLD",
+      "content_revision": "0.1.0",
+      "fresh_task": "A fixed object–screen bench has separation 120 cm and two sharp lens positions 60 cm apart. A technician reports the smaller image is 2 cm high and the larger is 6 cm high. Determine f and positions, then test the reported height pair and infer the correct larger height if the smaller is accurate.",
+      "protected_work": "Recover both physical roots and relate their exchange to reciprocal image magnification while testing inverse data.",
+      "stages": {
+        "predict": "State the expected relationship or outcome and your uncertainty before solving.",
+        "attempt": "A fixed object–screen bench has separation 120 cm and two sharp lens positions 60 cm apart. A technician reports the smaller image is 2 cm high and the larger is 6 cm high. Determine f and positions, then test the reported height pair and infer the correct larger height if the smaller is accurate.",
+        "reconstruct": "F=(14400−3600)/480=22.5 cm. Roots 30 and 90 cm; |m|=3 and 1/3, height ratio 9. Reported ratio 6/2=3 inconsistent; correct larger height 18 cm. D>4F and both roots positive.",
+        "diagnose": "Only if your saved answer exhibits this error: Mistaking height ratio for one magnification, or accepting inverse data without checking the root constraints. Otherwise record insufficient evidence.",
+        "repair": "Find both conjugates from fixed sum/product, use absolute magnifications and their reciprocal invariant, and test D>4F.",
+        "boundary_test": "If reported L≥D or large/small height ratio is 1, what physically admissible configurations remain?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH10-09-CORE2-DISPLACEMENT-INSTANCE-R1",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH10-09",
+      "qrt_target_id": "PH10-09-CORE2-DISPLACEMENT-SYNTHESIZE-R1",
+      "primary_operation": "SYNTHESIZE",
+      "source_role": "AUTHORED_TRANSFER",
+      "difficulty_status": "INSTANCE_UNSCORED",
+      "content_revision": "0.1.0",
+      "fresh_task": "An optical bench has D=100 cm and a measured large-to-small sharp-image height ratio 16. Infer separation of the two lens positions and focal length, assuming ideal thin lens.",
+      "protected_work": "Recover both physical roots and relate their exchange to reciprocal image magnification while testing inverse data.",
+      "stages": {
+        "predict": "State the expected relationship or outcome and your uncertainty before solving.",
+        "attempt": "An optical bench has D=100 cm and a measured large-to-small sharp-image height ratio 16. Infer separation of the two lens positions and focal length, assuming ideal thin lens.",
+        "reconstruct": "Let larger |m|=√16=4, so q=4p, p+q=100 gives p=20,q=80. L=60 cm; F=pq/D=16 cm. Check swapped positions give |m|=1/4 and ratio 16.",
+        "diagnose": "Only if your saved answer exhibits this error: Mistaking height ratio for one magnification, or accepting inverse data without checking the root constraints. Otherwise record insufficient evidence.",
+        "repair": "Find both conjugates from fixed sum/product, use absolute magnifications and their reciprocal invariant, and test D>4F.",
+        "boundary_test": "If reported L≥D or large/small height ratio is 1, what physically admissible configurations remain?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    }
+  ],
+  "author_main_assessment": {
+    "primary_operation": "SYNTHESIZE",
+    "band_candidate": "D4",
+    "blueprint_cell": "D4.6",
+    "factor_evidence": {
+      "concept_model_selection": {
+        "score": 1,
+        "evidence": "Choose the governing model: Recover both physical roots and relate their exchange to reciprocal image magnification while testing inverse data."
+      },
+      "representation_translation": {
+        "score": 2,
+        "evidence": "Translate the given geometry/measurements to the required representation: A fixed object–screen bench has separation 120 cm and two sharp lens positions 60 cm apart. A technician reports the smaller image is 2 cm high and the larger is 6 cm high. Determine f and positions, then test the reported height pair and infer the correct larger height if the smaller is accurate."
+      },
+      "reasoning_chain_length": {
+        "score": 2,
+        "evidence": "Coordinate dependent reasoning moves: F=(14400−3600)/480=22.5 cm. Roots 30 and 90 cm; |m|=3 and 1/3, height ratio 9. Reported ratio 6/2=3 inconsistent; correct larger height 18 cm. D>4F and both roots positive."
+      },
+      "algebra_computational_load": {
+        "score": 1,
+        "evidence": "Material routine multi-step arithmetic or algebra required in the exact MAIN; no extra score for solution length."
+      },
+      "trap_exception_sensitivity": {
+        "score": 2,
+        "evidence": "Test the applicable boundary: If reported L≥D or large/small height ratio is 1, what physically admissible configurations remain?"
+      }
+    },
+    "total": 8,
+    "disposition": "AUTHOR_PROPOSED_NOT_INDEPENDENT",
+    "instance_band": "NOT_SCORED"
+  },
+  "acceptance": {
+    "release": "HOLD",
+    "academic": "HOLD",
+    "native_contract": "NOT_VALIDATED",
+    "implementation": "NOT_RUN"
+  },
+  "note": "Fresh source-related authored transfer. This is not a verified examination or independent cognitive qualification."
+}

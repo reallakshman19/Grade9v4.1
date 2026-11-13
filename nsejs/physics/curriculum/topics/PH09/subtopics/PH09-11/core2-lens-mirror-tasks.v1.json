@@ -1,0 +1,105 @@
+{
+  "schema": "g9v41-b02-subtopic-preview/v1",
+  "status": "DRAFT_AUTHOR_EXPOSED",
+  "owner_agent": "AGENT_2",
+  "topic_id": "PH09",
+  "subtopic_id": "PH09-11",
+  "version": "0.1.0",
+  "source_question_uid": "g9:PHYSICS:NSEJS-22-OPT-02",
+  "source_revision_sha256": "09362fc73d5bddf0cead49cfeba09d32dad8f4109c1ac8d677ab1326a4f6ffc7",
+  "source_role": "AUTHORED_TRANSFER",
+  "source_return": "nsejs/physics/index.html?topic=optics&q=NSEJS-22-OPT-02#question-NSEJS-22-OPT-02",
+  "core1b": [
+    {
+      "id": "PH09-11-CORE2-LENS-MIRROR-MAIN-R1",
+      "kind": "MAIN",
+      "subtopic_id": "PH09-11",
+      "qrt_target_id": "PH09-11-CORE2-LENS-MIRROR-SYNTHESIZE-R1",
+      "primary_operation": "SYNTHESIZE",
+      "source_role": "AUTHORED_TRANSFER",
+      "difficulty_status": "AUTHOR_NOMINATION__INDEPENDENT_HOLD",
+      "content_revision": "0.1.0",
+      "fresh_task": "A thin converging lens of f=12 cm at x=0 images a 2 cm tall real object at x=−20 cm. Two possible plane-mirror placements perpendicular to the axis are x=22 cm and x=14 cm. For each placement find the would-be lens image, first return focus coordinate and whether it is reached before the lens; give signed transverse height only for a valid first return focus.",
+      "protected_work": "Combine first conjugate, mirror transformation and actual return ordering before reporting the final image and its height.",
+      "stages": {
+        "predict": "State the expected relationship or outcome and your uncertainty before solving.",
+        "attempt": "A thin converging lens of f=12 cm at x=0 images a 2 cm tall real object at x=−20 cm. Two possible plane-mirror placements perpendicular to the axis are x=22 cm and x=14 cm. For each placement find the would-be lens image, first return focus coordinate and whether it is reached before the lens; give signed transverse height only for a valid first return focus.",
+        "reconstruct": "q=12×20/(20−12)=30 cm, m=−30/20=−1.5, h_i=−3 cm. At M=22, x_R=44−30=14 cm: valid real focus before return reaches lens, h_i=−3 cm. At M=14, x_R=28−30=−2 cm: lens intercepted first, so this is only the mirror-only would-be focus; final image/height requires another refraction.",
+        "diagnose": "Only if your saved answer exhibits this error: Calling the first lens image the final image or forgetting that the reflected bundle can hit the lens again. Otherwise record insufficient evidence.",
+        "repair": "Trace chronological element encounters in a fixed global coordinate; then compute local conjugates only for actual encounters.",
+        "boundary_test": "At the boundary M=q/2, why is a separate optical-element model needed?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH09-11-CORE2-LENS-MIRROR-INSTANCE-R1",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH09-11",
+      "qrt_target_id": "PH09-11-CORE2-LENS-MIRROR-SYNTHESIZE-R1",
+      "primary_operation": "SYNTHESIZE",
+      "source_role": "AUTHORED_TRANSFER",
+      "difficulty_status": "INSTANCE_UNSCORED",
+      "content_revision": "0.1.0",
+      "fresh_task": "A real object is 30 cm before a converging lens f=20 cm. A perpendicular plane mirror can slide between lens and would-be real image. Determine the mirror-coordinate interval for the first reflected focus to be strictly between lens and mirror; find the transverse height for a 4 cm object if mirror x=45 cm.",
+      "protected_work": "Combine first conjugate, mirror transformation and actual return ordering before reporting the final image and its height.",
+      "stages": {
+        "predict": "State the expected relationship or outcome and your uncertainty before solving.",
+        "attempt": "A real object is 30 cm before a converging lens f=20 cm. A perpendicular plane mirror can slide between lens and would-be real image. Determine the mirror-coordinate interval for the first reflected focus to be strictly between lens and mirror; find the transverse height for a 4 cm object if mirror x=45 cm.",
+        "reconstruct": "q=20×30/(30−20)=60 cm, m=−2. Require 0<2M−60<M and 0<M<60: 30<M<60 cm. At M=45, x_R=30 cm and height −8 cm. At M=30 focus coincides with lens, outside strict interval.",
+        "diagnose": "Only if your saved answer exhibits this error: Calling the first lens image the final image or forgetting that the reflected bundle can hit the lens again. Otherwise record insufficient evidence.",
+        "repair": "Trace chronological element encounters in a fixed global coordinate; then compute local conjugates only for actual encounters.",
+        "boundary_test": "At the boundary M=q/2, why is a separate optical-element model needed?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    }
+  ],
+  "author_main_assessment": {
+    "primary_operation": "SYNTHESIZE",
+    "band_candidate": "D4",
+    "blueprint_cell": "D4.6",
+    "factor_evidence": {
+      "concept_model_selection": {
+        "score": 1,
+        "evidence": "Choose the governing model: Combine first conjugate, mirror transformation and actual return ordering before reporting the final image and its height."
+      },
+      "representation_translation": {
+        "score": 2,
+        "evidence": "Translate the given geometry/measurements to the required representation: A thin converging lens of f=12 cm at x=0 images a 2 cm tall real object at x=−20 cm. Two possible plane-mirror placements perpendicular to the axis are x=22 cm and x=14 cm. For each placement find the would-be lens image, first return focus coordinate and whether it is reached before the lens; give signed transverse height only for a valid first return focus."
+      },
+      "reasoning_chain_length": {
+        "score": 2,
+        "evidence": "Coordinate dependent reasoning moves: q=12×20/(20−12)=30 cm, m=−30/20=−1.5, h_i=−3 cm. At M=22, x_R=44−30=14 cm: valid real focus before return reaches lens, h_i=−3 cm. At M=14, x_R=28−30=−2 cm: lens intercepted first, so this is only the mirror-only would-be focus; final image/height requires another refraction."
+      },
+      "algebra_computational_load": {
+        "score": 1,
+        "evidence": "Material routine multi-step arithmetic or algebra required in the exact MAIN; no extra score for solution length."
+      },
+      "trap_exception_sensitivity": {
+        "score": 2,
+        "evidence": "Test the applicable boundary: At the boundary M=q/2, why is a separate optical-element model needed?"
+      }
+    },
+    "total": 8,
+    "disposition": "AUTHOR_PROPOSED_NOT_INDEPENDENT",
+    "instance_band": "NOT_SCORED"
+  },
+  "acceptance": {
+    "release": "HOLD",
+    "academic": "HOLD",
+    "native_contract": "NOT_VALIDATED",
+    "implementation": "NOT_RUN"
+  },
+  "note": "Fresh source-related authored transfer. This is not a verified examination or independent cognitive qualification."
+}
