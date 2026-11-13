@@ -363,7 +363,6 @@
       });
       renderAttemptFeedback(selected);
     };
-    };
 
     return box;
   }

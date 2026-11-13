@@ -348,6 +348,15 @@
           - Verified live in headless Chromium browser (1366x854 viewport): Candidate 1 (`NSEJS-24-CIRC-01`) renders 0 "producer" occurrences, generates instant `❌ INCORRECT` alert banner upon selecting Option C, styles Option C with red `✗ Your Choice (Incorrect)` badge, highlights Option D with green `✓ Correct Option` badge, and cleanly resets/re-enables all radio controls when clicking `🔄 Reset & Try Again`.
         - **Automated Verification**: Added `test_attempt_evaluation_and_key_highlighting()` in [`tests/test_qb_inline_filter.py`](tests/test_qb_inline_filter.py) covering Physics, Chemistry, and Biology readers. Full test suite expanded to passing all unit tests with 0 failures.
 
+    32. **Authoring Pipeline Flowchart & Architecture Lessons Upgraded to V4.1 Standard**:
+        - **Codified Operational Lessons in Flowchart**: Updated [`architecture/pipeline-flowchart.html`](architecture/pipeline-flowchart.html) with 5 newly established architecture benchmarks and lessons learned:
+          1. *Adversarial Developer Mock Strings & Jargon Eradication*: Full purge of "producer" / unverified proposal strings in favor of student-facing evaluation banners (`✅ CORRECT` / `❌ INCORRECT`), option badges, and retry controls (`🔄 Reset & Try Again`). Cryptographic details encapsulated in collapsed `<details>` summary.
+          2. *Single Master Topic Navigation Bar*: Consolidation of duplicate pill rows into one unified Master Topic bar directly synchronized with in-page search and filters.
+          3. *W3C SVG Asset Standards & XML Strictness*: Strict adherence to UTF-8 characters and numeric entities, typography $\ge 14\text{px}$, and zero XML parsing errors in Chromium.
+          4. *Bit-for-Bit Stem SHA-256 Sealing & Deduplication*: Gate 0 deduplication and 100% stem hash matching (`declared_matches_observed: true`).
+          5. *Client-Side Cache Invalidation & Attempt Migration*: Versioned script parameters (`?v=4.1.5`), `{ cache: "no-store" }` on JSON fetches, and backward-compatible `localStorage` attempt migration.
+        - **Header Search & Viewport Parity**: Added universal Ctrl+K site search control, stylesheet, and verified live via headless Playwright subagent with 0 console errors.
+
 
 
 ---

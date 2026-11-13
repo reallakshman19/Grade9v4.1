@@ -419,7 +419,6 @@
       });
       renderAttemptFeedback(selected);
     };
-    };
 
     return box;
   }
