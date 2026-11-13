@@ -1,7 +1,7 @@
 {
   "schema": "g9v41-chem-topic-adapter/v1",
   "adapter_id": "CHEM-C01",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "subject": "CHEMISTRY",
   "unit_id": "C01",
   "blueprint_ref": "CHEM-QRT-BLUEPRINT@0.1.0",
@@ -40,9 +40,9 @@
           ],
           "slots": {
             "X": "Explain why a tiny coloured drop can eventually tint the entire closed beaker without adding more dye.",
-            "Y": "A drop of dye spreads through still water. What unseen moving entities can explain this change? Link invisible random molecular motion to visible changes in concentration; distinguish observation from inference.",
+            "Y": "Chemistry warrant: Link invisible random molecular motion to visible changes in concentration; distinguish observation from inference. Prior basis: Specify the system: a closed beaker preserves its total matter even while solutes redistribute.",
             "Z": "A clear region becomes slightly coloured as dye particles cross into it and redistribute while total particle number stays fixed.",
-            "W": "Learner independently performs the decisive EXPLAIN inference required by: Explain why a tiny coloured drop can eventually tint the entire closed beaker without adding more dye."
+            "W": "Without the answer or decisive strategy supplied in advance, derive the causal explanation for this new task: \"Explain why a tiny coloured drop can eventually tint the entire closed beaker without adding more dye.\" A valid independent result must satisfy: Check conservation for a declared system boundary."
           },
           "student_task": "Explain why a tiny coloured drop can eventually tint the entire closed beaker without adding more dye.",
           "wrong_idea": "The coloured substance multiplies as it spreads.",
@@ -68,9 +68,9 @@
           ],
           "slots": {
             "X": "A red solute disperses without gas, heat or precipitate. What simple model best explains the uniform red appearance, and what would further test it?",
-            "Y": "A drop of dye spreads through still water. What unseen moving entities can explain this change? An observation of uniform colour does not establish formation of a new chemical substance. A model must predict a distinguishing observation.",
+            "Y": "Chemistry warrant: An observation of uniform colour does not establish formation of a new chemical substance. A model must predict a distinguishing observation. Prior basis: Specify the system: a closed beaker preserves its total matter even while solutes redistribute.",
             "Z": "Simple diffusion changes position and concentration; reaction changes species identities. A colour change could have either cause in other experiments.",
-            "W": "Learner independently performs the decisive MODEL inference required by: A red solute disperses without gas, heat or precipitate. What simple model best explains the uniform red appearance, and what would further test it?"
+            "W": "Without the answer or decisive strategy supplied in advance, choose and test a scientific model for this new task: \"A red solute disperses without gas, heat or precipitate. What simple model best explains the uniform red appearance, and what would further test it?\" A valid independent result must satisfy: A model prediction must be distinguishable from a compatible alternative."
           },
           "student_task": "A red solute disperses without gas, heat or precipitate. What simple model best explains the uniform red appearance, and what would further test it?",
           "wrong_idea": "The coloured substance multiplies as it spreads.",
@@ -96,9 +96,9 @@
           ],
           "slots": {
             "X": "A student says dye spreading proves that water molecules and dye particles have identical masses. Critique this inference.",
-            "Y": "A drop of dye spreads through still water. What unseen moving entities can explain this change? A photograph of a uniform solution does not prove the detailed mechanism or precise molecular size. Scientific arguments distinguish inference from directly observed facts.",
+            "Y": "Chemistry warrant: A photograph of a uniform solution does not prove the detailed mechanism or precise molecular size. Scientific arguments distinguish inference from directly observed facts. Prior basis: Specify the system: a closed beaker preserves its total matter even while solutes redistribute.",
             "Z": "Uniform colour is compatible with many particle motions; it cannot uniquely reveal the particle's mass or bond structure.",
-            "W": "Learner independently performs the decisive JUSTIFY inference required by: A student says dye spreading proves that water molecules and dye particles have identical masses. Critique this inference."
+            "W": "Without the answer or decisive strategy supplied in advance, identify decisive evidence or a counterexample and delimit the claim for this new task: \"A student says dye spreading proves that water molecules and dye particles have identical masses. Critique this inference.\" A valid independent result must satisfy: Reject deductions that exceed the measurement."
           },
           "student_task": "A student says dye spreading proves that water molecules and dye particles have identical masses. Critique this inference.",
           "wrong_idea": "The coloured substance multiplies as it spreads.",
@@ -140,14 +140,14 @@
           ],
           "slots": {
             "X": "A sealed air syringe compresses easily, but the same syringe filled with water barely compresses. Explain.",
-            "Y": "Why is it difficult to squeeze liquid water into half its original volume but easy to compress air? Connect particle spacing with bulk compressibility, while accounting for a sealed container and constant particle identities.",
+            "Y": "Chemistry warrant: Connect particle spacing with bulk compressibility, while accounting for a sealed container and constant particle identities. Prior basis: Observe shape and volume independently. A liquid flows to fit its vessel while maintaining approximately the same volume.",
             "Z": "Halve the syringe volume without losing air. Same particles, smaller typical distances; pressure generally rises.",
-            "W": "Learner independently performs the decisive EXPLAIN inference required by: A sealed air syringe compresses easily, but the same syringe filled with water barely compresses. Explain."
+            "W": "Without the answer or decisive strategy supplied in advance, derive the causal explanation for this new task: \"A sealed air syringe compresses easily, but the same syringe filled with water barely compresses. Explain.\" A valid independent result must satisfy: Identify the system boundary and whether the particle number is fixed."
           },
           "student_task": "A sealed air syringe compresses easily, but the same syringe filled with water barely compresses. Explain.",
           "wrong_idea": "Gases compress because their molecules shrink.",
           "replacement_rule": "Draw the same-sized particles in a smaller box with reduced gaps.",
-          "visual_job": "Three equal-size boxes depict closely packed ordered solid particles, disordered close-packed liquid particles and widely separated gas particles. A fourth box compresses a gas while keeping particle number fixed.",
+          "visual_job": "Use figures/c01-particle-states.svg only as prerequisite explanatory evidence, not an annotated answer to C01-04-EXPLAIN-D3. Three equal-size boxes depict closely packed ordered solid particles, disordered close-packed liquid particles and widely separated gas particles. A fourth box compresses a gas while keeping particle number fixed.",
           "independent_check": "Identify the system boundary and whether the particle number is fixed.",
           "source_bindings": [
             {
@@ -168,14 +168,14 @@
           ],
           "slots": {
             "X": "A mystery sample takes container shape but keeps almost unchanged volume under modest pressure. Which state model fits and what additional check helps?",
-            "Y": "Why is it difficult to squeeze liquid water into half its original volume but easy to compress air? A model should distinguish mobility, fixed relative positions and compressibility rather than use 'particles far apart' for every state.",
+            "Y": "Chemistry warrant: A model should distinguish mobility, fixed relative positions and compressibility rather than use 'particles far apart' for every state. Prior basis: Observe shape and volume independently. A liquid flows to fit its vessel while maintaining approximately the same volume.",
             "Z": "The gas model predicts large volume response to pressure; the liquid model predicts flow but small ordinary compressibility.",
-            "W": "Learner independently performs the decisive MODEL inference required by: A mystery sample takes container shape but keeps almost unchanged volume under modest pressure. Which state model fits and what additional check helps?"
+            "W": "Without the answer or decisive strategy supplied in advance, choose and test a scientific model for this new task: \"A mystery sample takes container shape but keeps almost unchanged volume under modest pressure. Which state model fits and what additional check helps?\" A valid independent result must satisfy: State a second independent condition before identifying the state."
           },
           "student_task": "A mystery sample takes container shape but keeps almost unchanged volume under modest pressure. Which state model fits and what additional check helps?",
           "wrong_idea": "Gases compress because their molecules shrink.",
           "replacement_rule": "Draw the same-sized particles in a smaller box with reduced gaps.",
-          "visual_job": "Three equal-size boxes depict closely packed ordered solid particles, disordered close-packed liquid particles and widely separated gas particles. A fourth box compresses a gas while keeping particle number fixed.",
+          "visual_job": "Use figures/c01-particle-states.svg only as prerequisite explanatory evidence, not an annotated answer to C01-05-MODEL-D3. Three equal-size boxes depict closely packed ordered solid particles, disordered close-packed liquid particles and widely separated gas particles. A fourth box compresses a gas while keeping particle number fixed.",
           "independent_check": "State a second independent condition before identifying the state.",
           "source_bindings": [
             {
@@ -196,14 +196,14 @@
           ],
           "slots": {
             "X": "Evaluate 'Every gas can be compressed to arbitrarily small volume by squeezing harder at a fixed temperature.'",
-            "Y": "Why is it difficult to squeeze liquid water into half its original volume but easy to compress air? Particle sketches are idealisations; extreme pressure or temperature can change state or invalidate a simple picture.",
+            "Y": "Chemistry warrant: Particle sketches are idealisations; extreme pressure or temperature can change state or invalidate a simple picture. Prior basis: Observe shape and volume independently. A liquid flows to fit its vessel while maintaining approximately the same volume.",
             "Z": "A gas under strong compression may liquefy if temperature allows; then the ordinary gas-separation rule no longer applies.",
-            "W": "Learner independently performs the decisive JUSTIFY inference required by: Evaluate 'Every gas can be compressed to arbitrarily small volume by squeezing harder at a fixed temperature.'"
+            "W": "Without the answer or decisive strategy supplied in advance, identify decisive evidence or a counterexample and delimit the claim for this new task: \"Evaluate 'Every gas can be compressed to arbitrarily small volume by squeezing harder at a fixed temperature.'\" A valid independent result must satisfy: Acknowledge model limits rather than promising universal compressibility."
           },
           "student_task": "Evaluate 'Every gas can be compressed to arbitrarily small volume by squeezing harder at a fixed temperature.'",
           "wrong_idea": "Gases compress because their molecules shrink.",
           "replacement_rule": "Draw the same-sized particles in a smaller box with reduced gaps.",
-          "visual_job": "Three equal-size boxes depict closely packed ordered solid particles, disordered close-packed liquid particles and widely separated gas particles. A fourth box compresses a gas while keeping particle number fixed.",
+          "visual_job": "Use figures/c01-particle-states.svg only as prerequisite explanatory evidence, not an annotated answer to C01-06-JUSTIFY-D4. Three equal-size boxes depict closely packed ordered solid particles, disordered close-packed liquid particles and widely separated gas particles. A fourth box compresses a gas while keeping particle number fixed.",
           "independent_check": "Acknowledge model limits rather than promising universal compressibility.",
           "source_bindings": [
             {
@@ -240,9 +240,9 @@
           ],
           "slots": {
             "X": "How can a net diffusion flux occur when no molecule 'knows' which way to move?",
-            "Y": "Why does the smell of food move through a room even when no fan is running? Random motion occurs in both directions, yet more particles leave a dense region than enter it because the count is higher there.",
+            "Y": "Chemistry warrant: Random motion occurs in both directions, yet more particles leave a dense region than enter it because the count is higher there. Prior basis: Draw two equal adjacent regions and count how many diffusing particles occupy each at the initial time.",
             "Z": "Take two equal adjacent volumes with 100 and 5 fragrance particles. Random crossing from the dense region gives more net outward crossings until concentrations approach.",
-            "W": "Learner independently performs the decisive EXPLAIN inference required by: How can a net diffusion flux occur when no molecule 'knows' which way to move?"
+            "W": "Without the answer or decisive strategy supplied in advance, derive the causal explanation for this new task: \"How can a net diffusion flux occur when no molecule 'knows' which way to move?\" A valid independent result must satisfy: At equilibrium net flux approaches zero; motion persists."
           },
           "student_task": "How can a net diffusion flux occur when no molecule 'knows' which way to move?",
           "wrong_idea": "Each perfume molecule travels directly from the source toward the observer.",
@@ -268,9 +268,9 @@
           ],
           "slots": {
             "X": "Odour reaches a sensor much faster with a running fan. What model or combination best explains the change?",
-            "Y": "Why does the smell of food move through a room even when no fan is running? Observed transport can combine diffusion with convection. Select models based on controls, not just distance and time.",
+            "Y": "Chemistry warrant: Observed transport can combine diffusion with convection. Select models based on controls, not just distance and time. Prior basis: Draw two equal adjacent regions and count how many diffusing particles occupy each at the initial time.",
             "Z": "Repeat a perfume test with controlled air currents to distinguish bulk transport from molecular diffusion.",
-            "W": "Learner independently performs the decisive MODEL inference required by: Odour reaches a sensor much faster with a running fan. What model or combination best explains the change?"
+            "W": "Without the answer or decisive strategy supplied in advance, choose and test a scientific model for this new task: \"Odour reaches a sensor much faster with a running fan. What model or combination best explains the change?\" A valid independent result must satisfy: Compare predictions with and without airflow."
           },
           "student_task": "Odour reaches a sensor much faster with a running fan. What model or combination best explains the change?",
           "wrong_idea": "Each perfume molecule travels directly from the source toward the observer.",
@@ -296,9 +296,9 @@
           ],
           "slots": {
             "X": "A lab report infers a molecular diffusion constant solely from the first moment a smell is detected across a room. Is that justified?",
-            "Y": "Why does the smell of food move through a room even when no fan is running? A single travel-time observation generally underdetermines both diffusion rate and convection speed.",
+            "Y": "Chemistry warrant: A single travel-time observation generally underdetermines both diffusion rate and convection speed. Prior basis: Draw two equal adjacent regions and count how many diffusing particles occupy each at the initial time.",
             "Z": "An odour front 3 m away appears after 5 s, but a hidden ventilation stream may be present. One measurement cannot yield a unique molecular diffusion coefficient.",
-            "W": "Learner independently performs the decisive JUSTIFY inference required by: A lab report infers a molecular diffusion constant solely from the first moment a smell is detected across a room. Is that justified?"
+            "W": "Without the answer or decisive strategy supplied in advance, identify decisive evidence or a counterexample and delimit the claim for this new task: \"A lab report infers a molecular diffusion constant solely from the first moment a smell is detected across a room. Is that justified?\" A valid independent result must satisfy: Infer only parameters that the controlled experiment identifies."
           },
           "student_task": "A lab report infers a molecular diffusion constant solely from the first moment a smell is detected across a room. Is that justified?",
           "wrong_idea": "Each perfume molecule travels directly from the source toward the observer.",
@@ -340,9 +340,9 @@
           ],
           "slots": {
             "X": "Explain why boiling water does not normally produce hydrogen gas.",
-            "Y": "When ice melts, what happens to the identity of its H₂O molecules? Intermolecular arrangement can change while chemical identity stays fixed.",
+            "Y": "Chemistry warrant: Intermolecular arrangement can change while chemical identity stays fixed. Prior basis: Define the chemical species before and after the proposed process. For physical water phase changes both are H₂O.",
             "Z": "Solid ice and water vapour still contain H₂O molecules. Their relative positions and motion differ.",
-            "W": "Learner independently performs the decisive EXPLAIN inference required by: Explain why boiling water does not normally produce hydrogen gas."
+            "W": "Without the answer or decisive strategy supplied in advance, derive the causal explanation for this new task: \"Explain why boiling water does not normally produce hydrogen gas.\" A valid independent result must satisfy: Check elemental composition of a closed sample."
           },
           "student_task": "Explain why boiling water does not normally produce hydrogen gas.",
           "wrong_idea": "Melting breaks H₂O into hydrogen and oxygen.",
@@ -368,9 +368,9 @@
           ],
           "slots": {
             "X": "A pan of boiling water loses 20 g of mass. Does this violate conservation of mass? Select a system model.",
-            "Y": "When ice melts, what happens to the identity of its H₂O molecules? Conservation should be applied to the system you choose, not a visually selected vessel that may be open.",
+            "Y": "Chemistry warrant: Conservation should be applied to the system you choose, not a visually selected vessel that may be open. Prior basis: Define the chemical species before and after the proposed process. For physical water phase changes both are H₂O.",
             "Z": "An open pot loses water mass as vapour escapes; a sealed setup retains the same water across its phases.",
-            "W": "Learner independently performs the decisive MODEL inference required by: A pan of boiling water loses 20 g of mass. Does this violate conservation of mass? Select a system model."
+            "W": "Without the answer or decisive strategy supplied in advance, choose and test a scientific model for this new task: \"A pan of boiling water loses 20 g of mass. Does this violate conservation of mass? Select a system model.\" A valid independent result must satisfy: The sum includes escaped and condensed vapour."
           },
           "student_task": "A pan of boiling water loses 20 g of mass. Does this violate conservation of mass? Select a system model.",
           "wrong_idea": "Melting breaks H₂O into hydrogen and oxygen.",
@@ -396,9 +396,9 @@
           ],
           "slots": {
             "X": "A student argues 'Mass conservation proves that no chemical reaction occurred.' Is this inference valid?",
-            "Y": "When ice melts, what happens to the identity of its H₂O molecules? A valid conclusion about physical change must state what has and has not been measured.",
+            "Y": "Chemistry warrant: A valid conclusion about physical change must state what has and has not been measured. Prior basis: Define the chemical species before and after the proposed process. For physical water phase changes both are H₂O.",
             "Z": "A sealed flask changes appearance from ice to liquid while its mass remains constant. This supports phase change; if reactions were possible, extra identity evidence might be required.",
-            "W": "Learner independently performs the decisive JUSTIFY inference required by: A student argues 'Mass conservation proves that no chemical reaction occurred.' Is this inference valid?"
+            "W": "Without the answer or decisive strategy supplied in advance, identify decisive evidence or a counterexample and delimit the claim for this new task: \"A student argues 'Mass conservation proves that no chemical reaction occurred.' Is this inference valid?\" A valid independent result must satisfy: Offer a chemically valid counterexample."
           },
           "student_task": "A student argues 'Mass conservation proves that no chemical reaction occurred.' Is this inference valid?",
           "wrong_idea": "Melting breaks H₂O into hydrogen and oxygen.",
@@ -440,9 +440,9 @@
           ],
           "slots": {
             "X": "Explain why wet clothes can feel cold in moving air even when the air is warm.",
-            "Y": "Why can evaporation cool the remaining liquid even on a warm day? Connect a molecular energy distribution, surface escape and cooling of the remaining sample.",
+            "Y": "Chemistry warrant: Connect a molecular energy distribution, surface escape and cooling of the remaining sample. Prior basis: Recognise that molecules within a liquid have a distribution of kinetic energies, even at one measured temperature.",
             "Z": "Fast-escaping molecules remove more-than-average energy from the liquid and the environment may supply replacement heat.",
-            "W": "Learner independently performs the decisive EXPLAIN inference required by: Explain why wet clothes can feel cold in moving air even when the air is warm."
+            "W": "Without the answer or decisive strategy supplied in advance, derive the causal explanation for this new task: \"Explain why wet clothes can feel cold in moving air even when the air is warm.\" A valid independent result must satisfy: Check an energy pathway, not just the sensation."
           },
           "student_task": "Explain why wet clothes can feel cold in moving air even when the air is warm.",
           "wrong_idea": "Evaporation only occurs at the boiling point.",
@@ -468,9 +468,9 @@
           ],
           "slots": {
             "X": "Two identical wet towels dry at different speeds in still humid air and moving dry air. Choose a causal model.",
-            "Y": "Why can evaporation cool the remaining liquid even on a warm day? A rate prediction requires surface area, airflow, temperature and humidity, not one-factor memorisation.",
+            "Y": "Chemistry warrant: A rate prediction requires surface area, airflow, temperature and humidity, not one-factor memorisation. Prior basis: Recognise that molecules within a liquid have a distribution of kinetic energies, even at one measured temperature.",
             "Z": "A wide shallow dish often loses water faster than a narrow deep glass at similar temperatures because its exposed area is larger.",
-            "W": "Learner independently performs the decisive MODEL inference required by: Two identical wet towels dry at different speeds in still humid air and moving dry air. Choose a causal model."
+            "W": "Without the answer or decisive strategy supplied in advance, choose and test a scientific model for this new task: \"Two identical wet towels dry at different speeds in still humid air and moving dry air. Choose a causal model.\" A valid independent result must satisfy: Explain both water-vapour gradient and energy."
           },
           "student_task": "Two identical wet towels dry at different speeds in still humid air and moving dry air. Choose a causal model.",
           "wrong_idea": "Evaporation only occurs at the boiling point.",
@@ -496,9 +496,9 @@
           ],
           "slots": {
             "X": "Evaluate: 'If a liquid evaporates, its temperature must always decrease.'",
-            "Y": "Why can evaporation cool the remaining liquid even on a warm day? Evaporation removes latent energy but the measured temperature depends on net energy exchange.",
+            "Y": "Chemistry warrant: Evaporation removes latent energy but the measured temperature depends on net energy exchange. Prior basis: Recognise that molecules within a liquid have a distribution of kinetic energies, even at one measured temperature.",
             "Z": "A surface undergoing evaporation in sunlight may warm if incoming radiation exceeds evaporative heat loss.",
-            "W": "Learner independently performs the decisive JUSTIFY inference required by: Evaluate: 'If a liquid evaporates, its temperature must always decrease.'"
+            "W": "Without the answer or decisive strategy supplied in advance, identify decisive evidence or a counterexample and delimit the claim for this new task: \"Evaluate: 'If a liquid evaporates, its temperature must always decrease.'\" A valid independent result must satisfy: State the energy-balance condition needed for a temperature decrease."
           },
           "student_task": "Evaluate: 'If a liquid evaporates, its temperature must always decrease.'",
           "wrong_idea": "Evaporation only occurs at the boiling point.",
@@ -540,14 +540,14 @@
           ],
           "slots": {
             "X": "Explain why a melting sample can remain near 0°C while energy continues entering.",
-            "Y": "Why can an ice-water mixture continue absorbing heat while the thermometer stays near the melting temperature? Energy conservation connects heater input to phase change while temperature is approximately fixed.",
+            "Y": "Chemistry warrant: Energy conservation connects heater input to phase change while temperature is approximately fixed. Prior basis: Read the axes before interpreting a graph: time is not heat input unless power is known and approximately constant.",
             "Z": "For ice at its melting temperature, supplied heat changes solid to liquid rather than warming the liquid until melting is complete.",
-            "W": "Learner independently performs the decisive EXPLAIN inference required by: Explain why a melting sample can remain near 0°C while energy continues entering."
+            "W": "Without the answer or decisive strategy supplied in advance, derive the causal explanation for this new task: \"Explain why a melting sample can remain near 0°C while energy continues entering.\" A valid independent result must satisfy: Point to the phase fraction and heat-input assumptions."
           },
           "student_task": "Explain why a melting sample can remain near 0°C while energy continues entering.",
           "wrong_idea": "A horizontal heating curve means no energy enters the material.",
           "replacement_rule": "Track heat input and microscopic changes separately.",
-          "visual_job": "Sketch a temperature-versus-energy plot: sloping solid heating, flat melting, sloping liquid heating. Label the plateau as energy used for phase change, not 'heater turned off'.",
+          "visual_job": "Use figures/c01-heating-curve.svg only as prerequisite explanatory evidence, not an annotated answer to C01-16-EXPLAIN-D3. Sketch a temperature-versus-energy plot: sloping solid heating, flat melting, sloping liquid heating. Label the plateau as energy used for phase change, not 'heater turned off'.",
           "independent_check": "Point to the phase fraction and heat-input assumptions.",
           "source_bindings": [
             {
@@ -568,14 +568,14 @@
           ],
           "slots": {
             "X": "A 0.20 kg ice sample at 0°C receives 33.4 kJ. Using Lf=334 kJ/kg, what fraction melts in an ideal setup?",
-            "Y": "Why can an ice-water mixture continue absorbing heat while the thermometer stays near the melting temperature? Different curve segments obey different energy relations. Identify phase state before applying a calculation.",
+            "Y": "Chemistry warrant: Different curve segments obey different energy relations. Identify phase state before applying a calculation. Prior basis: Read the axes before interpreting a graph: time is not heat input unless power is known and approximately constant.",
             "Z": "Heat absorbed while warming a single phase changes temperature, while a melt plateau uses Q=mLf under ideal assumptions.",
-            "W": "Learner independently performs the decisive MODEL inference required by: A 0.20 kg ice sample at 0°C receives 33.4 kJ. Using Lf=334 kJ/kg, what fraction melts in an ideal setup?"
+            "W": "Without the answer or decisive strategy supplied in advance, choose and test a scientific model for this new task: \"A 0.20 kg ice sample at 0°C receives 33.4 kJ. Using Lf=334 kJ/kg, what fraction melts in an ideal setup?\" A valid independent result must satisfy: Energy units and melt fraction ≤1 checked."
           },
           "student_task": "A 0.20 kg ice sample at 0°C receives 33.4 kJ. Using Lf=334 kJ/kg, what fraction melts in an ideal setup?",
           "wrong_idea": "A horizontal heating curve means no energy enters the material.",
           "replacement_rule": "Track heat input and microscopic changes separately.",
-          "visual_job": "Sketch a temperature-versus-energy plot: sloping solid heating, flat melting, sloping liquid heating. Label the plateau as energy used for phase change, not 'heater turned off'.",
+          "visual_job": "Use figures/c01-heating-curve.svg only as prerequisite explanatory evidence, not an annotated answer to C01-17-MODEL-D3. Sketch a temperature-versus-energy plot: sloping solid heating, flat melting, sloping liquid heating. Label the plateau as energy used for phase change, not 'heater turned off'.",
           "independent_check": "Energy units and melt fraction ≤1 checked.",
           "source_bindings": [
             {
@@ -596,14 +596,14 @@
           ],
           "slots": {
             "X": "A mixture shows a sloping 'melting' segment. Does that prove the thermometer is broken?",
-            "Y": "Why can an ice-water mixture continue absorbing heat while the thermometer stays near the melting temperature? The ideal pure-substance plateau assumes stable pressure and composition; changing these can alter the observed curve.",
+            "Y": "Chemistry warrant: The ideal pure-substance plateau assumes stable pressure and composition; changing these can alter the observed curve. Prior basis: Read the axes before interpreting a graph: time is not heat input unless power is known and approximately constant.",
             "Z": "Salt mixed into water can change the freezing/melting behaviour and broaden the transition range.",
-            "W": "Learner independently performs the decisive JUSTIFY inference required by: A mixture shows a sloping 'melting' segment. Does that prove the thermometer is broken?"
+            "W": "Without the answer or decisive strategy supplied in advance, identify decisive evidence or a counterexample and delimit the claim for this new task: \"A mixture shows a sloping 'melting' segment. Does that prove the thermometer is broken?\" A valid independent result must satisfy: Distinguish instrument fault from physical alternatives."
           },
           "student_task": "A mixture shows a sloping 'melting' segment. Does that prove the thermometer is broken?",
           "wrong_idea": "A horizontal heating curve means no energy enters the material.",
           "replacement_rule": "Track heat input and microscopic changes separately.",
-          "visual_job": "Sketch a temperature-versus-energy plot: sloping solid heating, flat melting, sloping liquid heating. Label the plateau as energy used for phase change, not 'heater turned off'.",
+          "visual_job": "Use figures/c01-heating-curve.svg only as prerequisite explanatory evidence, not an annotated answer to C01-18-JUSTIFY-D4. Sketch a temperature-versus-energy plot: sloping solid heating, flat melting, sloping liquid heating. Label the plateau as energy used for phase change, not 'heater turned off'.",
           "independent_check": "Distinguish instrument fault from physical alternatives.",
           "source_bindings": [
             {
@@ -627,6 +627,19 @@
       "version": "0.1.0",
       "kind": "INITIAL",
       "reason": "Full Stage2 draft topic-adapter bindings to authored C01–C07 Core1A/B content; unchanged shared 28 QRT authority",
+      "affected_subtopic_ids": [
+        "CHEM-C01.01",
+        "CHEM-C01.02",
+        "CHEM-C01.03",
+        "CHEM-C01.04",
+        "CHEM-C01.05",
+        "CHEM-C01.06"
+      ]
+    },
+    {
+      "version": "0.2.0",
+      "kind": "AMEND",
+      "reason": "Complete author-draft textbook concept evidence; make all X/Y/Z/W slots task-specific, preserving source and shared QRT IDs and held academic status",
       "affected_subtopic_ids": [
         "CHEM-C01.01",
         "CHEM-C01.02",
