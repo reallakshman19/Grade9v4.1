@@ -233,10 +233,10 @@
       <section class="chapter" id="stage-1">
         <h2>Stage 01 · Question Intake, Source Custody &amp; Fingerprinting</h2>
         <p>Verify that source stems, figures, and answer keys are segregated into Git-excluded custody with immutable fingerprints.</p>
-        <div class="check-item"><span class="check-box">✓</span><span><b>SHA-256 Byte Parity:</b> Exact 64-character hash match between disk bytes and metadata records.</span></div>
-        <div class="check-item"><span class="check-box">✓</span><span><b>Unique Stable IDs:</b> Zero duplicate question IDs across the entire repository.</span></div>
+        <div class="check-item"><span class="check-box">✓</span><span><b>SHA-256 Byte Parity:</b> Exact 64-character hash match between disk bytes and metadata records. Declared <span class="code">stem_sha256</span> strictly matches computed SHA-256 of the question stem string (<span class="code">declared_matches_observed: true</span>). Zero dummy hashes (e.g. mock hashes like <span class="code">chem_atom_02_sha</span>) or stale digests.</span></div>
+        <div class="check-item"><span class="check-box">✓</span><span><b>Unique Stable IDs &amp; Deduplication:</b> Zero duplicate question IDs across the entire repository. Strict cross-topic namespace deduplication prevents collisions (e.g. distinguishing <span class="code">CHEM-NSEJS-ATOM</span> vs <span class="code">BOND</span>, <span class="code">OPT</span> vs <span class="code">ELEC</span>).</span></div>
         <div class="check-item"><span class="check-box">✓</span><span><b>Custody Role Tagging:</b> Item clearly designated as <code>EXAM_PAPER</code>, <code>TEXTBOOK</code>, or <code>AUTHORED_TRANSFER</code>.</span></div>
-        <div class="check-item"><span class="check-box">✓</span><span><b>Diagram Custody:</b> Original figures intact; redrawn diagrams tagged as <code>DERIVED_FIGURE</code>.</span></div>
+        <div class="check-item"><span class="check-box">✓</span><span><b>Diagram Custody &amp; Parity:</b> Original figures intact; redrawn diagrams tagged as <code>DERIVED_FIGURE</code>. Referenced diagrams physically exist in both <span class="code">nsejs/assets/</span> and subject assets.</span></div>
         <div class="benchmark-box falsifier">
           <span class="benchmark-title">Strict Falsifier</span>Single-character stem modification or swapped diagram locator trips <code>INTEGRITY_FAIL</code>.
         </div>
@@ -284,16 +284,23 @@
       <!-- STAGE 05 -->
       <section class="chapter" id="stage-5">
         <h2>Stage 05 · Native Core2 Interactive Tablet Module</h2>
-        <p>Audit 12.7-inch tablet ergonomics, commitment-first interaction, vector SVG diagram integrity, and progressive hint scaffolding.</p>
+        <p>Audit 12.7-inch tablet ergonomics, commitment-first interaction, vector SVG diagram integrity, attempt evaluation highlighting, retry workflows, and progressive hint scaffolding.</p>
         <div class="check-item"><span class="check-box">✓</span><span><b>0px Horizontal Overflow:</b> Verified on $1280\times800$, $1024\times768$, $900\times1280$, $800\times1280$, and $375\times812$.</span></div>
         <div class="check-item"><span class="check-box">✓</span><span><b>Zero Iframes:</b> <span class="code">document.querySelectorAll('iframe').length === 0</span>.</span></div>
         <div class="check-item"><span class="check-box">✓</span><span><b>WCAG Touch Targets:</b> Interactive buttons, radio labels, and options strictly $\ge 48\text{px}$ (WCAG AAA standard).</span></div>
         <div class="check-item"><span class="check-box">✓</span><span><b>SVG Vector Typography:</b> Vector text, axis labels, and annotations strictly $\ge 14\text{px}$ (`font-size="14"` or larger). No optical cramping.</span></div>
+        <div class="check-item"><span class="check-box">✓</span><span><b>W3C SVG Parity &amp; Strictness:</b> Referenced diagrams exist in both <span class="code">nsejs/assets/</span> and subject <span class="code">assets/</span>, with responsive <span class="code">viewBox</span>, width="100%", height="100%", and valid XML entities (avoiding unescaped raw characters like <span class="code">&lt;</span> or <span class="code">&amp;</span> that break browser XML parsers).</span></div>
         <div class="check-item"><span class="check-box">✓</span><span><b>Vector Diagram Zero Leakage:</b> Inspect SVG `<text>` elements in Tab 1. The diagram must depict only the physical setup (symbolic vector labels $\vec{F}_B, \vec{T}$, initial parameters) and <b>ZERO post-derivation numerical values or solved ratios</b>.</span></div>
         <div class="check-item"><span class="check-box">✓</span><span><b>Commitment-First Derivations:</b> Explanations inert (<span class="code">display: none</span>) until answer commit.</span></div>
+        <div class="check-item"><span class="check-box">✓</span><span><b>Interactive Attempt Evaluation &amp; Option Highlighting:</b> Immediate visual state feedback on commit: <span class="code">.opt-user-correct</span> (emerald background with <span class="code">✓ Correct (Your Choice)</span> badge), <span class="code">.opt-user-wrong</span> (soft red background with <span class="code">✗ Your Choice (Incorrect)</span> badge), <span class="code">.opt-correct-key</span> (emerald border with <span class="code">✓ Correct Option</span> badge on official key), and <span class="code">.opt-neutral-disabled</span>. Top-level <span class="code">.attempt-feedback-banner</span> renders high-contrast <span class="code">✅ CORRECT</span> or <span class="code">❌ INCORRECT</span> feedback naming selected vs official key options.</span></div>
+        <div class="check-item"><span class="check-box">✓</span><span><b>Retry &amp; State Reset Control:</b> Every question card provides a <span class="code">[🔄 Reset &amp; Try Again]</span> control that clears local attempts in <span class="code">localStorage</span>, clears option highlighting and badges, re-enables inputs, and hides derivations without page refresh.</span></div>
+        <div class="check-item"><span class="check-box">✓</span><span><b>Purge of Defensive / Adversarial Jargon:</b> Zero occurrences of developer mock strings (<span class="code">PRODUCER-PROPOSED · NOT SELECTED</span>, <span class="code">differs from producer proposal</span>). All messaging is polished, student-facing, and pedagogical. Cryptographic hash details are encapsulated in collapsed <span class="code">&lt;details&gt;</span> summaries.</span></div>
+        <div class="check-item"><span class="check-box">✓</span><span><b>In-Page Navigation &amp; Link Integrity:</b> Zero dead anchors (e.g. <span class="code">href="#topic-view"</span> or <span class="code">#topicWorkspace</span> without unhiding the workspace). Navigating to deep-dive workspaces via hash or topic buttons must unhide the section and smoothly scroll (<span class="code">scrollIntoView({ behavior: 'smooth', block: 'start' })</span>) into view.</span></div>
+        <div class="check-item"><span class="check-box">✓</span><span><b>HTML Attribute Quote Syntax Strictness:</b> Zero backslash-escaped quotes in inline HTML attributes (e.g. <span class="code">onclick="window.selectTopic(\'...\')"</span>). Always use clean unescaped single quotes inside double quotes (<span class="code">onclick="window.selectTopic('...')"</span>) to avoid parser truncation.</span></div>
+        <div class="check-item"><span class="check-box">✓</span><span><b>Two-Tier Search Engine Integration:</b> Global Command Palette (Search 1, Ctrl/Cmd+K) for portal-wide fuzzy search with subject-scoped filters; inline filter bar (Search 2) for instant client-side filtering by query, topic, difficulty, and exam year with state URL synchronization.</span></div>
         <div class="check-item"><span class="check-box">✓</span><span><b>Progressive Hints ($H_1, H_2, H_3$):</b> Scaffolding never leaks Slot $W$ (the decisive crux).</span></div>
         <div class="benchmark-box falsifier">
-          <span class="benchmark-title">Strict Falsifiers</span>Horizontal scrollbar, hint leaking Slot $W$, SVG diagram displaying solved numbers ($T = 24\text{ N}, u_1 = 30$), or derivations accessible in DOM/alt text before commit fails tablet audit immediately.
+          <span class="benchmark-title">Strict Falsifiers</span>Horizontal scrollbar, hint leaking Slot $W$, SVG diagram displaying solved numbers ($T = 24\text{ N}, u_1 = 30$), dead anchor links (`#topic-view`), escaped quote syntax errors (`\'`), adversarial "producer" jargon, or derivations accessible in DOM/alt text before commit fails tablet audit immediately.
         </div>
       </section>
 
@@ -355,12 +362,15 @@
       <!-- STAGE 07 -->
       <section class="chapter" id="stage-7">
         <h2>Stage 07 · Dual-Engine Verification &amp; Technical Preview Gate</h2>
-        <p>Execute automated unit tests and Playwright headless browser viewport audits.</p>
+        <p>Execute automated unit tests, static link crawlers, and Playwright headless browser viewport audits.</p>
         <div class="check-item"><span class="check-box">✓</span><span><b>100% Pytest Pass:</b> Unit tests, schema checks, and DAG cycle audits pass completely.</span></div>
+        <div class="check-item"><span class="check-box">✓</span><span><b>Subject-Specific Gate 0–3 Pytest Suites:</b> Dedicated test suites (<span class="code">test_physics_core2.py</span>, <span class="code">test_chemistry_core2.py</span>, <span class="code">test_biology_core2.py</span>, <span class="code">test_qb_inline_filter.py</span>) pass 100% verifying schema integrity, zero duplicate IDs, bit-for-bit SHA-256 invariance, 3-tier progressive hint scaffolds, canonical 7 verbs, typography $\ge 14\text{px}$, and Rule 13 <span class="code">NOT_ADMITTED</span> status.</span></div>
+        <div class="check-item"><span class="check-box">✓</span><span><b>Site-Wide Link Crawler Audit:</b> Automated site crawler (<span class="code">python tools/audit_nsejs_pages.py</span>) audits all 43+ pages and 690+ internal links, verifying 0 broken links and 0 dead anchors.</span></div>
+        <div class="check-item"><span class="check-box">✓</span><span><b>Search Index Manifest Sealing:</b> Search index built (<span class="code">python tools/build_search_index.py</span>) with SHA-256 manifest pinning and 100% pass in <span class="code">tests/test_search_engine.py</span>.</span></div>
         <div class="check-item"><span class="check-box">✓</span><span><b>100% Playwright Pass:</b> Tablet regression audits pass across all 5 standard viewports (0px overflow, 0 console errors).</span></div>
         <div class="check-item"><span class="check-box">✓</span><span><b>Fail-Closed Gate Retained:</b> Status explicitly output as <code>HOLD: ACADEMIC_ADMISSION</code>. All questions strictly labeled <code>{Unvalidated}</code>.</span></div>
         <div class="benchmark-box falsifier">
-          <span class="benchmark-title">Strict Falsifier</span>Test failures, console errors, or auto-generated human approval receipts abort publication immediately. Green CI never implies academic approval.
+          <span class="benchmark-title">Strict Falsifier</span>Test failures, broken internal links, console errors, or auto-generated human approval receipts abort publication immediately. Green CI never implies academic approval.
         </div>
       </section>
 
@@ -433,7 +443,7 @@
             <tbody>
               <tr>
                 <td><b>Sources</b></td>
-                <td>Path bindings, file formatting, JSON schema alignment</td>
+                <td>Path bindings, file formatting, JSON schema alignment, stem SHA-256 digest recalculation, and question ID deduplication</td>
                 <td>Official examination authenticity, answer-key provenance</td>
               </tr>
               <tr>
@@ -453,7 +463,7 @@
               </tr>
               <tr>
                 <td><b>Core2 Tablet UX</b></td>
-                <td>Viewport overflows, touch targets ($\ge 48\text{px}$), SVG typography ($\ge 14\text{px}$), inert derivations</td>
+                <td>Viewport overflows, touch targets ($\ge 48\text{px}$), SVG typography ($\ge 14\text{px}$), inert derivations, attempt evaluation highlighting, retry button flows, dead anchor repairs, quote syntax fixes, and search index builds</td>
                 <td>Academic admission to curriculum reader</td>
               </tr>
               <tr>
@@ -497,6 +507,8 @@
 
 #### Part 4 · Construction & Tablet Witnesses
 - Core2 Tablet Viewport Audit: [PASS (0px overflow, >=48px touch, >=14px SVG) / FAIL]
+- Attempt Evaluation & Correct Key Highlighting: [PASS (user correct/wrong badges, key highlight, reset/retry) / FAIL]
+- In-Page Navigation & Link Integrity: [PASS (0 dead anchors, 0 escaped quote errors, smooth scroll) / FAIL]
 - Vector SVG Zero Leakage: [PASS (setup only; 0 solved values in SVG) / LEAK]
 - Commitment-First Derivations: [PASS (inert until commit) / LEAK]
 - B1–B7 Non-Compensatory Status: [B1:✓ B2:✓ B3:✓ B4:✓ B5:✓ B6:✓ B7:✓ / HOLD]
