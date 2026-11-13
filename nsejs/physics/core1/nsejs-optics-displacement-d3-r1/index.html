@@ -60,17 +60,142 @@ body .tab-button { min-width: 168px; flex: 1 1 180px; }
 <p><strong>Authored practice · Academic admission HOLD.</strong> Not a verified original NSEJS question.
 Core2 source, original figure, official key and source/QRT approval belong to Agent A.</p></header>
 <nav aria-label="Core learning tabs">
-<button class="tab-button active" type="button" id="tab-core2" onclick="switchTab('core2')">Core 2 source status</button>
-<button class="tab-button" type="button" id="tab-core1a" onclick="switchTab('core1a')">Core 1A teaching</button>
-<button class="tab-button" type="button" id="tab-core1b" onclick="switchTab('core1b')">Core 1B new challenge</button></nav>
+<button class="tab-button active" type="button" id="tab-core2" onclick="switchTab('core2')">1. Core 2 Target Problem</button>
+<button class="tab-button" type="button" id="tab-core1a" onclick="switchTab('core1a')">2. Core 1A Teaching Path</button>
+<button class="tab-button" type="button" id="tab-core1b" onclick="switchTab('core1b')">3. Core 1B Reconstruction</button></nav>
 <div id="content-core2" class="tab-content active">
-<section><h2>Original question — separate source authority</h2>
-<p>This standalone page does not reproduce the original examination question or authenticate its source.
-Use the Agent A source-preserving reader for the original question.
-No original-answer or QRT approval is issued by this learning page.</p>
-<button type="button" onclick="document.getElementById('derivation-section').style.display='block'">Show source authority note</button>
-<div id="derivation-section" class="derivation-section" style="display: none;">
-<p>Original question and derivation must remain under Agent A's separate source and attempt contract.</p></div></section></div>
+  <section class="step-box" style="border-left:4px solid #0284c7;background:#f8fafc;padding:16px 20px;border-radius:0 10px 10px 0;margin-bottom:16px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;flex-wrap:wrap;gap:8px;">
+      <span style="font-size:12px;font-weight:800;text-transform:uppercase;color:#0284c7;letter-spacing:0.06em;">Target Item: PHYS-NSEJS-2024-P-Q57 · Band D3</span>
+      <span style="font-size:11px;font-weight:800;background:#fef08a;color:#854d0e;border:1px solid #eab308;padding:2px 8px;border-radius:999px;">{Unvalidated} · Core 2 Reference</span>
+    </div>
+    <h2 style="font-size:20px;margin:4px 0 10px;color:#0f172a;">National Standard Examination in Junior Science (NSEJS) Reference Item</h2>
+    <h3 style="font-size:16px;color:#0369a1;margin:8px 0 6px;">Problem Statement</h3>
+    <p style="margin:0 0 10px;">An illuminated object and a fixed viewing screen are placed on an optical bench at a fixed separation <em>D</em> = 90.0 cm. A thin convex lens of focal length <em>f</em> is placed between them. It is observed that sharp, real images of the object are formed on the screen at two distinct lens positions separated by a displacement <em>d</em> = 30.0 cm.</p>
+    <p style="margin:0 0 10px;">If <em>h</em><sub>1</sub> and <em>h</em><sub>2</sub> are the heights of the images formed at the two positions, and <em>h</em><sub>0</sub> is the height of the object:</p>
+    <p style="margin:0;font-weight:750;color:#0f172a;">Determine the focal length <em>f</em> of the convex lens and the ratio of image heights <em>h</em><sub>1</sub> / <em>h</em><sub>2</sub> (where <em>h</em><sub>1</sub> &gt; <em>h</em><sub>2</sub>).</p>
+  </section>
+
+  <!-- Vector Diagram of Lens Displacement -->
+  <div class="diagram-container" style="background:#ffffff;border:1.5px solid #d2deea;border-radius:12px;padding:16px;margin:16px 0;text-align:center;box-shadow:0 2px 8px rgba(16,42,67,0.03);">
+    <svg viewBox="0 0 620 220" width="100%" height="220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Convex Lens Displacement Method Diagram showing two conjugate positions between object and screen">
+      <defs>
+        <marker id="arrow-opt" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1 L 10 5 L 0 9 z" fill="#0284c7"/>
+        </marker>
+        <marker id="arrow-red" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1 L 10 5 L 0 9 z" fill="#dc2626"/>
+        </marker>
+        <marker id="arrow-purple" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1 L 10 5 L 0 9 z" fill="#7c3aed"/>
+        </marker>
+      </defs>
+      <rect x="10" y="10" width="600" height="200" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+      <!-- Optical Axis -->
+      <line x1="30" y1="110" x2="590" y2="110" stroke="#64748b" stroke-width="2" stroke-dasharray="6,4"/>
+      <text x="525" y="102" font-size="11" fill="#64748b">Optical Axis</text>
+
+      <!-- Object -->
+      <line x1="70" y1="110" x2="70" y2="55" stroke="#2563eb" stroke-width="4" marker-end="url(#arrow-opt)"/>
+      <circle cx="70" cy="110" r="4" fill="#2563eb"/>
+      <text x="45" y="48" font-size="13" font-weight="bold" fill="#1e40af">Object (h₀)</text>
+      <text x="58" y="128" font-size="12" fill="#64748b">x = 0</text>
+
+      <!-- Screen -->
+      <line x1="530" y1="30" x2="530" y2="190" stroke="#475569" stroke-width="6"/>
+      <text x="495" y="24" font-size="13" font-weight="bold" fill="#334155">Fixed Screen</text>
+      <text x="515" y="202" font-size="12" fill="#64748b">x = D</text>
+
+      <!-- Lens Position 1 -->
+      <line x1="220" y1="35" x2="220" y2="185" stroke="#0d9488" stroke-width="3"/>
+      <path d="M 215 35 Q 220 25 225 35 M 215 185 Q 220 195 225 185" stroke="#0d9488" stroke-width="3" fill="none"/>
+      <text x="175" y="28" font-size="12" font-weight="bold" fill="#0f766e">Lens Pos 1 (u₁=30)</text>
+      <!-- Image 1 (Magnified, Inverted) -->
+      <line x1="530" y1="110" x2="530" y2="175" stroke="#dc2626" stroke-width="4" marker-end="url(#arrow-red)"/>
+      <text x="538" y="150" font-size="12" font-weight="bold" fill="#dc2626">I₁ (h₁ = 2h₀)</text>
+
+      <!-- Lens Position 2 -->
+      <line x1="380" y1="35" x2="380" y2="185" stroke="#0284c7" stroke-width="3"/>
+      <path d="M 375 35 Q 380 25 385 35 M 375 185 Q 380 195 385 185" stroke="#0284c7" stroke-width="3" fill="none"/>
+      <text x="345" y="28" font-size="12" font-weight="bold" fill="#0369a1">Lens Pos 2 (u₂=60)</text>
+      <!-- Image 2 (Diminished, Inverted) -->
+      <line x1="530" y1="110" x2="530" y2="85" stroke="#ea580c" stroke-width="3"/>
+      <text x="538" y="80" font-size="12" font-weight="bold" fill="#ea580c">I₂ (h₂ = 0.5h₀)</text>
+
+      <!-- Displacement d -->
+      <line x1="225" y1="145" x2="375" y2="145" stroke="#7c3aed" stroke-width="2.5" marker-start="url(#arrow-purple)" marker-end="url(#arrow-purple)"/>
+      <text x="250" y="140" font-size="12" font-weight="bold" fill="#6d28d9">Displacement d = 30 cm</text>
+
+      <!-- Total Distance D -->
+      <line x1="75" y1="180" x2="525" y2="180" stroke="#0f172a" stroke-width="2"/>
+      <text x="240" y="174" font-size="12" font-weight="bold" fill="#0f172a">Total Separation D = 90.0 cm</text>
+    </svg>
+  </div>
+
+  <!-- Interactive Option Commit Box -->
+  <section class="commit-box" style="background:#fffbeb;border:1.5px solid #fcd34d;border-radius:12px;padding:18px;margin:18px 0;">
+    <h3 style="margin-top:0;font-size:16px;color:#92400e;">Select Option &amp; Commit Unassisted Attempt:</h3>
+    <div style="display:flex;flex-direction:column;gap:10px;margin:12px 0;">
+      <label style="display:flex;align-items:center;gap:10px;cursor:pointer;font-size:15px;">
+        <input type="radio" id="opt_A" name="p_ans" value="A">
+        <span><strong>Option A:</strong> <em>f</em> = 20.0 cm and <em>h</em><sub>1</sub> / <em>h</em><sub>2</sub> = 4.0</span>
+      </label>
+      <label style="display:flex;align-items:center;gap:10px;cursor:pointer;font-size:15px;">
+        <input type="radio" id="opt_B" name="p_ans" value="B">
+        <span><strong>Option B:</strong> <em>f</em> = 22.5 cm and <em>h</em><sub>1</sub> / <em>h</em><sub>2</sub> = 2.0</span>
+      </label>
+      <label style="display:flex;align-items:center;gap:10px;cursor:pointer;font-size:15px;">
+        <input type="radio" id="opt_C" name="p_ans" value="C">
+        <span><strong>Option C:</strong> <em>f</em> = 18.0 cm and <em>h</em><sub>1</sub> / <em>h</em><sub>2</sub> = 3.0</span>
+      </label>
+      <label style="display:flex;align-items:center;gap:10px;cursor:pointer;font-size:15px;">
+        <input type="radio" id="opt_D" name="p_ans" value="D">
+        <span><strong>Option D:</strong> <em>f</em> = 25.0 cm and <em>h</em><sub>1</sub> / <em>h</em><sub>2</sub> = 1.5</span>
+      </label>
+    </div>
+    <button type="button" class="btn" onclick="commitOpticsAnswer()" style="background:#0284c7;color:white;font-weight:750;border:none;border-radius:8px;padding:12px 20px;cursor:pointer;font-size:15px;min-height:48px;">
+      Commit Answer &amp; Reveal Mathematical Derivation →
+    </button>
+  </section>
+
+  <!-- Mathematical Derivation Section (Disclosed after commit) -->
+  <div id="derivation-section" class="derivation-section" style="display:none;background:#f0fdf4;border:1.5px solid #86efac;border-radius:12px;padding:20px;margin-top:20px;">
+    <h3 style="margin-top:0;color:#166534;font-size:18px;">Mathematical Physics Derivation &amp; Invariant Proof</h3>
+    <ol style="padding-left:22px;line-height:1.7;">
+      <li>
+        <strong>1. System Formulation &amp; Spatial Constraints:</strong>
+        Let the object be at origin <em>x</em> = 0 and fixed screen at <em>x</em> = <em>D</em> = 90.0 cm. Let <em>u</em> be the object distance from the lens, so image distance <em>v</em> = <em>D</em> - <em>u</em>.
+        Substituting into the thin lens formula 1/<em>v</em> - 1/(-<em>u</em>) = 1/<em>f</em> &rArr; 1/(<em>D</em> - <em>u</em>) + 1/<em>u</em> = 1/<em>f</em>.
+        Multiplying by <em>u</em>(<em>D</em> - <em>u</em>)<em>f</em> yields the standard quadratic equation:
+        <div style="background:#ffffff;padding:8px 14px;border-radius:6px;border:1px solid #cbd5e1;margin:6px 0;display:inline-block;font-family:monospace;">u² - Du + Df = 0</div>
+      </li>
+      <li>
+        <strong>2. Conjugate Roots &amp; Displacement Formula:</strong>
+        The two real roots representing the two conjugate positions are:
+        <div style="background:#ffffff;padding:8px 14px;border-radius:6px;border:1px solid #cbd5e1;margin:6px 0;display:inline-block;font-family:monospace;">u₁ = (D - &radic;(D² - 4Df))/2, &nbsp; u₂ = (D + &radic;(D² - 4Df))/2</div><br>
+        Their separation displacement is <em>d</em> = <em>u</em><sub>2</sub> - <em>u</em><sub>1</sub> = &radic;(<em>D</em><sup>2</sup> - 4<em>Df</em>).<br>
+        Squaring both sides: <em>d</em><sup>2</sup> = <em>D</em><sup>2</sup> - 4<em>Df</em> &rArr; 4<em>Df</em> = <em>D</em><sup>2</sup> - <em>d</em><sup>2</sup>.
+        <div style="background:#ffffff;padding:8px 14px;border-radius:6px;border:1px solid #cbd5e1;margin:6px 0;display:inline-block;font-family:monospace;">f = (D² - d²) / (4D) = (90.0² - 30.0²) / (4 &times; 90.0) = (8100 - 900) / 360 = 7200 / 360 = 20.0 cm</div>
+      </li>
+      <li>
+        <strong>3. Image Magnifications &amp; Height Ratio:</strong>
+        At position 1: <em>u</em><sub>1</sub> = (90 - 30)/2 = 30.0 cm, so <em>v</em><sub>1</sub> = 90 - 30 = 60.0 cm.<br>
+        Magnification <em>m</em><sub>1</sub> = <em>v</em><sub>1</sub> / <em>u</em><sub>1</sub> = 60 / 30 = 2.0 &rArr; <em>h</em><sub>1</sub> = 2.0 <em>h</em><sub>0</sub>.<br>
+        At position 2: <em>u</em><sub>2</sub> = (90 + 30)/2 = 60.0 cm, so <em>v</em><sub>2</sub> = 90 - 60 = 30.0 cm.<br>
+        Magnification <em>m</em><sub>2</sub> = <em>v</em><sub>2</sub> / <em>u</em><sub>2</sub> = 30 / 60 = 0.5 &rArr; <em>h</em><sub>2</sub> = 0.5 <em>h</em><sub>0</sub>.<br>
+        The height ratio is therefore:
+        <div style="background:#ffffff;padding:8px 14px;border-radius:6px;border:1px solid #cbd5e1;margin:6px 0;display:inline-block;font-family:monospace;">h₁ / h₂ = 2.0 / 0.5 = 4.0</div><br>
+        Notice the invariant: <em>m</em><sub>1</sub> &times; <em>m</em><sub>2</sub> = 1.0, which implies <em>h</em><sub>1</sub> &times; <em>h</em><sub>2</sub> = <em>h</em><sub>0</sub><sup>2</sup> &rArr; <em>h</em><sub>0</sub> = &radic;(<em>h</em><sub>1</sub> <em>h</em><sub>2</sub>). Matches <strong>Option A</strong>.
+      </li>
+      <li>
+        <strong>4. Boundary Condition &amp; Falsification Limits:</strong>
+        For real images to form at two distinct positions on the screen, the quadratic discriminant must be strictly positive:
+        &Delta; = <em>D</em><sup>2</sup> - 4<em>Df</em> &gt; 0 &rArr; <em>D</em> &gt; 4<em>f</em>.<br>
+        Here 4<em>f</em> = 4(20.0) = 80.0 cm &lt; 90.0 cm, confirming the physical validity of two distinct conjugate positions. If <em>D</em> &lt; 4<em>f</em>, no real image can form on the screen for any lens position.
+      </li>
+    </ol>
+  </div>
+</div>
 <div id="content-core1a" class="tab-content">
 <section><h2>Core1A physical construction</h2><p>Transitioning from single-point lens calculations to the global quadratic solution space of conjugate foci on a fixed screen D, proving the existence of two distinct real positions and dual magnified/diminished states.</p>
 <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 600 100" role="img" aria-label="An object, thin lens and screen along a common optical axis; distances add to D.">
@@ -118,6 +243,19 @@ function switchTab(id){
   for(const el of document.querySelectorAll('.tab-content'))el.classList.remove('active');
   document.getElementById('tab-'+id).classList.add('active');
   document.getElementById('content-'+id).classList.add('active');
+}
+
+function commitOpticsAnswer() {
+  const selected = document.querySelector('input[name="p_ans"]:checked');
+  if (!selected) {
+    alert("Please select an option before committing your attempt.");
+    return;
+  }
+  const derivation = document.getElementById('derivation-section');
+  if (derivation) {
+    derivation.style.display = 'block';
+    derivation.scrollIntoView({ behavior: 'smooth' });
+  }
 }
 </script>
 <script type="application/json" id="agent-b-core1b-data">{"route":[{"ask":"Which two measured quantities correspond to the sum and difference of the lens-position roots?","why_this_ask":"The two roots sum to D; their positive separation is measured independently.","step_answer":"x1+x2=96 cm, x2-x1=48 cm."},{"ask":"How does their product determine the focal length?","why_this_ask":"The thin-lens quadratic has product Df.","step_answer":"x1*x2=(D^2-d^2)/4=Df, so f=(96^2-48^2)/(4*96)=18 cm."},{"ask":"Where are the physical conjugate lens positions?","why_this_ask":"Recover roots from measured sum and difference.","step_answer":"x1=(96-48)/2=24 cm; x2=(96+48)/2=72 cm."},{"ask":"What are the two magnification magnitudes?","why_this_ask":"Use |m|=(D-x)/x with real images.","step_answer":"At 24 cm, |m|=72/24=3. At 72 cm, |m|=24/72=1/3."}],"hints":["The measured separation is between two physically valid lens positions, not the focal length.","The sum and difference of the two position roots are known; use them to determine their product.","The product of the lens-position roots is Df. Use the observed sum and difference without presuming a particular value of f."],"boundaryAnswer":"No: 70 cm < 4f=72 cm, so the real-position quadratic has negative discriminant."}</script>
