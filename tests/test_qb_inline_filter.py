@@ -56,6 +56,7 @@ def test_attempt_evaluation_and_key_highlighting():
 
     # 2. Verify reader scripts evaluate attempts and highlight correct keys
     readers = [
+        ROOT / "nsejs" / "js" / "core2-physics-reader.js",
         ROOT / "nsejs" / "js" / "core2-chemistry-reader.js",
         ROOT / "nsejs" / "js" / "core2-biology-reader.js",
     ]

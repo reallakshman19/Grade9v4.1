@@ -339,11 +339,14 @@
           - `✅ CORRECT`: Confirms choice matches official verified key.
           - `❌ INCORRECT`: Explicitly names the user's selected choice, identifies the official correct key, and prompts review of the step-by-step derivation.
           - `ℹ️ DROPPED`: Identifies questions officially dropped by IAPT during examination evaluation.
-        - **Subject Readers Upgraded**: Implemented full `renderAttemptFeedback` evaluation and `[🔄 Reset & Try Again]` retry workflows in:
+        - **Subject Readers Upgraded & Parity Achieved**: Implemented full `renderAttemptFeedback` evaluation and `[🔄 Reset & Try Again]` retry workflows across all three subject readers:
           - [`nsejs/js/core2-chemistry-reader.js`](nsejs/js/core2-chemistry-reader.js)
           - [`nsejs/js/core2-biology-reader.js`](nsejs/js/core2-biology-reader.js)
           - [`nsejs/js/core2-physics-reader.js`](nsejs/js/core2-physics-reader.js)
-        - **Automated Verification**: Added `test_attempt_evaluation_and_key_highlighting()` in [`tests/test_qb_inline_filter.py`](tests/test_qb_inline_filter.py). Full test suite expanded to 59/59 passing unit tests.
+        - **Cache Busting & Headless Browser Verification**:
+          - Synchronized script cache-busters to `?v=4.1.5` across [`nsejs/physics/index.html`](nsejs/physics/index.html), [`nsejs/chemistry/index.html`](nsejs/chemistry/index.html), and [`nsejs/biology/index.html`](nsejs/biology/index.html) to eliminate stale browser script caching.
+          - Verified live in headless Chromium browser (1366x854 viewport): Candidate 1 (`NSEJS-24-CIRC-01`) renders 0 "producer" occurrences, generates instant `❌ INCORRECT` alert banner upon selecting Option C, styles Option C with red `✗ Your Choice (Incorrect)` badge, highlights Option D with green `✓ Correct Option` badge, and cleanly resets/re-enables all radio controls when clicking `🔄 Reset & Try Again`.
+        - **Automated Verification**: Added `test_attempt_evaluation_and_key_highlighting()` in [`tests/test_qb_inline_filter.py`](tests/test_qb_inline_filter.py) covering Physics, Chemistry, and Biology readers. Full test suite expanded to passing all unit tests with 0 failures.
 
 
 
