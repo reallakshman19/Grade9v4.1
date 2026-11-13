@@ -208,6 +208,18 @@
       - **Global Theme Variables**: Replaced legacy yellow CSS variables (`--unval-bg: #fffbeb`, `--unval-text: #92400e`, `--unval-border: #fcd34d`) with blue reviewed tokens (`--unval-bg: #f0f9ff`, `--unval-text: #0369a1`, `--unval-border: #0284c7`, text: `#0c4a6e`) across `index.html`, `core1-recovery.html`, `physics/index.html`, `chemistry/index.html`, and `biology/index.html`.
       - **Physics Candidate Bank Notices**: Modernized `.notice` banner in `nsejs/physics/question-bank.html` to `{Core 2: Reviewed}` and `.figure-warning` boxes to slate styling (`#f8fafc`, `#94a3b8`).
 
+    - **Milestone 23 — IAPT Exam Sources Download & Complete Three-Subject Candidate Bank Integration**:
+      - **10/10 Official IAPT Examination Papers & Keys Downloaded**: Fetched and fingerprinted all 5 exam years (2020–2024) in Git-excluded custody (`workspace/sources/iapt/source_manifest.json`):
+        - `2024_Set_51.pdf` (1.18 MB) | SHA-256 `b80e3bae...` & `2024_Final_Answer_Key.pdf` (453 KB) | SHA-256 `6d56f6f4...`
+        - `2023_Set_51.pdf` (1.11 MB) | SHA-256 `782cb3fb...` & `2023_Tentative_Answer_Key.pdf` (342 KB) | SHA-256 `e18fa8ba...`
+        - `2022_Set_51.pdf` (13.4 MB) | SHA-256 `b85c4635...` & `2022_Final_Answer_Key.pdf` (413 KB) | SHA-256 `1807ddca...`
+        - `2021_IOQJS_Part_I.pdf` (1.38 MB) | SHA-256 `c3a8e860...` & `2021_IOQJS_Part_I_Answer_Key.pdf` (606 KB) | SHA-256 `f6324a38...`
+        - `2020_IOQJS_Part_I.pdf` (4.61 MB) | SHA-256 `8b7f09e6...` & `2020_IOQJS_Part_I_Answer_Key.pdf` (195 KB) | SHA-256 `977509eb...`
+      - **Chemistry Candidate Question Bank ([nsejs/chemistry/question-bank.html](http://localhost:8000/nsejs/chemistry/question-bank.html))**: Upgraded to full 12.7" tablet candidate reader (`core2-chemistry-reader.js`) indexing 119 questions across 9 topic/exam pills (Atomic Structure: 10, Bonding: 10, Mole Concept: 10, Reactions: 10, 2024: 20, 2023: 20, 2022: 20, 2021: 11, 2020: 8).
+      - **Biology Candidate Question Bank ([nsejs/biology/question-bank.html](http://localhost:8000/nsejs/biology/question-bank.html))**: Upgraded to full 12.7" tablet candidate reader (`core2-biology-reader.js`) indexing 119 questions across 9 topic/exam pills (Genetics: 10, Living World: 10, Life Processes: 10, Environment: 10, 2024: 20, 2023: 20, 2022: 20, 2021: 11, 2020: 8).
+      - **Official Sources Verification Dossier ([nsejs/official-sources.html](http://localhost:8000/nsejs/official-sources.html))**: Upgraded with local download badges, byte counts, 64-char SHA-256 fingerprints, and direct links to practice cards.
+      - **Dual-Engine Automated & Browser Verification**: 43/43 pages passed static audit (836 internal links verified, 0 broken). Browser subagent confirmed 0 console errors and interactive cards rendering across Chemistry, Biology, and Official Sources.
+
 ---
 
 ## 2. Active Verification State
