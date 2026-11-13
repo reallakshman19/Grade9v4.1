@@ -13,7 +13,7 @@ import pytest
 ROOT = Path(__file__).resolve().parents[1]
 CURRICULUM = ROOT / "nsejs" / "physics" / "curriculum"
 VALIDATOR = runpy.run_path(str(CURRICULUM / "contracts/tools/validate_physics_contracts.py"))["inspect_package"]
-SLICES = ("PH07-01", "PH07-02", "PH07-04", "PH07-05", "PH08-04", "PH08-05", "PH08-06", "PH08-07")
+SLICES = ("PH07-01", "PH07-02", "PH07-04", "PH07-05", "PH07-06", "PH07-07", "PH08-04", "PH08-05", "PH08-06", "PH08-07", "PH08-08", "PH08-12")
 
 
 class Links(HTMLParser):
@@ -42,7 +42,7 @@ def test_subtopic_contract_and_dedicated_pair(sid):
     targets = data["subtopics"][0]["qrt_targets"]
     assert len({q["primary_operation"] for q in targets}) == 3
     assert all(q["source_role"] == "AUTHORED_TRANSFER" for q in targets)
-    expected = {sid: [] if sid == "PH07-01" else ["NSEJS-FND-CIRC-04"] if sid.startswith("PH07") else ["NSEJS-24-MECH-07"] for sid in SLICES}
+    expected = {sid: [] if sid in {"PH07-01", "PH07-07", "PH08-08", "PH08-12"} else ["NSEJS-FND-CIRC-04"] if sid.startswith("PH07") else ["NSEJS-24-MECH-07"] for sid in SLICES}
     assert [q["item_id"] for q in data["core2_sources"]] == expected[sid]
     assert all(q["source_role"] == "PREREQUISITE_BRIDGE" and q["academic_status"] == "HOLD" for q in data["core2_sources"])
     assert len(data["core1b"]) == 6
@@ -101,7 +101,7 @@ def test_25_subtopic_crosswalk_is_not_exam_admission():
     m = json.loads(p.read_text(encoding="utf-8"))
     assert len(m["rows"]) == len({r["subtopic_id"] for r in m["rows"]}) == 25
     assert sum(r["relation"] == "PRIMARY_RELATED_CANDIDATE_HOLD" for r in m["rows"]) == 2
-    assert sum(r["native_candidate"] == "B01_DEDICATED_PAIR" for r in m["rows"]) == 8
+    assert sum(r["native_candidate"] == "B01_DEDICATED_PAIR" for r in m["rows"]) == 12
     assert m["audit"]["qualified_direct_exam_items"] == m["audit"]["qualified_d3_d4_exam_items"] == 0
     for row in m["rows"]:
         assert row["direct_exam_admission"] == "HOLD"
@@ -148,3 +148,34 @@ def test_increment3_author_model_arithmetic():
     assert loss == pytest.approx(12)
     assert (120*alpha-loss)/300 == pytest.approx(0.12)
     assert (120*alpha-loss)/300 != pytest.approx(0.10)
+
+
+@pytest.mark.parametrize("sid,op", (("PH07-07","MODEL"), ("PH08-12","SYNTHESIZE"), ("PH08-12","JUSTIFY")))
+def test_increment4_d4_and_no_direct_exam_claim(sid, op):
+    d = json.loads((CURRICULUM / "topics" / sid[:4] / "b01" / sid / "physics-topic-package.v1.json").read_text(encoding="utf-8"))
+    target, = [t for t in d["subtopics"][0]["qrt_targets"] if t["primary_operation"] == op]
+    assert target["band"] == "D4"
+    assert 8 <= sum(v["score"] for v in target["factor_evidence"].values()) <= 10
+    assert target["source_role"] == "AUTHORED_TRANSFER"
+    assert target["qrt_status"] == "PROPOSED"
+    assert not d["core2_sources"]
+    assert d["acceptance"]["release"] == "HOLD"
+    for c in d["core1b"]:
+        assert c["fresh_task"] not in target["decisive_route"]
+
+
+def test_increment4_phase_evaporation_and_echo_arithmetic():
+    assert (30-6)*100 == (30-14)*150 == 2400
+    assert 12 - 0.004*2400 == pytest.approx(2.4)
+    assert (20-6)/2500 == pytest.approx(0.0056)
+    from math import sqrt
+    assert (sqrt(12**2+9**2)-sqrt(4**2+9**2))/300 > 0.015
+    assert (sqrt(12**2+6**2)-10)/340 < 0.012
+    v=250
+    width=v*0.056/2
+    one=v*0.016/2
+    other=width-one
+    assert (one,other) == pytest.approx((2,5))
+    assert sorted([2*(one+1)/v,2*(other-1)/v]) == pytest.approx([0.024,0.032])
+    assert sorted([2*(other+1)/v,2*(one-1)/v]) == pytest.approx([0.008,0.048])
+    assert [0.056+2*x/v for x in (one,other)] == pytest.approx([0.072,0.096])
