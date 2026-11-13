@@ -223,4 +223,7 @@ def main():
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    status = main()
+    if status == 0:
+        status = subprocess.call([sys.executable, str(ROOT / "tools/physics_ph01_r31_core1b_browser_qa.py")])
+    raise SystemExit(status)
