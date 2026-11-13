@@ -1,7 +1,7 @@
 {
   "schema": "g9v41-chem-topic-adapter/v1",
   "adapter_id": "CHEM-C11",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "subject": "CHEMISTRY",
   "unit_id": "C11",
   "blueprint_ref": "CHEM-QRT-BLUEPRINT@0.1.0",
@@ -58,24 +58,24 @@
           "status": "ACADEMIC_HOLD"
         },
         {
-          "instance_id": "C11-01-SYNTHESIZE-D3",
-          "template_ref": "QRT-SYNTHESIZE-D3",
+          "instance_id": "C11-01-SYNTHESIZE-D4-B02-R2",
+          "template_ref": "QRT-SYNTHESIZE-D4",
           "primary_operation": "SYNTHESIZE",
-          "band": "D3",
+          "band": "D4",
           "canonical_concept_refs": [
             "CHEM-C11.01-CONCEPT"
           ],
           "slots": {
-            "X": "Given a fresh experiment involving tetravalent branched carbon structure, identify a shared intermediate and order dependent steps under the specified conditions; justify what evidence would distinguish an alternative.",
-            "Y": "Carbon's tetravalency and catenation permit chains, rings and branches within valence constraints.",
-            "Z": "identify a shared intermediate and order dependent steps under the specified conditions",
-            "W": "The learner independently completes the cross-stage bridge, not exposed before first attempt."
+            "X": "An acyclic saturated hydrocarbon has 7 carbons, one quaternary carbon and no tertiary carbons. Combine degree counting and structural construction: find terminal and secondary counts, draw two nonidentical skeletons satisfying the data and verify formula.",
+            "Y": "Acyclic saturated graphs have degree sum 2(n−1). After choosing a branch center, arm-length multisets distinguish structures with only one branching center. Graph method is extension.",
+            "Z": "Degree sum 12. n₁+n₂=6; n₁+2n₂+4=12 => n₂=2,n₁=4. Two possible arm length sets from central carbon: 3,1,1,1 and 2,2,1,1, giving (CH₃)₃C–CH₂–CH₂–CH₃ and (CH₃)₂C(CH₂CH₃)₂. Both C₇H₁₆. Different arm-length multisets distinguish connectivity.",
+            "W": "Combine degree constraints with graph construction and non-equivalence proof."
           },
-          "student_task": "Given a fresh experiment involving tetravalent branched carbon structure, identify a shared intermediate and order dependent steps under the specified conditions; justify what evidence would distinguish an alternative.",
-          "wrong_idea": "A superficially similar example gives the same answer without checking species, conditions or evidence for tetravalent branched carbon structure.",
-          "replacement_rule": "Apply the concept's valid conditions and check species/charge/atom conservation or direct experimental discriminators; Carbon's tetravalency and catenation permit chains, rings and branches within valence constraints.",
-          "visual_job": "Show an accurate Chemistry diagram or evidence table for tetravalent branched carbon structure, with the decisive result unmarked.",
-          "independent_check": "Reverse the representation or test a counterexample for tetravalent branched carbon structure while checking relevant conserved entities.",
+          "student_task": "An acyclic saturated hydrocarbon has 7 carbons, one quaternary carbon and no tertiary carbons. Combine degree counting and structural construction: find terminal and secondary counts, draw two nonidentical skeletons satisfying the data and verify formula.",
+          "wrong_idea": "Matching carbon counts alone proves identical connectivity.",
+          "replacement_rule": "Acyclic saturated graphs have degree sum 2(n−1). After choosing a branch center, arm-length multisets distinguish structures with only one branching center. Graph method is extension.",
+          "visual_job": "Learner constructs the task-specific representation in protected W; no completed representation before attempt.",
+          "independent_check": "Can an arm-length set 4,1,1,1 fit the same formula? No; seven arm carbons plus center gives eight, not seven.",
           "source_bindings": [
             {
               "ref": "CBSE-X-2026",
@@ -86,24 +86,24 @@
           "status": "ACADEMIC_HOLD"
         },
         {
-          "instance_id": "C11-01-JUSTIFY-D3",
-          "template_ref": "QRT-JUSTIFY-D3",
+          "instance_id": "C11-01-JUSTIFY-D4-B02-R2",
+          "template_ref": "QRT-JUSTIFY-D4",
           "primary_operation": "JUSTIFY",
-          "band": "D3",
+          "band": "D4",
           "canonical_concept_refs": [
             "CHEM-C11.01-CONCEPT"
           ],
           "slots": {
-            "X": "In an unfamiliar case of tetravalent branched carbon structure, evaluate two plausible explanations, identify what is underdetermined, and justify a discriminating observation or boundary condition.",
-            "Y": "Carbon's tetravalency and catenation permit chains, rings and branches within valence constraints.",
-            "Z": "test the claim against scientific evidence and an exception or counterexample",
-            "W": "The learner independently completes the decisive warrant or failing boundary, not exposed before first attempt."
+            "X": "A student proposes that a connected neutral saturated C₆H₁₄ structure can contain two quaternary carbons. Test the claim using degree counting and show a realizable six-carbon skeleton with the maximum number of quaternary centers.",
+            "Y": "Valence and graph connectivity both constrain a carbon skeleton; count degrees before claiming feasibility. An upper bound needs a realizable example to establish a maximum. Extension model.",
+            "Z": "Tree degree sum 10. Two degree-four vertices use 8; remaining four vertices each have degree ≥1, giving ≥12, impossible. One degree-four center possible: (CH₃)₃C–CH₂–CH₃, six carbons, H=9+2+3=14. Maximum one. No isolated vertices in connected graph.",
+            "W": "Prove upper bound by contradiction and exhibit feasible witness."
           },
-          "student_task": "In an unfamiliar case of tetravalent branched carbon structure, evaluate two plausible explanations, identify what is underdetermined, and justify a discriminating observation or boundary condition.",
-          "wrong_idea": "A superficially similar example gives the same answer without checking species, conditions or evidence for tetravalent branched carbon structure.",
-          "replacement_rule": "Apply the concept's valid conditions and check species/charge/atom conservation or direct experimental discriminators; Carbon's tetravalency and catenation permit chains, rings and branches within valence constraints.",
-          "visual_job": "Show an accurate Chemistry diagram or evidence table for tetravalent branched carbon structure, with the decisive result unmarked.",
-          "independent_check": "Reverse the representation or test a counterexample for tetravalent branched carbon structure while checking relevant conserved entities.",
+          "student_task": "A student proposes that a connected neutral saturated C₆H₁₄ structure can contain two quaternary carbons. Test the claim using degree counting and show a realizable six-carbon skeleton with the maximum number of quaternary centers.",
+          "wrong_idea": "Every allowed local valence assignment guarantees a connected skeleton.",
+          "replacement_rule": "Valence and graph connectivity both constrain a carbon skeleton; count degrees before claiming feasibility. An upper bound needs a realizable example to establish a maximum. Extension model.",
+          "visual_job": "Learner constructs the task-specific representation in protected W; no completed representation before attempt.",
+          "independent_check": "Can C₈H₁₈ contain two adjacent quaternary centers? Yes, (CH₃)₃C–C(CH₃)₃, 8 carbons and 18 H.",
           "source_bindings": [
             {
               "ref": "CBSE-X-2026",
@@ -135,7 +135,7 @@
       ],
       "qrt_instances": [
         {
-          "instance_id": "C11-02-REPRESENT-D3",
+          "instance_id": "C11-02-REPRESENT-D3-B02-R2",
           "template_ref": "QRT-REPRESENT-D3",
           "primary_operation": "REPRESENT",
           "band": "D3",
@@ -143,16 +143,16 @@
             "CHEM-C11.02-CONCEPT"
           ],
           "slots": {
-            "X": "Explain the mechanism behind diamond versus graphite bonding; name at least one control or limitation that rejects a tempting alternative.",
-            "Y": "Diamond and graphite differ in bonding network, explaining many physical-property differences.",
-            "Z": "translate observation to particle/chemical-symbol representation conserving species, atoms and charge",
-            "W": "The learner independently completes the invariant correspondence, not exposed before first attempt."
+            "X": "Two ideal carbon network fragments have 12 carbon atoms each with periodic boundaries. Model A has four neighbours per carbon; B has three in-plane neighbours per carbon. Draw the local arrangements, count distinct nearest-neighbour links in each model and connect the diagrams to direction-dependent transport without treating link count as bond strength.",
+            "Y": "Coordination is the number of nearest bonded neighbours, not bond order or isolated bond strength. In an ideal periodic network each link is shared by two atoms; graphite has delocalised electrons in layers.",
+            "Z": "A tetrahedral 3D network, B trigonal planar in sheets. Each link counted twice: A=24, B=18. B has delocalised electrons in layers, A normally lacks mobile carriers. Link count is topology, not bond energy or conductivity magnitude. Periodic boundary idealisation avoids edge effects.",
+            "W": "Translate coordination into local geometry, network link counts and transport interpretation."
           },
-          "student_task": "Explain the mechanism behind diamond versus graphite bonding; name at least one control or limitation that rejects a tempting alternative.",
-          "wrong_idea": "A superficially similar example gives the same answer without checking species, conditions or evidence for diamond versus graphite bonding.",
-          "replacement_rule": "Apply the concept's valid conditions and check species/charge/atom conservation or direct experimental discriminators; Diamond and graphite differ in bonding network, explaining many physical-property differences.",
-          "visual_job": "Show an accurate Chemistry diagram or evidence table for diamond versus graphite bonding, with the decisive result unmarked.",
-          "independent_check": "Reverse the representation or test a counterexample for diamond versus graphite bonding while checking relevant conserved entities.",
+          "student_task": "Two ideal carbon network fragments have 12 carbon atoms each with periodic boundaries. Model A has four neighbours per carbon; B has three in-plane neighbours per carbon. Draw the local arrangements, count distinct nearest-neighbour links in each model and connect the diagrams to direction-dependent transport without treating link count as bond strength.",
+          "wrong_idea": "More neighbours automatically means better electrical conduction.",
+          "replacement_rule": "Coordination is the number of nearest bonded neighbours, not bond order or isolated bond strength. In an ideal periodic network each link is shared by two atoms; graphite has delocalised electrons in layers.",
+          "visual_job": "Learner constructs the task-specific representation in protected W; no completed representation before attempt.",
+          "independent_check": "If the fragment has open edges, is the same count guaranteed? No; edge coordination differs and must be counted explicitly.",
           "source_bindings": [
             {
               "ref": "CBSE-X-2026",
@@ -163,7 +163,7 @@
           "status": "ACADEMIC_HOLD"
         },
         {
-          "instance_id": "C11-02-SYNTHESIZE-D3",
+          "instance_id": "C11-02-SYNTHESIZE-D3-B02-R2",
           "template_ref": "QRT-SYNTHESIZE-D3",
           "primary_operation": "SYNTHESIZE",
           "band": "D3",
@@ -171,16 +171,16 @@
             "CHEM-C11.02-CONCEPT"
           ],
           "slots": {
-            "X": "Given a fresh experiment involving diamond versus graphite bonding, identify a shared intermediate and order dependent steps under the specified conditions; justify what evidence would distinguish an alternative.",
-            "Y": "Diamond and graphite differ in bonding network, explaining many physical-property differences.",
-            "Z": "identify a shared intermediate and order dependent steps under the specified conditions",
-            "W": "The learner independently completes the cross-stage bridge, not exposed before first attempt."
+            "X": "A layered carbon film shows high current along its plane, low current perpendicular to it and easy cleavage parallel to layers. After compression, perpendicular current increases but the in-plane response remains similar. Construct a model explaining both the original and changed observations and propose a discriminating measurement against a metallic-contamination hypothesis.",
+            "Y": "Structure–property reasoning may involve geometry, carrier paths, interlayer interaction and contact effects. A change in a single reading does not establish a phase transition or unique material identity.",
+            "Z": "Graphitic layers offer in-plane delocalised carriers and weaker interlayer interactions; compression may improve interlayer electronic coupling/contact while preserving layers. Increased perpendicular current does not prove changed allotrope. Contamination or contact change alternatives require structural/composition and controlled contact measurements. No unique quantitative prediction.",
+            "W": "Integrate network transport, mechanical response and perturbation evidence, distinguishing competing causes."
           },
-          "student_task": "Given a fresh experiment involving diamond versus graphite bonding, identify a shared intermediate and order dependent steps under the specified conditions; justify what evidence would distinguish an alternative.",
-          "wrong_idea": "A superficially similar example gives the same answer without checking species, conditions or evidence for diamond versus graphite bonding.",
-          "replacement_rule": "Apply the concept's valid conditions and check species/charge/atom conservation or direct experimental discriminators; Diamond and graphite differ in bonding network, explaining many physical-property differences.",
-          "visual_job": "Show an accurate Chemistry diagram or evidence table for diamond versus graphite bonding, with the decisive result unmarked.",
-          "independent_check": "Reverse the representation or test a counterexample for diamond versus graphite bonding while checking relevant conserved entities.",
+          "student_task": "A layered carbon film shows high current along its plane, low current perpendicular to it and easy cleavage parallel to layers. After compression, perpendicular current increases but the in-plane response remains similar. Construct a model explaining both the original and changed observations and propose a discriminating measurement against a metallic-contamination hypothesis.",
+          "wrong_idea": "A change in conductivity proves new chemical bonds formed.",
+          "replacement_rule": "Structure–property reasoning may involve geometry, carrier paths, interlayer interaction and contact effects. A change in a single reading does not establish a phase transition or unique material identity.",
+          "visual_job": "Learner constructs the task-specific representation in protected W; no completed representation before attempt.",
+          "independent_check": "If compression changes electrode contact alone, could current increase without altering carbon structure? Yes; use controlled contacts and independent structural evidence.",
           "source_bindings": [
             {
               "ref": "CBSE-X-2026",
@@ -268,24 +268,24 @@
           "status": "ACADEMIC_HOLD"
         },
         {
-          "instance_id": "C11-03-SYNTHESIZE-D3",
-          "template_ref": "QRT-SYNTHESIZE-D3",
+          "instance_id": "C11-03-SYNTHESIZE-D4-B02-R2",
+          "template_ref": "QRT-SYNTHESIZE-D4",
           "primary_operation": "SYNTHESIZE",
-          "band": "D3",
+          "band": "D4",
           "canonical_concept_refs": [
             "CHEM-C11.03-CONCEPT"
           ],
           "slots": {
-            "X": "Given a fresh experiment involving ethene versus ethane bromine test, identify a shared intermediate and order dependent steps under the specified conditions; justify what evidence would distinguish an alternative.",
-            "Y": "Alkanes have single C–C bonds while alkenes/alkynes have multiple bonds; chemical test evidence requires controls.",
-            "Z": "identify a shared intermediate and order dependent steps under the specified conditions",
-            "W": "The learner independently completes the cross-stage bridge, not exposed before first attempt."
+            "X": "An unknown pure C₄H₆ hydrocarbon consumes exactly 2 mol H₂ per mole in an ideal complete catalytic hydrogenation that changes only multiple bonds and leaves all rings intact. The final product is acyclic C₄H₁₀. Combine hydrogen deficiency and reaction evidence, draw two starting structures compatible with both, and identify one measurement that would distinguish them.",
+            "Y": "Hydrogen deficiency counts rings and multiple bonds; ideal hydrogenation consumes one H₂ per C=C and two per C≡C. Ring preservation is an explicit condition. Extension counting model, not a procedure.",
+            "Z": "C₄H₆ has two deficiency units relative to C₄H₁₀. Two H₂ add four H; final acyclic so initial no ring under model. But-1-yne HC≡C–CH₂–CH₃ and buta-1,3-diene CH₂=CH–CH=CH₂ both meet total uptake and yield butane. Distinguish via suitable structural spectroscopy or bond-specific evidence. Hydrogen uptake alone does not choose triple vs two doubles.",
+            "W": "Combine formula and selective reaction constraints; construct distinct compatible structures."
           },
-          "student_task": "Given a fresh experiment involving ethene versus ethane bromine test, identify a shared intermediate and order dependent steps under the specified conditions; justify what evidence would distinguish an alternative.",
-          "wrong_idea": "A superficially similar example gives the same answer without checking species, conditions or evidence for ethene versus ethane bromine test.",
-          "replacement_rule": "Apply the concept's valid conditions and check species/charge/atom conservation or direct experimental discriminators; Alkanes have single C–C bonds while alkenes/alkynes have multiple bonds; chemical test evidence requires controls.",
-          "visual_job": "Show an accurate Chemistry diagram or evidence table for ethene versus ethane bromine test, with the decisive result unmarked.",
-          "independent_check": "Reverse the representation or test a counterexample for ethene versus ethane bromine test while checking relevant conserved entities.",
+          "student_task": "An unknown pure C₄H₆ hydrocarbon consumes exactly 2 mol H₂ per mole in an ideal complete catalytic hydrogenation that changes only multiple bonds and leaves all rings intact. The final product is acyclic C₄H₁₀. Combine hydrogen deficiency and reaction evidence, draw two starting structures compatible with both, and identify one measurement that would distinguish them.",
+          "wrong_idea": "Hydrogen uptake uniquely identifies the bond arrangement.",
+          "replacement_rule": "Hydrogen deficiency counts rings and multiple bonds; ideal hydrogenation consumes one H₂ per C=C and two per C≡C. Ring preservation is an explicit condition. Extension counting model, not a procedure.",
+          "visual_job": "Learner constructs the task-specific representation in protected W; no completed representation before attempt.",
+          "independent_check": "If only one mole H₂ is taken up and rings preserved, can the original contain a ring? Yes; one ring plus one double can account for two deficiency units, yielding C₄H₈.",
           "source_bindings": [
             {
               "ref": "CBSE-X-2026",
@@ -296,7 +296,7 @@
           "status": "ACADEMIC_HOLD"
         },
         {
-          "instance_id": "C11-03-JUSTIFY-D3",
+          "instance_id": "C11-03-JUSTIFY-D3-B02-R2",
           "template_ref": "QRT-JUSTIFY-D3",
           "primary_operation": "JUSTIFY",
           "band": "D3",
@@ -304,16 +304,16 @@
             "CHEM-C11.03-CONCEPT"
           ],
           "slots": {
-            "X": "In an unfamiliar case of ethene versus ethane bromine test, evaluate two plausible explanations, identify what is underdetermined, and justify a discriminating observation or boundary condition.",
-            "Y": "Alkanes have single C–C bonds while alkenes/alkynes have multiple bonds; chemical test evidence requires controls.",
-            "Z": "test the claim against scientific evidence and an exception or counterexample",
-            "W": "The learner independently completes the decisive warrant or failing boundary, not exposed before first attempt."
+            "X": "A report claims every C₅H₁₀ molecule must contain a double bond and absorb one H₂ on ideal alkene hydrogenation. Construct an explicit counterexample, a valid confirming example, and show how both satisfy carbon valence; state what the formula does establish.",
+            "Y": "One hydrogen deficiency can be a ring or a double bond. Formula constrains total atom count; reactivity depends on actual connectivity and conditions.",
+            "Z": "Cyclopentane is five CH₂ groups in ring; no C=C and no uptake in stated ideal alkene-only model. Pent-1-ene CH₂=CH–CH₂–CH₂–CH₃ has 10 H and one C=C; ideal addition uses one H₂. Formula establishes one hydrogen deficiency relative to C₅H₁₂, not its allocation. Real reaction conditions can permit other transformations.",
+            "W": "Justify or refute universal formula-to-reactivity claim with two valence-valid witnesses."
           },
-          "student_task": "In an unfamiliar case of ethene versus ethane bromine test, evaluate two plausible explanations, identify what is underdetermined, and justify a discriminating observation or boundary condition.",
-          "wrong_idea": "A superficially similar example gives the same answer without checking species, conditions or evidence for ethene versus ethane bromine test.",
-          "replacement_rule": "Apply the concept's valid conditions and check species/charge/atom conservation or direct experimental discriminators; Alkanes have single C–C bonds while alkenes/alkynes have multiple bonds; chemical test evidence requires controls.",
-          "visual_job": "Show an accurate Chemistry diagram or evidence table for ethene versus ethane bromine test, with the decisive result unmarked.",
-          "independent_check": "Reverse the representation or test a counterexample for ethene versus ethane bromine test while checking relevant conserved entities.",
+          "student_task": "A report claims every C₅H₁₀ molecule must contain a double bond and absorb one H₂ on ideal alkene hydrogenation. Construct an explicit counterexample, a valid confirming example, and show how both satisfy carbon valence; state what the formula does establish.",
+          "wrong_idea": "All CₙH₂ₙ hydrocarbons are alkenes.",
+          "replacement_rule": "One hydrogen deficiency can be a ring or a double bond. Formula constrains total atom count; reactivity depends on actual connectivity and conditions.",
+          "visual_job": "Learner constructs the task-specific representation in protected W; no completed representation before attempt.",
+          "independent_check": "Can a neutral acyclic C₅H₁₀ contain a triple bond? No under ordinary hydrocarbon valence; triple requires two deficiency units.",
           "source_bindings": [
             {
               "ref": "CBSE-X-2026",
@@ -345,24 +345,24 @@
       ],
       "qrt_instances": [
         {
-          "instance_id": "C11-04-REPRESENT-D3",
-          "template_ref": "QRT-REPRESENT-D3",
+          "instance_id": "C11-04-REPRESENT-D4-B02-R2",
+          "template_ref": "QRT-REPRESENT-D4",
           "primary_operation": "REPRESENT",
-          "band": "D3",
+          "band": "D4",
           "canonical_concept_refs": [
             "CHEM-C11.04-CONCEPT"
           ],
           "slots": {
-            "X": "Explain the mechanism behind isomer names and homologous CH2 changes; name at least one control or limitation that rejects a tempting alternative.",
-            "Y": "Homologous series share a structural pattern and often differ by CH2; naming tracks connectivity rather than formula alone.",
-            "Z": "translate observation to particle/chemical-symbol representation conserving species, atoms and charge",
-            "W": "The learner independently completes the invariant correspondence, not exposed before first attempt."
+            "X": "A neutral acyclic saturated monohydric alcohol has molar mass 74 g/mol (C=12,H=1,O=16). Infer molecular formula, represent all distinct alcohol connectivities (excluding ethers and stereoisomers), and verify how each differs in formula from propanol.",
+            "Y": "Homologous alcohols share the functional group and successive members differ by CH₂; positional isomers require inequivalent sites on each carbon skeleton.",
+            "Z": "Alcohol formula CₙH₂ₙ₊₂O =>14n+18=74 => n=4, C₄H₁₀O. Butan-1-ol CH₃CH₂CH₂CH₂OH; butan-2-ol CH₃CH(OH)CH₂CH₃; 2-methylpropan-1-ol (CH₃)₂CHCH₂OH; 2-methylpropan-2-ol (CH₃)₃COH. Straight and branched skeleton each two inequivalent positions. C₃H₈O differs by CH₂. Enantiomers excluded.",
+            "W": "Translate mass, formula and symmetry into complete alcohol structures."
           },
-          "student_task": "Explain the mechanism behind isomer names and homologous CH2 changes; name at least one control or limitation that rejects a tempting alternative.",
-          "wrong_idea": "A superficially similar example gives the same answer without checking species, conditions or evidence for isomer names and homologous CH2 changes.",
-          "replacement_rule": "Apply the concept's valid conditions and check species/charge/atom conservation or direct experimental discriminators; Homologous series share a structural pattern and often differ by CH2; naming tracks connectivity rather than formula alone.",
-          "visual_job": "Show an accurate Chemistry diagram or evidence table for isomer names and homologous CH2 changes, with the decisive result unmarked.",
-          "independent_check": "Reverse the representation or test a counterexample for isomer names and homologous CH2 changes while checking relevant conserved entities.",
+          "student_task": "A neutral acyclic saturated monohydric alcohol has molar mass 74 g/mol (C=12,H=1,O=16). Infer molecular formula, represent all distinct alcohol connectivities (excluding ethers and stereoisomers), and verify how each differs in formula from propanol.",
+          "wrong_idea": "Each hydrogen position yields a distinct alcohol.",
+          "replacement_rule": "Homologous alcohols share the functional group and successive members differ by CH₂; positional isomers require inequivalent sites on each carbon skeleton.",
+          "visual_job": "Learner constructs the task-specific representation in protected W; no completed representation before attempt.",
+          "independent_check": "Would counting stereoisomers add a new type of distinction for butan-2-ol? Yes, it has a stereogenic center; enantiomers are a separate enrichment classification.",
           "source_bindings": [
             {
               "ref": "CBSE-X-2026",
@@ -401,7 +401,7 @@
           "status": "ACADEMIC_HOLD"
         },
         {
-          "instance_id": "C11-04-JUSTIFY-D3",
+          "instance_id": "C11-04-JUSTIFY-D3-B02-R2",
           "template_ref": "QRT-JUSTIFY-D3",
           "primary_operation": "JUSTIFY",
           "band": "D3",
@@ -409,16 +409,16 @@
             "CHEM-C11.04-CONCEPT"
           ],
           "slots": {
-            "X": "In an unfamiliar case of isomer names and homologous CH2 changes, evaluate two plausible explanations, identify what is underdetermined, and justify a discriminating observation or boundary condition.",
-            "Y": "Homologous series share a structural pattern and often differ by CH2; naming tracks connectivity rather than formula alone.",
-            "Z": "test the claim against scientific evidence and an exception or counterexample",
-            "W": "The learner independently completes the decisive warrant or failing boundary, not exposed before first attempt."
+            "X": "Three drawings are CH₃CH(OH)CH₂CH₃, CH₃CH₂CH(OH)CH₃ and CH₃CH₂OCH₂CH₃. A report counts three different constitutional alcohols. Evaluate it by tracing connectivity, formula and functional groups; give a fourth drawing that is a genuinely distinct alcohol with the same formula.",
+            "Y": "Constitutional identity depends on which atoms are bonded, not direction of drawing. An ether has C–O–C; alcohol has C–O–H. Formula alone does not establish group.",
+            "Z": "First and second are butan-2-ol with reversed numbering, same connectivity. Third diethyl ether shares C₄H₁₀O but is not alcohol. Only one constitutional alcohol among three. Butan-1-ol CH₃CH₂CH₂CH₂OH is distinct, same formula. Ignore stereochemistry unless specified.",
+            "W": "Reject duplicate and functional-group errors using connectivity and symmetry, then give witness."
           },
-          "student_task": "In an unfamiliar case of isomer names and homologous CH2 changes, evaluate two plausible explanations, identify what is underdetermined, and justify a discriminating observation or boundary condition.",
-          "wrong_idea": "A superficially similar example gives the same answer without checking species, conditions or evidence for isomer names and homologous CH2 changes.",
-          "replacement_rule": "Apply the concept's valid conditions and check species/charge/atom conservation or direct experimental discriminators; Homologous series share a structural pattern and often differ by CH2; naming tracks connectivity rather than formula alone.",
-          "visual_job": "Show an accurate Chemistry diagram or evidence table for isomer names and homologous CH2 changes, with the decisive result unmarked.",
-          "independent_check": "Reverse the representation or test a counterexample for isomer names and homologous CH2 changes while checking relevant conserved entities.",
+          "student_task": "Three drawings are CH₃CH(OH)CH₂CH₃, CH₃CH₂CH(OH)CH₃ and CH₃CH₂OCH₂CH₃. A report counts three different constitutional alcohols. Evaluate it by tracing connectivity, formula and functional groups; give a fourth drawing that is a genuinely distinct alcohol with the same formula.",
+          "wrong_idea": "Different written order guarantees a new constitutional isomer.",
+          "replacement_rule": "Constitutional identity depends on which atoms are bonded, not direction of drawing. An ether has C–O–C; alcohol has C–O–H. Formula alone does not establish group.",
+          "visual_job": "Learner constructs the task-specific representation in protected W; no completed representation before attempt.",
+          "independent_check": "Could two drawings with same connectivity be distinct stereoisomers? Yes if spatial configuration differs; connectivity alone does not resolve stereochemistry, which is excluded here.",
           "source_bindings": [
             {
               "ref": "CBSE-X-2026",
@@ -450,7 +450,7 @@
       ],
       "qrt_instances": [
         {
-          "instance_id": "C11-05-REPRESENT-D3",
+          "instance_id": "C11-05-REPRESENT-D3-B02-R2",
           "template_ref": "QRT-REPRESENT-D3",
           "primary_operation": "REPRESENT",
           "band": "D3",
@@ -458,16 +458,16 @@
             "CHEM-C11.05-CONCEPT"
           ],
           "slots": {
-            "X": "Explain the mechanism behind ethanol versus ethanoic acid structure; name at least one control or limitation that rejects a tempting alternative.",
-            "Y": "Functional groups determine characteristic reactions; alcohol –OH and acid –COOH are not interchangeable.",
-            "Z": "translate observation to particle/chemical-symbol representation conserving species, atoms and charge",
-            "W": "The learner independently completes the invariant correspondence, not exposed before first attempt."
+            "X": "Three neutral acyclic compounds have formula C₃H₆O: an aldehyde, a ketone, and an alcohol containing one C=C. Draw one valid structure for each, verify every carbon valence and identify which pair shares a carbonyl and which contains OH.",
+            "Y": "A single oxygen can occur in different functional groups; hydrogen deficiency may arise from C=O or C=C. Verify bond orders and atom counts independently.",
+            "Z": "Propanal CH₃CH₂CHO; propanone CH₃COCH₃; prop-2-en-1-ol CH₂=CHCH₂OH. All C₃H₆O; aldehyde and ketone have C=O, third has O–H and C=C. Each carbon bond-order sum four, O valence two. Formula alone cannot distinguish multiple bond allocation. Unsaturated alcohol context extension.",
+            "W": "Construct three valid representations from functional and formula constraints."
           },
-          "student_task": "Explain the mechanism behind ethanol versus ethanoic acid structure; name at least one control or limitation that rejects a tempting alternative.",
-          "wrong_idea": "A superficially similar example gives the same answer without checking species, conditions or evidence for ethanol versus ethanoic acid structure.",
-          "replacement_rule": "Apply the concept's valid conditions and check species/charge/atom conservation or direct experimental discriminators; Functional groups determine characteristic reactions; alcohol –OH and acid –COOH are not interchangeable.",
-          "visual_job": "Show an accurate Chemistry diagram or evidence table for ethanol versus ethanoic acid structure, with the decisive result unmarked.",
-          "independent_check": "Reverse the representation or test a counterexample for ethanol versus ethanoic acid structure while checking relevant conserved entities.",
+          "student_task": "Three neutral acyclic compounds have formula C₃H₆O: an aldehyde, a ketone, and an alcohol containing one C=C. Draw one valid structure for each, verify every carbon valence and identify which pair shares a carbonyl and which contains OH.",
+          "wrong_idea": "One oxygen and a formula uniquely identify a functional group.",
+          "replacement_rule": "A single oxygen can occur in different functional groups; hydrogen deficiency may arise from C=O or C=C. Verify bond orders and atom counts independently.",
+          "visual_job": "Learner constructs the task-specific representation in protected W; no completed representation before attempt.",
+          "independent_check": "Would propan-1-ol satisfy the given formula? No, C₃H₈O; it lacks the extra multiple bond.",
           "source_bindings": [
             {
               "ref": "CBSE-X-2026",
@@ -478,7 +478,7 @@
           "status": "ACADEMIC_HOLD"
         },
         {
-          "instance_id": "C11-05-SYNTHESIZE-D3",
+          "instance_id": "C11-05-SYNTHESIZE-D3-B02-R2",
           "template_ref": "QRT-SYNTHESIZE-D3",
           "primary_operation": "SYNTHESIZE",
           "band": "D3",
@@ -486,16 +486,16 @@
             "CHEM-C11.05-CONCEPT"
           ],
           "slots": {
-            "X": "Given a fresh experiment involving ethanol versus ethanoic acid structure, identify a shared intermediate and order dependent steps under the specified conditions; justify what evidence would distinguish an alternative.",
-            "Y": "Functional groups determine characteristic reactions; alcohol –OH and acid –COOH are not interchangeable.",
-            "Z": "identify a shared intermediate and order dependent steps under the specified conditions",
-            "W": "The learner independently completes the cross-stage bridge, not exposed before first attempt."
+            "X": "A pure neutral C₂H₆O sample is either ethanol or methoxymethane. It shows O–H absorption in a hypothetical independently calibrated spectrum and yields C₂H₄O₂ on complete selective oxidation that preserves the carbon skeleton. Combine the observations to identify the supported model and explain why molecular mass alone is inadequate.",
+            "Y": "An alcohol and ether can share molecular formula but differ in O–H bond and selective reaction behaviour. A calibrated structural observation plus a defined reaction model can discriminate candidates.",
+            "Z": "Ethanol CH₃CH₂OH contains O–H, can oxidise via ethanal to ethanoic acid CH₃COOH while preserving carbon skeleton; ether CH₃OCH₃ lacks O–H and does not fit stated selective pathway. Both C₂H₆O mass 46. Observations jointly support ethanol within two pure candidates; mixture or nonselective oxidation breaks inference. Spectral context enrichment.",
+            "W": "Combine connectivity, independent structural evidence and reaction sequence."
           },
-          "student_task": "Given a fresh experiment involving ethanol versus ethanoic acid structure, identify a shared intermediate and order dependent steps under the specified conditions; justify what evidence would distinguish an alternative.",
-          "wrong_idea": "A superficially similar example gives the same answer without checking species, conditions or evidence for ethanol versus ethanoic acid structure.",
-          "replacement_rule": "Apply the concept's valid conditions and check species/charge/atom conservation or direct experimental discriminators; Functional groups determine characteristic reactions; alcohol –OH and acid –COOH are not interchangeable.",
-          "visual_job": "Show an accurate Chemistry diagram or evidence table for ethanol versus ethanoic acid structure, with the decisive result unmarked.",
-          "independent_check": "Reverse the representation or test a counterexample for ethanol versus ethanoic acid structure while checking relevant conserved entities.",
+          "student_task": "A pure neutral C₂H₆O sample is either ethanol or methoxymethane. It shows O–H absorption in a hypothetical independently calibrated spectrum and yields C₂H₄O₂ on complete selective oxidation that preserves the carbon skeleton. Combine the observations to identify the supported model and explain why molecular mass alone is inadequate.",
+          "wrong_idea": "Molecular formula plus one positive observation always proves purity.",
+          "replacement_rule": "An alcohol and ether can share molecular formula but differ in O–H bond and selective reaction behaviour. A calibrated structural observation plus a defined reaction model can discriminate candidates.",
+          "visual_job": "Learner constructs the task-specific representation in protected W; no completed representation before attempt.",
+          "independent_check": "If a mixture contains a trace alcohol, does an O–H signal prove all sample molecules are ethanol? No. Signal could arise from minor component; quantitative composition needed.",
           "source_bindings": [
             {
               "ref": "CBSE-X-2026",
@@ -555,7 +555,7 @@
       ],
       "qrt_instances": [
         {
-          "instance_id": "C11-06-REPRESENT-D3",
+          "instance_id": "C11-06-REPRESENT-D3-B02-R2",
           "template_ref": "QRT-REPRESENT-D3",
           "primary_operation": "REPRESENT",
           "band": "D3",
@@ -563,16 +563,16 @@
             "CHEM-C11.06-CONCEPT"
           ],
           "slots": {
-            "X": "Explain the mechanism behind complete/incomplete combustion and addition; name at least one control or limitation that rejects a tempting alternative.",
-            "Y": "Combustion, oxidation, addition and substitution have distinct reactants, products and conditions; equations are not mechanisms.",
-            "Z": "translate observation to particle/chemical-symbol representation conserving species, atoms and charge",
-            "W": "The learner independently completes the invariant correspondence, not exposed before first attempt."
+            "X": "An ideal 0.10 mol methane sample burns completely with excess O₂. A second 0.10 mol sample is assumed to yield only CO and H₂O, with all methane consumed. Write balanced equations, compute oxygen requirements and compare carbon-containing products. State why these two models do not establish actual restricted-oxygen product proportions.",
+            "Y": "Combustion product assumptions determine oxygen demand. Carbon and hydrogen conservation hold under both models; incomplete combustion products require evidence.",
+            "Z": "CH₄+2O₂→CO₂+2H₂O: .20 mol O₂, .10 mol CO₂. 2CH₄+3O₂→2CO+4H₂O: .15 mol O₂, .10 mol CO. Both .20 mol H₂O. Restricted oxygen may yield CO₂, CO, soot, unreacted fuel; actual proportions need data. Models theoretical only.",
+            "W": "Translate alternative product assumptions into balanced equations and comparative mole ledger."
           },
-          "student_task": "Explain the mechanism behind complete/incomplete combustion and addition; name at least one control or limitation that rejects a tempting alternative.",
-          "wrong_idea": "A superficially similar example gives the same answer without checking species, conditions or evidence for complete/incomplete combustion and addition.",
-          "replacement_rule": "Apply the concept's valid conditions and check species/charge/atom conservation or direct experimental discriminators; Combustion, oxidation, addition and substitution have distinct reactants, products and conditions; equations are not mechanisms.",
-          "visual_job": "Show an accurate Chemistry diagram or evidence table for complete/incomplete combustion and addition, with the decisive result unmarked.",
-          "independent_check": "Reverse the representation or test a counterexample for complete/incomplete combustion and addition while checking relevant conserved entities.",
+          "student_task": "An ideal 0.10 mol methane sample burns completely with excess O₂. A second 0.10 mol sample is assumed to yield only CO and H₂O, with all methane consumed. Write balanced equations, compute oxygen requirements and compare carbon-containing products. State why these two models do not establish actual restricted-oxygen product proportions.",
+          "wrong_idea": "Restricted oxygen always gives pure CO.",
+          "replacement_rule": "Combustion product assumptions determine oxygen demand. Carbon and hydrogen conservation hold under both models; incomplete combustion products require evidence.",
+          "visual_job": "Learner constructs the task-specific representation in protected W; no completed representation before attempt.",
+          "independent_check": "If all carbon becomes soot and all hydrogen becomes water, what O₂ amount for .10 mol CH₄? CH₄+O₂→C+2H₂O, .10 mol O₂ under stated ideal model.",
           "source_bindings": [
             {
               "ref": "CBSE-X-2026",
@@ -611,24 +611,24 @@
           "status": "ACADEMIC_HOLD"
         },
         {
-          "instance_id": "C11-06-JUSTIFY-D3",
-          "template_ref": "QRT-JUSTIFY-D3",
+          "instance_id": "C11-06-JUSTIFY-D4-B02-R2",
+          "template_ref": "QRT-JUSTIFY-D4",
           "primary_operation": "JUSTIFY",
-          "band": "D3",
+          "band": "D4",
           "canonical_concept_refs": [
             "CHEM-C11.06-CONCEPT"
           ],
           "slots": {
-            "X": "In an unfamiliar case of complete/incomplete combustion and addition, evaluate two plausible explanations, identify what is underdetermined, and justify a discriminating observation or boundary condition.",
-            "Y": "Combustion, oxidation, addition and substitution have distinct reactants, products and conditions; equations are not mechanisms.",
-            "Z": "test the claim against scientific evidence and an exception or counterexample",
-            "W": "The learner independently completes the decisive warrant or failing boundary, not exposed before first attempt."
+            "X": "A theoretical methane substitution model allows CH₃Cl and CH₂Cl₂ only, plus HCl. From 0.10 mol completely reacted methane, 0.14 mol HCl is recorded. A student claims all carbon product is CH₃Cl. Test claim, infer product amounts under model and explain why a real product mixture might not be uniquely identified from HCl alone.",
+            "Y": "Substitution replaces H by another atom; successive net substitutions produce additional HCl. Product distribution cannot be inferred from the first balanced equation alone.",
+            "Z": "Let x CH₃Cl and y CH₂Cl₂; x+y=.10, x+2y=.14 from HCl. y=.04, x=.06 mol. All CH₃Cl gives .10 mol HCl, contradicts stated model. Further substitutions or unreacted material add unknowns; HCl alone then insufficient. Theoretical accounting, no procedure.",
+            "W": "Reject exclusive product claim using atom/stoichiometric constraints, solve and test model limits."
           },
-          "student_task": "In an unfamiliar case of complete/incomplete combustion and addition, evaluate two plausible explanations, identify what is underdetermined, and justify a discriminating observation or boundary condition.",
-          "wrong_idea": "A superficially similar example gives the same answer without checking species, conditions or evidence for complete/incomplete combustion and addition.",
-          "replacement_rule": "Apply the concept's valid conditions and check species/charge/atom conservation or direct experimental discriminators; Combustion, oxidation, addition and substitution have distinct reactants, products and conditions; equations are not mechanisms.",
-          "visual_job": "Show an accurate Chemistry diagram or evidence table for complete/incomplete combustion and addition, with the decisive result unmarked.",
-          "independent_check": "Reverse the representation or test a counterexample for complete/incomplete combustion and addition while checking relevant conserved entities.",
+          "student_task": "A theoretical methane substitution model allows CH₃Cl and CH₂Cl₂ only, plus HCl. From 0.10 mol completely reacted methane, 0.14 mol HCl is recorded. A student claims all carbon product is CH₃Cl. Test claim, infer product amounts under model and explain why a real product mixture might not be uniquely identified from HCl alone.",
+          "wrong_idea": "First substitution equation proves sole product.",
+          "replacement_rule": "Substitution replaces H by another atom; successive net substitutions produce additional HCl. Product distribution cannot be inferred from the first balanced equation alone.",
+          "visual_job": "Learner constructs the task-specific representation in protected W; no completed representation before attempt.",
+          "independent_check": "If CHCl₃ is allowed, do the same two measured quantities uniquely determine three amounts? No; three unknowns with two independent equations, subject to nonnegative constraints.",
           "source_bindings": [
             {
               "ref": "CBSE-X-2026",
@@ -660,7 +660,7 @@
       ],
       "qrt_instances": [
         {
-          "instance_id": "C11-07-REPRESENT-D3",
+          "instance_id": "C11-07-REPRESENT-D3-B02-R2",
           "template_ref": "QRT-REPRESENT-D3",
           "primary_operation": "REPRESENT",
           "band": "D3",
@@ -668,16 +668,16 @@
             "CHEM-C11.07-CONCEPT"
           ],
           "slots": {
-            "X": "Explain the mechanism behind soap micelles and hard-water calcium ions; name at least one control or limitation that rejects a tempting alternative.",
-            "Y": "Ethanol, ethanoic acid, soap and detergents demand structure–property reasoning; water hardness affects soap performance.",
-            "Z": "translate observation to particle/chemical-symbol representation conserving species, atoms and charge",
-            "W": "The learner independently completes the invariant correspondence, not exposed before first attempt."
+            "X": "Two ideal surfactant sketches show (A) heads at the water-facing surface and tails toward an oil droplet, (B) heads buried in oil and tails facing water. Represent both with labelled water/oil regions and explain which orientation supports an oil-in-water dispersion. Predict what changes when calcium binds the soap heads.",
+            "Y": "Amphiphilic molecules contain hydrophobic tails and hydrophilic heads; aggregate geometry depends on surrounding phases. Divalent ions can remove soap through precipitation, distinct from micellisation.",
+            "Z": "A is compatible with aqueous dispersion: hydrophobic tails associate with oil, ionic hydrophilic heads contact water. B reversed orientation is not typical oil-in-water arrangement. Ca²⁺ can form sparingly soluble carboxylate salt, reducing available active soap; not every remaining aggregate behaves identically. Foam not a direct measure of removal.",
+            "W": "Construct labelled molecular orientation and connect changed head chemistry to dispersion."
           },
-          "student_task": "Explain the mechanism behind soap micelles and hard-water calcium ions; name at least one control or limitation that rejects a tempting alternative.",
-          "wrong_idea": "A superficially similar example gives the same answer without checking species, conditions or evidence for soap micelles and hard-water calcium ions.",
-          "replacement_rule": "Apply the concept's valid conditions and check species/charge/atom conservation or direct experimental discriminators; Ethanol, ethanoic acid, soap and detergents demand structure–property reasoning; water hardness affects soap performance.",
-          "visual_job": "Show an accurate Chemistry diagram or evidence table for soap micelles and hard-water calcium ions, with the decisive result unmarked.",
-          "independent_check": "Reverse the representation or test a counterexample for soap micelles and hard-water calcium ions while checking relevant conserved entities.",
+          "student_task": "Two ideal surfactant sketches show (A) heads at the water-facing surface and tails toward an oil droplet, (B) heads buried in oil and tails facing water. Represent both with labelled water/oil regions and explain which orientation supports an oil-in-water dispersion. Predict what changes when calcium binds the soap heads.",
+          "wrong_idea": "Micelles have one universal orientation regardless of medium.",
+          "replacement_rule": "Amphiphilic molecules contain hydrophobic tails and hydrophilic heads; aggregate geometry depends on surrounding phases. Divalent ions can remove soap through precipitation, distinct from micellisation.",
+          "visual_job": "Learner constructs the task-specific representation in protected W; no completed representation before attempt.",
+          "independent_check": "Would the same orientation necessarily hold in an oil-continuous reverse-micelle model? No; solvent geometry can favour reversed aggregates, an extension case.",
           "source_bindings": [
             {
               "ref": "CBSE-X-2026",
@@ -716,24 +716,24 @@
           "status": "ACADEMIC_HOLD"
         },
         {
-          "instance_id": "C11-07-JUSTIFY-D3",
-          "template_ref": "QRT-JUSTIFY-D3",
+          "instance_id": "C11-07-JUSTIFY-D4-B02-R2",
+          "template_ref": "QRT-JUSTIFY-D4",
           "primary_operation": "JUSTIFY",
-          "band": "D3",
+          "band": "D4",
           "canonical_concept_refs": [
             "CHEM-C11.07-CONCEPT"
           ],
           "slots": {
-            "X": "In an unfamiliar case of soap micelles and hard-water calcium ions, evaluate two plausible explanations, identify what is underdetermined, and justify a discriminating observation or boundary condition.",
-            "Y": "Ethanol, ethanoic acid, soap and detergents demand structure–property reasoning; water hardness affects soap performance.",
-            "Z": "test the claim against scientific evidence and an exception or counterexample",
-            "W": "The learner independently completes the decisive warrant or failing boundary, not exposed before first attempt."
+            "X": "Two pure liquids are ethanol and ethanoic acid. In ideal separate tests an equal 0.050 mol portion of each is contacted with excess hydrogen carbonate; one generates 0.050 mol CO₂ and the other none. Equal portions are then combined in a theoretical 1:1 esterification with 60% conversion. Justify identification, calculate ester/water and remaining reactants, and explain why the initial gas observation does not establish a real mixture's purity.",
+            "Y": "Carboxylic acid can transfer proton to hydrogen carbonate. Esterification is reversible; conversion controls product amount. Distinguish functional-group evidence from purity and theoretical yield.",
+            "Z": "Acid + HCO₃⁻→CH₃COO⁻+CO₂+H₂O; ethanoic acid gives .050 mol CO₂, ethanol no analogous response. CH₃COOH+C₂H₅OH⇌CH₃COOC₂H₅+H₂O. .030 mol ester and water; .020 mol acid and ethanol remain. Gas identifies acidic behaviour within pure candidates, not arbitrary mixtures. Separate portions, no practical instructions.",
+            "W": "Justify identification and cross-check reaction amounts under stated conversion and purity assumptions."
           },
-          "student_task": "In an unfamiliar case of soap micelles and hard-water calcium ions, evaluate two plausible explanations, identify what is underdetermined, and justify a discriminating observation or boundary condition.",
-          "wrong_idea": "A superficially similar example gives the same answer without checking species, conditions or evidence for soap micelles and hard-water calcium ions.",
-          "replacement_rule": "Apply the concept's valid conditions and check species/charge/atom conservation or direct experimental discriminators; Ethanol, ethanoic acid, soap and detergents demand structure–property reasoning; water hardness affects soap performance.",
-          "visual_job": "Show an accurate Chemistry diagram or evidence table for soap micelles and hard-water calcium ions, with the decisive result unmarked.",
-          "independent_check": "Reverse the representation or test a counterexample for soap micelles and hard-water calcium ions while checking relevant conserved entities.",
+          "student_task": "Two pure liquids are ethanol and ethanoic acid. In ideal separate tests an equal 0.050 mol portion of each is contacted with excess hydrogen carbonate; one generates 0.050 mol CO₂ and the other none. Equal portions are then combined in a theoretical 1:1 esterification with 60% conversion. Justify identification, calculate ester/water and remaining reactants, and explain why the initial gas observation does not establish a real mixture's purity.",
+          "wrong_idea": "Ester formation always consumes all reactants; gas proves purity.",
+          "replacement_rule": "Carboxylic acid can transfer proton to hydrogen carbonate. Esterification is reversible; conversion controls product amount. Distinguish functional-group evidence from purity and theoretical yield.",
+          "visual_job": "Learner constructs the task-specific representation in protected W; no completed representation before attempt.",
+          "independent_check": "If 0.040 mol acid and .050 mol ethanol react at 60% conversion of acid, how much ester? 0.024 mol ester; .016 mol acid and .026 mol ethanol remain.",
           "source_bindings": [
             {
               "ref": "CBSE-X-2026",
@@ -785,6 +785,20 @@
       "version": "0.3.0",
       "kind": "AMEND",
       "reason": "Task-specific H1/H2/H3 and revision-safe new cycle/instance IDs for B02 review finding B02-01.",
+      "affected_subtopic_ids": [
+        "CHEM-C11.01",
+        "CHEM-C11.02",
+        "CHEM-C11.03",
+        "CHEM-C11.04",
+        "CHEM-C11.05",
+        "CHEM-C11.06",
+        "CHEM-C11.07"
+      ]
+    },
+    {
+      "version": "0.4.0",
+      "kind": "AMEND",
+      "reason": "Replace remaining 14 C11 legacy cycles with fresh exact-task individually scaffolded author nominations; old keys retained.",
       "affected_subtopic_ids": [
         "CHEM-C11.01",
         "CHEM-C11.02",
