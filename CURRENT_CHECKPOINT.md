@@ -263,6 +263,17 @@
           - Tablets & Lessons: 29 interactive modules (17 Physics, 7 Chemistry, 3 Biology, WPE Pilot).
           - Curriculum Topics: 13 major disciplinary topic hubs.
           - Portal & Verification Hubs: 13 top-level hubs, question banks, and official source dossiers.
+
+    27. **Single Master Topic Controller & Complete De-duplication Across All 3 Subject Hubs**:
+        - **Eradicated Duplicate Headers & Pill Bars**: Removed the lower duplicate `#topicNav` and top filter bars from [nsejs/physics/index.html](file:///d:/CodeD/g9v4/nsejs/physics/index.html), [nsejs/chemistry/index.html](file:///d:/CodeD/g9v4/nsejs/chemistry/index.html), and [nsejs/biology/index.html](file:///d:/CodeD/g9v4/nsejs/biology/index.html). Replaced both with a single, responsive master topic controller directly beneath the subject stats banner.
+        - **Zero-Scroll In-Place Topic Workspace**: Positioned `#topicWorkspace` immediately beneath the master topic bar. Clicking any topic pill renders that topic's Core 1 ribbon and candidate questions directly in-view with zero scrolling required.
+        - **Instant Overview Restoration**: Added `← Back to All Topics Overview` button to restore the overview cards instantly without page reloads.
+        - **Card Progression Wiring**: Fixed all topic cards across Physics, Chemistry, and Biology to directly trigger their respective topic workspace via `window.select<Subject>Topic(slug)`.
+        - **Complete Eradication of Legacy Silo Links**:
+          - Audited all 43 HTML files with `tools/audit_legacy_patterns.py` and `tools/audit_all_repo_links.py`.
+          - Replaced all legacy references to `question-bank.html`, `authored-practice.html`, `core1/index.html`, and `core1-recovery.html` across `nsejs/index.html`, `nsejs/official-sources.html`, `nsejs/core2/index.html`, and `nsejs/physics/learn-mechanics.html`.
+          - 0 broken links, 0 navigation leaks, 0 silo issues across all 43 pages.
+        - **Dual-Engine & Tablet Verification**: Playwright headless browser verified live at 1366 × 854 tablet viewport: 0 console errors, active pill highlighting, zero layout shift, and instant DOM swaps. All 315 existing unit tests pass.
         - Implemented smart search logic in `js/site-search.js`:
           - Multi-token boolean matching, word stemming, and prefix-matching.
           - Keyword synonyms & domain thesaurus expansion (`data/keyword-synonyms.v1.json`).
