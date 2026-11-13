@@ -42,7 +42,7 @@ function draw(book){
   add(article,el("div","eyebrow",s.id+" · "+s.scope));add(article,el("h2","",s.title));
   p(article,s.entry_question,"bridge");
   for(const paragraph of s.core1a_paragraphs)p(article,paragraph);
-  if(s.representation){const v=section(article,"Represent it faithfully","worked");p(v,s.representation)}
+  if(s.representation){const v=section(article,"Represent it faithfully","worked");if(s.figure_ref){const fig=add(v,el("figure","chem-figure"));const img=add(fig,el("img"));img.src=s.figure_ref;img.alt=s.figure_alt||s.title;img.loading="lazy";img.decoding="async";img.style.width="100%";img.style.height="auto";img.style.borderRadius="10px";add(fig,el("figcaption","mini",s.figure_alt||"Chemistry representation"));}p(v,s.representation)}
   if(s.worked_example){const w=section(article,"Worked example — all steps visible","worked");p(w,s.worked_example.problem);const list=add(w,el("ol"));for(const step of s.worked_example.steps)add(list,el("li","",step));p(w,"Result: "+s.worked_example.result);p(w,"Independent check: "+s.worked_example.check,"mini")}
   if(s.misconception){const m=section(article,"A tempting wrong route — and its repair","misconception");p(m,"Wrong: "+s.misconception.wrong);p(m,"Why it fails: "+s.misconception.why);p(m,"Repair: "+s.misconception.repair)}
   add(article,el("h3","","Three reasoning demands — learn, then reconstruct"));
