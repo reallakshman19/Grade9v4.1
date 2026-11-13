@@ -3,7 +3,7 @@
   "status": "PROPOSED_PLATFORM_DEPENDENCY",
   "review_id": 5896632580,
   "pinned_prediction_head": "ad109e0f77fd34a9f7e818e3314885c52e7d85b8",
-  "scope": "24 Increment 4 R2 cycle-specific response criteria. Other 48 B01 cycles have revised predictions and existing author stage prompts; stage-specific evidence still required.",
+  "scope": "48 exact-cycle response criteria: Increment 4 and Increment 5. Other 48 prior B01 cycles retain task-specific predictions and author stage prompts; exact boundary-response rubrics still outstanding.",
   "authority": "P00 owns shared runtime and protection; R01 owns independent academic review; Owner adopts contracts",
   "stage_order": [
     "PREDICT",
@@ -507,6 +507,438 @@
         "BOUNDARY_TEST": "Resolution must be fine enough to separate the possible two first arrivals; quantify timing uncertainty and pulse duration before asserting coincidence."
       },
       "boundary_prompt": "If two unresolved first-order arrivals are merely reported as one broad peak, what additional timing resolution condition is needed?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-03",
+      "target_id": "PH07-03-B01-D3-EXPLAIN-01",
+      "cycle_id": "PH07-03-B01-MAIN-EXPLAIN-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.6.ph07-03",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "Screws supply parallel conducting routes in A, so greater loss is possible despite same main wall; replace or thermally interrupt screws, match boundary temperatures and measure steady input.",
+        "RECONSTRUCT": "Compare the saved route with this case's reconstructed result: Screws supply parallel conducting routes in A, so greater loss is possible despite same main wall; replace or thermally interrupt screws, match boundary temperatures and measure steady input. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Identify whether your explanation assumes a material label alone determines the whole rate, or confuses a temperature observation with transfer.",
+        "REPAIR": "Trace the complete contact path and temperature difference; specify an independent matched measurement before attributing the result. Expected case-specific result: Screws supply parallel conducting routes in A, so greater loss is possible despite same main wall; replace or thermally interrupt screws, match boundary temperatures and measure steady input.",
+        "BOUNDARY_TEST": "It need not: no continuous bridge across the hot/cold boundaries is established."
+      },
+      "boundary_prompt": "If the screws touch only the outer skin, does the same bypass explanation necessarily apply?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-03",
+      "target_id": "PH07-03-B01-D3-EXPLAIN-01",
+      "cycle_id": "PH07-03-B01-INSTANCE-EXPLAIN-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.6.ph07-03",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "Different contact energy-transfer rates can cause sensation at equal T; thermometer checks T, matched geometry and boundary-temperature steady power compares conduction. Touch alone cannot establish conductivity.",
+        "RECONSTRUCT": "Compare the saved route with this case's reconstructed result: Different contact energy-transfer rates can cause sensation at equal T; thermometer checks T, matched geometry and boundary-temperature steady power compares conduction. Touch alone cannot establish conductivity. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Identify whether your explanation assumes a material label alone determines the whole rate, or confuses a temperature observation with transfer.",
+        "REPAIR": "Trace the complete contact path and temperature difference; specify an independent matched measurement before attributing the result. Expected case-specific result: Different contact energy-transfer rates can cause sensation at equal T; thermometer checks T, matched geometry and boundary-temperature steady power compares conduction. Touch alone cannot establish conductivity.",
+        "BOUNDARY_TEST": "No; contact resistance is part of the total path and needs control or measurement."
+      },
+      "boundary_prompt": "If contact resistance differs strongly between the rods and reservoirs, can the measured rates be attributed solely to rod material?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-03",
+      "target_id": "PH07-03-B01-D3-REPRESENT-01",
+      "cycle_id": "PH07-03-B01-MAIN-REPRESENT-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.6.ph07-03",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "Main branch 4 W; junction 34 °C; bypass 2 W; total 6 W. Endpoints common, no junction on bypass.",
+        "RECONSTRUCT": "Compare the saved route with this case's reconstructed result: Main branch 4 W; junction 34 °C; bypass 2 W; total 6 W. Endpoints common, no junction on bypass. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Check each branch's endpoints and whether the internal temperature drop follows the layer order. Did you put the bridge in series?",
+        "REPAIR": "Redraw the two routes, calculate branch powers at their common ΔT, then check the main branch junction by adding its drops. Expected case-specific result: Main branch 4 W; junction 34 °C; bypass 2 W; total 6 W. Endpoints common, no junction on bypass.",
+        "BOUNDARY_TEST": "Bypass becomes zero, main remains 4 W; total 4 W."
+      },
+      "boundary_prompt": "If the metal path is severed without changing boundary temperatures, what changes on each branch?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-03",
+      "target_id": "PH07-03-B01-D3-REPRESENT-01",
+      "cycle_id": "PH07-03-B01-INSTANCE-REPRESENT-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.6.ph07-03",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "Main 5 W, junction 45 °C; bridge 2 W; total 7 W. Temperature drops 5 and 25 K.",
+        "RECONSTRUCT": "Compare the saved route with this case's reconstructed result: Main 5 W, junction 45 °C; bridge 2 W; total 7 W. Temperature drops 5 and 25 K. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Check each branch's endpoints and whether the internal temperature drop follows the layer order. Did you put the bridge in series?",
+        "REPAIR": "Redraw the two routes, calculate branch powers at their common ΔT, then check the main branch junction by adding its drops. Expected case-specific result: Main 5 W, junction 45 °C; bridge 2 W; total 7 W. Temperature drops 5 and 25 K.",
+        "BOUNDARY_TEST": "Junction 25 °C; same total resistance and total 7 W."
+      },
+      "boundary_prompt": "If the two layers exchange positions, what happens to the junction temperature and total power?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-03",
+      "target_id": "PH07-03-B01-D4-MODEL-01",
+      "cycle_id": "PH07-03-B01-MAIN-MODEL-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.6.ph07-03",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "A fit R=30/9=10/3 K/W, triple predicts 3 W. B main 6 W and bypass 3 W (R_b=10); triple 2+3=5 W fits. Double predicts 3+3=6 W. Independent test supports B, not unique unrestricted explanation.",
+        "RECONSTRUCT": "Compare the saved route with this case's reconstructed result: A fit R=30/9=10/3 K/W, triple predicts 3 W. B main 6 W and bypass 3 W (R_b=10); triple 2+3=5 W fits. Double predicts 3+3=6 W. Independent test supports B, not unique unrestricted explanation. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Identify whether you inferred a unique network from the initial total power or forgot which model parameter changes with thickness.",
+        "REPAIR": "Fit both stipulated models to the first observation, propagate each through the changed geometry, compare independent predictions, and qualify the accepted model. Expected case-specific result: A fit R=30/9=10/3 K/W, triple predicts 3 W. B main 6 W and bypass 3 W (R_b=10); triple 2+3=5 W fits. Double predicts 3+3=6 W. Independent test supports B, not unique unrestricted explanation.",
+        "BOUNDARY_TEST": "No; main 2 W plus bypass 1 W=3 W. The fixed-bypass assumption is decisive."
+      },
+      "boundary_prompt": "If the bypass resistance also triples with layer thickness, does the 5 W prediction survive?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-03",
+      "target_id": "PH07-03-B01-D4-MODEL-01",
+      "cycle_id": "PH07-03-B01-INSTANCE-MODEL-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.6.ph07-03",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "A R_eff=20/7; doubled predicts 3.5 W. B slab 5 W plus bypass 2 W (10 K/W); double 2.5+2=4.5 W fits. Quadruple 1.25+2=3.25 W. Only these specified models compared.",
+        "RECONSTRUCT": "Compare the saved route with this case's reconstructed result: A R_eff=20/7; doubled predicts 3.5 W. B slab 5 W plus bypass 2 W (10 K/W); double 2.5+2=4.5 W fits. Quadruple 1.25+2=3.25 W. Only these specified models compared. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Identify whether you inferred a unique network from the initial total power or forgot which model parameter changes with thickness.",
+        "REPAIR": "Fit both stipulated models to the first observation, propagate each through the changed geometry, compare independent predictions, and qualify the accepted model. Expected case-specific result: A R_eff=20/7; doubled predicts 3.5 W. B slab 5 W plus bypass 2 W (10 K/W); double 2.5+2=4.5 W fits. Quadruple 1.25+2=3.25 W. Only these specified models compared.",
+        "BOUNDARY_TEST": "The fixed-bypass model predicts 3.25 W, so exact 4 W refutes it under the assumptions; measure other losses or varying resistance."
+      },
+      "boundary_prompt": "If a fourth trial instead gives 4 W at quadruple thickness, what would you conclude?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-08",
+      "target_id": "PH07-08-B01-D3-REPRESENT-01",
+      "cycle_id": "PH07-08-B01-MAIN-REPRESENT-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.6.ph07-08",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "Net powers +30,0,−20 W; T 20→23→23→22 °C; net 600−200=400 J.",
+        "RECONSTRUCT": "Compare the saved route with this case's reconstructed result: Net powers +30,0,−20 W; T 20→23→23→22 °C; net 600−200=400 J. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Check that your temperature slope corresponds to net, not gross, power and that each change occurs at its correct time.",
+        "REPAIR": "Recalculate each interval energy and temperature increment, then plot the two histories on aligned time axes. Expected case-specific result: Net powers +30,0,−20 W; T 20→23→23→22 °C; net 600−200=400 J.",
+        "BOUNDARY_TEST": "Final T 20 °C, net energy zero."
+      },
+      "boundary_prompt": "If the final interval lasts 30 s instead, what is final T?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-08",
+      "target_id": "PH07-08-B01-D3-REPRESENT-01",
+      "cycle_id": "PH07-08-B01-INSTANCE-REPRESENT-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.6.ph07-08",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "Energy +600,−300,0 J; T 25→27→26→26 °C; net +300 J.",
+        "RECONSTRUCT": "Compare the saved route with this case's reconstructed result: Energy +600,−300,0 J; T 25→27→26→26 °C; net +300 J. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Check that your temperature slope corresponds to net, not gross, power and that each change occurs at its correct time.",
+        "REPAIR": "Recalculate each interval energy and temperature increment, then plot the two histories on aligned time axes. Expected case-specific result: Energy +600,−300,0 J; T 25→27→26→26 °C; net +300 J.",
+        "BOUNDARY_TEST": "Final T unchanged at 26 °C; intermediate T falls to 24 °C then rises to 26 °C."
+      },
+      "boundary_prompt": "If the 20 s negative-power interval occurs first, what is final T and what changes in the trace?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-08",
+      "target_id": "PH07-08-B01-D4-MODEL-01",
+      "cycle_id": "PH07-08-B01-MAIN-MODEL-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.6.ph07-08",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "C=24/0.12=200 J/K, loss=20 W. Third (48−20)/200=0.14 K/s agrees; one slope leaves L=36−0.08C family.",
+        "RECONSTRUCT": "Compare the saved route with this case's reconstructed result: C=24/0.12=200 J/K, loss=20 W. Third (48−20)/200=0.14 K/s agrees; one slope leaves L=36−0.08C family. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Find which observation was used to fit parameters and which was independent. Did you confuse gross heater power with net accumulation?",
+        "REPAIR": "Write separate slope equations, eliminate the shared unknown, test the unused observation, and state what the result does not identify. Expected case-specific result: C=24/0.12=200 J/K, loss=20 W. Third (48−20)/200=0.14 K/s agrees; one slope leaves L=36−0.08C family.",
+        "BOUNDARY_TEST": "Not necessarily; different initial temperature may change loss. The matched-condition claim does not extrapolate."
+      },
+      "boundary_prompt": "If the third trial instead begins much hotter and gives 0.10 K/s, does it alone refute the matched-temperature model?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-08",
+      "target_id": "PH07-08-B01-D4-MODEL-01",
+      "cycle_id": "PH07-08-B01-INSTANCE-MODEL-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.6.ph07-08",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "C=30/0.12=250 J/K, loss=45−25=20 W. Third predicts 40/250=0.16, not 0.19. Exact model inconsistent; test losses, capacity or uncertainty independently.",
+        "RECONSTRUCT": "Compare the saved route with this case's reconstructed result: C=30/0.12=250 J/K, loss=45−25=20 W. Third predicts 40/250=0.16, not 0.19. Exact model inconsistent; test losses, capacity or uncertainty independently. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Find which observation was used to fit parameters and which was independent. Did you confuse gross heater power with net accumulation?",
+        "REPAIR": "Write separate slope equations, eliminate the shared unknown, test the unused observation, and state what the result does not identify. Expected case-specific result: C=30/0.12=250 J/K, loss=45−25=20 W. Third predicts 40/250=0.16, not 0.19. Exact model inconsistent; test losses, capacity or uncertainty independently.",
+        "BOUNDARY_TEST": "No; one independent equation regardless of repeat count."
+      },
+      "boundary_prompt": "If all slopes were measured only at 45 W and repeated precisely, could both C and loss be recovered?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-08",
+      "target_id": "PH07-08-B01-D3-JUSTIFY-01",
+      "cycle_id": "PH07-08-B01-MAIN-JUSTIFY-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.6.ph07-08",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "For slope 0.1 K/s, C=100,L=5 gives P=15 W; C=200,L=10 gives P=30 W. Same slope. Measure input directly, or independently C and loss.",
+        "RECONSTRUCT": "Compare the saved route with this case's reconstructed result: For slope 0.1 K/s, C=100,L=5 gives P=15 W; C=200,L=10 gives P=30 W. Same slope. Measure input directly, or independently C and loss. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Identify the first inference that treats a graph feature as a unique cause without state or power data.",
+        "REPAIR": "Construct two physically compatible histories with the same measured trace and specify an observation that separates them. Expected case-specific result: For slope 0.1 K/s, C=100,L=5 gives P=15 W; C=200,L=10 gives P=30 W. Same slope. Measure input directly, or independently C and loss.",
+        "BOUNDARY_TEST": "Yes under stated single-phase matched model."
+      },
+      "boundary_prompt": "If both C and loss are independently equal, does equal slope then imply equal heater power?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-08",
+      "target_id": "PH07-08-B01-D3-JUSTIFY-01",
+      "cycle_id": "PH07-08-B01-INSTANCE-JUSTIFY-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.6.ph07-08",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "Sample may melt with positive net input and changing phase fraction; dry plate may remain unchanged with equal input/loss. Observe state and independently measure energy paths.",
+        "RECONSTRUCT": "Compare the saved route with this case's reconstructed result: Sample may melt with positive net input and changing phase fraction; dry plate may remain unchanged with equal input/loss. Observe state and independently measure energy paths. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Identify the first inference that treats a graph feature as a unique cause without state or power data.",
+        "REPAIR": "Construct two physically compatible histories with the same measured trace and specify an observation that separates them. Expected case-specific result: Sample may melt with positive net input and changing phase fraction; dry plate may remain unchanged with equal input/loss. Observe state and independently measure energy paths.",
+        "BOUNDARY_TEST": "Yes if energy leaves a phase-coexisting sample at its freezing temperature; heaters off does not establish zero loss."
+      },
+      "boundary_prompt": "If both show a flat trace with heaters off, can freezing still occur? Under what condition?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-01",
+      "target_id": "PH08-01-B01-D3-EXPLAIN-01",
+      "cycle_id": "PH08-01-B01-MAIN-EXPLAIN-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.6.ph08-01",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "Source motion unchanged, barrier may reflect/absorb/alter path; verify microphone with known independent reference and compare barrier-in/out at matched geometry.",
+        "RECONSTRUCT": "Compare the saved route with this case's reconstructed result: Source motion unchanged, barrier may reflect/absorb/alter path; verify microphone with known independent reference and compare barrier-in/out at matched geometry. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Find whether you inferred source motion from receiver amplitude alone or ignored a possible alternate transmission path.",
+        "REPAIR": "Trace each causal link and give an independent observation to test the proposed source or transmission change. Expected case-specific result: Source motion unchanged, barrier may reflect/absorb/alter path; verify microphone with known independent reference and compare barrier-in/out at matched geometry.",
+        "BOUNDARY_TEST": "No; source change and path change are confounded."
+      },
+      "boundary_prompt": "If the source motion later weakens as well, can the receiver signal alone isolate the barrier effect?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-01",
+      "target_id": "PH08-01-B01-D3-EXPLAIN-01",
+      "cycle_id": "PH08-01-B01-INSTANCE-EXPLAIN-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.6.ph08-01",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "Mechanical vibration persists; residual gas, solid supports or sensor artifact may account for signal. Control support coupling and independently measure pressure/source motion.",
+        "RECONSTRUCT": "Compare the saved route with this case's reconstructed result: Mechanical vibration persists; residual gas, solid supports or sensor artifact may account for signal. Control support coupling and independently measure pressure/source motion. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Find whether you inferred source motion from receiver amplitude alone or ignored a possible alternate transmission path.",
+        "REPAIR": "Trace each causal link and give an independent observation to test the proposed source or transmission change. Expected case-specific result: Mechanical vibration persists; residual gas, solid supports or sensor artifact may account for signal. Control support coupling and independently measure pressure/source motion.",
+        "BOUNDARY_TEST": "Residual gas or non-acoustic electronic pickup/instrument artifact; test independently."
+      },
+      "boundary_prompt": "If all mechanical connections are isolated but the sensor still reports a signal, what alternative should be checked?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-01",
+      "target_id": "PH08-01-B01-D3-REPRESENT-01",
+      "cycle_id": "PH08-01-B01-MAIN-REPRESENT-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.6.ph08-01",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "Both T=4 ms, f=250 Hz; source displacement and voltage axes distinct; independent pulse onset gives 3 ms, phase offset alone permits 3+4n ms.",
+        "RECONSTRUCT": "Compare the saved route with this case's reconstructed result: Both T=4 ms, f=250 Hz; source displacement and voltage axes distinct; independent pulse onset gives 3 ms, phase offset alone permits 3+4n ms. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Check whether you counted peaks or intervals, and whether you treated phase alignment as a unique travel time.",
+        "REPAIR": "Construct the two independent axes with matching phase intervals, then compare onset evidence with possible whole-period offsets. Expected case-specific result: Both T=4 ms, f=250 Hz; source displacement and voltage axes distinct; independent pulse onset gives 3 ms, phase offset alone permits 3+4n ms.",
+        "BOUNDARY_TEST": "No; periodic phase permits additional whole periods."
+      },
+      "boundary_prompt": "If pulse onset was not measured, could the steady traces prove the delay is exactly 3 ms?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-01",
+      "target_id": "PH08-01-B01-D3-REPRESENT-01",
+      "cycle_id": "PH08-01-B01-INSTANCE-REPRESENT-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.6.ph08-01",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "Both T=6 ms, f≈166.7 Hz. Apparent phase offset 1 ms; 7 ms=1+6 ms, consistent. Different vertical quantities; onset constrains true delay.",
+        "RECONSTRUCT": "Compare the saved route with this case's reconstructed result: Both T=6 ms, f≈166.7 Hz. Apparent phase offset 1 ms; 7 ms=1+6 ms, consistent. Different vertical quantities; onset constrains true delay. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Check whether you counted peaks or intervals, and whether you treated phase alignment as a unique travel time.",
+        "REPAIR": "Construct the two independent axes with matching phase intervals, then compare onset evidence with possible whole-period offsets. Expected case-specific result: Both T=6 ms, f≈166.7 Hz. Apparent phase offset 1 ms; 7 ms=1+6 ms, consistent. Different vertical quantities; onset constrains true delay.",
+        "BOUNDARY_TEST": "An independently calibrated time reference or simultaneous known frequency measurement."
+      },
+      "boundary_prompt": "If the membrane frequency changes but the sensor clock is miscalibrated, what independent measurement is needed?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-01",
+      "target_id": "PH08-01-B01-D3-MODEL-01",
+      "cycle_id": "PH08-01-B01-MAIN-MODEL-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.6.ph08-01",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "Measured source amplitude unchanged, reference disfavors general gain change, screen alters path/coupling plausibly; compare screen removal and independent pressure/geometry. Frequency or unmeasured mode changes still possible.",
+        "RECONSTRUCT": "Compare the saved route with this case's reconstructed result: Measured source amplitude unchanged, reference disfavors general gain change, screen alters path/coupling plausibly; compare screen removal and independent pressure/geometry. Frequency or unmeasured mode changes still possible. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Identify which observation actually tests the source, the path or the receiver; did you treat one ratio as unique evidence?",
+        "REPAIR": "Write predictions for each causal model under the independent reference and intervention, retain compatible alternatives, and propose a discriminating control. Expected case-specific result: Measured source amplitude unchanged, reference disfavors general gain change, screen alters path/coupling plausibly; compare screen removal and independent pressure/geometry. Frequency or unmeasured mode changes still possible.",
+        "BOUNDARY_TEST": "Sensor gain or reference path may have changed; no unique screen attribution without calibration/control."
+      },
+      "boundary_prompt": "If the reference output also falls from 5 to 2 units, how does the inference change?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-01",
+      "target_id": "PH08-01-B01-D3-MODEL-01",
+      "cycle_id": "PH08-01-B01-INSTANCE-MODEL-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.6.ph08-01",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "Both halve, so a common gain or shared path change fits; measured source unchanged. Test microphone with known direct calibrated pressure while panel geometry held fixed or use second calibrated sensor; cannot isolate panel cause yet.",
+        "RECONSTRUCT": "Compare the saved route with this case's reconstructed result: Both halve, so a common gain or shared path change fits; measured source unchanged. Test microphone with known direct calibrated pressure while panel geometry held fixed or use second calibrated sensor; cannot isolate panel cause yet. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Identify which observation actually tests the source, the path or the receiver; did you treat one ratio as unique evidence?",
+        "REPAIR": "Write predictions for each causal model under the independent reference and intervention, retain compatible alternatives, and propose a discriminating control. Expected case-specific result: Both halve, so a common gain or shared path change fits; measured source unchanged. Test microphone with known direct calibrated pressure while panel geometry held fixed or use second calibrated sensor; cannot isolate panel cause yet.",
+        "BOUNDARY_TEST": "First sensor gain change is supported, not automatically all panel effects excluded."
+      },
+      "boundary_prompt": "If the second calibrated sensor records unchanged check pressure but the first output halves, which model gains support?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-02",
+      "target_id": "PH08-02-B01-D3-EXPLAIN-01",
+      "cycle_id": "PH08-02-B01-MAIN-EXPLAIN-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.6.ph08-02",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "Actual gaps 20,17,20 mm; compression between second and third, not first pair. Positive absolute displacement not a density measure.",
+        "RECONSTRUCT": "Compare the saved route with this case's reconstructed result: Actual gaps 20,17,20 mm; compression between second and third, not first pair. Positive absolute displacement not a density measure. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Check whether your explanation reads the height of a displacement graph as density without comparing adjacent particle locations.",
+        "REPAIR": "Compute actual positions and gaps; connect compression or rarefaction to their changes, not absolute displacement sign. Expected case-specific result: Actual gaps 20,17,20 mm; compression between second and third, not first pair. Positive absolute displacement not a density measure.",
+        "BOUNDARY_TEST": "Unchanged; common offset cancels from differences."
+      },
+      "boundary_prompt": "If every displacement increases by 3 mm, what happens to the three gaps?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-02",
+      "target_id": "PH08-02-B01-D3-EXPLAIN-01",
+      "cycle_id": "PH08-02-B01-INSTANCE-EXPLAIN-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.6.ph08-02",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "Actual −2,16,31 mm; first gap18 (rarefaction), second15 (unchanged). Rarefaction is interval spacing, not sign at a single particle.",
+        "RECONSTRUCT": "Compare the saved route with this case's reconstructed result: Actual −2,16,31 mm; first gap18 (rarefaction), second15 (unchanged). Rarefaction is interval spacing, not sign at a single particle. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Check whether your explanation reads the height of a displacement graph as density without comparing adjacent particle locations.",
+        "REPAIR": "Compute actual positions and gaps; connect compression or rarefaction to their changes, not absolute displacement sign. Expected case-specific result: Actual −2,16,31 mm; first gap18 (rarefaction), second15 (unchanged). Rarefaction is interval spacing, not sign at a single particle.",
+        "BOUNDARY_TEST": "Actual first position3, second16, gap13 mm; compression."
+      },
+      "boundary_prompt": "If the first displacement changes to +3 mm, with others fixed, what changes in the first gap?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-02",
+      "target_id": "PH08-02-B01-D3-REPRESENT-01",
+      "cycle_id": "PH08-02-B01-MAIN-REPRESENT-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.6.ph08-02",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "Actual0,11,20,29,40; gaps11,9,9,11. Pressure signs −,+,+,−. Label pressure at intervals and ξ at particles.",
+        "RECONSTRUCT": "Compare the saved route with this case's reconstructed result: Actual0,11,20,29,40; gaps11,9,9,11. Pressure signs −,+,+,−. Label pressure at intervals and ξ at particles. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Identify where your pressure plot copied displacement height or used time as if it were equilibrium coordinate.",
+        "REPAIR": "Draw particles at actual positions, compare adjacent gaps, then label interval pressure signs on a separate spatial graph. Expected case-specific result: Actual0,11,20,29,40; gaps11,9,9,11. Pressure signs −,+,+,−. Label pressure at intervals and ξ at particles.",
+        "BOUNDARY_TEST": "None in this linear spacing model; all gaps unchanged."
+      },
+      "boundary_prompt": "If the whole displacement graph is shifted upward by 2 mm, what changes in the pressure representation?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-02",
+      "target_id": "PH08-02-B01-D3-REPRESENT-01",
+      "cycle_id": "PH08-02-B01-INSTANCE-REPRESENT-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.6.ph08-02",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "Actual2,12,22,36,50; gaps10,10,14,14. First two compressed/high pressure, next two rarefied/low pressure.",
+        "RECONSTRUCT": "Compare the saved route with this case's reconstructed result: Actual2,12,22,36,50; gaps10,10,14,14. First two compressed/high pressure, next two rarefied/low pressure. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Identify where your pressure plot copied displacement height or used time as if it were equilibrium coordinate.",
+        "REPAIR": "Draw particles at actual positions, compare adjacent gaps, then label interval pressure signs on a separate spatial graph. Expected case-specific result: Actual2,12,22,36,50; gaps10,10,14,14. First two compressed/high pressure, next two rarefied/low pressure.",
+        "BOUNDARY_TEST": "No; time slope is not spatial slope without a travelling-wave model and direction."
+      },
+      "boundary_prompt": "If the horizontal axis instead denotes time at one microphone, can the same spacing inference be made directly?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-02",
+      "target_id": "PH08-02-B01-D4-JUSTIFY-01",
+      "cycle_id": "PH08-02-B01-MAIN-JUSTIFY-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.6.ph08-02",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "Differences −2,+1,+1. Profiles [0,−2,−1,0] and [3,1,2,3] fit. Third +1 implies first +2, so [2,0,1,2] unique under exact spacing and reference.",
+        "RECONSTRUCT": "Compare the saved route with this case's reconstructed result: Differences −2,+1,+1. Profiles [0,−2,−1,0] and [3,1,2,3] fit. Third +1 implies first +2, so [2,0,1,2] unique under exact spacing and reference. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Find whether your reasoning assumed an arbitrary zero displacement without evidence. Check whether a common offset changes any observed gaps.",
+        "REPAIR": "Construct a family of profiles from measured differences; impose the independent reference and verify every gap against the original evidence. Expected case-specific result: Differences −2,+1,+1. Profiles [0,−2,−1,0] and [3,1,2,3] fit. Third +1 implies first +2, so [2,0,1,2] unique under exact spacing and reference.",
+        "BOUNDARY_TEST": "No; total span gives only endpoint difference, not each adjacent difference."
+      },
+      "boundary_prompt": "If only the sum of the three actual gaps were measured, would one particle reference still determine every displacement?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-02",
+      "target_id": "PH08-02-B01-D4-JUSTIFY-01",
+      "cycle_id": "PH08-02-B01-INSTANCE-JUSTIFY-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.6.ph08-02",
+      "stage_response_criteria": {
+        "PREDICT": "Initial task-specific judgement and reason, recorded without correctness feedback.",
+        "ATTEMPT": "Differences +1,−1,−2,+2. Add 3 to report: [3,4,3,1,3], same gaps. Fourth +1 fixes common offset 3; this profile unique for exact gaps plus reference.",
+        "RECONSTRUCT": "Compare the saved route with this case's reconstructed result: Differences +1,−1,−2,+2. Add 3 to report: [3,4,3,1,3], same gaps. Fourth +1 fixes common offset 3; this profile unique for exact gaps plus reference. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Find whether your reasoning assumed an arbitrary zero displacement without evidence. Check whether a common offset changes any observed gaps.",
+        "REPAIR": "Construct a family of profiles from measured differences; impose the independent reference and verify every gap against the original evidence. Expected case-specific result: Differences +1,−1,−2,+2. Add 3 to report: [3,4,3,1,3], same gaps. Fourth +1 fixes common offset 3; this profile unique for exact gaps plus reference.",
+        "BOUNDARY_TEST": "No; common offset inherits the reference uncertainty even with exact gaps."
+      },
+      "boundary_prompt": "If the fourth measurement has ±0.5 mm uncertainty, can the other displacements be known exactly?",
       "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
       "runtime_status": "NOT_IMPLEMENTED"
     }

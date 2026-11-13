@@ -1,0 +1,473 @@
+{
+  "schema": "g9v41-nsejs-physics-topic-package/v1",
+  "subject_id": "PHYSICS",
+  "academic_track": "NSEJS",
+  "topic_id": "PH08",
+  "owner_agent": "AGENT_2",
+  "version": "0.3.2-b01.6.ph08-02",
+  "status": "DRAFT_AUTHOR_EXPOSED",
+  "pins": {
+    "contracts_version": "1.0.0",
+    "blueprint": {
+      "version": "0.2.0",
+      "git_blob_sha": "700dafcbe86d76442637bcf214eeb544497cf4ea"
+    },
+    "shared_qrt_28": {
+      "version": "1.0.0",
+      "git_blob_sha": "e2409aef11ae7d98444593bfbe1a38eb00c97cef"
+    },
+    "topic_adapter_version": "0.3.2-b01.6.ph08-02"
+  },
+  "syllabus_references": [
+    {
+      "reference_id": "PH08-CBSE-2026-SOUND",
+      "locator": "https://cbseacademic.nic.in/web_material/CurriculumMain27/SecPart1/ScienceSt_SecP1_2026-27.pdf — Class IX Science 086, Sound, pp. 17–18 (PDF pages 17–18)",
+      "authority": "OFFICIAL_SYLLABUS",
+      "scope_status": "CANDIDATE"
+    }
+  ],
+  "subtopics": [
+    {
+      "id": "PH08-02",
+      "title": "Longitudinal waves: displacement, compression and pressure graphs",
+      "scope_role": "SYLLABUS_CORE_CANDIDATE",
+      "syllabus_reference_ids": [
+        "PH08-CBSE-2026-SOUND"
+      ],
+      "prerequisite_ids": [
+        "PH08-01"
+      ],
+      "science_ref_ids": [
+        "PH08-02-SCI-01"
+      ],
+      "learning_goal": "For small-amplitude longitudinal motion, particle displacement gradients determine local compression or rarefaction; a spatial displacement graph and pressure graph represent different fields.",
+      "textbook_chapter_ref": "nsejs/physics/curriculum/topics/PH08/b01/PH08-02/core1a.html",
+      "qrt_targets": [
+        {
+          "id": "PH08-02-B01-D3-EXPLAIN-01",
+          "task_identity": "G9-B01-PH08-02-EXPLAIN-R1",
+          "band": "D3",
+          "primary_operation": "EXPLAIN",
+          "blueprint_cell": "D3.2",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Explain compression from relative particle displacements rather than absolute displacement or transverse graph shape.",
+          "decisive_route": "Three particles equally spaced have displacements +2,+2,0 units. Explain why only one gap compresses. Shortest valid route: First gap unchanged; second decreases by 2. Relative displacement controls compression.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "Competing displacement-height and spacing models."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "Translate particle-position data into density interpretation."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Compare actual gaps and explain pressure pattern."
+            },
+            "algebra_computational_load": {
+              "score": 0,
+              "evidence": "No substantial computation beyond simple spacing."
+            },
+            "trap_exception_sensitivity": {
+              "score": 2,
+              "evidence": "Equal displacements leave gaps unchanged; crest is not compression."
+            }
+          }
+        },
+        {
+          "id": "PH08-02-B01-D3-REPRESENT-01",
+          "task_identity": "G9-B01-PH08-02-REPRESENT-R1",
+          "band": "D3",
+          "primary_operation": "REPRESENT",
+          "blueprint_cell": "D3.5",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Convert a sampled spatial displacement profile into a particle-spacing and qualitative pressure representation, preserving the independent coordinate and sign convention.",
+          "decisive_route": "At x=0,10,20,30 mm displacements 0,2,0,−2 mm. Plot ξ and label each interval pressure sign. Shortest valid route: Gaps12,8,8 mm; rarefaction, compression, compression.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 1,
+              "evidence": "Identify longitudinal displacement field."
+            },
+            "representation_translation": {
+              "score": 2,
+              "evidence": "Coordinate sampled displacement, actual positions and interval pressure signs."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Compute gaps, classify each, construct labelled representations."
+            },
+            "algebra_computational_load": {
+              "score": 1,
+              "evidence": "Several signed differences."
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "Pressure extrema track gradient rather than displacement magnitude."
+            }
+          }
+        },
+        {
+          "id": "PH08-02-B01-D4-JUSTIFY-01",
+          "task_identity": "G9-B01-PH08-02-JUSTIFY-R1",
+          "band": "D4",
+          "primary_operation": "JUSTIFY",
+          "blueprint_cell": "D4.7",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Establish what a compression/pressure record can and cannot uniquely determine about particle displacement, using countermodels and an independent reference constraint.",
+          "decisive_route": "Four equilibrium positions have actual gaps 9,11,10 mm instead of 10 each. Claim displacement is unique. Give two compatible profiles and a reference that resolves. Shortest valid route: Differences −1,+1,0; profiles [0,−1,0,0] and [2,1,2,2] both fit. Known displacement of one particle fixes offset.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "Competing absolute-position and relative-spacing inverse models."
+            },
+            "representation_translation": {
+              "score": 2,
+              "evidence": "Translate pressure evidence into neighbour displacement differences."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Construct multiple compatible displacement sets, impose reference, verify uniqueness under stated constraints."
+            },
+            "algebra_computational_load": {
+              "score": 0,
+              "evidence": "Simple signed differences incidental."
+            },
+            "trap_exception_sensitivity": {
+              "score": 2,
+              "evidence": "Common-offset ambiguity and boundary condition are decisive."
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "science_records": [
+    {
+      "id": "PH08-02-SCI-01",
+      "claim": "For small-amplitude longitudinal motion, particle displacement gradients determine local compression or rarefaction; a spatial displacement graph and pressure graph represent different fields.",
+      "law_or_model": "For small longitudinal displacement ξ(x), fractional density change ≈−∂ξ/∂x; p′≈−B∂ξ/∂x for linear acoustic bulk modulus B. Finite-neighbour spacing gives the qualitative foundation.",
+      "assumptions": [
+        "Small longitudinal displacements and locally smooth field for derivative/linear pressure model.",
+        "Neighbour labels refer to equilibrium positions; displacements must not imply particle crossing."
+      ],
+      "conditions_and_limits": [
+        "Small longitudinal displacements and locally smooth field for derivative/linear pressure model.",
+        "Neighbour labels refer to equilibrium positions; displacements must not imply particle crossing.",
+        "Pressure and displacement traces are distinct variables; spatial and temporal slopes not interchangeable.",
+        "Ideal uniform offset ambiguity is a snapshot relation; physical boundary conditions and dynamics may constrain it."
+      ],
+      "units_and_signs": "ξ in m, x in m, density change fraction dimensionless, pressure p′ in Pa, B in Pa.",
+      "source_refs": [
+        "PH08-CBSE-2026-SOUND"
+      ],
+      "qualification_status": "HOLD"
+    }
+  ],
+  "topic_adapter": {
+    "adapter_id": "PHYS-TOPIC-PH08",
+    "topic_id": "PH08",
+    "version": "0.3.2-b01.6.ph08-02",
+    "for_blueprint": "PHYS-QRT-BLUEPRINT 0.2.0",
+    "status": "CANDIDATE_ONLY",
+    "cells": [
+      {
+        "cell_id": "D3.2",
+        "instance_ids": [
+          "PH08-02-B01-D3-EXPLAIN-01"
+        ]
+      },
+      {
+        "cell_id": "D3.5",
+        "instance_ids": [
+          "PH08-02-B01-D3-REPRESENT-01"
+        ]
+      },
+      {
+        "cell_id": "D4.7",
+        "instance_ids": [
+          "PH08-02-B01-D4-JUSTIFY-01"
+        ]
+      }
+    ]
+  },
+  "core1a": [
+    {
+      "id": "PH08-02-B01-CORE1A-R1",
+      "subtopic_id": "PH08-02",
+      "covered_qrt_ids": [
+        "PH08-02-B01-D3-EXPLAIN-01",
+        "PH08-02-B01-D3-REPRESENT-01",
+        "PH08-02-B01-D4-JUSTIFY-01"
+      ],
+      "phenomenon": "A compression can move along a row of air particles while each particle only oscillates around its equilibrium position.",
+      "scientific_narrative": "In a longitudinal wave, particles oscillate parallel to the direction of propagation. A compression is a region where particles are temporarily closer together than in their equilibrium arrangement; a rarefaction is a region where they are farther apart. In a sound wave, the disturbance and energy propagate through a medium while particles move locally. A diagram with a wavy line above a horizontal axis need not depict transverse particle motion: it may show the value of a longitudinal displacement or pressure field as a function of position.\n\nImagine equilibrium positions x₁ and x₂ separated by Δx. At a snapshot, their positions become x₁+ξ₁ and x₂+ξ₂. Their new separation is Δx+ξ₂−ξ₁. If the second displacement is smaller than the first, the spacing decreases and the region is compressed. If the second displacement is larger, the spacing increases and it is rarefied. If both displacements are equal, their separation is unchanged even if both have moved far from equilibrium. Thus a displacement maximum is not automatically a compression maximum.\n\nFor a small smooth displacement field ξ(x), the fractional change in spacing is approximately ∂ξ/∂x. Conservation of mass gives fractional density change approximately −∂ξ/∂x; in a linear acoustic model excess pressure is proportional to compression, p′=−B∂ξ/∂x, where B is the appropriate bulk modulus. These derivative relations are optional authored enrichment; the finite-neighbour argument is sufficient for qualitative reasoning. A sinusoidal displacement crest has locally zero gradient; compression peaks near the downward zero crossing and rarefaction near the upward crossing, given the stated coordinate convention. The sign of a displacement itself does not tell whether neighbouring particles are compressed.\n\nA spatial graph at one time describes field values along x. A time trace at one fixed detector describes how one measured field varies with time. Their slopes have different units and meanings. In a progressive sinusoidal wave the time trace may be related to the spatial trace if direction and wave speed are known. Do not infer spatial compression directly from a temporal displacement slope without the travelling-wave model and direction. For a right-moving profile ξ(x−vt), the temporal derivative equals −v times the spatial derivative; reversing direction changes the sign relation.\n\nWhen constructing a graph, label equilibrium coordinate, particle displacement or excess pressure, and physical units. Draw the actual positions of a few particles to check the inferred compression. In an inverse problem, a pressure snapshot constrains differences in displacement, not the common offset of every displacement; a boundary or displacement reference supplies missing information. A uniform offset added to all positions leaves spacing unchanged. This is a model ambiguity, not bulk transport by the sound wave. The existing Core2 wave snapshot uses displacement graphs, but no separate matching question has been established for this exact subtopic; the new constructions are authored transfer rather than direct exam evidence.",
+      "prerequisites": [
+        "PH08-01"
+      ],
+      "derivation_steps": [
+        {
+          "action": "Mark equilibrium particle positions and their signed longitudinal displacements.",
+          "why_valid": "Actual position is equilibrium position plus displacement.",
+          "science_ref_id": "PH08-02-SCI-01"
+        },
+        {
+          "action": "Calculate changed adjacent spacing rather than compare displacement magnitudes.",
+          "why_valid": "Compression corresponds to reduced spacing and increased density.",
+          "science_ref_id": "PH08-02-SCI-01"
+        },
+        {
+          "action": "Translate spacing changes into spatial displacement slope and qualitative pressure.",
+          "why_valid": "Negative slope gives compression under the stated coordinate convention.",
+          "science_ref_id": "PH08-02-SCI-01"
+        },
+        {
+          "action": "Test inverse or temporal interpretation with direction and reference data.",
+          "why_valid": "Only spatial differences determine spacing; boundary and propagation information can resolve ambiguity.",
+          "science_ref_id": "PH08-02-SCI-01"
+        }
+      ],
+      "model_limits": [
+        "Small longitudinal displacements and locally smooth field for derivative/linear pressure model.",
+        "Neighbour labels refer to equilibrium positions; displacements must not imply particle crossing.",
+        "Pressure and displacement traces are distinct variables; spatial and temporal slopes not interchangeable.",
+        "Ideal uniform offset ambiguity is a snapshot relation; physical boundary conditions and dynamics may constrain it."
+      ],
+      "progressive_examples": [
+        {
+          "id": "PH08-02-B01-EX1",
+          "tier": "FOUNDATION",
+          "problem": "Particles at 0 and 10 mm have displacements +1 and −1 mm. Find actual spacing.",
+          "reasoning": "8 mm, compression.",
+          "independent_check": "Actual positions 1 and 9 mm."
+        },
+        {
+          "id": "PH08-02-B01-EX2",
+          "tier": "CONNECTED",
+          "problem": "Four equilibrium positions 0,10,20,30 mm have displacements 0,+1,+1,0 mm. Classify intervals.",
+          "reasoning": "Actual 0,11,21,30; spacings 11,10,9 mm: rarefaction, unchanged, compression.",
+          "independent_check": "Displacement maximum alone did not fix compression."
+        },
+        {
+          "id": "PH08-02-B01-EX3",
+          "tier": "ADVANCED",
+          "problem": "A spatial displacement trace has equal upward and downward zero crossings. Where are pressure extrema in the ideal sinusoidal model?",
+          "reasoning": "Downward spatial crossing corresponds to compression/high pressure, upward crossing to rarefaction/low pressure.",
+          "independent_check": "Use sign of −spatial slope, not sign of displacement."
+        }
+      ],
+      "figures": [
+        {
+          "id": "PH08-02-FIG-01",
+          "reasoning_step": "Particle spacing versus displacement",
+          "scene_description": "Equal equilibrium gaps become unequal after longitudinal displacements; the compression is where the spacing is smaller. Original inline SVG.",
+          "source_or_authorship": "ORIGINAL_B01_SVG_INLINE"
+        }
+      ],
+      "misconception": {
+        "wrong_model": "A displacement crest is a compression crest, and the wavy graph is a transverse particle path.",
+        "diagnostic": "If adjacent particles have the same positive displacement, has their separation decreased?",
+        "repair": "Calculate actual spacing; distinguish field value, spatial gradient and direction of physical particle motion."
+      },
+      "exit_check": {
+        "task": "Equilibrium positions 0, 10, 20 mm have displacements +1, +2, 0 mm. Classify spacings.",
+        "answer": "11 mm rarefaction, 8 mm compression.",
+        "reasoning": "Actual positions 1,12,20 mm."
+      },
+      "authorship_status": "DRAFT_AUTHOR_EXPOSED"
+    }
+  ],
+  "core1b": [
+    {
+      "id": "PH08-02-B01-MAIN-EXPLAIN-R2",
+      "kind": "MAIN",
+      "subtopic_id": "PH08-02",
+      "qrt_target_id": "PH08-02-B01-D3-EXPLAIN-01",
+      "fresh_task": "Four particles equally spaced by 20 mm have displacements +2,+2,−1,−1 mm. A student claims the first two form a compression because both displacements are positive. Explain actual gaps and correct interpretation.",
+      "protected_work": "Explain compression from relative particle displacements rather than absolute displacement or transverse graph shape.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict which of the three adjacent gaps is most compressed, before calculating actual positions.",
+        "attempt": "Four particles equally spaced by 20 mm have displacements +2,+2,−1,−1 mm. A student claims the first two form a compression because both displacements are positive. Explain actual gaps and correct interpretation.",
+        "reconstruct": "Actual gaps 20,17,20 mm; compression between second and third, not first pair. Positive absolute displacement not a density measure.",
+        "diagnose": "Check whether your explanation reads the height of a displacement graph as density without comparing adjacent particle locations.",
+        "repair": "Compute actual positions and gaps; connect compression or rarefaction to their changes, not absolute displacement sign.",
+        "boundary_test": "If every displacement increases by 3 mm, what happens to the three gaps?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH08-02-B01-INSTANCE-EXPLAIN-R2",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH08-02",
+      "qrt_target_id": "PH08-02-B01-D3-EXPLAIN-01",
+      "fresh_task": "Three equilibrium positions 0,15,30 mm have displacements −2,+1,+1 mm. A report says the negatively displaced particle marks rarefaction. Explain what the data actually establish about each gap.",
+      "protected_work": "Explain compression from relative particle displacements rather than absolute displacement or transverse graph shape.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether the displacement sign at one particle alone identifies the density state of its neighbouring interval.",
+        "attempt": "Three equilibrium positions 0,15,30 mm have displacements −2,+1,+1 mm. A report says the negatively displaced particle marks rarefaction. Explain what the data actually establish about each gap.",
+        "reconstruct": "Actual −2,16,31 mm; first gap18 (rarefaction), second15 (unchanged). Rarefaction is interval spacing, not sign at a single particle.",
+        "diagnose": "Check whether your explanation reads the height of a displacement graph as density without comparing adjacent particle locations.",
+        "repair": "Compute actual positions and gaps; connect compression or rarefaction to their changes, not absolute displacement sign.",
+        "boundary_test": "If the first displacement changes to +3 mm, with others fixed, what changes in the first gap?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH08-02-B01-MAIN-REPRESENT-R2",
+      "kind": "MAIN",
+      "subtopic_id": "PH08-02",
+      "qrt_target_id": "PH08-02-B01-D3-REPRESENT-01",
+      "fresh_task": "At equilibrium x=0,10,20,30,40 mm, displacement is 0,+1,0,−1,0 mm. Construct ξ(x), actual particle positions and qualitative excess pressure on each interval.",
+      "protected_work": "Convert a sampled spatial displacement profile into a particle-spacing and qualitative pressure representation, preserving the independent coordinate and sign convention.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict the sign of excess pressure in the middle two intervals before drawing the two fields.",
+        "attempt": "At equilibrium x=0,10,20,30,40 mm, displacement is 0,+1,0,−1,0 mm. Construct ξ(x), actual particle positions and qualitative excess pressure on each interval.",
+        "reconstruct": "Actual0,11,20,29,40; gaps11,9,9,11. Pressure signs −,+,+,−. Label pressure at intervals and ξ at particles.",
+        "diagnose": "Identify where your pressure plot copied displacement height or used time as if it were equilibrium coordinate.",
+        "repair": "Draw particles at actual positions, compare adjacent gaps, then label interval pressure signs on a separate spatial graph.",
+        "boundary_test": "If the whole displacement graph is shifted upward by 2 mm, what changes in the pressure representation?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH08-02-B01-INSTANCE-REPRESENT-R2",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH08-02",
+      "qrt_target_id": "PH08-02-B01-D3-REPRESENT-01",
+      "fresh_task": "Five equally spaced equilibrium positions 0,12,24,36,48 mm have ξ=+2,0,−2,0,+2 mm. Draw displacement and actual spacing, then plot qualitative pressure signs on intervals.",
+      "protected_work": "Convert a sampled spatial displacement profile into a particle-spacing and qualitative pressure representation, preserving the independent coordinate and sign convention.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether the largest positive displacement is necessarily located in the most compressed interval.",
+        "attempt": "Five equally spaced equilibrium positions 0,12,24,36,48 mm have ξ=+2,0,−2,0,+2 mm. Draw displacement and actual spacing, then plot qualitative pressure signs on intervals.",
+        "reconstruct": "Actual2,12,22,36,50; gaps10,10,14,14. First two compressed/high pressure, next two rarefied/low pressure.",
+        "diagnose": "Identify where your pressure plot copied displacement height or used time as if it were equilibrium coordinate.",
+        "repair": "Draw particles at actual positions, compare adjacent gaps, then label interval pressure signs on a separate spatial graph.",
+        "boundary_test": "If the horizontal axis instead denotes time at one microphone, can the same spacing inference be made directly?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH08-02-B01-MAIN-JUSTIFY-R2",
+      "kind": "MAIN",
+      "subtopic_id": "PH08-02",
+      "qrt_target_id": "PH08-02-B01-D4-JUSTIFY-01",
+      "fresh_task": "Four particles at equilibrium positions 0,20,40,60 mm have measured actual neighbour gaps 18,21,21 mm. A student claims these gaps uniquely determine every signed displacement. Construct two distinct profiles with the same gaps, then show how measuring the third particle's displacement as +1 mm changes identifiability.",
+      "protected_work": "Establish what a compression/pressure record can and cannot uniquely determine about particle displacement, using countermodels and an independent reference constraint.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether three gap measurements alone can specify four signed displacements uniquely. State your initial reason.",
+        "attempt": "Four particles at equilibrium positions 0,20,40,60 mm have measured actual neighbour gaps 18,21,21 mm. A student claims these gaps uniquely determine every signed displacement. Construct two distinct profiles with the same gaps, then show how measuring the third particle's displacement as +1 mm changes identifiability.",
+        "reconstruct": "Differences −2,+1,+1. Profiles [0,−2,−1,0] and [3,1,2,3] fit. Third +1 implies first +2, so [2,0,1,2] unique under exact spacing and reference.",
+        "diagnose": "Find whether your reasoning assumed an arbitrary zero displacement without evidence. Check whether a common offset changes any observed gaps.",
+        "repair": "Construct a family of profiles from measured differences; impose the independent reference and verify every gap against the original evidence.",
+        "boundary_test": "If only the sum of the three actual gaps were measured, would one particle reference still determine every displacement?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH08-02-B01-INSTANCE-JUSTIFY-R2",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH08-02",
+      "qrt_target_id": "PH08-02-B01-D4-JUSTIFY-01",
+      "fresh_task": "Five equilibrium particles spaced 10 mm apart have measured gaps 11,9,8,12 mm. A report gives displacement [0,1,0,−2,0] mm as the only solution. Construct a different compatible profile, identify the missing constraint, and recover the profile if the fourth particle is known at displacement +1 mm.",
+      "protected_work": "Establish what a compression/pressure record can and cannot uniquely determine about particle displacement, using countermodels and an independent reference constraint.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Would you accept the reported displacement profile as unique from gap measurements alone? Record your initial judgement.",
+        "attempt": "Five equilibrium particles spaced 10 mm apart have measured gaps 11,9,8,12 mm. A report gives displacement [0,1,0,−2,0] mm as the only solution. Construct a different compatible profile, identify the missing constraint, and recover the profile if the fourth particle is known at displacement +1 mm.",
+        "reconstruct": "Differences +1,−1,−2,+2. Add 3 to report: [3,4,3,1,3], same gaps. Fourth +1 fixes common offset 3; this profile unique for exact gaps plus reference.",
+        "diagnose": "Find whether your reasoning assumed an arbitrary zero displacement without evidence. Check whether a common offset changes any observed gaps.",
+        "repair": "Construct a family of profiles from measured differences; impose the independent reference and verify every gap against the original evidence.",
+        "boundary_test": "If the fourth measurement has ±0.5 mm uncertainty, can the other displacements be known exactly?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    }
+  ],
+  "core2_sources": [],
+  "acceptance": {
+    "b1_b7": {
+      "B1": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B2": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B3": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B4": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B5": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B6": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B7": {
+        "status": "HOLD",
+        "evidence_refs": []
+      }
+    },
+    "gates": {
+      "source_authenticity": "HOLD",
+      "content_correctness": "HOLD",
+      "cognitive_qualification": "HOLD",
+      "teaching_sufficiency": "HOLD",
+      "assessment_validity": "HOLD",
+      "implementation": "NOT_RUN",
+      "release_authority": "HOLD"
+    },
+    "release": "HOLD",
+    "acceptance_note": "Isolated author-exposed candidate. No matched Core2 item in inspectable bank; all targets AUTHORED_TRANSFER. Unique version and R2 cycle convention; no canonical C04 selection. Separate stage criteria in B01 author handoff, not implemented runtime. Full JSON is author-exposed; B5 HOLD. Per-target MAIN provisional pending C06 adoption. No academic approval inferred from software validation."
+  }
+}
