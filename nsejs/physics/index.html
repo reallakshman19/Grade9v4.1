@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>NSEJS Physics — Topics &amp; Core Learning Modules · Grade9 v4.0</title>
+  <title>NSEJS Physics — Topics &amp; Core Learning Modules · Grade9 v4.1</title>
   <meta name="description" content="NSEJS Physics Topics & Core Learning Modules. Optimized for 12.7 inch tablet ergonomics. All questions labeled {Unvalidated}.">
   <link rel="stylesheet" href="../../site.css">
   <link rel="stylesheet" href="../../css/tablet-12-7.css">
@@ -517,7 +517,7 @@
 <body>
   <header class="mast">
     <div class="container top">
-      <a class="logo" href="../../index.html"><i>G9</i>Grade9 v4.0</a>
+      <a class="logo" href="../../index.html"><i>G9</i>Grade9 v4.1</a>
                   <nav class="tabs" aria-label="NSEJS subject practice and Grade9 resources">
         <a href="../physics/index.html" aria-current="page">⚛ Physics</a>
         <a href="../chemistry/index.html">🧪 Chemistry</a>
@@ -572,6 +572,36 @@
 
     <!-- Single Master Topic Navigation Bar -->
     <nav id="topicNav" class="master-topic-nav" aria-label="Physics curriculum topics"></nav>
+
+    <!-- In-Page Question Bank Search & Filter Bar (Search 2) -->
+    <section class="qb-filter-panel" id="qbFilters" role="search" aria-label="Physics Question Bank Search and Filter">
+      <div class="qb-search-field">
+        <span class="qb-search-icon" aria-hidden="true">🔍</span>
+        <input type="search" id="qbSearch" name="q" placeholder="Filter physics questions by stem, ID, formula, or concept…" autocomplete="off" aria-label="Filter physics questions">
+      </div>
+      <div class="qb-filter-controls">
+        <select id="qbTopicSelect" aria-label="Filter by Topic">
+          <option value="all">★ All Topics Overview</option>
+        </select>
+        <select id="qbDifficulty" aria-label="Filter by Demand Band">
+          <option value="">All Demand Bands</option>
+          <option value="D1">D1 · Foundational</option>
+          <option value="D2">D2 · Standard Core</option>
+          <option value="D3">D3 · Olympiad Challenge</option>
+        </select>
+        <select id="qbExam" aria-label="Filter by Exam Year">
+          <option value="">All Exams / Years</option>
+        </select>
+        <select id="qbSort" aria-label="Sort order">
+          <option value="canonical">Canonical Order</option>
+          <option value="id">Question ID</option>
+          <option value="demand-asc">Demand: D1 → D3</option>
+          <option value="demand-desc">Demand: D3 → D1</option>
+        </select>
+        <button type="button" class="qb-clear" id="qbClear" title="Clear search and filters">✕ Clear</button>
+      </div>
+      <div class="qb-result-count" id="qbResultCount" aria-live="polite">Showing 53 candidate questions</div>
+    </section>
 
     <!-- 6 Physics Topic Cards (12.7" Tablet Ergonomic Grid) -->
         <!-- Active Topic Deep-Dive Workspace (shown when a topic is selected) -->
