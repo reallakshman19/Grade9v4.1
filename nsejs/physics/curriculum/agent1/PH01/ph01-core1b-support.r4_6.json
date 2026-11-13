@@ -433,7 +433,7 @@
       "cycle_id": "PH01-MAIN-D3.3-R46",
       "hints": {
         "H1": "Normalize wheel angle and milliseconds; use the resulting speed only for the two probe launches.",
-        "H2": "Use the first sensor time to get H, then the signed quadratic for the other launch.",
+        "H2": "Use the first sensor time to get H, then the signed quadratic for the other launch. Normalize chamber units and compare each rate to the full-interval rate.",
         "H3": "Subtract dwell from trolley elapsed time, solve reciprocal time sum and check the domain."
       },
       "boundary_solution": "Moving time5.5 s < zero-current minimum6 s, impossible for 0≤c<4; equation yields negative c². No physically admissible belt speed."
@@ -513,11 +513,11 @@
     {
       "cycle_id": "PH01-M06-QRT-MODEL-D4-R46-SOURCE33-INSTANCE",
       "hints": {
-        "H1": "Use a new elapsed clock starting at the runner release.",
-        "H2": "Express the required speed as a function of contact time; distinguish unrestricted minimum from allowed interval.",
-        "H3": "Compare two allowed times using the sign of 20/(s1s2)−1; check the boundary."
+        "H1": "Reset the clock at runner release; keep the two allowed windows separate.",
+        "H2": "Express required U as f(s); use AM–GM to find the unrestricted minimum and locate it relative to both windows.",
+        "H3": "Compare f at the correct endpoint of each window using f(s1)−f(s2); then compare the two window minima."
       },
-      "boundary_solution": "0<s≤2; decreasing because s1s2<20. Minimum at s=2, U=6+2+10=18 m/s, t=4."
+      "boundary_solution": "Now s∈[1,7] contains √20. AM–GM gives U=6+2√20 at t=2+√20; this is smaller than both former endpoint minima. The feasible-time domain changed."
     },
     {
       "cycle_id": "PH01-M08-QRT-MODEL-D4-R46-SOURCE41-INSTANCE",

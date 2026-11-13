@@ -159,7 +159,7 @@
         const o = document.createElement("option");
         o.value = cycle.id;
         o.textContent = cycle.kind + " · " + cycle.cell_id + " · " +
-          ({"D3.2":"EXPLAIN","D4.7":"JUSTIFY · D4 candidate","D3.3":"APPLY","D3.7":"JUSTIFY","D3.4":"MODEL","D3.5":"REPRESENT","D3.6":"SYNTHESIZE","D4.4":"MODEL · D4 candidate","D4.5":"REPRESENT · D4 candidate","D4.6":"SYNTHESIZE · D4 candidate"}[cycle.cell_id]) + " · " + (cycle.kind === "MAIN" ? "integrated reasoning" : cycle.subtopic_id);
+          ({"D3.2":"EXPLAIN","D4.7":"JUSTIFY · D4 candidate","D3.3":"APPLY","D3.7":"JUSTIFY","D3.4":"MODEL","D3.5":"REPRESENT","D3.6":"SYNTHESIZE","D4.4":"MODEL · D4 candidate","D4.5":"REPRESENT · D4 candidate","D4.6":"SYNTHESIZE · D4 candidate"}[cycle.cell_id]) + " · " + (cycle.kind === "MAIN" ? "integrated reasoning" : cycle.subtopic_id) + (cycle.id.includes("-SOURCE") ? " · 2025 Q"+cycle.id.match(/-SOURCE(\d+)/)[1]+" transfer" : "");
         $("cycleSelect").appendChild(o);
       }
       $("cycleSelect").addEventListener("change", () => loadCycle($("cycleSelect").value));
@@ -225,10 +225,12 @@
   const ph01MapLink = document.createElement("a");
   const sourceRef = new URLSearchParams(location.search).get("source");
   const sourceIDs = new Set(["PH01-LINK-2020-51-Q5","PH01-LINK-2021-51-Q17","PH01-LINK-2021-51-Q20","PH01-LINK-2021-51-Q22","PH01-LINK-2022-51-Q35","PH01-LINK-2022-51-Q37","PH01-LINK-2022-51-Q39","PH01-LINK-2022-51-Q45","PH01-LINK-2023-51-Q60","PH01-LINK-2024-51-Q33","PH01-LINK-2024-51-Q36","PH01-LINK-2024-51-Q37","PH01-LINK-2024-51-Q46","PH01-LINK-2024-51-Q59","PH01-LINK-2024-51-Q60"]);
-  const sourceLink = sourceIDs.has(sourceRef) ? "#" + sourceRef : "";
+  const locator = new URLSearchParams(location.search).get("locator");
+  const locatorIDs = new Set(["2025-51-Q33","2025-51-Q41","2025-51-Q43","2025-51-Q48"]);
+  const sourceLink = locatorIDs.has(locator) ? "#locator-"+locator : sourceIDs.has(sourceRef) ? "#" + sourceRef : "";
   ph01MapLink.href = "../../textbook/PH01/core2-links-r46/index.html" + sourceLink;
   ph01MapLink.dataset.textbookHelp = "";
-  ph01MapLink.textContent = sourceLink ? "Return to the linked Core2 question record" : "PH01 Core2 question-to-construction map";
+  ph01MapLink.textContent = locatorIDs.has(locator) ? "Return to the 2025 publisher locator (not a Core2 record)" : sourceLink ? "Return to the linked Core2 question record" : "PH01 Core2 question-to-construction map";
   ph01SourceSection.appendChild(ph01MapLink);
   document.querySelector("main").appendChild(ph01SourceSection);
   for (const link of document.querySelectorAll("[data-textbook-help]")) link.addEventListener("click", (event) => {

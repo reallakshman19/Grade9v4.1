@@ -1434,28 +1434,28 @@
           "blueprint_cell": "D4.4",
           "source_role": "AUTHORED_TRANSFER",
           "qrt_status": "PROPOSED",
-          "protected_work": "Choose the constrained intercept model, distinguish endpoint optimum from interior tangency and reject infeasible roots.",
-          "decisive_route": "Choose the constrained intercept model, distinguish endpoint optimum from interior tangency and reject infeasible roots.",
+          "protected_work": "Choose the constrained intercept model on disjoint observation windows; distinguish excluded tangency, endpoint optima and a global comparison across regimes.",
+          "decisive_route": "Use s=t−2; minimize f=6+s+20/s over [1,2]∪[6,7]; compare endpoint minima with excluded unrestricted tangency.",
           "factor_evidence": {
             "concept_model_selection": {
               "score": 2,
-              "evidence": "Select constrained optimization rather than ordinary meeting or unrestricted tangency."
+              "evidence": "Choose constrained optimization and distinguish unregistered crossing from permitted contact."
             },
             "representation_translation": {
               "score": 1,
-              "evidence": "Translate two clocks into a common position history."
+              "evidence": "Translate two clocks and disconnected intervals into a common position history."
             },
             "reasoning_chain_length": {
               "score": 2,
-              "evidence": "Derive required speed, unrestricted minimum, monotonic restriction and altered domain."
+              "evidence": "Derive required speed, prove opposite monotonic regimes, compare minima and changed domain."
             },
             "algebra_computational_load": {
               "score": 2,
-              "evidence": "Rational function, inequality and radical."
+              "evidence": "Rational function, inequality and exact radical."
             },
             "trap_exception_sensitivity": {
               "score": 2,
-              "evidence": "Delayed clock and excluded tangency."
+              "evidence": "Excluded tangency, discontinuous observation domain and late-window optimum."
             }
           }
         }
@@ -4401,15 +4401,15 @@
         "PH01-M04-QRT-APPLY-D3-R46-SOURCE43",
         "PH01-M03-QRT-APPLY-D3-R46-SOURCE48"
       ],
-      "fresh_task": "A test facility calibrates a launch wheel of diameter 0.40 m. It turns 90° in 250 ms at uniform angular speed. Use f=turns/time and v=πDf to calculate f and rim speed. A launcher uses the rim speed as the magnitude u of its first probe's downward velocity; a second probe is launched upward at 2u from the same platform. Down positive, g=10 m/s². The first reaches a sensor after 2 s. Use H=ut+½gt² and the signed equation for the second to recover H and the second probe's positive arrival time; give its signed arrival velocity and verify it is after the turn. Next a survey trolley on a moving belt travels equal 12 m legs with belt-relative speed 4 m/s, first with then against belt speed c≥0. Its total clock is 8 s including 2 s dwell. Use the equal-leg reciprocal time relation to calculate c or prove the clock impossible; compute elapsed average speed. A supervisor proposes averaging the two leg speeds and treating equal opposite probe launch speeds as interchangeable. Test both claims. The wheel speed is used only for the launch, not the trolley.",
-      "protected_work": "Execute a specified angular/unit conversion, signed paired launch model with positive-root check, and equal-distance time ledger with dwell and feasibility check.",
+      "fresh_task": "A test facility calibrates a launch wheel of diameter 0.40 m. It turns 90° in 250 ms at uniform angular speed. Use f=turns/time and v=πDf to calculate f and rim speed. A launcher uses the rim speed as the magnitude u of its first probe's downward velocity; a second probe is launched upward at 2u from the same platform. Down positive, g=10 m/s². The first reaches a sensor after 2 s. Use H=ut+½gt² and the signed equation for the second to recover H and the second probe's positive arrival time; give its signed arrival velocity and verify it is after the turn. After the first sensor passage a braking controller records velocity u+20 m/s at chamber time 0, then 100(u+15) cm/s at 1000 ms, then the same velocity at 3000 ms. Assume each interval has constant acceleration. Compute both signed accelerations and the overall mean acceleration; distinguish the zero-acceleration coast from the elapsed mean. Next a survey trolley on a moving belt travels equal 12 m legs with belt-relative speed 4 m/s, first with then against belt speed c≥0. Its total clock is 8 s including 2 s dwell. Use the equal-leg reciprocal time relation to calculate c or prove the clock impossible; compute elapsed average speed. A supervisor proposes averaging the two leg speeds and treating equal opposite probe launch speeds as interchangeable. Test both claims. The wheel speed is used only for the launch, not the trolley.",
+      "protected_work": "Execute a specified angular/unit conversion, signed paired launch model with positive-root check, and equal-distance time ledger with dwell and feasibility check. Apply signed endpoint-rate equations to a mixed-unit staged controller record.",
       "differs_from_worked_anchor": true,
       "stages": {
         "predict": "Predict the model and admissible domain before any computation.",
-        "attempt": "A test facility calibrates a launch wheel of diameter 0.40 m. It turns 90° in 250 ms at uniform angular speed. Use f=turns/time and v=πDf to calculate f and rim speed. A launcher uses the rim speed as the magnitude u of its first probe's downward velocity; a second probe is launched upward at 2u from the same platform. Down positive, g=10 m/s². The first reaches a sensor after 2 s. Use H=ut+½gt² and the signed equation for the second to recover H and the second probe's positive arrival time; give its signed arrival velocity and verify it is after the turn. Next a survey trolley on a moving belt travels equal 12 m legs with belt-relative speed 4 m/s, first with then against belt speed c≥0. Its total clock is 8 s including 2 s dwell. Use the equal-leg reciprocal time relation to calculate c or prove the clock impossible; compute elapsed average speed. A supervisor proposes averaging the two leg speeds and treating equal opposite probe launch speeds as interchangeable. Test both claims. The wheel speed is used only for the launch, not the trolley.",
-        "reconstruct": "90°=1/4 turn, 250 ms=0.25 s, f=1 Hz and u=0.4π m/s. H=2u+20=0.8π+20 m. Probe B: 5t²−2ut−H=0, positive root t=(2u+√(4u²+20H))/10; negative root rejected. Its velocity −2u+10t=√(4u²+20H)>0, so arrival after turn 2u/10. The equal-opposite shortcut is invalid for −2u. Belt moving time=6 s. 12/(4+c)+12/(4−c)=96/(16−c²)=6 gives c²=0, c=0, both leg times3 s. Elapsed average speed=24/8=3 m/s; arithmetic moving-speed mean4 is not elapsed mean. Feasible at zero belt speed only. The elapsed clock includes dwell, and return requires c<4.",
+        "attempt": "A test facility calibrates a launch wheel of diameter 0.40 m. It turns 90° in 250 ms at uniform angular speed. Use f=turns/time and v=πDf to calculate f and rim speed. A launcher uses the rim speed as the magnitude u of its first probe's downward velocity; a second probe is launched upward at 2u from the same platform. Down positive, g=10 m/s². The first reaches a sensor after 2 s. Use H=ut+½gt² and the signed equation for the second to recover H and the second probe's positive arrival time; give its signed arrival velocity and verify it is after the turn. After the first sensor passage a braking controller records velocity u+20 m/s at chamber time 0, then 100(u+15) cm/s at 1000 ms, then the same velocity at 3000 ms. Assume each interval has constant acceleration. Compute both signed accelerations and the overall mean acceleration; distinguish the zero-acceleration coast from the elapsed mean. Next a survey trolley on a moving belt travels equal 12 m legs with belt-relative speed 4 m/s, first with then against belt speed c≥0. Its total clock is 8 s including 2 s dwell. Use the equal-leg reciprocal time relation to calculate c or prove the clock impossible; compute elapsed average speed. A supervisor proposes averaging the two leg speeds and treating equal opposite probe launch speeds as interchangeable. Test both claims. The wheel speed is used only for the launch, not the trolley.",
+        "reconstruct": "90°=1/4 turn, 250 ms=0.25 s, f=1 Hz and u=0.4π m/s. H=2u+20=0.8π+20 m. Probe B: 5t²−2ut−H=0, positive root t=(2u+√(4u²+20H))/10; negative root rejected. Its velocity −2u+10t=√(4u²+20H)>0, so arrival after turn 2u/10. The equal-opposite shortcut is invalid for −2u. Normalize 100(u+15) cm/s to u+15 m/s, and 1000/3000 ms to 1 s and 3 s respectively. Chamber rates are (u+15−u−20)/1=−5 m/s² and 0 over the next 2 s; overall (−5)/3 m/s², not the unweighted mean. Belt moving time=6 s. 12/(4+c)+12/(4−c)=96/(16−c²)=6 gives c²=0, c=0, both leg times3 s. Elapsed average speed=24/8=3 m/s; arithmetic moving-speed mean4 is not elapsed mean. Feasible at zero belt speed only. The elapsed clock includes dwell, and return requires c<4.",
         "diagnose": "Identify the earliest invalid sign, clock, root, wrap, or domain assumption in your actual saved reasoning.",
-        "repair": "Execute a specified angular/unit conversion, signed paired launch model with positive-root check, and equal-distance time ledger with dwell and feasibility check.",
+        "repair": "Execute a specified angular/unit conversion, signed paired launch model with positive-root check, and equal-distance time ledger with dwell and feasibility check. Apply signed endpoint-rate equations to a mixed-unit staged controller record.",
         "boundary_test": "The wheel observation is unchanged but trolley clock reads 7.5 s including 2 s dwell. Determine feasibility and explain why."
       },
       "attempt_policy": {
@@ -4660,16 +4660,16 @@
       "instance_qrt_ids": [
         "PH01-M06-QRT-MODEL-D4-R46-SOURCE33"
       ],
-      "fresh_task": "A cart travels on a straight rail according to x=12+2t+t² metres, t≥0 in seconds. A technician at x=0 can run only from t=2 s, at chosen constant positive speed U. The rail closes to runners at t=5 s. Determine the minimum U allowing contact, including contact at closure, and prove its global minimality. A controller claims the unconstrained tangency speed is always the minimum. Test this claim; repeat for closure at t=9 s.",
-      "protected_work": "Choose the constrained intercept model, distinguish endpoint optimum from interior tangency and reject infeasible roots.",
+      "fresh_task": "A service cart travels along a straight rail according to x=12+2t+t² metres, t≥0 in seconds. A technician starts at x=0 at t=2 s and runs at chosen positive constant speed U. A contact sensor registers coincidence only during t∈[3,4] s or t∈[8,9] s, including endpoints; the technician continues running through the gap and an earlier unregistered coincidence is not counted. Find the smallest U permitting at least one registered coincidence, and prove it is the global minimum over both windows. A controller proposes the unrestricted tangency speed; test it. If the late window is unavailable, find the new threshold.",
+      "protected_work": "Choose the constrained intercept model on disjoint observation windows; distinguish excluded tangency, endpoint optima and a global comparison across regimes.",
       "differs_from_worked_anchor": true,
       "stages": {
         "predict": "Predict the admissible model, direction or domain before calculating.",
-        "attempt": "A cart travels on a straight rail according to x=12+2t+t² metres, t≥0 in seconds. A technician at x=0 can run only from t=2 s, at chosen constant positive speed U. The rail closes to runners at t=5 s. Determine the minimum U allowing contact, including contact at closure, and prove its global minimality. A controller claims the unconstrained tangency speed is always the minimum. Test this claim; repeat for closure at t=9 s.",
-        "reconstruct": "Let s=t−2; 0<s≤3. Cart x=20+6s+s², runner x=Us. Meeting requires U=6+s+20/s. Unconstrained minimum is 6+2√20 at s=√20 by AM–GM. It is outside the initial window. For 0<s1<s2≤3, f(s1)−f(s2)=(s2−s1)(20/(s1s2)−1)>0, so minimum is at s=3: U=47/3 m/s, t=5. With closure t=9, s≤7 admits √20; minimum 6+2√20 m/s at t=2+√20. A zero discriminant alone does not decide feasibility with a time constraint.",
-        "diagnose": "Wrong models: start runner at t=0; use unrestricted discriminant-zero time without checking closure; use the cart instantaneous speed at closure as required runner speed. Identify the first invalid step.",
-        "repair": "Rebuild the two positions on the delayed clock; solve for required speed, prove the location of its minimum on the allowed domain, and check both time windows.",
-        "boundary_test": "If closure moves to t=4 s, find the minimum speed and prove why it cannot occur earlier."
+        "attempt": "A service cart travels along a straight rail according to x=12+2t+t² metres, t≥0 in seconds. A technician starts at x=0 at t=2 s and runs at chosen positive constant speed U. A contact sensor registers coincidence only during t∈[3,4] s or t∈[8,9] s, including endpoints; the technician continues running through the gap and an earlier unregistered coincidence is not counted. Find the smallest U permitting at least one registered coincidence, and prove it is the global minimum over both windows. A controller proposes the unrestricted tangency speed; test it. If the late window is unavailable, find the new threshold.",
+        "reconstruct": "Let s=t−2, so admissible elapsed times are [1,2]∪[6,7]. Target position is 20+6s+s²; runner Us. Required speed f(s)=6+s+20/s. Its unrestricted minimum 6+2√20 occurs at s=√20 by AM–GM, excluded from both windows. For s1<s2, f(s1)−f(s2)=(s2−s1)(20/(s1s2)−1). On [1,2] this is positive, so minimum f(2)=18 at t=4. On [6,7] it is negative, so minimum f(6)=46/3 at t=8. Compare: 46/3<18; global minimum is 46/3 m/s at t=8. With late window unavailable, 18 m/s. This permits unregistered prior crossings but no claimed registration outside the sensor windows. Tangency alone fails because its time is excluded.",
+        "diagnose": "Wrong models: run from t=0, use unrestricted discriminant-zero root without checking windows, search only the earliest window, or interpolate across the gap. Identify your first invalid assumption.",
+        "repair": "Build both positions on the delayed clock; derive f(s); prove monotonic direction separately on each allowed window, compare endpoint minima, and test the changed connected domain.",
+        "boundary_test": "The windows are joined into a single continuous interval [3,9] s. Find the new threshold and registration time, with justification."
       },
       "attempt_policy": {
         "save_first_answer_before_hint": true,
