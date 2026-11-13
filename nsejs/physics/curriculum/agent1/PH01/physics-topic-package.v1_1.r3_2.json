@@ -1,0 +1,2749 @@
+{
+  "schema": "g9v41-nsejs-physics-topic-package/v1.1",
+  "subject_id": "PHYSICS",
+  "academic_track": "NSEJS",
+  "topic_id": "PH01",
+  "owner_agent": "AGENT_1",
+  "version": "0.4.0",
+  "status": "DRAFT_AUTHOR_EXPOSED",
+  "pins": {
+    "contracts_version": "1.1.0",
+    "blueprint": {
+      "version": "0.2.0",
+      "git_blob_sha": "700dafcbe86d76442637bcf214eeb544497cf4ea"
+    },
+    "shared_qrt_28": {
+      "version": "1.0.0",
+      "git_blob_sha": "e2409aef11ae7d98444593bfbe1a38eb00c97cef"
+    },
+    "topic_adapter_version": "0.4.0"
+  },
+  "syllabus_references": [
+    {
+      "reference_id": "IAPT-NSEJS-2026-SCOPE",
+      "locator": "https://iapt.org.in/",
+      "authority": "OFFICIAL_SYLLABUS",
+      "scope_status": "CANDIDATE"
+    },
+    {
+      "reference_id": "CBSE-IX-MOTION-REF",
+      "locator": "https://cbseacademic.nic.in/web_material/term/9science.pdf",
+      "authority": "NCERT_CBSE",
+      "scope_status": "CANDIDATE"
+    },
+    {
+      "reference_id": "CBSE-2026-27",
+      "locator": "https://cbseacademic.nic.in/curriculum_2027.html",
+      "authority": "NCERT_CBSE",
+      "scope_status": "CANDIDATE"
+    }
+  ],
+  "subtopics": [
+    {
+      "id": "PH01-M01",
+      "title": "Measurement, position and reference directions",
+      "scope_role": "SYLLABUS_CORE_CANDIDATE",
+      "syllabus_reference_ids": [
+        "IAPT-NSEJS-2026-SCOPE",
+        "CBSE-IX-MOTION-REF",
+        "CBSE-2026-27"
+      ],
+      "prerequisite_ids": [],
+      "science_ref_ids": [
+        "PH01-SCI-COORDINATE-CALIBRATION",
+        "PH01-SCI-DISPLACEMENT"
+      ],
+      "learning_goal": "Build, translate and reconcile coordinate measurements without confusing origin, unit or direction. Two-anchor affine calibration is an authored enrichment, not a mandatory syllabus claim.",
+      "textbook_chapter_ref": "nsejs/physics/textbook/PH01/M01/index.html",
+      "qrt_targets": [
+        {
+          "id": "PH01-M01-QRT-MODEL-D3",
+          "task_identity": "AUTHORED-PH01-M01-QRT-MODEL-D3-R31",
+          "band": "D3",
+          "primary_operation": "MODEL",
+          "blueprint_cell": "D3.4",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Select and test a uniform signed coordinate model rather than treating instrument readings as metre positions.",
+          "decisive_route": "Use two common anchors to infer signed scale and offset, then test the extra independent observation.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "Choose offset-only versus signed-scale-plus-offset calibration."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "Translate two paired instrument readings into physical coordinates."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Infer scale, offset, prediction and consistency in sequence."
+            },
+            "algebra_computational_load": {
+              "score": 1,
+              "evidence": "Solve two linear relations with a negative scale."
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "Reject a model on a third inconsistent exact report."
+            }
+          }
+        },
+        {
+          "id": "PH01-M01-QRT-REPRESENT-D3",
+          "task_identity": "AUTHORED-PH01-M01-QRT-REPRESENT-D3-R31",
+          "band": "D3",
+          "primary_operation": "REPRESENT",
+          "blueprint_cell": "D3.5",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Translate a coordinate log into a common physical axis and a reversed observer axis, keeping times and segment directions aligned.",
+          "decisive_route": "Calibrate both axes from their zero and orientation, transform each row, compare signed changes and physical lengths.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 1,
+              "evidence": "Recognize the two fixed affine coordinate maps."
+            },
+            "representation_translation": {
+              "score": 2,
+              "evidence": "Construct aligned instrument-to-ground-to-instrument representations."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Translate each sample and infer directions and rest from differences."
+            },
+            "algebra_computational_load": {
+              "score": 0,
+              "evidence": "Only integer arithmetic; no substantial algebra."
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "Equal readings imply rest only under the stated monotone-or-rest assumption."
+            }
+          }
+        },
+        {
+          "id": "PH01-M01-QRT-SYNTHESIZE-D3",
+          "task_identity": "AUTHORED-PH01-M01-QRT-SYNTHESIZE-D3-R31",
+          "band": "D3",
+          "primary_operation": "SYNTHESIZE",
+          "blueprint_cell": "D3.6",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Reconcile two incomplete coordinate logs using shared markers and a physical separation constraint.",
+          "decisive_route": "Infer one scale from two cross-observations, use the signed displacement constraint to reconstruct the missing reading and verify it.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "Select shared physical coordinates as the bridge between two rulers."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "Convert paired marker readings and recover both instrument readings."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Combine calibration, signed displacement and inverse transformations."
+            },
+            "algebra_computational_load": {
+              "score": 1,
+              "evidence": "Solve affine relations including a fractional scale reading."
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "Opposite scale orientations and negative extrapolated readings must be interpreted correctly."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "PH01-M02",
+      "title": "Distance and displacement in one dimension",
+      "scope_role": "SYLLABUS_CORE_CANDIDATE",
+      "syllabus_reference_ids": [
+        "IAPT-NSEJS-2026-SCOPE",
+        "CBSE-IX-MOTION-REF",
+        "CBSE-2026-27"
+      ],
+      "prerequisite_ids": [
+        "PH01-M01"
+      ],
+      "science_ref_ids": [
+        "PH01-SCI-PATH-BOUNDS",
+        "PH01-SCI-DISPLACEMENT"
+      ],
+      "learning_goal": "Distinguish sampled endpoint information from actual route length and reconstruct feasible signed routes.",
+      "textbook_chapter_ref": "nsejs/physics/textbook/PH01/M02/index.html",
+      "qrt_targets": [
+        {
+          "id": "PH01-M02-QRT-MODEL-D3",
+          "task_identity": "AUTHORED-PH01-M02-QRT-MODEL-D3-R31",
+          "band": "D3",
+          "primary_operation": "MODEL",
+          "blueprint_cell": "D3.4",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Choose the appropriate exact-distance or lower-bound model for a partially observed journey, and construct counterexamples.",
+          "decisive_route": "Use checkpoint-wise triangle inequalities and show distinct feasible routes under the same data.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "Choose between exact route ledger and endpoint lower-bound model."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "Translate ordered sample positions into candidate routes."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Compute bound, construct two witnesses, assess claims."
+            },
+            "algebra_computational_load": {
+              "score": 0,
+              "evidence": "Only simple arithmetic."
+            },
+            "trap_exception_sensitivity": {
+              "score": 2,
+              "evidence": "Missing turns and absence of a speed limit are decisive exceptions."
+            }
+          }
+        },
+        {
+          "id": "PH01-M02-QRT-REPRESENT-D3",
+          "task_identity": "AUTHORED-PH01-M02-QRT-REPRESENT-D3-R31",
+          "band": "D3",
+          "primary_operation": "REPRESENT",
+          "blueprint_cell": "D3.5",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Translate a direction-coded odometer log into signed position and cumulative-distance representations.",
+          "decisive_route": "Use successive odometer differences as nonnegative leg lengths, assign signs from direction and construct aligned positions.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 1,
+              "evidence": "Choose signed change versus nonnegative accumulated distance."
+            },
+            "representation_translation": {
+              "score": 2,
+              "evidence": "Translate direction-coded odometer readings into two linked ledgers."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Recover four changes, cumulative values and crossing condition."
+            },
+            "algebra_computational_load": {
+              "score": 0,
+              "evidence": "Integer arithmetic only."
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "An odometer offset is not journey distance; a zero crossing need not coincide with a checkpoint."
+            }
+          }
+        },
+        {
+          "id": "PH01-M02-QRT-SYNTHESIZE-D3",
+          "task_identity": "AUTHORED-PH01-M02-QRT-SYNTHESIZE-D3-R31",
+          "band": "D3",
+          "primary_operation": "SYNTHESIZE",
+          "blueprint_cell": "D3.6",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Recover an unknown turning point by combining an exact path ledger with endpoint and reversal-order constraints.",
+          "decisive_route": "Write the signed-order-dependent distance relation, solve for the unknown turn, then verify directions and feasibility.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "Select a route-specific path ledger with direction-order conditions."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "Translate stated turning order into signed differences."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Build equation, solve turn, validate route and alternative."
+            },
+            "algebra_computational_load": {
+              "score": 1,
+              "evidence": "Solve a linear equation for an unknown turning point."
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "A zero or wrongly ordered leg invalidates the formal solution."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "PH01-M03",
+      "title": "Speed, signed velocity, path length and interval averages",
+      "scope_role": "SYLLABUS_CORE_CANDIDATE",
+      "syllabus_reference_ids": [
+        "IAPT-NSEJS-2026-SCOPE",
+        "CBSE-IX-MOTION-REF",
+        "CBSE-2026-27"
+      ],
+      "prerequisite_ids": [
+        "PH01-M01",
+        "PH01-M02"
+      ],
+      "science_ref_ids": [
+        "PH01-SCI-DISPLACEMENT",
+        "PH01-SCI-SPEED-AVERAGES",
+        "PH01-SCI-PIECEWISE-AVG"
+      ],
+      "learning_goal": "Choose, represent and invert distance/displacement and speed/velocity distinctions in multi-leg motion.",
+      "textbook_chapter_ref": "nsejs/physics/textbook/PH01/M03/index.html",
+      "qrt_targets": [
+        {
+          "id": "PH01-M03-QRT-MODEL-D3",
+          "task_identity": "AUTHORED-PH01-M03-QRT-MODEL-D3-R32",
+          "band": "D3",
+          "primary_operation": "MODEL",
+          "blueprint_cell": "D3.4",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Choose the time-weighted speed and signed-velocity model from a moving-time report and an elapsed-time report.",
+          "decisive_route": "Separate elapsed and moving time, recover signed and unsigned leg contributions, and test which report uses the requested definition.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "Choose the average definition and time basis."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "Convert the stage report into a travel ledger."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Evaluate two reports, then compute two averages."
+            },
+            "algebra_computational_load": {
+              "score": 0,
+              "evidence": "Simple arithmetic."
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "Rest and unequal stage times."
+            }
+          }
+        },
+        {
+          "id": "PH01-M03-QRT-REPRESENT-D3",
+          "task_identity": "AUTHORED-PH01-M03-QRT-REPRESENT-D3-R32",
+          "band": "D3",
+          "primary_operation": "REPRESENT",
+          "blueprint_cell": "D3.5",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Translate a signed constant-velocity travel log into position and cumulative-distance representations.",
+          "decisive_route": "Use the stated initial coordinate and signed legs to construct piecewise linear position and distance graphs.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 1,
+              "evidence": "Choose two distinct physical graph quantities."
+            },
+            "representation_translation": {
+              "score": 2,
+              "evidence": "Translate travel log to two aligned graphs."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Construct four intervals and average quantities."
+            },
+            "algebra_computational_load": {
+              "score": 0,
+              "evidence": "Integer arithmetic."
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "Coordinate origin shift and negative velocity."
+            }
+          }
+        },
+        {
+          "id": "PH01-M03-QRT-SYNTHESIZE-D3",
+          "task_identity": "AUTHORED-PH01-M03-QRT-SYNTHESIZE-D3-R32",
+          "band": "D3",
+          "primary_operation": "SYNTHESIZE",
+          "blueprint_cell": "D3.6",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Recover an unknown moving duration and speed from a total-time, distance and displacement ledger.",
+          "decisive_route": "Use independent signed and unsigned constraints plus a rest interval to infer the missing stage and test feasibility.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "Select elapsed-time and path constraints."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "Translate an average into distance."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Recover time, speed, signed average and feasibility."
+            },
+            "algebra_computational_load": {
+              "score": 1,
+              "evidence": "Solve linked linear relations."
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "Alternative total shorter than one known leg."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "PH01-M04",
+      "title": "Acceleration and velocity changes",
+      "scope_role": "SYLLABUS_CORE_CANDIDATE",
+      "syllabus_reference_ids": [
+        "IAPT-NSEJS-2026-SCOPE",
+        "CBSE-IX-MOTION-REF",
+        "CBSE-2026-27"
+      ],
+      "prerequisite_ids": [
+        "PH01-M01",
+        "PH01-M03"
+      ],
+      "science_ref_ids": [
+        "PH01-SCI-SIGNED-ACCELERATION"
+      ],
+      "learning_goal": "Infer signed acceleration, detect reversals and distinguish velocity change from speed change.",
+      "textbook_chapter_ref": "nsejs/physics/textbook/PH01/M04/index.html",
+      "qrt_targets": [
+        {
+          "id": "PH01-M04-QRT-MODEL-D3",
+          "task_identity": "AUTHORED-PH01-M04-QRT-MODEL-D3-R32",
+          "band": "D3",
+          "primary_operation": "MODEL",
+          "blueprint_cell": "D3.4",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Choose whether an interval average determines a unique reversal and speed history.",
+          "decisive_route": "Use explicit alternative velocity histories with identical endpoints to test a constant-acceleration assumption.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "Distinguish average and constant instantaneous acceleration models."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "Construct alternative v–t sketches."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Infer rate, continuity consequence and counterexample."
+            },
+            "algebra_computational_load": {
+              "score": 0,
+              "evidence": "Simple slope arithmetic."
+            },
+            "trap_exception_sensitivity": {
+              "score": 2,
+              "evidence": "An endpoint average does not determine zero timing."
+            }
+          }
+        },
+        {
+          "id": "PH01-M04-QRT-REPRESENT-D3",
+          "task_identity": "AUTHORED-PH01-M04-QRT-REPRESENT-D3-R32",
+          "band": "D3",
+          "primary_operation": "REPRESENT",
+          "blueprint_cell": "D3.5",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Translate a piecewise signed velocity history into acceleration and speed-change intervals.",
+          "decisive_route": "Compute segment slopes and split intervals at zero velocity to construct sign and speed labels.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 1,
+              "evidence": "Recognize slope versus speed magnitude."
+            },
+            "representation_translation": {
+              "score": 2,
+              "evidence": "Translate graph to two aligned representations."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Find slopes, zeros and intervals."
+            },
+            "algebra_computational_load": {
+              "score": 1,
+              "evidence": "Solve a fractional zero time."
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "Sign reversal and graph corners."
+            }
+          }
+        },
+        {
+          "id": "PH01-M04-QRT-SYNTHESIZE-D3",
+          "task_identity": "AUTHORED-PH01-M04-QRT-SYNTHESIZE-D3-R32",
+          "band": "D3",
+          "primary_operation": "SYNTHESIZE",
+          "blueprint_cell": "D3.6",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Reconstruct two acceleration stages using an unknown switch time and a velocity condition.",
+          "decisive_route": "Infer switch time from the velocity ledger, then determine reversal and speed history.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "Select stage-wise velocity model."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "Translate stage durations into velocity changes."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Recover switch, zeros and speed intervals."
+            },
+            "algebra_computational_load": {
+              "score": 1,
+              "evidence": "Solve a linear constraint and fractional time."
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "Reject out-of-interval roots."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "PH01-M05",
+      "title": "Position-time and velocity-time graphs",
+      "scope_role": "SYLLABUS_CORE_CANDIDATE",
+      "syllabus_reference_ids": [
+        "IAPT-NSEJS-2026-SCOPE",
+        "CBSE-IX-MOTION-REF",
+        "CBSE-2026-27"
+      ],
+      "prerequisite_ids": [
+        "PH01-M01",
+        "PH01-M02",
+        "PH01-M03",
+        "PH01-M04"
+      ],
+      "science_ref_ids": [
+        "PH01-SCI-GRAPH",
+        "PH01-SCI-XT-SLOPE",
+        "PH01-SCI-PIECEWISE-AVG"
+      ],
+      "learning_goal": "Model, translate and synthesize motion records using slopes, signed areas and cross-representation checks.",
+      "textbook_chapter_ref": "nsejs/physics/textbook/PH01/M05/index.html",
+      "qrt_targets": [
+        {
+          "id": "PH01-M05-QRT-MODEL-D3",
+          "task_identity": "AUTHORED-PH01-M05-QRT-MODEL-D3-R32",
+          "band": "D3",
+          "primary_operation": "MODEL",
+          "blueprint_cell": "D3.4",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Select a defensible motion-graph operation and distinguish observed average velocity from unobserved instantaneous velocity.",
+          "decisive_route": "Compare sampled positions against a specified piecewise-linear model; demonstrate why a second model can share samples.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "Select slope model with explicit interpolation."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "Translate samples into competing paths."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Infer velocity, path, alternative and invariant average."
+            },
+            "algebra_computational_load": {
+              "score": 0,
+              "evidence": "Simple arithmetic."
+            },
+            "trap_exception_sensitivity": {
+              "score": 2,
+              "evidence": "Hidden turns and absent interpolation."
+            }
+          }
+        },
+        {
+          "id": "PH01-M05-QRT-REPRESENT-D3",
+          "task_identity": "AUTHORED-PH01-M05-QRT-REPRESENT-D3-R32",
+          "band": "D3",
+          "primary_operation": "REPRESENT",
+          "blueprint_cell": "D3.5",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Translate a curved then straight position law into signed velocity and acceleration graphs and check areas.",
+          "decisive_route": "Obtain the velocity slope law from the given quadratic segment, join the later straight segment, and distinguish distance from displacement.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 1,
+              "evidence": "Select quadratic versus linear motion representation."
+            },
+            "representation_translation": {
+              "score": 2,
+              "evidence": "Translate x–t laws to v–t and a–t."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Recover turn, join, areas and path."
+            },
+            "algebra_computational_load": {
+              "score": 1,
+              "evidence": "Simple polynomial evaluation."
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "Reversal and acceleration switch."
+            }
+          }
+        },
+        {
+          "id": "PH01-M05-QRT-SYNTHESIZE-D3",
+          "task_identity": "AUTHORED-PH01-M05-QRT-SYNTHESIZE-D3-R32",
+          "band": "D3",
+          "primary_operation": "SYNTHESIZE",
+          "blueprint_cell": "D3.6",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Recover an unknown graph endpoint using signed area and distinguish reversal-dependent distance.",
+          "decisive_route": "Decompose a piecewise-linear v–t graph, solve the missing ordinate, and split the area at the zero crossing.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "Select signed-area constraint for unknown ordinate."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "Translate graph shape into trapezoid and triangles."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Recover velocity, zero, distance and position."
+            },
+            "algebra_computational_load": {
+              "score": 1,
+              "evidence": "Linear relation and fractions."
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "Positive net area can hide negative velocity."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "PH01-M06",
+      "title": "Constant-acceleration equations and validity",
+      "scope_role": "SYLLABUS_CORE_CANDIDATE",
+      "syllabus_reference_ids": [
+        "IAPT-NSEJS-2026-SCOPE",
+        "CBSE-IX-MOTION-REF",
+        "CBSE-2026-27"
+      ],
+      "prerequisite_ids": [
+        "PH01-M02",
+        "PH01-M03",
+        "PH01-M04",
+        "PH01-M05"
+      ],
+      "science_ref_ids": [
+        "PH01-SCI-CONSTANT-ACCEL"
+      ],
+      "learning_goal": "Derive, select and validate constant-acceleration laws, including root and reversal conditions.",
+      "textbook_chapter_ref": "nsejs/physics/textbook/PH01/M06/index.html",
+      "qrt_targets": [
+        {
+          "id": "PH01-M06-QRT-MODEL-D3",
+          "task_identity": "AUTHORED-PH01-M06-QRT-MODEL-D3-R32",
+          "band": "D3",
+          "primary_operation": "MODEL",
+          "blueprint_cell": "D3.4",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Select a signed constant-acceleration law and reject roots outside a specified physical time domain.",
+          "decisive_route": "Use the position constraint to generate roots, then verify the velocity direction and stated observation window.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "Select time-retaining versus squared law."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "Interpret sensor crossing and time window."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Generate roots, check interval and sign."
+            },
+            "algebra_computational_load": {
+              "score": 1,
+              "evidence": "Quadratic factoring."
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "Squared velocity obscures direction and one root is inadmissible."
+            }
+          }
+        },
+        {
+          "id": "PH01-M06-QRT-REPRESENT-D3",
+          "task_identity": "AUTHORED-PH01-M06-QRT-REPRESENT-D3-R32",
+          "band": "D3",
+          "primary_operation": "REPRESENT",
+          "blueprint_cell": "D3.5",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Translate constant-acceleration stage descriptions into a continuous v–t and x–t representation with a reversal.",
+          "decisive_route": "Use stage boundary conditions to derive v and x functions, then verify signed areas and actual path.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 1,
+              "evidence": "Choose signed area and boundary conditions."
+            },
+            "representation_translation": {
+              "score": 2,
+              "evidence": "Translate stage laws to two different graphs."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Recover turning point, switch, endpoint and path."
+            },
+            "algebra_computational_load": {
+              "score": 1,
+              "evidence": "Quadratic evaluation."
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "Reversal and continuous stage join."
+            }
+          }
+        },
+        {
+          "id": "PH01-M06-QRT-SYNTHESIZE-D3",
+          "task_identity": "AUTHORED-PH01-M06-QRT-SYNTHESIZE-D3-R32",
+          "band": "D3",
+          "primary_operation": "SYNTHESIZE",
+          "blueprint_cell": "D3.6",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Recover an unknown braking acceleration from two spatial observations and enforce time and stop constraints.",
+          "decisive_route": "Solve the shared constant-acceleration equations, then check whether a later stop is physically consistent.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "Select constant acceleration with a common initial state."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "Convert spatial observations into simultaneous constraints."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Recover parameters, reversal, displacement and distance."
+            },
+            "algebra_computational_load": {
+              "score": 1,
+              "evidence": "Linear system and decimal evaluation."
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "Different post-stop assumptions change the route."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "PH01-M07",
+      "title": "Relative motion, signed graphs and piecewise meetings — advanced construction pilot",
+      "scope_role": "SYLLABUS_CORE_CANDIDATE",
+      "syllabus_reference_ids": [
+        "IAPT-NSEJS-2026-SCOPE",
+        "CBSE-IX-MOTION-REF",
+        "CBSE-2026-27"
+      ],
+      "prerequisite_ids": [
+        "PH01-M01",
+        "PH01-M02",
+        "PH01-M03",
+        "PH01-M05"
+      ],
+      "science_ref_ids": [
+        "PH01-SCI-DISPLACEMENT",
+        "PH01-SCI-RELATIVE",
+        "PH01-SCI-GRAPH",
+        "PH01-SCI-PIECEWISE"
+      ],
+      "learning_goal": "Compose velocities in a shared frame, translate position/velocity histories between uniformly moving frames, and validate piecewise meeting events.",
+      "textbook_chapter_ref": "nsejs/physics/textbook/PH01/M07/index.html",
+      "qrt_targets": [
+        {
+          "id": "PH01-KIN-QRT-MODEL-D3",
+          "task_identity": "AUTHORED-PH01-KIN-QRT-MODEL-D3-R32",
+          "band": "D3",
+          "primary_operation": "MODEL",
+          "blueprint_cell": "D3.4",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Select the common-frame velocity composition and relative closing-rate model.",
+          "decisive_route": "Compose each craft's velocity in one frame, compare signed closing rate and check feasibility.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "Select relative frame model."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "Translate two velocities between frames."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Calculate and compare closing rates and meeting."
+            },
+            "algebra_computational_load": {
+              "score": 0,
+              "evidence": "Simple arithmetic."
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "Adding opposing directions and frame-invariant separation."
+            }
+          }
+        },
+        {
+          "id": "PH01-KIN-QRT-REPRESENT-D3",
+          "task_identity": "AUTHORED-PH01-KIN-QRT-REPRESENT-D3-R32",
+          "band": "D3",
+          "primary_operation": "REPRESENT",
+          "blueprint_cell": "D3.5",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Translate a ground position history into the coordinates and velocity graph of a moving observer.",
+          "decisive_route": "Construct ground and moving-frame representations using common time, then compare the two frame displacements.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 1,
+              "evidence": "Choose ground versus moving coordinates."
+            },
+            "representation_translation": {
+              "score": 2,
+              "evidence": "Translate position and velocity into moving-frame tables."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Recover four positions, three slopes and area checks."
+            },
+            "algebra_computational_load": {
+              "score": 0,
+              "evidence": "Simple integer arithmetic."
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "Displacement and distance are frame dependent."
+            }
+          }
+        },
+        {
+          "id": "PH01-KIN-QRT-SYNTH-D3",
+          "task_identity": "AUTHORED-PH01-KIN-QRT-SYNTH-D3-R32",
+          "band": "D3",
+          "primary_operation": "SYNTHESIZE",
+          "blueprint_cell": "D3.6",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Recover an admissible meeting event under a delayed departure and a changed boundary condition.",
+          "decisive_route": "Construct valid piecewise position laws, test each time interval and compare the zero-speed limit.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "Select piecewise model with a delayed start."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "Translate narrative into global-time laws."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Check dispatcher, solve, test delayed boundary."
+            },
+            "algebra_computational_load": {
+              "score": 1,
+              "evidence": "Linear equations."
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "Earlier meeting can invalidate the moving-stage root."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "PH01-M08",
+      "title": "Elementary uniform circular motion",
+      "scope_role": "SYLLABUS_CORE_CANDIDATE",
+      "syllabus_reference_ids": [
+        "IAPT-NSEJS-2026-SCOPE",
+        "CBSE-IX-MOTION-REF",
+        "CBSE-2026-27"
+      ],
+      "prerequisite_ids": [
+        "PH01-M01",
+        "PH01-M02",
+        "PH01-M03",
+        "PH01-M04"
+      ],
+      "science_ref_ids": [
+        "PH01-SCI-UNIFORM-CIRCULAR"
+      ],
+      "learning_goal": "Connect period and arc length with vector position, tangential direction and interval-average motion.",
+      "textbook_chapter_ref": "nsejs/physics/textbook/PH01/M08/index.html",
+      "qrt_targets": [
+        {
+          "id": "PH01-M08-QRT-MODEL-D3",
+          "task_identity": "AUTHORED-PH01-M08-QRT-MODEL-D3-R32",
+          "band": "D3",
+          "primary_operation": "MODEL",
+          "blueprint_cell": "D3.4",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Choose arc-length versus endpoint-vector models and distinguish steady speed from steady velocity.",
+          "decisive_route": "Compare two timing/position reports for possible integer lap counts and use direction data to identify a compatible model.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "Choose arc/endpoint and integer-lap model."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "Translate cardinal points into turn fractions."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Filter laps, test third reading and compute averages."
+            },
+            "algebra_computational_load": {
+              "score": 1,
+              "evidence": "Evaluate a bounded sequence."
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "Endpoint alone does not fix distance; third observation inconsistent."
+            }
+          }
+        },
+        {
+          "id": "PH01-M08-QRT-REPRESENT-D3",
+          "task_identity": "AUTHORED-PH01-M08-QRT-REPRESENT-D3-R32",
+          "band": "D3",
+          "primary_operation": "REPRESENT",
+          "blueprint_cell": "D3.5",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Translate a timed circular-motion record into positions, tangent vectors, arc lengths and average vector velocity.",
+          "decisive_route": "Construct aligned tables of phase, position, tangent direction and cumulative arc; check endpoints and elapsed fractions.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 1,
+              "evidence": "Select fixed circular coordinates and arc fraction."
+            },
+            "representation_translation": {
+              "score": 2,
+              "evidence": "Translate time into position, tangent and cumulative-distance table."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Determine six states and two interval vector averages."
+            },
+            "algebra_computational_load": {
+              "score": 0,
+              "evidence": "Simple division and π factors."
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "Clockwise direction and repeated positions."
+            }
+          }
+        },
+        {
+          "id": "PH01-M08-QRT-SYNTHESIZE-D3",
+          "task_identity": "AUTHORED-PH01-M08-QRT-SYNTHESIZE-D3-R32",
+          "band": "D3",
+          "primary_operation": "SYNTHESIZE",
+          "blueprint_cell": "D3.6",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Recover a period and speed from a partial-lap constraint and a measured route length, then combine vector and arc quantities.",
+          "decisive_route": "Use circumference, integer plus fractional revolutions, time and endpoint coordinates; verify the observed tangent.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "Select circumference and endpoint model."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "Translate lap remainder into compass position."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Infer period, tangent and both interval averages."
+            },
+            "algebra_computational_load": {
+              "score": 1,
+              "evidence": "Fractional revolution and vector division."
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "Integer versus fractional laps; arc is not chord."
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "science_records": [
+    {
+      "id": "PH01-SCI-DISPLACEMENT",
+      "claim": "For a one-dimensional motion, displacement is final position minus initial position and distance is total path length.",
+      "law_or_model": "signed one-dimensional position and cumulative distance",
+      "assumptions": [
+        "One fixed coordinate axis is declared",
+        "A common reference frame for all positions"
+      ],
+      "conditions_and_limits": [
+        "The absolute value of net displacement never exceeds path length.",
+        "A coordinate reversal changes displacement sign but does not alter path distance."
+      ],
+      "units_and_signs": "x and Δx in m, east positive unless specified; distance is nonnegative.",
+      "source_refs": [
+        "CBSE-IX-MOTION-REF"
+      ],
+      "qualification_status": "HOLD"
+    },
+    {
+      "id": "PH01-SCI-RELATIVE",
+      "claim": "For two bodies' velocities measured in the same non-rotating reference frame, relative velocity along one axis is the signed difference.",
+      "law_or_model": "v(B/A) = vB − vA; Galilean composition in classical one-dimensional kinematics",
+      "assumptions": [
+        "The compared velocities are signed on the same axis",
+        "Speeds sufficiently slow that elementary Galilean composition applies",
+        "The frame is suitably inertial for subsequent Newtonian force reasoning"
+      ],
+      "conditions_and_limits": [
+        "Relative velocities stated in different intermediate frames must be composed in order.",
+        "Do not add unsigned speeds automatically or infer meeting time without initial separation.",
+        "Individual displacement and path length need not be invariant under a moving frame; simultaneous separation and a meeting event are invariant under a common translation."
+      ],
+      "units_and_signs": "Signed velocities in m/s, signed east positive.",
+      "source_refs": [
+        "CBSE-IX-MOTION-REF"
+      ],
+      "qualification_status": "HOLD"
+    },
+    {
+      "id": "PH01-SCI-GRAPH",
+      "claim": "On a velocity-time graph, the signed area over a time interval is displacement, whereas total distance sums the magnitudes of segment contributions.",
+      "law_or_model": "piecewise v–t area and x–t slope",
+      "assumptions": [
+        "The graphed quantities use a fixed coordinate system",
+        "Time interval is partitioned at genuine changes of velocity law"
+      ],
+      "conditions_and_limits": [
+        "Signed area is not automatically positive distance.",
+        "Vertical velocity jumps are idealizations; actual finite force implies finite-time change."
+      ],
+      "units_and_signs": "Velocity m/s; time s; signed area m; positive and negative velocities are directions.",
+      "source_refs": [
+        "CBSE-IX-MOTION-REF"
+      ],
+      "qualification_status": "HOLD"
+    },
+    {
+      "id": "PH01-SCI-PIECEWISE",
+      "claim": "Each position formula applies only over the interval whose motion conditions define it.",
+      "law_or_model": "piecewise constant-velocity motion and interval-filtered intersections",
+      "assumptions": [
+        "Correct start times and initial positions are known",
+        "Each interval's velocity law is valid only within declared bounds"
+      ],
+      "conditions_and_limits": [
+        "A solution outside its interval is inadmissible even if the algebra is correct.",
+        "After a stop, reversal or delayed departure, use a new position expression with continuity at the boundary."
+      ],
+      "units_and_signs": "Global clock t in s; positions m; each segment retains signed velocity m/s.",
+      "source_refs": [
+        "CBSE-IX-MOTION-REF"
+      ],
+      "qualification_status": "HOLD"
+    },
+    {
+      "id": "PH01-SCI-SPEED-AVERAGES",
+      "claim": "Over a time interval, average speed is total path length divided by duration; average signed velocity is net displacement divided by duration.",
+      "law_or_model": "averages from path length and signed position",
+      "assumptions": [
+        "One global start and end time",
+        "Correct distinction between path length and signed position"
+      ],
+      "conditions_and_limits": [
+        "Replacing displacement with path length in average velocity is invalid.",
+        "An object may have zero average velocity while having nonzero average speed."
+      ],
+      "units_and_signs": "Speed ≥0, velocity has sign, both measured in m/s; length in metres and duration in seconds.",
+      "source_refs": [
+        "CBSE-IX-MOTION-REF"
+      ],
+      "qualification_status": "HOLD"
+    },
+    {
+      "id": "PH01-SCI-PIECEWISE-AVG",
+      "claim": "For motion split into constant-velocity intervals, total distance is the sum of |v_i| Δt_i and net displacement is the sum of v_i Δt_i.",
+      "law_or_model": "interval-by-interval path/displacement accounting",
+      "assumptions": [
+        "Each stage's signed velocity and interval duration are defined",
+        "Each interval is counted once and no time gap is overlooked"
+      ],
+      "conditions_and_limits": [
+        "The magnitude of net displacement never exceeds total distance.",
+        "A reversal makes the algebraic displacement sum differ from summed distance."
+      ],
+      "units_and_signs": "Velocity m/s; time s; sums produce metres.",
+      "source_refs": [
+        "CBSE-IX-MOTION-REF"
+      ],
+      "qualification_status": "HOLD"
+    },
+    {
+      "id": "PH01-SCI-XT-SLOPE",
+      "claim": "For a straight-line segment on an x–t graph, signed slope Δx/Δt equals the constant velocity in that interval.",
+      "law_or_model": "position-time slope and inverse graphical reconstruction",
+      "assumptions": [
+        "Position and time axes have known scale and units",
+        "Motion is piecewise constant velocity for straight graph segments"
+      ],
+      "conditions_and_limits": [
+        "A horizontal x–t segment means rest in that frame, not zero position.",
+        "Graph height on x–t is position, whereas graph height on v–t is velocity."
+      ],
+      "units_and_signs": "Position in m; time s; slope m/s.",
+      "source_refs": [
+        "CBSE-IX-MOTION-REF"
+      ],
+      "qualification_status": "HOLD"
+    },
+    {
+      "id": "PH01-SCI-COORDINATE-CALIBRATION",
+      "claim": "For a fixed straight axis, a uniformly spaced reading r maps to physical position x=b+kr, with nonzero signed scale k. Changing origin or direction changes coordinates, not physical separation.",
+      "law_or_model": "One-dimensional affine coordinate calibration",
+      "assumptions": [
+        "Straight stationary reference axis; uniform scale; both markers refer to the same physical points."
+      ],
+      "conditions_and_limits": [
+        "Two distinct calibrated markers determine b and k only under the uniform-scale assumption.",
+        "A moving origin requires a time-dependent transformation; nonuniform scales require more information."
+      ],
+      "units_and_signs": "x in m, r in scale divisions, k in m/division; sign of k gives axis orientation.",
+      "source_refs": [
+        "CBSE-IX-MOTION-REF"
+      ],
+      "qualification_status": "HOLD"
+    },
+    {
+      "id": "PH01-SCI-PATH-BOUNDS",
+      "claim": "Total path length D is at least |x_f−x_i|; in a straight monotone interval D=|Δx|. For a piecewise monotone route D is the sum of the absolute changes between all actual turns.",
+      "law_or_model": "One-dimensional path-length ledger and endpoint lower bound",
+      "assumptions": [
+        "Positions use one fixed metre axis; all stated turning points are included for an exact ledger."
+      ],
+      "conditions_and_limits": [
+        "Finite position samples alone generally give only a lower bound.",
+        "An exact upper bound cannot be inferred without additional restrictions on unobserved motion."
+      ],
+      "units_and_signs": "Positions and signed displacement in m; path length D≥0 in m.",
+      "source_refs": [
+        "CBSE-IX-MOTION-REF"
+      ],
+      "qualification_status": "HOLD"
+    },
+    {
+      "id": "PH01-SCI-SIGNED-ACCELERATION",
+      "claim": "Average acceleration is Δv/Δt; instantaneous acceleration is the slope of v–t. In one dimension, nonzero v and a of the same sign increase speed, opposite signs decrease speed.",
+      "law_or_model": "Signed acceleration and speed-change criterion",
+      "assumptions": [
+        "Fixed one-dimensional axis; elapsed time positive; instantaneous sign criterion applies where velocity is nonzero."
+      ],
+      "conditions_and_limits": [
+        "An interval average does not imply constant acceleration.",
+        "At a reversal v passes through zero; direction of acceleration is not itself direction of motion."
+      ],
+      "units_and_signs": "Velocity m/s; acceleration m/s²; east-positive unless declared.",
+      "source_refs": [
+        "CBSE-IX-MOTION-REF"
+      ],
+      "qualification_status": "HOLD"
+    },
+    {
+      "id": "PH01-SCI-CONSTANT-ACCEL",
+      "claim": "For constant signed acceleration on an interval, v=u+at, Δx=ut+½at²=½(u+v)t, and v²=u²+2aΔx.",
+      "law_or_model": "One-dimensional constant-acceleration kinematics",
+      "assumptions": [
+        "Constant acceleration on the stated interval; one fixed coordinate axis; t is elapsed time since interval start."
+      ],
+      "conditions_and_limits": [
+        "v² relation loses sign information; recover sign from time/domain.",
+        "Displacement is not distance when velocity reverses.",
+        "Variable acceleration needs a different model or piecewise intervals."
+      ],
+      "units_and_signs": "u,v m/s; a m/s²; t s; Δx m.",
+      "source_refs": [
+        "CBSE-IX-MOTION-REF"
+      ],
+      "qualification_status": "HOLD"
+    },
+    {
+      "id": "PH01-SCI-UNIFORM-CIRCULAR",
+      "claim": "For uniform circular motion at radius r and period T, speed is 2πr/T; velocity is tangent and changes direction. Displacement is the endpoint vector, not arc length.",
+      "law_or_model": "Uniform circular motion, arc length and vector displacement",
+      "assumptions": [
+        "Fixed circle radius, fixed centre and constant speed; motion in a plane; defined orientation."
+      ],
+      "conditions_and_limits": [
+        "Whole-revolution displacement is zero but speed is not.",
+        "Average velocity is the vector displacement divided by elapsed time; not the average of speed magnitudes.",
+        "Quantitative centripetal acceleration/force is an extension; no force law is needed here."
+      ],
+      "units_and_signs": "r in m, T in s; speed m/s; x and y east/north in m.",
+      "source_refs": [
+        "CBSE-IX-MOTION-REF"
+      ],
+      "qualification_status": "HOLD"
+    }
+  ],
+  "topic_adapter": {
+    "adapter_id": "PHYS-TOPIC-PH01",
+    "topic_id": "PH01",
+    "version": "0.4.0",
+    "for_blueprint": "PHYS-QRT-BLUEPRINT 0.2.0",
+    "status": "CANDIDATE_ONLY",
+    "cells": [
+      {
+        "cell_id": "D3.4",
+        "instance_ids": [
+          "PH01-M03-QRT-MODEL-D3",
+          "PH01-M05-QRT-MODEL-D3",
+          "PH01-KIN-QRT-MODEL-D3",
+          "PH01-M01-QRT-MODEL-D3",
+          "PH01-M02-QRT-MODEL-D3",
+          "PH01-M04-QRT-MODEL-D3",
+          "PH01-M06-QRT-MODEL-D3",
+          "PH01-M08-QRT-MODEL-D3"
+        ]
+      },
+      {
+        "cell_id": "D3.5",
+        "instance_ids": [
+          "PH01-M03-QRT-REPRESENT-D3",
+          "PH01-M05-QRT-REPRESENT-D3",
+          "PH01-KIN-QRT-REPRESENT-D3",
+          "PH01-M01-QRT-REPRESENT-D3",
+          "PH01-M02-QRT-REPRESENT-D3",
+          "PH01-M04-QRT-REPRESENT-D3",
+          "PH01-M06-QRT-REPRESENT-D3",
+          "PH01-M08-QRT-REPRESENT-D3"
+        ]
+      },
+      {
+        "cell_id": "D3.6",
+        "instance_ids": [
+          "PH01-M03-QRT-SYNTHESIZE-D3",
+          "PH01-M05-QRT-SYNTHESIZE-D3",
+          "PH01-KIN-QRT-SYNTH-D3",
+          "PH01-M01-QRT-SYNTHESIZE-D3",
+          "PH01-M02-QRT-SYNTHESIZE-D3",
+          "PH01-M04-QRT-SYNTHESIZE-D3",
+          "PH01-M06-QRT-SYNTHESIZE-D3",
+          "PH01-M08-QRT-SYNTHESIZE-D3"
+        ]
+      }
+    ]
+  },
+  "core1a": [
+    {
+      "id": "PH01-M01-CORE1A-R31",
+      "subtopic_id": "PH01-M01",
+      "covered_qrt_ids": [
+        "PH01-M01-QRT-MODEL-D3",
+        "PH01-M01-QRT-REPRESENT-D3",
+        "PH01-M01-QRT-SYNTHESIZE-D3"
+      ],
+      "phenomenon": "Two surveyors mark the same corridor from opposite ends; their labels differ but the physical location of each marker does not.",
+      "scientific_narrative": "A coordinate is a label for position relative to a chosen origin and direction. To compare readings from different rulers, first identify shared physical markers. A uniform ruler has a constant signed scale: subtract two paired readings to cancel the offset and determine the scale. One anchor then determines the offset. This explains why a shift of origin does not change displacement and why reversing an axis reverses its signed component. The physical separation remains the absolute difference in calibrated metre coordinates. Calibration is a model: two marks alone do not establish that every intermediate mark on a damaged ruler is equally spaced. A third independent check can invalidate the assumption. This is distinct from measuring the length of the travelled path.",
+      "prerequisites": [
+        "Read a number line, subtract signed numbers and convert lengths to metres."
+      ],
+      "derivation_steps": [
+        {
+          "action": "Choose one fixed physical metre axis and identify two distinct common markers.",
+          "why_valid": "Comparisons require a shared physical reference.",
+          "science_ref_id": "PH01-SCI-COORDINATE-CALIBRATION"
+        },
+        {
+          "action": "Find k=(x₂−x₁)/(r₂−r₁), then b=x₁−kr₁.",
+          "why_valid": "Subtracting eliminates the unknown offset; the nonzero denominator is required.",
+          "science_ref_id": "PH01-SCI-COORDINATE-CALIBRATION"
+        },
+        {
+          "action": "Check a third reading and distinguish signed change from absolute separation.",
+          "why_valid": "An inconsistent point rejects the proposed uniform calibration.",
+          "science_ref_id": "PH01-SCI-COORDINATE-CALIBRATION"
+        }
+      ],
+      "model_limits": [
+        "Two distinct calibrated markers determine b and k only under the uniform-scale assumption.",
+        "A moving origin requires a time-dependent transformation; nonuniform scales require more information."
+      ],
+      "progressive_examples": [
+        {
+          "id": "PH01-M01-EX-R31-0",
+          "tier": "FOUNDATION",
+          "problem": "A gate is x=0; a flag 4 m west is marked with a west-positive ruler of unit spacing. Compare readings.",
+          "reasoning": "Ground east-positive x=−4 m; west-positive r=+4 m.",
+          "independent_check": "Both give a 4 m separation from the gate."
+        },
+        {
+          "id": "PH01-M01-EX-R31-1",
+          "tier": "CONNECTED",
+          "problem": "A metre ruler has zero at x=7 m and increases eastward. Convert readings −2 and +3.",
+          "reasoning": "x=7+r; positions 5 m and 10 m, displacement +5 m.",
+          "independent_check": "Subtracting cancels the offset."
+        },
+        {
+          "id": "PH01-M01-EX-R31-2",
+          "tier": "ADVANCED",
+          "problem": "A uniform scale reads 1 at x=3 m and 5 at x=15 m. Find x at reading 4 and check a third marker reading 7 at x=21 m.",
+          "reasoning": "k=3 m/division, b=0; reading 4 gives 12 m; reading 7 gives 21 m.",
+          "independent_check": "The third marker is consistent but does not prove uniformity everywhere."
+        }
+      ],
+      "figures": [
+        {
+          "id": "PH01-M01-FIG-R31",
+          "reasoning_step": "Map the same marks onto opposing coordinate scales.",
+          "scene_description": "nsejs/physics/textbook/PH01/index.html#calibration-figure",
+          "source_or_authorship": "AUTHOR_CREATED_INLINE_SVG"
+        }
+      ],
+      "misconception": {
+        "wrong_model": "All rulers reporting different signed positions must disagree physically.",
+        "diagnostic": "Compare east-positive and west-positive readings of one fixed marker.",
+        "repair": "Translate both into one physical axis before comparing; distinguish sign from length."
+      },
+      "exit_check": {
+        "task": "A uniform scale reads 0 at x=9 m and 3 at x=3 m. Find x at reading 5.",
+        "answer": "x=−1 m.",
+        "reasoning": "k=−2 m/division and b=9 m; x=9−2(5)."
+      },
+      "authorship_status": "DRAFT_AUTHOR_EXPOSED"
+    },
+    {
+      "id": "PH01-M02-CORE1A-R31",
+      "subtopic_id": "PH01-M02",
+      "covered_qrt_ids": [
+        "PH01-M02-QRT-MODEL-D3",
+        "PH01-M02-QRT-REPRESENT-D3",
+        "PH01-M02-QRT-SYNTHESIZE-D3"
+      ],
+      "phenomenon": "A delivery robot visits recorded checkpoints, but its tracker may miss a detour between them.",
+      "scientific_narrative": "A signed position change is determined by the initial and final points alone. Distance depends on the route: every piece of actual motion contributes a nonnegative length. Break a straight route at each real reversal, not just at each convenient recording time. Adding signed changes cancels intermediate positions, whereas adding their magnitudes preserves travel. The triangle inequality establishes the endpoint lower bound. If the logger records only some checkpoints, the sum of successive absolute changes is itself a lower bound; an unobserved turn can add distance without changing any sampled position. If motion is monotone between checkpoints, the bound is attained. This distinction matters when interpreting logs, inferring unknown turning positions, or testing claims about an incomplete journey.",
+      "prerequisites": [
+        "PH01-M01 fixed origin, direction and scale; signed number arithmetic."
+      ],
+      "derivation_steps": [
+        {
+          "action": "Write successive signed changes between recorded positions.",
+          "why_valid": "Each change is an endpoint difference in one frame.",
+          "science_ref_id": "PH01-SCI-PATH-BOUNDS"
+        },
+        {
+          "action": "Add signed changes for displacement and magnitudes for minimum path length.",
+          "why_valid": "Intermediate positions cancel in the signed sum; each actual segment contributes nonnegative length.",
+          "science_ref_id": "PH01-SCI-PATH-BOUNDS"
+        },
+        {
+          "action": "Determine whether all reversals are known before treating the bound as equality.",
+          "why_valid": "Unobserved out-and-back motion adds distance without changing sampled endpoints.",
+          "science_ref_id": "PH01-SCI-PATH-BOUNDS"
+        }
+      ],
+      "model_limits": [
+        "Finite position samples alone generally give only a lower bound.",
+        "An exact upper bound cannot be inferred without additional restrictions on unobserved motion."
+      ],
+      "progressive_examples": [
+        {
+          "id": "PH01-M02-EX-R31-0",
+          "tier": "FOUNDATION",
+          "problem": "A walker goes from x=−3 m to x=5 m without reversing.",
+          "reasoning": "Δx=+8 m, distance=8 m.",
+          "independent_check": "A monotone straight trip attains the bound."
+        },
+        {
+          "id": "PH01-M02-EX-R31-1",
+          "tier": "CONNECTED",
+          "problem": "A robot records x=2,9,4 m with monotone legs.",
+          "reasoning": "Δx=+2 m; D=7+5=12 m.",
+          "independent_check": "D≥|Δx| and the turn is included."
+        },
+        {
+          "id": "PH01-M02-EX-R31-2",
+          "tier": "ADVANCED",
+          "problem": "Only x=0 and x=6 m are recorded. Construct routes of 6 m and 14 m.",
+          "reasoning": "Direct 0→6 gives 6 m. Route 0→10→6 gives 10+4=14 m. Both have Δx=+6 m.",
+          "independent_check": "The observations alone do not fix total path."
+        }
+      ],
+      "figures": [
+        {
+          "id": "PH01-M02-FIG-R31",
+          "reasoning_step": "Compare sampled checkpoints against an explicit hidden turn.",
+          "scene_description": "nsejs/physics/textbook/PH01/index.html#path-bound-figure",
+          "source_or_authorship": "AUTHOR_CREATED_INLINE_SVG"
+        }
+      ],
+      "misconception": {
+        "wrong_model": "Distance equals the sum of recorded position changes even when the logger misses turns.",
+        "diagnostic": "Compare a direct route and a detour with identical recorded endpoints.",
+        "repair": "Use the sum of absolute sampled changes as a lower bound unless monotone legs are guaranteed."
+      },
+      "exit_check": {
+        "task": "A robot samples x=3,−2,7 m. Find displacement and the minimum compatible distance.",
+        "answer": "Δx=+4 m; minimum 14 m.",
+        "reasoning": "Signed sum −5+9=4; magnitude sum 5+9=14, attained by monotone legs."
+      },
+      "authorship_status": "DRAFT_AUTHOR_EXPOSED"
+    },
+    {
+      "id": "PH01-M03-CORE1A-R2",
+      "subtopic_id": "PH01-M03",
+      "covered_qrt_ids": [
+        "PH01-M03-QRT-MODEL-D3",
+        "PH01-M03-QRT-REPRESENT-D3",
+        "PH01-M03-QRT-SYNTHESIZE-D3"
+      ],
+      "phenomenon": "A commuter can end near the starting point after a long journey: the speedometer and displacement tell different stories.",
+      "scientific_narrative": "A description of motion begins with position, not the answer to a numerical formula. Mark the commuter's origin and east-positive coordinate. Each trip leg changes the position by a signed amount, but each contributes a positive path length. Average speed is the accumulated path length divided by elapsed time; average velocity is the single net position change divided by the same time. The two averages can differ even for a perfectly continuous trip, and average velocity becomes zero on a round trip. Reversing the coordinate direction reverses the velocity component without changing any physical speed. Build both numerical sums from the travel log before deciding which one the experiment measures. A graph of position versus time makes the change in direction visible, while a ledger of distances preserves how far the person actually travelled.",
+      "prerequisites": [
+        "PH01-M01 reference frame and positive direction",
+        "PH01-M02 signed displacement"
+      ],
+      "derivation_steps": [
+        {
+          "action": "Mark every leg with its signed displacement and duration.",
+          "why_valid": "Displacement is the difference between endpoint positions, and its sign depends on the chosen axis.",
+          "science_ref_id": "PH01-SCI-DISPLACEMENT"
+        },
+        {
+          "action": "Sum signed legs for Δx, and absolute leg lengths for path distance.",
+          "why_valid": "A reversal cancels some signed displacement but never cancels distance already travelled.",
+          "science_ref_id": "PH01-SCI-PIECEWISE-AVG"
+        },
+        {
+          "action": "Divide the appropriate numerator by the same total elapsed time.",
+          "why_valid": "The definition of each average requires the corresponding path or net position quantity.",
+          "science_ref_id": "PH01-SCI-SPEED-AVERAGES"
+        }
+      ],
+      "model_limits": [
+        "Interval averages do not determine detailed instantaneous velocity.",
+        "Different direction conventions change signed velocity, not path length.",
+        "A single scalar speed does not carry the direction needed for a meeting equation."
+      ],
+      "progressive_examples": [
+        {
+          "id": "PH01-EX-FOUNDATION-0",
+          "tier": "FOUNDATION",
+          "problem": "A pupil walks 18 m east and 7 m west in 5 s. Compare distance and displacement.",
+          "reasoning": "Distance 18+7=25 m, signed displacement 18−7=+11 m, average speed 5 m/s, average velocity +2.2 m/s.",
+          "independent_check": "25≥11 and both averages carry m/s."
+        },
+        {
+          "id": "PH01-EX-CONNECTED-1",
+          "tier": "CONNECTED",
+          "problem": "A runner travels east 40 m in 8 s then west 40 m in 12 s. What does a motion tracker report?",
+          "reasoning": "Distance is 80 m and displacement is 0; average speed is 4 m/s and average velocity is zero.",
+          "independent_check": "Returning to origin confirms Δx=0 despite movement."
+        },
+        {
+          "id": "PH01-EX-ADVANCED-2",
+          "tier": "ADVANCED",
+          "problem": "A cyclist's outward and return legs together total 54 m, with final position +6 m relative to origin. Recover east/west leg lengths.",
+          "reasoning": "Write E+W=54 and E−W=6. Solving gives E=30 m and W=24 m. This reconstructs route lengths, not merely an average.",
+          "independent_check": "30+24=54 and 30−24=6; both lengths are nonnegative."
+        }
+      ],
+      "figures": [
+        {
+          "id": "PH01-M03-FIG-R32",
+          "reasoning_step": "Choose, represent and invert distance/displacement and speed/velocity distinctions in multi-leg motion.",
+          "scene_description": "nsejs/physics/textbook/PH01/M03/index.html#unit-figure",
+          "source_or_authorship": "AUTHOR_CREATED_INLINE_SVG"
+        }
+      ],
+      "misconception": {
+        "wrong_model": "Average velocity equals average speed whenever elapsed time is the same.",
+        "diagnostic": "Ask for both averages on an equal-distance out-and-back walk.",
+        "repair": "Use net signed displacement as the numerator of average velocity, and total travelled distance for average speed."
+      },
+      "exit_check": {
+        "task": "Travel +12 m in 4 s then −5 m in 1 s. Give both averages and direction.",
+        "answer": "Total distance 17 m; net displacement +7 m; average speed 3.4 m/s; average velocity +1.4 m/s.",
+        "reasoning": "The westward segment is negative in the signed sum but positive in the distance sum."
+      },
+      "authorship_status": "DRAFT_AUTHOR_EXPOSED"
+    },
+    {
+      "id": "PH01-M04-CORE1A-R32",
+      "subtopic_id": "PH01-M04",
+      "covered_qrt_ids": [
+        "PH01-M04-QRT-MODEL-D3",
+        "PH01-M04-QRT-REPRESENT-D3",
+        "PH01-M04-QRT-SYNTHESIZE-D3"
+      ],
+      "phenomenon": "A trolley rolling west slows, stops and rolls east when a steady eastward acceleration acts.",
+      "scientific_narrative": "Velocity specifies speed and direction; acceleration measures how velocity changes, not merely whether speed increases. On a fixed east-positive axis, an object with negative velocity can have positive acceleration: initially it slows, then it may reverse. Divide the signed change in velocity by elapsed time to obtain average acceleration. Only with a constant-acceleration model is this also the value throughout the interval. To determine speed change, compare the signs of instantaneous velocity and acceleration. If both have the same sign, the magnitude of velocity grows; if they have opposite signs, it shrinks. At zero velocity the sign rule needs care: the next interval determines the direction of motion. A velocity-time graph separates velocity sign (height), acceleration sign (slope) and a reversal (crossing zero).",
+      "prerequisites": [
+        "PH01-M01",
+        "PH01-M03"
+      ],
+      "derivation_steps": [
+        {
+          "action": "Write initial and final velocities on a declared axis.",
+          "why_valid": "The velocity change is a difference of signed components.",
+          "science_ref_id": "PH01-SCI-SIGNED-ACCELERATION"
+        },
+        {
+          "action": "Compute a_avg=(v−u)/Δt; use a constant slope only when justified.",
+          "why_valid": "The quotient is an interval rate, not automatically an instantaneous rate.",
+          "science_ref_id": "PH01-SCI-SIGNED-ACCELERATION"
+        },
+        {
+          "action": "Check the sign of v and a on each interval, splitting at v=0.",
+          "why_valid": "Speed is |v|, so its change depends on both signs.",
+          "science_ref_id": "PH01-SCI-SIGNED-ACCELERATION"
+        }
+      ],
+      "model_limits": [
+        "An interval average does not imply constant acceleration.",
+        "At a reversal v passes through zero; direction of acceleration is not itself direction of motion."
+      ],
+      "progressive_examples": [
+        {
+          "id": "PH01-M04-EX-R32-0",
+          "tier": "FOUNDATION",
+          "problem": "A bike changes velocity from +2 to +8 m/s in 3 s.",
+          "reasoning": "Average acceleration is +2 m/s².",
+          "independent_check": "Both velocities eastward; speed increases over the interval."
+        },
+        {
+          "id": "PH01-M04-EX-R32-1",
+          "tier": "CONNECTED",
+          "problem": "A trolley changes uniformly from −6 to −2 m/s in 2 s.",
+          "reasoning": "a=+2 m/s², but speed falls from 6 to 2 m/s.",
+          "independent_check": "Positive acceleration can slow a westbound object."
+        },
+        {
+          "id": "PH01-M04-EX-R32-2",
+          "tier": "ADVANCED",
+          "problem": "A cart starts at −8 m/s with constant +2 m/s² for 6 s. Identify the reversal.",
+          "reasoning": "v=−8+2t, zero at 4 s, final +4 m/s. Speed falls for 4 s and then rises.",
+          "independent_check": "The zero is inside the interval; a remains positive throughout."
+        }
+      ],
+      "figures": [
+        {
+          "id": "PH01-M04-FIG-R32",
+          "reasoning_step": "Infer signed acceleration, detect reversals and distinguish velocity change from speed change.",
+          "scene_description": "nsejs/physics/textbook/PH01/M04/index.html#unit-figure",
+          "source_or_authorship": "AUTHOR_CREATED_INLINE_SVG"
+        }
+      ],
+      "misconception": {
+        "wrong_model": "Positive acceleration always means speeding up.",
+        "diagnostic": "A westbound cart has a positive acceleration while its velocity is negative.",
+        "repair": "Use the sign of the velocity together with acceleration; split the motion at zero velocity."
+      },
+      "exit_check": {
+        "task": "A cart changes uniformly from +5 to −1 m/s in 3 s. Find acceleration and time of reversal.",
+        "answer": "a=−2 m/s²; reversal at 2.5 s.",
+        "reasoning": "v=5−2t=0 at t=2.5 s, within the interval."
+      },
+      "authorship_status": "DRAFT_AUTHOR_EXPOSED"
+    },
+    {
+      "id": "PH01-M05-CORE1A-R2",
+      "subtopic_id": "PH01-M05",
+      "covered_qrt_ids": [
+        "PH01-M05-QRT-MODEL-D3",
+        "PH01-M05-QRT-REPRESENT-D3",
+        "PH01-M05-QRT-SYNTHESIZE-D3"
+      ],
+      "phenomenon": "A vehicle's recorded position can pause, rise or fall while time keeps increasing; the slopes tell its signed motion.",
+      "scientific_narrative": "To read a motion graph, first name both axes. The height of an x–t graph is position, not speed. A horizontal x–t segment means that position is temporarily unchanged, whereas an upward slope means positive signed velocity and a downward slope means negative signed velocity. To obtain a velocity–time graph from a piecewise linear position record, compute the slope for every valid interval and place that signed velocity on the corresponding time segment. Conversely, the signed area under a velocity–time curve reconstructs each position increment, so the endpoint is independently checkable. For distance, however, the magnitudes of areas are added. Crossing the horizontal position axis does not necessarily mean the vehicle has stopped; the slope at that crossing decides velocity. Changing the coordinate origin shifts the whole x–t graph vertically without changing any velocity–time segment. This is a core representation-invariance check. A finite position table alone does not determine instantaneous slopes or hidden reversals: explicitly state linear interpolation or another valid motion model.",
+      "prerequisites": [
+        "PH01-M01 graph axes and scaled measurements",
+        "PH01-M03 distinction between distance and displacement",
+        "PH01-M04 acceleration and signed rates"
+      ],
+      "derivation_steps": [
+        {
+          "action": "Identify whether y-axis reports position or signed velocity.",
+          "why_valid": "A height on x–t measures position, but a height on v–t measures velocity; the mathematical action depends on the axis.",
+          "science_ref_id": "PH01-SCI-XT-SLOPE"
+        },
+        {
+          "action": "Use Δx/Δt to obtain interval velocity; preserve sign and duration.",
+          "why_valid": "The slope of each straight position segment equals the constant velocity in that interval.",
+          "science_ref_id": "PH01-SCI-XT-SLOPE"
+        },
+        {
+          "action": "Reconstruct total displacement from signed v×Δt areas and then independently calculate distance.",
+          "why_valid": "Signed areas add to endpoint displacement, while actual travelled distance sums absolute interval lengths.",
+          "science_ref_id": "PH01-SCI-GRAPH"
+        }
+      ],
+      "model_limits": [
+        "A graph's shape in paper coordinates is not the physical trajectory in space.",
+        "A position-axis crossing says nothing by itself about velocity direction.",
+        "A sharp velocity jump on an idealized step graph is not a real finite-acceleration process.",
+        "For smoothly changing velocity, use the actual area rather than constant-velocity rectangles.",
+        "Finite position samples alone do not specify the instantaneous velocity or exact path between samples."
+      ],
+      "progressive_examples": [
+        {
+          "id": "PH01-EX-FOUNDATION-0",
+          "tier": "FOUNDATION",
+          "problem": "A cart's position rises from +1 m to +9 m over 4 s as a straight x–t line. Find velocity.",
+          "reasoning": "The signed slope is (9−1)/4=+2 m/s.",
+          "independent_check": "Back substitution +1+2×4=+9 m."
+        },
+        {
+          "id": "PH01-EX-CONNECTED-1",
+          "tier": "CONNECTED",
+          "problem": "A piecewise-linear graph has x=3 at t=0, x=9 at t=3, and x=9 at t=5; reconstruct velocities.",
+          "reasoning": "First slope +2 m/s during 0–3; second slope 0 during 3–5. The second interval is stationary at position +9 m.",
+          "independent_check": "Signed areas +6 and 0 recover Δx=+6 m."
+        },
+        {
+          "id": "PH01-EX-ADVANCED-2",
+          "tier": "ADVANCED",
+          "problem": "An object has velocity +4 m/s for 2 s, then −2 m/s for 5 s. Construct its x–t endpoint from x0=+3 m.",
+          "reasoning": "Displacement is 8−10=−2 m, final position x=+1 m. The x–t graph first increases, then decreases past its starting height.",
+          "independent_check": "The signed area −2 m matches x_final−x_initial=−2; distance is 18 m."
+        }
+      ],
+      "figures": [
+        {
+          "id": "PH01-M05-FIG-R32",
+          "reasoning_step": "Model, translate and synthesize motion records using slopes, signed areas and cross-representation checks.",
+          "scene_description": "nsejs/physics/textbook/PH01/M05/index.html#unit-figure",
+          "source_or_authorship": "AUTHOR_CREATED_INLINE_SVG"
+        }
+      ],
+      "misconception": {
+        "wrong_model": "A downward line on a velocity–time graph means the object is going down a hill.",
+        "diagnostic": "Compare the velocity graph and its axis labels to a position–time sketch of the same object.",
+        "repair": "Read the plotted quantity and its units before interpreting the slope or signed area."
+      },
+      "exit_check": {
+        "task": "For v=+2 m/s during 4 s, then −3 m/s during 2 s, calculate net displacement and path distance.",
+        "answer": "Net displacement +8−6=+2 m; path distance 8+6=14 m.",
+        "reasoning": "Signed area of the second segment is negative, but travelled distance remains positive."
+      },
+      "authorship_status": "DRAFT_AUTHOR_EXPOSED"
+    },
+    {
+      "id": "PH01-M06-CORE1A-R32",
+      "subtopic_id": "PH01-M06",
+      "covered_qrt_ids": [
+        "PH01-M06-QRT-MODEL-D3",
+        "PH01-M06-QRT-REPRESENT-D3",
+        "PH01-M06-QRT-SYNTHESIZE-D3"
+      ],
+      "phenomenon": "A ball rolls up a ramp, momentarily stops, and rolls back; the same position may be visited at two distinct times.",
+      "scientific_narrative": "For a constant signed acceleration, the velocity graph is a straight line. Its slope gives v=u+at. The signed area of the rectangle of height u and triangle of height at gives Δx=ut+½at², even when part of the graph lies below the axis. The trapezoid expression uses the arithmetic mean of endpoint velocities only because the graph is linear. Multiplying v−u=at by v+u and substituting the area gives v²−u²=2aΔx, without dividing by a. Squaring loses velocity sign, and a position equation can yield two legitimate times when a cart passes a point on either side of a reversal. Treat roots as candidate times until the stage domain, direction and endpoint are checked. Find total distance by splitting at any zero of velocity, not by taking the absolute value of total displacement.",
+      "prerequisites": [
+        "PH01-M02",
+        "PH01-M03",
+        "PH01-M04",
+        "PH01-M05"
+      ],
+      "derivation_steps": [
+        {
+          "action": "Read the straight v–t slope to obtain v=u+at.",
+          "why_valid": "Constant acceleration means the slope does not vary.",
+          "science_ref_id": "PH01-SCI-CONSTANT-ACCEL"
+        },
+        {
+          "action": "Compute signed rectangle plus triangle area, or trapezoid area.",
+          "why_valid": "The integral of signed velocity is displacement.",
+          "science_ref_id": "PH01-SCI-CONSTANT-ACCEL"
+        },
+        {
+          "action": "Multiply v−u=at by v+u and use Δx=(u+v)t/2.",
+          "why_valid": "This eliminates elapsed time without assuming a nonzero acceleration.",
+          "science_ref_id": "PH01-SCI-CONSTANT-ACCEL"
+        }
+      ],
+      "model_limits": [
+        "v² relation loses sign information; recover sign from time/domain.",
+        "Displacement is not distance when velocity reverses.",
+        "Variable acceleration needs a different model or piecewise intervals."
+      ],
+      "progressive_examples": [
+        {
+          "id": "PH01-M06-EX-R32-0",
+          "tier": "FOUNDATION",
+          "problem": "A cart starts from rest with a=+2 m/s² for 4 s.",
+          "reasoning": "v=8 m/s and Δx=16 m.",
+          "independent_check": "Average v=4 m/s times 4 s gives 16 m."
+        },
+        {
+          "id": "PH01-M06-EX-R32-1",
+          "tier": "CONNECTED",
+          "problem": "A cart starts +6 m/s, accelerates −2 m/s² for 4 s.",
+          "reasoning": "v=−2 m/s; Δx=24−16=8 m. It travels 9 m to its turn at 3 s and 1 m back, D=10 m.",
+          "independent_check": "Net displacement 8 m is not the full path."
+        },
+        {
+          "id": "PH01-M06-EX-R32-2",
+          "tier": "ADVANCED",
+          "problem": "A cart starts +10 m/s, a=−2 m/s², and passes x=16 m from x0=0. Find times and velocity signs.",
+          "reasoning": "10t−t²=16 gives t=2 or 8 s; v=+6 or −6 m/s respectively, if motion continues for both.",
+          "independent_check": "Both times satisfy the position law, with different signed velocities."
+        }
+      ],
+      "figures": [
+        {
+          "id": "PH01-M06-FIG-R32",
+          "reasoning_step": "Derive, select and validate constant-acceleration laws, including root and reversal conditions.",
+          "scene_description": "nsejs/physics/textbook/PH01/M06/index.html#unit-figure",
+          "source_or_authorship": "AUTHOR_CREATED_INLINE_SVG"
+        }
+      ],
+      "misconception": {
+        "wrong_model": "The positive square root of v² always gives the physical final velocity.",
+        "diagnostic": "A cart that has reversed can revisit the same position with negative velocity.",
+        "repair": "Use v=u+at and the valid time interval to recover sign; verify each root in the original equations."
+      },
+      "exit_check": {
+        "task": "u=+4 m/s, a=−2 m/s² for 5 s. Find final velocity, displacement and distance.",
+        "answer": "v=−6 m/s, Δx=−5 m, D=13 m.",
+        "reasoning": "Turn at 2 s, x=4 m; final x=−5 m, giving 4+9 m."
+      },
+      "authorship_status": "DRAFT_AUTHOR_EXPOSED"
+    },
+    {
+      "id": "PH01-M07-CORE1A-READING-R1",
+      "subtopic_id": "PH01-M07",
+      "covered_qrt_ids": [
+        "PH01-KIN-QRT-MODEL-D3",
+        "PH01-KIN-QRT-REPRESENT-D3",
+        "PH01-KIN-QRT-SYNTH-D3"
+      ],
+      "phenomenon": "Two moving observers can assign different velocities to the same object, while a mathematical encounter time may fail because the motion model changes.",
+      "scientific_narrative": "The ground and a uniformly moving observer can assign different positions and velocities to the same object. In a common one-dimensional axis, x_rel=x_object−x_observer and v_rel=v_object−v_observer. These differences follow by subtracting the observer position at the same time; a constant observer velocity shifts every v–t segment by the same amount. A simultaneous separation between two objects and their meeting event are invariant under this shared translation, but an individual object's displacement and path distance need not be. For piecewise motion, build each position law from its actual boundary position and use one global clock. Solve for equality only on the interval where both laws apply. If a candidate root falls outside that interval, reject it and rebuild using the correct stage.",
+      "prerequisites": [
+        "PH01-M01",
+        "PH01-M02",
+        "PH01-M03",
+        "PH01-M05"
+      ],
+      "derivation_steps": [
+        {
+          "action": "Declare observer, object, axis and global time before assigning signs.",
+          "why_valid": "Relative position and velocity are only well-defined after fixing the measurement frame and coordinate direction.",
+          "science_ref_id": "PH01-SCI-RELATIVE"
+        },
+        {
+          "action": "Translate each position segment into a signed velocity (slope) and verify by graph area.",
+          "why_valid": "Velocity is the rate of position change; integrating a constant signed velocity across a segment gives that segment's displacement.",
+          "science_ref_id": "PH01-SCI-GRAPH"
+        },
+        {
+          "action": "Derive the encounter time within the first valid interval and test it against the interval bounds.",
+          "why_valid": "An equation inherits the domain of the motion conditions from which it was constructed; an out-of-domain root is inadmissible.",
+          "science_ref_id": "PH01-SCI-PIECEWISE"
+        },
+        {
+          "action": "Construct the second interval's position law continuously from its boundary and re-solve the encounter.",
+          "why_valid": "The object's position does not jump merely because it changes speed or direction at the transition.",
+          "science_ref_id": "PH01-SCI-PIECEWISE"
+        }
+      ],
+      "model_limits": [
+        "Elementary constant-velocity segment equations are not correct over an interval of continuously changing velocity.",
+        "A graph's signed area gives displacement, not necessarily total distance.",
+        "Relative velocity subtraction requires consistent frames and sign conventions.",
+        "A valid equation root still requires the event to fall within that equation's physical interval.",
+        "An object's displacement and distance generally depend on the observer's motion; only simultaneous separation and a shared meeting event are invariant under a common translating frame."
+      ],
+      "progressive_examples": [
+        {
+          "id": "PH01-M07-EX-FOUND-R32",
+          "tier": "FOUNDATION",
+          "problem": "A bus moves east at 8 m/s. A passenger walks west at 2 m/s relative to the bus.",
+          "reasoning": "Passenger ground velocity is +8−2=+6 m/s.",
+          "independent_check": "From the bus the passenger is westbound, from the ground eastbound."
+        },
+        {
+          "id": "PH01-M07-EX-CONNECT-R32",
+          "tier": "CONNECTED",
+          "problem": "A cart is stationary at ground x=9 m. An observer starts at x=1 m and moves east at 2 m/s for 3 s.",
+          "reasoning": "Relative position changes from 8 to 2 m; relative velocity is −2 m/s and displacement −6 m.",
+          "independent_check": "Ground displacement 0 minus observer displacement 6 gives −6 m."
+        },
+        {
+          "id": "PH01-M07-EX-ADV",
+          "tier": "ADVANCED",
+          "problem": "A moves east from x=0 at 4 m/s for 4 s then stops; B starts x=40 m and moves west at 3 m/s. When do they meet?",
+          "reasoning": "For 0≤t≤4, 4t=40−3t yields t=40/7≈5.71 s, outside its validity. After 4 s A is at x=16, so 16=40−3t gives t=8 s and position x=16 m.",
+          "independent_check": "Both actual position models give x=16 at t=8; the first-stage root is rejected as out-of-domain."
+        }
+      ],
+      "figures": [
+        {
+          "id": "PH01-M07-FIG-R32",
+          "reasoning_step": "Compose velocities in a shared frame, translate position/velocity histories between uniformly moving frames, and validate piecewise meeting events.",
+          "scene_description": "nsejs/physics/textbook/PH01/M07/index.html#unit-figure",
+          "source_or_authorship": "AUTHOR_CREATED_INLINE_SVG"
+        }
+      ],
+      "misconception": {
+        "wrong_model": "Treat an algebraic meeting time as valid even when its first-stage motion assumption has ended.",
+        "diagnostic": "If equation xA=4t is valid only for t≤4 s, is the solution t=5.71 s a real first-stage meeting?",
+        "repair": "Reject the out-of-domain candidate, construct xA=16 for t≥4, then recompute and verify both positions."
+      },
+      "exit_check": {
+        "task": "A cart moves +5 m/s; an observer moves +2 m/s along the same axis. If their separation is 12 m with the cart behind, when does the cart catch the observer?",
+        "answer": "Relative closing speed 3 m/s; meeting in 4 s.",
+        "reasoning": "Both coordinate systems describe the same simultaneous separation and meeting."
+      },
+      "authorship_status": "DRAFT_AUTHOR_EXPOSED"
+    },
+    {
+      "id": "PH01-M08-CORE1A-R32",
+      "subtopic_id": "PH01-M08",
+      "covered_qrt_ids": [
+        "PH01-M08-QRT-MODEL-D3",
+        "PH01-M08-QRT-REPRESENT-D3",
+        "PH01-M08-QRT-SYNTHESIZE-D3"
+      ],
+      "phenomenon": "A rider on a merry-go-round has a constant speedometer reading but changes direction continuously.",
+      "scientific_narrative": "A circular path differs from a straight line because direction changes even when the speed is fixed. Take a circle with radius r, centre at the origin and east/north axes. A full revolution covers circumference 2πr; dividing by the period T gives constant speed. For a fraction f of a revolution, arc length is f(2πr), but displacement is the straight vector from initial to final point. Velocity at every point is tangent, perpendicular to the radius; for counterclockwise travel the tangent turns counterclockwise as the radius does. After one complete revolution the vector displacement and average velocity are zero, though the distance and speed remain positive. The changing velocity direction means acceleration exists. At this elementary level the direction is inward by symmetry; quantitative centripetal acceleration and forces are enrichment or PH02 material, not required to solve these tasks.",
+      "prerequisites": [
+        "PH01-M01",
+        "PH01-M02",
+        "PH01-M03",
+        "PH01-M04"
+      ],
+      "derivation_steps": [
+        {
+          "action": "Compute the fraction of a revolution from elapsed time and period.",
+          "why_valid": "Constant speed around a fixed circumference makes elapsed fraction equal arc fraction.",
+          "science_ref_id": "PH01-SCI-UNIFORM-CIRCULAR"
+        },
+        {
+          "action": "Find the endpoint coordinates and subtract the initial vector.",
+          "why_valid": "Displacement depends on endpoints, not the path.",
+          "science_ref_id": "PH01-SCI-UNIFORM-CIRCULAR"
+        },
+        {
+          "action": "Divide arc length and vector displacement by elapsed time separately; identify tangent direction.",
+          "why_valid": "Speed and velocity encode different physical quantities.",
+          "science_ref_id": "PH01-SCI-UNIFORM-CIRCULAR"
+        }
+      ],
+      "model_limits": [
+        "Whole-revolution displacement is zero but speed is not.",
+        "Average velocity is the vector displacement divided by elapsed time; not the average of speed magnitudes.",
+        "Quantitative centripetal acceleration/force is an extension; no force law is needed here."
+      ],
+      "progressive_examples": [
+        {
+          "id": "PH01-M08-EX-R32-0",
+          "tier": "FOUNDATION",
+          "problem": "A runner circles radius 7 m once in 14 s.",
+          "reasoning": "Distance 14π m, speed π m/s, displacement zero.",
+          "independent_check": "Average velocity zero after a complete lap."
+        },
+        {
+          "id": "PH01-M08-EX-R32-1",
+          "tier": "CONNECTED",
+          "problem": "A rider starts east at (4,0), travels counterclockwise one quarter lap in 2 s.",
+          "reasoning": "Endpoint (0,4); displacement (−4,+4) m; average velocity (−2,+2) m/s. Speed π m/s.",
+          "independent_check": "Quarter arc=2π m; tangent at start points north."
+        },
+        {
+          "id": "PH01-M08-EX-R32-2",
+          "tier": "ADVANCED",
+          "problem": "A particle of radius 3 m starts at north and completes 3/4 counterclockwise lap in 9 s.",
+          "reasoning": "Endpoint east (3,0); distance 4.5π m; displacement (+3,−3) m; average velocity (1/3,−1/3) m/s. T=12 s.",
+          "independent_check": "At the east endpoint velocity points north; vector displacement is not the arc."
+        }
+      ],
+      "figures": [
+        {
+          "id": "PH01-M08-FIG-R32",
+          "reasoning_step": "Connect period and arc length with vector position, tangential direction and interval-average motion.",
+          "scene_description": "nsejs/physics/textbook/PH01/M08/index.html#unit-figure",
+          "source_or_authorship": "AUTHOR_CREATED_INLINE_SVG"
+        }
+      ],
+      "misconception": {
+        "wrong_model": "Constant speed implies constant velocity and zero acceleration.",
+        "diagnostic": "Compare the velocity arrows at opposite points of a circular path.",
+        "repair": "Velocity includes direction. Opposite tangents differ even if their lengths match."
+      },
+      "exit_check": {
+        "task": "Radius 6 m, T=12 s, start east and move counterclockwise for 6 s. Find distance, displacement and average velocity.",
+        "answer": "Distance 6π m; displacement (−12,0) m; average velocity (−2,0) m/s.",
+        "reasoning": "Half revolution ends at west; tangent direction reverses."
+      },
+      "authorship_status": "DRAFT_AUTHOR_EXPOSED"
+    }
+  ],
+  "core1b": [
+    {
+      "id": "PH01-MAIN-D3.4-R32",
+      "kind": "MAIN",
+      "subtopic_id": "PH01-M07",
+      "qrt_target_id": "PH01-KIN-QRT-MODEL-D3",
+      "cell_id": "D3.4",
+      "instance_qrt_ids": [
+        "PH01-M03-QRT-MODEL-D3",
+        "PH01-M05-QRT-MODEL-D3",
+        "PH01-KIN-QRT-MODEL-D3",
+        "PH01-M01-QRT-MODEL-D3",
+        "PH01-M02-QRT-MODEL-D3",
+        "PH01-M04-QRT-MODEL-D3",
+        "PH01-M06-QRT-MODEL-D3",
+        "PH01-M08-QRT-MODEL-D3"
+      ],
+      "fresh_task": "An instrumented cart completes one uniform lap of a radius-2 m circle in 8 s, arriving at a tangent point P that is the start of an east-positive straight rail. At P define straight-rail t=0. The rail logger reads r=0 at x=12 m and r=6 at x=0. A starts at P (r=6), with its circular speed directed east along the tangent. On the rail it accelerates east at +1 m/s² for 4 s. Cart B is at x=20 m at rail t=0 and travels west at 1 m/s. A technician proposes using the average speed of the entire circle-plus-rail journey as A's constant signed rail velocity to predict a meeting. Select and justify the appropriate physical models; find the loop distance, calibrated rail position and velocity at 4 s, the whole-journey average speed and signed average velocity along east, and determine whether a meeting occurs on the rail during 0–4 s. Assume point carts pass without interacting.",
+      "protected_work": "Choose arc versus endpoint, calibrated coordinate, accelerated position law, signed graph/area and relative meeting model instead of a whole-trip average.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether a completed loop contributes to displacement in the east direction.",
+        "attempt": "An instrumented cart completes one uniform lap of a radius-2 m circle in 8 s, arriving at a tangent point P that is the start of an east-positive straight rail. At P define straight-rail t=0. The rail logger reads r=0 at x=12 m and r=6 at x=0. A starts at P (r=6), with its circular speed directed east along the tangent. On the rail it accelerates east at +1 m/s² for 4 s. Cart B is at x=20 m at rail t=0 and travels west at 1 m/s. A technician proposes using the average speed of the entire circle-plus-rail journey as A's constant signed rail velocity to predict a meeting. Select and justify the appropriate physical models; find the loop distance, calibrated rail position and velocity at 4 s, the whole-journey average speed and signed average velocity along east, and determine whether a meeting occurs on the rail during 0–4 s. Assume point carts pass without interacting.",
+        "reconstruct": "Loop distance 4π m, speed π/2 m/s, displacement zero. Rail calibration x=12−2r, start x=0. For rail t∈[0,4], v=π/2+t and x=(π/2)t+t²/2. At 4 s v=π/2+4, x=2π+8 m and r=(12−x)/2=2−π. The straight v–t line has positive area 2π+8, equal to rail path. Total path=4π+2π+8=6π+8 m over 12 s; average speed=(6π+8)/12 m/s, east average velocity=(2π+8)/12 m/s. B=20−t. At t=4 B=16 m, A≈14.28 m; initial gap 20 m, closing speed always positive, gap still ≈1.72 m, so no meeting within [0,4]. Averages over the loop and rail cannot replace v(t).",
+        "diagnose": "Identify the earliest divergent model: circle phase or tangent, calibration, path versus displacement, time origin, acceleration validity, graph translation or relative separation.",
+        "repair": "Reconstruct the circle and straight-stage ledgers separately, then join them using the shared tangent speed, correct time origin, signed position and a valid meeting model.",
+        "boundary_test": "If B instead starts at x=12 m with the same westward velocity, does a meeting occur during the four-second rail stage? Justify with a continuous separation argument."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH01-MAIN-D3.5-R32",
+      "kind": "MAIN",
+      "subtopic_id": "PH01-M07",
+      "qrt_target_id": "PH01-KIN-QRT-REPRESENT-D3",
+      "cell_id": "D3.5",
+      "instance_qrt_ids": [
+        "PH01-M03-QRT-REPRESENT-D3",
+        "PH01-M05-QRT-REPRESENT-D3",
+        "PH01-KIN-QRT-REPRESENT-D3",
+        "PH01-M01-QRT-REPRESENT-D3",
+        "PH01-M02-QRT-REPRESENT-D3",
+        "PH01-M04-QRT-REPRESENT-D3",
+        "PH01-M06-QRT-REPRESENT-D3",
+        "PH01-M08-QRT-REPRESENT-D3"
+      ],
+      "fresh_task": "A cart completes a uniform counterclockwise revolution of a radius-3 m circle in 6 s, starting at the south point and returning to it; its final tangent is east along a straight rail. Set the rail origin at that point, x=0, and global time t=0 at the start of the lap. A rail scale reads r=4 at x=0 and r=0 at x=8 m. After the lap (t=6), the cart travels east under constant acceleration −π/2 m/s² for 4 s. Observer O on the rail starts at x=−2 m at t=6 and moves east at π/2 m/s. Construct a circle table at t=0,1.5,3,4.5,6 s showing compass position and tangent direction; then construct rail position, marker, ground velocity and observer-relative velocity representations at t=6,8,10 s. Use signed areas to check rail displacement, path and whole-trip averages along east.",
+      "protected_work": "Translate circular phase and tangent into the straight stage, then map signed coordinates, acceleration, graph areas, and relative motion to aligned representations.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether the rail cart reverses by t=10 s and whether its ground rest would imply observer-relative rest.",
+        "attempt": "A cart completes a uniform counterclockwise revolution of a radius-3 m circle in 6 s, starting at the south point and returning to it; its final tangent is east along a straight rail. Set the rail origin at that point, x=0, and global time t=0 at the start of the lap. A rail scale reads r=4 at x=0 and r=0 at x=8 m. After the lap (t=6), the cart travels east under constant acceleration −π/2 m/s² for 4 s. Observer O on the rail starts at x=−2 m at t=6 and moves east at π/2 m/s. Construct a circle table at t=0,1.5,3,4.5,6 s showing compass position and tangent direction; then construct rail position, marker, ground velocity and observer-relative velocity representations at t=6,8,10 s. Use signed areas to check rail displacement, path and whole-trip averages along east.",
+        "reconstruct": "Circle points south,east,north,west,south; tangents east,north,west,south,east. Loop path 6π m, speed π m/s. Let s=t−6. Rail x=πs−(π/4)s², v=π−(π/2)s, a=−π/2. At s=0,2,4: x=0,π,0; r=4,4−π/2,4; v=+π,0,−π. O positions −2,−2+π,−2+2π; relative positions 2,2,2−2π; relative velocities +π/2,−π/2,−3π/2. Ground v–t signed triangles +π,−π give Δx=0 and rail path 2π m. Loop displacement zero; total path 8π m over 10 s, average speed 4π/5 m/s; east average velocity zero. Relative signed area over rail −2π m matches endpoints. Acceleration is constant in the rail stage, not over the circular velocity vector.",
+        "diagnose": "Identify the earliest divergent model: circle phase or tangent, calibration, path versus displacement, time origin, acceleration validity, graph translation or relative separation.",
+        "repair": "Reconstruct the circle and straight-stage ledgers separately, then join them using the shared tangent speed, correct time origin, signed position and a valid meeting model.",
+        "boundary_test": "If O stays stationary at x=−2 m from t=6 onward instead, reconstruct the relative position and velocity tables and their displacement."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH01-MAIN-D3.6-R32",
+      "kind": "MAIN",
+      "subtopic_id": "PH01-M07",
+      "qrt_target_id": "PH01-KIN-QRT-SYNTH-D3",
+      "cell_id": "D3.6",
+      "instance_qrt_ids": [
+        "PH01-M03-QRT-SYNTHESIZE-D3",
+        "PH01-M05-QRT-SYNTHESIZE-D3",
+        "PH01-KIN-QRT-SYNTH-D3",
+        "PH01-M01-QRT-SYNTHESIZE-D3",
+        "PH01-M02-QRT-SYNTHESIZE-D3",
+        "PH01-M04-QRT-SYNTHESIZE-D3",
+        "PH01-M06-QRT-SYNTHESIZE-D3",
+        "PH01-M08-QRT-SYNTHESIZE-D3"
+      ],
+      "fresh_task": "A cart completes one uniform lap of a radius-3 m circle in 6 s, entering an east-positive straight rail tangentially at the start point. The rail marker scale reads r=5 at x=0 and r=1 at x=8 m. Rail elapsed time s begins at zero when A enters. It accelerates uniformly for 4 s, then an odometer reports that its total circle-plus-rail travel is 6π+4π+8 m; the rail motion was eastward throughout. Determine A's rail acceleration, final velocity, position and marker reading. Cart B starts at rail x=4π+12 m and moves west at 1 m/s from s=0. Determine the first meeting during 0≤s≤4, checking the domain, and find whole-trip average speed and east-average velocity. Assume point carts do not interact.",
+      "protected_work": "Combine circular speed and distance, calibrated coordinates, odometer path constraint, constant acceleration and relative position equations, then verify graph area and meeting domain.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether the odometer can isolate the straight-stage displacement if that stage never reverses.",
+        "attempt": "A cart completes one uniform lap of a radius-3 m circle in 6 s, entering an east-positive straight rail tangentially at the start point. The rail marker scale reads r=5 at x=0 and r=1 at x=8 m. Rail elapsed time s begins at zero when A enters. It accelerates uniformly for 4 s, then an odometer reports that its total circle-plus-rail travel is 6π+4π+8 m; the rail motion was eastward throughout. Determine A's rail acceleration, final velocity, position and marker reading. Cart B starts at rail x=4π+12 m and moves west at 1 m/s from s=0. Determine the first meeting during 0≤s≤4, checking the domain, and find whole-trip average speed and east-average velocity. Assume point carts do not interact.",
+        "reconstruct": "Loop path 6π, speed π m/s; rail path=4π+8, equal to signed Δx because rail motion eastward. Δx=4π+8=4π+½a·16, so a=1 m/s²; v(4)=π+4. x(4)=4π+8; scale x=10−2r, so r=1−2π. B(s)=4π+12−s; at s=4 B=4π+8=A(4). Closing speed π+s+1>0 throughout, so first meeting is exactly s=4. Rail v–t trapezoid area (π+(π+4))4/2=4π+8. Whole-trip path 10π+8, elapsed 10 s, average speed π+0.8 m/s; loop displacement zero, east average velocity (4π+8)/10 m/s.",
+        "diagnose": "Identify the earliest divergent model: circle phase or tangent, calibration, path versus displacement, time origin, acceleration validity, graph translation or relative separation.",
+        "repair": "Reconstruct the circle and straight-stage ledgers separately, then join them using the shared tangent speed, correct time origin, signed position and a valid meeting model.",
+        "boundary_test": "If B starts 2 m farther east with all other conditions unchanged, is there a meeting within the rail stage?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH01-M01-QRT-MODEL-D3-INSTANCE-R31",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH01-M01",
+      "qrt_target_id": "PH01-M01-QRT-MODEL-D3",
+      "cell_id": "D3.4",
+      "instance_qrt_ids": [
+        "PH01-M01-QRT-MODEL-D3"
+      ],
+      "fresh_task": "A rail survey logger uses a uniform scale r. Its marks r=2 and r=8 correspond to ground positions x=18 m and x=6 m (east positive). A third mark r=10 is reported at x=1 m. Decide whether all three reports can use one uniform calibration, and locate r=5 under the two-anchor model.",
+      "protected_work": "Select and test a uniform signed coordinate model rather than treating instrument readings as metre positions.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether larger logger readings mean eastward or westward motion.",
+        "attempt": "A rail survey logger uses a uniform scale r. Its marks r=2 and r=8 correspond to ground positions x=18 m and x=6 m (east positive). A third mark r=10 is reported at x=1 m. Decide whether all three reports can use one uniform calibration, and locate r=5 under the two-anchor model.",
+        "reconstruct": "k=(6−18)/(8−2)=−2 m/division; b=18−(−2)(2)=22 m. Thus x=22−2r; r=5 gives 12 m, while r=10 predicts 2 m, not 1 m. Exact observations cannot all fit a single uniform calibration; this does not identify which observation failed.",
+        "diagnose": "Locate whether the first divergence was in the zero, signed scale, coordinate conversion or consistency check.",
+        "repair": "Use two common anchors to infer signed scale and offset, then test the extra independent observation.",
+        "boundary_test": "If the third mark instead gives x=2 m, what can and cannot be concluded about the model?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH01-M01-QRT-REPRESENT-D3-INSTANCE-R31",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH01-M01",
+      "qrt_target_id": "PH01-M01-QRT-REPRESENT-D3",
+      "cell_id": "D3.5",
+      "instance_qrt_ids": [
+        "PH01-M01-QRT-REPRESENT-D3"
+      ],
+      "fresh_task": "A robot visits markers at times 0, 2, 5 and 7 s. Scale A has its zero at ground x=4 m, increases east and uses 2 m per division. Its readings are −1, 3, 3, 0. Scale B has zero at ground x=12 m, increases west and uses 1 m per division. Construct a time-aligned table of ground positions and B readings; mark each change's direction and identify the stationary interval. Assume straight monotone motion or rest between samples.",
+      "protected_work": "Translate a coordinate log into a common physical axis and a reversed observer axis, keeping times and segment directions aligned.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether positive changes in A will have the same sign in B.",
+        "attempt": "A robot visits markers at times 0, 2, 5 and 7 s. Scale A has its zero at ground x=4 m, increases east and uses 2 m per division. Its readings are −1, 3, 3, 0. Scale B has zero at ground x=12 m, increases west and uses 1 m per division. Construct a time-aligned table of ground positions and B readings; mark each change's direction and identify the stationary interval. Assume straight monotone motion or rest between samples.",
+        "reconstruct": "x=4+2A gives 2,10,10,4 m; B=12−x gives 10,2,2,8 divisions. Changes in ground x are +8,0,−6 m (east, rest, west). B changes −8,0,+6 divisions. Rest is 2–5 s. Both encode the same physical motion.",
+        "diagnose": "Locate whether the first divergence was in the zero, signed scale, coordinate conversion or consistency check.",
+        "repair": "Calibrate both axes from their zero and orientation, transform each row, compare signed changes and physical lengths.",
+        "boundary_test": "If B is relabelled with an east-positive axis and the same zero and spacing, reconstruct its readings."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH01-M01-QRT-SYNTHESIZE-D3-INSTANCE-R31",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH01-M01",
+      "qrt_target_id": "PH01-M01-QRT-SYNTHESIZE-D3",
+      "cell_id": "D3.6",
+      "instance_qrt_ids": [
+        "PH01-M01-QRT-SYNTHESIZE-D3"
+      ],
+      "fresh_task": "A field team uses ground x east-positive. Scale P has its zero at x=−6 m and increases east by 3 m per division. A second uniform scale Q records 7 at P=2 and 1 at P=6. A rover begins at Q=4, then moves exactly 10 m west. Recover its initial ground position, final P reading and final Q reading; check both scales describe the same displacement.",
+      "protected_work": "Reconcile two incomplete coordinate logs using shared markers and a physical separation constraint.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict which of P and Q increases when the rover moves west.",
+        "attempt": "A field team uses ground x east-positive. Scale P has its zero at x=−6 m and increases east by 3 m per division. A second uniform scale Q records 7 at P=2 and 1 at P=6. A rover begins at Q=4, then moves exactly 10 m west. Recover its initial ground position, final P reading and final Q reading; check both scales describe the same displacement.",
+        "reconstruct": "P=2 gives x=0; P=6 gives x=12. Q calibration k=(12−0)/(1−7)=−2 m/division; x=14−2Q. At Q=4, x=6 m. After moving west 10 m, x=−4 m; P=(−4+6)/3=2/3; Q=(14+4)/2=9. Both x changes are −10 m.",
+        "diagnose": "Locate whether the first divergence was in the zero, signed scale, coordinate conversion or consistency check.",
+        "repair": "Infer one scale from two cross-observations, use the signed displacement constraint to reconstruct the missing reading and verify it.",
+        "boundary_test": "If the rover instead moves 10 m east from the same start, find its final P and Q readings."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH01-M02-QRT-MODEL-D3-INSTANCE-R31",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH01-M02",
+      "qrt_target_id": "PH01-M02-QRT-MODEL-D3",
+      "cell_id": "D3.4",
+      "instance_qrt_ids": [
+        "PH01-M02-QRT-MODEL-D3"
+      ],
+      "fresh_task": "A warehouse tracker records x=−4 m, +5 m, +1 m at 0, 4, 9 s. No speed limit or between-sample direction is given. A supervisor claims distance must be 13 m; another claims 19 m is possible. Decide what the data determine, and construct an explicit route for each feasible claim.",
+      "protected_work": "Choose the appropriate exact-distance or lower-bound model for a partially observed journey, and construct counterexamples.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether recording the middle position fixes the total travelled distance.",
+        "attempt": "A warehouse tracker records x=−4 m, +5 m, +1 m at 0, 4, 9 s. No speed limit or between-sample direction is given. A supervisor claims distance must be 13 m; another claims 19 m is possible. Decide what the data determine, and construct an explicit route for each feasible claim.",
+        "reconstruct": "Displacement is +5 m. Minimum distance |5−(−4)|+|1−5|=9+4=13 m, attained by −4→5→1. A route −4→8→5→1 has length 12+3+4=19 m; visit 8 before 4 s, then 5 at 4 s and 1 at 9 s. Thus 13 is a minimum, not a uniquely determined total.",
+        "diagnose": "Locate whether the first divergence was in the sampled versus actual route, a signed leg, a cumulative length or a feasibility condition.",
+        "repair": "Use checkpoint-wise triangle inequalities and show distinct feasible routes under the same data.",
+        "boundary_test": "If a sensor certifies monotone motion on each sampled interval, which claims survive?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH01-M02-QRT-REPRESENT-D3-INSTANCE-R31",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH01-M02",
+      "qrt_target_id": "PH01-M02-QRT-REPRESENT-D3",
+      "cell_id": "D3.5",
+      "instance_qrt_ids": [
+        "PH01-M02-QRT-REPRESENT-D3"
+      ],
+      "fresh_task": "A rail trolley starts at x=+3 m (east positive). Its odometer reads 20, 28, 28, 39, 45 m at checkpoints A–E. In the four intervals it travels west monotonically, rests, travels east monotonically, then travels west monotonically. Construct a checkpoint table of ground positions, signed changes and cumulative distance since A. Identify when it first passes x=0 and whether the end displacement equals the distance.",
+      "protected_work": "Translate a direction-coded odometer log into signed position and cumulative-distance representations.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether the odometer can decrease when the trolley travels west.",
+        "attempt": "A rail trolley starts at x=+3 m (east positive). Its odometer reads 20, 28, 28, 39, 45 m at checkpoints A–E. In the four intervals it travels west monotonically, rests, travels east monotonically, then travels west monotonically. Construct a checkpoint table of ground positions, signed changes and cumulative distance since A. Identify when it first passes x=0 and whether the end displacement equals the distance.",
+        "reconstruct": "Leg lengths are 8,0,11,6 m; signed changes −8,0,+11,−6. Positions A–E: 3,−5,−5,6,0 m. Cumulative distance 0,8,8,19,25 m. The first crossing of zero is A–B by continuity; the final displacement is −3 m, not 25 m.",
+        "diagnose": "Locate whether the first divergence was in the sampled versus actual route, a signed leg, a cumulative length or a feasibility condition.",
+        "repair": "Use successive odometer differences as nonnegative leg lengths, assign signs from direction and construct aligned positions.",
+        "boundary_test": "If the trolley turns east instead in D–E, with the same odometer readings, revise the final position and displacement."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH01-M02-QRT-SYNTHESIZE-D3-INSTANCE-R31",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH01-M02",
+      "qrt_target_id": "PH01-M02-QRT-SYNTHESIZE-D3",
+      "cell_id": "D3.6",
+      "instance_qrt_ids": [
+        "PH01-M02-QRT-SYNTHESIZE-D3"
+      ],
+      "fresh_task": "A robot starts at x=−2 m, travels east to an unknown first turning point P, then west to x=1 m, then east to x=6 m. Each leg is strictly monotone. Its total distance is 23 m. Recover P, calculate the displacement and check whether an alternative claim P=0 m could satisfy the route.",
+      "protected_work": "Recover an unknown turning point by combining an exact path ledger with endpoint and reversal-order constraints.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether P must lie east of both the starting point and the second turn.",
+        "attempt": "A robot starts at x=−2 m, travels east to an unknown first turning point P, then west to x=1 m, then east to x=6 m. Each leg is strictly monotone. Its total distance is 23 m. Recover P, calculate the displacement and check whether an alternative claim P=0 m could satisfy the route.",
+        "reconstruct": "The first turn must exceed 1 m. D=(P+2)+(P−1)+(6−1)=2P+6=23, hence P=8.5 m. Legs 10.5,7.5,5 m total 23 m; displacement +8 m. P=0 violates the required westward leg to x=1.",
+        "diagnose": "Locate whether the first divergence was in the sampled versus actual route, a signed leg, a cumulative length or a feasibility condition.",
+        "repair": "Write the signed-order-dependent distance relation, solve for the unknown turn, then verify directions and feasibility.",
+        "boundary_test": "Could the same three strictly monotone legs total 8 m, with the same endpoints and second turn? Explain."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH01-M04-QRT-MODEL-D3-INSTANCE-R32",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH01-M04",
+      "qrt_target_id": "PH01-M04-QRT-MODEL-D3",
+      "cell_id": "D3.4",
+      "instance_qrt_ids": [
+        "PH01-M04-QRT-MODEL-D3"
+      ],
+      "fresh_task": "Two motion trackers report v=−6 m/s at t=0 and +6 m/s at t=6 s. Tracker A assumes uniform acceleration; tracker B only guarantees continuous velocity and reports its average acceleration. Decide which statements follow from both records: average acceleration, existence of a reversal, exact reversal time, and uniform acceleration. Construct a second continuous piecewise-linear v–t history with a different reversal time.",
+      "protected_work": "Choose whether an interval average determines a unique reversal and speed history.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether the endpoint data alone determine the time at which the cart stops.",
+        "attempt": "Two motion trackers report v=−6 m/s at t=0 and +6 m/s at t=6 s. Tracker A assumes uniform acceleration; tracker B only guarantees continuous velocity and reports its average acceleration. Decide which statements follow from both records: average acceleration, existence of a reversal, exact reversal time, and uniform acceleration. Construct a second continuous piecewise-linear v–t history with a different reversal time.",
+        "reconstruct": "Both have a_avg=(6−(−6))/6=+2 m/s². Continuity implies at least one zero and a sign change, not its exact time. A has v=−6+2t, zero at 3 s. B could have v=−6 at 0, 0 at 2, +6 at 6, linear on each interval, slopes +3 and +1.5 m/s². Both satisfy endpoints; neither a unique zero time nor uniform acceleration follows for B.",
+        "diagnose": "Locate the first divergence in the model, signed quantities, representation, interval constraint or independent check; do not diagnose a misconception from the final answer alone.",
+        "repair": "Use explicit alternative velocity histories with identical endpoints to test a constant-acceleration assumption.",
+        "boundary_test": "If B certifies constant acceleration over all 6 s, what new conclusion follows?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH01-M04-QRT-REPRESENT-D3-INSTANCE-R32",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH01-M04",
+      "qrt_target_id": "PH01-M04-QRT-REPRESENT-D3",
+      "cell_id": "D3.5",
+      "instance_qrt_ids": [
+        "PH01-M04-QRT-REPRESENT-D3"
+      ],
+      "fresh_task": "A cart has a piecewise-linear velocity graph through (t in s,v in m/s): (0,−4),(2,+2),(5,+2),(7,−2). Construct an a–t step graph and a time table showing direction and whether speed increases, decreases or is constant. Give all zero-velocity times.",
+      "protected_work": "Translate a piecewise signed velocity history into acceleration and speed-change intervals.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether the sign of acceleration alone tells the sign of velocity.",
+        "attempt": "A cart has a piecewise-linear velocity graph through (t in s,v in m/s): (0,−4),(2,+2),(5,+2),(7,−2). Construct an a–t step graph and a time table showing direction and whether speed increases, decreases or is constant. Give all zero-velocity times.",
+        "reconstruct": "Slopes are +3 for 0–2, 0 for 2–5, −2 for 5–7 m/s². Zeros: −4+3t=0 at 4/3 s; 2−2(t−5)=0 at 6 s. West/slowing 0–4/3; east/speeding 4/3–2; east/constant 2–5; east/slowing 5–6; west/speeding 6–7. At ideal corners slope is not uniquely defined; use open intervals.",
+        "diagnose": "Locate the first divergence in the model, signed quantities, representation, interval constraint or independent check; do not diagnose a misconception from the final answer alone.",
+        "repair": "Compute segment slopes and split intervals at zero velocity to construct sign and speed labels.",
+        "boundary_test": "Reverse the positive axis. Reconstruct acceleration signs and say which speed-change intervals differ."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH01-M04-QRT-SYNTHESIZE-D3-INSTANCE-R32",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH01-M04",
+      "qrt_target_id": "PH01-M04-QRT-SYNTHESIZE-D3",
+      "cell_id": "D3.6",
+      "instance_qrt_ids": [
+        "PH01-M04-QRT-SYNTHESIZE-D3"
+      ],
+      "fresh_task": "A trolley starts at v=−5 m/s. It accelerates at +3 m/s² until an unknown time τ, then at −1 m/s² until t=8 s. Its final velocity is +3 m/s. Recover τ, velocity at the switch and zero-velocity times within the motion; justify the speed-change intervals.",
+      "protected_work": "Reconstruct two acceleration stages using an unknown switch time and a velocity condition.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether the final positive velocity guarantees there was no earlier reversal.",
+        "attempt": "A trolley starts at v=−5 m/s. It accelerates at +3 m/s² until an unknown time τ, then at −1 m/s² until t=8 s. Its final velocity is +3 m/s. Recover τ, velocity at the switch and zero-velocity times within the motion; justify the speed-change intervals.",
+        "reconstruct": "v(8)=−5+3τ−(8−τ)=−13+4τ=3, so τ=4 s. v(4)=7 m/s. First zero at 5/3 s; second stage remains positive (7 to 3). Speed decreases 0–5/3, increases 5/3–4, decreases 4–8. Switch lies within 0–8.",
+        "diagnose": "Locate the first divergence in the model, signed quantities, representation, interval constraint or independent check; do not diagnose a misconception from the final answer alone.",
+        "repair": "Infer switch time from the velocity ledger, then determine reversal and speed history.",
+        "boundary_test": "If final velocity is instead −5 m/s, recover τ and determine whether a reversal occurs."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH01-M06-QRT-MODEL-D3-INSTANCE-R32",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH01-M06",
+      "qrt_target_id": "PH01-M06-QRT-MODEL-D3",
+      "cell_id": "D3.4",
+      "instance_qrt_ids": [
+        "PH01-M06-QRT-MODEL-D3"
+      ],
+      "fresh_task": "A cart at x=0 has u=+12 m/s and a=−3 m/s² until t=5 s, when a controller changes its motion. A sensor at x=18 m can register crossings in this interval. Decide whether v²=u²+2aΔx alone determines the number and direction of crossings; recover all valid times and signed velocities.",
+      "protected_work": "Select a signed constant-acceleration law and reject roots outside a specified physical time domain.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether a single position can correspond to two velocity signs under uniform acceleration.",
+        "attempt": "A cart at x=0 has u=+12 m/s and a=−3 m/s² until t=5 s, when a controller changes its motion. A sensor at x=18 m can register crossings in this interval. Decide whether v²=u²+2aΔx alone determines the number and direction of crossings; recover all valid times and signed velocities.",
+        "reconstruct": "Position law 12t−1.5t²=18 gives t²−8t+12=0, roots 2 and 6 s. Only t=2 belongs to [0,5]; v=+6 m/s. The squared law gives v²=36 and cannot select sign or time domain alone. The hypothetical second crossing would have v=−6 at 6 s if the same acceleration continued.",
+        "diagnose": "Locate the first divergence in the model, signed quantities, representation, interval constraint or independent check; do not diagnose a misconception from the final answer alone.",
+        "repair": "Use the position constraint to generate roots, then verify the velocity direction and stated observation window.",
+        "boundary_test": "If the controller change occurs at t=7 s instead, recover the valid crossings."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH01-M06-QRT-REPRESENT-D3-INSTANCE-R32",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH01-M06",
+      "qrt_target_id": "PH01-M06-QRT-REPRESENT-D3",
+      "cell_id": "D3.5",
+      "instance_qrt_ids": [
+        "PH01-M06-QRT-REPRESENT-D3"
+      ],
+      "fresh_task": "A cart starts at x=2 m with v=−3 m/s. It accelerates at +2 m/s² for 3 s, then moves with that final velocity for 2 s. Construct labelled v–t and x–t descriptions with the turning point, switch point, final position, signed displacement and total distance.",
+      "protected_work": "Translate constant-acceleration stage descriptions into a continuous v–t and x–t representation with a reversal.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether the position at the end of the accelerating stage must differ from its initial position.",
+        "attempt": "A cart starts at x=2 m with v=−3 m/s. It accelerates at +2 m/s² for 3 s, then moves with that final velocity for 2 s. Construct labelled v–t and x–t descriptions with the turning point, switch point, final position, signed displacement and total distance.",
+        "reconstruct": "For 0≤t≤3, v=−3+2t and x=2−3t+t². Turn at t=1.5 s, x=−0.25 m; at t=3, v=+3 and x=2 m. For 3≤t≤5, v=3 and x=2+3(t−3), final x=8 m. Signed area first stage zero, second +6 m, Δx=+6 m. D=2.25+2.25+6=10.5 m. x–t is curved then linear and continuous.",
+        "diagnose": "Locate the first divergence in the model, signed quantities, representation, interval constraint or independent check; do not diagnose a misconception from the final answer alone.",
+        "repair": "Use stage boundary conditions to derive v and x functions, then verify signed areas and actual path.",
+        "boundary_test": "If the second stage lasts 4 s rather than 2 s, what changes in both graphs and the distance?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH01-M06-QRT-SYNTHESIZE-D3-INSTANCE-R32",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH01-M06",
+      "qrt_target_id": "PH01-M06-QRT-SYNTHESIZE-D3",
+      "cell_id": "D3.6",
+      "instance_qrt_ids": [
+        "PH01-M06-QRT-SYNTHESIZE-D3"
+      ],
+      "fresh_task": "A cart moves east at x=0 with unknown u. Under constant acceleration it passes x=15 m at t=2 s and x=24 m at t=4 s, measured from its start. Find u and a, determine whether it stops by t=7 s, and give the signed displacement and distance over 0–7 s if acceleration continues.",
+      "protected_work": "Recover an unknown braking acceleration from two spatial observations and enforce time and stop constraints.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether the smaller second two-second displacement implies eastward or westward acceleration.",
+        "attempt": "A cart moves east at x=0 with unknown u. Under constant acceleration it passes x=15 m at t=2 s and x=24 m at t=4 s, measured from its start. Find u and a, determine whether it stops by t=7 s, and give the signed displacement and distance over 0–7 s if acceleration continues.",
+        "reconstruct": "2u+2a=15; 4u+8a=24. Subtract twice the first: 4a=−6, a=−1.5 m/s², u=9 m/s. v=9−1.5t; stop at 6 s, x=27 m. At 7 s x=63−36.75=26.25 m, v=−1.5 m/s. Δx=+26.25 m; D=27+0.75=27.75 m.",
+        "diagnose": "Locate the first divergence in the model, signed quantities, representation, interval constraint or independent check; do not diagnose a misconception from the final answer alone.",
+        "repair": "Solve the shared constant-acceleration equations, then check whether a later stop is physically consistent.",
+        "boundary_test": "If the controller instead holds the cart at rest once it reaches zero velocity, give displacement and distance by t=7."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH01-M08-QRT-MODEL-D3-INSTANCE-R32",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH01-M08",
+      "qrt_target_id": "PH01-M08-QRT-MODEL-D3",
+      "cell_id": "D3.4",
+      "instance_qrt_ids": [
+        "PH01-M08-QRT-MODEL-D3"
+      ],
+      "fresh_task": "A marker on a uniform counterclockwise circular track of radius 6 m is at the east point at t=0, at the west point at t=9 s, and at the north point at t=13.5 s. Its speed is known to be between 1 and 4 m/s inclusive. Decide whether one constant speed can explain the reports; determine the period and compute distance and average velocity over the first 9 s.",
+      "protected_work": "Choose arc-length versus endpoint-vector models and distinguish steady speed from steady velocity.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether the first east-to-west record fixes the travelled arc without the speed bound.",
+        "attempt": "A marker on a uniform counterclockwise circular track of radius 6 m is at the east point at t=0, at the west point at t=9 s, and at the north point at t=13.5 s. Its speed is known to be between 1 and 4 m/s inclusive. Decide whether one constant speed can explain the reports; determine the period and compute distance and average velocity over the first 9 s.",
+        "reconstruct": "East-to-west allows 0.5,1.5,… revolutions in 9 s. Speeds are (0.5+n)12π/9: 2π/3≈2.09 for n=0, 2π≈6.28 for n=1, so only half a lap fits. T=18 s. At 13.5 s, 0.75 lap from east counterclockwise gives south, not north; reports inconsistent. Under the first two reports, D=6π m, Δr=(−12,0) m, average velocity=(−4/3,0) m/s.",
+        "diagnose": "Locate the first divergence in the model, signed quantities, representation, interval constraint or independent check; do not diagnose a misconception from the final answer alone.",
+        "repair": "Compare two timing/position reports for possible integer lap counts and use direction data to identify a compatible model.",
+        "boundary_test": "If the third report instead names the south point, can all three records be consistent?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH01-M08-QRT-REPRESENT-D3-INSTANCE-R32",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH01-M08",
+      "qrt_target_id": "PH01-M08-QRT-REPRESENT-D3",
+      "cell_id": "D3.5",
+      "instance_qrt_ids": [
+        "PH01-M08-QRT-REPRESENT-D3"
+      ],
+      "fresh_task": "A runner starts at the south point of a radius-5 m circle, moving clockwise at constant speed, completing a lap in 20 s. Construct a table at t=0,5,10,15,20,25 s of position coordinates (east,north), instantaneous velocity direction and cumulative distance. Calculate the vector average velocity over t=5 to 25 s and over t=0 to 15 s.",
+      "protected_work": "Translate a timed circular-motion record into positions, tangent vectors, arc lengths and average vector velocity.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether cumulative distance and position both repeat after a revolution.",
+        "attempt": "A runner starts at the south point of a radius-5 m circle, moving clockwise at constant speed, completing a lap in 20 s. Construct a table at t=0,5,10,15,20,25 s of position coordinates (east,north), instantaneous velocity direction and cumulative distance. Calculate the vector average velocity over t=5 to 25 s and over t=0 to 15 s.",
+        "reconstruct": "Clockwise from south: south (0,−5), west (−5,0), north (0,5), east (5,0), south, west. Tangents west,north,east,south,west,north. Cumulative arc 0, 2.5π,5π,7.5π,10π,12.5π m. From 5 to 25 s same west endpoint, average velocity zero. From 0 to15 displacement (5,5) m; average velocity (1/3,1/3) m/s.",
+        "diagnose": "Locate the first divergence in the model, signed quantities, representation, interval constraint or independent check; do not diagnose a misconception from the final answer alone.",
+        "repair": "Construct aligned tables of phase, position, tangent direction and cumulative arc; check endpoints and elapsed fractions.",
+        "boundary_test": "If the direction reverses to counterclockwise from the same starting point with unchanged speed, reconstruct the position and tangent sequence."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH01-M08-QRT-SYNTHESIZE-D3-INSTANCE-R32",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH01-M08",
+      "qrt_target_id": "PH01-M08-QRT-SYNTHESIZE-D3",
+      "cell_id": "D3.6",
+      "instance_qrt_ids": [
+        "PH01-M08-QRT-SYNTHESIZE-D3"
+      ],
+      "fresh_task": "A cyclist follows a radius-8 m circle counterclockwise, starting at north. In 18 s the odometer adds 24π m. Determine the number of revolutions, period, endpoint, final tangent direction, and vector average velocity. A friend claims the endpoint must be north because 24π is a multiple of π; test the claim.",
+      "protected_work": "Recover a period and speed from a partial-lap constraint and a measured route length, then combine vector and arc quantities.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether the odometer distance can tell how many revolutions were completed when radius is known.",
+        "attempt": "A cyclist follows a radius-8 m circle counterclockwise, starting at north. In 18 s the odometer adds 24π m. Determine the number of revolutions, period, endpoint, final tangent direction, and vector average velocity. A friend claims the endpoint must be north because 24π is a multiple of π; test the claim.",
+        "reconstruct": "Circumference 16π m. Distance 24π implies 1.5 laps; T=18/1.5=12 s. Starting north (0,8), half-lap remainder ends south (0,−8). At south counterclockwise tangent points east. Δr=(0,−16) m, average velocity (0,−8/9) m/s; average speed 4π/3 m/s. Claim fails because the relevant multiple is circumference, not π alone.",
+        "diagnose": "Locate the first divergence in the model, signed quantities, representation, interval constraint or independent check; do not diagnose a misconception from the final answer alone.",
+        "repair": "Use circumference, integer plus fractional revolutions, time and endpoint coordinates; verify the observed tangent.",
+        "boundary_test": "If odometer instead adds 20π m in 18 s with unchanged radius and constant speed, recover endpoint and period."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH01-M03-QRT-MODEL-D3-INSTANCE-R32",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH01-M03",
+      "qrt_target_id": "PH01-M03-QRT-MODEL-D3",
+      "cell_id": "D3.4",
+      "instance_qrt_ids": [
+        "PH01-M03-QRT-MODEL-D3"
+      ],
+      "fresh_task": "A patrol robot moves east at 6 m/s for 4 s, waits for 3 s and moves west at 2 m/s for 6 s. A logger reports mean moving speed 3.6 m/s; a supervisor reports overall average speed 4 m/s by averaging 6 and 2. Decide which reports are valid for their definitions, calculate overall average speed and signed average velocity, and explain the error.",
+      "protected_work": "Choose the time-weighted speed and signed-velocity model from a moving-time report and an elapsed-time report.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether the moving-time and full elapsed-time averages must agree.",
+        "attempt": "A patrol robot moves east at 6 m/s for 4 s, waits for 3 s and moves west at 2 m/s for 6 s. A logger reports mean moving speed 3.6 m/s; a supervisor reports overall average speed 4 m/s by averaging 6 and 2. Decide which reports are valid for their definitions, calculate overall average speed and signed average velocity, and explain the error.",
+        "reconstruct": "Distance=24+12=36 m, moving time 10 s so moving average speed=3.6 m/s (valid for moving time). Full elapsed=13 s; average speed=36/13≈2.77 m/s, average velocity=+12/13≈+0.923 m/s. The unweighted mean 4 m/s ignores unequal durations and rest.",
+        "diagnose": "Locate the first divergence in the model, signed quantities, representation, interval constraint or independent check; do not diagnose a misconception from the final answer alone.",
+        "repair": "Separate elapsed and moving time, recover signed and unsigned leg contributions, and test which report uses the requested definition.",
+        "boundary_test": "If the westward stage lasts 12 s instead, with all other data fixed, give both overall averages and explain the direction."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH01-M03-QRT-REPRESENT-D3-INSTANCE-R32",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH01-M03",
+      "qrt_target_id": "PH01-M03-QRT-REPRESENT-D3",
+      "cell_id": "D3.5",
+      "instance_qrt_ids": [
+        "PH01-M03-QRT-REPRESENT-D3"
+      ],
+      "fresh_task": "A tracker starts at x=−4 m and records four intervals: +6 m in 2 s, rest for 3 s, −10 m in 5 s, +3 m in 1 s. Motion is constant velocity or rest in each interval. Construct aligned x–t and cumulative distance–time graphs, find the elapsed average speed and signed average velocity, and identify when the two graphs have opposite slope signs.",
+      "protected_work": "Translate a signed constant-velocity travel log into position and cumulative-distance representations.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether the cumulative distance graph can have negative slope.",
+        "attempt": "A tracker starts at x=−4 m and records four intervals: +6 m in 2 s, rest for 3 s, −10 m in 5 s, +3 m in 1 s. Motion is constant velocity or rest in each interval. Construct aligned x–t and cumulative distance–time graphs, find the elapsed average speed and signed average velocity, and identify when the two graphs have opposite slope signs.",
+        "reconstruct": "Times 0,2,5,10,11 s; positions −4,2,2,−8,−5 m; cumulative distances 0,6,6,16,19 m. Slopes x–t +3,0,−2,+3 m/s; distance slopes +3,0,+2,+3. Opposite signs 5–10 s. Average speed 19/11 m/s, average velocity −1/11 m/s.",
+        "diagnose": "Locate the first divergence in the model, signed quantities, representation, interval constraint or independent check; do not diagnose a misconception from the final answer alone.",
+        "repair": "Use the stated initial coordinate and signed legs to construct piecewise linear position and distance graphs.",
+        "boundary_test": "If the coordinate origin shifts 8 m east, reconstruct x–t positions and compare both averages."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH01-M03-QRT-SYNTHESIZE-D3-INSTANCE-R32",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH01-M03",
+      "qrt_target_id": "PH01-M03-QRT-SYNTHESIZE-D3",
+      "cell_id": "D3.6",
+      "instance_qrt_ids": [
+        "PH01-M03-QRT-SYNTHESIZE-D3"
+      ],
+      "fresh_task": "A courier moves east at 5 m/s for an unknown time, waits 4 s, then moves west at an unknown constant speed for 6 s. The entire trip lasts 18 s and average speed is 4 m/s. Recover the first moving time, westward speed and signed average velocity. Test whether an alternative total average speed of 2 m/s could be consistent.",
+      "protected_work": "Recover an unknown moving duration and speed from a total-time, distance and displacement ledger.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether total average speed alone can specify the direction of the final displacement.",
+        "attempt": "A courier moves east at 5 m/s for an unknown time, waits 4 s, then moves west at an unknown constant speed for 6 s. The entire trip lasts 18 s and average speed is 4 m/s. Recover the first moving time, westward speed and signed average velocity. Test whether an alternative total average speed of 2 m/s could be consistent.",
+        "reconstruct": "East time=18−4−6=8 s, east distance 40 m. Total path=4×18=72 m; west distance=32 m, west speed=16/3 m/s. Δx=40−32=+8 m, average velocity=+4/9 m/s. Alternative average speed 2 implies path 36 m, less than the east leg alone; impossible.",
+        "diagnose": "Locate the first divergence in the model, signed quantities, representation, interval constraint or independent check; do not diagnose a misconception from the final answer alone.",
+        "repair": "Use independent signed and unsigned constraints plus a rest interval to infer the missing stage and test feasibility.",
+        "boundary_test": "If total average speed is 5 m/s instead, recover the westward speed and signed average velocity."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH01-M05-QRT-MODEL-D3-INSTANCE-R32",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH01-M05",
+      "qrt_target_id": "PH01-M05-QRT-MODEL-D3",
+      "cell_id": "D3.4",
+      "instance_qrt_ids": [
+        "PH01-M05-QRT-MODEL-D3"
+      ],
+      "fresh_task": "A tracker reports x=0 m at 0 s, x=8 m at 4 s, and x=8 m at 8 s. One display explicitly joins the points with straight segments; another shows only the samples. For each display decide whether v at t=6 s and total distance are determined. Construct an alternative path consistent with the samples and give the average velocity from 0 to 8 s.",
+      "protected_work": "Select a defensible motion-graph operation and distinguish observed average velocity from unobserved instantaneous velocity.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether identical endpoint positions on an interval always mean rest.",
+        "attempt": "A tracker reports x=0 m at 0 s, x=8 m at 4 s, and x=8 m at 8 s. One display explicitly joins the points with straight segments; another shows only the samples. For each display decide whether v at t=6 s and total distance are determined. Construct an alternative path consistent with the samples and give the average velocity from 0 to 8 s.",
+        "reconstruct": "Straight-segment model: slopes +2 then 0 m/s, v(6)=0 and D=8 m. Samples alone permit e.g. x=10 at t=6 with linear 4–6 and 6–8 legs; v at 6 need not be uniquely defined; smooth alternatives also possible. D can be 8+2+2=12 m. All have average velocity (8−0)/8=+1 m/s. The x–t area has units m·s, not displacement.",
+        "diagnose": "Locate the first divergence in the model, signed quantities, representation, interval constraint or independent check; do not diagnose a misconception from the final answer alone.",
+        "repair": "Compare sampled positions against a specified piecewise-linear model; demonstrate why a second model can share samples.",
+        "boundary_test": "If a sensor independently guarantees monotone motion between each pair of samples, which quantities become determined?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH01-M05-QRT-REPRESENT-D3-INSTANCE-R32",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH01-M05",
+      "qrt_target_id": "PH01-M05-QRT-REPRESENT-D3",
+      "cell_id": "D3.5",
+      "instance_qrt_ids": [
+        "PH01-M05-QRT-REPRESENT-D3"
+      ],
+      "fresh_task": "A cart has x=2−4t+t² m for 0≤t≤4 s and x=2+4(t−4) m for 4≤t≤6 s. Construct v–t and a–t descriptions, label the reversal, and use signed velocity areas to verify net displacement and distance.",
+      "protected_work": "Translate a curved then straight position law into signed velocity and acceleration graphs and check areas.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether the cart's position at t=4 equals its initial position.",
+        "attempt": "A cart has x=2−4t+t² m for 0≤t≤4 s and x=2+4(t−4) m for 4≤t≤6 s. Construct v–t and a–t descriptions, label the reversal, and use signed velocity areas to verify net displacement and distance.",
+        "reconstruct": "First v=−4+2t (a=+2), second v=+4 (a=0); turn at t=2, x=−2 m. At t=4 x=2, at t=6 x=10. First signed areas −4,+4, second +8; Δx=+8 m, D=16 m. Velocity continuous at 4; acceleration changes there.",
+        "diagnose": "Locate the first divergence in the model, signed quantities, representation, interval constraint or independent check; do not diagnose a misconception from the final answer alone.",
+        "repair": "Obtain the velocity slope law from the given quadratic segment, join the later straight segment, and distinguish distance from displacement.",
+        "boundary_test": "If the straight segment continues at +4 m/s to t=8 instead, give the new displacement and distance."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH01-M05-QRT-SYNTHESIZE-D3-INSTANCE-R32",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH01-M05",
+      "qrt_target_id": "PH01-M05-QRT-SYNTHESIZE-D3",
+      "cell_id": "D3.6",
+      "instance_qrt_ids": [
+        "PH01-M05-QRT-SYNTHESIZE-D3"
+      ],
+      "fresh_task": "A cart's v–t graph is constant +4 m/s from 0 to 2 s, then decreases linearly to an unknown velocity V at t=6 s. Its net displacement over 0–6 s is +10 m. Find V, the zero crossing if any, total distance and final position from x0=−3 m.",
+      "protected_work": "Recover an unknown graph endpoint using signed area and distinguish reversal-dependent distance.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether positive net displacement prevents a negative final velocity.",
+        "attempt": "A cart's v–t graph is constant +4 m/s from 0 to 2 s, then decreases linearly to an unknown velocity V at t=6 s. Its net displacement over 0–6 s is +10 m. Find V, the zero crossing if any, total distance and final position from x0=−3 m.",
+        "reconstruct": "First area=8 m; remaining signed area=2 m=4(4+V)/2, giving V=−3 m/s. Second slope −7/4 m/s², zero at t=2+16/7=30/7 s. Positive second triangle area=32/7 m, negative magnitude=18/7 m. D=8+50/7=106/7 m. Final x=+7 m.",
+        "diagnose": "Locate the first divergence in the model, signed quantities, representation, interval constraint or independent check; do not diagnose a misconception from the final answer alone.",
+        "repair": "Decompose a piecewise-linear v–t graph, solve the missing ordinate, and split the area at the zero crossing.",
+        "boundary_test": "If net displacement is +16 m instead, find V and explain whether the second segment reverses."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH01-KIN-QRT-MODEL-D3-INSTANCE-R32",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH01-M07",
+      "qrt_target_id": "PH01-KIN-QRT-MODEL-D3",
+      "cell_id": "D3.4",
+      "instance_qrt_ids": [
+        "PH01-KIN-QRT-MODEL-D3"
+      ],
+      "fresh_task": "A kayak moves east at 4 m/s relative to water flowing west at 1 m/s relative to shore. A second craft 24 m west of it moves east at 6 m/s relative to the same water. A shore observer and a drifting observer disagree about the overtaking time. Compute both craft velocities in both frames and decide whether the meeting time differs.",
+      "protected_work": "Select the common-frame velocity composition and relative closing-rate model.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether changing to a uniformly drifting frame changes the meeting time.",
+        "attempt": "A kayak moves east at 4 m/s relative to water flowing west at 1 m/s relative to shore. A second craft 24 m west of it moves east at 6 m/s relative to the same water. A shore observer and a drifting observer disagree about the overtaking time. Compute both craft velocities in both frames and decide whether the meeting time differs.",
+        "reconstruct": "Shore velocities +3 and +5 m/s; water-frame velocities +4 and +6 m/s. In both frames the second gains +2 m/s and the initial simultaneous separation is 24 m. Meeting time 12 s. Frame transformation changes velocity components by the same constant, not simultaneous separation or meeting event.",
+        "diagnose": "Locate the first divergence in the model, signed quantities, representation, interval constraint or independent check; do not diagnose a misconception from the final answer alone.",
+        "repair": "Compose each craft's velocity in one frame, compare signed closing rate and check feasibility.",
+        "boundary_test": "If the second craft instead travels east at only 3 m/s relative to water, does it overtake?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH01-KIN-QRT-REPRESENT-D3-INSTANCE-R32",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH01-M07",
+      "qrt_target_id": "PH01-KIN-QRT-REPRESENT-D3",
+      "cell_id": "D3.5",
+      "instance_qrt_ids": [
+        "PH01-KIN-QRT-REPRESENT-D3"
+      ],
+      "fresh_task": "An elevator moves with constant velocity or rests between ground-frame samples (t,y)=(0,5),(3,−1),(6,−1),(8,3), with up positive. An observer's cabin begins at ground y=2 m and moves upward at +1 m/s. Construct the elevator's ground and observer-relative position tables and signed velocity steps. Calculate displacement in each frame and verify the relative result by signed areas.",
+      "protected_work": "Translate a ground position history into the coordinates and velocity graph of a moving observer.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether ground-frame rest implies rest relative to the rising observer.",
+        "attempt": "An elevator moves with constant velocity or rests between ground-frame samples (t,y)=(0,5),(3,−1),(6,−1),(8,3), with up positive. An observer's cabin begins at ground y=2 m and moves upward at +1 m/s. Construct the elevator's ground and observer-relative position tables and signed velocity steps. Calculate displacement in each frame and verify the relative result by signed areas.",
+        "reconstruct": "Ground positions 5,−1,−1,3 m; observer positions 2,5,8,10 m; relative positions 3,−6,−9,−7 m. Ground v=−2,0,+2; relative v=−3,−1,+1 m/s. Ground Δy=−2 m; relative Δy=−10 m, also −9−3+2. Ground path 10 m; relative path 14 m; displacement is not invariant between moving frames.",
+        "diagnose": "Locate the first divergence in the model, signed quantities, representation, interval constraint or independent check; do not diagnose a misconception from the final answer alone.",
+        "repair": "Construct ground and moving-frame representations using common time, then compare the two frame displacements.",
+        "boundary_test": "If the observer instead moves downward at −1 m/s from y=2 m, construct relative velocity steps and displacement."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH01-KIN-QRT-SYNTH-D3-INSTANCE-R32",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH01-M07",
+      "qrt_target_id": "PH01-KIN-QRT-SYNTH-D3",
+      "cell_id": "D3.6",
+      "instance_qrt_ids": [
+        "PH01-KIN-QRT-SYNTH-D3"
+      ],
+      "fresh_task": "Cyclist A starts at x=0 and rides east at 4 m/s from t=0. B is at x=30 m at rest until t=2 s, then rides west at 3 m/s. A dispatcher proposes a meeting at t=30/7 s by treating B as moving since t=0. Reject or verify that claim, find the actual meeting and test whether the same model works if B's departure is delayed until t=9 s.",
+      "protected_work": "Recover an admissible meeting event under a delayed departure and a changed boundary condition.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether the moving-stage equation is valid before B actually departs.",
+        "attempt": "Cyclist A starts at x=0 and rides east at 4 m/s from t=0. B is at x=30 m at rest until t=2 s, then rides west at 3 m/s. A dispatcher proposes a meeting at t=30/7 s by treating B as moving since t=0. Reject or verify that claim, find the actual meeting and test whether the same model works if B's departure is delayed until t=9 s.",
+        "reconstruct": "For 0≤t≤2, A≤8 while B=30: no meeting. For t≥2, B=30−3(t−2)=36−3t; equality gives t=36/7≈5.14 s, x=144/7 m. Dispatcher used an invalid starting position. If departure is t=9, A reaches stationary B at t=7.5<9; first meeting is before departure, and any moving-stage root must be checked separately.",
+        "diagnose": "Locate the first divergence in the model, signed quantities, representation, interval constraint or independent check; do not diagnose a misconception from the final answer alone.",
+        "repair": "Construct valid piecewise position laws, test each time interval and compare the zero-speed limit.",
+        "boundary_test": "If B's post-departure speed is set to zero while the original t=2 delay remains, what is the meeting time and why?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    }
+  ],
+  "core2_sources": [],
+  "acceptance": {
+    "b1_b7": {
+      "B1": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B2": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B3": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B4": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B5": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B6": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B7": {
+        "status": "HOLD",
+        "evidence_refs": []
+      }
+    },
+    "gates": {
+      "source_authenticity": "HOLD",
+      "content_correctness": "HOLD",
+      "cognitive_qualification": "HOLD",
+      "teaching_sufficiency": "HOLD",
+      "assessment_validity": "HOLD",
+      "implementation": "NOT_RUN",
+      "release_authority": "HOLD"
+    },
+    "release": "HOLD",
+    "acceptance_note": "R3.2 author-exposed eight-subtopic PH01 candidate; all C06 v1.1 MAIN cells bind eight distinct subtopics. Existing R2/R3.1 packages and revision-bound attempts preserved. All science/source/QRT/teaching/release gates HOLD; implementation receipts exact-head only."
+  }
+}
