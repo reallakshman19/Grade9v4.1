@@ -129,6 +129,23 @@
     - **Automated Regression Auditing**: Authored and committed `tools/audit_nsejs_pages.py` validating 43 published pages: 0 broken assets, 0 broken internal links (823 checked), 100% pass across all 17 Physics modules.
     - Verified live on `http://localhost:8000/nsejs/physics/learn-mechanics.html` (HTTP 200). Committed and pushed to `origin/main` (`78f8d08`).
 
+20. **Chemistry & Biology Peer-Review Audit, Defect Remediation & Track Promotion ({Core 2: Reviewed})**:
+    - **Peer-Review Scope**: Conducted rigorous B1–B7 disciplinary audit across all Chemistry and Biology flagship modules (`chem-electronic-structure-d3-r1`, `chem-phosphorus-oxyacids-d3-r1`, `bio-genetics-coordination-r1`, `bio-immunology-defense-d3-r1`, `bio-viral-genetics-d3-r1`).
+    - **Gate B3 Tab 1 Zero-Leakage Remediated**:
+      - In `chem-phosphorus-oxyacids-d3-r1`: Removed leaked answers from Tab 1 SVG (`Basicity = 1 (Monobasic!)`, `x = 2 -> H3PO2`, `2 P-H bonds -> Reducing (D)`). Replaced with neutral stoichiometry & coordination setup.
+      - In `bio-genetics-coordination-r1`: Removed numerical answer leakage (`9/16`, `7/16`, `400 meiotic divisions`, `1600 meiotic divisions`). Replaced with biochemical pathway & monosporic cytogenetic schema.
+      - In `bio-viral-genetics-d3-r1`: Removed leaked answer table (`(A) -> TRUE`, `(C) -> INCORRECT!`, `(D) -> INCORRECT!`). Replaced with virion structural anatomy & Baltimore genome taxonomy matrix.
+      - In `chem-electronic-structure-d3-r1`: Neutralized subshell Assignment reveals from the Aufbau diagram; enlarged typography to $\ge 14\text{px}$.
+      - In `bio-immunology-defense-d3-r1`: Enlarged all SVG typography to $\ge 14\text{px}$ ($14\text{px}$ labels across Fab, Fc, HSC, CMP, CLP).
+    - **Gate B4 Anti-Isomorphism Fresh Transfer Twins Authored**:
+      - `chem-phosphorus-oxyacids-d3-r1`: Replaced verbatim copy with **Pyrophosphoric Acid ($\text{H}_4\text{P}_2\text{O}_7$)** transfer twin (bridging P-O-P bond, basicity = 4, neutralization with KOH, non-reducing verification).
+      - `bio-genetics-coordination-r1`: Replaced duplicate with **Duplicate Dominant Epistasis in *Capsella bursa-pastoris*** transfer twin (triangular vs ovoid 15:1 ratio, 800 seeds, 1000 total meiotic divisions).
+      - `bio-viral-genetics-d3-r1`: Replaced duplicate with **Bacteriophage T4 vs Retrovirus HIV-1** transfer twin (complex naked dsDNA vs enveloped (+)ssRNA, reverse transcriptase/integrase packaging, detergent solvent sensitivity).
+    - **Rule 13 Invariant & Badging**: Added `{Unvalidated} · HOLD: ACADEMIC_ADMISSION` header pills and formal Rule 13 footers to all Chemistry and Biology modules.
+    - **Subject Track Cards Promoted**: Updated `nsejs/index.html` Track 2 (Chemistry) and Track 3 (Biology) badges from `{Core 2: Unvalidated}` to `{Core 2: Reviewed}` (`.reviewed-tag`). All 3 subject tracks now reflect completed peer-review passes.
+    - **Automated Regression Verification**: `tools/audit_nsejs_pages.py` verified across all 43 pages: 826 internal links checked, 0 broken links, 0 broken assets, 100% PASS on all modules.
+    - Verified live on `http://localhost:8000/nsejs/index.html` (HTTP 200). Committed and pushed to `origin/main` (`ae7ff21`).
+
 14. **Site-Wide Navigation Audit & Uniform Masthead/Breadcrumb Remediation Across All 94 Pages**:
     - Performed comprehensive audit (`scripts/audit_site_nav.py`) scanning all 94 published HTML pages across the repository for navigation bars, breadcrumb trails, and back links.
     - Remediated all 43 previously unnavigated or broken modules:
