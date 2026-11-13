@@ -4,7 +4,7 @@
   "academic_track": "NSEJS",
   "topic_id": "PH08",
   "owner_agent": "AGENT_2",
-  "version": "0.3.0-b01.4",
+  "version": "0.3.2-b01.5.ph08-08",
   "status": "DRAFT_AUTHOR_EXPOSED",
   "pins": {
     "contracts_version": "1.0.0",
@@ -16,7 +16,7 @@
       "version": "1.0.0",
       "git_blob_sha": "e2409aef11ae7d98444593bfbe1a38eb00c97cef"
     },
-    "topic_adapter_version": "0.3.0-b01.4"
+    "topic_adapter_version": "0.3.2-b01.5.ph08-08"
   },
   "syllabus_references": [
     {
@@ -170,7 +170,7 @@
   "topic_adapter": {
     "adapter_id": "PHYS-TOPIC-PH08",
     "topic_id": "PH08",
-    "version": "0.3.0-b01.4",
+    "version": "0.3.2-b01.5.ph08-08",
     "for_blueprint": "PHYS-QRT-BLUEPRINT 0.2.0",
     "status": "CANDIDATE_ONLY",
     "cells": [
@@ -282,7 +282,7 @@
   ],
   "core1b": [
     {
-      "id": "PH08-08-B01-MAIN-MODEL-R1",
+      "id": "PH08-08-B01-MAIN-MODEL-R2",
       "kind": "MAIN",
       "subtopic_id": "PH08-08",
       "qrt_target_id": "PH08-08-B01-D3-MODEL-01",
@@ -290,7 +290,7 @@
       "protected_work": "Choose the correct reflected-path and time-reference model when direct and reflected arrivals occur at a separated receiver.",
       "differs_from_worked_anchor": true,
       "stages": {
-        "predict": "Record your initial interpretation and confidence before viewing any support.",
+        "predict": "Before calculating, predict whether the wall distance could be obtained by the familiar round-trip shortcut in this setup. Record your initial judgement.",
         "attempt": "Source and receiver are 9 m apart parallel to a wall at the same normal distance. Reflection arrives 12.5 ms after direct arrival; v=320 m/s. Find wall distance and explain why round-trip shortcut fails.",
         "reconstruct": "Reflected path=9+4=13 m. (2d)^2=169−81=88, d=√22≈4.69 m. Separated receiver and direct reference invalidate vt/2.",
         "diagnose": "Identify the first invalid path or time-reference assumption. Did you treat an excess delay as elapsed time or ignore separated endpoints?",
@@ -306,7 +306,7 @@
       "runtime_verification": "NOT_RUN"
     },
     {
-      "id": "PH08-08-B01-INSTANCE-MODEL-R1",
+      "id": "PH08-08-B01-INSTANCE-MODEL-R2",
       "kind": "INSTANCE",
       "subtopic_id": "PH08-08",
       "qrt_target_id": "PH08-08-B01-D3-MODEL-01",
@@ -314,7 +314,7 @@
       "protected_work": "Choose the correct reflected-path and time-reference model when direct and reflected arrivals occur at a separated receiver.",
       "differs_from_worked_anchor": true,
       "stages": {
-        "predict": "Record your initial interpretation and confidence before viewing any support.",
+        "predict": "Would you initially accept the proposed 2 m wall distance? State your confidence and first reason.",
         "attempt": "Two sensors (one emits) are 6 m apart parallel to a wall at equal unknown distance. Echo delay after direct sound is 10 ms, v=400 m/s. Recover the wall distance and test a proposed 2 m result.",
         "reconstruct": "Reflected path=6+4=10 m; 2d=√(100−36)=8 m; d=4 m. At d=2 m, path √52≈7.21 m, giving delay≈3.03 ms, not 10.",
         "diagnose": "Identify the first invalid path or time-reference assumption. Did you treat an excess delay as elapsed time or ignore separated endpoints?",
@@ -330,7 +330,7 @@
       "runtime_verification": "NOT_RUN"
     },
     {
-      "id": "PH08-08-B01-MAIN-APPLY-R1",
+      "id": "PH08-08-B01-MAIN-APPLY-R2",
       "kind": "MAIN",
       "subtopic_id": "PH08-08",
       "qrt_target_id": "PH08-08-B01-D3-APPLY-01",
@@ -338,7 +338,7 @@
       "protected_work": "Calculate direct and reflected arrival times for a specified unequal-distance geometry and check the reported time difference against a detector criterion.",
       "differs_from_worked_anchor": true,
       "stages": {
-        "predict": "Record your initial interpretation and confidence before viewing any support.",
+        "predict": "Predict whether the detector resolves the two arrivals under the 15 ms criterion. Record your initial basis before calculating.",
         "attempt": "Source 4 m and receiver 8 m from a wall have parallel separation 9 m. v=300 m/s. A detector resolves pulses 15 ms apart or more. Find direct and reflected arrival times and decide whether they resolve.",
         "reconstruct": "Direct √97≈9.849 m, reflected 15 m. Times≈32.83 and 50 ms, excess≈17.17 ms; yes under criterion.",
         "diagnose": "Compare your direct and reflected lengths, time conversions and threshold. Did you compare the detector criterion with total time instead of separation?",
@@ -354,7 +354,7 @@
       "runtime_verification": "NOT_RUN"
     },
     {
-      "id": "PH08-08-B01-INSTANCE-APPLY-R1",
+      "id": "PH08-08-B01-INSTANCE-APPLY-R2",
       "kind": "INSTANCE",
       "subtopic_id": "PH08-08",
       "qrt_target_id": "PH08-08-B01-D3-APPLY-01",
@@ -362,7 +362,7 @@
       "protected_work": "Calculate direct and reflected arrival times for a specified unequal-distance geometry and check the reported time difference against a detector criterion.",
       "differs_from_worked_anchor": true,
       "stages": {
-        "predict": "Record your initial interpretation and confidence before viewing any support.",
+        "predict": "Predict whether the two arrivals satisfy the 12 ms requirement. State your initial expectation.",
         "attempt": "Source 2 m and receiver 10 m from a wall have parallel separation 6 m. v=340 m/s. Calculate both path times and assess a 12 ms separation requirement.",
         "reconstruct": "Direct 10 m, reflected √180≈13.416 m. Times≈29.41 and39.46 ms; gap≈10.05 ms, below 12 ms.",
         "diagnose": "Compare your direct and reflected lengths, time conversions and threshold. Did you compare the detector criterion with total time instead of separation?",
@@ -378,7 +378,7 @@
       "runtime_verification": "NOT_RUN"
     },
     {
-      "id": "PH08-08-B01-MAIN-REPRESENT-R1",
+      "id": "PH08-08-B01-MAIN-REPRESENT-R2",
       "kind": "MAIN",
       "subtopic_id": "PH08-08",
       "qrt_target_id": "PH08-08-B01-D3-REPRESENT-01",
@@ -386,7 +386,7 @@
       "protected_work": "Translate between a pulse-arrival trace and a two-leg reflection diagram while retaining the direct reference and geometric constraints.",
       "differs_from_worked_anchor": true,
       "stages": {
-        "predict": "Record your initial interpretation and confidence before viewing any support.",
+        "predict": "Sketch in words the order and approximate spacing you expect on the arrival trace, then state whether you expect one wall distance.",
         "attempt": "Direct and reflected arrivals are at 20 and 34 ms after emission, v=300 m/s. Source and receiver are equal distance from a large plane wall. Draw both spatial and time representations, label excess delay and infer wall distance.",
         "reconstruct": "Direct=6 m, reflected=10.2 m; gap14 ms. d=0.5√(104.04−36)≈4.124 m. Virtual image and wall midpoint reflection; t labels distinct.",
         "diagnose": "Check whether your timing diagram distinguishes emission, direct arrival and reflected arrival; compare the virtual path with both real legs.",
@@ -402,7 +402,7 @@
       "runtime_verification": "NOT_RUN"
     },
     {
-      "id": "PH08-08-B01-INSTANCE-REPRESENT-R1",
+      "id": "PH08-08-B01-INSTANCE-REPRESENT-R2",
       "kind": "INSTANCE",
       "subtopic_id": "PH08-08",
       "qrt_target_id": "PH08-08-B01-D3-REPRESENT-01",
@@ -410,7 +410,7 @@
       "protected_work": "Translate between a pulse-arrival trace and a two-leg reflection diagram while retaining the direct reference and geometric constraints.",
       "differs_from_worked_anchor": true,
       "stages": {
-        "predict": "Record your initial interpretation and confidence before viewing any support.",
+        "predict": "Predict whether a wall distance is uniquely recoverable from the two arrivals and stated geometry. Record your initial reason.",
         "attempt": "A receiver records direct arrival at 24 ms and reflected at 40 ms after a pulse. v=250 m/s, equal normal wall distances. Draw the time trace and corresponding image-source geometry, infer normal distance.",
         "reconstruct": "Direct=6 m, reflected=10 m; gap16 ms; d=4 m. Show reflection point midway parallel separation and two legs each 5 m.",
         "diagnose": "Check whether your timing diagram distinguishes emission, direct arrival and reflected arrival; compare the virtual path with both real legs.",
@@ -468,6 +468,6 @@
       "release_authority": "HOLD"
     },
     "release": "HOLD",
-    "acceptance_note": "Dedicated B01 slice; No matching exam question in inspectable Core2 bank; explicitly recorded source gap. New advanced tasks AUTHORED_TRANSFER, not direct exam evidence. Per-target MAIN placeholders pending approved cross-instance tile design. No academic approval inferred from software validation."
+    "acceptance_note": "Dedicated B01 slice; No matching exam question in inspectable Core2 bank; explicitly recorded source gap. New advanced tasks AUTHORED_TRANSFER, not direct exam evidence. Per-target MAIN placeholders pending approved cross-instance tile design. No academic approval inferred from software validation. R00 correction: all six predictions revised for exact tasks; cycle IDs R2 and uniquely versioned isolated slice (0.3.0-b01.4 history retained at reviewed commit). No final stage implementation or protected custody implied; inherited runtime still groups post-attempt stages. B5 HOLD."
   }
 }

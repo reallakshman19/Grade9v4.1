@@ -4,7 +4,7 @@
   "academic_track": "NSEJS",
   "topic_id": "PH08",
   "owner_agent": "AGENT_2",
-  "version": "0.3.0-b01.3",
+  "version": "0.3.2-b01.5.ph08-05",
   "status": "DRAFT_AUTHOR_EXPOSED",
   "pins": {
     "contracts_version": "1.0.0",
@@ -16,7 +16,7 @@
       "version": "1.0.0",
       "git_blob_sha": "e2409aef11ae7d98444593bfbe1a38eb00c97cef"
     },
-    "topic_adapter_version": "0.3.0-b01.3"
+    "topic_adapter_version": "0.3.2-b01.5.ph08-05"
   },
   "syllabus_references": [
     {
@@ -170,7 +170,7 @@
   "topic_adapter": {
     "adapter_id": "PHYS-TOPIC-PH08",
     "topic_id": "PH08",
-    "version": "0.3.0-b01.3",
+    "version": "0.3.2-b01.5.ph08-05",
     "for_blueprint": "PHYS-QRT-BLUEPRINT 0.2.0",
     "status": "CANDIDATE_ONLY",
     "cells": [
@@ -282,7 +282,7 @@
   ],
   "core1b": [
     {
-      "id": "PH08-05-B01-MAIN-MODEL-R1",
+      "id": "PH08-05-B01-MAIN-MODEL-R2",
       "kind": "MAIN",
       "subtopic_id": "PH08-05",
       "qrt_target_id": "PH08-05-B01-D3-MODEL-01",
@@ -290,7 +290,7 @@
       "protected_work": "Separate constant detector delay from physical propagation by testing an affine time–distance model against an independent observation.",
       "differs_from_worked_anchor": true,
       "stages": {
-        "predict": "Record your initial interpretation and confidence before viewing support.",
+        "predict": "Before calculating, predict whether the independently reported 300 m/s is compatible with the two arrivals. Record your initial reason.",
         "attempt": "A signal arrival time is 4 ms at 0.60 m and 10 ms at 2.40 m. Another instrument reports 300 m/s. Test whether a single speed and an additive delay can explain the measurements, then predict the time at 1.50 m.",
         "reconstruct": "v=1.8/0.006=300 m/s agrees; τ=4−2=2 ms; expected 7 ms at 1.50 m.",
         "diagnose": "If you divided one distance by its reported arrival time, compare the predicted times at all distances. Does a nonzero shared trigger delay explain the residuals?",
@@ -306,7 +306,7 @@
       "runtime_verification": "NOT_RUN"
     },
     {
-      "id": "PH08-05-B01-INSTANCE-MODEL-R1",
+      "id": "PH08-05-B01-INSTANCE-MODEL-R2",
       "kind": "INSTANCE",
       "subtopic_id": "PH08-05",
       "qrt_target_id": "PH08-05-B01-D3-MODEL-01",
@@ -314,7 +314,7 @@
       "protected_work": "Separate constant detector delay from physical propagation by testing an affine time–distance model against an independent observation.",
       "differs_from_worked_anchor": true,
       "stages": {
-        "predict": "Record your initial interpretation and confidence before viewing support.",
+        "predict": "Do you expect one set of speed and delay values to account for all three arrival times? State your initial judgement.",
         "attempt": "A pulse arrives after 5.5 ms at 1.05 m and 9.5 ms at 2.45 m using one apparatus. A third distance of 3.50 m gives 12.5 ms. Find speed and offset and decide whether the readings support the fixed-delay model.",
         "reconstruct": "v=1.40/0.004=350 m/s; τ=5.5−3=2.5 ms. Third predicted 10+2.5=12.5 ms agrees.",
         "diagnose": "If you divided one distance by its reported arrival time, compare the predicted times at all distances. Does a nonzero shared trigger delay explain the residuals?",
@@ -330,7 +330,7 @@
       "runtime_verification": "NOT_RUN"
     },
     {
-      "id": "PH08-05-B01-MAIN-REPRESENT-R1",
+      "id": "PH08-05-B01-MAIN-REPRESENT-R2",
       "kind": "MAIN",
       "subtopic_id": "PH08-05",
       "qrt_target_id": "PH08-05-B01-D3-REPRESENT-01",
@@ -338,7 +338,7 @@
       "protected_work": "Construct a piecewise time–distance graph from local wavelength data and preserve the distinction between transit time and period.",
       "differs_from_worked_anchor": true,
       "stages": {
-        "predict": "Record your initial interpretation and confidence before viewing support.",
+        "predict": "Predict what the cumulative travel-time graph will look like across the interface, and which section you expect to take longer.",
         "attempt": "A stationary source sends waves with f=250 Hz across 1.0 m with λ=1.6 m and then 0.9 m with λ=1.2 m. Construct the path-time graph; label the interface and calculate the overall transit speed.",
         "reconstruct": "v₁=400, v₂=300 m/s; graph (0,0),(1.0,2.5 ms),(1.9,5.5 ms); v_eff≈345.45 m/s. Second slope steeper.",
         "diagnose": "Check the axes: did you plot local oscillation instead of cumulative arrival time? Does the slower segment have the larger slope?",
@@ -354,7 +354,7 @@
       "runtime_verification": "NOT_RUN"
     },
     {
-      "id": "PH08-05-B01-INSTANCE-REPRESENT-R1",
+      "id": "PH08-05-B01-INSTANCE-REPRESENT-R2",
       "kind": "INSTANCE",
       "subtopic_id": "PH08-05",
       "qrt_target_id": "PH08-05-B01-D3-REPRESENT-01",
@@ -362,7 +362,7 @@
       "protected_work": "Construct a piecewise time–distance graph from local wavelength data and preserve the distinction between transit time and period.",
       "differs_from_worked_anchor": true,
       "stages": {
-        "predict": "Record your initial interpretation and confidence before viewing support.",
+        "predict": "Predict whether the two sections have similar or different travel times. Record your initial expectation before drawing the graph.",
         "attempt": "A steady source of 400 Hz sends sound across a 0.9 m section with λ=0.75 m followed by 0.6 m with λ=1.25 m. Sketch cumulative travel time versus path distance at all three boundaries and infer overall speed.",
         "reconstruct": "Local speeds 300 and 500 m/s. Graph points (0,0), (0.9,3 ms), (1.5,4.2 ms); effective speed≈357.14 m/s. First slope steeper.",
         "diagnose": "Check the axes: did you plot local oscillation instead of cumulative arrival time? Does the slower segment have the larger slope?",
@@ -378,7 +378,7 @@
       "runtime_verification": "NOT_RUN"
     },
     {
-      "id": "PH08-05-B01-MAIN-SYNTHESIZE-R1",
+      "id": "PH08-05-B01-MAIN-SYNTHESIZE-R2",
       "kind": "MAIN",
       "subtopic_id": "PH08-05",
       "qrt_target_id": "PH08-05-B01-D4-SYNTHESIZE-01",
@@ -386,7 +386,7 @@
       "protected_work": "Resolve the unknown path composition and common timing offset from two independent paths, and establish which measurements determine a unique solution.",
       "differs_from_worked_anchor": true,
       "stages": {
-        "predict": "Record your initial interpretation and confidence before viewing support.",
+        "predict": "Do you expect the three measured arrival times to permit a unique physically possible composition? Record your initial judgement.",
         "attempt": "A 3 m path contains x metres of medium A and the rest in B. Local wavelengths at f=400 Hz are 0.50 m and 1.00 m. The mixed arrival is 13 ms, and an all-A 3 m route is 17 ms, with common unknown delay. An independent all-B 1 m route reports 4.5 ms. Infer x and delay; check if all observations can coexist.",
         "reconstruct": "vA=200, vB=400 m/s. All-A τ=17−15=2 ms. Mixed propagation 11 ms; base all-B 7.5 ms plus 2.5x ms gives x=1.4 m. Independent all-B 1 m predicts 2.5+2=4.5 ms. All agree.",
         "diagnose": "Find whether you averaged the two speeds or counted detector delay more than once. Are the observations independent enough to determine the unknown length?",
@@ -402,7 +402,7 @@
       "runtime_verification": "NOT_RUN"
     },
     {
-      "id": "PH08-05-B01-INSTANCE-SYNTHESIZE-R1",
+      "id": "PH08-05-B01-INSTANCE-SYNTHESIZE-R2",
       "kind": "INSTANCE",
       "subtopic_id": "PH08-05",
       "qrt_target_id": "PH08-05-B01-D4-SYNTHESIZE-01",
@@ -410,7 +410,7 @@
       "protected_work": "Resolve the unknown path composition and common timing offset from two independent paths, and establish which measurements determine a unique solution.",
       "differs_from_worked_anchor": true,
       "stages": {
-        "predict": "Record your initial interpretation and confidence before viewing support.",
+        "predict": "Predict whether the mixed path and reference observations are mutually consistent. Give your initial confidence before finding the length.",
         "attempt": "A 2 m direct path contains unknown length x in medium A and the rest in B. A 500 Hz source has λA=0.60 m and λB=1.00 m. The apparatus reports 7.2 ms through the mixed path and 5.6 ms through 2 m entirely in B. Both have the same unknown delay. A separate 1 m path entirely in A reports 4.933 ms (rounded). Find x and delay, and assess consistency.",
         "reconstruct": "vA=300, vB=500 m/s. All B propagation 4 ms, τ=1.6 ms. Mixed propagation 5.6 ms; extra 1.6 ms=x(1/300−1/500), so x=1.2 m. Third predicts 3.333+1.6=4.933 ms. Physically admissible x.",
         "diagnose": "Find whether you averaged the two speeds or counted detector delay more than once. Are the observations independent enough to determine the unknown length?",
@@ -478,6 +478,6 @@
       "release_authority": "HOLD"
     },
     "release": "HOLD",
-    "acceptance_note": "Dedicated B01 subtopic slice; existing Core2 candidate is supporting PREREQUISITE_BRIDGE, producer D2 and source/QRT HOLD. New advanced tasks AUTHORED_TRANSFER; no direct exam admission. Per-target MAIN placeholders remain pending approved tile MAIN design. No academic approval inferred from software validation."
+    "acceptance_note": "Dedicated B01 subtopic slice; existing Core2 candidate is supporting PREREQUISITE_BRIDGE, producer D2 and source/QRT HOLD. New advanced tasks AUTHORED_TRANSFER; no direct exam admission. Per-target MAIN placeholders remain pending approved tile MAIN design. No academic approval inferred from software validation. R00 correction: all six predictions revised for exact tasks; cycle IDs R2 and uniquely versioned isolated slice (0.3.0-b01.3 history retained at reviewed commit). No final stage implementation or protected custody implied; inherited runtime still groups post-attempt stages. B5 HOLD."
   }
 }

@@ -4,7 +4,7 @@
   "academic_track": "NSEJS",
   "topic_id": "PH07",
   "owner_agent": "AGENT_2",
-  "version": "0.3.0-b01.1",
+  "version": "0.3.2-b01.5.ph07-01",
   "status": "DRAFT_AUTHOR_EXPOSED",
   "pins": {
     "contracts_version": "1.0.0",
@@ -16,7 +16,7 @@
       "version": "1.0.0",
       "git_blob_sha": "e2409aef11ae7d98444593bfbe1a38eb00c97cef"
     },
-    "topic_adapter_version": "0.3.0-b01.1"
+    "topic_adapter_version": "0.3.2-b01.5.ph07-01"
   },
   "syllabus_references": [
     {
@@ -171,7 +171,7 @@
   "topic_adapter": {
     "adapter_id": "PHYS-TOPIC-PH07",
     "topic_id": "PH07",
-    "version": "0.3.0-b01.1",
+    "version": "0.3.2-b01.5.ph07-01",
     "for_blueprint": "PHYS-QRT-BLUEPRINT 0.2.0",
     "status": "CANDIDATE_ONLY",
     "cells": [
@@ -278,7 +278,7 @@
   ],
   "core1b": [
     {
-      "id": "PH07-01-B01-MAIN-MODEL-R1",
+      "id": "PH07-01-B01-MAIN-MODEL-R2",
       "kind": "MAIN",
       "subtopic_id": "PH07-01",
       "qrt_target_id": "PH07-01-B01-D3-MODEL-01",
@@ -286,7 +286,7 @@
       "protected_work": "Distinguish an additive offset from a slope error and select the affine calibration before inferring the sample temperature.",
       "differs_from_worked_anchor": true,
       "stages": {
-        "predict": "Record your initial conclusion or expected relationship and explain your confidence before inspecting any support.",
+        "predict": "Before calculating, would you trust the colleague's correction for the 42-unit sample? Commit to yes, no, or uncertain and your initial reason.",
         "attempt": "An instrument reads 12 and 72 in 0 °C and 60 °C baths. Its sample reading is 42. A colleague says an offset correction is sufficient. A 30 °C bath reads 44. Assess the model and any conditional sample estimate.",
         "reconstruct": "Offset-only fits both endpoints: θ=r−12 gives 30 °C for the sample. The intermediate bath would read 42, not 44; exact data contradict the offset/linear model. The estimate is conditional, not certified.",
         "diagnose": "If you used one correction for every raw value, compare its prediction at both reference points. If you fit two points, check the independent reference. Which observation falsifies your route?",
@@ -302,7 +302,7 @@
       "runtime_verification": "NOT_RUN"
     },
     {
-      "id": "PH07-01-B01-INSTANCE-MODEL-R1",
+      "id": "PH07-01-B01-INSTANCE-MODEL-R2",
       "kind": "INSTANCE",
       "subtopic_id": "PH07-01",
       "qrt_target_id": "PH07-01-B01-D3-MODEL-01",
@@ -310,7 +310,7 @@
       "protected_work": "Distinguish an additive offset from a slope error and select the affine calibration before inferring the sample temperature.",
       "differs_from_worked_anchor": true,
       "stages": {
-        "predict": "Record your initial conclusion or expected relationship and explain your confidence before inspecting any support.",
+        "predict": "Predict whether the 32-unit specimen reading is sufficient to certify a temperature. State your initial confidence and why.",
         "attempt": "A sensor reads 2 at 10 °C, 62 at 90 °C, and 32 in a specimen. A 50 °C check reads 33. Select a correction model and report what the specimen data actually justify.",
         "reconstruct": "The endpoints give θ=10+80(r−2)/60=50 °C for r=32; offset-only fails the second endpoint. The midpoint should display 32, not 33. Exact data rule out perfect linearity; the estimate is conditional.",
         "diagnose": "If you used one correction for every raw value, compare its prediction at both reference points. If you fit two points, check the independent reference. Which observation falsifies your route?",
@@ -326,7 +326,7 @@
       "runtime_verification": "NOT_RUN"
     },
     {
-      "id": "PH07-01-B01-MAIN-REPRESENT-R1",
+      "id": "PH07-01-B01-MAIN-REPRESENT-R2",
       "kind": "MAIN",
       "subtopic_id": "PH07-01",
       "qrt_target_id": "PH07-01-B01-D3-REPRESENT-01",
@@ -334,7 +334,7 @@
       "protected_work": "Construct a common temperature scale from two unequal raw scales, preserving reference locations, interval size and a signed difference.",
       "differs_from_worked_anchor": true,
       "stages": {
-        "predict": "Record your initial conclusion or expected relationship and explain your confidence before inspecting any support.",
+        "predict": "Which sample, P or Q, do you expect to be warmer, or is the ordering uncertain? Record your initial basis before drawing.",
         "attempt": "A scale P spans raw 4 to 44 between 0 and 80 °C; Q spans raw 100 to 180 over the same interval. P reads 19 and Q reads 122. Construct a common labelled axis and compare the samples.",
         "reconstruct": "P=30 °C; Q=22 °C. Mark 0,22,30,80 in order, annotate the two raw reference pairs; P is warmer by 8 K despite smaller raw reading.",
         "diagnose": "Compare your axis with the reconstructed scale: did you compare raw values, misplace a reference, or reverse the signed ordering? Identify the first mismatch.",
@@ -350,7 +350,7 @@
       "runtime_verification": "NOT_RUN"
     },
     {
-      "id": "PH07-01-B01-INSTANCE-REPRESENT-R1",
+      "id": "PH07-01-B01-INSTANCE-REPRESENT-R2",
       "kind": "INSTANCE",
       "subtopic_id": "PH07-01",
       "qrt_target_id": "PH07-01-B01-D3-REPRESENT-01",
@@ -358,7 +358,7 @@
       "protected_work": "Construct a common temperature scale from two unequal raw scales, preserving reference locations, interval size and a signed difference.",
       "differs_from_worked_anchor": true,
       "stages": {
-        "predict": "Record your initial conclusion or expected relationship and explain your confidence before inspecting any support.",
+        "predict": "Predict whether X or Y has the higher physical temperature, or whether they tie. Give your initial reason without computing.",
         "attempt": "Sensor X maps raw −5 to 15 over −20 to 60 °C; Y maps raw 0 to 80 over the same temperatures. X reads 5 and Y reads 35. Put both results on a single Celsius axis and compare.",
         "reconstruct": "X=20 °C; Y=15 °C. The shared axis marks −20,15,20,60 with endpoint labels; X exceeds Y by 5 K.",
         "diagnose": "Compare your axis with the reconstructed scale: did you compare raw values, misplace a reference, or reverse the signed ordering? Identify the first mismatch.",
@@ -374,7 +374,7 @@
       "runtime_verification": "NOT_RUN"
     },
     {
-      "id": "PH07-01-B01-MAIN-JUSTIFY-R1",
+      "id": "PH07-01-B01-MAIN-JUSTIFY-R2",
       "kind": "MAIN",
       "subtopic_id": "PH07-01",
       "qrt_target_id": "PH07-01-B01-D3-JUSTIFY-01",
@@ -382,7 +382,7 @@
       "protected_work": "Determine whether the claimed accuracy follows from independent reference data, and distinguish resolution, repeatability and systematic error.",
       "differs_from_worked_anchor": true,
       "stages": {
-        "predict": "Record your initial conclusion or expected relationship and explain your confidence before inspecting any support.",
+        "predict": "Would you accept the probe's advertised accuracy based on these readings? Record your initial judgement and reason.",
         "attempt": "A probe displays 0.01 °C digits; a stable 15.00 °C reference gives 14.30, 14.31, 14.30 and a 35.00 °C reference gives 34.30, 34.29, 34.30. Defend or reject a claim of ±0.01 °C accuracy and propose the minimum further validation.",
         "reconstruct": "Both clusters show about −0.70 °C bias despite low scatter. Reject accuracy claim; a +0.70 °C correction is tentative in this interval. Test an independent bath and quantify reference and sensor uncertainty.",
         "diagnose": "If you accepted accuracy because readings repeated, contrast the observed scatter with the reference error. Identify which claim the observations do and do not support.",
@@ -398,7 +398,7 @@
       "runtime_verification": "NOT_RUN"
     },
     {
-      "id": "PH07-01-B01-INSTANCE-JUSTIFY-R1",
+      "id": "PH07-01-B01-INSTANCE-JUSTIFY-R2",
       "kind": "INSTANCE",
       "subtopic_id": "PH07-01",
       "qrt_target_id": "PH07-01-B01-D3-JUSTIFY-01",
@@ -406,7 +406,7 @@
       "protected_work": "Determine whether the claimed accuracy follows from independent reference data, and distinguish resolution, repeatability and systematic error.",
       "differs_from_worked_anchor": true,
       "stages": {
-        "predict": "Record your initial conclusion or expected relationship and explain your confidence before inspecting any support.",
+        "predict": "Would you use this thermometer's displayed value as a certified temperature at an untested point? Explain your initial judgement.",
         "attempt": "A thermometer repeats 40.8, 40.8 and 40.9 in a 40.0 °C reference and 70.8, 70.9 and 70.8 in a 70.0 °C reference. The user concludes it is accurate to 0.1 °C for any temperature. Evaluate the evidence and design a discriminating check.",
         "reconstruct": "About +0.8 °C bias, small repeat scatter. Reject ±0.1 °C accuracy. A −0.8 °C correction is provisional between tested points. Test another independent reference within the intended range and account for uncertainty.",
         "diagnose": "If you accepted accuracy because readings repeated, contrast the observed scatter with the reference error. Identify which claim the observations do and do not support.",
@@ -464,6 +464,6 @@
       "release_authority": "HOLD"
     },
     "release": "HOLD",
-    "acceptance_note": "B01 subtopic-only development slice, not canonical replacement for PH07 adapter; C06 v1 MAIN placeholders per-target, not approved cross-instance tile MAIN. All authored transfer, no authenticated exam or independent qualification. Source PH00-MEAS unbound. No academic approval inferred from software validation."
+    "acceptance_note": "B01 subtopic-only development slice, not canonical replacement for PH07 adapter; C06 v1 MAIN placeholders per-target, not approved cross-instance tile MAIN. All authored transfer, no authenticated exam or independent qualification. Source PH00-MEAS unbound. No academic approval inferred from software validation. R00 correction: all six predictions revised for exact tasks; cycle IDs R2 and uniquely versioned isolated slice (0.3.0-b01.1 history retained at reviewed commit). No final stage implementation or protected custody implied; inherited runtime still groups post-attempt stages. B5 HOLD."
   }
 }

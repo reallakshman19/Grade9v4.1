@@ -4,7 +4,7 @@
   "academic_track": "NSEJS",
   "topic_id": "PH07",
   "owner_agent": "AGENT_2",
-  "version": "0.3.0-b01.2",
+  "version": "0.3.2-b01.5.ph07-02",
   "status": "DRAFT_AUTHOR_EXPOSED",
   "pins": {
     "contracts_version": "1.0.0",
@@ -16,7 +16,7 @@
       "version": "1.0.0",
       "git_blob_sha": "e2409aef11ae7d98444593bfbe1a38eb00c97cef"
     },
-    "topic_adapter_version": "0.3.0-b01.2"
+    "topic_adapter_version": "0.3.2-b01.5.ph07-02"
   },
   "syllabus_references": [
     {
@@ -180,7 +180,7 @@
   "topic_adapter": {
     "adapter_id": "PHYS-TOPIC-PH07",
     "topic_id": "PH07",
-    "version": "0.3.0-b01.2",
+    "version": "0.3.2-b01.5.ph07-02",
     "for_blueprint": "PHYS-QRT-BLUEPRINT 0.2.0",
     "status": "CANDIDATE_ONLY",
     "cells": [
@@ -293,7 +293,7 @@
   ],
   "core1b": [
     {
-      "id": "PH07-02-B01-MAIN-MODEL-R1",
+      "id": "PH07-02-B01-MAIN-MODEL-R2",
       "kind": "MAIN",
       "subtopic_id": "PH07-02",
       "qrt_target_id": "PH07-02-B01-D3-MODEL-01",
@@ -301,7 +301,7 @@
       "protected_work": "Choose a system-boundary energy-rate model and distinguish driven steady state from equilibrium and constant-temperature phase change.",
       "differs_from_worked_anchor": true,
       "stages": {
-        "predict": "Record your initial conclusion and confidence before opening any support.",
+        "predict": "Before drawing any diagrams, predict whether the thermos, incubator and melting sample have the same energy behaviour or different behaviour. Give one initial reason.",
         "attempt": "An insulated thermos is left undriven at room temperature, a warm incubator uses 32 W to maintain temperature above the room, and a melting sample receives 12 W without measurable loss. All readings remain constant. Construct a model for each, including whether internal energy changes and whether the surroundings are in equilibrium with it.",
         "reconstruct": "Thermos at same temperature: no net transfer, unchanged energy under assumptions. Incubator: nonzero balanced rates at steady state, not equilibrium with room. Melting sample: positive accumulation at constant T due to phase change. Distinguish observed constant T from the necessary system conditions.",
         "diagnose": "Compare your energy paths with the observations: did you equate constant temperature with no energy transfer or overlook phase change?",
@@ -317,7 +317,7 @@
       "runtime_verification": "NOT_RUN"
     },
     {
-      "id": "PH07-02-B01-INSTANCE-MODEL-R1",
+      "id": "PH07-02-B01-INSTANCE-MODEL-R2",
       "kind": "INSTANCE",
       "subtopic_id": "PH07-02",
       "qrt_target_id": "PH07-02-B01-D3-MODEL-01",
@@ -325,7 +325,7 @@
       "protected_work": "Choose a system-boundary energy-rate model and distinguish driven steady state from equilibrium and constant-temperature phase change.",
       "differs_from_worked_anchor": true,
       "stages": {
-        "predict": "Record your initial conclusion and confidence before opening any support.",
+        "predict": "Which of the three objects do you initially think is accumulating energy? Record your prediction and reasoning before building diagrams.",
         "attempt": "An unheated object matches the surroundings at 20 °C; a hotter electronically warmed solid loses 26 W and receives 26 W; an ice-water mixture receives 15 W while remaining at its melting point. Compare their energy diagrams and identify which are genuine equilibrium or steady-state examples.",
         "reconstruct": "First is thermal equilibrium under stated conditions. Second is driven steady state with zero accumulation but nonzero transfer. Third gains internal energy despite constant temperature, as long as phase change persists and loss is negligible.",
         "diagnose": "Compare your energy paths with the observations: did you equate constant temperature with no energy transfer or overlook phase change?",
@@ -341,7 +341,7 @@
       "runtime_verification": "NOT_RUN"
     },
     {
-      "id": "PH07-02-B01-MAIN-SYNTHESIZE-R1",
+      "id": "PH07-02-B01-MAIN-SYNTHESIZE-R2",
       "kind": "MAIN",
       "subtopic_id": "PH07-02",
       "qrt_target_id": "PH07-02-B01-D3-SYNTHESIZE-01",
@@ -349,7 +349,7 @@
       "protected_work": "Combine geometry-specific input and heat-loss models through conservation, then check how an additional loss path invalidates a simple scaling law.",
       "differs_from_worked_anchor": true,
       "stages": {
-        "predict": "Record your initial conclusion and confidence before opening any support.",
+        "predict": "When the shell size increases ninefold, predict whether the required drive increases, decreases or stays constant. Give your initial reasoning.",
         "attempt": "Two geometrically similar thin-walled warm shells have a drive power proportional to D²/a, and heat loss proportional to a², where a is size and D is drive setting. At the same fixed surface temperature, predict the ratio of D when size grows by factor 9; then discuss an extra loss independent of size.",
         "reconstruct": "Steady balance D²/a ∝ a² gives D ∝ a^(3/2), ratio 27. A size-independent heat loss adds a term: D² ∝ a³ plus a term proportional to a, so the pure power law is no longer universal.",
         "diagnose": "Identify the first point at which your calculation treated a cross-section and a surface as interchangeable, or ignored the extra heat loss.",
@@ -365,7 +365,7 @@
       "runtime_verification": "NOT_RUN"
     },
     {
-      "id": "PH07-02-B01-INSTANCE-SYNTHESIZE-R1",
+      "id": "PH07-02-B01-INSTANCE-SYNTHESIZE-R2",
       "kind": "INSTANCE",
       "subtopic_id": "PH07-02",
       "qrt_target_id": "PH07-02-B01-D3-SYNTHESIZE-01",
@@ -373,7 +373,7 @@
       "protected_work": "Combine geometry-specific input and heat-loss models through conservation, then check how an additional loss path invalidates a simple scaling law.",
       "differs_from_worked_anchor": true,
       "stages": {
-        "predict": "Record your initial conclusion and confidence before opening any support.",
+        "predict": "Predict whether the redesigned cylinder needs a larger, smaller or unchanged drive. Record your initial reason before finding its factor.",
         "attempt": "A heated cylindrical model has input power per unit length K X²/r² and lateral loss per unit length H r at a fixed temperature. A redesigned surface has radius 2r and doubles H, with K unchanged. Find the required factor change in X and identify the assumption needed for the prediction.",
         "reconstruct": "X²=H r³/K; changing H by 2 and r by 2 multiplies X² by 16, so X increases by 4. This requires the assumed fixed-temperature loss model and negligible other paths.",
         "diagnose": "Identify the first point at which your calculation treated a cross-section and a surface as interchangeable, or ignored the extra heat loss.",
@@ -389,7 +389,7 @@
       "runtime_verification": "NOT_RUN"
     },
     {
-      "id": "PH07-02-B01-MAIN-JUSTIFY-R1",
+      "id": "PH07-02-B01-MAIN-JUSTIFY-R2",
       "kind": "MAIN",
       "subtopic_id": "PH07-02",
       "qrt_target_id": "PH07-02-B01-D3-JUSTIFY-01",
@@ -397,7 +397,7 @@
       "protected_work": "Judge whether a constant-temperature observation warrants claims about heat transfer and internal energy by constructing discriminating counterexamples.",
       "differs_from_worked_anchor": true,
       "stages": {
-        "predict": "Record your initial conclusion and confidence before opening any support.",
+        "predict": "Would you accept both of the technician's claims about the cup, tank and heated vessel? Record separate initial verdicts.",
         "attempt": "A small cup and a much larger tank contain water at the same temperature; a heater maintains a separate warm vessel at that temperature while a meter records 60 W input. A technician says all three store the same thermal energy and none loses energy. Assess the claims and specify a measurement or assumption for each.",
         "reconstruct": "Equal T does not imply equal U for different masses. The driven vessel at steady unchanged phase can lose 60 W despite stable temperature; verify loss with a system energy balance. Temperature alone does not determine U or the energy paths.",
         "diagnose": "Identify the specific physical counterexample that defeats each general statement; check if you used temperature in place of an energy quantity.",
@@ -413,7 +413,7 @@
       "runtime_verification": "NOT_RUN"
     },
     {
-      "id": "PH07-02-B01-INSTANCE-JUSTIFY-R1",
+      "id": "PH07-02-B01-INSTANCE-JUSTIFY-R2",
       "kind": "INSTANCE",
       "subtopic_id": "PH07-02",
       "qrt_target_id": "PH07-02-B01-D3-JUSTIFY-01",
@@ -421,7 +421,7 @@
       "protected_work": "Judge whether a constant-temperature observation warrants claims about heat transfer and internal energy by constructing discriminating counterexamples.",
       "differs_from_worked_anchor": true,
       "stages": {
-        "predict": "Record your initial conclusion and confidence before opening any support.",
+        "predict": "Before calculating, record whether you agree with each claim about the two blocks and the third heated block. Explain your initial basis.",
         "attempt": "Two metal blocks at identical temperature have masses 1 kg and 4 kg; a third block at constant higher temperature receives 10 W continuously. A claim says the first two must contain equal energy and the third cannot exchange heat. Supply counterexamples and state what needs to be checked before inferring zero net accumulation.",
         "reconstruct": "For identical material and common reference, different masses generally have different internal energy; equality of temperature only prevents net spontaneous heat transfer when in mutual thermal contact. Third block could lose 10 W at steady unchanged state; energy rates and phase must be checked.",
         "diagnose": "Identify the specific physical counterexample that defeats each general statement; check if you used temperature in place of an energy quantity.",
@@ -489,6 +489,6 @@
       "release_authority": "HOLD"
     },
     "release": "HOLD",
-    "acceptance_note": "B01 source-related isolated slice. Existing fuse candidate is a D2-labelled cross-topic bridge, not verified direct exam evidence; advanced scaling is authored transfer. C06 v1 MAIN placeholders, integrated tile MAIN pending. No academic approval inferred from software validation."
+    "acceptance_note": "B01 source-related isolated slice. Existing fuse candidate is a D2-labelled cross-topic bridge, not verified direct exam evidence; advanced scaling is authored transfer. C06 v1 MAIN placeholders, integrated tile MAIN pending. No academic approval inferred from software validation. R00 correction: all six predictions revised for exact tasks; cycle IDs R2 and uniquely versioned isolated slice (0.3.0-b01.2 history retained at reviewed commit). No final stage implementation or protected custody implied; inherited runtime still groups post-attempt stages. B5 HOLD."
   }
 }
