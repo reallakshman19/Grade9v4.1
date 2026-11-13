@@ -141,6 +141,56 @@ def main():
                         "refresh":"PASS","overflow_px":max(0,overflow),
                         "page_errors":errors,"status":"PASS"
                     })
+                # Help visited before saving must remain in the first-attempt
+                # exposure record, rather than being silently discarded.
+                help_ctx = browser.new_context(viewport={"width":1000,"height":1600})
+                hp = help_ctx.new_page()
+                hp.goto(url, wait_until="load")
+                hp.wait_for_function("document.querySelector('#runtimeStatus').textContent.includes('Candidate task loaded')")
+                hp.locator("#textbookLink").click()
+                hp.wait_for_url("**/nsejs/physics/textbook/PH01/index.html")
+                hp.go_back(wait_until="load")
+                hp.wait_for_function("document.querySelector('#runtimeStatus').textContent.includes('Candidate task loaded')")
+                hp.locator("#predictInput").fill("My tentative prediction before asking for help.")
+                hp.locator("#attemptInput").fill("I studied the textbook, so this is not unassisted evidence.")
+                hp.locator("#saveFirst").click()
+                visited = storage_snapshot(hp)["record"]
+                assert visited["first_answer"]["answer"].startswith("I studied")
+                assert "TEXTBOOK_BEFORE_FIRST" in {x["kind"] for x in visited["help_exposure"]}
+                hp.locator("#textbookLink").click()
+                hp.wait_for_url("**/nsejs/physics/textbook/PH01/index.html")
+                hp.go_back(wait_until="load")
+                hp.wait_for_function("document.querySelector('#runtimeStatus').textContent.includes('Candidate task loaded')")
+                again = storage_snapshot(hp)["record"]
+                assert "TEXTBOOK_AFTER_FIRST" in {x["kind"] for x in again["help_exposure"]}
+                assert again["first_answer"] == visited["first_answer"]
+                help_ctx.close()
+                receipt["tests"].append({
+                    "case":"linked_textbook_help_exposure",
+                    "before_first_preserved":True,
+                    "after_first_preserved":True,
+                    "first_answer_immutable":True,
+                    "status":"PASS"
+                })
+                # A record pinned to an earlier digest must never prefill
+                # the attempt at the current content revision.
+                stale_ctx = browser.new_context(viewport={"width":1000,"height":1600})
+                sp = stale_ctx.new_page()
+                sp.goto(url, wait_until="load")
+                sp.wait_for_function("document.querySelector('#runtimeStatus').textContent.includes('Candidate task loaded')")
+                sp.evaluate("""() => localStorage.setItem(
+                  'G9V41:PH01:R2:old-revision:PH01-MAIN-D3.4-R2',
+                  JSON.stringify({first_answer:{answer:'STALE INJECTED'}, task_id:'PH01-MAIN-D3.4-R2'})
+                )""")
+                sp.reload(wait_until="load")
+                sp.wait_for_function("document.querySelector('#runtimeStatus').textContent.includes('Candidate task loaded')")
+                assert sp.locator("#postAttempt").is_hidden()
+                assert sp.locator("#saveFirst").is_enabled()
+                stale_ctx.close()
+                receipt["tests"].append({
+                    "case":"stale_revision", "stale_first_answer_ignored":True,
+                    "status":"PASS"
+                })
                 blocked = browser.new_context(viewport={"width":1000,"height":1600})
                 blocked.add_init_script("""Object.defineProperty(window, 'localStorage', {
                     configurable: true,
