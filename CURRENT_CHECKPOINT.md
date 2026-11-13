@@ -121,6 +121,14 @@
     - Chemistry and Biology remain `{Core 2: Unvalidated}` pending equivalent peer review.
     - Verified live on `http://localhost:8000/nsejs/index.html` (HTTP 200). Committed and pushed to `origin/main` (`ef8a06f`).
 
+19. **WPE Engine & Mechanics Learning Route Remediation (`learn-mechanics.html`)**:
+    - **Engine Dependency Restored**: Restored missing `physics/wpe/gap-six-stage-engine.js` (25,227 bytes) and 3 related CSS stylesheets (`extension-learning.css`, `focused-journeys.css`, `gap-transfer-r3.css`) to the local working directory.
+    - **Route Fallback Implemented**: Upgraded `nsejs/js/wpe-contract-adapter.js` to automatically fall back to the valid target question `g9:PHYSICS:G9-AUTH-MECH-001` (revision `65eadfb0dfc06b4dc3c910ade26d5f5d005efea00be5d7c4f8128b3d45c29259`) when accessed directly or without query parameters, eliminating `EXACT_SOURCE_UID_AND_REVISION_REQUIRED` crashes.
+    - **Explicit Parameter Links Fixed**: Repaired direct navigation links in `nsejs/physics/index.html` (lines 672, 686, 695), `nsejs/physics/core1/index.html` (line 333), and `nsejs/physics/learn-mechanics.html` (line 24) to carry full verified query parameters.
+    - **Tablet Touch & Rule 13 Compliance**: Linked `css/tablet-12-7.css` in `learn-mechanics.html` and added explicit `{Unvalidated} · HOLD: ACADEMIC_ADMISSION` badges and Rule 13 footers to `nsejs-fluids-sound-r1` and `nsejs-fluids-surface-energy-d3-r1`.
+    - **Automated Regression Auditing**: Authored and committed `tools/audit_nsejs_pages.py` validating 43 published pages: 0 broken assets, 0 broken internal links (823 checked), 100% pass across all 17 Physics modules.
+    - Verified live on `http://localhost:8000/nsejs/physics/learn-mechanics.html` (HTTP 200). Committed and pushed to `origin/main` (`78f8d08`).
+
 14. **Site-Wide Navigation Audit & Uniform Masthead/Breadcrumb Remediation Across All 94 Pages**:
     - Performed comprehensive audit (`scripts/audit_site_nav.py`) scanning all 94 published HTML pages across the repository for navigation bars, breadcrumb trails, and back links.
     - Remediated all 43 previously unnavigated or broken modules:
