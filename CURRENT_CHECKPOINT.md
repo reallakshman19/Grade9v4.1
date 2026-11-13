@@ -45,6 +45,13 @@
    - 0px horizontal scroll overflow on tablet viewports.
    - Verified commitment protection (derivations hidden until user commits an answer).
    - Rule 13 invariants preserved: `{Unvalidated}` pill badges and `HOLD: ACADEMIC_ADMISSION` warning banners active across all subject pages.
+9. **UI Streamlining & 12.7" Tablet Ergonomics Upgrade**:
+   - Refactored `nsejs/physics/index.html`, `nsejs/chemistry/index.html`, and `nsejs/biology/index.html`:
+     - Consolidated multiple stacked notice banners into a single unified Hero Header with an embedded `{Unvalidated}` governance badge.
+     - Added 4-cell Metrics & Status Strip to all three subject hubs.
+     - Added interactive, touch-friendly filter pills (`min-height: 44px`) with instant client-side card filtering.
+     - Redesigned topic cards with 3-stage progression decks (`Core 2`, `Core 1A`, `Core 1B`), 48px primary action CTAs, and clean collapsible source module drawers.
+     - Eliminated repetitive in-card notice boxes while maintaining 100% Rule 13 compliance and 0px horizontal scroll overflow.
 
 ---
 

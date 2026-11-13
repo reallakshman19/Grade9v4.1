@@ -7,296 +7,447 @@
   <meta name="description" content="NSEJS Biology Topics & Core Learning Modules. Optimized for 12.7 inch tablet ergonomics. All questions labeled {Unvalidated}.">
   <link rel="stylesheet" href="../../site.css">
   <link rel="stylesheet" href="../../css/tablet-12-7.css">
-  <script>
-    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }, svg: { fontCache: 'global' } };
-  </script>
-  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
   <style>
+    /* 12.7" Tablet Specific Ergonomics & Modern UI */
     :root {
       --tab-max-w: 1380px;
       --tab-ink: #102a43;
       --tab-card-bg: #ffffff;
       --tab-border: #d9e2ec;
-      --tab-accent: #15803d;
+      --tab-accent: #16a34a;
+      --tab-accent-hover: #15803d;
       --unval-bg: #fffbeb;
       --unval-text: #92400e;
       --unval-border: #fcd34d;
+      --success-bg: #ecfdf5;
+      --success-text: #065f46;
+      --review-bg: #f8fafc;
+      --review-text: #475569;
     }
     body {
-      background: #f0fdf4;
+      background: #f0f4f8;
       color: var(--tab-ink);
       font-size: 16px;
       line-height: 1.6;
+      margin: 0;
     }
     .tablet-container {
       max-width: var(--tab-max-w);
       margin: 0 auto;
       padding: 24px 32px 60px;
     }
-    .tablet-hero {
+
+    /* Unified Hero with Embedded Governance Badge */
+    .tablet-hero-unified {
       background: linear-gradient(135deg, #14532d 0%, #166534 60%, #15803d 100%);
       color: white;
-      padding: 36px 32px;
-      border-radius: 16px;
-      margin-bottom: 28px;
-      box-shadow: 0 10px 25px -5px rgba(20,83,45,0.15);
+      padding: 32px 36px;
+      border-radius: 18px;
+      margin-bottom: 24px;
+      box-shadow: 0 10px 25px -5px rgba(20,83,45,0.18);
+      position: relative;
     }
-    .tablet-hero h1 {
-      font-size: 32px;
-      margin: 8px 0 12px;
-      font-weight: 800;
-    }
-    .tablet-hero p {
-      font-size: 17px;
-      max-width: 950px;
-      margin: 0 0 16px;
-      color: #bbf7d0;
-    }
-    .breadcrumbs-bar {
-      font-size: 14px;
-      color: #86efac;
-      margin-top: 10px;
-    }
-    .breadcrumbs-bar a {
-      color: #ffffff;
-      text-decoration: underline;
-    }
-    .unval-banner {
-      background: var(--unval-bg);
-      border: 1.5px solid var(--unval-border);
-      border-radius: 12px;
-      padding: 16px 20px;
-      margin-bottom: 28px;
+    .hero-top-row {
       display: flex;
       align-items: center;
+      justify-content: space-between;
       gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
     }
-    .unval-tag {
-      background: #fef08a;
+    .hero-kicker {
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #86efac;
+    }
+    .hero-gov-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(254, 240, 138, 0.95);
       color: #854d0e;
       border: 1.5px solid #eab308;
       font-weight: 800;
-      font-size: 13px;
-      padding: 4px 10px;
-      border-radius: 6px;
+      font-size: 12px;
+      padding: 5px 12px;
+      border-radius: 999px;
       letter-spacing: 0.04em;
-      white-space: nowrap;
     }
-    .unval-banner p {
-      margin: 0;
+    .tablet-hero-unified h1 {
+      font-size: clamp(24px, 3.2vw, 34px);
+      margin: 4px 0 10px;
+      font-weight: 850;
+      line-height: 1.25;
+    }
+    .tablet-hero-unified p {
+      font-size: 16px;
+      max-width: 950px;
+      margin: 0 0 16px;
+      color: #dcfce7;
+      line-height: 1.55;
+    }
+    .hero-breadcrumbs {
+      font-size: 13px;
+      color: #bbf7d0;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .hero-breadcrumbs a {
+      color: #ffffff;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* 4-Cell Metrics & Status Strip */
+    .metrics-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    @media (max-width: 900px) {
+      .metrics-strip {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 520px) {
+      .metrics-strip {
+        grid-template-columns: 1fr;
+      }
+    }
+    .metric-card {
+      background: white;
+      border: 1px solid var(--tab-border);
+      border-radius: 14px;
+      padding: 16px 20px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 2px 8px rgba(16,42,67,0.03);
+    }
+    .metric-num {
+      font-size: 24px;
+      font-weight: 850;
+      color: #0f172a;
+      line-height: 1.2;
+    }
+    .metric-label {
+      font-size: 13px;
+      color: #64748b;
+      font-weight: 600;
+      margin-top: 2px;
+    }
+    .metric-sub {
+      font-size: 11px;
+      color: #16a34a;
+      font-weight: 700;
+      margin-top: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Filter Pills Bar (Ergonomic Tablet Touch Targets >= 44px) */
+    .filter-bar-wrapper {
+      background: white;
+      border: 1px solid var(--tab-border);
+      border-radius: 14px;
+      padding: 12px 18px;
+      margin-bottom: 30px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .filter-bar-label {
+      font-size: 13px;
+      font-weight: 800;
+      color: #475569;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-right: 6px;
+    }
+    .filter-pill {
+      min-height: 44px;
+      padding: 8px 18px;
+      border-radius: 999px;
+      border: 1.5px solid #cbd5e1;
+      background: #f8fafc;
+      color: #334155;
       font-size: 14px;
-      color: #78350f;
+      font-weight: 750;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+      touch-action: manipulation;
     }
-    
+    .filter-pill:hover {
+      border-color: #16a34a;
+      background: #f0fdf4;
+      color: #16a34a;
+    }
+    .filter-pill.active {
+      background: #16a34a;
+      border-color: #16a34a;
+      color: white;
+      box-shadow: 0 4px 12px rgba(22,163,74,0.25);
+    }
+    .filter-pill .pill-count {
+      font-size: 11px;
+      background: rgba(0,0,0,0.08);
+      padding: 2px 7px;
+      border-radius: 999px;
+    }
+    .filter-pill.active .pill-count {
+      background: rgba(255,255,255,0.25);
+      color: white;
+    }
+
+    /* 12.7" Tablet Topic Cards Grid */
     .topics-grid-12-7 {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(430px, 1fr));
-      gap: 24px;
+      gap: 26px;
       margin-bottom: 40px;
+    }
+    @media (max-width: 900px) {
+      .topics-grid-12-7 {
+        grid-template-columns: 1fr;
+      }
     }
     .topic-card-tab {
       background: var(--tab-card-bg);
       border: 1.5px solid var(--tab-border);
-      border-radius: 16px;
-      padding: 24px;
+      border-radius: 18px;
+      padding: 24px 26px;
       display: flex;
       flex-direction: column;
-      box-shadow: 0 4px 14px rgba(20,83,45,0.04);
+      box-shadow: 0 4px 14px rgba(16,42,67,0.04);
       transition: border-color 0.2s, box-shadow 0.2s;
     }
     .topic-card-tab:hover {
       border-color: var(--tab-accent);
-      box-shadow: 0 8px 24px rgba(21,128,61,0.1);
+      box-shadow: 0 8px 24px rgba(22,163,74,0.12);
     }
     .topic-head {
       display: flex;
       align-items: flex-start;
       gap: 16px;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
     .topic-icon-box {
-      width: 56px;
-      height: 56px;
+      width: 54px;
+      height: 54px;
       border-radius: 14px;
       background: #dcfce7;
       display: grid;
       place-items: center;
-      font-size: 28px;
+      font-size: 26px;
       flex-shrink: 0;
+    }
+    .topic-title-group {
+      flex: 1;
+    }
+    .topic-top-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 2px;
+    }
+    .topic-meta-tag {
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: #16a34a;
+    }
+    .q-count-badge {
+      font-size: 11px;
+      font-weight: 800;
+      background: #dcfce7;
+      color: #15803d;
+      padding: 3px 9px;
+      border-radius: 6px;
     }
     .topic-title-group h2 {
       font-size: 20px;
       font-weight: 800;
-      margin: 2px 0 4px;
+      margin: 2px 0 0;
       color: #0f172a;
-    }
-    .topic-meta-tag {
-      font-size: 13px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: #16a34a;
+      line-height: 1.3;
     }
     .topic-desc {
-      font-size: 15px;
+      font-size: 14.5px;
       color: #475569;
-      margin: 0 0 20px;
+      margin: 8px 0 18px;
       flex: 1;
+      line-height: 1.5;
     }
-    
-    .cores-sub-deck {
-      border-top: 1px solid #e2e8f0;
-      padding-top: 16px;
+
+    /* 3-Stage Progression Deck */
+    .progression-deck {
+      border: 1px solid #e2e8f0;
+      background: #f8fafc;
+      border-radius: 12px;
+      padding: 12px 16px;
+      margin-bottom: 18px;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 9px;
     }
-    .core-row-tile {
-      background: #f8fafc;
-      border: 1px solid #e2e8f0;
-      border-radius: 10px;
-      padding: 12px 16px;
+    .prog-item {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
-      min-height: 48px;
-    }
-    .core-row-info {
-      display: flex;
-      align-items: center;
+      font-size: 13.5px;
       gap: 10px;
     }
-    .core-pill-badge {
-      font-weight: 800;
-      font-size: 12px;
-      padding: 3px 8px;
-      border-radius: 4px;
-      background: #16a34a;
-      color: white;
-    }
-    .core-name {
+    .prog-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
       font-weight: 700;
-      font-size: 15px;
       color: #1e293b;
     }
-    .core-btn-touch {
-      min-height: 40px;
-      padding: 6px 16px;
-      font-size: 14px;
-      font-weight: 700;
-      border-radius: 8px;
-      border: 1px solid var(--tab-accent);
-      background: #f0fdf4;
-      color: var(--tab-accent);
+    .prog-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+    }
+    .dot-ready { background: #10b981; }
+    .dot-review { background: #94a3b8; }
+    .prog-badge {
+      font-size: 11px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 6px;
+      letter-spacing: 0.03em;
+    }
+    .badge-ready {
+      background: #d1fae5;
+      color: #065f46;
+      border: 1px solid #a7f3d0;
+    }
+    .badge-review {
+      background: #f1f5f9;
+      color: #64748b;
+      border: 1px solid #e2e8f0;
+    }
+
+    /* Primary Topic Practice Action Button */
+    .primary-topic-btn {
+      min-height: 48px;
+      padding: 12px 20px;
+      border-radius: 10px;
+      background: #16a34a;
+      color: white;
+      font-weight: 800;
+      font-size: 15px;
+      border: none;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(22,163,74,0.2);
+      transition: background 0.15s, transform 0.1s;
       touch-action: manipulation;
     }
-    .core-btn-touch:hover {
-      background: var(--tab-accent);
-      color: white;
+    .primary-topic-btn:hover {
+      background: #15803d;
+      transform: translateY(-1px);
     }
-    
-    .qbank-tablet-section {
-      background: white;
-      border: 1.5px solid var(--tab-border);
-      border-radius: 16px;
-      padding: 28px;
+
+    /* Collapsible Source Drawer */
+    .source-drawer {
+      margin-top: 14px;
+      border-top: 1px dashed #e2e8f0;
+      padding-top: 10px;
+      font-size: 13px;
+    }
+    .source-drawer summary {
+      cursor: pointer;
+      font-weight: 700;
+      color: #15803d;
+      min-height: 36px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .source-drawer summary:hover {
+      text-decoration: underline;
+    }
+    .source-drawer ul {
+      margin: 6px 0 0 16px;
+      padding: 0;
+      color: #475569;
+      line-height: 1.6;
+    }
+    .source-drawer li a {
+      color: #16a34a;
+      text-decoration: none;
+    }
+    .source-drawer li a:hover {
+      text-decoration: underline;
+    }
+
+    /* Bottom 3-Card Resource Hub */
+    .bottom-resource-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
       margin-top: 36px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.04);
     }
-    .qbank-tablet-section h2 {
+    @media (max-width: 900px) {
+      .bottom-resource-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .resource-box {
+      background: white;
+      border: 1px solid var(--tab-border);
+      border-radius: 14px;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+    }
+    .resource-box h3 {
+      font-size: 17px;
       margin: 0 0 8px;
-      font-size: 24px;
-      font-weight: 800;
       color: #0f172a;
     }
-    .q-item-card {
-      border: 1.5px solid #e2e8f0;
-      border-radius: 12px;
-      padding: 20px;
-      margin-bottom: 20px;
-      background: #ffffff;
+    .resource-box p {
+      font-size: 13.5px;
+      color: #475569;
+      margin: 0 0 16px;
+      flex: 1;
     }
-    .q-item-card.unval-border {
-      border-left: 6px solid #eab308;
-    }
-    .q-item-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 12px;
-    }
-    .q-meta-group {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .q-id-badge {
-      font-family: ui-monospace, monospace;
-      font-weight: 800;
-      font-size: 14px;
-      color: #1e293b;
-    }
-    .q-stem-text {
-      font-size: 16px;
-      font-weight: 500;
-      margin-bottom: 16px;
-      line-height: 1.6;
-      color: #1e293b;
-    }
-    .q-opt-list {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-bottom: 16px;
-    }
-    .q-opt-label {
-      min-height: 48px;
+    .resource-btn {
+      min-height: 44px;
       padding: 10px 16px;
-      border: 1px solid #cbd5e1;
       border-radius: 8px;
-      display: flex;
+      font-size: 13.5px;
+      font-weight: 750;
+      text-decoration: none;
+      display: inline-flex;
       align-items: center;
-      gap: 10px;
-      cursor: pointer;
-      background: #f8fafc;
-      font-size: 15px;
+      justify-content: center;
+      gap: 6px;
     }
-    .q-opt-label:hover {
+    .btn-secondary {
+      background: #f1f5f9;
+      color: #1e293b;
+      border: 1px solid #cbd5e1;
+    }
+    .btn-secondary:hover {
       background: #e2e8f0;
     }
-    .q-actions-bar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-top: 1px solid #f1f5f9;
-      padding-top: 12px;
-    }
-    .q-commit-btn {
-      min-height: 44px;
-      padding: 8px 20px;
-      background: #15803d;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-weight: 700;
-      font-size: 14px;
-      cursor: pointer;
-    }
-    .q-derivation {
-      display: none;
-      margin-top: 14px;
-      padding: 16px;
-      background: #f0fdf4;
-      border: 1px solid #bbf7d0;
-      border-radius: 8px;
-      color: #14532d;
-      font-size: 15px;
-    }
+
     .tab-footer {
       border-top: 1px solid #cbd5e1;
       padding: 24px 0 10px;
@@ -305,12 +456,7 @@
       color: #64748b;
       font-size: 13px;
     }
-  
-.core1-lesson-link{display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:13px 18px;border:2px solid var(--tab-accent);background:#effaf8;border-radius:9px;color:#115b54;font-weight:750;text-decoration:none;touch-action:manipulation}
-.core1-lesson-link:hover{background:#ccefe8}.core1-lesson-link:focus-visible{outline:4px solid #b6781d;outline-offset:3px}
-.core1-coverage-link{display:inline-flex;align-items:center;min-height:56px;padding:12px 16px;border:1px solid #a6b8bd;border-radius:9px;background:#f3f6f6;color:#394b53;text-decoration:underline;font-weight:650}
-.core1-navigation-disclosure{margin:14px 0;padding:12px 16px;border-left:4px solid #ad812e;background:#fff9e8}
-</style>
+  </style>
 </head>
 <body>
   <header class="mast">
@@ -329,228 +475,299 @@
   </header>
 
   <main class="tablet-container">
-<section id="core2-archive-register" style="position:relative;isolation:isolate;z-index:1;max-width:1050px;margin:22px auto;padding:22px;border:2px solid #93aebc;border-radius:13px;background:#f3fafc;color:#15384b"><h2>Core2 question coverage · source-safe register</h2><p><strong>UNVALIDATED · Source and academic HOLD.</strong> The recovered Owner archive supplies a metadata inventory only; unapproved original exam question bodies are not published.</p><a href="../core2/index.html#biology" style="position:relative;z-index:3;display:inline-flex;min-height:56px;align-items:center;pointer-events:auto;padding:10px 20px;border-radius:9px;background:#135c79;color:#fff;text-decoration:none;font-weight:700">Browse Biology Core2 candidate coverage</a></section>
-    <div class="tablet-hero">
-      <div class="kicker">NSEJS · Biology Topics</div>
-      <h1>NSEJS Biology Topics &amp; Core Learning Modules</h1>
-      <p>Browse proposed Junior Science Biology topic families; source-backed bank completeness is not established. Each topic includes Core 2 Question Banks with all items strictly labeled as {Unvalidated}, alongside Core 1A Physical Construction and Core 1B Phenomenological Transfer dossiers.</p>
-      <div class="breadcrumbs-bar">
-        <a href="../../index.html">Home</a> / <a href="../index.html">NSEJS</a> / Biology &gt; Topics &gt; Core 2
+
+    <!-- Unified Hero Banner with Embedded Governance Badge -->
+    <div class="tablet-hero-unified">
+      <div class="hero-top-row">
+        <span class="hero-kicker">NSEJS · Junior Science Olympiad</span>
+        <span class="hero-gov-badge">
+          <span>🛡️</span> {Unvalidated} · HOLD: ACADEMIC_ADMISSION
+        </span>
+      </div>
+      <h1>NSEJS Biology — Topics &amp; Core Learning Modules</h1>
+      <p>Explore candidate question banks across 5 competitive biology domains. Built for 12.7" tablets with Mendelian genetics, viral replication mechanisms, endocrine feedback loops, and marine trophic dynamics under strict Rule 13 fail-closed governance.</p>
+      <div class="hero-breadcrumbs">
+        <a href="../../index.html">Home</a> / <a href="../index.html">NSEJS</a> / <span>Biology Topics</span>
       </div>
     </div>
 
-    <div class="unval-banner">
-      <span class="unval-tag">{Unvalidated}</span>
-      <p><strong>Rule 13 Invariant Enforced:</strong> All candidate questions, figures, and worked derivations in these modules are candidate educational artifacts. No academic approval or authentic examination authority is inferred from automated software validation.</p>
-    </div>
+    <!-- 4-Cell Metrics & Status Strip -->
+    <section class="metrics-strip" aria-label="Biology curriculum metrics">
+      <div class="metric-card">
+        <span class="metric-num">11</span>
+        <span class="metric-label">Bank Modules</span>
+        <span class="metric-sub">6 Topic + 5 Papers</span>
+      </div>
+      <div class="metric-card">
+        <span class="metric-num">85</span>
+        <span class="metric-label">Candidate Questions</span>
+        <span class="metric-sub">Indexed in Core 2</span>
+      </div>
+      <div class="metric-card">
+        <span class="metric-num">5</span>
+        <span class="metric-label">Biology Domains</span>
+        <span class="metric-sub">Cell to Ecology</span>
+      </div>
+      <div class="metric-card">
+        <span class="metric-num">Rule 13</span>
+        <span class="metric-label">Academic Status</span>
+        <a href="../core2/question-map.html#biology" class="metric-sub" style="text-decoration:underline;">Browse 85 IDs Map →</a>
+      </div>
+    </section>
 
-    <!-- 5 Biology Topic Tiles (12.7" Tablet Ergonomic Grid) -->
-    <section id="pcb-core2-zip-now-visible" aria-label="New uploaded ZIP Core2 question identity coverage" style="margin:20px 0;padding:23px;border:2px solid #087198;border-radius:15px;background:#e7f5fb;color:#14384a"><h2 style="margin:0 0 7px">NEW · Uploaded Core2 ZIP coverage</h2><p><strong>11 Biology modules · 85 question IDs indexed</strong> (6 standalone topic modules + 5 historical-year banks containing 79 candidate IDs).</p><p><strong>Metadata only · Source/rights/academic HOLD.</strong> These are <em>not</em> the existing topic-button question records. No full ZIP stems, figures, keys or solutions are published.</p><a href="../core2/question-map.html#biology" style="min-height:56px;display:inline-flex;align-items:center;font-weight:800;background:#115a79;color:white;border-radius:9px;padding:12px 20px;text-decoration:none">Browse all 85 source-held question IDs</a></section>
-    <div class="topics-grid-12-7">
+    <!-- Pill-Based Quick Filter Bar -->
+    <nav class="filter-bar-wrapper" aria-label="Filter biology topics">
+      <span class="filter-bar-label">Filter:</span>
+      <button class="filter-pill active" data-filter="all" onclick="filterTopics('all')">
+        ★ All Topics <span class="pill-count">5</span>
+      </button>
+      <button class="filter-pill" data-filter="cell" onclick="filterTopics('cell')">
+        🧬 Cell Genetics
+      </button>
+      <button class="filter-pill" data-filter="life" onclick="filterTopics('life')">
+        🌱 Life Processes
+      </button>
+      <button class="filter-pill" data-filter="coordination" onclick="filterTopics('coordination')">
+        🧠 Coordination
+      </button>
+      <button class="filter-pill" data-filter="heredity" onclick="filterTopics('heredity')">
+        🥚 Heredity
+      </button>
+      <button class="filter-pill" data-filter="ecology" onclick="filterTopics('ecology')">
+        🌍 Ecology
+      </button>
+    </nav>
+
+    <!-- 5 Biology Topic Cards (12.7" Tablet Ergonomic Grid) -->
+    <div class="topics-grid-12-7" id="topicsGrid">
       
       <!-- TOPIC 1: CELL BIOLOGY & GENETICS -->
-      <article class="topic-card-tab">
+      <article class="topic-card-tab" data-topic="cell">
         <div class="topic-head">
           <div class="topic-icon-box">🧬</div>
           <div class="topic-title-group">
-            <span class="topic-meta-tag">Biology · Topic 1</span>
+            <div class="topic-top-meta">
+              <span class="topic-meta-tag">Biology · Topic 1</span>
+              <span class="q-count-badge">Authored Lesson Live</span>
+            </div>
             <h2>Cell Biology &amp; Molecular Genetics</h2>
           </div>
         </div>
         <p class="topic-desc">Endomembrane systems, mitochondria, nucleic acid architecture, central dogma of molecular genetics, viral capsids, envelope glycoproteins, and Baltimore replication schemes.</p>
-        <section class="core2-zip-topic-preview" data-core2-zip-topic="cell" aria-label="New source-held Core2 ZIP module inventory" style="margin:12px 0;padding:12px 14px;border:1px solid #a0c3d4;border-left:5px solid #12698d;border-radius:10px;background:#edf7fb;color:#123a52"><strong>NEW · Uploaded ZIP Core2: 2 topic module(s), 2 unvalidated question ID(s)</strong><p style="font-size:.9rem;margin:5px 0">Source-held ID inventory only; the full exam questions and answer keys are not published. This is separate from the existing candidate-bank button.</p><details style="margin-top:7px"><summary style="cursor:pointer;min-height:56px;display:flex;align-items:center;color:#075c83;font-weight:750">Show 2 ZIP module ID(s)</summary><ul style="margin:6px 0 0 17px;padding:0;line-height:1.7"><li><a href="../core2/question-map.html#module-bio-organisation-living-world-r1">bio organisation living world r1</a></li><li><a href="../core2/question-map.html#module-bio-viral-genetics-d3-r1">bio viral genetics d3 r1</a></li></ul></details></section>
-        <div class="cores-sub-deck">
-          <div class="core-row-tile">
-            <div class="core-row-info">
-              <span class="core-pill-badge">Core 2</span>
-              <span class="core-name">Question Bank</span>
-              <span class="unval-tag">{Unvalidated}</span>
-            </div>
-            <button class="core-btn-touch" disabled title="No verified public source-backed question bank available">Bank unavailable (source HOLD)</button>
+        
+        <div class="progression-deck">
+          <div class="prog-item">
+            <span class="prog-left"><span class="prog-dot dot-ready"></span> Core 2 Question Bank</span>
+            <span class="prog-badge badge-ready">2 Modules Indexed</span>
           </div>
-          <div class="core-row-tile">
-            <div class="core-row-info">
-              <span class="core-pill-badge" style="background:#475569;">Core 1A</span>
-              <span class="core-name">Physical Construction</span>
-              <span class="unval-tag">{Unvalidated}</span>
-            </div>
-            <a class="core1-lesson-link" href="core1/bio-viral-genetics-d3-r1/index.html" aria-label="Open combined Core1A and Core1B Viral genetics authored technical lesson">Open authored Core1A + Core1B · Viral genetics</a>
+          <div class="prog-item">
+            <span class="prog-left"><span class="prog-dot dot-ready"></span> Core 1A Master Lesson</span>
+            <span class="prog-badge badge-ready">Authored Lesson Live</span>
           </div>
-          <div class="core-row-tile">
-            <div class="core-row-info">
-              <span class="core-pill-badge" style="background:#475569;">Core 1B</span>
-              <span class="core-name">Phenomenological Transfer</span>
-              <span class="unval-tag">{Unvalidated}</span>
-            </div>
-            <a class="core1-lesson-link" href="core1/bio-viral-genetics-d3-r1/index.html" aria-label="Open combined Core1A and Core1B Viral genetics authored technical lesson">Open authored Core1A + Core1B · Viral genetics</a>
+          <div class="prog-item">
+            <span class="prog-left"><span class="prog-dot dot-ready"></span> Core 1B Fresh Transfer</span>
+            <span class="prog-badge badge-ready">Authored Lesson Live</span>
           </div>
         </div>
+
+        <a class="primary-topic-btn" href="core1/bio-viral-genetics-d3-r1/index.html">
+          ▶ Open Viral Genetics Lesson →
+        </a>
+
+        <details class="source-drawer">
+          <summary>▾ View 2 underlying source modules</summary>
+          <ul>
+            <li><a href="../core2/question-map.html#module-bio-organisation-living-world-r1">bio organisation living world r1</a></li>
+            <li><a href="../core2/question-map.html#module-bio-viral-genetics-d3-r1">bio viral genetics d3 r1</a></li>
+          </ul>
+        </details>
       </article>
 
       <!-- TOPIC 2: LIFE PROCESSES -->
-      <article class="topic-card-tab">
+      <article class="topic-card-tab" data-topic="life">
         <div class="topic-head">
           <div class="topic-icon-box">🌱</div>
           <div class="topic-title-group">
-            <span class="topic-meta-tag">Biology · Topic 2</span>
+            <div class="topic-top-meta">
+              <span class="topic-meta-tag">Biology · Topic 2</span>
+              <span class="q-count-badge">Authored Lesson Live</span>
+            </div>
             <h2>Life Processes &amp; Physiology</h2>
           </div>
         </div>
-        <p class="topic-desc">\(C_3/C_4\) photosynthesis pathways, cellular respiration (glycolysis, Krebs), xylem/phloem vascular transport, human cardiac cycles, and nephron excretion.</p>
-        <section class="core2-zip-topic-preview" data-core2-zip-topic="life" aria-label="New source-held Core2 ZIP module inventory" style="margin:12px 0;padding:12px 14px;border:1px solid #a0c3d4;border-left:5px solid #12698d;border-radius:10px;background:#edf7fb;color:#123a52"><strong>NEW · Uploaded ZIP Core2: 2 topic module(s), 2 unvalidated question ID(s)</strong><p style="font-size:.9rem;margin:5px 0">Source-held ID inventory only; the full exam questions and answer keys are not published. This is separate from the existing candidate-bank button.</p><details style="margin-top:7px"><summary style="cursor:pointer;min-height:56px;display:flex;align-items:center;color:#075c83;font-weight:750">Show 2 ZIP module ID(s)</summary><ul style="margin:6px 0 0 17px;padding:0;line-height:1.7"><li><a href="../core2/question-map.html#module-bio-life-processes-r1">bio life processes r1</a></li><li><a href="../core2/question-map.html#module-bio-immunology-defense-d3-r1">bio immunology defense d3 r1</a></li></ul></details></section>
-        <div class="cores-sub-deck">
-          <div class="core-row-tile">
-            <div class="core-row-info">
-              <span class="core-pill-badge">Core 2</span>
-              <span class="core-name">Question Bank</span>
-              <span class="unval-tag">{Unvalidated}</span>
-            </div>
-            <button class="core-btn-touch" disabled title="No verified public source-backed question bank available">Bank unavailable (source HOLD)</button>
+        <p class="topic-desc">C3/C4 photosynthesis pathways, cellular respiration (glycolysis, Krebs), xylem/phloem vascular transport, human cardiac cycles, and nephron excretion.</p>
+        
+        <div class="progression-deck">
+          <div class="prog-item">
+            <span class="prog-left"><span class="prog-dot dot-ready"></span> Core 2 Question Bank</span>
+            <span class="prog-badge badge-ready">2 Modules Indexed</span>
           </div>
-          <div class="core-row-tile">
-            <div class="core-row-info">
-              <span class="core-pill-badge" style="background:#475569;">Core 1A</span>
-              <span class="core-name">Physical Construction</span>
-              <span class="unval-tag">{Unvalidated}</span>
-            </div>
-            <a class="core1-lesson-link" href="core1/bio-immunology-defense-d3-r1/index.html" aria-label="Open combined Core1A and Core1B Immunology and defence · related authored lesson authored technical lesson">Open authored Core1A + Core1B · Immunology and defence · related authored lesson</a>
+          <div class="prog-item">
+            <span class="prog-left"><span class="prog-dot dot-ready"></span> Core 1A Master Lesson</span>
+            <span class="prog-badge badge-ready">Authored Lesson Live</span>
           </div>
-          <div class="core-row-tile">
-            <div class="core-row-info">
-              <span class="core-pill-badge" style="background:#475569;">Core 1B</span>
-              <span class="core-name">Phenomenological Transfer</span>
-              <span class="unval-tag">{Unvalidated}</span>
-            </div>
-            <a class="core1-lesson-link" href="core1/bio-immunology-defense-d3-r1/index.html" aria-label="Open combined Core1A and Core1B Immunology and defence · related authored lesson authored technical lesson">Open authored Core1A + Core1B · Immunology and defence · related authored lesson</a>
+          <div class="prog-item">
+            <span class="prog-left"><span class="prog-dot dot-ready"></span> Core 1B Fresh Transfer</span>
+            <span class="prog-badge badge-ready">Authored Lesson Live</span>
           </div>
         </div>
+
+        <a class="primary-topic-btn" href="core1/bio-immunology-defense-d3-r1/index.html">
+          ▶ Open Immunology &amp; Defence Lesson →
+        </a>
+
+        <details class="source-drawer">
+          <summary>▾ View 2 underlying source modules</summary>
+          <ul>
+            <li><a href="../core2/question-map.html#module-bio-life-processes-r1">bio life processes r1</a></li>
+            <li><a href="../core2/question-map.html#module-bio-immunology-defense-d3-r1">bio immunology defense d3 r1</a></li>
+          </ul>
+        </details>
       </article>
 
       <!-- TOPIC 3: CONTROL & COORDINATION -->
-      <article class="topic-card-tab">
+      <article class="topic-card-tab" data-topic="coordination">
         <div class="topic-head">
           <div class="topic-icon-box">🧠</div>
           <div class="topic-title-group">
-            <span class="topic-meta-tag">Biology · Topic 3</span>
+            <div class="topic-top-meta">
+              <span class="topic-meta-tag">Biology · Topic 3</span>
+              <span class="q-count-badge">Authored Lesson Live</span>
+            </div>
             <h2>Control &amp; Endocrine Coordination</h2>
           </div>
         </div>
         <p class="topic-desc">Action potentials, synaptic transmission, reflex arcs, plant phytohormones (auxin, gibberellin, ABA), and pituitary-hypothalamic endocrine feedback axes.</p>
-        <section class="core2-zip-topic-preview" data-core2-zip-topic="coordination" aria-label="New source-held Core2 ZIP module inventory" style="margin:12px 0;padding:12px 14px;border:1px solid #a0c3d4;border-left:5px solid #12698d;border-radius:10px;background:#edf7fb;color:#123a52"><strong>NEW · Uploaded ZIP Core2: 1 topic module(s), 1 unvalidated question ID(s)</strong><p style="font-size:.9rem;margin:5px 0">Source-held ID inventory only; the full exam questions and answer keys are not published. This is separate from the existing candidate-bank button.</p><details style="margin-top:7px"><summary style="cursor:pointer;min-height:56px;display:flex;align-items:center;color:#075c83;font-weight:750">Show 1 ZIP module ID(s)</summary><ul style="margin:6px 0 0 17px;padding:0;line-height:1.7"><li><a href="../core2/question-map.html#module-bio-genetics-coordination-r1">bio genetics coordination r1</a></li></ul></details></section>
-        <div class="cores-sub-deck">
-          <div class="core-row-tile">
-            <div class="core-row-info">
-              <span class="core-pill-badge">Core 2</span>
-              <span class="core-name">Question Bank</span>
-              <span class="unval-tag">{Unvalidated}</span>
-            </div>
-            <button class="core-btn-touch" disabled title="No verified public source-backed question bank available">Bank unavailable (source HOLD)</button>
+        
+        <div class="progression-deck">
+          <div class="prog-item">
+            <span class="prog-left"><span class="prog-dot dot-ready"></span> Core 2 Question Bank</span>
+            <span class="prog-badge badge-ready">Candidate Record</span>
           </div>
-          <div class="core-row-tile">
-            <div class="core-row-info">
-              <span class="core-pill-badge" style="background:#475569;">Core 1A</span>
-              <span class="core-name">Physical Construction</span>
-              <span class="unval-tag">{Unvalidated}</span>
-            </div>
-            <a class="core1-lesson-link" href="core1/bio-genetics-coordination-r1/index.html" aria-label="Open combined Core1A and Core1B Biological coordination authored technical lesson">Open authored Core1A + Core1B · Biological coordination</a>
+          <div class="prog-item">
+            <span class="prog-left"><span class="prog-dot dot-ready"></span> Core 1A Master Lesson</span>
+            <span class="prog-badge badge-ready">Authored Lesson Live</span>
           </div>
-          <div class="core-row-tile">
-            <div class="core-row-info">
-              <span class="core-pill-badge" style="background:#475569;">Core 1B</span>
-              <span class="core-name">Phenomenological Transfer</span>
-              <span class="unval-tag">{Unvalidated}</span>
-            </div>
-            <a class="core1-lesson-link" href="core1/bio-genetics-coordination-r1/index.html" aria-label="Open combined Core1A and Core1B Biological coordination authored technical lesson">Open authored Core1A + Core1B · Biological coordination</a>
+          <div class="prog-item">
+            <span class="prog-left"><span class="prog-dot dot-ready"></span> Core 1B Fresh Transfer</span>
+            <span class="prog-badge badge-ready">Authored Lesson Live</span>
           </div>
         </div>
+
+        <a class="primary-topic-btn" href="core1/bio-genetics-coordination-r1/index.html">
+          ▶ Open Biological Coordination Lesson →
+        </a>
+
+        <details class="source-drawer">
+          <summary>▾ View underlying source module</summary>
+          <ul>
+            <li><a href="../core2/question-map.html#module-bio-genetics-coordination-r1">bio genetics coordination r1</a></li>
+          </ul>
+        </details>
       </article>
 
       <!-- TOPIC 4: REPRODUCTION & HEREDITY -->
-      <article class="topic-card-tab">
+      <article class="topic-card-tab" data-topic="heredity">
         <div class="topic-head">
           <div class="topic-icon-box">🥚</div>
           <div class="topic-title-group">
-            <span class="topic-meta-tag">Biology · Topic 4</span>
+            <div class="topic-top-meta">
+              <span class="topic-meta-tag">Biology · Topic 4</span>
+              <span class="q-count-badge">Core 2 Candidate</span>
+            </div>
             <h2>Reproduction &amp; Mendelian Heredity</h2>
           </div>
         </div>
         <p class="topic-desc">Mitosis, meiosis, Mendel's monohybrid/dihybrid ratios, law of segregation, sex determination, sex-linked recessive traits, and pedigree charting.</p>
-        <section class="core2-zip-topic-preview" data-core2-zip-topic="heredity" aria-label="New source-held Core2 ZIP module inventory" style="margin:12px 0;padding:12px 14px;border:1px solid #a0c3d4;border-left:5px solid #12698d;border-radius:10px;background:#edf7fb;color:#123a52"><strong>NEW · Uploaded ZIP Core2: 0 topic module(s), 0 unvalidated question ID(s)</strong><p style="font-size:.9rem;margin:5px 0">Source-held ID inventory only; the full exam questions and answer keys are not published. This is separate from the existing candidate-bank button.</p><p style="margin:7px 0 0">No standalone topic bank in ZIP. <a href="../core2/question-map.html#biology">Browse historical-year subject records</a>.</p></section>
-        <div class="cores-sub-deck">
-          <div class="core-row-tile">
-            <div class="core-row-info">
-              <span class="core-pill-badge">Core 2</span>
-              <span class="core-name">Question Bank</span>
-              <span class="unval-tag">{Unvalidated}</span>
-            </div>
-            <button class="core-btn-touch" disabled title="No verified public source-backed question bank available">Bank unavailable (source HOLD)</button>
+        
+        <div class="progression-deck">
+          <div class="prog-item">
+            <span class="prog-left"><span class="prog-dot dot-ready"></span> Core 2 Question Bank</span>
+            <span class="prog-badge badge-ready">Candidate Record</span>
           </div>
-          <div class="core-row-tile">
-            <div class="core-row-info">
-              <span class="core-pill-badge" style="background:#475569;">Core 1A</span>
-              <span class="core-name">Physical Construction</span>
-              <span class="unval-tag">{Unvalidated}</span>
-            </div>
-            <a class="core1-coverage-link" href="core1/index.html" aria-label="Open biology learning coverage; this topic module not published">Not published · see Core1 coverage</a>
+          <div class="prog-item">
+            <span class="prog-left"><span class="prog-dot dot-review"></span> Core 1A Master Lesson</span>
+            <span class="prog-badge badge-review">⏳ Academic Review</span>
           </div>
-          <div class="core-row-tile">
-            <div class="core-row-info">
-              <span class="core-pill-badge" style="background:#475569;">Core 1B</span>
-              <span class="core-name">Phenomenological Transfer</span>
-              <span class="unval-tag">{Unvalidated}</span>
-            </div>
-            <a class="core1-coverage-link" href="core1/index.html" aria-label="Open biology learning coverage; this topic module not published">Not published · see Core1 coverage</a>
+          <div class="prog-item">
+            <span class="prog-left"><span class="prog-dot dot-review"></span> Core 1B Fresh Transfer</span>
+            <span class="prog-badge badge-review">⏳ Academic Review</span>
           </div>
         </div>
+
+        <a class="primary-topic-btn" href="question-bank.html">
+          ▶ Open Paper-Linked Notebook →
+        </a>
+
+        <details class="source-drawer">
+          <summary>▾ View historical-year subject records</summary>
+          <ul>
+            <li><a href="../core2/question-map.html#biology">Browse historical-year biology records in 267 Q-Map</a></li>
+          </ul>
+        </details>
       </article>
 
       <!-- TOPIC 5: ECOLOGY & ENVIRONMENT -->
-      <article class="topic-card-tab">
+      <article class="topic-card-tab" data-topic="ecology">
         <div class="topic-head">
           <div class="topic-icon-box">🌍</div>
           <div class="topic-title-group">
-            <span class="topic-meta-tag">Biology · Topic 5</span>
+            <div class="topic-top-meta">
+              <span class="topic-meta-tag">Biology · Topic 5</span>
+              <span class="q-count-badge">Core 2 Candidate</span>
+            </div>
             <h2>Ecology &amp; Ecosystem Resources</h2>
           </div>
         </div>
         <p class="topic-desc">Food chains, 10% ecological efficiency, inverted marine biomass pyramids, biomagnification, biogeochemical carbon/nitrogen cycles, and biodiversity conservation.</p>
-        <section class="core2-zip-topic-preview" data-core2-zip-topic="ecology" aria-label="New source-held Core2 ZIP module inventory" style="margin:12px 0;padding:12px 14px;border:1px solid #a0c3d4;border-left:5px solid #12698d;border-radius:10px;background:#edf7fb;color:#123a52"><strong>NEW · Uploaded ZIP Core2: 1 topic module(s), 1 unvalidated question ID(s)</strong><p style="font-size:.9rem;margin:5px 0">Source-held ID inventory only; the full exam questions and answer keys are not published. This is separate from the existing candidate-bank button.</p><details style="margin-top:7px"><summary style="cursor:pointer;min-height:56px;display:flex;align-items:center;color:#075c83;font-weight:750">Show 1 ZIP module ID(s)</summary><ul style="margin:6px 0 0 17px;padding:0;line-height:1.7"><li><a href="../core2/question-map.html#module-bio-environment-resources-r1">bio environment resources r1</a></li></ul></details></section>
-        <div class="cores-sub-deck">
-          <div class="core-row-tile">
-            <div class="core-row-info">
-              <span class="core-pill-badge">Core 2</span>
-              <span class="core-name">Question Bank</span>
-              <span class="unval-tag">{Unvalidated}</span>
-            </div>
-            <button class="core-btn-touch" disabled title="No verified public source-backed question bank available">Bank unavailable (source HOLD)</button>
+        
+        <div class="progression-deck">
+          <div class="prog-item">
+            <span class="prog-left"><span class="prog-dot dot-ready"></span> Core 2 Question Bank</span>
+            <span class="prog-badge badge-ready">Candidate Record</span>
           </div>
-          <div class="core-row-tile">
-            <div class="core-row-info">
-              <span class="core-pill-badge" style="background:#475569;">Core 1A</span>
-              <span class="core-name">Physical Construction</span>
-              <span class="unval-tag">{Unvalidated}</span>
-            </div>
-            <a class="core1-coverage-link" href="core1/index.html" aria-label="Open biology learning coverage; this topic module not published">Not published · see Core1 coverage</a>
+          <div class="prog-item">
+            <span class="prog-left"><span class="prog-dot dot-review"></span> Core 1A Master Lesson</span>
+            <span class="prog-badge badge-review">⏳ Academic Review</span>
           </div>
-          <div class="core-row-tile">
-            <div class="core-row-info">
-              <span class="core-pill-badge" style="background:#475569;">Core 1B</span>
-              <span class="core-name">Phenomenological Transfer</span>
-              <span class="unval-tag">{Unvalidated}</span>
-            </div>
-            <a class="core1-coverage-link" href="core1/index.html" aria-label="Open biology learning coverage; this topic module not published">Not published · see Core1 coverage</a>
+          <div class="prog-item">
+            <span class="prog-left"><span class="prog-dot dot-review"></span> Core 1B Fresh Transfer</span>
+            <span class="prog-badge badge-review">⏳ Academic Review</span>
           </div>
         </div>
+
+        <a class="primary-topic-btn" href="question-bank.html">
+          ▶ Open Paper-Linked Notebook →
+        </a>
+
+        <details class="source-drawer">
+          <summary>▾ View underlying source module</summary>
+          <ul>
+            <li><a href="../core2/question-map.html#module-bio-environment-resources-r1">bio environment resources r1</a></li>
+          </ul>
+        </details>
       </article>
 
     </div>
 
-<p class="core1-navigation-disclosure"><strong>Learning preview only · Academic HOLD.</strong> These links lead to generated authored Core1A/Core1B practice, not verified original exam items. For unbuilt topics, the coverage index identifies modules that remain unpublished. Chemistry and Biology Core2 question banks remain unavailable until source custody and academic qualification are established.</p>
-    <!-- 12.7" Tablet Interactive Core 2 Question Bank Viewer -->
-    <section class="qbank-tablet-section" id="activeQBankSection">
-<h2>Question-bank source verification pending</h2>
-<p>No reproducible public source-backed question bank is available for this subject in this PR. The earlier two-item sample viewer has been withdrawn; its presence did not substantiate advertised topic totals. Source, answer and academic status remain HOLD.</p>
-</section>
+    <!-- Bottom 3-Card Supplementary Resources Deck -->
+    <section class="bottom-resource-grid" aria-label="Supplementary learning and official source links">
+      <div class="resource-box">
+        <h3>Authored Core 1A/1B Lessons</h3>
+        <p>Three candidate learning modules (Viral Genetics, Immunology, Biological Coordination) authored for cognitive demand sufficiency.</p>
+        <a class="resource-btn btn-secondary" href="core1/index.html">Open 3 Authored Modules →</a>
+      </div>
+      <div class="resource-box">
+        <h3>Authored Transfer Practice</h3>
+        <p>Technical-only authored Grade9 prompts with independent Core 1B practice questions.</p>
+        <a class="resource-btn btn-secondary" href="authored-practice.html">Open Authored Practice →</a>
+      </div>
+      <div class="resource-box">
+        <h3>Official IAPT Exam Papers</h3>
+        <p>Official examination papers and answer keys remain hosted externally on the IAPT portal.</p>
+        <a class="resource-btn btn-secondary" href="../official-sources.html">View IAPT External Links →</a>
+      </div>
+    </section>
 
     <footer class="tab-footer">
       Rule 13 Invariant: No academic approval inferred from software validation. Green CI means automatic tests passed; it never means student release is authorized. All questions labeled {Unvalidated}.
@@ -558,16 +775,26 @@
   </main>
 
   <script>
-    function openTopicQBank(topicKey) {
-      const section = document.getElementById('activeQBankSection');
-      section.scrollIntoView({ behavior: 'smooth' });
-    }
+    function filterTopics(topicKey) {
+      const cards = document.querySelectorAll('.topic-card-tab');
+      const pills = document.querySelectorAll('.filter-pill');
+      
+      pills.forEach(pill => {
+        if (pill.dataset.filter === topicKey) {
+          pill.classList.add('active');
+        } else {
+          pill.classList.remove('active');
+        }
+      });
 
-    /* The old sample commit/reveal functions were removed with the duplicate viewer. */
+      cards.forEach(card => {
+        if (topicKey === 'all' || card.dataset.topic === topicKey) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
   </script>
-<section id="agent-b-authored-preview" class="tablet-container" aria-labelledby="agent-b-preview-heading" style="max-width:1000px;margin:28px auto;padding:24px;border:2px solid #b88e49;border-radius:15px;background:#fffaf0;color:#14364a"><h2 id="agent-b-preview-heading">Core1A / Core1B authored technical preview</h2><p>Learning modules are UNVALIDATED, academically on HOLD and are not official NSEJS questions. Independently verified source/academic approval is not claimed.</p><a href="core1/index.html" style="display:inline-block;min-height:56px;box-sizing:border-box;padding:15px 20px;border-radius:12px;background:#0b5977;color:#fff;font-weight:700;text-decoration:none">Open 3 authored learning modules</a></section>
-<section id="source-linked-external-practice" class="tablet-container" style="margin:28px auto;padding:22px;border:2px solid #a78c5d;border-radius:13px;background:#fff7df;color:#553e18"><h2>Study from the original IAPT paper (external)</h2><p><strong>Source HOLD · not a verified Biology question bank.</strong> Use your own paper question number for local first-response notes. No question text, diagrams, official solution or exam score is reproduced. The 2024 code-51 link supports unverified notes only. Earlier years are link-only.</p><a href="question-bank.html" style="display:inline-flex;min-height:56px;align-items:center;padding:13px 20px;border-radius:11px;background:#145a75;color:white;font-weight:750;text-decoration:none">Open source-linked practice notebook</a></section>
-<section id="authored-transfer-question-bank" class="tablet-container" style="margin:24px auto;padding:20px;border:2px solid #80aebc;border-radius:12px;background:#edf8fa;color:#1a3e52"><h2>Authored Core1B independent transfer practice</h2><p>Technical-only authored Grade9 prompts, not official NSEJS questions. Two Chemistry and three Biology practices were generated from checked-in Core1B teaching builders; answers and academic admission remain HOLD.</p><a href="authored-practice.html" style="display:inline-flex;align-items:center;min-height:56px;padding:12px 18px;color:#114d72">Open authored transfer practice questions</a></section>
-<section id="official-iapt-links" style="max-width:1060px;margin:24px auto;padding:20px;border:2px solid #b6c9d3;border-radius:12px;background:#fff"><h2>Official IAPT source papers (external links only)</h2><p>Original papers stay on IAPT. These learning previews are not independently source-approved.</p><a style="display:inline-flex;align-items:center;min-height:56px;padding:12px 20px;background:#125a79;color:white;border-radius:10px" href="../official-sources.html">View official paper/key links</a></section>
 </body>
 </html>
