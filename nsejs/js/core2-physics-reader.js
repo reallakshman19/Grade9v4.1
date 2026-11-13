@@ -773,6 +773,12 @@
   window.selectPhysicsTopic = function(slug) {
     filterState.topic = slug;
     applyFilters(false);
+    if (slug !== "all") {
+      const ws = document.getElementById("topicWorkspace");
+      if (ws) {
+        ws.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
   };
 
   async function load() {
@@ -851,10 +857,14 @@
     const initialQ = filterState.q;
     const initialHash = (window.location.hash || "").replace(/^#/, "");
     if (initialHash && filterState.topic === "all") {
-      const matchQ = combinedQuestions.find(q => q.id === initialHash || q.source_id === initialHash);
-      if (matchQ) {
-        const matchTopic = TOPICS.find(t => t[1] === matchQ.topic);
-        if (matchTopic) filterState.topic = matchTopic[0];
+      if (initialHash === "topic-view" || initialHash === "topicWorkspace") {
+        filterState.topic = "optics";
+      } else {
+        const matchQ = combinedQuestions.find(q => q.id === initialHash || q.source_id === initialHash);
+        if (matchQ) {
+          const matchTopic = TOPICS.find(t => t[1] === matchQ.topic);
+          if (matchTopic) filterState.topic = matchTopic[0];
+        }
       }
     }
 
