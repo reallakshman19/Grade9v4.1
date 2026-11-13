@@ -159,6 +159,8 @@
         $("cycleSelect").appendChild(o);
       }
       $("cycleSelect").addEventListener("change", () => loadCycle($("cycleSelect").value));
+      const requested = new URLSearchParams(location.search).get("cycle");
+      if (requested && cycles.some(c => c.id === requested)) $("cycleSelect").value = requested;
       loadCycle($("cycleSelect").value);
     } catch (err) {
       say("Task loading failed closed: " + safe(err.message));
