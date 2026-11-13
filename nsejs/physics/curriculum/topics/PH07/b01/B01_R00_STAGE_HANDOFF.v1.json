@@ -2349,27 +2349,27 @@
     {
       "subtopic_id": "PH08-04",
       "target_id": "PH08-04-B01-D3-REPRESENT-01",
-      "cycle_id": "PH08-04-B01-MAIN-REPRESENT-R2",
+      "cycle_id": "PH08-04-B01-MAIN-REPRESENT-R3",
       "kind": "MAIN",
-      "package_version": "0.3.2-b01.5.ph08-04",
+      "package_version": "0.3.3-b01.8.ph08-04",
       "stage_response_criteria": {
         "PREDICT": "Record the exact task's initial judgement and reason separately, without correctness feedback.",
         "ATTEMPT": "T=6 ms, f≈166.7 Hz; time maximum at 5 ms. λ=2.04 m, spatial maximum at 1.12 m. v=2.04/0.006=340 m/s. Axis labels and extrema must be consistent.",
         "RECONSTRUCT": "Compare the saved attempt with the case-specific reconstruction: T=6 ms, f≈166.7 Hz; time maximum at 5 ms. λ=2.04 m, spatial maximum at 1.12 m. v=2.04/0.006=340 m/s. Axis labels and extrema must be consistent. Identify a concrete difference or verify agreement.",
         "DIAGNOSE": "Compare the axis labels, the phase of each marker and the spacing on your two plots. Which specific mismatch would change the inferred period or wavelength?",
         "REPAIR": "Redraw a complete labelled repetition on each physical axis and verify the halfway opposite phase before computing parameters. Expected case-specific result: T=6 ms, f≈166.7 Hz; time maximum at 5 ms. λ=2.04 m, spatial maximum at 1.12 m. v=2.04/0.006=340 m/s. Axis labels and extrema must be consistent.",
-        "BOUNDARY_TEST": "If the minimum and maximum are adjacent, separation 2.04 m is λ/2, hence λ=4.08 m and v=680 m/s for T=6 ms. Without adjacency, separation=(n+1/2)λ and the answer is a family, not unique."
+        "BOUNDARY_TEST": "Adjacent minimum and maximum are separated by λ/2; 2.04 m implies λ=4.08 m and v=680 m/s for T=6 ms. Without adjacency the wavelength would not be unique."
       },
-      "boundary_prompt": "If the second spatial marker is a maximum rather than a minimum, what wavelength and speed follow?",
+      "boundary_prompt": "If the second spatial marker is instead the maximum immediately adjacent to the first minimum, what wavelength and speed follow?",
       "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
       "runtime_status": "NOT_IMPLEMENTED"
     },
     {
       "subtopic_id": "PH08-04",
       "target_id": "PH08-04-B01-D3-REPRESENT-01",
-      "cycle_id": "PH08-04-B01-INSTANCE-REPRESENT-R2",
+      "cycle_id": "PH08-04-B01-INSTANCE-REPRESENT-R3",
       "kind": "INSTANCE",
-      "package_version": "0.3.2-b01.5.ph08-04",
+      "package_version": "0.3.3-b01.8.ph08-04",
       "stage_response_criteria": {
         "PREDICT": "Record the exact task's initial judgement and reason separately, without correctness feedback.",
         "ATTEMPT": "T=2 ms, f=500 Hz, λ=0.68 m, v=340 m/s. Each half-cycle changes crossing slope; extrema are at quarter-cycle intervals. Do not align the spatial slope with temporal slope without a propagation direction.",
@@ -2387,7 +2387,7 @@
       "target_id": "PH08-04-B01-D3-APPLY-01",
       "cycle_id": "PH08-04-B01-MAIN-APPLY-R2",
       "kind": "MAIN",
-      "package_version": "0.3.2-b01.5.ph08-04",
+      "package_version": "0.3.3-b01.8.ph08-04",
       "stage_response_criteria": {
         "PREDICT": "Record the exact task's initial judgement and reason separately, without correctness feedback.",
         "ATTEMPT": "Ten intervals span 25 ms, T=2.5 ms, f=400 Hz. Four intervals span 3.4 m, λ=0.85 m; v=340 m/s, within independent range.",
@@ -2405,7 +2405,7 @@
       "target_id": "PH08-04-B01-D3-APPLY-01",
       "cycle_id": "PH08-04-B01-INSTANCE-APPLY-R2",
       "kind": "INSTANCE",
-      "package_version": "0.3.2-b01.5.ph08-04",
+      "package_version": "0.3.3-b01.8.ph08-04",
       "stage_response_criteria": {
         "PREDICT": "Record the exact task's initial judgement and reason separately, without correctness feedback.",
         "ATTEMPT": "Seven temporal intervals span 14 ms, T=2 ms, f=500 Hz. Six spatial intervals span 3.96 m, λ=0.66 m. v=330 m/s, within the range.",
@@ -2423,7 +2423,7 @@
       "target_id": "PH08-04-B01-D3-JUSTIFY-01",
       "cycle_id": "PH08-04-B01-MAIN-JUSTIFY-R2",
       "kind": "MAIN",
-      "package_version": "0.3.2-b01.5.ph08-04",
+      "package_version": "0.3.3-b01.8.ph08-04",
       "stage_response_criteria": {
         "PREDICT": "Record the exact task's initial judgement and reason separately, without correctness feedback.",
         "ATTEMPT": "T=4 ms, f=250 Hz. λ=1.36/n m, n a positive integer; v=340/n m/s. λ=1.36 m only for successive minima. Count all intervening periods or establish n with independent data.",
@@ -2441,7 +2441,7 @@
       "target_id": "PH08-04-B01-D3-JUSTIFY-01",
       "cycle_id": "PH08-04-B01-INSTANCE-JUSTIFY-R2",
       "kind": "INSTANCE",
-      "package_version": "0.3.2-b01.5.ph08-04",
+      "package_version": "0.3.3-b01.8.ph08-04",
       "stage_response_criteria": {
         "PREDICT": "Record the exact task's initial judgement and reason separately, without correctness feedback.",
         "ATTEMPT": "T=1.6 ms, f=625 Hz; λ=0.544/n m and v=340/n m/s. Need confirmation of successive compressions or count n, or an independent speed in the same wave.",
@@ -2781,7 +2781,7 @@
   ],
   "review_status": "HOLD",
   "known_review_flags": [
-    "PH08-04 MAIN REPRESENT boundary changes the second spatial marker to a maximum; answer is conditional on adjacency, otherwise retain half-integer alias family. Original task also needs explicit successive-minima assumption for a unique wavelength.",
+    "PH08-04 REPRESENT exact cycle prompts clarified in R3 to specify successive/adjacent phase markers; prior R2 retained in history. Other prompts and criteria still require independent academic review.",
     "All public author artifacts and sidecar criteria are exposed; no claim of unseen learner assessment."
   ]
 }
