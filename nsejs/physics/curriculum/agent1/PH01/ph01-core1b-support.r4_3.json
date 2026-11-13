@@ -1,0 +1,451 @@
+{
+  "schema": "g9v41-ph01-core1b-support/v1",
+  "status": "AUTHOR_EXPOSED_CANDIDATE__ACADEMIC_HOLD",
+  "topic_id": "PH01",
+  "package_version": "0.7.0",
+  "purpose": "Post-attempt support after protected first answer is saved; no machine-diagnosis or independent QRT admission",
+  "hints_policy": "H1 CLARIFY, H2 CORRELATE, H3 OPEN_THE_WAY; candidate texts require separate protected-W content review. All hints remain locked until first answer persists in the current runtime.",
+  "cycles": [
+    {
+      "cycle_id": "PH01-MAIN-D3.4-R32",
+      "hints": {
+        "H1": "Separate the completed circular segment from the straight stage and declare the rail clock.",
+        "H2": "Recover the rail calibration and the signed velocity-area relation under constant acceleration.",
+        "H3": "Compare both rail position laws on the valid interval; distinguish whole-journey path and endpoint."
+      },
+      "boundary_solution": "At t=0 gap 12 m; at t=4 B=8 m and A=2π+8>8. The separation changes continuously and strictly decreases (closing speed π/2+t+1>0), so there is exactly one crossing within 0<t<4. No constant-average model is required."
+    },
+    {
+      "cycle_id": "PH01-MAIN-D3.5-R32",
+      "hints": {
+        "H1": "Use one global time axis but reset elapsed time in the rail equation.",
+        "H2": "Find circular tangent speed before constructing the signed rail position and velocity laws.",
+        "H3": "Keep ground, scale and observer coordinates in distinct columns and verify both signed area sums."
+      },
+      "boundary_solution": "Relative positions at t=6,8,10 become 2,π+2,2 m; relative velocities +π,0,−π m/s. Relative displacement zero, as in ground. Rail and loop paths and whole-trip averages remain unchanged."
+    },
+    {
+      "cycle_id": "PH01-MAIN-D3.6-R32",
+      "hints": {
+        "H1": "Identify the circular distance, period and initial tangent velocity separately from the rail measurements.",
+        "H2": "Use the odometer only as a signed displacement after checking the no-reversal condition.",
+        "H3": "Recover the acceleration, then compare both rail position laws and verify the endpoint using a velocity graph."
+      },
+      "boundary_solution": "At s=4 B is 2 m east of A. The gap decreases strictly throughout, so it never reaches zero in 0≤s≤4. A meeting after that cannot be asserted without later motion information."
+    },
+    {
+      "cycle_id": "PH01-M01-QRT-MODEL-D3-INSTANCE-R31",
+      "hints": {
+        "H1": "Notice which values describe physical metres and which are logger divisions.",
+        "H2": "Compare the change between two common marks before considering the third report.",
+        "H3": "Write a candidate calibration and test a measurement that was not used to construct it."
+      },
+      "boundary_solution": "All three reports fit x=22−2r. This is evidence of consistency at these marks, not proof of uniform spacing everywhere."
+    },
+    {
+      "cycle_id": "PH01-M01-QRT-REPRESENT-D3-INSTANCE-R31",
+      "hints": {
+        "H1": "Identify each scale's zero, positive direction and physical length of one division.",
+        "H2": "Translate every reading to a common physical position before building the second table.",
+        "H3": "Keep the times aligned and check which signs change when the coordinate convention changes."
+      },
+      "boundary_solution": "B′=x−12 gives −10,−2,−2,−8 divisions. The signs reverse relative to B; the physical path and stationary interval are unchanged."
+    },
+    {
+      "cycle_id": "PH01-M01-QRT-SYNTHESIZE-D3-INSTANCE-R31",
+      "hints": {
+        "H1": "Separate the physical displacement from the numbers recorded by the two scales.",
+        "H2": "Use the two shared markers to relate the unknown scale to physical metres.",
+        "H3": "Recover the start first, then apply the signed physical change and invert both maps."
+      },
+      "boundary_solution": "Final x=16 m; P=22/3 divisions, Q=−1 division. Negative Q is a valid extrapolated coordinate if the uniform scale extends that far."
+    },
+    {
+      "cycle_id": "PH01-M02-QRT-MODEL-D3-INSTANCE-R31",
+      "hints": {
+        "H1": "Identify which positions are actually observed and which intermediate positions remain unknown.",
+        "H2": "Compare the shortest route between successive checkpoint pairs with a route containing a detour.",
+        "H3": "Use an explicit list of possible turning positions to test the supervisor's assertion."
+      },
+      "boundary_solution": "Then D=9+4=13 m exactly and Δx=+5 m. The 19 m claim requires an extra reversal and contradicts the new condition."
+    },
+    {
+      "cycle_id": "PH01-M02-QRT-REPRESENT-D3-INSTANCE-R31",
+      "hints": {
+        "H1": "Distinguish the absolute odometer reading from distance accumulated after A.",
+        "H2": "Recover each interval length from neighbouring odometer readings, then use its reported direction.",
+        "H3": "Align position and cumulative distance by checkpoint; inspect the signs of consecutive positions."
+      },
+      "boundary_solution": "Last change becomes +6 m, so final position is +12 m and displacement +9 m. Cumulative distance remains 25 m because odometer changes are unchanged."
+    },
+    {
+      "cycle_id": "PH01-M02-QRT-SYNTHESIZE-D3-INSTANCE-R31",
+      "hints": {
+        "H1": "Mark the direction order and the known second turn on a number line.",
+        "H2": "Write each leg length with the sign implied by its direction, keeping P unknown.",
+        "H3": "Use the measured total and then verify the recovered turning point against the assumed ordering."
+      },
+      "boundary_solution": "The formal equation 2P+6=8 gives P=1 m, making the westward leg zero. Strictly monotone nonzero legs require P>1, so D>8 m; a total of 8 m is impossible under these conditions."
+    },
+    {
+      "cycle_id": "PH01-M04-QRT-MODEL-D3-INSTANCE-R32",
+      "hints": {
+        "H1": "Separate the measured endpoints from any assumption about the intervals between them.",
+        "H2": "Use the same endpoints to draw two continuous histories and compare their slopes.",
+        "H3": "Test which claims remain true under both histories, including existence rather than timing."
+      },
+      "boundary_solution": "Then v=−6+2t everywhere in the interval, zero uniquely at 3 s; acceleration is +2 m/s²."
+    },
+    {
+      "cycle_id": "PH01-M04-QRT-REPRESENT-D3-INSTANCE-R32",
+      "hints": {
+        "H1": "Name the quantity and units on each original and proposed graph axis.",
+        "H2": "Compute each slope and locate the times when the velocity changes sign.",
+        "H3": "Construct a time-aligned sign table without treating a negative velocity as negative speed."
+      },
+      "boundary_solution": "Acceleration signs become −3,0,+2 m/s²; velocity signs reverse as coordinate components, but physical directions and all speed-change intervals stay the same."
+    },
+    {
+      "cycle_id": "PH01-M04-QRT-SYNTHESIZE-D3-INSTANCE-R32",
+      "hints": {
+        "H1": "Use the total time to express the duration of the second acceleration stage.",
+        "H2": "Connect the change in velocity over each stage to its duration.",
+        "H3": "After recovering the switch, examine both velocity laws and test every zero against its own interval."
+      },
+      "boundary_solution": "−13+4τ=−5 gives τ=2 s. v(2)=+1 m/s; first zero at 5/3 s, second at 3 s. It reverses twice; final speed 5 m/s."
+    },
+    {
+      "cycle_id": "PH01-M06-QRT-MODEL-D3-INSTANCE-R32",
+      "hints": {
+        "H1": "Identify the interval over which the acceleration is certified constant.",
+        "H2": "Choose a relation that retains time and then compare the velocity signs.",
+        "H3": "Test all candidate roots against the controller-change time and the original position law."
+      },
+      "boundary_solution": "Both t=2 and t=6 s are now inside the interval, with velocities +6 and −6 m/s respectively. Both cross the same point; only the first moves east."
+    },
+    {
+      "cycle_id": "PH01-M06-QRT-REPRESENT-D3-INSTANCE-R32",
+      "hints": {
+        "H1": "Use one clock and mark the time where the acceleration law changes.",
+        "H2": "Find the velocity zero and the position at both the turn and the stage boundary.",
+        "H3": "Join the two graphs continuously and compare signed area with the magnitude-based route length."
+      },
+      "boundary_solution": "First stage unchanged; extend v=+3 to t=7, x=2+3(t−3), final x=14 m. Net Δx=+12 m and D=16.5 m."
+    },
+    {
+      "cycle_id": "PH01-M06-QRT-SYNTHESIZE-D3-INSTANCE-R32",
+      "hints": {
+        "H1": "Write the position law at each observation with one common start and acceleration.",
+        "H2": "Use both measurements to eliminate one unknown, then check the velocity law.",
+        "H3": "Locate any zero velocity before interpreting total distance; test the final stage conditions."
+      },
+      "boundary_solution": "The first 6 s are unchanged, then x=27 m stays constant. Displacement +27 m and distance 27 m. Applying the old constant acceleration after stopping would contradict the changed model."
+    },
+    {
+      "cycle_id": "PH01-M08-QRT-MODEL-D3-INSTANCE-R32",
+      "hints": {
+        "H1": "Distinguish a location after a half revolution from the actual number of revolutions made.",
+        "H2": "Use the speed bounds to restrict how many additional full laps could have occurred.",
+        "H3": "Check the third position against the same period and calculate interval averages from the appropriate quantities."
+      },
+      "boundary_solution": "Yes, with T=18 s and speed 2π/3 m/s. The third observation is at 3/4 revolution. The first nine-second averages are unchanged."
+    },
+    {
+      "cycle_id": "PH01-M08-QRT-REPRESENT-D3-INSTANCE-R32",
+      "hints": {
+        "H1": "Declare the compass axes and travel direction before making the table.",
+        "H2": "Advance one quarter revolution per five seconds and place each tangent perpendicular to its radius.",
+        "H3": "Compare cumulative distance with endpoint differences for each requested time window."
+      },
+      "boundary_solution": "Positions south,east,north,west,south,east; tangents east,north,west,south,east,north. Arc distances stay the same. From 0 to15 displacement (−5,+5) m; average velocity (−1/3,+1/3) m/s."
+    },
+    {
+      "cycle_id": "PH01-M08-QRT-SYNTHESIZE-D3-INSTANCE-R32",
+      "hints": {
+        "H1": "Use circumference as the distance for one full revolution, not π alone.",
+        "H2": "Find the total turn count and keep the fractional part when locating the endpoint.",
+        "H3": "Combine elapsed time, turn count and endpoint-vector change; verify the tangent using the direction of travel."
+      },
+      "boundary_solution": "20π/(16π)=1.25 laps, T=18/1.25=14.4 s. Starting north, the quarter-lap remainder ends west (−8,0); tangent south. Average velocity (−4/9,−4/9) m/s."
+    },
+    {
+      "cycle_id": "PH01-M03-QRT-MODEL-D3-INSTANCE-R32",
+      "hints": {
+        "H1": "Clarify which elapsed time each observer's report refers to and include the wait.",
+        "H2": "Keep a signed displacement ledger and a separate unsigned path ledger.",
+        "H3": "Compare each reported average with the physical numerator and the time interval it actually uses."
+      },
+      "boundary_solution": "D=24+24=48 m, elapsed=19 s, average speed 48/19 m/s, average velocity zero. Equal opposing displacements cancel, not distances."
+    },
+    {
+      "cycle_id": "PH01-M03-QRT-REPRESENT-D3-INSTANCE-R32",
+      "hints": {
+        "H1": "Identify the start coordinate and what each recorded leg reports.",
+        "H2": "Accumulate the signed changes in one representation and magnitudes in the other.",
+        "H3": "Compare slopes over exactly the same intervals and use the final ledgers to check both averages."
+      },
+      "boundary_solution": "Subtract 8 from every position: −12,−6,−6,−16,−13 m. All slopes, distance graph and both averages remain unchanged."
+    },
+    {
+      "cycle_id": "PH01-M03-QRT-SYNTHESIZE-D3-INSTANCE-R32",
+      "hints": {
+        "H1": "Separate the unknown duration from the fixed rest and return intervals.",
+        "H2": "Use the overall average speed to recover the full path before solving for the return leg.",
+        "H3": "Test the resulting path components for nonnegativity, then find the signed displacement."
+      },
+      "boundary_solution": "Path=90 m, west distance=50 m, west speed=25/3 m/s; displacement −10 m and average velocity −5/9 m/s."
+    },
+    {
+      "cycle_id": "PH01-M05-QRT-MODEL-D3-INSTANCE-R32",
+      "hints": {
+        "H1": "Distinguish a drawn line from a list of measurements and name the axes.",
+        "H2": "Use the slope only on a defined graph segment; compare possible interpolations.",
+        "H3": "State which results are model-dependent and which are invariant under the given samples."
+      },
+      "boundary_solution": "Distance is exactly 8 m; equal endpoints in the second monotone interval force constant position, so v(6)=0. First-interval instantaneous velocity still need not be constant."
+    },
+    {
+      "cycle_id": "PH01-M05-QRT-REPRESENT-D3-INSTANCE-R32",
+      "hints": {
+        "H1": "Read the velocity at the endpoints and at each marked time before choosing a graph operation.",
+        "H2": "Use the slope for acceleration and signed trapezoid or triangle areas for each position increment.",
+        "H3": "Maintain a separate cumulative-distance ledger and compare x–t slopes to the original velocity at the marked times."
+      },
+      "boundary_solution": "At t=4, x=2 m and cumulative path is 8 m. From 4 to 8 s the added signed area is +16 m, so x=18 m, displacement +16 m and total distance 24 m. The x–t line extends with slope +4 m/s and the distance graph with the same positive slope."
+    },
+    {
+      "cycle_id": "PH01-M05-QRT-SYNTHESIZE-D3-INSTANCE-R32",
+      "hints": {
+        "H1": "Identify the rectangle and the linearly changing segment of the velocity graph.",
+        "H2": "Use signed area as a constraint on the unknown final ordinate.",
+        "H3": "After recovering the endpoint, split the graph at any velocity zero before calculating path distance."
+      },
+      "boundary_solution": "Remaining area 8 m=2(4+V), so V=0. The cart reaches zero only at t=6; it never moves west during the stated interval. Distance equals displacement 16 m."
+    },
+    {
+      "cycle_id": "PH01-KIN-QRT-MODEL-D3-INSTANCE-R32",
+      "hints": {
+        "H1": "Name the reference frame for each reported velocity before comparing them.",
+        "H2": "Express both velocities in the same signed shore frame, then in the water frame.",
+        "H3": "Check the relative closing rate in both frames and explain the common meeting time."
+      },
+      "boundary_solution": "Its shore velocity is +2 m/s versus +3 for the kayak, so separation increases at 1 m/s. Water-frame difference is also −1 m/s; no future overtaking."
+    },
+    {
+      "cycle_id": "PH01-KIN-QRT-REPRESENT-D3-INSTANCE-R32",
+      "hints": {
+        "H1": "Use the common ground coordinate for both the elevator and observer.",
+        "H2": "Subtract observer position at each shared time and derive slopes in the two frames.",
+        "H3": "Verify relative displacement using signed areas and distinguish frame-dependent displacement from simultaneous separation."
+      },
+      "boundary_solution": "Relative velocities −1,+1,+3 m/s. Relative displacement −3+3+6=+6 m, equal to ground displacement −2 minus observer displacement −8. Ground quantities unchanged."
+    },
+    {
+      "cycle_id": "PH01-KIN-QRT-SYNTH-D3-INSTANCE-R32",
+      "hints": {
+        "H1": "Keep one global clock and label the interval before departure separately.",
+        "H2": "Write the moving model from its actual boundary position, not a fictitious t=0 departure.",
+        "H3": "Check the first meeting against both stage domains, then evaluate the changed departure or speed condition."
+      },
+      "boundary_solution": "B stays at x=30 for both stages. Substituting zero into the general delayed model xB=30−v(t−2) gives xB=30 and t=7.5 s, which is valid after t=2. This limit is legitimate; do not substitute into an already simplified expression that assumed v=3."
+    },
+    {
+      "cycle_id": "PH01-M04-QRT-SYNTHESIZE-D4-R41-INSTANCE",
+      "hints": {
+        "H1": "Use one clock and express the peak velocity and final velocity.",
+        "H2": "Find the signed trapezoid areas of both stages with symbolic duration.",
+        "H3": "Use the endpoint constraint to eliminate A; test the resulting timing and signs."
+      },
+      "boundary_solution": "60−7τ=16 gives τ=44/7>6, outside the allowed two-stage model. No admissible pair."
+    },
+    {
+      "cycle_id": "PH01-M05-QRT-SYNTHESIZE-D4-R41-INSTANCE",
+      "hints": {
+        "H1": "Express distance and displacement as P+N and P−N.",
+        "H2": "Name the sloping-segment duration and use triangle similarity to express the negative interval.",
+        "H3": "Use both independent constraints to solve the unknown graph; separately test the proposed single segment."
+      },
+      "boundary_solution": "No. D=Δx implies N=0. A continuous linear velocity segment ending strictly below zero for a nonzero interval necessarily has N>0, a contradiction."
+    },
+    {
+      "cycle_id": "PH01-M01-QRT-MODEL-D4-R42-INSTANCE",
+      "hints": {
+        "H1": "Normalize units and locate A in the common plane.",
+        "H2": "Use two circle equations for B; retain both signs.",
+        "H3": "Apply the independent signed observation and check the triangle bound."
+      },
+      "boundary_solution": "No: |A|+|B|=19 m is the maximum separation."
+    },
+    {
+      "cycle_id": "PH01-M02-QRT-MODEL-D4-R42-INSTANCE",
+      "hints": {
+        "H1": "Distinguish total path from endpoint magnitude.",
+        "H2": "Use right-angle geometry and rotate the first unit direction 90° left.",
+        "H3": "Solve both length orders and compare turn points and path bound."
+      },
+      "boundary_solution": "6 m east, then 8 m north; same path length and displacement."
+    },
+    {
+      "cycle_id": "PH01-M03-QRT-REPRESENT-D4-R42-INSTANCE",
+      "hints": {
+        "H1": "Convert both rates and clocks to SI.",
+        "H2": "Recover east and west lengths from the two path readings.",
+        "H3": "Construct both time ledgers instead of silently discarding a conflicting clock."
+      },
+      "boundary_solution": "75 s; boundaries 0,120,195,240; positions/path unchanged; averages 2.875 and +2.125 m/s."
+    },
+    {
+      "cycle_id": "PH01-M06-QRT-SYNTHESIZE-D4-R42-INSTANCE",
+      "hints": {
+        "H1": "Recover the first boundary state.",
+        "H2": "Use the second region's nonzero return root and signed exit speed.",
+        "H3": "Subtract the two first-region durations, recover k and check depth."
+      },
+      "boundary_solution": "k=6, depth12 m; turn5 s, second crossing7 s, return10 s; path60 m, bound holds."
+    },
+    {
+      "cycle_id": "PH01-M07-QRT-SYNTHESIZE-D4-R42-INSTANCE",
+      "hints": {
+        "H1": "Mark reflection event before writing return law.",
+        "H2": "Write receiver stages with the actual boundary positions.",
+        "H3": "Test candidate roots against both time domains."
+      },
+      "boundary_solution": "Reflection t2; return x=120−30t. First root 10/3>3; second root24/7 in [3,7], x=120/7 m."
+    },
+    {
+      "cycle_id": "PH01-M08-QRT-REPRESENT-D4-R42-INSTANCE",
+      "hints": {
+        "H1": "Declare signed rotation convention and tooth ratio.",
+        "H2": "Use spool's own circumference and its gear's frequency.",
+        "H3": "Build signed and unsigned travel ledgers; test B attachment."
+      },
+      "boundary_solution": "Net zero, path7.2π m, time14 s, average velocity0 and speed7.2π/14."
+    },
+    {
+      "cycle_id": "PH01-MAIN-D4.4-R42",
+      "hints": {
+        "H1": "Convert units and solve the endpoint ranges before decomposing the path.",
+        "H2": "Use perpendicular-leg sum and squared sum; keep both length orders.",
+        "H3": "Test each rotated turn against compass and camera."
+      },
+      "boundary_solution": "a6,b8; first direction (.96,−.28), second (.28,.96), turn (5.76,−1.68)."
+    },
+    {
+      "cycle_id": "PH01-MAIN-D4.5-R42",
+      "hints": {
+        "H1": "Convert rev/min and determine driven gear direction.",
+        "H2": "Use spool circumference for signed speed.",
+        "H3": "Infer upward/downward lengths and reconstruct the clock ledger."
+      },
+      "boundary_solution": "Yes, moving time60; same path and displacement; averages9π/60 and3π/60."
+    },
+    {
+      "cycle_id": "PH01-MAIN-D4.6-R42",
+      "hints": {
+        "H1": "Express peak velocity using final velocity and switch time.",
+        "H2": "Use signed trapezoids, negative triangle and stage position.",
+        "H3": "Match returning signal and detector within common valid domains."
+      },
+      "boundary_solution": "36−4τ=36 implies τ=0, prohibited."
+    },
+    {
+      "cycle_id": "PH01-M01-QRT-APPLY-D3-R43-INSTANCE",
+      "hints": {
+        "H1": "Map all velocities to signed m/s and durations to seconds.",
+        "H2": "Use the same endpoint-rate procedure on each row.",
+        "H3": "Compare absolute values only after the signed SI rate; check what endpoints can establish."
+      },
+      "boundary_solution": "A Δt=150 s, a_avg=−2/15 m/s²; B magnitude10/3 exceeds A."
+    },
+    {
+      "cycle_id": "PH01-M04-QRT-APPLY-D3-R43-INSTANCE",
+      "hints": {
+        "H1": "Use signed velocities and the duration of each stage, not global time.",
+        "H2": "Within a uniform stage execute v=v_i+aΔt to locate its zero.",
+        "H3": "Use the net velocity change for the full interval; do not average rates without duration weights."
+      },
+      "boundary_solution": "Its average remains +4.5 and overall +1/9, but its zero time and duration of slowing cannot be inferred from endpoints alone."
+    },
+    {
+      "cycle_id": "PH01-M06-QRT-APPLY-D3-R43-INSTANCE",
+      "hints": {
+        "H1": "Map u,a,Δx to the specified relation and preserve the sign of a.",
+        "H2": "For each real v² keep both signed roots unless they coincide.",
+        "H3": "Recover time for each root and discard events outside the model's time domain."
+      },
+      "boundary_solution": "x18 only outward t2; x24 turn t4; x30 none. The t6 root is outside the recorded interval."
+    },
+    {
+      "cycle_id": "PH01-M08-QRT-APPLY-D3-R43-INSTANCE",
+      "hints": {
+        "H1": "Convert angle to turns, diameter to radius and milliseconds to seconds.",
+        "H2": "Use the given relations with the same angular observation for each wheel.",
+        "H3": "Check arc against vΔt; use the remaining fractional turn for endpoint separation."
+      },
+      "boundary_solution": "f=4 Hz; v=1.2π m/s; arc=.9π m; endpoint displacement zero."
+    },
+    {
+      "cycle_id": "PH01-M02-QRT-JUSTIFY-D3-R43-INSTANCE",
+      "hints": {
+        "H1": "Separate positive and negative path totals.",
+        "H2": "Write D and Δ in terms of those totals, then derive an exact difference.",
+        "H3": "An equality of path and displacement is a direction condition, not a time-history claim."
+      },
+      "boundary_solution": "No. Two legs (3,0),(3,4) have nonnegative x components, path3+5=8 but endpoint(6,4) magnitude√52<8. Equality requires aligned legs in the same direction, not merely x signs."
+    },
+    {
+      "cycle_id": "PH01-M03-QRT-JUSTIFY-D3-R43-INSTANCE",
+      "hints": {
+        "H1": "Start from total path divided by elapsed time.",
+        "H2": "Subtract the unweighted mean and factor the numerator.",
+        "H3": "An equal-distance example must use actual durations; state the theorem's domain."
+      },
+      "boundary_solution": "Yes, if those are the only two intervals. D=s2t, T=2t gives s2/2. Rest can be a stage; unequal additional rest invalidates the original two-stage condition."
+    },
+    {
+      "cycle_id": "PH01-M04-QRT-JUSTIFY-D3-R43-INSTANCE",
+      "hints": {
+        "H1": "Distinguish an endpoint average from an instantaneous derivative.",
+        "H2": "For each claimed implication give the law and the condition it needs.",
+        "H3": "Construct sign-changing or negative-velocity counterexamples; use nonnegativity for the changed condition."
+      },
+      "boundary_solution": "Yes. Integral of continuous nonnegative acceleration is zero only if a=0 everywhere; hence v constant. The nonnegative condition excludes cancellation."
+    },
+    {
+      "cycle_id": "PH01-M05-QRT-JUSTIFY-D3-R43-INSTANCE",
+      "hints": {
+        "H1": "Identify the warranted quantities for area, absolute area and slope.",
+        "H2": "Split C at the zero crossing before calculating path.",
+        "H3": "Use different pairs for counterexamples; a numerical match alone cannot prove a universal claim."
+      },
+      "boundary_solution": "Yes D=Δx=area, hence equal elapsed average speed. No: A and B still have different slopes."
+    },
+    {
+      "cycle_id": "PH01-M06-QRT-JUSTIFY-D3-R43-INSTANCE",
+      "hints": {
+        "H1": "Use common u,T and the constant-acceleration endpoint condition.",
+        "H2": "For the coast alternative use rectangle plus triangle areas.",
+        "H3": "To refute the converse, construct a nonuniform history with equal total area (time-reflected complementary speeds)."
+      },
+      "boundary_solution": "Mean speed (u+u/3)/2=2u/3; ratio 2/3, not 1/2. Terminal rest is necessary for the stated theorem."
+    },
+    {
+      "cycle_id": "PH01-MAIN-D3.3-R43",
+      "hints": {
+        "H1": "Convert diameter, time and angle to r, seconds and revolutions.",
+        "H2": "Use stated formulae and positive initial belt speed; check stop domain.",
+        "H3": "Map signed a and station displacement; reject invalid v²/root."
+      },
+      "boundary_solution": "v²=.16π²−.12π²=.04π², v=+.2π before stop, t=.1s. Negative root would occur at .3s, outside interval."
+    },
+    {
+      "cycle_id": "PH01-MAIN-D3.7-R43",
+      "hints": {
+        "H1": "Start from the conditions of the triangle/rectangle comparison.",
+        "H2": "A counterexample to uniformity must preserve area and endpoints, while changing slopes.",
+        "H3": "Use signed versus absolute areas and state the extra condition that makes them equal."
+      },
+      "boundary_solution": "Claim (iii) becomes true under that added condition: signed area equals path, so equal displacement and same T imply equal average speed. It still does not constrain acceleration history."
+    }
+  ]
+}
