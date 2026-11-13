@@ -117,7 +117,10 @@ body .tab-button { min-width: 168px; flex: 1 1 180px; }
 
 <div class="lesson-container">
   <div class="header">
-    <h1>Microbiology & Virology — Capsid, Envelope & Baltimore Genomes</h1>
+    <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);padding:3px 10px;border-radius:999px;font-size:12px;font-weight:800;margin-bottom:8px;">
+      🛡️ {Unvalidated} · HOLD: ACADEMIC_ADMISSION
+    </div>
+    <h1>Microbiology &amp; Virology — Capsid, Envelope &amp; Baltimore Genomes</h1>
     <div class="meta">Target Item: NSEJS-2024-B-Q50 | Band: D3 (Score 6) | Operation: SYNTHESIZE</div>
   </div>
 
@@ -165,14 +168,13 @@ body .tab-button { min-width: 168px; flex: 1 1 180px; }
         <circle cx="38" cy="110" r="4" fill="#ef4444"/>
         <text x="135" y="45" font-size="14" fill="#dc2626" font-weight="bold">Viral Glycoproteins (Spikes)</text>
 
-        <!-- Evaluation Table -->
-        <rect x="250" y="30" width="280" height="160" rx="6" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.5"/>
-        <text x="265" y="55" font-size="14" fill="#15803d" font-weight="bold">(A) Obligate intracellular &rarr; TRUE</text>
-        <text x="265" y="80" font-size="14" fill="#15803d" font-weight="bold">(B) Needs host ribosomes &rarr; TRUE</text>
-        <text x="265" y="110" font-size="14" fill="#dc2626" font-weight="bold">(C) "Without proteins" &rarr; INCORRECT!</text>
-        <text x="280" y="128" font-size="14" fill="#64748b">(Envelope requires viral spikes)</text>
-        <text x="265" y="155" font-size="14" fill="#dc2626" font-weight="bold">(D) "All have dsDNA" &rarr; INCORRECT!</text>
-        <text x="280" y="173" font-size="14" fill="#64748b">(HIV, rabies, flu are RNA viruses!)</text>
+        <!-- Baltimore & Envelope Classification Taxonomy -->
+        <rect x="250" y="30" width="280" height="160" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+        <text x="265" y="58" font-size="14" fill="#0f172a" font-weight="bold">Taxonomic Assessment Matrix:</text>
+        <text x="265" y="85" font-size="14" fill="#334155">• Viral Envelope: Host Bilayer + Peplomers</text>
+        <text x="265" y="110" font-size="14" fill="#334155">• Protein Capsid: Capsomers &amp; Symmetry</text>
+        <text x="265" y="135" font-size="14" fill="#334155">• Genome: dsDNA, ssDNA, dsRNA, (+)ssRNA, (-)ssRNA</text>
+        <text x="265" y="162" font-size="14" fill="#64748b">• Metabolism: 100% Host Ribosome Dependent</text>
       </svg>
     </div>
 
@@ -219,7 +221,10 @@ body .tab-button { min-width: 168px; flex: 1 1 180px; }
 <h2>Core 1B — New reconstruction practice</h2>
 <p>Source-distinct practice only. Your first response is not graded and remains unchanged after help.</p>
 <section><h3>Stage 1 — Predict</h3><p>Can a virus infect a host cell if its envelope is composed 100% of host membrane components without any viral proteins?</p><label for="ab-pred">Your physical prediction</label><textarea id="ab-pred" data-role="prediction-input"></textarea><button type="button" data-role="save-prediction">Save prediction</button></section>
-<section><h3>Stage 2 — Independent attempt</h3><p>Select the biologically incorrect statements among: (A) virions are obligate intracellular parasites, (B) replication depends on host ribosomes, (C) envelope has only host glycolipids without proteins, (D) all animal viruses have dsDNA genomes.</p><label for="ab-attempt">Your original calculation and model</label><textarea id="ab-attempt" data-role="firstAttempt-input"></textarea><button type="button" data-role="save-firstAttempt">Freeze original attempt</button></section>
+<section><h3>Stage 2 — Independent attempt (Fresh Transfer Twin: Bacteriophage T4 vs Retrovirus HIV-1)</h3>
+<p><strong>Altered Structural &amp; Genomic Constraints:</strong> Compare the molecular architecture and host-cell entry mechanisms of a complex naked double-stranded DNA bacteriophage (T4) with an enveloped retrovirus (HIV-1).</p>
+<p><strong>Tasks to evaluate:</strong> (A) Contrast how T4 and HIV-1 attach to and penetrate their respective host targets: tail fiber lysozyme drill vs envelope gp120/gp41 receptor fusion. (B) Explain why HIV-1 virions MUST package their own reverse transcriptase and integrase proteins inside the capsid, whereas host RNA polymerase cannot directly transcribe the (+)ssRNA retroviral genome into mRNA. (C) Explain why enveloped viruses like HIV-1 are rapidly inactivated by ether and detergents, whereas non-enveloped (naked) viruses like T4 and poliovirus remain fully infectious.</p>
+<label for="ab-attempt">Your independent comparative derivation</label><textarea id="ab-attempt" data-role="firstAttempt-input" placeholder="Explain entry mechanics, enzyme packaging, and lipid solvent sensitivity..."></textarea><button type="button" data-role="save-firstAttempt">Freeze original attempt</button></section>
 <section><h3>Optional H1/H2/H3 help</h3>
 <button type="button" data-hint="1">Reveal H1 (record exposure)</button><p data-hint-text="1"></p>
 <button type="button" data-hint="2">Reveal H2 (record exposure)</button><p data-hint-text="2"></p>
@@ -231,9 +236,9 @@ body .tab-button { min-width: 168px; flex: 1 1 180px; }
 <section data-role="transfer-stage" hidden><h3>Stage 6 — Changed-condition transfer</h3><p>What about naked (non-enveloped) viruses like poliovirus or adenovirus? Do they have spikes?</p><textarea data-role="transfer-input" aria-label="New changed-condition commitment"></textarea><button type="button" data-role="save-transfer">Save transfer response</button><p data-role="boundary-answer" hidden></p></section>
 <p data-role="status" aria-live="polite"></p></div>
 
-  <div class="footer">
-    No academic approval inferred from software validation. Green CI means automatic tests passed; it never means student release is authorized.
-  </div>
+  <footer style="margin-top:24px;padding:16px;background:#f8fafc;border:1px solid #cbd5e1;border-radius:10px;text-align:center;font-size:12px;color:#64748b;">
+    Rule 13 Invariant: No academic approval inferred from software validation. Green CI means automatic tests passed; it never means student release is authorized. All questions labeled {Unvalidated}.
+  </footer>
 </div>
 
 <script>

@@ -290,19 +290,19 @@ body .tab-button { min-width: 168px; flex: 1 1 180px; }
         <rect x="380" y="30" width="130" height="40" rx="4" fill="#f3e8ff" stroke="#9333ea" stroke-width="1.5"/>
         <text x="390" y="55" font-size="14" fill="#7e22ce" font-weight="bold">Anthocyanin (Purple)</text>
 
-        <!-- Ratio Breakdown -->
+        <!-- Dihybrid Gene Interaction Model -->
         <rect x="30" y="90" width="230" height="60" rx="6" fill="#f5f3ff" stroke="#c084fc" stroke-width="1.5"/>
-        <text x="45" y="115" font-size="15" fill="#6b21a8" font-weight="bold">9 C_P_ &rarr; Purple (9/16)</text>
-        <text x="45" y="135" font-size="14" fill="#581c87">900 seeds with both enzymes</text>
+        <text x="45" y="115" font-size="15" fill="#6b21a8" font-weight="bold">Two-Locus Genotypes</text>
+        <text x="45" y="135" font-size="14" fill="#581c87">Assess C_P_ vs C_pp, ccP_, ccpp</text>
 
         <rect x="280" y="90" width="230" height="60" rx="6" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.5"/>
-        <text x="295" y="115" font-size="15" fill="#475569" font-weight="bold">3 C_pp + 3 ccP_ + 1 ccpp &rarr; White (7/16)</text>
-        <text x="295" y="135" font-size="14" fill="#334155">700 seeds blocked in pathway</text>
+        <text x="295" y="115" font-size="15" fill="#475569" font-weight="bold">Phenotypic Expression</text>
+        <text x="295" y="135" font-size="14" fill="#334155">Determine Anthocyanin Progeny Ratio</text>
 
-        <!-- Meiotic Stoichiometry -->
+        <!-- Meiotic Stoichiometry Invariant -->
         <rect x="30" y="170" width="480" height="65" rx="6" fill="#ecfdf5" stroke="#6ee7b7" stroke-width="1.5"/>
-        <text x="45" y="195" font-size="14" fill="#065f46" font-weight="bold">Male (Anther): 1600 pollen &divide; 4 = 400 meiotic divisions</text>
-        <text x="45" y="218" font-size="14" fill="#065f46" font-weight="bold">Female (Ovule): 1600 eggs &divide; 1 = 1600 meiotic divisions (3 megaspores degenerate)</text>
+        <text x="45" y="195" font-size="14" fill="#065f46" font-weight="bold">Microsporogenesis: 1 Microspore Mother Cell &rarr; 4 Pollen Grains</text>
+        <text x="45" y="218" font-size="14" fill="#065f46" font-weight="bold">Megasporogenesis: 1 Megaspore Mother Cell &rarr; 1 Functional Egg (3 Degenerate)</text>
       </svg>
     </div>
 
@@ -353,7 +353,11 @@ body .tab-button { min-width: 168px; flex: 1 1 180px; }
 <h2>Core 1B — New reconstruction practice</h2>
 <p>Source-distinct practice only. Your first response is not graded and remains unchanged after help.</p>
 <section><h3>Stage 1 — Predict</h3><p>In sweet pea, purple pigment requires dominant alleles at both loci C and P. In a dihybrid cross CcPp x CcPp, will the proportion of pigmented purple progeny be higher than, equal to, or lower than the classic Mendelian 9/16 dihybrid dominant fraction?</p><label for="ab-pred">Your physical prediction</label><textarea id="ab-pred" data-role="prediction-input"></textarea><button type="button" data-role="save-prediction">Save prediction</button></section>
-<section><h3>Stage 2 — Independent attempt</h3><p>For the cross CcPp x CcPp yielding 1600 viable seeds, calculate the expected phenotypic ratio of Purple to White flowers and the minimum total number of meiotic divisions required to produce the gametes for these 1600 seeds.</p><label for="ab-attempt">Your original calculation and model</label><textarea id="ab-attempt" data-role="firstAttempt-input"></textarea><button type="button" data-role="save-firstAttempt">Freeze original attempt</button></section>
+<section><h3>Stage 2 — Independent attempt (Fresh Transfer Twin: Duplicate Dominant Epistasis in Capsella)</h3>
+<p><strong>Altered Epistatic Architecture:</strong> In shepherd's purse (<em>Capsella bursa-pastoris</em>), triangular seed capsule shape is governed by two duplicate dominant genes, A and B. A plant produces triangular capsules if it has at least one dominant allele at either locus (A_B_, A_bb, or aaB_). Only the double recessive genotype (aabb) produces ovoid capsules.</p>
+<p>A dihybrid cross (AaBb &times; AaBb) is performed, yielding <strong>800 viable seeds</strong>.</p>
+<p><strong>Tasks to solve:</strong> (A) Calculate the expected phenotypic ratio of Triangular to Ovoid capsules (15 : 1). (B) Calculate the expected number of ovoid seeds produced. (C) Calculate the minimum total number of meiotic divisions required in the parent plants to produce the male and female gametes that formed these 800 seeds.</p>
+<label for="ab-attempt">Your independent derivation and meiotic calculation</label><textarea id="ab-attempt" data-role="firstAttempt-input" placeholder="Derive: Ratio = 15:1; Ovoid = 800/16 = 50; Meiosis = 800/4 + 800/1 = 200 + 800 = 1000..."></textarea><button type="button" data-role="save-firstAttempt">Freeze original attempt</button></section>
 <section><h3>Optional H1/H2/H3 help</h3>
 <button type="button" data-hint="1">Reveal H1 (record exposure)</button><p data-hint-text="1"></p>
 <button type="button" data-hint="2">Reveal H2 (record exposure)</button><p data-hint-text="2"></p>
@@ -508,5 +512,8 @@ body .tab-button { min-width: 168px; flex: 1 1 180px; }
   else boot();
 })();
 </script>
+  <footer style="max-width:900px;margin:24px auto 0;padding:16px;background:#f8fafc;border:1px solid #cbd5e1;border-radius:10px;text-align:center;font-size:12px;color:#64748b;">
+    Rule 13 Invariant: No academic approval inferred from software validation. Green CI means automatic tests passed; it never means student release is authorized. All questions labeled {Unvalidated}.
+  </footer>
 </body>
 </html>

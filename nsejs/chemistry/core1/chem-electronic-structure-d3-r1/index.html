@@ -91,12 +91,136 @@ body .tab-button { min-width: 168px; flex: 1 1 180px; }
 <nav><button type="button" id="tab-core2" class="tab-button active" onclick="switchTab('core2')">Core 2 status</button>
 <button type="button" id="tab-core1a" class="tab-button" onclick="switchTab('core1a')">Core 1A teaching</button>
 <button type="button" id="tab-core1b" class="tab-button" onclick="switchTab('core1b')">Core 1B new challenge</button></nav>
-<div id="content-core2" class="tab-content active"><section><h2>Original source authority</h2>
-<p>The original exam question and canonical UID, paper/key and QRT decisions remain with Agent A.
-This candidate does not reproduce them or infer source authenticity.</p>
-<button type="button" onclick="document.getElementById('derivation-section').style.display='block'">Show source custody notice</button>
-<div id="derivation-section" class="derivation-section" style="display: none;"><p>Original Core2
-retrieval and attempt are a separate source-bound route controlled by Agent A.</p></div></section></div>
+<div id="content-core2" class="tab-content active">
+  <section class="step-box" style="border-left:4px solid #0d9488;background:#f8fafc;padding:16px 20px;border-radius:0 10px 10px 0;margin-bottom:16px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;flex-wrap:wrap;gap:8px;">
+      <span style="font-size:12px;font-weight:800;text-transform:uppercase;color:#0d9488;letter-spacing:0.06em;">Target Item: CHEM-NSEJS-2024-C-Q56 · Band D3 (Score 6) · Operation: MODEL / SYNTHESIZE</span>
+      <span style="font-size:11px;font-weight:800;background:#fef08a;color:#854d0e;border:1px solid #eab308;padding:2px 8px;border-radius:999px;">{Unvalidated} · Core 2 Reference</span>
+    </div>
+    <h2 style="font-size:20px;margin:4px 0 10px;color:#0f172a;">National Standard Examination in Junior Science (NSEJS) Reference Item</h2>
+    <h3 style="font-size:16px;color:#0f766e;margin:8px 0 6px;">Problem Statement</h3>
+    <p style="margin:0 0 10px;">[Multiple Correct] An element in its neutral, ground-state atomic form has the following principal quantum shell electron populations:</p>
+    <p style="margin:0 0 12px;font-family:ui-monospace,monospace;font-size:15px;background:#eef6f9;padding:8px 14px;border-radius:8px;display:inline-block;border:1px solid #cce3ea;">
+      <strong>K = 2, &nbsp; L = 8, &nbsp; M = 9, &nbsp; N = 2</strong>
+    </p>
+    <p style="margin:0 0 8px;font-weight:700;color:#0f172a;">Which of the following statements regarding this element are correct?</p>
+    <ul style="margin:0 0 12px 20px;padding:0;line-height:1.6;font-size:15px;">
+      <li><strong>(A)</strong> The atomic number of the element is <em>Z</em> = 21, and it belongs to the d-block of the periodic table.</li>
+      <li><strong>(B)</strong> Its ground-state subshell electronic configuration is 1s² 2s² 2p⁶ 3s² 3p⁶ 3d¹ 4s².</li>
+      <li><strong>(C)</strong> The neutral atom possesses a total of 12 p-electrons and exactly 1 d-electron.</li>
+      <li><strong>(D)</strong> The total number of unpaired electrons in the neutral ground state is 1.</li>
+    </ul>
+  </section>
+
+  <!-- Vector Diagram of Shell to Subshell Aufbau Filling -->
+  <div class="diagram-container" style="background:#ffffff;border:1.5px solid #d2deea;border-radius:12px;padding:16px;margin:16px 0;text-align:center;box-shadow:0 2px 8px rgba(16,42,67,0.03);">
+    <svg viewBox="0 0 640 230" width="100%" height="230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Aufbau orbital filling progression and shell deconstruction for Scandium Z=21">
+      <defs>
+        <marker id="arrow-chem" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1 L 10 5 L 0 9 z" fill="#0d9488"/>
+        </marker>
+      </defs>
+      <rect x="10" y="10" width="620" height="210" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+      <text x="25" y="32" font-size="14" font-weight="bold" fill="#0f766e">Shell Population to (n + ℓ) Aufbau Deconstruction</text>
+      
+      <!-- Energy Axis -->
+      <line x1="50" y1="195" x2="50" y2="45" stroke="#64748b" stroke-width="2.5" marker-end="url(#arrow-chem)"/>
+      <text x="20" y="38" font-size="14" font-weight="bold" fill="#0f766e">Energy (E)</text>
+
+      <!-- K Shell -->
+      <rect x="80" y="165" width="100" height="32" rx="6" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.5"/>
+      <text x="88" y="186" font-size="14" font-weight="bold" fill="#0369a1">K: 1s² (2e⁻)</text>
+
+      <!-- L Shell -->
+      <rect x="195" y="145" width="125" height="32" rx="6" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.5"/>
+      <text x="203" y="166" font-size="14" font-weight="bold" fill="#0369a1">L: 2s² 2p⁶ (8e⁻)</text>
+
+      <!-- M Shell Core -->
+      <rect x="335" y="120" width="135" height="32" rx="6" fill="#ccfbf1" stroke="#0d9488" stroke-width="1.5"/>
+      <text x="342" y="141" font-size="14" font-weight="bold" fill="#0f766e">M: 3s² 3p⁶ (8e⁻)</text>
+
+      <!-- N Shell 4s -->
+      <rect x="485" y="95" width="125" height="32" rx="6" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+      <text x="495" y="116" font-size="14" font-weight="bold" fill="#b45309">N: 4s² (2e⁻)</text>
+      <text x="488" y="86" font-size="14" fill="#92400e">Fills before 3d (n+ℓ = 4)</text>
+
+      <!-- M Shell 3d -->
+      <rect x="485" y="45" width="125" height="32" rx="6" fill="#fce7f3" stroke="#db2777" stroke-width="2"/>
+      <text x="495" y="66" font-size="14" font-weight="bold" fill="#9d174d">M: 3d (n+ℓ = 5)</text>
+      <text x="480" y="38" font-size="14" font-weight="bold" fill="#be185d">Subshell Capacity: 10e⁻</text>
+
+      <!-- Horizontal Connectors -->
+      <line x1="180" y1="181" x2="195" y2="161" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="3,3"/>
+      <line x1="320" y1="161" x2="335" y2="136" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="3,3"/>
+      <line x1="470" y1="136" x2="485" y2="111" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="3,3"/>
+      <line x1="547" y1="95" x2="547" y2="77" stroke="#db2777" stroke-width="2" marker-end="url(#arrow-chem)"/>
+
+      <!-- Neutral Shell Summary -->
+      <text x="40" y="215" font-size="14" font-weight="bold" fill="#0f172a">Given Shell Populations: K = 2, L = 8, M = 9, N = 2 · Determine Subshell Occupancies via (n+ℓ)</text>
+    </svg>
+  </div>
+
+  <!-- Interactive Option Commit Box -->
+  <section class="commit-box" style="background:#fffbeb;border:1.5px solid #fcd34d;border-radius:12px;padding:18px;margin:18px 0;">
+    <h3 style="margin-top:0;font-size:16px;color:#92400e;">Select Options &amp; Commit Unassisted Attempt:</h3>
+    <div style="display:flex;flex-direction:column;gap:10px;margin:12px 0;">
+      <label style="display:flex;align-items:center;gap:10px;cursor:pointer;font-size:15px;">
+        <input type="checkbox" id="opt_A" name="chem_ans" value="A">
+        <span><strong>Option (A):</strong> Atomic number <em>Z</em> = 21, and element belongs to d-block.</span>
+      </label>
+      <label style="display:flex;align-items:center;gap:10px;cursor:pointer;font-size:15px;">
+        <input type="checkbox" id="opt_B" name="chem_ans" value="B">
+        <span><strong>Option (B):</strong> Subshell configuration is 1s² 2s² 2p⁶ 3s² 3p⁶ 3d¹ 4s².</span>
+      </label>
+      <label style="display:flex;align-items:center;gap:10px;cursor:pointer;font-size:15px;">
+        <input type="checkbox" id="opt_C" name="chem_ans" value="C">
+        <span><strong>Option (C):</strong> Total 12 p-electrons and exactly 1 d-electron.</span>
+      </label>
+      <label style="display:flex;align-items:center;gap:10px;cursor:pointer;font-size:15px;">
+        <input type="checkbox" id="opt_D" name="chem_ans" value="D">
+        <span><strong>Option (D):</strong> Total number of unpaired electrons in ground state is 1.</span>
+      </label>
+    </div>
+    <button type="button" id="btn-commit-chem" onclick="commitChemAttempt()" style="min-height:48px;padding:12px 24px;background:#0d9488;color:white;border:none;border-radius:10px;font-weight:800;font-size:14px;cursor:pointer;box-shadow:0 3px 8px rgba(13,148,136,0.25);">
+      Commit First Attempt &amp; Reveal Derivation
+    </button>
+  </section>
+
+  <!-- Complete Derivation Section (Inert until commit) -->
+  <div id="derivation-section" class="derivation-section" style="display:none;background:#f0fdf4;border:1.5px solid #86efac;border-radius:12px;padding:20px;margin-top:16px;">
+    <h3 style="color:#166534;margin-top:0;font-size:17px;">Step-by-Step Inert Derivation &amp; First Principles Verification</h3>
+    <ol style="margin:0 0 14px 20px;padding:0;line-height:1.65;font-size:14.5px;color:#1e293b;">
+      <li><strong>Atomic Number Deduction:</strong> Total electrons in a neutral atom equal nuclear charge <em>Z</em>:
+        <br><code>Z = K + L + M + N = 2 + 8 + 9 + 2 = 21</code>. Element 21 is Scandium (Sc). <em>(Statement A is true)</em>.
+      </li>
+      <li><strong>Subshell Decomposition via Aufbau Principle:</strong>
+        <br>• K-shell (n = 1): <code>1s²</code> (2 electrons).
+        <br>• L-shell (n = 2): <code>2s² 2p⁶</code> (8 electrons).
+        <br>• Following the (n + ℓ) rule, the 4s subshell (n+ℓ = 4+0 = 4) fills before the 3d subshell (n+ℓ = 3+2 = 5). Thus N-shell has <code>4s²</code>.
+        <br>• M-shell (n = 3) has 9 electrons: <code>3s² 3p⁶ 3d¹</code>.
+        <br>• Complete ground-state configuration: <code>1s² 2s² 2p⁶ 3s² 3p⁶ 3d¹ 4s²</code>. <em>(Statement B is true)</em>.
+      </li>
+      <li><strong>Orbital Population Breakdown:</strong>
+        <br>• Total p-electrons = 2p⁶ (6) + 3p⁶ (6) = <strong>12</strong>.
+        <br>• Total d-electrons = 3d¹ = <strong>1</strong>. <em>(Statement C is true)</em>.
+      </li>
+      <li><strong>Unpaired Spin Count:</strong>
+        <br>All subshells 1s², 2s², 2p⁶, 3s², 3p⁶, and 4s² are completely filled and paired. The single electron in 3d¹ remains unpaired. Total unpaired electrons = <strong>1</strong>. <em>(Statement D is true)</em>.
+      </li>
+      <li><strong>Periodic Block Placement:</strong>
+        <br>The differentiating (last added) electron enters the 3d orbital. By IUPAC definition, elements where d-orbitals are progressively filled belong to the <strong>d-block</strong> (Transition Metals).
+      </li>
+    </ol>
+    <div style="background:#dcfce7;border:1px solid #bbf7d0;padding:12px 16px;border-radius:8px;font-weight:800;color:#14532d;font-size:14.5px;">
+      ✓ Academic Key Verdict: All four statements (A), (B), (C), and (D) are correct.
+    </div>
+    <div style="margin-top:14px;">
+      <a href="javascript:void(0)" onclick="switchTab('core1a')" style="display:inline-flex;align-items:center;min-height:48px;padding:8px 18px;background:#0d9488;color:white;border-radius:8px;text-decoration:none;font-weight:750;font-size:13.5px;">
+        Proceed to Core 1A Teaching Path →
+      </a>
+    </div>
+  </div>
+</div>
 <div id="content-core1a" class="tab-content"><section><h2>Core1A — taught operation</h2>
 <p>Deconstructing bulk principal quantum shell counts (M=9, N=2) into specific orbital occupancies (3s2 3p6 3d1 4s2), distinguishing core vs valence electrons, counting unpaired spins, and identifying d-block transition identity.</p>
 <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 400 55" role="img" aria-label="Conceptual progression from representation to inference to verification">
@@ -131,7 +255,15 @@ retrieval and attempt are a separate source-bound route controlled by Agent A.</
  document.querySelectorAll('.tab-content').forEach(x=>x.classList.remove('active'));
  document.getElementById('tab-'+tab).classList.add('active');
  document.getElementById('content-'+tab).classList.add('active');
-}</script><script type="application/json" id="agent-b-core1b-data">{"route":[{"ask":"What is the neutral ground-state Sc configuration?","why_this_ask":"There are 21 electrons.","step_answer":"Sc (Z=21) is [Ar]3d1 4s2."},{"ask":"Which subshell loses electrons first when Sc is ionized?","why_this_ask":"Ionization changes the energy ordering; 4s electrons are lost first.","step_answer":"Sc2+ has [Ar]3d1 after loss of two 4s electrons."},{"ask":"What happens to the final remaining valence electron for Sc3+?","why_this_ask":"Removing the third electron produces the Ar core.","step_answer":"Sc3+ is [Ar], with no 3d electron."},{"ask":"What are the three unpaired-electron counts?","why_this_ask":"Use subshell occupancy and pairing.","step_answer":"Neutral Sc has 1; Sc2+ has 1; Sc3+ has 0 unpaired electrons."}],"hints":["Use the neutral atom configuration as a starting point, then treat electron removal as a separate operation.","In transition-metal cations the 4s electrons are removed before the 3d electrons; do not simply reverse the Aufbau filling list.","Write each ionic configuration before counting spins. Ask when the remaining 3d electron is removed."],"boundaryAnswer":"No. Sc+ has [Ar]3d1 4s1 in its ground state, giving two unpaired electrons; the next electron removed for Sc2+ is 4s."}</script>
+}
+function commitChemAttempt() {
+  const der = document.getElementById('derivation-section');
+  if (der) {
+    der.style.display = 'block';
+    der.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+}
+</script><script type="application/json" id="agent-b-core1b-data">{"route":[{"ask":"What is the neutral ground-state Sc configuration?","why_this_ask":"There are 21 electrons.","step_answer":"Sc (Z=21) is [Ar]3d1 4s2."},{"ask":"Which subshell loses electrons first when Sc is ionized?","why_this_ask":"Ionization changes the energy ordering; 4s electrons are lost first.","step_answer":"Sc2+ has [Ar]3d1 after loss of two 4s electrons."},{"ask":"What happens to the final remaining valence electron for Sc3+?","why_this_ask":"Removing the third electron produces the Ar core.","step_answer":"Sc3+ is [Ar], with no 3d electron."},{"ask":"What are the three unpaired-electron counts?","why_this_ask":"Use subshell occupancy and pairing.","step_answer":"Neutral Sc has 1; Sc2+ has 1; Sc3+ has 0 unpaired electrons."}],"hints":["Use the neutral atom configuration as a starting point, then treat electron removal as a separate operation.","In transition-metal cations the 4s electrons are removed before the 3d electrons; do not simply reverse the Aufbau filling list.","Write each ionic configuration before counting spins. Ask when the remaining 3d electron is removed."],"boundaryAnswer":"No. Sc+ has [Ar]3d1 4s1 in its ground state, giving two unpaired electrons; the next electron removed for Sc2+ is 4s."}</script>
 <script>
 (function () {
   'use strict';

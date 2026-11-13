@@ -153,22 +153,22 @@ body .tab-button { min-width: 168px; flex: 1 1 180px; }
 
         <!-- P-OH bond -->
         <line x1="140" y1="125" x2="200" y2="155" stroke="#15803d" stroke-width="3"/>
-        <text x="205" y="162" font-size="15" fill="#15803d" font-weight="bold">-OH (1 ionisable H⁺)</text>
+        <text x="205" y="162" font-size="15" fill="#15803d" font-weight="bold">-OH (Ionisable)</text>
 
         <!-- P-H bonds -->
         <line x1="100" y1="125" x2="50" y2="155" stroke="#0284c7" stroke-width="3"/>
-        <text x="25" y="172" font-size="15" fill="#0284c7" font-weight="bold">-H (reducing)</text>
+        <text x="25" y="172" font-size="15" fill="#0284c7" font-weight="bold">-H (Direct Hydride)</text>
         
         <line x1="100" y1="95" x2="50" y2="65" stroke="#0284c7" stroke-width="3"/>
-        <text x="25" y="60" font-size="15" fill="#0284c7" font-weight="bold">-H (reducing)</text>
+        <text x="25" y="60" font-size="15" fill="#0284c7" font-weight="bold">-H (Direct Hydride)</text>
 
-        <!-- Stoichiometry card -->
-        <rect x="290" y="35" width="240" height="150" rx="6" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.5"/>
-        <text x="305" y="65" font-size="14" fill="#334155" font-weight="bold">40.0 g NaOH &divide; 40.0 = 1.0 mol</text>
-        <text x="305" y="90" font-size="14" fill="#0f172a">1.0 mol Acid &harr; 1.0 mol Base</text>
-        <text x="305" y="115" font-size="14" fill="#15803d" font-weight="bold">&rArr; Basicity = 1 (Monobasic!)</text>
-        <text x="305" y="140" font-size="14" fill="#c2410c">&rArr; x = 2 &rarr; H₃PO₂ (Statement A)</text>
-        <text x="305" y="165" font-size="14" fill="#0284c7">&rArr; 2 P-H bonds &rarr; Reducing (D)</text>
+        <!-- Experimental Neutralization Setup -->
+        <rect x="280" y="30" width="250" height="160" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+        <text x="295" y="58" font-size="15" fill="#0f172a" font-weight="bold">Neutralization System:</text>
+        <text x="295" y="85" font-size="14" fill="#334155">Acid Sample: 1.0 mol H₃POₓ</text>
+        <text x="295" y="112" font-size="14" fill="#334155">Titrant: 40.0 g NaOH (M = 40.0 g/mol)</text>
+        <text x="295" y="140" font-size="14" fill="#0369a1" font-weight="bold">Objective: Determine x &amp; Properties</text>
+        <text x="295" y="168" font-size="14" fill="#64748b">Direct P-H vs Ionisable P-OH Bonding</text>
       </svg>
     </div>
 
@@ -215,7 +215,10 @@ body .tab-button { min-width: 168px; flex: 1 1 180px; }
 <h2>Core 1B — New reconstruction practice</h2>
 <p>Source-distinct practice only. Your first response is not graded and remains unchanged after help.</p>
 <section><h3>Stage 1 — Predict</h3><p>Does an acid formula with three hydrogen atoms (like H3PO2) guarantee that it can donate three protons to a base?</p><label for="ab-pred">Your physical prediction</label><textarea id="ab-pred" data-role="prediction-input"></textarea><button type="button" data-role="save-prediction">Save prediction</button></section>
-<section><h3>Stage 2 — Independent attempt</h3><p>Evaluate the neutralisation of 1.0 mol H3POx by 40.0 g NaOH (M = 40.0 g/mol) and select the correct statements among: (A) x=2 and monobasic, (B) x=3 and dibasic, (C) two ionisable P-OH bonds, (D) powerful reducing agent.</p><label for="ab-attempt">Your original calculation and model</label><textarea id="ab-attempt" data-role="firstAttempt-input"></textarea><button type="button" data-role="save-firstAttempt">Freeze original attempt</button></section>
+<section><h3>Stage 2 — Independent attempt (Fresh Transfer Twin: H4P2O7 Pyrophosphoric Acid)</h3>
+<p><strong>Altered Coordination &amp; Basicity Boundary:</strong> An anhydrous polyprotic phosphorus oxyacid sample containing 0.25 mol of acid is completely neutralised by 1.0 mol of potassium hydroxide (KOH, M = 56.1 g/mol). Spectroscopic analysis confirms the molecule contains a bridging P-O-P bond, four ionisable protons, and exactly zero direct P-H bonds.</p>
+<p><strong>Tasks to evaluate:</strong> (A) Calculate the basicity of this acid and determine whether its molecular formula is pyrophosphoric acid (H4P2O7). (B) Calculate the total mass of KOH consumed in complete neutralization. (C) Explain why this acid exhibits zero reducing behavior towards Tollens or Fehling reagents, contrasting directly with hypophosphorous acid (H3PO2).</p>
+<label for="ab-attempt">Your independent derivation and stoichiometry</label><textarea id="ab-attempt" data-role="firstAttempt-input" placeholder="Derive: Basicity = n(KOH)/n(Acid) = 1.0/0.25 = 4..."></textarea><button type="button" data-role="save-firstAttempt">Freeze original attempt</button></section>
 <section><h3>Optional H1/H2/H3 help</h3>
 <button type="button" data-hint="1">Reveal H1 (record exposure)</button><p data-hint-text="1"></p>
 <button type="button" data-hint="2">Reveal H2 (record exposure)</button><p data-hint-text="2"></p>
@@ -227,9 +230,9 @@ body .tab-button { min-width: 168px; flex: 1 1 180px; }
 <section data-role="transfer-stage" hidden><h3>Stage 6 — Changed-condition transfer</h3><p>Can phosphoric acid H3PO4 act as a reducing agent?</p><textarea data-role="transfer-input" aria-label="New changed-condition commitment"></textarea><button type="button" data-role="save-transfer">Save transfer response</button><p data-role="boundary-answer" hidden></p></section>
 <p data-role="status" aria-live="polite"></p></div>
 
-  <div class="footer">
-    No academic approval inferred from software validation. Green CI means automatic tests passed; it never means student release is authorized.
-  </div>
+  <footer style="margin-top:24px;padding:16px;background:#f8fafc;border:1px solid #cbd5e1;border-radius:10px;text-align:center;font-size:12px;color:#64748b;">
+    Rule 13 Invariant: No academic approval inferred from software validation. Green CI means automatic tests passed; it never means student release is authorized. All questions labeled {Unvalidated}.
+  </footer>
 </div>
 
 <script>
