@@ -1,12 +1,12 @@
 # Checkpoint — 13 November 2026
 
-**Observed:** 2026-11-13T14:28:00+04:00 (Asia/Dubai)  
+**Observed:** 2026-11-13T14:33:00+04:00 (Asia/Dubai)  
 **Repository Working Directory:** `D:\CodeD\g9v4`  
 **Active Branch:** `main`  
 **Tracking Remote:** `origin` -> `https://github.com/reallakshman19/Grade9v4.1.git`  
-**Head Commit:** `11b0d78` (`docs(architecture): update pipeline flowchart with Stage 8 academic release gate and V4.1 lessons`)  
+**Head Commit:** `8308e68` (`docs(architecture): add review and audit guide page and wire universal navigation`)  
 **Upstream Remote:** `upstream-v4.0` -> `https://github.com/reallakshman19/Grade9v4.0.git`  
-**Localhost Server:** Running at `http://localhost:8000` (Python HTTP server, PID/task-60)
+**Localhost Server:** Running at `http://localhost:8000` (Python HTTP server)
 
 ---
 
@@ -61,15 +61,12 @@
       - `Candidate 2 · PHYS-NSEJS-FLUID-04`: Droplet Coalescence & Surface Energy Release ($r^3$ vs $r^2$ non-linear scaling).
     - Enhanced [nsejs/js/core2-learning-route.js](file:///D:/CodeD/g9v4/nsejs/js/core2-learning-route.js) to dynamically bridge Stage 5 Assessment Cards directly to Stage 6 Learning Modules (`core1/nsejs-fluids-sound-r1/index.html` and `core1/nsejs-fluids-surface-energy-d3-r1/index.html`).
 11. **Headless Browser Automated Verification**:
-    - Subagent verified `http://localhost:8000/nsejs/physics/question-bank.html?topic=fluids` and `?topic=optics`:
+    - Verified `http://localhost:8000/nsejs/physics/question-bank.html?topic=fluids` and `?topic=optics`:
       - 0 console errors.
       - 0px horizontal scroll overflow.
       - Exactly 2 candidate cards rendered for Fluids & Sound with visible learning route links.
-      - Upgraded topic pill bar active state verified and visually inspected via host screenshot `final_step_53.png`.
-12. **Git Synchronization**:
-    - Committed changes in commit `07d9fec`: `feat(nsejs): upgrade physics question-bank topic pills and integrate fluids candidate records with Core 1 routes`.
-    - Pushed cleanly to `origin/main` on `https://github.com/reallakshman19/Grade9v4.1.git`.
-13. **Full Core 1A/1B Master Learning Integration Across Hub & Question Bank**:
+      - Upgraded topic pill bar active state verified and visually inspected.
+12. **Full Core 1A/1B Master Learning Integration Across Hub & Question Bank**:
     - **Physics Hub Upgrade ([nsejs/physics/index.html](file:///D:/CodeD/g9v4/nsejs/physics/index.html))**:
       - Replaced disabled `⏳ Academic Review` badges on all 6 topic cards with active, touch-friendly navigation rows (`.prog-item-link`) and dual-action button groups:
         - `▶ Open Candidate Bank (N Qs) →`
@@ -82,35 +79,55 @@
       - Transformed legacy placeholder list into a modern, responsive 12.7" tablet directory linking **all 17 Physics Core 1 master lessons**.
       - Added interactive domain filter pills (`All 17`, `Optics 6`, `Mechanics 2`, `Circuits 3`, `Electrostatics 2`, `Magnetism 2`, `Fluids 2`).
       - Every lesson features a high-contrast `▶ Launch ... Journey →` button leading to its interactive module without any disabled placeholders.
-    - **Host Browser Verification**: Passed with 0 console errors and 0px horizontal scroll overflow (verified via host screenshot `final_step_66.png`).
-    - **Committed & Pushed**: Commit `dcc7d91` pushed to `origin/main`.
-14. **Populated Core 2 Target Problem in Lens Displacement Master Module**:
+13. **Populated Core 2 Target Problem in Lens Displacement Master Module**:
     - Replaced placeholder disclaimer in Tab 1 ("1. Core 2 Target Problem") of [nsejs-optics-displacement-d3-r1/index.html](file:///D:/CodeD/g9v4/nsejs/physics/core1/nsejs-optics-displacement-d3-r1/index.html) with:
       - Full problem statement: Convex Lens Displacement Method on fixed optical bench ($D = 90.0\text{ cm}$, $d = 30.0\text{ cm}$).
-      - Vector SVG optical diagram illustrating the optical axis, object ($h_0$), fixed screen, conjugate lens positions 1 & 2 ($u_1 = 30\text{ cm}$, $u_2 = 60\text{ cm}$), magnified/diminished images ($I_1, I_2$), displacement $d$, and total separation $D$.
+      - Vector SVG optical diagram illustrating optical axis, object ($h_0$), fixed screen, conjugate lens positions 1 & 2 ($u_1 = 30\text{ cm}$, $u_2 = 60\text{ cm}$), magnified/diminished images ($I_1, I_2$), displacement $d$, and total separation $D$.
       - Interactive option commit box (Options A, B, C, D) with unassisted attempt commitment.
-      - 4-step mathematical derivation & invariant proof (system formulation, conjugate roots $f = (D^2-d^2)/(4D) = 20.0\text{ cm}$, height ratio $h_1/h_2 = 4.0$, boundary condition $D > 4f$) revealed after commitment.
-    - Verified live with 0 console errors and 0px overflow via host screenshot `final_step_70.png`.
-    - Pushed to `origin/main` (commit `7e9a81a`).
-15. **Pipeline Flowchart & Benchmarks Synchronized with V4.1 Lessons ([architecture/pipeline-flowchart.html](file:///D:/CodeD/g9v4/architecture/pipeline-flowchart.html))**:
+      - 4-step mathematical derivation & invariant proof ($f = (D^2-d^2)/(4D) = 20.0\text{ cm}$, height ratio $h_1/h_2 = 4.0$, boundary condition $D > 4f$) revealed after commitment.
+14. **Pipeline Flowchart & Benchmarks Synchronized with V4.1 Lessons ([architecture/pipeline-flowchart.html](file:///D:/CodeD/g9v4/architecture/pipeline-flowchart.html))**:
     - **Added Stage 8 (`Stage 08 (Final Gate)`)**: Documented the definitive 4 Non-Compensatory Conditions to remove `{Unvalidated}` and Rule 13 HOLD banners (Human Scientific Review, Signed B1–B7 Ledger, Rights Clearance, and Signed Cryptographic Review Receipt).
     - **Updated Stage 5 & Stage 6 Invariants**: Mandated the bi-directional learning bridge ribbons/buttons, $\ge 48\text{px}$ touch targets, and full Tab 1 question rendering (forbidding empty disclaimer placeholders).
     - **Added V4.1 Lessons & Architecture Table**: Documented operational challenges, legacy V4.0 vulnerabilities, and V4.1 invariant architecture standards.
-    - Verified live with 0 console errors and 0px overflow via host screenshot `final_step_96.png`.
-    - Pushed to `origin/main` (commit `11b0d78`).
+15. **Architecture Review & Audit Guide Created & Deployed**:
+    - Created [architecture/review-guide.html](architecture/review-guide.html) and artifact [review-guide.md](file:///C:/Users/reall/.gemini/antigravity/brain/16afc2ec-3682-454e-8584-186a2f7af477/review-guide.md):
+      - Complete, actionable end-to-end review rubric synthesizing Guidebook, Pipeline Flowchart, and Source Register.
+      - Section 01: Governance & Fail-Closed Triage (`PASS`, `HOLD`, `FAIL`, `NOT_RUN`) + Sealed Blind Review Protocol vs. Author Exposure boundary.
+      - Section 02: Parallel Evidence Routes (Route A Questions vs Route B Exposition) and the exact task-join test.
+      - Stages 01–07: Step-by-step checklists, measurable pass benchmarks, and strict falsification triggers across Question Intake, Demand Profiling, Blind QRT Adjudication, Warrants & Adapters, 12.7" Tablet UX, B1–B7 Non-Compensatory Rubric, and Dual-Engine Verification.
+      - Section 08: Code vs. Authority Action Matrix distinguishing what agents can mechanically fix vs what requires human authority (`HOLD`).
+      - Section 09: Standard 5-Part Review & Delivery Receipt Form.
+    - Updated navigation links across [architecture/index.html](architecture/index.html), [architecture/pipeline-flowchart.html](architecture/pipeline-flowchart.html), and [architecture/guidebook.html](architecture/guidebook.html).
+    - Verified live on localhost:8000 (HTTP 200). Committed and pushed to `origin/main` (`8308e68`).
 
 ---
 
 ## 2. Active Verification State
 
-- **Local Preview Server**: `http://localhost:8000` (Active).
+- **Local Preview Server**: Running at `http://localhost:8000` (Python HTTP server).
 - **Core 2 Question Bank Total Questions**: 53 Physics questions indexed across 6 topic domains (Optics: 10, Electrostatics: 10, Circuits: 10, Magnetism & EMI: 10, Mechanics: 11, Fluids & Sound: 2).
+- **Core 1 Master Learning Lessons**: 17 interactive master lessons indexed in `nsejs/physics/core1/index.html`.
+- **Architecture Suite**: Fully interconnected suite:
+  - `http://localhost:8000/architecture/index.html` (Architecture Hub)
+  - `http://localhost:8000/architecture/guidebook.html` (Architecture Guidebook)
+  - `http://localhost:8000/architecture/pipeline-flowchart.html` (Pipeline Flowchart & Benchmarks)
+  - `http://localhost:8000/architecture/review-guide.html` (Review & Audit Guide)
+  - `http://localhost:8000/architecture/production-checklist.html` (12.7" Tablet Checklist)
+  - `http://localhost:8000/architecture/guidebook-sources.json` (Source Register)
 - **Rule 13 Invariants Enforced**: `{Unvalidated}` badges and `HOLD: ACADEMIC_ADMISSION` warning banners active across all routes. No academic approval is inferred from software validation.
 
 ---
 
-## 3. Recommended Next Actions
+## 3. Compact & Context Restoration Directives
 
-1. Review other subject question banks (`Chemistry` and `Biology`) for equivalent topic filtering or authoring extensions if needed.
-2. Monitor GitHub Pages deployment workflow in `.github/workflows/deploy.yaml`.
-3. Run `/compact` if you wish to compact the conversation context.
+```text
+RESTORE DIRECTIVE:
+- Working Directory: D:\CodeD\g9v4
+- Active Branch: main (synced with https://github.com/reallakshman19/Grade9v4.1.git)
+- Pinned commit: 8308e68 (plus checkpoint commit)
+- Localhost Preview Server: http://localhost:8000
+- Staged / Active Trees:
+  - nsejs/ (NSEJS Hub, 53 Core 2 candidate questions, 17 Core 1 master learning modules)
+  - architecture/ (guidebook.html, pipeline-flowchart.html, review-guide.html, production-checklist.html, index.html)
+- Governance Invariant: Rule 13 (AGENTS.md) — mechanical test passes != academic approval; fail-closed HOLD preserved.
+```
