@@ -141,6 +141,17 @@
   function createCard(q, index) {
     const box = text("article", "", "card");
     box.id = "question-" + encodeURIComponent(q.source_id || q.id);
+    box.dataset.sourceId = q.source_id || q.id;
+    if (q.id) {
+      box.dataset.qid = q.id;
+      if (q.source_id && q.id !== q.source_id) {
+        const anc = document.createElement("a");
+        anc.id = encodeURIComponent(q.id);
+        anc.className = "qb-card-anchor";
+        anc.style.cssText = "position:absolute;visibility:hidden;pointer-events:none;";
+        box.prepend(anc);
+      }
+    }
     append(box, text("h2", "Candidate " + (index + 1) + " · " + (q.source_id || q.id)));
 
     const opStr = (q.op || "MODEL");
