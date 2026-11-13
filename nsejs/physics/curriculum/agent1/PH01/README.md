@@ -1,61 +1,66 @@
-# Agent 1 — PH01 Motion and Kinematics candidate pilot
+# Agent 1 — PH01 Motion and Kinematics R2 (author-exposed candidate)
 
-**Task:** G9V41-NSEJS-PHYSICS-AGENT1-PH01-R1
-**Parent contracts:** C01–C08 engineering candidate v1.0.0, Draft PR #2.
-**Workstream:** PH01–PH06 first half, under AGENT_1 ownership.
-**Implementation status:** PH01 reading chapter authored; one advanced construction subtopic **candidate**. PH02–PH06 are **inventoried only**. No Owner or academic acceptance.
+**Task:** G9V41-NSEJS-PHYSICS-AGENT1-PH01-R2
+**Parent contracts:** C01–C08 v1.0.0 in Draft PR #2; candidate C06 v1.1.0 amendment on this branch.
+**Branch/PR:** feat/nsejs-physics-agent1-ph01-kinematics-r1 / Draft PR #3.
+**Authority:** ENGINEERING_CANDIDATE · SCIENTIFIC_HOLD · INDEPENDENT_QRT_HOLD · B1–B7_HOLD · NO_MERGE_OR_DEPLOY.
 
-## Readable textbook — start here
+Agent 1 owns PH01–PH06; Agent 2 owns PH07–PH12. PH02–PH06 are **inventoried, not authored or qualified**.
 
-[PH01 Motion and Kinematics — reading-first chapter](../../../textbook/PH01/index.html)
+## What exists now
 
-This is an original teaching manuscript with 11 continuous sections, two authored accessible SVG diagrams, signed motion derivations, an interactive relative-velocity exploration and five concept investigations. It addresses position/displacement, speed/velocity, acceleration, motion graphs, constant-acceleration assumptions, relative motion, piecewise meetings, and elementary circular motion. The self-check solutions are ordinary textbook exposition, **not protected Core1B evidence**.
+| Deliverable | Actual state |
+|---|---|
+| [PH01 readable textbook](../../../textbook/PH01/index.html) | Authored: 11 connected sections, two accessible original SVG diagrams, interactive reference-frame exploration, worked derivations and five textbook investigations |
+| [PH01 scope and QRT coverage ledger](ph01-subtopic-qrt-coverage.v1.json) | Eight textbook subtopics, **three with draft QRT constructions**, five QRT gaps |
+| [PH01 R2 topic package](physics-topic-package.v1_1.json) | Three Core1A subtopic constructions, nine proposed D3 tasks across MODEL, REPRESENT and SYNTHESIZE |
+| [PH01 R2 adapter](topic-adapter.PH01.v0.2.0.json) | Three Blueprint cells D3.4/D3.5/D3.6, each with three subtopic instances |
+| [Candidate Core1B learner page](../../../core1/ph01-qrt-r2/index.html) | Twelve cycles: three combined MAIN, nine INSTANCE; first-answer protection, hints, repair and boundary testing |
+| [H1/H2/H3 and boundary support](ph01-core1b-support.v1.json) | Task-specific hints and complete changed-condition explanations for all 12 cycles |
+| [C06 resolution record](contract-gap-C06-MAIN-join-resolution.v1.json) | Engineering candidate resolution; Owner/Oracle and academic acceptance pending |
 
-A web page with exercises does not prove B3 teaching sufficiency; independent science and pedagogy review remain HOLD.
+The earlier [v1 topic package](physics-topic-package.v1.json) and [v0.1 adapter](topic-adapter.PH01.v0.1.0.json) remain unchanged for compatibility.
 
-## First QRT constructions
+## Three PH01 subtopics now carrying draft QRTs
 
-The first detailed topic-package subtopic is **PH01-M07** (relative motion, signed graphs and piecewise meetings).
-
-| Proposed tile | Primary operation | Learner-owned inference | Status |
+| Subtopic | MODEL D3.4 | REPRESENT D3.5 | SYNTHESIZE D3.6 |
 |---|---|---|---|
-| PHY-PH01-D3.4 | MODEL | Which reference frame and velocity-composition model applies? | PROPOSED |
-| PHY-PH01-D3.5 | REPRESENT | Convert changing position records into signed velocities and areas | PROPOSED |
-| PHY-PH01-D3.6 | SYNTHESIZE | Reject an out-of-domain meeting solution and reconstruct a valid stage | PROPOSED |
+| PH01-M03 — Speed and velocity | Choose a path/displacement average model | Translate signed travel legs into position history | Recover unknown leg lengths and test feasibility |
+| PH01-M05 — Motion graphs | Choose slope/area model for the question | Translate position samples to signed velocity intervals | Recover missing velocity from signed areas |
+| PH01-M07 — Relative and piecewise motion | Select observer, frame and stage model | Translate positions across observers | Reject an out-of-domain meeting root and rebuild the correct stage |
 
-Three candidate operation targets have three distinct Core1B MAIN prompts and three corresponding independent INSTANCE prompts, with six-stage authored feedback, model conditions, and protected-answer policy metadata. All are **author-authored, not historical NSEJS exam items**. Their exact five-factor D3 scores are author proposals, not blind QRT decisions.
+All nine D3 labels and five-factor scores are author proposals, not independent academic QRT verdicts. There are **zero** accepted D4 targets and **zero** qualified authentic exam-source items.
 
-The native semantic package is [physics-topic-package.v1.json](physics-topic-package.v1.json). The standalone candidate adapter is [topic-adapter.PH01.v0.1.0.json](topic-adapter.PH01.v0.1.0.json). Their duplicated adapter data must remain identical until a reviewed single-source generator is adopted.
+## Five PH01 QRT gaps
 
-## PH01 completion versus current pilot
+PH01-M01 measurement/reference directions; PH01-M02 distance/displacement; PH01-M04 acceleration; PH01-M06 constant-acceleration equations; PH01-M08 elementary circular motion.
 
-| PH01 subtopic | Textbook coverage | QRT candidate package |
-|---|---|---|
-| PH01-M01 Position and coordinate choice | Present | Not authored |
-| PH01-M02 Distance/displacement | Present | Not authored |
-| PH01-M03 Speed/velocity and averages | Present | Not authored |
-| PH01-M04 Acceleration | Present | Not authored |
-| PH01-M05 Graph representation | Present | Not separately qualified |
-| PH01-M06 Constant-acceleration equations | Present | Not authored |
-| PH01-M07 Relative and piecewise motion | Present | **Three draft D3 operations, unqualified** |
-| PH01-M08 Elementary circular motion | Present as conceptual introduction | Not authored |
+These five have textbook sections but lack standalone three-operation QRT packs, independent science checking and B1–B7 qualification. Do not mistake a textbook section for a completed learning route.
 
-Do not mistake a chapter paragraph, example or proposed QRT cell for a fully qualified learning route. Remaining PH01 instance coverage and independent B1–B7 reviews are future slices.
+## C06 MAIN integration contract
 
-## Contract gap — C06 MAIN cycle
+Original v1 had no way to guarantee a single MAIN combines multiple subtopic instances. In the candidate v1.1 amendment:
 
-[Open PH01-GAP-C06-MAIN-JOIN-001](contract-gap-C06-MAIN-join.v1.json).
+- [Versioned C06 contract](../../contracts/core-contracts.v1_1.json)
+- [Versioned topic-package schema](../../contracts/physics-topic-package.v1_1.schema.json)
+- [Version-aware validator](../../contracts/tools/validate_physics_contracts.py)
 
-The initial candidate C06 schema encodes one QRT target and subtopic per MAIN cycle, while the actual Physics Blueprint requires a MAIN task to **mix multiple subtopic instances within a tile**. This pilot records the mismatch rather than inventing an approved MAIN. An Owner/Oracle-reviewed versioned C06/schema amendment is needed. Native multi-instance B4 and B6 are HOLD.
+The validator requires exactly one MAIN per cell, at least two distinct subtopic instances, coverage of all the cell's instances, no cross-cell contamination, and one INSTANCE cycle per target. The earlier v1 files remain valid. The original [gap record](contract-gap-C06-MAIN-join.v1.json) is preserved; its [candidate resolution](contract-gap-C06-MAIN-join-resolution.v1.json) is still pending Owner/Oracle approval. **No Physics Blueprint rule was altered.**
 
-The Physics Blueprint remains DRAFT_OWNER_REVIEW, D3.1 remains PAUSED, external 28 Shared QRT pin is not verified by this repository's local validator, and the root WPE topic adapter has no approved selected version.
+## Protected attempt runtime and limits
 
-## Evidence and checks
+The Core1B page uses same-origin JSON package/support, computes a SHA-256 content revision from their exact bytes, and stores the first prediction/answer in a revision-specific browser storage key before hints or reconstruction are unlocked. H1/H2/H3 support, diagnosis self-report, repair, boundary attempt, and linked textbook help exposure are recorded separately. When storage is disabled, learners can type and copy their work but hints/answers remain locked.
 
-- Source references: official [IAPT 2026 NSEJS information](https://iapt.org.in/), [CBSE 2026–27 curriculum](https://cbseacademic.nic.in/curriculum_2027.html), and historical [CBSE motion teaching outline](https://cbseacademic.nic.in/web_material/term/9science.pdf).
-- Six-topic source/scope candidate inventory: [ph01-ph06-syllabus-inventory.v1.json](../ph01-ph06-syllabus-inventory.v1.json).
-- Validation: python nsejs/physics/curriculum/contracts/tools/validate_physics_contracts.py nsejs/physics/curriculum/agent1/PH01/physics-topic-package.v1.json
-- Regression: python -m pytest -q tests/test_nsejs_physics_ph01.py
-- Browser: python tools/physics_textbook_browser_qa.py (requires Playwright Chromium; checks 12.7-inch portrait/landscape, keyboard and responsive overflow).
+The runtime marks mastery as UNASSESSED. Client-side self-study cannot be called secure invigilation, independent academic review or observed child mastery. Qualitative B3/B4/B6 and all remaining B1–B7 scientific evidence are still HOLD.
 
-Source authenticity, science, QRT cognitive qualification, B1–B7, learner-protection runtime and final release remain HOLD. Branch is draft and must not merge/deploy without Owner authorization and relevant independent academic reviews.
+## Verify
+
+    python -m pip install -e ".[dev]"
+    python nsejs/physics/curriculum/contracts/tools/validate_physics_contracts.py nsejs/physics/curriculum/agent1/PH01/physics-topic-package.v1_1.json
+    python -m pytest -q
+    python tools/physics_textbook_browser_qa.py
+    python tools/physics_ph01_core1b_browser_qa.py
+
+Chromium QA uses 1000×1600 portrait and 1600×1000 landscape. It checks protected first answer, staged hints, revisions, changed-condition answers, refresh, help exposure, stale revisions, disabled storage, responsive overflow and errors. Exact-head workflow receipts are linked from Draft PR #3.
+
+**All scientific and release gates HOLD.** The Physics Blueprint remains DRAFT_OWNER_REVIEW, D3.1 PAUSED, WPE selected adapter UNSELECTED and D1/D2 SPEC_PENDING. No merge or deployment without Owner approval and independent academic review.
