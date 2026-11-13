@@ -4,7 +4,7 @@
   "academic_track": "NSEJS",
   "topic_id": "PH11",
   "owner_agent": "AGENT_2",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "status": "DRAFT_AUTHOR_EXPOSED",
   "pins": {
     "contracts_version": "1.0.0",
@@ -16,7 +16,7 @@
       "version": "1.0.0",
       "git_blob_sha": "e2409aef11ae7d98444593bfbe1a38eb00c97cef"
     },
-    "topic_adapter_version": "0.1.0"
+    "topic_adapter_version": "0.2.0"
   },
   "syllabus_references": [
     {
@@ -143,6 +143,121 @@
           }
         }
       ]
+    },
+    {
+      "id": "PH11-10",
+      "title": "Joule heating: electrical power, thermal transfer and control conditions",
+      "scope_role": "SYLLABUS_CORE_CANDIDATE",
+      "syllabus_reference_ids": [
+        "PH11-CBSE"
+      ],
+      "prerequisite_ids": [],
+      "science_ref_ids": [
+        "PH11-SCI-SECOND-01"
+      ],
+      "learning_goal": "Explain and reason about joule heating: electrical power, thermal transfer and control conditions with valid conditions and independent checks.",
+      "textbook_chapter_ref": "nsejs/physics/curriculum/topics/PH11/CHAPTER_CONTINUOUS_DRAFT.md",
+      "qrt_targets": [
+        {
+          "id": "PH11-10-D3-EXPLAIN-02",
+          "task_identity": "G9-AUTH-PH11-10-EXPLAIN-002",
+          "band": "D3",
+          "primary_operation": "EXPLAIN",
+          "blueprint_cell": "D3.2",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Explain energy flow from a source to a warm resistor without claiming that current is consumed.",
+          "decisive_route": "First discriminate the physical mechanism: Define electrical energy-transfer rate P=VI for the measured branch.; then apply conditions and test a model boundary.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 1,
+              "evidence": "The EXPLAIN task distinguishes actual applicability of Electrical power in resistors; relation to Joule heating from a tempting alternative."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "The EXPLAIN task translates the physical setup into Current A, resistance ohm, voltage V, power W, energy J and time s. with a declared reference."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "The EXPLAIN task needs two warranted inferences: Define electrical energy-transfer rate P=VI for the measured branch. Then Substitute Ohm law V=IR to get P=I²R and alternatively I=V/R to get P=V²/R."
+            },
+            "algebra_computational_load": {
+              "score": 0,
+              "evidence": "The EXPLAIN task has no mandatory computation as its decisive reasoning move."
+            },
+            "trap_exception_sensitivity": {
+              "score": 2,
+              "evidence": "The EXPLAIN task has an explicit limit: At fixed voltage and fixed current the resistance comparison trends differ"
+            }
+          }
+        },
+        {
+          "id": "PH11-10-D3-MODEL-02",
+          "task_identity": "G9-AUTH-PH11-10-MODEL-002",
+          "band": "D3",
+          "primary_operation": "MODEL",
+          "blueprint_cell": "D3.4",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Choose the correct resistance-power comparison model based on fixed source voltage or fixed current.",
+          "decisive_route": "First discriminate the physical mechanism: Define electrical energy-transfer rate P=VI for the measured branch.; then apply conditions and test a model boundary.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "The MODEL task distinguishes actual applicability of Electrical power in resistors; relation to Joule heating from a tempting alternative."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "The MODEL task translates the physical setup into Current A, resistance ohm, voltage V, power W, energy J and time s. with a declared reference."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "The MODEL task needs two warranted inferences: Define electrical energy-transfer rate P=VI for the measured branch. Then Substitute Ohm law V=IR to get P=I²R and alternatively I=V/R to get P=V²/R."
+            },
+            "algebra_computational_load": {
+              "score": 0,
+              "evidence": "The MODEL task has no mandatory computation as its decisive reasoning move."
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "The MODEL task has an explicit limit: Nonohmic devices and changing resistance invalidate fixed-R simplifications"
+            }
+          }
+        },
+        {
+          "id": "PH11-10-D3-APPLY-02",
+          "task_identity": "G9-AUTH-PH11-10-APPLY-002",
+          "band": "D3",
+          "primary_operation": "APPLY",
+          "blueprint_cell": "D3.3",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Calculate thermal energy from electrical power with explicit duration and operating point.",
+          "decisive_route": "First discriminate the physical mechanism: Define electrical energy-transfer rate P=VI for the measured branch.; then apply conditions and test a model boundary.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 1,
+              "evidence": "The APPLY task distinguishes actual applicability of Electrical power in resistors; relation to Joule heating from a tempting alternative."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "The APPLY task translates the physical setup into Current A, resistance ohm, voltage V, power W, energy J and time s. with a declared reference."
+            },
+            "reasoning_chain_length": {
+              "score": 1,
+              "evidence": "The APPLY task needs two warranted inferences: Define electrical energy-transfer rate P=VI for the measured branch. Then Substitute Ohm law V=IR to get P=I²R and alternatively I=V/R to get P=V²/R."
+            },
+            "algebra_computational_load": {
+              "score": 2,
+              "evidence": "The APPLY task uses appropriate symbolic or numerical work rather than an arbitrary number of calculations."
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "The APPLY task has an explicit limit: Thermal rise cannot be obtained from electrical power alone without time and heat balance"
+            }
+          }
+        }
+      ]
     }
   ],
   "science_records": [
@@ -165,31 +280,59 @@
         "PH11-CBSE"
       ],
       "qualification_status": "HOLD"
+    },
+    {
+      "id": "PH11-SCI-SECOND-01",
+      "claim": "In an ideal ohmic resistor with steady current I and resistance R, electrical power transformed into thermal energy is P=I²R, while with an ideal fixed voltage V across the resistor P=V²/R.",
+      "law_or_model": "Electrical power in resistors; relation to Joule heating",
+      "assumptions": [
+        "Steady current and approximately ohmic resistance",
+        "Power is evaluated at the actual operating current or voltage",
+        "Energy-to-temperature inference needs separate thermal system and loss information"
+      ],
+      "conditions_and_limits": [
+        "At fixed voltage and fixed current the resistance comparison trends differ",
+        "Nonohmic devices and changing resistance invalidate fixed-R simplifications",
+        "Thermal rise cannot be obtained from electrical power alone without time and heat balance"
+      ],
+      "units_and_signs": "Current A, resistance ohm, voltage V, power W, energy J and time s.",
+      "source_refs": [
+        "PH11-CBSE"
+      ],
+      "qualification_status": "HOLD"
     }
   ],
   "topic_adapter": {
     "adapter_id": "PHYS-TOPIC-PH11",
     "topic_id": "PH11",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "for_blueprint": "PHYS-QRT-BLUEPRINT 0.2.0",
     "status": "CANDIDATE_ONLY",
     "cells": [
       {
         "cell_id": "D3.4",
         "instance_ids": [
-          "PH11-LEAD-MODEL-D3"
+          "PH11-LEAD-MODEL-D3",
+          "PH11-10-D3-MODEL-02"
         ]
       },
       {
         "cell_id": "D3.3",
         "instance_ids": [
-          "PH11-LEAD-APPLY-D3"
+          "PH11-LEAD-APPLY-D3",
+          "PH11-10-D3-APPLY-02"
         ]
       },
       {
         "cell_id": "D3.5",
         "instance_ids": [
           "PH11-LEAD-REPRESENT-D3"
+        ]
+      },
+      {
+        "cell_id": "D3.2",
+        "instance_ids": [
+          "PH11-10-D3-EXPLAIN-02"
         ]
       }
     ]
@@ -270,6 +413,79 @@
         "task": "Two 8-ohm resistors are in parallel across an ideal 8 V source. What is the total current?",
         "answer": "2 A.",
         "reasoning": "Each branch draws 1 A; the total is 2 A and equivalent resistance is 4 ohm."
+      },
+      "authorship_status": "DRAFT_AUTHOR_EXPOSED"
+    },
+    {
+      "id": "PH11-10-CORE1A-SECOND-01",
+      "subtopic_id": "PH11-10",
+      "covered_qrt_ids": [
+        "PH11-10-D3-EXPLAIN-02",
+        "PH11-10-D3-MODEL-02",
+        "PH11-10-D3-APPLY-02"
+      ],
+      "phenomenon": "A wire in an electric heater becomes warm when current flows, even though the electrons are not used up.",
+      "scientific_narrative": "The electric field transfers energy to charges moving through a resistive element. Through interactions in the material, this electrical energy appears as increased thermal energy and may then flow into the surroundings. At a steady operating point the electrical power delivered is P=VI. If the resistor is approximately ohmic so that V=IR, substitution gives P=I²R; equivalently I=V/R gives P=V²/R. These expressions describe the same physical power under compatible conditions. A higher resistance creates more heating at fixed current, but less heating at fixed applied voltage, because current changes. A final wire temperature also depends on how fast heat leaves the wire and on its heat capacity. A physics explanation cannot replace those controls with a memorized slogan that bigger R always means greater heat.",
+      "prerequisites": [
+        "Steady current and approximately ohmic resistance",
+        "Power is evaluated at the actual operating current or voltage",
+        "Energy-to-temperature inference needs separate thermal system and loss information"
+      ],
+      "derivation_steps": [
+        {
+          "action": "Define electrical energy-transfer rate P=VI for the measured branch.",
+          "why_valid": "Electrical potential drop times current measures energy transfer per unit time.",
+          "science_ref_id": "PH11-SCI-SECOND-01"
+        },
+        {
+          "action": "Substitute Ohm law V=IR to get P=I²R and alternatively I=V/R to get P=V²/R.",
+          "why_valid": "Ohm law substitution is valid only in the relevant approximately constant-R regime.",
+          "science_ref_id": "PH11-SCI-SECOND-01"
+        },
+        {
+          "action": "Distinguish comparisons at fixed current from fixed voltage and link P times duration to energy.",
+          "why_valid": "The independent variable held fixed determines how current or voltage responds to resistance change.",
+          "science_ref_id": "PH11-SCI-SECOND-01"
+        }
+      ],
+      "model_limits": [
+        "At fixed voltage and fixed current the resistance comparison trends differ",
+        "Nonohmic devices and changing resistance invalidate fixed-R simplifications",
+        "Thermal rise cannot be obtained from electrical power alone without time and heat balance"
+      ],
+      "progressive_examples": [
+        {
+          "id": "PH11-10-EX-1",
+          "tier": "FOUNDATION",
+          "problem": "An ohmic wire carries 2 A at 3 ohms. Find power.",
+          "reasoning": "P=I²R=4×3=12 W.",
+          "independent_check": "The voltage is 6 V, so VI=6×2=12 W."
+        },
+        {
+          "id": "PH11-10-EX-2",
+          "tier": "CONNECTED",
+          "problem": "A 6 ohm resistor is across an ideal 12 V source. Find power.",
+          "reasoning": "P=V²/R=144/6=24 W.",
+          "independent_check": "I=2 A and VI=24 W agrees."
+        },
+        {
+          "id": "PH11-10-EX-3",
+          "tier": "ADVANCED",
+          "problem": "At fixed ideal 12 V, compare 6 ohm and 12 ohm resistors' powers.",
+          "reasoning": "24 W versus 12 W; the higher resistance has lower power under fixed voltage.",
+          "independent_check": "Under fixed 2 A, the higher resistance instead dissipates 48 W, showing the distinction."
+        }
+      ],
+      "figures": [],
+      "misconception": {
+        "wrong_model": "A bigger resistance necessarily generates more heat in every circuit.",
+        "diagnostic": "Does doubling R increase power when applied V is held fixed by an ideal source?",
+        "repair": "Under fixed V, P=V²/R decreases; under fixed I, P=I²R increases."
+      },
+      "exit_check": {
+        "task": "At fixed 10 V, an ohmic resistor rises from 5 ohm to 10 ohm. What happens to power?",
+        "answer": "Power decreases from 20 W to 10 W.",
+        "reasoning": "P=V²/R, with voltage fixed; compare after checking assumptions."
       },
       "authorship_status": "DRAFT_AUTHOR_EXPOSED"
     }
@@ -410,6 +626,150 @@
         "diagnose": "Contrast an incorrect route (Current entering a resistor is partly used up, so branch currents must get smaller along the wire.) with your saved first answer; do not infer misconception without discriminating evidence.",
         "repair": "Use the replacement principle: Charge is conserved: the entering current equals the sum of outgoing branch currents. Rebuild the inference, not merely the final answer.",
         "boundary_test": "Redraw the network with wire crossings but no junctions and preserve every actual connection."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH11-10-MAIN-EXPLAIN-02",
+      "kind": "MAIN",
+      "subtopic_id": "PH11-10",
+      "qrt_target_id": "PH11-10-D3-EXPLAIN-02",
+      "fresh_task": "A student says half the electrons vanish into heat. Trace the correct charge-and-energy distinction.",
+      "protected_work": "Explain energy flow from a source to a warm resistor without claiming that current is consumed.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict the physical outcome or model regime before hints: Explain energy flow from a source to a warm resistor without claiming that current is consumed.",
+        "attempt": "A student says half the electrons vanish into heat. Trace the correct charge-and-energy distinction.",
+        "reconstruct": "After saving first attempt, reconstruct: Define electrical energy-transfer rate P=VI for the measured branch. -> Substitute Ohm law V=IR to get P=I²R and alternatively I=V/R to get P=V²/R. -> Distinguish comparisons at fixed current from fixed voltage and link P times duration to energy.. Verify the model assumptions.",
+        "diagnose": "Compare your first saved route with this wrong idea: A bigger resistance necessarily generates more heat in every circuit.",
+        "repair": "Rebuild the reasoning with the principle: Under fixed V, P=V²/R decreases; under fixed I, P=I²R increases.",
+        "boundary_test": "Introduce a nonohmic lamp filament that changes R as it warms; identify which fixed-R claim needs revision."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH11-10-INSTANCE-EXPLAIN-02",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH11-10",
+      "qrt_target_id": "PH11-10-D3-EXPLAIN-02",
+      "fresh_task": "A current-carrying metal strip becomes hot, while the current measured before and after it is the same. Explain these compatible observations.",
+      "protected_work": "Explain energy flow from a source to a warm resistor without claiming that current is consumed.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict the physical outcome or model regime before hints: Explain energy flow from a source to a warm resistor without claiming that current is consumed.",
+        "attempt": "A current-carrying metal strip becomes hot, while the current measured before and after it is the same. Explain these compatible observations.",
+        "reconstruct": "After saving first attempt, reconstruct: Define electrical energy-transfer rate P=VI for the measured branch. -> Substitute Ohm law V=IR to get P=I²R and alternatively I=V/R to get P=V²/R. -> Distinguish comparisons at fixed current from fixed voltage and link P times duration to energy.. Verify the model assumptions.",
+        "diagnose": "Compare your first saved route with this wrong idea: A bigger resistance necessarily generates more heat in every circuit.",
+        "repair": "Rebuild the reasoning with the principle: Under fixed V, P=V²/R decreases; under fixed I, P=I²R increases.",
+        "boundary_test": "Introduce a nonohmic lamp filament that changes R as it warms; identify which fixed-R claim needs revision."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH11-10-MAIN-MODEL-02",
+      "kind": "MAIN",
+      "subtopic_id": "PH11-10",
+      "qrt_target_id": "PH11-10-D3-MODEL-02",
+      "fresh_task": "Two resistors are driven separately from the same ideal 9 V battery. Decide which has higher power and defend the assumption.",
+      "protected_work": "Choose the correct resistance-power comparison model based on fixed source voltage or fixed current.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict the physical outcome or model regime before hints: Choose the correct resistance-power comparison model based on fixed source voltage or fixed current.",
+        "attempt": "Two resistors are driven separately from the same ideal 9 V battery. Decide which has higher power and defend the assumption.",
+        "reconstruct": "After saving first attempt, reconstruct: Define electrical energy-transfer rate P=VI for the measured branch. -> Substitute Ohm law V=IR to get P=I²R and alternatively I=V/R to get P=V²/R. -> Distinguish comparisons at fixed current from fixed voltage and link P times duration to energy.. Verify the model assumptions.",
+        "diagnose": "Compare your first saved route with this wrong idea: A bigger resistance necessarily generates more heat in every circuit.",
+        "repair": "Rebuild the reasoning with the principle: Under fixed V, P=V²/R decreases; under fixed I, P=I²R increases.",
+        "boundary_test": "Switch to a supply with substantial internal resistance; identify why terminal voltage may no longer remain fixed."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH11-10-INSTANCE-MODEL-02",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH11-10",
+      "qrt_target_id": "PH11-10-D3-MODEL-02",
+      "fresh_task": "Two lab teams compare 8 ohm and 16 ohm wires, one using a fixed-current supply, another a fixed-voltage supply. Determine which power relation each must use.",
+      "protected_work": "Choose the correct resistance-power comparison model based on fixed source voltage or fixed current.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict the physical outcome or model regime before hints: Choose the correct resistance-power comparison model based on fixed source voltage or fixed current.",
+        "attempt": "Two lab teams compare 8 ohm and 16 ohm wires, one using a fixed-current supply, another a fixed-voltage supply. Determine which power relation each must use.",
+        "reconstruct": "After saving first attempt, reconstruct: Define electrical energy-transfer rate P=VI for the measured branch. -> Substitute Ohm law V=IR to get P=I²R and alternatively I=V/R to get P=V²/R. -> Distinguish comparisons at fixed current from fixed voltage and link P times duration to energy.. Verify the model assumptions.",
+        "diagnose": "Compare your first saved route with this wrong idea: A bigger resistance necessarily generates more heat in every circuit.",
+        "repair": "Rebuild the reasoning with the principle: Under fixed V, P=V²/R decreases; under fixed I, P=I²R increases.",
+        "boundary_test": "Switch to a supply with substantial internal resistance; identify why terminal voltage may no longer remain fixed."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH11-10-MAIN-APPLY-02",
+      "kind": "MAIN",
+      "subtopic_id": "PH11-10",
+      "qrt_target_id": "PH11-10-D3-APPLY-02",
+      "fresh_task": "A 4 ohm resistor runs from an ideal 8 V source for 15 s; calculate electrical energy and compare VI with I²R.",
+      "protected_work": "Calculate thermal energy from electrical power with explicit duration and operating point.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict the physical outcome or model regime before hints: Calculate thermal energy from electrical power with explicit duration and operating point.",
+        "attempt": "A 4 ohm resistor runs from an ideal 8 V source for 15 s; calculate electrical energy and compare VI with I²R.",
+        "reconstruct": "After saving first attempt, reconstruct: Define electrical energy-transfer rate P=VI for the measured branch. -> Substitute Ohm law V=IR to get P=I²R and alternatively I=V/R to get P=V²/R. -> Distinguish comparisons at fixed current from fixed voltage and link P times duration to energy.. Verify the model assumptions.",
+        "diagnose": "Compare your first saved route with this wrong idea: A bigger resistance necessarily generates more heat in every circuit.",
+        "repair": "Rebuild the reasoning with the principle: Under fixed V, P=V²/R decreases; under fixed I, P=I²R increases.",
+        "boundary_test": "If the resistor cools to the surroundings during operation, explain why delivered energy is not equal to stored thermal energy increase."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH11-10-INSTANCE-APPLY-02",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH11-10",
+      "qrt_target_id": "PH11-10-D3-APPLY-02",
+      "fresh_task": "An ideal resistor has R=5 ohm and I=3 A for 40 s. Determine energy delivered to the element.",
+      "protected_work": "Calculate thermal energy from electrical power with explicit duration and operating point.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict the physical outcome or model regime before hints: Calculate thermal energy from electrical power with explicit duration and operating point.",
+        "attempt": "An ideal resistor has R=5 ohm and I=3 A for 40 s. Determine energy delivered to the element.",
+        "reconstruct": "After saving first attempt, reconstruct: Define electrical energy-transfer rate P=VI for the measured branch. -> Substitute Ohm law V=IR to get P=I²R and alternatively I=V/R to get P=V²/R. -> Distinguish comparisons at fixed current from fixed voltage and link P times duration to energy.. Verify the model assumptions.",
+        "diagnose": "Compare your first saved route with this wrong idea: A bigger resistance necessarily generates more heat in every circuit.",
+        "repair": "Rebuild the reasoning with the principle: Under fixed V, P=V²/R decreases; under fixed I, P=I²R increases.",
+        "boundary_test": "If the resistor cools to the surroundings during operation, explain why delivered energy is not equal to stored thermal energy increase."
       },
       "attempt_policy": {
         "save_first_answer_before_hint": true,
