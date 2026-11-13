@@ -85,6 +85,6 @@ def test_reader_is_internally_linked_and_draft_only():
     for topic in TOPICS:
         assert f"topics/{topic}/index.html" in index
         chapter = (CURR / f"topics/{topic}/index.html").read_text(encoding="utf-8")
-        assert re.search(r"<h3 id=\"s\\d+\"", chapter)
+        assert re.search(r'<h3 id="s\d+"', chapter)
         assert 'href="../../agent2/index.html"' in chapter
         assert 'href="core1b-preview.html"' in chapter
