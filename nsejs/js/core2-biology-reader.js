@@ -151,6 +151,28 @@
     const stem = text("p", String(q.stem || "").replace(/\[FIG[^\]]*\]/g, ""), "stem");
     append(box, stem);
 
+    if (Array.isArray(q.source_figures) && q.source_figures.length > 0) {
+      const figWrap = text("div", "", "figure-container");
+      figWrap.style.cssText = "margin: 12px 0 16px; text-align: center; background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 10px; padding: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.03);";
+      q.source_figures.forEach(fig => {
+        const img = document.createElement("img");
+        img.src = "../assets/" + fig;
+        img.alt = q.figure_note || fig;
+        img.className = "candidate-fig-img";
+        img.style.cssText = "max-width: 100%; height: auto; max-height: 320px; display: inline-block; border-radius: 6px;";
+        img.onerror = function() {
+          img.src = "assets/" + fig;
+        };
+        figWrap.appendChild(img);
+      });
+      if (q.figure_note) {
+        const caption = text("p", q.figure_note, "figure-caption");
+        caption.style.cssText = "font-size: 13px; color: #64748b; font-style: italic; margin-top: 6px;";
+        figWrap.appendChild(caption);
+      }
+      box.appendChild(figWrap);
+    }
+
     const group = text("div", "", "options");
     const controls = [];
     const isMulti = q.question_type === "multiple_correct_mcq";
@@ -687,6 +709,12 @@
   window.selectBiologyTopic = function(slug) {
     filterState.topic = slug;
     applyFilters(false);
+    if (slug !== "all") {
+      const ws = document.getElementById("topicWorkspace");
+      if (ws) {
+        ws.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
   };
 
   async function loadData() {
@@ -736,10 +764,14 @@
       const initialQ = filterState.q;
       const initialHash = (window.location.hash || "").replace(/^#/, "");
       if (initialHash && filterState.topic === "all") {
-        const matchQ = allBiologyQuestions.find(q => q.id === initialHash || q.source_id === initialHash);
-        if (matchQ) {
-          const matchTopic = TOPICS.find(t => t[1] === matchQ.topic);
-          if (matchTopic) filterState.topic = matchTopic[0];
+        if (initialHash === "topic-view" || initialHash === "topicWorkspace") {
+          filterState.topic = "living_world";
+        } else {
+          const matchQ = allBiologyQuestions.find(q => q.id === initialHash || q.source_id === initialHash);
+          if (matchQ) {
+            const matchTopic = TOPICS.find(t => t[1] === matchQ.topic);
+            if (matchTopic) filterState.topic = matchTopic[0];
+          }
         }
       }
 
