@@ -44,8 +44,8 @@ def test_additive_reconciliation_does_not_select_canonical_adapter():
         for c in p["core1b"]:
             assert c["id"] not in cycle_ids
             cycle_ids.add(c["id"])
-    assert len(ids) == 48 and len(cycle_ids) == 96
-    assert len(versions) == 12
+    assert len(ids) == 60 and len(cycle_ids) == 120
+    assert len(versions) == 16
     assert cell_bindings == {(k, t["target_id"], t["package_blob"]) for k,v in REG["cell_candidates"].items() for t in v}
     assert {r["subtopic_id"] for r in REG["overlapping_subtopics"]} == {"PH07-05","PH07-07","PH08-05","PH08-08"}
     r, = [r for r in REG["overlapping_subtopics"] if r["subtopic_id"]=="PH07-07"]
@@ -53,26 +53,26 @@ def test_additive_reconciliation_does_not_select_canonical_adapter():
     assert m["legacy_cell"] == "D3.4"
     assert m["proposed_same_operation"] == [{"target":"PH07-07-B01-D4-MODEL-01","cell":"D4.4","relation":"DISTINCT_TASK_NOT_EQUIVALENT_NOT_RECLASSIFICATION"}]
 
-def test_all_72_prediction_revisions_are_task_specific_and_not_literal_w():
+def test_all_96_prediction_revisions_are_task_specific_and_not_literal_w():
     prompts = set()
     for pin in REG["isolated_slices"]:
         p = read_package(pin)
         assert p["acceptance"]["b1_b7"]["B5"]["status"] == "HOLD"
         assert p["acceptance"]["release"] == "HOLD"
         for c in p["core1b"]:
-            assert c["id"].endswith("-R2")
+            assert c["id"].endswith(("-R2","-R3"))
             assert c["stages"]["predict"] not in prompts
             prompts.add(c["stages"]["predict"])
             assert c["protected_work"] not in c["stages"]["predict"]
             assert c["stages"]["predict"] != c["fresh_task"]
             assert c["stages"]["attempt"] == c["fresh_task"]
             assert c["runtime_verification"] == "NOT_RUN"
-    assert len(prompts) == 72
+    assert len(prompts) == 96
 
-def test_stage_handoff_is_bound_to_increment4_not_runtime_approval():
+def test_stage_handoff_is_bound_to_increment4_and_5_not_runtime_approval():
     assert HANDOFF["stage_order"] == ["PREDICT","ATTEMPT","RECONSTRUCT","DIAGNOSE","REPAIR","BOUNDARY_TEST"]
     assert HANDOFF["status"] == "PROPOSED_PLATFORM_DEPENDENCY"
-    assert len(HANDOFF["criteria"]) == 24
+    assert len(HANDOFF["criteria"]) == 48
     packages = {p["subtopics"][0]["id"]:read_package(p) for p in REG["isolated_slices"]}
     seen = set()
     for row in HANDOFF["criteria"]:
@@ -157,3 +157,36 @@ def test_echo_countermodel_oracle():
     assert centered["L1"]==centered["R1"]==F(30,1000)
     assert sorted([offset["L1"],offset["R1"]])==[F(20,1000),F(40,1000)]
     assert set(centered.values())!=set(offset.values())
+
+
+def test_increment5_conduction_model_oracle():
+    # Fit each competing model to the first observation, then evaluate independent geometry.
+    delta, nominal, initial = F(20), F(4), F(7)
+    altered_R=delta/initial
+    bypass=initial-delta/nominal
+    assert delta/(2*altered_R)==F(7,2)
+    assert delta/(2*nominal)+bypass==F(9,2)
+    assert delta/(4*nominal)+bypass==F(13,4)
+    assert delta/(4*nominal)+bypass != 4
+
+def test_increment5_heating_curve_model_oracle():
+    # Independently enumerate physically admissible capacities and common losses.
+    pairs=[(c,l) for c in range(50,501) for l in range(0,46)
+           if F(45-l,c)==F(1,10) and F(75-l,c)==F(22,100)]
+    assert pairs==[(250,20)]
+    assert F(60-20,250)==F(16,100)
+    assert F(60-20,250)!=F(19,100)
+    assert F(36-20,200)==F(8,100)
+
+def test_increment5_longitudinal_spacing_inverse_oracle():
+    equilibrium=[0,10,20,30,40]
+    def gaps(displacements):
+        actual=[x+d for x,d in zip(equilibrium,displacements)]
+        return [b-a for a,b in zip(actual,actual[1:])]
+    assert gaps([0,1,0,-2,0])==gaps([3,4,3,1,3])==[11,9,8,12]
+    fits=[[offset,offset+1,offset,offset-2,offset] for offset in range(-5,6) if offset-2==1]
+    assert fits==[[3,4,3,1,3]]
+    pin,=[p for p in REG["isolated_slices"] if p["subtopics"][0]["id"]=="PH08-02"]
+    target,=[t for t in read_package(pin)["subtopics"][0]["qrt_targets"] if t["primary_operation"]=="JUSTIFY"]
+    assert target["band"]=="D3"
+    assert sum(v["score"] for v in target["factor_evidence"].values())==7
