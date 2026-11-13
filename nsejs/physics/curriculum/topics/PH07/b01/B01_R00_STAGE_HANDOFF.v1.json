@@ -1,0 +1,515 @@
+{
+  "schema": "g9v41-b01-stage-handoff/v1",
+  "status": "PROPOSED_PLATFORM_DEPENDENCY",
+  "review_id": 5896632580,
+  "pinned_prediction_head": "ad109e0f77fd34a9f7e818e3314885c52e7d85b8",
+  "scope": "24 Increment 4 R2 cycle-specific response criteria. Other 48 B01 cycles have revised predictions and existing author stage prompts; stage-specific evidence still required.",
+  "authority": "P00 owns shared runtime and protection; R01 owns independent academic review; Owner adopts contracts",
+  "stage_order": [
+    "PREDICT",
+    "ATTEMPT",
+    "RECONSTRUCT",
+    "DIAGNOSE",
+    "REPAIR",
+    "BOUNDARY_TEST"
+  ],
+  "proposed_behavior": [
+    {
+      "stage": "PREDICT",
+      "entry": "Public task only, no protected W or decisive help",
+      "capture": "Separate nonempty initial prediction/reason and receipt",
+      "next": "ATTEMPT only after saved prediction; no correctness feedback"
+    },
+    {
+      "stage": "ATTEMPT",
+      "entry": "Prediction receipt matches exact revision",
+      "capture": "Immutable original response and help exposures",
+      "next": "RECONSTRUCT only after durable acknowledged save"
+    },
+    {
+      "stage": "RECONSTRUCT",
+      "entry": "Committed first attempt",
+      "capture": "Learner compares own route with reconstruction and records explanation",
+      "next": "DIAGNOSE after saved comparison"
+    },
+    {
+      "stage": "DIAGNOSE",
+      "entry": "Saved reconstruction response",
+      "capture": "Learner selects/describes misconception and cites evidence in own work; author criteria private",
+      "next": "REPAIR after diagnosis receipt; no automatic correctness claim"
+    },
+    {
+      "stage": "REPAIR",
+      "entry": "Saved diagnosis",
+      "capture": "New revision and validity check, not overwrite",
+      "next": "BOUNDARY_TEST only after repair receipt"
+    },
+    {
+      "stage": "BOUNDARY_TEST",
+      "entry": "Saved repair; previously unseen boundary prompt released",
+      "capture": "Independent response and separate receipt before any boundary explanation",
+      "next": "Feedback only after boundary commit; no mastery claim without review"
+    }
+  ],
+  "receipt_proposal": {
+    "binding": [
+      "learner/session pseudonym as approved",
+      "subtopic_id",
+      "target_id",
+      "cycle_id",
+      "package_version",
+      "task_revision_digest",
+      "stage",
+      "response_digest",
+      "previous_receipt_id",
+      "help_exposure_ids",
+      "server_timestamp"
+    ],
+    "custody": "Approved server-side or equivalent protected delivery; browser localStorage is not tamper resistant. Separate public task and protected answer/criteria payloads. Do not place stage-response criteria in learner pre-attempt JSON. Existing public repo author artifacts are already exposed; review must distinguish author-exposed and unseen assessment."
+  },
+  "acceptance_cases": [
+    "HTTP Chromium at 1000×1600 and 1600×1000, keyboard and touch; all six stages advance one at a time and save distinct receipts.",
+    "Inspect browser network payload before first attempt: protected W, route, solution and boundary not delivered; H1/H2/H3 allowed only per approved stage and exposure policy.",
+    "Refresh after each stage; receipt-chain restores exact stage and immutable original, never reveals later payload early.",
+    "Change question revision under same stable task; stale receipt rejected, no silent carryover.",
+    "Blocked storage, corrupted receipt, failed save or unavailable backend fail closed; test no stage advance.",
+    "Attempt to bypass client via direct reveal request; protected endpoint rejects unauthorized stage; browser-only prototype cannot satisfy this.",
+    "Source return and keyboard focus restoration; actual trace recorded with exact commit/browser/version/viewport.",
+    "R01 reviews each target and fresh task, marks only independently supported operation and difficulty; stage receipts alone do not certify mastery."
+  ],
+  "criteria": [
+    {
+      "subtopic_id": "PH07-06",
+      "target_id": "PH07-06-B01-D3-REPRESENT-01",
+      "cycle_id": "PH07-06-B01-MAIN-REPRESENT-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.5.ph07-06",
+      "stage_response_criteria": {
+        "PREDICT": "A task-specific initial conclusion and reason, recorded independently; do not grade for correctness before attempt.",
+        "ATTEMPT": "Temperature rise/plateau/rise and liquid fraction 0→1→1; 600 J during melting, 200 J later.",
+        "RECONSTRUCT": "Learner identifies at least one specific difference between their saved first route and the reconstruction, or demonstrates agreement with an explicit check.",
+        "DIAGNOSE": "Plateau treated as zero energy; mismatched axes or phase endpoint.",
+        "REPAIR": "Temperature rise/plateau/rise and liquid fraction 0→1→1; 600 J during melting, 200 J later. Require revised reasoning in learner's own words with an explicit validity check.",
+        "BOUNDARY_TEST": "No phase-fraction change under zero net input and negligible loss, assuming equilibrium."
+      },
+      "boundary_prompt": "If the heater is switched off but the sample remains at the transition temperature with negligible loss, how does the phase-fraction graph change?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-06",
+      "target_id": "PH07-06-B01-D3-REPRESENT-01",
+      "cycle_id": "PH07-06-B01-INSTANCE-REPRESENT-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.5.ph07-06",
+      "stage_response_criteria": {
+        "PREDICT": "A task-specific initial conclusion and reason, recorded independently; do not grade for correctness before attempt.",
+        "ATTEMPT": "Temperature plateau then fall; solid fraction 0→1→1; 900 J then 450 J removed.",
+        "RECONSTRUCT": "Learner identifies at least one specific difference between their saved first route and the reconstruction, or demonstrates agreement with an explicit check.",
+        "DIAGNOSE": "Solid fraction decreases during freezing; wrong sign or net power.",
+        "REPAIR": "Temperature plateau then fall; solid fraction 0→1→1; 900 J then 450 J removed. Require revised reasoning in learner's own words with an explicit validity check.",
+        "BOUNDARY_TEST": "100 s under identical full conversion at 9 W."
+      },
+      "boundary_prompt": "For half the net cooling power during freezing, under identical conditions, what plateau duration follows?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-06",
+      "target_id": "PH07-06-B01-D3-EXPLAIN-01",
+      "cycle_id": "PH07-06-B01-MAIN-EXPLAIN-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.5.ph07-06",
+      "stage_response_criteria": {
+        "PREDICT": "A task-specific initial conclusion and reason, recorded independently; do not grade for correctness before attempt.",
+        "ATTEMPT": "Boiling energy changes phase; vapour escape requires open-system accounting; solid balanced input/output.",
+        "RECONSTRUCT": "Learner identifies at least one specific difference between their saved first route and the reconstruction, or demonstrates agreement with an explicit check.",
+        "DIAGNOSE": "Equates steady temperature with equal internal changes; ignores mass leaving.",
+        "REPAIR": "Boiling energy changes phase; vapour escape requires open-system accounting; solid balanced input/output. Require revised reasoning in learner's own words with an explicit validity check.",
+        "BOUNDARY_TEST": "For ordinary boiling equilibrium, greater ambient pressure raises boiling temperature; lower pressure lowers it."
+      },
+      "boundary_prompt": "What happens to an equilibrium boiling temperature when surrounding pressure is changed?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-06",
+      "target_id": "PH07-06-B01-D3-EXPLAIN-01",
+      "cycle_id": "PH07-06-B01-INSTANCE-EXPLAIN-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.5.ph07-06",
+      "stage_response_criteria": {
+        "PREDICT": "A task-specific initial conclusion and reason, recorded independently; do not grade for correctness before attempt.",
+        "ATTEMPT": "Freezing releases energy at fixed T; second solid may have no net exchange.",
+        "RECONSTRUCT": "Learner identifies at least one specific difference between their saved first route and the reconstruction, or demonstrates agreement with an explicit check.",
+        "DIAGNOSE": "Equates freezing with equilibrium of unchanged solid.",
+        "REPAIR": "Freezing releases energy at fixed T; second solid may have no net exchange. Require revised reasoning in learner's own words with an explicit validity check.",
+        "BOUNDARY_TEST": "No; mixtures may freeze across a range."
+      },
+      "boundary_prompt": "If a mixture freezes over a range, must it produce a perfectly flat plateau?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-06",
+      "target_id": "PH07-06-B01-D3-JUSTIFY-01",
+      "cycle_id": "PH07-06-B01-MAIN-JUSTIFY-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.5.ph07-06",
+      "stage_response_criteria": {
+        "PREDICT": "A task-specific initial conclusion and reason, recorded independently; do not grade for correctness before attempt.",
+        "ATTEMPT": "Both net inputs 2400 J; compare full equal-mass transitions, not duration.",
+        "RECONSTRUCT": "Learner identifies at least one specific difference between their saved first route and the reconstruction, or demonstrates agreement with an explicit check.",
+        "DIAGNOSE": "Uses gross heater power or duration as latent-energy evidence.",
+        "REPAIR": "Both net inputs 2400 J; compare full equal-mass transitions, not duration. Require revised reasoning in learner's own words with an explicit validity check.",
+        "BOUNDARY_TEST": "No; initial liquid fraction changes mass converted, so energy per total mass is not comparable without knowing fraction."
+      },
+      "boundary_prompt": "If the second initially contains some liquid, can equal net energies still be interpreted as equal latent heat per mass?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-06",
+      "target_id": "PH07-06-B01-D3-JUSTIFY-01",
+      "cycle_id": "PH07-06-B01-INSTANCE-JUSTIFY-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.5.ph07-06",
+      "stage_response_criteria": {
+        "PREDICT": "A task-specific initial conclusion and reason, recorded independently; do not grade for correctness before attempt.",
+        "ATTEMPT": "Both net inputs 600 J; duration depends on net power, equal fractions needed.",
+        "RECONSTRUCT": "Learner identifies at least one specific difference between their saved first route and the reconstruction, or demonstrates agreement with an explicit check.",
+        "DIAGNOSE": "Ignores loss or transition fraction.",
+        "REPAIR": "Both net inputs 600 J; duration depends on net power, equal fractions needed. Require revised reasoning in learner's own words with an explicit validity check.",
+        "BOUNDARY_TEST": "Independent calorimetric or calibrated energy/heat-loss measurement with uncertainty."
+      },
+      "boundary_prompt": "If loss estimates have unknown systematic error, what independent measurement would help test the energy comparison?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-07",
+      "target_id": "PH07-07-B01-D3-EXPLAIN-01",
+      "cycle_id": "PH07-07-B01-MAIN-EXPLAIN-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.5.ph07-07",
+      "stage_response_criteria": {
+        "PREDICT": "A task-specific initial conclusion and reason, recorded independently; do not grade for correctness before attempt.",
+        "ATTEMPT": "Open vapour removal supports net evaporation, vaporization takes energy; other input/loss can compensate.",
+        "RECONSTRUCT": "Learner identifies at least one specific difference between their saved first route and the reconstruction, or demonstrates agreement with an explicit check.",
+        "DIAGNOSE": "Treats greater mass loss as sufficient for colder sample.",
+        "REPAIR": "Open vapour removal supports net evaporation, vaporization takes energy; other input/loss can compensate. Require revised reasoning in learner's own words with an explicit validity check.",
+        "BOUNDARY_TEST": "Yes, dynamic molecular exchange persists at saturation under stated equilibrium conditions."
+      },
+      "boundary_prompt": "At saturation with equal liquid and air temperature, can molecular exchange continue despite zero net evaporation?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-07",
+      "target_id": "PH07-07-B01-D3-EXPLAIN-01",
+      "cycle_id": "PH07-07-B01-INSTANCE-EXPLAIN-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.5.ph07-07",
+      "stage_response_criteria": {
+        "PREDICT": "A task-specific initial conclusion and reason, recorded independently; do not grade for correctness before attempt.",
+        "ATTEMPT": "Fan can increase dry convection and wet evaporation; matched dry/wet controls and mass loss.",
+        "RECONSTRUCT": "Learner identifies at least one specific difference between their saved first route and the reconstruction, or demonstrates agreement with an explicit check.",
+        "DIAGNOSE": "Attributes all fan cooling to evaporation.",
+        "REPAIR": "Fan can increase dry convection and wet evaporation; matched dry/wet controls and mass loss. Require revised reasoning in learner's own words with an explicit validity check.",
+        "BOUNDARY_TEST": "Droplets are non-vapor mass loss; cannot multiply total mass loss by vaporization energy."
+      },
+      "boundary_prompt": "If droplets are blown off, why is total mass loss no longer a direct evaporation measure?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-07",
+      "target_id": "PH07-07-B01-D4-MODEL-01",
+      "cycle_id": "PH07-07-B01-MAIN-MODEL-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.5.ph07-07",
+      "stage_response_criteria": {
+        "PREDICT": "A task-specific initial conclusion and reason, recorded independently; do not grade for correctness before attempt.",
+        "ATTEMPT": "Extra powers 6,12 W; estimates 6,9.6 W; residual 0,2.4 W; no unique cause.",
+        "RECONSTRUCT": "Learner identifies at least one specific difference between their saved first route and the reconstruction, or demonstrates agreement with an explicit check.",
+        "DIAGNOSE": "Fits each trial without checking independent evaporation prediction or forces an explanation.",
+        "REPAIR": "Extra powers 6,12 W; estimates 6,9.6 W; residual 0,2.4 W; no unique cause. Require revised reasoning in learner's own words with an explicit validity check.",
+        "BOUNDARY_TEST": "No, ±0.001 g/s corresponds to ±2.4 W, so the observed discrepancy is within that range, subject to other uncertainty."
+      },
+      "boundary_prompt": "If the second mass-loss rate is uncertain by ±0.001 g/s, does its discrepancy alone reject the model?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-07",
+      "target_id": "PH07-07-B01-D4-MODEL-01",
+      "cycle_id": "PH07-07-B01-INSTANCE-MODEL-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.5.ph07-07",
+      "stage_response_criteria": {
+        "PREDICT": "A task-specific initial conclusion and reason, recorded independently; do not grade for correctness before attempt.",
+        "ATTEMPT": "Extra powers 5,10 W; estimates 5,7.5 W; residual 0,2.5 W; independent control.",
+        "RECONSTRUCT": "Learner identifies at least one specific difference between their saved first route and the reconstruction, or demonstrates agreement with an explicit check.",
+        "DIAGNOSE": "Treats residual as proof of one mechanism or ignores wet/dry mismatch.",
+        "REPAIR": "Extra powers 5,10 W; estimates 5,7.5 W; residual 0,2.5 W; independent control. Require revised reasoning in learner's own words with an explicit validity check.",
+        "BOUNDARY_TEST": "No; altered radiation makes wet-dry subtraction confounded unless measured."
+      },
+      "boundary_prompt": "If wetting changes the surface emissivity, can dry-wet subtraction still isolate evaporation exactly?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-07",
+      "target_id": "PH07-07-B01-D3-SYNTHESIZE-01",
+      "cycle_id": "PH07-07-B01-MAIN-SYNTHESIZE-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.5.ph07-07",
+      "stage_response_criteria": {
+        "PREDICT": "A task-specific initial conclusion and reason, recorded independently; do not grade for correctness before attempt.",
+        "ATTEMPT": "Net rates +2.4 and −2.4 W; balance 0.005 g/s; state assumptions.",
+        "RECONSTRUCT": "Learner identifies at least one specific difference between their saved first route and the reconstruction, or demonstrates agreement with an explicit check.",
+        "DIAGNOSE": "Uses mass loss alone to decide temperature; omits other losses.",
+        "REPAIR": "Net rates +2.4 and −2.4 W; balance 0.005 g/s; state assumptions. Require revised reasoning in learner's own words with an explicit validity check.",
+        "BOUNDARY_TEST": "Variable mass changes heat capacity and energy carried out; fixed-state temperature inference needs revision."
+      },
+      "boundary_prompt": "If the mass changes appreciably, why must the simple temperature-rate model be qualified?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-07",
+      "target_id": "PH07-07-B01-D3-SYNTHESIZE-01",
+      "cycle_id": "PH07-07-B01-INSTANCE-SYNTHESIZE-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.5.ph07-07",
+      "stage_response_criteria": {
+        "PREDICT": "A task-specific initial conclusion and reason, recorded independently; do not grade for correctness before attempt.",
+        "ATTEMPT": "Net rates +5 and −5 W; balance 0.008 g/s; state assumptions.",
+        "RECONSTRUCT": "Learner identifies at least one specific difference between their saved first route and the reconstruction, or demonstrates agreement with an explicit check.",
+        "DIAGNOSE": "Confuses zero net accumulation with zero evaporation.",
+        "REPAIR": "Net rates +5 and −5 W; balance 0.008 g/s; state assumptions. Require revised reasoning in learner's own words with an explicit validity check.",
+        "BOUNDARY_TEST": "Balance becomes (30−14)/2500=0.0064 g/s."
+      },
+      "boundary_prompt": "If airflow simultaneously adds 4 W of non-evaporative loss, how does the balancing evaporation rate change?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-08",
+      "target_id": "PH08-08-B01-D3-MODEL-01",
+      "cycle_id": "PH08-08-B01-MAIN-MODEL-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.5.ph08-08",
+      "stage_response_criteria": {
+        "PREDICT": "A task-specific initial conclusion and reason, recorded independently; do not grade for correctness before attempt.",
+        "ATTEMPT": "Reflected path 13 m; d=√22 m; separated receiver and direct reference invalidate shortcut.",
+        "RECONSTRUCT": "Learner identifies at least one specific difference between their saved first route and the reconstruction, or demonstrates agreement with an explicit check.",
+        "DIAGNOSE": "Treats excess delay as emission time or uses vt/2.",
+        "REPAIR": "Reflected path 13 m; d=√22 m; separated receiver and direct reference invalidate shortcut. Require revised reasoning in learner's own words with an explicit validity check.",
+        "BOUNDARY_TEST": "Impossible: 12.5 ms at 320 m/s gives 4 m, shorter than direct 9 m."
+      },
+      "boundary_prompt": "If 12.5 ms instead meant time from emission, would the data be physically possible? Explain.",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-08",
+      "target_id": "PH08-08-B01-D3-MODEL-01",
+      "cycle_id": "PH08-08-B01-INSTANCE-MODEL-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.5.ph08-08",
+      "stage_response_criteria": {
+        "PREDICT": "A task-specific initial conclusion and reason, recorded independently; do not grade for correctness before attempt.",
+        "ATTEMPT": "Reflected length 10 m; d=4 m; proposed 2 m predicts about 3.03 ms excess.",
+        "RECONSTRUCT": "Learner identifies at least one specific difference between their saved first route and the reconstruction, or demonstrates agreement with an explicit check.",
+        "DIAGNOSE": "Accepts proposed value without back-substitution.",
+        "REPAIR": "Reflected length 10 m; d=4 m; proposed 2 m predicts about 3.03 ms excess. Require revised reasoning in learner's own words with an explicit validity check.",
+        "BOUNDARY_TEST": "Replace 2d with sum of normal distances; direct distance also includes their difference."
+      },
+      "boundary_prompt": "If one sensor is farther from the wall than the other, which geometric relation must change?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-08",
+      "target_id": "PH08-08-B01-D3-APPLY-01",
+      "cycle_id": "PH08-08-B01-MAIN-APPLY-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.5.ph08-08",
+      "stage_response_criteria": {
+        "PREDICT": "A task-specific initial conclusion and reason, recorded independently; do not grade for correctness before attempt.",
+        "ATTEMPT": "Direct √97 m, reflected 15 m; 32.83 and 50 ms; gap 17.17 ms resolves.",
+        "RECONSTRUCT": "Learner identifies at least one specific difference between their saved first route and the reconstruction, or demonstrates agreement with an explicit check.",
+        "DIAGNOSE": "Compares total reflected time with separation criterion.",
+        "REPAIR": "Direct √97 m, reflected 15 m; 32.83 and 50 ms; gap 17.17 ms resolves. Require revised reasoning in learner's own words with an explicit validity check.",
+        "BOUNDARY_TEST": "About 17.17 ms, the excess rather than total arrival time."
+      },
+      "boundary_prompt": "If the detector clock starts at direct arrival, what time should it report for the reflected pulse?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-08",
+      "target_id": "PH08-08-B01-D3-APPLY-01",
+      "cycle_id": "PH08-08-B01-INSTANCE-APPLY-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.5.ph08-08",
+      "stage_response_criteria": {
+        "PREDICT": "A task-specific initial conclusion and reason, recorded independently; do not grade for correctness before attempt.",
+        "ATTEMPT": "Direct 10 m, reflected √180 m; 29.41 and 39.46 ms; gap 10.05 ms does not resolve.",
+        "RECONSTRUCT": "Learner identifies at least one specific difference between their saved first route and the reconstruction, or demonstrates agreement with an explicit check.",
+        "DIAGNOSE": "Incorrect normal sum/difference or time units.",
+        "REPAIR": "Direct 10 m, reflected √180 m; 29.41 and 39.46 ms; gap 10.05 ms does not resolve. Require revised reasoning in learner's own words with an explicit validity check.",
+        "BOUNDARY_TEST": "Yes: (√180−10)/280≈12.20 ms, above 12 ms."
+      },
+      "boundary_prompt": "If sound speed changes to 280 m/s while geometry remains fixed, is the separation now sufficient?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-08",
+      "target_id": "PH08-08-B01-D3-REPRESENT-01",
+      "cycle_id": "PH08-08-B01-MAIN-REPRESENT-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.5.ph08-08",
+      "stage_response_criteria": {
+        "PREDICT": "A task-specific initial conclusion and reason, recorded independently; do not grade for correctness before attempt.",
+        "ATTEMPT": "Direct 6 m, reflected 10.2 m, gap 14 ms; d≈4.124 m; correctly labelled geometry.",
+        "RECONSTRUCT": "Learner identifies at least one specific difference between their saved first route and the reconstruction, or demonstrates agreement with an explicit check.",
+        "DIAGNOSE": "Mislabels emission/direct/reflected time or virtual path.",
+        "REPAIR": "Direct 6 m, reflected 10.2 m, gap 14 ms; d≈4.124 m; correctly labelled geometry. Require revised reasoning in learner's own words with an explicit validity check.",
+        "BOUNDARY_TEST": "No; mirror-equivalent wall side can yield the same times."
+      },
+      "boundary_prompt": "If two opposite walls are possible, do the two times alone select which wall reflected the pulse?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-08",
+      "target_id": "PH08-08-B01-D3-REPRESENT-01",
+      "cycle_id": "PH08-08-B01-INSTANCE-REPRESENT-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.5.ph08-08",
+      "stage_response_criteria": {
+        "PREDICT": "A task-specific initial conclusion and reason, recorded independently; do not grade for correctness before attempt.",
+        "ATTEMPT": "Direct 6 m, reflected 10 m, gap 16 ms; d=4 m; virtual image and midpoint.",
+        "RECONSTRUCT": "Learner identifies at least one specific difference between their saved first route and the reconstruction, or demonstrates agreement with an explicit check.",
+        "DIAGNOSE": "Assumes geometry without checking reflection point.",
+        "REPAIR": "Direct 6 m, reflected 10 m, gap 16 ms; d=4 m; virtual image and midpoint. Require revised reasoning in learner's own words with an explicit validity check.",
+        "BOUNDARY_TEST": "Ideal specular path is not supported by the finite wall; require other geometry or mechanism."
+      },
+      "boundary_prompt": "If the wall is too short to contain the constructed reflection point, what happens to the claimed path interpretation?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-12",
+      "target_id": "PH08-12-B01-D3-REPRESENT-01",
+      "cycle_id": "PH08-12-B01-MAIN-REPRESENT-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.5.ph08-12",
+      "stage_response_criteria": {
+        "PREDICT": "A task-specific initial conclusion and reason, recorded independently; do not grade for correctness before attempt.",
+        "ATTEMPT": "a=3,b=7; peaks 15,35,50,65,85 ms; second multiplicity two.",
+        "RECONSTRUCT": "Learner identifies at least one specific difference between their saved first route and the reconstruction, or demonstrates agreement with an explicit check.",
+        "DIAGNOSE": "Counts peaks as reflection orders or omits an order.",
+        "REPAIR": "a=3,b=7; peaks 15,35,50,65,85 ms; second multiplicity two. Require revised reasoning in learner's own words with an explicit validity check.",
+        "BOUNDARY_TEST": "Both first paths coincide at 25 ms and both third at 75 ms; second remains 50 ms with two paths."
+      },
+      "boundary_prompt": "If both wall distances become 5 m, how do the first and third arrival multiplicities change?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-12",
+      "target_id": "PH08-12-B01-D3-REPRESENT-01",
+      "cycle_id": "PH08-12-B01-INSTANCE-REPRESENT-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.5.ph08-12",
+      "stage_response_criteria": {
+        "PREDICT": "A task-specific initial conclusion and reason, recorded independently; do not grade for correctness before attempt.",
+        "ATTEMPT": "Peaks 33.333,46.667,80,113.333,126.667 ms; six paths/five times.",
+        "RECONSTRUCT": "Learner identifies at least one specific difference between their saved first route and the reconstruction, or demonstrates agreement with an explicit check.",
+        "DIAGNOSE": "Fails to group equal-time paths.",
+        "REPAIR": "Peaks 33.333,46.667,80,113.333,126.667 ms; six paths/five times. Require revised reasoning in learner's own words with an explicit validity check.",
+        "BOUNDARY_TEST": "No; missed arrivals break ordinal peak-to-order mapping."
+      },
+      "boundary_prompt": "If a detector misses one first-order return, can the observed peak order still be equated with reflection order?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-12",
+      "target_id": "PH08-12-B01-D4-SYNTHESIZE-01",
+      "cycle_id": "PH08-12-B01-MAIN-SYNTHESIZE-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.5.ph08-12",
+      "stage_response_criteria": {
+        "PREDICT": "A task-specific initial conclusion and reason, recorded independently; do not grade for correctness before attempt.",
+        "ATTEMPT": "L=15 m; a=4.5,b=10.5 m; shifted 24,36 ms; mirror rejected; third 78,102 ms.",
+        "RECONSTRUCT": "Learner identifies at least one specific difference between their saved first route and the reconstruction, or demonstrates agreement with an explicit check.",
+        "DIAGNOSE": "Selects left/right from first trace alone or ignores invariant width.",
+        "REPAIR": "L=15 m; a=4.5,b=10.5 m; shifted 24,36 ms; mirror rejected; third 78,102 ms. Require revised reasoning in learner's own words with an explicit validity check.",
+        "BOUNDARY_TEST": "Mirror (10.5,4.5) also fits original labelled times."
+      },
+      "boundary_prompt": "If no displaced-source data were available, what alternative geometry would remain?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-12",
+      "target_id": "PH08-12-B01-D4-SYNTHESIZE-01",
+      "cycle_id": "PH08-12-B01-INSTANCE-SYNTHESIZE-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.5.ph08-12",
+      "stage_response_criteria": {
+        "PREDICT": "A task-specific initial conclusion and reason, recorded independently; do not grade for correctness before attempt.",
+        "ATTEMPT": "L=7 m; a=2,b=5 m; mirror rejected; missing 40 ms; third 72,96 ms.",
+        "RECONSTRUCT": "Learner identifies at least one specific difference between their saved first route and the reconstruction, or demonstrates agreement with an explicit check.",
+        "DIAGNOSE": "Treats 56 ms as width without its stipulated order, or skips mirror test.",
+        "REPAIR": "L=7 m; a=2,b=5 m; mirror rejected; missing 40 ms; third 72,96 ms. Require revised reasoning in learner's own words with an explicit validity check.",
+        "BOUNDARY_TEST": "Without order label, the 56 ms peak could be another path; width no longer follows directly and additional assignments need checking."
+      },
+      "boundary_prompt": "If the 56 ms peak were not known to be second-order, why might the inverse model become underdetermined?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-12",
+      "target_id": "PH08-12-B01-D4-JUSTIFY-01",
+      "cycle_id": "PH08-12-B01-MAIN-JUSTIFY-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.5.ph08-12",
+      "stage_response_criteria": {
+        "PREDICT": "A task-specific initial conclusion and reason, recorded independently; do not grade for correctness before attempt.",
+        "ATTEMPT": "L=10, unordered {3,7}; mirror countermodel; 1 m right shift yields distinguishable pairs.",
+        "RECONSTRUCT": "Learner identifies at least one specific difference between their saved first route and the reconstruction, or demonstrates agreement with an explicit check.",
+        "DIAGNOSE": "Infers orientation from unlabelled timing or missing detections.",
+        "REPAIR": "L=10, unordered {3,7}; mirror countermodel; 1 m right shift yields distinguishable pairs. Require revised reasoning in learner's own words with an explicit validity check.",
+        "BOUNDARY_TEST": "No; width stays constant and common second-order time is invariant."
+      },
+      "boundary_prompt": "Would measuring the common second-order return after moving the source distinguish the mirror models?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-12",
+      "target_id": "PH08-12-B01-D4-JUSTIFY-01",
+      "cycle_id": "PH08-12-B01-INSTANCE-JUSTIFY-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.5.ph08-12",
+      "stage_response_criteria": {
+        "PREDICT": "A task-specific initial conclusion and reason, recorded independently; do not grade for correctness before attempt.",
+        "ATTEMPT": "L=9; centered (4.5,4.5) and off-centre (3,6) both fit; first times 30 vs20/40 ms.",
+        "RECONSTRUCT": "Learner identifies at least one specific difference between their saved first route and the reconstruction, or demonstrates agreement with an explicit check.",
+        "DIAGNOSE": "Infers centeredness from width alone.",
+        "REPAIR": "L=9; centered (4.5,4.5) and off-centre (3,6) both fit; first times 30 vs20/40 ms. Require revised reasoning in learner's own words with an explicit validity check.",
+        "BOUNDARY_TEST": "Resolution must be fine enough to separate the possible two first arrivals; quantify timing uncertainty and pulse duration before asserting coincidence."
+      },
+      "boundary_prompt": "If two unresolved first-order arrivals are merely reported as one broad peak, what additional timing resolution condition is needed?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    }
+  ],
+  "review_status": "HOLD"
+}
