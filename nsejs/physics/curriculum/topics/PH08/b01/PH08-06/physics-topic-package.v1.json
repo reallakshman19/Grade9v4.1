@@ -295,8 +295,8 @@
         "predict": "Record your initial interpretation and confidence before viewing support.",
         "attempt": "Trace X has pressure maximum 5 Pa and minimum −5 Pa, maxima 5 ms apart. Y has extrema ±2.5 Pa, maxima 2.5 ms apart. Construct both graphs on a common time/pressure grid and compare f and mean intensity.",
         "reconstruct": "fX=200, fY=400 Hz; amplitudes 5,2.5 Pa. IX/IY=4 at common impedance. Mark two Y cycles per X cycle.",
-        "diagnose": "Compare your reasoning with the reconstruction. Test this task-specific misconception: Compare two equal-period pressure traces with different amplitudes. Which measurements alone are enough to rank frequency, intensity and perception? Identify the first unsupported inference in your own attempt.",
-        "repair": "Rebuild the relevant model using the stated conditions: Read independent graph dimensions, square pressure ratio under matched impedance and keep perceptual claims conditional. Check your reconstruction against the original task data.",
+        "diagnose": "If you used peak-to-peak as peak pressure, or identified pitch from trace height, reread the axes. Compare the independent period and pressure measurements.",
+        "repair": "Mark equilibrium and extrema; recover one complete cycle on each time trace. Convert pressure-amplitude ratios to intensity only after confirming common impedance.",
         "boundary_test": "If Y were measured in a different medium, what extra information is needed for intensity ratio?"
       },
       "attempt_policy": {
@@ -319,8 +319,8 @@
         "predict": "Record your initial interpretation and confidence before viewing support.",
         "attempt": "Trace A repeats an upward zero crossing every 4 ms and has peak-to-peak pressure 6 Pa. Trace B has successive pressure maxima 2 ms apart and peak-to-peak 3 Pa. Draw one full cycle of each on common scales; compare pitch and intensity in the same medium.",
         "reconstruct": "A: f=250 Hz, peak 3 Pa. B: f=500 Hz, peak 1.5 Pa. B higher pitch, intensity A/B=4. Show A crossing upward at t=0 and B maximum at t=0 if choosing those reference points.",
-        "diagnose": "Compare your reasoning with the reconstruction. Test this task-specific misconception: Compare two equal-period pressure traces with different amplitudes. Which measurements alone are enough to rank frequency, intensity and perception? Identify the first unsupported inference in your own attempt.",
-        "repair": "Rebuild the relevant model using the stated conditions: Read independent graph dimensions, square pressure ratio under matched impedance and keep perceptual claims conditional. Check your reconstruction against the original task data.",
+        "diagnose": "If you used peak-to-peak as peak pressure, or identified pitch from trace height, reread the axes. Compare the independent period and pressure measurements.",
+        "repair": "Mark equilibrium and extrema; recover one complete cycle on each time trace. Convert pressure-amplitude ratios to intensity only after confirming common impedance.",
         "boundary_test": "Can the higher-pitch trace also have the higher perceived loudness? Why cannot these data settle that?"
       },
       "attempt_policy": {
@@ -343,8 +343,8 @@
         "predict": "Record your initial interpretation and confidence before viewing support.",
         "attempt": "A source gives pressure amplitudes 12 Pa at 1 m, 6 Pa at 2 m and 4 Pa at 3 m on one radial line. A second line gives 4 Pa at 2 m. Assess the ideal isotropic model and whether one radial line establishes it.",
         "reconstruct": "First line fits 1/r with product pr=12 Pa·m; second line at 2 m predicts 6 but gives 4 Pa. Global isotropy not supported; intensity ratio at 2 m is (6/4)²=2.25 between lines.",
-        "diagnose": "Compare your reasoning with the reconstruction. Test this task-specific misconception: Compare two equal-period pressure traces with different amplitudes. Which measurements alone are enough to rank frequency, intensity and perception? Identify the first unsupported inference in your own attempt.",
-        "repair": "Rebuild the relevant model using the stated conditions: Read independent graph dimensions, square pressure ratio under matched impedance and keep perceptual claims conditional. Check your reconstruction against the original task data.",
+        "diagnose": "Check whether your ideal spreading prediction actually fits all locations, not merely one distance pair. What alternative loss or directional effects remain?",
+        "repair": "Compute pressure times distance along each comparable path, predict a third point and compare residuals. Do not infer a unique cause from failure of the ideal model.",
         "boundary_test": "What additional control would distinguish directional source emission from room reflection effects?"
       },
       "attempt_policy": {
@@ -367,8 +367,8 @@
         "predict": "Record your initial interpretation and confidence before viewing support.",
         "attempt": "At 2 m and 4 m from a source, a calibrated pressure sensor reports peak amplitudes 8 and 4 Pa. At 8 m it reports 1 Pa. Test ideal isotropic lossless spreading in one medium and infer what the data do and do not establish.",
         "reconstruct": "First pair fits p∝1/r. Ideal prediction at 8 m is 2 Pa, observed 1 Pa; intensity one-quarter of ideal at 8 m. Some assumption fails; cannot uniquely identify absorption, directivity or reflections from these data.",
-        "diagnose": "Compare your reasoning with the reconstruction. Test this task-specific misconception: Compare two equal-period pressure traces with different amplitudes. Which measurements alone are enough to rank frequency, intensity and perception? Identify the first unsupported inference in your own attempt.",
-        "repair": "Rebuild the relevant model using the stated conditions: Read independent graph dimensions, square pressure ratio under matched impedance and keep perceptual claims conditional. Check your reconstruction against the original task data.",
+        "diagnose": "Check whether your ideal spreading prediction actually fits all locations, not merely one distance pair. What alternative loss or directional effects remain?",
+        "repair": "Compute pressure times distance along each comparable path, predict a third point and compare residuals. Do not infer a unique cause from failure of the ideal model.",
         "boundary_test": "If all three measurements fit 1/r exactly, does that prove the source is isotropic?"
       },
       "attempt_policy": {
@@ -391,8 +391,8 @@
         "predict": "Record your initial interpretation and confidence before viewing support.",
         "attempt": "Two calibrated peak-pressure traces have ratio pX/pY=2 and different frequencies. Media have unknown impedances. A student says X has four times the intensity and therefore always sounds louder. Give compatible impedance ratios that produce equality and reverse the intensity ordering, and specify a decisive observation.",
         "reconstruct": "IX/IY=4 ZY/ZX. If ZX/ZY=4, equal; if >4 (e.g. 8), IX<IY. Same impedance gives ratio 4. Measure medium impedance for each; perceived loudness also needs perceptual information.",
-        "diagnose": "Compare your reasoning with the reconstruction. Test this task-specific misconception: Compare two equal-period pressure traces with different amplitudes. Which measurements alone are enough to rank frequency, intensity and perception? Identify the first unsupported inference in your own attempt.",
-        "repair": "Rebuild the relevant model using the stated conditions: Read independent graph dimensions, square pressure ratio under matched impedance and keep perceptual claims conditional. Check your reconstruction against the original task data.",
+        "diagnose": "Check if you assumed equal medium impedance or treated two different sensor quantities as interchangeable. Can an admissible change in impedance reverse your intensity ordering?",
+        "repair": "Choose the appropriate travelling-wave intensity relation, retain the unknown impedance, construct compatible cases and specify the measurement that would remove ambiguity. Keep loudness separate.",
         "boundary_test": "If the graphs are uncalibrated voltage readings from two different microphones, what further uncertainty enters?"
       },
       "attempt_policy": {
@@ -415,8 +415,8 @@
         "predict": "Record your initial interpretation and confidence before viewing support.",
         "attempt": "A displacement trace for tone A has twice the displacement amplitude of tone B but half its frequency. Both are progressive linear waves. The medium for each is not specified. A report claims IA>IB and A must sound louder. Decide whether the evidence proves either claim; use I∝ρv(fA_displacement)² and construct two compatible impedance cases with opposite intensity order.",
         "reconstruct": "Products fA_displacement equal, so IA/IB=(ρv)A/(ρv)B. If impedance ratio is 2, IA>IB; if 1/2, IA<IB; equal impedances give equal intensity. Loudness additionally depends on frequency and listener. Measure each impedance or pressure and impedance.",
-        "diagnose": "Compare your reasoning with the reconstruction. Test this task-specific misconception: Compare two equal-period pressure traces with different amplitudes. Which measurements alone are enough to rank frequency, intensity and perception? Identify the first unsupported inference in your own attempt.",
-        "repair": "Rebuild the relevant model using the stated conditions: Read independent graph dimensions, square pressure ratio under matched impedance and keep perceptual claims conditional. Check your reconstruction against the original task data.",
+        "diagnose": "Check if you assumed equal medium impedance or treated two different sensor quantities as interchangeable. Can an admissible change in impedance reverse your intensity ordering?",
+        "repair": "Choose the appropriate travelling-wave intensity relation, retain the unknown impedance, construct compatible cases and specify the measurement that would remove ambiguity. Keep loudness separate.",
         "boundary_test": "If both propagate in the same medium and frequency doubles while displacement amplitude stays fixed, what intensity ratio follows?"
       },
       "attempt_policy": {
