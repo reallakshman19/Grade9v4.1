@@ -1,0 +1,81 @@
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;color:#1a394a;background:#f0f6f8;font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}
+.shell{width:min(1200px,100%);margin:0 auto;padding:0 20px}
+a{color:#126e71}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid #e7a44c;outline-offset:3px}
+.skip{position:absolute;left:12px;top:-100px;background:white;padding:10px;z-index:99}.skip:focus{top:10px}
+.banner{background:#144253;color:#fff}.top-links{display:flex;gap:18px;justify-content:space-between;flex-wrap:wrap;padding:14px 20px}
+.banner a{color:#fff;text-decoration:none;font-weight:700}.banner a:hover{text-decoration:underline}
+.intro{padding:31px 0 8px}.mini{font-size:.76rem;font-weight:850;letter-spacing:.08em;text-transform:uppercase;color:#507386}
+h1{font-size:clamp(1.9rem,4.2vw,3.1rem);line-height:1.16;max-width:970px;margin:10px 0 15px}
+h1 em{color:#18776e;font-style:normal}.intro>p{max-width:930px}
+.overview{display:flex;gap:8px;flex-wrap:wrap;margin:21px 0}.overview span{background:#e1eef1;color:#22586d;padding:7px 10px;border-radius:20px;font-weight:750;font-size:.81rem}
+.source-journey{border:2px solid #a8c9d0;border-radius:13px;background:#fff;padding:15px;margin:20px 0}
+.source-journey[hidden],#source-return[hidden],[hidden]{display:none!important}
+.source-journey strong{font-size:1.08rem}
+.source-journey p{margin:8px 0}.source-journey a,.return-original{display:inline-block;color:white;background:#147a73;text-decoration:none;padding:10px 14px;border-radius:9px;font-weight:750}
+.progress{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin:18px 0}.progress progress{width:min(370px,100%);height:17px;accent-color:#18897c}
+.lesson-nav{display:flex;flex-wrap:wrap;gap:9px;margin:14px 0 21px}
+.lesson-nav a{display:inline-flex;align-items:center;min-height:44px;border:1px solid #b9d1d8;background:#fff;border-radius:10px;text-decoration:none;padding:9px 12px;font-size:.89rem;font-weight:760}
+.lesson-nav a:hover,.lesson-nav a[aria-current=page]{background:#dff1ed;border-color:#21897d}
+.lesson-nav a.complete:after{content:" ✓";color:#187e64}
+.current-title{margin:15px 0;font-size:1.14rem;color:#285a6c}
+.lesson{background:white;border:1px solid #d4e2e7;border-radius:17px;overflow:hidden;box-shadow:0 9px 28px #294c620a;margin-bottom:27px}
+.lesson-title{padding:22px 27px;background:#e6f0f3}
+.lesson-title .mini{margin:0}.lesson-title h2{font-size:clamp(1.5rem,3vw,2.1rem);margin:4px 0;line-height:1.17}
+.lesson-title p:last-child{margin:6px 0 0}
+.learning-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.guide,.challenge{min-width:0;padding:24px 27px}.guide{border-right:1px solid #dae7eb}.challenge{background:#f9fbfc}
+.guide h2,.challenge h2{font-size:1.28rem;line-height:1.3;margin:7px 0 14px}
+.prereq{background:#f3f9fd;border-left:4px solid #588ca5;padding:11px 13px;border-radius:0 8px 8px 0}
+.big-idea{font-weight:750;background:#e9f7ef;border-left:4px solid #248874;padding:12px 14px;border-radius:0 8px 8px 0}
+.visual{border:1px solid #cddfe6;background:#f5fafc;border-radius:12px;margin:19px 0 5px;padding:9px}
+.visual svg{width:100%;height:auto;display:block;max-height:290px}
+.visual figcaption{font-size:.8rem;color:#456475;margin-top:6px}
+.visual-controls{border:1px solid #cddfe6;padding:13px;border-radius:11px;background:#f4fafb;margin-bottom:19px}
+.visual-controls label{font-weight:750;display:block;font-size:.89rem}
+.visual-controls input{width:100%;margin:15px 0 12px;accent-color:#167f77;min-height:26px}
+.model-readout{display:block;font-size:.88rem;color:#194d62;font-weight:650}
+.guide-steps{padding-left:23px}.guide-steps li{margin:12px 0;padding-left:3px}
+.bridge{border:1px solid #cddfe6;border-radius:11px;margin:11px 0;padding:10px 13px;font-size:.88rem;background:#f7fafb}
+.bridge summary{cursor:pointer;font-weight:750;color:#215a70}
+.stage-root{border:1px solid #cddfe7;border-radius:13px;padding:15px;background:white;margin:17px 0}
+.step-list{list-style:none;margin:0 0 15px;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.step-list li{border:1px solid #d6e4e8;background:#f1f6f8;border-radius:8px;padding:8px;font-size:.77rem;font-weight:700;min-width:0;overflow-wrap:anywhere}
+.step-list .current{background:#d8f0ea;border:2px solid #258879;color:#115f57}.step-list .done{background:#e5f4ed;color:#206b50}
+.stage-card h3{font-size:1.21rem;margin:11px 0}.stage-card p{font-size:.92rem}
+.challenge-prompt{font-weight:650;background:#f4f9fc;padding:13px;border-left:4px solid #537fa0;border-radius:0 8px 8px 0}
+.step-note{background:#f5f9fc;border:1px solid #d1e1e9;padding:12px;border-radius:9px}
+.field{margin:15px 0}.field label{display:block;font-size:.9rem;font-weight:770;margin-bottom:6px}
+.field input,.field textarea,.field select,.stage-card>select{font:inherit;font-size:.94rem;max-width:100%;width:100%;border:1px solid #9fb8c4;border-radius:8px;background:#fff;padding:10px;color:#16384c;min-height:44px}
+.field textarea{min-height:94px;resize:vertical}.field-tip{font-size:.79rem!important;color:#5c7785}
+.stage-actions{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 15px}
+.stage-actions button,.hints button{font:inherit;font-size:.88rem;font-weight:760;min-height:44px;padding:9px 13px;border-radius:9px;cursor:pointer}
+button.primary{color:white;background:#147d72;border:1px solid #0e736a}
+button.secondary{color:#23556b;background:#fff;border:1px solid #9ebcc5}
+button.reset{color:#8b5341;background:#fff7f5;border:1px solid #d5bbae}
+button:disabled{opacity:.52;cursor:not-allowed}
+.hints{border:1px solid #e2d3af;background:#fffaf0;padding:13px;border-radius:10px;margin:17px 0}
+.hints h4{margin:0 0 9px;font-size:.92rem}
+.hint-list{padding-left:23px;font-size:.89rem}
+.hint-list li{padding:7px 0;border-bottom:1px solid #eadfbf}
+.snapshot{border:1px solid #bdd7e2;background:#f4f9fc;padding:12px;border-radius:11px;margin:15px 0}
+.snapshot h4{margin:2px 0 9px;font-size:.96rem}
+.snapshot dl{margin:0}.snapshot dt{font-weight:750;color:#365e74;font-size:.81rem;margin-top:7px}
+.snapshot dd{margin:2px 0 7px;white-space:pre-wrap;overflow-wrap:anywhere;font-size:.85rem}
+.worked{border:1px solid #badbcd;background:#eff9f4;padding:14px;border-radius:11px;margin:14px 0}
+.worked h4{margin:2px 0 7px}.worked ol{padding-left:23px}.worked li{margin:10px 0;font-size:.9rem}
+.self-check{margin:14px 0;border:1px solid #cedfe7;border-radius:10px;padding:9px 13px}
+.self-check legend{font-weight:750}.self-check label{display:block;font-size:.89rem;margin:10px 0}.self-check input{margin-right:6px;accent-color:#137e75}
+.diagnosis-tip{border-left:4px solid #26857f;background:#f0f8f6;padding:12px}
+.repair-record{white-space:pre-wrap;overflow-wrap:anywhere}
+.status{font-size:.85rem;color:#9e4e31;min-height:1.25em}
+.history{border:1px solid #cddde5;border-radius:10px;padding:11px;margin:13px 0}
+.done{font-weight:750;background:#e7f6ed;padding:12px;border-radius:9px}
+.lesson-footer{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;border-top:1px solid #dce8ea;padding:15px 23px;background:#eef5f7}
+.lesson-footer a{text-decoration:none;font-weight:700;overflow-wrap:anywhere}
+.end-note{font-size:.83rem;background:#e4eef3;border-radius:12px;padding:18px 22px;margin:22px 0 50px}
+@media(max-width:970px){.learning-grid{grid-template-columns:1fr}.guide{border-right:0;border-bottom:1px solid #d7e5e8}}
+@media(max-width:520px){.shell{padding-inline:12px}.top-links{padding-inline:12px;gap:11px}.intro{padding-top:20px}.guide,.challenge{padding:17px 15px}.lesson-title{padding:18px 16px}.stage-root{padding:11px}.step-list{grid-template-columns:repeat(2,minmax(0,1fr))}.stage-actions button{flex:1 1 100%}.lesson-nav a{width:100%}.visual svg{min-height:130px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}

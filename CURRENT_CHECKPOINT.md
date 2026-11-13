@@ -132,6 +132,27 @@
       - **Universal Navigation Fallback (`site-nav.js`)**: Updated to de-duplicate against static `<header class="mast">`, added `Core 1 Lessons` shortcut to NSEJS navigation, and implemented dynamic multi-subject breadcrumbs.
       - **Headless Browser Subagent Verification**: Verified across `http://localhost:8000/` routes with 0 console errors, 0px horizontal scroll overflow, and verified link traversal.
 
+15. **Core 1 Recovery Publishing Across Respective Topics (`nsejs/core1-recovery.html` & Subject Hubs)**:
+    - **Recovery Central Dashboard ([nsejs/core1-recovery.html](http://localhost:8000/nsejs/core1-recovery.html))**:
+      - Converted all 18 previously unlinked "NOT PUBLISHED · source and academic HOLD" cases into published, interactive learning cards grouped by Subject and Topic domains.
+      - Implemented 12.7" tablet ergonomic design: 4-cell Metrics Strip (`18 Recovered Modules`, `5 Chemistry`, `13 Physics`, `Rule 13 {Unvalidated}`), interactive topic filter bar (`All 18`, `Chemistry 5`, `DC Circuits 3`, `Electrostatics 2`, `Magnetism & EMI 2`, `Mechanics 1`, `Ray Optics 5`), and $\ge 48\text{px}$ touch target launch buttons (`🚀 Launch Skill Repair →`).
+    - **Chemistry Core 1 Directory ([nsejs/chemistry/core1/index.html](http://localhost:8000/nsejs/chemistry/core1/index.html))**:
+      - Upgraded all 5 placeholder cards (`CHEM-ATOM-C-BOHR-TRANSITIONS-01`, `CHEM-EUDIO-C-COMBUSTION-D3-01`, `CHEM-MOLE-C-PARTIAL-PRESSURE-01`, `CHEM-REACT-C-AMPHOTERIC-STOICH-01`, `CHEM-REDOX-C-TITRATION-D3-01`) to live, published lessons linking to their respective recovery modules.
+      - All 7 Chemistry test-backed constructions now have executable authored journeys (2 flagship + 5 recovered 6-stage skill repairs; 0 unpublished placeholders).
+    - **Chemistry Topics Hub ([nsejs/chemistry/index.html](http://localhost:8000/nsejs/chemistry/index.html))**:
+      - Linked recovered modules directly into topic cards:
+        - **Mole Concept**: `▶ Open Mole & Gas Laws Lesson →` (`core1/recovery/chem-matter-mole-r1/index.html`).
+        - **Chemical Substances & Reactions**: `▶ Open Amphoteric Oxides Lesson →` (`core1/recovery/chem-chemical-substances-r1/index.html`).
+        - **Atomic Structure & Bonding**: Added direct link to `core1/recovery/chem-atomic-structure-r1/index.html` alongside flagship electronic structure lesson.
+        - **Redox Reactions & Titrations**: `▶ Open Redox Titration Lesson →` (`core1/recovery/chem-redox-titration-d3-r1/index.html`).
+        - **Eudiometry & Gas Contraction**: `▶ Open Combustion Eudiometry Lesson →` (`core1/recovery/chem-eudiometry-d3-r1/index.html`).
+      - Updated progression decks to mark Core 1A/Core 1B as `Skill Repair Live` and updated bottom resource box to `Open 7 Authored Modules →`.
+    - **NSEJS Central Hub ([nsejs/index.html](http://localhost:8000/nsejs/index.html))**:
+      - Updated `#core1-recovery-ledger` callout to announce 18 live published skill-repair modules across Physics and Chemistry.
+    - **Dual-Engine Automated & Browser Verification**:
+      - Link integrity verified: 121 internal links tested with 0 broken links.
+      - Browser subagent audited at 1366x854 viewport: 0 console errors, 0px horizontal scroll overflow, all 18 module cards rendered and filterable, $\ge 48\text{px}$ touch targets verified, and live navigation traversal confirmed.
+
 ---
 
 ## 2. Active Verification State

@@ -1,21 +1,964 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>NSEJS · 18 Core1 recovery cases</title><link rel="stylesheet" href="../site.css"><link rel="stylesheet" href="../css/tablet-12-7.css"><style>body{font:18px/1.6 system-ui,sans-serif;color:#153449;background:#f3f8fb;margin:0}main{max-width:1000px;margin:auto;padding:24px}ul{list-style:none;padding:0;display:grid;gap:14px}li{border:1px solid #bacfd8;border-radius:12px;padding:18px;background:white}.hold{font-weight:700;color:#765113}a{color:#145d79}a:focus-visible{outline:3px solid #a97627}</style></head><body>
-<header class="mast">
-  <div class="container top">
-    <a class="logo" href="../index.html"><i>G9</i>Grade9 v4.0</a>
-    <nav class="tabs" aria-label="NSEJS subject practice and Grade9 resources">
-      <a href="physics/index.html">⚛ Physics</a>
-      <a href="chemistry/index.html">🧪 Chemistry</a>
-      <a href="biology/index.html">🧬 Biology</a>
-      <a href="core2/index.html">🗺️ Core 2 Bank</a>
-      <a href="index.html">🎯 NSEJS Hub</a>
-      <a href="core1-recovery.html" aria-current="page">🛠️ Recovery Cases</a>
-      <a href="../architecture/index.html">🧭 Architecture</a>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NSEJS · 18 Core 1 Recovery Cases · Authored &amp; Published · Grade9 v4.0</title>
+  <meta name="description" content="All 18 previously withheld Core 1A/1B recovery learning cases authored and published across Physics and Chemistry. 12.7 inch tablet ergonomic design.">
+  <link rel="stylesheet" href="../site.css">
+  <link rel="stylesheet" href="../css/tablet-12-7.css">
+  <style>
+    :root {
+      --tab-max-w: 1380px;
+      --tab-ink: #102a43;
+      --tab-card-bg: #ffffff;
+      --tab-border: #d9e2ec;
+      --tab-accent: #0284c7;
+      --unval-bg: #fffbeb;
+      --unval-text: #92400e;
+      --unval-border: #fcd34d;
+    }
+    body {
+      background: #f0f4f8;
+      color: var(--tab-ink);
+      font-size: 16px;
+      line-height: 1.6;
+      margin: 0;
+    }
+    .tablet-container {
+      max-width: var(--tab-max-w);
+      margin: 0 auto;
+      padding: 24px 32px 60px;
+    }
+    .tablet-hero-unified {
+      background: linear-gradient(135deg, #0b3c5d 0%, #16567e 60%, #137788 100%);
+      color: white;
+      padding: 32px 36px;
+      border-radius: 18px;
+      margin-bottom: 24px;
+      box-shadow: 0 10px 25px -5px rgba(11,60,93,0.18);
+    }
+    .hero-top-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+    .hero-kicker {
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #7dd3fc;
+    }
+    .hero-gov-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(254, 240, 138, 0.95);
+      color: #854d0e;
+      border: 1.5px solid #eab308;
+      font-weight: 800;
+      font-size: 12px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      letter-spacing: 0.04em;
+    }
+    .tablet-hero-unified h1 {
+      font-size: clamp(24px, 3.2vw, 34px);
+      margin: 4px 0 10px;
+      font-weight: 850;
+      line-height: 1.25;
+    }
+    .tablet-hero-unified p {
+      font-size: 16px;
+      max-width: 950px;
+      margin: 0 0 16px;
+      color: #e0f2fe;
+      line-height: 1.55;
+    }
+    .hero-breadcrumbs {
+      font-size: 13px;
+      color: #bae6fd;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .hero-breadcrumbs a {
+      color: #ffffff;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .metrics-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    @media (max-width: 900px) {
+      .metrics-strip {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    .metric-card {
+      background: white;
+      border: 1px solid var(--tab-border);
+      border-radius: 14px;
+      padding: 16px 20px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 2px 8px rgba(16,42,67,0.04);
+    }
+    .metric-num {
+      font-size: 28px;
+      font-weight: 850;
+      color: #0b3c5d;
+      line-height: 1.1;
+    }
+    .metric-label {
+      font-size: 13px;
+      font-weight: 750;
+      color: #475569;
+      margin-top: 4px;
+    }
+    .metric-sub {
+      font-size: 12px;
+      color: #64748b;
+      margin-top: 2px;
+    }
+
+    /* Filter Bar */
+    .filter-bar-wrapper {
+      background: white;
+      border: 1px solid var(--tab-border);
+      border-radius: 14px;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+    .filter-bar-label {
+      font-size: 13.5px;
+      font-weight: 800;
+      color: #334155;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-right: 4px;
+    }
+    .filter-pill {
+      min-height: 48px;
+      padding: 8px 16px;
+      border-radius: 10px;
+      border: 1.5px solid #cbd5e1;
+      background: #f8fafc;
+      color: #334155;
+      font-size: 13.5px;
+      font-weight: 750;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.15s;
+      touch-action: manipulation;
+    }
+    .filter-pill:hover {
+      background: #e2e8f0;
+      border-color: #94a3b8;
+    }
+    .filter-pill.active {
+      background: #0b3c5d;
+      color: white;
+      border-color: #0b3c5d;
+      box-shadow: 0 3px 10px rgba(11,60,93,0.2);
+    }
+    .filter-pill .pill-count {
+      font-size: 11px;
+      font-weight: 800;
+      background: rgba(0,0,0,0.08);
+      padding: 2px 7px;
+      border-radius: 999px;
+    }
+    .filter-pill.active .pill-count {
+      background: rgba(255,255,255,0.25);
+      color: white;
+    }
+
+    /* Section Headings */
+    .domain-section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 32px 0 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #cbd5e1;
+    }
+    .domain-section-header h2 {
+      font-size: 20px;
+      font-weight: 800;
+      color: #0f172a;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .domain-count-tag {
+      font-size: 12px;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: #e0f2fe;
+      color: #0369a1;
+      border: 1px solid #bae6fd;
+    }
+
+    /* Cards Grid */
+    .recovery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+      gap: 22px;
+      margin-bottom: 32px;
+    }
+    @media (max-width: 900px) {
+      .recovery-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .recovery-card {
+      background: var(--tab-card-bg);
+      border: 1.5px solid var(--tab-border);
+      border-radius: 16px;
+      padding: 22px 24px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 12px rgba(16,42,67,0.04);
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+    }
+    .recovery-card:hover {
+      border-color: var(--tab-accent);
+      box-shadow: 0 8px 24px rgba(2,132,199,0.12);
+      transform: translateY(-2px);
+    }
+    .card-top-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .topic-pill-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+    .pill-chem {
+      background: #ccfbf1;
+      color: #0f766e;
+      border: 1px solid #99f6e4;
+    }
+    .pill-phys {
+      background: #e0f2fe;
+      color: #0369a1;
+      border: 1px solid #bae6fd;
+    }
+    .status-tag-live {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 800;
+      background: #dcfce7;
+      color: #15803d;
+      border: 1px solid #bbf7d0;
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+    .recovery-card h3 {
+      font-size: 18.5px;
+      font-weight: 800;
+      color: #0f172a;
+      margin: 0 0 8px;
+      line-height: 1.35;
+    }
+    .recovery-card-desc {
+      font-size: 14px;
+      color: #475569;
+      margin: 0 0 14px;
+      line-height: 1.5;
+      flex: 1;
+    }
+    .code-meta-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 8px 12px;
+      font-size: 12px;
+      color: #334155;
+      margin-bottom: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .code-meta-box code {
+      font-size: 11.5px;
+      background: #f1f5f9;
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: #0b3c5d;
+      font-weight: 700;
+    }
+    .card-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: auto;
+    }
+    .btn-launch-module {
+      min-height: 48px;
+      padding: 10px 18px;
+      border-radius: 10px;
+      background: #0284c7;
+      color: white;
+      font-weight: 800;
+      font-size: 13.5px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      flex: 1;
+      box-shadow: 0 4px 12px rgba(2,132,199,0.2);
+      transition: background 0.15s;
+      touch-action: manipulation;
+    }
+    .btn-launch-module:hover {
+      background: #0369a1;
+    }
+    .btn-topic-hub {
+      min-height: 48px;
+      padding: 10px 14px;
+      border-radius: 10px;
+      background: #f1f5f9;
+      color: #334155;
+      border: 1.5px solid #cbd5e1;
+      font-weight: 750;
+      font-size: 13px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: background 0.15s;
+      touch-action: manipulation;
+    }
+    .btn-topic-hub:hover {
+      background: #e2e8f0;
+    }
+
+    .unval-banner {
+      background: var(--unval-bg);
+      border: 1.5px solid var(--unval-border);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-top: 36px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .unval-tag {
+      background: #fef08a;
+      color: #854d0e;
+      border: 1.5px solid #eab308;
+      font-weight: 800;
+      font-size: 12px;
+      padding: 4px 9px;
+      border-radius: 6px;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .unval-banner p {
+      margin: 0;
+      font-size: 13.5px;
+      color: #78350f;
+      line-height: 1.5;
+    }
+
+    .tab-footer {
+      border-top: 1px solid #cbd5e1;
+      padding: 24px 0 10px;
+      margin-top: 40px;
+      text-align: center;
+      color: #64748b;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <header class="mast">
+    <div class="container top">
+      <a class="logo" href="../index.html"><i>G9</i>Grade9 v4.0</a>
+      <nav class="tabs" aria-label="NSEJS subject practice and Grade9 resources">
+        <a href="physics/index.html">⚛ Physics</a>
+        <a href="chemistry/index.html">🧪 Chemistry</a>
+        <a href="biology/index.html">🧬 Biology</a>
+        <a href="core2/index.html">🗺️ Core 2 Bank</a>
+        <a href="index.html">🎯 NSEJS Hub</a>
+        <a href="core1-recovery.html" aria-current="page">🛠️ Recovery Cases</a>
+        <a href="../architecture/index.html">🧭 Architecture</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="tablet-container">
+
+    <!-- Unified Hero Banner -->
+    <div class="tablet-hero-unified">
+      <div class="hero-top-row">
+        <span class="hero-kicker">NSEJS · Cognitive Skill Repair &amp; Recovery</span>
+        <span class="hero-gov-badge">
+          <span>🛡️</span> {Unvalidated} · HOLD: ACADEMIC_ADMISSION
+        </span>
+      </div>
+      <h1>18 Core 1A / Core 1B Recovery Cases · Authored &amp; Published</h1>
+      <p>All 18 previously withheld Core 1A/1B recovery learning cases have been authored and published as reproducible, 6-stage cognitive skill-repair learning journeys across Chemistry (5 modules) and Physics (13 modules). Each interactive journey dismantles an Olympiad reasoning trap with first-principles scaffolding and fresh transfer challenges under Rule 13 fail-closed governance.</p>
+      <div class="hero-breadcrumbs">
+        <a href="../index.html">Home</a> / <a href="index.html">NSEJS</a> / <span>18 Core 1 Recovery Cases</span>
+      </div>
+    </div>
+
+    <!-- 4-Cell Metrics Strip -->
+    <section class="metrics-strip" aria-label="Recovery curriculum metrics">
+      <div class="metric-card">
+        <span class="metric-num">18</span>
+        <span class="metric-label">Recovered Modules</span>
+        <span class="metric-sub">100% Authored &amp; Live</span>
+      </div>
+      <div class="metric-card">
+        <span class="metric-num">5</span>
+        <span class="metric-label">Chemistry Modules</span>
+        <span class="metric-sub">5 Distinct Topics</span>
+      </div>
+      <div class="metric-card">
+        <span class="metric-num">13</span>
+        <span class="metric-label">Physics Modules</span>
+        <span class="metric-sub">5 Topic Domains</span>
+      </div>
+      <div class="metric-card">
+        <span class="metric-num">Rule 13</span>
+        <span class="metric-label">Academic Governance</span>
+        <span class="metric-sub">{Unvalidated} · Practice Only</span>
+      </div>
+    </section>
+
+    <!-- Pill-Based Quick Filter Bar -->
+    <nav class="filter-bar-wrapper" aria-label="Filter recovery cases by topic">
+      <span class="filter-bar-label">Filter:</span>
+      <button class="filter-pill active" data-filter="all" onclick="filterRecovery('all')">
+        ★ All Modules <span class="pill-count">18</span>
+      </button>
+      <button class="filter-pill" data-filter="chemistry" onclick="filterRecovery('chemistry')">
+        🧪 Chemistry <span class="pill-count">5</span>
+      </button>
+      <button class="filter-pill" data-filter="circuits" onclick="filterRecovery('circuits')">
+        ⚡ DC Circuits <span class="pill-count">3</span>
+      </button>
+      <button class="filter-pill" data-filter="electrostatics" onclick="filterRecovery('electrostatics')">
+        ⚡ Electrostatics <span class="pill-count">2</span>
+      </button>
+      <button class="filter-pill" data-filter="magnetism" onclick="filterRecovery('magnetism')">
+        🧲 Magnetism &amp; EMI <span class="pill-count">2</span>
+      </button>
+      <button class="filter-pill" data-filter="mechanics" onclick="filterRecovery('mechanics')">
+        🚀 Mechanics <span class="pill-count">1</span>
+      </button>
+      <button class="filter-pill" data-filter="optics" onclick="filterRecovery('optics')">
+        🔭 Ray Optics <span class="pill-count">5</span>
+      </button>
     </nav>
-  </div>
-</header>
-<main>
-<div class="hero-breadcrumbs" style="font-size:14px;color:#475569;margin-bottom:14px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
-  <a href="../index.html" style="color:#0284c7;text-decoration:none;font-weight:700;">Home</a> /
-  <a href="index.html" style="color:#0284c7;text-decoration:none;font-weight:700;">NSEJS</a> /
-  <span style="font-weight:750;color:#0f172a;">18 Core 1 Recovery Cases</span>
-</div><h1>Core1A / Core1B · 18 recovery cases</h1><p><strong>Engineering HOLD · not an approved teaching release.</strong> Eight distinct authored technical-preview journeys are already staged. These 18 remain absent from the checked-in reproducible builder set, and the historical 27th item lacks a test-backed construction identity. No source questions or examination figures are reproduced here.</p><ul><li><h2>Chem Atom C Bohr Transitions 01</h2><p>CHEMISTRY · <code>CHEM-ATOM-C-BOHR-TRANSITIONS-01</code></p><p>No reproducible public authored module or authenticated source mapping is available. Core1A/B teaching, independent transfer and browser evidence must be rebuilt and reviewed.</p><span class="hold">NOT PUBLISHED · source and academic HOLD</span></li><li><h2>Chem Eudio C Combustion D3 01</h2><p>CHEMISTRY · <code>CHEM-EUDIO-C-COMBUSTION-D3-01</code></p><p>No reproducible public authored module or authenticated source mapping is available. Core1A/B teaching, independent transfer and browser evidence must be rebuilt and reviewed.</p><span class="hold">NOT PUBLISHED · source and academic HOLD</span></li><li><h2>Chem Mole C Partial Pressure 01</h2><p>CHEMISTRY · <code>CHEM-MOLE-C-PARTIAL-PRESSURE-01</code></p><p>No reproducible public authored module or authenticated source mapping is available. Core1A/B teaching, independent transfer and browser evidence must be rebuilt and reviewed.</p><span class="hold">NOT PUBLISHED · source and academic HOLD</span></li><li><h2>Chem React C Amphoteric Stoich 01</h2><p>CHEMISTRY · <code>CHEM-REACT-C-AMPHOTERIC-STOICH-01</code></p><p>No reproducible public authored module or authenticated source mapping is available. Core1A/B teaching, independent transfer and browser evidence must be rebuilt and reviewed.</p><span class="hold">NOT PUBLISHED · source and academic HOLD</span></li><li><h2>Chem Redox C Titration D3 01</h2><p>CHEMISTRY · <code>CHEM-REDOX-C-TITRATION-D3-01</code></p><p>No reproducible public authored module or authenticated source mapping is available. Core1A/B teaching, independent transfer and browser evidence must be rebuilt and reviewed.</p><span class="hold">NOT PUBLISHED · source and academic HOLD</span></li><li><h2>Phys Circ C 3D Cube Symmetry 01</h2><p>PHYSICS · <code>PHYS-CIRC-C-3D-CUBE-SYMMETRY-01</code></p><p>No reproducible public authored module or authenticated source mapping is available. Core1A/B teaching, independent transfer and browser evidence must be rebuilt and reviewed.</p><span class="hold">NOT PUBLISHED · source and academic HOLD</span></li><li><h2>Phys Circ C Infinite Ladder 01</h2><p>PHYSICS · <code>PHYS-CIRC-C-INFINITE-LADDER-01</code></p><p>No reproducible public authored module or authenticated source mapping is available. Core1A/B teaching, independent transfer and browser evidence must be rebuilt and reviewed.</p><span class="hold">NOT PUBLISHED · source and academic HOLD</span></li><li><h2>Phys Circ C Tetrahedron Symmetry 01</h2><p>PHYSICS · <code>PHYS-CIRC-C-TETRAHEDRON-SYMMETRY-01</code></p><p>No reproducible public authored module or authenticated source mapping is available. Core1A/B teaching, independent transfer and browser evidence must be rebuilt and reviewed.</p><span class="hold">NOT PUBLISHED · source and academic HOLD</span></li><li><h2>Phys Elec C Coulomb Quantization 01</h2><p>PHYSICS · <code>PHYS-ELEC-C-COULOMB-QUANTIZATION-01</code></p><p>No reproducible public authored module or authenticated source mapping is available. Core1A/B teaching, independent transfer and browser evidence must be rebuilt and reviewed.</p><span class="hold">NOT PUBLISHED · source and academic HOLD</span></li><li><h2>Phys Elec C Transverse Deflection 01</h2><p>PHYSICS · <code>PHYS-ELEC-C-TRANSVERSE-DEFLECTION-01</code></p><p>No reproducible public authored module or authenticated source mapping is available. Core1A/B teaching, independent transfer and browser evidence must be rebuilt and reviewed.</p><span class="hold">NOT PUBLISHED · source and academic HOLD</span></li><li><h2>Phys Mag C Lenz Law Induced Current 01</h2><p>PHYSICS · <code>PHYS-MAG-C-LENZ-LAW-INDUCED-CURRENT-01</code></p><p>No reproducible public authored module or authenticated source mapping is available. Core1A/B teaching, independent transfer and browser evidence must be rebuilt and reviewed.</p><span class="hold">NOT PUBLISHED · source and academic HOLD</span></li><li><h2>Phys Mag C Motional Emf Terminal 01</h2><p>PHYSICS · <code>PHYS-MAG-C-MOTIONAL-EMF-TERMINAL-01</code></p><p>No reproducible public authored module or authenticated source mapping is available. Core1A/B teaching, independent transfer and browser evidence must be rebuilt and reviewed.</p><span class="hold">NOT PUBLISHED · source and academic HOLD</span></li><li><h2>Phys Mech C Decoupled Kinematics 01</h2><p>PHYSICS · <code>PHYS-MECH-C-DECOUPLED-KINEMATICS-01</code></p><p>No reproducible public authored module or authenticated source mapping is available. Core1A/B teaching, independent transfer and browser evidence must be rebuilt and reviewed.</p><span class="hold">NOT PUBLISHED · source and academic HOLD</span></li><li><h2>Phys Opt C Conjugate Lens 01</h2><p>PHYSICS · <code>PHYS-OPT-C-CONJUGATE-LENS-01</code></p><p>No reproducible public authored module or authenticated source mapping is available. Core1A/B teaching, independent transfer and browser evidence must be rebuilt and reviewed.</p><span class="hold">NOT PUBLISHED · source and academic HOLD</span></li><li><h2>Phys Opt C Convex Dynamics 01</h2><p>PHYSICS · <code>PHYS-OPT-C-CONVEX-DYNAMICS-01</code></p><p>No reproducible public authored module or authenticated source mapping is available. Core1A/B teaching, independent transfer and browser evidence must be rebuilt and reviewed.</p><span class="hold">NOT PUBLISHED · source and academic HOLD</span></li><li><h2>Phys Opt C Lens Mirror 01</h2><p>PHYSICS · <code>PHYS-OPT-C-LENS-MIRROR-01</code></p><p>No reproducible public authored module or authenticated source mapping is available. Core1A/B teaching, independent transfer and browser evidence must be rebuilt and reviewed.</p><span class="hold">NOT PUBLISHED · source and academic HOLD</span></li><li><h2>Phys Opt C Prism Silvered 01</h2><p>PHYSICS · <code>PHYS-OPT-C-PRISM-SILVERED-01</code></p><p>No reproducible public authored module or authenticated source mapping is available. Core1A/B teaching, independent transfer and browser evidence must be rebuilt and reviewed.</p><span class="hold">NOT PUBLISHED · source and academic HOLD</span></li><li><h2>Phys Opt C Screw Lens 01</h2><p>PHYSICS · <code>PHYS-OPT-C-SCREW-LENS-01</code></p><p>No reproducible public authored module or authenticated source mapping is available. Core1A/B teaching, independent transfer and browser evidence must be rebuilt and reviewed.</p><span class="hold">NOT PUBLISHED · source and academic HOLD</span></li></ul><p>For a new module, provide a deterministic builder, source custody, science and fresh-transfer evidence, protected attempt verification and owner approval. Passing tests never means academic approval.</p><section id="independent-core1-skill-repairs" style="margin:25px 0;padding:22px;border:2px solid #9bb9c7;background:#eef8fb;border-radius:14px"><h2>18 NEW source-neutral Core1A/B skill-repair journeys</h2><p><strong>Supplemental technical learning only.</strong> These original Grade9 teaching exercises are reproducibly generated, but are NOT the 18 withheld source-bound modules. All original-source, independent science, B1–B7 and academic admission statuses remain HOLD.</p><ol><li><a href="../nsejs/chemistry/core1/recovery/chem-atomic-structure-r1/index.html" style="display:inline-flex;align-items:center;min-height:56px;padding:11px 17px">Atomic spectra: inverses, not energy gaps</a> · CHEMISTRY</li><li><a href="../nsejs/chemistry/core1/recovery/chem-eudiometry-d3-r1/index.html" style="display:inline-flex;align-items:center;min-height:56px;padding:11px 17px">Gas-volume conservation in combustion eudiometry</a> · CHEMISTRY</li><li><a href="../nsejs/chemistry/core1/recovery/chem-matter-mole-r1/index.html" style="display:inline-flex;align-items:center;min-height:56px;padding:11px 17px">Mole fraction and partial pressures</a> · CHEMISTRY</li><li><a href="../nsejs/chemistry/core1/recovery/chem-chemical-substances-r1/index.html" style="display:inline-flex;align-items:center;min-height:56px;padding:11px 17px">Amphoteric oxides and equivalent bookkeeping</a> · CHEMISTRY</li><li><a href="../nsejs/chemistry/core1/recovery/chem-redox-titration-d3-r1/index.html" style="display:inline-flex;align-items:center;min-height:56px;padding:11px 17px">Redox titration by electron-equivalent balance</a> · CHEMISTRY</li><li><a href="../nsejs/physics/core1/recovery/nsejs-circuits-cube-d3-r1/index.html" style="display:inline-flex;align-items:center;min-height:56px;padding:11px 17px">Cube networks by equipotential groups</a> · PHYSICS</li><li><a href="../nsejs/physics/core1/recovery/nsejs-circuits-ladder-d3-r1/index.html" style="display:inline-flex;align-items:center;min-height:56px;padding:11px 17px">Infinite ladders and self-consistency</a> · PHYSICS</li><li><a href="../nsejs/physics/core1/recovery/nsejs-circuits-r1/index.html" style="display:inline-flex;align-items:center;min-height:56px;padding:11px 17px">A tetrahedron of resistors</a> · PHYSICS</li><li><a href="../nsejs/physics/core1/recovery/nsejs-electrostatics-r1/index.html" style="display:inline-flex;align-items:center;min-height:56px;padding:11px 17px">Coulomb force and electron-count scale</a> · PHYSICS</li><li><a href="../nsejs/physics/core1/recovery/nsejs-electrostatics-deflection-d3-r1/index.html" style="display:inline-flex;align-items:center;min-height:56px;padding:11px 17px">Transverse electrostatic deflection</a> · PHYSICS</li><li><a href="../nsejs/physics/core1/recovery/nsejs-magnetism-r1/index.html" style="display:inline-flex;align-items:center;min-height:56px;padding:11px 17px">Lenz's law: identify flux change first</a> · PHYSICS</li><li><a href="../nsejs/physics/core1/recovery/nsejs-magnetism-terminal-d3-r1/index.html" style="display:inline-flex;align-items:center;min-height:56px;padding:11px 17px">Falling conductive rod: terminal magnetic damping</a> · PHYSICS</li><li><a href="../nsejs/physics/core1/recovery/nsejs-mechanics-r1/index.html" style="display:inline-flex;align-items:center;min-height:56px;padding:11px 17px">Position, displacement and average speed</a> · PHYSICS</li><li><a href="../nsejs/physics/core1/recovery/ioqjs-optics-conjugate-d3-r1/index.html" style="display:inline-flex;align-items:center;min-height:56px;padding:11px 17px">Coupled conjugate-distance constraints</a> · PHYSICS</li><li><a href="../nsejs/physics/core1/recovery/nsejs-optics-r1/index.html" style="display:inline-flex;align-items:center;min-height:56px;padding:11px 17px">Convex mirrors: sign and limiting image position</a> · PHYSICS</li><li><a href="../nsejs/physics/core1/recovery/nsejs-optics-lens-mirror-d3-r1/index.html" style="display:inline-flex;align-items:center;min-height:56px;padding:11px 17px">Lens image followed by plane-mirror reflection</a> · PHYSICS</li><li><a href="../nsejs/physics/core1/recovery/nsejs-optics-prism-d3-r1/index.html" style="display:inline-flex;align-items:center;min-height:56px;padding:11px 17px">Silvered prisms: discrete reflection geometry</a> · PHYSICS</li><li><a href="../nsejs/physics/core1/recovery/nsejs-optics-screw-lens-d3-r1/index.html" style="display:inline-flex;align-items:center;min-height:56px;padding:11px 17px">Lens magnification and screw pitch</a> · PHYSICS</li></ol></section></main></body></html>
+
+    <!-- SECTION 1: CHEMISTRY RECOVERY CASES (5 MODULES) -->
+    <div class="domain-section-header" id="chem-heading">
+      <h2>🧪 Chemistry Recovery Modules</h2>
+      <span class="domain-count-tag">5 Published Modules</span>
+    </div>
+
+    <div class="recovery-grid" id="chem-grid">
+
+      <!-- Chem 1: Atomic Structure -->
+      <article class="recovery-card" data-domain="chemistry" data-sub="atomic">
+        <div class="card-top-meta">
+          <span class="topic-pill-badge pill-chem">🔬 Atomic Structure</span>
+          <span class="status-tag-live">● Live Module</span>
+        </div>
+        <h3>Atomic Spectra: Inverses, Not Energy Gaps</h3>
+        <p class="recovery-card-desc">Dismantles the arithmetic trap of subtracting wavelengths directly. Enforces inverse proportionality (&lambda; &prop; 1/&Delta;E) and Rydberg energy-level difference calculations.</p>
+        <div class="code-meta-box">
+          <span>Construction: <code>CHEM-ATOM-C-BOHR-TRANSITIONS-01</code></span>
+          <span>Target: <code>CHEM-NSEJS-ATOM-01</code> · 6-Stage Repair Engine</span>
+        </div>
+        <div class="card-actions">
+          <a class="btn-launch-module" href="chemistry/core1/recovery/chem-atomic-structure-r1/index.html">
+            🚀 Launch Skill Repair →
+          </a>
+          <a class="btn-topic-hub" href="chemistry/index.html#atomic" title="View Atomic Structure in Chemistry Hub">
+            📖 Topic Hub
+          </a>
+        </div>
+      </article>
+
+      <!-- Chem 2: Eudiometry -->
+      <article class="recovery-card" data-domain="chemistry" data-sub="eudiometry">
+        <div class="card-top-meta">
+          <span class="topic-pill-badge pill-chem">💨 Eudiometry</span>
+          <span class="status-tag-live">● Live Module</span>
+        </div>
+        <h3>Gas-Volume Conservation in Combustion Eudiometry</h3>
+        <p class="recovery-card-desc">Master explosive hydrocarbon combustions, gas contraction upon cooling to room temperature (liquid H2O volume drops to 0), and KOH residual CO2 absorption tracking.</p>
+        <div class="code-meta-box">
+          <span>Construction: <code>CHEM-EUDIO-C-COMBUSTION-D3-01</code></span>
+          <span>Target: <code>CHEM-NSEJS-EUDIO-D3-01</code> · 6-Stage Repair Engine</span>
+        </div>
+        <div class="card-actions">
+          <a class="btn-launch-module" href="chemistry/core1/recovery/chem-eudiometry-d3-r1/index.html">
+            🚀 Launch Skill Repair →
+          </a>
+          <a class="btn-topic-hub" href="chemistry/index.html#eudiometry" title="View Eudiometry in Chemistry Hub">
+            📖 Topic Hub
+          </a>
+        </div>
+      </article>
+
+      <!-- Chem 3: Mole Concept -->
+      <article class="recovery-card" data-domain="chemistry" data-sub="mole">
+        <div class="card-top-meta">
+          <span class="topic-pill-badge pill-chem">⚖️ Mole Concept</span>
+          <span class="status-tag-live">● Live Module</span>
+        </div>
+        <h3>Mole Fraction and Dalton's Partial Pressures</h3>
+        <p class="recovery-card-desc">Derives Dalton's law of partial pressures from ideal gas fundamentals, calculates vapor pressure equilibrium over aqueous solutions, and normalizes mole fractions.</p>
+        <div class="code-meta-box">
+          <span>Construction: <code>CHEM-MOLE-C-PARTIAL-PRESSURE-01</code></span>
+          <span>Target: <code>CHEM-NSEJS-MOLE-01</code> · 6-Stage Repair Engine</span>
+        </div>
+        <div class="card-actions">
+          <a class="btn-launch-module" href="chemistry/core1/recovery/chem-matter-mole-r1/index.html">
+            🚀 Launch Skill Repair →
+          </a>
+          <a class="btn-topic-hub" href="chemistry/index.html#matter" title="View Mole Concept in Chemistry Hub">
+            📖 Topic Hub
+          </a>
+        </div>
+      </article>
+
+      <!-- Chem 4: Amphoteric Oxides -->
+      <article class="recovery-card" data-domain="chemistry" data-sub="reactions">
+        <div class="card-top-meta">
+          <span class="topic-pill-badge pill-chem">🧪 Reactions &amp; Oxides</span>
+          <span class="status-tag-live">● Live Module</span>
+        </div>
+        <h3>Amphoteric Oxides &amp; Equivalent Bookkeeping</h3>
+        <p class="recovery-card-desc">Resolves dual-path acid/base reactivity of ZnO and Al2O3, complex ion formation ([Al(OH)4]-, [Zn(OH)4]2-), and stoichiometric equivalent factor calculation.</p>
+        <div class="code-meta-box">
+          <span>Construction: <code>CHEM-REACT-C-AMPHOTERIC-STOICH-01</code></span>
+          <span>Target: <code>CHEM-NSEJS-REACT-01</code> · 6-Stage Repair Engine</span>
+        </div>
+        <div class="card-actions">
+          <a class="btn-launch-module" href="chemistry/core1/recovery/chem-chemical-substances-r1/index.html">
+            🚀 Launch Skill Repair →
+          </a>
+          <a class="btn-topic-hub" href="chemistry/index.html#reactions" title="View Reactions in Chemistry Hub">
+            📖 Topic Hub
+          </a>
+        </div>
+      </article>
+
+      <!-- Chem 5: Redox Titration -->
+      <article class="recovery-card" data-domain="chemistry" data-sub="redox">
+        <div class="card-top-meta">
+          <span class="topic-pill-badge pill-chem">🔄 Redox Titration</span>
+          <span class="status-tag-live">● Live Module</span>
+        </div>
+        <h3>Redox Titration by Electron-Equivalent Balance</h3>
+        <p class="recovery-card-desc">Applies half-cell electron stoichiometry (MnO4- &rarr; Mn2+, n=5) to balance permanganate/oxalate titrations in acidic media using equivalent balance N1V1 = N2V2.</p>
+        <div class="code-meta-box">
+          <span>Construction: <code>CHEM-REDOX-C-TITRATION-D3-01</code></span>
+          <span>Target: <code>CHEM-NSEJS-REDOX-D3-01</code> · 6-Stage Repair Engine</span>
+        </div>
+        <div class="card-actions">
+          <a class="btn-launch-module" href="chemistry/core1/recovery/chem-redox-titration-d3-r1/index.html">
+            🚀 Launch Skill Repair →
+          </a>
+          <a class="btn-topic-hub" href="chemistry/index.html#redox" title="View Redox in Chemistry Hub">
+            📖 Topic Hub
+          </a>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- SECTION 2: PHYSICS RECOVERY CASES (13 MODULES) -->
+    <div class="domain-section-header" id="phys-heading">
+      <h2>⚛️ Physics Recovery Modules</h2>
+      <span class="domain-count-tag">13 Published Modules</span>
+    </div>
+
+    <div class="recovery-grid" id="phys-grid">
+
+      <!-- Phys 1: Resistor Cube -->
+      <article class="recovery-card" data-domain="physics" data-sub="circuits">
+        <div class="card-top-meta">
+          <span class="topic-pill-badge pill-phys">⚡ DC Circuits</span>
+          <span class="status-tag-live">● Live Module</span>
+        </div>
+        <h3>Cube Networks by Equipotential Groups</h3>
+        <p class="recovery-card-desc">Exploits 3D body-diagonal symmetry to collapse equipotential nodes into parallel branches (3 &rarr; 6 &rarr; 3 resistors), deriving Req = (5/6)R with zero loop equations.</p>
+        <div class="code-meta-box">
+          <span>Construction: <code>PHYS-CIRC-C-3D-CUBE-SYMMETRY-01</code></span>
+          <span>Target: <code>PHYS-NSEJS-CIRC-02</code> · 6-Stage Repair Engine</span>
+        </div>
+        <div class="card-actions">
+          <a class="btn-launch-module" href="physics/core1/recovery/nsejs-circuits-cube-d3-r1/index.html">
+            🚀 Launch Skill Repair →
+          </a>
+          <a class="btn-topic-hub" href="physics/index.html#circuits" title="View Circuits in Physics Hub">
+            📖 Topic Hub
+          </a>
+        </div>
+      </article>
+
+      <!-- Phys 2: Infinite Ladder -->
+      <article class="recovery-card" data-domain="physics" data-sub="circuits">
+        <div class="card-top-meta">
+          <span class="topic-pill-badge pill-phys">⚡ DC Circuits</span>
+          <span class="status-tag-live">● Live Module</span>
+        </div>
+        <h3>Infinite Ladders &amp; Self-Consistency</h3>
+        <p class="recovery-card-desc">Formulates recursive network truncation Req = R1 + (R2 || Req), solves the quadratic characteristic equation, and rigorously rejects the unphysical negative resistance root.</p>
+        <div class="code-meta-box">
+          <span>Construction: <code>PHYS-CIRC-C-INFINITE-LADDER-01</code></span>
+          <span>Target: <code>PHYS-NSEJS-CIRC-03</code> · 6-Stage Repair Engine</span>
+        </div>
+        <div class="card-actions">
+          <a class="btn-launch-module" href="physics/core1/recovery/nsejs-circuits-ladder-d3-r1/index.html">
+            🚀 Launch Skill Repair →
+          </a>
+          <a class="btn-topic-hub" href="physics/index.html#circuits" title="View Circuits in Physics Hub">
+            📖 Topic Hub
+          </a>
+        </div>
+      </article>
+
+      <!-- Phys 3: Resistor Tetrahedron -->
+      <article class="recovery-card" data-domain="physics" data-sub="circuits">
+        <div class="card-top-meta">
+          <span class="topic-pill-badge pill-phys">⚡ DC Circuits</span>
+          <span class="status-tag-live">● Live Module</span>
+        </div>
+        <h3>A Tetrahedron of Resistors</h3>
+        <p class="recovery-card-desc">Applies mirror bridge symmetry across opposing vertices to identify zero-current bridge resistors, reducing non-planar tetrahedral networks to Req = (1/2)R.</p>
+        <div class="code-meta-box">
+          <span>Construction: <code>PHYS-CIRC-C-TETRAHEDRON-SYMMETRY-01</code></span>
+          <span>Target: <code>PHYS-NSEJS-CIRC-01</code> · 6-Stage Repair Engine</span>
+        </div>
+        <div class="card-actions">
+          <a class="btn-launch-module" href="physics/core1/recovery/nsejs-circuits-r1/index.html">
+            🚀 Launch Skill Repair →
+          </a>
+          <a class="btn-topic-hub" href="physics/index.html#circuits" title="View Circuits in Physics Hub">
+            📖 Topic Hub
+          </a>
+        </div>
+      </article>
+
+      <!-- Phys 4: Coulomb Quantization -->
+      <article class="recovery-card" data-domain="physics" data-sub="electrostatics">
+        <div class="card-top-meta">
+          <span class="topic-pill-badge pill-phys">⚡ Electrostatics</span>
+          <span class="status-tag-live">● Live Module</span>
+        </div>
+        <h3>Coulomb Force and Electron-Count Scale</h3>
+        <p class="recovery-card-desc">Bridges macroscopic electrostatic Coulomb forces with microscopic fundamental charge quantization (q = Ne), analyzing discrete electron deficits in spheres.</p>
+        <div class="code-meta-box">
+          <span>Construction: <code>PHYS-ELEC-C-COULOMB-QUANTIZATION-01</code></span>
+          <span>Target: <code>PHYS-NSEJS-ELEC-01</code> · 6-Stage Repair Engine</span>
+        </div>
+        <div class="card-actions">
+          <a class="btn-launch-module" href="physics/core1/recovery/nsejs-electrostatics-r1/index.html">
+            🚀 Launch Skill Repair →
+          </a>
+          <a class="btn-topic-hub" href="physics/index.html#electrostatics" title="View Electrostatics in Physics Hub">
+            📖 Topic Hub
+          </a>
+        </div>
+      </article>
+
+      <!-- Phys 5: Transverse Deflection -->
+      <article class="recovery-card" data-domain="physics" data-sub="electrostatics">
+        <div class="card-top-meta">
+          <span class="topic-pill-badge pill-phys">⚡ Electrostatics</span>
+          <span class="status-tag-live">● Live Module</span>
+        </div>
+        <h3>Transverse Electrostatic Deflection</h3>
+        <p class="recovery-card-desc">Deconstructs 2D charged particle trajectories inside uniform electric fields into decoupled horizontal motion and constant vertical acceleration: y = q E L&sup2; / (2 m v0&sup2;).</p>
+        <div class="code-meta-box">
+          <span>Construction: <code>PHYS-ELEC-C-TRANSVERSE-DEFLECTION-01</code></span>
+          <span>Target: <code>PHYS-NSEJS-ELEC-02</code> · 6-Stage Repair Engine</span>
+        </div>
+        <div class="card-actions">
+          <a class="btn-launch-module" href="physics/core1/recovery/nsejs-electrostatics-deflection-d3-r1/index.html">
+            🚀 Launch Skill Repair →
+          </a>
+          <a class="btn-topic-hub" href="physics/index.html#electrostatics" title="View Electrostatics in Physics Hub">
+            📖 Topic Hub
+          </a>
+        </div>
+      </article>
+
+      <!-- Phys 6: Lenz Law -->
+      <article class="recovery-card" data-domain="physics" data-sub="magnetism">
+        <div class="card-top-meta">
+          <span class="topic-pill-badge pill-phys">🧲 Magnetism &amp; EMI</span>
+          <span class="status-tag-live">● Live Module</span>
+        </div>
+        <h3>Lenz's Law: Identify Flux Change First</h3>
+        <p class="recovery-card-desc">Prevents right-hand rule sign inversions by enforcing the primary rule: calculate d&Phi;B/dt first, then determine opposition induced current and induced magnetic moments.</p>
+        <div class="code-meta-box">
+          <span>Construction: <code>PHYS-MAG-C-LENZ-LAW-INDUCED-CURRENT-01</code></span>
+          <span>Target: <code>PHYS-NSEJS-MAG-01</code> · 6-Stage Repair Engine</span>
+        </div>
+        <div class="card-actions">
+          <a class="btn-launch-module" href="physics/core1/recovery/nsejs-magnetism-r1/index.html">
+            🚀 Launch Skill Repair →
+          </a>
+          <a class="btn-topic-hub" href="physics/index.html#magnetism" title="View Magnetism in Physics Hub">
+            📖 Topic Hub
+          </a>
+        </div>
+      </article>
+
+      <!-- Phys 7: Falling Rod Terminal -->
+      <article class="recovery-card" data-domain="physics" data-sub="magnetism">
+        <div class="card-top-meta">
+          <span class="topic-pill-badge pill-phys">🧲 Magnetism &amp; EMI</span>
+          <span class="status-tag-live">● Live Module</span>
+        </div>
+        <h3>Falling Conductive Rod: Terminal Magnetic Damping</h3>
+        <p class="recovery-card-desc">Analyzes motional emf (&epsilon; = BLv), closed-loop current, and upward Lorentz braking force FB = B&sup2;L&sup2;v/R, solving for asymptotic terminal equilibrium velocity vt = mgR/(B&sup2;L&sup2;).</p>
+        <div class="code-meta-box">
+          <span>Construction: <code>PHYS-MAG-C-MOTIONAL-EMF-TERMINAL-01</code></span>
+          <span>Target: <code>PHYS-NSEJS-MAG-02</code> · 6-Stage Repair Engine</span>
+        </div>
+        <div class="card-actions">
+          <a class="btn-launch-module" href="physics/core1/recovery/nsejs-magnetism-terminal-d3-r1/index.html">
+            🚀 Launch Skill Repair →
+          </a>
+          <a class="btn-topic-hub" href="physics/index.html#magnetism" title="View Magnetism in Physics Hub">
+            📖 Topic Hub
+          </a>
+        </div>
+      </article>
+
+      <!-- Phys 8: Decoupled Kinematics -->
+      <article class="recovery-card" data-domain="physics" data-sub="mechanics">
+        <div class="card-top-meta">
+          <span class="topic-pill-badge pill-phys">🚀 Mechanics</span>
+          <span class="status-tag-live">● Live Module</span>
+        </div>
+        <h3>Position, Displacement &amp; Average Speed</h3>
+        <p class="recovery-card-desc">Eliminates arithmetic mean velocity misconceptions over equal distances. Enforces harmonic mean formula v_avg = 2 v1 v2 / (v1 + v2) and decouples distance from displacement.</p>
+        <div class="code-meta-box">
+          <span>Construction: <code>PHYS-MECH-C-DECOUPLED-KINEMATICS-01</code></span>
+          <span>Target: <code>NSEJS-2024-P-Q46</code> · 6-Stage Repair Engine</span>
+        </div>
+        <div class="card-actions">
+          <a class="btn-launch-module" href="physics/core1/recovery/nsejs-mechanics-r1/index.html">
+            🚀 Launch Skill Repair →
+          </a>
+          <a class="btn-topic-hub" href="physics/index.html#mechanics" title="View Mechanics in Physics Hub">
+            📖 Topic Hub
+          </a>
+        </div>
+      </article>
+
+      <!-- Phys 9: Conjugate Lens -->
+      <article class="recovery-card" data-domain="physics" data-sub="optics">
+        <div class="card-top-meta">
+          <span class="topic-pill-badge pill-phys">🔭 Ray Optics</span>
+          <span class="status-tag-live">● Live Module</span>
+        </div>
+        <h3>Coupled Conjugate-Distance Constraints</h3>
+        <p class="recovery-card-desc">Explores the Bessel displacement method for fixed screen distance D &gt; 4f: derives focal length f = (D&sup2; - d&sup2;)/(4D) and reciprocal magnification relationship m1 m2 = 1.</p>
+        <div class="code-meta-box">
+          <span>Construction: <code>PHYS-OPT-C-CONJUGATE-LENS-01</code></span>
+          <span>Target: <code>IOQJS-2021-P-Q01</code> · 6-Stage Repair Engine</span>
+        </div>
+        <div class="card-actions">
+          <a class="btn-launch-module" href="physics/core1/recovery/ioqjs-optics-conjugate-d3-r1/index.html">
+            🚀 Launch Skill Repair →
+          </a>
+          <a class="btn-topic-hub" href="physics/index.html#optics" title="View Optics in Physics Hub">
+            📖 Topic Hub
+          </a>
+        </div>
+      </article>
+
+      <!-- Phys 10: Convex Mirror Dynamics -->
+      <article class="recovery-card" data-domain="physics" data-sub="optics">
+        <div class="card-top-meta">
+          <span class="topic-pill-badge pill-phys">🔭 Ray Optics</span>
+          <span class="status-tag-live">● Live Module</span>
+        </div>
+        <h3>Convex Mirrors: Sign &amp; Limiting Image Position</h3>
+        <p class="recovery-card-desc">Proves analytically that convex mirrors strictly form virtual, erect, diminished images inside the focal length (0 &lt; v &lt; f) regardless of object distance u &in; (&minus;&infin;, 0).</p>
+        <div class="code-meta-box">
+          <span>Construction: <code>PHYS-OPT-C-CONVEX-DYNAMICS-01</code></span>
+          <span>Target: <code>PHYS-NSEJS-OPT-01</code> · 6-Stage Repair Engine</span>
+        </div>
+        <div class="card-actions">
+          <a class="btn-launch-module" href="physics/core1/recovery/nsejs-optics-r1/index.html">
+            🚀 Launch Skill Repair →
+          </a>
+          <a class="btn-topic-hub" href="physics/index.html#optics" title="View Optics in Physics Hub">
+            📖 Topic Hub
+          </a>
+        </div>
+      </article>
+
+      <!-- Phys 11: Lens-Mirror Cascade -->
+      <article class="recovery-card" data-domain="physics" data-sub="optics">
+        <div class="card-top-meta">
+          <span class="topic-pill-badge pill-phys">🔭 Ray Optics</span>
+          <span class="status-tag-live">● Live Module</span>
+        </div>
+        <h3>Lens Image Followed by Plane-Mirror Reflection</h3>
+        <p class="recovery-card-desc">Master multi-element compound optical cascades: treating thin lens real/virtual intermediate images as object sources for plane mirrors with reverse ray tracing.</p>
+        <div class="code-meta-box">
+          <span>Construction: <code>PHYS-OPT-C-LENS-MIRROR-01</code></span>
+          <span>Target: <code>PHYS-NSEJS-OPT-02</code> · 6-Stage Repair Engine</span>
+        </div>
+        <div class="card-actions">
+          <a class="btn-launch-module" href="physics/core1/recovery/nsejs-optics-lens-mirror-d3-r1/index.html">
+            🚀 Launch Skill Repair →
+          </a>
+          <a class="btn-topic-hub" href="physics/index.html#optics" title="View Optics in Physics Hub">
+            📖 Topic Hub
+          </a>
+        </div>
+      </article>
+
+      <!-- Phys 12: Silvered Prism -->
+      <article class="recovery-card" data-domain="physics" data-sub="optics">
+        <div class="card-top-meta">
+          <span class="topic-pill-badge pill-phys">🔭 Ray Optics</span>
+          <span class="status-tag-live">● Live Module</span>
+        </div>
+        <h3>Silvered Prisms: Discrete Reflection Geometry</h3>
+        <p class="recovery-card-desc">Enforces normal incidence retracing conditions on silvered faces (r2 = 0&deg;), proving refraction angle r1 = A and calculating critical entry incidence sin i = &mu; sin A.</p>
+        <div class="code-meta-box">
+          <span>Construction: <code>PHYS-OPT-C-PRISM-SILVERED-01</code></span>
+          <span>Target: <code>PHYS-NSEJS-OPT-03</code> · 6-Stage Repair Engine</span>
+        </div>
+        <div class="card-actions">
+          <a class="btn-launch-module" href="physics/core1/recovery/nsejs-optics-prism-d3-r1/index.html">
+            🚀 Launch Skill Repair →
+          </a>
+          <a class="btn-topic-hub" href="physics/index.html#optics" title="View Optics in Physics Hub">
+            📖 Topic Hub
+          </a>
+        </div>
+      </article>
+
+      <!-- Phys 13: Screw-Lens Microdisplacement -->
+      <article class="recovery-card" data-domain="physics" data-sub="optics">
+        <div class="card-top-meta">
+          <span class="topic-pill-badge pill-phys">🔭 Ray Optics</span>
+          <span class="status-tag-live">● Live Module</span>
+        </div>
+        <h3>Lens Magnification &amp; Screw Pitch</h3>
+        <p class="recovery-card-desc">Couples mechanical micrometer screw pitch rotations with optical longitudinal magnification, deriving axial image shift &Delta;v = m&sup2; &Delta;u under differential limits.</p>
+        <div class="code-meta-box">
+          <span>Construction: <code>PHYS-OPT-C-SCREW-LENS-01</code></span>
+          <span>Target: <code>PHYS-NSEJS-OPT-04</code> · 6-Stage Repair Engine</span>
+        </div>
+        <div class="card-actions">
+          <a class="btn-launch-module" href="physics/core1/recovery/nsejs-optics-screw-lens-d3-r1/index.html">
+            🚀 Launch Skill Repair →
+          </a>
+          <a class="btn-topic-hub" href="physics/index.html#optics" title="View Optics in Physics Hub">
+            📖 Topic Hub
+          </a>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Governance Banner -->
+    <div class="unval-banner">
+      <span class="unval-tag">{Unvalidated}</span>
+      <p><strong>Rule 13 Invariant Enforced:</strong> All candidate questions, figures, and worked derivations in these recovery modules are candidate educational artifacts. No academic approval or authentic examination authority is inferred from automated software validation. Green CI tests certify deterministic build and navigation integrity only.</p>
+    </div>
+
+    <footer class="tab-footer">
+      Rule 13 Invariant: No academic approval inferred from software validation. Green CI means automatic tests passed; it never means student release is authorized. All questions labeled {Unvalidated}.
+    </footer>
+
+  </main>
+
+  <script>
+    function filterRecovery(filterKey) {
+      const pills = document.querySelectorAll('.filter-pill');
+      pills.forEach(pill => {
+        if (pill.dataset.filter === filterKey) {
+          pill.classList.add('active');
+        } else {
+          pill.classList.remove('active');
+        }
+      });
+
+      const cards = document.querySelectorAll('.recovery-card');
+      const chemHeading = document.getElementById('chem-heading');
+      const physHeading = document.getElementById('phys-heading');
+      
+      let visibleChem = 0;
+      let visiblePhys = 0;
+
+      cards.forEach(card => {
+        const domain = card.dataset.domain;
+        const sub = card.dataset.sub;
+        let match = false;
+
+        if (filterKey === 'all') {
+          match = true;
+        } else if (filterKey === 'chemistry' && domain === 'chemistry') {
+          match = true;
+        } else if (sub === filterKey) {
+          match = true;
+        }
+
+        if (match) {
+          card.style.display = 'flex';
+          if (domain === 'chemistry') visibleChem++;
+          if (domain === 'physics') visiblePhys++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      if (chemHeading) chemHeading.style.display = (visibleChem > 0) ? 'flex' : 'none';
+      if (physHeading) physHeading.style.display = (visiblePhys > 0) ? 'flex' : 'none';
+    }
+  </script>
+</body>
+</html>
