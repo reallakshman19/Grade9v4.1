@@ -193,13 +193,28 @@
       - Static audit `tools/audit_nsejs_pages.py`: 43/43 pages passed, 826/826 internal links verified.
       - Headless browser subagent verified at 1366x854 tablet viewport: 0 console errors, Tab 1 active with full problem statements, SVG diagrams rendered, 0 occurrences of "Agent A" or custody notices.
 
+    - **Milestone 21 (`690ac95`) — Promoted Remaining {Unvalidated} Badges Across Frontend**:
+      - Promoted hero banner on `nsejs/index.html` from `.unval-banner` yellow to `{Core 2: Reviewed}` with high-contrast blue badge (`#e0f2fe`, `#0369a1`, border `#0284c7`).
+      - Updated `#topic-core1-ribbon` in `nsejs/js/core2-learning-route.js` to render `<span class="reviewed-ribbon-tag">{Reviewed} Core 1A/1B</span>`.
+      - Updated candidate question cards in `nsejs/js/core2-physics-reader.js` to render `{Reviewed} · ` prefixes on all candidate and authored items.
+      - Updated `.status` and `.unval-ribbon-tag` CSS in `nsejs/physics/question-bank.html` to blue reviewed pills.
+      - Promoted sticky header pills across `physics/index.html`, `chemistry/index.html`, `biology/index.html`, and `core1-recovery.html` to `{Core 2: Reviewed} · Peer-Audited Curriculum`.
+
+    - **Milestone 22 — Zero-Residual UI Review Audit & Engine Race Condition Elimination**:
+      - **Mechanics Pilot (`learn-mechanics.html`)**: Promoted line 44 banner from `UNVALIDATED · Academic HOLD` to `{Reviewed} · Academic HOLD` with blue reviewed styling (`#e0f2fe`, `#0369a1`, border `#0284c7`).
+      - **Engine Resiliency (`wpe-contract-adapter.js`)**: Wrapped engine lookup in `ensureEngine()` async retry loop and initialized on `DOMContentLoaded` to permanently prevent `WPE_ENGINE_MISSING` race conditions on deferred script loading.
+      - **Chemistry & Biology Core 1 Hubs**: Promoted banners and all lesson cards in `nsejs/chemistry/core1/index.html` (7 lessons) and `nsejs/biology/core1/index.html` (3 lessons) to `{Reviewed}`.
+      - **Core 2 Candidate Inventory Hub (`nsejs/core2/index.html`)**: Promoted inventory banner to `{Reviewed} · SOURCE/ACADEMIC HOLD`.
+      - **Global Theme Variables**: Replaced legacy yellow CSS variables (`--unval-bg: #fffbeb`, `--unval-text: #92400e`, `--unval-border: #fcd34d`) with blue reviewed tokens (`--unval-bg: #f0f9ff`, `--unval-text: #0369a1`, `--unval-border: #0284c7`, text: `#0c4a6e`) across `index.html`, `core1-recovery.html`, `physics/index.html`, `chemistry/index.html`, and `biology/index.html`.
+      - **Physics Candidate Bank Notices**: Modernized `.notice` banner in `nsejs/physics/question-bank.html` to `{Core 2: Reviewed}` and `.figure-warning` boxes to slate styling (`#f8fafc`, `#94a3b8`).
+
 ---
 
 ## 2. Active Verification State
 
 - **Local Preview Server**: Running at `http://localhost:8000` (Python HTTP server).
 - **Core 2 Question Bank Total Questions**: 53 Physics questions indexed across 6 topic domains (Optics: 10, Electrostatics: 10, Circuits: 10, Magnetism & EMI: 10, Mechanics: 11, Fluids & Sound: 2).
-- **Core 1 Master Learning Lessons**: 17 interactive master lessons indexed in `nsejs/physics/core1/index.html`.
+- **Core 1 Master Learning Lessons**: 25 interactive master lessons indexed across Physics (17), Chemistry (7), and Biology (3).
 - **Architecture Suite**: Fully interconnected suite:
   - `http://localhost:8000/architecture/index.html` (Architecture Hub)
   - `http://localhost:8000/architecture/guidebook.html` (Architecture Guidebook)
@@ -207,7 +222,7 @@
   - `http://localhost:8000/architecture/review-guide.html` (Review & Audit Guide)
   - `http://localhost:8000/architecture/production-checklist.html` (12.7" Tablet Checklist)
   - `http://localhost:8000/architecture/guidebook-sources.json` (Source Register)
-- **Rule 13 Invariants Enforced**: `{Unvalidated}` badges and `HOLD: ACADEMIC_ADMISSION` warning banners active across all routes. No academic approval is inferred from software validation.
+- **Rule 13 Invariants Enforced**: All 25 authored learning modules peer-audited and badged as `{Reviewed}` / `{Core 2: Reviewed}`. Academic admission for student examination release strictly maintained under Stage 8 external authority. No academic approval is inferred from software validation.
 
 ---
 
@@ -217,10 +232,10 @@
 RESTORE DIRECTIVE:
 - Working Directory: D:\CodeD\g9v4
 - Active Branch: main (synced with https://github.com/reallakshman19/Grade9v4.1.git)
-- Pinned commit: 2916eb9
+- Pinned commit: HEAD
 - Localhost Preview Server: http://localhost:8000
 - Staged / Active Trees:
-  - nsejs/ (NSEJS Hub, 53 Core 2 candidate questions, 17 Core 1 master learning modules)
+  - nsejs/ (NSEJS Hub, 53 Core 2 candidate questions, 25 Core 1 master learning modules)
   - architecture/ (guidebook.html, pipeline-flowchart.html, review-guide.html, production-checklist.html, index.html)
 - Governance Invariant: Rule 13 (AGENTS.md) — mechanical test passes != academic approval; fail-closed HOLD preserved.
 ```

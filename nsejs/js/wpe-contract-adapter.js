@@ -285,6 +285,12 @@
 
   async function mount(config = {}) {
     try {
+      if (typeof window.WPEGapJourneys !== "function") {
+        for (let i = 0; i < 20; i++) {
+          await new Promise(r => setTimeout(r, 50));
+          if (typeof window.WPEGapJourneys === "function") break;
+        }
+      }
       requireThat(typeof window.WPEGapJourneys === "function", "WPE_ENGINE_MISSING");
       const query = new URLSearchParams(location.search);
       let requestedUID = query.get("source_uid");
@@ -393,9 +399,16 @@
   }
 
   window.NSEJSWPEAdapter = Object.freeze({mount, sourcePayload, validateContract, scenarioFor});
-  if (document.body?.dataset?.nsejsMechanicsPilot === "true") {
-    mount({contractUrl:"../data/mechanics-wpe-teaching-pilot.v1.json",
-      bridgeUrl:"../data/source-learning-bridge-tech-preview.v1.json",
-      sourceCollectionUrl:"../data/physics-authored-practice-r1.json"});
+  function init() {
+    if (document.body?.dataset?.nsejsMechanicsPilot === "true") {
+      mount({contractUrl:"../data/mechanics-wpe-teaching-pilot.v1.json",
+        bridgeUrl:"../data/source-learning-bridge-tech-preview.v1.json",
+        sourceCollectionUrl:"../data/physics-authored-practice-r1.json"});
+    }
+  }
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
   }
 })();
