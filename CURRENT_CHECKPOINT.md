@@ -1,10 +1,10 @@
 # Checkpoint — 13 November 2026
 
-**Observed:** 2026-11-13T13:45:00+04:00 (Asia/Dubai)  
+**Observed:** 2026-11-13T14:06:00+04:00 (Asia/Dubai)  
 **Repository Working Directory:** `D:\CodeD\g9v4`  
 **Active Branch:** `main`  
 **Tracking Remote:** `origin` -> `https://github.com/reallakshman19/Grade9v4.1.git`  
-**Head Commit:** `07d9fec` (`feat(nsejs): upgrade physics question-bank topic pills and integrate fluids candidate records with Core 1 routes`)  
+**Head Commit:** `dcc7d91` (`feat(core1): bridge all 17 Core 1 master lessons to Physics topic hub and question bank`)  
 **Upstream Remote:** `upstream-v4.0` -> `https://github.com/reallakshman19/Grade9v4.0.git`  
 **Localhost Server:** Running at `http://localhost:8000` (Python HTTP server, PID/task-60)
 
@@ -69,6 +69,21 @@
 12. **Git Synchronization**:
     - Committed changes in commit `07d9fec`: `feat(nsejs): upgrade physics question-bank topic pills and integrate fluids candidate records with Core 1 routes`.
     - Pushed cleanly to `origin/main` on `https://github.com/reallakshman19/Grade9v4.1.git`.
+13. **Full Core 1A/1B Master Learning Integration Across Hub & Question Bank**:
+    - **Physics Hub Upgrade ([nsejs/physics/index.html](file:///D:/CodeD/g9v4/nsejs/physics/index.html))**:
+      - Replaced disabled `⏳ Academic Review` badges on all 6 topic cards with active, touch-friendly navigation rows (`.prog-item-link`) and dual-action button groups:
+        - `▶ Open Candidate Bank (N Qs) →`
+        - `🎓 Open ... Master Lesson (Core 1) →`
+      - Updated 4-cell metric strip to reflect `17 Core 1 Modules / Interactive Lessons`.
+    - **Question Bank Topic Ribbons & Card-Level Learning Routes ([nsejs/js/core2-learning-route.js](file:///D:/CodeD/g9v4/nsejs/js/core2-learning-route.js))**:
+      - Added `#topic-core1-ribbon` prominently beneath topic pills across all 6 physics topics (Optics, Mechanics, Circuits, Electrostatics, Magnetism, Fluids).
+      - Mapped individual candidate items (e.g. `NSEJS-24-MECH-01`, `NSEJS-24-OPT-01`, `NSEJS-24-CIRC-01`, `NSEJS-24-ELEC-01`, `NSEJS-24-MAG-01`, `PHYS-NSEJS-FLUID-01/04`, `G9-AUTH-MECH-001`) to their dedicated 6-stage / 3-stage interactive master lessons with $\ge 48\text{px}$ touch targets.
+    - **Unified Core 1 Master Learning Directory ([nsejs/physics/core1/index.html](file:///D:/CodeD/g9v4/nsejs/physics/core1/index.html))**:
+      - Transformed legacy placeholder list into a modern, responsive 12.7" tablet directory linking **all 17 Physics Core 1 master lessons**.
+      - Added interactive domain filter pills (`All 17`, `Optics 6`, `Mechanics 2`, `Circuits 3`, `Electrostatics 2`, `Magnetism 2`, `Fluids 2`).
+      - Every lesson features a high-contrast `▶ Launch ... Journey →` button leading to its interactive module without any disabled placeholders.
+    - **Host Browser Verification**: Passed with 0 console errors and 0px horizontal scroll overflow (verified via host screenshot `final_step_66.png`).
+    - **Committed & Pushed**: Commit `dcc7d91` pushed to `origin/main`.
 
 ---
 
