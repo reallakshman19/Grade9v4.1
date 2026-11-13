@@ -1,0 +1,102 @@
+{
+  "schema": "g9v41-b02-subtopic-preview/v1",
+  "status": "DRAFT_AUTHOR_EXPOSED",
+  "owner_agent": "AGENT_2",
+  "topic_id": "PH09",
+  "subtopic_id": "PH09-03",
+  "version": "0.1.0",
+  "source_role": "AUTHORED_TRANSFER",
+  "source_status": "NO_QUALIFIED_SOURCE_YET",
+  "core1b": [
+    {
+      "id": "PH09-03-B02-HANDEDNESS-COMPOSITION-MAIN-R1",
+      "kind": "MAIN",
+      "subtopic_id": "PH09-03",
+      "qrt_target_id": "PH09-03-JUSTIFY-D3-HANDEDNESS-COMPOSITION-R1",
+      "primary_operation": "JUSTIFY",
+      "source_role": "AUTHORED_TRANSFER",
+      "difficulty_status": "AUTHOR_NOMINATION__INDEPENDENT_HOLD",
+      "content_revision": "0.1.0",
+      "fresh_task": "Three labelled markers are A=(1,1), B=(4,1), C=(2,3). An image report gives A′=(−1,−1), B′=(−4,−1), C′=(−2,−3), and claims one mirror created it. A second report gives A″=(−1,1), B″=(−4,1), C″=(−2,3). Justify which report can be a single reflection and identify the simplest transformation for the other. Use signed orientation as evidence.",
+      "protected_work": "Use an oriented non-collinear configuration to distinguish a single reflection from a rotation or even number of reflections, rather than rely on verbal left/right labels.",
+      "stages": {
+        "predict": "Before solving, predict the outcome or relationship and record uncertainty.",
+        "attempt": "Three labelled markers are A=(1,1), B=(4,1), C=(2,3). An image report gives A′=(−1,−1), B′=(−4,−1), C′=(−2,−3), and claims one mirror created it. A second report gives A″=(−1,1), B″=(−4,1), C″=(−2,3). Justify which report can be a single reflection and identify the simplest transformation for the other. Use signed orientation as evidence.",
+        "reconstruct": "Original signed double area det(B−A,C−A)=6. First report vectors (−3,0),(−1,−2) give +6: orientation preserved, impossible for one reflection of non-collinear labelled points; it is a 180° rotation about origin (or two perpendicular reflections). Second gives det((−3,0),(−1,2))=−6, and all points satisfy x→−x, y unchanged, so reflection across x=0.",
+        "diagnose": "Only if your saved response exhibits this error: Equating any apparent left/right change with a single mirror reflection. Otherwise record insufficient evidence.",
+        "repair": "Track two independent displacement vectors and compute their determinant before naming the transformation.",
+        "boundary_test": "Why does a collinear triple of markers fail to distinguish the handedness of a general planar isometry?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH09-03-B02-HANDEDNESS-COMPOSITION-INSTANCE-R1",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH09-03",
+      "qrt_target_id": "PH09-03-JUSTIFY-D3-HANDEDNESS-COMPOSITION-R1",
+      "primary_operation": "JUSTIFY",
+      "source_role": "AUTHORED_TRANSFER",
+      "difficulty_status": "INSTANCE_UNSCORED",
+      "content_revision": "0.1.0",
+      "fresh_task": "An oriented triangle A=(0,0), B=(2,0), C=(0,1) is observed as A′=(0,0), B′=(0,2), C′=(1,0). A second observation has A″=(0,0), B″=(0,2), C″=(−1,0). Distinguish reflection versus rotation using signed orientation and identify each mapping.",
+      "protected_work": "Use an oriented non-collinear configuration to distinguish a single reflection from a rotation or even number of reflections, rather than rely on verbal left/right labels.",
+      "stages": {
+        "predict": "Before solving, predict the outcome or relationship and record uncertainty.",
+        "attempt": "An oriented triangle A=(0,0), B=(2,0), C=(0,1) is observed as A′=(0,0), B′=(0,2), C′=(1,0). A second observation has A″=(0,0), B″=(0,2), C″=(−1,0). Distinguish reflection versus rotation using signed orientation and identify each mapping.",
+        "reconstruct": "Original determinant +2. First +x→+y, +y→+x gives determinant −2: reflection across y=x. Second +x→+y, +y→−x gives determinant +2: rotation +90°. A single reflection cannot realize second labelled triangle.",
+        "diagnose": "Only if your saved response exhibits this error: Equating any apparent left/right change with a single mirror reflection. Otherwise record insufficient evidence.",
+        "repair": "Track two independent displacement vectors and compute their determinant before naming the transformation.",
+        "boundary_test": "Why does a collinear triple of markers fail to distinguish the handedness of a general planar isometry?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    }
+  ],
+  "author_main_assessment": {
+    "primary_operation": "JUSTIFY",
+    "band_candidate": "D3",
+    "blueprint_cell": "D3.7",
+    "factor_evidence": {
+      "concept_model_selection": {
+        "score": 1,
+        "evidence": "Select reflection versus proper rotation criterion."
+      },
+      "representation_translation": {
+        "score": 2,
+        "evidence": "Translate labelled coordinate observations to oriented vector pairs."
+      },
+      "reasoning_chain_length": {
+        "score": 2,
+        "evidence": "Calculate orientation, reject one reflection, identify transformation."
+      },
+      "algebra_computational_load": {
+        "score": 1,
+        "evidence": "Routine determinants with signs are material."
+      },
+      "trap_exception_sensitivity": {
+        "score": 1,
+        "evidence": "Non-collinear labelled points required; an arrow alone is insufficient."
+      }
+    },
+    "total": 7,
+    "disposition": "AUTHOR_PROPOSED_NOT_INDEPENDENT",
+    "instance_band": "NOT_SCORED"
+  },
+  "acceptance": {
+    "release": "HOLD",
+    "academic": "HOLD",
+    "native_contract": "NOT_VALIDATED",
+    "implementation": "NOT_RUN"
+  }
+}
