@@ -6,70 +6,47 @@
   "use strict";
 
   const TOPICS = [
-    ["genetics", "GENETICS_AND_HEREDITY", "Genetics & Heredity", "🧬"],
     ["living_world", "ORGANISATION_IN_LIVING_WORLD", "Cell & Living World", "🧫"],
-    ["life_processes", "LIFE_PROCESSES", "Life Processes", "🫀"],
-    ["environment", "ENVIRONMENT_AND_NATURAL_RESOURCES", "Environment & Ecology", "🌿"],
-    ["year_2024", "YEAR_2024", "2024 Paper Code 51", "📅"],
-    ["year_2023", "YEAR_2023", "2023 Exam Paper", "📅"],
-    ["year_2022", "YEAR_2022", "2022 Exam Paper", "📅"],
-    ["year_2021", "YEAR_2021", "2021 Exam Paper", "📅"],
-    ["year_2020", "YEAR_2020", "2020 Exam Paper", "📅"]
+    ["life_processes", "LIFE_PROCESSES", "Life Processes & Physiology", "🫀"],
+    ["coordination", "CONTROL_AND_COORDINATION", "Control & Coordination", "🧠"],
+    ["genetics", "GENETICS_AND_HEREDITY", "Genetics & Heredity", "🧬"],
+    ["environment", "ENVIRONMENT_AND_NATURAL_RESOURCES", "Ecology & Environment", "🌿"]
   ];
 
   const TOPIC_RIBBONS = {
-    "genetics": {
-      title: "Genetics, Heredity & Molecular Mechanisms",
-      links: [
-        { label: "▶ Epistasis & Meiosis Stoichiometry (D2 Flagship)", url: "core1/bio-genetics-coordination-r1/index.html" }
-      ]
-    },
     "living_world": {
-      title: "Cell Biology, Virology & Living Organization",
+      title: "Cell Biology, Living Organization & Virology",
       links: [
-        { label: "▶ Virology & Baltimore Genomes (D3 Flagship)", url: "core1/bio-viral-genetics-d3-r1/index.html" }
+        { label: "▶ Virology & Baltimore Genomes (D3 Flagship)", url: "core1/bio-viral-genetics-d3-r1/index.html" },
+        { label: "🗺️ View Core 2 267-Item Question Map", url: "../core2/question-map.html#biology" }
       ]
     },
     "life_processes": {
-      title: "Physiology, Immunology & Life Processes",
+      title: "Physiology, Transport, Respiration & Metabolism",
       links: [
-        { label: "▶ Vertebrate Immune Architecture (D3 Flagship)", url: "core1/bio-immunology-defense-d3-r1/index.html" }
+        { label: "▶ Vertebrate Immune & Metabolic Architecture", url: "core1/bio-immunology-defense-d3-r1/index.html" },
+        { label: "📑 Official IAPT Source Downloads", url: "../official-sources.html" }
+      ]
+    },
+    "coordination": {
+      title: "Control & Coordination (Nervous, Endocrine & Immunity)",
+      links: [
+        { label: "▶ Vertebrate Immune Defense & Neuro Coordination (D3 Flagship)", url: "core1/bio-immunology-defense-d3-r1/index.html" },
+        { label: "📑 Official IAPT Source Downloads", url: "../official-sources.html" }
+      ]
+    },
+    "genetics": {
+      title: "Genetics, Heredity & Molecular Mechanisms",
+      links: [
+        { label: "▶ Epistasis & Meiosis Stoichiometry (D2 Flagship)", url: "core1/bio-genetics-coordination-r1/index.html" },
+        { label: "🗺️ View Core 2 267-Item Question Map", url: "../core2/question-map.html#biology" }
       ]
     },
     "environment": {
-      title: "Ecology, Biogeochemical Cycles & Resources",
+      title: "Ecology, Biogeochemical Cycles & Natural Resources",
       links: [
-        { label: "🗺️ View Core 2 267-Item Question Map", url: "../core2/question-map.html" }
-      ]
-    },
-    "year_2024": {
-      title: "IAPT NSEJS 2024 Code 51 Official Exam Paper",
-      links: [
-        { label: "📑 Official IAPT Source Downloads & Verification Dossier", url: "../official-sources.html" }
-      ]
-    },
-    "year_2023": {
-      title: "IAPT NSEJS 2023 Official Exam Paper",
-      links: [
-        { label: "📑 Official IAPT Source Downloads & Verification Dossier", url: "../official-sources.html" }
-      ]
-    },
-    "year_2022": {
-      title: "IAPT NSEJS 2022 Official Exam Paper",
-      links: [
-        { label: "📑 Official IAPT Source Downloads & Verification Dossier", url: "../official-sources.html" }
-      ]
-    },
-    "year_2021": {
-      title: "IAPT IOQJS 2021-22 Part I Official Exam Paper",
-      links: [
-        { label: "📑 Official IAPT Source Downloads & Verification Dossier", url: "../official-sources.html" }
-      ]
-    },
-    "year_2020": {
-      title: "IAPT IOQJS 2020-21 Part I Official Exam Paper",
-      links: [
-        { label: "📑 Official IAPT Source Downloads & Verification Dossier", url: "../official-sources.html" }
+        { label: "🗺️ View Core 2 267-Item Question Map", url: "../core2/question-map.html#biology" },
+        { label: "📑 Official IAPT Source Downloads", url: "../official-sources.html" }
       ]
     }
   };
@@ -78,7 +55,7 @@
   const target = document.getElementById("questions");
   const nav = document.getElementById("topicNav");
   const query = new URLSearchParams(location.search);
-  const selectedSlug = TOPICS.some(t => t[0] === query.get("topic")) ? query.get("topic") : "genetics";
+  const selectedSlug = TOPICS.some(t => t[0] === query.get("topic")) ? query.get("topic") : "living_world";
 
   const text = (tag, content, className) => {
     const node = document.createElement(tag);
@@ -149,6 +126,16 @@
 
     const statusBadge = text("span", "{Core 2: Candidate Practice} · Rule 13 HOLD", "status");
     append(box, statusBadge);
+
+    if (q.exam_year) {
+      const yearStr = q.exam_year.replace("YEAR_", "");
+      const examBadge = text("span", "📅 Official Exam: " + yearStr, "status");
+      examBadge.style.background = "#e0f2fe";
+      examBadge.style.color = "#0369a1";
+      examBadge.style.borderColor = "#bae6fd";
+      examBadge.style.marginLeft = "8px";
+      append(box, examBadge);
+    }
 
     const stem = text("p", String(q.stem || "").replace(/\[FIG[^\]]*\]/g, ""), "stem");
     append(box, stem);

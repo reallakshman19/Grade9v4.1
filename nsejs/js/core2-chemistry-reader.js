@@ -10,11 +10,8 @@
     ["bonding", "CHEMICAL_BONDING", "Chemical Bonding", "🔗"],
     ["mole_concept", "MOLE_CONCEPT_AND_GAS_LAWS", "Mole & Gas Laws", "⚖️"],
     ["reactions", "CHEMICAL_SUBSTANCES_AND_REACTIONS", "Chemical Reactions", "🧪"],
-    ["year_2024", "YEAR_2024", "2024 Paper Code 51", "📅"],
-    ["year_2023", "YEAR_2023", "2023 Exam Paper", "📅"],
-    ["year_2022", "YEAR_2022", "2022 Exam Paper", "📅"],
-    ["year_2021", "YEAR_2021", "2021 Exam Paper", "📅"],
-    ["year_2020", "YEAR_2020", "2020 Exam Paper", "📅"]
+    ["redox", "REDOX_AND_TITRATIONS", "Redox & Titrations", "🔄"],
+    ["eudiometry", "EUDIOMETRY_AND_GAS_ANALYSIS", "Eudiometry & Gases", "💨"]
   ];
 
   const TOPIC_RIBBONS = {
@@ -28,51 +25,36 @@
     "bonding": {
       title: "Chemical Bonding & Molecular Architecture",
       links: [
-        { label: "▶ Phosphorus Oxyacids & Basicity (D3 Flagship)", url: "core1/chem-phosphorus-oxyacids-d3-r1/index.html" }
+        { label: "▶ Phosphorus Oxyacids & Basicity (D3 Flagship)", url: "core1/chem-phosphorus-oxyacids-d3-r1/index.html" },
+        { label: "🗺️ View Core 2 267-Item Question Map", url: "../core2/question-map.html#chemistry" }
       ]
     },
     "mole_concept": {
-      title: "Mole Concept & Stoichiometry",
+      title: "Matter, States & Mole Concept",
       links: [
         { label: "▶ Partial Pressures & Ideal Gas (Skill Repair)", url: "core1/recovery/chem-matter-mole-r1/index.html" },
-        { label: "▶ Combustion Eudiometry (Skill Repair)", url: "core1/recovery/chem-eudiometry-d3-r1/index.html" }
+        { label: "📑 Official IAPT Source Downloads", url: "../official-sources.html" }
       ]
     },
     "reactions": {
-      title: "Chemical Substances & Redox Reactions",
+      title: "Chemical Substances, Reactions & Equilibrium",
       links: [
         { label: "▶ Amphoteric Oxides & Stoichiometry (Skill Repair)", url: "core1/recovery/chem-chemical-substances-r1/index.html" },
-        { label: "▶ Redox Titration & Oxidation States (Skill Repair)", url: "core1/recovery/chem-redox-titration-d3-r1/index.html" }
+        { label: "🗺️ View Core 2 267-Item Question Map", url: "../core2/question-map.html#chemistry" }
       ]
     },
-    "year_2024": {
-      title: "IAPT NSEJS 2024 Code 51 Official Exam Paper",
+    "redox": {
+      title: "Redox Reactions, Oxidation States & Volumetric Titrations",
       links: [
-        { label: "📑 Official IAPT Source Downloads & Verification Dossier", url: "../official-sources.html" }
+        { label: "▶ Redox Titration & Oxidation States (Skill Repair)", url: "core1/recovery/chem-redox-titration-d3-r1/index.html" },
+        { label: "📑 Official IAPT Source Downloads", url: "../official-sources.html" }
       ]
     },
-    "year_2023": {
-      title: "IAPT NSEJS 2023 Official Exam Paper",
+    "eudiometry": {
+      title: "Eudiometry & Combustion Gas Analysis",
       links: [
-        { label: "📑 Official IAPT Source Downloads & Verification Dossier", url: "../official-sources.html" }
-      ]
-    },
-    "year_2022": {
-      title: "IAPT NSEJS 2022 Official Exam Paper",
-      links: [
-        { label: "📑 Official IAPT Source Downloads & Verification Dossier", url: "../official-sources.html" }
-      ]
-    },
-    "year_2021": {
-      title: "IAPT IOQJS 2021-22 Part I Official Exam Paper",
-      links: [
-        { label: "📑 Official IAPT Source Downloads & Verification Dossier", url: "../official-sources.html" }
-      ]
-    },
-    "year_2020": {
-      title: "IAPT IOQJS 2020-21 Part I Official Exam Paper",
-      links: [
-        { label: "📑 Official IAPT Source Downloads & Verification Dossier", url: "../official-sources.html" }
+        { label: "▶ Combustion Eudiometry & Hydrocarbon Formulas (Skill Repair)", url: "core1/recovery/chem-eudiometry-d3-r1/index.html" },
+        { label: "📑 Official IAPT Source Downloads", url: "../official-sources.html" }
       ]
     }
   };
@@ -169,6 +151,16 @@
 
     const statusBadge = text("span", "{Core 2: Candidate Practice} · Rule 13 HOLD", "status");
     append(box, statusBadge);
+
+    if (q.exam_year) {
+      const yearStr = q.exam_year.replace("YEAR_", "");
+      const examBadge = text("span", "📅 Official Exam: " + yearStr, "status");
+      examBadge.style.background = "#e0f2fe";
+      examBadge.style.color = "#0369a1";
+      examBadge.style.borderColor = "#bae6fd";
+      examBadge.style.marginLeft = "8px";
+      append(box, examBadge);
+    }
 
     const stem = text("p", String(q.stem || "").replace(/\[FIG[^\]]*\]/g, ""), "stem");
     append(box, stem);

@@ -232,6 +232,15 @@
         - 43/43 pages passed static audit (806 internal links verified, 0 broken).
         - Browser subagent confirmed clean instant redirect from `core1-recovery.html` to `index.html`, 0 references to `core1-recovery.html` across recovery DOMs, touch targets $\ge 48$px, and 0 console errors across all audited pages.
 
+    - **Milestone 25 — Elimination of Artificial Year Buckets & Direct Scientific Topic Reclassification**:
+      - **Chemistry Topic Migration (119 items)**: Reclassified all 79 official exam items (2020–2024) into the 6 scientific topics (`Atomic Structure`: 27, `Chemical Bonding`: 25, `Mole & Gas Laws`: 26, `Chemical Reactions`: 33, `Redox & Titrations`: 4, `Eudiometry & Gases`: 4).
+      - **Biology Topic Migration (119 items)**: Reclassified all 79 official exam items (2020–2024) into the 5 scientific topics (`Cell & Living World`: 36, `Life Processes & Physiology`: 25, `Control & Coordination`: 15, `Genetics & Heredity`: 23, `Ecology & Environment`: 20).
+      - **Topic Bar Cleanliness**: Eliminated all artificial `YEAR_xxxx` pills from [nsejs/chemistry/question-bank.html](http://localhost:8000/nsejs/chemistry/question-bank.html) and [nsejs/biology/question-bank.html](http://localhost:8000/nsejs/biology/question-bank.html). Topic bars now display exclusively real disciplinary curriculum domains with live question counts.
+      - **Exam Provenance Badges**: Added `📅 Official Exam: XXXX` provenance badges on every migrated question card so exam origins remain explicit while filed under authentic scientific topics.
+      - **Dual-Engine Automated & Browser Verification**:
+        - Static audit: 43/43 pages passed (806 internal links verified, 0 broken).
+        - Headless browser subagent verified live on 12.7" tablet viewport ($1366 \times 854$): zero console errors, 48px touch targets, topic pill live filtering functional.
+
 ---
 
 ## 2. Active Verification State
