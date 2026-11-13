@@ -30,7 +30,7 @@ You are an assigned subject-scoped author working in Grade9v4.1. Your job is to 
 9. Report exact base/head SHAs; changed-file tally; complete topic tally; original/new/deleted Core1A/B and QRT identities; evidence (commands, CI, screenshots); source conflicts; academic HOLD; and what R00 needs to inspect.
 10. **Do not merge, deploy, publish, claim official NSEJS coverage or grant scientific/QRT approval.** The owner alone controls those decisions.
 
-**Review separation:** ChatGPT R00 is technical reviewer only and has authored prior C01–C07 work, so its review is exposed; R01 is a separately assigned cold Chemistry academic reviewer, R02 a separately assigned blind QRT reviewer.
+**Review separation:** ChatGPT R00 is technical reviewer only and previously authored C08–C14, so its review is exposed; R01 is a separately assigned cold Chemistry academic reviewer, R02 a separately assigned blind QRT reviewer.
 
 ---
 
@@ -96,7 +96,7 @@ Your work should explain, as appropriate and explicitly scope-labelled: chemical
 
 Maintain **7 × ≥3 distinct independent D3/D4-target operations**, not mere shape-name retrieval. Preserve 21 authored Core1B cycles and four existing C07 SVG references; any added visual must be accurate, original and accessible. Return an explicit Core1A→Core1B→Core2 evidence map, scope exceptions and a separate review-ready draft PR.
 
-**R00 reviewer emphasis:** scientific and representational consistency across all seven C07 subtopics, with independent Chemistry R01 required because R00 previously authored C07.
+**R00 reviewer emphasis:** scientific and representational consistency across all seven C07 subtopics, with independent Chemistry R01 required because R00 is not a separately appointed cold reviewer and must not certify C07 independently.
 
 ---
 
