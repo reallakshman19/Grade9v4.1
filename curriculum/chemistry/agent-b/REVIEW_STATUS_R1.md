@@ -27,7 +27,7 @@ C09.01–C09.05 are **CORE_CANDIDATE** and C09.06 is **EXTENSION**. Advanced C12
 
 Connector independently fetched and parsed the 18 primary added artifacts on the B branch after commits. Checks passed: 7/7 unit IDs, 40/40 syllabus subtopic joins, 120/120 exact QRT ID/operation/band matches, three distinct operations per subtopic, 18/18 C09 Core1B links/closures/first-attempt declarations, six C09 textbook sections, and 12/12 authored capstone score sums. This is cross-file machine consistency, **not** proof of scientific teaching depth, assessment band or runtime behaviour.
 
-The new Python test file adds six fail-closed tests; its actual execution and complete unchanged Python CI results must be checked on the PR head. No full-suite PASS is claimed in this report.
+**Exact first PR-head Python QA observed:** GitHub Actions run [43463671173](https://github.com/reallakshman19/Grade9v4.1/actions/runs/43463671173), SHA `18d7cee50fd6875b33eaae4fe2456ca1b7192407`: Python 3.11 **347 passed, 1 warning, 0 failures**; Python 3.12 **347 passed, 1 warning, 0 failures**. Includes six new Agent B fail-closed tests. If this report or branch changes again, that run verifies the earlier head, not the new exact head.
 
 ## Known open decisions / HOLDs
 
