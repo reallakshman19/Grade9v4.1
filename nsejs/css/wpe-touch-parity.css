@@ -1,0 +1,42 @@
+/* Wave 2 · NSEJS 12.7-inch touch adaptation; existing WPE CSS remains unchanged. */
+html{box-sizing:border-box;scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:inherit}
+body{background:#f4f8fa;color:#173749}
+#nsejs-wave2-root{max-width:1200px;margin:0 auto;padding:24px clamp(18px,3vw,42px)}
+#nsejs-wave2-root h1{font-size:clamp(1.8rem,2.8vw,2.6rem);line-height:1.24}
+#nsejs-wave2-root p,#nsejs-wave2-root li{line-height:1.65}
+#nsejs-wave2-root .intro{max-width:1100px}
+.nsejs-hold{background:#fff7dc;border:2px solid #b78a35;border-radius:12px;padding:16px 21px}
+#nsejs-parity-status{padding:14px 18px;border:1px solid #8fb1be;border-radius:12px;background:#e8f5f7}
+#nsejs-parity-status[data-state="HOLD"]{background:#fff2e7;border-color:#b66439;color:#853715}
+#nsejs-parity-status[data-state="PREVIEW"]{background:#e9f5ef;color:#23543d}
+#nsejs-revisit-source{margin-top:28px;padding:22px;border:1px solid #aac8d2;border-radius:15px;background:#fff}
+#nsejs-source-return{display:inline-flex;align-items:center;padding:14px 22px;background:#135e78;color:white;text-decoration:none;border-radius:12px;font-weight:700;min-height:56px}
+#nsejs-source-return[hidden]{display:none}
+#nsejs-wave2-root :is(button,select,input,textarea){font-size:clamp(17px,1.45vw,20px)}
+#nsejs-wave2-root :is(button,.variant-switch button,.lesson-nav a,.top-links a){min-height:56px}
+#nsejs-wave2-root button{padding:14px 18px;touch-action:manipulation}
+#nsejs-wave2-root .field{margin-bottom:18px}
+#nsejs-wave2-root .field label{display:block;font-size:clamp(17px,1.35vw,19px);font-weight:650;margin-bottom:8px}
+#nsejs-wave2-root .field :is(input,textarea,select){min-height:56px;width:100%;max-width:100%;padding:12px;border:2px solid #9dbac4;border-radius:10px}
+#nsejs-wave2-root input[type="range"]{min-height:56px;width:100%;touch-action:pan-y}
+#nsejs-wave2-root textarea{min-height:110px}
+#nsejs-wave2-root .learning-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,430px),1fr));gap:22px}
+#nsejs-wave2-root .visual svg{max-width:100%;height:auto}
+#nsejs-wave2-root .overview{display:flex;gap:10px;flex-wrap:wrap}
+#nsejs-wave2-root .overview span{padding:8px 10px}
+#nsejs-wave2-root .stage-list{display:flex;flex-wrap:wrap;gap:8px}
+#nsejs-wave2-root .lesson-nav a{display:flex;align-items:center;overflow-wrap:anywhere}
+#nsejs-wave2-root .stage-card{min-width:0}
+#nsejs-wave2-root .actions{display:flex;gap:12px;flex-wrap:wrap}
+#nsejs-wave2-root .actions button{flex:1 1 210px}
+#nsejs-wave2-root :is(button,a,input,textarea,select):focus-visible{outline:4px solid #a66b21;outline-offset:3px}
+@media(max-width:1050px){
+  #nsejs-wave2-root{padding:24px}
+  #nsejs-wave2-root .learning-grid{grid-template-columns:minmax(0,1fr)}
+  #nsejs-wave2-root .guide,#nsejs-wave2-root .challenge{min-width:0}
+}
+@media(max-width:620px){
+  #nsejs-wave2-root{padding:14px}
+  #nsejs-wave2-root .actions button{width:100%;flex-basis:100%}
+}

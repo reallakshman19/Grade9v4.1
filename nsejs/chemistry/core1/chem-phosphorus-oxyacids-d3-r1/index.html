@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learning Journey: Phosphorus Oxyacids Structure & Basicity (D3)</title>
+  <style>
+    :root {
+      --primary: #7c2d12;
+      --secondary: #c2410c;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --accent: #15803d;
+    }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: var(--bg); color: var(--text); line-height: 1.6; margin: 0; padding: 20px; }
+    .container { max-width: 900px; margin: 0 auto; background: var(--card-bg); border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); overflow: hidden; border: 1px solid var(--border); }
+    .header { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; padding: 24px; }
+    .header h1 { margin: 0 0 8px 0; font-size: 24px; }
+    .header .meta { font-size: 14px; opacity: 0.9; }
+    .nav-tabs { display: flex; background: #f1f5f9; border-bottom: 1px solid var(--border); }
+    .tab-button { flex: 1; padding: 14px 20px; text-align: center; background: none; border: none; font-size: 15px; font-weight: 600; color: var(--text-muted); cursor: pointer; border-bottom: 3px solid transparent; }
+    .tab-button.active { background: var(--card-bg); color: var(--primary); border-bottom: 3px solid var(--primary); }
+    .tab-content { padding: 24px; display: none; }
+    .tab-content.active { display: block; }
+    .diagram-container { margin: 20px 0; padding: 16px; background: #f8fafc; border-radius: 8px; border: 1px solid var(--border); text-align: center; }
+    .diagram-container svg { width: 100%; height: 100%; max-width: 620px; height: 260px; }
+    .step-box { background: #f8fafc; border-left: 4px solid var(--secondary); padding: 16px; margin-bottom: 16px; border-radius: 0 8px 8px 0; }
+    .step-box h3 { margin: 0 0 8px 0; font-size: 16px; color: var(--primary); }
+    .badge { display: inline-block; padding: 3px 8px; border-radius: 4px; font-size: 12px; font-weight: 600; background: #ffedd5; color: #c2410c; margin-right: 6px; }
+    .derivation-section { margin-top: 24px; padding: 20px; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; }
+    .commit-box { margin: 20px 0; padding: 16px; background: #fffbeb; border: 1px solid #fef3c7; border-radius: 8px; }
+    .btn { background: var(--primary); color: white; border: none; padding: 10px 20px; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer; }
+    .footer { background: #f8fafc; padding: 16px 24px; border-top: 1px solid var(--border); font-size: 13px; color: var(--text-muted); text-align: center; }
+    @media (max-width: 600px) { body { padding: 8px; } .header { padding: 16px; } .tab-button { padding: 10px 6px; font-size: 13px; } .tab-content { padding: 16px; } }
+  </style>
+<style id="agent-b-127-tablet-touch">
+html { font-size: 18px; -webkit-text-size-adjust: 100%; }
+body { font-size: 1rem; line-height: 1.6; }
+main { width: min(100%, 1060px); max-width: 1060px; margin-inline: auto; padding: clamp(16px, 2.4vw, 36px); }
+main h1 { font-size: clamp(1.65rem, 2.4vw, 2.1rem); line-height: 1.23; }
+main h2 { font-size: 1.4rem; line-height: 1.3; }
+main h3 { font-size: 1.17rem; line-height: 1.4; }
+main p, main li { line-height: 1.62; overflow-wrap: anywhere; }
+main nav, main .tab-nav, main .tabs { display: flex; flex-wrap: wrap; align-items: stretch; gap: 12px; margin-block: 16px 22px; }
+body button, body .tab-button, body input[type="button"], body input[type="submit"] {
+  min-height: 56px; padding: 12px 18px; border-radius: 10px;
+  font: inherit; font-size: 1rem; line-height: 1.25;
+  touch-action: manipulation; -webkit-tap-highlight-color: transparent;
+}
+body button:focus-visible, body textarea:focus-visible, body input:focus-visible {
+  outline: 3px solid #1971c2; outline-offset: 3px;
+}
+body .tab-button { min-width: 168px; flex: 1 1 180px; }
+#content-core1b { max-width: 100%; }
+#content-core1b[data-agent-b-core1b] section { padding: clamp(18px, 2.2vw, 30px); margin-block: 16px; }
+#content-core1b[data-agent-b-core1b] label { display: block; margin-block: 10px 7px; font-weight: 650; }
+#content-core1b[data-agent-b-core1b] textarea {
+  display: block; width: 100%; max-width: 100%; min-height: 176px;
+  padding: 16px; border-radius: 9px; border: 2px solid #9faebf;
+  font: inherit; font-size: 1rem; line-height: 1.5;
+  resize: vertical; touch-action: pan-y;
+}
+#content-core1b[data-agent-b-core1b] button { min-width: 104px; min-height: 56px; margin: 8px 10px 8px 0; }
+#content-core1b[data-agent-b-core1b] [data-role="status"] { display: block; min-height: 32px; margin: 12px 0; line-height: 1.5; }
+#content-core1b[data-agent-b-core1b] [hidden] { display: none !important; }
+@media (orientation: portrait) and (min-width: 800px) {
+  main { max-width: 94vw; }
+  body .tab-button { flex: 1 1 210px; }
+  #content-core1b section { padding: 22px; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <h1>Inorganic Chemistry — Phosphorus Oxyacids Structure & Basicity</h1>
+    <div class="meta">Target Item: NSEJS-2024-C-Q55 | Band: D3 (Score 6) | Operation: SYNTHESIZE</div>
+  </div>
+
+  <div class="nav-tabs">
+    <button class="tab-button active" id="tab-core2" onclick="switchTab('core2')">1. Core 2 Target Problem</button>
+    <button class="tab-button" id="tab-core1a" onclick="switchTab('core1a')">2. Core 1A Teaching Path</button>
+    <button class="tab-button" id="tab-core1b" onclick="switchTab('core1b')">3. Core 1B Reconstruction</button>
+  </div>
+
+  <div id="content-core2" class="tab-content active">
+    <h2>NSEJS 2024 Reference Item</h2>
+    <div class="step-box">
+      <h3>Problem Statement</h3>
+      <p>[Multiple Correct] Exactly 1.0 mol of a phosphorus oxyacid H<sub>3</sub>PO<sub>x</sub> is completely neutralised by 40.0 g of sodium hydroxide (NaOH, M = 40.0 g mol<sup>-1</sup>). Which of the following statements are correct?</p>
+      <ul>
+        <li>(A) x = 2 and the acid is monobasic.</li>
+        <li>(B) x = 3 and the acid is dibasic.</li>
+        <li>(C) The acid contains two ionisable P-OH bonds.</li>
+        <li>(D) The acid acts as a powerful reducing agent.</li>
+      </ul>
+    </div>
+
+    <div class="diagram-container">
+      <svg viewBox="0 0 560 220" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="10" width="540" height="200" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+        <!-- Structure of H3PO2 -->
+        <circle cx="120" cy="110" r="24" fill="#fed7aa" stroke="#ea580c" stroke-width="2"/>
+        <text x="114" y="117" font-size="18" fill="#9a3412" font-weight="bold">P</text>
+        
+        <!-- P=O bond -->
+        <line x1="120" y1="86" x2="120" y2="45" stroke="#ea580c" stroke-width="3"/>
+        <text x="113" y="38" font-size="16" fill="#c2410c" font-weight="bold">=O</text>
+
+        <!-- P-OH bond -->
+        <line x1="140" y1="125" x2="200" y2="155" stroke="#15803d" stroke-width="3"/>
+        <text x="205" y="162" font-size="15" fill="#15803d" font-weight="bold">-OH (1 ionisable H⁺)</text>
+
+        <!-- P-H bonds -->
+        <line x1="100" y1="125" x2="50" y2="155" stroke="#0284c7" stroke-width="3"/>
+        <text x="25" y="172" font-size="15" fill="#0284c7" font-weight="bold">-H (reducing)</text>
+        
+        <line x1="100" y1="95" x2="50" y2="65" stroke="#0284c7" stroke-width="3"/>
+        <text x="25" y="60" font-size="15" fill="#0284c7" font-weight="bold">-H (reducing)</text>
+
+        <!-- Stoichiometry card -->
+        <rect x="290" y="35" width="240" height="150" rx="6" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.5"/>
+        <text x="305" y="65" font-size="14" fill="#334155" font-weight="bold">40.0 g NaOH &divide; 40.0 = 1.0 mol</text>
+        <text x="305" y="90" font-size="14" fill="#0f172a">1.0 mol Acid &harr; 1.0 mol Base</text>
+        <text x="305" y="115" font-size="14" fill="#15803d" font-weight="bold">&rArr; Basicity = 1 (Monobasic!)</text>
+        <text x="305" y="140" font-size="14" fill="#c2410c">&rArr; x = 2 &rarr; H₃PO₂ (Statement A)</text>
+        <text x="305" y="165" font-size="14" fill="#0284c7">&rArr; 2 P-H bonds &rarr; Reducing (D)</text>
+      </svg>
+    </div>
+
+    <div class="commit-box">
+      <h3>Select Correct Statements:</h3>
+      <div><input type="checkbox" id="c_optA" value="A"><label for="c_optA"> (A) x = 2 and the acid is monobasic.</label></div>
+      <div><input type="checkbox" id="c_optB" value="B"><label for="c_optB"> (B) x = 3 and the acid is dibasic.</label></div>
+      <div><input type="checkbox" id="c_optC" value="C"><label for="c_optC"> (C) The acid contains two ionisable P-OH bonds.</label></div>
+      <div><input type="checkbox" id="c_optD" value="D"><label for="c_optD"> (D) The acid acts as a powerful reducing agent.</label></div>
+      <br>
+      <button class="btn" onclick="commitChemAnswer()">Commit Answer & Reveal Mathematical Derivation</button>
+    </div>
+
+    <div id="derivation-section" class="derivation-section" style="display: none;">
+      <h3>Inorganic Chemistry Derivation & Proof</h3>
+      <p><strong>1. System Representation & Setup:</strong> Moles of NaOH = 40.0 g / 40.0 g mol<sup>-1</sup> = 1.0 mol. Complete neutralisation of 1.0 mol acid requires 1.0 mol monoacidic base.</p>
+      <p><strong>2. Physical Model & Formulation:</strong> Basicity = n(NaOH) / n(Acid) = 1.0 / 1.0 = 1. In phosphorus oxyacids H<sub>3</sub>PO<sub>x</sub>, basicity equals the number of P-OH bonds: Basicity = x - 1 = 1 &rArr; x = 2. The formula is H<sub>3</sub>PO<sub>2</sub> (hypophosphorous acid).</p>
+      <p><strong>3. Execution & Resolution:</strong> H<sub>3</sub>PO<sub>2</sub> contains 1 P=O bond, 1 ionisable P-OH bond, and 2 non-ionisable P-H bonds. Because it possesses two direct P-H hydride bonds, it acts as a strong reducing agent (e.g. reducing Ag<sup>+</sup> to metallic Ag). Therefore, <strong>Statements A and D</strong> are verified true, while B and C are false.</p>
+      <p><strong>4. Limiting Check:</strong> H<sub>3</sub>PO<sub>3</sub> requires 2 mol NaOH (dibasic), and H<sub>3</sub>PO<sub>4</sub> requires 3 mol NaOH (tribasic).</p>
+    </div>
+  </div>
+
+  <div id="content-core1a" class="tab-content">
+    <h2>Core 1A: Declarative Teaching Construction</h2>
+    <div class="step-box">
+      <span class="badge">Prerequisite</span>
+      <h3>P-OH versus P-H Bond Polarity</h3>
+      <p>Only protons attached to oxygen (P-OH) are acidic because the high electronegativity of oxygen polarizes the bond. Direct P-H bonds are non-polar (EN of P = 2.19, H = 2.20) and do not ionize, but act as reducing centers.</p>
+    </div>
+    <div class="step-box">
+      <span class="badge">Worked Example</span>
+      <h3>Phosphorous Acid H3PO3 Neutralization</h3>
+      <p>0.50 mol of H<sub>3</sub>PO<sub>3</sub> requires 1.0 mol of NaOH (Basicity = 2). It has two P-OH bonds and one reducing P-H bond.</p>
+    </div>
+    <div class="step-box">
+      <span class="badge">Independent Exit Check</span>
+      <h3>Pyrophosphoric Acid H4P2O7 Check</h3>
+      <p>No P-H bonds &rArr; Basicity = 4. 0.25 mol requires 1.0 mol NaOH (40.0 g).</p>
+    </div>
+  </div>
+
+  <div id="content-core1b" class="tab-content" data-agent-b-core1b data-source-id="NSEJS-2024-C-Q55" data-practice-id="NSEJS-2024-C-Q55-CORE1B-TASK" data-revision="a8ce678b0831e1d57779242190dd08e1fe1e44f94eb4a80256a93a6b9e01129d">
+<style>#content-core1b [hidden]{display:none !important;} #content-core1b textarea{width:100%;min-height:5rem;} #content-core1b button{min-height:44px;margin:.35rem;}</style>
+<h2>Core 1B — New reconstruction practice</h2>
+<p>Source-distinct practice only. Your first response is not graded and remains unchanged after help.</p>
+<section><h3>Stage 1 — Predict</h3><p>Does an acid formula with three hydrogen atoms (like H3PO2) guarantee that it can donate three protons to a base?</p><label for="ab-pred">Your physical prediction</label><textarea id="ab-pred" data-role="prediction-input"></textarea><button type="button" data-role="save-prediction">Save prediction</button></section>
+<section><h3>Stage 2 — Independent attempt</h3><p>Evaluate the neutralisation of 1.0 mol H3POx by 40.0 g NaOH (M = 40.0 g/mol) and select the correct statements among: (A) x=2 and monobasic, (B) x=3 and dibasic, (C) two ionisable P-OH bonds, (D) powerful reducing agent.</p><label for="ab-attempt">Your original calculation and model</label><textarea id="ab-attempt" data-role="firstAttempt-input"></textarea><button type="button" data-role="save-firstAttempt">Freeze original attempt</button></section>
+<section><h3>Optional H1/H2/H3 help</h3>
+<button type="button" data-hint="1">Reveal H1 (record exposure)</button><p data-hint-text="1"></p>
+<button type="button" data-hint="2">Reveal H2 (record exposure)</button><p data-hint-text="2"></p>
+<button type="button" data-hint="3">Reveal H3 (record exposure)</button><p data-hint-text="3"></p>
+</section>
+<section data-role="model-host" hidden><h3>Stage 3 — Reconstruct after first commitment</h3></section>
+<section data-role="diagnosis-stage" hidden><h3>Stage 4 — Diagnose your first divergence</h3><textarea data-role="diagnosis-input" aria-label="Diagnose original model"></textarea><button type="button" data-role="save-diagnosis">Save diagnosis</button></section>
+<section data-role="repair-stage" hidden><h3>Stage 5 — Repair separately</h3><textarea data-role="repair-input" aria-label="Repair original model"></textarea><button type="button" data-role="save-repair">Save repair</button></section>
+<section data-role="transfer-stage" hidden><h3>Stage 6 — Changed-condition transfer</h3><p>Can phosphoric acid H3PO4 act as a reducing agent?</p><textarea data-role="transfer-input" aria-label="New changed-condition commitment"></textarea><button type="button" data-role="save-transfer">Save transfer response</button><p data-role="boundary-answer" hidden></p></section>
+<p data-role="status" aria-live="polite"></p></div>
+
+  <div class="footer">
+    No academic approval inferred from software validation. Green CI means automatic tests passed; it never means student release is authorized.
+  </div>
+</div>
+
+<script>
+  function switchTab(tabId) {
+    document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+    document.getElementById('tab-' + tabId).classList.add('active');
+    document.getElementById('content-' + tabId).classList.add('active');
+  }
+
+  function commitChemAnswer() {
+    const a = document.getElementById('c_optA').checked;
+    const b = document.getElementById('c_optB').checked;
+    const c = document.getElementById('c_optC').checked;
+    const d = document.getElementById('c_optD').checked;
+    if (!a && !b && !c && !d) {
+      alert('Please select at least one option.');
+      return;
+    }
+    document.getElementById('derivation-section').style.display = 'block';
+  }
+</script>
+<script type="application/json" id="agent-b-core1b-data">{"route":[{"ask":"1. How many moles of NaOH are present in 40.0 g?","why_this_ask":"Establishes quantitative molar base quantity.","step_answer":"n(NaOH) = 40.0 g / (40.0 g/mol) = 1.0 mol."},{"ask":"2. What is the basicity of the acid if 1.0 mol acid consumes 1.0 mol NaOH?","why_this_ask":"Determines the number of replaceable protons per molecule.","step_answer":"Basicity = n(NaOH) / n(Acid) = 1.0 / 1.0 = 1 (monobasic)."},{"ask":"3. Which phosphorus oxyacid H3POx is monobasic and what is x?","why_this_ask":"Connects basicity to the oxoacid formula series.","step_answer":"In H3POx, Basicity = x - 1 = 1 => x = 2. The acid is H3PO2 (hypophosphorous acid)."},{"ask":"4. How many P-OH and P-H bonds exist in H3PO2 and what chemical property arises?","why_this_ask":"Synthesizes structure with chemical reactivity.","step_answer":"H3PO2 contains 1 P=O, 1 ionizable P-OH, and 2 non-ionizable P-H bonds. The direct P-H bonds make it a powerful reducing agent. Thus A and D are correct."}],"hints":["Calculate moles of NaOH: 40.0 g / 40.0 g/mol = 1.0 mol. Compare with 1.0 mol of acid.","1.0 mol acid neutralizes 1.0 mol NaOH, so basicity is 1. Which phosphorus oxyacid has basicity 1: H3PO4, H3PO3, or H3PO2?","Draw the P-H and P-OH bonds. Only hydrogens on oxygen can contribute to ordinary acid-base neutralization; compare your formula with this rule."],"boundaryAnswer":"No. In H3PO4, phosphorus is in its highest oxidation state (+5) and all hydrogen atoms are bonded to oxygen (three P-OH bonds). With zero P-H bonds, it has no reducing capability."}</script>
+<script>
+(function () {
+  'use strict';
+  function boot() {
+    const root = document.querySelector('#content-core1b[data-agent-b-core1b]');
+    if (!root) return;
+    const data = JSON.parse(document.getElementById('agent-b-core1b-data').textContent);
+    const key = ['g9v4','agent-b','core1b',root.dataset.sourceId,root.dataset.practiceId,root.dataset.revision].join(':');
+    const by = role => root.querySelector('[data-role="' + role + '"]');
+    const notify = (message, danger=false) => {
+      by('status').textContent=message;
+      by('status').setAttribute('role', danger ? 'alert' : 'status');
+    };
+    const nonblank = x => typeof x === 'string' && !!x.trim();
+    const valid = x => !!x && x.schema==='agent-b-core1b-attempt/v1' &&
+      x.key===key && x.revision===root.dataset.revision &&
+      x.hints && typeof x.hints==='object' && !Array.isArray(x.hints) &&
+      (!x.prediction || nonblank(x.prediction)) &&
+      (!x.firstAttempt || (nonblank(x.firstAttempt.text) && nonblank(x.prediction))) &&
+      (!x.diagnosis || (nonblank(x.diagnosis) && x.firstAttempt)) &&
+      (!x.repair || (nonblank(x.repair) && x.diagnosis)) &&
+      (!x.transfer || (nonblank(x.transfer) && x.repair));
+    let priorRaw = null;
+    let state = {schema:'agent-b-core1b-attempt/v1', key, revision:root.dataset.revision,
+      prediction:null, firstAttempt:null, hints:{}, diagnosis:null, repair:null, transfer:null, events:[]};
+    function lock(message) {
+      root.querySelectorAll('textarea,button').forEach(e => e.disabled=true);
+      notify(message, true);
+    }
+    try {
+      const probe=key+':probe';
+      localStorage.setItem(probe,'ok');
+      if(localStorage.getItem(probe)!=='ok')throw Error('storage denied');
+      localStorage.removeItem(probe);
+      priorRaw=localStorage.getItem(key);
+      if(priorRaw!==null){
+        const restored=JSON.parse(priorRaw);
+        if(!valid(restored))throw Error('persisted evidence is invalid');
+        state=restored;
+      }
+    } catch (_) { lock('Attempt storage is unavailable or evidence is invalid. Nothing can be revealed or recorded.'); return; }
+    function put(next) {
+      try {
+        if(localStorage.getItem(key)!==priorRaw){lock('Another tab changed this attempt. Reload to see the original saved evidence.');return false;}
+        const raw=JSON.stringify(next);
+        localStorage.setItem(key,raw);
+        if(localStorage.getItem(key)!==raw)throw Error('readback mismatch');
+        priorRaw=raw;state=next;render();return true;
+      } catch (_) {lock('Attempt could not be saved and verified. Reconstruction remains protected.');return false;}
+    }
+    function commit(field, value) {
+      if(!nonblank(value)){notify('Write a nonblank response before continuing.',true);return;}
+      if(field==='firstAttempt' && !state.prediction){notify('Commit your prediction first.',true);return;}
+      if(field==='diagnosis' && !state.firstAttempt){notify('Commit an attempt first.',true);return;}
+      if(field==='repair' && !state.diagnosis){notify('Record your diagnosis first.',true);return;}
+      if(field==='transfer' && !state.repair){notify('Record your repair first.',true);return;}
+      if(state[field]){notify('This original response is already frozen.',true);return;}
+      const next=JSON.parse(JSON.stringify(state));
+      next[field]=field==='firstAttempt'?{text:value, helpBeforeAttempt:Object.keys(next.hints).sort()}:value;
+      next.events.push({type:'COMMIT_'+field.toUpperCase(),at:new Date().toISOString()});
+      put(next);
+    }
+    function render() {
+      by('prediction-input').value=state.prediction||by('prediction-input').value;
+      by('firstAttempt-input').value=state.firstAttempt?.text||by('firstAttempt-input').value;
+      by('diagnosis-input').value=state.diagnosis||by('diagnosis-input').value;
+      by('repair-input').value=state.repair||by('repair-input').value;
+      by('transfer-input').value=state.transfer||by('transfer-input').value;
+      for(const field of ['prediction','firstAttempt','diagnosis','repair','transfer']){
+        by('save-'+field).disabled=!!state[field];
+      }
+      const reveal=!!state.firstAttempt;
+      by('model-host').hidden=!reveal;
+      if(reveal && !by('model-host').dataset.rendered){
+        const list=document.createElement('ol');
+        for(const step of data.route){
+          const li=document.createElement('li');
+          li.textContent=step.ask+' — '+step.step_answer;
+          list.appendChild(li);
+        }
+        by('model-host').appendChild(list);
+        by('model-host').dataset.rendered='yes';
+      }
+      by('diagnosis-stage').hidden=!reveal;
+      by('repair-stage').hidden=!state.diagnosis;
+      by('transfer-stage').hidden=!state.repair;
+      by('boundary-answer').hidden=!state.transfer;
+      if(state.transfer) by('boundary-answer').textContent=data.boundaryAnswer;
+      root.querySelectorAll('[data-hint]').forEach(button => {
+        const tier=button.dataset.hint;
+        button.disabled=!!state.hints[tier];
+        if(state.hints[tier]){
+          const span=root.querySelector('[data-hint-text="'+tier+'"]');
+          span.textContent=data.hints[Number(tier)-1];
+        }
+      });
+      notify(reveal?'First answer saved and frozen. Reconstruction available.':'Prediction and original response are stored separately from hints and repairs.');
+    }
+    for(const field of ['prediction','firstAttempt','diagnosis','repair','transfer']){
+      by('save-'+field).addEventListener('click',()=>commit(field,by(field+'-input').value));
+    }
+    root.querySelectorAll('[data-hint]').forEach(btn=>btn.addEventListener('click',()=>{
+      const tier=btn.dataset.hint;
+      if(state.hints[tier])return;
+      const next=JSON.parse(JSON.stringify(state));
+      next.hints[tier]={at:new Date().toISOString(),beforeAttempt:!state.firstAttempt};
+      next.events.push({type:'HINT_EXPOSED',tier,at:next.hints[tier].at,beforeAttempt:!state.firstAttempt});
+      put(next);
+    }));
+    window.addEventListener('storage',event=>{
+      if(event.key===key && event.newValue!==priorRaw)lock('Another tab changed this evidence. Reload before continuing.');
+    });
+    render();
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);
+  else boot();
+})();
+</script>
+</body>
+</html>

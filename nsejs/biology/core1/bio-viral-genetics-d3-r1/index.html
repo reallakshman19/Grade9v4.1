@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learning Journey: Viral Envelope Architecture & Genetics (D3)</title>
+  <style>
+    :root {
+      --primary: #4c1d95;
+      --secondary: #7c3aed;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --accent: #10b981;
+    }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: var(--bg); color: var(--text); line-height: 1.6; margin: 0; padding: 20px; }
+    .container { max-width: 900px; margin: 0 auto; background: var(--card-bg); border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); overflow: hidden; border: 1px solid var(--border); }
+    .header { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; padding: 24px; }
+    .header h1 { margin: 0 0 8px 0; font-size: 24px; }
+    .header .meta { font-size: 14px; opacity: 0.9; }
+    .nav-tabs { display: flex; background: #f1f5f9; border-bottom: 1px solid var(--border); }
+    .tab-button { flex: 1; padding: 14px 20px; text-align: center; background: none; border: none; font-size: 15px; font-weight: 600; color: var(--text-muted); cursor: pointer; border-bottom: 3px solid transparent; }
+    .tab-button.active { background: var(--card-bg); color: var(--primary); border-bottom: 3px solid var(--primary); }
+    .tab-content { padding: 24px; display: none; }
+    .tab-content.active { display: block; }
+    .diagram-container { margin: 20px 0; padding: 16px; background: #f8fafc; border-radius: 8px; border: 1px solid var(--border); text-align: center; }
+    .diagram-container svg { width: 100%; height: 100%; max-width: 620px; height: 260px; }
+    .step-box { background: #f8fafc; border-left: 4px solid var(--secondary); padding: 16px; margin-bottom: 16px; border-radius: 0 8px 8px 0; }
+    .step-box h3 { margin: 0 0 8px 0; font-size: 16px; color: var(--primary); }
+    .badge { display: inline-block; padding: 3px 8px; border-radius: 4px; font-size: 12px; font-weight: 600; background: #ede9fe; color: #6d28d9; margin-right: 6px; }
+    .derivation-section { margin-top: 24px; padding: 20px; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; }
+    .commit-box { margin: 20px 0; padding: 16px; background: #fffbeb; border: 1px solid #fef3c7; border-radius: 8px; }
+    .btn { background: var(--primary); color: white; border: none; padding: 10px 20px; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer; }
+    .footer { background: #f8fafc; padding: 16px 24px; border-top: 1px solid var(--border); font-size: 13px; color: var(--text-muted); text-align: center; }
+    @media (max-width: 600px) { body { padding: 8px; } .header { padding: 16px; } .tab-button { padding: 10px 6px; font-size: 13px; } .tab-content { padding: 16px; } }
+  </style>
+<style id="agent-b-127-tablet-touch">
+html { font-size: 18px; -webkit-text-size-adjust: 100%; }
+body { font-size: 1rem; line-height: 1.6; }
+main { width: min(100%, 1060px); max-width: 1060px; margin-inline: auto; padding: clamp(16px, 2.4vw, 36px); }
+main h1 { font-size: clamp(1.65rem, 2.4vw, 2.1rem); line-height: 1.23; }
+main h2 { font-size: 1.4rem; line-height: 1.3; }
+main h3 { font-size: 1.17rem; line-height: 1.4; }
+main p, main li { line-height: 1.62; overflow-wrap: anywhere; }
+main nav, main .tab-nav, main .tabs { display: flex; flex-wrap: wrap; align-items: stretch; gap: 12px; margin-block: 16px 22px; }
+body button, body .tab-button, body input[type="button"], body input[type="submit"] {
+  min-height: 56px; padding: 12px 18px; border-radius: 10px;
+  font: inherit; font-size: 1rem; line-height: 1.25;
+  touch-action: manipulation; -webkit-tap-highlight-color: transparent;
+}
+body button:focus-visible, body textarea:focus-visible, body input:focus-visible {
+  outline: 3px solid #1971c2; outline-offset: 3px;
+}
+body .tab-button { min-width: 168px; flex: 1 1 180px; }
+#content-core1b { max-width: 100%; }
+#content-core1b[data-agent-b-core1b] section { padding: clamp(18px, 2.2vw, 30px); margin-block: 16px; }
+#content-core1b[data-agent-b-core1b] label { display: block; margin-block: 10px 7px; font-weight: 650; }
+#content-core1b[data-agent-b-core1b] textarea {
+  display: block; width: 100%; max-width: 100%; min-height: 176px;
+  padding: 16px; border-radius: 9px; border: 2px solid #9faebf;
+  font: inherit; font-size: 1rem; line-height: 1.5;
+  resize: vertical; touch-action: pan-y;
+}
+#content-core1b[data-agent-b-core1b] button { min-width: 104px; min-height: 56px; margin: 8px 10px 8px 0; }
+#content-core1b[data-agent-b-core1b] [data-role="status"] { display: block; min-height: 32px; margin: 12px 0; line-height: 1.5; }
+#content-core1b[data-agent-b-core1b] [hidden] { display: none !important; }
+@media (orientation: portrait) and (min-width: 800px) {
+  main { max-width: 94vw; }
+  body .tab-button { flex: 1 1 210px; }
+  #content-core1b section { padding: 22px; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <h1>Microbiology & Virology — Capsid, Envelope & Baltimore Genomes</h1>
+    <div class="meta">Target Item: NSEJS-2024-B-Q50 | Band: D3 (Score 6) | Operation: SYNTHESIZE</div>
+  </div>
+
+  <div class="nav-tabs">
+    <button class="tab-button active" id="tab-core2" onclick="switchTab('core2')">1. Core 2 Target Problem</button>
+    <button class="tab-button" id="tab-core1a" onclick="switchTab('core1a')">2. Core 1A Teaching Path</button>
+    <button class="tab-button" id="tab-core1b" onclick="switchTab('core1b')">3. Core 1B Reconstruction</button>
+  </div>
+
+  <div id="content-core2" class="tab-content active">
+    <h2>NSEJS 2024 Reference Item</h2>
+    <div class="step-box">
+      <h3>Problem Statement</h3>
+      <p>[Multiple Correct] Which of the following statements concerning viral structure, molecular genetics, and replication are <strong>biologically incorrect</strong>?</p>
+      <ul>
+        <li>(A) Mature virions are obligate intracellular infectious particles.</li>
+        <li>(B) Viral replication depends strictly on host ribosomes and translational machinery.</li>
+        <li>(C) The viral envelope consists exclusively of host-derived glycolipids without proteins.</li>
+        <li>(D) All animal viruses contain double-stranded DNA genomes.</li>
+      </ul>
+    </div>
+
+    <div class="diagram-container">
+      <svg viewBox="0 0 560 220" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="10" width="540" height="200" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+        <!-- Enveloped Virion Structure -->
+        <circle cx="120" cy="110" r="60" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2" stroke-dasharray="4,2"/>
+        <text x="50" y="35" font-size="14" fill="#6d28d9" font-weight="bold">Host-Derived Lipid Bilayer</text>
+
+        <!-- Capsid Core -->
+        <polygon points="120,70 150,90 150,130 120,150 90,130 90,90" fill="#ede9fe" stroke="#6d28d9" stroke-width="2"/>
+        <text x="102" y="115" font-size="14" fill="#4c1d95" font-weight="bold">RNA/DNA</text>
+
+        <!-- Glycoprotein Spikes -->
+        <line x1="120" y1="50" x2="120" y2="30" stroke="#ef4444" stroke-width="3"/>
+        <circle cx="120" cy="28" r="4" fill="#ef4444"/>
+
+        <line x1="180" y1="110" x2="200" y2="110" stroke="#ef4444" stroke-width="3"/>
+        <circle cx="202" cy="110" r="4" fill="#ef4444"/>
+
+        <line x1="120" y1="170" x2="120" y2="190" stroke="#ef4444" stroke-width="3"/>
+        <circle cx="120" cy="192" r="4" fill="#ef4444"/>
+
+        <line x1="60" y1="110" x2="40" y2="110" stroke="#ef4444" stroke-width="3"/>
+        <circle cx="38" cy="110" r="4" fill="#ef4444"/>
+        <text x="135" y="45" font-size="14" fill="#dc2626" font-weight="bold">Viral Glycoproteins (Spikes)</text>
+
+        <!-- Evaluation Table -->
+        <rect x="250" y="30" width="280" height="160" rx="6" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.5"/>
+        <text x="265" y="55" font-size="14" fill="#15803d" font-weight="bold">(A) Obligate intracellular &rarr; TRUE</text>
+        <text x="265" y="80" font-size="14" fill="#15803d" font-weight="bold">(B) Needs host ribosomes &rarr; TRUE</text>
+        <text x="265" y="110" font-size="14" fill="#dc2626" font-weight="bold">(C) "Without proteins" &rarr; INCORRECT!</text>
+        <text x="280" y="128" font-size="14" fill="#64748b">(Envelope requires viral spikes)</text>
+        <text x="265" y="155" font-size="14" fill="#dc2626" font-weight="bold">(D) "All have dsDNA" &rarr; INCORRECT!</text>
+        <text x="280" y="173" font-size="14" fill="#64748b">(HIV, rabies, flu are RNA viruses!)</text>
+      </svg>
+    </div>
+
+    <div class="commit-box">
+      <h3>Select the Biologically INCORRECT Statements:</h3>
+      <div><input type="checkbox" id="b_optA" value="A"><label for="b_optA"> (A) Mature virions are obligate intracellular infectious particles.</label></div>
+      <div><input type="checkbox" id="b_optB" value="B"><label for="b_optB"> (B) Viral replication depends strictly on host ribosomes and translational machinery.</label></div>
+      <div><input type="checkbox" id="b_optC" value="C"><label for="b_optC"> (C) The viral envelope consists exclusively of host-derived glycolipids without proteins.</label></div>
+      <div><input type="checkbox" id="b_optD" value="D"><label for="b_optD"> (D) All animal viruses contain double-stranded DNA genomes.</label></div>
+      <br>
+      <button class="btn" onclick="commitBioAnswer()">Commit Answer & Reveal Mathematical Derivation</button>
+    </div>
+
+    <div id="derivation-section" class="derivation-section" style="display: none;">
+      <h3>Biological Science Derivation & Proof</h3>
+      <p><strong>1. System Representation & Setup:</strong> Statements A and B describe canonical viral characteristics: mature virions possess no cellular metabolism and are obligate intracellular parasites (A is true); viruses lack ribosomes and tRNAs, relying 100% on host translation (B is true).</p>
+      <p><strong>2. Physical Model & Formulation:</strong> Statement C claims the envelope consists exclusively of host glycolipids without proteins. This is biologically false: during budding, the host-derived lipid bilayer is studded with viral-encoded transmembrane glycoproteins (spikes/peplomers) essential for cell attachment and fusion.</p>
+      <p><strong>3. Execution & Resolution:</strong> Statement D claims all animal viruses contain dsDNA genomes. This is biologically false: animal viruses demonstrate extraordinary genomic diversity in the Baltimore classification, including positive-sense ssRNA (coronaviruses, polio), negative-sense ssRNA (influenza, rabies), retroviruses (HIV), and ssDNA (parvoviruses). Since the prompt asks for <strong>biologically incorrect</strong> statements, <strong>Options C and D</strong> are the correct answers.</p>
+      <p><strong>4. Limiting Check:</strong> A and B are eliminated because they are biologically true.</p>
+    </div>
+  </div>
+
+  <div id="content-core1a" class="tab-content">
+    <h2>Core 1A: Declarative Teaching Construction</h2>
+    <div class="step-box">
+      <span class="badge">Prerequisite</span>
+      <h3>Chimeric Envelope & Baltimore Classification</h3>
+      <p>Envelopes are acquired from host membranes but must carry viral glycoprotein spikes to bind receptors. Animal viral genomes range from dsDNA to ssDNA, dsRNA, and positive/negative ssRNA.</p>
+    </div>
+    <div class="step-box">
+      <span class="badge">Worked Example</span>
+      <h3>Human Immunodeficiency Virus (HIV)</h3>
+      <p>HIV buds from host plasma membrane but incorporates viral gp120/gp41 spikes, and its genome consists of two (+)ssRNA molecules.</p>
+    </div>
+    <div class="step-box">
+      <span class="badge">Independent Exit Check</span>
+      <h3>Rabies & Influenza Virus Check</h3>
+      <p>Both are enveloped (-)ssRNA animal viruses, proving animal viruses are not exclusively dsDNA.</p>
+    </div>
+  </div>
+
+  <div id="content-core1b" class="tab-content" data-agent-b-core1b data-source-id="NSEJS-2024-B-Q50" data-practice-id="NSEJS-2024-B-Q50-CORE1B-TASK" data-revision="ecebb97bfe2854371658e80ca7a1659ab6e9797b9075869f9086f0e0b6ba787e">
+<style>#content-core1b [hidden]{display:none !important;} #content-core1b textarea{width:100%;min-height:5rem;} #content-core1b button{min-height:44px;margin:.35rem;}</style>
+<h2>Core 1B — New reconstruction practice</h2>
+<p>Source-distinct practice only. Your first response is not graded and remains unchanged after help.</p>
+<section><h3>Stage 1 — Predict</h3><p>Can a virus infect a host cell if its envelope is composed 100% of host membrane components without any viral proteins?</p><label for="ab-pred">Your physical prediction</label><textarea id="ab-pred" data-role="prediction-input"></textarea><button type="button" data-role="save-prediction">Save prediction</button></section>
+<section><h3>Stage 2 — Independent attempt</h3><p>Select the biologically incorrect statements among: (A) virions are obligate intracellular parasites, (B) replication depends on host ribosomes, (C) envelope has only host glycolipids without proteins, (D) all animal viruses have dsDNA genomes.</p><label for="ab-attempt">Your original calculation and model</label><textarea id="ab-attempt" data-role="firstAttempt-input"></textarea><button type="button" data-role="save-firstAttempt">Freeze original attempt</button></section>
+<section><h3>Optional H1/H2/H3 help</h3>
+<button type="button" data-hint="1">Reveal H1 (record exposure)</button><p data-hint-text="1"></p>
+<button type="button" data-hint="2">Reveal H2 (record exposure)</button><p data-hint-text="2"></p>
+<button type="button" data-hint="3">Reveal H3 (record exposure)</button><p data-hint-text="3"></p>
+</section>
+<section data-role="model-host" hidden><h3>Stage 3 — Reconstruct after first commitment</h3></section>
+<section data-role="diagnosis-stage" hidden><h3>Stage 4 — Diagnose your first divergence</h3><textarea data-role="diagnosis-input" aria-label="Diagnose original model"></textarea><button type="button" data-role="save-diagnosis">Save diagnosis</button></section>
+<section data-role="repair-stage" hidden><h3>Stage 5 — Repair separately</h3><textarea data-role="repair-input" aria-label="Repair original model"></textarea><button type="button" data-role="save-repair">Save repair</button></section>
+<section data-role="transfer-stage" hidden><h3>Stage 6 — Changed-condition transfer</h3><p>What about naked (non-enveloped) viruses like poliovirus or adenovirus? Do they have spikes?</p><textarea data-role="transfer-input" aria-label="New changed-condition commitment"></textarea><button type="button" data-role="save-transfer">Save transfer response</button><p data-role="boundary-answer" hidden></p></section>
+<p data-role="status" aria-live="polite"></p></div>
+
+  <div class="footer">
+    No academic approval inferred from software validation. Green CI means automatic tests passed; it never means student release is authorized.
+  </div>
+</div>
+
+<script>
+  function switchTab(tabId) {
+    document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+    document.getElementById('tab-' + tabId).classList.add('active');
+    document.getElementById('content-' + tabId).classList.add('active');
+  }
+
+  function commitBioAnswer() {
+    const a = document.getElementById('b_optA').checked;
+    const b = document.getElementById('b_optB').checked;
+    const c = document.getElementById('b_optC').checked;
+    const d = document.getElementById('b_optD').checked;
+    if (!a && !b && !c && !d) {
+      alert('Please select at least one option.');
+      return;
+    }
+    document.getElementById('derivation-section').style.display = 'block';
+  }
+</script>
+<script type="application/json" id="agent-b-core1b-data">{"route":[{"ask":"1. Are mature virions obligate intracellular infectious particles?","why_this_ask":"Evaluates Statement A.","step_answer":"Yes, virions cannot replicate outside a host cell (Statement A is true)."},{"ask":"2. Does viral protein translation require host ribosomes?","why_this_ask":"Evaluates Statement B.","step_answer":"Yes, viruses carry no ribosomes of their own (Statement B is true)."},{"ask":"3. Does the viral envelope lack proteins?","why_this_ask":"Evaluates Statement C.","step_answer":"No, envelopes contain viral-encoded glycoprotein spikes essential for receptor attachment (Statement C is incorrect)."},{"ask":"4. Do all animal viruses have dsDNA genomes?","why_this_ask":"Evaluates Statement D.","step_answer":"No, many animal viruses have RNA genomes (e.g. influenza, rabies, HIV). Thus C and D are the incorrect statements."}],"hints":["Notice the question asks which statements are biologically INCORRECT!","Does the envelope of a coronavirus or influenza virus lack proteins? What are the spike proteins made of?","Distinguish an envelope's lipid membrane from viral-encoded entry proteins and remember that animal viruses have diverse genome types."],"boundaryAnswer":"Naked viruses lack a lipid membrane entirely; their capsid proteins themselves directly form the receptor-binding surface structure."}</script>
+<script>
+(function () {
+  'use strict';
+  function boot() {
+    const root = document.querySelector('#content-core1b[data-agent-b-core1b]');
+    if (!root) return;
+    const data = JSON.parse(document.getElementById('agent-b-core1b-data').textContent);
+    const key = ['g9v4','agent-b','core1b',root.dataset.sourceId,root.dataset.practiceId,root.dataset.revision].join(':');
+    const by = role => root.querySelector('[data-role="' + role + '"]');
+    const notify = (message, danger=false) => {
+      by('status').textContent=message;
+      by('status').setAttribute('role', danger ? 'alert' : 'status');
+    };
+    const nonblank = x => typeof x === 'string' && !!x.trim();
+    const valid = x => !!x && x.schema==='agent-b-core1b-attempt/v1' &&
+      x.key===key && x.revision===root.dataset.revision &&
+      x.hints && typeof x.hints==='object' && !Array.isArray(x.hints) &&
+      (!x.prediction || nonblank(x.prediction)) &&
+      (!x.firstAttempt || (nonblank(x.firstAttempt.text) && nonblank(x.prediction))) &&
+      (!x.diagnosis || (nonblank(x.diagnosis) && x.firstAttempt)) &&
+      (!x.repair || (nonblank(x.repair) && x.diagnosis)) &&
+      (!x.transfer || (nonblank(x.transfer) && x.repair));
+    let priorRaw = null;
+    let state = {schema:'agent-b-core1b-attempt/v1', key, revision:root.dataset.revision,
+      prediction:null, firstAttempt:null, hints:{}, diagnosis:null, repair:null, transfer:null, events:[]};
+    function lock(message) {
+      root.querySelectorAll('textarea,button').forEach(e => e.disabled=true);
+      notify(message, true);
+    }
+    try {
+      const probe=key+':probe';
+      localStorage.setItem(probe,'ok');
+      if(localStorage.getItem(probe)!=='ok')throw Error('storage denied');
+      localStorage.removeItem(probe);
+      priorRaw=localStorage.getItem(key);
+      if(priorRaw!==null){
+        const restored=JSON.parse(priorRaw);
+        if(!valid(restored))throw Error('persisted evidence is invalid');
+        state=restored;
+      }
+    } catch (_) { lock('Attempt storage is unavailable or evidence is invalid. Nothing can be revealed or recorded.'); return; }
+    function put(next) {
+      try {
+        if(localStorage.getItem(key)!==priorRaw){lock('Another tab changed this attempt. Reload to see the original saved evidence.');return false;}
+        const raw=JSON.stringify(next);
+        localStorage.setItem(key,raw);
+        if(localStorage.getItem(key)!==raw)throw Error('readback mismatch');
+        priorRaw=raw;state=next;render();return true;
+      } catch (_) {lock('Attempt could not be saved and verified. Reconstruction remains protected.');return false;}
+    }
+    function commit(field, value) {
+      if(!nonblank(value)){notify('Write a nonblank response before continuing.',true);return;}
+      if(field==='firstAttempt' && !state.prediction){notify('Commit your prediction first.',true);return;}
+      if(field==='diagnosis' && !state.firstAttempt){notify('Commit an attempt first.',true);return;}
+      if(field==='repair' && !state.diagnosis){notify('Record your diagnosis first.',true);return;}
+      if(field==='transfer' && !state.repair){notify('Record your repair first.',true);return;}
+      if(state[field]){notify('This original response is already frozen.',true);return;}
+      const next=JSON.parse(JSON.stringify(state));
+      next[field]=field==='firstAttempt'?{text:value, helpBeforeAttempt:Object.keys(next.hints).sort()}:value;
+      next.events.push({type:'COMMIT_'+field.toUpperCase(),at:new Date().toISOString()});
+      put(next);
+    }
+    function render() {
+      by('prediction-input').value=state.prediction||by('prediction-input').value;
+      by('firstAttempt-input').value=state.firstAttempt?.text||by('firstAttempt-input').value;
+      by('diagnosis-input').value=state.diagnosis||by('diagnosis-input').value;
+      by('repair-input').value=state.repair||by('repair-input').value;
+      by('transfer-input').value=state.transfer||by('transfer-input').value;
+      for(const field of ['prediction','firstAttempt','diagnosis','repair','transfer']){
+        by('save-'+field).disabled=!!state[field];
+      }
+      const reveal=!!state.firstAttempt;
+      by('model-host').hidden=!reveal;
+      if(reveal && !by('model-host').dataset.rendered){
+        const list=document.createElement('ol');
+        for(const step of data.route){
+          const li=document.createElement('li');
+          li.textContent=step.ask+' — '+step.step_answer;
+          list.appendChild(li);
+        }
+        by('model-host').appendChild(list);
+        by('model-host').dataset.rendered='yes';
+      }
+      by('diagnosis-stage').hidden=!reveal;
+      by('repair-stage').hidden=!state.diagnosis;
+      by('transfer-stage').hidden=!state.repair;
+      by('boundary-answer').hidden=!state.transfer;
+      if(state.transfer) by('boundary-answer').textContent=data.boundaryAnswer;
+      root.querySelectorAll('[data-hint]').forEach(button => {
+        const tier=button.dataset.hint;
+        button.disabled=!!state.hints[tier];
+        if(state.hints[tier]){
+          const span=root.querySelector('[data-hint-text="'+tier+'"]');
+          span.textContent=data.hints[Number(tier)-1];
+        }
+      });
+      notify(reveal?'First answer saved and frozen. Reconstruction available.':'Prediction and original response are stored separately from hints and repairs.');
+    }
+    for(const field of ['prediction','firstAttempt','diagnosis','repair','transfer']){
+      by('save-'+field).addEventListener('click',()=>commit(field,by(field+'-input').value));
+    }
+    root.querySelectorAll('[data-hint]').forEach(btn=>btn.addEventListener('click',()=>{
+      const tier=btn.dataset.hint;
+      if(state.hints[tier])return;
+      const next=JSON.parse(JSON.stringify(state));
+      next.hints[tier]={at:new Date().toISOString(),beforeAttempt:!state.firstAttempt};
+      next.events.push({type:'HINT_EXPOSED',tier,at:next.hints[tier].at,beforeAttempt:!state.firstAttempt});
+      put(next);
+    }));
+    window.addEventListener('storage',event=>{
+      if(event.key===key && event.newValue!==priorRaw)lock('Another tab changed this evidence. Reload before continuing.');
+    });
+    render();
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);
+  else boot();
+})();
+</script>
+</body>
+</html>

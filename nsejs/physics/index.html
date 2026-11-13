@@ -1,0 +1,605 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NSEJS Physics — Topics &amp; Core Learning Modules · Grade9 v4.0</title>
+  <meta name="description" content="NSEJS Physics Topics & Core Learning Modules. Optimized for 12.7 inch tablet ergonomics. All questions labeled {Unvalidated}.">
+  <link rel="stylesheet" href="../../site.css">
+  <link rel="stylesheet" href="../../css/tablet-12-7.css">
+  <style>
+    /* 12.7" Tablet Specific Architecture & Layout */
+    :root {
+      --tab-max-w: 1380px;
+      --tab-ink: #102a43;
+      --tab-card-bg: #ffffff;
+      --tab-border: #d9e2ec;
+      --tab-accent: #0b69a3;
+      --unval-bg: #fffbeb;
+      --unval-text: #92400e;
+      --unval-border: #fcd34d;
+    }
+    body {
+      background: #f0f4f8;
+      color: var(--tab-ink);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    .tablet-container {
+      max-width: var(--tab-max-w);
+      margin: 0 auto;
+      padding: 24px 32px 60px;
+    }
+    .tablet-hero {
+      background: linear-gradient(135deg, #0b3c5d 0%, #17547d 60%, #1d709e 100%);
+      color: white;
+      padding: 36px 32px;
+      border-radius: 16px;
+      margin-bottom: 28px;
+      box-shadow: 0 10px 25px -5px rgba(11,60,93,0.15);
+    }
+    .tablet-hero h1 {
+      font-size: 32px;
+      margin: 8px 0 12px;
+      font-weight: 800;
+    }
+    .tablet-hero p {
+      font-size: 17px;
+      max-width: 950px;
+      margin: 0 0 16px;
+      color: #e2e8f0;
+    }
+    .breadcrumbs-bar {
+      font-size: 14px;
+      color: #cbd5e1;
+      margin-top: 10px;
+    }
+    .breadcrumbs-bar a {
+      color: #93c5fd;
+      text-decoration: none;
+    }
+    .unval-banner {
+      background: var(--unval-bg);
+      border: 1.5px solid var(--unval-border);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .unval-tag {
+      background: #fef08a;
+      color: #854d0e;
+      border: 1.5px solid #eab308;
+      font-weight: 800;
+      font-size: 13px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+    .unval-banner p {
+      margin: 0;
+      font-size: 14px;
+      color: #78350f;
+    }
+    
+    /* 12.7" Tablet Topic Cards Grid */
+    .topics-grid-12-7 {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(430px, 1fr));
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+    .topic-card-tab {
+      background: var(--tab-card-bg);
+      border: 1.5px solid var(--tab-border);
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 14px rgba(16,42,67,0.04);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .topic-card-tab:hover {
+      border-color: var(--tab-accent);
+      box-shadow: 0 8px 24px rgba(11,105,163,0.1);
+    }
+    .topic-head {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+    .topic-icon-box {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      background: #e0f2fe;
+      display: grid;
+      place-items: center;
+      font-size: 28px;
+      flex-shrink: 0;
+    }
+    .topic-title-group h2 {
+      font-size: 20px;
+      font-weight: 800;
+      margin: 2px 0 4px;
+      color: #0f172a;
+    }
+    .topic-meta-tag {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #0284c7;
+    }
+    .topic-desc {
+      font-size: 15px;
+      color: #475569;
+      margin: 0 0 20px;
+      flex: 1;
+    }
+    
+    /* Cores Sub-Tiles */
+    .cores-sub-deck {
+      border-top: 1px solid #e2e8f0;
+      padding-top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .core-row-tile {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      min-height: 48px;
+    }
+    .core-row-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .core-pill-badge {
+      font-weight: 800;
+      font-size: 12px;
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: #0284c7;
+      color: white;
+    }
+    .core-name {
+      font-weight: 700;
+      font-size: 15px;
+      color: #1e293b;
+    }
+    .core-btn-touch {
+      min-height: 40px;
+      padding: 6px 16px;
+      font-size: 14px;
+      font-weight: 700;
+      border-radius: 8px;
+      border: 1px solid var(--tab-accent);
+      background: #f0f9ff;
+      color: var(--tab-accent);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      touch-action: manipulation;
+    }
+    .core-btn-touch:hover {
+      background: var(--tab-accent);
+      color: white;
+    }
+    
+    /* Embedded 12.7" Tablet Question Bank Viewer Section */
+    .qbank-tablet-section {
+      background: white;
+      border: 1.5px solid var(--tab-border);
+      border-radius: 16px;
+      padding: 28px;
+      margin-top: 36px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+    }
+    .qbank-tablet-section h2 {
+      margin: 0 0 8px;
+      font-size: 24px;
+      font-weight: 800;
+      color: #0f172a;
+    }
+    .q-item-card {
+      border: 1.5px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      background: #ffffff;
+    }
+    .q-item-card.unval-border {
+      border-left: 6px solid #eab308;
+    }
+    .q-item-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    .q-meta-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .q-id-badge {
+      font-family: ui-monospace, monospace;
+      font-weight: 800;
+      font-size: 14px;
+      color: #1e293b;
+    }
+    .q-stem-text {
+      font-size: 16px;
+      font-weight: 500;
+      margin-bottom: 16px;
+      line-height: 1.6;
+      color: #1e293b;
+    }
+    .q-opt-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .q-opt-label {
+      min-height: 48px;
+      padding: 10px 16px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      background: #f8fafc;
+      font-size: 15px;
+    }
+    .q-opt-label:hover {
+      background: #e2e8f0;
+    }
+    .q-actions-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid #f1f5f9;
+      padding-top: 12px;
+    }
+    .q-commit-btn {
+      min-height: 44px;
+      padding: 8px 20px;
+      background: #0284c7;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .q-derivation {
+      display: none;
+      margin-top: 14px;
+      padding: 16px;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 8px;
+      color: #166534;
+      font-size: 15px;
+    }
+    .tab-footer {
+      border-top: 1px solid #cbd5e1;
+      padding: 24px 0 10px;
+      margin-top: 40px;
+      text-align: center;
+      color: #64748b;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <header class="mast">
+    <div class="container top">
+      <a class="logo" href="../../index.html"><i>G9</i>Grade9 v4.0</a>
+      <nav class="tabs" aria-label="NSEJS subject practice and Grade9 resources">
+        <a href="index.html" aria-current="page">⚛ Physics</a>
+        <a href="question-bank.html">📚 Physics Q-Bank</a>
+        <a href="../chemistry/index.html">🧪 Chemistry</a>
+        <a href="../biology/index.html">🧬 Biology</a>
+        <a href="../core2/index.html">🗺️ Core 2 Bank</a>
+        <a href="../index.html">🎯 NSEJS Hub</a>
+        <a href="../../architecture/index.html">🧭 Architecture</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="tablet-container">
+<section id="core2-archive-register" style="position:relative;isolation:isolate;z-index:1;max-width:1050px;margin:22px auto;padding:22px;border:2px solid #93aebc;border-radius:13px;background:#f3fafc;color:#15384b"><h2>Core2 question coverage · source-safe register</h2><p><strong>UNVALIDATED · Source and academic HOLD.</strong> The recovered Owner archive supplies a metadata inventory only; unapproved original exam question bodies are not published.</p><a href="../core2/index.html#physics" style="position:relative;z-index:3;display:inline-flex;min-height:56px;align-items:center;pointer-events:auto;padding:10px 20px;border-radius:9px;background:#135c79;color:#fff;text-decoration:none;font-weight:700">Browse Physics Core2 candidate coverage</a></section>
+    <div class="tablet-hero">
+      <div class="kicker">NSEJS · Physics Topics</div>
+      <h1>NSEJS Physics Topics &amp; Core Learning Modules</h1>
+      <p>Explore candidate topic families in Junior Science Physics; bank completeness is not independently established. Each topic includes Core 2 Question Banks with all items strictly labeled as {Unvalidated}, alongside Core 1A Physical Construction and Core 1B Phenomenological Transfer dossiers.</p>
+      <div class="breadcrumbs-bar">
+        <a href="../../index.html">Home</a> / <a href="../index.html">NSEJS</a> / Physics &gt; Topics &gt; Core 2
+      </div>
+    </div>
+
+    <div class="unval-banner">
+      <span class="unval-tag">{Unvalidated}</span>
+      <p><strong>Rule 13 Invariant Enforced:</strong> All candidate questions, figures, and worked derivations in these modules are candidate educational artifacts. No academic approval or authentic examination authority is inferred from automated software validation.</p>
+    </div>
+
+    <!-- 6 Physics Topic Tiles (12.7" Tablet Ergonomic Grid) -->
+    <section id="pcb-core2-zip-now-visible" aria-label="New uploaded ZIP Core2 question identity coverage" style="margin:20px 0;padding:23px;border:2px solid #087198;border-radius:15px;background:#e7f5fb;color:#14384a"><h2 style="margin:0 0 7px">NEW · Uploaded Core2 ZIP coverage</h2><p><strong>21 Physics modules · 95 question IDs indexed</strong> (16 standalone topic modules + 5 historical-year banks containing 79 candidate IDs).</p><p><strong>Metadata only · Source/rights/academic HOLD.</strong> These are <em>not</em> the existing topic-button question records. No full ZIP stems, figures, keys or solutions are published.</p><a href="../core2/question-map.html#physics" style="min-height:56px;display:inline-flex;align-items:center;font-weight:800;background:#115a79;color:white;border-radius:9px;padding:12px 20px;text-decoration:none">Browse all 95 source-held question IDs</a></section>
+    <div class="topics-grid-12-7">
+      
+      <!-- TOPIC 1: RAY OPTICS -->
+      <article class="topic-card-tab">
+        <div class="topic-head">
+          <div class="topic-icon-box">🔭</div>
+          <div class="topic-title-group">
+            <span class="topic-meta-tag">Physics · Topic 1</span>
+            <h2>Ray Optics &amp; Optical Instruments</h2>
+          </div>
+        </div>
+        <p class="topic-desc">Spherical mirrors, thin lens formula, prism minimum deviation, magnification, mirror-lens combinations, and conjugate focus shifts.</p>
+        <section class="core2-zip-topic-preview" data-core2-zip-topic="optics" aria-label="New source-held Core2 ZIP module inventory" style="margin:12px 0;padding:12px 14px;border:1px solid #a0c3d4;border-left:5px solid #12698d;border-radius:10px;background:#edf7fb;color:#123a52"><strong>NEW · Uploaded ZIP Core2: 6 topic module(s), 6 unvalidated question ID(s)</strong><p style="font-size:.9rem;margin:5px 0">Source-held ID inventory only; the full exam questions and answer keys are not published. This is separate from the existing candidate-bank button.</p><details style="margin-top:7px"><summary style="cursor:pointer;min-height:56px;display:flex;align-items:center;color:#075c83;font-weight:750">Show 6 ZIP module ID(s)</summary><ul style="margin:6px 0 0 17px;padding:0;line-height:1.7"><li><a href="../core2/question-map.html#module-ioqjs-optics-conjugate-d3-r1">ioqjs optics conjugate d3 r1</a></li><li><a href="../core2/question-map.html#module-nsejs-optics-displacement-d3-r1">nsejs optics displacement d3 r1</a></li><li><a href="../core2/question-map.html#module-nsejs-optics-lens-mirror-d3-r1">nsejs optics lens mirror d3 r1</a></li><li><a href="../core2/question-map.html#module-nsejs-optics-prism-d3-r1">nsejs optics prism d3 r1</a></li><li><a href="../core2/question-map.html#module-nsejs-optics-r1">nsejs optics r1</a></li><li><a href="../core2/question-map.html#module-nsejs-optics-screw-lens-d3-r1">nsejs optics screw lens d3 r1</a></li></ul></details></section>
+        <div class="cores-sub-deck">
+          <div class="core-row-tile">
+            <div class="core-row-info">
+              <span class="core-pill-badge">Core 2</span>
+              <span class="core-name">Question Bank</span>
+              <span class="unval-tag">{Unvalidated}</span>
+            </div>
+            <button class="core-btn-touch" onclick="openTopicQBank('optics')">Open 10 candidate records →</button>
+          </div>
+          <div class="core-row-tile">
+            <div class="core-row-info">
+              <span class="core-pill-badge" style="background:#475569;">Core 1A</span>
+              <span class="core-name">Physical Construction</span>
+              <span class="unval-tag">{Unvalidated}</span>
+            </div>
+            <span class="core-btn-touch" role="note" aria-label="Core1A or Core1B under separate review" style="opacity:.65;cursor:default">Under separate review</span>
+          </div>
+          <div class="core-row-tile">
+            <div class="core-row-info">
+              <span class="core-pill-badge" style="background:#475569;">Core 1B</span>
+              <span class="core-name">Phenomenological Transfer</span>
+              <span class="unval-tag">{Unvalidated}</span>
+            </div>
+            <span class="core-btn-touch" role="note" aria-label="Core1A or Core1B under separate review" style="opacity:.65;cursor:default">Under separate review</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- TOPIC 2: MECHANICS & KINEMATICS -->
+      <article class="topic-card-tab">
+        <div class="topic-head">
+          <div class="topic-icon-box">🚀</div>
+          <div class="topic-title-group">
+            <span class="topic-meta-tag">Physics · Topic 2</span>
+            <h2>Mechanics &amp; Kinematics</h2>
+          </div>
+        </div>
+        <p class="topic-desc">1D/2D kinematics, piecewise acceleration, Newton's laws of motion, momentum conservation, gravitational orbital motion, and mass balance.</p>
+        <section class="core2-zip-topic-preview" data-core2-zip-topic="mechanics" aria-label="New source-held Core2 ZIP module inventory" style="margin:12px 0;padding:12px 14px;border:1px solid #a0c3d4;border-left:5px solid #12698d;border-radius:10px;background:#edf7fb;color:#123a52"><strong>NEW · Uploaded ZIP Core2: 1 topic module(s), 1 unvalidated question ID(s)</strong><p style="font-size:.9rem;margin:5px 0">Source-held ID inventory only; the full exam questions and answer keys are not published. This is separate from the existing candidate-bank button.</p><details style="margin-top:7px"><summary style="cursor:pointer;min-height:56px;display:flex;align-items:center;color:#075c83;font-weight:750">Show 1 ZIP module ID(s)</summary><ul style="margin:6px 0 0 17px;padding:0;line-height:1.7"><li><a href="../core2/question-map.html#module-nsejs-mechanics-r1">nsejs mechanics r1</a></li></ul></details></section>
+        <div class="cores-sub-deck">
+          <div class="core-row-tile">
+            <div class="core-row-info">
+              <span class="core-pill-badge">Core 2</span>
+              <span class="core-name">Question Bank</span>
+              <span class="unval-tag">{Unvalidated}</span>
+            </div>
+            <button class="core-btn-touch" onclick="openTopicQBank('mechanics')">Open 11 candidate records (1 authored) →</button>
+          </div>
+          <div class="core-row-tile">
+            <div class="core-row-info">
+              <span class="core-pill-badge" style="background:#475569;">Core 1A</span>
+              <span class="core-name">Physical Construction</span>
+              <span class="unval-tag">{Unvalidated}</span>
+            </div>
+            <span class="core-btn-touch" role="note" aria-label="Core1A or Core1B under separate review" style="opacity:.65;cursor:default">Under separate review</span>
+          </div>
+          <div class="core-row-tile">
+            <div class="core-row-info">
+              <span class="core-pill-badge" style="background:#475569;">Core 1B</span>
+              <span class="core-name">Phenomenological Transfer</span>
+              <span class="unval-tag">{Unvalidated}</span>
+            </div>
+            <span class="core-btn-touch" role="note" aria-label="Core1A or Core1B under separate review" style="opacity:.65;cursor:default">Under separate review</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- TOPIC 3: CURRENT ELECTRICITY & CIRCUITS -->
+      <article class="topic-card-tab">
+        <div class="topic-head">
+          <div class="topic-icon-box">⚡</div>
+          <div class="topic-title-group">
+            <span class="topic-meta-tag">Physics · Topic 3</span>
+            <h2>Current Electricity &amp; DC Circuits</h2>
+          </div>
+        </div>
+        <p class="topic-desc">Ohm's law, Kirchhoff's network laws, resistor cube networks, infinite ladders, power dissipation in resistive combinations, and non-ideal meters.</p>
+        <section class="core2-zip-topic-preview" data-core2-zip-topic="circuits" aria-label="New source-held Core2 ZIP module inventory" style="margin:12px 0;padding:12px 14px;border:1px solid #a0c3d4;border-left:5px solid #12698d;border-radius:10px;background:#edf7fb;color:#123a52"><strong>NEW · Uploaded ZIP Core2: 3 topic module(s), 3 unvalidated question ID(s)</strong><p style="font-size:.9rem;margin:5px 0">Source-held ID inventory only; the full exam questions and answer keys are not published. This is separate from the existing candidate-bank button.</p><details style="margin-top:7px"><summary style="cursor:pointer;min-height:56px;display:flex;align-items:center;color:#075c83;font-weight:750">Show 3 ZIP module ID(s)</summary><ul style="margin:6px 0 0 17px;padding:0;line-height:1.7"><li><a href="../core2/question-map.html#module-nsejs-circuits-r1">nsejs circuits r1</a></li><li><a href="../core2/question-map.html#module-nsejs-circuits-cube-d3-r1">nsejs circuits cube d3 r1</a></li><li><a href="../core2/question-map.html#module-nsejs-circuits-ladder-d3-r1">nsejs circuits ladder d3 r1</a></li></ul></details></section>
+        <div class="cores-sub-deck">
+          <div class="core-row-tile">
+            <div class="core-row-info">
+              <span class="core-pill-badge">Core 2</span>
+              <span class="core-name">Question Bank</span>
+              <span class="unval-tag">{Unvalidated}</span>
+            </div>
+            <button class="core-btn-touch" onclick="openTopicQBank('circuits')">Open 10 candidate records →</button>
+          </div>
+          <div class="core-row-tile">
+            <div class="core-row-info">
+              <span class="core-pill-badge" style="background:#475569;">Core 1A</span>
+              <span class="core-name">Physical Construction</span>
+              <span class="unval-tag">{Unvalidated}</span>
+            </div>
+            <span class="core-btn-touch" role="note" aria-label="Core1A or Core1B under separate review" style="opacity:.65;cursor:default">Under separate review</span>
+          </div>
+          <div class="core-row-tile">
+            <div class="core-row-info">
+              <span class="core-pill-badge" style="background:#475569;">Core 1B</span>
+              <span class="core-name">Phenomenological Transfer</span>
+              <span class="unval-tag">{Unvalidated}</span>
+            </div>
+            <span class="core-btn-touch" role="note" aria-label="Core1A or Core1B under separate review" style="opacity:.65;cursor:default">Under separate review</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- TOPIC 4: ELECTROSTATICS -->
+      <article class="topic-card-tab">
+        <div class="topic-head">
+          <div class="topic-icon-box">⚛️</div>
+          <div class="topic-title-group">
+            <span class="topic-meta-tag">Physics · Topic 4</span>
+            <h2>Electrostatics &amp; Fields</h2>
+          </div>
+        </div>
+        <p class="topic-desc">Coulomb's law, superposition principle, electric field mapping, transverse deflection of charged particles, equipotential surfaces, and charge ratios.</p>
+        <section class="core2-zip-topic-preview" data-core2-zip-topic="electrostatics" aria-label="New source-held Core2 ZIP module inventory" style="margin:12px 0;padding:12px 14px;border:1px solid #a0c3d4;border-left:5px solid #12698d;border-radius:10px;background:#edf7fb;color:#123a52"><strong>NEW · Uploaded ZIP Core2: 2 topic module(s), 2 unvalidated question ID(s)</strong><p style="font-size:.9rem;margin:5px 0">Source-held ID inventory only; the full exam questions and answer keys are not published. This is separate from the existing candidate-bank button.</p><details style="margin-top:7px"><summary style="cursor:pointer;min-height:56px;display:flex;align-items:center;color:#075c83;font-weight:750">Show 2 ZIP module ID(s)</summary><ul style="margin:6px 0 0 17px;padding:0;line-height:1.7"><li><a href="../core2/question-map.html#module-nsejs-electrostatics-r1">nsejs electrostatics r1</a></li><li><a href="../core2/question-map.html#module-nsejs-electrostatics-deflection-d3-r1">nsejs electrostatics deflection d3 r1</a></li></ul></details></section>
+        <div class="cores-sub-deck">
+          <div class="core-row-tile">
+            <div class="core-row-info">
+              <span class="core-pill-badge">Core 2</span>
+              <span class="core-name">Question Bank</span>
+              <span class="unval-tag">{Unvalidated}</span>
+            </div>
+            <button class="core-btn-touch" onclick="openTopicQBank('electrostatics')">Open 10 candidate records →</button>
+          </div>
+          <div class="core-row-tile">
+            <div class="core-row-info">
+              <span class="core-pill-badge" style="background:#475569;">Core 1A</span>
+              <span class="core-name">Physical Construction</span>
+              <span class="unval-tag">{Unvalidated}</span>
+            </div>
+            <span class="core-btn-touch" role="note" aria-label="Core1A or Core1B under separate review" style="opacity:.65;cursor:default">Under separate review</span>
+          </div>
+          <div class="core-row-tile">
+            <div class="core-row-info">
+              <span class="core-pill-badge" style="background:#475569;">Core 1B</span>
+              <span class="core-name">Phenomenological Transfer</span>
+              <span class="unval-tag">{Unvalidated}</span>
+            </div>
+            <span class="core-btn-touch" role="note" aria-label="Core1A or Core1B under separate review" style="opacity:.65;cursor:default">Under separate review</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- TOPIC 5: MAGNETISM & EMI -->
+      <article class="topic-card-tab">
+        <div class="topic-head">
+          <div class="topic-icon-box">🧲</div>
+          <div class="topic-title-group">
+            <span class="topic-meta-tag">Physics · Topic 5</span>
+            <h2>Magnetism &amp; Electromagnetic Induction</h2>
+          </div>
+        </div>
+        <p class="topic-desc">Biot-Savart field patterns, long solenoid central B-fields, Lorentz force, right-hand rules, Faraday induction, Lenz rule, and motional damping.</p>
+        <section class="core2-zip-topic-preview" data-core2-zip-topic="magnetism" aria-label="New source-held Core2 ZIP module inventory" style="margin:12px 0;padding:12px 14px;border:1px solid #a0c3d4;border-left:5px solid #12698d;border-radius:10px;background:#edf7fb;color:#123a52"><strong>NEW · Uploaded ZIP Core2: 2 topic module(s), 2 unvalidated question ID(s)</strong><p style="font-size:.9rem;margin:5px 0">Source-held ID inventory only; the full exam questions and answer keys are not published. This is separate from the existing candidate-bank button.</p><details style="margin-top:7px"><summary style="cursor:pointer;min-height:56px;display:flex;align-items:center;color:#075c83;font-weight:750">Show 2 ZIP module ID(s)</summary><ul style="margin:6px 0 0 17px;padding:0;line-height:1.7"><li><a href="../core2/question-map.html#module-nsejs-magnetism-r1">nsejs magnetism r1</a></li><li><a href="../core2/question-map.html#module-nsejs-magnetism-terminal-d3-r1">nsejs magnetism terminal d3 r1</a></li></ul></details></section>
+        <div class="cores-sub-deck">
+          <div class="core-row-tile">
+            <div class="core-row-info">
+              <span class="core-pill-badge">Core 2</span>
+              <span class="core-name">Question Bank</span>
+              <span class="unval-tag">{Unvalidated}</span>
+            </div>
+            <button class="core-btn-touch" onclick="openTopicQBank('magnetism')">Open 10 candidate records →</button>
+          </div>
+          <div class="core-row-tile">
+            <div class="core-row-info">
+              <span class="core-pill-badge" style="background:#475569;">Core 1A</span>
+              <span class="core-name">Physical Construction</span>
+              <span class="unval-tag">{Unvalidated}</span>
+            </div>
+            <span class="core-btn-touch" role="note" aria-label="Core1A or Core1B under separate review" style="opacity:.65;cursor:default">Under separate review</span>
+          </div>
+          <div class="core-row-tile">
+            <div class="core-row-info">
+              <span class="core-pill-badge" style="background:#475569;">Core 1B</span>
+              <span class="core-name">Phenomenological Transfer</span>
+              <span class="unval-tag">{Unvalidated}</span>
+            </div>
+            <span class="core-btn-touch" role="note" aria-label="Core1A or Core1B under separate review" style="opacity:.65;cursor:default">Under separate review</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- TOPIC 6: FLUIDS & SOUND -->
+      <article class="topic-card-tab">
+        <div class="topic-head">
+          <div class="topic-icon-box">🌊</div>
+          <div class="topic-title-group">
+            <span class="topic-meta-tag">Physics · Topic 6</span>
+            <h2>Fluid Mechanics &amp; Sound Waves</h2>
+          </div>
+        </div>
+        <p class="topic-desc">Hydrostatic pressure, buoyant flotation, droplet coalescence surface energy release, acoustics, echo timing, and temperature-dependent sound velocity.</p>
+        <section class="core2-zip-topic-preview" data-core2-zip-topic="fluids" aria-label="New source-held Core2 ZIP module inventory" style="margin:12px 0;padding:12px 14px;border:1px solid #a0c3d4;border-left:5px solid #12698d;border-radius:10px;background:#edf7fb;color:#123a52"><strong>NEW · Uploaded ZIP Core2: 2 topic module(s), 2 unvalidated question ID(s)</strong><p style="font-size:.9rem;margin:5px 0">Source-held ID inventory only; the full exam questions and answer keys are not published. This is separate from the existing candidate-bank button.</p><details style="margin-top:7px"><summary style="cursor:pointer;min-height:56px;display:flex;align-items:center;color:#075c83;font-weight:750">Show 2 ZIP module ID(s)</summary><ul style="margin:6px 0 0 17px;padding:0;line-height:1.7"><li><a href="../core2/question-map.html#module-nsejs-fluids-sound-r1">nsejs fluids sound r1</a></li><li><a href="../core2/question-map.html#module-nsejs-fluids-surface-energy-d3-r1">nsejs fluids surface energy d3 r1</a></li></ul></details></section>
+        <div class="cores-sub-deck">
+          <div class="core-row-tile">
+            <div class="core-row-info">
+              <span class="core-pill-badge">Core 2</span>
+              <span class="core-name">Question Bank</span>
+              <span class="unval-tag">{Unvalidated}</span>
+            </div>
+            <button class="core-btn-touch" onclick="openTopicQBank('fluids')">No public bank (HOLD) →</button>
+          </div>
+          <div class="core-row-tile">
+            <div class="core-row-info">
+              <span class="core-pill-badge" style="background:#475569;">Core 1A</span>
+              <span class="core-name">Physical Construction</span>
+              <span class="unval-tag">{Unvalidated}</span>
+            </div>
+            <span class="core-btn-touch" role="note" aria-label="Core1A or Core1B under separate review" style="opacity:.65;cursor:default">Under separate review</span>
+          </div>
+          <div class="core-row-tile">
+            <div class="core-row-info">
+              <span class="core-pill-badge" style="background:#475569;">Core 1B</span>
+              <span class="core-name">Phenomenological Transfer</span>
+              <span class="unval-tag">{Unvalidated}</span>
+            </div>
+            <span class="core-btn-touch" role="note" aria-label="Core1A or Core1B under separate review" style="opacity:.65;cursor:default">Under separate review</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Legacy two-question sample: full source-indexed bank is at question-bank.html -->
+    <section class="qbank-tablet-section" id="activeQBankSection">
+<h2>Source-indexed Physics candidate bank</h2>
+<p>The five available Physics topic banks are presented through one source-indexed reader. Earlier embedded examples have been withdrawn to avoid independent option/key versions. All original-exam and QRT claims remain unverified.</p>
+<a class="core-btn-touch" href="question-bank.html?topic=optics">Open Physics candidate bank</a>
+</section>
+
+    <footer class="tab-footer">
+      Rule 13 Invariant: No academic approval inferred from software validation. Green CI means automatic tests passed; it never means student release is authorized. All questions labeled {Unvalidated}.
+    </footer>
+  </main>
+
+  <script>
+    function openTopicQBank(topicKey) {
+      window.location.href = "question-bank.html?topic=" + encodeURIComponent(topicKey);
+    }
+
+    /* The old sample commit/reveal functions were removed with the duplicate viewer. */
+  </script>
+<section id="agent-b-authored-preview" class="tablet-container" aria-labelledby="agent-b-preview-heading" style="max-width:1000px;margin:28px auto;padding:24px;border:2px solid #b88e49;border-radius:15px;background:#fffaf0;color:#14364a"><h2 id="agent-b-preview-heading">Core1A / Core1B authored technical preview</h2><p>Learning modules are UNVALIDATED, academically on HOLD and are not official NSEJS questions. Independently verified source/academic approval is not claimed.</p><a href="core1/index.html" style="display:inline-block;min-height:56px;box-sizing:border-box;padding:15px 20px;border-radius:12px;background:#0b5977;color:#fff;font-weight:700;text-decoration:none">Open 3 authored learning modules</a></section>
+<section id="nsejs-wpe-mechanics-parity" class="tablet-container" aria-labelledby="nsejs-mechanics-heading" style="margin:24px auto;padding:22px;border:2px solid #6c9fad;border-radius:15px;background:#f0f9fc;color:#173749"><h2 id="nsejs-mechanics-heading">Mechanics Core1A → Core1B · six-stage authored technical preview</h2><p><strong>UNVALIDATED · Academic HOLD.</strong> A single source-bound authored Grade9 Physics practice example, not an original NSEJS exam question or academically admitted source. Use the interactive collision model and independent Task A/B.</p><a href="learn-mechanics.html?source_uid=g9:PHYSICS:G9-AUTH-MECH-001&source_revision=65eadfb0dfc06b4dc3c910ade26d5f5d005efea00be5d7c4f8128b3d45c29259" style="display:inline-flex;align-items:center;min-height:56px;padding:14px 22px;border-radius:12px;background:#145c76;color:#fff;font-weight:750;text-decoration:none">Open authored Mechanics six-stage learner</a></section>
+<section id="official-iapt-links" style="max-width:1060px;margin:24px auto;padding:20px;border:2px solid #b6c9d3;border-radius:12px;background:#fff"><h2>Official IAPT source papers (external links only)</h2><p>Original papers stay on IAPT. These learning previews are not independently source-approved.</p><a style="display:inline-flex;align-items:center;min-height:56px;padding:12px 20px;background:#125a79;color:white;border-radius:10px" href="../official-sources.html">View official paper/key links</a></section>
+</body>
+</html>

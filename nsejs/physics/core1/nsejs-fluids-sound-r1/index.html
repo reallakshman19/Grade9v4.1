@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learning Journey: Fluid Mechanics — Buoyancy in Accelerating Frames</title>
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --secondary: #0284c7;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --accent: #10b981;
+      --danger: #ef4444;
+      --warning: #f59e0b;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 24px;
+    }
+    .header h1 {
+      margin: 0 0 8px 0;
+      font-size: 24px;
+    }
+    .header .meta {
+      font-size: 14px;
+      opacity: 0.9;
+    }
+    .nav-tabs {
+      display: flex;
+      background: #f1f5f9;
+      border-bottom: 1px solid var(--border);
+    }
+    .tab-button {
+      flex: 1;
+      padding: 14px 20px;
+      text-align: center;
+      background: none;
+      border: none;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+      border-bottom: 3px solid transparent;
+    }
+    .tab-button:hover {
+      background: #e2e8f0;
+      color: var(--text);
+    }
+    .tab-button.active {
+      background: var(--card-bg);
+      color: var(--primary);
+      border-bottom: 3px solid var(--primary);
+    }
+    .tab-content {
+      padding: 24px;
+      display: none;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    .diagram-container {
+      margin: 20px 0;
+      padding: 16px;
+      background: #f8fafc;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-align: center;
+    }
+    .diagram-container svg {
+      width: 100%;
+      height: 100%;
+      max-width: 600px;
+      height: 340px;
+    }
+    .step-box {
+      background: #f8fafc;
+      border-left: 4px solid var(--secondary);
+      padding: 16px;
+      margin-bottom: 16px;
+      border-radius: 0 8px 8px 0;
+    }
+    .step-box h3 {
+      margin: 0 0 8px 0;
+      font-size: 16px;
+      color: var(--primary);
+    }
+    .badge {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      background: #e0f2fe;
+      color: #0369a1;
+      margin-right: 6px;
+    }
+    .derivation-section {
+      margin-top: 24px;
+      padding: 20px;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 8px;
+    }
+    .commit-box {
+      margin: 20px 0;
+      padding: 16px;
+      background: #fffbeb;
+      border: 1px solid #fef3c7;
+      border-radius: 8px;
+    }
+    .btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn:hover {
+      background: #1e40af;
+    }
+    .footer {
+      background: #f8fafc;
+      padding: 16px 24px;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--text-muted);
+      text-align: center;
+    }
+    @media (max-width: 600px) {
+      body {
+        padding: 8px;
+      }
+      .header {
+        padding: 16px;
+      }
+      .tab-button {
+        padding: 10px 6px;
+        font-size: 13px;
+      }
+      .tab-content {
+        padding: 16px;
+      }
+    }
+  </style>
+<style id="agent-b-127-tablet-touch">
+html { font-size: 18px; -webkit-text-size-adjust: 100%; }
+body { font-size: 1rem; line-height: 1.6; }
+main { width: min(100%, 1060px); max-width: 1060px; margin-inline: auto; padding: clamp(16px, 2.4vw, 36px); }
+main h1 { font-size: clamp(1.65rem, 2.4vw, 2.1rem); line-height: 1.23; }
+main h2 { font-size: 1.4rem; line-height: 1.3; }
+main h3 { font-size: 1.17rem; line-height: 1.4; }
+main p, main li { line-height: 1.62; overflow-wrap: anywhere; }
+main nav, main .tab-nav, main .tabs { display: flex; flex-wrap: wrap; align-items: stretch; gap: 12px; margin-block: 16px 22px; }
+body button, body .tab-button, body input[type="button"], body input[type="submit"] {
+  min-height: 56px; padding: 12px 18px; border-radius: 10px;
+  font: inherit; font-size: 1rem; line-height: 1.25;
+  touch-action: manipulation; -webkit-tap-highlight-color: transparent;
+}
+body button:focus-visible, body textarea:focus-visible, body input:focus-visible {
+  outline: 3px solid #1971c2; outline-offset: 3px;
+}
+body .tab-button { min-width: 168px; flex: 1 1 180px; }
+#content-core1b { max-width: 100%; }
+#content-core1b[data-agent-b-core1b] section { padding: clamp(18px, 2.2vw, 30px); margin-block: 16px; }
+#content-core1b[data-agent-b-core1b] label { display: block; margin-block: 10px 7px; font-weight: 650; }
+#content-core1b[data-agent-b-core1b] textarea {
+  display: block; width: 100%; max-width: 100%; min-height: 176px;
+  padding: 16px; border-radius: 9px; border: 2px solid #9faebf;
+  font: inherit; font-size: 1rem; line-height: 1.5;
+  resize: vertical; touch-action: pan-y;
+}
+#content-core1b[data-agent-b-core1b] button { min-width: 104px; min-height: 56px; margin: 8px 10px 8px 0; }
+#content-core1b[data-agent-b-core1b] [data-role="status"] { display: block; min-height: 32px; margin: 12px 0; line-height: 1.5; }
+#content-core1b[data-agent-b-core1b] [hidden] { display: none !important; }
+@media (orientation: portrait) and (min-width: 800px) {
+  main { max-width: 94vw; }
+  body .tab-button { flex: 1 1 210px; }
+  #content-core1b section { padding: 22px; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <h1>Fluid Mechanics — Buoyancy in Accelerating Frames</h1>
+    <div class="meta">
+      Anchor Item: PHYS-NSEJS-FLUID-01 | Band: D2 | Cognitive Demand: MODEL | Crux Move: M2
+    </div>
+  </div>
+
+  <div class="nav-tabs">
+    <button class="tab-button active" id="tab-core2" onclick="switchTab('core2')">1. Core 2 Target Problem</button>
+    <button class="tab-button" id="tab-core1a" onclick="switchTab('core1a')">2. Core 1A Teaching Path</button>
+    <button class="tab-button" id="tab-core1b" onclick="switchTab('core1b')">3. Core 1B Reconstruction</button>
+  </div>
+
+  <!-- TAB 1: CORE 2 -->
+  <div id="content-core2" class="tab-content active">
+    <h2>National Standard Examination in Junior Science (NSEJS) Reference Item</h2>
+    <div class="step-box">
+      <h3>Problem Statement</h3>
+      <p>A solid block of density &rho;<sub>s</sub> = 600 kg/m<sup>3</sup> and mass m = 3.0 kg is tied to the bottom of a container filled with water (&rho;<sub>w</sub> = 1000 kg/m<sup>3</sup>) by a light inextensible cord. The entire container is placed inside an elevator accelerating vertically upwards with constant acceleration a = 2.0 m/s<sup>2</sup>. Taking g = 10.0 m/s<sup>2</sup>:</p>
+      <p><strong>Determine the tension T in the cord during upward acceleration, and the initial upward acceleration a<sub>rel</sub> of the block relative to the container immediately after the cord is severed.</strong></p>
+    </div>
+
+    <div class="diagram-container">
+      <svg viewBox="0 0 500 320" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <rect x="20" y="20" width="460" height="280" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+        <!-- Elevator frame -->
+        <rect x="70" y="40" width="360" height="240" fill="#f1f5f9" stroke="#64748b" stroke-width="2"/>
+        <text x="80" y="65" font-size="15" fill="#334155" font-weight="bold">Elevator (a = 2.0 m/s² ↑)</text>
+        <line x1="400" y1="90" x2="400" y2="50" stroke="#ef4444" stroke-width="4" marker-end="url(#arrow)"/>
+        <!-- Water tank -->
+        <rect x="120" y="100" width="260" height="160" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+        <text x="130" y="125" font-size="14" fill="#0369a1" font-weight="bold">Water Tank (ρ_w = 1000 kg/m³)</text>
+        <!-- Block -->
+        <rect x="210" y="150" width="80" height="60" rx="4" fill="#fed7aa" stroke="#ea580c" stroke-width="2"/>
+        <text x="220" y="185" font-size="14" fill="#c2410c" font-weight="bold">Block</text>
+        <text x="215" y="202" font-size="14" fill="#7c2d12">ρ_s = 600</text>
+        <!-- Cord -->
+        <line x1="250" y1="210" x2="250" y2="260" stroke="#0f172a" stroke-width="3"/>
+        <circle cx="250" cy="260" r="4" fill="#0f172a"/>
+        <!-- Forces -->
+        <line x1="250" y1="150" x2="250" y2="105" stroke="#10b981" stroke-width="3"/>
+        <text x="260" y="125" font-size="14" fill="#047857" font-weight="bold">F_B = 60 N</text>
+        <line x1="230" y1="210" x2="230" y2="245" stroke="#ef4444" stroke-width="3"/>
+        <text x="150" y="240" font-size="14" fill="#b91c1c" font-weight="bold">W_eff = 36 N</text>
+        <text x="260" y="235" font-size="14" fill="#1e3a8a" font-weight="bold">T = 24 N</text>
+      </svg>
+    </div>
+
+    <div class="commit-box">
+      <h3>Select Option:</h3>
+      <div><input type="radio" id="optA" name="ans" value="A"><label for="optA"> A: T = 18.0 N, a<sub>rel</sub> = 6.0 m/s<sup>2</sup></label></div>
+      <div><input type="radio" id="optB" name="ans" value="B"><label for="optB"> B: T = 24.0 N, a<sub>rel</sub> = 8.0 m/s<sup>2</sup></label></div>
+      <div><input type="radio" id="optC" name="ans" value="C"><label for="optC"> C: T = 20.0 N, a<sub>rel</sub> = 6.67 m/s<sup>2</sup></label></div>
+      <div><input type="radio" id="optD" name="ans" value="D"><label for="optD"> D: T = 30.0 N, a<sub>rel</sub> = 10.0 m/s<sup>2</sup></label></div>
+      <br>
+      <button class="btn" onclick="commitAnswer()">Commit Answer & Reveal Mathematical Derivation</button>
+    </div>
+
+    <div id="derivation-section" class="derivation-section" style="display: none;">
+      <h3>Mathematical Physics Derivation & Proof</h3>
+      <p><strong>1. System Representation & Setup:</strong> In the upward accelerating elevator frame (a = 2.0 m/s<sup>2</sup>), the effective downward acceleration due to gravity is g<sub>eff</sub> = g + a = 10.0 + 2.0 = 12.0 m/s<sup>2</sup>.</p>
+      <p><strong>2. Physical Model & Formulation:</strong> Volume of the solid block: V = m / &rho;<sub>s</sub> = 3.0 / 600 = 0.0050 m<sup>3</sup>. Buoyant force in the accelerating frame: F<sub>B</sub> = &rho;<sub>w</sub> &times; V &times; g<sub>eff</sub> = 1000 &times; 0.0050 &times; 12.0 = 60.0 N. Effective weight of the block: W<sub>eff</sub> = m &times; g<sub>eff</sub> = 3.0 &times; 12.0 = 36.0 N.</p>
+      <p><strong>3. Execution & Resolution:</strong> From vertical equilibrium prior to severance: F<sub>B</sub> = W<sub>eff</sub> + T &rArr; T = F<sub>B</sub> - W<sub>eff</sub> = 60.0 - 36.0 = 24.0 N. Immediately upon cutting the cord, the net upward force in the elevator frame is F<sub>net</sub> = F<sub>B</sub> - W<sub>eff</sub> = 24.0 N. The relative upward acceleration is a<sub>rel</sub> = F<sub>net</sub> / m = 24.0 / 3.0 = 8.0 m/s<sup>2</sup>. Matching <strong>Option B</strong>.</p>
+      <p><strong>4. Limiting Check:</strong> As a &rarr; -g (free fall), g<sub>eff</sub> &rarr; 0, producing T = 0 N and a<sub>rel</sub> = 0 m/s<sup>2</sup>.</p>
+    </div>
+  </div>
+
+  <!-- TAB 2: CORE 1A -->
+  <div id="content-core1a" class="tab-content">
+    <h2>Core 1A: Declarative Teaching Construction</h2>
+    <div class="step-box">
+      <span class="badge">Prerequisite</span>
+      <h3>Effective Gravity & Accelerated Pressure Gradients</h3>
+      <p>A fluid accelerating upwards at rate a requires a steeper hydrostatic pressure gradient &part;P/&part;y = -&rho;(g + a) to accelerate the liquid elements. Consequently, Archimedes' buoyant force scales directly with effective gravity: F<sub>B</sub> = &rho;<sub>fluid</sub> &times; V &times; (g + a).</p>
+    </div>
+
+    <div class="step-box">
+      <span class="badge">Worked Example</span>
+      <h3>Ascending Rocket Sensor Mooring Tether</h3>
+      <p>A sensor package of mass m = 2.0 kg and density &rho;<sub>s</sub> = 500 kg/m<sup>3</sup> is moored by a tether in brine (&rho;<sub>f</sub> = 1200 kg/m<sup>3</sup>) inside a rocket accelerating vertically upwards at a = 6.0 m/s<sup>2</sup> with g = 10.0 m/s<sup>2</sup>.</p>
+      <p>1. Effective gravity: g<sub>eff</sub> = g + a = 10.0 + 6.0 = 16.0 m/s<sup>2</sup>.</p>
+      <p>2. Volume: V = 2.0 / 500 = 0.0040 m<sup>3</sup>. Buoyant force: F<sub>B</sub> = 1200 &times; 0.0040 &times; 16.0 = 76.8 N. Effective weight: W<sub>eff</sub> = 2.0 &times; 16.0 = 32.0 N.</p>
+      <p>3. Tether tension: T = 76.8 - 32.0 = 44.8 N. Relative severance acceleration: a<sub>rel</sub> = 44.8 / 2.0 = 22.4 m/s<sup>2</sup> upward.</p>
+    </div>
+
+    <div class="step-box">
+      <span class="badge">Independent Exit Check</span>
+      <h3>Downward Accelerating Elevator Check</h3>
+      <p>For m = 4.0 kg, &rho;<sub>s</sub> = 800 kg/m<sup>3</sup> in water with a = 2.0 m/s<sup>2</sup> downward: g<sub>eff</sub> = 8.0 m/s<sup>2</sup>, V = 0.0050 m<sup>3</sup>, F<sub>B</sub> = 40.0 N, W<sub>eff</sub> = 32.0 N &rArr; T = 8.0 N, a<sub>rel</sub> = 2.0 m/s<sup>2</sup>.</p>
+    </div>
+  </div>
+
+  <!-- TAB 3: CORE 1B -->
+  <div id="content-core1b" class="tab-content" data-agent-b-core1b data-source-id="PHYS-NSEJS-FLUID-01" data-practice-id="PHYS-NSEJS-FLUID-01-CORE1B-ELEVATOR-BUOYANCY-TASK" data-revision="f1ae8b2e8965f296a9cdbaf962bc60bcefa1b45a81d73863b9ede90db2add7fa">
+<style>#content-core1b [hidden]{display:none !important;} #content-core1b textarea{width:100%;min-height:5rem;} #content-core1b button{min-height:44px;margin:.35rem;}</style>
+<h2>Core 1B — New reconstruction practice</h2>
+<p>Source-distinct practice only. Your first response is not graded and remains unchanged after help.</p>
+<section><h3>Stage 1 — Predict</h3><p>A block of density rho_s = 600 kg/m^3 is tied to the bottom of a water container by a cord. When the elevator accelerates vertically upwards, does the tension in the cord increase, decrease, or stay the same?</p><label for="ab-pred">Your physical prediction</label><textarea id="ab-pred" data-role="prediction-input"></textarea><button type="button" data-role="save-prediction">Save prediction</button></section>
+<section><h3>Stage 2 — Independent attempt</h3><p>Determine the tension T in the cord during upward acceleration (a = 2.0 m/s^2, g = 10.0 m/s^2) and the initial upward acceleration a_rel of the block relative to the container immediately after the cord is severed (mass m = 3.0 kg, rho_s = 600 kg/m^3, rho_w = 1000 kg/m^3).</p><label for="ab-attempt">Your original calculation and model</label><textarea id="ab-attempt" data-role="firstAttempt-input"></textarea><button type="button" data-role="save-firstAttempt">Freeze original attempt</button></section>
+<section><h3>Optional H1/H2/H3 help</h3>
+<button type="button" data-hint="1">Reveal H1 (record exposure)</button><p data-hint-text="1"></p>
+<button type="button" data-hint="2">Reveal H2 (record exposure)</button><p data-hint-text="2"></p>
+<button type="button" data-hint="3">Reveal H3 (record exposure)</button><p data-hint-text="3"></p>
+</section>
+<section data-role="model-host" hidden><h3>Stage 3 — Reconstruct after first commitment</h3></section>
+<section data-role="diagnosis-stage" hidden><h3>Stage 4 — Diagnose your first divergence</h3><textarea data-role="diagnosis-input" aria-label="Diagnose original model"></textarea><button type="button" data-role="save-diagnosis">Save diagnosis</button></section>
+<section data-role="repair-stage" hidden><h3>Stage 5 — Repair separately</h3><textarea data-role="repair-input" aria-label="Repair original model"></textarea><button type="button" data-role="save-repair">Save repair</button></section>
+<section data-role="transfer-stage" hidden><h3>Stage 6 — Changed-condition transfer</h3><p>What would happen to the cord tension T and relative acceleration a_rel if the elevator cable snapped and entered free fall (a = -g)?</p><textarea data-role="transfer-input" aria-label="New changed-condition commitment"></textarea><button type="button" data-role="save-transfer">Save transfer response</button><p data-role="boundary-answer" hidden></p></section>
+<p data-role="status" aria-live="polite"></p></div>
+
+  <div class="footer">
+    No academic approval inferred from software validation. Green CI means automatic tests passed; it never means student release is authorized.
+  </div>
+</div>
+
+<script>
+  function switchTab(tabId) {
+    document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+    document.getElementById('tab-' + tabId).classList.add('active');
+    document.getElementById('content-' + tabId).classList.add('active');
+  }
+
+  function commitAnswer() {
+    const selected = document.querySelector('input[name="ans"]:checked');
+    if (!selected) {
+      alert('Please select an option before committing your answer.');
+      return;
+    }
+    const derivationSection = document.getElementById('derivation-section');
+    derivationSection.style.display = 'block';
+  }
+</script>
+
+<script type="application/json" id="agent-b-core1b-data">{"route":[{"ask":"1. What is the effective acceleration due to gravity g_eff inside the upwardly accelerating elevator?","why_this_ask":"Transforms the problem into the non-inertial reference frame of the container.","step_answer":"g_eff = g + a = 10.0 + 2.0 = 12.0 m/s^2 directed vertically downwards."},{"ask":"2. What is the volume V of the solid block, and what buoyant force F_B acts upon it in the elevator frame?","why_this_ask":"Evaluates fluid pressure gradient resultant force on the block.","step_answer":"V = m / rho_s = 3.0 / 600 = 0.0050 m^3. F_B = rho_w * V * g_eff = 1000 * 0.0050 * 12.0 = 60.0 N."},{"ask":"3. What is the tension T in the cord prior to severance?","why_this_ask":"Applies static equilibrium Sigma F_y = 0 in the elevator frame.","step_answer":"W_eff = m * g_eff = 3.0 * 12.0 = 36.0 N. Equilibrium gives F_B = W_eff + T, so T = 60.0 - 36.0 = 24.0 N."},{"ask":"4. What is the initial acceleration a_rel of the block relative to the container immediately after the cord is severed?","why_this_ask":"Applies Newton's second law in the container frame with constraint force T = 0.","step_answer":"F_net = F_B - W_eff = 24.0 N upward. Relative acceleration is a_rel = F_net / m = 24.0 / 3.0 = 8.0 m/s^2 upward."}],"hints":["Work in the non-inertial frame of the elevator where effective gravity is g_eff = g + a.","Remember that hydrostatic pressure gradient increases with upward acceleration: buoyant force is F_B = rho_w * V * g_eff, and effective weight is W_eff = m * g_eff.","Before cutting the cord, T = F_B - W_eff. After cutting the cord, the net upward force is exactly T, giving relative acceleration a_rel = T / m."],"boundaryAnswer":"In free fall, g_eff = g - g = 0 m/s^2. Both buoyant force F_B and effective weight W_eff drop to zero. Consequently, cord tension drops to T = 0 N and relative acceleration is a_rel = 0 m/s^2. The block floats freely without tension or relative acceleration."}</script>
+<script>
+(function () {
+  'use strict';
+  function boot() {
+    const root = document.querySelector('#content-core1b[data-agent-b-core1b]');
+    if (!root) return;
+    const data = JSON.parse(document.getElementById('agent-b-core1b-data').textContent);
+    const key = ['g9v4','agent-b','core1b',root.dataset.sourceId,root.dataset.practiceId,root.dataset.revision].join(':');
+    const by = role => root.querySelector('[data-role="' + role + '"]');
+    const notify = (message, danger=false) => {
+      by('status').textContent=message;
+      by('status').setAttribute('role', danger ? 'alert' : 'status');
+    };
+    const nonblank = x => typeof x === 'string' && !!x.trim();
+    const valid = x => !!x && x.schema==='agent-b-core1b-attempt/v1' &&
+      x.key===key && x.revision===root.dataset.revision &&
+      x.hints && typeof x.hints==='object' && !Array.isArray(x.hints) &&
+      (!x.prediction || nonblank(x.prediction)) &&
+      (!x.firstAttempt || (nonblank(x.firstAttempt.text) && nonblank(x.prediction))) &&
+      (!x.diagnosis || (nonblank(x.diagnosis) && x.firstAttempt)) &&
+      (!x.repair || (nonblank(x.repair) && x.diagnosis)) &&
+      (!x.transfer || (nonblank(x.transfer) && x.repair));
+    let priorRaw = null;
+    let state = {schema:'agent-b-core1b-attempt/v1', key, revision:root.dataset.revision,
+      prediction:null, firstAttempt:null, hints:{}, diagnosis:null, repair:null, transfer:null, events:[]};
+    function lock(message) {
+      root.querySelectorAll('textarea,button').forEach(e => e.disabled=true);
+      notify(message, true);
+    }
+    try {
+      const probe=key+':probe';
+      localStorage.setItem(probe,'ok');
+      if(localStorage.getItem(probe)!=='ok')throw Error('storage denied');
+      localStorage.removeItem(probe);
+      priorRaw=localStorage.getItem(key);
+      if(priorRaw!==null){
+        const restored=JSON.parse(priorRaw);
+        if(!valid(restored))throw Error('persisted evidence is invalid');
+        state=restored;
+      }
+    } catch (_) { lock('Attempt storage is unavailable or evidence is invalid. Nothing can be revealed or recorded.'); return; }
+    function put(next) {
+      try {
+        if(localStorage.getItem(key)!==priorRaw){lock('Another tab changed this attempt. Reload to see the original saved evidence.');return false;}
+        const raw=JSON.stringify(next);
+        localStorage.setItem(key,raw);
+        if(localStorage.getItem(key)!==raw)throw Error('readback mismatch');
+        priorRaw=raw;state=next;render();return true;
+      } catch (_) {lock('Attempt could not be saved and verified. Reconstruction remains protected.');return false;}
+    }
+    function commit(field, value) {
+      if(!nonblank(value)){notify('Write a nonblank response before continuing.',true);return;}
+      if(field==='firstAttempt' && !state.prediction){notify('Commit your prediction first.',true);return;}
+      if(field==='diagnosis' && !state.firstAttempt){notify('Commit an attempt first.',true);return;}
+      if(field==='repair' && !state.diagnosis){notify('Record your diagnosis first.',true);return;}
+      if(field==='transfer' && !state.repair){notify('Record your repair first.',true);return;}
+      if(state[field]){notify('This original response is already frozen.',true);return;}
+      const next=JSON.parse(JSON.stringify(state));
+      next[field]=field==='firstAttempt'?{text:value, helpBeforeAttempt:Object.keys(next.hints).sort()}:value;
+      next.events.push({type:'COMMIT_'+field.toUpperCase(),at:new Date().toISOString()});
+      put(next);
+    }
+    function render() {
+      by('prediction-input').value=state.prediction||by('prediction-input').value;
+      by('firstAttempt-input').value=state.firstAttempt?.text||by('firstAttempt-input').value;
+      by('diagnosis-input').value=state.diagnosis||by('diagnosis-input').value;
+      by('repair-input').value=state.repair||by('repair-input').value;
+      by('transfer-input').value=state.transfer||by('transfer-input').value;
+      for(const field of ['prediction','firstAttempt','diagnosis','repair','transfer']){
+        by('save-'+field).disabled=!!state[field];
+      }
+      const reveal=!!state.firstAttempt;
+      by('model-host').hidden=!reveal;
+      if(reveal && !by('model-host').dataset.rendered){
+        const list=document.createElement('ol');
+        for(const step of data.route){
+          const li=document.createElement('li');
+          li.textContent=step.ask+' — '+step.step_answer;
+          list.appendChild(li);
+        }
+        by('model-host').appendChild(list);
+        by('model-host').dataset.rendered='yes';
+      }
+      by('diagnosis-stage').hidden=!reveal;
+      by('repair-stage').hidden=!state.diagnosis;
+      by('transfer-stage').hidden=!state.repair;
+      by('boundary-answer').hidden=!state.transfer;
+      if(state.transfer) by('boundary-answer').textContent=data.boundaryAnswer;
+      root.querySelectorAll('[data-hint]').forEach(button => {
+        const tier=button.dataset.hint;
+        button.disabled=!!state.hints[tier];
+        if(state.hints[tier]){
+          const span=root.querySelector('[data-hint-text="'+tier+'"]');
+          span.textContent=data.hints[Number(tier)-1];
+        }
+      });
+      notify(reveal?'First answer saved and frozen. Reconstruction available.':'Prediction and original response are stored separately from hints and repairs.');
+    }
+    for(const field of ['prediction','firstAttempt','diagnosis','repair','transfer']){
+      by('save-'+field).addEventListener('click',()=>commit(field,by(field+'-input').value));
+    }
+    root.querySelectorAll('[data-hint]').forEach(btn=>btn.addEventListener('click',()=>{
+      const tier=btn.dataset.hint;
+      if(state.hints[tier])return;
+      const next=JSON.parse(JSON.stringify(state));
+      next.hints[tier]={at:new Date().toISOString(),beforeAttempt:!state.firstAttempt};
+      next.events.push({type:'HINT_EXPOSED',tier,at:next.hints[tier].at,beforeAttempt:!state.firstAttempt});
+      put(next);
+    }));
+    window.addEventListener('storage',event=>{
+      if(event.key===key && event.newValue!==priorRaw)lock('Another tab changed this evidence. Reload before continuing.');
+    });
+    render();
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);
+  else boot();
+})();
+</script>
+</body>
+</html>

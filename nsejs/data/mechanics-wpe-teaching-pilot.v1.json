@@ -1,0 +1,383 @@
+{
+  "schema": "grade9-nsejs-wpe-learner-contract/v1",
+  "engine": "window.WPEGapJourneys",
+  "stages": [
+    "Predict",
+    "Attempt",
+    "Reconstruct",
+    "Diagnose",
+    "Repair",
+    "Boundary test"
+  ],
+  "subject": "PHYSICS",
+  "academic_admission": "HOLD",
+  "source": {
+    "question_uid": "g9:PHYSICS:G9-AUTH-MECH-001",
+    "content_revision_sha256": "65eadfb0dfc06b4dc3c910ade26d5f5d005efea00be5d7c4f8128b3d45c29259",
+    "origin": "AUTHORED_PRACTICE_NOT_OFFICIAL_EXAM",
+    "academic_admission": "HOLD"
+  },
+  "lesson": {
+    "id": "G9-NSEJS-AUTH-MECH-001-CORE1",
+    "revision": "mechanics-collision-friction-authored-r1",
+    "topic": "MECHANICS",
+    "engine_adapter": "WPE_SCENARIO_DATA_ONLY",
+    "title": "Which conservation rule applies, and when?",
+    "short": "Collision → friction · choose a physical ledger",
+    "sourceCaution": "G9-AUTH-MECH-001 is original Grade9 authored practice, not an authenticated NSEJS paper item. Its proposed answer is not an official key; Physics/QRT academic admission remains HOLD.",
+    "core1a": {
+      "prerequisites": "Before this lesson, know momentum p=mv (kg·m/s), kinetic energy K=½mv² (J), normal force N=mg (N) on a level surface, friction magnitude μN and work W=F·d (J). Momentum and energy conservation have different physical conditions.",
+      "core": "Split the story into two phases: during a short STICKING impact with negligible external impulse, horizontal momentum is conserved but kinetic energy decreases. During the later slide, kinetic friction removes the remaining kinetic energy by negative work. Never feed the pre-impact kinetic energy directly into the stopping-distance calculation.",
+      "guide": "GUIDED ANCHOR — Two identical carts of mass m: first at +8 m/s, second at rest. They lock together after a brief impact with negligible horizontal external impulse, then traverse a rough horizontal surface with kinetic friction μ=0.25 and g=10 m/s². Adjust μ in the visual to see the post-impact stopping distance change without changing collision momentum.",
+      "question": "Why is momentum conserved during sticking but not during the subsequent friction-braking interval?",
+      "wrong": "Tempting wrong model: conserve kinetic energy through a STICKING collision. That predicts a joined speed too large and fails the energy audit. Another error is to keep conserving momentum during the rough-patch slide even though friction is an external horizontal force.",
+      "conditions": "Assume straight-line horizontal motion, collision duration short enough to neglect external horizontal impulse, carts stick perfectly, flat track with normal force equal to total weight, constant kinetic μ only after impact, no additional driving force or aerodynamic drag. The mass cancels from stopping distance for identical carts; with μ→0⁺ the distance diverges.",
+      "guideSteps": [
+        [
+          "Choose collision system and timescale",
+          "Take BOTH carts during short impact. With negligible external horizontal impulse, p_before=p_after even though the collision is inelastic."
+        ],
+        [
+          "Solve joined velocity",
+          "For equal m: m(8)+m(0)=(2m)V, so V=4 m/s to the right."
+        ],
+        [
+          "Audit energy lost in sticking",
+          "Before K=½m(8²)=32m J for m in kg; after K=½(2m)(4²)=16m J. The missing 16m J dissipates in deformation, heat or sound."
+        ],
+        [
+          "Apply friction only AFTER impact",
+          "F_k=μ(2m)g opposite travel. The 16m J remaining immediately after impact is what friction removes on the patch."
+        ],
+        [
+          "Solve and test boundaries",
+          "d=V²/(2μg)=16/(2×0.25×10)=3.2 m; m/s² divided by m/s² yields metres in the original formula. Halve μ → double d; if μ=0, the joined carts never stop without other forces."
+        ]
+      ],
+      "model": {
+        "kind": "SLIDER_MODEL",
+        "parameter": "friction_mu",
+        "label": "Kinetic friction coefficient μ after collision",
+        "min": 0.1,
+        "max": 0.6,
+        "step": 0.05,
+        "value": 0.25,
+        "units": "dimensionless",
+        "governing_formula": "d=(u1/2)^2/(2*mu*g); equal masses stick; u1=8 m/s; g=10 m/s²",
+        "inelastic_collision": true
+      },
+      "academic": {
+        "decision": "Which stage conserves what? Sticking conserves horizontal MOMENTUM during short contact, whereas the friction slide uses the work–energy theorem.",
+        "observe": "At fixed impact velocities and masses, joined speed stays 4 m/s while increasing μ makes the later stopping distance shorter.",
+        "validity": "Only a short impact with negligible external impulse and a later constant-kinetic-friction horizontal slide justify the two sequential equations.",
+        "limit": "μ→0⁺: stopping distance diverges; μ doubles: stopping distance halves; choosing an elastic impact instead changes the collision equations.",
+        "sourceBoundary": "This remains authored Grade9 Mechanics practice with science review HOLD and no official examination admission."
+      }
+    },
+    "reference_physics": {
+      "original": {
+        "m1_kg": 1,
+        "m2_kg": 1,
+        "u1_mps": 8,
+        "u2_mps": 0,
+        "mu": 0.25,
+        "g_mps2": 10,
+        "collision": "perfectly_inelastic",
+        "joined_speed_mps": 4,
+        "stopping_distance_m": 3.2,
+        "collision_energy_loss_per_m_kg_j": 16
+      },
+      "task_a": {
+        "m1_kg": 2,
+        "m2_kg": 1,
+        "u1_mps": 6,
+        "u2_mps": 0,
+        "mu": 0.2,
+        "g_mps2": 10,
+        "joined_speed_mps": 4,
+        "collision_loss_j": 12,
+        "post_collision_kinetic_j": 24,
+        "friction_force_n": 6,
+        "stopping_distance_m": 4
+      },
+      "task_b": {
+        "m1_kg": 1,
+        "m2_kg": 1,
+        "u1_mps": 6,
+        "u2_mps": 0,
+        "g_mps2": 10,
+        "collision": "perfectly_elastic",
+        "b_speed_mps": 6,
+        "observed_stop_m": 9,
+        "inferred_mu": 0.2,
+        "e_boundary": 0.5,
+        "b_boundary_speed_mps": 4.5,
+        "b_boundary_mu": 0.1125
+      }
+    }
+  },
+  "tasks": {
+    "A": {
+      "id": "G9-NSEJS-AUTH-MECH-001-A",
+      "reasoning_demand": "Choose a short-impact momentum ledger, quantify inelastic collision loss, then separately compute a stopping distance from friction work",
+      "prediction": "A 2 kg cart moving at 6 m/s sticks to a stationary 1 kg cart. Will the joined speed be 3 m/s, 4 m/s or 6 m/s? Explain what is conserved across the brief collision.",
+      "challenge": "FRESH TASK A — A 2.0 kg trolley moving right at 6.0 m/s sticks to a stationary 1.0 kg trolley on a level track. During impact the horizontal external impulse is negligible. Immediately afterwards the combined 3.0 kg assembly slides on a rough horizontal patch with kinetic friction coefficient 0.20; take g=10 m/s². Find their speed just after impact, energy dissipated in sticking, and stopping distance on the patch. Explain why the collision and braking require DIFFERENT conservation ledgers.",
+      "fields": [
+        {
+          "id": "model",
+          "label": "Which governing model is justified?",
+          "type": "select",
+          "choices": [
+            "Choose an idea",
+            "Conserve momentum during sticking; apply friction work after impact",
+            "Conserve kinetic energy through the sticking collision",
+            "Conserve momentum during friction braking",
+            "I'm not sure yet"
+          ],
+          "expected": "Conserve momentum during sticking; apply friction work after impact",
+          "mistake": "A sticking collision conserves system momentum for negligible external impulse, but destroys mechanical kinetic energy; friction subsequently does external work.",
+          "errorKind": "MODEL_CHOICE"
+        },
+        {
+          "id": "assumption",
+          "label": "Which conditions allow the two equations?",
+          "type": "select",
+          "choices": [
+            "Choose an idea",
+            "Negligible horizontal impact impulse; carts stick; constant kinetic friction afterwards",
+            "Perfectly elastic impact; no friction afterwards",
+            "Track friction dominates the short collision impulse",
+            "I'm not sure yet"
+          ],
+          "expected": "Negligible horizontal impact impulse; carts stick; constant kinetic friction afterwards",
+          "mistake": "The collision and the later slide are separate time intervals with distinct models.",
+          "errorKind": "INVALID_ASSUMPTION"
+        },
+        {
+          "id": "speed",
+          "label": "Joined speed immediately after collision (m/s)",
+          "type": "number",
+          "expected": 4,
+          "tol": 0.02,
+          "mistake": "Use (2×6+1×0)/(2+1)=4 m/s. Masses add only after sticking.",
+          "errorKind": "CALCULATION_OR_UNITS"
+        },
+        {
+          "id": "loss",
+          "label": "Collision kinetic energy lost (J)",
+          "type": "number",
+          "expected": 12,
+          "tol": 0.1,
+          "mistake": "Kbefore=½(2)(6²)=36 J; Kafter=½(3)(4²)=24 J; 12 J is dissipated in the sticking collision.",
+          "errorKind": "CALCULATION_OR_UNITS"
+        },
+        {
+          "id": "distance",
+          "label": "Distance during rough-patch slide (m)",
+          "type": "number",
+          "expected": 4,
+          "tol": 0.03,
+          "mistake": "Friction force μ(3 kg)g=6 N; 24 J/6 N = 4 m. Do not use initial 36 J for the post-collision slide.",
+          "errorKind": "CALCULATION_OR_UNITS"
+        },
+        {
+          "id": "reason",
+          "label": "Explain both conservation decisions, your signed forces, energy loss and units",
+          "type": "textarea"
+        }
+      ],
+      "hints": [
+        "During the short impact, isolate BOTH carts and account for horizontal impulse before choosing a conservation rule.",
+        "Compare kinetic energy before and after sticking. The lost kinetic energy is not available for the subsequent friction-braking work.",
+        "Friction acts AFTER collision: F=μ(m₁+m₂)g and its work magnitude is Fd=½(m₁+m₂)V²."
+      ],
+      "worked": [
+        [
+          "Choose separate intervals",
+          "Impact is brief with negligible horizontal external impulse, so momentum of the two carts is conserved across sticking. The later rough patch exerts external friction and is NOT a momentum-conserving interval."
+        ],
+        [
+          "Solve the inelastic collision",
+          "Initial momentum p=(2 kg)(6 m/s)=12 kg·m/s. The joined 3 kg mass must move at V=12/3=4 m/s rightward."
+        ],
+        [
+          "Audit kinetic-energy dissipation",
+          "Before impact ½(2 kg)(6²)=36 J; immediately after impact ½(3 kg)(4²)=24 J. The 12 J difference is dissipated by the inelastic collision, not recovered during braking."
+        ],
+        [
+          "Compute the resisting force",
+          "On the level patch, N=(3 kg)(10 m/s²)=30 N; Fk=μN=0.20×30 N=6 N opposite motion."
+        ],
+        [
+          "Finish by work and check units",
+          "The 24 J POST-collision kinetic energy is removed by 6 N×d. Thus d=24 J/6 N=4 m. J/N=m and V²/(2μg)=16/4=4 m independently."
+        ]
+      ],
+      "boundary": "CHANGED CONDITION A — The carts still stick with joined speed 4 m/s, but the next horizontal patch is ideal frictionless (μ=0) and has no other drag or braking force. Is there a finite stopping distance there? Explain the limiting case as μ→0⁺.",
+      "boundaryFields": [
+        {
+          "id": "model",
+          "label": "What does the μ=0 limit imply?",
+          "type": "select",
+          "choices": [
+            "Choose an idea",
+            "No finite stopping distance on an ideal frictionless horizontal patch",
+            "The 4 m stopping distance remains valid",
+            "Collision energy loss alone stops the joined carts",
+            "I'm not sure yet"
+          ],
+          "expected": "No finite stopping distance on an ideal frictionless horizontal patch",
+          "mistake": "With no force doing negative work after impact, joined speed stays constant; d=V²/(2μg) diverges for μ→0⁺.",
+          "errorKind": "MODEL_CHOICE"
+        },
+        {
+          "id": "why",
+          "label": "Explain why collision dissipation cannot stop the already-moving assembly after the impact",
+          "type": "textarea"
+        }
+      ],
+      "boundaryCheck": "When μ=0, the post-impact horizontal net force and friction work are zero. The stuck carts keep moving at 4 m/s; no finite stopping distance exists. The limiting d=V²/(2μg) tends to infinity as μ approaches zero from above.",
+      "first_attempt_policy": "SAVE_BEFORE_REVEAL",
+      "written_response_grading": "UNASSESSED"
+    },
+    "B": {
+      "id": "G9-NSEJS-AUTH-MECH-001-B",
+      "reasoning_demand": "Recognize an ELASTIC collision instead of sticking, infer the struck cart's speed, and invert friction work to identify μ from measured slide distance",
+      "prediction": "Two equal-mass carts collide head-on and separate perfectly elastically. One was initially at rest. Must they both leave moving at half the incoming speed? Predict the velocity of each and justify the collision model.",
+      "challenge": "UNFAMILIAR TASK B — A 1.0 kg laboratory air-track cart A moves right at 6.0 m/s into an identical stationary cart B. The head-on collision is explicitly perfectly ELASTIC and horizontal external impulse during contact is negligible. A stops after collision and B alone enters a level rough lane; B is observed to slide 9.0 m before stopping. Take g=10 m/s² and assume B's kinetic friction coefficient stays constant. Determine B's immediate post-impact speed and INFER the lane's μ. Explain why copying the original sticking formula would be a wrong model.",
+      "fields": [
+        {
+          "id": "model",
+          "label": "Which collision and friction model applies?",
+          "type": "select",
+          "choices": [
+            "Choose an idea",
+            "Conserve momentum AND kinetic energy in elastic collision; then use B-only friction work",
+            "Use the original stick-together speed and stop both carts",
+            "Conserve total momentum throughout friction braking",
+            "I'm not sure yet"
+          ],
+          "expected": "Conserve momentum AND kinetic energy in elastic collision; then use B-only friction work",
+          "mistake": "Perfectly elastic equal-mass collisions exchange velocities in this one-dimensional setup. Only the struck B cart is subsequently braked. Copying a sticking-collision shortcut is wrong for this explicitly elastic impact.",
+          "errorKind": "MODEL_CHOICE"
+        },
+        {
+          "id": "assumption",
+          "label": "Which claim is required to infer μ?",
+          "type": "select",
+          "choices": [
+            "Choose an idea",
+            "Head-on 1D elastic contact; B alone slides; steady kinetic friction; negligible other losses",
+            "The carts lock together and both enter rough patch",
+            "All kinetic energy is lost at impact despite elasticity",
+            "I'm not sure yet"
+          ],
+          "expected": "Head-on 1D elastic contact; B alone slides; steady kinetic friction; negligible other losses",
+          "mistake": "The measured B-only stopping distance identifies μ only with known collision outcome and a justified resistance model.",
+          "errorKind": "INVALID_ASSUMPTION"
+        },
+        {
+          "id": "speed",
+          "label": "Speed of B immediately after elastic contact (m/s)",
+          "type": "number",
+          "expected": 6,
+          "tol": 0.02,
+          "mistake": "For identical masses in 1D elastic impact with B initially stationary, their velocities exchange: B leaves at +6 m/s.",
+          "errorKind": "CALCULATION_OR_UNITS"
+        },
+        {
+          "id": "coefficient",
+          "label": "Inferred kinetic friction coefficient (dimensionless)",
+          "type": "number",
+          "expected": 0.2,
+          "tol": 0.005,
+          "mistake": "B's 18 J kinetic energy is dissipated over 9 m: μ=(6²)/(2×10×9)=0.20.",
+          "errorKind": "CALCULATION_OR_UNITS"
+        },
+        {
+          "id": "reason",
+          "label": "Explain why elastic energy conservation applies during collision, why B alone is braked and why μ is dimensionless",
+          "type": "textarea"
+        }
+      ],
+      "hints": [
+        "An ELASTIC impact differs fundamentally from sticking: conserve both momentum and kinetic energy during the short collision.",
+        "In a one-dimensional equal-mass elastic collision, the incoming cart transfers its velocity to the initially stationary cart.",
+        "For B only, use μmgd=½mv_B², cancel its mass and solve μ=v_B²/(2gd). A sticking assumption would give the wrong μ."
+      ],
+      "worked": [
+        [
+          "Read the contact model correctly",
+          "These equal-mass carts do NOT stick. During the brief isolated elastic impact, both total momentum and translational kinetic energy are conserved."
+        ],
+        [
+          "Resolve the velocities",
+          "For a 1D elastic collision between equal masses, velocities exchange. A stops (v_A=0), B moves right at v_B=6 m/s."
+        ],
+        [
+          "Choose the moving system for braking",
+          "Only B enters the rough 9 m lane. Its starting kinetic energy for the slide is K_B=½(1 kg)(6²)=18 J."
+        ],
+        [
+          "Infer the unknown surface resistance",
+          "Work by kinetic friction has magnitude μ(1 kg)(10 m/s²)(9 m)=90μ J. Setting equal to 18 J gives μ=0.20."
+        ],
+        [
+          "Check the incorrect sticking shortcut",
+          "If the carts had stuck, the speed would be 3 m/s and the unknown inferred coefficient would differ. That is a different experiment. Units: v²/(gd) is dimensionless."
+        ]
+      ],
+      "boundary": "CHANGED COLLISION MODEL B — Identical 1 kg carts now collide with coefficient of restitution e=0.50 instead of perfectly elastically, with initial speeds still +6 and 0 m/s. B alone slides 9.0 m on an unknown constant-friction lane. What is B's new post-impact speed, and what μ is implied? Justify your restitution and momentum equations.",
+      "boundaryFields": [
+        {
+          "id": "model",
+          "label": "What model replaces the elastic velocity exchange?",
+          "type": "select",
+          "choices": [
+            "Choose an idea",
+            "Conserve collision momentum and impose restitution e=0.50, then use B friction work",
+            "Reuse vB=6 m/s and μ=0.20 despite the changed restitution",
+            "Assume the carts stick because e is less than one",
+            "I'm not sure yet"
+          ],
+          "expected": "Conserve collision momentum and impose restitution e=0.50, then use B friction work",
+          "mistake": "With e=0.50, the carts still separate. Use vB−vA=e(uA−uB) together with momentum.",
+          "errorKind": "MODEL_CHOICE"
+        },
+        {
+          "id": "speed",
+          "label": "New B speed (m/s)",
+          "type": "number",
+          "expected": 4.5,
+          "tol": 0.03,
+          "mistake": "For equal masses, vB=(1+e)uA/2=4.5 m/s.",
+          "errorKind": "CALCULATION_OR_UNITS"
+        },
+        {
+          "id": "coefficient",
+          "label": "New inferred μ for the 9 m lane",
+          "type": "number",
+          "expected": 0.1125,
+          "tol": 0.003,
+          "mistake": "μ=(4.5²)/(2×10×9)=0.1125, not 0.20.",
+          "errorKind": "CALCULATION_OR_UNITS"
+        },
+        {
+          "id": "why",
+          "label": "Explain why e=0.50 changes the collision stage and the inferred friction coefficient",
+          "type": "textarea"
+        }
+      ],
+      "boundaryCheck": "Conserve momentum v_A+v_B=6 m/s and apply e=(v_B−v_A)/(6)=0.5. Thus v_B−v_A=3, giving v_B=4.5 m/s and v_A=1.5 m/s. B's observed 9 m stop implies μ=(4.5²)/(2×10×9)=0.1125. Do not assume sticking or full elasticity.",
+      "first_attempt_policy": "SAVE_BEFORE_REVEAL",
+      "written_response_grading": "UNASSESSED"
+    }
+  },
+  "source_return": {
+    "page": "nsejs/physics/question-bank.html",
+    "topic": "mechanics",
+    "question_uid": "g9:PHYSICS:G9-AUTH-MECH-001",
+    "content_revision_sha256": "65eadfb0dfc06b4dc3c910ade26d5f5d005efea00be5d7c4f8128b3d45c29259",
+    "route_status": "TECHNICAL_PREVIEW"
+  }
+}

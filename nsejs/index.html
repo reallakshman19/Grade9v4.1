@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NSEJS — Subject-wise Junior Science · Grade9 v4.0</title>
+  <meta name="description" content="NSEJS subject-wise Junior Science learning track: Physics, Chemistry, Biology. Optimized for 12.7 inch tablet. All questions labeled {Unvalidated}.">
+  <link rel="stylesheet" href="../site.css">
+  <link rel="stylesheet" href="../css/tablet-12-7.css">
+  <style>
+    :root {
+      --tab-max-w: 1380px;
+      --tab-ink: #102a43;
+      --tab-card-bg: #ffffff;
+      --tab-border: #d9e2ec;
+      --unval-bg: #fffbeb;
+      --unval-text: #92400e;
+      --unval-border: #fcd34d;
+    }
+    body {
+      background: #f0f4f8;
+      color: var(--tab-ink);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    .tablet-container {
+      max-width: var(--tab-max-w);
+      margin: 0 auto;
+      padding: 24px 32px 60px;
+    }
+    .tablet-hero {
+      background: linear-gradient(135deg, #0d3552 0%, #114760 60%, #126b69 100%);
+      color: white;
+      padding: 36px 32px;
+      border-radius: 16px;
+      margin-bottom: 28px;
+      box-shadow: 0 10px 25px -5px rgba(13,53,82,0.15);
+    }
+    .tablet-hero h1 {
+      font-size: 32px;
+      margin: 8px 0 12px;
+      font-weight: 800;
+    }
+    .tablet-hero p {
+      font-size: 17px;
+      max-width: 950px;
+      margin: 0 0 16px;
+      color: #e2e8f0;
+    }
+    .breadcrumbs-bar {
+      font-size: 14px;
+      color: #cbd5e1;
+      margin-top: 10px;
+    }
+    .breadcrumbs-bar a {
+      color: #9fe9d7;
+      text-decoration: none;
+    }
+    .unval-banner {
+      background: var(--unval-bg);
+      border: 1.5px solid var(--unval-border);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .unval-tag {
+      background: #fef08a;
+      color: #854d0e;
+      border: 1.5px solid #eab308;
+      font-weight: 800;
+      font-size: 13px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+    .unval-banner p {
+      margin: 0;
+      font-size: 14px;
+      color: #78350f;
+    }
+    
+    .sciences-grid-12-7 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+    @media (max-width: 990px) {
+      .sciences-grid-12-7 {
+        grid-template-columns: 1fr;
+      }
+    }
+    .science-card-tab {
+      background: var(--tab-card-bg);
+      border: 1.5px solid var(--tab-border);
+      border-radius: 16px;
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 14px rgba(16,42,67,0.04);
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    }
+    .science-card-tab:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(16,42,67,0.1);
+    }
+    .science-icon {
+      font-size: 38px;
+      width: 64px;
+      height: 64px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 16px;
+    }
+    .phys-bg { background: #e0f2fe; }
+    .chem-bg { background: #ccfbf1; }
+    .bio-bg { background: #dcfce7; }
+    
+    .science-card-tab h2 {
+      font-size: 24px;
+      font-weight: 800;
+      margin: 4px 0 8px;
+    }
+    .science-kicker {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .science-card-tab p {
+      font-size: 15px;
+      color: #475569;
+      margin: 0 0 20px;
+      flex: 1;
+    }
+    .science-btn {
+      min-height: 48px;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-weight: 800;
+      font-size: 15px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      touch-action: manipulation;
+    }
+    .phys-btn { background: #0284c7; color: white; }
+    .chem-btn { background: #0d9488; color: white; }
+    .bio-btn { background: #16a34a; color: white; }
+    .phys-btn:hover { background: #0369a1; }
+    .chem-btn:hover { background: #0f766e; }
+    .bio-btn:hover { background: #15803d; }
+    
+    .topic-pills-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 20px;
+    }
+    .topic-pill {
+      background: #f1f5f9;
+      color: #334155;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 6px;
+    }
+    
+    .tab-footer {
+      border-top: 1px solid #cbd5e1;
+      padding: 24px 0 10px;
+      margin-top: 40px;
+      text-align: center;
+      color: #64748b;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <header class="mast">
+    <div class="container top">
+      <a class="logo" href="../index.html"><i>G9</i>Grade9 v4.0</a>
+      <nav class="tabs" aria-label="NSEJS subject practice and Grade9 resources">
+        <a href="physics/index.html">⚛ Physics</a>
+        <a href="chemistry/index.html">🧪 Chemistry</a>
+        <a href="biology/index.html">🧬 Biology</a>
+        <a href="core2/index.html">🗺️ Core 2 Bank</a>
+        <a href="index.html" aria-current="page">🎯 NSEJS Hub</a>
+        <a href="../architecture/index.html">🧭 Architecture</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="tablet-container">
+    <div class="tablet-hero">
+      <div class="kicker">NSEJS · Science Hub</div>
+      <h1>NSEJS Subject-Wise Junior Science</h1>
+      <p>A rigorous examination-preparation curriculum across Physics, Chemistry, and Biology. Each science features 12.7" tablet-optimized topic hubs and Core 2 Question Banks with all items strictly labeled as {Unvalidated} under Rule 13 governance.</p>
+      <div class="breadcrumbs-bar">
+        <a href="../index.html">Home</a> / <a href="index.html">NSEJS</a> / Sciences
+      </div>
+    </div>
+
+    <div class="unval-banner">
+      <span class="unval-tag">{Unvalidated}</span>
+      <p><strong>Rule 13 Invariant Enforced:</strong> All candidate questions, figures, and worked derivations in these modules are candidate educational artifacts. No academic approval or authentic examination authority is inferred from automated software validation.</p>
+    </div>
+
+    <div class="sciences-grid-12-7">
+      
+      <!-- SCIENCE 1: PHYSICS -->
+      <article class="science-card-tab">
+        <div class="science-icon phys-bg">⚛️</div>
+        <span class="science-kicker" style="color:#0284c7;">Track 1 · 6 Topics · 50 source-claimed + 1 authored candidate</span>
+        <h2>Physics</h2>
+        <p>Explore Ray Optics, Mechanics, DC Circuits, Electrostatics, Magnetism &amp; EMI, and Fluids &amp; Sound.</p>
+        <div class="topic-pills-row">
+          <span class="topic-pill">Optics</span>
+          <span class="topic-pill">Mechanics</span>
+          <span class="topic-pill">Circuits</span>
+          <span class="topic-pill">Electrostatics</span>
+          <span class="topic-pill">Magnetism</span>
+          <span class="topic-pill">Fluids</span>
+        </div>
+        <div style="margin-bottom: 16px;">
+          <span class="unval-tag">{Core 2: Unvalidated}</span>
+        </div>
+        <a class="science-btn phys-btn" href="physics/index.html">Open Physics Topics →</a>
+      </article>
+
+      <!-- SCIENCE 2: CHEMISTRY -->
+      <article class="science-card-tab">
+        <div class="science-icon chem-bg">🧪</div>
+        <span class="science-kicker" style="color:#0d9488;">Track 2 · 6 Topics · candidate count unverified</span>
+        <h2>Chemistry</h2>
+        <p>Master Matter &amp; Moles, Chemical Reactions, Atomic Bonding, Phosphorus Oxyacids, Redox Titrations, and Eudiometry.</p>
+        <div class="topic-pills-row">
+          <span class="topic-pill">Mole Concept</span>
+          <span class="topic-pill">Reactions</span>
+          <span class="topic-pill">Atomic/Bonding</span>
+          <span class="topic-pill">Oxyacids</span>
+          <span class="topic-pill">Redox</span>
+          <span class="topic-pill">Eudiometry</span>
+        </div>
+        <div style="margin-bottom: 16px;">
+          <span class="unval-tag">{Core 2: Unvalidated}</span>
+        </div>
+        <a class="science-btn chem-btn" href="chemistry/index.html">Open Chemistry Topics →</a>
+      </article>
+
+      <!-- SCIENCE 3: BIOLOGY -->
+      <article class="science-card-tab">
+        <div class="science-icon bio-bg">🌱</div>
+        <span class="science-kicker" style="color:#16a34a;">Track 3 · 5 Topics · candidate count unverified</span>
+        <h2>Biology</h2>
+        <p>Understand Cytology &amp; Molecular Genetics, Photosynthesis &amp; Physiology, Endocrine Coordination, Heredity, and Marine Ecology.</p>
+        <div class="topic-pills-row">
+          <span class="topic-pill">Cell Genetics</span>
+          <span class="topic-pill">Life Processes</span>
+          <span class="topic-pill">Coordination</span>
+          <span class="topic-pill">Mendelian Heredity</span>
+          <span class="topic-pill">Ecology</span>
+        </div>
+        <div style="margin-bottom: 16px;">
+          <span class="unval-tag">{Core 2: Unvalidated}</span>
+        </div>
+        <a class="science-btn bio-btn" href="biology/index.html">Open Biology Topics →</a>
+      </article>
+
+    </div>
+
+    <footer class="tab-footer">
+      Rule 13 Invariant: No academic approval inferred from software validation. Green CI means automatic tests passed; it never means student release is authorized. All questions labeled {Unvalidated}.
+    </footer>
+  </main>
+<section id="core1-recovery-ledger" class="tablet-container" style="margin:26px auto;padding:20px;border:1px solid #bdada0;border-radius:12px;background:#fff9ed;color:#573f21"><h2>18 unavailable Core1 learning modules · recovery register</h2><p>These modules still lack checked-in, reproducible public authoring and independent source/academic acceptance. No fake lesson links.</p><a href="core1-recovery.html" style="display:inline-flex;min-height:56px;align-items:center;padding:12px 19px;color:#114e78">Inspect 18 recovery cases</a></section>
+<section id="official-iapt-links" style="max-width:1060px;margin:24px auto;padding:20px;border:2px solid #b6c9d3;border-radius:12px;background:#fff"><h2>Official IAPT source papers (external links only)</h2><p>Original papers stay on IAPT. These learning previews are not independently source-approved.</p><a style="display:inline-flex;align-items:center;min-height:56px;padding:12px 20px;background:#125a79;color:white;border-radius:10px" href="official-sources.html">View official paper/key links</a></section>
+</body>
+</html>
