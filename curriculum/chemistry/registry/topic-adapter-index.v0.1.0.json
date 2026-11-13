@@ -1,0 +1,217 @@
+{
+  "schema": "g9v41-chemistry-adapter-registry/v1",
+  "version": "0.1.0",
+  "status": "CANDIDATE_HANDOFF_NOT_RELEASED",
+  "baseline_commit": "82a782f12c57b5d9d25e9b1eb8d2053a56dfabc0",
+  "common_contracts": {
+    "syllabus": "curriculum/chemistry/syllabus/chemistry-syllabus.v1.json@0.1.0",
+    "core": "curriculum/chemistry/contracts/chem-core-authority.v0.1.0.json@0.1.0",
+    "blueprint": "curriculum/chemistry/blueprint/chemistry-qrt.D3-D4.v0.1.0.json@0.1.0",
+    "adapter_schema": "curriculum/chemistry/contracts/chem-topic-adapter.schema.v0.1.0.json@0.1.0"
+  },
+  "agents": {
+    "A": {
+      "owns": "C01-C07",
+      "also": "Common contract stewardship and semantic consistency review",
+      "branch": "feat/nsejs-chem-a-stage0-stage1-contracts-r1"
+    },
+    "B": {
+      "owns": "C08-C14",
+      "also": "Propose common contract gaps; do not edit shared contract without review",
+      "branch": "feat/nsejs-chem-c08-c14"
+    }
+  },
+  "units": [
+    {
+      "unit_id": "C01",
+      "owner_agent": "A",
+      "subtopic_count": 6,
+      "prerequisite_unit_refs": [],
+      "canonical_adapter_path": "curriculum/chemistry/adapters/C01.v1.json",
+      "adapter_status": "NOT_AUTHORED",
+      "pilot_exception": null,
+      "scope_status": "CANDIDATE_MAPPING"
+    },
+    {
+      "unit_id": "C02",
+      "owner_agent": "A",
+      "subtopic_count": 7,
+      "prerequisite_unit_refs": [
+        "C01"
+      ],
+      "canonical_adapter_path": "curriculum/chemistry/adapters/C02.v1.json",
+      "adapter_status": "NOT_AUTHORED",
+      "pilot_exception": null,
+      "scope_status": "CANDIDATE_MAPPING"
+    },
+    {
+      "unit_id": "C03",
+      "owner_agent": "A",
+      "subtopic_count": 6,
+      "prerequisite_unit_refs": [
+        "C01",
+        "C02"
+      ],
+      "canonical_adapter_path": "curriculum/chemistry/adapters/C03.v1.json",
+      "adapter_status": "NOT_AUTHORED",
+      "pilot_exception": null,
+      "scope_status": "CANDIDATE_MAPPING"
+    },
+    {
+      "unit_id": "C04",
+      "owner_agent": "A",
+      "subtopic_count": 6,
+      "prerequisite_unit_refs": [
+        "C03"
+      ],
+      "canonical_adapter_path": "curriculum/chemistry/adapters/C04.v1.json",
+      "adapter_status": "NOT_AUTHORED",
+      "pilot_exception": null,
+      "scope_status": "CANDIDATE_MAPPING"
+    },
+    {
+      "unit_id": "C05",
+      "owner_agent": "A",
+      "subtopic_count": 6,
+      "prerequisite_unit_refs": [
+        "C03"
+      ],
+      "canonical_adapter_path": "curriculum/chemistry/adapters/C05.v1.json",
+      "adapter_status": "NOT_AUTHORED",
+      "pilot_exception": null,
+      "scope_status": "CANDIDATE_MAPPING"
+    },
+    {
+      "unit_id": "C06",
+      "owner_agent": "A",
+      "subtopic_count": 6,
+      "prerequisite_unit_refs": [
+        "C05"
+      ],
+      "canonical_adapter_path": "curriculum/chemistry/adapters/C06.v1.json",
+      "adapter_status": "NOT_AUTHORED",
+      "pilot_exception": null,
+      "scope_status": "CANDIDATE_MAPPING"
+    },
+    {
+      "unit_id": "C07",
+      "owner_agent": "A",
+      "subtopic_count": 7,
+      "prerequisite_unit_refs": [
+        "C03",
+        "C05",
+        "C06"
+      ],
+      "canonical_adapter_path": "curriculum/chemistry/adapters/C07.v1.json",
+      "adapter_status": "NOT_AUTHORED",
+      "pilot_exception": "Illustrative example only; C07 full adapter not authored",
+      "scope_status": "CANDIDATE_MAPPING"
+    },
+    {
+      "unit_id": "C08",
+      "owner_agent": "B",
+      "subtopic_count": 6,
+      "prerequisite_unit_refs": [
+        "C03",
+        "C04"
+      ],
+      "canonical_adapter_path": "curriculum/chemistry/adapters/C08.v1.json",
+      "adapter_status": "NOT_AUTHORED",
+      "pilot_exception": null,
+      "scope_status": "CANDIDATE_MAPPING"
+    },
+    {
+      "unit_id": "C09",
+      "owner_agent": "B",
+      "subtopic_count": 6,
+      "prerequisite_unit_refs": [
+        "C04",
+        "C07",
+        "C08"
+      ],
+      "canonical_adapter_path": "curriculum/chemistry/adapters/C09.v1.json",
+      "adapter_status": "NOT_AUTHORED",
+      "pilot_exception": null,
+      "scope_status": "CANDIDATE_MAPPING"
+    },
+    {
+      "unit_id": "C10",
+      "owner_agent": "B",
+      "subtopic_count": 6,
+      "prerequisite_unit_refs": [
+        "C05",
+        "C06",
+        "C07",
+        "C08"
+      ],
+      "canonical_adapter_path": "curriculum/chemistry/adapters/C10.v1.json",
+      "adapter_status": "NOT_AUTHORED",
+      "pilot_exception": null,
+      "scope_status": "CANDIDATE_MAPPING"
+    },
+    {
+      "unit_id": "C11",
+      "owner_agent": "B",
+      "subtopic_count": 7,
+      "prerequisite_unit_refs": [
+        "C07",
+        "C08"
+      ],
+      "canonical_adapter_path": "curriculum/chemistry/adapters/C11.v1.json",
+      "adapter_status": "NOT_AUTHORED",
+      "pilot_exception": null,
+      "scope_status": "CANDIDATE_MAPPING"
+    },
+    {
+      "unit_id": "C12",
+      "owner_agent": "B",
+      "subtopic_count": 5,
+      "prerequisite_unit_refs": [
+        "C01",
+        "C04",
+        "C08"
+      ],
+      "canonical_adapter_path": "curriculum/chemistry/adapters/C12.v1.json",
+      "adapter_status": "NOT_AUTHORED",
+      "pilot_exception": null,
+      "scope_status": "CANDIDATE_MAPPING"
+    },
+    {
+      "unit_id": "C13",
+      "owner_agent": "B",
+      "subtopic_count": 5,
+      "prerequisite_unit_refs": [
+        "C04",
+        "C05",
+        "C08"
+      ],
+      "canonical_adapter_path": "curriculum/chemistry/adapters/C13.v1.json",
+      "adapter_status": "NOT_AUTHORED",
+      "pilot_exception": null,
+      "scope_status": "CANDIDATE_MAPPING"
+    },
+    {
+      "unit_id": "C14",
+      "owner_agent": "B",
+      "subtopic_count": 5,
+      "prerequisite_unit_refs": [
+        "C01",
+        "C02",
+        "C08",
+        "C09"
+      ],
+      "canonical_adapter_path": "curriculum/chemistry/adapters/C14.v1.json",
+      "adapter_status": "NOT_AUTHORED",
+      "pilot_exception": null,
+      "scope_status": "CANDIDATE_MAPPING"
+    }
+  ],
+  "policy": {
+    "no_cross_agent_writes": true,
+    "preexisting_generated_pages_unchanged": true,
+    "new_adapter_requires": "Schema validation + three distinct demand operations + syllabus ID join + QRT refs + canonical truth resolution",
+    "shared_upgrade": "Agent A authors a version bump after accepted gap; Agent B pins the new SHA explicitly",
+    "existing_source_anchors": "Candidate registry and historical Core2 map are separate; no official source promotion"
+  },
+  "handoff_status": "AGENT_B_MAY_BEGIN_C08_C14_INVENTORY_AND_ADAPTER_CANDIDATES_WITH_EXPLICIT_ACADEMIC_HOLD"
+}
