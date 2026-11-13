@@ -1,0 +1,634 @@
+{
+  "schema": "g9v41-chem-core1ab-book/v1",
+  "version": "0.1.0",
+  "unit_id": "C04",
+  "title": "Mole Concept and Stoichiometry",
+  "academic_status": "ACADEMIC_HOLD_AUTHOR_DRAFT",
+  "scope_note": "C04.01–.02 SCOPE_REVIEW; C04.05–.06 EXTENSION; mathematical complexity not evidence of official compulsory syllabus",
+  "introduction": "Chemistry becomes quantitative when we connect mass, particle counts and balanced equations. Every calculation begins with a careful definition of what is counted and ends with a conservation check. We distinguish stoichiometric ideal predictions from real experimental outcomes.",
+  "source_refs": [
+    "CBSE-IX-2026",
+    "CBSE-X-2026",
+    "SI-2019-MOLE-DEFINITION"
+  ],
+  "subtopics": [
+    {
+      "id": "CHEM-C04.01",
+      "title": "Mole as a counting unit (scope check)",
+      "entry_question": "What does 'one mole' mean, and why should chemists need a counting unit larger than a dozen?",
+      "core1a_paragraphs": [
+        "Chemists cannot individually count atoms in a macroscopic sample. A mole is the SI unit for amount of substance, containing exactly 6.02214076 × 10²³ specified elementary entities. The 'specified' part matters: one mole of O₂ molecules contains two moles of O atoms.",
+        "An amount in moles is not itself a mass. Molar mass connects amount of substance to mass: n=m/M when m and M are expressed in compatible units. This makes counts of molecules accessible through a balance.",
+        "An ordinary classroom stoichiometry task should state the counted entity. One mole of NaCl formula units is a convenient chemical amount description, although a NaCl crystal is not made from separate small NaCl molecules."
+      ],
+      "representation": "Show a three-column count ladder: mass in grams ↔ moles ↔ elementary entities; labels specify H₂O molecules, Na⁺ ions or NaCl formula units.",
+      "worked_example": {
+        "problem": "How many water molecules are present in 0.50 mol of H₂O?",
+        "steps": [
+          "A mole contains the Avogadro constant N_A of specified entities.",
+          "Number of molecules = nN_A.",
+          "0.50 × 6.02214076×10²³ ≈3.01×10²³ molecules.",
+          "The number of H atoms in those molecules is twice as large."
+        ],
+        "result": "About 3.01×10²³ water molecules.",
+        "check": "Less than one mole must correspond to fewer than N_A molecules."
+      },
+      "misconception": {
+        "wrong": "A mole means exactly one gram of any substance.",
+        "why": "The molar mass varies with the species.",
+        "repair": "Always distinguish amount, particle count and mass."
+      },
+      "demands": [
+        {
+          "instance_id": "C04-01-EXPLAIN-D3",
+          "template_ref": "QRT-EXPLAIN-D3",
+          "primary_operation": "EXPLAIN",
+          "band": "D3",
+          "title": "Why 'specified entities' matters",
+          "core1a_explanation": "The mole is a counting unit; changing the counted object changes the relationship between chemical amounts.",
+          "worked_reasoning": "0.20 mol of O₂ molecules contains 0.40 mol of oxygen atoms because each molecule contains two O atoms.",
+          "independent_check": "Count atom multiplicity explicitly.",
+          "hints": [
+            "Write a ledger for the chemical species and units given.",
+            "Check the balanced reaction and identify exactly which quantity is conserved.",
+            "Identify the bridging mole quantity; leave the final route selection to yourself."
+          ],
+          "core1b": {
+            "predict": "Predict the relevant ratio or limiting quantity and record the assumptions.",
+            "attempt": "Explain the difference between 0.25 mol O₂ molecules and 0.25 mol O atoms.",
+            "reconstruct": "Recreate the amount-of-substance ledger and explain every conversion or reaction relation.",
+            "diagnose": "Assess whether this tempting approach would fail: Moles of molecules and moles of constituent atoms are identical",
+            "repair": "Name the entity and apply each molecular subscript to atom amounts.",
+            "boundary": "Would the relationship be different for ozone O₃?",
+            "model_response": "0.25 mol O₂ molecules contains 0.50 mol O atoms. 0.25 mol O atoms is half as many oxygen atoms, equivalent to 0.125 mol O₂ molecules if paired as O₂."
+          }
+        },
+        {
+          "instance_id": "C04-02-REPRESENT-D3",
+          "template_ref": "QRT-REPRESENT-D3",
+          "primary_operation": "REPRESENT",
+          "band": "D3",
+          "title": "Mole-number to microscopic count",
+          "core1a_explanation": "Translate amount of a specified chemical entity to an integer-scale microscopic population without changing entity identity.",
+          "worked_reasoning": "0.10 mol H₂O represents ~6.022×10²² molecules and twice that many H atoms.",
+          "independent_check": "Carry units 'formula units' and 'ions'.",
+          "hints": [
+            "Write a ledger for the chemical species and units given.",
+            "Check the balanced reaction and identify exactly which quantity is conserved.",
+            "Identify the bridging mole quantity; leave the final route selection to yourself."
+          ],
+          "core1b": {
+            "predict": "Predict the relevant ratio or limiting quantity and record the assumptions.",
+            "attempt": "What number of chloride ions is present in 0.20 mol CaCl₂ formula units in an ideal ionic accounting?",
+            "reconstruct": "Recreate the amount-of-substance ledger and explain every conversion or reaction relation.",
+            "diagnose": "Assess whether this tempting approach would fail: One CaCl₂ formula unit contains one Cl ion",
+            "repair": "Read subscripts as entity multiplicities and use nN_A.",
+            "boundary": "How many moles of calcium ions are represented by the same sample?",
+            "model_response": "Each formula unit has two chloride ions, so 0.20 mol CaCl₂ units corresponds to 0.40 mol chloride ions or approximately 2.41×10²³ chloride ions."
+          }
+        },
+        {
+          "instance_id": "C04-03-JUSTIFY-D4",
+          "template_ref": "QRT-JUSTIFY-D4",
+          "primary_operation": "JUSTIFY",
+          "band": "D4",
+          "title": "Mole ratio under dissociation",
+          "core1a_explanation": "A stated mole amount does not uniquely specify measured electrical carriers without knowing dissociation and the environment.",
+          "worked_reasoning": "0.10 mol undissociated molecular solute has a different ideal ion count than 0.10 mol fully dissociated NaCl.",
+          "independent_check": "State conditions and chemical species.",
+          "hints": [
+            "Write a ledger for the chemical species and units given.",
+            "Check the balanced reaction and identify exactly which quantity is conserved.",
+            "Identify the bridging mole quantity; leave the final route selection to yourself."
+          ],
+          "core1b": {
+            "predict": "Predict the relevant ratio or limiting quantity and record the assumptions.",
+            "attempt": "Someone claims 0.10 mol of any solute always yields 0.20 mol dissolved ions. Evaluate with at least two substances.",
+            "reconstruct": "Recreate the amount-of-substance ledger and explain every conversion or reaction relation.",
+            "diagnose": "Assess whether this tempting approach would fail: Mole unit automatically implies double ion concentration",
+            "repair": "Check ionic dissociation versus molecular dissolution.",
+            "boundary": "What changes for ideal dissociation of CaCl₂?",
+            "model_response": "False. NaCl ideally produces two ions per formula unit in dilute aqueous solution; glucose remains mostly molecular, so does not give that ion count. Speciation and conditions determine carrier amounts."
+          }
+        }
+      ],
+      "source_notes": "Quantitative mole arithmetic explicitly SCOPE_REVIEW relative to the detailed secondary syllabus.",
+      "scope": "SCOPE_REVIEW"
+    },
+    {
+      "id": "CHEM-C04.02",
+      "title": "Mass, number of particles and molar mass (scope check)",
+      "entry_question": "If a tiny number of water molecules weighs almost nothing, why does a mole of them weigh about 18 grams?",
+      "core1a_paragraphs": [
+        "Relative atomic masses give the mass contribution of the atoms in a formula. Molar mass expresses mass per mole of specified entities. Water has 2 hydrogens and 1 oxygen, so approximately M(H₂O) = 2(1)+16=18 g/mol.",
+        "The conversions n=m/M and N=nN_A are a bridge between scales. Use the correct identity for each substance: oxygen gas is O₂ with 32 g/mol, while one mole of oxygen atoms has about 16 g mass.",
+        "Unit analysis can expose major errors. A mass divided by a molar mass gives moles; multiplying moles by molar mass gives grams; multiplying moles by Avogadro's constant gives a count, not grams."
+      ],
+      "representation": "One mole ladder with arrows g / (g mol⁻¹) → mol and mol × (entities mol⁻¹) → entities. Specify masses are approximate when using rounded atomic masses.",
+      "worked_example": {
+        "problem": "Find the moles in 9 g water and its approximate molecule count.",
+        "steps": [
+          "M(H₂O)=18 g/mol.",
+          "n=9 g / (18 g/mol)=0.50 mol.",
+          "Number =0.50×6.022×10²³.",
+          "The count is about 3.01×10²³ molecules."
+        ],
+        "result": "0.50 mol, about 3.01×10²³ molecules.",
+        "check": "The resulting molecular count is half the count in a mole."
+      },
+      "misconception": {
+        "wrong": "Use water's formula mass 18 as the number of molecules in one gram.",
+        "why": "Mass units and amount of substance are different physical quantities.",
+        "repair": "Write the full unit alongside each numerical value."
+      },
+      "demands": [
+        {
+          "instance_id": "C04-04-APPLY-D3",
+          "template_ref": "QRT-APPLY-D3",
+          "primary_operation": "APPLY",
+          "band": "D3",
+          "title": "Mass → amount → count",
+          "core1a_explanation": "Two conversions are connected by amount n; the formula mass is the required bridge.",
+          "worked_reasoning": "4.4 g CO₂ with M=44 g/mol is 0.10 mol and about 6.02×10²² molecules.",
+          "independent_check": "Separate molecular count from atom count.",
+          "hints": [
+            "Write a ledger for the chemical species and units given.",
+            "Check the balanced reaction and identify exactly which quantity is conserved.",
+            "Identify the bridging mole quantity; leave the final route selection to yourself."
+          ],
+          "core1b": {
+            "predict": "Predict the relevant ratio or limiting quantity and record the assumptions.",
+            "attempt": "How many molecules are in 8.8 g CO₂ (M=44 g/mol)?",
+            "reconstruct": "Recreate the amount-of-substance ledger and explain every conversion or reaction relation.",
+            "diagnose": "Assess whether this tempting approach would fail: A molecule's gram value is 44 g",
+            "repair": "Maintain g/mol units and interpret mole as bulk amount.",
+            "boundary": "How many oxygen atoms are in these molecules?",
+            "model_response": "n=8.8/44=0.20 mol; N≈1.204×10²³ CO₂ molecules."
+          }
+        },
+        {
+          "instance_id": "C04-05-MODEL-D3",
+          "template_ref": "QRT-MODEL-D3",
+          "primary_operation": "MODEL",
+          "band": "D3",
+          "title": "Which mass model corresponds to the entity?",
+          "core1a_explanation": "The same element symbol can denote atom O, diatomic molecule O₂ or oxide ion O²⁻; molar-mass choice depends on specified species.",
+          "worked_reasoning": "One mole O₂ molecules weighs ~32 g; one mole O atoms weighs ~16 g.",
+          "independent_check": "Read subscripts before choosing M.",
+          "hints": [
+            "Write a ledger for the chemical species and units given.",
+            "Check the balanced reaction and identify exactly which quantity is conserved.",
+            "Identify the bridging mole quantity; leave the final route selection to yourself."
+          ],
+          "core1b": {
+            "predict": "Predict the relevant ratio or limiting quantity and record the assumptions.",
+            "attempt": "A sealed bottle contains 0.50 mol O₂. What is the oxygen gas mass, and why is 8 g an incorrect answer?",
+            "reconstruct": "Recreate the amount-of-substance ledger and explain every conversion or reaction relation.",
+            "diagnose": "Assess whether this tempting approach would fail: An element's atomic mass is automatically the gas molar mass",
+            "repair": "Translate chemical species first, then calculate.",
+            "boundary": "Would the mass change if 0.50 mol O atoms were specified instead?",
+            "model_response": "Mass =0.50×32=16 g. The 8 g answer uses atomic oxygen molar mass 16 for a sample specified as O₂ molecules."
+          }
+        },
+        {
+          "instance_id": "C04-06-SYNTHESIZE-D4",
+          "template_ref": "QRT-SYNTHESIZE-D4",
+          "primary_operation": "SYNTHESIZE",
+          "band": "D4",
+          "title": "Infer species from mass and count",
+          "core1a_explanation": "Molar mass inferred independently from m and N may constrain molecular identity but not prove a unique structure.",
+          "worked_reasoning": "A gas sample 0.20 mol with mass 6.4 g has molar mass 32 g/mol, consistent with O₂ among simple gases.",
+          "independent_check": "Distinguish mass-derived M from complete identity.",
+          "hints": [
+            "Write a ledger for the chemical species and units given.",
+            "Check the balanced reaction and identify exactly which quantity is conserved.",
+            "Identify the bridging mole quantity; leave the final route selection to yourself."
+          ],
+          "core1b": {
+            "predict": "Predict the relevant ratio or limiting quantity and record the assumptions.",
+            "attempt": "A sample contains 3.011×10²² molecules and weighs 2.2 g. Infer its molar mass and suggest a compatible simple gas.",
+            "reconstruct": "Recreate the amount-of-substance ledger and explain every conversion or reaction relation.",
+            "diagnose": "Assess whether this tempting approach would fail: Molar mass uniquely identifies a compound",
+            "repair": "State a plausible species and remaining ambiguity.",
+            "boundary": "Could another molecular formula yield the same molar mass?",
+            "model_response": "n≈0.05 mol; M=2.2/0.05=44 g/mol. CO₂ is compatible, but the mass alone cannot uniquely identify a gas."
+          }
+        }
+      ],
+      "source_notes": "Quantitative mole model is a marked scope-review topic.",
+      "scope": "SCOPE_REVIEW"
+    },
+    {
+      "id": "CHEM-C04.03",
+      "title": "Balancing reaction equations and mole ratios",
+      "entry_question": "Why must coefficients change when balancing a chemical equation, but subscripts must not?",
+      "core1a_paragraphs": [
+        "A chemical equation represents both chemical identities and the relative numbers of reacting entities. Subscripts belong to a species' identity; coefficients count how many units take part.",
+        "Balancing ensures the same number of atoms of each element on both sides. A balanced equation also defines the stoichiometric mole ratio for the reaction as written, assuming that reaction occurs as specified.",
+        "For hydrogen combustion, 2H₂ + O₂ → 2H₂O means two moles hydrogen molecules react with one mole oxygen molecules to produce two moles water molecules. It does not mean every real experiment reaches completion or contains exactly those amounts initially."
+      ],
+      "representation": "Draw two H₂ plus one O₂ producing two H₂O. Colour-match each hydrogen and oxygen atom across the arrow.",
+      "worked_example": {
+        "problem": "Balance Al + O₂ → Al₂O₃ and state the aluminium-to-oxygen mole ratio.",
+        "steps": [
+          "Product has two Al and three O per formula unit.",
+          "Use 2Al₂O₃ so oxygen count becomes 6, achievable with 3O₂.",
+          "Aluminium count on product side is 4; use 4Al.",
+          "Coefficients are 4:3:2 for Al:O₂:Al₂O₃."
+        ],
+        "result": "4Al + 3O₂ → 2Al₂O₃; ratio Al/O₂ =4/3.",
+        "check": "Al=4, O=6 on each side."
+      },
+      "misconception": {
+        "wrong": "Change product Al₂O₃ into AlO to make smaller coefficients.",
+        "why": "AlO would denote a different chemical composition.",
+        "repair": "Keep species fixed and balance with integer coefficients."
+      },
+      "demands": [
+        {
+          "instance_id": "C04-07-EXPLAIN-D3",
+          "template_ref": "QRT-EXPLAIN-D3",
+          "primary_operation": "EXPLAIN",
+          "band": "D3",
+          "title": "Why coefficients encode mole ratios",
+          "core1a_explanation": "Coefficients satisfy the atom ledger and then become ratios of amount of substance.",
+          "worked_reasoning": "2H₂ + O₂ →2H₂O has a 2:1:2 molecule or mole ratio, not 2:1:1 by mass.",
+          "independent_check": "Check mass separately with molar masses.",
+          "hints": [
+            "Write a ledger for the chemical species and units given.",
+            "Check the balanced reaction and identify exactly which quantity is conserved.",
+            "Identify the bridging mole quantity; leave the final route selection to yourself."
+          ],
+          "core1b": {
+            "predict": "Predict the relevant ratio or limiting quantity and record the assumptions.",
+            "attempt": "Why can 3 mol O₂ react with 6 mol H₂ to give 6 mol H₂O under complete combustion?",
+            "reconstruct": "Recreate the amount-of-substance ledger and explain every conversion or reaction relation.",
+            "diagnose": "Assess whether this tempting approach would fail: Stoichiometric coefficients are masses measured in grams",
+            "repair": "Interpret coefficients as counts or moles of entities.",
+            "boundary": "Would the gram masses follow the same 2:1:2 ratio?",
+            "model_response": "The balanced reaction consumes 2 mol H₂ per 1 mol O₂; scaling its coefficients by three gives 6,3,6 mol, conserving H and O atoms."
+          }
+        },
+        {
+          "instance_id": "C04-08-REPRESENT-D3",
+          "template_ref": "QRT-REPRESENT-D3",
+          "primary_operation": "REPRESENT",
+          "band": "D3",
+          "title": "Equation as atom ledger",
+          "core1a_explanation": "A valid representation must conserve each element and preserve chemical formulas.",
+          "worked_reasoning": "For iron oxide formation: 4Fe + 3O₂ → 2Fe₂O₃ conserves Fe4, O6.",
+          "independent_check": "Atom counts of every element must agree.",
+          "hints": [
+            "Write a ledger for the chemical species and units given.",
+            "Check the balanced reaction and identify exactly which quantity is conserved.",
+            "Identify the bridging mole quantity; leave the final route selection to yourself."
+          ],
+          "core1b": {
+            "predict": "Predict the relevant ratio or limiting quantity and record the assumptions.",
+            "attempt": "Balance C₂H₆ + O₂ → CO₂ + H₂O using integer coefficients.",
+            "reconstruct": "Recreate the amount-of-substance ledger and explain every conversion or reaction relation.",
+            "diagnose": "Assess whether this tempting approach would fail: It is acceptable to change ethane C₂H₆ into C₂H₄ when balancing",
+            "repair": "Only coefficients can vary.",
+            "boundary": "Verify oxygen count as the final independent step.",
+            "model_response": "2C₂H₆ + 7O₂ → 4CO₂ + 6H₂O. C=4, H=12, O=14 on both sides."
+          }
+        },
+        {
+          "instance_id": "C04-09-SYNTHESIZE-D4",
+          "template_ref": "QRT-SYNTHESIZE-D4",
+          "primary_operation": "SYNTHESIZE",
+          "band": "D4",
+          "title": "Partial reaction and remaining reagent",
+          "core1a_explanation": "Stoichiometric ratios describe consumed amounts, not initial amounts. A limiting-reagent question adds an inventory constraint.",
+          "worked_reasoning": "With 5 mol H₂ and 2 mol O₂, oxygen can consume only 4 mol H₂, leaving 1 mol H₂.",
+          "independent_check": "Account for all initial species.",
+          "hints": [
+            "Write a ledger for the chemical species and units given.",
+            "Check the balanced reaction and identify exactly which quantity is conserved.",
+            "Identify the bridging mole quantity; leave the final route selection to yourself."
+          ],
+          "core1b": {
+            "predict": "Predict the relevant ratio or limiting quantity and record the assumptions.",
+            "attempt": "A closed vessel begins with 3 mol H₂ and 2 mol O₂. Assuming complete H₂ combustion, find final H₂O and unreacted O₂ amounts.",
+            "reconstruct": "Recreate the amount-of-substance ledger and explain every conversion or reaction relation.",
+            "diagnose": "Assess whether this tempting approach would fail: All initial reagent amounts are automatically consumed",
+            "repair": "Compare available mole ratios with reaction ratio.",
+            "boundary": "Would starting with 4 mol H₂ and 2 mol O₂ change leftover gas?",
+            "model_response": "2H₂:1O₂. Hydrogen is limiting; 3 mol H₂ requires 1.5 mol O₂, produces 3 mol H₂O and leaves 0.5 mol O₂."
+          }
+        }
+      ],
+      "source_notes": "Balance and reaction ratio CORE candidate; limiting inference EXTENSION cross-reference.",
+      "scope": "CORE_CANDIDATE"
+    },
+    {
+      "id": "CHEM-C04.04",
+      "title": "Reaction composition and mass relationships",
+      "entry_question": "Why do two grams of hydrogen gas and sixteen grams of oxygen gas not necessarily make eighteen grams of water?",
+      "core1a_paragraphs": [
+        "Chemical combination follows balanced atom ratios, not arbitrary total mass. Hydrogen and oxygen gases react as 2H₂ + O₂ → 2H₂O. To find whether reagents are in the correct proportions, convert their masses into moles first.",
+        "Use M(H₂)=2 g/mol and M(O₂)=32 g/mol. The required mass ratio for complete consumption is 4 g H₂ to 32 g O₂, or 1:8 by mass. In a closed system, the initial total mass equals the masses of product and leftovers combined.",
+        "Mass-conservation and stoichiometric calculation are different but compatible constraints. The first checks the total; the second determines how much of each product or leftover species exists."
+      ],
+      "representation": "Reaction ledger with rows initial moles, reacted moles, remaining moles, produced moles. Separate masses and moles.",
+      "worked_example": {
+        "problem": "React 4 g H₂ with 32 g O₂ and assume complete reaction.",
+        "steps": [
+          "n(H₂)=4/2=2 mol; n(O₂)=32/32=1 mol.",
+          "Ratio 2:1 exactly matches the balanced equation.",
+          "2 mol water form; mass =2×18=36 g.",
+          "No unreacted reagent remains in the ideal model."
+        ],
+        "result": "36 g H₂O.",
+        "check": "4 g +32 g=36 g."
+      },
+      "misconception": {
+        "wrong": "Simply add reagent masses and assign the sum to product even when one reagent is in excess.",
+        "why": "Any unreacted material is part of final mass and must be deducted from product mass.",
+        "repair": "Compute reacted moles first; then convert to product mass."
+      },
+      "demands": [
+        {
+          "instance_id": "C04-10-APPLY-D3",
+          "template_ref": "QRT-APPLY-D3",
+          "primary_operation": "APPLY",
+          "band": "D3",
+          "title": "Reaction ratio in mass units",
+          "core1a_explanation": "Chemistry converts grams to moles before applying equation ratios.",
+          "worked_reasoning": "2 g H₂ is 1 mol and needs 0.5 mol O₂ =16 g to produce 1 mol H₂O =18 g.",
+          "independent_check": "Verify mass conservation.",
+          "hints": [
+            "Write a ledger for the chemical species and units given.",
+            "Check the balanced reaction and identify exactly which quantity is conserved.",
+            "Identify the bridging mole quantity; leave the final route selection to yourself."
+          ],
+          "core1b": {
+            "predict": "Predict the relevant ratio or limiting quantity and record the assumptions.",
+            "attempt": "If 16 g O₂ reacts completely with enough H₂, what mass of H₂O forms?",
+            "reconstruct": "Recreate the amount-of-substance ledger and explain every conversion or reaction relation.",
+            "diagnose": "Assess whether this tempting approach would fail: Use H₂/O₂ gram ratio 2:1 because equation coefficients are 2:1",
+            "repair": "Use moles, not coefficient mass ratios.",
+            "boundary": "Check 16+2=18 g.",
+            "model_response": "16 g O₂=0.50 mol, consumes 1 mol H₂ (2 g), produces 1 mol H₂O (18 g)."
+          }
+        },
+        {
+          "instance_id": "C04-11-MODEL-D3",
+          "template_ref": "QRT-MODEL-D3",
+          "primary_operation": "MODEL",
+          "band": "D3",
+          "title": "Mass-based limiting check",
+          "core1a_explanation": "Initial masses must be compared after normalising to stoichiometric quantities.",
+          "worked_reasoning": "4 g H₂ needs 32 g O₂. If only 16 g O₂ exists, oxygen is limiting.",
+          "independent_check": "Compute both limiting extents.",
+          "hints": [
+            "Write a ledger for the chemical species and units given.",
+            "Check the balanced reaction and identify exactly which quantity is conserved.",
+            "Identify the bridging mole quantity; leave the final route selection to yourself."
+          ],
+          "core1b": {
+            "predict": "Predict the relevant ratio or limiting quantity and record the assumptions.",
+            "attempt": "A student mixes 4 g H₂ and 16 g O₂. Which reagent controls H₂O production?",
+            "reconstruct": "Recreate the amount-of-substance ledger and explain every conversion or reaction relation.",
+            "diagnose": "Assess whether this tempting approach would fail: Reactant with smaller gram mass is always limiting",
+            "repair": "Compare moles divided by reaction coefficients.",
+            "boundary": "If 40 g O₂ were supplied instead, which reagent would be limiting?",
+            "model_response": "n(H₂)=2 mol, n(O₂)=0.5 mol; oxygen is limiting because 0.5 mol O₂ consumes only 1 mol H₂. Product =1 mol H₂O =18 g; 1 mol H₂ remains."
+          }
+        },
+        {
+          "instance_id": "C04-12-SYNTHESIZE-D4",
+          "template_ref": "QRT-SYNTHESIZE-D4",
+          "primary_operation": "SYNTHESIZE",
+          "band": "D4",
+          "title": "Inverse reaction ledger",
+          "core1a_explanation": "Observed product mass can determine reacted amounts if reaction and conditions are known; excess reagent requires a second measurement.",
+          "worked_reasoning": "36 g H₂O signals 2 mol water and thus 2 mol H₂ consumed, 1 mol O₂ consumed under ideal equation.",
+          "independent_check": "Check element and mass balances.",
+          "hints": [
+            "Write a ledger for the chemical species and units given.",
+            "Check the balanced reaction and identify exactly which quantity is conserved.",
+            "Identify the bridging mole quantity; leave the final route selection to yourself."
+          ],
+          "core1b": {
+            "predict": "Predict the relevant ratio or limiting quantity and record the assumptions.",
+            "attempt": "A reaction produces 54 g H₂O from H₂ + O₂, with sufficient reactants. Determine masses consumed of each gas.",
+            "reconstruct": "Recreate the amount-of-substance ledger and explain every conversion or reaction relation.",
+            "diagnose": "Assess whether this tempting approach would fail: Product mass alone determines initial excess amounts",
+            "repair": "Infer consumed amounts only; initial inventory may contain excess.",
+            "boundary": "How could measurement of leftover gas determine initial quantities?",
+            "model_response": "54 g water =3 mol. Consumed H₂=3 mol=6 g; consumed O₂=1.5 mol=48 g. Total 54 g."
+          }
+        }
+      ],
+      "source_notes": "Mass-based chemical calculation connected to C03 and C04.",
+      "scope": "CORE_CANDIDATE"
+    },
+    {
+      "id": "CHEM-C04.05",
+      "title": "Limiting reactants and excess (extension)",
+      "entry_question": "What makes a reagent limiting, and why isn't the one with fewer grams necessarily the limiting one?",
+      "core1a_paragraphs": [
+        "A limiting reactant is used up first if a specified reaction proceeds as modeled. Its available quantity compared with its coefficient determines how many complete reaction 'sets' can take place.",
+        "For aA + bB → products, compare n(A)/a and n(B)/b. The smaller nonnegative value limits the reaction extent, under ideal single-reaction and completion assumptions. The other reagent may be in excess.",
+        "The method gives a model, not a guarantee of actual chemical yield. Reaction rates, side reactions, equilibrium and incomplete mixing can change observations; separate the stoichiometric maximum from an experimental outcome."
+      ],
+      "representation": "Use a two-column ledger of available moles/coefficient for reactants and a product yield arrow determined by the smaller extent.",
+      "worked_example": {
+        "problem": "5 mol H₂ and 2 mol O₂ react by 2H₂ + O₂ →2H₂O. Identify limiting reagent.",
+        "steps": [
+          "H₂ normalized amount =5/2=2.5 reaction units.",
+          "O₂ normalized amount =2/1=2 reaction units.",
+          "O₂ limits to 2 reaction units.",
+          "H₂ consumed 4 mol, remaining 1 mol; water formed 4 mol."
+        ],
+        "result": "O₂ limiting; 4 mol H₂O; 1 mol H₂ leftover.",
+        "check": "Initial 5,2 minus consumed 4,2 equals leftovers 1,0."
+      },
+      "misconception": {
+        "wrong": "The reactant with the smaller initial mole amount is always limiting.",
+        "why": "Coefficients represent required ratios; absolute mole count alone is insufficient.",
+        "repair": "Normalize each initial amount by its balanced coefficient."
+      },
+      "demands": [
+        {
+          "instance_id": "C04-13-APPLY-D3",
+          "template_ref": "QRT-APPLY-D3",
+          "primary_operation": "APPLY",
+          "band": "D3",
+          "title": "Normalize by coefficients",
+          "core1a_explanation": "Compare available moles per reaction set, not raw counts.",
+          "worked_reasoning": "For 2A+B→products, nA=3, nB=2 gives extents 1.5 and 2; A is limiting.",
+          "independent_check": "Use the reaction extent method.",
+          "hints": [
+            "Write a ledger for the chemical species and units given.",
+            "Check the balanced reaction and identify exactly which quantity is conserved.",
+            "Identify the bridging mole quantity; leave the final route selection to yourself."
+          ],
+          "core1b": {
+            "predict": "Predict the relevant ratio or limiting quantity and record the assumptions.",
+            "attempt": "For 3A+2B→C, starting nA=6 mol and nB=3 mol, identify limiting reactant.",
+            "reconstruct": "Recreate the amount-of-substance ledger and explain every conversion or reaction relation.",
+            "diagnose": "Assess whether this tempting approach would fail: Less A than B automatically means A limits",
+            "repair": "Divide each reactant amount by its own coefficient.",
+            "boundary": "Would B still limit if nB=5?",
+            "model_response": "A allows 6/3=2 units; B allows 3/2=1.5 units. B limits, so 1.5 mol C can form in the ideal equation."
+          }
+        },
+        {
+          "instance_id": "C04-14-MODEL-D3",
+          "template_ref": "QRT-MODEL-D3",
+          "primary_operation": "MODEL",
+          "band": "D3",
+          "title": "Find yield and leftovers",
+          "core1a_explanation": "The extent fixes every amount consumed or produced in a single specified reaction.",
+          "worked_reasoning": "In 2H₂+O₂→2H₂O with nH₂=5 and nO₂=2, extent=2 gives 4 mol water, leaves 1 mol H₂.",
+          "independent_check": "Declare the single-reaction idealisation.",
+          "hints": [
+            "Write a ledger for the chemical species and units given.",
+            "Check the balanced reaction and identify exactly which quantity is conserved.",
+            "Identify the bridging mole quantity; leave the final route selection to yourself."
+          ],
+          "core1b": {
+            "predict": "Predict the relevant ratio or limiting quantity and record the assumptions.",
+            "attempt": "A + 2B → 3C starts with A=2 mol and B=3 mol. Predict maximum C and leftover A.",
+            "reconstruct": "Recreate the amount-of-substance ledger and explain every conversion or reaction relation.",
+            "diagnose": "Assess whether this tempting approach would fail: All starting A is consumed because its coefficient is smaller",
+            "repair": "Use extent consistently for products and leftover reactants.",
+            "boundary": "What happens if a side reaction consumes some B?",
+            "model_response": "Extent min(2/1,3/2)=1.5 mol; C=4.5 mol; A consumed 1.5, leftover 0.5 mol."
+          }
+        },
+        {
+          "instance_id": "C04-15-SYNTHESIZE-D4",
+          "template_ref": "QRT-SYNTHESIZE-D4",
+          "primary_operation": "SYNTHESIZE",
+          "band": "D4",
+          "title": "Reverse limiting problem",
+          "core1a_explanation": "A product count plus leftover data can constrain initial composition; deductions depend on correct reaction identity.",
+          "worked_reasoning": "Given a completed 2H₂+O₂ reaction, water amount 4 mol and leftover H₂ 1 mol imply initial H₂=5 mol, O₂ at least 2 mol; without leftover O₂ measurement its initial amount is not uniquely fixed.",
+          "independent_check": "Explicit identifiability and mole balance.",
+          "hints": [
+            "Write a ledger for the chemical species and units given.",
+            "Check the balanced reaction and identify exactly which quantity is conserved.",
+            "Identify the bridging mole quantity; leave the final route selection to yourself."
+          ],
+          "core1b": {
+            "predict": "Predict the relevant ratio or limiting quantity and record the assumptions.",
+            "attempt": "A completed ideal H₂/O₂ reaction produces 2 mol H₂O, leaves 1 mol O₂ and no H₂. Find both starting mole amounts.",
+            "reconstruct": "Recreate the amount-of-substance ledger and explain every conversion or reaction relation.",
+            "diagnose": "Assess whether this tempting approach would fail: Final product mass alone determines every initial reactant amount",
+            "repair": "Use measured leftovers to close the remaining degrees of freedom.",
+            "boundary": "If the leftover O₂ were not measured, would initial O₂ be uniquely known?",
+            "model_response": "2 mol water consumed 2 mol H₂ and 1 mol O₂. With no H₂ leftover, initial H₂=2 mol. O₂ initial = consumed 1+leftover 1=2 mol."
+          }
+        }
+      ],
+      "source_notes": "EXTENSION: deliberately beyond simple coefficient matching.",
+      "scope": "EXTENSION"
+    },
+    {
+      "id": "CHEM-C04.06",
+      "title": "Yield and multireaction stoichiometry (extension)",
+      "entry_question": "If the balanced equation predicts 10 g product, why might an experiment recover only 7 g?",
+      "core1a_paragraphs": [
+        "The theoretical yield is the maximum amount of the target product predicted from the limiting reactant under the specified stoichiometric model. Actual isolated product may be lower due to incomplete conversion, side reactions or recovery losses.",
+        "Percent yield is commonly defined as actual isolated target-product mass divided by theoretical target-product mass, multiplied by 100. It is meaningful only when the compared products refer to the same chemical species and purity basis.",
+        "Multistage syntheses connect several material balances. Loss in one stage changes the reactant available to the next; multiplying independent stage yields is valid only under corresponding proportional-yield assumptions."
+      ],
+      "representation": "Use a flow diagram reactant → theoretical target → actual recovered target, with waste and recovery-loss arrows. Each arrow carries an explicit mass basis.",
+      "worked_example": {
+        "problem": "A stoichiometric reaction predicts 12 g product; experiment isolates 9 g of pure target.",
+        "steps": [
+          "Define theoretical target product mass =12 g.",
+          "Define actual isolated pure target product mass =9 g.",
+          "Percent yield =9/12×100.",
+          "The ratio is 75%."
+        ],
+        "result": "75% yield.",
+        "check": "0≤ yield≤100% under ordinary valid definitions; apparent >100% signals impurity or basis error."
+      },
+      "misconception": {
+        "wrong": "Any lower mass proves the chemistry failed completely.",
+        "why": "Incomplete conversion and physical collection losses are different mechanisms.",
+        "repair": "Separate chemical conversion from isolated-product recovery."
+      },
+      "demands": [
+        {
+          "instance_id": "C04-16-APPLY-D3",
+          "template_ref": "QRT-APPLY-D3",
+          "primary_operation": "APPLY",
+          "band": "D3",
+          "title": "Yield with correct species basis",
+          "core1a_explanation": "An actual/theoretical comparison requires compatible chemical identity and purity bases.",
+          "worked_reasoning": "If 20 g theoretical and 15 g pure actual, yield 75%. A wet product measured at 18 g can overstate recovered pure mass.",
+          "independent_check": "Use purified mass.",
+          "hints": [
+            "Write a ledger for the chemical species and units given.",
+            "Check the balanced reaction and identify exactly which quantity is conserved.",
+            "Identify the bridging mole quantity; leave the final route selection to yourself."
+          ],
+          "core1b": {
+            "predict": "Predict the relevant ratio or limiting quantity and record the assumptions.",
+            "attempt": "A 16 g theoretical sample gives 12 g dry purified product. Find percent yield.",
+            "reconstruct": "Recreate the amount-of-substance ledger and explain every conversion or reaction relation.",
+            "diagnose": "Assess whether this tempting approach would fail: Use the reactant mass as denominator for yield",
+            "repair": "Compare masses of the same target product.",
+            "boundary": "What happens if the product sample contains 2 g solvent?",
+            "model_response": "12/16×100 =75%. Product identity and dryness are assumed independently verified."
+          }
+        },
+        {
+          "instance_id": "C04-17-MODEL-D3",
+          "template_ref": "QRT-MODEL-D3",
+          "primary_operation": "MODEL",
+          "band": "D3",
+          "title": "Differentiate reaction from recovery",
+          "core1a_explanation": "Two pathways can lower isolated yield: conversion inefficiency and collection inefficiency. Data from only final mass may not distinguish them.",
+          "worked_reasoning": "A reaction could produce 10 g target but lose 3 g on filtration, or chemically produce 7 g and collect all; final 7 g is shared.",
+          "independent_check": "Do not claim mechanism from net yield alone.",
+          "hints": [
+            "Write a ledger for the chemical species and units given.",
+            "Check the balanced reaction and identify exactly which quantity is conserved.",
+            "Identify the bridging mole quantity; leave the final route selection to yourself."
+          ],
+          "core1b": {
+            "predict": "Predict the relevant ratio or limiting quantity and record the assumptions.",
+            "attempt": "A 10 g theoretical experiment isolates 7 g. Does the measurement alone prove 30% unreacted reactant?",
+            "reconstruct": "Recreate the amount-of-substance ledger and explain every conversion or reaction relation.",
+            "diagnose": "Assess whether this tempting approach would fail: All missing target mass equals unreacted starting mass",
+            "repair": "List distinct loss channels and design independent measurements.",
+            "boundary": "How would measuring leftover reactant help?",
+            "model_response": "No. Material may be lost in separation, converted to side products or left unreacted. Additional chemical analyses are required to attribute the 3 g gap."
+          }
+        },
+        {
+          "instance_id": "C04-18-SYNTHESIZE-D4",
+          "template_ref": "QRT-SYNTHESIZE-D4",
+          "primary_operation": "SYNTHESIZE",
+          "band": "D4",
+          "title": "Two-stage effective yield",
+          "core1a_explanation": "Sequential stages with independent proportional retention multiply their yield fractions; this is a conditional model.",
+          "worked_reasoning": "If stage 1 yields 80% of theoretical and stage 2 converts 50% of stage-1 available material to a mass-scaled target, overall fraction is 0.8×0.5=0.4 relative to the appropriate theoretical baseline.",
+          "independent_check": "Check dimensional basis and factor multiplication.",
+          "hints": [
+            "Write a ledger for the chemical species and units given.",
+            "Check the balanced reaction and identify exactly which quantity is conserved.",
+            "Identify the bridging mole quantity; leave the final route selection to yourself."
+          ],
+          "core1b": {
+            "predict": "Predict the relevant ratio or limiting quantity and record the assumptions.",
+            "attempt": "An ideal route could give 25 g final product from initial input. Stage 1 operates at 80% and stage 2 at 60% of its stage-specific theoretical outcome. Under proportional assumptions, what final mass is expected?",
+            "reconstruct": "Recreate the amount-of-substance ledger and explain every conversion or reaction relation.",
+            "diagnose": "Assess whether this tempting approach would fail: Average 80% and 60% to get the overall yield",
+            "repair": "Apply the second fraction to the reduced amount from stage 1.",
+            "boundary": "Would doubling only the stage-2 yield double final output?",
+            "model_response": "25×0.8×0.6=12 g final product. The calculation requires that the ideal 25 g basis and sequential proportional yields are defined consistently."
+          }
+        }
+      ],
+      "source_notes": "EXTENSION, not an asserted compulsory Class X topic.",
+      "scope": "EXTENSION"
+    }
+  ]
+}
