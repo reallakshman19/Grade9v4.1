@@ -178,6 +178,21 @@
       - Link integrity verified: 121 internal links tested with 0 broken links.
       - Browser subagent audited at 1366x854 viewport: 0 console errors, 0px horizontal scroll overflow, all 18 module cards rendered and filterable, $\ge 48\text{px}$ touch targets verified, and live navigation traversal confirmed.
 
+21. **QRT Terms, Cognitive Demand Visibility & Blueprint Governance Benchmark**:
+    - **Blueprint Reality Articulated**: Added architecture documentation clarifying that Physics operates under draft WPE pilot blueprints (`PHYS-QRT-BLUEPRINT 0.2.0`), while Chemistry and Biology have NO approved blueprints. All demand scores (`MODEL / D2`, etc.) are author proposals under `{Unvalidated} · HOLD: ACADEMIC_ADMISSION`. Green software builds only satisfy Stage 7 mechanical compliance; Stage 8 independent human review remains required.
+    - **QRT Demand & Crux Surface on Recovery Dashboard**: Updated `nsejs/core1-recovery.html` with high-contrast QRT badges (`[QRT: MODEL · D2]`, `[QRT: SYNTHESIZE · D3]`) and explicit Crux move codes across all 18 cards.
+    - **NSEJS Hub Benchmark Section**: Added `#qrt-blueprint-benchmark` section to `nsejs/index.html` detailing the 7 canonical operations (`RETRIEVE`..`JUSTIFY`) and D1–D4 cognitive demand bands.
+    - **Tab 1 Full Stem & SVG Rendering**: Replaced legacy empty disclaimers with full reference problem statements, vector SVG diagrams ($\ge 14\text{px}$ text), and interactive commitment forms in `chem-electronic-structure-d3-r1` and `bio-immunology-defense-d3-r1`.
+
+22. **Elimination of Internal Agent Jargon & Full Lesson Header Standardization**:
+    - **Eliminated Internal Agent Plumbing**: Eradicated all student-facing leaks of multi-agent plumbing (`Agent A`, `Core2 source... belong to Agent A`, `remain with Agent A`) from `nsejs/physics/core1/nsejs-optics-displacement-d3-r1/index.html`.
+    - **Standardized Tab Navigation**: Replaced confusing `Core 2 status` tab labels with standardized `1. Core 2 Target Problem`, `2. Core 1A Teaching Path`, `3. Core 1B Reconstruction` across Chemistry and Biology flagship modules.
+    - **High-Visibility QRT Metadata Header**: Added standardized, high-contrast metadata bars across `nsejs-optics-displacement-d3-r1`, `chem-electronic-structure-d3-r1`, and `bio-immunology-defense-d3-r1` displaying `Target Item ID`, `Demand Band & Score`, `Cognitive Demand Operation`, and `Crux Move Code`.
+    - **Authoring Pipeline Flowchart Invariant Added**: Updated `architecture/pipeline-flowchart.html` with the *Elimination of Internal Agent Jargon* architecture standard.
+    - **Dual-Engine Automated & Browser Verification**:
+      - Static audit `tools/audit_nsejs_pages.py`: 43/43 pages passed, 826/826 internal links verified.
+      - Headless browser subagent verified at 1366x854 tablet viewport: 0 console errors, Tab 1 active with full problem statements, SVG diagrams rendered, 0 occurrences of "Agent A" or custody notices.
+
 ---
 
 ## 2. Active Verification State
