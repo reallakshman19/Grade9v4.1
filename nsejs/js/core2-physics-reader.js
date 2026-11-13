@@ -1,4 +1,4 @@
-/* Agent A: NSEJS Core2 candidate reader. No Core1A/Core1B authorship or academic admissions. */
+/* Grade9 v4.0: NSEJS Physics Core 2 Candidate Question Bank Reader. */
 (function () {
   "use strict";
   const TOPICS = [
