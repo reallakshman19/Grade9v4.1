@@ -1,0 +1,483 @@
+{
+  "schema": "g9v41-nsejs-physics-topic-package/v1",
+  "subject_id": "PHYSICS",
+  "academic_track": "NSEJS",
+  "topic_id": "PH08",
+  "owner_agent": "AGENT_2",
+  "version": "0.3.0-b01.3",
+  "status": "DRAFT_AUTHOR_EXPOSED",
+  "pins": {
+    "contracts_version": "1.0.0",
+    "blueprint": {
+      "version": "0.2.0",
+      "git_blob_sha": "700dafcbe86d76442637bcf214eeb544497cf4ea"
+    },
+    "shared_qrt_28": {
+      "version": "1.0.0",
+      "git_blob_sha": "e2409aef11ae7d98444593bfbe1a38eb00c97cef"
+    },
+    "topic_adapter_version": "0.3.0-b01.3"
+  },
+  "syllabus_references": [
+    {
+      "reference_id": "PH08-CBSE-2026-SOUND",
+      "locator": "https://cbseacademic.nic.in/web_material/CurriculumMain27/SecPart1/ScienceSt_SecP1_2026-27.pdf — Class IX Science 086, Sound, pp. 17–18 (PDF pages 17–18)",
+      "authority": "OFFICIAL_SYLLABUS",
+      "scope_status": "CANDIDATE"
+    }
+  ],
+  "subtopics": [
+    {
+      "id": "PH08-05",
+      "title": "Sound speed: periodic waves and travel-time measurements",
+      "scope_role": "SYLLABUS_CORE_CANDIDATE",
+      "syllabus_reference_ids": [
+        "PH08-CBSE-2026-SOUND"
+      ],
+      "prerequisite_ids": [
+        "PH08-04"
+      ],
+      "science_ref_ids": [
+        "PH08-05-SCI-01"
+      ],
+      "learning_goal": "Pattern speed relates frequency and wavelength in a uniform medium; travel times add along segments, and fixed instrumental delay must be distinguished from propagation time.",
+      "textbook_chapter_ref": "nsejs/physics/curriculum/topics/PH08/b01/PH08-05/core1a.html",
+      "qrt_targets": [
+        {
+          "id": "PH08-05-B01-D3-MODEL-01",
+          "task_identity": "G9-B01-PH08-05-MODEL-R1",
+          "band": "D3",
+          "primary_operation": "MODEL",
+          "blueprint_cell": "D3.4",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Separate constant detector delay from physical propagation by testing an affine time–distance model against an independent observation.",
+          "decisive_route": "A pulse arrives after 5.5 ms at 1.05 m and 9.5 ms at 2.45 m using one apparatus. A third distance of 3.50 m gives 12.5 ms. Find speed and offset and decide whether the readings support the fixed-delay model. Shortest valid route: v=1.40/0.004=350 m/s; τ=5.5−3=2.5 ms. Third predicted 10+2.5=12.5 ms agrees.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "Choose proportional-time or additive-offset model."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "Interpret time–distance readings as slope and intercept."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Derive slope, determine intercept, test unused datum."
+            },
+            "algebra_computational_load": {
+              "score": 1,
+              "evidence": "Difference and unit conversion."
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "Nonzero offset invalidates single-distance division."
+            }
+          }
+        },
+        {
+          "id": "PH08-05-B01-D3-REPRESENT-01",
+          "task_identity": "G9-B01-PH08-05-REPRESENT-R1",
+          "band": "D3",
+          "primary_operation": "REPRESENT",
+          "blueprint_cell": "D3.5",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Construct a piecewise time–distance graph from local wavelength data and preserve the distinction between transit time and period.",
+          "decisive_route": "A steady source of 400 Hz sends sound across a 0.9 m section with λ=0.75 m followed by 0.6 m with λ=1.25 m. Sketch cumulative travel time versus path distance at all three boundaries and infer overall speed. Shortest valid route: Local speeds 300 and 500 m/s. Graph points (0,0), (0.9,3 ms), (1.5,4.2 ms); effective speed≈357.14 m/s. First slope steeper.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 1,
+              "evidence": "Identify same source and two uniform media."
+            },
+            "representation_translation": {
+              "score": 2,
+              "evidence": "Map each local wavelength to a speed and graph slope."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Compute speeds then segment slopes and total transit time."
+            },
+            "algebra_computational_load": {
+              "score": 1,
+              "evidence": "Unit conversion and two segment calculations."
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "Slower segment has larger time-versus-distance slope."
+            }
+          }
+        },
+        {
+          "id": "PH08-05-B01-D4-SYNTHESIZE-01",
+          "task_identity": "G9-B01-PH08-05-SYNTHESIZE-R1",
+          "band": "D4",
+          "primary_operation": "SYNTHESIZE",
+          "blueprint_cell": "D4.6",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Resolve the unknown path composition and common timing offset from two independent paths, and establish which measurements determine a unique solution.",
+          "decisive_route": "A 2 m direct path contains unknown length x in medium A and the rest in B. A 500 Hz source has λA=0.60 m and λB=1.00 m. The apparatus reports 7.2 ms through the mixed path and 5.6 ms through 2 m entirely in B. Both have the same unknown delay. A separate 1 m path entirely in A reports 4.933 ms (rounded). Find x and delay, and assess consistency. Shortest valid route: vA=300, vB=500 m/s. All B propagation 4 ms, τ=1.6 ms. Mixed propagation 5.6 ms; extra 1.6 ms=x(1/300−1/500), so x=1.2 m. Third predicts 3.333+1.6=4.933 ms. Physically admissible x.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "Choose layered transit model over one averaged speed or uncorrected arrival."
+            },
+            "representation_translation": {
+              "score": 2,
+              "evidence": "Coordinate paired path compositions and measured time constraints."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Infer local speed from periodic data, eliminate offset, solve length, back-substitute and independently verify."
+            },
+            "algebra_computational_load": {
+              "score": 1,
+              "evidence": "Routine coupled equations with multiple quantities."
+            },
+            "trap_exception_sensitivity": {
+              "score": 2,
+              "evidence": "Equal paths are redundant; physically admissible fraction and independent measurement matter."
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "science_records": [
+    {
+      "id": "PH08-05-SCI-01",
+      "claim": "Pattern speed relates frequency and wavelength in a uniform medium; travel times add along segments, and fixed instrumental delay must be distinguished from propagation time.",
+      "law_or_model": "v=fλ; t=L/v; t_measured=τ+Σ(L_i/v_i)",
+      "assumptions": [
+        "Uniform stationary medium within each segment; fixed source frequency across a stationary interface.",
+        "Straight prescribed path, no refraction or reflections unless stated; pulse detection delay is additive and constant where assumed."
+      ],
+      "conditions_and_limits": [
+        "Uniform stationary medium within each segment; fixed source frequency across a stationary interface.",
+        "Straight prescribed path, no refraction or reflections unless stated; pulse detection delay is additive and constant where assumed.",
+        "Time-of-flight and period are distinct time quantities; avoid applying v=fλ to mismatched observations.",
+        "Effective speed uses total path/total propagation time, excluding sensor delay."
+      ],
+      "units_and_signs": "v in m/s, λ and path lengths in m, f in Hz, t and τ in s; segment times add, not speeds.",
+      "source_refs": [
+        "PH08-CBSE-2026-SOUND"
+      ],
+      "qualification_status": "HOLD"
+    }
+  ],
+  "topic_adapter": {
+    "adapter_id": "PHYS-TOPIC-PH08",
+    "topic_id": "PH08",
+    "version": "0.3.0-b01.3",
+    "for_blueprint": "PHYS-QRT-BLUEPRINT 0.2.0",
+    "status": "CANDIDATE_ONLY",
+    "cells": [
+      {
+        "cell_id": "D3.4",
+        "instance_ids": [
+          "PH08-05-B01-D3-MODEL-01"
+        ]
+      },
+      {
+        "cell_id": "D3.5",
+        "instance_ids": [
+          "PH08-05-B01-D3-REPRESENT-01"
+        ]
+      },
+      {
+        "cell_id": "D4.6",
+        "instance_ids": [
+          "PH08-05-B01-D4-SYNTHESIZE-01"
+        ]
+      }
+    ]
+  },
+  "core1a": [
+    {
+      "id": "PH08-05-B01-CORE1A-R1",
+      "subtopic_id": "PH08-05",
+      "covered_qrt_ids": [
+        "PH08-05-B01-D3-MODEL-01",
+        "PH08-05-B01-D3-REPRESENT-01",
+        "PH08-05-B01-D4-SYNTHESIZE-01"
+      ],
+      "phenomenon": "A sound pulse takes measurable time to travel between sensors; a periodic source supplies an independent wavelength and frequency measurement.",
+      "scientific_narrative": "A sound disturbance transports energy through a medium. In a uniform stationary medium, a periodic pattern advances one wavelength λ during one period T, so its speed v=λ/T=fλ. This is a relation between the properties of the same wave, not a prescription for changing the speed by changing frequency. Sound speed depends on the medium and its state, including temperature. If a source maintains its frequency as a wave crosses a stationary boundary, the temporal repetitions remain continuous; wavelength changes when speed changes.\n\nA pulse provides an independent speed measurement. For a known straight path length L and a measured propagation time t, v=L/t. A real trigger or sensor may add a fixed time offset τ, so a single reported time cannot separate τ from propagation. With the same apparatus at two different path lengths, t₂−t₁=(L₂−L₁)/v, so the slope of time versus distance is 1/v. The intercept is τ under the constant-offset model. A third observation can test that model rather than merely reproduce the two points that determined it. If the signal is reflected, the path length must include all propagation legs; PH08-08 develops that geometry.\n\nIf a direct path includes consecutive uniform sections, total travel time equals L₁/v₁+L₂/v₂. The effective speed is total distance divided by total travel time, not the arithmetic mean of speeds unless special conditions establish it. A slower segment contributes a disproportionately large travel time. At a stationary interface, frequency stays fixed for steady transmission; use the local wavelength to infer the local speed. For an unknown length fraction, separate the known total length from the unknown segment length, then write a time equation for each independent observation. Two measurements with the same unknown common delay may be redundant; subtracting them removes that delay only if they actually differ in propagation path.\n\nA reliable calculation labels the horizontal axis, distinguishes pulse delay from oscillation period, converts milliseconds to seconds, and checks the inferred speed against an independent measurement. If the data cannot distinguish two models, report the ambiguity. This subtopic supports the existing Core2 sound-wave candidate; the timing and layered-medium inverse constructions are new authored transfer, not additional authenticated exam questions.",
+      "prerequisites": [
+        "PH08-04"
+      ],
+      "derivation_steps": [
+        {
+          "action": "Identify a temporal period and same-phase spatial spacing or a pulse's physical path.",
+          "why_valid": "A complete period advances one wavelength; a pulse path is a separate measurement.",
+          "science_ref_id": "PH08-05-SCI-01"
+        },
+        {
+          "action": "Express travel time as segment lengths divided by local speeds.",
+          "why_valid": "Consecutive travel times add by definition; the speed is constant only within each stated segment.",
+          "science_ref_id": "PH08-05-SCI-01"
+        },
+        {
+          "action": "Remove common offset with independent differences and solve for unknown length or speed.",
+          "why_valid": "Subtracting cancels a genuinely common instrumental term; independent paths supply the missing constraint.",
+          "science_ref_id": "PH08-05-SCI-01"
+        },
+        {
+          "action": "Test the result on a measurement not used to fit the model.",
+          "why_valid": "Residuals reveal incorrect path, nonconstant delay or incompatible data.",
+          "science_ref_id": "PH08-05-SCI-01"
+        }
+      ],
+      "model_limits": [
+        "Uniform stationary medium within each segment; fixed source frequency across a stationary interface.",
+        "Straight prescribed path, no refraction or reflections unless stated; pulse detection delay is additive and constant where assumed.",
+        "Time-of-flight and period are distinct time quantities; avoid applying v=fλ to mismatched observations.",
+        "Effective speed uses total path/total propagation time, excluding sensor delay."
+      ],
+      "progressive_examples": [
+        {
+          "id": "PH08-05-B01-EX1",
+          "tier": "FOUNDATION",
+          "problem": "A sound source has frequency 500 Hz and wavelength 0.68 m. Find the wave speed.",
+          "reasoning": "v=500×0.68=340 m/s.",
+          "independent_check": "T=0.002 s; the pattern advances 0.68 m in that time."
+        },
+        {
+          "id": "PH08-05-B01-EX2",
+          "tier": "CONNECTED",
+          "problem": "A direct pulse reaches a sensor at 0.68 m after 3 ms and at 1.70 m after 6 ms; apparatus delay is constant. Find v and τ.",
+          "reasoning": "Difference 1.02 m/0.003 s=340 m/s. τ=3−2=1 ms.",
+          "independent_check": "At 1.70 m, 5 ms propagation plus 1 ms delay gives 6 ms."
+        },
+        {
+          "id": "PH08-05-B01-EX3",
+          "tier": "ADVANCED",
+          "problem": "A 1.2 m path has 0.4 m at 200 m/s and 0.8 m at 400 m/s. Find propagation time and effective speed; source f=400 Hz.",
+          "reasoning": "t=2+2=4 ms, effective speed=300 m/s. Local wavelengths 0.5 m and 1 m.",
+          "independent_check": "Distance = 200×0.002+400×0.002=1.2 m; arithmetic mean happens to equal the effective speed here because times match."
+        }
+      ],
+      "figures": [
+        {
+          "id": "PH08-05-FIG-01",
+          "reasoning_step": "Travel time with a fixed offset",
+          "scene_description": "Two sensors and a common trigger delay; the difference between arrival times determines the propagation slope. Original inline SVG, not source examination figure.",
+          "source_or_authorship": "ORIGINAL_B01_SVG_INLINE"
+        }
+      ],
+      "misconception": {
+        "wrong_model": "A higher frequency automatically means a higher speed; averaging medium speeds or including a trigger delay gives the physical speed.",
+        "diagnostic": "Can two different frequencies travel with the same speed? What happens to the arrival-time slope when every timestamp is shifted?",
+        "repair": "Use local v=fλ, add propagation times, and fit the common offset separately."
+      },
+      "exit_check": {
+        "task": "A 600 Hz source has wavelengths 0.50 m and 0.75 m in two media. A pulse crosses 0.6 m in each. Find transit time.",
+        "answer": "3.33 ms (approximately).",
+        "reasoning": "Speeds 300 and 450 m/s, times 2 ms and 1.333 ms; add them."
+      },
+      "authorship_status": "DRAFT_AUTHOR_EXPOSED"
+    }
+  ],
+  "core1b": [
+    {
+      "id": "PH08-05-B01-MAIN-MODEL-R1",
+      "kind": "MAIN",
+      "subtopic_id": "PH08-05",
+      "qrt_target_id": "PH08-05-B01-D3-MODEL-01",
+      "fresh_task": "A signal arrival time is 4 ms at 0.60 m and 10 ms at 2.40 m. Another instrument reports 300 m/s. Test whether a single speed and an additive delay can explain the measurements, then predict the time at 1.50 m.",
+      "protected_work": "Separate constant detector delay from physical propagation by testing an affine time–distance model against an independent observation.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Record your initial interpretation and confidence before viewing support.",
+        "attempt": "A signal arrival time is 4 ms at 0.60 m and 10 ms at 2.40 m. Another instrument reports 300 m/s. Test whether a single speed and an additive delay can explain the measurements, then predict the time at 1.50 m.",
+        "reconstruct": "v=1.8/0.006=300 m/s agrees; τ=4−2=2 ms; expected 7 ms at 1.50 m.",
+        "diagnose": "Compare your reasoning with the reconstruction. Test this task-specific misconception: Can two different frequencies travel with the same speed? What happens to the arrival-time slope when every timestamp is shifted? Identify the first unsupported inference in your own attempt.",
+        "repair": "Rebuild the relevant model using the stated conditions: Use local v=fλ, add propagation times, and fit the common offset separately. Check your reconstruction against the original task data.",
+        "boundary_test": "If apparatus delay varies with distance, can two readings establish a unique speed?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH08-05-B01-INSTANCE-MODEL-R1",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH08-05",
+      "qrt_target_id": "PH08-05-B01-D3-MODEL-01",
+      "fresh_task": "A pulse arrives after 5.5 ms at 1.05 m and 9.5 ms at 2.45 m using one apparatus. A third distance of 3.50 m gives 12.5 ms. Find speed and offset and decide whether the readings support the fixed-delay model.",
+      "protected_work": "Separate constant detector delay from physical propagation by testing an affine time–distance model against an independent observation.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Record your initial interpretation and confidence before viewing support.",
+        "attempt": "A pulse arrives after 5.5 ms at 1.05 m and 9.5 ms at 2.45 m using one apparatus. A third distance of 3.50 m gives 12.5 ms. Find speed and offset and decide whether the readings support the fixed-delay model.",
+        "reconstruct": "v=1.40/0.004=350 m/s; τ=5.5−3=2.5 ms. Third predicted 10+2.5=12.5 ms agrees.",
+        "diagnose": "Compare your reasoning with the reconstruction. Test this task-specific misconception: Can two different frequencies travel with the same speed? What happens to the arrival-time slope when every timestamp is shifted? Identify the first unsupported inference in your own attempt.",
+        "repair": "Rebuild the relevant model using the stated conditions: Use local v=fλ, add propagation times, and fit the common offset separately. Check your reconstruction against the original task data.",
+        "boundary_test": "If the third observation were 13.5 ms, what inference would have to be revised?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH08-05-B01-MAIN-REPRESENT-R1",
+      "kind": "MAIN",
+      "subtopic_id": "PH08-05",
+      "qrt_target_id": "PH08-05-B01-D3-REPRESENT-01",
+      "fresh_task": "A stationary source sends waves with f=250 Hz across 1.0 m with λ=1.6 m and then 0.9 m with λ=1.2 m. Construct the path-time graph; label the interface and calculate the overall transit speed.",
+      "protected_work": "Construct a piecewise time–distance graph from local wavelength data and preserve the distinction between transit time and period.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Record your initial interpretation and confidence before viewing support.",
+        "attempt": "A stationary source sends waves with f=250 Hz across 1.0 m with λ=1.6 m and then 0.9 m with λ=1.2 m. Construct the path-time graph; label the interface and calculate the overall transit speed.",
+        "reconstruct": "v₁=400, v₂=300 m/s; graph (0,0),(1.0,2.5 ms),(1.9,5.5 ms); v_eff≈345.45 m/s. Second slope steeper.",
+        "diagnose": "Compare your reasoning with the reconstruction. Test this task-specific misconception: Can two different frequencies travel with the same speed? What happens to the arrival-time slope when every timestamp is shifted? Identify the first unsupported inference in your own attempt.",
+        "repair": "Rebuild the relevant model using the stated conditions: Use local v=fλ, add propagation times, and fit the common offset separately. Check your reconstruction against the original task data.",
+        "boundary_test": "Would the same graph describe a detector's local pressure oscillation? Explain."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH08-05-B01-INSTANCE-REPRESENT-R1",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH08-05",
+      "qrt_target_id": "PH08-05-B01-D3-REPRESENT-01",
+      "fresh_task": "A steady source of 400 Hz sends sound across a 0.9 m section with λ=0.75 m followed by 0.6 m with λ=1.25 m. Sketch cumulative travel time versus path distance at all three boundaries and infer overall speed.",
+      "protected_work": "Construct a piecewise time–distance graph from local wavelength data and preserve the distinction between transit time and period.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Record your initial interpretation and confidence before viewing support.",
+        "attempt": "A steady source of 400 Hz sends sound across a 0.9 m section with λ=0.75 m followed by 0.6 m with λ=1.25 m. Sketch cumulative travel time versus path distance at all three boundaries and infer overall speed.",
+        "reconstruct": "Local speeds 300 and 500 m/s. Graph points (0,0), (0.9,3 ms), (1.5,4.2 ms); effective speed≈357.14 m/s. First slope steeper.",
+        "diagnose": "Compare your reasoning with the reconstruction. Test this task-specific misconception: Can two different frequencies travel with the same speed? What happens to the arrival-time slope when every timestamp is shifted? Identify the first unsupported inference in your own attempt.",
+        "repair": "Rebuild the relevant model using the stated conditions: Use local v=fλ, add propagation times, and fit the common offset separately. Check your reconstruction against the original task data.",
+        "boundary_test": "If the source frequency doubles without changing the medium, what happens to the graph and to local wavelengths?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH08-05-B01-MAIN-SYNTHESIZE-R1",
+      "kind": "MAIN",
+      "subtopic_id": "PH08-05",
+      "qrt_target_id": "PH08-05-B01-D4-SYNTHESIZE-01",
+      "fresh_task": "A 3 m path contains x metres of medium A and the rest in B. Local wavelengths at f=400 Hz are 0.50 m and 1.00 m. The mixed arrival is 13 ms, and an all-A 3 m route is 17 ms, with common unknown delay. An independent all-B 1 m route reports 4.5 ms. Infer x and delay; check if all observations can coexist.",
+      "protected_work": "Resolve the unknown path composition and common timing offset from two independent paths, and establish which measurements determine a unique solution.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Record your initial interpretation and confidence before viewing support.",
+        "attempt": "A 3 m path contains x metres of medium A and the rest in B. Local wavelengths at f=400 Hz are 0.50 m and 1.00 m. The mixed arrival is 13 ms, and an all-A 3 m route is 17 ms, with common unknown delay. An independent all-B 1 m route reports 4.5 ms. Infer x and delay; check if all observations can coexist.",
+        "reconstruct": "vA=200, vB=400 m/s. All-A τ=17−15=2 ms. Mixed propagation 11 ms; base all-B 7.5 ms plus 2.5x ms gives x=1.4 m. Independent all-B 1 m predicts 2.5+2=4.5 ms. All agree.",
+        "diagnose": "Compare your reasoning with the reconstruction. Test this task-specific misconception: Can two different frequencies travel with the same speed? What happens to the arrival-time slope when every timestamp is shifted? Identify the first unsupported inference in your own attempt.",
+        "repair": "Rebuild the relevant model using the stated conditions: Use local v=fλ, add propagation times, and fit the common offset separately. Check your reconstruction against the original task data.",
+        "boundary_test": "If only the mixed arrival is known, describe the family of possible x and delays."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH08-05-B01-INSTANCE-SYNTHESIZE-R1",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH08-05",
+      "qrt_target_id": "PH08-05-B01-D4-SYNTHESIZE-01",
+      "fresh_task": "A 2 m direct path contains unknown length x in medium A and the rest in B. A 500 Hz source has λA=0.60 m and λB=1.00 m. The apparatus reports 7.2 ms through the mixed path and 5.6 ms through 2 m entirely in B. Both have the same unknown delay. A separate 1 m path entirely in A reports 4.933 ms (rounded). Find x and delay, and assess consistency.",
+      "protected_work": "Resolve the unknown path composition and common timing offset from two independent paths, and establish which measurements determine a unique solution.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Record your initial interpretation and confidence before viewing support.",
+        "attempt": "A 2 m direct path contains unknown length x in medium A and the rest in B. A 500 Hz source has λA=0.60 m and λB=1.00 m. The apparatus reports 7.2 ms through the mixed path and 5.6 ms through 2 m entirely in B. Both have the same unknown delay. A separate 1 m path entirely in A reports 4.933 ms (rounded). Find x and delay, and assess consistency.",
+        "reconstruct": "vA=300, vB=500 m/s. All B propagation 4 ms, τ=1.6 ms. Mixed propagation 5.6 ms; extra 1.6 ms=x(1/300−1/500), so x=1.2 m. Third predicts 3.333+1.6=4.933 ms. Physically admissible x.",
+        "diagnose": "Compare your reasoning with the reconstruction. Test this task-specific misconception: Can two different frequencies travel with the same speed? What happens to the arrival-time slope when every timestamp is shifted? Identify the first unsupported inference in your own attempt.",
+        "repair": "Rebuild the relevant model using the stated conditions: Use local v=fλ, add propagation times, and fit the common offset separately. Check your reconstruction against the original task data.",
+        "boundary_test": "If vA=vB instead, can transit-time data determine x?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    }
+  ],
+  "core2_sources": [
+    {
+      "item_id": "NSEJS-24-MECH-07",
+      "source_role": "PREREQUISITE_BRIDGE",
+      "locator": "nsejs/physics/index.html?topic=mechanics&q=NSEJS-24-MECH-07#NSEJS-24-MECH-07; existing candidate NSEJS-2024-P-Q34; observed display digest only, not original source digest; official locator 2024 paper code 51 Q34 (ledger claim); supporting prerequisite for PH08-05",
+      "stem_sha256": "fd0236063fd9371219472f7769cdffa9a8b78d0acfff0b309b268dc5c1dca893",
+      "figure_status": "HOLD",
+      "key_status": "HOLD",
+      "academic_status": "HOLD"
+    }
+  ],
+  "acceptance": {
+    "b1_b7": {
+      "B1": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B2": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B3": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B4": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B5": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B6": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B7": {
+        "status": "HOLD",
+        "evidence_refs": []
+      }
+    },
+    "gates": {
+      "source_authenticity": "HOLD",
+      "content_correctness": "HOLD",
+      "cognitive_qualification": "HOLD",
+      "teaching_sufficiency": "HOLD",
+      "assessment_validity": "HOLD",
+      "implementation": "NOT_RUN",
+      "release_authority": "HOLD"
+    },
+    "release": "HOLD",
+    "acceptance_note": "Dedicated B01 subtopic slice; existing Core2 candidate is supporting PREREQUISITE_BRIDGE, producer D2 and source/QRT HOLD. New advanced tasks AUTHORED_TRANSFER; no direct exam admission. Per-target MAIN placeholders remain pending approved tile MAIN design. No academic approval inferred from software validation."
+  }
+}
