@@ -219,9 +219,12 @@
   ph01Text.textContent = "Finish independent practice first. These are candidate preparation links; source and academic HOLD.";
   ph01SourceSection.appendChild(ph01Text);
   const ph01MapLink = document.createElement("a");
-  ph01MapLink.href = "../../textbook/PH01/core2-links/index.html";
+  const sourceRef = new URLSearchParams(location.search).get("source");
+  const sourceIDs = new Set(["PH01-LINK-2022-51-Q35","PH01-LINK-2022-51-Q37","PH01-LINK-2022-51-Q39","PH01-LINK-2022-51-Q45","PH01-LINK-2023-51-Q60","PH01-LINK-2024-51-Q33","PH01-LINK-2024-51-Q36","PH01-LINK-2024-51-Q37","PH01-LINK-2024-51-Q46","PH01-LINK-2024-51-Q59","PH01-LINK-2024-51-Q60"]);
+  const sourceLink = sourceIDs.has(sourceRef) ? "#" + sourceRef : "";
+  ph01MapLink.href = "../../textbook/PH01/core2-links/index.html" + sourceLink;
   ph01MapLink.dataset.textbookHelp = "";
-  ph01MapLink.textContent = "PH01 Core2 question-to-construction map";
+  ph01MapLink.textContent = sourceLink ? "Return to the linked Core2 question record" : "PH01 Core2 question-to-construction map";
   ph01SourceSection.appendChild(ph01MapLink);
   document.querySelector("main").appendChild(ph01SourceSection);
   for (const link of document.querySelectorAll("[data-textbook-help]")) link.addEventListener("click", (event) => {

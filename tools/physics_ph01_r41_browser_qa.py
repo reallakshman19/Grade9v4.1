@@ -39,7 +39,7 @@ def main():
                 assert page.locator("#reconstructAnswer").is_visible()
                 assert page.locator("#showBoundary").is_disabled()
                 page.locator("#core2-return a").click()
-                page.wait_for_url("**/core2-links/index.html")
+                page.wait_for_url("**/core2-links/index.html#PH01-LINK-2024-51-Q60")
                 page.go_back()
                 page.wait_for_function("document.querySelector('#runtimeStatus').textContent.includes('Candidate task loaded')")
                 assert page.locator("#saveFirst").is_disabled()
