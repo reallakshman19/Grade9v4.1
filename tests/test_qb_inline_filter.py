@@ -67,3 +67,13 @@ def test_attempt_evaluation_and_key_highlighting():
         assert "opt-user-wrong" in code, f"opt-user-wrong highlighting missing in {reader}"
         assert "attempt-feedback-banner" in code, f"attempt-feedback-banner missing in {reader}"
         assert "retryBtn" in code, f"retryBtn missing in {reader}"
+
+
+def test_no_broken_anchor_links_or_escaped_onclicks():
+    # Verify no pages have broken dead href="#topic-view" on primary buttons
+    # and no onclick attributes with escaped single quotes (\')
+    for html_file in ROOT.glob("nsejs/**/*.html"):
+        content = html_file.read_text(encoding="utf-8")
+        assert r"\'" not in content, f"Escaped quote syntax found in {html_file}"
+        assert 'href="#topic-view"' not in content, f"Dead anchor href='#topic-view' found in {html_file}"
+

@@ -357,6 +357,26 @@
           5. *Client-Side Cache Invalidation & Attempt Migration*: Versioned script parameters (`?v=4.1.5`), `{ cache: "no-store" }` on JSON fetches, and backward-compatible `localStorage` attempt migration.
         - **Header Search & Viewport Parity**: Added universal Ctrl+K site search control, stylesheet, and verified live via headless Playwright subagent with 0 console errors.
 
+    33. **Biology Core 2 Technical Remediation, Dead Anchor Eradication & SVG Visual Sealing**:
+        - **Eradicated Dead In-Page Anchors & Broken Links**:
+          - Replaced dummy dead `href="#topic-view"` buttons on Topic 4 (Reproduction & Mendelian Heredity) and Topic 5 (Ecology & Ecosystem Resources) with active, interactive action buttons triggering `window.selectBiologyTopic('genetics')` and `window.selectBiologyTopic('environment')` directly.
+          - Eliminated all escaped single quote syntax errors (`onclick="window.selectBiologyTopic(\'...\')"`) across both Biology and Chemistry index pages, restoring valid JavaScript click handlers.
+          - Upgraded hash navigation in all three subject readers (`core2-biology-reader.js`, `core2-chemistry-reader.js`, `core2-physics-reader.js`) so that `#topic-view` and `#topicWorkspace` smoothly scroll to and unhide the deep-dive workspace with default topics active rather than failing silently on hidden sections.
+        - **Bit-for-Bit SHA-256 Invariance**:
+          - Re-calculated bit-for-bit SHA-256 digests across all 119 Biology questions, fixing all 9 stem hash mismatches (`BIO-NSEJS-GEN-02` through `10`) in [`nsejs/data/biology-core2-candidates.v1.json`](nsejs/data/biology-core2-candidates.v1.json).
+        - **W3C SVG Asset Authoring & Inline Reader Integration**:
+          - Authored all 4 missing W3C compliant Biology SVGs with responsive `viewBox="0 0 780 440"`, width="100%", height="100%", and typography strictly $\ge 14\text{px}$ in both `nsejs/assets/` and `nsejs/biology/assets/`:
+            1. `fig_bio_complementary_genes.svg`: 2-step anthocyanin biochemical pathway ($9:7$ dihybrid ratio) & meiotic divisions (400 microsporogenesis + 1600 megasporogenesis = 2000 total meiotic divisions).
+            2. `fig_bio_water_potential.svg`: *Solanum tuberosum* osmotic equilibrium curve, van 't Hoff equation $\Psi_s = -i C R T = -6.09\text{ bar}$ at $C = 0.25\text{ M}$, and full turgor $\Psi_p = +6.09\text{ bar}$ in pure water.
+            3. `fig_bio_nephron_filtration.svg`: Glomerular capillary hemodynamics, Starling pressures ($P_{\text{GC}} = 55$, $P_{\text{BS}} = 15$, $\Pi_{\text{GC}} = 30 \implies \text{NFP} = 10\text{ mmHg}$, $\text{GFR} = 125\text{ mL/min} = 180\text{ L/day}$, and $99\%$ reabsorption $\implies 1.80\text{ L/day}$ urine).
+            4. `fig_bio_trophic_pyramid.svg`: Lindeman 10% trophic energy transfer ($60,000 \to 6,000 \to 600 \to 60\text{ kJ}$) alongside $10\times$ DDT lipophilic biomagnification ($0.040 \to 0.40 \to 4.0 \to 40.0\text{ ppm}$).
+          - Enhanced [`nsejs/js/core2-biology-reader.js`](nsejs/js/core2-biology-reader.js) to render `q.source_figures` inline with responsive styling and figure note captions.
+        - **Automated Verification Suite**:
+          - Authored [`tests/test_biology_core2.py`](tests/test_biology_core2.py) with 8 comprehensive unit tests verifying Gate 0–3 invariants and Rule 13 `NOT_ADMITTED` status.
+          - Added anchor integrity tests in [`tests/test_qb_inline_filter.py`](tests/test_qb_inline_filter.py).
+          - Search index rebuilt with 346 indexed items (SHA256: `6930a60a123ffcb56a41bc0c2437a1473a9872a74853283dbcdb48dad8c7330c`).
+          - Site-wide audit: 43/43 pages pass with 0 broken links. All 37 Core 2 & Search unit tests pass.
+
 
 
 ---
