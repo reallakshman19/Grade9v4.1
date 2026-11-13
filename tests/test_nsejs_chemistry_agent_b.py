@@ -64,6 +64,10 @@ class TestAgentBCandidate(unittest.TestCase):
                 self.assertEqual(item["scope"], source[item["subtopic_id"]]["scope"])
                 self.assertTrue(item["missing_prerequisite_refs"])
                 self.assertNotEqual(item["canonical_truth_status"], "QUALIFIED")
+                if item["scope"] in ("EXTENSION", "ENRICHMENT"):
+                    for task in item["qrt_instances"]:
+                        self.assertEqual(task["source_bindings"][0]["role"], "AUTHORED_PRACTICE")
+                        self.assertEqual(task["source_bindings"][0]["review_status"], "HOLD")
             for concept in self.records[unit]["concepts"]:
                 self.assertEqual(concept["academic_status"], "DRAFT_UNREVIEWED")
                 self.assertEqual(concept["exam_provenance_claim"], "NONE")
