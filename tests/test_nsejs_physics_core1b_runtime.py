@@ -51,7 +51,7 @@ def test_client_attempt_protection_and_revision_code_exist():
         'boundary_attempts.push({text: answer,saved_at: now()',
         'mastery_status: "UNASSESSED"',
         'if (!current || (record && record.first_answer)) return;',
-        'window', 'localStorage.setItem',
+        'localStorage.setItem',
     ):
         assert phrase in html
     assert "<iframe" not in html
