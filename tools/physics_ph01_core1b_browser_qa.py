@@ -230,4 +230,6 @@ if __name__ == "__main__":
         status = subprocess.call([sys.executable, str(ROOT / "tools/physics_ph01_subtopic_routes_browser_qa.py")])
     if status == 0:
         status = subprocess.call([sys.executable, str(ROOT / "tools/physics_ph01_r32_browser_qa.py")])
+    if status == 0:
+        status = subprocess.call([sys.executable, str(ROOT / "tools/physics_ph01_r41_browser_qa.py")])
     raise SystemExit(status)
