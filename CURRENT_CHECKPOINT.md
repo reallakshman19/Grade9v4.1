@@ -377,6 +377,17 @@
           - Search index rebuilt with 346 indexed items (SHA256: `6930a60a123ffcb56a41bc0c2437a1473a9872a74853283dbcdb48dad8c7330c`).
           - Site-wide audit: 43/43 pages pass with 0 broken links. All 37 Core 2 & Search unit tests pass.
 
+    34. **Skill Upgrade & Pipeline Flowchart Synchronization: The 4 Core 2 Pillars (Procedure, Workflow, Self-Check, Evidences)**:
+        - **Skill Specification Upgraded (`ag-core2`)**:
+          - Updated [`C:\Users\reall\.gemini\config\skills\ag-core2\SKILL.md`](file:///C:/Users/reall/.gemini/config/skills/ag-core2/SKILL.md) and [`CRITICAL_ANTIPATTERNS.md`](file:///C:/Users/reall/.gemini/config/skills/ag-core2/references/CRITICAL_ANTIPATTERNS.md): added Anti-Patterns 8–11 (Adversarial Jargon Leaks, SVG XML Entity Crashes, Missing Attempt Feedback & Reset Lifecycle, Stale Browser Script Cache Serving).
+          - Enhanced [`scripts/verify_playwright_template.js`](file:///C:/Users/reall/.gemini/config/skills/ag-core2/scripts/verify_playwright_template.js) with regex assertions banning forbidden jargon (`/producer/i`), checking attempt feedback banners, verifying `[🔄 Reset & Try Again]` functionality, and capturing visual screenshot proof (`playwright_evidence_*.png`).
+          - Synchronized `ag-core2.zip` in both user skill directory and `templates/skills/ag-core2 skill.zip`.
+        - **Pipeline Flowchart Synchronized ([architecture/pipeline-flowchart.html](http://localhost:8000/architecture/pipeline-flowchart.html))**:
+          - Updated Stage 5 benchmark to explicitly enforce the 4 Pillars (Procedure, Workflow, Self-Check, Evidences).
+          - Updated Stage 7 benchmark to mandate automated forbidden string linters and visual evidence artifact generation.
+          - Added dedicated panel: *The 4 Non-Bypassable Pillars of Core 2 Production (V4.1 Specification)* detailing the contrast between V4.0 legacy defects and V4.1 invariant standards across Procedure, Workflow, Self-Check, and Evidences.
+        - **Verification**: Verified live with Playwright on `http://localhost:8000/architecture/pipeline-flowchart.html` (0 console errors, clean layout) and 37/37 Core 2 unit tests passing.
+
 
 
 ---
