@@ -249,7 +249,7 @@
         const icon = t[3];
         const count = counts[slug] || 0;
         const btn = text("a", "", "topic-pill-btn");
-        btn.href = "question-bank.html?topic=" + encodeURIComponent(slug);
+        btn.href = "index.html?topic=" + encodeURIComponent(slug) + "#topic-view";
         if (slug === selectedSlug) btn.classList.add("active");
         append(btn,
           text("span", icon, "pill-icon"),

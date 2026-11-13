@@ -232,14 +232,30 @@
         - 43/43 pages passed static audit (806 internal links verified, 0 broken).
         - Browser subagent confirmed clean instant redirect from `core1-recovery.html` to `index.html`, 0 references to `core1-recovery.html` across recovery DOMs, touch targets $\ge 48$px, and 0 console errors across all audited pages.
 
-    - **Milestone 25 — Elimination of Artificial Year Buckets & Direct Scientific Topic Reclassification**:
-      - **Chemistry Topic Migration (119 items)**: Reclassified all 79 official exam items (2020–2024) into the 6 scientific topics (`Atomic Structure`: 27, `Chemical Bonding`: 25, `Mole & Gas Laws`: 26, `Chemical Reactions`: 33, `Redox & Titrations`: 4, `Eudiometry & Gases`: 4).
-      - **Biology Topic Migration (119 items)**: Reclassified all 79 official exam items (2020–2024) into the 5 scientific topics (`Cell & Living World`: 36, `Life Processes & Physiology`: 25, `Control & Coordination`: 15, `Genetics & Heredity`: 23, `Ecology & Environment`: 20).
-      - **Topic Bar Cleanliness**: Eliminated all artificial `YEAR_xxxx` pills from [nsejs/chemistry/question-bank.html](http://localhost:8000/nsejs/chemistry/question-bank.html) and [nsejs/biology/question-bank.html](http://localhost:8000/nsejs/biology/question-bank.html). Topic bars now display exclusively real disciplinary curriculum domains with live question counts.
-      - **Exam Provenance Badges**: Added `📅 Official Exam: XXXX` provenance badges on every migrated question card so exam origins remain explicit while filed under authentic scientific topics.
+    - **Milestone 26 — Universal Curriculum Hierarchy Architecture & Complete Silo Elimination**:
+      - **Universal Hierarchy Standard Enforced**: Implemented the strict academic standard: **`Subject → Topic → Questions (Core 2) & Core 1A/1B Lessons`** across Physics, Chemistry, and Biology, eradicating detached "Question Bank" and "Core 1 Lessons" silos.
+      - **Unified Subject Topic Hubs ([biology/index.html](http://localhost:8000/nsejs/biology/index.html), [chemistry/index.html](http://localhost:8000/nsejs/chemistry/index.html), [physics/index.html](http://localhost:8000/nsejs/physics/index.html))**:
+        - Embedded the interactive `#topic-view` workspace directly into all three subject hubs.
+        - Rendered disciplinary topic selector pills with live question counts: Biology (5 topics, 119 questions), Chemistry (6 topics, 119 questions), Physics (6 topics, 95 questions).
+        - Integrated topic ribbons linking all Core 1A/1B master learning modules alongside candidate question practice cards.
+      - **Decommissioned & Redirected 8 Detached Silos**:
+        - `nsejs/biology/question-bank.html` → `index.html#topic-view`
+        - `nsejs/chemistry/question-bank.html` → `index.html#topic-view`
+        - `nsejs/physics/question-bank.html` → `index.html#topic-view`
+        - `nsejs/biology/authored-practice.html` → `index.html`
+        - `nsejs/chemistry/authored-practice.html` → `index.html`
+        - `nsejs/biology/core1/index.html` → `../index.html`
+        - `nsejs/chemistry/core1/index.html` → `../index.html`
+        - `nsejs/physics/core1/index.html` → `../index.html`
+        - All redirects equipped with instant client-side forwarders, fallback redirect cards, and Rule 13 invariant footers.
+      - **Standardized 5-Tab Masthead Across All Pages**: Unified `<nav class="tabs">` across all 43 HTML files to exactly 5 subject/platform tabs (`⚛ Physics`, `🧪 Chemistry`, `🧬 Biology`, `🎯 NSEJS Hub`, `🧭 Architecture`). Eradicated all detached Q-Bank tabs from top-level navigation.
+      - **Parent Topic Breadcrumbs & Navigation Across All 26 Learning Modules**: Updated breadcrumb bars and back buttons across all 26 modules (3 Biology, 7 Chemistry, 16 Physics) to point directly to their parent topic (`Home / NSEJS / <Subject> / <Topic Name> / <Lesson>`) with back button `← Back to <Topic Name>` and action button `📝 Practice Topic Questions`.
+      - **SHA-256 Platform Resiliency**: Normalized CRLF line endings on `physics-core2-candidates.v1.json` and hardened `digestText()` in `core2-physics-reader.js` to normalize `\r\n` to `\n`, completely resolving false-positive `SOURCE_CONTENT_INTEGRITY_MISMATCH` notices.
       - **Dual-Engine Automated & Browser Verification**:
-        - Static audit: 43/43 pages passed (806 internal links verified, 0 broken).
-        - Headless browser subagent verified live on 12.7" tablet viewport ($1366 \times 854$): zero console errors, 48px touch targets, topic pill live filtering functional.
+        - Static link audit (`tools/audit_nsejs_pages.py`): 43/43 pages passed, 682 internal links checked, 0 broken links.
+        - Navigation leak audit (`tools/audit_navigation_leaks.py`): 43/43 pages checked, 0 flags, 0 broken references.
+        - Hierarchy audit (`tools/audit_hierarchy_issues.py`): 43/43 pages checked, 0 silo issues.
+        - Tablet browser subagent verification (1366 × 854): 0 console errors, instant topic pill switching, verified redirect traversal, and touch targets $\ge 48$px.
 
 ---
 

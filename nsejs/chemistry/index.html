@@ -7,6 +7,7 @@
   <meta name="description" content="NSEJS Chemistry Topics & Core Learning Modules. Optimized for 12.7 inch tablet ergonomics. All questions labeled {Unvalidated}.">
   <link rel="stylesheet" href="../../site.css">
   <link rel="stylesheet" href="../../css/tablet-12-7.css">
+  <link rel="stylesheet" href="../../css/site-search.css">
   <style>
     /* 12.7" Tablet Specific Ergonomics & Modern UI */
     :root {
@@ -462,14 +463,13 @@
   <header class="mast">
     <div class="container top">
       <a class="logo" href="../../index.html"><i>G9</i>Grade9 v4.0</a>
-      <nav class="tabs" aria-label="NSEJS subject practice and Grade9 resources">
+                  <nav class="tabs" aria-label="NSEJS subject practice and Grade9 resources">
         <a href="../physics/index.html">⚛ Physics</a>
-        <a href="index.html" aria-current="page">🧪 Chemistry</a>
-        <a href="question-bank.html">📚 Chemistry Q-Bank</a>
+        <a href="../chemistry/index.html" aria-current="page">🧪 Chemistry</a>
         <a href="../biology/index.html">🧬 Biology</a>
-        <a href="../core2/index.html">🗺️ Core 2 Bank</a>
         <a href="../index.html">🎯 NSEJS Hub</a>
         <a href="../../architecture/index.html">🧭 Architecture</a>
+        <button type="button" class="g9-header-search-btn" data-g9-action="search" data-search-scope="chemistry" title="Search Chemistry &amp; NSEJS (Ctrl/⌘ K)">🔍 Search <kbd>Ctrl K</kbd></button>
       </nav>
     </div>
   </header>
@@ -491,27 +491,27 @@
       </div>
     </div>
 
-    <!-- 4-Cell Metrics & Status Strip -->
+        <!-- 4-Cell Metrics & Status Strip -->
     <section class="metrics-strip" aria-label="Chemistry curriculum metrics">
       <div class="metric-card">
-        <span class="metric-num">13</span>
-        <span class="metric-label">Bank Modules</span>
-        <span class="metric-sub">8 Topic + 5 Papers</span>
-      </div>
-      <div class="metric-card">
-        <span class="metric-num">87</span>
-        <span class="metric-label">Candidate Questions</span>
-        <span class="metric-sub">Indexed in Core 2</span>
-      </div>
-      <div class="metric-card">
         <span class="metric-num">6</span>
-        <span class="metric-label">Chemistry Domains</span>
-        <span class="metric-sub">Mole to Eudiometry</span>
+        <span class="metric-label">Chemistry Topics</span>
+        <span class="metric-sub">Atom to Eudiometry</span>
+      </div>
+      <div class="metric-card">
+        <span class="metric-num">119</span>
+        <span class="metric-label">Candidate Questions</span>
+        <span class="metric-sub">All Topics Indexed</span>
+      </div>
+      <div class="metric-card">
+        <span class="metric-num">7</span>
+        <span class="metric-label">Core 1A/1B Journeys</span>
+        <span class="metric-sub">Authored &amp; Verified</span>
       </div>
       <div class="metric-card">
         <span class="metric-num">Rule 13</span>
         <span class="metric-label">Academic Status</span>
-        <a href="../core2/question-map.html#chemistry" class="metric-sub" style="text-decoration:underline;">Browse 87 IDs Map →</a>
+        <a href="../core2/question-map.html#chemistry" class="metric-sub" style="text-decoration:underline;">Browse 119 IDs Map →</a>
       </div>
     </section>
 
@@ -794,22 +794,38 @@
 
     </div>
 
+            <!-- Interactive Disciplinary Topic Workspace: Core 1A/1B Lessons + Core 2 Questions -->
+    <section id="topic-view" class="topic-workspace" style="margin: 40px 0 32px; padding: 28px 26px; border: 2px solid #5eead4; border-radius: 18px; background: #ffffff; box-shadow: 0 4px 16px rgba(13,148,136,0.06); scroll-margin-top: 24px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:16px;">
+        <div>
+          <span style="font-size:12px;font-weight:800;text-transform:uppercase;color:#0d9488;letter-spacing:0.07em;">Topic Deep-Dive &amp; Practice</span>
+          <h2 style="font-size:22px;font-weight:800;margin:2px 0 0;color:#0f172a;">Topic Practice &amp; Core 1 Master Lessons</h2>
+        </div>
+        <span style="font-size:12px;font-weight:800;background:#ccfbf1;color:#0f766e;padding:5px 12px;border-radius:999px;border:1px solid #5eead4;">
+          Structure: Subject → Topic → Questions &amp; Lessons
+        </span>
+      </div>
+      <nav id="topicNav" aria-label="Chemistry curriculum topics" style="display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 20px 0;"></nav>
+      <p id="status" role="status" style="font-size:14px;color:#64748b;margin:10px 0;">Loading candidate questions from chemistry-core2-candidates.v1.json…</p>
+      <section id="questions" aria-label="Chemistry candidate questions"></section>
+    </section>
+
     <!-- Bottom 3-Card Supplementary Resources Deck -->
     <section class="bottom-resource-grid" aria-label="Supplementary learning and official source links">
       <div class="resource-box">
-        <h3>Authored Core 1A/1B Lessons</h3>
-        <p>All 7 candidate learning modules authored across 6 chemistry domains (2 flagship + 5 recovered 6-stage skill repairs).</p>
-        <a class="resource-btn btn-secondary" href="core1/index.html">Open 7 Authored Modules →</a>
+        <h3>Disciplinary Chemistry Curriculum</h3>
+        <p>Explore all 6 chemistry domains structured hierarchically: Subject → Topic → Questions (Core 2) &amp; Core 1A/1B Lessons.</p>
+        <a class="resource-btn btn-secondary" href="#topicsGrid">Browse All 6 Topics ↑</a>
       </div>
       <div class="resource-box">
-        <h3>Authored Transfer Practice</h3>
-        <p>Technical-only authored Grade9 prompts with independent Core 1B practice questions.</p>
-        <a class="resource-btn btn-secondary" href="authored-practice.html">Open Authored Practice →</a>
+        <h3>Core 2 Question Map</h3>
+        <p>Comprehensive 267-item cross-subject question map with provenance verification, SHA-256 digests, and cognitive demand classifications.</p>
+        <a class="resource-btn btn-secondary" href="../core2/question-map.html#chemistry">View Chemistry Question Map →</a>
       </div>
       <div class="resource-box">
         <h3>Official IAPT Exam Papers</h3>
-        <p>Official examination papers and answer keys remain hosted externally on the IAPT portal.</p>
-        <a class="resource-btn btn-secondary" href="../official-sources.html">View IAPT External Links →</a>
+        <p>10 official examination papers and publisher answer keys downloaded, SHA-256 verified, and archived in local custody.</p>
+        <a class="resource-btn btn-secondary" href="../official-sources.html">View IAPT Source Downloads →</a>
       </div>
     </section>
 
@@ -840,5 +856,11 @@
       });
     }
   </script>
+  <script>
+    window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']]},svg:{fontCache:'global'}};
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+  <script defer src="../js/core2-chemistry-reader.js"></script>
+  <script src="../../js/site-search.js" data-site-root="../../"></script>
 </body>
 </html>
