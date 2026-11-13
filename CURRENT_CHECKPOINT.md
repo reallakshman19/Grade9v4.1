@@ -1,10 +1,10 @@
 # Checkpoint — 13 November 2026
 
-**Observed:** 2026-11-13T17:50:00+04:00 (Asia/Dubai)  
+**Observed:** 2026-11-13T20:42:00+04:00 (Asia/Dubai)  
 **Repository Working Directory:** `D:\CodeD\g9v4`  
 **Active Branch:** `main`  
 **Tracking Remote:** `origin` -> `https://github.com/reallakshman19/Grade9v4.1.git`  
-**Head Commit:** `105ee9d` (`feat(nsejs): eliminate artificial year buckets, migrate all 158 exam items directly to disciplinary topics, and surface official exam provenance badges`)  
+**Head Commit:** `66b4ca1` (`feat(physics): add smooth scroll to workspace on topic selection`)  
 **Upstream Remote:** `upstream-v4.0` -> `https://github.com/reallakshman19/Grade9v4.0.git`  
 **Localhost Server:** Running at `http://localhost:8000` (Python HTTP server)
 
