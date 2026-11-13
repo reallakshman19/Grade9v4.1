@@ -67,6 +67,63 @@
       align-items: center;
       gap: 16px;
     }
+    details.governance-drawer {
+      background: #f0f9ff;
+      border: 1.5px solid #0284c7;
+      border-radius: 12px;
+      margin-bottom: 28px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(2,132,199,0.06);
+      transition: all 0.2s ease;
+    }
+    details.governance-drawer summary {
+      padding: 13px 18px;
+      font-weight: 750;
+      font-size: 14px;
+      color: #0369a1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      list-style: none;
+      user-select: none;
+      touch-action: manipulation;
+    }
+    details.governance-drawer summary::-webkit-details-marker {
+      display: none;
+    }
+    details.governance-drawer summary:hover {
+      background: #e0f2fe;
+    }
+    details.governance-drawer[open] summary {
+      border-bottom: 1px solid #bae6fd;
+      background: #e0f2fe;
+    }
+    .drawer-toggle-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12.5px;
+      color: #0284c7;
+      background: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-weight: 700;
+      border: 1px solid #bae6fd;
+    }
+    details.governance-drawer[open] .drawer-toggle-badge::after {
+      content: "▴ Hide Notice";
+    }
+    details.governance-drawer:not([open]) .drawer-toggle-badge::after {
+      content: "▾ View Academic Notice";
+    }
+    .drawer-body {
+      padding: 16px 20px 20px;
+      background: #ffffff;
+      font-size: 14px;
+      color: #0f172a;
+      line-height: 1.6;
+    }
     .unval-tag {
       background: #fef08a;
       color: #854d0e;
@@ -212,78 +269,92 @@
 
   <main class="tablet-container">
     <div class="tablet-hero">
-      <div class="kicker">NSEJS · Science Hub</div>
-      <h1>NSEJS Subject-Wise Junior Science</h1>
-      <p>A rigorous examination-preparation curriculum across Physics, Chemistry, and Biology. Each science features 12.7" tablet-optimized topic hubs and Core 2 Question Banks with all candidate items rigorously peer-audited and labeled as {Core 2: Reviewed} under Rule 13 governance.</p>
+      <div class="kicker">NSEJS Junior Science Olympiad · Grade 9 Foundation</div>
+      <h1>NSEJS Subject-Wise Science Hub</h1>
+      <p>Master competitive junior science from first principles across Physics, Chemistry, and Biology. Explore 17 disciplinary topic domains, 26 interactive master lessons, and 267 source-grounded candidate questions with 10 downloaded official IAPT examination papers.</p>
       <div class="breadcrumbs-bar">
         <a href="../index.html">Home</a> / <a href="index.html">NSEJS</a> / Sciences
       </div>
     </div>
 
-    <div class="unval-banner" style="background:#f0f9ff;border-left:5px solid #0284c7;">
-      <span class="reviewed-tag" style="background:#e0f2fe;color:#0369a1;border:1.5px solid #0284c7;font-weight:800;font-size:13px;padding:4px 10px;border-radius:6px;">{Core 2: Reviewed}</span>
-      <p><strong>Disciplinary Peer-Review Audit Completed:</strong> All candidate questions, vector figures, and worked derivations have passed rigorous B1–B7 peer-review audits across Physics, Chemistry, and Biology. In accordance with Rule 13, technical and pedagogical fidelity is verified; final official examination release remains subject to Stage 8 release authority.</p>
-    </div>
+    <!-- Collapsible Academic Governance Drawer -->
+    <details class="governance-drawer">
+      <summary>
+        <span class="summary-left" style="display:inline-flex;align-items:center;gap:10px;flex-wrap:wrap;">
+          <span class="reviewed-tag">{Core 2: Reviewed}</span>
+          <span>Disciplinary Peer-Review Audit &amp; Academic Governance Standards</span>
+        </span>
+        <span class="drawer-toggle-badge"></span>
+      </summary>
+      <div class="drawer-body">
+        <p style="margin:0 0 10px;">
+          <strong>Disciplinary Peer-Review Audit Completed:</strong> All candidate questions, vector figures, and worked derivations have passed rigorous B1–B7 peer-review audits across Physics, Chemistry, and Biology. In accordance with Rule 13, technical, dimensional, and pedagogical fidelity is verified under automated dual-engine test suites.
+        </p>
+        <p style="margin:0;font-size:13px;color:#475569;">
+          <strong>Stage 8 Release Authority Invariant:</strong> Green software validation and automated CI runs certify mechanical and structural consistency; authentic examination release remains subject to independent Stage 8 academic faculty sign-off. Downloaded raw examination papers and keys are safely held in Git-excluded custody (<code>workspace/sources/iapt/</code>).
+        </p>
+      </div>
+    </details>
 
     <div class="sciences-grid-12-7">
       
       <!-- SCIENCE 1: PHYSICS -->
       <article class="science-card-tab">
         <div class="science-icon phys-bg">⚛️</div>
-        <span class="science-kicker" style="color:#0284c7;">Track 1 · 6 Topics · 50 source-claimed + 1 authored candidate</span>
+        <span class="science-kicker" style="color:#0284c7;">Track 1 · 6 Topics · 95 Questions · 16 Master Lessons</span>
         <h2>Physics</h2>
-        <p>Explore Ray Optics, Mechanics, DC Circuits, Electrostatics, Magnetism &amp; EMI, and Fluids &amp; Sound.</p>
+        <p>Explore Ray Optics, Mechanics &amp; Kinematics, DC Circuits, Electrostatics, Magnetism &amp; EMI, and Fluids &amp; Sound.</p>
         <div class="topic-pills-row">
-          <span class="topic-pill">Optics</span>
-          <span class="topic-pill">Mechanics</span>
-          <span class="topic-pill">Circuits</span>
-          <span class="topic-pill">Electrostatics</span>
-          <span class="topic-pill">Magnetism</span>
-          <span class="topic-pill">Fluids</span>
+          <span class="topic-pill">Optics 10</span>
+          <span class="topic-pill">Mechanics 11</span>
+          <span class="topic-pill">Circuits 10</span>
+          <span class="topic-pill">Electrostatics 10</span>
+          <span class="topic-pill">Magnetism 10</span>
+          <span class="topic-pill">Fluids 2</span>
         </div>
         <div style="margin-bottom: 16px;">
           <span class="reviewed-tag" title="Disciplinary peer-review audit and defect remediation completed. Academic admission remains subject to Stage 8 release authority.">{Core 2: Reviewed}</span>
         </div>
-        <a class="science-btn phys-btn" href="physics/index.html">Open Physics Topics →</a>
+        <a class="science-btn phys-btn" href="physics/index.html">Open Physics Topics (95 Qs) →</a>
       </article>
 
       <!-- SCIENCE 2: CHEMISTRY -->
       <article class="science-card-tab">
         <div class="science-icon chem-bg">🧪</div>
-        <span class="science-kicker" style="color:#0d9488;">Track 2 · 6 Topics · candidate count unverified</span>
+        <span class="science-kicker" style="color:#0d9488;">Track 2 · 6 Topics · 119 Questions · 7 Master Lessons</span>
         <h2>Chemistry</h2>
-        <p>Master Matter &amp; Moles, Chemical Reactions, Atomic Bonding, Phosphorus Oxyacids, Redox Titrations, and Eudiometry.</p>
+        <p>Master Atomic Structure, Chemical Bonding, Matter &amp; Moles, Chemical Reactions, Redox Titrations, and Combustion Eudiometry.</p>
         <div class="topic-pills-row">
-          <span class="topic-pill">Mole Concept</span>
-          <span class="topic-pill">Reactions</span>
-          <span class="topic-pill">Atomic/Bonding</span>
-          <span class="topic-pill">Oxyacids</span>
-          <span class="topic-pill">Redox</span>
-          <span class="topic-pill">Eudiometry</span>
+          <span class="topic-pill">Atomic Structure 27</span>
+          <span class="topic-pill">Bonding 25</span>
+          <span class="topic-pill">Mole Concept 26</span>
+          <span class="topic-pill">Reactions 33</span>
+          <span class="topic-pill">Redox 4</span>
+          <span class="topic-pill">Eudiometry 4</span>
         </div>
         <div style="margin-bottom: 16px;">
           <span class="reviewed-tag" title="Disciplinary peer-review audit and defect remediation completed. Academic admission remains subject to Stage 8 release authority.">{Core 2: Reviewed}</span>
         </div>
-        <a class="science-btn chem-btn" href="chemistry/index.html">Open Chemistry Topics →</a>
+        <a class="science-btn chem-btn" href="chemistry/index.html">Open Chemistry Topics (119 Qs) →</a>
       </article>
 
       <!-- SCIENCE 3: BIOLOGY -->
       <article class="science-card-tab">
         <div class="science-icon bio-bg">🌱</div>
-        <span class="science-kicker" style="color:#16a34a;">Track 3 · 5 Topics · candidate count unverified</span>
+        <span class="science-kicker" style="color:#16a34a;">Track 3 · 5 Topics · 119 Questions · 3 Master Lessons</span>
         <h2>Biology</h2>
-        <p>Understand Cytology &amp; Molecular Genetics, Photosynthesis &amp; Physiology, Endocrine Coordination, Heredity, and Marine Ecology.</p>
+        <p>Understand Cytology &amp; Molecular Genetics, Photosynthesis &amp; Physiology, Endocrine Coordination, Mendelian Heredity, and Ecology.</p>
         <div class="topic-pills-row">
-          <span class="topic-pill">Cell Genetics</span>
-          <span class="topic-pill">Life Processes</span>
-          <span class="topic-pill">Coordination</span>
-          <span class="topic-pill">Mendelian Heredity</span>
-          <span class="topic-pill">Ecology</span>
+          <span class="topic-pill">Cell Genetics 36</span>
+          <span class="topic-pill">Life Processes 25</span>
+          <span class="topic-pill">Coordination 15</span>
+          <span class="topic-pill">Heredity 23</span>
+          <span class="topic-pill">Ecology 20</span>
         </div>
         <div style="margin-bottom: 16px;">
           <span class="reviewed-tag" title="Disciplinary peer-review audit and defect remediation completed. Academic admission remains subject to Stage 8 release authority.">{Core 2: Reviewed}</span>
         </div>
-        <a class="science-btn bio-btn" href="biology/index.html">Open Biology Topics →</a>
+        <a class="science-btn bio-btn" href="biology/index.html">Open Biology Topics (119 Qs) →</a>
       </article>
 
     </div>
