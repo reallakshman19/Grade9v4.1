@@ -18,6 +18,8 @@
     box.appendChild(a);
   }
   function attach(card, route) {
+    const existing = card.querySelector("[data-b02-core2-route]");
+    if (existing && (existing.dataset.boundRevision !== card.dataset.contentRevision || existing.dataset.boundUid !== card.dataset.questionUid)) existing.remove();
     if (card.querySelector("[data-b02-core2-route]")) return;
     if (card.dataset.questionUid !== route.question_uid) return;
     const exact = (route.observed_revisions || []).find(
@@ -27,13 +29,15 @@
     if (route.academic_admission !== "HOLD" || route.exact_source !== "HOLD") return;
     const box = document.createElement("section");
     box.dataset.b02Core2Route = route.source_id;
+    box.dataset.boundRevision = card.dataset.contentRevision;
+    box.dataset.boundUid = card.dataset.questionUid;
     box.setAttribute("aria-label", "B02 optics candidate learning links");
     box.className = "nsejs-topic-ribbon";
     const title = document.createElement("strong");
     title.textContent = "B02 · " + route.primary_subtopic + " · Core1A / Core1B candidate routes";
     box.appendChild(title);
     const note = document.createElement("p");
-    note.textContent = "ACADEMIC HOLD · " + route.route_role + ". " + route.science_or_source_hold;
+    note.textContent = "ACADEMIC HOLD · " + route.route_role + ". Source fidelity, answer and independent QRT not admitted.";
     box.appendChild(note);
     const topic = route.primary_subtopic.slice(0,4);
     const register = prefix + "curriculum/topics/" + topic + "/subtopics/core2-links.html";
@@ -60,6 +64,7 @@
       const scan = () => bank.querySelectorAll("[data-source-id][data-question-uid][data-content-revision]").forEach(card => {
         const route = byId.get(card.dataset.sourceId);
         if (route) attach(card, route);
+        else card.querySelector("[data-b02-core2-route]")?.remove();
       });
       const observer = new MutationObserver(scan);
       observer.observe(bank,{childList:true,subtree:true,attributes:true,attributeFilter:["data-question-uid","data-content-revision"]});
