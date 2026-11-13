@@ -41,3 +41,10 @@ Mechanical validation requires exact pins, valid references, >=3 distinct propos
 - Obtain independent physics/QRT/B1–B7 reviews and Owner decision before any academic promotion, merge or deployment.
 
 **No academic approval inferred from software validation.**
+
+## Continuous textbook pilots added after first-slice authoring
+
+- `topics/PH08/CHAPTER_CONTINUOUS_DRAFT.md`: connected Sound & Waves manuscript spanning 13 teaching sections, with original echo diagram `topics/PH08/figures/lead-concept.svg`.
+- `topics/PH10/CHAPTER_CONTINUOUS_DRAFT.md`: connected Refraction/Lenses/Human Eye manuscript spanning 17 teaching sections, with a geometric lens-position diagram `topics/PH10/figures/lead-concept.svg`.
+
+These manuscripts introduce the wider curriculum narrative but **are not** yet native C05/C06 accepted constructions for all listed subtopics. They require scientific and pedagogy review, native data binding and complete learner-runtime QA. Do not count their headings as an accepted chapter-completeness tally.
