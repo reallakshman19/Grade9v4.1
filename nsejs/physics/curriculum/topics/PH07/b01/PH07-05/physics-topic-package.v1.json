@@ -303,8 +303,8 @@
         "predict": "Record your initial interpretation and confidence before viewing support.",
         "attempt": "A paved courtyard and adjacent lake absorb similar radiation, but measured pavement warms faster and air above it is warmer. Explain the energy and fluid links needed for a local circulation, and state why its speed cannot be deduced from these observations alone.",
         "reconstruct": "Differences in effective C, water mixing and losses can produce different net temperature changes. Warmer adjacent air may become less dense and rise, leading to pressure-driven return flow under favourable conditions. Speed also depends on pressure gradient, geometry, drag and weather.",
-        "diagnose": "Compare your reasoning with the reconstruction. Test this task-specific misconception: A plate absorbs more power but also has a larger thermal capacity. What quantity actually predicts initial temperature rise? Identify the first unsupported inference in your own attempt.",
-        "repair": "Rebuild the relevant model using the stated conditions: Compare net power divided by capacity and test assumptions independently. Check your reconstruction against the original task data.",
+        "diagnose": "Identify the missing causal link if your explanation jumps directly from solar irradiation to wind direction. Did you distinguish stored energy, surface temperature and air density?",
+        "repair": "Trace incident and retained power, thermal capacity, surface/air response and buoyancy; include a return flow and a background-weather condition.",
         "boundary_test": "If forced wind from the courtyard to the lake dominates, can the observed surface temperatures alone prove natural circulation direction?"
       },
       "attempt_policy": {
@@ -327,8 +327,8 @@
         "predict": "Record your initial interpretation and confidence before viewing support.",
         "attempt": "Two shores receive equal solar power. Shore X has lower effective thermal capacity and warms faster despite similar absorption. Near-surface air above X warms more than above Y; background wind is negligible. Explain a possible circulation and why equal irradiation does not imply equal surface temperature. Identify when the inference could fail.",
         "reconstruct": "For comparable losses, lower C gives faster warming. Air over X can become lighter and rise; pressure adjustment and return flow can bring near-surface air from Y toward X. Need actual loss rates, density and pressure conditions; strong background wind or stable layering can change result.",
-        "diagnose": "Compare your reasoning with the reconstruction. Test this task-specific misconception: A plate absorbs more power but also has a larger thermal capacity. What quantity actually predicts initial temperature rise? Identify the first unsupported inference in your own attempt.",
-        "repair": "Rebuild the relevant model using the stated conditions: Compare net power divided by capacity and test assumptions independently. Check your reconstruction against the original task data.",
+        "diagnose": "Identify the missing causal link if your explanation jumps directly from solar irradiation to wind direction. Did you distinguish stored energy, surface temperature and air density?",
+        "repair": "Trace incident and retained power, thermal capacity, surface/air response and buoyancy; include a return flow and a background-weather condition.",
         "boundary_test": "If X cools below Y at night, what conditional reversal becomes plausible?"
       },
       "attempt_policy": {
@@ -351,8 +351,8 @@
         "predict": "Record your initial interpretation and confidence before viewing support.",
         "attempt": "A surface has independently measured C=250 J/K. At matched initial temperature, incident powers 100 and 180 W produce rates 0.12 and 0.28 K/s. At 140 W the observed rate is 0.20 K/s. Estimate absorption and loss, test the third trial, then assess whether the same model can be extrapolated to a much higher surface temperature.",
         "reconstruct": "Net powers 30 and 70 W; α=40/80=0.5, loss=20 W. Third (70−20)/250=0.20 K/s fits. Independent data support this local model, not extrapolation to changed emission/convection. α lies in [0,1].",
-        "diagnose": "Compare your reasoning with the reconstruction. Test this task-specific misconception: A plate absorbs more power but also has a larger thermal capacity. What quantity actually predicts initial temperature rise? Identify the first unsupported inference in your own attempt.",
-        "repair": "Rebuild the relevant model using the stated conditions: Compare net power divided by capacity and test assumptions independently. Check your reconstruction against the original task data.",
+        "diagnose": "If you fitted only one warming rate, list the remaining unknowns. Check whether your inferred absorptivity is physically possible and whether the third trial agrees.",
+        "repair": "Convert rates to net power using the measured capacity, derive absorption and loss from two independent trials, and check the unused third observation. Restrict inference to matched initial conditions.",
         "boundary_test": "If one trial were at a different initial temperature, why might subtraction cease to isolate α?"
       },
       "attempt_policy": {
@@ -375,8 +375,8 @@
         "predict": "Record your initial interpretation and confidence before viewing support.",
         "attempt": "A dry plate is independently measured to have C=300 J/K. At the same initial temperature its warming rates are 0.08 and 0.16 K/s for incident powers 90 and 150 W. A third trial at 120 W gives 0.10 K/s. Assume α and loss fixed across trials. Infer parameters from first two trials, test the third and explain whether a unique physical model survives.",
         "reconstruct": "Net powers 24,48 W; α=24/60=0.4; loss=36−24=12 W. Third predicted (48−12)/300=0.12 K/s, not 0.10. Exact data refute one common α/loss model; need uncertainty or altered loss/absorption measurement. Two trials identify parameters only under assumptions.",
-        "diagnose": "Compare your reasoning with the reconstruction. Test this task-specific misconception: A plate absorbs more power but also has a larger thermal capacity. What quantity actually predicts initial temperature rise? Identify the first unsupported inference in your own attempt.",
-        "repair": "Rebuild the relevant model using the stated conditions: Compare net power divided by capacity and test assumptions independently. Check your reconstruction against the original task data.",
+        "diagnose": "If you fitted only one warming rate, list the remaining unknowns. Check whether your inferred absorptivity is physically possible and whether the third trial agrees.",
+        "repair": "Convert rates to net power using the measured capacity, derive absorption and loss from two independent trials, and check the unused third observation. Restrict inference to matched initial conditions.",
         "boundary_test": "If C had not been measured, which combinations of parameters would the first two slopes constrain?"
       },
       "attempt_policy": {
@@ -399,8 +399,8 @@
         "predict": "Record your initial interpretation and confidence before viewing support.",
         "attempt": "Surface X absorbs 90 W and loses 30 W, C=400 J/K. Y absorbs 80 W with C=300 J/K. Determine maximum initial loss Y can have and still warm strictly faster than X. Then classify a measured loss of 40 W.",
         "reconstruct": "X rate=0.15 K/s. Y faster if (80−L)/300>0.15, so L<35 W. At 40 W, Y rate≈0.133 K/s, slower.",
-        "diagnose": "Compare your reasoning with the reconstruction. Test this task-specific misconception: A plate absorbs more power but also has a larger thermal capacity. What quantity actually predicts initial temperature rise? Identify the first unsupported inference in your own attempt.",
-        "repair": "Rebuild the relevant model using the stated conditions: Compare net power divided by capacity and test assumptions independently. Check your reconstruction against the original task data.",
+        "diagnose": "Did you rank absorption rather than temperature rise? Compare the net power and capacity of each surface; identify which inequality determines the crossover.",
+        "repair": "Write the separate net rates, solve the strict inequality for the changed parameter and substitute the supplied trial. Explain why changing losses can alter the later ranking.",
         "boundary_test": "If X and Y start at different temperatures, what independent measurements would be needed before assigning the difference to absorption?"
       },
       "attempt_policy": {
@@ -423,8 +423,8 @@
         "predict": "Record your initial interpretation and confidence before viewing support.",
         "attempt": "Plate A absorbs 75 W, loses 15 W and has C=600 J/K. B absorbs 50 W, loses 10 W and has unknown C. Find the capacity threshold below which B initially warms faster, and predict the result for C=300 J/K. What assumption limits the comparison?",
         "reconstruct": "A rate 60/600=0.10 K/s. B rate 40/C; faster if C<400 J/K. At 300, rate≈0.133 K/s, so B faster. Fixed phase and initial loss/absorption model required.",
-        "diagnose": "Compare your reasoning with the reconstruction. Test this task-specific misconception: A plate absorbs more power but also has a larger thermal capacity. What quantity actually predicts initial temperature rise? Identify the first unsupported inference in your own attempt.",
-        "repair": "Rebuild the relevant model using the stated conditions: Compare net power divided by capacity and test assumptions independently. Check your reconstruction against the original task data.",
+        "diagnose": "Did you rank absorption rather than temperature rise? Compare the net power and capacity of each surface; identify which inequality determines the crossover.",
+        "repair": "Write the separate net rates, solve the strict inequality for the changed parameter and substitute the supplied trial. Explain why changing losses can alter the later ranking.",
         "boundary_test": "If B's losses increase as it warms, can the initial ranking be assumed throughout?"
       },
       "attempt_policy": {
