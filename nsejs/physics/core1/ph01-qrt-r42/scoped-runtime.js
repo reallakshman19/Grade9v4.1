@@ -222,7 +222,7 @@
   const sourceRef = new URLSearchParams(location.search).get("source");
   const sourceIDs = new Set(["PH01-LINK-2020-51-Q5","PH01-LINK-2021-51-Q17","PH01-LINK-2021-51-Q20","PH01-LINK-2021-51-Q22","PH01-LINK-2022-51-Q35","PH01-LINK-2022-51-Q37","PH01-LINK-2022-51-Q39","PH01-LINK-2022-51-Q45","PH01-LINK-2023-51-Q60","PH01-LINK-2024-51-Q33","PH01-LINK-2024-51-Q36","PH01-LINK-2024-51-Q37","PH01-LINK-2024-51-Q46","PH01-LINK-2024-51-Q59","PH01-LINK-2024-51-Q60"]);
   const sourceLink = sourceIDs.has(sourceRef) ? "#" + sourceRef : "";
-  ph01MapLink.href = "../../textbook/PH01/core2-links/index.html" + sourceLink;
+  ph01MapLink.href = "../../textbook/PH01/core2-links-r42/index.html" + sourceLink;
   ph01MapLink.dataset.textbookHelp = "";
   ph01MapLink.textContent = sourceLink ? "Return to the linked Core2 question record" : "PH01 Core2 question-to-construction map";
   ph01SourceSection.appendChild(ph01MapLink);
