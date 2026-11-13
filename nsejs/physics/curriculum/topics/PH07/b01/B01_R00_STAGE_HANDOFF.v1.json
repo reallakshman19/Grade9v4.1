@@ -3,7 +3,7 @@
   "status": "PROPOSED_PLATFORM_DEPENDENCY",
   "review_id": 5896632580,
   "pinned_prediction_head": "ad109e0f77fd34a9f7e818e3314885c52e7d85b8",
-  "scope": "102 exact-cycle response criteria: Increments 4 through 7. Other 48 prior B01 cycles retain task-specific predictions and author stage prompts; exact boundary-response rubrics still outstanding.",
+  "scope": "150 exact-cycle author response criteria covering every B01 cycle in all 25 isolated candidate pairs. Author-exposed; not a protected payload or implemented runtime. R01 must independently review all criteria.",
   "authority": "P00 owns shared runtime and protection; R01 owns independent academic review; Owner adopts contracts",
   "stage_order": [
     "PREDICT",
@@ -1913,7 +1913,875 @@
       "boundary_prompt": "If only the 300 Hz response were observed and end information unavailable, what remains?",
       "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
       "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-01",
+      "target_id": "PH07-01-B01-D3-MODEL-01",
+      "cycle_id": "PH07-01-B01-MAIN-MODEL-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.5.ph07-01",
+      "stage_response_criteria": {
+        "PREDICT": "Record the exact task's initial judgement and reason separately, without correctness feedback.",
+        "ATTEMPT": "Offset-only fits both endpoints: θ=r−12 gives 30 °C for the sample. The intermediate bath would read 42, not 44; exact data contradict the offset/linear model. The estimate is conditional, not certified.",
+        "RECONSTRUCT": "Compare the saved attempt with the case-specific reconstruction: Offset-only fits both endpoints: θ=r−12 gives 30 °C for the sample. The intermediate bath would read 42, not 44; exact data contradict the offset/linear model. The estimate is conditional, not certified. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "If you used one correction for every raw value, compare its prediction at both reference points. If you fit two points, check the independent reference. Which observation falsifies your route?",
+        "REPAIR": "Rebuild the model from both references, then test a measurement not used to fit it; qualify the inferred value if the check disagrees. Expected case-specific result: Offset-only fits both endpoints: θ=r−12 gives 30 °C for the sample. The intermediate bath would read 42, not 44; exact data contradict the offset/linear model. The estimate is conditional, not certified.",
+        "BOUNDARY_TEST": "Agreement supports offset correction over the tested points (conditional 30 °C), not accuracy between or beyond them; independent calibration and uncertainty remain necessary."
+      },
+      "boundary_prompt": "If all three bath readings instead agree with the offset model, what changes and what remains untested?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-01",
+      "target_id": "PH07-01-B01-D3-MODEL-01",
+      "cycle_id": "PH07-01-B01-INSTANCE-MODEL-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.5.ph07-01",
+      "stage_response_criteria": {
+        "PREDICT": "Record the exact task's initial judgement and reason separately, without correctness feedback.",
+        "ATTEMPT": "The endpoints give θ=10+80(r−2)/60=50 °C for r=32; offset-only fails the second endpoint. The midpoint should display 32, not 33. Exact data rule out perfect linearity; the estimate is conditional.",
+        "RECONSTRUCT": "Compare the saved attempt with the case-specific reconstruction: The endpoints give θ=10+80(r−2)/60=50 °C for r=32; offset-only fails the second endpoint. The midpoint should display 32, not 33. Exact data rule out perfect linearity; the estimate is conditional. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "If you used one correction for every raw value, compare its prediction at both reference points. If you fit two points, check the independent reference. Which observation falsifies your route?",
+        "REPAIR": "Rebuild the model from both references, then test a measurement not used to fit it; qualify the inferred value if the check disagrees. Expected case-specific result: The endpoints give θ=10+80(r−2)/60=50 °C for r=32; offset-only fails the second endpoint. The midpoint should display 32, not 33. Exact data rule out perfect linearity; the estimate is conditional.",
+        "BOUNDARY_TEST": "No. A one-unit residual can be consistent with the stated ±2 raw-unit uncertainty; propagate endpoint/reference uncertainty as well."
+      },
+      "boundary_prompt": "If the readings have stated ±2 raw-unit uncertainty, can a one-unit discrepancy alone establish nonlinearity? Explain.",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-01",
+      "target_id": "PH07-01-B01-D3-REPRESENT-01",
+      "cycle_id": "PH07-01-B01-MAIN-REPRESENT-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.5.ph07-01",
+      "stage_response_criteria": {
+        "PREDICT": "Record the exact task's initial judgement and reason separately, without correctness feedback.",
+        "ATTEMPT": "P=30 °C; Q=22 °C. Mark 0,22,30,80 in order, annotate the two raw reference pairs; P is warmer by 8 K despite smaller raw reading.",
+        "RECONSTRUCT": "Compare the saved attempt with the case-specific reconstruction: P=30 °C; Q=22 °C. Mark 0,22,30,80 in order, annotate the two raw reference pairs; P is warmer by 8 K despite smaller raw reading. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Compare your axis with the reconstructed scale: did you compare raw values, misplace a reference, or reverse the signed ordering? Identify the first mismatch.",
+        "REPAIR": "Map each instrument independently into the same physical coordinate system; then place points and compute a difference. Expected case-specific result: P=30 °C; Q=22 °C. Mark 0,22,30,80 in order, annotate the two raw reference pairs; P is warmer by 8 K despite smaller raw reading.",
+        "BOUNDARY_TEST": "Extrapolation extends the fitted scale outside its validated interval; it is not a certified temperature without independent range evidence."
+      },
+      "boundary_prompt": "If Q is outside its calibrated raw range, distinguish plotting an extrapolation from a justified measurement.",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-01",
+      "target_id": "PH07-01-B01-D3-REPRESENT-01",
+      "cycle_id": "PH07-01-B01-INSTANCE-REPRESENT-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.5.ph07-01",
+      "stage_response_criteria": {
+        "PREDICT": "Record the exact task's initial judgement and reason separately, without correctness feedback.",
+        "ATTEMPT": "X=20 °C; Y=15 °C. The shared axis marks −20,15,20,60 with endpoint labels; X exceeds Y by 5 K.",
+        "RECONSTRUCT": "Compare the saved attempt with the case-specific reconstruction: X=20 °C; Y=15 °C. The shared axis marks −20,15,20,60 with endpoint labels; X exceeds Y by 5 K. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Compare your axis with the reconstructed scale: did you compare raw values, misplace a reference, or reverse the signed ordering? Identify the first mismatch.",
+        "REPAIR": "Map each instrument independently into the same physical coordinate system; then place points and compute a difference. Expected case-specific result: X=20 °C; Y=15 °C. The shared axis marks −20,15,20,60 with endpoint labels; X exceeds Y by 5 K.",
+        "BOUNDARY_TEST": "X=293.15 K and Y=288.15 K; all Celsius-axis coordinates shift +273.15, order and difference 5 K unchanged."
+      },
+      "boundary_prompt": "Relabel the axis in kelvin; what changes about the positions and their difference?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-01",
+      "target_id": "PH07-01-B01-D3-JUSTIFY-01",
+      "cycle_id": "PH07-01-B01-MAIN-JUSTIFY-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.5.ph07-01",
+      "stage_response_criteria": {
+        "PREDICT": "Record the exact task's initial judgement and reason separately, without correctness feedback.",
+        "ATTEMPT": "Both clusters show about −0.70 °C bias despite low scatter. Reject accuracy claim; a +0.70 °C correction is tentative in this interval. Test an independent bath and quantify reference and sensor uncertainty.",
+        "RECONSTRUCT": "Compare the saved attempt with the case-specific reconstruction: Both clusters show about −0.70 °C bias despite low scatter. Reject accuracy claim; a +0.70 °C correction is tentative in this interval. Test an independent bath and quantify reference and sensor uncertainty. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "If you accepted accuracy because readings repeated, contrast the observed scatter with the reference error. Identify which claim the observations do and do not support.",
+        "REPAIR": "Use independent reference residuals to assess bias; distinguish the tested interval from an unsupported whole-range claim. Expected case-specific result: Both clusters show about −0.70 °C bias despite low scatter. Reject accuracy claim; a +0.70 °C correction is tentative in this interval. Test an independent bath and quantify reference and sensor uncertainty.",
+        "BOUNDARY_TEST": "At 35 °C the bias would be −1.40 °C rather than −0.70 °C at 15 °C; a single exact correction cannot fit both."
+      },
+      "boundary_prompt": "If the second cluster instead centered on 33.60 °C, what would be wrong with a constant correction?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-01",
+      "target_id": "PH07-01-B01-D3-JUSTIFY-01",
+      "cycle_id": "PH07-01-B01-INSTANCE-JUSTIFY-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.5.ph07-01",
+      "stage_response_criteria": {
+        "PREDICT": "Record the exact task's initial judgement and reason separately, without correctness feedback.",
+        "ATTEMPT": "About +0.8 °C bias, small repeat scatter. Reject ±0.1 °C accuracy. A −0.8 °C correction is provisional between tested points. Test another independent reference within the intended range and account for uncertainty.",
+        "RECONSTRUCT": "Compare the saved attempt with the case-specific reconstruction: About +0.8 °C bias, small repeat scatter. Reject ±0.1 °C accuracy. A −0.8 °C correction is provisional between tested points. Test another independent reference within the intended range and account for uncertainty. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "If you accepted accuracy because readings repeated, contrast the observed scatter with the reference error. Identify which claim the observations do and do not support.",
+        "REPAIR": "Use independent reference residuals to assess bias; distinguish the tested interval from an unsupported whole-range claim. Expected case-specific result: About +0.8 °C bias, small repeat scatter. Reject ±0.1 °C accuracy. A −0.8 °C correction is provisional between tested points. Test another independent reference within the intended range and account for uncertainty.",
+        "BOUNDARY_TEST": "No. More repeats test repeatability at 40 °C, not accuracy at 90 °C or systematic bias."
+      },
+      "boundary_prompt": "Would many more repeats at 40 °C alone establish accuracy at 90 °C? Explain.",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-02",
+      "target_id": "PH07-02-B01-D3-MODEL-01",
+      "cycle_id": "PH07-02-B01-MAIN-MODEL-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.5.ph07-02",
+      "stage_response_criteria": {
+        "PREDICT": "Record the exact task's initial judgement and reason separately, without correctness feedback.",
+        "ATTEMPT": "Thermos at same temperature: no net transfer, unchanged energy under assumptions. Incubator: nonzero balanced rates at steady state, not equilibrium with room. Melting sample: positive accumulation at constant T due to phase change. Distinguish observed constant T from the necessary system conditions.",
+        "RECONSTRUCT": "Compare the saved attempt with the case-specific reconstruction: Thermos at same temperature: no net transfer, unchanged energy under assumptions. Incubator: nonzero balanced rates at steady state, not equilibrium with room. Melting sample: positive accumulation at constant T due to phase change. Distinguish observed constant T from the necessary system conditions. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Compare your energy paths with the observations: did you equate constant temperature with no energy transfer or overlook phase change?",
+        "REPAIR": "Draw the system boundary, label input and loss rates, and only then infer the internal-energy and equilibrium conditions. Expected case-specific result: Thermos at same temperature: no net transfer, unchanged energy under assumptions. Incubator: nonzero balanced rates at steady state, not equilibrium with room. Melting sample: positive accumulation at constant T due to phase change. Distinguish observed constant T from the necessary system conditions.",
+        "BOUNDARY_TEST": "Heater input ceases immediately; outward loss may continue while incubator is warmer, so prior balance no longer holds; cooling follows if unchanged phase and other inputs absent."
+      },
+      "boundary_prompt": "If the incubator heater is disconnected, which energy-path inference changes first?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-02",
+      "target_id": "PH07-02-B01-D3-MODEL-01",
+      "cycle_id": "PH07-02-B01-INSTANCE-MODEL-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.5.ph07-02",
+      "stage_response_criteria": {
+        "PREDICT": "Record the exact task's initial judgement and reason separately, without correctness feedback.",
+        "ATTEMPT": "First is thermal equilibrium under stated conditions. Second is driven steady state with zero accumulation but nonzero transfer. Third gains internal energy despite constant temperature, as long as phase change persists and loss is negligible.",
+        "RECONSTRUCT": "Compare the saved attempt with the case-specific reconstruction: First is thermal equilibrium under stated conditions. Second is driven steady state with zero accumulation but nonzero transfer. Third gains internal energy despite constant temperature, as long as phase change persists and loss is negligible. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Compare your energy paths with the observations: did you equate constant temperature with no energy transfer or overlook phase change?",
+        "REPAIR": "Draw the system boundary, label input and loss rates, and only then infer the internal-energy and equilibrium conditions. Expected case-specific result: First is thermal equilibrium under stated conditions. Second is driven steady state with zero accumulation but nonzero transfer. Third gains internal energy despite constant temperature, as long as phase change persists and loss is negligible.",
+        "BOUNDARY_TEST": "Net accumulation zero under complete energy accounting; temperature alone does not establish phase, equilibrium or the magnitudes of individual transfers."
+      },
+      "boundary_prompt": "If the mixture also loses 15 W, what can be concluded about its net energy change, and what cannot be inferred from temperature alone?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-02",
+      "target_id": "PH07-02-B01-D3-SYNTHESIZE-01",
+      "cycle_id": "PH07-02-B01-MAIN-SYNTHESIZE-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.5.ph07-02",
+      "stage_response_criteria": {
+        "PREDICT": "Record the exact task's initial judgement and reason separately, without correctness feedback.",
+        "ATTEMPT": "Steady balance D²/a ∝ a² gives D ∝ a^(3/2), ratio 27. A size-independent heat loss adds a term: D² ∝ a³ plus a term proportional to a, so the pure power law is no longer universal.",
+        "RECONSTRUCT": "Compare the saved attempt with the case-specific reconstruction: Steady balance D²/a ∝ a² gives D ∝ a^(3/2), ratio 27. A size-independent heat loss adds a term: D² ∝ a³ plus a term proportional to a, so the pure power law is no longer universal. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Identify the first point at which your calculation treated a cross-section and a surface as interchangeable, or ignored the extra heat loss.",
+        "REPAIR": "Rebuild the two rate models independently and equate them only at the stated steady condition; retest any altered heat path. Expected case-specific result: Steady balance D²/a ∝ a² gives D ∝ a^(3/2), ratio 27. A size-independent heat loss adds a term: D² ∝ a³ plus a term proportional to a, so the pure power law is no longer universal.",
+        "BOUNDARY_TEST": "D²/a=constant gives D∝a^(1/2) under the alternative model."
+      },
+      "boundary_prompt": "If all heat loss were size-independent, what drive exponent follows instead?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-02",
+      "target_id": "PH07-02-B01-D3-SYNTHESIZE-01",
+      "cycle_id": "PH07-02-B01-INSTANCE-SYNTHESIZE-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.5.ph07-02",
+      "stage_response_criteria": {
+        "PREDICT": "Record the exact task's initial judgement and reason separately, without correctness feedback.",
+        "ATTEMPT": "X²=H r³/K; changing H by 2 and r by 2 multiplies X² by 16, so X increases by 4. This requires the assumed fixed-temperature loss model and negligible other paths.",
+        "RECONSTRUCT": "Compare the saved attempt with the case-specific reconstruction: X²=H r³/K; changing H by 2 and r by 2 multiplies X² by 16, so X increases by 4. This requires the assumed fixed-temperature loss model and negligible other paths. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Identify the first point at which your calculation treated a cross-section and a surface as interchangeable, or ignored the extra heat loss.",
+        "REPAIR": "Rebuild the two rate models independently and equate them only at the stated steady condition; retest any altered heat path. Expected case-specific result: X²=H r³/K; changing H by 2 and r by 2 multiplies X² by 16, so X increases by 4. This requires the assumed fixed-temperature loss model and negligible other paths.",
+        "BOUNDARY_TEST": "No. H may differ at the new temperature; measure/model its temperature dependence and other losses."
+      },
+      "boundary_prompt": "If H falls with increasing surface temperature, does this comparison at equal specified temperature justify predictions at a different temperature?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-02",
+      "target_id": "PH07-02-B01-D3-JUSTIFY-01",
+      "cycle_id": "PH07-02-B01-MAIN-JUSTIFY-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.5.ph07-02",
+      "stage_response_criteria": {
+        "PREDICT": "Record the exact task's initial judgement and reason separately, without correctness feedback.",
+        "ATTEMPT": "Equal T does not imply equal U for different masses. The driven vessel at steady unchanged phase can lose 60 W despite stable temperature; verify loss with a system energy balance. Temperature alone does not determine U or the energy paths.",
+        "RECONSTRUCT": "Compare the saved attempt with the case-specific reconstruction: Equal T does not imply equal U for different masses. The driven vessel at steady unchanged phase can lose 60 W despite stable temperature; verify loss with a system energy balance. Temperature alone does not determine U or the energy paths. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Identify the specific physical counterexample that defeats each general statement; check if you used temperature in place of an energy quantity.",
+        "REPAIR": "State the system, mass and phase, identify the energy paths, and qualify each inference with its actual conditions. Expected case-specific result: Equal T does not imply equal U for different masses. The driven vessel at steady unchanged phase can lose 60 W despite stable temperature; verify loss with a system energy balance. Temperature alone does not determine U or the energy paths.",
+        "BOUNDARY_TEST": "Boiling changes phase and possibly mass; energy/enthalpy leaving with vapour and other terms must be included; steady temperature alone is insufficient."
+      },
+      "boundary_prompt": "If the heated vessel is boiling with a fixed temperature but changing mass, why is the previous steady-state energy argument insufficient?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-02",
+      "target_id": "PH07-02-B01-D3-JUSTIFY-01",
+      "cycle_id": "PH07-02-B01-INSTANCE-JUSTIFY-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.5.ph07-02",
+      "stage_response_criteria": {
+        "PREDICT": "Record the exact task's initial judgement and reason separately, without correctness feedback.",
+        "ATTEMPT": "For identical material and common reference, different masses generally have different internal energy; equality of temperature only prevents net spontaneous heat transfer when in mutual thermal contact. Third block could lose 10 W at steady unchanged state; energy rates and phase must be checked.",
+        "RECONSTRUCT": "Compare the saved attempt with the case-specific reconstruction: For identical material and common reference, different masses generally have different internal energy; equality of temperature only prevents net spontaneous heat transfer when in mutual thermal contact. Third block could lose 10 W at steady unchanged state; energy rates and phase must be checked. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Identify the specific physical counterexample that defeats each general statement; check if you used temperature in place of an energy quantity.",
+        "REPAIR": "State the system, mass and phase, identify the energy paths, and qualify each inference with its actual conditions. Expected case-specific result: For identical material and common reference, different masses generally have different internal energy; equality of temperature only prevents net spontaneous heat transfer when in mutual thermal contact. Third block could lose 10 W at steady unchanged state; energy rates and phase must be checked.",
+        "BOUNDARY_TEST": "Net spontaneous heat transfer outward normally reduces internal energy; temperature falls under unchanged phase and positive heat capacity."
+      },
+      "boundary_prompt": "If there is no input or work and the third block is hotter than its environment, what trend should follow under ordinary heat-loss conditions?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-04",
+      "target_id": "PH07-04-B01-D3-EXPLAIN-01",
+      "cycle_id": "PH07-04-B01-MAIN-EXPLAIN-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.5.ph07-04",
+      "stage_response_criteria": {
+        "PREDICT": "Record the exact task's initial judgement and reason separately, without correctness feedback.",
+        "ATTEMPT": "First lower layer is lighter and unstable; second heavier below is stable against small displacements. Observe density at matched depth or trace parcels and return flow. Heating direction alone is not sufficient.",
+        "RECONSTRUCT": "Compare the saved attempt with the case-specific reconstruction: First lower layer is lighter and unstable; second heavier below is stable against small displacements. Observe density at matched depth or trace parcels and return flow. Heating direction alone is not sufficient. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "If you inferred flow from temperature alone, compare the actual lower and upper densities. Which displacement is self-reinforcing, and where must displaced fluid return?",
+        "REPAIR": "Reconstruct the density comparison, buoyancy direction and mass-continuity path. Then check whether an externally driven flow changes the conclusion about natural stability. Expected case-specific result: First lower layer is lighter and unstable; second heavier below is stable against small displacements. Observe density at matched depth or trace parcels and return flow. Heating direction alone is not sufficient.",
+        "BOUNDARY_TEST": "If lighter fluid comes to lie below denser fluid the arrangement becomes unstable and natural circulation can develop; the reverse arrangement becomes stable, conditional on actual densities and geometry."
+      },
+      "boundary_prompt": "If the density gradient reverses after prolonged heating, how would the expected circulation change?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-04",
+      "target_id": "PH07-04-B01-D3-EXPLAIN-01",
+      "cycle_id": "PH07-04-B01-INSTANCE-EXPLAIN-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.5.ph07-04",
+      "stage_response_criteria": {
+        "PREDICT": "Record the exact task's initial judgement and reason separately, without correctness feedback.",
+        "ATTEMPT": "A is unstable: lighter lower fluid rises and denser upper fluid descends. B has denser lower fluid and is stable against small vertical exchange; warmth does not override composition-dependent density. In a closed tank upward mass flux has compensating downward flux.",
+        "RECONSTRUCT": "Compare the saved attempt with the case-specific reconstruction: A is unstable: lighter lower fluid rises and denser upper fluid descends. B has denser lower fluid and is stable against small vertical exchange; warmth does not override composition-dependent density. In a closed tank upward mass flux has compensating downward flux. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "If you inferred flow from temperature alone, compare the actual lower and upper densities. Which displacement is self-reinforcing, and where must displaced fluid return?",
+        "REPAIR": "Reconstruct the density comparison, buoyancy direction and mass-continuity path. Then check whether an externally driven flow changes the conclusion about natural stability. Expected case-specific result: A is unstable: lighter lower fluid rises and denser upper fluid descends. B has denser lower fluid and is stable against small vertical exchange; warmth does not override composition-dependent density. In a closed tank upward mass flux has compensating downward flux.",
+        "BOUNDARY_TEST": "No. Pump-driven flow is forced convection; stability refers to spontaneous buoyancy-driven motion."
+      },
+      "boundary_prompt": "If a pump circulates B, does that disprove the stability explanation?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-04",
+      "target_id": "PH07-04-B01-D3-MODEL-01",
+      "cycle_id": "PH07-04-B01-MAIN-MODEL-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.5.ph07-04",
+      "stage_response_criteria": {
+        "PREDICT": "Record the exact task's initial judgement and reason separately, without correctness feedback.",
+        "ATTEMPT": "Steady losses 12,20,15 W. Fan adds 8 W and rotation adds 3 W relative to baseline, with flow evidence supporting forced/natural convection respectively. Radiation or support conduction may still change; match surface surroundings, supports and emissivity.",
+        "RECONSTRUCT": "Compare the saved attempt with the case-specific reconstruction: Steady losses 12,20,15 W. Fan adds 8 W and rotation adds 3 W relative to baseline, with flow evidence supporting forced/natural convection respectively. Radiation or support conduction may still change; match surface surroundings, supports and emissivity. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Check whether your model uses steady net input as a measure of total loss, or incorrectly identifies all loss as convection. Which observation distinguishes flow from the other paths?",
+        "REPAIR": "Compare energy rates at matched temperatures and trace the observed fluid motion. Treat uncontrolled radiation, evaporation or conduction as alternative explanations until controlled. Expected case-specific result: Steady losses 12,20,15 W. Fan adds 8 W and rotation adds 3 W relative to baseline, with flow evidence supporting forced/natural convection respectively. Radiation or support conduction may still change; match surface surroundings, supports and emissivity.",
+        "BOUNDARY_TEST": "Fan changes evaporation as well as convection; matched wet/dry comparisons and mass-loss/energy measurements are needed to separate the effects."
+      },
+      "boundary_prompt": "What if the surface is wet and evaporation changes when the fan runs?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-04",
+      "target_id": "PH07-04-B01-D3-MODEL-01",
+      "cycle_id": "PH07-04-B01-INSTANCE-MODEL-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.5.ph07-04",
+      "stage_response_criteria": {
+        "PREDICT": "Record the exact task's initial judgement and reason separately, without correctness feedback.",
+        "ATTEMPT": "First exceeds second by 8 W; third exceeds second by 18 W. Flow evidence supports natural plume in first and forced convection in third. Powers alone do not isolate radiation/conduction; orientation and boundary conditions can alter other paths.",
+        "RECONSTRUCT": "Compare the saved attempt with the case-specific reconstruction: First exceeds second by 8 W; third exceeds second by 18 W. Flow evidence supports natural plume in first and forced convection in third. Powers alone do not isolate radiation/conduction; orientation and boundary conditions can alter other paths. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Check whether your model uses steady net input as a measure of total loss, or incorrectly identifies all loss as convection. Which observation distinguishes flow from the other paths?",
+        "REPAIR": "Compare energy rates at matched temperatures and trace the observed fluid motion. Treat uncontrolled radiation, evaporation or conduction as alternative explanations until controlled. Expected case-specific result: First exceeds second by 8 W; third exceeds second by 18 W. Flow evidence supports natural plume in first and forced convection in third. Powers alone do not isolate radiation/conduction; orientation and boundary conditions can alter other paths.",
+        "BOUNDARY_TEST": "Air-mediated convection (and gas conduction in ideal vacuum) is removed; radiation and conduction through supports may persist."
+      },
+      "boundary_prompt": "If a vacuum replaces air and the plate supports remain unchanged, which heat-transfer path is removed?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-04",
+      "target_id": "PH07-04-B01-D3-JUSTIFY-01",
+      "cycle_id": "PH07-04-B01-MAIN-JUSTIFY-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.5.ph07-04",
+      "stage_response_criteria": {
+        "PREDICT": "Record the exact task's initial judgement and reason separately, without correctness feedback.",
+        "ATTEMPT": "Multiple confounds (temperature difference, exposed area, evaporation, stirring). Match mass, area, initial temperature, surroundings and cover; vary stirring only, measure temperature/time and mass loss or steady input. Stirring can alter internal transfer but alone not established.",
+        "RECONSTRUCT": "Compare the saved attempt with the case-specific reconstruction: Multiple confounds (temperature difference, exposed area, evaporation, stirring). Match mass, area, initial temperature, surroundings and cover; vary stirring only, measure temperature/time and mass loss or steady input. Stirring can alter internal transfer but alone not established. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Locate any causal claim that uses the observed cooling rate alone. Can a separate process produce the same observation while circulation persists?",
+        "REPAIR": "Build a counterexample, then propose a matched comparison changing only the target fluid motion and recording mass loss or input power as appropriate. Expected case-specific result: Multiple confounds (temperature difference, exposed area, evaporation, stirring). Match mass, area, initial temperature, surroundings and cover; vary stirring only, measure temperature/time and mass loss or steady input. Stirring can alter internal transfer but alone not established.",
+        "BOUNDARY_TEST": "No. Internal circulation may exist while another path limits total outward loss; a tracer or internal temperature profile tests it."
+      },
+      "boundary_prompt": "If the controlled trials agree in cooling rate, does that prove no internal convection exists?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-04",
+      "target_id": "PH07-04-B01-D3-JUSTIFY-01",
+      "cycle_id": "PH07-04-B01-INSTANCE-JUSTIFY-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.5.ph07-04",
+      "stage_response_criteria": {
+        "PREDICT": "Record the exact task's initial judgement and reason separately, without correctness feedback.",
+        "ATTEMPT": "Lid may reduce evaporation and air exchange while fluid still circulates inside. Compare mass loss, use temperature-matched dry/covered controls and flow tracer; measure power required at matched temperature. No complete elimination follows from cooling alone.",
+        "RECONSTRUCT": "Compare the saved attempt with the case-specific reconstruction: Lid may reduce evaporation and air exchange while fluid still circulates inside. Compare mass loss, use temperature-matched dry/covered controls and flow tracer; measure power required at matched temperature. No complete elimination follows from cooling alone. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Locate any causal claim that uses the observed cooling rate alone. Can a separate process produce the same observation while circulation persists?",
+        "REPAIR": "Build a counterexample, then propose a matched comparison changing only the target fluid motion and recording mass loss or input power as appropriate. Expected case-specific result: Lid may reduce evaporation and air exchange while fluid still circulates inside. Compare mass loss, use temperature-matched dry/covered controls and flow tracer; measure power required at matched temperature. No complete elimination follows from cooling alone.",
+        "BOUNDARY_TEST": "External forced convection between vessel and moving outside air can remain."
+      },
+      "boundary_prompt": "If the interior is motionless but the outside air flows, which convection path can remain?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-05",
+      "target_id": "PH07-05-B01-D3-EXPLAIN-01",
+      "cycle_id": "PH07-05-B01-MAIN-EXPLAIN-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.5.ph07-05",
+      "stage_response_criteria": {
+        "PREDICT": "Record the exact task's initial judgement and reason separately, without correctness feedback.",
+        "ATTEMPT": "Differences in effective C, water mixing and losses can produce different net temperature changes. Warmer adjacent air may become less dense and rise, leading to pressure-driven return flow under favourable conditions. Speed also depends on pressure gradient, geometry, drag and weather.",
+        "RECONSTRUCT": "Compare the saved attempt with the case-specific reconstruction: Differences in effective C, water mixing and losses can produce different net temperature changes. Warmer adjacent air may become less dense and rise, leading to pressure-driven return flow under favourable conditions. Speed also depends on pressure gradient, geometry, drag and weather. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Identify the missing causal link if your explanation jumps directly from solar irradiation to wind direction. Did you distinguish stored energy, surface temperature and air density?",
+        "REPAIR": "Trace incident and retained power, thermal capacity, surface/air response and buoyancy; include a return flow and a background-weather condition. Expected case-specific result: Differences in effective C, water mixing and losses can produce different net temperature changes. Warmer adjacent air may become less dense and rise, leading to pressure-driven return flow under favourable conditions. Speed also depends on pressure gradient, geometry, drag and weather.",
+        "BOUNDARY_TEST": "No. Dominant forced wind can overwhelm or alter a conditional natural circulation; surface temperatures alone do not establish actual flow direction."
+      },
+      "boundary_prompt": "If forced wind from the courtyard to the lake dominates, can the observed surface temperatures alone prove natural circulation direction?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-05",
+      "target_id": "PH07-05-B01-D3-EXPLAIN-01",
+      "cycle_id": "PH07-05-B01-INSTANCE-EXPLAIN-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.5.ph07-05",
+      "stage_response_criteria": {
+        "PREDICT": "Record the exact task's initial judgement and reason separately, without correctness feedback.",
+        "ATTEMPT": "For comparable losses, lower C gives faster warming. Air over X can become lighter and rise; pressure adjustment and return flow can bring near-surface air from Y toward X. Need actual loss rates, density and pressure conditions; strong background wind or stable layering can change result.",
+        "RECONSTRUCT": "Compare the saved attempt with the case-specific reconstruction: For comparable losses, lower C gives faster warming. Air over X can become lighter and rise; pressure adjustment and return flow can bring near-surface air from Y toward X. Need actual loss rates, density and pressure conditions; strong background wind or stable layering can change result. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Identify the missing causal link if your explanation jumps directly from solar irradiation to wind direction. Did you distinguish stored energy, surface temperature and air density?",
+        "REPAIR": "Trace incident and retained power, thermal capacity, surface/air response and buoyancy; include a return flow and a background-weather condition. Expected case-specific result: For comparable losses, lower C gives faster warming. Air over X can become lighter and rise; pressure adjustment and return flow can bring near-surface air from Y toward X. Need actual loss rates, density and pressure conditions; strong background wind or stable layering can change result.",
+        "BOUNDARY_TEST": "If X becomes cooler than Y, buoyancy-driven near-surface flow X→Y may become plausible under matched favourable weather and density/pressure conditions."
+      },
+      "boundary_prompt": "If X cools below Y at night, what conditional reversal becomes plausible?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-05",
+      "target_id": "PH07-05-B01-D4-MODEL-01",
+      "cycle_id": "PH07-05-B01-MAIN-MODEL-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.5.ph07-05",
+      "stage_response_criteria": {
+        "PREDICT": "Record the exact task's initial judgement and reason separately, without correctness feedback.",
+        "ATTEMPT": "Net powers 30 and 70 W; α=40/80=0.5, loss=20 W. Third (70−20)/250=0.20 K/s fits. Independent data support this local model, not extrapolation to changed emission/convection. α lies in [0,1].",
+        "RECONSTRUCT": "Compare the saved attempt with the case-specific reconstruction: Net powers 30 and 70 W; α=40/80=0.5, loss=20 W. Third (70−20)/250=0.20 K/s fits. Independent data support this local model, not extrapolation to changed emission/convection. α lies in [0,1]. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "If you fitted only one warming rate, list the remaining unknowns. Check whether your inferred absorptivity is physically possible and whether the third trial agrees.",
+        "REPAIR": "Convert rates to net power using the measured capacity, derive absorption and loss from two independent trials, and check the unused third observation. Restrict inference to matched initial conditions. Expected case-specific result: Net powers 30 and 70 W; α=40/80=0.5, loss=20 W. Third (70−20)/250=0.20 K/s fits. Independent data support this local model, not extrapolation to changed emission/convection. α lies in [0,1].",
+        "BOUNDARY_TEST": "The loss term can differ with initial temperature; subtraction then includes an unknown loss difference and cannot isolate absorptivity alone."
+      },
+      "boundary_prompt": "If one trial were at a different initial temperature, why might subtraction cease to isolate α?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-05",
+      "target_id": "PH07-05-B01-D4-MODEL-01",
+      "cycle_id": "PH07-05-B01-INSTANCE-MODEL-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.5.ph07-05",
+      "stage_response_criteria": {
+        "PREDICT": "Record the exact task's initial judgement and reason separately, without correctness feedback.",
+        "ATTEMPT": "Net powers 24,48 W; α=24/60=0.4; loss=36−24=12 W. Third predicted (48−12)/300=0.12 K/s, not 0.10. Exact data refute one common α/loss model; need uncertainty or altered loss/absorption measurement. Two trials identify parameters only under assumptions.",
+        "RECONSTRUCT": "Compare the saved attempt with the case-specific reconstruction: Net powers 24,48 W; α=24/60=0.4; loss=36−24=12 W. Third predicted (48−12)/300=0.12 K/s, not 0.10. Exact data refute one common α/loss model; need uncertainty or altered loss/absorption measurement. Two trials identify parameters only under assumptions. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "If you fitted only one warming rate, list the remaining unknowns. Check whether your inferred absorptivity is physically possible and whether the third trial agrees.",
+        "REPAIR": "Convert rates to net power using the measured capacity, derive absorption and loss from two independent trials, and check the unused third observation. Restrict inference to matched initial conditions. Expected case-specific result: Net powers 24,48 W; α=24/60=0.4; loss=36−24=12 W. Third predicted (48−12)/300=0.12 K/s, not 0.10. Exact data refute one common α/loss model; need uncertainty or altered loss/absorption measurement. Two trials identify parameters only under assumptions.",
+        "BOUNDARY_TEST": "Slopes constrain α/C=(0.16−0.08)/(150−90)=1/750 K/J and loss/C=90/750−0.08=0.04 K/s, not individual α,C,loss."
+      },
+      "boundary_prompt": "If C had not been measured, which combinations of parameters would the first two slopes constrain?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-05",
+      "target_id": "PH07-05-B01-D3-SYNTHESIZE-01",
+      "cycle_id": "PH07-05-B01-MAIN-SYNTHESIZE-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.5.ph07-05",
+      "stage_response_criteria": {
+        "PREDICT": "Record the exact task's initial judgement and reason separately, without correctness feedback.",
+        "ATTEMPT": "X rate=0.15 K/s. Y faster if (80−L)/300>0.15, so L<35 W. At 40 W, Y rate≈0.133 K/s, slower.",
+        "RECONSTRUCT": "Compare the saved attempt with the case-specific reconstruction: X rate=0.15 K/s. Y faster if (80−L)/300>0.15, so L<35 W. At 40 W, Y rate≈0.133 K/s, slower. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Did you rank absorption rather than temperature rise? Compare the net power and capacity of each surface; identify which inequality determines the crossover.",
+        "REPAIR": "Write the separate net rates, solve the strict inequality for the changed parameter and substitute the supplied trial. Explain why changing losses can alter the later ranking. Expected case-specific result: X rate=0.15 K/s. Y faster if (80−L)/300>0.15, so L<35 W. At 40 W, Y rate≈0.133 K/s, slower.",
+        "BOUNDARY_TEST": "Measure actual absorbed power, effective capacities, initial temperatures and heat-loss rates at those states; match other conditions."
+      },
+      "boundary_prompt": "If X and Y start at different temperatures, what independent measurements would be needed before assigning the difference to absorption?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH07-05",
+      "target_id": "PH07-05-B01-D3-SYNTHESIZE-01",
+      "cycle_id": "PH07-05-B01-INSTANCE-SYNTHESIZE-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.5.ph07-05",
+      "stage_response_criteria": {
+        "PREDICT": "Record the exact task's initial judgement and reason separately, without correctness feedback.",
+        "ATTEMPT": "A rate 60/600=0.10 K/s. B rate 40/C; faster if C<400 J/K. At 300, rate≈0.133 K/s, so B faster. Fixed phase and initial loss/absorption model required.",
+        "RECONSTRUCT": "Compare the saved attempt with the case-specific reconstruction: A rate 60/600=0.10 K/s. B rate 40/C; faster if C<400 J/K. At 300, rate≈0.133 K/s, so B faster. Fixed phase and initial loss/absorption model required. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Did you rank absorption rather than temperature rise? Compare the net power and capacity of each surface; identify which inequality determines the crossover.",
+        "REPAIR": "Write the separate net rates, solve the strict inequality for the changed parameter and substitute the supplied trial. Explain why changing losses can alter the later ranking. Expected case-specific result: A rate 60/600=0.10 K/s. B rate 40/C; faster if C<400 J/K. At 300, rate≈0.133 K/s, so B faster. Fixed phase and initial loss/absorption model required.",
+        "BOUNDARY_TEST": "No. Increasing B's loss decreases its net rate; the initial ranking can reverse as state changes."
+      },
+      "boundary_prompt": "If B's losses increase as it warms, can the initial ranking be assumed throughout?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-04",
+      "target_id": "PH08-04-B01-D3-REPRESENT-01",
+      "cycle_id": "PH08-04-B01-MAIN-REPRESENT-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.5.ph08-04",
+      "stage_response_criteria": {
+        "PREDICT": "Record the exact task's initial judgement and reason separately, without correctness feedback.",
+        "ATTEMPT": "T=6 ms, f≈166.7 Hz; time maximum at 5 ms. λ=2.04 m, spatial maximum at 1.12 m. v=2.04/0.006=340 m/s. Axis labels and extrema must be consistent.",
+        "RECONSTRUCT": "Compare the saved attempt with the case-specific reconstruction: T=6 ms, f≈166.7 Hz; time maximum at 5 ms. λ=2.04 m, spatial maximum at 1.12 m. v=2.04/0.006=340 m/s. Axis labels and extrema must be consistent. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Compare the axis labels, the phase of each marker and the spacing on your two plots. Which specific mismatch would change the inferred period or wavelength?",
+        "REPAIR": "Redraw a complete labelled repetition on each physical axis and verify the halfway opposite phase before computing parameters. Expected case-specific result: T=6 ms, f≈166.7 Hz; time maximum at 5 ms. λ=2.04 m, spatial maximum at 1.12 m. v=2.04/0.006=340 m/s. Axis labels and extrema must be consistent.",
+        "BOUNDARY_TEST": "If the minimum and maximum are adjacent, separation 2.04 m is λ/2, hence λ=4.08 m and v=680 m/s for T=6 ms. Without adjacency, separation=(n+1/2)λ and the answer is a family, not unique."
+      },
+      "boundary_prompt": "If the second spatial marker is a maximum rather than a minimum, what wavelength and speed follow?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-04",
+      "target_id": "PH08-04-B01-D3-REPRESENT-01",
+      "cycle_id": "PH08-04-B01-INSTANCE-REPRESENT-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.5.ph08-04",
+      "stage_response_criteria": {
+        "PREDICT": "Record the exact task's initial judgement and reason separately, without correctness feedback.",
+        "ATTEMPT": "T=2 ms, f=500 Hz, λ=0.68 m, v=340 m/s. Each half-cycle changes crossing slope; extrema are at quarter-cycle intervals. Do not align the spatial slope with temporal slope without a propagation direction.",
+        "RECONSTRUCT": "Compare the saved attempt with the case-specific reconstruction: T=2 ms, f=500 Hz, λ=0.68 m, v=340 m/s. Each half-cycle changes crossing slope; extrema are at quarter-cycle intervals. Do not align the spatial slope with temporal slope without a propagation direction. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Compare the axis labels, the phase of each marker and the spacing on your two plots. Which specific mismatch would change the inferred period or wavelength?",
+        "REPAIR": "Redraw a complete labelled repetition on each physical axis and verify the halfway opposite phase before computing parameters. Expected case-specific result: T=2 ms, f=500 Hz, λ=0.68 m, v=340 m/s. Each half-cycle changes crossing slope; extrema are at quarter-cycle intervals. Do not align the spatial slope with temporal slope without a propagation direction.",
+        "BOUNDARY_TEST": "For a simple sinusoid, truly consecutive zero crossings alternate slope and span T/2; no skipped crossings and the same trace are required."
+      },
+      "boundary_prompt": "If only adjacent unlabelled zero crossings are supplied, what assumption would you need to recover a full period?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-04",
+      "target_id": "PH08-04-B01-D3-APPLY-01",
+      "cycle_id": "PH08-04-B01-MAIN-APPLY-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.5.ph08-04",
+      "stage_response_criteria": {
+        "PREDICT": "Record the exact task's initial judgement and reason separately, without correctness feedback.",
+        "ATTEMPT": "Ten intervals span 25 ms, T=2.5 ms, f=400 Hz. Four intervals span 3.4 m, λ=0.85 m; v=340 m/s, within independent range.",
+        "RECONSTRUCT": "Compare the saved attempt with the case-specific reconstruction: Ten intervals span 25 ms, T=2.5 ms, f=400 Hz. Four intervals span 3.4 m, λ=0.85 m; v=340 m/s, within independent range. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Check whether you counted marked peaks or intervals, and whether the milliseconds were converted. Trace any discrepancy to the earliest incorrect operation.",
+        "REPAIR": "Compute the number of intervals from ordinal labels, divide each span by its interval count, then independently substitute the recovered period and wavelength. Expected case-specific result: Ten intervals span 25 ms, T=2.5 ms, f=400 Hz. Four intervals span 3.4 m, λ=0.85 m; v=340 m/s, within independent range.",
+        "BOUNDARY_TEST": "No. v=fλ combines quantities from the same propagating wave; accidental numerical agreement from different waves is not evidence."
+      },
+      "boundary_prompt": "If the spatial image was taken from a different wave, is the numerical agreement sufficient evidence of a correct speed?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-04",
+      "target_id": "PH08-04-B01-D3-APPLY-01",
+      "cycle_id": "PH08-04-B01-INSTANCE-APPLY-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.5.ph08-04",
+      "stage_response_criteria": {
+        "PREDICT": "Record the exact task's initial judgement and reason separately, without correctness feedback.",
+        "ATTEMPT": "Seven temporal intervals span 14 ms, T=2 ms, f=500 Hz. Six spatial intervals span 3.96 m, λ=0.66 m. v=330 m/s, within the range.",
+        "RECONSTRUCT": "Compare the saved attempt with the case-specific reconstruction: Seven temporal intervals span 14 ms, T=2 ms, f=500 Hz. Six spatial intervals span 3.96 m, λ=0.66 m. v=330 m/s, within the range. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Check whether you counted marked peaks or intervals, and whether the milliseconds were converted. Trace any discrepancy to the earliest incorrect operation.",
+        "REPAIR": "Compute the number of intervals from ordinal labels, divide each span by its interval count, then independently substitute the recovered period and wavelength. Expected case-specific result: Seven temporal intervals span 14 ms, T=2 ms, f=500 Hz. Six spatial intervals span 3.96 m, λ=0.66 m. v=330 m/s, within the range.",
+        "BOUNDARY_TEST": "T=2 s, f=0.5 Hz; λ=0.66 m gives v=0.33 m/s, a factor 1000 smaller."
+      },
+      "boundary_prompt": "If timestamps are actually in seconds, not milliseconds, recompute f and v and explain the unit sensitivity.",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-04",
+      "target_id": "PH08-04-B01-D3-JUSTIFY-01",
+      "cycle_id": "PH08-04-B01-MAIN-JUSTIFY-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.5.ph08-04",
+      "stage_response_criteria": {
+        "PREDICT": "Record the exact task's initial judgement and reason separately, without correctness feedback.",
+        "ATTEMPT": "T=4 ms, f=250 Hz. λ=1.36/n m, n a positive integer; v=340/n m/s. λ=1.36 m only for successive minima. Count all intervening periods or establish n with independent data.",
+        "RECONSTRUCT": "Compare the saved attempt with the case-specific reconstruction: T=4 ms, f=250 Hz. λ=1.36/n m, n a positive integer; v=340/n m/s. λ=1.36 m only for successive minima. Count all intervening periods or establish n with independent data. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Identify which observation determines a full repetition and which leaves the number of repetitions unknown. If you assumed a unique speed, construct a second compatible case.",
+        "REPAIR": "State the assumptions explicitly, retain the unknown positive integer count and specify what additional observation eliminates it. Expected case-specific result: T=4 ms, f=250 Hz. λ=1.36/n m, n a positive integer; v=340/n m/s. λ=1.36 m only for successive minima. Count all intervening periods or establish n with independent data.",
+        "BOUNDARY_TEST": "n=1; λ=1.36 m follows from v/f=340/250."
+      },
+      "boundary_prompt": "If an independent speed of 340 m/s is supplied, what n and wavelength are consistent?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-04",
+      "target_id": "PH08-04-B01-D3-JUSTIFY-01",
+      "cycle_id": "PH08-04-B01-INSTANCE-JUSTIFY-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.5.ph08-04",
+      "stage_response_criteria": {
+        "PREDICT": "Record the exact task's initial judgement and reason separately, without correctness feedback.",
+        "ATTEMPT": "T=1.6 ms, f=625 Hz; λ=0.544/n m and v=340/n m/s. Need confirmation of successive compressions or count n, or an independent speed in the same wave.",
+        "RECONSTRUCT": "Compare the saved attempt with the case-specific reconstruction: T=1.6 ms, f=625 Hz; λ=0.544/n m and v=340/n m/s. Need confirmation of successive compressions or count n, or an independent speed in the same wave. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Identify which observation determines a full repetition and which leaves the number of repetitions unknown. If you assumed a unique speed, construct a second compatible case.",
+        "REPAIR": "State the assumptions explicitly, retain the unknown positive integer count and specify what additional observation eliminates it. Expected case-specific result: T=1.6 ms, f=625 Hz; λ=0.544/n m and v=340/n m/s. Need confirmation of successive compressions or count n, or an independent speed in the same wave.",
+        "BOUNDARY_TEST": "A nonsinusoidal signal can have multiple or unevenly spaced zero crossings per period; identify matching phase/full repetition independently."
+      },
+      "boundary_prompt": "If the time trace is nonsinusoidal and can cross zero several times per period, why is the half-period rule no longer automatic?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-05",
+      "target_id": "PH08-05-B01-D3-MODEL-01",
+      "cycle_id": "PH08-05-B01-MAIN-MODEL-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.5.ph08-05",
+      "stage_response_criteria": {
+        "PREDICT": "Record the exact task's initial judgement and reason separately, without correctness feedback.",
+        "ATTEMPT": "v=1.8/0.006=300 m/s agrees; τ=4−2=2 ms; expected 7 ms at 1.50 m.",
+        "RECONSTRUCT": "Compare the saved attempt with the case-specific reconstruction: v=1.8/0.006=300 m/s agrees; τ=4−2=2 ms; expected 7 ms at 1.50 m. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "If you divided one distance by its reported arrival time, compare the predicted times at all distances. Does a nonzero shared trigger delay explain the residuals?",
+        "REPAIR": "Use the difference between two measured distances and times to isolate propagation speed, infer the intercept and predict an unused measurement. Expected case-specific result: v=1.8/0.006=300 m/s agrees; τ=4−2=2 ms; expected 7 ms at 1.50 m.",
+        "BOUNDARY_TEST": "No. If delay can vary independently with distance, two measurements cannot separate propagation slope from changing delay; independent delay calibration or model required."
+      },
+      "boundary_prompt": "If apparatus delay varies with distance, can two readings establish a unique speed?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-05",
+      "target_id": "PH08-05-B01-D3-MODEL-01",
+      "cycle_id": "PH08-05-B01-INSTANCE-MODEL-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.5.ph08-05",
+      "stage_response_criteria": {
+        "PREDICT": "Record the exact task's initial judgement and reason separately, without correctness feedback.",
+        "ATTEMPT": "v=1.40/0.004=350 m/s; τ=5.5−3=2.5 ms. Third predicted 10+2.5=12.5 ms agrees.",
+        "RECONSTRUCT": "Compare the saved attempt with the case-specific reconstruction: v=1.40/0.004=350 m/s; τ=5.5−3=2.5 ms. Third predicted 10+2.5=12.5 ms agrees. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "If you divided one distance by its reported arrival time, compare the predicted times at all distances. Does a nonzero shared trigger delay explain the residuals?",
+        "REPAIR": "Use the difference between two measured distances and times to isolate propagation speed, infer the intercept and predict an unused measurement. Expected case-specific result: v=1.40/0.004=350 m/s; τ=5.5−3=2.5 ms. Third predicted 10+2.5=12.5 ms agrees.",
+        "BOUNDARY_TEST": "Third prediction was12.5 ms, not13.5. Exact common-speed/common-delay model fails at the third point; investigate changing delay, path or measurement."
+      },
+      "boundary_prompt": "If the third observation were 13.5 ms, what inference would have to be revised?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-05",
+      "target_id": "PH08-05-B01-D3-REPRESENT-01",
+      "cycle_id": "PH08-05-B01-MAIN-REPRESENT-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.5.ph08-05",
+      "stage_response_criteria": {
+        "PREDICT": "Record the exact task's initial judgement and reason separately, without correctness feedback.",
+        "ATTEMPT": "v₁=400, v₂=300 m/s; graph (0,0),(1.0,2.5 ms),(1.9,5.5 ms); v_eff≈345.45 m/s. Second slope steeper.",
+        "RECONSTRUCT": "Compare the saved attempt with the case-specific reconstruction: v₁=400, v₂=300 m/s; graph (0,0),(1.0,2.5 ms),(1.9,5.5 ms); v_eff≈345.45 m/s. Second slope steeper. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Check the axes: did you plot local oscillation instead of cumulative arrival time? Does the slower segment have the larger slope?",
+        "REPAIR": "Recover local speed from each wavelength and common frequency, add segment times, construct the piecewise graph and verify its total path/time ratio. Expected case-specific result: v₁=400, v₂=300 m/s; graph (0,0),(1.0,2.5 ms),(1.9,5.5 ms); v_eff≈345.45 m/s. Second slope steeper.",
+        "BOUNDARY_TEST": "No. The graph gives cumulative transit time versus distance, not excess pressure versus local time; the dependent variable and slope have different meaning."
+      },
+      "boundary_prompt": "Would the same graph describe a detector's local pressure oscillation? Explain.",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-05",
+      "target_id": "PH08-05-B01-D3-REPRESENT-01",
+      "cycle_id": "PH08-05-B01-INSTANCE-REPRESENT-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.5.ph08-05",
+      "stage_response_criteria": {
+        "PREDICT": "Record the exact task's initial judgement and reason separately, without correctness feedback.",
+        "ATTEMPT": "Local speeds 300 and 500 m/s. Graph points (0,0), (0.9,3 ms), (1.5,4.2 ms); effective speed≈357.14 m/s. First slope steeper.",
+        "RECONSTRUCT": "Compare the saved attempt with the case-specific reconstruction: Local speeds 300 and 500 m/s. Graph points (0,0), (0.9,3 ms), (1.5,4.2 ms); effective speed≈357.14 m/s. First slope steeper. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Check the axes: did you plot local oscillation instead of cumulative arrival time? Does the slower segment have the larger slope?",
+        "REPAIR": "Recover local speed from each wavelength and common frequency, add segment times, construct the piecewise graph and verify its total path/time ratio. Expected case-specific result: Local speeds 300 and 500 m/s. Graph points (0,0), (0.9,3 ms), (1.5,4.2 ms); effective speed≈357.14 m/s. First slope steeper.",
+        "BOUNDARY_TEST": "In unchanged nondispersive media speed and transit-time graph unchanged; each local wavelength halves at doubled frequency."
+      },
+      "boundary_prompt": "If the source frequency doubles without changing the medium, what happens to the graph and to local wavelengths?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-05",
+      "target_id": "PH08-05-B01-D4-SYNTHESIZE-01",
+      "cycle_id": "PH08-05-B01-MAIN-SYNTHESIZE-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.5.ph08-05",
+      "stage_response_criteria": {
+        "PREDICT": "Record the exact task's initial judgement and reason separately, without correctness feedback.",
+        "ATTEMPT": "vA=200, vB=400 m/s. All-A τ=17−15=2 ms. Mixed propagation 11 ms; base all-B 7.5 ms plus 2.5x ms gives x=1.4 m. Independent all-B 1 m predicts 2.5+2=4.5 ms. All agree.",
+        "RECONSTRUCT": "Compare the saved attempt with the case-specific reconstruction: vA=200, vB=400 m/s. All-A τ=17−15=2 ms. Mixed propagation 11 ms; base all-B 7.5 ms plus 2.5x ms gives x=1.4 m. Independent all-B 1 m predicts 2.5+2=4.5 ms. All agree. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Find whether you averaged the two speeds or counted detector delay more than once. Are the observations independent enough to determine the unknown length?",
+        "REPAIR": "Write one time equation for each path using a single delay, remove that delay, solve the length fraction within its physical bounds and check the unused path. Expected case-specific result: vA=200, vB=400 m/s. All-A τ=17−15=2 ms. Mixed propagation 11 ms; base all-B 7.5 ms plus 2.5x ms gives x=1.4 m. Independent all-B 1 m predicts 2.5+2=4.5 ms. All agree.",
+        "BOUNDARY_TEST": "13 ms = τ +7.5 ms +2.5x ms/m, hence τ=(5.5−2.5x) ms for x in [0,3] m, restricted further to x≤2.2 m if τ≥0. No unique pair."
+      },
+      "boundary_prompt": "If only the mixed arrival is known, describe the family of possible x and delays.",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-05",
+      "target_id": "PH08-05-B01-D4-SYNTHESIZE-01",
+      "cycle_id": "PH08-05-B01-INSTANCE-SYNTHESIZE-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.5.ph08-05",
+      "stage_response_criteria": {
+        "PREDICT": "Record the exact task's initial judgement and reason separately, without correctness feedback.",
+        "ATTEMPT": "vA=300, vB=500 m/s. All B propagation 4 ms, τ=1.6 ms. Mixed propagation 5.6 ms; extra 1.6 ms=x(1/300−1/500), so x=1.2 m. Third predicts 3.333+1.6=4.933 ms. Physically admissible x.",
+        "RECONSTRUCT": "Compare the saved attempt with the case-specific reconstruction: vA=300, vB=500 m/s. All B propagation 4 ms, τ=1.6 ms. Mixed propagation 5.6 ms; extra 1.6 ms=x(1/300−1/500), so x=1.2 m. Third predicts 3.333+1.6=4.933 ms. Physically admissible x. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Find whether you averaged the two speeds or counted detector delay more than once. Are the observations independent enough to determine the unknown length?",
+        "REPAIR": "Write one time equation for each path using a single delay, remove that delay, solve the length fraction within its physical bounds and check the unused path. Expected case-specific result: vA=300, vB=500 m/s. All B propagation 4 ms, τ=1.6 ms. Mixed propagation 5.6 ms; extra 1.6 ms=x(1/300−1/500), so x=1.2 m. Third predicts 3.333+1.6=4.933 ms. Physically admissible x.",
+        "BOUNDARY_TEST": "No. Mixed time becomes total length/v regardless of x, so time data cannot identify composition."
+      },
+      "boundary_prompt": "If vA=vB instead, can transit-time data determine x?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-06",
+      "target_id": "PH08-06-B01-D3-REPRESENT-01",
+      "cycle_id": "PH08-06-B01-MAIN-REPRESENT-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.5.ph08-06",
+      "stage_response_criteria": {
+        "PREDICT": "Record the exact task's initial judgement and reason separately, without correctness feedback.",
+        "ATTEMPT": "fX=200, fY=400 Hz; amplitudes 5,2.5 Pa. IX/IY=4 at common impedance. Mark two Y cycles per X cycle.",
+        "RECONSTRUCT": "Compare the saved attempt with the case-specific reconstruction: fX=200, fY=400 Hz; amplitudes 5,2.5 Pa. IX/IY=4 at common impedance. Mark two Y cycles per X cycle. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "If you used peak-to-peak as peak pressure, or identified pitch from trace height, reread the axes. Compare the independent period and pressure measurements.",
+        "REPAIR": "Mark equilibrium and extrema; recover one complete cycle on each time trace. Convert pressure-amplitude ratios to intensity only after confirming common impedance. Expected case-specific result: fX=200, fY=400 Hz; amplitudes 5,2.5 Pa. IX/IY=4 at common impedance. Mark two Y cycles per X cycle.",
+        "BOUNDARY_TEST": "Acoustic impedances Z_X and Z_Y are required, or their ratio; I_X/I_Y=4Z_Y/Z_X for matched linear progressive sinusoidal conditions."
+      },
+      "boundary_prompt": "If Y were measured in a different medium, what extra information is needed for intensity ratio?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-06",
+      "target_id": "PH08-06-B01-D3-REPRESENT-01",
+      "cycle_id": "PH08-06-B01-INSTANCE-REPRESENT-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.5.ph08-06",
+      "stage_response_criteria": {
+        "PREDICT": "Record the exact task's initial judgement and reason separately, without correctness feedback.",
+        "ATTEMPT": "A: f=250 Hz, peak 3 Pa. B: f=500 Hz, peak 1.5 Pa. B higher pitch, intensity A/B=4. Show A crossing upward at t=0 and B maximum at t=0 if choosing those reference points.",
+        "RECONSTRUCT": "Compare the saved attempt with the case-specific reconstruction: A: f=250 Hz, peak 3 Pa. B: f=500 Hz, peak 1.5 Pa. B higher pitch, intensity A/B=4. Show A crossing upward at t=0 and B maximum at t=0 if choosing those reference points. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "If you used peak-to-peak as peak pressure, or identified pitch from trace height, reread the axes. Compare the independent period and pressure measurements.",
+        "REPAIR": "Mark equilibrium and extrema; recover one complete cycle on each time trace. Convert pressure-amplitude ratios to intensity only after confirming common impedance. Expected case-specific result: A: f=250 Hz, peak 3 Pa. B: f=500 Hz, peak 1.5 Pa. B higher pitch, intensity A/B=4. Show A crossing upward at t=0 and B maximum at t=0 if choosing those reference points.",
+        "BOUNDARY_TEST": "Yes. Loudness depends on frequency-dependent perception, listener, duration and other conditions; lower physical intensity does not guarantee lower perceived loudness."
+      },
+      "boundary_prompt": "Can the higher-pitch trace also have the higher perceived loudness? Why cannot these data settle that?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-06",
+      "target_id": "PH08-06-B01-D3-MODEL-01",
+      "cycle_id": "PH08-06-B01-MAIN-MODEL-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.5.ph08-06",
+      "stage_response_criteria": {
+        "PREDICT": "Record the exact task's initial judgement and reason separately, without correctness feedback.",
+        "ATTEMPT": "First line fits 1/r with product pr=12 Pa·m; second line at 2 m predicts 6 but gives 4 Pa. Global isotropy not supported; intensity ratio at 2 m is (6/4)²=2.25 between lines.",
+        "RECONSTRUCT": "Compare the saved attempt with the case-specific reconstruction: First line fits 1/r with product pr=12 Pa·m; second line at 2 m predicts 6 but gives 4 Pa. Global isotropy not supported; intensity ratio at 2 m is (6/4)²=2.25 between lines. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Check whether your ideal spreading prediction actually fits all locations, not merely one distance pair. What alternative loss or directional effects remain?",
+        "REPAIR": "Compute pressure times distance along each comparable path, predict a third point and compare residuals. Do not infer a unique cause from failure of the ideal model. Expected case-specific result: First line fits 1/r with product pr=12 Pa·m; second line at 2 m predicts 6 but gives 4 Pa. Global isotropy not supported; intensity ratio at 2 m is (6/4)²=2.25 between lines.",
+        "BOUNDARY_TEST": "Repeat in a controlled low-reflection/anechoic environment with matched source and calibrated sensor, and map angular response; compare before/after changing reflections."
+      },
+      "boundary_prompt": "What additional control would distinguish directional source emission from room reflection effects?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-06",
+      "target_id": "PH08-06-B01-D3-MODEL-01",
+      "cycle_id": "PH08-06-B01-INSTANCE-MODEL-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.5.ph08-06",
+      "stage_response_criteria": {
+        "PREDICT": "Record the exact task's initial judgement and reason separately, without correctness feedback.",
+        "ATTEMPT": "First pair fits p∝1/r. Ideal prediction at 8 m is 2 Pa, observed 1 Pa; intensity one-quarter of ideal at 8 m. Some assumption fails; cannot uniquely identify absorption, directivity or reflections from these data.",
+        "RECONSTRUCT": "Compare the saved attempt with the case-specific reconstruction: First pair fits p∝1/r. Ideal prediction at 8 m is 2 Pa, observed 1 Pa; intensity one-quarter of ideal at 8 m. Some assumption fails; cannot uniquely identify absorption, directivity or reflections from these data. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Check whether your ideal spreading prediction actually fits all locations, not merely one distance pair. What alternative loss or directional effects remain?",
+        "REPAIR": "Compute pressure times distance along each comparable path, predict a third point and compare residuals. Do not infer a unique cause from failure of the ideal model. Expected case-specific result: First pair fits p∝1/r. Ideal prediction at 8 m is 2 Pa, observed 1 Pa; intensity one-quarter of ideal at 8 m. Some assumption fails; cannot uniquely identify absorption, directivity or reflections from these data.",
+        "BOUNDARY_TEST": "No. A single radial line can show 1/r even for a directional source. Measure matched distances at multiple angles and control reflections."
+      },
+      "boundary_prompt": "If all three measurements fit 1/r exactly, does that prove the source is isotropic?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-06",
+      "target_id": "PH08-06-B01-D4-JUSTIFY-01",
+      "cycle_id": "PH08-06-B01-MAIN-JUSTIFY-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.5.ph08-06",
+      "stage_response_criteria": {
+        "PREDICT": "Record the exact task's initial judgement and reason separately, without correctness feedback.",
+        "ATTEMPT": "IX/IY=4 ZY/ZX. If ZX/ZY=4, equal; if >4 (e.g. 8), IX<IY. Same impedance gives ratio 4. Measure medium impedance for each; perceived loudness also needs perceptual information.",
+        "RECONSTRUCT": "Compare the saved attempt with the case-specific reconstruction: IX/IY=4 ZY/ZX. If ZX/ZY=4, equal; if >4 (e.g. 8), IX<IY. Same impedance gives ratio 4. Measure medium impedance for each; perceived loudness also needs perceptual information. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Check if you assumed equal medium impedance or treated two different sensor quantities as interchangeable. Can an admissible change in impedance reverse your intensity ordering?",
+        "REPAIR": "Choose the appropriate travelling-wave intensity relation, retain the unknown impedance, construct compatible cases and specify the measurement that would remove ambiguity. Keep loudness separate. Expected case-specific result: IX/IY=4 ZY/ZX. If ZX/ZY=4, equal; if >4 (e.g. 8), IX<IY. Same impedance gives ratio 4. Measure medium impedance for each; perceived loudness also needs perceptual information.",
+        "BOUNDARY_TEST": "Microphone sensitivities, frequency response, gain and calibration may differ; voltage ratio need not equal pressure ratio."
+      },
+      "boundary_prompt": "If the graphs are uncalibrated voltage readings from two different microphones, what further uncertainty enters?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-06",
+      "target_id": "PH08-06-B01-D4-JUSTIFY-01",
+      "cycle_id": "PH08-06-B01-INSTANCE-JUSTIFY-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.5.ph08-06",
+      "stage_response_criteria": {
+        "PREDICT": "Record the exact task's initial judgement and reason separately, without correctness feedback.",
+        "ATTEMPT": "Products fA_displacement equal, so IA/IB=(ρv)A/(ρv)B. If impedance ratio is 2, IA>IB; if 1/2, IA<IB; equal impedances give equal intensity. Loudness additionally depends on frequency and listener. Measure each impedance or pressure and impedance.",
+        "RECONSTRUCT": "Compare the saved attempt with the case-specific reconstruction: Products fA_displacement equal, so IA/IB=(ρv)A/(ρv)B. If impedance ratio is 2, IA>IB; if 1/2, IA<IB; equal impedances give equal intensity. Loudness additionally depends on frequency and listener. Measure each impedance or pressure and impedance. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Check if you assumed equal medium impedance or treated two different sensor quantities as interchangeable. Can an admissible change in impedance reverse your intensity ordering?",
+        "REPAIR": "Choose the appropriate travelling-wave intensity relation, retain the unknown impedance, construct compatible cases and specify the measurement that would remove ambiguity. Keep loudness separate. Expected case-specific result: Products fA_displacement equal, so IA/IB=(ρv)A/(ρv)B. If impedance ratio is 2, IA>IB; if 1/2, IA<IB; equal impedances give equal intensity. Loudness additionally depends on frequency and listener. Measure each impedance or pressure and impedance.",
+        "BOUNDARY_TEST": "For fixed displacement amplitude and common impedance in the linear progressive model, I∝f² so doubled frequency yields fourfold intensity."
+      },
+      "boundary_prompt": "If both propagate in the same medium and frequency doubles while displacement amplitude stays fixed, what intensity ratio follows?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-07",
+      "target_id": "PH08-07-B01-D3-REPRESENT-01",
+      "cycle_id": "PH08-07-B01-MAIN-REPRESENT-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.5.ph08-07",
+      "stage_response_criteria": {
+        "PREDICT": "Record the exact task's initial judgement and reason separately, without correctness feedback.",
+        "ATTEMPT": "Shift −0.60 m ≡ +0.20 m. Later crests 0.40,1.20; troughs 0,0.80,1.60; zeros 0.20,0.60,1.00,1.40. Later displacement at x=0.20 is zero. Initial crests 0.20,1.00; troughs 0.60,1.40; zeros 0,0.40,0.80,1.20,1.60.",
+        "RECONSTRUCT": "Compare the saved attempt with the case-specific reconstruction: Shift −0.60 m ≡ +0.20 m. Later crests 0.40,1.20; troughs 0,0.80,1.60; zeros 0.20,0.60,1.00,1.40. Later displacement at x=0.20 is zero. Initial crests 0.20,1.00; troughs 0.60,1.40; zeros 0,0.40,0.80,1.20,1.60. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Inspect the sign of the shift, the interval between phase markers, and the fixed-coordinate reading; identify the first inconsistency.",
+        "REPAIR": "Shift every phase marker by the signed propagation distance, then use periodic repetition to place the field in the viewing window. Read the value at the specified coordinate. Expected case-specific result: Shift −0.60 m ≡ +0.20 m. Later crests 0.40,1.20; troughs 0,0.80,1.60; zeros 0.20,0.60,1.00,1.40. Later displacement at x=0.20 is zero. Initial crests 0.20,1.00; troughs 0.60,1.40; zeros 0,0.40,0.80,1.20,1.60.",
+        "BOUNDARY_TEST": "Shift is −(800/3)(0.003)=−0.8 m, exactly one wavelength. The later profile coincides with initial; at x=0.20 m displacement remains +6 mm."
+      },
+      "boundary_prompt": "If the speed were 800/3 m/s at the same elapsed time, what would the later profile look like?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-07",
+      "target_id": "PH08-07-B01-D3-REPRESENT-01",
+      "cycle_id": "PH08-07-B01-INSTANCE-REPRESENT-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.5.ph08-07",
+      "stage_response_criteria": {
+        "PREDICT": "Record the exact task's initial judgement and reason separately, without correctness feedback.",
+        "ATTEMPT": "Shift −0.30 m ≡ +0.10 m. Later troughs 0.20,0.60; crests 0,0.40,0.80; zeros 0.10,0.30,0.50,0.70. At x=0.10 value is zero. Initial troughs 0.10,0.50; crests 0.30,0.70; zeros 0,0.20,0.40,0.60,0.80.",
+        "RECONSTRUCT": "Compare the saved attempt with the case-specific reconstruction: Shift −0.30 m ≡ +0.10 m. Later troughs 0.20,0.60; crests 0,0.40,0.80; zeros 0.10,0.30,0.50,0.70. At x=0.10 value is zero. Initial troughs 0.10,0.50; crests 0.30,0.70; zeros 0,0.20,0.40,0.60,0.80. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Inspect the sign of the shift, the interval between phase markers, and the fixed-coordinate reading; identify the first inconsistency.",
+        "REPAIR": "Shift every phase marker by the signed propagation distance, then use periodic repetition to place the field in the viewing window. Read the value at the specified coordinate. Expected case-specific result: Shift −0.30 m ≡ +0.10 m. Later troughs 0.20,0.60; crests 0,0.40,0.80; zeros 0.10,0.30,0.50,0.70. At x=0.10 value is zero. Initial troughs 0.10,0.50; crests 0.30,0.70; zeros 0,0.20,0.40,0.60,0.80.",
+        "BOUNDARY_TEST": "Vertical scale becomes excess pressure (Pa), not particle displacement (m); maxima/minima indicate pressure variations, not actual particle positions."
+      },
+      "boundary_prompt": "If the graph instead shows pressure, what changes in the interpretation of its vertical scale?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-07",
+      "target_id": "PH08-07-B01-D4-MODEL-01",
+      "cycle_id": "PH08-07-B01-MAIN-MODEL-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.5.ph08-07",
+      "stage_response_criteria": {
+        "PREDICT": "Record the exact task's initial judgement and reason separately, without correctness feedback.",
+        "ATTEMPT": "u=(0.10+0.60n)/0.004 gives −275,−125,175,325 m/s. At 1.5 ms the offsets modulo λ are 0.1875,0.4125,0.2625,0.4875 m. Only −275 fits; period 0.60/275≈2.18 ms if needed.",
+        "RECONSTRUCT": "Compare the saved attempt with the case-specific reconstruction: u=(0.10+0.60n)/0.004 gives −275,−125,175,325 m/s. At 1.5 ms the offsets modulo λ are 0.1875,0.4125,0.2625,0.4875 m. Only −275 fits; period 0.60/275≈2.18 ms if needed. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Did your model rule out additional full cycles or negative velocities without evidence? List one omitted candidate and test it against the independent snapshot.",
+        "REPAIR": "Enumerate the signed integer family within bounds; predict each candidate's independent phase observation and retain exactly those that agree. Expected case-specific result: u=(0.10+0.60n)/0.004 gives −275,−125,175,325 m/s. At 1.5 ms the offsets modulo λ are 0.1875,0.4125,0.2625,0.4875 m. Only −275 fits; period 0.60/275≈2.18 ms if needed.",
+        "BOUNDARY_TEST": "No. At double the original interval, all candidates have offset +0.20 m modulo0.60, so this observation is redundant."
+      },
+      "boundary_prompt": "If the independent snapshot instead were at 8 ms with offset +0.20 m, would it distinguish these candidates?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-07",
+      "target_id": "PH08-07-B01-D4-MODEL-01",
+      "cycle_id": "PH08-07-B01-INSTANCE-MODEL-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.5.ph08-07",
+      "stage_response_criteria": {
+        "PREDICT": "Record the exact task's initial judgement and reason separately, without correctness feedback.",
+        "ATTEMPT": "Possible u: −350,−150,250,450 m/s. At 2 ms their offsets modulo 1 m are 0.30,0.70,0.50,0.90. Only −350 m/s fits; f=350 Hz if required.",
+        "RECONSTRUCT": "Compare the saved attempt with the case-specific reconstruction: Possible u: −350,−150,250,450 m/s. At 2 ms their offsets modulo 1 m are 0.30,0.70,0.50,0.90. Only −350 m/s fits; f=350 Hz if required. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Did your model rule out additional full cycles or negative velocities without evidence? List one omitted candidate and test it against the independent snapshot.",
+        "REPAIR": "Enumerate the signed integer family within bounds; predict each candidate's independent phase observation and retain exactly those that agree. Expected case-specific result: Possible u: −350,−150,250,450 m/s. At 2 ms their offsets modulo 1 m are 0.30,0.70,0.50,0.90. Only −350 m/s fits; f=350 Hz if required.",
+        "BOUNDARY_TEST": "Two negative candidates remain: −350 and −150 m/s. Direction alone does not determine cycle count."
+      },
+      "boundary_prompt": "Suppose the third snapshot is unavailable but the direction is known to be left. Is the solution unique? List the survivors.",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-07",
+      "target_id": "PH08-07-B01-D3-JUSTIFY-01",
+      "cycle_id": "PH08-07-B01-MAIN-JUSTIFY-R2",
+      "kind": "MAIN",
+      "package_version": "0.3.2-b01.5.ph08-07",
+      "stage_response_criteria": {
+        "PREDICT": "Record the exact task's initial judgement and reason separately, without correctness feedback.",
+        "ATTEMPT": "u=120n; allowed ±120,±240 m/s. Identical snapshots do not fix direction or cycle count. At 1 ms offsets modulo 0.72 are 0.12,0.24,0.60,0.48 m for +120,+240,−120,−240 respectively; distinct observations resolve them.",
+        "RECONSTRUCT": "Compare the saved attempt with the case-specific reconstruction: u=120n; allowed ±120,±240 m/s. Identical snapshots do not fix direction or cycle count. At 1 ms offsets modulo 0.72 are 0.12,0.24,0.60,0.48 m for +120,+240,−120,−240 respectively; distinct observations resolve them. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Find whether your argument assumes an identical snapshot means no propagation or uniquely fixes a cycle count; construct a counterexample.",
+        "REPAIR": "Separate pattern velocity from particle displacement, retain all admissible shifts, and propose a genuinely discriminating observation. Expected case-specific result: u=120n; allowed ±120,±240 m/s. Identical snapshots do not fix direction or cycle count. At 1 ms offsets modulo 0.72 are 0.12,0.24,0.60,0.48 m for +120,+240,−120,−240 respectively; distinct observations resolve them.",
+        "BOUNDARY_TEST": "A nonperiodic isolated pulse lacks identical phase markers one wavelength apart; under rigid translation an identical whole profile implies zero shift (given full observation), not arbitrary integer-wavelength shift."
+      },
+      "boundary_prompt": "If a nonperiodic isolated pulse rather than a sinusoid has identical snapshots, why is the integer-wavelength argument inapplicable?",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "subtopic_id": "PH08-07",
+      "target_id": "PH08-07-B01-D3-JUSTIFY-01",
+      "cycle_id": "PH08-07-B01-INSTANCE-JUSTIFY-R2",
+      "kind": "INSTANCE",
+      "package_version": "0.3.2-b01.5.ph08-07",
+      "stage_response_criteria": {
+        "PREDICT": "Record the exact task's initial judgement and reason separately, without correctness feedback.",
+        "ATTEMPT": "u=180n, so ±180,±360 m/s. The pattern propagates; local material displacement is not the pattern displacement. At a suitably chosen additional time, e.g. 1 ms, offsets 0.18,0.36,0.72,0.54 m distinguish the four.",
+        "RECONSTRUCT": "Compare the saved attempt with the case-specific reconstruction: u=180n, so ±180,±360 m/s. The pattern propagates; local material displacement is not the pattern displacement. At a suitably chosen additional time, e.g. 1 ms, offsets 0.18,0.36,0.72,0.54 m distinguish the four. Identify a concrete difference or verify agreement.",
+        "DIAGNOSE": "Find whether your argument assumes an identical snapshot means no propagation or uniquely fixes a cycle count; construct a counterexample.",
+        "REPAIR": "Separate pattern velocity from particle displacement, retain all admissible shifts, and propose a genuinely discriminating observation. Expected case-specific result: u=180n, so ±180,±360 m/s. The pattern propagates; local material displacement is not the pattern displacement. At a suitably chosen additional time, e.g. 1 ms, offsets 0.18,0.36,0.72,0.54 m distinguish the four.",
+        "BOUNDARY_TEST": "No. Amplitude alone gives no sign or number of wavelengths travelled; independent timing or phase evidence is needed."
+      },
+      "boundary_prompt": "Does a measurement of amplitude alone distinguish the four velocities? Explain.",
+      "academic_status": "AUTHOR_PROPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+      "runtime_status": "NOT_IMPLEMENTED"
     }
   ],
-  "review_status": "HOLD"
+  "review_status": "HOLD",
+  "known_review_flags": [
+    "PH08-04 MAIN REPRESENT boundary changes the second spatial marker to a maximum; answer is conditional on adjacency, otherwise retain half-integer alias family. Original task also needs explicit successive-minima assumption for a unique wavelength.",
+    "All public author artifacts and sidecar criteria are exposed; no claim of unseen learner assessment."
+  ]
 }
