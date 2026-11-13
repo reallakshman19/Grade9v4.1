@@ -1,7 +1,7 @@
 {
   "schema": "g9v41-chem-topic-adapter/v1",
   "adapter_id": "CHEM-C05",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "subject": "CHEMISTRY",
   "unit_id": "C05",
   "blueprint_ref": "CHEM-QRT-BLUEPRINT@0.1.0",
@@ -40,9 +40,9 @@
           ],
           "slots": {
             "X": "Why is Mg²⁺ still magnesium although it has the same number of electrons as neon?",
-            "Y": "If electrons are lost, does an atom become a different element? Ordinary ionisation changes electrons while keeping nuclear proton count fixed.",
+            "Y": "Chemistry warrant: Ordinary ionisation changes electrons while keeping nuclear proton count fixed. Prior basis: Identify Z, the number of protons; that fixes the elemental name even after electron transfer.",
             "Z": "Na atom Z=11 can become Na⁺ with ten electrons, still sodium.",
-            "W": "Learner independently performs the decisive EXPLAIN inference required by: Why is Mg²⁺ still magnesium although it has the same number of electrons as neon?"
+            "W": "Without the answer or decisive strategy supplied in advance, derive the causal explanation for this new task: \"Why is Mg²⁺ still magnesium although it has the same number of electrons as neon?\" A valid independent result must satisfy: Check proton count invariant."
           },
           "student_task": "Why is Mg²⁺ still magnesium although it has the same number of electrons as neon?",
           "wrong_idea": "Adding an electron changes chlorine into argon because it then has 18 electrons.",
@@ -68,9 +68,9 @@
           ],
           "slots": {
             "X": "An atom has 13 protons, 14 neutrons and 10 electrons. Identify nuclide and charge.",
-            "Y": "If electrons are lost, does an atom become a different element? Mass number and charge encode different particle ledgers.",
+            "Y": "Chemistry warrant: Mass number and charge encode different particle ledgers. Prior basis: Identify Z, the number of protons; that fixes the elemental name even after electron transfer.",
             "Z": "17p,18n,18e corresponds to ³⁵Cl⁻; the superscript charge is not the mass-number superscript.",
-            "W": "Learner independently performs the decisive REPRESENT inference required by: An atom has 13 protons, 14 neutrons and 10 electrons. Identify nuclide and charge."
+            "W": "Without the answer or decisive strategy supplied in advance, construct and validate the requested chemical representation for this new task: \"An atom has 13 protons, 14 neutrons and 10 electrons. Identify nuclide and charge.\" A valid independent result must satisfy: Independent A and charge checks."
           },
           "student_task": "An atom has 13 protons, 14 neutrons and 10 electrons. Identify nuclide and charge.",
           "wrong_idea": "Adding an electron changes chlorine into argon because it then has 18 electrons.",
@@ -96,9 +96,9 @@
           ],
           "slots": {
             "X": "Unknown X has 20 nucleons, 9 protons, and one more electron than protons. Identify element, neutrons and charge.",
-            "Y": "If electrons are lost, does an atom become a different element? Several particle-count conditions can be combined while checking consistency and possible ambiguity.",
+            "Y": "Chemistry warrant: Several particle-count conditions can be combined while checking consistency and possible ambiguity. Prior basis: Identify Z, the number of protons; that fixes the elemental name even after electron transfer.",
             "Z": "A and charge give equations n=A−Z and e=Z−charge, so knowing Z closes the particle inventory.",
-            "W": "Learner independently performs the decisive MODEL inference required by: Unknown X has 20 nucleons, 9 protons, and one more electron than protons. Identify element, neutrons and charge."
+            "W": "Without the answer or decisive strategy supplied in advance, choose and test a scientific model for this new task: \"Unknown X has 20 nucleons, 9 protons, and one more electron than protons. Identify element, neutrons and charge.\" A valid independent result must satisfy: Check all constraints without asserting sample stability."
           },
           "student_task": "Unknown X has 20 nucleons, 9 protons, and one more electron than protons. Identify element, neutrons and charge.",
           "wrong_idea": "Adding an electron changes chlorine into argon because it then has 18 electrons.",
@@ -140,14 +140,14 @@
           ],
           "slots": {
             "X": "Why is rare high-angle deflection significant for the nucleus model?",
-            "Y": "What did Rutherford's gold-foil experiment reveal that Thomson's model could not explain? Connect observed scattering distribution to charge concentration while distinguishing observation and model.",
+            "Y": "Chemistry warrant: Connect observed scattering distribution to charge concentration while distinguishing observation and model. Prior basis: State the observations before drawing the nucleus: mostly small deflections with rare large-angle scattering.",
             "Z": "Most alpha particles go nearly straight: the atom is mostly open space on this scale; rare backscattering supports concentrated nuclear charge.",
-            "W": "Learner independently performs the decisive EXPLAIN inference required by: Why is rare high-angle deflection significant for the nucleus model?"
+            "W": "Without the answer or decisive strategy supplied in advance, derive the causal explanation for this new task: \"Why is rare high-angle deflection significant for the nucleus model?\" A valid independent result must satisfy: Separate common and rare scattering."
           },
           "student_task": "Why is rare high-angle deflection significant for the nucleus model?",
           "wrong_idea": "Most alpha particles rebounded from the gold foil.",
           "replacement_rule": "Separate frequent observations from rare high-angle events.",
-          "visual_job": "Diagram alpha rays on a foil: most straight, few large deflections. Separate observed tracks from inferred compact nucleus.",
+          "visual_job": "Use figures/c05-rutherford.svg only as prerequisite explanatory evidence, not an annotated answer to C05-04-EXPLAIN-D3. Diagram alpha rays on a foil: most straight, few large deflections. Separate observed tracks from inferred compact nucleus.",
           "independent_check": "Separate common and rare scattering.",
           "source_bindings": [
             {
@@ -168,14 +168,14 @@
           ],
           "slots": {
             "X": "A proposed atom model has positive charge uniformly spread throughout the whole atom. Which scattering observation strains the model most?",
-            "Y": "What did Rutherford's gold-foil experiment reveal that Thomson's model could not explain? A good model must simultaneously explain common low deflection and rare large deflection.",
+            "Y": "Chemistry warrant: A good model must simultaneously explain common low deflection and rare large deflection. Prior basis: State the observations before drawing the nucleus: mostly small deflections with rare large-angle scattering.",
             "Z": "Rutherford's compact nucleus gives both; Thomson's diffuse positive region fails at large angles.",
-            "W": "Learner independently performs the decisive MODEL inference required by: A proposed atom model has positive charge uniformly spread throughout the whole atom. Which scattering observation strains the model most?"
+            "W": "Without the answer or decisive strategy supplied in advance, choose and test a scientific model for this new task: \"A proposed atom model has positive charge uniformly spread throughout the whole atom. Which scattering observation strains the model most?\" A valid independent result must satisfy: Compare every frequency category."
           },
           "student_task": "A proposed atom model has positive charge uniformly spread throughout the whole atom. Which scattering observation strains the model most?",
           "wrong_idea": "Most alpha particles rebounded from the gold foil.",
           "replacement_rule": "Separate frequent observations from rare high-angle events.",
-          "visual_job": "Diagram alpha rays on a foil: most straight, few large deflections. Separate observed tracks from inferred compact nucleus.",
+          "visual_job": "Use figures/c05-rutherford.svg only as prerequisite explanatory evidence, not an annotated answer to C05-05-MODEL-D3. Diagram alpha rays on a foil: most straight, few large deflections. Separate observed tracks from inferred compact nucleus.",
           "independent_check": "Compare every frequency category.",
           "source_bindings": [
             {
@@ -196,14 +196,14 @@
           ],
           "slots": {
             "X": "A report claims gold-foil scattering proves that electrons travel in fixed circular orbits. Assess.",
-            "Y": "What did Rutherford's gold-foil experiment reveal that Thomson's model could not explain? A scattering result supports aspects of a model but does not establish every detail of electron arrangement.",
+            "Y": "Chemistry warrant: A scattering result supports aspects of a model but does not establish every detail of electron arrangement. Prior basis: State the observations before drawing the nucleus: mostly small deflections with rare large-angle scattering.",
             "Z": "Rutherford scattering reveals nuclear concentration, not discrete electronic energy shells.",
-            "W": "Learner independently performs the decisive JUSTIFY inference required by: A report claims gold-foil scattering proves that electrons travel in fixed circular orbits. Assess."
+            "W": "Without the answer or decisive strategy supplied in advance, identify decisive evidence or a counterexample and delimit the claim for this new task: \"A report claims gold-foil scattering proves that electrons travel in fixed circular orbits. Assess.\" A valid independent result must satisfy: Explain evidentiary limits."
           },
           "student_task": "A report claims gold-foil scattering proves that electrons travel in fixed circular orbits. Assess.",
           "wrong_idea": "Most alpha particles rebounded from the gold foil.",
           "replacement_rule": "Separate frequent observations from rare high-angle events.",
-          "visual_job": "Diagram alpha rays on a foil: most straight, few large deflections. Separate observed tracks from inferred compact nucleus.",
+          "visual_job": "Use figures/c05-rutherford.svg only as prerequisite explanatory evidence, not an annotated answer to C05-06-JUSTIFY-D4. Diagram alpha rays on a foil: most straight, few large deflections. Separate observed tracks from inferred compact nucleus.",
           "independent_check": "Explain evidentiary limits.",
           "source_bindings": [
             {
@@ -240,9 +240,9 @@
           ],
           "slots": {
             "X": "Why is Al commonly represented as forming Al³⁺ in ionic compound bookkeeping?",
-            "Y": "Why does magnesium show the shell pattern 2,8,2 rather than putting all 12 electrons together? The outer-shell count supports a model for ion formation but does not by itself prove a reaction.",
+            "Y": "Chemistry warrant: The outer-shell count supports a model for ion formation but does not by itself prove a reaction. Prior basis: Take neutral-atom electron number equal to the atomic number.",
             "Z": "Mg (2,8,2) often loses two electrons to reach a neon-like arrangement, giving Mg²⁺.",
-            "W": "Learner independently performs the decisive EXPLAIN inference required by: Why is Al commonly represented as forming Al³⁺ in ionic compound bookkeeping?"
+            "W": "Without the answer or decisive strategy supplied in advance, derive the causal explanation for this new task: \"Why is Al commonly represented as forming Al³⁺ in ionic compound bookkeeping?\" A valid independent result must satisfy: Explain least-change shell reasoning with caveat."
           },
           "student_task": "Why is Al commonly represented as forming Al³⁺ in ionic compound bookkeeping?",
           "wrong_idea": "The outermost shell can always hold only eight electrons for every element.",
@@ -268,9 +268,9 @@
           ],
           "slots": {
             "X": "Find shell configuration for neutral phosphorus Z=15 and for a hypothetical P³⁻ ion using the elementary model.",
-            "Y": "Why does magnesium show the shell pattern 2,8,2 rather than putting all 12 electrons together? The shell diagram and atomic number must preserve electron count.",
+            "Y": "Chemistry warrant: The shell diagram and atomic number must preserve electron count. Prior basis: Take neutral-atom electron number equal to the atomic number.",
             "Z": "Neutral neon with Z=10 has 10 electrons distributed as 2,8. Neutral argon with Z=18 has 18 electrons distributed as 2,8,8; always check that the shell totals equal the atomic number.",
-            "W": "Learner independently performs the decisive REPRESENT inference required by: Find shell configuration for neutral phosphorus Z=15 and for a hypothetical P³⁻ ion using the elementary model."
+            "W": "Without the answer or decisive strategy supplied in advance, construct and validate the requested chemical representation for this new task: \"Find shell configuration for neutral phosphorus Z=15 and for a hypothetical P³⁻ ion using the elementary model.\" A valid independent result must satisfy: Sum shells and check charge."
           },
           "student_task": "Find shell configuration for neutral phosphorus Z=15 and for a hypothetical P³⁻ ion using the elementary model.",
           "wrong_idea": "The outermost shell can always hold only eight electrons for every element.",
@@ -296,9 +296,9 @@
           ],
           "slots": {
             "X": "A student extrapolates 'the third shell fills all 18 places before a fourth shell begins' to predict potassium 2,8,9. Evaluate.",
-            "Y": "Why does magnesium show the shell pattern 2,8,2 rather than putting all 12 electrons together? The first-18 school shell pattern cannot be extrapolated blindly into transition-metal subshell ordering.",
+            "Y": "Chemistry warrant: The first-18 school shell pattern cannot be extrapolated blindly into transition-metal subshell ordering. Prior basis: Take neutral-atom electron number equal to the atomic number.",
             "Z": "For potassium Z=19 the observed basic shell distribution is 2,8,8,1 rather than forcing 2,8,9 under an unqualified naive rule.",
-            "W": "Learner independently performs the decisive MODEL inference required by: A student extrapolates 'the third shell fills all 18 places before a fourth shell begins' to predict potassium 2,8,9. Evaluate."
+            "W": "Without the answer or decisive strategy supplied in advance, choose and test a scientific model for this new task: \"A student extrapolates 'the third shell fills all 18 places before a fourth shell begins' to predict potassium 2,8,9. Evaluate.\" A valid independent result must satisfy: State the model boundary explicitly."
           },
           "student_task": "A student extrapolates 'the third shell fills all 18 places before a fourth shell begins' to predict potassium 2,8,9. Evaluate.",
           "wrong_idea": "The outermost shell can always hold only eight electrons for every element.",
@@ -340,14 +340,14 @@
           ],
           "slots": {
             "X": "Why can chlorine-35 and chlorine-37 have broadly similar chemistry despite different masses?",
-            "Y": "Why are two carbon-12 and carbon-14 atoms both called carbon? Element identity follows proton count; isotopes differ in neutron number and often mass.",
+            "Y": "Chemistry warrant: Element identity follows proton count; isotopes differ in neutron number and often mass. Prior basis: Read Z and A separately from nuclide notation and derive the neutron count as A−Z.",
             "Z": "Cl-35 and Cl-37 both have Z17; they differ in neutron counts 18 versus 20.",
-            "W": "Learner independently performs the decisive EXPLAIN inference required by: Why can chlorine-35 and chlorine-37 have broadly similar chemistry despite different masses?"
+            "W": "Without the answer or decisive strategy supplied in advance, derive the causal explanation for this new task: \"Why can chlorine-35 and chlorine-37 have broadly similar chemistry despite different masses?\" A valid independent result must satisfy: State approximate versus exact chemical equivalence."
           },
           "student_task": "Why can chlorine-35 and chlorine-37 have broadly similar chemistry despite different masses?",
           "wrong_idea": "Different isotopic mass numbers mean different chemical elements.",
           "replacement_rule": "Check protons before naming the element.",
-          "visual_job": "Side-by-side isotope notation ¹²₆C and ¹⁴₆C; draw nuclei p6/n6 versus p6/n8. Show weighted-average bar separately.",
+          "visual_job": "Use figures/c05-isotopes.svg only as prerequisite explanatory evidence, not an annotated answer to C05-10-EXPLAIN-D3. Side-by-side isotope notation ¹²₆C and ¹⁴₆C; draw nuclei p6/n6 versus p6/n8. Show weighted-average bar separately.",
           "independent_check": "State approximate versus exact chemical equivalence.",
           "source_bindings": [
             {
@@ -368,14 +368,14 @@
           ],
           "slots": {
             "X": "A species is ⁴⁰₂₀Ca²⁺. Find p,n,e.",
-            "Y": "Why are two carbon-12 and carbon-14 atoms both called carbon? Atomic notation carries two separate integers, A and Z, and charge if needed.",
+            "Y": "Chemistry warrant: Atomic notation carries two separate integers, A and Z, and charge if needed. Prior basis: Read Z and A separately from nuclide notation and derive the neutron count as A−Z.",
             "Z": "²³₁₁Na has 11p and 12n; a Na⁺ ion has one fewer electron, not one fewer neutron.",
-            "W": "Learner independently performs the decisive REPRESENT inference required by: A species is ⁴⁰₂₀Ca²⁺. Find p,n,e."
+            "W": "Without the answer or decisive strategy supplied in advance, construct and validate the requested chemical representation for this new task: \"A species is ⁴⁰₂₀Ca²⁺. Find p,n,e.\" A valid independent result must satisfy: Check A=p+n and charge=p−e."
           },
           "student_task": "A species is ⁴⁰₂₀Ca²⁺. Find p,n,e.",
           "wrong_idea": "Different isotopic mass numbers mean different chemical elements.",
           "replacement_rule": "Check protons before naming the element.",
-          "visual_job": "Side-by-side isotope notation ¹²₆C and ¹⁴₆C; draw nuclei p6/n6 versus p6/n8. Show weighted-average bar separately.",
+          "visual_job": "Use figures/c05-isotopes.svg only as prerequisite explanatory evidence, not an annotated answer to C05-11-REPRESENT-D3. Side-by-side isotope notation ¹²₆C and ¹⁴₆C; draw nuclei p6/n6 versus p6/n8. Show weighted-average bar separately.",
           "independent_check": "Check A=p+n and charge=p−e.",
           "source_bindings": [
             {
@@ -396,14 +396,14 @@
           ],
           "slots": {
             "X": "A hypothetical element has isotopes at 10 u and 11 u. Its measured average is 10.2 u. Find fraction of 11 u isotope.",
-            "Y": "Why are two carbon-12 and carbon-14 atoms both called carbon? Weighted average depends on fractional abundances and isotope masses.",
+            "Y": "Chemistry warrant: Weighted average depends on fractional abundances and isotope masses. Prior basis: Read Z and A separately from nuclide notation and derive the neutron count as A−Z.",
             "Z": "A sample with 75% mass-35 and 25% mass-37 isotopes has average mass ~35.5 u (rounded-mass model).",
-            "W": "Learner independently performs the decisive MODEL inference required by: A hypothetical element has isotopes at 10 u and 11 u. Its measured average is 10.2 u. Find fraction of 11 u isotope."
+            "W": "Without the answer or decisive strategy supplied in advance, choose and test a scientific model for this new task: \"A hypothetical element has isotopes at 10 u and 11 u. Its measured average is 10.2 u. Find fraction of 11 u isotope.\" A valid independent result must satisfy: Identify dependency on isotope count and exact masses."
           },
           "student_task": "A hypothetical element has isotopes at 10 u and 11 u. Its measured average is 10.2 u. Find fraction of 11 u isotope.",
           "wrong_idea": "Different isotopic mass numbers mean different chemical elements.",
           "replacement_rule": "Check protons before naming the element.",
-          "visual_job": "Side-by-side isotope notation ¹²₆C and ¹⁴₆C; draw nuclei p6/n6 versus p6/n8. Show weighted-average bar separately.",
+          "visual_job": "Use figures/c05-isotopes.svg only as prerequisite explanatory evidence, not an annotated answer to C05-12-MODEL-D4. Side-by-side isotope notation ¹²₆C and ¹⁴₆C; draw nuclei p6/n6 versus p6/n8. Show weighted-average bar separately.",
           "independent_check": "Identify dependency on isotope count and exact masses.",
           "source_bindings": [
             {
@@ -440,9 +440,9 @@
           ],
           "slots": {
             "X": "Explain why F⁻ and Na⁺ can share electron count yet attract electrostatically.",
-            "Y": "How can Na⁺ and Ne have the same number of electrons yet remain different chemical species? Isoelectronic does not imply identical chemical reactivity or charge.",
+            "Y": "Chemistry warrant: Isoelectronic does not imply identical chemical reactivity or charge. Prior basis: Start with proton count, which does not change during ordinary ion formation.",
             "Z": "F⁻ (9p,10e), Ne (10p,10e) and Na⁺ (11p,10e) have the same electron count but different charge and nucleus.",
-            "W": "Learner independently performs the decisive EXPLAIN inference required by: Explain why F⁻ and Na⁺ can share electron count yet attract electrostatically."
+            "W": "Without the answer or decisive strategy supplied in advance, derive the causal explanation for this new task: \"Explain why F⁻ and Na⁺ can share electron count yet attract electrostatically.\" A valid independent result must satisfy: Distinguish charge from polarizability and other forces."
           },
           "student_task": "Explain why F⁻ and Na⁺ can share electron count yet attract electrostatically.",
           "wrong_idea": "Two species with ten electrons are the same element.",
@@ -468,9 +468,9 @@
           ],
           "slots": {
             "X": "For Al³⁺ and N³⁻ compute electrons and elementary shell patterns (Al Z13, N Z7).",
-            "Y": "How can Na⁺ and Ne have the same number of electrons yet remain different chemical species? Ion charge notation, electron count and outer-shell diagrams must agree.",
+            "Y": "Chemistry warrant: Ion charge notation, electron count and outer-shell diagrams must agree. Prior basis: Start with proton count, which does not change during ordinary ion formation.",
             "Z": "Mg²⁺ has 12p and10e, represented 2,8; O²⁻ has8p and10e, also 2,8.",
-            "W": "Learner independently performs the decisive REPRESENT inference required by: For Al³⁺ and N³⁻ compute electrons and elementary shell patterns (Al Z13, N Z7)."
+            "W": "Without the answer or decisive strategy supplied in advance, construct and validate the requested chemical representation for this new task: \"For Al³⁺ and N³⁻ compute electrons and elementary shell patterns (Al Z13, N Z7).\" A valid independent result must satisfy: Check electron sum."
           },
           "student_task": "For Al³⁺ and N³⁻ compute electrons and elementary shell patterns (Al Z13, N Z7).",
           "wrong_idea": "Two species with ten electrons are the same element.",
@@ -496,9 +496,9 @@
           ],
           "slots": {
             "X": "Compare the expected radii of O²⁻, F⁻ and Na⁺, each having ten electrons, using a clearly stated simple model.",
-            "Y": "How can Na⁺ and Ne have the same number of electrons yet remain different chemical species? For the same electron count, differing nuclear charge can affect effective attraction and ionic radius in comparable species.",
+            "Y": "Chemistry warrant: For the same electron count, differing nuclear charge can affect effective attraction and ionic radius in comparable species. Prior basis: Start with proton count, which does not change during ordinary ion formation.",
             "Z": "Within an isoelectronic sequence of comparable ions, more protons usually pull the same-number electrons inward more strongly.",
-            "W": "Learner independently performs the decisive MODEL inference required by: Compare the expected radii of O²⁻, F⁻ and Na⁺, each having ten electrons, using a clearly stated simple model."
+            "W": "Without the answer or decisive strategy supplied in advance, choose and test a scientific model for this new task: \"Compare the expected radii of O²⁻, F⁻ and Na⁺, each having ten electrons, using a clearly stated simple model.\" A valid independent result must satisfy: State fixed-electron assumption."
           },
           "student_task": "Compare the expected radii of O²⁻, F⁻ and Na⁺, each having ten electrons, using a clearly stated simple model.",
           "wrong_idea": "Two species with ten electrons are the same element.",
@@ -540,9 +540,9 @@
           ],
           "slots": {
             "X": "Why can an atom emit light at discrete frequencies rather than any arbitrary frequency when its electronic energies are quantised?",
-            "Y": "Why do modern electron configurations use 3d and 4s notation when earlier shell diagrams seem sufficient? Spectral lines support discrete energy differences; emitted light carries energy corresponding to a transition.",
+            "Y": "Chemistry warrant: Spectral lines support discrete energy differences; emitted light carries energy corresponding to a transition. Prior basis: Distinguish principal shell count from subshell occupancy such as s, p and d.",
             "Z": "E=hν means a higher photon frequency corresponds to higher energy in this model.",
-            "W": "Learner independently performs the decisive EXPLAIN inference required by: Why can an atom emit light at discrete frequencies rather than any arbitrary frequency when its electronic energies are quantised?"
+            "W": "Without the answer or decisive strategy supplied in advance, derive the causal explanation for this new task: \"Why can an atom emit light at discrete frequencies rather than any arbitrary frequency when its electronic energies are quantised?\" A valid independent result must satisfy: Declare idealised line-model limits."
           },
           "student_task": "Why can an atom emit light at discrete frequencies rather than any arbitrary frequency when its electronic energies are quantised?",
           "wrong_idea": "Always remove 3d electrons before 4s because 3d has a smaller leading number.",
@@ -568,9 +568,9 @@
           ],
           "slots": {
             "X": "Given Fe neutral [Ar]3d⁶4s², state Fe²⁺ subshell configuration in common notation.",
-            "Y": "Why do modern electron configurations use 3d and 4s notation when earlier shell diagrams seem sufficient? Configurations are electron inventories; ion charge removes or adds electrons without changing proton count.",
+            "Y": "Chemistry warrant: Configurations are electron inventories; ion charge removes or adds electrons without changing proton count. Prior basis: Distinguish principal shell count from subshell occupancy such as s, p and d.",
             "Z": "Sc neutral [Ar]3d¹4s² has 18+1+2=21 electrons; Sc³⁺ [Ar] has 18.",
-            "W": "Learner independently performs the decisive REPRESENT inference required by: Given Fe neutral [Ar]3d⁶4s², state Fe²⁺ subshell configuration in common notation."
+            "W": "Without the answer or decisive strategy supplied in advance, construct and validate the requested chemical representation for this new task: \"Given Fe neutral [Ar]3d⁶4s², state Fe²⁺ subshell configuration in common notation.\" A valid independent result must satisfy: Count p−e and state convention."
           },
           "student_task": "Given Fe neutral [Ar]3d⁶4s², state Fe²⁺ subshell configuration in common notation.",
           "wrong_idea": "Always remove 3d electrons before 4s because 3d has a smaller leading number.",
@@ -596,9 +596,9 @@
           ],
           "slots": {
             "X": "A student writes Cr³⁺ as [Ar]3d⁵4s⁻² by subtracting all three electrons from 4s. Diagnose the model error and give the common configuration.",
-            "Y": "Why do modern electron configurations use 3d and 4s notation when earlier shell diagrams seem sufficient? Ground-state configurations and ion configurations depend on electron interactions and energy ordering; naive shell order does not uniquely determine every ion.",
+            "Y": "Chemistry warrant: Ground-state configurations and ion configurations depend on electron interactions and energy ordering; naive shell order does not uniquely determine every ion. Prior basis: Distinguish principal shell count from subshell occupancy such as s, p and d.",
             "Z": "Chromium neutral [Ar]3d⁵4s¹ is an exception to the naive [Ar]3d⁴4s² model; Cr³⁺ is [Ar]3d³.",
-            "W": "Learner independently performs the decisive MODEL inference required by: A student writes Cr³⁺ as [Ar]3d⁵4s⁻² by subtracting all three electrons from 4s. Diagnose the model error and give the common configuration."
+            "W": "Without the answer or decisive strategy supplied in advance, choose and test a scientific model for this new task: \"A student writes Cr³⁺ as [Ar]3d⁵4s⁻² by subtracting all three electrons from 4s. Diagnose the model error and give the common configuration.\" A valid independent result must satisfy: Verify occupancy ≥0 and total electron count."
           },
           "student_task": "A student writes Cr³⁺ as [Ar]3d⁵4s⁻² by subtracting all three electrons from 4s. Diagnose the model error and give the common configuration.",
           "wrong_idea": "Always remove 3d electrons before 4s because 3d has a smaller leading number.",
@@ -627,6 +627,19 @@
       "version": "0.1.0",
       "kind": "INITIAL",
       "reason": "Full Stage2 draft topic-adapter bindings to authored C01–C07 Core1A/B content; unchanged shared 28 QRT authority",
+      "affected_subtopic_ids": [
+        "CHEM-C05.01",
+        "CHEM-C05.02",
+        "CHEM-C05.03",
+        "CHEM-C05.04",
+        "CHEM-C05.05",
+        "CHEM-C05.06"
+      ]
+    },
+    {
+      "version": "0.2.0",
+      "kind": "AMEND",
+      "reason": "Complete author-draft textbook concept evidence; make all X/Y/Z/W slots task-specific, preserving source and shared QRT IDs and held academic status",
       "affected_subtopic_ids": [
         "CHEM-C05.01",
         "CHEM-C05.02",
