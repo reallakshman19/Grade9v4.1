@@ -1,0 +1,1632 @@
+{
+  "schema": "g9v41-b01-adapter-reconciliation-proposal/v1",
+  "status": "PROPOSAL_ONLY_INTEGRATION_BLOCKED",
+  "review_id": 5896632580,
+  "reviewed_head": "fbe2b5a2f66c5c7a5f18cf1f03fc091af69edfba",
+  "prediction_revision_head": "ad109e0f77fd34a9f7e818e3314885c52e7d85b8",
+  "legacy_base": "de3d55e05a35150b1111f25aee3ba8acd4ef47e5",
+  "contract": "C04 v1.0 / C06 v1.0",
+  "proposed_c06": {
+    "pr": 3,
+    "head": "6dd8c0000e710fc923e9d347123f78c17449ed7b",
+    "status": "UNAPPROVED"
+  },
+  "authority": "P00/R00/Owner; B01 cannot adopt or resolve canonical adapters",
+  "identity_rule": "(package commit, blob, path, adapter_id, adapter_version, subtopic_id, target_id, cycle_id); never resolve by canonical adapter ID alone",
+  "legacy_packages": [
+    {
+      "path": "nsejs/physics/curriculum/topics/PH07/physics-topic-package.v1.json",
+      "commit": "de3d55e05a35150b1111f25aee3ba8acd4ef47e5",
+      "blob": "6dbb424be53b65bea169dd813299cae479f18c89",
+      "version": "0.2.0",
+      "adapter_id": "PHYS-TOPIC-PH07",
+      "adapter_version": "0.2.0",
+      "subtopics": [
+        {
+          "id": "PH07-05",
+          "targets": [
+            {
+              "id": "PH07-LEAD-EXPLAIN-D3",
+              "identity": "G9-AUTH-PH07-EXPLAIN-001",
+              "cell": "D3.2",
+              "operation": "EXPLAIN",
+              "band": "D3",
+              "cycle_ids": [
+                "PH07-MAIN-EXPLAIN-01",
+                "PH07-INSTANCE-EXPLAIN-01"
+              ]
+            },
+            {
+              "id": "PH07-LEAD-MODEL-D3",
+              "identity": "G9-AUTH-PH07-MODEL-001",
+              "cell": "D3.4",
+              "operation": "MODEL",
+              "band": "D3",
+              "cycle_ids": [
+                "PH07-MAIN-MODEL-01",
+                "PH07-INSTANCE-MODEL-01"
+              ]
+            },
+            {
+              "id": "PH07-LEAD-SYNTHESIZE-D3",
+              "identity": "G9-AUTH-PH07-SYNTHESIZE-001",
+              "cell": "D3.6",
+              "operation": "SYNTHESIZE",
+              "band": "D3",
+              "cycle_ids": [
+                "PH07-MAIN-SYNTHESIZE-01",
+                "PH07-INSTANCE-SYNTHESIZE-01"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "PH07-07",
+          "targets": [
+            {
+              "id": "PH07-07-D3-EXPLAIN-02",
+              "identity": "G9-AUTH-PH07-07-EXPLAIN-002",
+              "cell": "D3.2",
+              "operation": "EXPLAIN",
+              "band": "D3",
+              "cycle_ids": [
+                "PH07-07-MAIN-EXPLAIN-02",
+                "PH07-07-INSTANCE-EXPLAIN-02"
+              ]
+            },
+            {
+              "id": "PH07-07-D3-MODEL-02",
+              "identity": "G9-AUTH-PH07-07-MODEL-002",
+              "cell": "D3.4",
+              "operation": "MODEL",
+              "band": "D3",
+              "cycle_ids": [
+                "PH07-07-MAIN-MODEL-02",
+                "PH07-07-INSTANCE-MODEL-02"
+              ]
+            },
+            {
+              "id": "PH07-07-D3-SYNTHESIZE-02",
+              "identity": "G9-AUTH-PH07-07-SYNTHESIZE-002",
+              "cell": "D3.6",
+              "operation": "SYNTHESIZE",
+              "band": "D3",
+              "cycle_ids": [
+                "PH07-07-MAIN-SYNTHESIZE-02",
+                "PH07-07-INSTANCE-SYNTHESIZE-02"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "nsejs/physics/curriculum/topics/PH08/physics-topic-package.v1.json",
+      "commit": "de3d55e05a35150b1111f25aee3ba8acd4ef47e5",
+      "blob": "0e7ddad0b150da4e03af7feedafc9a1dea461440",
+      "version": "0.2.0",
+      "adapter_id": "PHYS-TOPIC-PH08",
+      "adapter_version": "0.2.0",
+      "subtopics": [
+        {
+          "id": "PH08-08",
+          "targets": [
+            {
+              "id": "PH08-LEAD-MODEL-D3",
+              "identity": "G9-AUTH-PH08-MODEL-001",
+              "cell": "D3.4",
+              "operation": "MODEL",
+              "band": "D3",
+              "cycle_ids": [
+                "PH08-MAIN-MODEL-01",
+                "PH08-INSTANCE-MODEL-01"
+              ]
+            },
+            {
+              "id": "PH08-LEAD-APPLY-D3",
+              "identity": "G9-AUTH-PH08-APPLY-001",
+              "cell": "D3.3",
+              "operation": "APPLY",
+              "band": "D3",
+              "cycle_ids": [
+                "PH08-MAIN-APPLY-01",
+                "PH08-INSTANCE-APPLY-01"
+              ]
+            },
+            {
+              "id": "PH08-LEAD-REPRESENT-D3",
+              "identity": "G9-AUTH-PH08-REPRESENT-001",
+              "cell": "D3.5",
+              "operation": "REPRESENT",
+              "band": "D3",
+              "cycle_ids": [
+                "PH08-MAIN-REPRESENT-01",
+                "PH08-INSTANCE-REPRESENT-01"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "PH08-05",
+          "targets": [
+            {
+              "id": "PH08-05-D3-APPLY-02",
+              "identity": "G9-AUTH-PH08-05-APPLY-002",
+              "cell": "D3.3",
+              "operation": "APPLY",
+              "band": "D3",
+              "cycle_ids": [
+                "PH08-05-MAIN-APPLY-02",
+                "PH08-05-INSTANCE-APPLY-02"
+              ]
+            },
+            {
+              "id": "PH08-05-D3-REPRESENT-02",
+              "identity": "G9-AUTH-PH08-05-REPRESENT-002",
+              "cell": "D3.5",
+              "operation": "REPRESENT",
+              "band": "D3",
+              "cycle_ids": [
+                "PH08-05-MAIN-REPRESENT-02",
+                "PH08-05-INSTANCE-REPRESENT-02"
+              ]
+            },
+            {
+              "id": "PH08-05-D3-JUSTIFY-02",
+              "identity": "G9-AUTH-PH08-05-JUSTIFY-002",
+              "cell": "D3.7",
+              "operation": "JUSTIFY",
+              "band": "D3",
+              "cycle_ids": [
+                "PH08-05-MAIN-JUSTIFY-02",
+                "PH08-05-INSTANCE-JUSTIFY-02"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "isolated_slices": [
+    {
+      "path": "nsejs/physics/curriculum/topics/PH07/b01/PH07-01/physics-topic-package.v1.json",
+      "commit": "ad109e0f77fd34a9f7e818e3314885c52e7d85b8",
+      "blob": "65bea0d422b7c76bfb64946748ad873f2270262f",
+      "version": "0.3.2-b01.5.ph07-01",
+      "adapter_id": "PHYS-TOPIC-PH07",
+      "adapter_version": "0.3.2-b01.5.ph07-01",
+      "subtopics": [
+        {
+          "id": "PH07-01",
+          "targets": [
+            {
+              "id": "PH07-01-B01-D3-MODEL-01",
+              "identity": "G9-B01-PH07-01-MODEL-R1",
+              "cell": "D3.4",
+              "operation": "MODEL",
+              "band": "D3",
+              "cycle_ids": [
+                "PH07-01-B01-MAIN-MODEL-R2",
+                "PH07-01-B01-INSTANCE-MODEL-R2"
+              ]
+            },
+            {
+              "id": "PH07-01-B01-D3-REPRESENT-01",
+              "identity": "G9-B01-PH07-01-REPRESENT-R1",
+              "cell": "D3.5",
+              "operation": "REPRESENT",
+              "band": "D3",
+              "cycle_ids": [
+                "PH07-01-B01-MAIN-REPRESENT-R2",
+                "PH07-01-B01-INSTANCE-REPRESENT-R2"
+              ]
+            },
+            {
+              "id": "PH07-01-B01-D3-JUSTIFY-01",
+              "identity": "G9-B01-PH07-01-JUSTIFY-R1",
+              "cell": "D3.7",
+              "operation": "JUSTIFY",
+              "band": "D3",
+              "cycle_ids": [
+                "PH07-01-B01-MAIN-JUSTIFY-R2",
+                "PH07-01-B01-INSTANCE-JUSTIFY-R2"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "nsejs/physics/curriculum/topics/PH07/b01/PH07-02/physics-topic-package.v1.json",
+      "commit": "ad109e0f77fd34a9f7e818e3314885c52e7d85b8",
+      "blob": "c0e3fe07c15dd865e19ec9ec339d704e1d3495be",
+      "version": "0.3.2-b01.5.ph07-02",
+      "adapter_id": "PHYS-TOPIC-PH07",
+      "adapter_version": "0.3.2-b01.5.ph07-02",
+      "subtopics": [
+        {
+          "id": "PH07-02",
+          "targets": [
+            {
+              "id": "PH07-02-B01-D3-MODEL-01",
+              "identity": "G9-B01-PH07-02-MODEL-R1",
+              "cell": "D3.4",
+              "operation": "MODEL",
+              "band": "D3",
+              "cycle_ids": [
+                "PH07-02-B01-MAIN-MODEL-R2",
+                "PH07-02-B01-INSTANCE-MODEL-R2"
+              ]
+            },
+            {
+              "id": "PH07-02-B01-D3-SYNTHESIZE-01",
+              "identity": "G9-B01-PH07-02-SYNTHESIZE-R1",
+              "cell": "D3.6",
+              "operation": "SYNTHESIZE",
+              "band": "D3",
+              "cycle_ids": [
+                "PH07-02-B01-MAIN-SYNTHESIZE-R2",
+                "PH07-02-B01-INSTANCE-SYNTHESIZE-R2"
+              ]
+            },
+            {
+              "id": "PH07-02-B01-D3-JUSTIFY-01",
+              "identity": "G9-B01-PH07-02-JUSTIFY-R1",
+              "cell": "D3.7",
+              "operation": "JUSTIFY",
+              "band": "D3",
+              "cycle_ids": [
+                "PH07-02-B01-MAIN-JUSTIFY-R2",
+                "PH07-02-B01-INSTANCE-JUSTIFY-R2"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "nsejs/physics/curriculum/topics/PH07/b01/PH07-04/physics-topic-package.v1.json",
+      "commit": "ad109e0f77fd34a9f7e818e3314885c52e7d85b8",
+      "blob": "92e79b9e3684c9a33955266e99c99de27bb8b87a",
+      "version": "0.3.2-b01.5.ph07-04",
+      "adapter_id": "PHYS-TOPIC-PH07",
+      "adapter_version": "0.3.2-b01.5.ph07-04",
+      "subtopics": [
+        {
+          "id": "PH07-04",
+          "targets": [
+            {
+              "id": "PH07-04-B01-D3-EXPLAIN-01",
+              "identity": "G9-B01-PH07-04-EXPLAIN-R1",
+              "cell": "D3.2",
+              "operation": "EXPLAIN",
+              "band": "D3",
+              "cycle_ids": [
+                "PH07-04-B01-MAIN-EXPLAIN-R2",
+                "PH07-04-B01-INSTANCE-EXPLAIN-R2"
+              ]
+            },
+            {
+              "id": "PH07-04-B01-D3-MODEL-01",
+              "identity": "G9-B01-PH07-04-MODEL-R1",
+              "cell": "D3.4",
+              "operation": "MODEL",
+              "band": "D3",
+              "cycle_ids": [
+                "PH07-04-B01-MAIN-MODEL-R2",
+                "PH07-04-B01-INSTANCE-MODEL-R2"
+              ]
+            },
+            {
+              "id": "PH07-04-B01-D3-JUSTIFY-01",
+              "identity": "G9-B01-PH07-04-JUSTIFY-R1",
+              "cell": "D3.7",
+              "operation": "JUSTIFY",
+              "band": "D3",
+              "cycle_ids": [
+                "PH07-04-B01-MAIN-JUSTIFY-R2",
+                "PH07-04-B01-INSTANCE-JUSTIFY-R2"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "nsejs/physics/curriculum/topics/PH07/b01/PH07-05/physics-topic-package.v1.json",
+      "commit": "ad109e0f77fd34a9f7e818e3314885c52e7d85b8",
+      "blob": "d30a6668ad9359173b42287219ac45a2dc0bd62d",
+      "version": "0.3.2-b01.5.ph07-05",
+      "adapter_id": "PHYS-TOPIC-PH07",
+      "adapter_version": "0.3.2-b01.5.ph07-05",
+      "subtopics": [
+        {
+          "id": "PH07-05",
+          "targets": [
+            {
+              "id": "PH07-05-B01-D3-EXPLAIN-01",
+              "identity": "G9-B01-PH07-05-EXPLAIN-R1",
+              "cell": "D3.2",
+              "operation": "EXPLAIN",
+              "band": "D3",
+              "cycle_ids": [
+                "PH07-05-B01-MAIN-EXPLAIN-R2",
+                "PH07-05-B01-INSTANCE-EXPLAIN-R2"
+              ]
+            },
+            {
+              "id": "PH07-05-B01-D4-MODEL-01",
+              "identity": "G9-B01-PH07-05-MODEL-R1",
+              "cell": "D4.4",
+              "operation": "MODEL",
+              "band": "D4",
+              "cycle_ids": [
+                "PH07-05-B01-MAIN-MODEL-R2",
+                "PH07-05-B01-INSTANCE-MODEL-R2"
+              ]
+            },
+            {
+              "id": "PH07-05-B01-D3-SYNTHESIZE-01",
+              "identity": "G9-B01-PH07-05-SYNTHESIZE-R1",
+              "cell": "D3.6",
+              "operation": "SYNTHESIZE",
+              "band": "D3",
+              "cycle_ids": [
+                "PH07-05-B01-MAIN-SYNTHESIZE-R2",
+                "PH07-05-B01-INSTANCE-SYNTHESIZE-R2"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "nsejs/physics/curriculum/topics/PH07/b01/PH07-06/physics-topic-package.v1.json",
+      "commit": "ad109e0f77fd34a9f7e818e3314885c52e7d85b8",
+      "blob": "9f53962e02ff87ac31c66fe1dbc8a9b3130e7525",
+      "version": "0.3.2-b01.5.ph07-06",
+      "adapter_id": "PHYS-TOPIC-PH07",
+      "adapter_version": "0.3.2-b01.5.ph07-06",
+      "subtopics": [
+        {
+          "id": "PH07-06",
+          "targets": [
+            {
+              "id": "PH07-06-B01-D3-REPRESENT-01",
+              "identity": "G9-B01-PH07-06-REPRESENT-R1",
+              "cell": "D3.5",
+              "operation": "REPRESENT",
+              "band": "D3",
+              "cycle_ids": [
+                "PH07-06-B01-MAIN-REPRESENT-R2",
+                "PH07-06-B01-INSTANCE-REPRESENT-R2"
+              ]
+            },
+            {
+              "id": "PH07-06-B01-D3-EXPLAIN-01",
+              "identity": "G9-B01-PH07-06-EXPLAIN-R1",
+              "cell": "D3.2",
+              "operation": "EXPLAIN",
+              "band": "D3",
+              "cycle_ids": [
+                "PH07-06-B01-MAIN-EXPLAIN-R2",
+                "PH07-06-B01-INSTANCE-EXPLAIN-R2"
+              ]
+            },
+            {
+              "id": "PH07-06-B01-D3-JUSTIFY-01",
+              "identity": "G9-B01-PH07-06-JUSTIFY-R1",
+              "cell": "D3.7",
+              "operation": "JUSTIFY",
+              "band": "D3",
+              "cycle_ids": [
+                "PH07-06-B01-MAIN-JUSTIFY-R2",
+                "PH07-06-B01-INSTANCE-JUSTIFY-R2"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "nsejs/physics/curriculum/topics/PH07/b01/PH07-07/physics-topic-package.v1.json",
+      "commit": "ad109e0f77fd34a9f7e818e3314885c52e7d85b8",
+      "blob": "ecf4116c599a27d6d3f4ae0737a8c759dba2d527",
+      "version": "0.3.2-b01.5.ph07-07",
+      "adapter_id": "PHYS-TOPIC-PH07",
+      "adapter_version": "0.3.2-b01.5.ph07-07",
+      "subtopics": [
+        {
+          "id": "PH07-07",
+          "targets": [
+            {
+              "id": "PH07-07-B01-D3-EXPLAIN-01",
+              "identity": "G9-B01-PH07-07-EXPLAIN-R1",
+              "cell": "D3.2",
+              "operation": "EXPLAIN",
+              "band": "D3",
+              "cycle_ids": [
+                "PH07-07-B01-MAIN-EXPLAIN-R2",
+                "PH07-07-B01-INSTANCE-EXPLAIN-R2"
+              ]
+            },
+            {
+              "id": "PH07-07-B01-D4-MODEL-01",
+              "identity": "G9-B01-PH07-07-MODEL-R1",
+              "cell": "D4.4",
+              "operation": "MODEL",
+              "band": "D4",
+              "cycle_ids": [
+                "PH07-07-B01-MAIN-MODEL-R2",
+                "PH07-07-B01-INSTANCE-MODEL-R2"
+              ]
+            },
+            {
+              "id": "PH07-07-B01-D3-SYNTHESIZE-01",
+              "identity": "G9-B01-PH07-07-SYNTHESIZE-R1",
+              "cell": "D3.6",
+              "operation": "SYNTHESIZE",
+              "band": "D3",
+              "cycle_ids": [
+                "PH07-07-B01-MAIN-SYNTHESIZE-R2",
+                "PH07-07-B01-INSTANCE-SYNTHESIZE-R2"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "nsejs/physics/curriculum/topics/PH08/b01/PH08-04/physics-topic-package.v1.json",
+      "commit": "ad109e0f77fd34a9f7e818e3314885c52e7d85b8",
+      "blob": "16d7100aa0cd2e5b6aac69a50cb1a4cfccd5857d",
+      "version": "0.3.2-b01.5.ph08-04",
+      "adapter_id": "PHYS-TOPIC-PH08",
+      "adapter_version": "0.3.2-b01.5.ph08-04",
+      "subtopics": [
+        {
+          "id": "PH08-04",
+          "targets": [
+            {
+              "id": "PH08-04-B01-D3-REPRESENT-01",
+              "identity": "G9-B01-PH08-04-REPRESENT-R1",
+              "cell": "D3.5",
+              "operation": "REPRESENT",
+              "band": "D3",
+              "cycle_ids": [
+                "PH08-04-B01-MAIN-REPRESENT-R2",
+                "PH08-04-B01-INSTANCE-REPRESENT-R2"
+              ]
+            },
+            {
+              "id": "PH08-04-B01-D3-APPLY-01",
+              "identity": "G9-B01-PH08-04-APPLY-R1",
+              "cell": "D3.3",
+              "operation": "APPLY",
+              "band": "D3",
+              "cycle_ids": [
+                "PH08-04-B01-MAIN-APPLY-R2",
+                "PH08-04-B01-INSTANCE-APPLY-R2"
+              ]
+            },
+            {
+              "id": "PH08-04-B01-D3-JUSTIFY-01",
+              "identity": "G9-B01-PH08-04-JUSTIFY-R1",
+              "cell": "D3.7",
+              "operation": "JUSTIFY",
+              "band": "D3",
+              "cycle_ids": [
+                "PH08-04-B01-MAIN-JUSTIFY-R2",
+                "PH08-04-B01-INSTANCE-JUSTIFY-R2"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "nsejs/physics/curriculum/topics/PH08/b01/PH08-05/physics-topic-package.v1.json",
+      "commit": "ad109e0f77fd34a9f7e818e3314885c52e7d85b8",
+      "blob": "31a922fe9604ea33dc66b7482c08e3252f1e76d4",
+      "version": "0.3.2-b01.5.ph08-05",
+      "adapter_id": "PHYS-TOPIC-PH08",
+      "adapter_version": "0.3.2-b01.5.ph08-05",
+      "subtopics": [
+        {
+          "id": "PH08-05",
+          "targets": [
+            {
+              "id": "PH08-05-B01-D3-MODEL-01",
+              "identity": "G9-B01-PH08-05-MODEL-R1",
+              "cell": "D3.4",
+              "operation": "MODEL",
+              "band": "D3",
+              "cycle_ids": [
+                "PH08-05-B01-MAIN-MODEL-R2",
+                "PH08-05-B01-INSTANCE-MODEL-R2"
+              ]
+            },
+            {
+              "id": "PH08-05-B01-D3-REPRESENT-01",
+              "identity": "G9-B01-PH08-05-REPRESENT-R1",
+              "cell": "D3.5",
+              "operation": "REPRESENT",
+              "band": "D3",
+              "cycle_ids": [
+                "PH08-05-B01-MAIN-REPRESENT-R2",
+                "PH08-05-B01-INSTANCE-REPRESENT-R2"
+              ]
+            },
+            {
+              "id": "PH08-05-B01-D4-SYNTHESIZE-01",
+              "identity": "G9-B01-PH08-05-SYNTHESIZE-R1",
+              "cell": "D4.6",
+              "operation": "SYNTHESIZE",
+              "band": "D4",
+              "cycle_ids": [
+                "PH08-05-B01-MAIN-SYNTHESIZE-R2",
+                "PH08-05-B01-INSTANCE-SYNTHESIZE-R2"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "nsejs/physics/curriculum/topics/PH08/b01/PH08-06/physics-topic-package.v1.json",
+      "commit": "ad109e0f77fd34a9f7e818e3314885c52e7d85b8",
+      "blob": "acca92421a1f79614306a1c74ace36309a17d9cc",
+      "version": "0.3.2-b01.5.ph08-06",
+      "adapter_id": "PHYS-TOPIC-PH08",
+      "adapter_version": "0.3.2-b01.5.ph08-06",
+      "subtopics": [
+        {
+          "id": "PH08-06",
+          "targets": [
+            {
+              "id": "PH08-06-B01-D3-REPRESENT-01",
+              "identity": "G9-B01-PH08-06-REPRESENT-R1",
+              "cell": "D3.5",
+              "operation": "REPRESENT",
+              "band": "D3",
+              "cycle_ids": [
+                "PH08-06-B01-MAIN-REPRESENT-R2",
+                "PH08-06-B01-INSTANCE-REPRESENT-R2"
+              ]
+            },
+            {
+              "id": "PH08-06-B01-D3-MODEL-01",
+              "identity": "G9-B01-PH08-06-MODEL-R1",
+              "cell": "D3.4",
+              "operation": "MODEL",
+              "band": "D3",
+              "cycle_ids": [
+                "PH08-06-B01-MAIN-MODEL-R2",
+                "PH08-06-B01-INSTANCE-MODEL-R2"
+              ]
+            },
+            {
+              "id": "PH08-06-B01-D4-JUSTIFY-01",
+              "identity": "G9-B01-PH08-06-JUSTIFY-R1",
+              "cell": "D4.7",
+              "operation": "JUSTIFY",
+              "band": "D4",
+              "cycle_ids": [
+                "PH08-06-B01-MAIN-JUSTIFY-R2",
+                "PH08-06-B01-INSTANCE-JUSTIFY-R2"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "nsejs/physics/curriculum/topics/PH08/b01/PH08-07/physics-topic-package.v1.json",
+      "commit": "ad109e0f77fd34a9f7e818e3314885c52e7d85b8",
+      "blob": "b744adbdb8c7aa4281674cdb6812f2cc5aa56999",
+      "version": "0.3.2-b01.5.ph08-07",
+      "adapter_id": "PHYS-TOPIC-PH08",
+      "adapter_version": "0.3.2-b01.5.ph08-07",
+      "subtopics": [
+        {
+          "id": "PH08-07",
+          "targets": [
+            {
+              "id": "PH08-07-B01-D3-REPRESENT-01",
+              "identity": "G9-B01-PH08-07-REPRESENT-R1",
+              "cell": "D3.5",
+              "operation": "REPRESENT",
+              "band": "D3",
+              "cycle_ids": [
+                "PH08-07-B01-MAIN-REPRESENT-R2",
+                "PH08-07-B01-INSTANCE-REPRESENT-R2"
+              ]
+            },
+            {
+              "id": "PH08-07-B01-D4-MODEL-01",
+              "identity": "G9-B01-PH08-07-MODEL-R1",
+              "cell": "D4.4",
+              "operation": "MODEL",
+              "band": "D4",
+              "cycle_ids": [
+                "PH08-07-B01-MAIN-MODEL-R2",
+                "PH08-07-B01-INSTANCE-MODEL-R2"
+              ]
+            },
+            {
+              "id": "PH08-07-B01-D3-JUSTIFY-01",
+              "identity": "G9-B01-PH08-07-JUSTIFY-R1",
+              "cell": "D3.7",
+              "operation": "JUSTIFY",
+              "band": "D3",
+              "cycle_ids": [
+                "PH08-07-B01-MAIN-JUSTIFY-R2",
+                "PH08-07-B01-INSTANCE-JUSTIFY-R2"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "nsejs/physics/curriculum/topics/PH08/b01/PH08-08/physics-topic-package.v1.json",
+      "commit": "ad109e0f77fd34a9f7e818e3314885c52e7d85b8",
+      "blob": "5c49278b7fa7f62ba0e3d443c5c25a003402c8c4",
+      "version": "0.3.2-b01.5.ph08-08",
+      "adapter_id": "PHYS-TOPIC-PH08",
+      "adapter_version": "0.3.2-b01.5.ph08-08",
+      "subtopics": [
+        {
+          "id": "PH08-08",
+          "targets": [
+            {
+              "id": "PH08-08-B01-D3-MODEL-01",
+              "identity": "G9-B01-PH08-08-MODEL-R1",
+              "cell": "D3.4",
+              "operation": "MODEL",
+              "band": "D3",
+              "cycle_ids": [
+                "PH08-08-B01-MAIN-MODEL-R2",
+                "PH08-08-B01-INSTANCE-MODEL-R2"
+              ]
+            },
+            {
+              "id": "PH08-08-B01-D3-APPLY-01",
+              "identity": "G9-B01-PH08-08-APPLY-R1",
+              "cell": "D3.3",
+              "operation": "APPLY",
+              "band": "D3",
+              "cycle_ids": [
+                "PH08-08-B01-MAIN-APPLY-R2",
+                "PH08-08-B01-INSTANCE-APPLY-R2"
+              ]
+            },
+            {
+              "id": "PH08-08-B01-D3-REPRESENT-01",
+              "identity": "G9-B01-PH08-08-REPRESENT-R1",
+              "cell": "D3.5",
+              "operation": "REPRESENT",
+              "band": "D3",
+              "cycle_ids": [
+                "PH08-08-B01-MAIN-REPRESENT-R2",
+                "PH08-08-B01-INSTANCE-REPRESENT-R2"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "nsejs/physics/curriculum/topics/PH08/b01/PH08-12/physics-topic-package.v1.json",
+      "commit": "ad109e0f77fd34a9f7e818e3314885c52e7d85b8",
+      "blob": "c86114ee34a0073770b83b9cea6a780b8806377e",
+      "version": "0.3.2-b01.5.ph08-12",
+      "adapter_id": "PHYS-TOPIC-PH08",
+      "adapter_version": "0.3.2-b01.5.ph08-12",
+      "subtopics": [
+        {
+          "id": "PH08-12",
+          "targets": [
+            {
+              "id": "PH08-12-B01-D3-REPRESENT-01",
+              "identity": "G9-B01-PH08-12-REPRESENT-R1",
+              "cell": "D3.5",
+              "operation": "REPRESENT",
+              "band": "D3",
+              "cycle_ids": [
+                "PH08-12-B01-MAIN-REPRESENT-R2",
+                "PH08-12-B01-INSTANCE-REPRESENT-R2"
+              ]
+            },
+            {
+              "id": "PH08-12-B01-D4-SYNTHESIZE-01",
+              "identity": "G9-B01-PH08-12-SYNTHESIZE-R1",
+              "cell": "D4.6",
+              "operation": "SYNTHESIZE",
+              "band": "D4",
+              "cycle_ids": [
+                "PH08-12-B01-MAIN-SYNTHESIZE-R2",
+                "PH08-12-B01-INSTANCE-SYNTHESIZE-R2"
+              ]
+            },
+            {
+              "id": "PH08-12-B01-D4-JUSTIFY-01",
+              "identity": "G9-B01-PH08-12-JUSTIFY-R1",
+              "cell": "D4.7",
+              "operation": "JUSTIFY",
+              "band": "D4",
+              "cycle_ids": [
+                "PH08-12-B01-MAIN-JUSTIFY-R2",
+                "PH08-12-B01-INSTANCE-JUSTIFY-R2"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "overlapping_subtopics": [
+    {
+      "subtopic_id": "PH07-05",
+      "legacy": [
+        {
+          "id": "PH07-LEAD-EXPLAIN-D3",
+          "identity": "G9-AUTH-PH07-EXPLAIN-001",
+          "cell": "D3.2",
+          "operation": "EXPLAIN",
+          "band": "D3",
+          "cycle_ids": [
+            "PH07-MAIN-EXPLAIN-01",
+            "PH07-INSTANCE-EXPLAIN-01"
+          ]
+        },
+        {
+          "id": "PH07-LEAD-MODEL-D3",
+          "identity": "G9-AUTH-PH07-MODEL-001",
+          "cell": "D3.4",
+          "operation": "MODEL",
+          "band": "D3",
+          "cycle_ids": [
+            "PH07-MAIN-MODEL-01",
+            "PH07-INSTANCE-MODEL-01"
+          ]
+        },
+        {
+          "id": "PH07-LEAD-SYNTHESIZE-D3",
+          "identity": "G9-AUTH-PH07-SYNTHESIZE-001",
+          "cell": "D3.6",
+          "operation": "SYNTHESIZE",
+          "band": "D3",
+          "cycle_ids": [
+            "PH07-MAIN-SYNTHESIZE-01",
+            "PH07-INSTANCE-SYNTHESIZE-01"
+          ]
+        }
+      ],
+      "proposed": [
+        {
+          "id": "PH07-05-B01-D3-EXPLAIN-01",
+          "identity": "G9-B01-PH07-05-EXPLAIN-R1",
+          "cell": "D3.2",
+          "operation": "EXPLAIN",
+          "band": "D3",
+          "cycle_ids": [
+            "PH07-05-B01-MAIN-EXPLAIN-R2",
+            "PH07-05-B01-INSTANCE-EXPLAIN-R2"
+          ]
+        },
+        {
+          "id": "PH07-05-B01-D4-MODEL-01",
+          "identity": "G9-B01-PH07-05-MODEL-R1",
+          "cell": "D4.4",
+          "operation": "MODEL",
+          "band": "D4",
+          "cycle_ids": [
+            "PH07-05-B01-MAIN-MODEL-R2",
+            "PH07-05-B01-INSTANCE-MODEL-R2"
+          ]
+        },
+        {
+          "id": "PH07-05-B01-D3-SYNTHESIZE-01",
+          "identity": "G9-B01-PH07-05-SYNTHESIZE-R1",
+          "cell": "D3.6",
+          "operation": "SYNTHESIZE",
+          "band": "D3",
+          "cycle_ids": [
+            "PH07-05-B01-MAIN-SYNTHESIZE-R2",
+            "PH07-05-B01-INSTANCE-SYNTHESIZE-R2"
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "legacy_target": "PH07-LEAD-EXPLAIN-D3",
+          "legacy_cell": "D3.2",
+          "proposed_same_operation": [
+            {
+              "target": "PH07-05-B01-D3-EXPLAIN-01",
+              "cell": "D3.2",
+              "relation": "DISTINCT_TASK_NOT_EQUIVALENT_NOT_RECLASSIFICATION"
+            }
+          ],
+          "disposition": "PRESERVE_LEGACY; NO AUTOMATIC SUPERSESSION"
+        },
+        {
+          "legacy_target": "PH07-LEAD-MODEL-D3",
+          "legacy_cell": "D3.4",
+          "proposed_same_operation": [
+            {
+              "target": "PH07-05-B01-D4-MODEL-01",
+              "cell": "D4.4",
+              "relation": "DISTINCT_TASK_NOT_EQUIVALENT_NOT_RECLASSIFICATION"
+            }
+          ],
+          "disposition": "PRESERVE_LEGACY; NO AUTOMATIC SUPERSESSION"
+        },
+        {
+          "legacy_target": "PH07-LEAD-SYNTHESIZE-D3",
+          "legacy_cell": "D3.6",
+          "proposed_same_operation": [
+            {
+              "target": "PH07-05-B01-D3-SYNTHESIZE-01",
+              "cell": "D3.6",
+              "relation": "DISTINCT_TASK_NOT_EQUIVALENT_NOT_RECLASSIFICATION"
+            }
+          ],
+          "disposition": "PRESERVE_LEGACY; NO AUTOMATIC SUPERSESSION"
+        }
+      ],
+      "proposal": "Use B01 dedicated pair for isolated author preview only; preserve inherited candidates and legacy operation cells for reconciliation. No canonical selection or merge."
+    },
+    {
+      "subtopic_id": "PH07-07",
+      "legacy": [
+        {
+          "id": "PH07-07-D3-EXPLAIN-02",
+          "identity": "G9-AUTH-PH07-07-EXPLAIN-002",
+          "cell": "D3.2",
+          "operation": "EXPLAIN",
+          "band": "D3",
+          "cycle_ids": [
+            "PH07-07-MAIN-EXPLAIN-02",
+            "PH07-07-INSTANCE-EXPLAIN-02"
+          ]
+        },
+        {
+          "id": "PH07-07-D3-MODEL-02",
+          "identity": "G9-AUTH-PH07-07-MODEL-002",
+          "cell": "D3.4",
+          "operation": "MODEL",
+          "band": "D3",
+          "cycle_ids": [
+            "PH07-07-MAIN-MODEL-02",
+            "PH07-07-INSTANCE-MODEL-02"
+          ]
+        },
+        {
+          "id": "PH07-07-D3-SYNTHESIZE-02",
+          "identity": "G9-AUTH-PH07-07-SYNTHESIZE-002",
+          "cell": "D3.6",
+          "operation": "SYNTHESIZE",
+          "band": "D3",
+          "cycle_ids": [
+            "PH07-07-MAIN-SYNTHESIZE-02",
+            "PH07-07-INSTANCE-SYNTHESIZE-02"
+          ]
+        }
+      ],
+      "proposed": [
+        {
+          "id": "PH07-07-B01-D3-EXPLAIN-01",
+          "identity": "G9-B01-PH07-07-EXPLAIN-R1",
+          "cell": "D3.2",
+          "operation": "EXPLAIN",
+          "band": "D3",
+          "cycle_ids": [
+            "PH07-07-B01-MAIN-EXPLAIN-R2",
+            "PH07-07-B01-INSTANCE-EXPLAIN-R2"
+          ]
+        },
+        {
+          "id": "PH07-07-B01-D4-MODEL-01",
+          "identity": "G9-B01-PH07-07-MODEL-R1",
+          "cell": "D4.4",
+          "operation": "MODEL",
+          "band": "D4",
+          "cycle_ids": [
+            "PH07-07-B01-MAIN-MODEL-R2",
+            "PH07-07-B01-INSTANCE-MODEL-R2"
+          ]
+        },
+        {
+          "id": "PH07-07-B01-D3-SYNTHESIZE-01",
+          "identity": "G9-B01-PH07-07-SYNTHESIZE-R1",
+          "cell": "D3.6",
+          "operation": "SYNTHESIZE",
+          "band": "D3",
+          "cycle_ids": [
+            "PH07-07-B01-MAIN-SYNTHESIZE-R2",
+            "PH07-07-B01-INSTANCE-SYNTHESIZE-R2"
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "legacy_target": "PH07-07-D3-EXPLAIN-02",
+          "legacy_cell": "D3.2",
+          "proposed_same_operation": [
+            {
+              "target": "PH07-07-B01-D3-EXPLAIN-01",
+              "cell": "D3.2",
+              "relation": "DISTINCT_TASK_NOT_EQUIVALENT_NOT_RECLASSIFICATION"
+            }
+          ],
+          "disposition": "PRESERVE_LEGACY; NO AUTOMATIC SUPERSESSION"
+        },
+        {
+          "legacy_target": "PH07-07-D3-MODEL-02",
+          "legacy_cell": "D3.4",
+          "proposed_same_operation": [
+            {
+              "target": "PH07-07-B01-D4-MODEL-01",
+              "cell": "D4.4",
+              "relation": "DISTINCT_TASK_NOT_EQUIVALENT_NOT_RECLASSIFICATION"
+            }
+          ],
+          "disposition": "PRESERVE_LEGACY; NO AUTOMATIC SUPERSESSION"
+        },
+        {
+          "legacy_target": "PH07-07-D3-SYNTHESIZE-02",
+          "legacy_cell": "D3.6",
+          "proposed_same_operation": [
+            {
+              "target": "PH07-07-B01-D3-SYNTHESIZE-01",
+              "cell": "D3.6",
+              "relation": "DISTINCT_TASK_NOT_EQUIVALENT_NOT_RECLASSIFICATION"
+            }
+          ],
+          "disposition": "PRESERVE_LEGACY; NO AUTOMATIC SUPERSESSION"
+        }
+      ],
+      "proposal": "Use B01 dedicated pair for isolated author preview only; preserve inherited candidates and legacy operation cells for reconciliation. No canonical selection or merge."
+    },
+    {
+      "subtopic_id": "PH08-08",
+      "legacy": [
+        {
+          "id": "PH08-LEAD-MODEL-D3",
+          "identity": "G9-AUTH-PH08-MODEL-001",
+          "cell": "D3.4",
+          "operation": "MODEL",
+          "band": "D3",
+          "cycle_ids": [
+            "PH08-MAIN-MODEL-01",
+            "PH08-INSTANCE-MODEL-01"
+          ]
+        },
+        {
+          "id": "PH08-LEAD-APPLY-D3",
+          "identity": "G9-AUTH-PH08-APPLY-001",
+          "cell": "D3.3",
+          "operation": "APPLY",
+          "band": "D3",
+          "cycle_ids": [
+            "PH08-MAIN-APPLY-01",
+            "PH08-INSTANCE-APPLY-01"
+          ]
+        },
+        {
+          "id": "PH08-LEAD-REPRESENT-D3",
+          "identity": "G9-AUTH-PH08-REPRESENT-001",
+          "cell": "D3.5",
+          "operation": "REPRESENT",
+          "band": "D3",
+          "cycle_ids": [
+            "PH08-MAIN-REPRESENT-01",
+            "PH08-INSTANCE-REPRESENT-01"
+          ]
+        }
+      ],
+      "proposed": [
+        {
+          "id": "PH08-08-B01-D3-MODEL-01",
+          "identity": "G9-B01-PH08-08-MODEL-R1",
+          "cell": "D3.4",
+          "operation": "MODEL",
+          "band": "D3",
+          "cycle_ids": [
+            "PH08-08-B01-MAIN-MODEL-R2",
+            "PH08-08-B01-INSTANCE-MODEL-R2"
+          ]
+        },
+        {
+          "id": "PH08-08-B01-D3-APPLY-01",
+          "identity": "G9-B01-PH08-08-APPLY-R1",
+          "cell": "D3.3",
+          "operation": "APPLY",
+          "band": "D3",
+          "cycle_ids": [
+            "PH08-08-B01-MAIN-APPLY-R2",
+            "PH08-08-B01-INSTANCE-APPLY-R2"
+          ]
+        },
+        {
+          "id": "PH08-08-B01-D3-REPRESENT-01",
+          "identity": "G9-B01-PH08-08-REPRESENT-R1",
+          "cell": "D3.5",
+          "operation": "REPRESENT",
+          "band": "D3",
+          "cycle_ids": [
+            "PH08-08-B01-MAIN-REPRESENT-R2",
+            "PH08-08-B01-INSTANCE-REPRESENT-R2"
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "legacy_target": "PH08-LEAD-MODEL-D3",
+          "legacy_cell": "D3.4",
+          "proposed_same_operation": [
+            {
+              "target": "PH08-08-B01-D3-MODEL-01",
+              "cell": "D3.4",
+              "relation": "DISTINCT_TASK_NOT_EQUIVALENT_NOT_RECLASSIFICATION"
+            }
+          ],
+          "disposition": "PRESERVE_LEGACY; NO AUTOMATIC SUPERSESSION"
+        },
+        {
+          "legacy_target": "PH08-LEAD-APPLY-D3",
+          "legacy_cell": "D3.3",
+          "proposed_same_operation": [
+            {
+              "target": "PH08-08-B01-D3-APPLY-01",
+              "cell": "D3.3",
+              "relation": "DISTINCT_TASK_NOT_EQUIVALENT_NOT_RECLASSIFICATION"
+            }
+          ],
+          "disposition": "PRESERVE_LEGACY; NO AUTOMATIC SUPERSESSION"
+        },
+        {
+          "legacy_target": "PH08-LEAD-REPRESENT-D3",
+          "legacy_cell": "D3.5",
+          "proposed_same_operation": [
+            {
+              "target": "PH08-08-B01-D3-REPRESENT-01",
+              "cell": "D3.5",
+              "relation": "DISTINCT_TASK_NOT_EQUIVALENT_NOT_RECLASSIFICATION"
+            }
+          ],
+          "disposition": "PRESERVE_LEGACY; NO AUTOMATIC SUPERSESSION"
+        }
+      ],
+      "proposal": "Use B01 dedicated pair for isolated author preview only; preserve inherited candidates and legacy operation cells for reconciliation. No canonical selection or merge."
+    },
+    {
+      "subtopic_id": "PH08-05",
+      "legacy": [
+        {
+          "id": "PH08-05-D3-APPLY-02",
+          "identity": "G9-AUTH-PH08-05-APPLY-002",
+          "cell": "D3.3",
+          "operation": "APPLY",
+          "band": "D3",
+          "cycle_ids": [
+            "PH08-05-MAIN-APPLY-02",
+            "PH08-05-INSTANCE-APPLY-02"
+          ]
+        },
+        {
+          "id": "PH08-05-D3-REPRESENT-02",
+          "identity": "G9-AUTH-PH08-05-REPRESENT-002",
+          "cell": "D3.5",
+          "operation": "REPRESENT",
+          "band": "D3",
+          "cycle_ids": [
+            "PH08-05-MAIN-REPRESENT-02",
+            "PH08-05-INSTANCE-REPRESENT-02"
+          ]
+        },
+        {
+          "id": "PH08-05-D3-JUSTIFY-02",
+          "identity": "G9-AUTH-PH08-05-JUSTIFY-002",
+          "cell": "D3.7",
+          "operation": "JUSTIFY",
+          "band": "D3",
+          "cycle_ids": [
+            "PH08-05-MAIN-JUSTIFY-02",
+            "PH08-05-INSTANCE-JUSTIFY-02"
+          ]
+        }
+      ],
+      "proposed": [
+        {
+          "id": "PH08-05-B01-D3-MODEL-01",
+          "identity": "G9-B01-PH08-05-MODEL-R1",
+          "cell": "D3.4",
+          "operation": "MODEL",
+          "band": "D3",
+          "cycle_ids": [
+            "PH08-05-B01-MAIN-MODEL-R2",
+            "PH08-05-B01-INSTANCE-MODEL-R2"
+          ]
+        },
+        {
+          "id": "PH08-05-B01-D3-REPRESENT-01",
+          "identity": "G9-B01-PH08-05-REPRESENT-R1",
+          "cell": "D3.5",
+          "operation": "REPRESENT",
+          "band": "D3",
+          "cycle_ids": [
+            "PH08-05-B01-MAIN-REPRESENT-R2",
+            "PH08-05-B01-INSTANCE-REPRESENT-R2"
+          ]
+        },
+        {
+          "id": "PH08-05-B01-D4-SYNTHESIZE-01",
+          "identity": "G9-B01-PH08-05-SYNTHESIZE-R1",
+          "cell": "D4.6",
+          "operation": "SYNTHESIZE",
+          "band": "D4",
+          "cycle_ids": [
+            "PH08-05-B01-MAIN-SYNTHESIZE-R2",
+            "PH08-05-B01-INSTANCE-SYNTHESIZE-R2"
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "legacy_target": "PH08-05-D3-APPLY-02",
+          "legacy_cell": "D3.3",
+          "proposed_same_operation": [],
+          "disposition": "PRESERVE_LEGACY; NO AUTOMATIC SUPERSESSION"
+        },
+        {
+          "legacy_target": "PH08-05-D3-REPRESENT-02",
+          "legacy_cell": "D3.5",
+          "proposed_same_operation": [
+            {
+              "target": "PH08-05-B01-D3-REPRESENT-01",
+              "cell": "D3.5",
+              "relation": "DISTINCT_TASK_NOT_EQUIVALENT_NOT_RECLASSIFICATION"
+            }
+          ],
+          "disposition": "PRESERVE_LEGACY; NO AUTOMATIC SUPERSESSION"
+        },
+        {
+          "legacy_target": "PH08-05-D3-JUSTIFY-02",
+          "legacy_cell": "D3.7",
+          "proposed_same_operation": [],
+          "disposition": "PRESERVE_LEGACY; NO AUTOMATIC SUPERSESSION"
+        }
+      ],
+      "proposal": "Use B01 dedicated pair for isolated author preview only; preserve inherited candidates and legacy operation cells for reconciliation. No canonical selection or merge."
+    }
+  ],
+  "cell_candidates": {
+    "PHYS-TOPIC-PH07/D3.2": [
+      {
+        "subtopic_id": "PH07-05",
+        "target_id": "PH07-LEAD-EXPLAIN-D3",
+        "task_identity": "G9-AUTH-PH07-EXPLAIN-001",
+        "package_blob": "6dbb424be53b65bea169dd813299cae479f18c89",
+        "package_version": "0.2.0",
+        "kind": "LEGACY"
+      },
+      {
+        "subtopic_id": "PH07-07",
+        "target_id": "PH07-07-D3-EXPLAIN-02",
+        "task_identity": "G9-AUTH-PH07-07-EXPLAIN-002",
+        "package_blob": "6dbb424be53b65bea169dd813299cae479f18c89",
+        "package_version": "0.2.0",
+        "kind": "LEGACY"
+      },
+      {
+        "subtopic_id": "PH07-04",
+        "target_id": "PH07-04-B01-D3-EXPLAIN-01",
+        "task_identity": "G9-B01-PH07-04-EXPLAIN-R1",
+        "package_blob": "92e79b9e3684c9a33955266e99c99de27bb8b87a",
+        "package_version": "0.3.2-b01.5.ph07-04",
+        "kind": "B01_ISOLATED"
+      },
+      {
+        "subtopic_id": "PH07-05",
+        "target_id": "PH07-05-B01-D3-EXPLAIN-01",
+        "task_identity": "G9-B01-PH07-05-EXPLAIN-R1",
+        "package_blob": "d30a6668ad9359173b42287219ac45a2dc0bd62d",
+        "package_version": "0.3.2-b01.5.ph07-05",
+        "kind": "B01_ISOLATED"
+      },
+      {
+        "subtopic_id": "PH07-06",
+        "target_id": "PH07-06-B01-D3-EXPLAIN-01",
+        "task_identity": "G9-B01-PH07-06-EXPLAIN-R1",
+        "package_blob": "9f53962e02ff87ac31c66fe1dbc8a9b3130e7525",
+        "package_version": "0.3.2-b01.5.ph07-06",
+        "kind": "B01_ISOLATED"
+      },
+      {
+        "subtopic_id": "PH07-07",
+        "target_id": "PH07-07-B01-D3-EXPLAIN-01",
+        "task_identity": "G9-B01-PH07-07-EXPLAIN-R1",
+        "package_blob": "ecf4116c599a27d6d3f4ae0737a8c759dba2d527",
+        "package_version": "0.3.2-b01.5.ph07-07",
+        "kind": "B01_ISOLATED"
+      }
+    ],
+    "PHYS-TOPIC-PH07/D3.4": [
+      {
+        "subtopic_id": "PH07-05",
+        "target_id": "PH07-LEAD-MODEL-D3",
+        "task_identity": "G9-AUTH-PH07-MODEL-001",
+        "package_blob": "6dbb424be53b65bea169dd813299cae479f18c89",
+        "package_version": "0.2.0",
+        "kind": "LEGACY"
+      },
+      {
+        "subtopic_id": "PH07-07",
+        "target_id": "PH07-07-D3-MODEL-02",
+        "task_identity": "G9-AUTH-PH07-07-MODEL-002",
+        "package_blob": "6dbb424be53b65bea169dd813299cae479f18c89",
+        "package_version": "0.2.0",
+        "kind": "LEGACY"
+      },
+      {
+        "subtopic_id": "PH07-01",
+        "target_id": "PH07-01-B01-D3-MODEL-01",
+        "task_identity": "G9-B01-PH07-01-MODEL-R1",
+        "package_blob": "65bea0d422b7c76bfb64946748ad873f2270262f",
+        "package_version": "0.3.2-b01.5.ph07-01",
+        "kind": "B01_ISOLATED"
+      },
+      {
+        "subtopic_id": "PH07-02",
+        "target_id": "PH07-02-B01-D3-MODEL-01",
+        "task_identity": "G9-B01-PH07-02-MODEL-R1",
+        "package_blob": "c0e3fe07c15dd865e19ec9ec339d704e1d3495be",
+        "package_version": "0.3.2-b01.5.ph07-02",
+        "kind": "B01_ISOLATED"
+      },
+      {
+        "subtopic_id": "PH07-04",
+        "target_id": "PH07-04-B01-D3-MODEL-01",
+        "task_identity": "G9-B01-PH07-04-MODEL-R1",
+        "package_blob": "92e79b9e3684c9a33955266e99c99de27bb8b87a",
+        "package_version": "0.3.2-b01.5.ph07-04",
+        "kind": "B01_ISOLATED"
+      }
+    ],
+    "PHYS-TOPIC-PH07/D3.6": [
+      {
+        "subtopic_id": "PH07-05",
+        "target_id": "PH07-LEAD-SYNTHESIZE-D3",
+        "task_identity": "G9-AUTH-PH07-SYNTHESIZE-001",
+        "package_blob": "6dbb424be53b65bea169dd813299cae479f18c89",
+        "package_version": "0.2.0",
+        "kind": "LEGACY"
+      },
+      {
+        "subtopic_id": "PH07-07",
+        "target_id": "PH07-07-D3-SYNTHESIZE-02",
+        "task_identity": "G9-AUTH-PH07-07-SYNTHESIZE-002",
+        "package_blob": "6dbb424be53b65bea169dd813299cae479f18c89",
+        "package_version": "0.2.0",
+        "kind": "LEGACY"
+      },
+      {
+        "subtopic_id": "PH07-02",
+        "target_id": "PH07-02-B01-D3-SYNTHESIZE-01",
+        "task_identity": "G9-B01-PH07-02-SYNTHESIZE-R1",
+        "package_blob": "c0e3fe07c15dd865e19ec9ec339d704e1d3495be",
+        "package_version": "0.3.2-b01.5.ph07-02",
+        "kind": "B01_ISOLATED"
+      },
+      {
+        "subtopic_id": "PH07-05",
+        "target_id": "PH07-05-B01-D3-SYNTHESIZE-01",
+        "task_identity": "G9-B01-PH07-05-SYNTHESIZE-R1",
+        "package_blob": "d30a6668ad9359173b42287219ac45a2dc0bd62d",
+        "package_version": "0.3.2-b01.5.ph07-05",
+        "kind": "B01_ISOLATED"
+      },
+      {
+        "subtopic_id": "PH07-07",
+        "target_id": "PH07-07-B01-D3-SYNTHESIZE-01",
+        "task_identity": "G9-B01-PH07-07-SYNTHESIZE-R1",
+        "package_blob": "ecf4116c599a27d6d3f4ae0737a8c759dba2d527",
+        "package_version": "0.3.2-b01.5.ph07-07",
+        "kind": "B01_ISOLATED"
+      }
+    ],
+    "PHYS-TOPIC-PH08/D3.4": [
+      {
+        "subtopic_id": "PH08-08",
+        "target_id": "PH08-LEAD-MODEL-D3",
+        "task_identity": "G9-AUTH-PH08-MODEL-001",
+        "package_blob": "0e7ddad0b150da4e03af7feedafc9a1dea461440",
+        "package_version": "0.2.0",
+        "kind": "LEGACY"
+      },
+      {
+        "subtopic_id": "PH08-05",
+        "target_id": "PH08-05-B01-D3-MODEL-01",
+        "task_identity": "G9-B01-PH08-05-MODEL-R1",
+        "package_blob": "31a922fe9604ea33dc66b7482c08e3252f1e76d4",
+        "package_version": "0.3.2-b01.5.ph08-05",
+        "kind": "B01_ISOLATED"
+      },
+      {
+        "subtopic_id": "PH08-06",
+        "target_id": "PH08-06-B01-D3-MODEL-01",
+        "task_identity": "G9-B01-PH08-06-MODEL-R1",
+        "package_blob": "acca92421a1f79614306a1c74ace36309a17d9cc",
+        "package_version": "0.3.2-b01.5.ph08-06",
+        "kind": "B01_ISOLATED"
+      },
+      {
+        "subtopic_id": "PH08-08",
+        "target_id": "PH08-08-B01-D3-MODEL-01",
+        "task_identity": "G9-B01-PH08-08-MODEL-R1",
+        "package_blob": "5c49278b7fa7f62ba0e3d443c5c25a003402c8c4",
+        "package_version": "0.3.2-b01.5.ph08-08",
+        "kind": "B01_ISOLATED"
+      }
+    ],
+    "PHYS-TOPIC-PH08/D3.3": [
+      {
+        "subtopic_id": "PH08-08",
+        "target_id": "PH08-LEAD-APPLY-D3",
+        "task_identity": "G9-AUTH-PH08-APPLY-001",
+        "package_blob": "0e7ddad0b150da4e03af7feedafc9a1dea461440",
+        "package_version": "0.2.0",
+        "kind": "LEGACY"
+      },
+      {
+        "subtopic_id": "PH08-05",
+        "target_id": "PH08-05-D3-APPLY-02",
+        "task_identity": "G9-AUTH-PH08-05-APPLY-002",
+        "package_blob": "0e7ddad0b150da4e03af7feedafc9a1dea461440",
+        "package_version": "0.2.0",
+        "kind": "LEGACY"
+      },
+      {
+        "subtopic_id": "PH08-04",
+        "target_id": "PH08-04-B01-D3-APPLY-01",
+        "task_identity": "G9-B01-PH08-04-APPLY-R1",
+        "package_blob": "16d7100aa0cd2e5b6aac69a50cb1a4cfccd5857d",
+        "package_version": "0.3.2-b01.5.ph08-04",
+        "kind": "B01_ISOLATED"
+      },
+      {
+        "subtopic_id": "PH08-08",
+        "target_id": "PH08-08-B01-D3-APPLY-01",
+        "task_identity": "G9-B01-PH08-08-APPLY-R1",
+        "package_blob": "5c49278b7fa7f62ba0e3d443c5c25a003402c8c4",
+        "package_version": "0.3.2-b01.5.ph08-08",
+        "kind": "B01_ISOLATED"
+      }
+    ],
+    "PHYS-TOPIC-PH08/D3.5": [
+      {
+        "subtopic_id": "PH08-08",
+        "target_id": "PH08-LEAD-REPRESENT-D3",
+        "task_identity": "G9-AUTH-PH08-REPRESENT-001",
+        "package_blob": "0e7ddad0b150da4e03af7feedafc9a1dea461440",
+        "package_version": "0.2.0",
+        "kind": "LEGACY"
+      },
+      {
+        "subtopic_id": "PH08-05",
+        "target_id": "PH08-05-D3-REPRESENT-02",
+        "task_identity": "G9-AUTH-PH08-05-REPRESENT-002",
+        "package_blob": "0e7ddad0b150da4e03af7feedafc9a1dea461440",
+        "package_version": "0.2.0",
+        "kind": "LEGACY"
+      },
+      {
+        "subtopic_id": "PH08-04",
+        "target_id": "PH08-04-B01-D3-REPRESENT-01",
+        "task_identity": "G9-B01-PH08-04-REPRESENT-R1",
+        "package_blob": "16d7100aa0cd2e5b6aac69a50cb1a4cfccd5857d",
+        "package_version": "0.3.2-b01.5.ph08-04",
+        "kind": "B01_ISOLATED"
+      },
+      {
+        "subtopic_id": "PH08-05",
+        "target_id": "PH08-05-B01-D3-REPRESENT-01",
+        "task_identity": "G9-B01-PH08-05-REPRESENT-R1",
+        "package_blob": "31a922fe9604ea33dc66b7482c08e3252f1e76d4",
+        "package_version": "0.3.2-b01.5.ph08-05",
+        "kind": "B01_ISOLATED"
+      },
+      {
+        "subtopic_id": "PH08-06",
+        "target_id": "PH08-06-B01-D3-REPRESENT-01",
+        "task_identity": "G9-B01-PH08-06-REPRESENT-R1",
+        "package_blob": "acca92421a1f79614306a1c74ace36309a17d9cc",
+        "package_version": "0.3.2-b01.5.ph08-06",
+        "kind": "B01_ISOLATED"
+      },
+      {
+        "subtopic_id": "PH08-07",
+        "target_id": "PH08-07-B01-D3-REPRESENT-01",
+        "task_identity": "G9-B01-PH08-07-REPRESENT-R1",
+        "package_blob": "b744adbdb8c7aa4281674cdb6812f2cc5aa56999",
+        "package_version": "0.3.2-b01.5.ph08-07",
+        "kind": "B01_ISOLATED"
+      },
+      {
+        "subtopic_id": "PH08-08",
+        "target_id": "PH08-08-B01-D3-REPRESENT-01",
+        "task_identity": "G9-B01-PH08-08-REPRESENT-R1",
+        "package_blob": "5c49278b7fa7f62ba0e3d443c5c25a003402c8c4",
+        "package_version": "0.3.2-b01.5.ph08-08",
+        "kind": "B01_ISOLATED"
+      },
+      {
+        "subtopic_id": "PH08-12",
+        "target_id": "PH08-12-B01-D3-REPRESENT-01",
+        "task_identity": "G9-B01-PH08-12-REPRESENT-R1",
+        "package_blob": "c86114ee34a0073770b83b9cea6a780b8806377e",
+        "package_version": "0.3.2-b01.5.ph08-12",
+        "kind": "B01_ISOLATED"
+      }
+    ],
+    "PHYS-TOPIC-PH08/D3.7": [
+      {
+        "subtopic_id": "PH08-05",
+        "target_id": "PH08-05-D3-JUSTIFY-02",
+        "task_identity": "G9-AUTH-PH08-05-JUSTIFY-002",
+        "package_blob": "0e7ddad0b150da4e03af7feedafc9a1dea461440",
+        "package_version": "0.2.0",
+        "kind": "LEGACY"
+      },
+      {
+        "subtopic_id": "PH08-04",
+        "target_id": "PH08-04-B01-D3-JUSTIFY-01",
+        "task_identity": "G9-B01-PH08-04-JUSTIFY-R1",
+        "package_blob": "16d7100aa0cd2e5b6aac69a50cb1a4cfccd5857d",
+        "package_version": "0.3.2-b01.5.ph08-04",
+        "kind": "B01_ISOLATED"
+      },
+      {
+        "subtopic_id": "PH08-07",
+        "target_id": "PH08-07-B01-D3-JUSTIFY-01",
+        "task_identity": "G9-B01-PH08-07-JUSTIFY-R1",
+        "package_blob": "b744adbdb8c7aa4281674cdb6812f2cc5aa56999",
+        "package_version": "0.3.2-b01.5.ph08-07",
+        "kind": "B01_ISOLATED"
+      }
+    ],
+    "PHYS-TOPIC-PH07/D3.5": [
+      {
+        "subtopic_id": "PH07-01",
+        "target_id": "PH07-01-B01-D3-REPRESENT-01",
+        "task_identity": "G9-B01-PH07-01-REPRESENT-R1",
+        "package_blob": "65bea0d422b7c76bfb64946748ad873f2270262f",
+        "package_version": "0.3.2-b01.5.ph07-01",
+        "kind": "B01_ISOLATED"
+      },
+      {
+        "subtopic_id": "PH07-06",
+        "target_id": "PH07-06-B01-D3-REPRESENT-01",
+        "task_identity": "G9-B01-PH07-06-REPRESENT-R1",
+        "package_blob": "9f53962e02ff87ac31c66fe1dbc8a9b3130e7525",
+        "package_version": "0.3.2-b01.5.ph07-06",
+        "kind": "B01_ISOLATED"
+      }
+    ],
+    "PHYS-TOPIC-PH07/D3.7": [
+      {
+        "subtopic_id": "PH07-01",
+        "target_id": "PH07-01-B01-D3-JUSTIFY-01",
+        "task_identity": "G9-B01-PH07-01-JUSTIFY-R1",
+        "package_blob": "65bea0d422b7c76bfb64946748ad873f2270262f",
+        "package_version": "0.3.2-b01.5.ph07-01",
+        "kind": "B01_ISOLATED"
+      },
+      {
+        "subtopic_id": "PH07-02",
+        "target_id": "PH07-02-B01-D3-JUSTIFY-01",
+        "task_identity": "G9-B01-PH07-02-JUSTIFY-R1",
+        "package_blob": "c0e3fe07c15dd865e19ec9ec339d704e1d3495be",
+        "package_version": "0.3.2-b01.5.ph07-02",
+        "kind": "B01_ISOLATED"
+      },
+      {
+        "subtopic_id": "PH07-04",
+        "target_id": "PH07-04-B01-D3-JUSTIFY-01",
+        "task_identity": "G9-B01-PH07-04-JUSTIFY-R1",
+        "package_blob": "92e79b9e3684c9a33955266e99c99de27bb8b87a",
+        "package_version": "0.3.2-b01.5.ph07-04",
+        "kind": "B01_ISOLATED"
+      },
+      {
+        "subtopic_id": "PH07-06",
+        "target_id": "PH07-06-B01-D3-JUSTIFY-01",
+        "task_identity": "G9-B01-PH07-06-JUSTIFY-R1",
+        "package_blob": "9f53962e02ff87ac31c66fe1dbc8a9b3130e7525",
+        "package_version": "0.3.2-b01.5.ph07-06",
+        "kind": "B01_ISOLATED"
+      }
+    ],
+    "PHYS-TOPIC-PH07/D4.4": [
+      {
+        "subtopic_id": "PH07-05",
+        "target_id": "PH07-05-B01-D4-MODEL-01",
+        "task_identity": "G9-B01-PH07-05-MODEL-R1",
+        "package_blob": "d30a6668ad9359173b42287219ac45a2dc0bd62d",
+        "package_version": "0.3.2-b01.5.ph07-05",
+        "kind": "B01_ISOLATED"
+      },
+      {
+        "subtopic_id": "PH07-07",
+        "target_id": "PH07-07-B01-D4-MODEL-01",
+        "task_identity": "G9-B01-PH07-07-MODEL-R1",
+        "package_blob": "ecf4116c599a27d6d3f4ae0737a8c759dba2d527",
+        "package_version": "0.3.2-b01.5.ph07-07",
+        "kind": "B01_ISOLATED"
+      }
+    ],
+    "PHYS-TOPIC-PH08/D4.6": [
+      {
+        "subtopic_id": "PH08-05",
+        "target_id": "PH08-05-B01-D4-SYNTHESIZE-01",
+        "task_identity": "G9-B01-PH08-05-SYNTHESIZE-R1",
+        "package_blob": "31a922fe9604ea33dc66b7482c08e3252f1e76d4",
+        "package_version": "0.3.2-b01.5.ph08-05",
+        "kind": "B01_ISOLATED"
+      },
+      {
+        "subtopic_id": "PH08-12",
+        "target_id": "PH08-12-B01-D4-SYNTHESIZE-01",
+        "task_identity": "G9-B01-PH08-12-SYNTHESIZE-R1",
+        "package_blob": "c86114ee34a0073770b83b9cea6a780b8806377e",
+        "package_version": "0.3.2-b01.5.ph08-12",
+        "kind": "B01_ISOLATED"
+      }
+    ],
+    "PHYS-TOPIC-PH08/D4.7": [
+      {
+        "subtopic_id": "PH08-06",
+        "target_id": "PH08-06-B01-D4-JUSTIFY-01",
+        "task_identity": "G9-B01-PH08-06-JUSTIFY-R1",
+        "package_blob": "acca92421a1f79614306a1c74ace36309a17d9cc",
+        "package_version": "0.3.2-b01.5.ph08-06",
+        "kind": "B01_ISOLATED"
+      },
+      {
+        "subtopic_id": "PH08-12",
+        "target_id": "PH08-12-B01-D4-JUSTIFY-01",
+        "task_identity": "G9-B01-PH08-12-JUSTIFY-R1",
+        "package_blob": "c86114ee34a0073770b83b9cea6a780b8806377e",
+        "package_version": "0.3.2-b01.5.ph08-12",
+        "kind": "B01_ISOLATED"
+      }
+    ],
+    "PHYS-TOPIC-PH08/D4.4": [
+      {
+        "subtopic_id": "PH08-07",
+        "target_id": "PH08-07-B01-D4-MODEL-01",
+        "task_identity": "G9-B01-PH08-07-MODEL-R1",
+        "package_blob": "b744adbdb8c7aa4281674cdb6812f2cc5aa56999",
+        "package_version": "0.3.2-b01.5.ph08-07",
+        "kind": "B01_ISOLATED"
+      }
+    ]
+  },
+  "selection": {
+    "canonical_topic_adapter": null,
+    "legacy_history": "PRESERVED",
+    "b01_history": "PRESERVED",
+    "automatic_supersession": false,
+    "preview": "Explicit B01 path only",
+    "integrated_main": "NOT_IMPLEMENTED",
+    "cross_instance_compatibility": "NOT_QUALIFIED"
+  },
+  "migration": {
+    "prior_cycle_revision": "R1 at reviewed_head",
+    "revised_cycle_revision": "R2 at prediction_revision_head",
+    "policy": "No migration of old local attempt receipts or hidden revision data. Old IDs/versions retained in git; new attempts use separate IDs. Historical evidence never qualifies revised tasks."
+  }
+}
