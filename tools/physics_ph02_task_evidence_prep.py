@@ -56,8 +56,14 @@ def main():
     mains={t["uid"]:(next(u for u in UNIT["units"] if u["id"]==t["unit"]),t) for t in QRT["main_cycles"]}
     tasks={**base,**add,**mains}
     assert len(base)==8 and len(add)==16 and len(mains)==6 and len(tasks)==30
-    native_ids={x["id"] for x in NATIVE["core1b"]}
-    assert set(tasks)==native_ids
+    # The v1.1 native contract uses author UIDs for INSTANCE but canonical
+    # PH02-MAIN-* IDs for MAIN; runtime UIDs add AUTHORED- for MAIN.
+    native_ids={x["id"] if x["kind"]=="INSTANCE" else "AUTHORED-"+x["id"]
+                for x in NATIVE["core1b"]}
+    assert set(tasks)==native_ids, {
+        "missing_from_native":sorted(set(tasks)-native_ids),
+        "missing_from_source":sorted(native_ids-set(tasks)),
+    }
     items=[]
     for uid,(u,t) in tasks.items():
         source="unit" if uid in base else "qrt"
