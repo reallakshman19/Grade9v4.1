@@ -198,6 +198,67 @@ def check_storage_disabled(browser,ids):
     ctx.close()
 
 
+def check_task_only_deep_link_and_history(browser,ids):
+    from urllib.parse import urlencode
+    native=[(task_id,v) for task_id,v in ids.items()
+            if v[0]=="C10" and v[1]=="CHEM-C10.01" and v[2]=="native"]
+    assert len(native)==3
+    task_a=native[0][0]
+    task_b=native[1][0]
+    context=browser.new_context(viewport={"width":1000,"height":1600},has_touch=True)
+    page=context.new_page()
+    # A task-only link must locate its owning subtopic and choose practice mode.
+    page.goto(BASE+"?"+urlencode({"unit":"C10","task":task_a}))
+    wait_loaded(page,task_a)
+    page.locator("#task-select").select_option(task_b)
+    wait_loaded(page,task_b)
+    check("task="+task_b in page.url,"Task selection did not update URL")
+    page.go_back()
+    wait_loaded(page,task_a)
+    check("task="+task_a in page.url,"Browser back did not restore the task")
+    # Two rapid unit switches should never permit an old fetch to win.
+    page.locator("#unit-select").select_option("C11")
+    page.locator("#unit-select").select_option("C10")
+    page.locator("#lesson .eyebrow").wait_for(timeout=20000)
+    check(page.locator("#lesson .eyebrow").inner_text().startswith("CHEM-C10."),
+          "Asynchronous C11 response polluted final C10 route")
+    context.close()
+
+
+def check_visual_blob_tampering_fail_closed(browser,ids):
+    from urllib.parse import urlencode
+    task_id=next(k for k,v in ids.items() if v[0]=="C11" and v[2]=="native")
+    unit,subtopic,_=ids[task_id]
+    context=browser.new_context(viewport={"width":1600,"height":1000})
+    page=context.new_page()
+    page.goto(BASE+"?"+urlencode({"unit":unit,"subtopic":subtopic,
+                                  "mode":"practice","task":task_id}))
+    wait_loaded(page,task_id)
+    page.locator("#prediction-answer").fill(
+        "My prediction is conditional on charge carriers and observed state."
+    )
+    page.locator("#original-answer").fill(
+        "I independently compare the microscopic models and test the supplied conditions."
+    )
+    page.locator("#commit-attempt").click()
+    page.locator("text=Model response · POST-COMMIT").wait_for()
+    def tamper(route):
+        route.fulfill(status=200,content_type="image/svg+xml",body=(
+            '<svg xmlns="http://www.w3.org/2000/svg">'
+            '<title>Corrupted staged asset</title><desc>Untrusted image</desc></svg>'
+        ))
+    page.route("**/curriculum/chemistry/agent-b/figures/b02-stages/*.svg",tamper)
+    page.get_by_role("button",name="Inspect S1 · CLARIFY (unreviewed)").click()
+    page.locator("#notice").get_by_text("STAGE_BLOB_MISMATCH_HOLD",exact=False).wait_for(
+        timeout=15000)
+    check(page.locator(".stage-figure").count()==0,
+          "Tampered asset was rendered despite blob digest mismatch")
+    exposed=page.evaluate("""id => Object.keys(localStorage)
+      .filter(k=>k.startsWith("g9chem:stage-exposure:v2:"+id+":"))""",task_id)
+    check(not exposed,"Failed visual was incorrectly recorded as exposed")
+    context.close()
+
+
 def check_all_units_still_load(browser):
     ctx=browser.new_context(viewport={"width":1000,"height":1600})
     page=ctx.new_page()
@@ -250,6 +311,8 @@ def main():
                 check_help_and_source_return(browser,ids)
                 check_storage_disabled(browser,ids)
                 check_all_units_still_load(browser)
+                check_task_only_deep_link_and_history(browser,ids)
+                check_visual_blob_tampering_fail_closed(browser,ids)
             finally:
                 browser.close()
         print(
