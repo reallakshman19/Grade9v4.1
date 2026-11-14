@@ -160,4 +160,4 @@ def test_audit_hardening_attempt_xml_and_stage_role_contracts():
     for test in ("check_corrupted_saved_attempts_fail_closed",
                  "check_svg_xml_namespaces_and_stage_role_negative"):
         assert "def "+test+"(" in browser
-        assert "\\n                "+test+"(browser,ids)" in browser
+        assert any(line.strip()==test+"(browser,ids)" for line in browser.splitlines())
