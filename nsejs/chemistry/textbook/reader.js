@@ -376,6 +376,7 @@
       const output=tag("div",undefined,"visual-result");
       const b=button("Inspect "+asset.id+" · "+asset.role+" (unreviewed)",async()=>{
         if(b.disabled)return;
+        const restoreFocus=document.activeElement===b;
         b.disabled=true;
         if(renderEpoch!==renderGeneration)return;
         const saved=storageRead(revisionKey("attempt",task));
@@ -402,9 +403,15 @@
           output.replaceChildren(figure);
           b.disabled=false;
           updateSequence();
+          // Disabling a focused button during fetch removes keyboard focus.
+          // Restore it only when the user has not focused another control.
+          if(restoreFocus&&document.activeElement===document.body)
+            b.focus({preventScroll:true});
         }catch(error){
           message((error.message||"STAGE_ASSET_HOLD")+" · No unverified image displayed.");
           b.disabled=false;
+          if(restoreFocus&&document.activeElement===document.body)
+            b.focus({preventScroll:true});
         }
       });
       controls.set(asset.id,b);
