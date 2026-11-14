@@ -144,3 +144,43 @@ def test_b01_takeover_runtime_boundaries_are_explicit():
     assert "No verified hint taxonomy" in html
     assert "not secure or tamper-proof" in html
     assert "automatic grading" in js
+
+
+def test_b01_r14_78_html_and_inline_figure_byte_pins():
+    """Source revision includes actual learner-facing HTML and embedded SVG."""
+    proposal=data(B01/"B01_INTEGRATED_CURRICULUM_PROPOSAL.v1.json")
+    manifest=data(B01/"learner-preview/author-page-pins.r14.json")
+    assert manifest["schema"]=="g9-b01-author-page-pins/v1"
+    assert manifest["status"]=="CANDIDATE_SOURCE_REVISION_INTEGRITY_ONLY"
+    assert manifest["academic_status"]=="HOLD"
+    assert manifest["author_pair_count"]==39
+    assert manifest["html_page_count"]==78
+    needed=set()
+    for g in proposal["groups"]:
+        for task in g["base_instances"]:
+            needed.add(task["package_path"].replace("physics-topic-package.v1.json","core1a.html"))
+            needed.add(task["package_path"].replace("physics-topic-package.v1.json","core1b.html"))
+    for task in proposal["supplements"]:
+        needed.update((task["core1a"],task["core1b"]))
+    pins={x["path"]:x["git_blob"] for x in manifest["pages"]}
+    assert len(needed)==len(pins)==78
+    assert set(pins)==needed
+    for path, sha in pins.items():
+        assert blob(Path(path))==sha,(path,sha)
+        assert b"<html" in (ROOT/path).read_bytes()[:300].lower()
+
+
+def test_b01_r14_stage_order_and_non_destructive_storage_guards_exist():
+    js=(ROOT/B01/"learner-preview/runtime.js").read_text(encoding="utf-8")
+    assert "pagePins" in js and "requestText(task.core1a,a,'.html')" in js
+    assert "requestText(task.core1b,b,'.html')" in js
+    assert "pinResource.raw" in js
+    assert "state.sourceDigest" in js
+    assert "first.help_before_first" in js
+    assert "current.first_answer" in js and "JSON.stringify(current.first_answer)" in js
+    assert "event.key!==key()" in js
+    assert "field==='diagnosis_notes'&&!kinds.includes('RECONSTRUCT')" in js
+    assert "field==='repairs'&&!state.record.diagnosis_notes.length" in js
+    assert "field==='boundary_attempts'&&!state.record.repairs.length" in js
+    assert "'TEXTBOOK'" in js and "'ORIGINAL_CORE1B'" in js
+    assert "No automatic" not in js or "UNASSESSED" in js
