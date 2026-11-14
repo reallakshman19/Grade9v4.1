@@ -19,7 +19,7 @@ CASES=[
  ("AUTHORED-PH02-F01-TRANSFER-01",(12-5)-2*(-1),9),
  ("AUTHORED-PH02-F02-TRANSFER-01",6*2-(6*2+0.5*2*2**2),-4),
  ("AUTHORED-PH02-F03-TRANSFER-01",(2*3)/1.5,4),
- ("AUTHORED-PH02-F04-TRANSFER-01",-12/4,-3),
+ ("AUTHORED-PH02-F04-TRANSFER-01",(-12+4)/4,-2),
  ("AUTHORED-PH02-F05-TRANSFER-01",1*2,2),
  ("AUTHORED-PH02-F06-TRANSFER-01",8-3,5),
  ("AUTHORED-PH02-F07-TRANSFER-01",5*10*math.sin(math.radians(30))+5*1,30),
@@ -34,7 +34,7 @@ CASES=[
  ("AUTHORED-PH02-F04-QRT-JUSTIFY-D3-R1",2*(-6/2)+3*(6/3),0),
  ("AUTHORED-PH02-F05-QRT-MODEL-D3-R1",(1*9)/(2+1),3),
  ("AUTHORED-PH02-F05-QRT-SYNTHESIZE-D3-R1",4-(1*9)/(2+1),1),
- ("AUTHORED-PH02-F06-QRT-MODEL-D3-R1",(7-2)-4,1),
+ ("AUTHORED-PH02-F06-QRT-MODEL-D3-R1",(7-2-3)/2,1),
  ("AUTHORED-PH02-F06-QRT-JUSTIFY-D3-R1",3+5,8),
  ("AUTHORED-PH02-F07-QRT-REPRESENT-D3-R1",40*math.cos(math.radians(30)),20*math.sqrt(3)),
  ("AUTHORED-PH02-F07-QRT-SYNTHESIZE-D3-R1",2*10*0.5+5,15),
@@ -61,8 +61,14 @@ def test_ph02_independent_formula_check_covers_exactly_all_task_uids():
 
 
 def test_ph02_selected_force_limits_and_changed_condition():
-    # F06: required static friction exceeds limit; cannot report a valid rest state.
+    # F06: required static friction exceeds limit; kinetic regime gives 1 m/s² east.
     assert abs(7-2)>4
+    assert math.isclose((7-2-3)/2,1)
+    # F06 original two-stage source: first static possible, then 2 m/s² west sliding.
+    assert 8-3<=6 and abs(8-16)>6
+    assert math.isclose((8-16+4)/2,-2)
+    # F04 contact pair cancels only on combined boundary.
+    assert math.isclose((4*(-2)+1*(9))/(4+1),0.2)
     # F07: 16 N uphill rope exceeds [5,15] N rest interval on 30 deg ramp.
     assert abs(2*10*0.5-16)>5
     # F08: slack rope candidate acceleration and taut-rope tension are consistent.
