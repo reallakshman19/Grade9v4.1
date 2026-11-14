@@ -274,6 +274,19 @@
       const registryPath='nsejs/physics/curriculum/topics/PH07/b01/B01_INTEGRATED_CURRICULUM_PROPOSAL.v1.json';
       const registry=await request(registryPath);
       const x=registry.json;
+      const pinResource=await request(PINS_PATH);
+      const pagePins=pinResource.json;
+      if(pagePins.schema!=='g9-b01-author-page-pins/v1'||
+         pagePins.status!=='CANDIDATE_SOURCE_REVISION_INTEGRITY_ONLY'||
+         pagePins.academic_status!=='HOLD'||pagePins.html_page_count!==78||
+         !Array.isArray(pagePins.pages)||pagePins.pages.length!==78)
+        throw Error('Missing exact source-page revision manifest');
+      for(const page of pagePins.pages) {
+        if(typeof page.path!=='string'||!page.path.startsWith('nsejs/physics/curriculum/topics/')||
+           !/^[0-9a-f]{40}$/.test(page.git_blob)||state.pagePins.has(page.path))
+          throw Error('Invalid/duplicate source-page revision pin');
+        state.pagePins.set(page.path,page.git_blob);
+      }
       if(x.status!=='AUTHOR_PROPOSAL_ONLY__INTEGRATION_HOLD'||
          x.academic_status!=='HOLD'||x.runtime_status!=='NOT_IMPLEMENTED' ||
          x.counts.selected_canonical_adapters!==0||x.counts.selected_canonical_mains!==0||
@@ -333,12 +346,19 @@
       }
       if(state.tasks.length!==89||new Set(state.tasks.map(t=>t.id)).size!==89)
         throw Error('Duplicate or missing reasoning tasks');
-      const revisionMaterial=registry.raw+'\n'+
+      const expectedPages=new Set(state.tasks.flatMap(t=>[t.core1a,t.core1b]));
+      if(expectedPages.size!==78||state.pagePins.size!==78||
+         [...expectedPages].some(p=>!state.pagePins.has(p)))
+        throw Error('Source-page manifest has missing/unexpected HTML paths');
+      for(const t of state.tasks) {
+        if(!t.stages||['predict','attempt','reconstruct','diagnose','repair','boundary_test']
+          .some(k=>typeof t.stages[k]!=='string'||!t.stages[k].trim()))
+          throw Error('Incomplete six-stage author task: '+t.id);
+      }
+      const revisionMaterial=registry.raw+'\n'+pinResource.raw+'\n'+
         urls.map(x=>x.path+':'+x.blob).sort().join('\n')+'\n'+
         x.supplements.map(y=>y.proposal_path+':'+y.proposal_blob).sort().join('\n');
-      state.digest=await hash(revisionMaterial,'SHA-256');
-      $('revision').textContent='Verified author-proposal digest SHA-256 '+state.digest.slice(0,24)+
-        '…; every package checked against its pinned Git blob. 89 INSTANCE tasks · 0 selected MAINs.';
+      state.sourceDigest=await hash(revisionMaterial,'SHA-256');
       state.tasks.sort((a,b)=>a.subtopic_id.localeCompare(b.subtopic_id)||a.id.localeCompare(b.id));
       const select=$('task-select');select.replaceChildren();
       for(const task of state.tasks) {
@@ -346,13 +366,25 @@
         op.textContent=task.subtopic_id+' · '+task.cell+' · '+(task.source_kind==='SUPPLEMENTAL'?'source transfer':'primary')+' · '+task.id;
         select.appendChild(op);
       }
-      select.disabled=false;state.ready=true;
       const wanted=new URL(location.href).searchParams.get('task');
       if(wanted&&state.tasks.some(t=>t.id===wanted))select.value=wanted;
-      select.addEventListener('change',()=>choose(select.value));
-      choose(select.value);
+      select.addEventListener('change',()=>{void choose(select.value);});
+      await choose(select.value);
     }catch(err){lock('Package/revision verification failed: '+String(err.message));}
   }
+  for(const [id,kind] of [['core1a-link','TEXTBOOK'],['original-core1b-link','ORIGINAL_CORE1B']]) {
+    $(id).addEventListener('click',event=>{
+      if(!logExposure(kind))event.preventDefault();
+    });
+  }
+  window.addEventListener('storage',event=>{
+    if(!state.ready||!state.current||event.key!==key())return;
+    try {
+      const latest=event.newValue===null?null:JSON.parse(event.newValue);
+      if(!latest||!valid(latest)||JSON.stringify(latest)!==JSON.stringify(state.record))
+        lock('Attempt changed in another tab; reload to inspect without overwriting');
+    }catch(_){lock('Attempt changed or corrupted in another tab');}
+  });
   $('h1').addEventListener('click',()=>{
     if(state.record.help_exposure.some(x=>x.kind==='H1'))return;
     if(logExposure('H1')) { $('help-text').textContent='H1: State the physical quantities and units; separate observed data from assumptions.';restore(); }
