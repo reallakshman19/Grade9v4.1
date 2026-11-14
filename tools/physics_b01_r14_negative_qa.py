@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import hashlib
 import socket
 import subprocess
 import sys
@@ -16,6 +17,20 @@ ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/"review-artifacts/physics-b01-r14"
 BASE="/nsejs/physics/curriculum/topics/PH07/b01/learner-preview/index.html"
 TASK="PH07-01-B01-INSTANCE-MODEL-R2"
+
+def legacy_r13_digest():
+    path=ROOT/"nsejs/physics/curriculum/topics/PH07/b01/B01_INTEGRATED_CURRICULUM_PROPOSAL.v1.json"
+    raw=path.read_text(encoding="utf-8")
+    p=json.loads(raw)
+    packages={}
+    for g in p["groups"]:
+        for e in g["base_instances"]:
+            packages[e["package_path"]]=e["package_blob"]
+    pack_lines="\n".join(sorted(p+":"+sha for p,sha in packages.items()))
+    transfer_lines="\n".join(sorted(e["proposal_path"]+":"+e["proposal_blob"]
+                                    for e in p["supplements"]))
+    source=raw+"\n"+pack_lines+"\n"+transfer_lines
+    return hashlib.sha256(source.encode("utf-8")).hexdigest()
 
 def find_port():
     with socket.socket() as sock:
@@ -127,6 +142,41 @@ def adversarial(browser,origin,orientation,width,height):
                        "orientation":orientation,"pass":True})
     finally:
         context.close()
+    # R13 original keyed answers remain available after R14's stricter HTML/figure
+    # revision digest. The linked new record discloses unverified old figure custody.
+    context=browser.new_context(viewport={"width":width,"height":height},has_touch=True)
+    page=context.new_page()
+    try:
+        page.goto(url);ready(page)
+        old_key="g9-b01-r1:"+legacy_r13_digest()+":"+TASK
+        record={
+            "schema":"g9-b01-attempt-r1","task_id":TASK,
+            "content_revision":legacy_r13_digest(),
+            "first_answer":{"prediction":"Historical R13 prediction",
+                            "answer":"Historical R13 physical reasoning",
+                            "saved_at":"2026-11-13T12:00:00.000Z"},
+            "help_exposure":[],"diagnosis_notes":[],"repairs":[],
+            "boundary_attempts":[],"mastery_status":"UNASSESSED",
+        }
+        page.evaluate("(p)=>localStorage.setItem(p[0],JSON.stringify(p[1]))",
+                      [old_key,record])
+        page.reload()
+        page.wait_for_function(
+            "document.querySelector('#status').textContent.includes('Historical R13 first answer carried forward')",
+            timeout=22000,
+        )
+        new_key,linked=saved(page)
+        assert new_key is not None and new_key != old_key
+        assert linked["first_answer"]==record["first_answer"]
+        assert linked["migration_provenance"]["from_digest"]==legacy_r13_digest()
+        assert linked["migration_provenance"]["figure_identity_at_old_attempt"]=="NOT_ESTABLISHED_R13"
+        assert page.evaluate("(k)=>JSON.parse(localStorage.getItem(k))",old_key)==record
+        assert page.locator("#attempt-input").is_disabled()
+        assert "NOT ESTABLISHED" in page.locator("#saved-first").inner_text()
+        output.append({"case":"R13_FIRST_ANSWER_NONDESTRUCTIVE_LINK_AND_FIGURE_CAVEAT",
+                       "orientation":orientation,"pass":True})
+    finally:
+        context.close()
     return output
 
 def main():
@@ -152,7 +202,7 @@ def main():
             for orientation,w,h in (("portrait",1000,1600),("landscape",1600,1000)):
                 receipt["cases"]+=adversarial(browser,origin,orientation,w,h)
             browser.close()
-        assert len(receipt["cases"])==8
+        assert len(receipt["cases"])==10
         receipt["status"]="R00_NEGATIVE_CONTROLS_PASS__ACADEMIC_HOLD"
         (OUT/"r14-negative-qa.json").write_text(json.dumps(receipt,indent=2)+"\n")
         print(json.dumps(receipt,indent=2))
