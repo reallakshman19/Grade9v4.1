@@ -31,7 +31,7 @@ def test_c11_05_haloalkane_content_and_boundary_transfer():
     s=section("C11","CHEM-C11.05")
     text=" ".join(s["teaching"])
     assert "haloalkane" in text.lower()
-    assert "CH₃Cl" in text and "CH₃CH₂Br" not in text or "bromoethane" in text
+    assert "CH₃Cl" in text and "bromoethane" in text
     assert "Cl⁻" in text and "covalent" in text
     assert "1-chloropropane" in text and "2-chloropropane" in text
     assert "functional" in text.lower()
@@ -40,7 +40,7 @@ def test_c11_05_haloalkane_content_and_boundary_transfer():
     task=next(x for x in tasks if x["operation"]=="REPRESENT")
     boundary=task["boundary_test"]
     assert "C₃H₇Cl" in boundary["prompt"]
-    assert "independently draw" in boundary["prompt"]
+    assert "independently draw" in boundary["prompt"].lower()
     assert "1-chloropropane" in boundary["answer"]
     assert "2-chloropropane" in boundary["answer"]
     assert "ethanol" in boundary["answer"].lower()
