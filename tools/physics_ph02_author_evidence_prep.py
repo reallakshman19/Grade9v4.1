@@ -77,7 +77,7 @@ def main()->None:
         for role,marker,claim,warrant in required:
             idx=search(BASE,marker,start,end)
             # Multi-line prerequisite array: capture more than an empty leading line.
-            span=2 if role=="CORE1A_PREREQUISITE" else 1
+            span=2 if role in {"CORE1A_PREREQUISITE","CORE1A_WORKED_FOUNDATION","CORE1A_WORKED_CONNECTED","CORE1A_WORKED_ADVANCED"} else 1
             witnesses.append(quote(DATA,BASE,idx,min(end,idx+span),role,claim,warrant))
         for role,marker in [
             ("CORE1B_HINT_NONLEAK",'if(!rec?.first_answer)return fail("Commit a first attempt before hints.");'),
