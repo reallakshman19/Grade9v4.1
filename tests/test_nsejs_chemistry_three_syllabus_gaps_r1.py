@@ -149,7 +149,7 @@ def test_revised_c11_boundary_has_exact_author_evidence_blob_pin():
     evidence=next(x for x in ledger["evidence_files"] if x["path"].endswith(
         "B02-C11-legacy-refinement-evidence.v0.4.0.json"))
     raw=(ROOT/evidence["path"]).read_bytes()
-    assert hashlib.sha1(("blob "+str(len(raw))+"\\0").encode()+raw).hexdigest()==evidence["blob_sha"]
+    assert hashlib.sha1(f"blob {len(raw)}".encode()+bytes([0])+raw).hexdigest()==evidence["blob_sha"]
     records=json.loads(raw.decode("utf-8"))["records"]
     item=next(x for x in records if x["cycle_id"]=="CORE1B-C11-05-1-B02-R2")
     cycle=next(x for x in read("C11","core1b","core1b.v0.1.0.json")["cycles"]
