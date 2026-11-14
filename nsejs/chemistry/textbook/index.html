@@ -31,13 +31,23 @@ label.write{display:block;font-weight:750;margin:18px 0 8px}.stage{border-top:1p
 #notice{font-size:15px;color:#7b311b;margin:10px 0}
 @media(max-width:950px){.layout{grid-template-columns:1fr}aside{position:static}#sections{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}article{padding:26px}.controls{align-items:stretch}}
 @media(max-width:550px){#sections{grid-template-columns:1fr}body{font-size:17px}header{padding:15px}main{padding:0 12px}.control{min-width:100%;flex:1}}
+.source-return:not(:empty){background:white;padding:12px 18px;margin-bottom:14px;border:1px solid var(--line);border-radius:11px}
+.source-return a{font-weight:750}.source-return .small{margin-left:12px}
+.stage-figure{margin:12px 0;padding:12px;border:1px solid var(--line);border-radius:12px;background:#fff;max-width:100%}
+.stage-figure img{display:block;width:100%;height:auto;max-width:920px;margin:auto}
+.stage-figure figcaption{padding-top:8px}
+.visual-result{flex:1 1 100%;min-width:0}
+.stage .task-actions{align-items:stretch}.stage .task-actions button{min-height:56px}
+#sections button{min-height:56px}
+@media print{.controls,.source-return,#sections,.task-actions,#notice{display:none!important}aside{display:none!important}.layout{display:block}article{padding:0;border:0}.banner{color:#111;background:#fff}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
 </style></head>
 <body>
 <header><div class="wrap"><strong>Grade9 · Chemistry textbook drafts</strong><nav aria-label="Breadcrumb"><a href="../../index.html">NSEJS Hub</a> · <a href="../index.html">Chemistry</a> · <a href="../../../architecture/index.html">Architecture</a></nav></div></header>
 <div class="banner" role="status"><strong>AUTHOR DRAFT · ACADEMIC HOLD.</strong> These are original practice and textbook candidates, not reviewed NSEJS examination questions. Independent scientific review and curriculum source reconciliation are pending. No mastery or qualification is claimed.</div>
 <main>
- <div class="intro"><h1>Chemistry — textbook first, independent reasoning next</h1><p>Seven connected Core1A units and matching Core1B six-stage reconstruction. Read a complete subtopic before attempting a fresh, first-attempt-protected task. D3/D4 labels are author proposals, not independently adjudicated.</p></div>
+ <div class="intro"><h1>Chemistry — textbook first, independent reasoning next</h1><p>Seven connected Core1A units and matching Core1B reconstruction. For C10/C11, 39 native tasks and eight optional supplemental tasks have 141 author-stage SVGs; these visual candidates are displayed only after committing a first answer until independent review. D3/D4 labels are author proposals, not independently adjudicated.</p></div>
+ <div id="source-return" class="source-return" aria-label="Chemistry source return"></div>
  <div class="controls">
   <div class="control"><label for="unit-select">Select textbook unit</label><select id="unit-select"></select></div>
   <div class="control"><label for="task-select">Core1B cognitive task</label><select id="task-select" disabled aria-label="Choose cognitive demand"></select></div>

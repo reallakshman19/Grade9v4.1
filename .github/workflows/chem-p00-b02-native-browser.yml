@@ -1,0 +1,36 @@
+name: Chemistry P00 B02 native reader HTTP Chromium (technical only)
+on:
+  pull_request:
+    paths:
+      - "nsejs/chemistry/textbook/**"
+      - "tools/chemistry_p00_b02_browser_qa.py"
+      - "tests/test_nsejs_chemistry_p00_integration.py"
+      - ".github/workflows/chem-p00-b02-native-browser.yml"
+  workflow_dispatch:
+jobs:
+  b02-native:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install Chromium and Python browser automation
+        run: |
+          python -m pip install "playwright>=1.49,<2"
+          python -m playwright install --with-deps chromium
+      - name: Syntax-check P00 native Chemistry reader
+        run: node --check nsejs/chemistry/textbook/reader.js
+      - name: Verify native B02 task and progressive SVG journeys over HTTP
+        run: python tools/chemistry_p00_b02_browser_qa.py
+      - name: Upload 12.7-inch tablet review screenshots
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: chemistry-p00-b02-tablet-evidence
+          path: chemistry-p00-browser-evidence/
+          if-no-files-found: ignore
+      - name: Academic governance disclaimer
+        if: always()
+        run: echo "Technical browser tests cannot qualify chemistry accuracy, QRT cognitive demand, hints or official exam sources."
