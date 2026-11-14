@@ -1,0 +1,267 @@
+"""P00 B02 native HTML review-only QA. 47 tasks × two tablet orientations.
+
+Running this provides no academic/QRT qualification. The SVG stages are
+deliberately POST-COMMIT ONLY pending independent R02 review.
+"""
+from __future__ import annotations
+
+import json
+from pathlib import Path
+import subprocess
+import sys
+import time
+import urllib.request
+
+from playwright.sync_api import sync_playwright
+
+ROOT = Path(__file__).resolve().parents[1]
+BASE = "http://127.0.0.1:8793/nsejs/chemistry/textbook/index.html"
+B02 = ROOT / "curriculum" / "chemistry" / "agent-b"
+OUTPUT = ROOT / "chemistry-p00-browser-evidence"
+OUTPUT.mkdir(exist_ok=True)
+VIEWS = {"landscape": (1600, 1000), "portrait": (1000, 1600)}
+
+
+def jsfile(path):
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def inventory():
+    stages = jsfile(B02 / "qrt/B02-C10-C11-staged-visuals.v0.7.0.json")
+    supplemental = jsfile(B02 / "qrt/B02-core2-targeted-transfers.v0.5.0.json")
+    all_tasks = {}
+    for unit in ("C10", "C11"):
+        for task in jsfile(B02 / f"core1b/{unit}.core1b.v0.1.0.json")["cycles"]:
+            all_tasks[task["cycle_id"]] = (unit, task["subtopic_ref"], "native")
+    for task in supplemental["records"]:
+        unit = task["subtopic_id"].split(".")[0].replace("CHEM-", "")
+        all_tasks[task["task_id"]] = (unit, task["subtopic_id"], "supplemental")
+    assert len(all_tasks) == 47
+    assert len(stages["records"]) == 47
+    assert {r["task_id"] for r in stages["records"]} == set(all_tasks)
+    return all_tasks, stages
+
+
+def check(cond, label):
+    if not cond:
+        raise AssertionError(label)
+
+
+def wait_loaded(page, expected_id):
+    page.locator("#original-answer").wait_for(timeout=25000)
+    check(page.locator("#task-select").input_value() == expected_id,
+          f"Wrong task selected: expected {expected_id}")
+    check(page.locator("#notice").inner_text().find("FAIL_CLOSED") == -1,
+          "Reader rejected trusted B02 files")
+    check(page.locator(".stage").count() >= 2, "Missing predict/attempt stages")
+    check(page.locator(".stage-figure").count() == 0, "Unreviewed visual leaked precommit")
+    check(page.locator("text=Model response · POST-COMMIT").count() == 0,
+          "Worked model leaked precommit")
+    check(page.locator("text=S1–S3 candidate visual support (post-commit only)").count() == 0,
+          "Unreviewed stage controls leaked precommit")
+    dims=page.evaluate("() => ({width:document.documentElement.scrollWidth, inner:innerWidth})")
+    check(dims["width"]<=dims["inner"]+3, f"Horizontal overflow {dims}")
+
+
+def visit_task(page, unit, subtopic, task_id, orientation, run_stages):
+    from urllib.parse import urlencode
+
+    url = BASE + "?" + urlencode({
+        "unit": unit, "subtopic": subtopic, "mode": "practice", "task": task_id
+    })
+    response = page.goto(url, wait_until="domcontentloaded", timeout=30000)
+    check(response is not None and response.status == 200, f"HTTP route {task_id}")
+    wait_loaded(page, task_id)
+    if not run_stages:
+        return 0
+    page.locator("#prediction-answer").fill(
+        "I expect the proposed model needs testing against the measured conditions."
+    )
+    page.locator("#original-answer").fill(
+        f"First independent reasoning for {task_id}: compare scientific observations, "
+        "select a bounded explanation, and check a counterexample."
+    )
+    page.locator("#commit-attempt").click()
+    page.locator("text=Model response · POST-COMMIT").wait_for(timeout=15000)
+    check(page.locator("#original-answer").is_readonly(), "First answer not locked")
+    check(page.locator(".stage-figure").count() == 0,
+          "Visual should require explicit postcommit selection")
+    revealed = 0
+    for num,role in [("S1","CLARIFY"),("S2","CORRELATE"),("S3","OPEN_THE_WAY")]:
+        trigger = page.get_by_role("button", name=f"Inspect {num} · {role} (unreviewed)")
+        trigger.click()
+        figure = page.locator(".stage-figure").nth(revealed)
+        figure.locator("img").wait_for(timeout=15000)
+        page.wait_for_function(
+            """i => { const e=document.querySelectorAll('.stage-figure img')[i];
+                       return !!e && e.complete && e.naturalWidth > 0; }""",
+            arg=revealed, timeout=15000)
+        check(figure.locator("img").get_attribute("alt").startswith(num+" "+role),
+              f"Missing accessible stage description {task_id} {num}")
+        revealed += 1
+    check(page.locator(".stage-figure").count() == 3,
+          f"Not all 3 stage assets displayed for {task_id}")
+    check("STAGE_ASSET" not in page.locator("#notice").inner_text(),
+          "Stage asset failed validation")
+    return revealed
+
+
+def check_revision_protection(page, ids):
+    first = next(k for k,v in ids.items() if v[0]=="C10" and v[2]=="native")
+    unit, subtopic, _ = ids[first]
+    from urllib.parse import urlencode
+    route = BASE + "?" + urlencode({
+        "unit":unit, "subtopic":subtopic, "mode":"practice", "task":first
+    })
+    page.goto(route)
+    page.locator("#original-answer").wait_for()
+    check(page.locator("#original-answer").is_readonly(),
+          "Original answer should survive unchanged refresh")
+    stored = page.evaluate("""id => Object.keys(localStorage)
+        .filter(k => k.startsWith("g9chem:attempt:v2:"+id+":"))
+        .map(k => [k, JSON.parse(localStorage.getItem(k))])""", first)
+    check(len(stored)==1, "Expected one original committed revision")
+    first_text=stored[0][1]["attempt"]
+    check(first_text in page.locator("#original-answer").input_value(),
+          "Refresh overwrote the original answer")
+    # This mutation changes only Core1A teaching, not attempt.prompt or model.
+    # A partial task-only hash would incorrectly reuse the saved response.
+    def mutate(route):
+        response = route.fetch()
+        book = response.json()
+        book["sections"][0]["teaching"][0] += " P00 controlled revision mutation."
+        route.fulfill(status=200, content_type="application/json", body=json.dumps(book))
+    page.route("**/curriculum/chemistry/agent-b/learner/C10.reader.v0.1.0.json", mutate)
+    page.goto(route)
+    page.locator("#commit-attempt").wait_for(timeout=15000)
+    check(not page.locator("#original-answer").is_readonly(),
+          "Changed lesson incorrectly reused first attempt")
+    check(page.locator(".stage-figure").count()==0, "Revised task exposed old visuals")
+    preserved=page.evaluate("""id => Object.keys(localStorage)
+        .filter(k => k.startsWith("g9chem:attempt:v2:"+id+":"))
+        .map(k => JSON.parse(localStorage.getItem(k)).attempt)""", first)
+    check(first_text in preserved, "Old revision attempt was erased")
+    page.unroute("**/curriculum/chemistry/agent-b/learner/C10.reader.v0.1.0.json")
+
+
+def check_help_and_source_return(browser, ids):
+    first = next(k for k,v in ids.items() if v[0]=="C10" and v[2]=="native")
+    unit,subtopic,_=ids[first]
+    from urllib.parse import urlencode
+    context=browser.new_context(viewport={"width":1000,"height":1600},has_touch=True)
+    page=context.new_page()
+    route=BASE+"?"+urlencode({"unit":unit,"subtopic":subtopic,
+                              "mode":"practice","task":first,
+                              "return":"../index.html","source":"CHEM-C10-TEST"})
+    page.goto(route);wait_loaded(page,first)
+    check(page.locator("#source-return a").count()==1,"Safe Chemistry source return absent")
+    check(page.locator("#source-return a").get_attribute("href").endswith(
+        "/nsejs/chemistry/index.html"),"Wrong source return destination")
+    page.get_by_role("button",name="Reveal H1 (assisted, logged)").click()
+    check("H1:" in page.locator(".task-actions").inner_text(),"H1 not exposed")
+    check(page.locator("text=Model response · POST-COMMIT").count()==0,
+          "H1 exposed solution prematurely")
+    page.locator("#prediction-answer").fill("I predict the observation needs a carrier model.")
+    page.locator("#original-answer").fill(
+        "With one hint, I compare competing charge-carrier explanations and test conditions.")
+    page.locator("#commit-attempt").click()
+    page.locator("text=Model response · POST-COMMIT").wait_for()
+    check("H1" in page.locator(".saved").locator("xpath=..").inner_text(),
+          "Assisted attempt status omitted")
+    keys=page.evaluate("""id => Object.keys(localStorage).filter(
+      k => k.startsWith("g9chem:attempt:v2:"+id+":")).map(k=>JSON.parse(
+      localStorage.getItem(k)))""",first)
+    check(len(keys)==1 and keys[0]["help_exposure"]==["H1"],"Help exposure not bound")
+    page.goto(BASE+"?unit=C10&mode=practice&task=INVENTED-TASK")
+    page.locator("text=UNKNOWN_TASK_HOLD").wait_for(timeout=15000)
+    page.goto(BASE+"?unit=C10&mode=study&return=https%3A%2F%2Fevil.example%2F")
+    page.locator("#lesson h2").wait_for(timeout=15000)
+    check(page.locator("#source-return a").count()==0,
+          "Cross-origin source-return link accepted")
+    context.close()
+
+
+def check_storage_disabled(browser,ids):
+    first=next(k for k,v in ids.items() if v[0]=="C11" and v[2]=="native")
+    unit,subtopic,_=ids[first]
+    ctx=browser.new_context(viewport={"width":1000,"height":1600})
+    ctx.add_init_script("""Object.defineProperty(window,'localStorage',
+      {configurable:true,get(){throw Error('storage disabled');}});""")
+    page=ctx.new_page()
+    from urllib.parse import urlencode
+    page.goto(BASE+"?"+urlencode({"unit":unit,"subtopic":subtopic,
+                                  "mode":"practice","task":first}))
+    page.locator("text=Storage unavailable").first.wait_for(timeout=15000)
+    check(page.locator("#commit-attempt").count()==0,
+          "Model reveal must fail closed without persistent storage")
+    check(page.locator(".stage-figure").count()==0,"Unreviewed stage leaked")
+    ctx.close()
+
+
+def check_all_units_still_load(browser):
+    ctx=browser.new_context(viewport={"width":1000,"height":1600})
+    page=ctx.new_page()
+    for unit in ("C08","C09","C12","C13","C14"):
+        page.goto(BASE+"?unit="+unit+"&mode=study")
+        page.locator("#lesson .eyebrow").wait_for(timeout=25000)
+        check("UNREVIEWED" in page.locator("#lesson .eyebrow").inner_text(),
+              f"Existing {unit} reader regressed")
+    ctx.close()
+
+
+def main():
+    ids,_=inventory()
+    server=subprocess.Popen(
+      [sys.executable,"-m","http.server","8793","--bind","127.0.0.1"],
+      cwd=ROOT,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+    try:
+        for _ in range(80):
+            try:
+                urllib.request.urlopen("http://127.0.0.1:8793/",timeout=1)
+                break
+            except Exception:
+                time.sleep(0.25)
+        else:
+            raise RuntimeError("HTTP test server unavailable")
+        with sync_playwright() as playwright:
+            browser=playwright.chromium.launch(
+              headless=True,args=["--no-sandbox","--disable-dev-shm-usage"])
+            try:
+                total_stages=0
+                for orientation,(width,height) in VIEWS.items():
+                    ctx=browser.new_context(viewport={"width":width,"height":height},
+                                           has_touch=True)
+                    page=ctx.new_page()
+                    errors=[]
+                    page.on("pageerror",lambda exc:errors.append(str(exc)))
+                    for task_id,(unit,subtopic,kind) in ids.items():
+                        total_stages+=visit_task(
+                            page,unit,subtopic,task_id,orientation,
+                            run_stages=(orientation=="landscape"))
+                    check(not errors,f"Uncaught browser errors in {orientation}: {errors}")
+                    if orientation=="landscape":
+                        check_revision_protection(page,ids)
+                    page.goto(BASE+"?unit=C11&mode=practice")
+                    page.locator("#original-answer").wait_for(timeout=15000)
+                    page.screenshot(path=str(OUTPUT/f"C11-{orientation}.png"),
+                                    full_page=False)
+                    ctx.close()
+                check(total_stages==141,f"Expected 141 verified SVG displays, got {total_stages}")
+                check_help_and_source_return(browser,ids)
+                check_storage_disabled(browser,ids)
+                check_all_units_still_load(browser)
+            finally:
+                browser.close()
+        print(
+          "PASS: 47 unique native task deep links at both 12.7-inch orientations; "
+          "141/141 verified postcommit SVG renderings, 39 native+8 supplemental; "
+          "unit, subtopic, task, return, H1 exposure, first-attempt refresh, "
+          "full lesson revision mutation, disabled storage and other five units. "
+          "No academic/QRT/source qualification inferred.")
+    finally:
+        server.terminate()
+        server.wait(timeout=10)
+
+
+if __name__=="__main__":
+    main()
