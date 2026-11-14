@@ -1,0 +1,112 @@
+"""Owner-directed repairs for the three CBSE Chemistry content omissions in audit PR #27.
+
+This suite checks authored source-visible content, exact task identity retention,
+and scientifically bounded models. It does not grant independent academic/QRT PASS.
+"""
+import json
+from pathlib import Path
+
+ROOT=Path(__file__).resolve().parents[1]
+B=ROOT/"curriculum/chemistry/agent-b"
+
+
+def read(unit,subdir,extension):
+    path=B/subdir/f"{unit}.{extension}"
+    if extension.endswith("json"):
+        return json.loads(path.read_text(encoding="utf-8"))
+    return path.read_text(encoding="utf-8")
+
+
+def section(unit,subtopic):
+    doc=read(unit,"learner","reader.v0.1.0.json")
+    return next(x for x in doc["sections"] if x["id"]==subtopic)
+
+
+def cycles(unit,subtopic):
+    doc=read(unit,"core1b","core1b.v0.1.0.json")
+    return [x for x in doc["cycles"] if x["subtopic_ref"]==subtopic]
+
+
+def test_c11_05_haloalkane_content_and_boundary_transfer():
+    s=section("C11","CHEM-C11.05")
+    text=" ".join(s["teaching"])
+    assert "haloalkane" in text.lower()
+    assert "CH₃Cl" in text and "CH₃CH₂Br" not in text or "bromoethane" in text
+    assert "Cl⁻" in text and "covalent" in text
+    assert "1-chloropropane" in text and "2-chloropropane" in text
+    assert "functional" in text.lower()
+    tasks=cycles("C11","CHEM-C11.05")
+    assert len(tasks)==3
+    task=next(x for x in tasks if x["operation"]=="REPRESENT")
+    boundary=task["boundary_test"]
+    assert "C₃H₇Cl" in boundary["prompt"]
+    assert "independently draw" in boundary["prompt"]
+    assert "1-chloropropane" in boundary["answer"]
+    assert "2-chloropropane" in boundary["answer"]
+    assert "ethanol" in boundary["answer"].lower()
+    assert task["attempt"]["first_attempt_must_be_saved_before_feedback"] is True
+    assert task["academic_status"] not in ("QUALIFIED","PASS")
+    manuscript=read("C11","textbook","core1a.md")
+    assert "Halo functional groups" in manuscript
+    assert "CH₃Cl" in manuscript
+
+
+def test_c14_01_ozone_depletion_cause_and_distinction():
+    s=section("C14","CHEM-C14.01")
+    txt=" ".join(s["teaching"])
+    for value in ("stratospheric ozone","depletion","chlorofluorocarbons","CFC","Cl·",
+                  "ClO·","O₃","UV"):
+        assert value.lower() in txt.lower()
+    assert "ground-level" in txt
+    task=next(x for x in cycles("C14","CHEM-C14.01") if x["operation"]=="MODEL")
+    assert "stratospheric" in task["attempt"]["prompt"]
+    assert "CFC" in task["attempt"]["prompt"]
+    model=task["attempt"]["post_commit_closure"]["model_response"]
+    assert "Cl·+O₃" in model and "ClO·+O" in model
+    assert "satellite" in model.lower()
+    assert "next month" in task["boundary_test"]["prompt"]
+    assert "not instantaneous" in task["boundary_test"]["answer"]
+    assert task["attempt"]["first_attempt_must_be_saved_before_feedback"] is True
+    manuscript=read("C14","textbook","core1a.md")
+    assert "Stratospheric ozone depletion" in manuscript
+
+
+def test_c14_05_biodegradable_vs_nonbiodegradable():
+    s=section("C14","CHEM-C14.05")
+    txt=" ".join(s["teaching"])
+    for term in ("Biodegradable","non-biodegradable","microorganisms","polyethylene",
+                 "glass","recyclable","compost"):
+        assert term.lower() in txt.lower()
+    task=next(x for x in cycles("C14","CHEM-C14.05") if x["operation"]=="EXPLAIN")
+    prompt=task["attempt"]["prompt"]
+    assert "polyethylene" in prompt and "glass" in prompt
+    assert "classify" in prompt.lower()
+    assert "dry" in task["boundary_test"]["prompt"]
+    assert "non-biodegradable" in task["attempt"]["post_commit_closure"]["model_response"]
+    assert task["attempt"]["first_attempt_must_be_saved_before_feedback"] is True
+    manuscript=read("C14","textbook","core1a.md")
+    assert "Biodegradable versus non-biodegradable" in manuscript
+
+
+def test_all_original_36_core1b_ids_preserved_and_hold():
+    c11=read("C11","core1b","core1b.v0.1.0.json")
+    c14=read("C14","core1b","core1b.v0.1.0.json")
+    assert len(c11["cycles"])==21
+    assert len(c14["cycles"])==15
+    all_ids=[x["cycle_id"] for x in c11["cycles"]+c14["cycles"]]
+    assert len(set(all_ids))==36
+    assert all(x["source_role"]=="AUTHORED_PRACTICE" for x in c11["cycles"]+c14["cycles"])
+    assert all(x["academic_status"] not in ("PASS","QUALIFIED")
+               for x in c11["cycles"]+c14["cycles"])
+    assert len(read("C11","learner","reader.v0.1.0.json")["sections"])==7
+    assert len(read("C14","learner","reader.v0.1.0.json")["sections"])==5
+
+
+def test_source_remediation_not_equal_to_independent_qualification():
+    s11=section("C11","CHEM-C11.05")
+    s14a=section("C14","CHEM-C14.01")
+    s14e=section("C14","CHEM-C14.05")
+    assert all(x.get("scope") for x in (s11,s14a,s14e))
+    for u in ("C11","C14"):
+        data=read(u,"learner","reader.v0.1.0.json")
+        assert data["academic_status"]=="DRAFT_ACADEMIC_HOLD"
