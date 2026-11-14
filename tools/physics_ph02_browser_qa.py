@@ -31,34 +31,40 @@ def loaded(page):
     )
 
 
-def state(page, uid):
+def state(page, task_uid):
     return page.evaluate(
         """prefix => {
           const keys = Object.keys(localStorage).filter(k => k.startsWith(prefix));
           const key = keys.find(k => k.includes('AUTHORED-') && !k.endsWith(':prehelp'));
           return key ? JSON.parse(localStorage.getItem(key)) : null;
-        }""", f"{PREFIX}AUTHORED-PH02-{uid}-TRANSFER-01:"
+        }""", f"{PREFIX}{task_uid}:"
     )
 
 
-def test_one(page, uid):
-    url = f"/nsejs/physics/core1/PH02/{uid}/index.html"
+def test_one(page, uid, task_uid=None, main=False):
+    task_uid = task_uid or f"AUTHORED-PH02-{uid}-TRANSFER-01"
+    url = f"/nsejs/physics/core1/PH02/{'main' if main else uid}/index.html"
+    if main or task_uid != f"AUTHORED-PH02-{uid}-TRANSFER-01":
+        url += f"?task={task_uid}"
     page.goto(page.url.split("/nsejs/")[0] + url, wait_until="load")
     loaded(page)
     assert page.locator("#postAttempt").is_hidden()
     assert page.locator("#hintBtn").is_hidden()
     assert page.locator("#reconstructBtn").is_hidden()
+    assert page.locator("#reconstruction").inner_text() == ""  # HINT_LEAK negative DOM control
+    assert page.locator("#boundaryModel").inner_text() == ""
+    assert "Reviewed" not in page.locator("body").inner_text()
     page.locator("#prediction").fill("My reasoned prediction before support.")
     page.locator("#attempt").fill("Independent signed force model and warrant; this is learner-like test input.")
     page.locator("#firstCommit").click()
     page.wait_for_function("() => !document.querySelector('#postAttempt').hidden")
-    old = state(page,uid)
+    old = state(page,task_uid)
     assert old and old["first_answer"].startswith("Independent signed")
     assert old["revision"] and old["first_prediction"]
     for n in range(1,4):
         page.locator("#hintBtn").click()
         assert page.locator(f"#hint{n}").is_visible()
-        assert state(page,uid)["hints_seen"] == n
+        assert state(page,task_uid)["hints_seen"] == n
     page.locator("#reconstructBtn").click()
     assert page.locator("#reconstruction").is_visible()
     page.locator("#diagnosis").fill("Incorrect first model was not isolated; checking the boundary.")
@@ -76,9 +82,9 @@ def test_one(page, uid):
     assert page.locator("#attempt").input_value().startswith("Independent signed")
     assert page.locator("#attempt").is_disabled()
     assert page.locator("#boundaryModel").is_visible()
-    assert state(page,uid)["first_answer"] == old["first_answer"]
+    assert state(page,task_uid)["first_answer"] == old["first_answer"]
     assert page.evaluate("document.documentElement.scrollWidth <= innerWidth") 
-    return {"unit":uid,"first_immutable":True,"hint_order":3,"six_stages":True,"refresh":True}
+    return {"unit":uid,"task_uid":task_uid,"main":main,"first_immutable":True,"hint_order":3,"six_stages":True,"refresh":True}
 
 
 def main():
@@ -89,7 +95,7 @@ def main():
         [sys.executable, "-m", "http.server", str(port), "--bind", "127.0.0.1",
          "--directory", str(ROOT)],
         stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    receipt={"task":"PH02_AUTHORED_CHROMIUM_R1","source_status":"HOLD",
+    receipt={"task":"PH02_AUTHORED_CHROMIUM_R2_FULL_30_CYCLES","source_status":"HOLD",
              "academic_status":"HOLD","disposition":"NOT_YET_VERIFIED","checks":[]}
     try:
         target=f"http://127.0.0.1:{port}/nsejs/physics/core1/PH02/F01/index.html"
@@ -110,6 +116,9 @@ def main():
                     page=context.new_page()
                     page.on("pageerror",lambda error:receipt["checks"].append(
                         {"error":str(error),"orientation":orientation}))
+                    # Eight textbooks, 24 distinct INSTANCE tasks and six integrated MAIN.
+                    qrt=json.loads((ROOT/"nsejs/physics/ph02/qrt-candidates.v1.json").read_text())
+                    base=json.loads((ROOT/"nsejs/physics/ph02/units.v1.json").read_text())
                     for number in range(1,9):
                         uid=f"F{number:02d}"
                         page.goto(f"http://127.0.0.1:{port}/nsejs/physics/textbook/PH02/{uid}/index.html")
@@ -118,6 +127,12 @@ def main():
                         assert page.locator("svg[role=img]").count() == 1
                         assert page.evaluate("document.documentElement.scrollWidth <= innerWidth")
                         result=test_one(page,uid)
+                        receipt["checks"].append({"orientation":orientation,**result})
+                    for t in qrt["tasks"]:
+                        result=test_one(page,t["unit"].split("-")[-1],t["uid"])
+                        receipt["checks"].append({"orientation":orientation,**result})
+                    for m in qrt["main_cycles"]:
+                        result=test_one(page,m["unit"].split("-")[-1],m["uid"],main=True)
                         receipt["checks"].append({"orientation":orientation,**result})
                     context.close()
                 context=browser.new_context()
