@@ -36,21 +36,26 @@ function refresh(){
   $("prediction").disabled=saved;$("attempt").disabled=saved;
   $("firstCommit").hidden=saved;$("postAttempt").hidden=!saved;
   if(saved){$("prediction").value=rec.first_prediction;$("attempt").value=rec.first_answer;$("firstIntegrity").textContent="First prediction and attempt saved immutably for revision "+rec.revision+" at "+rec.first_at+". Later repairs cannot overwrite them.";}
-  for(let i=0;i<3;i++)$("hint"+(i+1)).hidden=!(saved&&(rec.hints_seen||0)>i);
+  for(let i=0;i<3;i++){const visible=saved&&(rec.hints_seen||0)>i;const node=$("hint"+(i+1));node.hidden=!visible;if(visible)node.innerHTML="<strong>H"+(i+1)+"</strong>"+p(ptask.hints[i]);}
   $("hintBtn").hidden=!saved||(rec?.hints_seen||0)>=3;
   if(saved&&(!rec.hints_seen||rec.hints_seen<3))$("hintBtn").textContent="Open H"+((rec.hints_seen||0)+1)+" support";
   $("reconstructBtn").hidden=!saved||!!rec?.reconstruct_seen;
   $("reconstruction").hidden=!saved||!rec?.reconstruct_seen;
+  if(saved&&rec?.reconstruct_seen)$("reconstruction").innerHTML="<h3>Shortest defensible route</h3>"+p(ptask.reconstruction)+"<h3>Independent route/check</h3>"+p(ptask.alternative);
   $("diagnoseStage").hidden=!rec?.reconstruct_seen;
+  if(rec?.reconstruct_seen)$("diagnosisGuidance").innerHTML=p(ptask.diagnosis);
   $("diagnosis").disabled=!!rec?.diagnosis_text;$("diagnoseBtn").hidden=!!rec?.diagnosis_text;
   if(rec?.diagnosis_text)$("diagnosis").value=rec.diagnosis_text;
-  $("repairStage").hidden=!rec?.diagnosis_text;$("repair").disabled=!!rec?.repair_text;$("repairBtn").hidden=!!rec?.repair_text;
+  $("repairStage").hidden=!rec?.diagnosis_text;
+  if(rec?.diagnosis_text)$("repairGuidance").innerHTML=p(ptask.repair);$("repair").disabled=!!rec?.repair_text;$("repairBtn").hidden=!!rec?.repair_text;
   if(rec?.repair_text)$("repair").value=rec.repair_text;
   $("boundaryStage").hidden=!rec?.repair_text;
+  if(rec?.repair_text)$("boundaryQuestion").innerHTML=p(ptask.boundaryPrompt);
   $("boundary").disabled=!!rec?.boundary_attempt;$("boundaryBtn").hidden=!!rec?.boundary_attempt;
   if(rec?.boundary_attempt)$("boundary").value=rec.boundary_attempt;
   $("boundaryRevealBtn").hidden=!rec?.boundary_attempt||!!rec?.boundary_revealed;
   $("boundaryModel").hidden=!rec?.boundary_revealed;
+  if(rec?.boundary_revealed)$("boundaryModel").innerHTML=p(ptask.boundaryModel);
   $("runtimeStatus").textContent=saved?"Candidate cycle loaded. First attempt protected; assistance and revisions logged.":"Candidate task loaded. Submit a real first prediction and reasoning before hints/reconstruction.";
   $("runtimeStatus").className="status";
 }
@@ -118,11 +123,11 @@ async function init(){
    '<section class="step"><h2>1 · Predict before solving</h2>'+p(ptask.prediction)+'<label for="prediction">Your prediction and reason</label><textarea id="prediction"></textarea></section>'+
    '<section class="step"><h2>2 · Attempt: protect your decisive work</h2>'+p(ptask.prompt)+'<label for="attempt">Your independent calculation, model and check</label><textarea id="attempt"></textarea><button id="firstCommit" type="button">Commit prediction + first reasoning</button><p id="firstIntegrity" class="fine"></p><p><a id="helpLink" href="'+lessonHref+'">Consult this subtopic’s Core1A textbook (help exposure tracked)</a></p></section>'+
    '<div id="postAttempt" hidden><section class="step"><h2>H1–H3 · Optional ordered support</h2><p>Only after the first answer has been saved. Supports may orient, but do not count as independent first attempts.</p><button id="hintBtn" type="button" class="secondary">Open H1 support</button>'+
-   u.practice.hints.map((h,i)=>'<div id="hint'+(i+1)+'" class="help" hidden><strong>H'+(i+1)+'</strong>'+p(h)+'</div>').join('')+'</section>'+
-   '<section class="step"><h2>3 · Reconstruct after attempting</h2><button id="reconstructBtn" type="button" class="secondary">Reveal reasoned reconstruction</button><div id="reconstruction" class="answer" hidden><h3>Shortest defensible route</h3>'+p(ptask.reconstruction)+'<h3>Independent route/check</h3>'+p(ptask.alternative)+'</div></section>'+
-   '<section id="diagnoseStage" class="step" hidden><h2>4 · Diagnose the first divergence</h2>'+p(ptask.diagnosis)+'<label for="diagnosis">Which reasoning step diverged, or what evidence is missing?</label><textarea id="diagnosis"></textarea><button id="diagnoseBtn" type="button">Save diagnosis</button></section>'+
-   '<section id="repairStage" class="step" hidden><h2>5 · Repair that step</h2>'+p(ptask.repair)+'<label for="repair">Your separate repaired explanation</label><textarea id="repair"></textarea><button id="repairBtn" type="button">Save repair separately</button></section>'+
-   '<section id="boundaryStage" class="step" hidden><h2>6 · Boundary: new changed condition</h2>'+p(ptask.boundaryPrompt)+'<label for="boundary">Your new attempt before seeing the model</label><textarea id="boundary"></textarea><button id="boundaryBtn" type="button">Commit boundary attempt</button><button id="boundaryRevealBtn" type="button" class="secondary" hidden>Reveal boundary model</button><div id="boundaryModel" class="answer" hidden>'+p(ptask.boundaryModel)+'</div></section></div>'+
+   u.practice.hints.map((h,i)=>'<div id="hint'+(i+1)+'" class="help" hidden></div>').join('')+'</section>'+
+   '<section class="step"><h2>3 · Reconstruct after attempting</h2><button id="reconstructBtn" type="button" class="secondary">Reveal reasoned reconstruction</button><div id="reconstruction" class="answer" hidden></div></section>'+
+   '<section id="diagnoseStage" class="step" hidden><h2>4 · Diagnose the first divergence</h2><div id="diagnosisGuidance"></div><label for="diagnosis">Which reasoning step diverged, or what evidence is missing?</label><textarea id="diagnosis"></textarea><button id="diagnoseBtn" type="button">Save diagnosis</button></section>'+
+   '<section id="repairStage" class="step" hidden><h2>5 · Repair that step</h2><div id="repairGuidance"></div><label for="repair">Your separate repaired explanation</label><textarea id="repair"></textarea><button id="repairBtn" type="button">Save repair separately</button></section>'+
+   '<section id="boundaryStage" class="step" hidden><h2>6 · Boundary: new changed condition</h2><div id="boundaryQuestion"></div><label for="boundary">Your new attempt before seeing the model</label><textarea id="boundary"></textarea><button id="boundaryBtn" type="button">Commit boundary attempt</button><button id="boundaryRevealBtn" type="button" class="secondary" hidden>Reveal boundary model</button><div id="boundaryModel" class="answer" hidden></div></section></div>'+
    '<p class="fine">There is no automatic correctness or academic status promotion. Review requires source-specific B1–B7 evidence, exact-head browser receipts and an independent R01 assessor.</p>';
   if(!loadState()){$("firstCommit").disabled=true;return;}
   bind();refresh();
