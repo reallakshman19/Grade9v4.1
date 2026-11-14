@@ -29,7 +29,12 @@ def free_port():
         return s.getsockname()[1]
 
 def ready(pg):
-    pg.wait_for_function("""() => { const s=document.querySelector('#status').textContent; return s.includes('Exact-version author candidate loaded') || s.includes('Fail closed'); }""",timeout=40000)
+    try:
+        pg.wait_for_function("""() => { const s=document.querySelector('#status').textContent; return s.includes('Exact-version author candidate loaded') || s.includes('Fail closed'); }""",timeout=18000)
+    except Exception as exc:
+        message=pg.locator("#status").inner_text()
+        script=pg.evaluate("""() => [...document.scripts].map(s=>({src:s.src,loaded:!!s.src}))""")
+        raise AssertionError("B01 did not initialize: status="+message+" scripts="+str(script)+" readyState="+pg.evaluate("document.readyState")) from exc
     message=pg.locator("#status").inner_text()
     assert "Exact-version author candidate loaded" in message, "B01 loader failure: "+message
 
