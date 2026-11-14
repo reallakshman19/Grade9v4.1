@@ -232,3 +232,95 @@ def test_reject_relabelled_negative_control_log(tmp_path):
     p=case(tmp_path)
     next(x for x in p["negative_tests"] if x["case"]=="HINT_LEAK")["case"]="SAVE_FAILURE"
     assert_blocked(p,tmp_path,"NEGATIVE_CASE_LOG_MISMATCH")
+
+
+# Production policy remains PILOT until the Owner approves the first exemplar.
+PSCRIPT=ROOT/"docs/agent-entry/quality-gate-r2/enforce_pr_packets.py"
+pspec=importlib.util.spec_from_file_location("physics_evidence_pr_policy",PSCRIPT)
+assert pspec and pspec.loader
+E=importlib.util.module_from_spec(pspec)
+pspec.loader.exec_module(E)
+
+
+def pilot_policy(tmp_path,monkeypatch):
+    import json
+    policy=json.loads((ROOT/"docs/agent-entry/quality-gate-r2/quality-policy.v1.json").read_text())
+    tmp=tmp_path/"policy.json"
+    tmp.write_text(json.dumps(policy),encoding="utf-8")
+    monkeypatch.setattr(E,"POLICY_PATH",tmp)
+    return policy,tmp
+
+
+def test_policy_is_explicitly_not_enforcing_before_golden(tmp_path,monkeypatch):
+    policy,tmp=pilot_policy(tmp_path,monkeypatch)
+    result=E.enforce(tmp_path)
+    assert result["status"]=="PILOT_NOT_ENFORCED"
+    assert result["academic_status"]=="HOLD"
+    assert result["owner_per_question_approval_required"] is False
+
+
+def test_active_policy_rejects_missing_owner_golden(tmp_path,monkeypatch):
+    policy,path=pilot_policy(tmp_path,monkeypatch)
+    policy["activation"]="ACTIVE_AFTER_OWNER_GOLDEN"
+    policy["production_enabled"]=True
+    path.write_text(__import__("json").dumps(policy),encoding="utf-8")
+    result=E.enforce(tmp_path,"1"*40)
+    assert result["status"]=="BLOCKED"
+    assert "OWNER_GOLDEN_HEAD_MISSING" in result["issues"]
+
+
+def test_active_policy_requires_packet_for_every_changed_physics_file(tmp_path,monkeypatch):
+    import json
+    policy,path=pilot_policy(tmp_path,monkeypatch)
+    policy.update(activation="ACTIVE_AFTER_OWNER_GOLDEN",
+                  production_enabled=True,owner_accepted_golden_head="2"*40,
+                  owner_golden_receipt_path="review/golden.md",protected_paths=["evidence/"])
+    (tmp_path/"review").mkdir()
+    (tmp_path/"review/golden.md").write_text("Owner-approved synthetic fixture only")
+    path.write_text(json.dumps(policy),encoding="utf-8")
+    monkeypatch.setattr(E,"changed_paths",lambda root,base:["evidence/lesson.html"])
+    result=E.enforce(tmp_path,"1"*40)
+    assert result["status"]=="BLOCKED"
+    assert "NO_AUTHOR_EVIDENCE_PACKETS_FOR_CHANGED_PHYSICS_CONTENT" in result["issues"]
+
+
+def test_active_policy_verifies_every_file_is_in_a_grounded_packet(tmp_path,monkeypatch):
+    import json
+    p=case(tmp_path)
+    policy,path=pilot_policy(tmp_path,monkeypatch)
+    policy.update(activation="ACTIVE_AFTER_OWNER_GOLDEN",
+                  production_enabled=True,owner_accepted_golden_head="2"*40,
+                  owner_golden_receipt_path="review/golden.md",protected_paths=["evidence/"])
+    (tmp_path/"review").mkdir()
+    (tmp_path/"review/golden.md").write_text("Owner-approved synthetic fixture only")
+    path.write_text(json.dumps(policy),encoding="utf-8")
+    packet_file=tmp_path/"review/quality-packets/physics/PH01/test.packet.json"
+    packet_file.parent.mkdir(parents=True)
+    packet_file.write_text(json.dumps(p),encoding="utf-8")
+    monkeypatch.setattr(E,"changed_paths",lambda root,base:["evidence/lesson.html"])
+    result=E.enforce(tmp_path,"1"*40)
+    assert result["status"]=="PACKETS_STRUCTURALLY_GROUNDED_REVIEW_STILL_REQUIRED",result
+    assert result["academic_status"]=="HOLD"
+    monkeypatch.setattr(E,"changed_paths",lambda root,base:["evidence/lesson.html","evidence/MISSING.html"])
+    result=E.enforce(tmp_path,"1"*40)
+    assert "NO_PACKET_EXACT_SOURCE_EVIDENCE:evidence/MISSING.html" in result["issues"]
+
+
+def test_active_policy_missing_specific_core2_uid_fails(tmp_path,monkeypatch):
+    import json
+    p=case(tmp_path)
+    policy,path=pilot_policy(tmp_path,monkeypatch)
+    policy.update(activation="ACTIVE_AFTER_OWNER_GOLDEN",
+                  production_enabled=True,owner_accepted_golden_head="2"*40,
+                  owner_golden_receipt_path="review/golden.md",protected_paths=["evidence/"])
+    (tmp_path/"review").mkdir()
+    (tmp_path/"review/golden.md").write_text("Owner-approved synthetic fixture only")
+    path.write_text(json.dumps(policy),encoding="utf-8")
+    packet_file=tmp_path/"review/quality-packets/physics/PH01/test.packet.json"
+    packet_file.parent.mkdir(parents=True)
+    packet_file.write_text(json.dumps(p),encoding="utf-8")
+    monkeypatch.setattr(E,"changed_paths",lambda root,base:["evidence/lesson.html"])
+    monkeypatch.setattr(E,"changed_core2_question_ids",lambda root,base,changed:["MISSING_UID"])
+    result=E.enforce(tmp_path,"1"*40)
+    assert result["status"]=="BLOCKED"
+    assert "CORE2_CHANGED_ITEM_WITHOUT_OWN_PACKET:MISSING_UID" in result["issues"]
