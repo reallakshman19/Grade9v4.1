@@ -9,7 +9,7 @@
   const ROOT = new URL(HOME, location.href);
   const PREVIEW = 'g9-b01-r1:';
   const PINS_PATH = 'nsejs/physics/curriculum/topics/PH07/b01/learner-preview/author-page-pins.r14.json';
-  const state = { tasks: [], current: null, record: null, digest: null, sourceDigest: null,
+  const state = { tasks: [], current: null, record: null, digest: null, sourceDigest: null, legacyDigest: null,
     pagePins: new Map(), ready: false, source: null, storageOK: false, selection: 0 };
   function status(text, kind) { $('status').textContent = text; $('status').dataset.kind = kind || 'info'; }
   function bool(id, show) { $(id).hidden = !show; }
@@ -62,9 +62,9 @@
     return typeof value==='string' && /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/.test(value) &&
       Number.isFinite(Date.parse(value));
   }
-  function valid(r) {
+  function valid(r, expectedRevision=state.digest) {
     if(!r ||typeof r!=='object'||Array.isArray(r)||r.schema!=='g9-b01-attempt-r1'||
-       r.task_id!==state.current?.id||r.content_revision!==state.digest||
+       r.task_id!==state.current?.id||r.content_revision!==expectedRevision||
        r.mastery_status!=='UNASSESSED')return false;
     const first=r.first_answer;
     if(first!==null && (!first||typeof first!=='object'||Array.isArray(first)||
@@ -74,6 +74,10 @@
          !first.help_before_first.every(k=>EXPOSURE_KINDS.includes(k) && k!=='RECONSTRUCT' && k!=='BOUNDARY_MODEL')))))return false;
     const keys=['help_exposure','diagnosis_notes','repairs','boundary_attempts'];
     if(!keys.every(k=>Array.isArray(r[k])&&r[k].length<=(k==='help_exposure'?100:1)))return false;
+    if(r.migration_provenance!==undefined &&
+       (!r.migration_provenance||r.migration_provenance.from_digest!==state.legacyDigest||
+        r.migration_provenance.figure_identity_at_old_attempt!=='NOT_ESTABLISHED_R13'||
+        !isISO(r.migration_provenance.migrated_at)))return false;
     const kinds=[];
     for(const item of r.help_exposure) {
       if(!item||!EXPOSURE_KINDS.includes(item.kind)||!isISO(item.at))return false;
