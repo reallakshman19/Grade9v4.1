@@ -56,4 +56,20 @@ try{
  const data=await resp.json(); const u=data.units.find(x=>x.id===uid);
  if(data.schema!=="g9v41-ph02-author-candidate-content/v1"||!u||data.academic_status!=="HOLD")throw Error("Invalid/missing PH02 candidate and status");
  render(u);
+ const bridgeResponse=await fetch(new URL("./teaching-bridges.v1.json",import.meta.url),{cache:"no-store"});
+ if(!bridgeResponse.ok)throw Error("Core1A operation bridges unavailable; HTTP "+bridgeResponse.status);
+ const bridgeData=await bridgeResponse.json();
+ const bridges=bridgeData.bridges?.[uid];
+ if(bridgeData.schema!=="g9v41-ph02-core1a-operation-bridges/v1"||
+    bridgeData.status!=="AUTHOR_EXPOSED_CANDIDATE__ACADEMIC_HOLD"||
+    !Array.isArray(bridges)||bridges.length!==2||new Set(bridges.map(b=>b.op)).size!==2)
+   throw Error("Missing or invalid Core1A operation bridge; HOLD");
+ const bridgeSection=document.createElement("section");
+ bridgeSection.id="additional-constructions";
+ bridgeSection.innerHTML='<h2>A10 · Build the additional reasoning constructions</h2>'+
+   '<p>These two general methods prepare different reasoning operations without disclosing their protected transfer problems.</p>'+
+   bridges.map(b=>'<div class="example"><h3>'+esc(b.op)+' · '+esc(b.title)+'</h3>'+p(b.teaching)+
+      '<p><strong>Different worked illustration:</strong> '+esc(b.worked)+'</p>'+
+      '<p><strong>Independent condition check:</strong> '+esc(b.check)+'</p></div>').join('');
+ el.appendChild(bridgeSection);
 }catch(err){el.textContent="PH02 lesson is unavailable; status remains HOLD. "+String(err.message||err);el.className="error";}
