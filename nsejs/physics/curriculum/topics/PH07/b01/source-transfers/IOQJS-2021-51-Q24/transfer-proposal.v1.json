@@ -1,0 +1,135 @@
+{
+  "schema": "b01-source-locator-transfer-proposal/v1",
+  "status": "AUTHOR_EXPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+  "subtopic_id": "PH07-02",
+  "scope_role": "PREREQUISITE_BRIDGE",
+  "source": {
+    "locator_id": "IOQJS-2021-51-Q24",
+    "year": 2021,
+    "session": "2021-22",
+    "exam_date": "2022-03-06",
+    "paper_code": "51",
+    "question_number": 24,
+    "printed_page": 7,
+    "subject": "PHYSICS",
+    "paper_url": "https://iapt.org.in/images/nse_2021/ioqjs_2021_22_part_i.pdf",
+    "visual_copy_url": "https://iapt.org.in/images/nse_2021/ioqjs_2021_22_part_i.pdf",
+    "final_key_url": "https://iapt.org.in/wp-content/uploads/ioqjs_2021_22_part_i_answer_key.pdf",
+    "publisher_key": [
+      "D"
+    ],
+    "publisher_disposition": "KEY_OBSERVED",
+    "paper_visual_status": "PUBLISHER_PAGE_VISUALLY_INSPECTED",
+    "key_visual_status": "FINAL_KEY_VISUALLY_INSPECTED",
+    "source_bytes_sha256": null,
+    "rights_status": "HOLD",
+    "exact_source_revision_status": "HOLD",
+    "academic_admission": "HOLD",
+    "source_band": "NOT_QUALIFIED",
+    "map_binding": {
+      "question_uid": "g9:pcb:physics:nsejs-2021-physics-r1:008",
+      "content_revision_sha256": "6304d569e1f2eaacbb366fcd3785166257e21c8bf1e1859ccd176f5b94b5168f",
+      "proposed_operation": "APPLY",
+      "identity_status": "METADATA_MATCH_ONLY_EXACT_CONTENT_HOLD"
+    },
+    "bank_binding": null,
+    "bank_identity_conflict": [],
+    "subtopic_id": "PH07-02",
+    "reasoning_observation": "Stipulated human heat load5 kW for4 h gives20 kWh; dividing by assumed 0.5 conversion factor yields40 kWh. Real cooling COP is heat removed divided by electrical work, not necessarily ≤1; source's efficiency wording needs model qualification."
+  },
+  "related_source_observations": [],
+  "prerequisite_support": [
+    "PH07-05",
+    "PH07-10",
+    "PH07-12"
+  ],
+  "existing_package_pin": {
+    "path": "nsejs/physics/curriculum/topics/PH07/b01/PH07-02/physics-topic-package.v1.json",
+    "blob": "c0e3fe07c15dd865e19ec9ec339d704e1d3495be",
+    "version": "0.3.2-b01.5.ph07-02"
+  },
+  "target": {
+    "id": "PH07-02-B01-IOQJS-2021-51-Q24-D4-SYNTHESIZE-R1",
+    "band": "D4",
+    "cell": "D4.6",
+    "primary_operation": "SYNTHESIZE",
+    "task_identity": "PH07-02-B01-IOQJS-2021-51-Q24-D4-SYNTHESIZE-R1",
+    "source_role": "AUTHORED_TRANSFER",
+    "protected_work": "Combine multiple heat-load paths and measured electrical consumption to discriminate cooling-performance models and predict an independent operating interval.",
+    "decisive_route": "Matched room trial has load6 kW, cooler electrical2 kW and zero temperature trend. Another trial adds3 kW load but electrical remains2 kW with measured accumulation1 kW. Test common COP. Shortest valid route: First COP3; second removal8 kW, COP4, so common COP3 fails under specified loads.",
+    "factor_evidence": {
+      "concept_model_selection": {
+        "score": 2,
+        "evidence": "Distinguish heat-load balance from electrical-to-heat efficiency"
+      },
+      "representation_translation": {
+        "score": 2,
+        "evidence": "Coordinate power, time, stored energy and cooling transfer"
+      },
+      "reasoning_chain_length": {
+        "score": 2,
+        "evidence": "Fit cooling coefficient and other load, predict reserved interval"
+      },
+      "algebra_computational_load": {
+        "score": 1,
+        "evidence": "Coupled energy arithmetic"
+      },
+      "trap_exception_sensitivity": {
+        "score": 2,
+        "evidence": "Cooling COP can exceed one; temperature held constant does not prove no heat transfer"
+      }
+    },
+    "score": 9,
+    "status": "PROPOSED"
+  },
+  "core1a": {
+    "scientific_construction": "For a room at a maintained temperature, its internal energy is approximately constant, so removed heat equals net incoming heat under the stipulated model. People, equipment, sunlight and wall transfers can contribute. A cooling device's coefficient of performance COP_c=Q_removed/W_electric (or ratio of rates in steady conditions) can exceed one because the device transfers energy rather than converts all electrical work into cooling. For a complete cyclic device, heat rejected to surroundings equals heat removed plus electrical work if other terms are negligible. Do not call COP a conventional efficiency bounded by one. In a stylized exercise a supplied conversion ratio may be used as defined. Use kW for rate and kWh for energy. If temperature changes, include stored-energy change rather than applying a steady balance.",
+    "worked_anchor": {
+      "task": "A simulated room receives3 kW heat; cooler COP=2. Maintained for2 h. Find electrical energy and rejected heat.",
+      "reasoning": "Electric1.5 kW, 3 kWh; removed6 kWh; rejected9 kWh."
+    },
+    "model_limits": "Specified ideal or matched conditions only; supplied quantitative relations do not establish compulsory exam scope."
+  },
+  "core1b": [
+    {
+      "id": "PH07-02-B01-IOQJS-2021-51-Q24-D4-SYNTHESIZE-R1-MAIN_PLACEHOLDER",
+      "kind": "MAIN_PLACEHOLDER",
+      "task": "A room model maintains constant temperature in two 2-hour trials. Known equipment heat load is2 kW in both; occupancy heat is1 kW in A and4 kW in B. Other common heat leakage L is unknown. Electricity consumed by cooling is3 and5 kWh respectively. Assume one common COP and common L. Infer both from the two observations, predict electrical use in a reserved 3-hour trial with occupancy2.5 kW, and test an exact measured 6.5 kWh.",
+      "protected_work": "Combine multiple heat-load paths and measured electrical consumption to discriminate cooling-performance models and predict an independent operating interval.",
+      "stages": {
+        "predict": "Predict whether constant room temperature implies zero heat transfer and whether two independent occupancy trials can separate L from COP.",
+        "attempt": "A room model maintains constant temperature in two 2-hour trials. Known equipment heat load is2 kW in both; occupancy heat is1 kW in A and4 kW in B. Other common heat leakage L is unknown. Electricity consumed by cooling is3 and5 kWh respectively. Assume one common COP and common L. Infer both from the two observations, predict electrical use in a reserved 3-hour trial with occupancy2.5 kW, and test an exact measured 6.5 kWh.",
+        "reconstruct": "Electrical rates1.5 and2.5 kW. COP=(6−3)/(2.5−1.5)=3. L=4.5−3=1.5 kW. Reserved total6 kW, electric2 kW, energy6 kWh; exact6.5 fails model. No unique cause.",
+        "diagnose": "Check kW versus kWh, leakage, accumulation and whether COP was incorrectly limited to 1.",
+        "repair": "Write room and cooler balances separately, fit independent conditions, predict and check reserved trial.",
+        "boundary_test": "If the reserved run instead allows internal energy to rise by1.5 kWh and COP unchanged, what electrical energy would be needed?"
+      },
+      "boundary_response_criterion": "Total inflow18 kWh, removed16.5 kWh; electricity5.5 kWh.",
+      "attempt_policy": "PROPOSED_ONLY_PUBLIC_AUTHOR_EXPOSED",
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH07-02-B01-IOQJS-2021-51-Q24-D4-SYNTHESIZE-R1-INSTANCE",
+      "kind": "INSTANCE",
+      "task": "Two 1-hour simulated cooling trials hold a room at constant temperature. Known load rates are4 and7 kW; common unknown leakage L is added. Electrical rates are2 and3 kW. Fit COP and L; predict a 2-hour run at known load5.5 kW, then compare measured electrical energy5 kWh and compute rejected energy if model fits.",
+      "protected_work": "Combine multiple heat-load paths and measured electrical consumption to discriminate cooling-performance models and predict an independent operating interval.",
+      "stages": {
+        "predict": "Predict whether the same electrical energy necessarily means the same heat removal if cooling COP can vary.",
+        "attempt": "Two 1-hour simulated cooling trials hold a room at constant temperature. Known load rates are4 and7 kW; common unknown leakage L is added. Electrical rates are2 and3 kW. Fit COP and L; predict a 2-hour run at known load5.5 kW, then compare measured electrical energy5 kWh and compute rejected energy if model fits.",
+        "reconstruct": "COP3, L2 kW; predicted total7.5 kW, electric2.5 kW, 5 kWh, fits. Removed15 kWh, rejected20 kWh. COP above1 not violation of conservation.",
+        "diagnose": "Check kW versus kWh, leakage, accumulation and whether COP was incorrectly limited to 1.",
+        "repair": "Write room and cooler balances separately, fit independent conditions, predict and check reserved trial.",
+        "boundary_test": "If actual run has measured heat accumulation3 kWh at same total inflow and electric energy, what inferred COP follows?"
+      },
+      "boundary_response_criterion": "Removed12 kWh, COP=12/5=2.4, so common3 fails.",
+      "attempt_policy": "PROPOSED_ONLY_PUBLIC_AUTHOR_EXPOSED",
+      "runtime_verification": "NOT_RUN"
+    }
+  ],
+  "acceptance": {
+    "b1_b7": "HOLD",
+    "canonical_integration": "NOT_SELECTED",
+    "source_admission": "HOLD",
+    "release": "HOLD"
+  }
+}
