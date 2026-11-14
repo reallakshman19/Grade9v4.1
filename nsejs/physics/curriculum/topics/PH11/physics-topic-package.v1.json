@@ -1,0 +1,827 @@
+{
+  "schema": "g9v41-nsejs-physics-topic-package/v1",
+  "subject_id": "PHYSICS",
+  "academic_track": "NSEJS",
+  "topic_id": "PH11",
+  "owner_agent": "AGENT_2",
+  "version": "0.2.0",
+  "status": "DRAFT_AUTHOR_EXPOSED",
+  "pins": {
+    "contracts_version": "1.0.0",
+    "blueprint": {
+      "version": "0.2.0",
+      "git_blob_sha": "700dafcbe86d76442637bcf214eeb544497cf4ea"
+    },
+    "shared_qrt_28": {
+      "version": "1.0.0",
+      "git_blob_sha": "e2409aef11ae7d98444593bfbe1a38eb00c97cef"
+    },
+    "topic_adapter_version": "0.2.0"
+  },
+  "syllabus_references": [
+    {
+      "reference_id": "PH11-CBSE",
+      "locator": "https://cbseacademic.nic.in/web_material/CurriculumMain27/SecPart1/Science_SecP1_2026-27.pdf",
+      "authority": "OFFICIAL_SYLLABUS",
+      "scope_status": "CANDIDATE"
+    }
+  ],
+  "subtopics": [
+    {
+      "id": "PH11-07",
+      "title": "Parallel resistors, branch currents and electrical loading",
+      "scope_role": "SYLLABUS_CORE_CANDIDATE",
+      "syllabus_reference_ids": [
+        "PH11-CBSE"
+      ],
+      "prerequisite_ids": [
+        "PH11-04"
+      ],
+      "science_ref_ids": [
+        "PH11-SCI-LEAD-01"
+      ],
+      "learning_goal": "Derive, defend and check parallel resistors, branch currents and electrical loading using the actual model conditions instead of pattern matching.",
+      "textbook_chapter_ref": "nsejs/physics/curriculum/topics/PH11/CHAPTER_LEAD_DRAFT.md",
+      "qrt_targets": [
+        {
+          "id": "PH11-LEAD-MODEL-D3",
+          "task_identity": "G9-AUTH-PH11-MODEL-001",
+          "band": "D3",
+          "primary_operation": "MODEL",
+          "blueprint_cell": "D3.4",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Determine whether two resistors truly share both nodes before invoking parallel rules.",
+          "decisive_route": "Learner independently: A circuit drawing contains a crossing without a junction dot and two resistors near each other. Determine the topology from an explicit node list. Under ideal wires and junctions, steady direct current, check a parallel pair cannot be treated as a series string.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "The exact MODEL task tests the applicability of Ohmic DC network with node and branch constraints; learner must distinguish relevant and irrelevant conditions."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "The MODEL task requires translating Branch diagrams, equal branch voltages, total current into a precise representation with labeled givens."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "The MODEL task links at least two warranted reasoning moves: Label the two nodes and establish equal voltage across each resistor. Then Apply I1=V/R1 and I2=V/R2 to the branches."
+            },
+            "algebra_computational_load": {
+              "score": 0,
+              "evidence": "The authored MODEL task uses no mandatory computation as its decisive act; the number of arithmetic steps is not counted as reasoning depth."
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "The MODEL task includes a near-neighbour or boundary: A parallel pair cannot be treated as a series string"
+            }
+          }
+        },
+        {
+          "id": "PH11-LEAD-APPLY-D3",
+          "task_identity": "G9-AUTH-PH11-APPLY-001",
+          "band": "D3",
+          "primary_operation": "APPLY",
+          "blueprint_cell": "D3.3",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Calculate branch currents and total resistance after checking parallel operating conditions.",
+          "decisive_route": "Learner independently: Across an ideal 18 V source sit parallel 9-ohm and 6-ohm branches. Compute I1, I2 and Req and check charge conservation. Under ideal wires and junctions, steady direct current, check a parallel pair cannot be treated as a series string.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 1,
+              "evidence": "The exact APPLY task tests the applicability of Ohmic DC network with node and branch constraints; learner must distinguish relevant and irrelevant conditions."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "The APPLY task requires translating Branch diagrams, equal branch voltages, total current into a precise representation with labeled givens."
+            },
+            "reasoning_chain_length": {
+              "score": 1,
+              "evidence": "The APPLY task links at least two warranted reasoning moves: Label the two nodes and establish equal voltage across each resistor. Then Apply I1=V/R1 and I2=V/R2 to the branches."
+            },
+            "algebra_computational_load": {
+              "score": 2,
+              "evidence": "The authored APPLY task uses a concrete numerical or symbolic execution step where meaningful; the number of arithmetic steps is not counted as reasoning depth."
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "The APPLY task includes a near-neighbour or boundary: At a junction charge conservation constrains total current; current is not consumed by components"
+            }
+          }
+        },
+        {
+          "id": "PH11-LEAD-REPRESENT-D3",
+          "task_identity": "G9-AUTH-PH11-REPRESENT-001",
+          "band": "D3",
+          "primary_operation": "REPRESENT",
+          "blueprint_cell": "D3.5",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Translate a labeled connection graph into a circuit diagram preserving junction identity and voltages.",
+          "decisive_route": "Learner independently: Draw a two-node schematic for a network with three branches between nodes A and B and mark equal voltages. Under ideal wires and junctions, steady direct current, check a parallel pair cannot be treated as a series string.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 1,
+              "evidence": "The exact REPRESENT task tests the applicability of Ohmic DC network with node and branch constraints; learner must distinguish relevant and irrelevant conditions."
+            },
+            "representation_translation": {
+              "score": 2,
+              "evidence": "The REPRESENT task requires translating Branch diagrams, equal branch voltages, total current into a precise representation with labeled givens."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "The REPRESENT task links at least two warranted reasoning moves: Label the two nodes and establish equal voltage across each resistor. Then Apply I1=V/R1 and I2=V/R2 to the branches."
+            },
+            "algebra_computational_load": {
+              "score": 0,
+              "evidence": "The authored REPRESENT task uses no mandatory computation as its decisive act; the number of arithmetic steps is not counted as reasoning depth."
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "The REPRESENT task includes a near-neighbour or boundary: A source with significant internal resistance may change terminal voltage when a load is added"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "PH11-10",
+      "title": "Joule heating: electrical power, thermal transfer and control conditions",
+      "scope_role": "SYLLABUS_CORE_CANDIDATE",
+      "syllabus_reference_ids": [
+        "PH11-CBSE"
+      ],
+      "prerequisite_ids": [],
+      "science_ref_ids": [
+        "PH11-SCI-SECOND-01"
+      ],
+      "learning_goal": "Explain and reason about joule heating: electrical power, thermal transfer and control conditions with valid conditions and independent checks.",
+      "textbook_chapter_ref": "nsejs/physics/curriculum/topics/PH11/CHAPTER_CONTINUOUS_DRAFT.md",
+      "qrt_targets": [
+        {
+          "id": "PH11-10-D3-EXPLAIN-02",
+          "task_identity": "G9-AUTH-PH11-10-EXPLAIN-002",
+          "band": "D3",
+          "primary_operation": "EXPLAIN",
+          "blueprint_cell": "D3.2",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Explain energy flow from a source to a warm resistor without claiming that current is consumed.",
+          "decisive_route": "First discriminate the physical mechanism: Define electrical energy-transfer rate P=VI for the measured branch.; then apply conditions and test a model boundary.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 1,
+              "evidence": "The EXPLAIN task distinguishes actual applicability of Electrical power in resistors; relation to Joule heating from a tempting alternative."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "The EXPLAIN task translates the physical setup into Current A, resistance ohm, voltage V, power W, energy J and time s. with a declared reference."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "The EXPLAIN task needs two warranted inferences: Define electrical energy-transfer rate P=VI for the measured branch. Then Substitute Ohm law V=IR to get P=I²R and alternatively I=V/R to get P=V²/R."
+            },
+            "algebra_computational_load": {
+              "score": 0,
+              "evidence": "The EXPLAIN task has no mandatory computation as its decisive reasoning move."
+            },
+            "trap_exception_sensitivity": {
+              "score": 2,
+              "evidence": "The EXPLAIN task has an explicit limit: At fixed voltage and fixed current the resistance comparison trends differ"
+            }
+          }
+        },
+        {
+          "id": "PH11-10-D3-MODEL-02",
+          "task_identity": "G9-AUTH-PH11-10-MODEL-002",
+          "band": "D3",
+          "primary_operation": "MODEL",
+          "blueprint_cell": "D3.4",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Choose the correct resistance-power comparison model based on fixed source voltage or fixed current.",
+          "decisive_route": "First discriminate the physical mechanism: Define electrical energy-transfer rate P=VI for the measured branch.; then apply conditions and test a model boundary.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "The MODEL task distinguishes actual applicability of Electrical power in resistors; relation to Joule heating from a tempting alternative."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "The MODEL task translates the physical setup into Current A, resistance ohm, voltage V, power W, energy J and time s. with a declared reference."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "The MODEL task needs two warranted inferences: Define electrical energy-transfer rate P=VI for the measured branch. Then Substitute Ohm law V=IR to get P=I²R and alternatively I=V/R to get P=V²/R."
+            },
+            "algebra_computational_load": {
+              "score": 0,
+              "evidence": "The MODEL task has no mandatory computation as its decisive reasoning move."
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "The MODEL task has an explicit limit: Nonohmic devices and changing resistance invalidate fixed-R simplifications"
+            }
+          }
+        },
+        {
+          "id": "PH11-10-D3-APPLY-02",
+          "task_identity": "G9-AUTH-PH11-10-APPLY-002",
+          "band": "D3",
+          "primary_operation": "APPLY",
+          "blueprint_cell": "D3.3",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Calculate thermal energy from electrical power with explicit duration and operating point.",
+          "decisive_route": "First discriminate the physical mechanism: Define electrical energy-transfer rate P=VI for the measured branch.; then apply conditions and test a model boundary.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 1,
+              "evidence": "The APPLY task distinguishes actual applicability of Electrical power in resistors; relation to Joule heating from a tempting alternative."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "The APPLY task translates the physical setup into Current A, resistance ohm, voltage V, power W, energy J and time s. with a declared reference."
+            },
+            "reasoning_chain_length": {
+              "score": 1,
+              "evidence": "The APPLY task needs two warranted inferences: Define electrical energy-transfer rate P=VI for the measured branch. Then Substitute Ohm law V=IR to get P=I²R and alternatively I=V/R to get P=V²/R."
+            },
+            "algebra_computational_load": {
+              "score": 2,
+              "evidence": "The APPLY task uses appropriate symbolic or numerical work rather than an arbitrary number of calculations."
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "The APPLY task has an explicit limit: Thermal rise cannot be obtained from electrical power alone without time and heat balance"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "science_records": [
+    {
+      "id": "PH11-SCI-LEAD-01",
+      "claim": "In ideal parallel resistive branches the potential difference across each branch is the same, while the junction current equals the sum of branch currents.",
+      "law_or_model": "Ohmic DC network with node and branch constraints",
+      "assumptions": [
+        "Ideal wires and junctions, steady direct current",
+        "Resistors approximately ohmic at fixed temperature",
+        "Source potential difference stated and no unmodeled internal resistance"
+      ],
+      "conditions_and_limits": [
+        "A parallel pair cannot be treated as a series string",
+        "At a junction charge conservation constrains total current; current is not consumed by components",
+        "A source with significant internal resistance may change terminal voltage when a load is added"
+      ],
+      "units_and_signs": "Voltage V, current A, resistance ohm, power W; distinguish parallel equal voltage from series equal current.",
+      "source_refs": [
+        "PH11-CBSE"
+      ],
+      "qualification_status": "HOLD"
+    },
+    {
+      "id": "PH11-SCI-SECOND-01",
+      "claim": "In an ideal ohmic resistor with steady current I and resistance R, electrical power transformed into thermal energy is P=I²R, while with an ideal fixed voltage V across the resistor P=V²/R.",
+      "law_or_model": "Electrical power in resistors; relation to Joule heating",
+      "assumptions": [
+        "Steady current and approximately ohmic resistance",
+        "Power is evaluated at the actual operating current or voltage",
+        "Energy-to-temperature inference needs separate thermal system and loss information"
+      ],
+      "conditions_and_limits": [
+        "At fixed voltage and fixed current the resistance comparison trends differ",
+        "Nonohmic devices and changing resistance invalidate fixed-R simplifications",
+        "Thermal rise cannot be obtained from electrical power alone without time and heat balance"
+      ],
+      "units_and_signs": "Current A, resistance ohm, voltage V, power W, energy J and time s.",
+      "source_refs": [
+        "PH11-CBSE"
+      ],
+      "qualification_status": "HOLD"
+    }
+  ],
+  "topic_adapter": {
+    "adapter_id": "PHYS-TOPIC-PH11",
+    "topic_id": "PH11",
+    "version": "0.2.0",
+    "for_blueprint": "PHYS-QRT-BLUEPRINT 0.2.0",
+    "status": "CANDIDATE_ONLY",
+    "cells": [
+      {
+        "cell_id": "D3.4",
+        "instance_ids": [
+          "PH11-LEAD-MODEL-D3",
+          "PH11-10-D3-MODEL-02"
+        ]
+      },
+      {
+        "cell_id": "D3.3",
+        "instance_ids": [
+          "PH11-LEAD-APPLY-D3",
+          "PH11-10-D3-APPLY-02"
+        ]
+      },
+      {
+        "cell_id": "D3.5",
+        "instance_ids": [
+          "PH11-LEAD-REPRESENT-D3"
+        ]
+      },
+      {
+        "cell_id": "D3.2",
+        "instance_ids": [
+          "PH11-10-D3-EXPLAIN-02"
+        ]
+      }
+    ]
+  },
+  "core1a": [
+    {
+      "id": "PH11-LEAD-CORE1A-01",
+      "subtopic_id": "PH11-07",
+      "covered_qrt_ids": [
+        "PH11-LEAD-MODEL-D3",
+        "PH11-LEAD-APPLY-D3",
+        "PH11-LEAD-REPRESENT-D3"
+      ],
+      "phenomenon": "Adding a second lamp branch can change the total current drawn from a battery even if each branch receives the same voltage.",
+      "scientific_narrative": "In a circuit schematic, two components are in parallel only when both ends are connected to the same two electrical nodes. A drawn branch crossing another wire does not imply a connection without a junction mark. By definition, components sharing the same node pair have the same potential difference. At each junction, conservation of charge requires the currents entering and leaving to balance. For ideal ohmic resistors, I=V/R. Combining these principles gives 1/Req=1/R1+1/R2. Unlike a single path, a parallel network divides the current, not the voltage. A lower equivalent resistance at fixed ideal source voltage means a larger total current. Real cells can sag under load, so the phrase 'fixed voltage' is a model assumption, not an unavoidable physical fact.",
+      "prerequisites": [
+        "PH11-04"
+      ],
+      "derivation_steps": [
+        {
+          "action": "Label the two nodes and establish equal voltage across each resistor.",
+          "why_valid": "Potential difference depends only on the node pair, not the shape of the drawing.",
+          "science_ref_id": "PH11-SCI-LEAD-01"
+        },
+        {
+          "action": "Apply I1=V/R1 and I2=V/R2 to the branches.",
+          "why_valid": "Ohm's law applies here to each ideal resistor at fixed operating conditions.",
+          "science_ref_id": "PH11-SCI-LEAD-01"
+        },
+        {
+          "action": "Use Itotal=I1+I2 and define Req=V/Itotal to derive the reciprocal relation.",
+          "why_valid": "Charge is conserved at junctions, so total current adds rather than being consumed.",
+          "science_ref_id": "PH11-SCI-LEAD-01"
+        }
+      ],
+      "model_limits": [
+        "A parallel pair cannot be treated as a series string",
+        "At a junction charge conservation constrains total current; current is not consumed by components",
+        "A source with significant internal resistance may change terminal voltage when a load is added"
+      ],
+      "progressive_examples": [
+        {
+          "id": "PH11-EX-1",
+          "tier": "FOUNDATION",
+          "problem": "Connect 6 ohm and 3 ohm resistors in parallel across an ideal 12 V battery. Find branch currents.",
+          "reasoning": "I1=2 A and I2=4 A; Itotal=6 A, Req=2 ohm.",
+          "independent_check": "Req is less than the smaller branch resistance and the currents sum to 6 A."
+        },
+        {
+          "id": "PH11-EX-2",
+          "tier": "CONNECTED",
+          "problem": "An ideal 9 V source drives a 9 ohm resistor. Add another 9 ohm parallel branch; compare total current.",
+          "reasoning": "Total current increases from 1 A to 2 A; equivalent resistance halves to 4.5 ohm.",
+          "independent_check": "Each branch still carries 1 A, assuming ideal fixed source voltage."
+        },
+        {
+          "id": "PH11-EX-3",
+          "tier": "ADVANCED",
+          "problem": "A 4 ohm and 12 ohm network is drawn with both ends at the same nodes but the lines cross. What is Req?",
+          "reasoning": "If both components share the two nodes, Req=(4*12)/(4+12)=3 ohm, regardless of the drawn crossing.",
+          "independent_check": "Redraw as two unmistakable parallel branches and check 1/3=1/4+1/12."
+        }
+      ],
+      "figures": [
+        {
+          "id": "PH11-FIG-LEAD-01",
+          "reasoning_step": "Label the two nodes and establish equal voltage across each resistor.",
+          "scene_description": "Original two-node network with marked junctions, two branch resistors, separate I1 and I2 arrows, and an ammeter showing the total current before branching.",
+          "source_or_authorship": "ORIGINAL_AUTHOR_FIGURE_SPEC__NOT_YET_RENDERED"
+        }
+      ],
+      "misconception": {
+        "wrong_model": "Current entering a resistor is partly used up, so branch currents must get smaller along the wire.",
+        "diagnostic": "Where does charge go at a split junction in steady state?",
+        "repair": "Charge is conserved: the entering current equals the sum of outgoing branch currents."
+      },
+      "exit_check": {
+        "task": "Two 8-ohm resistors are in parallel across an ideal 8 V source. What is the total current?",
+        "answer": "2 A.",
+        "reasoning": "Each branch draws 1 A; the total is 2 A and equivalent resistance is 4 ohm."
+      },
+      "authorship_status": "DRAFT_AUTHOR_EXPOSED"
+    },
+    {
+      "id": "PH11-10-CORE1A-SECOND-01",
+      "subtopic_id": "PH11-10",
+      "covered_qrt_ids": [
+        "PH11-10-D3-EXPLAIN-02",
+        "PH11-10-D3-MODEL-02",
+        "PH11-10-D3-APPLY-02"
+      ],
+      "phenomenon": "A wire in an electric heater becomes warm when current flows, even though the electrons are not used up.",
+      "scientific_narrative": "The electric field transfers energy to charges moving through a resistive element. Through interactions in the material, this electrical energy appears as increased thermal energy and may then flow into the surroundings. At a steady operating point the electrical power delivered is P=VI. If the resistor is approximately ohmic so that V=IR, substitution gives P=I²R; equivalently I=V/R gives P=V²/R. These expressions describe the same physical power under compatible conditions. A higher resistance creates more heating at fixed current, but less heating at fixed applied voltage, because current changes. A final wire temperature also depends on how fast heat leaves the wire and on its heat capacity. A physics explanation cannot replace those controls with a memorized slogan that bigger R always means greater heat.",
+      "prerequisites": [
+        "Steady current and approximately ohmic resistance",
+        "Power is evaluated at the actual operating current or voltage",
+        "Energy-to-temperature inference needs separate thermal system and loss information"
+      ],
+      "derivation_steps": [
+        {
+          "action": "Define electrical energy-transfer rate P=VI for the measured branch.",
+          "why_valid": "Electrical potential drop times current measures energy transfer per unit time.",
+          "science_ref_id": "PH11-SCI-SECOND-01"
+        },
+        {
+          "action": "Substitute Ohm law V=IR to get P=I²R and alternatively I=V/R to get P=V²/R.",
+          "why_valid": "Ohm law substitution is valid only in the relevant approximately constant-R regime.",
+          "science_ref_id": "PH11-SCI-SECOND-01"
+        },
+        {
+          "action": "Distinguish comparisons at fixed current from fixed voltage and link P times duration to energy.",
+          "why_valid": "The independent variable held fixed determines how current or voltage responds to resistance change.",
+          "science_ref_id": "PH11-SCI-SECOND-01"
+        }
+      ],
+      "model_limits": [
+        "At fixed voltage and fixed current the resistance comparison trends differ",
+        "Nonohmic devices and changing resistance invalidate fixed-R simplifications",
+        "Thermal rise cannot be obtained from electrical power alone without time and heat balance"
+      ],
+      "progressive_examples": [
+        {
+          "id": "PH11-10-EX-1",
+          "tier": "FOUNDATION",
+          "problem": "An ohmic wire carries 2 A at 3 ohms. Find power.",
+          "reasoning": "P=I²R=4×3=12 W.",
+          "independent_check": "The voltage is 6 V, so VI=6×2=12 W."
+        },
+        {
+          "id": "PH11-10-EX-2",
+          "tier": "CONNECTED",
+          "problem": "A 6 ohm resistor is across an ideal 12 V source. Find power.",
+          "reasoning": "P=V²/R=144/6=24 W.",
+          "independent_check": "I=2 A and VI=24 W agrees."
+        },
+        {
+          "id": "PH11-10-EX-3",
+          "tier": "ADVANCED",
+          "problem": "At fixed ideal 12 V, compare 6 ohm and 12 ohm resistors' powers.",
+          "reasoning": "24 W versus 12 W; the higher resistance has lower power under fixed voltage.",
+          "independent_check": "Under fixed 2 A, the higher resistance instead dissipates 48 W, showing the distinction."
+        }
+      ],
+      "figures": [],
+      "misconception": {
+        "wrong_model": "A bigger resistance necessarily generates more heat in every circuit.",
+        "diagnostic": "Does doubling R increase power when applied V is held fixed by an ideal source?",
+        "repair": "Under fixed V, P=V²/R decreases; under fixed I, P=I²R increases."
+      },
+      "exit_check": {
+        "task": "At fixed 10 V, an ohmic resistor rises from 5 ohm to 10 ohm. What happens to power?",
+        "answer": "Power decreases from 20 W to 10 W.",
+        "reasoning": "P=V²/R, with voltage fixed; compare after checking assumptions."
+      },
+      "authorship_status": "DRAFT_AUTHOR_EXPOSED"
+    }
+  ],
+  "core1b": [
+    {
+      "id": "PH11-MAIN-MODEL-01",
+      "kind": "MAIN",
+      "subtopic_id": "PH11-07",
+      "qrt_target_id": "PH11-LEAD-MODEL-D3",
+      "fresh_task": "Given connections A–R1–B and A–R2–B plus an extra disconnected crossing, decide whether the resistors are in series or parallel.",
+      "protected_work": "Determine whether two resistors truly share both nodes before invoking parallel rules.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Before any help, predict the qualitative outcome: Determine whether two resistors truly share both nodes before invoking parallel rules.",
+        "attempt": "Given connections A–R1–B and A–R2–B plus an extra disconnected crossing, decide whether the resistors are in series or parallel.",
+        "reconstruct": "After committing the first answer, reconstruct the reasoning with Label the two nodes and establish equal voltage across each resistor. -> Apply I1=V/R1 and I2=V/R2 to the branches. -> Use Itotal=I1+I2 and define Req=V/Itotal to derive the reciprocal relation. and compare assumptions.",
+        "diagnose": "Contrast an incorrect route (Current entering a resistor is partly used up, so branch currents must get smaller along the wire.) with your saved first answer; do not infer misconception without discriminating evidence.",
+        "repair": "Use the replacement principle: Charge is conserved: the entering current equals the sum of outgoing branch currents. Rebuild the inference, not merely the final answer.",
+        "boundary_test": "Move one lead of R2 to the middle of R1; explain why the original topology model no longer applies."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH11-INSTANCE-MODEL-01",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH11-07",
+      "qrt_target_id": "PH11-LEAD-MODEL-D3",
+      "fresh_task": "A circuit drawing contains a crossing without a junction dot and two resistors near each other. Determine the topology from an explicit node list.",
+      "protected_work": "Determine whether two resistors truly share both nodes before invoking parallel rules.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Before any help, predict the qualitative outcome: Determine whether two resistors truly share both nodes before invoking parallel rules.",
+        "attempt": "A circuit drawing contains a crossing without a junction dot and two resistors near each other. Determine the topology from an explicit node list.",
+        "reconstruct": "After committing the first answer, reconstruct the reasoning with Label the two nodes and establish equal voltage across each resistor. -> Apply I1=V/R1 and I2=V/R2 to the branches. -> Use Itotal=I1+I2 and define Req=V/Itotal to derive the reciprocal relation. and compare assumptions.",
+        "diagnose": "Contrast an incorrect route (Current entering a resistor is partly used up, so branch currents must get smaller along the wire.) with your saved first answer; do not infer misconception without discriminating evidence.",
+        "repair": "Use the replacement principle: Charge is conserved: the entering current equals the sum of outgoing branch currents. Rebuild the inference, not merely the final answer.",
+        "boundary_test": "Move one lead of R2 to the middle of R1; explain why the original topology model no longer applies."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH11-MAIN-APPLY-01",
+      "kind": "MAIN",
+      "subtopic_id": "PH11-07",
+      "qrt_target_id": "PH11-LEAD-APPLY-D3",
+      "fresh_task": "Two resistors 5 ohm and 20 ohm share an ideal 10 V source. Independently calculate branch powers and total current.",
+      "protected_work": "Calculate branch currents and total resistance after checking parallel operating conditions.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Before any help, predict the qualitative outcome: Calculate branch currents and total resistance after checking parallel operating conditions.",
+        "attempt": "Two resistors 5 ohm and 20 ohm share an ideal 10 V source. Independently calculate branch powers and total current.",
+        "reconstruct": "After committing the first answer, reconstruct the reasoning with Label the two nodes and establish equal voltage across each resistor. -> Apply I1=V/R1 and I2=V/R2 to the branches. -> Use Itotal=I1+I2 and define Req=V/Itotal to derive the reciprocal relation. and compare assumptions.",
+        "diagnose": "Contrast an incorrect route (Current entering a resistor is partly used up, so branch currents must get smaller along the wire.) with your saved first answer; do not infer misconception without discriminating evidence.",
+        "repair": "Use the replacement principle: Charge is conserved: the entering current equals the sum of outgoing branch currents. Rebuild the inference, not merely the final answer.",
+        "boundary_test": "Replace the ideal source with one of non-negligible internal resistance; identify which numerical result becomes conditional."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH11-INSTANCE-APPLY-01",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH11-07",
+      "qrt_target_id": "PH11-LEAD-APPLY-D3",
+      "fresh_task": "Across an ideal 18 V source sit parallel 9-ohm and 6-ohm branches. Compute I1, I2 and Req and check charge conservation.",
+      "protected_work": "Calculate branch currents and total resistance after checking parallel operating conditions.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Before any help, predict the qualitative outcome: Calculate branch currents and total resistance after checking parallel operating conditions.",
+        "attempt": "Across an ideal 18 V source sit parallel 9-ohm and 6-ohm branches. Compute I1, I2 and Req and check charge conservation.",
+        "reconstruct": "After committing the first answer, reconstruct the reasoning with Label the two nodes and establish equal voltage across each resistor. -> Apply I1=V/R1 and I2=V/R2 to the branches. -> Use Itotal=I1+I2 and define Req=V/Itotal to derive the reciprocal relation. and compare assumptions.",
+        "diagnose": "Contrast an incorrect route (Current entering a resistor is partly used up, so branch currents must get smaller along the wire.) with your saved first answer; do not infer misconception without discriminating evidence.",
+        "repair": "Use the replacement principle: Charge is conserved: the entering current equals the sum of outgoing branch currents. Rebuild the inference, not merely the final answer.",
+        "boundary_test": "Replace the ideal source with one of non-negligible internal resistance; identify which numerical result becomes conditional."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH11-MAIN-REPRESENT-01",
+      "kind": "MAIN",
+      "subtopic_id": "PH11-07",
+      "qrt_target_id": "PH11-LEAD-REPRESENT-D3",
+      "fresh_task": "A technician gives an unordered list of endpoints for 4-ohm and 8-ohm resistors. Construct the circuit and explain whether they are parallel.",
+      "protected_work": "Translate a labeled connection graph into a circuit diagram preserving junction identity and voltages.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Before any help, predict the qualitative outcome: Translate a labeled connection graph into a circuit diagram preserving junction identity and voltages.",
+        "attempt": "A technician gives an unordered list of endpoints for 4-ohm and 8-ohm resistors. Construct the circuit and explain whether they are parallel.",
+        "reconstruct": "After committing the first answer, reconstruct the reasoning with Label the two nodes and establish equal voltage across each resistor. -> Apply I1=V/R1 and I2=V/R2 to the branches. -> Use Itotal=I1+I2 and define Req=V/Itotal to derive the reciprocal relation. and compare assumptions.",
+        "diagnose": "Contrast an incorrect route (Current entering a resistor is partly used up, so branch currents must get smaller along the wire.) with your saved first answer; do not infer misconception without discriminating evidence.",
+        "repair": "Use the replacement principle: Charge is conserved: the entering current equals the sum of outgoing branch currents. Rebuild the inference, not merely the final answer.",
+        "boundary_test": "Redraw the network with wire crossings but no junctions and preserve every actual connection."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH11-INSTANCE-REPRESENT-01",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH11-07",
+      "qrt_target_id": "PH11-LEAD-REPRESENT-D3",
+      "fresh_task": "Draw a two-node schematic for a network with three branches between nodes A and B and mark equal voltages.",
+      "protected_work": "Translate a labeled connection graph into a circuit diagram preserving junction identity and voltages.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Before any help, predict the qualitative outcome: Translate a labeled connection graph into a circuit diagram preserving junction identity and voltages.",
+        "attempt": "Draw a two-node schematic for a network with three branches between nodes A and B and mark equal voltages.",
+        "reconstruct": "After committing the first answer, reconstruct the reasoning with Label the two nodes and establish equal voltage across each resistor. -> Apply I1=V/R1 and I2=V/R2 to the branches. -> Use Itotal=I1+I2 and define Req=V/Itotal to derive the reciprocal relation. and compare assumptions.",
+        "diagnose": "Contrast an incorrect route (Current entering a resistor is partly used up, so branch currents must get smaller along the wire.) with your saved first answer; do not infer misconception without discriminating evidence.",
+        "repair": "Use the replacement principle: Charge is conserved: the entering current equals the sum of outgoing branch currents. Rebuild the inference, not merely the final answer.",
+        "boundary_test": "Redraw the network with wire crossings but no junctions and preserve every actual connection."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH11-10-MAIN-EXPLAIN-02",
+      "kind": "MAIN",
+      "subtopic_id": "PH11-10",
+      "qrt_target_id": "PH11-10-D3-EXPLAIN-02",
+      "fresh_task": "A student says half the electrons vanish into heat. Trace the correct charge-and-energy distinction.",
+      "protected_work": "Explain energy flow from a source to a warm resistor without claiming that current is consumed.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict the physical outcome or model regime before hints: Explain energy flow from a source to a warm resistor without claiming that current is consumed.",
+        "attempt": "A student says half the electrons vanish into heat. Trace the correct charge-and-energy distinction.",
+        "reconstruct": "After saving first attempt, reconstruct: Define electrical energy-transfer rate P=VI for the measured branch. -> Substitute Ohm law V=IR to get P=I²R and alternatively I=V/R to get P=V²/R. -> Distinguish comparisons at fixed current from fixed voltage and link P times duration to energy.. Verify the model assumptions.",
+        "diagnose": "Compare your first saved route with this wrong idea: A bigger resistance necessarily generates more heat in every circuit.",
+        "repair": "Rebuild the reasoning with the principle: Under fixed V, P=V²/R decreases; under fixed I, P=I²R increases.",
+        "boundary_test": "Introduce a nonohmic lamp filament that changes R as it warms; identify which fixed-R claim needs revision."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH11-10-INSTANCE-EXPLAIN-02",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH11-10",
+      "qrt_target_id": "PH11-10-D3-EXPLAIN-02",
+      "fresh_task": "A current-carrying metal strip becomes hot, while the current measured before and after it is the same. Explain these compatible observations.",
+      "protected_work": "Explain energy flow from a source to a warm resistor without claiming that current is consumed.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict the physical outcome or model regime before hints: Explain energy flow from a source to a warm resistor without claiming that current is consumed.",
+        "attempt": "A current-carrying metal strip becomes hot, while the current measured before and after it is the same. Explain these compatible observations.",
+        "reconstruct": "After saving first attempt, reconstruct: Define electrical energy-transfer rate P=VI for the measured branch. -> Substitute Ohm law V=IR to get P=I²R and alternatively I=V/R to get P=V²/R. -> Distinguish comparisons at fixed current from fixed voltage and link P times duration to energy.. Verify the model assumptions.",
+        "diagnose": "Compare your first saved route with this wrong idea: A bigger resistance necessarily generates more heat in every circuit.",
+        "repair": "Rebuild the reasoning with the principle: Under fixed V, P=V²/R decreases; under fixed I, P=I²R increases.",
+        "boundary_test": "Introduce a nonohmic lamp filament that changes R as it warms; identify which fixed-R claim needs revision."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH11-10-MAIN-MODEL-02",
+      "kind": "MAIN",
+      "subtopic_id": "PH11-10",
+      "qrt_target_id": "PH11-10-D3-MODEL-02",
+      "fresh_task": "Two resistors are driven separately from the same ideal 9 V battery. Decide which has higher power and defend the assumption.",
+      "protected_work": "Choose the correct resistance-power comparison model based on fixed source voltage or fixed current.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict the physical outcome or model regime before hints: Choose the correct resistance-power comparison model based on fixed source voltage or fixed current.",
+        "attempt": "Two resistors are driven separately from the same ideal 9 V battery. Decide which has higher power and defend the assumption.",
+        "reconstruct": "After saving first attempt, reconstruct: Define electrical energy-transfer rate P=VI for the measured branch. -> Substitute Ohm law V=IR to get P=I²R and alternatively I=V/R to get P=V²/R. -> Distinguish comparisons at fixed current from fixed voltage and link P times duration to energy.. Verify the model assumptions.",
+        "diagnose": "Compare your first saved route with this wrong idea: A bigger resistance necessarily generates more heat in every circuit.",
+        "repair": "Rebuild the reasoning with the principle: Under fixed V, P=V²/R decreases; under fixed I, P=I²R increases.",
+        "boundary_test": "Switch to a supply with substantial internal resistance; identify why terminal voltage may no longer remain fixed."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH11-10-INSTANCE-MODEL-02",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH11-10",
+      "qrt_target_id": "PH11-10-D3-MODEL-02",
+      "fresh_task": "Two lab teams compare 8 ohm and 16 ohm wires, one using a fixed-current supply, another a fixed-voltage supply. Determine which power relation each must use.",
+      "protected_work": "Choose the correct resistance-power comparison model based on fixed source voltage or fixed current.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict the physical outcome or model regime before hints: Choose the correct resistance-power comparison model based on fixed source voltage or fixed current.",
+        "attempt": "Two lab teams compare 8 ohm and 16 ohm wires, one using a fixed-current supply, another a fixed-voltage supply. Determine which power relation each must use.",
+        "reconstruct": "After saving first attempt, reconstruct: Define electrical energy-transfer rate P=VI for the measured branch. -> Substitute Ohm law V=IR to get P=I²R and alternatively I=V/R to get P=V²/R. -> Distinguish comparisons at fixed current from fixed voltage and link P times duration to energy.. Verify the model assumptions.",
+        "diagnose": "Compare your first saved route with this wrong idea: A bigger resistance necessarily generates more heat in every circuit.",
+        "repair": "Rebuild the reasoning with the principle: Under fixed V, P=V²/R decreases; under fixed I, P=I²R increases.",
+        "boundary_test": "Switch to a supply with substantial internal resistance; identify why terminal voltage may no longer remain fixed."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH11-10-MAIN-APPLY-02",
+      "kind": "MAIN",
+      "subtopic_id": "PH11-10",
+      "qrt_target_id": "PH11-10-D3-APPLY-02",
+      "fresh_task": "A 4 ohm resistor runs from an ideal 8 V source for 15 s; calculate electrical energy and compare VI with I²R.",
+      "protected_work": "Calculate thermal energy from electrical power with explicit duration and operating point.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict the physical outcome or model regime before hints: Calculate thermal energy from electrical power with explicit duration and operating point.",
+        "attempt": "A 4 ohm resistor runs from an ideal 8 V source for 15 s; calculate electrical energy and compare VI with I²R.",
+        "reconstruct": "After saving first attempt, reconstruct: Define electrical energy-transfer rate P=VI for the measured branch. -> Substitute Ohm law V=IR to get P=I²R and alternatively I=V/R to get P=V²/R. -> Distinguish comparisons at fixed current from fixed voltage and link P times duration to energy.. Verify the model assumptions.",
+        "diagnose": "Compare your first saved route with this wrong idea: A bigger resistance necessarily generates more heat in every circuit.",
+        "repair": "Rebuild the reasoning with the principle: Under fixed V, P=V²/R decreases; under fixed I, P=I²R increases.",
+        "boundary_test": "If the resistor cools to the surroundings during operation, explain why delivered energy is not equal to stored thermal energy increase."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH11-10-INSTANCE-APPLY-02",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH11-10",
+      "qrt_target_id": "PH11-10-D3-APPLY-02",
+      "fresh_task": "An ideal resistor has R=5 ohm and I=3 A for 40 s. Determine energy delivered to the element.",
+      "protected_work": "Calculate thermal energy from electrical power with explicit duration and operating point.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict the physical outcome or model regime before hints: Calculate thermal energy from electrical power with explicit duration and operating point.",
+        "attempt": "An ideal resistor has R=5 ohm and I=3 A for 40 s. Determine energy delivered to the element.",
+        "reconstruct": "After saving first attempt, reconstruct: Define electrical energy-transfer rate P=VI for the measured branch. -> Substitute Ohm law V=IR to get P=I²R and alternatively I=V/R to get P=V²/R. -> Distinguish comparisons at fixed current from fixed voltage and link P times duration to energy.. Verify the model assumptions.",
+        "diagnose": "Compare your first saved route with this wrong idea: A bigger resistance necessarily generates more heat in every circuit.",
+        "repair": "Rebuild the reasoning with the principle: Under fixed V, P=V²/R decreases; under fixed I, P=I²R increases.",
+        "boundary_test": "If the resistor cools to the surroundings during operation, explain why delivered energy is not equal to stored thermal energy increase."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    }
+  ],
+  "core2_sources": [],
+  "acceptance": {
+    "b1_b7": {
+      "B1": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B2": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B3": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B4": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B5": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B6": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B7": {
+        "status": "HOLD",
+        "evidence_refs": []
+      }
+    },
+    "gates": {
+      "source_authenticity": "HOLD",
+      "content_correctness": "HOLD",
+      "cognitive_qualification": "HOLD",
+      "teaching_sufficiency": "HOLD",
+      "assessment_validity": "HOLD",
+      "implementation": "NOT_RUN",
+      "release_authority": "HOLD"
+    },
+    "release": "HOLD",
+    "acceptance_note": "Six independent authored lead constructions only; 83-subtopic inventory remains planning. No exam claim, science/independent QRT approval, actual learner attempt runtime, or release. Academic review and B1–B7 HOLD."
+  }
+}

@@ -1,0 +1,129 @@
+{
+  "schema": "b01-source-locator-transfer-proposal/v1",
+  "status": "AUTHOR_EXPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+  "subtopic_id": "PH08-04",
+  "scope_role": "SYLLABUS_CORE_CANDIDATE",
+  "source": {
+    "locator_id": "NSEJS-2018-JS511-Q2",
+    "year": 2018,
+    "session": "2018-19",
+    "exam_date": null,
+    "paper_code": "JS511",
+    "question_number": 2,
+    "printed_page": 2,
+    "subject": "PHYSICS",
+    "paper_url": "https://mail.iapt.org.in/images/nse2018/QP-NSEJS--JS511.pdf",
+    "visual_copy_url": "https://www.nsejs.com/wp-content/uploads/2024/11/nsejs-2018.pdf",
+    "final_key_url": "https://iapt.org.in/wp-content/uploads/Final-answer-keys-for-NSEJS.pdf",
+    "publisher_key": [
+      "A"
+    ],
+    "publisher_disposition": "KEY_OBSERVED",
+    "paper_visual_status": "PUBLISHER_TEXT_AND_MATCHING_ARCHIVE_PAGE_VISUALLY_INSPECTED",
+    "key_visual_status": "FINAL_KEY_VISUALLY_INSPECTED",
+    "source_bytes_sha256": null,
+    "rights_status": "HOLD",
+    "exact_source_revision_status": "HOLD",
+    "academic_admission": "HOLD",
+    "source_band": "NOT_QUALIFIED",
+    "map_binding": null,
+    "bank_binding": null,
+    "bank_identity_conflict": [],
+    "subtopic_id": "PH08-04",
+    "reasoning_observation": "In one nondispersive medium, f_low=50 Hz, f_high=70 Hz and wavelength difference2 m imply v=2/(1/50−1/70)=350 m/s. Musical interval interpreted as frequency ratio."
+  },
+  "related_source_observations": [],
+  "prerequisite_support": [
+    "PH08-05",
+    "PH08-11"
+  ],
+  "existing_package_pin": {
+    "path": "nsejs/physics/curriculum/topics/PH08/b01/PH08-04/physics-topic-package.v1.json",
+    "blob": "55d684eafacb3187404c079427a24a260532ddb8",
+    "version": "0.3.3-b01.8.ph08-04"
+  },
+  "target": {
+    "id": "PH08-04-B01-NSEJS-2018-JS511-Q2-D3-APPLY-R1",
+    "band": "D3",
+    "cell": "D3.3",
+    "primary_operation": "APPLY",
+    "task_identity": "PH08-04-B01-NSEJS-2018-JS511-Q2-D3-APPLY-R1",
+    "source_role": "AUTHORED_TRANSFER",
+    "protected_work": "Recover a common wave speed from a frequency ratio and signed wavelength difference, then check whether the shared-medium model fits an independent observation.",
+    "decisive_route": "Two tones have f=120 and180 Hz and wavelength difference0.9 m. Find common speed and verify a measured third tone at90 Hz has λ=3.6 m. Shortest valid route: v=324 m/s; wavelengths2.7 and1.8 m; third λ=3.6 m, consistent.",
+    "factor_evidence": {
+      "concept_model_selection": {
+        "score": 1,
+        "evidence": "Supplied same-medium relation"
+      },
+      "representation_translation": {
+        "score": 1,
+        "evidence": "Translate note ratio into frequencies and signed difference"
+      },
+      "reasoning_chain_length": {
+        "score": 2,
+        "evidence": "Derive speed then both wavelengths and verify"
+      },
+      "algebra_computational_load": {
+        "score": 2,
+        "evidence": "Several ratios and unit conversions"
+      },
+      "trap_exception_sensitivity": {
+        "score": 1,
+        "evidence": "Frequency and wavelength ratios invert at common speed"
+      }
+    },
+    "score": 7,
+    "status": "PROPOSED"
+  },
+  "core1a": {
+    "scientific_construction": "For two tones in a nondispersive medium, v=f₁λ₁=f₂λ₂. Let r=f₂/f₁>1; then λ₁−λ₂=v(1/f₁−1/f₂)=v(r−1)/(rf₁). The lower frequency has the larger wavelength. Infer speed only if both tones share it; a changed medium or dispersion breaks that constraint. A measured period gives f=1/T, with milliseconds converted to seconds. A third measured wavelength can test the common-speed hypothesis. This source-driven lesson uses distinct original cases.",
+    "worked_anchor": {
+      "task": "Two tones have periods10 and5 ms in a medium of speed300 m/s. Find wavelength difference.",
+      "reasoning": "f=100,200 Hz; λ=3,1.5 m; difference1.5 m."
+    },
+    "model_limits": "Specified ideal or matched conditions only; supplied quantitative relations do not establish compulsory exam scope."
+  },
+  "core1b": [
+    {
+      "id": "PH08-04-B01-NSEJS-2018-JS511-Q2-D3-APPLY-R1-MAIN_PLACEHOLDER",
+      "kind": "MAIN_PLACEHOLDER",
+      "task": "A tone has period8 ms. A second tone has frequency 8/5 times the first. Their wavelengths differ by0.96 m in one uniform nondispersive medium. Recover both frequencies, speed, both wavelengths and predict wavelength of a 250 Hz tone. A reserved measurement is1.30 m exactly; test consistency.",
+      "protected_work": "Recover a common wave speed from a frequency ratio and signed wavelength difference, then check whether the shared-medium model fits an independent observation.",
+      "stages": {
+        "predict": "Predict which tone has longer wavelength and whether the third observation can independently test the inferred speed.",
+        "attempt": "A tone has period8 ms. A second tone has frequency 8/5 times the first. Their wavelengths differ by0.96 m in one uniform nondispersive medium. Recover both frequencies, speed, both wavelengths and predict wavelength of a 250 Hz tone. A reserved measurement is1.30 m exactly; test consistency.",
+        "reconstruct": "f₁=125 Hz, f₂=200 Hz; v=0.96/(1/125−1/200)=320 m/s. λ₁=2.56, λ₂=1.60 m. Third predicted1.28 m; exact1.30 fails common model.",
+        "diagnose": "Locate any inverted ratio, ms conversion or unjustified shared-speed assumption.",
+        "repair": "Write the two v=fλ equations, subtract wavelength expressions and check each recovered product.",
+        "boundary_test": "If third measurement is 1.30±0.03 m, can it alone reject the prediction?"
+      },
+      "boundary_response_criterion": "No; 1.28 lies within interval.",
+      "attempt_policy": "PROPOSED_ONLY_PUBLIC_AUTHOR_EXPOSED",
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH08-04-B01-NSEJS-2018-JS511-Q2-D3-APPLY-R1-INSTANCE",
+      "kind": "INSTANCE",
+      "task": "Two tones of frequencies150 Hz and twice that frequency have wavelength difference1.1 m. Infer common speed and both wavelengths. A third tone of period4 ms has observed wavelength1.32 m. Check all observations; state what is conditional if media differ.",
+      "protected_work": "Recover a common wave speed from a frequency ratio and signed wavelength difference, then check whether the shared-medium model fits an independent observation.",
+      "stages": {
+        "predict": "Predict whether doubling frequency at common speed doubles or halves wavelength.",
+        "attempt": "Two tones of frequencies150 Hz and twice that frequency have wavelength difference1.1 m. Infer common speed and both wavelengths. A third tone of period4 ms has observed wavelength1.32 m. Check all observations; state what is conditional if media differ.",
+        "reconstruct": "v=330 m/s; λ=2.2 and1.1 m. Third f=250 Hz, predicted1.32 m. Same-speed hypothesis consistent, not proof of identical conditions.",
+        "diagnose": "Locate any inverted ratio, ms conversion or unjustified shared-speed assumption.",
+        "repair": "Write the two v=fλ equations, subtract wavelength expressions and check each recovered product.",
+        "boundary_test": "If first two tones travel in different media, can difference and frequency ratio alone determine both speeds?"
+      },
+      "boundary_response_criterion": "No; one difference constrains two unknown speeds.",
+      "attempt_policy": "PROPOSED_ONLY_PUBLIC_AUTHOR_EXPOSED",
+      "runtime_verification": "NOT_RUN"
+    }
+  ],
+  "acceptance": {
+    "b1_b7": "HOLD",
+    "canonical_integration": "NOT_SELECTED",
+    "source_admission": "HOLD",
+    "release": "HOLD"
+  }
+}

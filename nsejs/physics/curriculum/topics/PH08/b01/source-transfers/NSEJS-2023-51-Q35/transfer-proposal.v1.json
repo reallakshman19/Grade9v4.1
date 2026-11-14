@@ -1,0 +1,158 @@
+{
+  "schema": "b01-source-locator-transfer-proposal/v1",
+  "status": "AUTHOR_EXPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+  "subtopic_id": "PH08-05",
+  "scope_role": "SYLLABUS_CORE_CANDIDATE",
+  "source": {
+    "locator_id": "NSEJS-2023-51-Q35",
+    "year": 2023,
+    "code": 51,
+    "question_number": 35,
+    "printed_page": 7,
+    "paper_url": "https://www.iapt.org.in/images/nse_2023/NSEJS_2023_Set_51.pdf",
+    "final_key_url": "https://iapt.org.in/wp-content/uploads/NSEJS_2023_TENTATIVE_ANSWER_KEY.pdf",
+    "publisher_key": [
+      "D"
+    ],
+    "publisher_disposition": "KEY_OBSERVED",
+    "paper_visual_status": "PAGE_VISUALLY_INSPECTED",
+    "key_visual_status": "FINAL_KEY_VISUALLY_INSPECTED",
+    "source_bytes_sha256": null,
+    "rights_status": "HOLD",
+    "exact_source_revision_status": "HOLD",
+    "academic_admission": "HOLD",
+    "source_band": "NOT_QUALIFIED",
+    "map_binding": {
+      "question_uid": "g9:pcb:physics:nsejs-2023-physics-r1:003",
+      "content_revision_sha256": "28edbc777c18ec3c54fedfa33bbaf5d932cac908203a44c3ca329f5ef6d091cd",
+      "proposed_operation": "MODEL",
+      "identity_status": "METADATA_MATCH_ONLY_EXACT_CONTENT_HOLD"
+    },
+    "bank_binding": null,
+    "subtopic_id": "PH08-05",
+    "reasoning_observation": "For the stipulated fixed gas model, absolute temperatures scale as squared speed ratios; the supplied values give approximately 48 °C. Same-gas/medium assumptions required."
+  },
+  "related_source_observations": [
+    {
+      "locator_id": "NSEJS-2022-51-Q48",
+      "year": 2022,
+      "code": 51,
+      "question_number": 48,
+      "printed_page": 9,
+      "paper_url": "https://www.iapt.org.in/images/nse_2022/nsejs_2022_23_part_i.pdf",
+      "final_key_url": "https://iapt.org.in/images/nse_2022/nsejs-2022-final-answer-key.pdf",
+      "publisher_key": [],
+      "publisher_disposition": "DROPPED_CODE_51",
+      "paper_visual_status": "TEXT_RETRIEVED_SCREENSHOT_FAILED_404_RELOCATED_FILE_TOO_LARGE",
+      "key_visual_status": "FINAL_KEY_VISUALLY_INSPECTED",
+      "source_bytes_sha256": null,
+      "rights_status": "HOLD",
+      "exact_source_revision_status": "HOLD",
+      "academic_admission": "HOLD",
+      "source_band": "NOT_QUALIFIED",
+      "map_binding": {
+        "question_uid": "g9:pcb:physics:nsejs-2022-physics-r1:016",
+        "content_revision_sha256": "9ea3f019c3c0b5de72c5b6ff097bafb21d7dd892f1189039c1a69246b97f243e",
+        "proposed_operation": "APPLY",
+        "identity_status": "METADATA_MATCH_ONLY_EXACT_CONTENT_HOLD"
+      },
+      "bank_binding": null,
+      "subtopic_id": "PH08-05",
+      "reasoning_observation": "Final key explicitly drops code 51 Q48. The text asks for measurement discrepancy under v proportional to square root of absolute T. Do not infer a correct official option or count as scored exam evidence."
+    }
+  ],
+  "prerequisite_support": [
+    "PH07-01",
+    "PH08-03",
+    "PH07-10"
+  ],
+  "existing_package_pin": {
+    "path": "nsejs/physics/curriculum/topics/PH08/b01/PH08-05/physics-topic-package.v1.json",
+    "blob": "580213b3e051fe2b26905a058db1f135aa7f0d92",
+    "version": "0.3.3-b01.8.ph08-05"
+  },
+  "target": {
+    "id": "PH08-05-B01-NSEJS-2023-51-Q35-D4-MODEL-R1",
+    "band": "D4",
+    "cell": "D4.4",
+    "primary_operation": "MODEL",
+    "task_identity": "PH08-05-B01-NSEJS-2023-51-Q35-D4-MODEL-R1",
+    "source_role": "AUTHORED_TRANSFER",
+    "protected_work": "Fit competing temperature-dependent speed and additive timing-offset models from independent path lengths, then test a reserved temperature observation.",
+    "decisive_route": "At 300 K, two paths 3 and 6 m yield 12 and22 ms. At 363 K, same paths yield 12 and 232/11 ms. Compare recovered speed and delay; check whether one common delay fits. Shortest valid route: At 300 K v=300, τ=2 ms. At 363 K difference100/11 ms gives v330, τ=32/11 ms. Temperature relation fits speed, but common offset fails.",
+    "factor_evidence": {
+      "concept_model_selection": {
+        "score": 2,
+        "evidence": "Competing change in medium speed and instrument delay can mimic one observation."
+      },
+      "representation_translation": {
+        "score": 2,
+        "evidence": "Coordinate length/time calibration with squared speed–temperature relation."
+      },
+      "reasoning_chain_length": {
+        "score": 2,
+        "evidence": "Fit speed and delay at each state, compare squared ratios and reserved observation."
+      },
+      "algebra_computational_load": {
+        "score": 1,
+        "evidence": "Coupled ratios and time conversions."
+      },
+      "trap_exception_sensitivity": {
+        "score": 2,
+        "evidence": "Absolute temperature and common gas composition are decisive; independent data may reject both models."
+      }
+    },
+    "score": 9,
+    "status": "PROPOSED"
+  },
+  "core1a": {
+    "scientific_construction": "For the same ideal gas composition and suitable fixed conditions, sound speed v=k√T, so v²/T is constant for absolute T. It is not proportional to the square root of a Celsius reading. A time measurement can include a fixed offset τ: t_obs=τ+L/v. At a matched thermal state, two different known path lengths give v from their time difference and τ by substitution. Repeating this at another temperature tests whether the inferred speed changes as predicted or whether an apparent change comes from detector timing. The same-gas model does not establish actual humidity, composition or flow. A dropped source question is useful as a warning about measurement/model assumptions, not as scored exam evidence.",
+    "worked_anchor": {
+      "task": "At 300 K a gas speed is 300 m/s. At 363 K predict speed under the stipulated model.",
+      "reasoning": "330 m/s, since 363/300=1.21. If a thermometer reports 90 °C rather than 363 K, use absolute temperature."
+    },
+    "model_limits": "Only specified ideal/matched conditions; extension relations are supplied, not independently warranted compulsory syllabus scope."
+  },
+  "core1b": [
+    {
+      "id": "PH08-05-B01-NSEJS-2023-51-Q35-D4-MODEL-R1-MAIN_PLACEHOLDER",
+      "kind": "MAIN_PLACEHOLDER",
+      "task": "A uniform gas is held at 256 K and then 324 K. At 256 K, paths 2.4 and4.8 m have observed times 12 and22 ms. At 324 K, paths 2.7 and5.4 m have observed times 13 and23 ms. Model X: speed follows k√T, detector delay unchanged. Model Y: speed is constant, delay may change. Test both, identify any alternative supported by the measurements, and predict the time for a 8.1 m path at 324 K under that alternative.",
+      "protected_work": "Fit competing temperature-dependent speed and additive timing-offset models from independent path lengths, then test a reserved temperature observation.",
+      "stages": {
+        "predict": "Predict whether a single path at each temperature would distinguish changed speed from changed offset.",
+        "attempt": "A uniform gas is held at 256 K and then 324 K. At 256 K, paths 2.4 and4.8 m have observed times 12 and22 ms. At 324 K, paths 2.7 and5.4 m have observed times 13 and23 ms. Model X: speed follows k√T, detector delay unchanged. Model Y: speed is constant, delay may change. Test both, identify any alternative supported by the measurements, and predict the time for a 8.1 m path at 324 K under that alternative.",
+        "reconstruct": "At256 K v240, τ2 ms; at324 K v270, τ3 ms. Speed ratio9/8=√(324/256); X fails common delay, Y fails constant speed. Combined temperature-dependent speed and changed delay fits; predicted33 ms for8.1 m. Not unique cause.",
+        "diagnose": "Check whether you used Celsius in the squared ratio or treated a raw time as propagation.",
+        "repair": "Recover each slope and offset from independent paths, compare v²/T, then test the unused observation.",
+        "boundary_test": "If a reserved 8.1 m path gives 31 ms exactly, can the fitted alternative explain every measurement?"
+      },
+      "boundary_response_criterion": "No; prediction33 ms fails, investigate path, timing or gas state.",
+      "attempt_policy": "PROPOSED_ONLY_PUBLIC_AUTHOR_EXPOSED",
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH08-05-B01-NSEJS-2023-51-Q35-D4-MODEL-R1-INSTANCE",
+      "kind": "INSTANCE",
+      "task": "A gas at 289 K gives timings 7 and12 ms for lengths 1.7 and3.4 m. At 400 K lengths 2 and4 m give 7 and12 ms. A third path6 m at400 K reports17 ms. Test a common v²/T and common delay model versus constant speed with adjustable delay, using the reserved path.",
+      "protected_work": "Fit competing temperature-dependent speed and additive timing-offset models from independent path lengths, then test a reserved temperature observation.",
+      "stages": {
+        "predict": "Predict whether equal observed times for unequal distances establish equal sound speeds.",
+        "attempt": "A gas at 289 K gives timings 7 and12 ms for lengths 1.7 and3.4 m. At 400 K lengths 2 and4 m give 7 and12 ms. A third path6 m at400 K reports17 ms. Test a common v²/T and common delay model versus constant speed with adjustable delay, using the reserved path.",
+        "reconstruct": "v₁=340, τ₁=2 ms; v₂=400, τ₂=2 ms. v²/T=400 (m/s)²/K both; constant speed impossible because slopes differ. Third predicts17 ms, fits conditional model.",
+        "diagnose": "Check whether you used Celsius in the squared ratio or treated a raw time as propagation.",
+        "repair": "Recover each slope and offset from independent paths, compare v²/T, then test the unused observation.",
+        "boundary_test": "If the third path gives19 ms exactly, what does that establish?"
+      },
+      "boundary_response_criterion": "The common fitted model cannot explain all exact observations, not a unique cause.",
+      "attempt_policy": "PROPOSED_ONLY_PUBLIC_AUTHOR_EXPOSED",
+      "runtime_verification": "NOT_RUN"
+    }
+  ],
+  "acceptance": {
+    "b1_b7": "HOLD",
+    "canonical_integration": "NOT_SELECTED",
+    "source_admission": "HOLD",
+    "release": "HOLD"
+  }
+}

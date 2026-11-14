@@ -1,0 +1,473 @@
+{
+  "schema": "g9v41-nsejs-physics-topic-package/v1",
+  "subject_id": "PHYSICS",
+  "academic_track": "NSEJS",
+  "topic_id": "PH08",
+  "owner_agent": "AGENT_2",
+  "version": "0.3.2-b01.7.ph08-09",
+  "status": "DRAFT_AUTHOR_EXPOSED",
+  "pins": {
+    "contracts_version": "1.0.0",
+    "blueprint": {
+      "version": "0.2.0",
+      "git_blob_sha": "700dafcbe86d76442637bcf214eeb544497cf4ea"
+    },
+    "shared_qrt_28": {
+      "version": "1.0.0",
+      "git_blob_sha": "e2409aef11ae7d98444593bfbe1a38eb00c97cef"
+    },
+    "topic_adapter_version": "0.3.2-b01.7.ph08-09"
+  },
+  "syllabus_references": [
+    {
+      "reference_id": "PH08-CBSE-2026-SOUND",
+      "locator": "https://cbseacademic.nic.in/web_material/CurriculumMain27/SecPart1/ScienceSt_SecP1_2026-27.pdf — Class IX Science 086, Sound, pp. 17–18 (PDF pages 17–18)",
+      "authority": "OFFICIAL_SYLLABUS",
+      "scope_status": "CANDIDATE"
+    }
+  ],
+  "subtopics": [
+    {
+      "id": "PH08-09",
+      "title": "Echo and reverberation: arrival overlap and detectability",
+      "scope_role": "SYLLABUS_CORE_CANDIDATE",
+      "syllabus_reference_ids": [
+        "PH08-CBSE-2026-SOUND"
+      ],
+      "prerequisite_ids": [
+        "PH08-08"
+      ],
+      "science_ref_ids": [
+        "PH08-09-SCI-01"
+      ],
+      "learning_goal": "Distinct echoes and reverberation depend on arrival separation, signal duration, amplitudes, detection resolution and reflection persistence, not a universal distance threshold.",
+      "textbook_chapter_ref": "nsejs/physics/curriculum/topics/PH08/b01/PH08-09/core1a.html",
+      "qrt_targets": [
+        {
+          "id": "PH08-09-B01-D3-EXPLAIN-01",
+          "task_identity": "G9-B01-PH08-09-EXPLAIN-R1",
+          "band": "D3",
+          "primary_operation": "EXPLAIN",
+          "blueprint_cell": "D3.2",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Explain changing echo/reverberation observations through finite pulse overlap, reflection strength and detector limits, not a single distance rule.",
+          "decisive_route": "A room gives a distinct repeat for a brief click but a blended return for a longer sound. Explain without changing room geometry. Shortest valid route: Same travel delays; longer signal overlaps reflected sound, altering separability.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "Distinguish temporal overlap and amplitude effects."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "Connect arrival intervals and threshold to observed persistence."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Trace geometry, pulse duration, detection and changed observation."
+            },
+            "algebra_computational_load": {
+              "score": 0,
+              "evidence": "No substantive arithmetic beyond reading intervals."
+            },
+            "trap_exception_sensitivity": {
+              "score": 2,
+              "evidence": "Missing or overlapping return does not prove absent physical path."
+            }
+          }
+        },
+        {
+          "id": "PH08-09-B01-D4-MODEL-01",
+          "task_identity": "G9-B01-PH08-09-MODEL-R1",
+          "band": "D4",
+          "primary_operation": "MODEL",
+          "blueprint_cell": "D4.4",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Discriminate rival sets of hidden reflection paths using two independent detector interventions and interval/threshold models rather than counting observed peaks.",
+          "decisive_route": "Model A has returns at 10 and 40 ms, relative amplitudes 0.6 and 0.4; B has those plus 22 ms amplitude 0.2. Direct amplitude1. At duration 15 ms, gap requirement 5 ms, threshold 0.3, predict both records. Then duration 4 ms and threshold0.1. Shortest valid route: Initially detected 0,10,40: first cluster0–25, late40–55. Both fit. At 4 ms, all leading gaps exceed 9 ms; B gives extra22 ms, A not.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "Two distinct path sets can explain the same grouped record."
+            },
+            "representation_translation": {
+              "score": 2,
+              "evidence": "Coordinate thresholded amplitude data with temporal interval and quiet-gap grouping across interventions."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Predict grouped records for each model, test changed duration and threshold, retain compatible alternatives."
+            },
+            "algebra_computational_load": {
+              "score": 1,
+              "evidence": "Several interval and threshold comparisons."
+            },
+            "trap_exception_sensitivity": {
+              "score": 2,
+              "evidence": "Hidden weak paths and overlap create nonunique initial records."
+            }
+          }
+        },
+        {
+          "id": "PH08-09-B01-D3-JUSTIFY-01",
+          "task_identity": "G9-B01-PH08-09-JUSTIFY-R1",
+          "band": "D3",
+          "primary_operation": "JUSTIFY",
+          "blueprint_cell": "D3.7",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Establish whether an unresolved timing record warrants a claim about path count or surface treatment by constructing compatible counterexamples and a decisive measurement.",
+          "decisive_route": "One late cluster is seen. Claim it proves one reflector. Give a countermodel. Shortest valid route: Two returns closer than duration or quiet gap merge; lower duration/sensitivity tests multiplicity.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "Competing one-path and multiple-path explanations."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "Translate observed groups into possible hidden path sets."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Construct compatible cases and identify a discriminating intervention."
+            },
+            "algebra_computational_load": {
+              "score": 0,
+              "evidence": "Arithmetic incidental."
+            },
+            "trap_exception_sensitivity": {
+              "score": 2,
+              "evidence": "Resolution and amplitude thresholds create ambiguity."
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "science_records": [
+    {
+      "id": "PH08-09-SCI-01",
+      "claim": "Distinct echoes and reverberation depend on arrival separation, signal duration, amplitudes, detection resolution and reflection persistence, not a universal distance threshold.",
+      "law_or_model": "For a stated pulse model, reflected delay Δt=(L_ref−L_direct)/v; arrival interval [t,t+τ] for duration τ; separability depends on the specified detector/overlap criterion.",
+      "assumptions": [
+        "Linear pulse-duration model assumes negligible distortion and known leading times; real signals can interfere or change shape.",
+        "Quiet-gap and amplitude thresholds are explicitly specified task models, not universal human criteria."
+      ],
+      "conditions_and_limits": [
+        "Linear pulse-duration model assumes negligible distortion and known leading times; real signals can interfere or change shape.",
+        "Quiet-gap and amplitude thresholds are explicitly specified task models, not universal human criteria.",
+        "Use relative arrival times consistently; absolute time from emission differs from excess delay.",
+        "Absorption can reduce detectable returns without removing physical paths; amplitude alone does not determine distance."
+      ],
+      "units_and_signs": "Times s or ms, path lengths m, relative amplitude dimensionless when supplied; no universal human threshold assumed.",
+      "source_refs": [
+        "PH08-CBSE-2026-SOUND"
+      ],
+      "qualification_status": "HOLD"
+    }
+  ],
+  "topic_adapter": {
+    "adapter_id": "PHYS-TOPIC-PH08",
+    "topic_id": "PH08",
+    "version": "0.3.2-b01.7.ph08-09",
+    "for_blueprint": "PHYS-QRT-BLUEPRINT 0.2.0",
+    "status": "CANDIDATE_ONLY",
+    "cells": [
+      {
+        "cell_id": "D3.2",
+        "instance_ids": [
+          "PH08-09-B01-D3-EXPLAIN-01"
+        ]
+      },
+      {
+        "cell_id": "D4.4",
+        "instance_ids": [
+          "PH08-09-B01-D4-MODEL-01"
+        ]
+      },
+      {
+        "cell_id": "D3.7",
+        "instance_ids": [
+          "PH08-09-B01-D3-JUSTIFY-01"
+        ]
+      }
+    ]
+  },
+  "core1a": [
+    {
+      "id": "PH08-09-B01-CORE1A-R1",
+      "subtopic_id": "PH08-09",
+      "covered_qrt_ids": [
+        "PH08-09-B01-D3-EXPLAIN-01",
+        "PH08-09-B01-D4-MODEL-01",
+        "PH08-09-B01-D3-JUSTIFY-01"
+      ],
+      "phenomenon": "A short clap may produce a distinct repeat in one room but a long blended sound in another.",
+      "scientific_narrative": "When a source produces a short pulse in a room, part of the sound arrives directly and parts reflect from surfaces. A sufficiently delayed detectable return may be heard as a distinct echo. Numerous overlapping reflected arrivals can prolong the sound after the source stops; this persistence is reverberation. The distinction depends on the source signal, the listener or detector, the strength of returns and their timing. The familiar school estimate of a tenth of a second for a separately perceived echo is a rough contextual guideline, not an exact universal rule.\n\nDraw a time axis beginning at emission. A direct arrival has a travel time L_direct/v; a reflected arrival has L_ref/v. The difference is the excess delay, not necessarily the full return time. A pulse of duration τ occupies an interval from its leading arrival t to t+τ if propagation does not substantially change its shape. Two finite pulses overlap if their intervals intersect; even nonoverlapping intervals may not be distinguishable if the detector needs a minimum quiet gap or a return is too weak. For a specified model with required quiet gap g, successive nonoverlapping pulses are separately resolved only when their leading times differ by at least τ+g. This is a stipulated detector rule, not a claim about all human hearing.\n\nAn example: pulses of duration 12 ms start at 0, 8 and 40 ms relative to the direct arrival. The first two overlap from 8 to12 ms and together occupy 0–20 ms; the third begins 20 ms after that cluster ends. If all are detectable and the specified quiet-gap criterion is 5 ms, the third is separable from the earlier cluster. A pulse starting only 3 ms after the cluster ends would not be separately resolved by that rule even though it does not overlap. In analysing a series of reflections, update the cluster end to the latest end of any pulse that overlaps or lies within the specified quiet-gap threshold.\n\nAbsorbent wall treatments can reduce reflected amplitudes and late energy, usually reducing reverberation. They do not necessarily change path travel times significantly when geometry and medium stay fixed. A weak reflection can be physically present but absent from the detector's record. Moving the source, changing a wall, or changing pulse duration can change overlap and perceived clarity without necessarily altering every path. Avoid using loud sounds in demonstrations; reason from recorded or hypothetical data.\n\nFor advanced tasks, compare two proposed room or detector models by predicting arrival intervals and thresholded observations, then use an independent change of duration or sensitivity to eliminate alternatives. Distinguish an observed unresolved cluster from a claim that there is only one path. The present inspectable Core2 bank has no exact reverberation question; these constructions are authored transfer.",
+      "prerequisites": [
+        "PH08-08"
+      ],
+      "derivation_steps": [
+        {
+          "action": "Identify direct and reflected leading times, pulse duration and detection threshold.",
+          "why_valid": "Arrival geometry and instrument response are separate inputs.",
+          "science_ref_id": "PH08-09-SCI-01"
+        },
+        {
+          "action": "Construct pulse intervals and group overlap or insufficient quiet gaps.",
+          "why_valid": "A cluster can contain several physically distinct paths.",
+          "science_ref_id": "PH08-09-SCI-01"
+        },
+        {
+          "action": "Apply the stated amplitude and resolution rules to predicted records.",
+          "why_valid": "Detectability depends on both signal strength and temporal separation.",
+          "science_ref_id": "PH08-09-SCI-01"
+        },
+        {
+          "action": "Test a changed source duration or detector threshold against rival path models.",
+          "why_valid": "An independent observation can distinguish previously unresolved returns.",
+          "science_ref_id": "PH08-09-SCI-01"
+        }
+      ],
+      "model_limits": [
+        "Linear pulse-duration model assumes negligible distortion and known leading times; real signals can interfere or change shape.",
+        "Quiet-gap and amplitude thresholds are explicitly specified task models, not universal human criteria.",
+        "Use relative arrival times consistently; absolute time from emission differs from excess delay.",
+        "Absorption can reduce detectable returns without removing physical paths; amplitude alone does not determine distance."
+      ],
+      "progressive_examples": [
+        {
+          "id": "PH08-09-B01-EX1",
+          "tier": "FOUNDATION",
+          "problem": "Direct and reflected pulses start 15 ms apart; pulse duration 20 ms. Do intervals overlap?",
+          "reasoning": "Yes, by 5 ms.",
+          "independent_check": "First interval 0–20 ms; second 15–35 ms."
+        },
+        {
+          "id": "PH08-09-B01-EX2",
+          "tier": "CONNECTED",
+          "problem": "Pulses start at 0, 10, 35 ms, duration 8 ms, quiet gap 5 ms required. Group the record.",
+          "reasoning": "First two separated by only 2 ms quiet gap: one unresolved group; third starts 17 ms after second ends, separate.",
+          "independent_check": "Group 0–18 ms and 35–43 ms."
+        },
+        {
+          "id": "PH08-09-B01-EX3",
+          "tier": "ADVANCED",
+          "problem": "Two rooms have identical visible leading times 0 and 40 ms, but one may have a weak return at 20 ms below threshold. What test distinguishes them?",
+          "reasoning": "Lower a calibrated detection threshold with sufficiently short pulse and quiet-gap rule; an additional detected 20 ms return supports the weak-path model.",
+          "independent_check": "A missing return at original threshold is not evidence of absence."
+        }
+      ],
+      "figures": [
+        {
+          "id": "PH08-09-FIG-01",
+          "reasoning_step": "Finite pulse intervals and groups",
+          "scene_description": "Two early arrivals overlap; a later arrival is separated by a quiet interval. Original inline SVG.",
+          "source_or_authorship": "ORIGINAL_B01_SVG_INLINE"
+        }
+      ],
+      "misconception": {
+        "wrong_model": "Each separate reflected path is automatically a distinct audible echo; a missing peak proves no reflected path exists.",
+        "diagnostic": "Could two 20 ms pulses starting 10 ms apart be resolved as separate echoes? Could a weak path fall below threshold?",
+        "repair": "Build arrival intervals and apply explicit resolution and amplitude conditions before interpreting the record."
+      },
+      "exit_check": {
+        "task": "Three detectable pulses start 0, 7 and 30 ms, each 10 ms long; required quiet gap is 4 ms. How many resolved groups?",
+        "answer": "Two: 0–17 ms and 30–40 ms.",
+        "reasoning": "First two overlap; third has 13 ms gap."
+      },
+      "authorship_status": "DRAFT_AUTHOR_EXPOSED"
+    }
+  ],
+  "core1b": [
+    {
+      "id": "PH08-09-B01-MAIN-EXPLAIN-R2",
+      "kind": "MAIN",
+      "subtopic_id": "PH08-09",
+      "qrt_target_id": "PH08-09-B01-D3-EXPLAIN-01",
+      "fresh_task": "Two detectable returns arrive 12 and 38 ms after direct sound. A brief click gives separated returns; a much longer source pulse gives blended sound. Explain why changed sound duration can alter echo perception without moving walls.",
+      "protected_work": "Explain changing echo/reverberation observations through finite pulse overlap, reflection strength and detector limits, not a single distance rule.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether changing the source pulse duration can change perceived echo clarity without changing reflected travel times.",
+        "attempt": "Two detectable returns arrive 12 and 38 ms after direct sound. A brief click gives separated returns; a much longer source pulse gives blended sound. Explain why changed sound duration can alter echo perception without moving walls.",
+        "reconstruct": "Fixed path delays; longer pulses overlap or leave too small a quiet gap, producing blended persistence. Separability also depends on threshold and strength.",
+        "diagnose": "Identify whether you treated echo timing alone as a complete description of clarity or assumed a missing signal means no path.",
+        "repair": "Compare physical path delays, pulse intervals, amplitude and detection conditions; explain which changed and which did not.",
+        "boundary_test": "If the longer pulse is replaced by a short one but reflections are too weak, must separate echoes be heard?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH08-09-B01-INSTANCE-EXPLAIN-R2",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH08-09",
+      "qrt_target_id": "PH08-09-B01-D3-EXPLAIN-01",
+      "fresh_task": "A hall's late sound becomes weaker after adding absorptive panels, while measured arrival times of two still-detectable returns remain unchanged. Explain the observations and why unchanged timing does not mean the treatment failed.",
+      "protected_work": "Explain changing echo/reverberation observations through finite pulse overlap, reflection strength and detector limits, not a single distance rule.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether unchanged arrival times establish unchanged reverberation.",
+        "attempt": "A hall's late sound becomes weaker after adding absorptive panels, while measured arrival times of two still-detectable returns remain unchanged. Explain the observations and why unchanged timing does not mean the treatment failed.",
+        "reconstruct": "Absorption reduces reflected energy/amplitudes and late persistence without substantially changing geometry/travel times. Measure decay/late energy as well as timing.",
+        "diagnose": "Identify whether you treated echo timing alone as a complete description of clarity or assumed a missing signal means no path.",
+        "repair": "Compare physical path delays, pulse intervals, amplitude and detection conditions; explain which changed and which did not.",
+        "boundary_test": "If a panel also moves the effective reflecting boundary, can arrival times change?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH08-09-B01-MAIN-MODEL-R2",
+      "kind": "MAIN",
+      "subtopic_id": "PH08-09",
+      "qrt_target_id": "PH08-09-B01-D4-MODEL-01",
+      "fresh_task": "Model A has reflections at 9 and 38 ms after direct, amplitudes 0.7,0.4. Model B adds a 21 ms return at 0.2. Direct amplitude1. Detector retains amplitudes ≥threshold and separates clusters only after quiet gap ≥4 ms. With duration 14 ms and threshold0.3, observed groups are 0–23 and 38–52 ms. Next change duration to 3 ms at threshold0.3, then threshold to0.1 at same duration; the last trace shows starts 0,9,21,38 ms. Test both models through all trials and explain what each intervention establishes.",
+      "protected_work": "Discriminate rival sets of hidden reflection paths using two independent detector interventions and interval/threshold models rather than counting observed peaks.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether shortening the pulse alone is enough to distinguish A and B, then give your initial expectation for lowering threshold.",
+        "attempt": "Model A has reflections at 9 and 38 ms after direct, amplitudes 0.7,0.4. Model B adds a 21 ms return at 0.2. Direct amplitude1. Detector retains amplitudes ≥threshold and separates clusters only after quiet gap ≥4 ms. With duration 14 ms and threshold0.3, observed groups are 0–23 and 38–52 ms. Next change duration to 3 ms at threshold0.3, then threshold to0.1 at same duration; the last trace shows starts 0,9,21,38 ms. Test both models through all trials and explain what each intervention establishes.",
+        "reconstruct": "Initially both detect0,9,38 and group0–23,38–52. Short duration at old threshold separates0,9,38 (gaps6,26); both still fit. Lower threshold exposes21 only in B; all gaps≥4 after 3 ms. B fits three traces; duration resolves existing overlap, threshold exposes weak path. Not proof no further subthreshold paths.",
+        "diagnose": "Find where a weak return was incorrectly discarded as nonexistent, or a group was incorrectly counted as one path; recompute interval ends after each intervention.",
+        "repair": "Apply threshold first, form intervals for surviving pulses, group using latest cluster end and required gap, and compare all trials before selecting a model.",
+        "boundary_test": "If the third run instead keeps duration 14 ms but lowers threshold0.1, how many groups does B predict?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH08-09-B01-INSTANCE-MODEL-R2",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH08-09",
+      "qrt_target_id": "PH08-09-B01-D4-MODEL-01",
+      "fresh_task": "Model X has returns at 12 and 48 ms, amplitudes0.8,0.5. Model Y adds a 28 ms return at amplitude0.25. Direct amplitude1. Detector threshold0.4, duration18 ms, required quiet gap6 ms; observed groups 0–30 and48–66 ms. Threshold then drops to0.2 at duration18 ms, yielding one group 0–66 ms. Finally duration drops to4 ms at threshold0.2. Determine which model fits and predict final separate starts, and explain whether the second trace alone proves there are exactly three reflection paths.",
+      "protected_work": "Discriminate rival sets of hidden reflection paths using two independent detector interventions and interval/threshold models rather than counting observed peaks.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether lowering sensitivity threshold without shortening the pulse can change the number of resolved groups; state your initial reasoning.",
+        "attempt": "Model X has returns at 12 and 48 ms, amplitudes0.8,0.5. Model Y adds a 28 ms return at amplitude0.25. Direct amplitude1. Detector threshold0.4, duration18 ms, required quiet gap6 ms; observed groups 0–30 and48–66 ms. Threshold then drops to0.2 at duration18 ms, yielding one group 0–66 ms. Finally duration drops to4 ms at threshold0.2. Determine which model fits and predict final separate starts, and explain whether the second trace alone proves there are exactly three reflection paths.",
+        "reconstruct": "Initial both fit. At threshold0.2, Y detects28–46, overlaps early0–30; gap to48=2<6, one group. X remains two, rejected. Final 4 ms intervals at0,12,28,48 have quiet gaps8,12,16, so all separate. Y supported among stated models, not exhaustive physical path count.",
+        "diagnose": "Find where a weak return was incorrectly discarded as nonexistent, or a group was incorrectly counted as one path; recompute interval ends after each intervention.",
+        "repair": "Apply threshold first, form intervals for surviving pulses, group using latest cluster end and required gap, and compare all trials before selecting a model.",
+        "boundary_test": "If the required quiet gap in the final run increases to10 ms, how many groups are reported?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH08-09-B01-MAIN-JUSTIFY-R2",
+      "kind": "MAIN",
+      "subtopic_id": "PH08-09",
+      "qrt_target_id": "PH08-09-B01-D3-JUSTIFY-01",
+      "fresh_task": "A detector shows one late group from 30 to50 ms with pulse duration20 ms. A report says there is exactly one reflecting surface. Construct two compatible path situations that can yield the record, and specify a measurement that could distinguish them.",
+      "protected_work": "Establish whether an unresolved timing record warrants a claim about path count or surface treatment by constructing compatible counterexamples and a decisive measurement.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Would you accept the claim of exactly one reflecting surface from one visible group?",
+        "attempt": "A detector shows one late group from 30 to50 ms with pulse duration20 ms. A report says there is exactly one reflecting surface. Construct two compatible path situations that can yield the record, and specify a measurement that could distinguish them.",
+        "reconstruct": "One detected return at30 produces interval30–50. Another compatible situation includes additional weak subthreshold reflection, e.g. at35; recorded group same. Lower threshold and shorten duration enough to resolve candidate; cannot infer physical surface count from visible group alone.",
+        "diagnose": "Locate the unsupported inference from an observed group or arrival time to a unique physical path or energy conclusion.",
+        "repair": "Construct two distinct scenarios consistent with the record and propose an observation giving different predictions.",
+        "boundary_test": "If two detectable paths have exactly equal arrival time, will shortening the pulse distinguish them by timing alone?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH08-09-B01-INSTANCE-JUSTIFY-R2",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH08-09",
+      "qrt_target_id": "PH08-09-B01-D3-JUSTIFY-01",
+      "fresh_task": "An untreated hall and a treated hall both show direct arrival at0 and late group at40 ms, but the treated late amplitude is smaller. A student concludes the panels did not reduce reverberation because the timing is the same. Give a counterexample and a more relevant measurement.",
+      "protected_work": "Establish whether an unresolved timing record warrants a claim about path count or surface treatment by constructing compatible counterexamples and a decisive measurement.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether identical group timing is enough to decide that the treatment had no effect.",
+        "attempt": "An untreated hall and a treated hall both show direct arrival at0 and late group at40 ms, but the treated late amplitude is smaller. A student concludes the panels did not reduce reverberation because the timing is the same. Give a counterexample and a more relevant measurement.",
+        "reconstruct": "Same path length can produce same time but reduced reflected energy; panel can reduce late amplitudes or suppress other returns. Measure calibrated decay/late energy at matched excitation, not timing alone.",
+        "diagnose": "Locate the unsupported inference from an observed group or arrival time to a unique physical path or energy conclusion.",
+        "repair": "Construct two distinct scenarios consistent with the record and propose an observation giving different predictions.",
+        "boundary_test": "If the direct pulse amplitude also decreases after treatment, what control is needed for comparing reflected energy?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    }
+  ],
+  "core2_sources": [],
+  "acceptance": {
+    "b1_b7": {
+      "B1": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B2": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B3": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B4": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B5": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B6": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B7": {
+        "status": "HOLD",
+        "evidence_refs": []
+      }
+    },
+    "gates": {
+      "source_authenticity": "HOLD",
+      "content_correctness": "HOLD",
+      "cognitive_qualification": "HOLD",
+      "teaching_sufficiency": "HOLD",
+      "assessment_validity": "HOLD",
+      "implementation": "NOT_RUN",
+      "release_authority": "HOLD"
+    },
+    "release": "HOLD",
+    "acceptance_note": "Isolated author-exposed candidate. No matched exact Core2 item in inspectable bank; all targets AUTHORED_TRANSFER. Unique version and R2 cycle convention; no canonical C04 selection. Separate stage criteria in B01 author handoff, not implemented runtime. Full JSON is author-exposed; B5 HOLD. Per-target MAIN provisional pending C06 adoption. No academic approval inferred from software validation."
+  }
+}

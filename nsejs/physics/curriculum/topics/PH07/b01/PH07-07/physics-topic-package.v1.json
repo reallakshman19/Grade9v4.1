@@ -1,0 +1,483 @@
+{
+  "schema": "g9v41-nsejs-physics-topic-package/v1",
+  "subject_id": "PHYSICS",
+  "academic_track": "NSEJS",
+  "topic_id": "PH07",
+  "owner_agent": "AGENT_2",
+  "version": "0.3.2-b01.5.ph07-07",
+  "status": "DRAFT_AUTHOR_EXPOSED",
+  "pins": {
+    "contracts_version": "1.0.0",
+    "blueprint": {
+      "version": "0.2.0",
+      "git_blob_sha": "700dafcbe86d76442637bcf214eeb544497cf4ea"
+    },
+    "shared_qrt_28": {
+      "version": "1.0.0",
+      "git_blob_sha": "e2409aef11ae7d98444593bfbe1a38eb00c97cef"
+    },
+    "topic_adapter_version": "0.3.2-b01.5.ph07-07"
+  },
+  "syllabus_references": [
+    {
+      "reference_id": "PH07-CBSE",
+      "locator": "https://cbseacademic.nic.in/web_material/CurriculumMain27/SecPart1/ScienceSt_SecP1_2026-27.pdf",
+      "authority": "OFFICIAL_SYLLABUS",
+      "scope_status": "CANDIDATE"
+    },
+    {
+      "reference_id": "PH07-NCERT-HIST",
+      "locator": "https://sathee.iitk.ac.in/ncert-books/class-09/nb-science-09/sci-09-chapter-1-matter-in-our-surroundings/",
+      "authority": "NCERT_CBSE",
+      "scope_status": "CANDIDATE"
+    }
+  ],
+  "subtopics": [
+    {
+      "id": "PH07-07",
+      "title": "Evaporation, cooling and competing environmental mechanisms",
+      "scope_role": "PREREQUISITE_BRIDGE",
+      "syllabus_reference_ids": [
+        "PH07-CBSE",
+        "PH07-NCERT-HIST"
+      ],
+      "prerequisite_ids": [
+        "PH07-06",
+        "PH07-04"
+      ],
+      "science_ref_ids": [
+        "PH07-07-SCI-01"
+      ],
+      "learning_goal": "Surface evaporation can remove energy from a liquid and its surroundings; rate and cooling depend on environmental vapour conditions, energy supply and other heat-transfer paths.",
+      "textbook_chapter_ref": "nsejs/physics/curriculum/topics/PH07/b01/PH07-07/core1a.html",
+      "qrt_targets": [
+        {
+          "id": "PH07-07-B01-D3-EXPLAIN-01",
+          "task_identity": "G9-B01-PH07-07-EXPLAIN-R1",
+          "band": "D3",
+          "primary_operation": "EXPLAIN",
+          "blueprint_cell": "D3.2",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Explain a change in cooling using net evaporation and independent energy-transfer pathways under specified environmental controls.",
+          "decisive_route": "A wet cloth cools more in moving air than still air; a dry cloth also cools more in moving air. Explain why the wet observation cannot alone measure evaporation. Shortest valid route: Airflow can enhance convection in both; wet cloth has additional evaporation if vapour removed. Compare matched dry and wet and measure mass loss.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "Choose surface evaporation versus boiling/forced convection."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "Connect environment, mass transfer and energy flow."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Trace vapour removal, net evaporation, heat uptake and cooling."
+            },
+            "algebra_computational_load": {
+              "score": 0,
+              "evidence": "No substantial computation."
+            },
+            "trap_exception_sensitivity": {
+              "score": 2,
+              "evidence": "Airflow affects both dry and wet heat losses."
+            }
+          }
+        },
+        {
+          "id": "PH07-07-B01-D4-MODEL-01",
+          "task_identity": "G9-B01-PH07-07-MODEL-R1",
+          "band": "D4",
+          "primary_operation": "MODEL",
+          "blueprint_cell": "D4.4",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Fit and test a shared wet–dry energy-loss model from independent mass and power observations, retaining unexplained residuals rather than forcing attribution.",
+          "decisive_route": "At matched temperatures dry/wet powers are 10/18 W in still air and 16/29 W in moving air. Wet mass-loss rates are 0.0032 and 0.0040 g/s; L_v=2500 J/g. Test evaporation-only extra loss. Shortest valid route: Differences 8 and 13 W; predicted 8 and 10 W. First fits, second residual 3 W. Need uncertainty or other wet-path change; one model not fully supported.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "Competing evaporation-only and additional wet-surface loss models."
+            },
+            "representation_translation": {
+              "score": 2,
+              "evidence": "Coordinate matched wet/dry power and evaporation rate datasets."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Infer dry/wet differences, predict energy from mass, compare multiple trials and diagnose contradiction."
+            },
+            "algebra_computational_load": {
+              "score": 1,
+              "evidence": "Multi-case unit conversions and residual calculations."
+            },
+            "trap_exception_sensitivity": {
+              "score": 2,
+              "evidence": "Wet/dry loss equivalence and droplet entrainment are decisive model limits."
+            }
+          }
+        },
+        {
+          "id": "PH07-07-B01-D3-SYNTHESIZE-01",
+          "task_identity": "G9-B01-PH07-07-SYNTHESIZE-R1",
+          "band": "D3",
+          "primary_operation": "SYNTHESIZE",
+          "blueprint_cell": "D3.6",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Combine mass-transfer and energy-transfer rates to predict temperature tendencies and identify a threshold where cooling changes sign.",
+          "decisive_route": "A wet plate receives 20 W, has 8 W other losses, and evaporates at 0.004 g/s with L_v=2500 J/g. Find net energy rate and evaporation threshold for no accumulation. Shortest valid route: Evaporation 10 W; net +2 W; threshold 12/2500=0.0048 g/s.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "Distinguish net energy from evaporation alone."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "Map supplied power and mass rates to one energy balance."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Calculate each loss and compare net power; derive threshold."
+            },
+            "algebra_computational_load": {
+              "score": 1,
+              "evidence": "Material rate and threshold arithmetic."
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "A wetter/faster-evaporating sample need not cool if input compensates."
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "science_records": [
+    {
+      "id": "PH07-07-SCI-01",
+      "claim": "Surface evaporation can remove energy from a liquid and its surroundings; rate and cooling depend on environmental vapour conditions, energy supply and other heat-transfer paths.",
+      "law_or_model": "Rate of mass loss = Δm/Δt; idealized evaporative energy rate = L_v × mass evaporation rate; net accumulation = other inputs − evaporation loss − other outputs (enrichment, supplied coefficient).",
+      "assumptions": [
+        "Open versus closed system and net evaporation versus gross molecular exchange must be distinguished.",
+        "Mass loss measures evaporation only when other losses such as spills/droplet entrainment are negligible."
+      ],
+      "conditions_and_limits": [
+        "Open versus closed system and net evaporation versus gross molecular exchange must be distinguished.",
+        "Mass loss measures evaporation only when other losses such as spills/droplet entrainment are negligible.",
+        "Dry-wet subtraction requires matched non-evaporative heat paths; wetting may change them.",
+        "Use supplied vaporization coefficient only as an approximate local model, not a constant for all liquids/temperatures."
+      ],
+      "units_and_signs": "Mass in kg or g with explicit conversion, evaporation rate kg/s, power W, L_v J/kg; temperature difference in K.",
+      "source_refs": [
+        "PH07-CBSE",
+        "PH07-NCERT-HIST"
+      ],
+      "qualification_status": "HOLD"
+    }
+  ],
+  "topic_adapter": {
+    "adapter_id": "PHYS-TOPIC-PH07",
+    "topic_id": "PH07",
+    "version": "0.3.2-b01.5.ph07-07",
+    "for_blueprint": "PHYS-QRT-BLUEPRINT 0.2.0",
+    "status": "CANDIDATE_ONLY",
+    "cells": [
+      {
+        "cell_id": "D3.2",
+        "instance_ids": [
+          "PH07-07-B01-D3-EXPLAIN-01"
+        ]
+      },
+      {
+        "cell_id": "D4.4",
+        "instance_ids": [
+          "PH07-07-B01-D4-MODEL-01"
+        ]
+      },
+      {
+        "cell_id": "D3.6",
+        "instance_ids": [
+          "PH07-07-B01-D3-SYNTHESIZE-01"
+        ]
+      }
+    ]
+  },
+  "core1a": [
+    {
+      "id": "PH07-07-B01-CORE1A-R1",
+      "subtopic_id": "PH07-07",
+      "covered_qrt_ids": [
+        "PH07-07-B01-D3-EXPLAIN-01",
+        "PH07-07-B01-D4-MODEL-01",
+        "PH07-07-B01-D3-SYNTHESIZE-01"
+      ],
+      "phenomenon": "A damp surface can become cooler than a nearby dry surface even when both receive the same airflow.",
+      "scientific_narrative": "Liquid molecules have a distribution of energies. At a free surface, some molecules escape to the gas phase even when the liquid is below its boiling temperature. The energy needed for vaporization comes from the liquid and surroundings; remaining molecules can redistribute energy and the liquid can cool. Boiling is different: vapour bubbles form in the bulk when the relevant vapour-pressure condition is met. Surface evaporation does not require boiling and does not occur only at one temperature.\n\nEvaporation and condensation occur together at a liquid-vapour interface. In an open environment, vapour can be carried away, sustaining a net outward mass flux. In a closed space, vapour may accumulate until evaporation and condensation balance dynamically. Relative humidity describes how much water vapour is present relative to saturation at the air temperature; it is not simply the total amount of water in the air. Warmer liquid, larger exposed area and airflow may increase net evaporation under otherwise matched conditions. Airflow can also change convection, and the effect of humidity depends on liquid and air temperatures.\n\nConsider two equally warm plates, one dry and one wet, under identical airflow. Both may transfer heat to surrounding air. The wet plate additionally can lose energy through evaporation. If the plates are kept at the same temperature by heaters, the extra required input may estimate the additional evaporation-related loss only if all other paths are matched or separately measured. The strongest evidence combines mass-loss data with energy and temperature observations; a temperature difference alone cannot identify a unique mechanism.\n\nA useful controlled comparison is a dry reference and an otherwise equivalent wet sample at each airflow setting. The dry reference indicates non-evaporative heat loss at matched temperature and geometry; the wet-dry difference is a candidate evaporative term. If the rate of liquid mass loss is known and no droplets escape, an independently supplied energy per unit mass of vaporization permits a check. Real wet surfaces may also differ in emissivity or convective properties, so subtracting a dry reference is a model with conditions, not automatic proof.\n\nFor example, suppose a dry reference requires 12 W at steady temperature and a wet reference requires 22 W. If the wet surface evaporates 0.004 g/s and the supplied vaporization energy is 2500 J/g, evaporation accounts for 10 W, consistent with the difference. If a second airflow setting produces a larger wet-dry power difference without a matching increase in measured evaporation, then additional mechanisms or measurement error must be investigated. No authentic Core2 question for this subtopic has been identified in the inspectable bank. The tasks here are original advanced transfer rather than exam reproductions.",
+      "prerequisites": [
+        "PH07-06",
+        "PH07-04"
+      ],
+      "derivation_steps": [
+        {
+          "action": "Identify the liquid surface, vapour environment and mass-transfer paths.",
+          "why_valid": "Net evaporation is surface escape minus condensation.",
+          "science_ref_id": "PH07-07-SCI-01"
+        },
+        {
+          "action": "Trace the energy needed for phase change and other heat-transfer paths.",
+          "why_valid": "Cooling results from net energy imbalance, not simply mass loss.",
+          "science_ref_id": "PH07-07-SCI-01"
+        },
+        {
+          "action": "Construct a controlled dry/wet or airflow/humidity comparison.",
+          "why_valid": "Changing one variable and observing mass as well as temperature helps separate competing mechanisms.",
+          "science_ref_id": "PH07-07-SCI-01"
+        },
+        {
+          "action": "Check the measured energy difference against independently measured mass loss.",
+          "why_valid": "Agreement supports the conditional model; discrepancy identifies a missing path or uncertainty.",
+          "science_ref_id": "PH07-07-SCI-01"
+        }
+      ],
+      "model_limits": [
+        "Open versus closed system and net evaporation versus gross molecular exchange must be distinguished.",
+        "Mass loss measures evaporation only when other losses such as spills/droplet entrainment are negligible.",
+        "Dry-wet subtraction requires matched non-evaporative heat paths; wetting may change them.",
+        "Use supplied vaporization coefficient only as an approximate local model, not a constant for all liquids/temperatures."
+      ],
+      "progressive_examples": [
+        {
+          "id": "PH07-07-B01-EX1",
+          "tier": "FOUNDATION",
+          "problem": "Two identical wet cloths are exposed to dry air and humid air at matched temperature and airflow. Which tends to dry faster?",
+          "reasoning": "The dry-air case, if the liquid-vapour driving condition is larger and other factors match.",
+          "independent_check": "Measure mass lost in equal intervals rather than judge by touch."
+        },
+        {
+          "id": "PH07-07-B01-EX2",
+          "tier": "CONNECTED",
+          "problem": "A dry plate needs 8 W and an otherwise matched wet plate 14 W to stay at the same temperature. Interpret the difference.",
+          "reasoning": "6 W extra loss is consistent with evaporation if other heat paths match; not proof without mass data.",
+          "independent_check": "Check wet mass loss and a supplied vaporization-energy coefficient."
+        },
+        {
+          "id": "PH07-07-B01-EX3",
+          "tier": "ADVANCED",
+          "problem": "A wet sample loses 0.003 g/s. Supplied energy per gram is 2400 J/g. Its extra steady heater power is 9 W. Evaluate.",
+          "reasoning": "Evaporation estimate is 7.2 W; 1.8 W unexplained by that model. Check wet/dry path mismatch, droplet loss and uncertainty.",
+          "independent_check": "Compare 7.2 W prediction against independent 9 W measurement."
+        }
+      ],
+      "figures": [
+        {
+          "id": "PH07-07-FIG-01",
+          "reasoning_step": "Controlled dry/wet energy comparison",
+          "scene_description": "At matched temperature, dry and wet panels lose non-evaporative heat; the wet panel may also evaporate water. Original inline SVG; not an exam figure.",
+          "source_or_authorship": "ORIGINAL_B01_SVG_INLINE"
+        }
+      ],
+      "misconception": {
+        "wrong_model": "Evaporation requires boiling; increased wind cooling proves evaporation is the only cause.",
+        "diagnostic": "A fan cools a dry object too. How can dry/wet comparisons plus mass loss distinguish evaporation from convection?",
+        "repair": "Match temperatures and paths, use dry controls and compare energy accounting with actual evaporation."
+      },
+      "exit_check": {
+        "task": "A sample loses 0.002 g/s through evaporation; supplied L_v=2500 J/g. What additional power would offset that loss in the idealized model?",
+        "answer": "5 W.",
+        "reasoning": "Mass evaporation rate × energy per gram; other heat paths remain separate."
+      },
+      "authorship_status": "DRAFT_AUTHOR_EXPOSED"
+    }
+  ],
+  "core1b": [
+    {
+      "id": "PH07-07-B01-MAIN-EXPLAIN-R2",
+      "kind": "MAIN",
+      "subtopic_id": "PH07-07",
+      "qrt_target_id": "PH07-07-B01-D3-EXPLAIN-01",
+      "fresh_task": "Equal wet samples at matched temperature sit in a sealed humid enclosure and an open dry enclosure. The open sample loses more mass and becomes cooler. Explain a causal chain and one condition under which cooling need not differ despite mass loss.",
+      "protected_work": "Explain a change in cooling using net evaporation and independent energy-transfer pathways under specified environmental controls.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether the open sample's greater mass loss is enough by itself to establish its temperature change. State your initial reason.",
+        "attempt": "Equal wet samples at matched temperature sit in a sealed humid enclosure and an open dry enclosure. The open sample loses more mass and becomes cooler. Explain a causal chain and one condition under which cooling need not differ despite mass loss.",
+        "reconstruct": "Vapour removal in open air sustains net evaporation; vaporization takes energy from liquid/surroundings, so liquid may cool. External energy supply or altered convection could compensate, so mass loss alone doesn't fix temperature trend.",
+        "diagnose": "Did your explanation attribute every fan-induced change to evaporation? Check the dry reference and identify how vapour is removed.",
+        "repair": "Trace net molecular escape, energy uptake, and the competing dry heat-transfer path; state a control and mass-loss check.",
+        "boundary_test": "At saturation with equal liquid and air temperature, can molecular exchange continue despite zero net evaporation?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH07-07-B01-INSTANCE-EXPLAIN-R2",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH07-07",
+      "qrt_target_id": "PH07-07-B01-D3-EXPLAIN-01",
+      "fresh_task": "A damp and a dry plate at matched temperature are exposed to a fan. Both require extra heater power, but the wet plate's mass also decreases. Explain the separate energy pathways, and propose a comparison that distinguishes them.",
+      "protected_work": "Explain a change in cooling using net evaporation and independent energy-transfer pathways under specified environmental controls.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether the fan-induced power changes of the damp and dry plates have the same explanation. Record your initial interpretation.",
+        "attempt": "A damp and a dry plate at matched temperature are exposed to a fan. Both require extra heater power, but the wet plate's mass also decreases. Explain the separate energy pathways, and propose a comparison that distinguishes them.",
+        "reconstruct": "Fan enhances non-evaporative convection in both; net evaporation from wet plate may add energy loss. Compare fan-on/off dry and wet controls at same T, area, humidity; measure actual mass loss.",
+        "diagnose": "Did your explanation attribute every fan-induced change to evaporation? Check the dry reference and identify how vapour is removed.",
+        "repair": "Trace net molecular escape, energy uptake, and the competing dry heat-transfer path; state a control and mass-loss check.",
+        "boundary_test": "If droplets are blown off, why is total mass loss no longer a direct evaporation measure?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH07-07-B01-MAIN-MODEL-R2",
+      "kind": "MAIN",
+      "subtopic_id": "PH07-07",
+      "qrt_target_id": "PH07-07-B01-D4-MODEL-01",
+      "fresh_task": "Two matched trials use dry/wet steady powers 12/18 W and 20/32 W. Verified evaporation rates are 0.0025 and 0.0040 g/s; L_v=2400 J/g. Decide whether a common evaporation-only model explains both and quantify any residual.",
+      "protected_work": "Fit and test a shared wet–dry energy-loss model from independent mass and power observations, retaining unexplained residuals rather than forcing attribution.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Before doing the arithmetic, predict whether both sets of steady-power readings can be explained by the proposed model. State your confidence.",
+        "attempt": "Two matched trials use dry/wet steady powers 12/18 W and 20/32 W. Verified evaporation rates are 0.0025 and 0.0040 g/s; L_v=2400 J/g. Decide whether a common evaporation-only model explains both and quantify any residual.",
+        "reconstruct": "Differences 6 and 12 W. Predicted evaporation 6 and 9.6 W. Second residual 2.4 W; first consistent. Need changed wet non-evaporative path or error; cannot uniquely name cause.",
+        "diagnose": "Inspect the wet–dry differences and independently predicted evaporation losses. Identify the first trial that contradicts the common model.",
+        "repair": "Compute extra power and evaporation rate×coefficient separately; compare residuals and list a plausible independent test before assigning a cause.",
+        "boundary_test": "If the second mass-loss rate is uncertain by ±0.001 g/s, does its discrepancy alone reject the model?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH07-07-B01-INSTANCE-MODEL-R2",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH07-07",
+      "qrt_target_id": "PH07-07-B01-D4-MODEL-01",
+      "fresh_task": "At same surface temperature and area, dry/wet powers are 9/14 W in one enclosure and 15/25 W in another. Measured true evaporation is 0.002 and 0.003 g/s; supplied L_v=2500 J/g. Assess both trials and design an additional measurement to discriminate the unexplained difference.",
+      "protected_work": "Fit and test a shared wet–dry energy-loss model from independent mass and power observations, retaining unexplained residuals rather than forcing attribution.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Do you expect both enclosure trials to support the same explanation of the wet plate's extra power? Record your initial judgement.",
+        "attempt": "At same surface temperature and area, dry/wet powers are 9/14 W in one enclosure and 15/25 W in another. Measured true evaporation is 0.002 and 0.003 g/s; supplied L_v=2500 J/g. Assess both trials and design an additional measurement to discriminate the unexplained difference.",
+        "reconstruct": "Extra loss 5 and 10 W; predicted 5 and 7.5 W. Residual 0 and 2.5 W. Test wet/dry convective or radiative loss independently, or replicate calorimetric and mass measurements. No unique cause.",
+        "diagnose": "Inspect the wet–dry differences and independently predicted evaporation losses. Identify the first trial that contradicts the common model.",
+        "repair": "Compute extra power and evaporation rate×coefficient separately; compare residuals and list a plausible independent test before assigning a cause.",
+        "boundary_test": "If wetting changes the surface emissivity, can dry-wet subtraction still isolate evaporation exactly?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH07-07-B01-MAIN-SYNTHESIZE-R2",
+      "kind": "MAIN",
+      "subtopic_id": "PH07-07",
+      "qrt_target_id": "PH07-07-B01-D3-SYNTHESIZE-01",
+      "fresh_task": "A liquid receives 18 W from a heater and loses 6 W through non-evaporative paths. L_v=2400 J/g. Compare two evaporation rates 0.004 and 0.006 g/s, and find the rate for zero accumulation.",
+      "protected_work": "Combine mass-transfer and energy-transfer rates to predict temperature tendencies and identify a threshold where cooling changes sign.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict which of the two stated evaporation rates gives a warming tendency, a cooling tendency or neither. Give your initial reason.",
+        "attempt": "A liquid receives 18 W from a heater and loses 6 W through non-evaporative paths. L_v=2400 J/g. Compare two evaporation rates 0.004 and 0.006 g/s, and find the rate for zero accumulation.",
+        "reconstruct": "Evaporation 9.6 or 14.4 W; net +2.4 or −2.4 W. Threshold 12/2400=0.005 g/s. Temperature trend follows under fixed-state, approximately constant-capacity model.",
+        "diagnose": "Did you use evaporation rate alone to predict cooling? Check whether supplied energy exceeds the sum of all losses.",
+        "repair": "Write the energy-rate balance, calculate the crossover at zero net accumulation, and state the assumptions behind the temperature prediction.",
+        "boundary_test": "If the mass changes appreciably, why must the simple temperature-rate model be qualified?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH07-07-B01-INSTANCE-SYNTHESIZE-R2",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH07-07",
+      "qrt_target_id": "PH07-07-B01-D3-SYNTHESIZE-01",
+      "fresh_task": "A damp surface receives 30 W and has other loss 10 W. At evaporation rates 0.006 and 0.010 g/s, L_v=2500 J/g, determine which tends to warm and which cools, then find the balancing rate.",
+      "protected_work": "Combine mass-transfer and energy-transfer rates to predict temperature tendencies and identify a threshold where cooling changes sign.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "For the 30 W damp surface, predict the temperature tendency at each of the two evaporation rates. Record your initial basis before calculating.",
+        "attempt": "A damp surface receives 30 W and has other loss 10 W. At evaporation rates 0.006 and 0.010 g/s, L_v=2500 J/g, determine which tends to warm and which cools, then find the balancing rate.",
+        "reconstruct": "Loss 15 or 25 W; net +5 or −5 W; balance at 20/2500=0.008 g/s. State assumptions about energy stores and other losses.",
+        "diagnose": "Did you use evaporation rate alone to predict cooling? Check whether supplied energy exceeds the sum of all losses.",
+        "repair": "Write the energy-rate balance, calculate the crossover at zero net accumulation, and state the assumptions behind the temperature prediction.",
+        "boundary_test": "If airflow simultaneously adds 4 W of non-evaporative loss, how does the balancing evaporation rate change?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    }
+  ],
+  "core2_sources": [],
+  "acceptance": {
+    "b1_b7": {
+      "B1": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B2": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B3": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B4": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B5": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B6": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B7": {
+        "status": "HOLD",
+        "evidence_refs": []
+      }
+    },
+    "gates": {
+      "source_authenticity": "HOLD",
+      "content_correctness": "HOLD",
+      "cognitive_qualification": "HOLD",
+      "teaching_sufficiency": "HOLD",
+      "assessment_validity": "HOLD",
+      "implementation": "NOT_RUN",
+      "release_authority": "HOLD"
+    },
+    "release": "HOLD",
+    "acceptance_note": "Dedicated B01 slice; No matching exam question in inspectable Core2 bank; explicitly recorded source gap. New advanced tasks AUTHORED_TRANSFER, not direct exam evidence. Per-target MAIN placeholders pending approved cross-instance tile design. No academic approval inferred from software validation. R00 correction: all six predictions revised for exact tasks; cycle IDs R2 and uniquely versioned isolated slice (0.3.0-b01.4 history retained at reviewed commit). No final stage implementation or protected custody implied; inherited runtime still groups post-attempt stages. B5 HOLD."
+  }
+}

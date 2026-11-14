@@ -1,0 +1,827 @@
+{
+  "schema": "g9v41-nsejs-physics-topic-package/v1",
+  "subject_id": "PHYSICS",
+  "academic_track": "NSEJS",
+  "topic_id": "PH08",
+  "owner_agent": "AGENT_2",
+  "version": "0.2.0",
+  "status": "DRAFT_AUTHOR_EXPOSED",
+  "pins": {
+    "contracts_version": "1.0.0",
+    "blueprint": {
+      "version": "0.2.0",
+      "git_blob_sha": "700dafcbe86d76442637bcf214eeb544497cf4ea"
+    },
+    "shared_qrt_28": {
+      "version": "1.0.0",
+      "git_blob_sha": "e2409aef11ae7d98444593bfbe1a38eb00c97cef"
+    },
+    "topic_adapter_version": "0.2.0"
+  },
+  "syllabus_references": [
+    {
+      "reference_id": "PH08-CBSE",
+      "locator": "https://cbseacademic.nic.in/web_material/CurriculumMain27/SecPart1/ScienceSt_SecP1_2026-27.pdf",
+      "authority": "OFFICIAL_SYLLABUS",
+      "scope_status": "CANDIDATE"
+    }
+  ],
+  "subtopics": [
+    {
+      "id": "PH08-08",
+      "title": "Reflection of sound and echo travel time",
+      "scope_role": "SYLLABUS_CORE_CANDIDATE",
+      "syllabus_reference_ids": [
+        "PH08-CBSE"
+      ],
+      "prerequisite_ids": [
+        "PH08-05"
+      ],
+      "science_ref_ids": [
+        "PH08-SCI-LEAD-01"
+      ],
+      "learning_goal": "Derive, defend and check reflection of sound and echo travel time using the actual model conditions instead of pattern matching.",
+      "textbook_chapter_ref": "nsejs/physics/curriculum/topics/PH08/CHAPTER_LEAD_DRAFT.md",
+      "qrt_targets": [
+        {
+          "id": "PH08-LEAD-MODEL-D3",
+          "task_identity": "G9-AUTH-PH08-MODEL-001",
+          "band": "D3",
+          "primary_operation": "MODEL",
+          "blueprint_cell": "D3.4",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Select the correct propagation geometry before relating echo delay to reflector distance.",
+          "decisive_route": "Learner independently: A source sits 18 m from a flat wall while the microphone is positioned 42 m from the wall. Which geometry governs the reflected arrival time? Under known propagation speed in the medium, check distance equals vt/2 only for an outward-and-back path of equal length.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "The exact MODEL task tests the applicability of Sound travel-time model with reflected paths and declared measurement geometry; learner must distinguish relevant and irrelevant conditions."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "The MODEL task requires translating Ray/path diagrams and return-time; round trip rather than one way into a precise representation with labeled givens."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "The MODEL task links at least two warranted reasoning moves: Draw and label the outward path and the reflected return path. Then Write total propagation time as the sum of each path length divided by speed."
+            },
+            "algebra_computational_load": {
+              "score": 0,
+              "evidence": "The authored MODEL task uses no mandatory computation as its decisive act; the number of arithmetic steps is not counted as reasoning depth."
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "The MODEL task includes a near-neighbour or boundary: Distance equals vt/2 only for an outward-and-back path of equal length"
+            }
+          }
+        },
+        {
+          "id": "PH08-LEAD-APPLY-D3",
+          "task_identity": "G9-AUTH-PH08-APPLY-001",
+          "band": "D3",
+          "primary_operation": "APPLY",
+          "blueprint_cell": "D3.3",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Use a time-of-flight relation under a stated echo geometry, checking units and the total path.",
+          "decisive_route": "Learner independently: A pulse travels at 336 m/s; a colocated detector measures a 0.75 s return. Determine the reflector distance and justify any factor of two. Under known propagation speed in the medium, check distance equals vt/2 only for an outward-and-back path of equal length.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 1,
+              "evidence": "The exact APPLY task tests the applicability of Sound travel-time model with reflected paths and declared measurement geometry; learner must distinguish relevant and irrelevant conditions."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "The APPLY task requires translating Ray/path diagrams and return-time; round trip rather than one way into a precise representation with labeled givens."
+            },
+            "reasoning_chain_length": {
+              "score": 1,
+              "evidence": "The APPLY task links at least two warranted reasoning moves: Draw and label the outward path and the reflected return path. Then Write total propagation time as the sum of each path length divided by speed."
+            },
+            "algebra_computational_load": {
+              "score": 2,
+              "evidence": "The authored APPLY task uses a concrete numerical or symbolic execution step where meaningful; the number of arithmetic steps is not counted as reasoning depth."
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "The APPLY task includes a near-neighbour or boundary: A separate microphone or off-axis reflector changes the path sum"
+            }
+          }
+        },
+        {
+          "id": "PH08-LEAD-REPRESENT-D3",
+          "task_identity": "G9-AUTH-PH08-REPRESENT-001",
+          "band": "D3",
+          "primary_operation": "REPRESENT",
+          "blueprint_cell": "D3.5",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Translate between a pulse-timing record and a two-leg spatial reflection diagram without losing path length.",
+          "decisive_route": "Learner independently: A diagram shows two different source/receiver distances to a reflector. Draw a timing bar that accounts for both legs. Under known propagation speed in the medium, check distance equals vt/2 only for an outward-and-back path of equal length.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 1,
+              "evidence": "The exact REPRESENT task tests the applicability of Sound travel-time model with reflected paths and declared measurement geometry; learner must distinguish relevant and irrelevant conditions."
+            },
+            "representation_translation": {
+              "score": 2,
+              "evidence": "The REPRESENT task requires translating Ray/path diagrams and return-time; round trip rather than one way into a precise representation with labeled givens."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "The REPRESENT task links at least two warranted reasoning moves: Draw and label the outward path and the reflected return path. Then Write total propagation time as the sum of each path length divided by speed."
+            },
+            "algebra_computational_load": {
+              "score": 0,
+              "evidence": "The authored REPRESENT task uses no mandatory computation as its decisive act; the number of arithmetic steps is not counted as reasoning depth."
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "The REPRESENT task includes a near-neighbour or boundary: Distinct audibility depends on delay, intensity and environmental conditions"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "PH08-05",
+      "title": "Wave speed, frequency and wavelength from observations",
+      "scope_role": "SYLLABUS_CORE_CANDIDATE",
+      "syllabus_reference_ids": [
+        "PH08-CBSE"
+      ],
+      "prerequisite_ids": [],
+      "science_ref_ids": [
+        "PH08-SCI-SECOND-01"
+      ],
+      "learning_goal": "Explain and reason about wave speed, frequency and wavelength from observations with valid conditions and independent checks.",
+      "textbook_chapter_ref": "nsejs/physics/curriculum/topics/PH08/CHAPTER_CONTINUOUS_DRAFT.md",
+      "qrt_targets": [
+        {
+          "id": "PH08-05-D3-APPLY-02",
+          "task_identity": "G9-AUTH-PH08-05-APPLY-002",
+          "band": "D3",
+          "primary_operation": "APPLY",
+          "blueprint_cell": "D3.3",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Use v=fλ after establishing that the quantities describe one uniform-medium wave.",
+          "decisive_route": "First discriminate the physical mechanism: Define one cycle in time (period T) and one repeated spatial pattern (wavelength lambda).; then apply conditions and test a model boundary.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 1,
+              "evidence": "The APPLY task distinguishes actual applicability of v=f lambda for periodic propagation from a tempting alternative."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "The APPLY task translates the physical setup into Frequency Hz (1/s), wavelength m, period s, wave speed m/s. with a declared reference."
+            },
+            "reasoning_chain_length": {
+              "score": 1,
+              "evidence": "The APPLY task needs two warranted inferences: Define one cycle in time (period T) and one repeated spatial pattern (wavelength lambda). Then Note that one wavelength of the pattern passes a location in one period under constant speed."
+            },
+            "algebra_computational_load": {
+              "score": 2,
+              "evidence": "The APPLY task uses appropriate symbolic or numerical work rather than an arbitrary number of calculations."
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "The APPLY task has an explicit limit: Particle oscillation speed is not the wave-pattern propagation speed"
+            }
+          }
+        },
+        {
+          "id": "PH08-05-D3-REPRESENT-02",
+          "task_identity": "G9-AUTH-PH08-05-REPRESENT-002",
+          "band": "D3",
+          "primary_operation": "REPRESENT",
+          "blueprint_cell": "D3.5",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Translate a position-graph crest spacing and a time-series peak interval into a consistent speed estimate.",
+          "decisive_route": "First discriminate the physical mechanism: Define one cycle in time (period T) and one repeated spatial pattern (wavelength lambda).; then apply conditions and test a model boundary.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 1,
+              "evidence": "The REPRESENT task distinguishes actual applicability of v=f lambda for periodic propagation from a tempting alternative."
+            },
+            "representation_translation": {
+              "score": 2,
+              "evidence": "The REPRESENT task translates the physical setup into Frequency Hz (1/s), wavelength m, period s, wave speed m/s. with a declared reference."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "The REPRESENT task needs two warranted inferences: Define one cycle in time (period T) and one repeated spatial pattern (wavelength lambda). Then Note that one wavelength of the pattern passes a location in one period under constant speed."
+            },
+            "algebra_computational_load": {
+              "score": 0,
+              "evidence": "The REPRESENT task has no mandatory computation as its decisive reasoning move."
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "The REPRESENT task has an explicit limit: Measurements from different media cannot be combined indiscriminately"
+            }
+          }
+        },
+        {
+          "id": "PH08-05-D3-JUSTIFY-02",
+          "task_identity": "G9-AUTH-PH08-05-JUSTIFY-002",
+          "band": "D3",
+          "primary_operation": "JUSTIFY",
+          "blueprint_cell": "D3.7",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Justify why doubling frequency at fixed wave speed halves wavelength.",
+          "decisive_route": "First discriminate the physical mechanism: Define one cycle in time (period T) and one repeated spatial pattern (wavelength lambda).; then apply conditions and test a model boundary.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 1,
+              "evidence": "The JUSTIFY task distinguishes actual applicability of v=f lambda for periodic propagation from a tempting alternative."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "The JUSTIFY task translates the physical setup into Frequency Hz (1/s), wavelength m, period s, wave speed m/s. with a declared reference."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "The JUSTIFY task needs two warranted inferences: Define one cycle in time (period T) and one repeated spatial pattern (wavelength lambda). Then Note that one wavelength of the pattern passes a location in one period under constant speed."
+            },
+            "algebra_computational_load": {
+              "score": 0,
+              "evidence": "The JUSTIFY task has no mandatory computation as its decisive reasoning move."
+            },
+            "trap_exception_sensitivity": {
+              "score": 2,
+              "evidence": "The JUSTIFY task has an explicit limit: A frequency change in the same nondispersive medium changes wavelength, not necessarily speed"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "science_records": [
+    {
+      "id": "PH08-SCI-LEAD-01",
+      "claim": "An echo is a reflected sound returning after a total travel time; for a stationary source and planar reflector in a uniform stationary medium, the pulse travels the outward and return distances.",
+      "law_or_model": "Sound travel-time model with reflected paths and declared measurement geometry",
+      "assumptions": [
+        "Known propagation speed in the medium",
+        "Source, microphone and reflector positions specified",
+        "Geometrical propagation approximation for the path under consideration"
+      ],
+      "conditions_and_limits": [
+        "Distance equals vt/2 only for an outward-and-back path of equal length",
+        "A separate microphone or off-axis reflector changes the path sum",
+        "Distinct audibility depends on delay, intensity and environmental conditions"
+      ],
+      "units_and_signs": "Sound speed in m/s, path in m, time in s. No factor 2 unless the measured interval covers equal outbound and inbound paths.",
+      "source_refs": [
+        "PH08-CBSE"
+      ],
+      "qualification_status": "HOLD"
+    },
+    {
+      "id": "PH08-SCI-SECOND-01",
+      "claim": "For a steady periodic wave propagating in a uniform medium, wave-pattern speed equals frequency multiplied by wavelength, and each variable must be measured relative to the same propagation conditions.",
+      "law_or_model": "v=f lambda for periodic propagation",
+      "assumptions": [
+        "Wavelength and frequency describe the same periodic wave mode",
+        "Propagation speed is stable across the observation interval",
+        "Frequency and wavelength use corresponding space/time reference"
+      ],
+      "conditions_and_limits": [
+        "Particle oscillation speed is not the wave-pattern propagation speed",
+        "Measurements from different media cannot be combined indiscriminately",
+        "A frequency change in the same nondispersive medium changes wavelength, not necessarily speed"
+      ],
+      "units_and_signs": "Frequency Hz (1/s), wavelength m, period s, wave speed m/s.",
+      "source_refs": [
+        "PH08-CBSE"
+      ],
+      "qualification_status": "HOLD"
+    }
+  ],
+  "topic_adapter": {
+    "adapter_id": "PHYS-TOPIC-PH08",
+    "topic_id": "PH08",
+    "version": "0.2.0",
+    "for_blueprint": "PHYS-QRT-BLUEPRINT 0.2.0",
+    "status": "CANDIDATE_ONLY",
+    "cells": [
+      {
+        "cell_id": "D3.4",
+        "instance_ids": [
+          "PH08-LEAD-MODEL-D3"
+        ]
+      },
+      {
+        "cell_id": "D3.3",
+        "instance_ids": [
+          "PH08-LEAD-APPLY-D3",
+          "PH08-05-D3-APPLY-02"
+        ]
+      },
+      {
+        "cell_id": "D3.5",
+        "instance_ids": [
+          "PH08-LEAD-REPRESENT-D3",
+          "PH08-05-D3-REPRESENT-02"
+        ]
+      },
+      {
+        "cell_id": "D3.7",
+        "instance_ids": [
+          "PH08-05-D3-JUSTIFY-02"
+        ]
+      }
+    ]
+  },
+  "core1a": [
+    {
+      "id": "PH08-LEAD-CORE1A-01",
+      "subtopic_id": "PH08-08",
+      "covered_qrt_ids": [
+        "PH08-LEAD-MODEL-D3",
+        "PH08-LEAD-APPLY-D3",
+        "PH08-LEAD-REPRESENT-D3"
+      ],
+      "phenomenon": "A person claps by a cliff and hears a later reflected copy of the sound.",
+      "scientific_narrative": "Sound is a disturbance that travels through matter. When a wave encounters a large reflecting surface, part of its energy travels back into the original region. The reflected pulse can reach a listener after the direct sound. That delay carries geometric information: it measures propagation along a path, not merely a straight-line distance printed on a picture. For a person standing beside the source and facing a large stationary wall, the same approximate distance is traversed outward and back. Therefore an echo delay is twice the one-way travel time. If the microphone is elsewhere, the path is source-to-wall plus wall-to-receiver. Echo questions become advanced when their representation changes, not when large numbers are inserted. We should teach reflections and timing diagrams before showing distance shortcuts.",
+      "prerequisites": [
+        "PH08-05"
+      ],
+      "derivation_steps": [
+        {
+          "action": "Draw and label the outward path and the reflected return path.",
+          "why_valid": "Time-of-flight is defined along the actual traversed distance.",
+          "science_ref_id": "PH08-SCI-LEAD-01"
+        },
+        {
+          "action": "Write total propagation time as the sum of each path length divided by speed.",
+          "why_valid": "At constant speed a journey length L consumes time L/v; distinct legs add in time.",
+          "science_ref_id": "PH08-SCI-LEAD-01"
+        },
+        {
+          "action": "Only for equal outgoing and incoming lengths, set total time to 2d/v and solve for d.",
+          "why_valid": "The factor of two is a geometric consequence of the symmetric round trip, not a universal property of sound.",
+          "science_ref_id": "PH08-SCI-LEAD-01"
+        }
+      ],
+      "model_limits": [
+        "Distance equals vt/2 only for an outward-and-back path of equal length",
+        "A separate microphone or off-axis reflector changes the path sum",
+        "Distinct audibility depends on delay, intensity and environmental conditions"
+      ],
+      "progressive_examples": [
+        {
+          "id": "PH08-EX-1",
+          "tier": "FOUNDATION",
+          "problem": "A stationary listener and source are 85 m from a wall; sound travels at 340 m/s. Find the delay.",
+          "reasoning": "The total path is 170 m, so the reflected sound returns after 0.50 s.",
+          "independent_check": "Multiply 0.50 s by 340 m/s to recover 170 m traveled, not 85 m."
+        },
+        {
+          "id": "PH08-EX-2",
+          "tier": "CONNECTED",
+          "problem": "An echo delay of 0.80 s is recorded with colocated source and receiver; v=330 m/s. Estimate the wall distance.",
+          "reasoning": "The round-trip distance is 264 m; the one-way wall distance is 132 m.",
+          "independent_check": "The check is 132/330 + 132/330 = 0.80 s."
+        },
+        {
+          "id": "PH08-EX-3",
+          "tier": "ADVANCED",
+          "problem": "A source is 30 m from the reflector and a microphone 50 m from it along the same ray line on the source side. Find the reflected travel time at 320 m/s.",
+          "reasoning": "The two legs total 80 m, yielding 0.25 s; the 2d shortcut does not apply.",
+          "independent_check": "Recalculate from both legs separately: 30/320 + 50/320 = 0.25 s."
+        }
+      ],
+      "figures": [
+        {
+          "id": "PH08-FIG-LEAD-01",
+          "reasoning_step": "Draw and label the outward path and the reflected return path.",
+          "scene_description": "An original 3-stage schematic: transmitted pulse, reflection at cliff, returning pulse; a time axis with a blank travel-distance construction.",
+          "source_or_authorship": "ORIGINAL_AUTHOR_FIGURE_SPEC__NOT_YET_RENDERED"
+        }
+      ],
+      "misconception": {
+        "wrong_model": "Every echo distance is simply sound speed multiplied by delay.",
+        "diagnostic": "A microphone receives a reflection after 0.30 s. Does that always mean the obstacle is 102 m away at 340 m/s?",
+        "repair": "Trace the exact source-reflector-receiver path; the division by two applies only to the colocated round trip."
+      },
+      "exit_check": {
+        "task": "A colocated source and detector record an echo at 0.60 s in air at 340 m/s. How far is the wall?",
+        "answer": "102 m.",
+        "reasoning": "The sound travels a total of 204 m: 102 m outward and 102 m back."
+      },
+      "authorship_status": "DRAFT_AUTHOR_EXPOSED"
+    },
+    {
+      "id": "PH08-05-CORE1A-SECOND-01",
+      "subtopic_id": "PH08-05",
+      "covered_qrt_ids": [
+        "PH08-05-D3-APPLY-02",
+        "PH08-05-D3-REPRESENT-02",
+        "PH08-05-D3-JUSTIFY-02"
+      ],
+      "phenomenon": "A loudspeaker emits one tone, while nearby microphones measure the spacing in time between recurring pressure peaks.",
+      "scientific_narrative": "A periodic source repeats its motion every T seconds. The wave pattern generated in those T seconds advances a distance equal to its wavelength λ when the speed is stable. The pattern speed therefore satisfies v=λ/T. Since frequency f is 1/T, the same relationship is v=fλ. The relation connects two different measurements: a sensor at one place records period, and a set of sensors or a spatial snapshot records wavelength. Students must identify whether a graph's horizontal axis represents distance or time. The sound speed depends principally on the medium and its conditions, so changing the vibration rate of a source in a given medium does not automatically increase the pattern speed. Using v=fλ is meaningful only when the same mode, medium and reference have been identified.",
+      "prerequisites": [
+        "Wavelength and frequency describe the same periodic wave mode",
+        "Propagation speed is stable across the observation interval",
+        "Frequency and wavelength use corresponding space/time reference"
+      ],
+      "derivation_steps": [
+        {
+          "action": "Define one cycle in time (period T) and one repeated spatial pattern (wavelength lambda).",
+          "why_valid": "Time period and spatial cycle are independent measurements of the same repeating disturbance.",
+          "science_ref_id": "PH08-SCI-SECOND-01"
+        },
+        {
+          "action": "Note that one wavelength of the pattern passes a location in one period under constant speed.",
+          "why_valid": "Uniform speed lets path length be calculated as speed multiplied by elapsed time.",
+          "science_ref_id": "PH08-SCI-SECOND-01"
+        },
+        {
+          "action": "Combine v=lambda/T with f=1/T and verify the dimensions m/s.",
+          "why_valid": "Substituting reciprocal period and checking units gives a relation for propagation speed.",
+          "science_ref_id": "PH08-SCI-SECOND-01"
+        }
+      ],
+      "model_limits": [
+        "Particle oscillation speed is not the wave-pattern propagation speed",
+        "Measurements from different media cannot be combined indiscriminately",
+        "A frequency change in the same nondispersive medium changes wavelength, not necessarily speed"
+      ],
+      "progressive_examples": [
+        {
+          "id": "PH08-05-EX-1",
+          "tier": "FOUNDATION",
+          "problem": "A pressure sensor records a cycle every 2 ms. What is frequency?",
+          "reasoning": "f=1/0.002 s=500 Hz.",
+          "independent_check": "The unit is cycles per second and two milliseconds is not two seconds."
+        },
+        {
+          "id": "PH08-05-EX-2",
+          "tier": "CONNECTED",
+          "problem": "At 340 m/s, what is the wavelength of a 500 Hz tone?",
+          "reasoning": "lambda=v/f=0.68 m.",
+          "independent_check": "The product 500 per second times 0.68 metres is 340 m/s."
+        },
+        {
+          "id": "PH08-05-EX-3",
+          "tier": "ADVANCED",
+          "problem": "A position graph shows compression maxima 0.90 m apart and a time trace has period 0.003 s. Determine v.",
+          "reasoning": "v=0.90/0.003=300 m/s, provided the two records represent the same wave in the same medium.",
+          "independent_check": "Using f=333.33 Hz gives fλ approximately 300 m/s."
+        }
+      ],
+      "figures": [],
+      "misconception": {
+        "wrong_model": "Increasing a source's frequency in the same air necessarily increases sound speed.",
+        "diagnostic": "If a loudspeaker doubles frequency without changing the medium, must v double?",
+        "repair": "In the basic uniform-medium model v is governed by propagation conditions, so wavelength adjusts inversely."
+      },
+      "exit_check": {
+        "task": "Sound travels at 336 m/s and a sensor observes a 4 ms period. Find wavelength.",
+        "answer": "1.344 m.",
+        "reasoning": "f=250 Hz, so λ=336/250=1.344 m."
+      },
+      "authorship_status": "DRAFT_AUTHOR_EXPOSED"
+    }
+  ],
+  "core1b": [
+    {
+      "id": "PH08-MAIN-MODEL-01",
+      "kind": "MAIN",
+      "subtopic_id": "PH08-08",
+      "qrt_target_id": "PH08-LEAD-MODEL-D3",
+      "fresh_task": "Compare three proposed models—direct path, symmetric round trip and two unequal reflected legs—for an unfamiliar microphone placement.",
+      "protected_work": "Select the correct propagation geometry before relating echo delay to reflector distance.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Before any help, predict the qualitative outcome: Select the correct propagation geometry before relating echo delay to reflector distance.",
+        "attempt": "Compare three proposed models—direct path, symmetric round trip and two unequal reflected legs—for an unfamiliar microphone placement.",
+        "reconstruct": "After committing the first answer, reconstruct the reasoning with Draw and label the outward path and the reflected return path. -> Write total propagation time as the sum of each path length divided by speed. -> Only for equal outgoing and incoming lengths, set total time to 2d/v and solve for d. and compare assumptions.",
+        "diagnose": "Contrast an incorrect route (Every echo distance is simply sound speed multiplied by delay.) with your saved first answer; do not infer misconception without discriminating evidence.",
+        "repair": "Use the replacement principle: Trace the exact source-reflector-receiver path; the division by two applies only to the colocated round trip. Rebuild the inference, not merely the final answer.",
+        "boundary_test": "Move the microphone to the source position and identify the changed assumption."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH08-INSTANCE-MODEL-01",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH08-08",
+      "qrt_target_id": "PH08-LEAD-MODEL-D3",
+      "fresh_task": "A source sits 18 m from a flat wall while the microphone is positioned 42 m from the wall. Which geometry governs the reflected arrival time?",
+      "protected_work": "Select the correct propagation geometry before relating echo delay to reflector distance.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Before any help, predict the qualitative outcome: Select the correct propagation geometry before relating echo delay to reflector distance.",
+        "attempt": "A source sits 18 m from a flat wall while the microphone is positioned 42 m from the wall. Which geometry governs the reflected arrival time?",
+        "reconstruct": "After committing the first answer, reconstruct the reasoning with Draw and label the outward path and the reflected return path. -> Write total propagation time as the sum of each path length divided by speed. -> Only for equal outgoing and incoming lengths, set total time to 2d/v and solve for d. and compare assumptions.",
+        "diagnose": "Contrast an incorrect route (Every echo distance is simply sound speed multiplied by delay.) with your saved first answer; do not infer misconception without discriminating evidence.",
+        "repair": "Use the replacement principle: Trace the exact source-reflector-receiver path; the division by two applies only to the colocated round trip. Rebuild the inference, not merely the final answer.",
+        "boundary_test": "Move the microphone to the source position and identify the changed assumption."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH08-MAIN-APPLY-01",
+      "kind": "MAIN",
+      "subtopic_id": "PH08-08",
+      "qrt_target_id": "PH08-LEAD-APPLY-D3",
+      "fresh_task": "A student uses delay 1.20 s and speed 300 m/s for a colocated echo; independently compute the one-way range.",
+      "protected_work": "Use a time-of-flight relation under a stated echo geometry, checking units and the total path.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Before any help, predict the qualitative outcome: Use a time-of-flight relation under a stated echo geometry, checking units and the total path.",
+        "attempt": "A student uses delay 1.20 s and speed 300 m/s for a colocated echo; independently compute the one-way range.",
+        "reconstruct": "After committing the first answer, reconstruct the reasoning with Draw and label the outward path and the reflected return path. -> Write total propagation time as the sum of each path length divided by speed. -> Only for equal outgoing and incoming lengths, set total time to 2d/v and solve for d. and compare assumptions.",
+        "diagnose": "Contrast an incorrect route (Every echo distance is simply sound speed multiplied by delay.) with your saved first answer; do not infer misconception without discriminating evidence.",
+        "repair": "Use the replacement principle: Trace the exact source-reflector-receiver path; the division by two applies only to the colocated round trip. Rebuild the inference, not merely the final answer.",
+        "boundary_test": "Move the detector 15 m closer to the wall while keeping the source fixed. Determine whether the old relation remains valid."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH08-INSTANCE-APPLY-01",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH08-08",
+      "qrt_target_id": "PH08-LEAD-APPLY-D3",
+      "fresh_task": "A pulse travels at 336 m/s; a colocated detector measures a 0.75 s return. Determine the reflector distance and justify any factor of two.",
+      "protected_work": "Use a time-of-flight relation under a stated echo geometry, checking units and the total path.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Before any help, predict the qualitative outcome: Use a time-of-flight relation under a stated echo geometry, checking units and the total path.",
+        "attempt": "A pulse travels at 336 m/s; a colocated detector measures a 0.75 s return. Determine the reflector distance and justify any factor of two.",
+        "reconstruct": "After committing the first answer, reconstruct the reasoning with Draw and label the outward path and the reflected return path. -> Write total propagation time as the sum of each path length divided by speed. -> Only for equal outgoing and incoming lengths, set total time to 2d/v and solve for d. and compare assumptions.",
+        "diagnose": "Contrast an incorrect route (Every echo distance is simply sound speed multiplied by delay.) with your saved first answer; do not infer misconception without discriminating evidence.",
+        "repair": "Use the replacement principle: Trace the exact source-reflector-receiver path; the division by two applies only to the colocated round trip. Rebuild the inference, not merely the final answer.",
+        "boundary_test": "Move the detector 15 m closer to the wall while keeping the source fixed. Determine whether the old relation remains valid."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH08-MAIN-REPRESENT-01",
+      "kind": "MAIN",
+      "subtopic_id": "PH08-08",
+      "qrt_target_id": "PH08-LEAD-REPRESENT-D3",
+      "fresh_task": "A source is 25 m from a wall, a receiver 55 m from it, and v=320 m/s. Construct corresponding equal-scale distance and time strips.",
+      "protected_work": "Translate between a pulse-timing record and a two-leg spatial reflection diagram without losing path length.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Before any help, predict the qualitative outcome: Translate between a pulse-timing record and a two-leg spatial reflection diagram without losing path length.",
+        "attempt": "A source is 25 m from a wall, a receiver 55 m from it, and v=320 m/s. Construct corresponding equal-scale distance and time strips.",
+        "reconstruct": "After committing the first answer, reconstruct the reasoning with Draw and label the outward path and the reflected return path. -> Write total propagation time as the sum of each path length divided by speed. -> Only for equal outgoing and incoming lengths, set total time to 2d/v and solve for d. and compare assumptions.",
+        "diagnose": "Contrast an incorrect route (Every echo distance is simply sound speed multiplied by delay.) with your saved first answer; do not infer misconception without discriminating evidence.",
+        "repair": "Use the replacement principle: Trace the exact source-reflector-receiver path; the division by two applies only to the colocated round trip. Rebuild the inference, not merely the final answer.",
+        "boundary_test": "Swap the source and receiver positions, keeping the reflector fixed; check which quantities remain unchanged."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH08-INSTANCE-REPRESENT-01",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH08-08",
+      "qrt_target_id": "PH08-LEAD-REPRESENT-D3",
+      "fresh_task": "A diagram shows two different source/receiver distances to a reflector. Draw a timing bar that accounts for both legs.",
+      "protected_work": "Translate between a pulse-timing record and a two-leg spatial reflection diagram without losing path length.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Before any help, predict the qualitative outcome: Translate between a pulse-timing record and a two-leg spatial reflection diagram without losing path length.",
+        "attempt": "A diagram shows two different source/receiver distances to a reflector. Draw a timing bar that accounts for both legs.",
+        "reconstruct": "After committing the first answer, reconstruct the reasoning with Draw and label the outward path and the reflected return path. -> Write total propagation time as the sum of each path length divided by speed. -> Only for equal outgoing and incoming lengths, set total time to 2d/v and solve for d. and compare assumptions.",
+        "diagnose": "Contrast an incorrect route (Every echo distance is simply sound speed multiplied by delay.) with your saved first answer; do not infer misconception without discriminating evidence.",
+        "repair": "Use the replacement principle: Trace the exact source-reflector-receiver path; the division by two applies only to the colocated round trip. Rebuild the inference, not merely the final answer.",
+        "boundary_test": "Swap the source and receiver positions, keeping the reflector fixed; check which quantities remain unchanged."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH08-05-MAIN-APPLY-02",
+      "kind": "MAIN",
+      "subtopic_id": "PH08-05",
+      "qrt_target_id": "PH08-05-D3-APPLY-02",
+      "fresh_task": "A sensor sees period 2.5 ms and a spatial graph of the same wave has 0.80 m between compressions; infer speed.",
+      "protected_work": "Use v=fλ after establishing that the quantities describe one uniform-medium wave.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict the physical outcome or model regime before hints: Use v=fλ after establishing that the quantities describe one uniform-medium wave.",
+        "attempt": "A sensor sees period 2.5 ms and a spatial graph of the same wave has 0.80 m between compressions; infer speed.",
+        "reconstruct": "After saving first attempt, reconstruct: Define one cycle in time (period T) and one repeated spatial pattern (wavelength lambda). -> Note that one wavelength of the pattern passes a location in one period under constant speed. -> Combine v=lambda/T with f=1/T and verify the dimensions m/s.. Verify the model assumptions.",
+        "diagnose": "Compare your first saved route with this wrong idea: Increasing a source's frequency in the same air necessarily increases sound speed.",
+        "repair": "Rebuild the reasoning with the principle: In the basic uniform-medium model v is governed by propagation conditions, so wavelength adjusts inversely.",
+        "boundary_test": "Take the spatial graph from another medium at a different temperature; explain why the calculation needs new evidence."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH08-05-INSTANCE-APPLY-02",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH08-05",
+      "qrt_target_id": "PH08-05-D3-APPLY-02",
+      "fresh_task": "A microphone detects 250 Hz periodic sound in a medium where wave speed is 320 m/s. Determine wavelength.",
+      "protected_work": "Use v=fλ after establishing that the quantities describe one uniform-medium wave.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict the physical outcome or model regime before hints: Use v=fλ after establishing that the quantities describe one uniform-medium wave.",
+        "attempt": "A microphone detects 250 Hz periodic sound in a medium where wave speed is 320 m/s. Determine wavelength.",
+        "reconstruct": "After saving first attempt, reconstruct: Define one cycle in time (period T) and one repeated spatial pattern (wavelength lambda). -> Note that one wavelength of the pattern passes a location in one period under constant speed. -> Combine v=lambda/T with f=1/T and verify the dimensions m/s.. Verify the model assumptions.",
+        "diagnose": "Compare your first saved route with this wrong idea: Increasing a source's frequency in the same air necessarily increases sound speed.",
+        "repair": "Rebuild the reasoning with the principle: In the basic uniform-medium model v is governed by propagation conditions, so wavelength adjusts inversely.",
+        "boundary_test": "Take the spatial graph from another medium at a different temperature; explain why the calculation needs new evidence."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH08-05-MAIN-REPRESENT-02",
+      "kind": "MAIN",
+      "subtopic_id": "PH08-05",
+      "qrt_target_id": "PH08-05-D3-REPRESENT-02",
+      "fresh_task": "A graphical record shows three cycles across 2.4 m and five cycles across 0.01 s. Determine wavelength, period and speed.",
+      "protected_work": "Translate a position-graph crest spacing and a time-series peak interval into a consistent speed estimate.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict the physical outcome or model regime before hints: Translate a position-graph crest spacing and a time-series peak interval into a consistent speed estimate.",
+        "attempt": "A graphical record shows three cycles across 2.4 m and five cycles across 0.01 s. Determine wavelength, period and speed.",
+        "reconstruct": "After saving first attempt, reconstruct: Define one cycle in time (period T) and one repeated spatial pattern (wavelength lambda). -> Note that one wavelength of the pattern passes a location in one period under constant speed. -> Combine v=lambda/T with f=1/T and verify the dimensions m/s.. Verify the model assumptions.",
+        "diagnose": "Compare your first saved route with this wrong idea: Increasing a source's frequency in the same air necessarily increases sound speed.",
+        "repair": "Rebuild the reasoning with the principle: In the basic uniform-medium model v is governed by propagation conditions, so wavelength adjusts inversely.",
+        "boundary_test": "If the time axis is mislabeled milliseconds as seconds, diagnose the apparent impossible speed."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH08-05-INSTANCE-REPRESENT-02",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH08-05",
+      "qrt_target_id": "PH08-05-D3-REPRESENT-02",
+      "fresh_task": "One plot has 1.05 m between peaks and another 3 ms between peaks. Draw the two distinct measurement axes and relate them.",
+      "protected_work": "Translate a position-graph crest spacing and a time-series peak interval into a consistent speed estimate.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict the physical outcome or model regime before hints: Translate a position-graph crest spacing and a time-series peak interval into a consistent speed estimate.",
+        "attempt": "One plot has 1.05 m between peaks and another 3 ms between peaks. Draw the two distinct measurement axes and relate them.",
+        "reconstruct": "After saving first attempt, reconstruct: Define one cycle in time (period T) and one repeated spatial pattern (wavelength lambda). -> Note that one wavelength of the pattern passes a location in one period under constant speed. -> Combine v=lambda/T with f=1/T and verify the dimensions m/s.. Verify the model assumptions.",
+        "diagnose": "Compare your first saved route with this wrong idea: Increasing a source's frequency in the same air necessarily increases sound speed.",
+        "repair": "Rebuild the reasoning with the principle: In the basic uniform-medium model v is governed by propagation conditions, so wavelength adjusts inversely.",
+        "boundary_test": "If the time axis is mislabeled milliseconds as seconds, diagnose the apparent impossible speed."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH08-05-MAIN-JUSTIFY-02",
+      "kind": "MAIN",
+      "subtopic_id": "PH08-05",
+      "qrt_target_id": "PH08-05-D3-JUSTIFY-02",
+      "fresh_task": "A student claims v doubles with frequency while keeping wavelength fixed, despite unchanged medium. Identify the unstated assumption.",
+      "protected_work": "Justify why doubling frequency at fixed wave speed halves wavelength.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict the physical outcome or model regime before hints: Justify why doubling frequency at fixed wave speed halves wavelength.",
+        "attempt": "A student claims v doubles with frequency while keeping wavelength fixed, despite unchanged medium. Identify the unstated assumption.",
+        "reconstruct": "After saving first attempt, reconstruct: Define one cycle in time (period T) and one repeated spatial pattern (wavelength lambda). -> Note that one wavelength of the pattern passes a location in one period under constant speed. -> Combine v=lambda/T with f=1/T and verify the dimensions m/s.. Verify the model assumptions.",
+        "diagnose": "Compare your first saved route with this wrong idea: Increasing a source's frequency in the same air necessarily increases sound speed.",
+        "repair": "Rebuild the reasoning with the principle: In the basic uniform-medium model v is governed by propagation conditions, so wavelength adjusts inversely.",
+        "boundary_test": "Allow the wave to move into a second medium; identify why holding v fixed would now be unjustified."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH08-05-INSTANCE-JUSTIFY-02",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH08-05",
+      "qrt_target_id": "PH08-05-D3-JUSTIFY-02",
+      "fresh_task": "Use the definitions of period and wavelength to prove the consequence for the same propagation mode.",
+      "protected_work": "Justify why doubling frequency at fixed wave speed halves wavelength.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict the physical outcome or model regime before hints: Justify why doubling frequency at fixed wave speed halves wavelength.",
+        "attempt": "Use the definitions of period and wavelength to prove the consequence for the same propagation mode.",
+        "reconstruct": "After saving first attempt, reconstruct: Define one cycle in time (period T) and one repeated spatial pattern (wavelength lambda). -> Note that one wavelength of the pattern passes a location in one period under constant speed. -> Combine v=lambda/T with f=1/T and verify the dimensions m/s.. Verify the model assumptions.",
+        "diagnose": "Compare your first saved route with this wrong idea: Increasing a source's frequency in the same air necessarily increases sound speed.",
+        "repair": "Rebuild the reasoning with the principle: In the basic uniform-medium model v is governed by propagation conditions, so wavelength adjusts inversely.",
+        "boundary_test": "Allow the wave to move into a second medium; identify why holding v fixed would now be unjustified."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    }
+  ],
+  "core2_sources": [],
+  "acceptance": {
+    "b1_b7": {
+      "B1": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B2": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B3": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B4": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B5": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B6": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B7": {
+        "status": "HOLD",
+        "evidence_refs": []
+      }
+    },
+    "gates": {
+      "source_authenticity": "HOLD",
+      "content_correctness": "HOLD",
+      "cognitive_qualification": "HOLD",
+      "teaching_sufficiency": "HOLD",
+      "assessment_validity": "HOLD",
+      "implementation": "NOT_RUN",
+      "release_authority": "HOLD"
+    },
+    "release": "HOLD",
+    "acceptance_note": "Six independent authored lead constructions only; 83-subtopic inventory remains planning. No exam claim, science/independent QRT approval, actual learner attempt runtime, or release. Academic review and B1–B7 HOLD."
+  }
+}

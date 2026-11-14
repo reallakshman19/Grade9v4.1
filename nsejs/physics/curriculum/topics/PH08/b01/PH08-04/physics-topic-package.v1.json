@@ -1,0 +1,483 @@
+{
+  "schema": "g9v41-nsejs-physics-topic-package/v1",
+  "subject_id": "PHYSICS",
+  "academic_track": "NSEJS",
+  "topic_id": "PH08",
+  "owner_agent": "AGENT_2",
+  "version": "0.3.3-b01.8.ph08-04",
+  "status": "DRAFT_AUTHOR_EXPOSED",
+  "pins": {
+    "contracts_version": "1.0.0",
+    "blueprint": {
+      "version": "0.2.0",
+      "git_blob_sha": "700dafcbe86d76442637bcf214eeb544497cf4ea"
+    },
+    "shared_qrt_28": {
+      "version": "1.0.0",
+      "git_blob_sha": "e2409aef11ae7d98444593bfbe1a38eb00c97cef"
+    },
+    "topic_adapter_version": "0.3.3-b01.8.ph08-04"
+  },
+  "syllabus_references": [
+    {
+      "reference_id": "PH08-CBSE-2026-SOUND",
+      "locator": "https://cbseacademic.nic.in/web_material/CurriculumMain27/SecPart1/ScienceSt_SecP1_2026-27.pdf — Class IX Science 086, Sound, pp. 17–18 (PDF pages 17–18)",
+      "authority": "OFFICIAL_SYLLABUS",
+      "scope_status": "CANDIDATE"
+    }
+  ],
+  "subtopics": [
+    {
+      "id": "PH08-04",
+      "title": "Frequency, period and wavelength",
+      "scope_role": "SYLLABUS_CORE_CANDIDATE",
+      "syllabus_reference_ids": [
+        "PH08-CBSE-2026-SOUND"
+      ],
+      "prerequisite_ids": [
+        "PH08-02"
+      ],
+      "science_ref_ids": [
+        "PH08-04-SCI-01"
+      ],
+      "learning_goal": "Identify and relate temporal and spatial periodicity while preserving phase, scale and units.",
+      "textbook_chapter_ref": "nsejs/physics/curriculum/topics/PH08/b01/PH08-04/core1a.html",
+      "qrt_targets": [
+        {
+          "id": "PH08-04-B01-D3-REPRESENT-01",
+          "task_identity": "G9-B01-PH08-04-REPRESENT-R1",
+          "band": "D3",
+          "primary_operation": "REPRESENT",
+          "blueprint_cell": "D3.5",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Construct a consistent pair of space and time representations by preserving phase, interval count and physical axis units.",
+          "decisive_route": "For a single sinusoidal progressive pressure wave, consecutive pressure maxima at a fixed microphone occur at 1, 5 and 9 ms. At a fixed instant, a compression is at x=0.20 m, the next rarefaction at 0.80 m, and the next compression at 1.40 m. Sketch and label one cycle on each graph, including the midway opposite phase; infer T, f, λ and test whether the inferred speed is 300 m/s. Shortest valid route: Time maxima are 4 ms apart; place rarefaction midway, T=0.004 s and f=250 Hz. Spatial maxima are 1.20 m apart; place minimum at 0.80 m. λ=1.2 m and v=300 m/s. Both axes depict the same pressure variable but different independent variables.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 1,
+              "evidence": "Identify periodic sinusoidal wave and phase equivalence."
+            },
+            "representation_translation": {
+              "score": 2,
+              "evidence": "Two scaled graphs must preserve phase and units; opposite-phase markers are decisive."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Find interval and phase in both axes, then cross-check speed."
+            },
+            "algebra_computational_load": {
+              "score": 1,
+              "evidence": "Convert ms, reciprocate and multiply."
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "Adjacent compression and rarefaction are not a full wavelength."
+            }
+          }
+        },
+        {
+          "id": "PH08-04-B01-D3-APPLY-01",
+          "task_identity": "G9-B01-PH08-04-APPLY-R1",
+          "band": "D3",
+          "primary_operation": "APPLY",
+          "blueprint_cell": "D3.3",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Execute the interval-count, unit-conversion and reciprocal chain consistently across two measurements and check numerical agreement.",
+          "decisive_route": "A microphone records the first and ninth successive compression peaks at 1.2 and 29.2 ms. A simultaneous spatial snapshot has the first and fifth successive compressions at 0.40 and 5.16 m. Using the periodic wave relations, calculate T, f, λ and v. A pulse time-of-flight measurement for the same medium gives 335–345 m/s; determine whether these results agree. Shortest valid route: Eight temporal intervals span 28 ms, T=3.5 ms, f≈285.714 Hz. Four spatial intervals span 4.76 m, λ=1.19 m. v=1.19/0.0035=340 m/s, inside range. Check 8T=28 ms and 4λ=4.76 m.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 1,
+              "evidence": "Recognize full intervals between successive equal-phase peaks."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "Translate ordinal peak positions into interval counts in two records."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Independent period and wavelength calculations feed velocity comparison."
+            },
+            "algebra_computational_load": {
+              "score": 1,
+              "evidence": "Subtraction, division, reciprocal and unit conversion materially needed."
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "Counting peaks rather than intervals changes result."
+            }
+          }
+        },
+        {
+          "id": "PH08-04-B01-D3-JUSTIFY-01",
+          "task_identity": "G9-B01-PH08-04-JUSTIFY-R1",
+          "band": "D3",
+          "primary_operation": "JUSTIFY",
+          "blueprint_cell": "D3.7",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Determine whether proposed wave parameters are uniquely supported by the observation, using phase and measurement constraints rather than visual resemblance.",
+          "decisive_route": "A sinusoidal pressure recorder shows consecutive zero crossings 1.5 ms apart, but no crossing slopes. A spatial snapshot of the same wave shows two compression maxima 1.02 m apart; the observer has not checked for intervening maxima. A student claims f=667 Hz, λ=1.02 m and v=680 m/s. Evaluate each inference and state the minimum observation needed to identify λ uniquely. Shortest valid route: For consecutive zero crossings of a sinusoid, T=3 ms and f≈333.3 Hz, not 667. Two compression maxima separated by 1.02 m may span n≥1 wavelengths, λ=1.02/n m. Therefore v=340/n m/s, not a unique 680 m/s. Count full spatial periods or confirm the maxima are successive.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "Distinguish adjacent opposite phase from repeated phase and unknown spatial interval count."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "Interpret time and spatial observation in phase terms."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Correct period, parameterize possible wavelengths, then reject unique speed and identify discriminating observation."
+            },
+            "algebra_computational_load": {
+              "score": 0,
+              "evidence": "Arithmetic is incidental to nonuniqueness proof."
+            },
+            "trap_exception_sensitivity": {
+              "score": 2,
+              "evidence": "Unknown number of intervening maxima creates decisive underdetermination."
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "science_records": [
+    {
+      "id": "PH08-04-SCI-01",
+      "claim": "For a stable periodic travelling wave, period is repeat time, wavelength is repeat distance and v=λ/T=fλ in a uniform medium.",
+      "law_or_model": "T=Δt/N; f=1/T; λ=Δx/N; v=fλ",
+      "assumptions": [
+        "Stable periodic wave, correct same-phase interval count",
+        "Same wave measured in uniform stationary medium; sinusoid for half-cycle extrema/zero-crossing rule"
+      ],
+      "conditions_and_limits": [
+        "A single period and wavelength describe a periodic wave or a specified frequency component; irregular pulses need other descriptors.",
+        "Use stationary source/observer and a uniform stationary medium for the simple travelling-wave relation; do not apply it across different waves.",
+        "Measure the spacing between points at the same phase, not simply adjacent extrema or zero crossings.",
+        "Frequency comparisons between different media require identifying the source; v=fλ is not a claim that all sound travels at the same speed."
+      ],
+      "units_and_signs": "T in s, f in Hz, λ in m, v in m/s; convert ms to s. Speed is positive, direction specified separately.",
+      "source_refs": [
+        "PH08-CBSE-2026-SOUND"
+      ],
+      "qualification_status": "HOLD"
+    }
+  ],
+  "topic_adapter": {
+    "adapter_id": "PHYS-TOPIC-PH08",
+    "topic_id": "PH08",
+    "version": "0.3.3-b01.8.ph08-04",
+    "for_blueprint": "PHYS-QRT-BLUEPRINT 0.2.0",
+    "status": "CANDIDATE_ONLY",
+    "cells": [
+      {
+        "cell_id": "D3.5",
+        "instance_ids": [
+          "PH08-04-B01-D3-REPRESENT-01"
+        ]
+      },
+      {
+        "cell_id": "D3.3",
+        "instance_ids": [
+          "PH08-04-B01-D3-APPLY-01"
+        ]
+      },
+      {
+        "cell_id": "D3.7",
+        "instance_ids": [
+          "PH08-04-B01-D3-JUSTIFY-01"
+        ]
+      }
+    ]
+  },
+  "core1a": [
+    {
+      "id": "PH08-04-B01-CORE1A-R1",
+      "subtopic_id": "PH08-04",
+      "covered_qrt_ids": [
+        "PH08-04-B01-D3-REPRESENT-01",
+        "PH08-04-B01-D3-APPLY-01",
+        "PH08-04-B01-D3-JUSTIFY-01"
+      ],
+      "phenomenon": "A repeating sound pattern can be measured with a fixed microphone or a spatial snapshot; the two observations have different axes.",
+      "scientific_narrative": "A vibrating tuning fork can repeat its motion hundreds of times per second. When it drives air, neighbouring regions alternately compress and rarefy. At a fixed microphone, the pressure variation repeats in time; in a snapshot of the air, the compression pattern repeats in space. These are two different observations of one travelling disturbance. The particles themselves oscillate about equilibrium rather than accompanying the sound to the listener.\n\nOne cycle means return to the same state of oscillation, including direction of change. The period T is the time per cycle in seconds. Frequency f is the number of complete cycles per second, in hertz (Hz = s⁻¹). If N cycles occupy duration Δt, T=Δt/N and f=N/Δt=1/T. Count intervals between matching phase points: six successive peaks enclose five complete periods, not six. If an instrument labels the time axis in milliseconds, divide milliseconds by 1000 before computing hertz.\n\nThe wavelength λ is the shortest repeat distance between matching points of the spatial pattern, measured along propagation, in metres. In a sinusoidal pressure snapshot, successive compressions are a wavelength apart; a compression and its neighbouring rarefaction are half a wavelength apart. Likewise, two adjacent zero crossings normally have opposite slope and are half a period apart on a time trace. On an arbitrary periodic signal, identify a full repeating motif rather than assuming every peak or zero crossing is equivalent. A pressure graph is not a drawing of air particles moving up and down: its vertical axis denotes pressure variation.\n\nTo connect space and time, imagine following one compression in a uniform stationary medium. During one period the pattern moves one wavelength. Thus speed v=λ/T=fλ. The relation is kinematic: it measures the speed of the pattern, not the speed of the particles' oscillation. For the same steady source crossing a stationary boundary the temporal frequency remains fixed, while a changed propagation speed changes the wavelength. This principle will be developed further in PH08-05. Do not combine a time record from one wave with a spatial record of another just because both are sound.\n\nA practical measurement uses several cycles to reduce the fractional error caused by locating a peak. For example, if each endpoint can be read only within 0.1 ms, the uncertainty in a time interval can be as large as 0.2 ms, whether it spans one or several cycles. Dividing a longer span by its cycle count can improve the period estimate provided that the frequency stays stable. Measurement resolution does not cure systematic clock error or uncertainty in the cycle count.",
+      "prerequisites": [
+        "PH08-02"
+      ],
+      "derivation_steps": [
+        {
+          "action": "Choose whether the observation fixes position or time.",
+          "why_valid": "A fixed sensor measures temporal repetition; a snapshot measures spatial repetition.",
+          "science_ref_id": "PH08-04-SCI-01"
+        },
+        {
+          "action": "Locate same-phase points and count full intervals.",
+          "why_valid": "Complete cycles return to the same oscillation state; N full cycles occupy N periods or wavelengths.",
+          "science_ref_id": "PH08-04-SCI-01"
+        },
+        {
+          "action": "Convert units and calculate the reciprocal, then track a compression through one period.",
+          "why_valid": "A pattern traverses one wavelength in one period in a uniform medium; hence v=λ/T=fλ.",
+          "science_ref_id": "PH08-04-SCI-01"
+        },
+        {
+          "action": "Check phase and independent speed or interval data.",
+          "why_valid": "An independent measurement can reveal an incorrect cycle count or incompatible records.",
+          "science_ref_id": "PH08-04-SCI-01"
+        }
+      ],
+      "model_limits": [
+        "A single period and wavelength describe a periodic wave or a specified frequency component; irregular pulses need other descriptors.",
+        "Use stationary source/observer and a uniform stationary medium for the simple travelling-wave relation; do not apply it across different waves.",
+        "Measure the spacing between points at the same phase, not simply adjacent extrema or zero crossings.",
+        "Frequency comparisons between different media require identifying the source; v=fλ is not a claim that all sound travels at the same speed."
+      ],
+      "progressive_examples": [
+        {
+          "id": "PH08-04-B01-EX1",
+          "tier": "FOUNDATION",
+          "problem": "Four successive crests on a time trace appear at 0, 2, 4 and 6 ms. Find T and f.",
+          "reasoning": "Three cycles span 6 ms, T=2 ms=0.002 s, f=500 Hz.",
+          "independent_check": "3/0.006=500 Hz."
+        },
+        {
+          "id": "PH08-04-B01-EX2",
+          "tier": "CONNECTED",
+          "problem": "A pressure snapshot shows compression at 0.10 m and adjacent rarefaction at 0.45 m. The period is 2.0 ms. Find λ and v.",
+          "reasoning": "Half-wavelength is 0.35 m, λ=0.70 m; v=0.70/0.002=350 m/s.",
+          "independent_check": "In one period the pressure pattern moves 0.70 m."
+        },
+        {
+          "id": "PH08-04-B01-EX3",
+          "tier": "ADVANCED",
+          "problem": "Two successive compression maxima of a travelling wave are 0.90 m apart. A stationary source maintains 400 Hz when entering another medium with v=300 m/s. Predict the new λ and whether the frequency changes.",
+          "reasoning": "Initially v=360 m/s. At stationary boundary the source fixes f=400 Hz, new λ=300/400=0.75 m. The wavelength decreases, not the frequency.",
+          "independent_check": "Check 400×0.75=300 m/s and compare the ratio of wavelengths with speed ratio."
+        }
+      ],
+      "figures": [
+        {
+          "id": "PH08-04-FIG-PHASE",
+          "reasoning_step": "Distinguish repeat time from repeat distance; match the phase of markers.",
+          "scene_description": "Original two-panel pressure graph with full-period and wavelength brackets; see Core1A inline SVG.",
+          "source_or_authorship": "ORIGINAL_B01_SVG_INLINE"
+        }
+      ],
+      "misconception": {
+        "wrong_model": "Every neighbouring peak, zero crossing or compression–rarefaction pair is one complete cycle; a pressure graph shows the particle trajectory.",
+        "diagnostic": "A pressure trace crosses zero going upward then downward 2 ms later. Does the same oscillation state recur? What does the vertical axis measure?",
+        "repair": "Track matching phase and axis quantity. Opposite-slope zero crossings of a sinusoid span half a period; pressure is not transverse particle displacement."
+      },
+      "exit_check": {
+        "task": "Successive pressure minima arrive at a microphone 5 ms apart. At one instant a compression and its adjacent rarefaction are 0.825 m apart. Find f, λ and v.",
+        "answer": "200 Hz, 1.65 m and 330 m/s.",
+        "reasoning": "T=0.005 s; λ=2×0.825 m; v=1.65/0.005."
+      },
+      "authorship_status": "DRAFT_AUTHOR_EXPOSED"
+    }
+  ],
+  "core1b": [
+    {
+      "id": "PH08-04-B01-MAIN-REPRESENT-R3",
+      "kind": "MAIN",
+      "subtopic_id": "PH08-04",
+      "qrt_target_id": "PH08-04-B01-D3-REPRESENT-01",
+      "fresh_task": "A single sinusoidal pressure wave has successive minima at 2, 8 and 14 ms at a microphone. At a fixed instant, two successive minima are at 0.10 and 2.14 m. Sketch one cycle in time and space, marking corresponding maxima; infer frequency and check a proposed speed of 340 m/s.",
+      "protected_work": "Construct a consistent pair of space and time representations by preserving phase, interval count and physical axis units.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Before drawing, predict whether the proposed 340 m/s speed is compatible with the two records. State your initial confidence.",
+        "attempt": "A single sinusoidal pressure wave has successive minima at 2, 8 and 14 ms at a microphone. At a fixed instant, two successive minima are at 0.10 and 2.14 m. Sketch one cycle in time and space, marking corresponding maxima; infer frequency and check a proposed speed of 340 m/s.",
+        "reconstruct": "T=6 ms, f≈166.7 Hz; time maximum at 5 ms. λ=2.04 m, spatial maximum at 1.12 m. v=2.04/0.006=340 m/s. Axis labels and extrema must be consistent.",
+        "diagnose": "Compare the axis labels, the phase of each marker and the spacing on your two plots. Which specific mismatch would change the inferred period or wavelength?",
+        "repair": "Redraw a complete labelled repetition on each physical axis and verify the halfway opposite phase before computing parameters.",
+        "boundary_test": "If the second spatial marker is instead the maximum immediately adjacent to the first minimum, what wavelength and speed follow?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH08-04-B01-INSTANCE-REPRESENT-R3",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH08-04",
+      "qrt_target_id": "PH08-04-B01-D3-REPRESENT-01",
+      "fresh_task": "Successive upward zero crossings on a time trace are at 0.5 and 2.5 ms. A spatial snapshot has successive downward zero crossings at 0.30 and 0.98 m. Draw a complete sinusoidal cycle for each with extrema and crossing slopes labelled; determine T, f, λ and v.",
+      "protected_work": "Construct a consistent pair of space and time representations by preserving phase, interval count and physical axis units.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether the two crossing records are sufficient to calculate one wave speed. Give your initial judgement before drawing.",
+        "attempt": "Successive upward zero crossings on a time trace are at 0.5 and 2.5 ms. A spatial snapshot has successive downward zero crossings at 0.30 and 0.98 m. Draw a complete sinusoidal cycle for each with extrema and crossing slopes labelled; determine T, f, λ and v.",
+        "reconstruct": "T=2 ms, f=500 Hz, λ=0.68 m, v=340 m/s. Each half-cycle changes crossing slope; extrema are at quarter-cycle intervals. Do not align the spatial slope with temporal slope without a propagation direction.",
+        "diagnose": "Compare the axis labels, the phase of each marker and the spacing on your two plots. Which specific mismatch would change the inferred period or wavelength?",
+        "repair": "Redraw a complete labelled repetition on each physical axis and verify the halfway opposite phase before computing parameters.",
+        "boundary_test": "If only adjacent unlabelled zero crossings are supplied, what assumption would you need to recover a full period?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH08-04-B01-MAIN-APPLY-R2",
+      "kind": "MAIN",
+      "subtopic_id": "PH08-04",
+      "qrt_target_id": "PH08-04-B01-D3-APPLY-01",
+      "fresh_task": "In a stable wave, the second and twelfth compression peaks are at 3 and 28 ms. A snapshot locates the third and seventh successive compressions at 1.1 and 4.5 m. Calculate T, f, λ, v and compare with an independently measured range 330–350 m/s.",
+      "protected_work": "Execute the interval-count, unit-conversion and reciprocal chain consistently across two measurements and check numerical agreement.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether the calculated speed will fall inside 330–350 m/s. State the evidence you initially trust.",
+        "attempt": "In a stable wave, the second and twelfth compression peaks are at 3 and 28 ms. A snapshot locates the third and seventh successive compressions at 1.1 and 4.5 m. Calculate T, f, λ, v and compare with an independently measured range 330–350 m/s.",
+        "reconstruct": "Ten intervals span 25 ms, T=2.5 ms, f=400 Hz. Four intervals span 3.4 m, λ=0.85 m; v=340 m/s, within independent range.",
+        "diagnose": "Check whether you counted marked peaks or intervals, and whether the milliseconds were converted. Trace any discrepancy to the earliest incorrect operation.",
+        "repair": "Compute the number of intervals from ordinal labels, divide each span by its interval count, then independently substitute the recovered period and wavelength.",
+        "boundary_test": "If the spatial image was taken from a different wave, is the numerical agreement sufficient evidence of a correct speed?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH08-04-B01-INSTANCE-APPLY-R2",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH08-04",
+      "qrt_target_id": "PH08-04-B01-D3-APPLY-01",
+      "fresh_task": "The third and tenth peaks of a fixed microphone signal occur at 5 and 19 ms. At one instant the second and eighth matching compressions are at 0.40 and 4.36 m. Infer T, f, λ and v; decide whether 320–340 m/s is consistent.",
+      "protected_work": "Execute the interval-count, unit-conversion and reciprocal chain consistently across two measurements and check numerical agreement.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether the microphone and spatial records will support the stated 320–340 m/s range. Record your initial reason.",
+        "attempt": "The third and tenth peaks of a fixed microphone signal occur at 5 and 19 ms. At one instant the second and eighth matching compressions are at 0.40 and 4.36 m. Infer T, f, λ and v; decide whether 320–340 m/s is consistent.",
+        "reconstruct": "Seven temporal intervals span 14 ms, T=2 ms, f=500 Hz. Six spatial intervals span 3.96 m, λ=0.66 m. v=330 m/s, within the range.",
+        "diagnose": "Check whether you counted marked peaks or intervals, and whether the milliseconds were converted. Trace any discrepancy to the earliest incorrect operation.",
+        "repair": "Compute the number of intervals from ordinal labels, divide each span by its interval count, then independently substitute the recovered period and wavelength.",
+        "boundary_test": "If timestamps are actually in seconds, not milliseconds, recompute f and v and explain the unit sensitivity."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH08-04-B01-MAIN-JUSTIFY-R2",
+      "kind": "MAIN",
+      "subtopic_id": "PH08-04",
+      "qrt_target_id": "PH08-04-B01-D3-JUSTIFY-01",
+      "fresh_task": "A sinusoidal wave has consecutive time-trace zero crossings 2 ms apart. In a spatial photo two pressure minima are 1.36 m apart, but the image between them is obscured. A student asserts f=500 Hz and λ=1.36 m. Decide what is justified and give possible speeds, then propose the missing observation.",
+      "protected_work": "Determine whether proposed wave parameters are uniquely supported by the observation, using phase and measurement constraints rather than visual resemblance.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Would you initially accept the student's two numerical claims as uniquely determined? Record separate judgements before solving.",
+        "attempt": "A sinusoidal wave has consecutive time-trace zero crossings 2 ms apart. In a spatial photo two pressure minima are 1.36 m apart, but the image between them is obscured. A student asserts f=500 Hz and λ=1.36 m. Decide what is justified and give possible speeds, then propose the missing observation.",
+        "reconstruct": "T=4 ms, f=250 Hz. λ=1.36/n m, n a positive integer; v=340/n m/s. λ=1.36 m only for successive minima. Count all intervening periods or establish n with independent data.",
+        "diagnose": "Identify which observation determines a full repetition and which leaves the number of repetitions unknown. If you assumed a unique speed, construct a second compatible case.",
+        "repair": "State the assumptions explicitly, retain the unknown positive integer count and specify what additional observation eliminates it.",
+        "boundary_test": "If an independent speed of 340 m/s is supplied, what n and wavelength are consistent?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH08-04-B01-INSTANCE-JUSTIFY-R2",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH08-04",
+      "qrt_target_id": "PH08-04-B01-D3-JUSTIFY-01",
+      "fresh_task": "A sinusoidal trace shows consecutive zero crossings separated by 0.8 ms. Two spatial compressions separated by 0.544 m are visible but the intervening region is missing. A report gives f=1250 Hz and λ=0.544 m. Challenge or defend the report, and specify what observation makes speed unique.",
+      "protected_work": "Determine whether proposed wave parameters are uniquely supported by the observation, using phase and measurement constraints rather than visual resemblance.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether the report has enough information to establish a unique speed. State your initial reason without computing.",
+        "attempt": "A sinusoidal trace shows consecutive zero crossings separated by 0.8 ms. Two spatial compressions separated by 0.544 m are visible but the intervening region is missing. A report gives f=1250 Hz and λ=0.544 m. Challenge or defend the report, and specify what observation makes speed unique.",
+        "reconstruct": "T=1.6 ms, f=625 Hz; λ=0.544/n m and v=340/n m/s. Need confirmation of successive compressions or count n, or an independent speed in the same wave.",
+        "diagnose": "Identify which observation determines a full repetition and which leaves the number of repetitions unknown. If you assumed a unique speed, construct a second compatible case.",
+        "repair": "State the assumptions explicitly, retain the unknown positive integer count and specify what additional observation eliminates it.",
+        "boundary_test": "If the time trace is nonsinusoidal and can cross zero several times per period, why is the half-period rule no longer automatic?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    }
+  ],
+  "core2_sources": [
+    {
+      "item_id": "NSEJS-24-MECH-07",
+      "source_role": "PREREQUISITE_BRIDGE",
+      "locator": "nsejs/physics/index.html?topic=mechanics&q=NSEJS-24-MECH-07#NSEJS-24-MECH-07; supporting prerequisite for PH08-07; existing D2 candidate; observed display stem digest, not authenticated original",
+      "stem_sha256": "fd0236063fd9371219472f7769cdffa9a8b78d0acfff0b309b268dc5c1dca893",
+      "figure_status": "HOLD",
+      "key_status": "HOLD",
+      "academic_status": "HOLD"
+    }
+  ],
+  "acceptance": {
+    "b1_b7": {
+      "B1": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B2": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B3": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B4": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B5": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B6": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B7": {
+        "status": "HOLD",
+        "evidence_refs": []
+      }
+    },
+    "gates": {
+      "source_authenticity": "HOLD",
+      "content_correctness": "HOLD",
+      "cognitive_qualification": "HOLD",
+      "teaching_sufficiency": "HOLD",
+      "assessment_validity": "HOLD",
+      "implementation": "NOT_RUN",
+      "release_authority": "HOLD"
+    },
+    "release": "HOLD",
+    "acceptance_note": "B01 subtopic-only slice, not canonical replacement for PH08 adapter. C06 v1 per-target MAIN provisional, not integrated cross-instance tile MAIN. All authored transfer. No academic approval inferred from software validation. Related Core2 source-HOLD bridge added for PH08-07; no direct exam evidence or changed authored task identity. R00 correction: all six predictions revised for exact tasks; cycle IDs R2 and uniquely versioned isolated slice (0.3.1-b01.2 history retained at reviewed commit). No final stage implementation or protected custody implied; inherited runtime still groups post-attempt stages. B5 HOLD. Increment 7 clarification: explicit successive spatial phase markers and adjacent opposite-phase boundary condition in REPRESENT; R3 cycle revisions preserve R2 historical prompts; no target reclassification."
+  }
+}

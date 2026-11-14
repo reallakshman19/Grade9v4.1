@@ -1,0 +1,104 @@
+{
+  "schema": "g9v41-b02-subtopic-preview/v1",
+  "status": "DRAFT_AUTHOR_EXPOSED",
+  "owner_agent": "AGENT_2",
+  "topic_id": "PH10",
+  "subtopic_id": "PH10-07",
+  "version": "0.1.0",
+  "source_role": "AUTHORED_TRANSFER",
+  "source_question_uid": "g9:PHYSICS:NSEJS-23-OPT-02",
+  "source_revision_sha256": "e8013bb9a42189b7c6bbbcea6f559152bdfd20a903adf348f2f251c0e5f23c98",
+  "source_return": "nsejs/physics/index.html?topic=optics&q=NSEJS-23-OPT-02#question-NSEJS-23-OPT-02",
+  "core1b": [
+    {
+      "id": "PH10-07-B02-NEWTON-LENS-OFFSET-MAIN-R1",
+      "kind": "MAIN",
+      "subtopic_id": "PH10-07",
+      "qrt_target_id": "PH10-07-SYNTHESIZE-D3-NEWTON-LENS-OFFSET-R1",
+      "primary_operation": "SYNTHESIZE",
+      "source_role": "AUTHORED_TRANSFER",
+      "difficulty_status": "AUTHOR_NOMINATION__INDEPENDENT_HOLD",
+      "content_revision": "0.1.0",
+      "fresh_task": "An optical bench reports an object 8 cm beyond the front focus and an image 18 cm beyond the rear focus of a converging lens. The object–screen distance is reported as 48 cm. Determine whether all three observations can hold for one ideal lens, then state the predicted magnification and correct total distance if the offsets are accurate.",
+      "protected_work": "Combine focal-reference offsets with the real-conjugate constraint and independently check the resulting global image geometry.",
+      "stages": {
+        "predict": "Before solving, predict the outcome or relationship and record uncertainty.",
+        "attempt": "An optical bench reports an object 8 cm beyond the front focus and an image 18 cm beyond the rear focus of a converging lens. The object–screen distance is reported as 48 cm. Determine whether all three observations can hold for one ideal lens, then state the predicted magnification and correct total distance if the offsets are accurate.",
+        "reconstruct": "F=√(8×18)=12 cm. p=20 cm,q=30 cm, so D=50 cm, not 48; |m|=30/20=1.5, inverted. Both p,q>F and 1/p+1/q=1/12. The three observations are inconsistent.",
+        "diagnose": "Only if your saved response exhibits this error: Measuring all distances from the lens when the reported positions are relative to the foci, or accepting inconsistent bench data. Otherwise record insufficient evidence.",
+        "repair": "Convert offsets to p=F+a,q=F+b before computing separation/magnification; check signed conjugate equation.",
+        "boundary_test": "If an object lies between the front focus and lens, why can the positive real-offset formula not establish a screen image?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH10-07-B02-NEWTON-LENS-OFFSET-INSTANCE-R1",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH10-07",
+      "qrt_target_id": "PH10-07-SYNTHESIZE-D3-NEWTON-LENS-OFFSET-R1",
+      "primary_operation": "SYNTHESIZE",
+      "source_role": "AUTHORED_TRANSFER",
+      "difficulty_status": "INSTANCE_UNSCORED",
+      "content_revision": "0.1.0",
+      "fresh_task": "An object lies 9 cm beyond the first focus. Its inverted screen image is four times its height. Find F, both distances measured from lens, and offset of image beyond second focus.",
+      "protected_work": "Combine focal-reference offsets with the real-conjugate constraint and independently check the resulting global image geometry.",
+      "stages": {
+        "predict": "Before solving, predict the outcome or relationship and record uncertainty.",
+        "attempt": "An object lies 9 cm beyond the first focus. Its inverted screen image is four times its height. Find F, both distances measured from lens, and offset of image beyond second focus.",
+        "reconstruct": "p=F+9, q=4p. 1/F=1/p+1/(4p)=5/(4p) gives p=5F/4, so F/4=9 =>F=36 cm. p=45,q=180, rear offset b=144 cm; 9×144=1296=F². m=−4.",
+        "diagnose": "Only if your saved response exhibits this error: Measuring all distances from the lens when the reported positions are relative to the foci, or accepting inconsistent bench data. Otherwise record insufficient evidence.",
+        "repair": "Convert offsets to p=F+a,q=F+b before computing separation/magnification; check signed conjugate equation.",
+        "boundary_test": "If an object lies between the front focus and lens, why can the positive real-offset formula not establish a screen image?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    }
+  ],
+  "author_main_assessment": {
+    "primary_operation": "SYNTHESIZE",
+    "band_candidate": "D3",
+    "blueprint_cell": "D3.6",
+    "factor_evidence": {
+      "concept_model_selection": {
+        "score": 1,
+        "evidence": "Select focal-offset and conjugate constraint rather than treating offsets as pole distances."
+      },
+      "representation_translation": {
+        "score": 2,
+        "evidence": "Translate between focus-relative and lens-relative measurements."
+      },
+      "reasoning_chain_length": {
+        "score": 2,
+        "evidence": "Infer F, conjugates, magnification, and independently test reported separation."
+      },
+      "algebra_computational_load": {
+        "score": 1,
+        "evidence": "Routine square root and arithmetic required."
+      },
+      "trap_exception_sensitivity": {
+        "score": 1,
+        "evidence": "Real-conjugate assumptions and incompatible data must be checked."
+      }
+    },
+    "total": 7,
+    "disposition": "AUTHOR_PROPOSED_NOT_INDEPENDENT",
+    "instance_band": "NOT_SCORED"
+  },
+  "acceptance": {
+    "release": "HOLD",
+    "academic": "HOLD",
+    "native_contract": "NOT_VALIDATED",
+    "implementation": "NOT_RUN"
+  }
+}

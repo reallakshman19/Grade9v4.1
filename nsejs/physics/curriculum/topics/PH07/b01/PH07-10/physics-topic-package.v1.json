@@ -1,0 +1,485 @@
+{
+  "schema": "g9v41-nsejs-physics-topic-package/v1",
+  "subject_id": "PHYSICS",
+  "academic_track": "NSEJS",
+  "topic_id": "PH07",
+  "owner_agent": "AGENT_2",
+  "version": "0.3.2-b01.8.ph07-10",
+  "status": "DRAFT_AUTHOR_EXPOSED",
+  "pins": {
+    "contracts_version": "1.0.0",
+    "blueprint": {
+      "version": "0.2.0",
+      "git_blob_sha": "700dafcbe86d76442637bcf214eeb544497cf4ea"
+    },
+    "shared_qrt_28": {
+      "version": "1.0.0",
+      "git_blob_sha": "e2409aef11ae7d98444593bfbe1a38eb00c97cef"
+    },
+    "topic_adapter_version": "0.3.2-b01.8.ph07-10"
+  },
+  "syllabus_references": [
+    {
+      "reference_id": "PH07-CBSE",
+      "locator": "https://cbseacademic.nic.in/web_material/CurriculumMain27/SecPart1/ScienceSt_SecP1_2026-27.pdf",
+      "authority": "OFFICIAL_SYLLABUS",
+      "scope_status": "CANDIDATE"
+    },
+    {
+      "reference_id": "PH07-NCERT-HIST",
+      "locator": "https://sathee.iitk.ac.in/ncert-books/class-09/nb-science-09/sci-09-chapter-1-matter-in-our-surroundings/",
+      "authority": "NCERT_CBSE",
+      "scope_status": "CANDIDATE"
+    }
+  ],
+  "subtopics": [
+    {
+      "id": "PH07-10",
+      "title": "Thermal experiments: fair comparisons, insulation and uncertainty",
+      "scope_role": "PREREQUISITE_BRIDGE",
+      "syllabus_reference_ids": [
+        "PH07-CBSE",
+        "PH07-NCERT-HIST"
+      ],
+      "prerequisite_ids": [
+        "PH07-03",
+        "PH07-05",
+        "PH07-08"
+      ],
+      "science_ref_ids": [
+        "PH07-10-SCI-01"
+      ],
+      "learning_goal": "Thermal comparisons require matched boundary conditions, relevant controls and independent measurements; an observed temperature rate alone need not identify a mechanism.",
+      "textbook_chapter_ref": "nsejs/physics/curriculum/topics/PH07/b01/PH07-10/core1a.html",
+      "qrt_targets": [
+        {
+          "id": "PH07-10-B01-D4-MODEL-01",
+          "task_identity": "G9-B01-PH07-10-MODEL-R1",
+          "band": "D4",
+          "primary_operation": "MODEL",
+          "blueprint_cell": "D4.4",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Discriminate additive treatment/location and interaction models by predicting the unused factorial observation from three matched power readings.",
+          "decisive_route": "A at X needs 10 W, B at X 16 W, A at Y 13 W. B at Y measures 22 W. Test an additive model. Shortest valid route: Predicted 19 W; residual 3 W. Exact common additive model fails; possible interaction or uncontrolled change.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "Competing additive and interaction models fit incomplete data."
+            },
+            "representation_translation": {
+              "score": 2,
+              "evidence": "Coordinate a two-factor table with independent power readings."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Infer both effects, predict the unused cell and test model fit."
+            },
+            "algebra_computational_load": {
+              "score": 1,
+              "evidence": "Multiple signed power differences."
+            },
+            "trap_exception_sensitivity": {
+              "score": 2,
+              "evidence": "Three cells alone cannot identify interaction; an unused fourth is decisive."
+            }
+          }
+        },
+        {
+          "id": "PH07-10-B01-D3-REPRESENT-01",
+          "task_identity": "G9-B01-PH07-10-REPRESENT-R1",
+          "band": "D3",
+          "primary_operation": "REPRESENT",
+          "blueprint_cell": "D3.5",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Translate matched temperature histories and independent capacities into aligned cooling-rate and energy-loss representations.",
+          "decisive_route": "Samples C=200 and400 J/K cool 3 and2 K over20 s. Draw endpoints and compare loss. Shortest valid route: Slopes −0.15,−0.10 K/s; losses30,40 W.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 1,
+              "evidence": "Select stated single-phase capacity model."
+            },
+            "representation_translation": {
+              "score": 2,
+              "evidence": "Coordinate temperature traces, slopes and energy data."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Calculate intervals and losses; check a ranking changes when capacities differ."
+            },
+            "algebra_computational_load": {
+              "score": 1,
+              "evidence": "Several rate conversions."
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "Comparing slopes alone may reverse loss ordering."
+            }
+          }
+        },
+        {
+          "id": "PH07-10-B01-D3-JUSTIFY-01",
+          "task_identity": "G9-B01-PH07-10-JUSTIFY-R1",
+          "band": "D3",
+          "primary_operation": "JUSTIFY",
+          "blueprint_cell": "D3.7",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Assess whether an insulation claim follows from an uncontrolled or uncertain comparison; construct countermodels and a discriminating fair test.",
+          "decisive_route": "Container A cools faster and has less water. Claim A is poorer insulation. Refute. Shortest valid route: Smaller capacity can cause larger slope at equal loss. Match capacity or measure loss power independently.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "Competing capacity, insulation and evaporation models."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "Translate measured comparison into conditional causal evidence."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Construct counterexample, identify confounds and design a decisive control."
+            },
+            "algebra_computational_load": {
+              "score": 0,
+              "evidence": "No substantial calculation."
+            },
+            "trap_exception_sensitivity": {
+              "score": 2,
+              "evidence": "Repeatability and uncertainty can defeat a claimed strict ranking."
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "science_records": [
+    {
+      "id": "PH07-10-SCI-01",
+      "claim": "Thermal comparisons require matched boundary conditions, relevant controls and independent measurements; an observed temperature rate alone need not identify a mechanism.",
+      "law_or_model": "For a single-phase sample with approximately constant C, P_net=CΔT/Δt. At steady unchanged temperature, P_input=P_loss under complete energy accounting.",
+      "assumptions": [
+        "Use a fixed-phase, approximately constant effective capacity only over the stated comparison interval.",
+        "Match initial state, temperature range, geometry, ambient conditions, probe calibration and relevant transfer paths."
+      ],
+      "conditions_and_limits": [
+        "Use a fixed-phase, approximately constant effective capacity only over the stated comparison interval.",
+        "Match initial state, temperature range, geometry, ambient conditions, probe calibration and relevant transfer paths.",
+        "An additive treatment/location model requires stability and no interaction; a fourth cell can test it.",
+        "Repeatability does not establish accuracy; interval comparisons are conditional on the stated uncertainty model."
+      ],
+      "units_and_signs": "T in °C or K, ΔT in K, C in J/K, P in W, energy in J; report measurement resolution and uncertainty.",
+      "source_refs": [
+        "PH07-CBSE",
+        "PH07-NCERT-HIST"
+      ],
+      "qualification_status": "HOLD"
+    }
+  ],
+  "topic_adapter": {
+    "adapter_id": "PHYS-TOPIC-PH07",
+    "topic_id": "PH07",
+    "version": "0.3.2-b01.8.ph07-10",
+    "for_blueprint": "PHYS-QRT-BLUEPRINT 0.2.0",
+    "status": "CANDIDATE_ONLY",
+    "cells": [
+      {
+        "cell_id": "D4.4",
+        "instance_ids": [
+          "PH07-10-B01-D4-MODEL-01"
+        ]
+      },
+      {
+        "cell_id": "D3.5",
+        "instance_ids": [
+          "PH07-10-B01-D3-REPRESENT-01"
+        ]
+      },
+      {
+        "cell_id": "D3.7",
+        "instance_ids": [
+          "PH07-10-B01-D3-JUSTIFY-01"
+        ]
+      }
+    ]
+  },
+  "core1a": [
+    {
+      "id": "PH07-10-B01-CORE1A-R1",
+      "subtopic_id": "PH07-10",
+      "covered_qrt_ids": [
+        "PH07-10-B01-D4-MODEL-01",
+        "PH07-10-B01-D3-REPRESENT-01",
+        "PH07-10-B01-D3-JUSTIFY-01"
+      ],
+      "phenomenon": "Two containers can cool at different rates without the difference being caused by their insulation.",
+      "scientific_narrative": "A fair thermal experiment starts with a question that can be answered by a measured quantity. To compare insulation, for example, decide whether the quantity is energy loss at a fixed temperature difference, or the time taken by a matched sample to cool through a stated interval. The two are related but not identical. Equal initial temperatures do not imply equal initial internal energy or equal thermal capacity. Equal containers may have different lids, contact paths or exposed areas. Control variables must be chosen because of their physical relevance, not merely because a laboratory checklist mentions them.\n\nConsider two warm water containers. Their cooling rates may depend on water mass, vessel heat capacity, exposed surface, wall thickness, airflow, evaporation, radiation and ambient temperature. If the sample masses differ, comparing temperature slopes does not directly compare energy-loss rates. In the single-phase approximation, effective heat capacity C includes the participating water and vessel; loss power with no input is approximately −CΔT/Δt over a short interval. When heater power is adjusted to maintain a constant temperature, the net accumulation is approximately zero and the input can estimate total loss, but only if other energy paths and instrument power are accounted for.\n\nA stronger experiment uses matching specimens at the same initial temperature, geometry and ambient conditions, changes just the proposed treatment, and repeats the comparison with positions exchanged to test a location effect. Use temperature probes with known calibration and response time; record the times and readings rather than rounding each step. If evaporation is plausible, measure mass loss or use a suitable matched cover. If wall conduction is the target, a metal support may create a separate thermal bypass. A result from a whole container does not isolate a material's thermal conductivity.\n\nGraphs show measurements and the model used to interpret them. Plot temperature against time with units, indicate uncertainty or resolution, and compare slopes over the same temperature range rather than assume cooling is linear over an entire experiment. Independent power data permit a check on a temperature-based estimate. When two uncertainty intervals overlap, a simple interval comparison cannot establish a strict ordering; repeated observations may reduce random error but do not remove common calibration bias. If the prediction fails, look at the control conditions and the model before selecting a cause.\n\nThe advanced reasoning is to reconstruct what each measurement can establish, find a confounded comparison, and design a new observation that discriminates alternatives. For example, swapping two treatments between locations can separate a treatment effect from a location effect when the effects are additive and stable. A full factorial comparison at matched temperature can test the additive assumption itself. None of these authored tasks is claimed as an authenticated NSEJS question; the inspectable Core2 bank contains no exact match.",
+      "prerequisites": [
+        "PH07-03",
+        "PH07-05",
+        "PH07-08"
+      ],
+      "derivation_steps": [
+        {
+          "action": "State the measured outcome and the physical hypothesis.",
+          "why_valid": "A cooling slope and a total heat-loss power answer different questions.",
+          "science_ref_id": "PH07-10-SCI-01"
+        },
+        {
+          "action": "List energy paths and relevant variables; choose a matched control.",
+          "why_valid": "A confounder can produce the same apparent treatment effect.",
+          "science_ref_id": "PH07-10-SCI-01"
+        },
+        {
+          "action": "Use independent measurements to test the proposed model.",
+          "why_valid": "Capacity, power, mass loss and location swaps constrain alternative explanations.",
+          "science_ref_id": "PH07-10-SCI-01"
+        },
+        {
+          "action": "Report observed differences, uncertainty and the limits of causal inference.",
+          "why_valid": "A fit or repeat alone does not establish a universal material property.",
+          "science_ref_id": "PH07-10-SCI-01"
+        }
+      ],
+      "model_limits": [
+        "Use a fixed-phase, approximately constant effective capacity only over the stated comparison interval.",
+        "Match initial state, temperature range, geometry, ambient conditions, probe calibration and relevant transfer paths.",
+        "An additive treatment/location model requires stability and no interaction; a fourth cell can test it.",
+        "Repeatability does not establish accuracy; interval comparisons are conditional on the stated uncertainty model."
+      ],
+      "progressive_examples": [
+        {
+          "id": "PH07-10-B01-EX1",
+          "tier": "FOUNDATION",
+          "problem": "Equal-phase specimens cool at 0.10 and 0.15 K/s, with capacities 300 and 200 J/K. Compare inferred losses.",
+          "reasoning": "Both are 30 W under the stated model.",
+          "independent_check": "Multiply capacity by slope magnitude; temperature rate alone was misleading."
+        },
+        {
+          "id": "PH07-10-B01-EX2",
+          "tier": "CONNECTED",
+          "problem": "A 300 J/K container loses 2 K in 30 s with heater off. Estimate average net loss.",
+          "reasoning": "20 W.",
+          "independent_check": "300×2/30=20 W; use matched temperature interval."
+        },
+        {
+          "id": "PH07-10-B01-EX3",
+          "tier": "ADVANCED",
+          "problem": "At matched T, treatment A and B require 12 and 18 W at location X. A requires 15 W at location Y. Under additive stable effects predict B at Y.",
+          "reasoning": "21 W. Treatment effect +6 W, location effect +3 W.",
+          "independent_check": "Measure B at Y independently to test additivity."
+        }
+      ],
+      "figures": [
+        {
+          "id": "PH07-10-FIG-01",
+          "reasoning_step": "Matched thermal comparison",
+          "scene_description": "A treatment and reference are exchanged between two locations; the four observations test a treatment/location model. Original inline SVG.",
+          "source_or_authorship": "ORIGINAL_B01_SVG_INLINE"
+        }
+      ],
+      "misconception": {
+        "wrong_model": "A faster temperature fall proves poorer insulation, and repeated readings eliminate every error.",
+        "diagnostic": "Could a smaller heat capacity yield faster cooling at the same loss power? Could all probes share one offset?",
+        "repair": "Use matched state, independent energy and control data, and distinguish repeatability from calibration."
+      },
+      "exit_check": {
+        "task": "Two loss estimates are 18±2 W and 21±2 W. Do these bounds alone establish the second is strictly larger?",
+        "answer": "No; intervals 16–20 and 19–23 W overlap.",
+        "reasoning": "Admissible values can reverse the ordering; need improved precision or another test."
+      },
+      "authorship_status": "DRAFT_AUTHOR_EXPOSED"
+    }
+  ],
+  "core1b": [
+    {
+      "id": "PH07-10-B01-MAIN-MODEL-R2",
+      "kind": "MAIN",
+      "subtopic_id": "PH07-10",
+      "qrt_target_id": "PH07-10-B01-D4-MODEL-01",
+      "fresh_task": "At fixed temperature, insulation A/X needs 14 W, B/X 20 W, A/Y 18 W. An unused B/Y trial gives 24 W. Fit additive treatment/location effects, test fourth cell and state what is still not established.",
+      "protected_work": "Discriminate additive treatment/location and interaction models by predicting the unused factorial observation from three matched power readings.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether the unused B/Y trial can distinguish an additive model from some alternatives.",
+        "attempt": "At fixed temperature, insulation A/X needs 14 W, B/X 20 W, A/Y 18 W. An unused B/Y trial gives 24 W. Fit additive treatment/location effects, test fourth cell and state what is still not established.",
+        "reconstruct": "B−A=6 W, Y−X=4 W; B/Y predicted24 W, fits. Only conditional support; not material conductivity or absence of all interactions.",
+        "diagnose": "Find the missing independent cell or a confounded treatment/location contrast; did you interpret a residual as a unique cause?",
+        "repair": "Compute matched differences, predict the unused cell under additivity, compare residual with uncertainty and propose an independent control.",
+        "boundary_test": "If B/Y instead needs 27 W, quantify the discrepancy and explain its significance."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH07-10-B01-INSTANCE-MODEL-R2",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH07-10",
+      "qrt_target_id": "PH07-10-B01-D4-MODEL-01",
+      "fresh_task": "Four matched steady-power trials: A/X=11 W, B/X=17 W, A/Y=15 W, B/Y=19 W. Infer treatment effects at each location, test the additive model and propose a control.",
+      "protected_work": "Discriminate additive treatment/location and interaction models by predicting the unused factorial observation from three matched power readings.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether the effect of B appears identical at the two locations before fitting a model.",
+        "attempt": "Four matched steady-power trials: A/X=11 W, B/X=17 W, A/Y=15 W, B/Y=19 W. Infer treatment effects at each location, test the additive model and propose a control.",
+        "reconstruct": "Effects +6 W at X, +4 W at Y; additive prediction21 W, residual −2 W. Exact additivity fails. Repeat with randomized order and matched ambient flow or measure location-specific leakage.",
+        "diagnose": "Find the missing independent cell or a confounded treatment/location contrast; did you interpret a residual as a unique cause?",
+        "repair": "Compute matched differences, predict the unused cell under additivity, compare residual with uncertainty and propose an independent control.",
+        "boundary_test": "If each power reading has a possible independent ±0.5 W error, can a zero interaction be ruled out by bounds alone?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH07-10-B01-MAIN-REPRESENT-R2",
+      "kind": "MAIN",
+      "subtopic_id": "PH07-10",
+      "qrt_target_id": "PH07-10-B01-D3-REPRESENT-01",
+      "fresh_task": "A and B start at 40 °C. After 30 s A is 37 °C, B 38 °C; after 60 s A is35 °C, B36 °C. Capacities A=200, B=400 J/K. Plot each trace and tabulate average loss power in each interval.",
+      "protected_work": "Translate matched temperature histories and independent capacities into aligned cooling-rate and energy-loss representations.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether the faster temperature decrease necessarily belongs to the larger energy-loss rate.",
+        "attempt": "A and B start at 40 °C. After 30 s A is 37 °C, B 38 °C; after 60 s A is35 °C, B36 °C. Capacities A=200, B=400 J/K. Plot each trace and tabulate average loss power in each interval.",
+        "reconstruct": "A losses20 then13.33 W; B26.67 then26.67 W. A initially has steeper slope but B loses more energy per time.",
+        "diagnose": "Check interval durations, capacity factors and whether your calculated power was net or gross outward transfer.",
+        "repair": "Plot measured temperatures first; compute each interval's signed energy change and account for any independent heater input.",
+        "boundary_test": "If both capacities were 200 J/K, how would first-interval loss ordering change?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH07-10-B01-INSTANCE-REPRESENT-R2",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH07-10",
+      "qrt_target_id": "PH07-10-B01-D3-REPRESENT-01",
+      "fresh_task": "Two vessels have C=150 and300 J/K, start45 °C, and after20 s are41 and42 °C; at40 s they are39 and40 °C. Construct temperature and average loss-power histories; compare total energy lost.",
+      "protected_work": "Translate matched temperature histories and independent capacities into aligned cooling-rate and energy-loss representations.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict which vessel loses more total energy, or record uncertainty before plotting.",
+        "attempt": "Two vessels have C=150 and300 J/K, start45 °C, and after20 s are41 and42 °C; at40 s they are39 and40 °C. Construct temperature and average loss-power histories; compare total energy lost.",
+        "reconstruct": "A first30 W, second15 W, total900 J; B first45 W, second30 W, total1500 J. Plot aligned intervals.",
+        "diagnose": "Check interval durations, capacity factors and whether your calculated power was net or gross outward transfer.",
+        "repair": "Plot measured temperatures first; compute each interval's signed energy change and account for any independent heater input.",
+        "boundary_test": "If B receives a constant 10 W heater, but follows the same trace, what are its actual mean outward losses?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH07-10-B01-MAIN-JUSTIFY-R2",
+      "kind": "MAIN",
+      "subtopic_id": "PH07-10",
+      "qrt_target_id": "PH07-10-B01-D3-JUSTIFY-01",
+      "fresh_task": "An uncovered small vessel cools faster than a covered large vessel. A report attributes the difference solely to wall insulation. Give two alternative mechanisms and a fair experimental design.",
+      "protected_work": "Assess whether an insulation claim follows from an uncontrolled or uncertain comparison; construct countermodels and a discriminating fair test.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Would you accept wall insulation as the sole explanation from this comparison?",
+        "attempt": "An uncovered small vessel cools faster than a covered large vessel. A report attributes the difference solely to wall insulation. Give two alternative mechanisms and a fair experimental design.",
+        "reconstruct": "Different heat capacity and evaporation can produce difference; match mass/vessel geometry, cover, ambient and initial temperature; vary only wall treatment, measure steady power and mass loss where relevant.",
+        "diagnose": "Identify the assumption about matched variables or measurement certainty that the claim requires.",
+        "repair": "Give a compatible alternative or overlapping values; design a control and specify what the resulting observation would establish.",
+        "boundary_test": "If the steady power is equal but probe cooling slopes differ, what should be checked?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH07-10-B01-INSTANCE-JUSTIFY-R2",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH07-10",
+      "qrt_target_id": "PH07-10-B01-D3-JUSTIFY-01",
+      "fresh_task": "A and B loss-power estimates are 16±3 W and 20±3 W from matched steady trials. A student claims B definitely loses more and that a second identical reading proves it. Evaluate and design an improved test.",
+      "protected_work": "Assess whether an insulation claim follows from an uncontrolled or uncertain comparison; construct countermodels and a discriminating fair test.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether the initial uncertainty bounds establish a strict loss ordering.",
+        "attempt": "A and B loss-power estimates are 16±3 W and 20±3 W from matched steady trials. A student claims B definitely loses more and that a second identical reading proves it. Evaluate and design an improved test.",
+        "reconstruct": "Intervals 13–19 and17–23 overlap; strict ordering not established by these bounds. Repetition may reduce random error but not bias; calibrate power and temperature, improve uncertainty and swap locations.",
+        "diagnose": "Identify the assumption about matched variables or measurement certainty that the claim requires.",
+        "repair": "Give a compatible alternative or overlapping values; design a control and specify what the resulting observation would establish.",
+        "boundary_test": "If improved bounds are A=16±1 W and B=20±1 W, is ordering established under the interval model?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    }
+  ],
+  "core2_sources": [],
+  "acceptance": {
+    "b1_b7": {
+      "B1": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B2": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B3": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B4": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B5": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B6": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B7": {
+        "status": "HOLD",
+        "evidence_refs": []
+      }
+    },
+    "gates": {
+      "source_authenticity": "HOLD",
+      "content_correctness": "HOLD",
+      "cognitive_qualification": "HOLD",
+      "teaching_sufficiency": "HOLD",
+      "assessment_validity": "HOLD",
+      "implementation": "NOT_RUN",
+      "release_authority": "HOLD"
+    },
+    "release": "HOLD",
+    "acceptance_note": "Isolated author-exposed candidate. No matched exact Core2 item in inspectable bank; all targets AUTHORED_TRANSFER. Unique version and R2 cycle convention; no canonical C04 selection. Separate stage criteria in B01 author handoff, not implemented runtime. Full JSON is author-exposed; B5 HOLD. Per-target MAIN provisional pending C06 adoption. No academic approval inferred from software validation."
+  }
+}

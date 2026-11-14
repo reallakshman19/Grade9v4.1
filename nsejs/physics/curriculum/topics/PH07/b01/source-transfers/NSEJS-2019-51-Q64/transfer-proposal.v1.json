@@ -1,0 +1,153 @@
+{
+  "schema": "b01-source-locator-transfer-proposal/v1",
+  "status": "AUTHOR_EXPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+  "subtopic_id": "PH07-01",
+  "scope_role": "PREREQUISITE_BRIDGE",
+  "source": {
+    "locator_id": "NSEJS-2019-51-Q64",
+    "year": 2019,
+    "code": 51,
+    "question_number": 64,
+    "printed_page": 13,
+    "paper_url": "https://iapt.org.in/wp-content/uploads/NSEJS_QP-2019.pdf",
+    "final_key_url": "https://iapt.org.in/wp-content/uploads/NSEJS_FINAL_ANSWER_KEY_2019.pdf",
+    "publisher_key": [
+      "D"
+    ],
+    "publisher_disposition": "KEY_OBSERVED",
+    "paper_visual_status": "PAGE_VISUALLY_INSPECTED",
+    "key_visual_status": "FINAL_KEY_VISUALLY_INSPECTED",
+    "source_bytes_sha256": null,
+    "rights_status": "HOLD",
+    "exact_source_revision_status": "HOLD",
+    "academic_admission": "HOLD",
+    "source_band": "NOT_QUALIFIED",
+    "map_binding": null,
+    "bank_binding": null,
+    "subtopic_id": "PH07-01",
+    "reasoning_observation": "Affine calibration: two fixed points determine an offset and scale; the observed mapping gives 60 on the new scale. No independent exam qualification."
+  },
+  "related_source_observations": [
+    {
+      "locator_id": "NSEJS-2023-51-Q47",
+      "year": 2023,
+      "code": 51,
+      "question_number": 47,
+      "printed_page": 8,
+      "paper_url": "https://www.iapt.org.in/images/nse_2023/NSEJS_2023_Set_51.pdf",
+      "final_key_url": "https://iapt.org.in/wp-content/uploads/NSEJS_2023_TENTATIVE_ANSWER_KEY.pdf",
+      "publisher_key": [
+        "B"
+      ],
+      "publisher_disposition": "KEY_OBSERVED",
+      "paper_visual_status": "PAGE_VISUALLY_INSPECTED",
+      "key_visual_status": "FINAL_KEY_VISUALLY_INSPECTED",
+      "source_bytes_sha256": null,
+      "rights_status": "HOLD",
+      "exact_source_revision_status": "HOLD",
+      "academic_admission": "HOLD",
+      "source_band": "NOT_QUALIFIED",
+      "map_binding": {
+        "question_uid": "g9:pcb:physics:nsejs-2023-physics-r1:015",
+        "content_revision_sha256": "6f814c320b9285160e46c89631450011124d29b96739bad6a4863e3320858d05",
+        "proposed_operation": "APPLY",
+        "identity_status": "METADATA_MATCH_ONLY_EXACT_CONTENT_HOLD"
+      },
+      "bank_binding": null,
+      "subtopic_id": "PH07-01",
+      "reasoning_observation": "Absolute temperature equals Celsius reading plus 273.15; 37.3 °C converts numerically to 310.45 K before rounding. A displayed tenth-degree reading does not warrant hundredth-degree measurement precision."
+    }
+  ],
+  "prerequisite_support": [
+    "PH07-10"
+  ],
+  "existing_package_pin": {
+    "path": "nsejs/physics/curriculum/topics/PH07/b01/PH07-01/physics-topic-package.v1.json",
+    "blob": "65bea0d422b7c76bfb64946748ad873f2270262f",
+    "version": "0.3.2-b01.5.ph07-01"
+  },
+  "target": {
+    "id": "PH07-01-B01-NSEJS-2019-51-Q64-D3-MODEL-R1",
+    "band": "D3",
+    "cell": "D3.4",
+    "primary_operation": "MODEL",
+    "task_identity": "PH07-01-B01-NSEJS-2019-51-Q64-D3-MODEL-R1",
+    "source_role": "AUTHORED_TRANSFER",
+    "protected_work": "Fit and independently test a two-point affine thermometer model, then separate absolute temperature, temperature interval and readout precision.",
+    "decisive_route": "Two calibrations at 5 and45 °C read 20 and100. A reserved 25 °C reference reads 62. Test the affine model; if a sample reads 80, give conditional Celsius and Kelvin estimates. Shortest valid route: r=2θ+10; predicted60 not62; exact model fails. Conditional sample θ=35 °C, T=308.15 K, not certified.",
+    "factor_evidence": {
+      "concept_model_selection": {
+        "score": 2,
+        "evidence": "Choose between offset-only and general affine calibration."
+      },
+      "representation_translation": {
+        "score": 1,
+        "evidence": "Translate reference measurements into two independent equations."
+      },
+      "reasoning_chain_length": {
+        "score": 2,
+        "evidence": "Fit slope/intercept; predict unused reading and compare interval conversion."
+      },
+      "algebra_computational_load": {
+        "score": 1,
+        "evidence": "Routine ratios and offsets."
+      },
+      "trap_exception_sensitivity": {
+        "score": 1,
+        "evidence": "A fixed offset cancels in intervals but not absolute temperature."
+      }
+    },
+    "score": 7,
+    "status": "PROPOSED"
+  },
+  "core1a": {
+    "scientific_construction": "An affine scale is r=aθ+b, where θ is Celsius temperature and r is the readout. Two distinct reference temperatures determine a and b if the linear model applies. Subtract readings to remove the offset; use a third independent reference to test the assumption. Kelvin temperature is T=θ+273.15, but ΔT in kelvin equals Δθ in degrees Celsius. A conversion does not create measurement precision. A reading rounded to 0.1 °C has at least the stated rounding limitation; calibration and sensor response can add uncertainty. A systematic offset can leave a measured change correct while making absolute readings wrong.",
+    "worked_anchor": {
+      "task": "A sensor reads 8 and 68 at 10 °C and 40 °C. Find its affine relation and predicted readout at 25 °C.",
+      "reasoning": "Slope 2 units/°C; offset −12; predicted 38. An offset-only model cannot fit the two points."
+    },
+    "model_limits": "Only specified ideal/matched conditions; extension relations are supplied, not independently warranted compulsory syllabus scope."
+  },
+  "core1b": [
+    {
+      "id": "PH07-01-B01-NSEJS-2019-51-Q64-D3-MODEL-R1-MAIN_PLACEHOLDER",
+      "kind": "MAIN_PLACEHOLDER",
+      "task": "A laboratory sensor at 12 and 42 °C reads 24 and 69 units. An unused 32 °C reference reads 54. Fit an affine model, compare an offset-only model and infer temperatures corresponding to readings 39 and 51. Give absolute Kelvin values and the temperature interval.",
+      "protected_work": "Fit and independently test a two-point affine thermometer model, then separate absolute temperature, temperature interval and readout precision.",
+      "stages": {
+        "predict": "Predict whether a constant readout offset changes inferred absolute temperatures and their difference in the same way.",
+        "attempt": "A laboratory sensor at 12 and 42 °C reads 24 and 69 units. An unused 32 °C reference reads 54. Fit an affine model, compare an offset-only model and infer temperatures corresponding to readings 39 and 51. Give absolute Kelvin values and the temperature interval.",
+        "reconstruct": "a=1.5, b=6; third predicts54. Offset-only cannot fit both. θ=22 and30 °C; T=295.15 and303.15 K numerically, difference8 K. Precision is limited by original measurements.",
+        "diagnose": "Identify whether you treated a scale factor as an offset, used 273.15 for a temperature change, or ignored a failed check.",
+        "repair": "Write separate equations, eliminate the offset, check an unused reference, and label any derived endpoints conditional.",
+        "boundary_test": "If all later readings have a common +3-unit offset but the old calibration is used, what happens to estimated temperatures and their difference?"
+      },
+      "boundary_response_criterion": "Each inferred temperature is +2 K too high; difference remains8 K if slope unchanged.",
+      "attempt_policy": "PROPOSED_ONLY_PUBLIC_AUTHOR_EXPOSED",
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH07-01-B01-NSEJS-2019-51-Q64-D3-MODEL-R1-INSTANCE",
+      "kind": "INSTANCE",
+      "task": "A calibrated instrument reads 15 units at 0 °C and 95 units at 40 °C. A reserved 20 °C check reads 58 units exactly. A sample moves from readout 35 to 75. Test the proposed affine model, calculate conditional temperature change and explain whether the absolute endpoints are validated.",
+      "protected_work": "Fit and independently test a two-point affine thermometer model, then separate absolute temperature, temperature interval and readout precision.",
+      "stages": {
+        "predict": "Predict whether the two calibration points alone guarantee the sample temperatures.",
+        "attempt": "A calibrated instrument reads 15 units at 0 °C and 95 units at 40 °C. A reserved 20 °C check reads 58 units exactly. A sample moves from readout 35 to 75. Test the proposed affine model, calculate conditional temperature change and explain whether the absolute endpoints are validated.",
+        "reconstruct": "r=2θ+15; predicted55 not58. Model fails exact third point. Conditional θ=10,30 °C, interval20 K; if discrepancy is nonlinear even interval is not certified. Do not report exact Kelvin endpoints as validated.",
+        "diagnose": "Identify whether you treated a scale factor as an offset, used 273.15 for a temperature change, or ignored a failed check.",
+        "repair": "Write separate equations, eliminate the offset, check an unused reference, and label any derived endpoints conditional.",
+        "boundary_test": "If the check has uncertainty ±4 readout units while both calibration points are exact, does it exclude the predicted reading?"
+      },
+      "boundary_response_criterion": "No. Interval54–62 includes55. It does not prove accuracy elsewhere.",
+      "attempt_policy": "PROPOSED_ONLY_PUBLIC_AUTHOR_EXPOSED",
+      "runtime_verification": "NOT_RUN"
+    }
+  ],
+  "acceptance": {
+    "b1_b7": "HOLD",
+    "canonical_integration": "NOT_SELECTED",
+    "source_admission": "HOLD",
+    "release": "HOLD"
+  }
+}

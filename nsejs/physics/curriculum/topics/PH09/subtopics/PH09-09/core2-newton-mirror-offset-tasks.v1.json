@@ -1,0 +1,104 @@
+{
+  "schema": "g9v41-b02-subtopic-preview/v1",
+  "status": "DRAFT_AUTHOR_EXPOSED",
+  "owner_agent": "AGENT_2",
+  "topic_id": "PH09",
+  "subtopic_id": "PH09-09",
+  "version": "0.1.0",
+  "source_role": "AUTHORED_TRANSFER",
+  "source_question_uid": "g9:PHYSICS:NSEJS-19-OPT-01",
+  "source_revision_sha256": "e52fe52091194f66ff2f47804c2815eee5212ed85240536fcfe7f7a2409a7ba7",
+  "source_return": "nsejs/physics/index.html?topic=optics&q=NSEJS-19-OPT-01#question-NSEJS-19-OPT-01",
+  "core1b": [
+    {
+      "id": "PH09-09-B02-NEWTON-MIRROR-OFFSET-MAIN-R1",
+      "kind": "MAIN",
+      "subtopic_id": "PH09-09",
+      "qrt_target_id": "PH09-09-REPRESENT-D3-NEWTON-MIRROR-OFFSET-R1",
+      "primary_operation": "REPRESENT",
+      "source_role": "AUTHORED_TRANSFER",
+      "difficulty_status": "AUTHOR_NOMINATION__INDEPENDENT_HOLD",
+      "content_revision": "0.1.0",
+      "fresh_task": "A convex spherical mirror has radius magnitude 48 cm. A real object is measured 72 cm from the virtual focus. A report says the virtual image is 8 cm from the pole. Construct a signed position-line with object, pole, image, focus and centre; calculate the correct image offset from focus and decide whether the report confused the two reference points.",
+      "protected_work": "Convert measurements relative to focus and pole into one signed position-line representation and use it to identify inconsistent experimental claims.",
+      "stages": {
+        "predict": "Before solving, predict the outcome or relationship and record uncertainty.",
+        "attempt": "A convex spherical mirror has radius magnitude 48 cm. A real object is measured 72 cm from the virtual focus. A report says the virtual image is 8 cm from the pole. Construct a signed position-line with object, pole, image, focus and centre; calculate the correct image offset from focus and decide whether the report confused the two reference points.",
+        "reconstruct": "F=24, C=+48. y=72 implies u=−48. z=F²/y=576/72=8 cm from focus, so v=+16 cm from pole. Report's 8 cm is focus offset, not pole distance. Order O −48,P 0,I +16,F +24,C +48. Check 1/24=−1/48+1/16.",
+        "diagnose": "Only if your saved response exhibits this error: Using object-to-focus or image-to-focus magnitude as u or v without moving origin. Otherwise record insufficient evidence.",
+        "repair": "Draw all points in one fixed axis, then derive y=d+F,z=F−v before using Newton relation.",
+        "boundary_test": "For a finite real object, can the image lie beyond the convex mirror focus? Use the same position line."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH09-09-B02-NEWTON-MIRROR-OFFSET-INSTANCE-R1",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH09-09",
+      "qrt_target_id": "PH09-09-REPRESENT-D3-NEWTON-MIRROR-OFFSET-R1",
+      "primary_operation": "REPRESENT",
+      "source_role": "AUTHORED_TRANSFER",
+      "difficulty_status": "INSTANCE_UNSCORED",
+      "content_revision": "0.1.0",
+      "fresh_task": "A convex mirror gives a virtual image 6 cm from its focus, and the real object is 54 cm from the same focus. Infer F and R, then plot all positions and verify magnification.",
+      "protected_work": "Convert measurements relative to focus and pole into one signed position-line representation and use it to identify inconsistent experimental claims.",
+      "stages": {
+        "predict": "Before solving, predict the outcome or relationship and record uncertainty.",
+        "attempt": "A convex mirror gives a virtual image 6 cm from its focus, and the real object is 54 cm from the same focus. Infer F and R, then plot all positions and verify magnification.",
+        "reconstruct": "F=√(6×54)=18 cm, R≈36 cm. Object distance d=54−18=36; image v=18−6=12. Positions O −36,P0,I+12,F+18,C+36. m=12/36=1/3. Check signed equation.",
+        "diagnose": "Only if your saved response exhibits this error: Using object-to-focus or image-to-focus magnitude as u or v without moving origin. Otherwise record insufficient evidence.",
+        "repair": "Draw all points in one fixed axis, then derive y=d+F,z=F−v before using Newton relation.",
+        "boundary_test": "For a finite real object, can the image lie beyond the convex mirror focus? Use the same position line."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    }
+  ],
+  "author_main_assessment": {
+    "primary_operation": "REPRESENT",
+    "band_candidate": "D3",
+    "blueprint_cell": "D3.5",
+    "factor_evidence": {
+      "concept_model_selection": {
+        "score": 1,
+        "evidence": "Select convex mirror focal-reference representation."
+      },
+      "representation_translation": {
+        "score": 2,
+        "evidence": "Construct a signed position line from reference-relative measurements."
+      },
+      "reasoning_chain_length": {
+        "score": 2,
+        "evidence": "Infer F,d,z,v, compare report and verify signed law."
+      },
+      "algebra_computational_load": {
+        "score": 1,
+        "evidence": "Routine reciprocal/product calculation required."
+      },
+      "trap_exception_sensitivity": {
+        "score": 1,
+        "evidence": "Focus versus pole origin is decisive."
+      }
+    },
+    "total": 7,
+    "disposition": "AUTHOR_PROPOSED_NOT_INDEPENDENT",
+    "instance_band": "NOT_SCORED"
+  },
+  "acceptance": {
+    "release": "HOLD",
+    "academic": "HOLD",
+    "native_contract": "NOT_VALIDATED",
+    "implementation": "NOT_RUN"
+  }
+}

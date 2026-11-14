@@ -1,0 +1,128 @@
+{
+  "schema": "b01-source-locator-transfer-proposal/v1",
+  "status": "AUTHOR_EXPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+  "subtopic_id": "PH08-12",
+  "scope_role": "EXTENSION",
+  "source": {
+    "locator_id": "NSEJS-2018-JS511-Q16",
+    "year": 2018,
+    "session": "2018-19",
+    "exam_date": null,
+    "paper_code": "JS511",
+    "question_number": 16,
+    "printed_page": 5,
+    "subject": "PHYSICS",
+    "paper_url": "https://mail.iapt.org.in/images/nse2018/QP-NSEJS--JS511.pdf",
+    "visual_copy_url": "https://www.nsejs.com/wp-content/uploads/2024/11/nsejs-2018.pdf",
+    "final_key_url": "https://iapt.org.in/wp-content/uploads/Final-answer-keys-for-NSEJS.pdf",
+    "publisher_key": [],
+    "publisher_disposition": "DELETED_JS511",
+    "paper_visual_status": "PUBLISHER_TEXT_AND_MATCHING_ARCHIVE_PAGE_VISUALLY_INSPECTED",
+    "key_visual_status": "FINAL_KEY_VISUALLY_INSPECTED",
+    "source_bytes_sha256": null,
+    "rights_status": "HOLD",
+    "exact_source_revision_status": "HOLD",
+    "academic_admission": "HOLD",
+    "source_band": "NOT_QUALIFIED",
+    "map_binding": null,
+    "bank_binding": null,
+    "bank_identity_conflict": [],
+    "subtopic_id": "PH08-12",
+    "reasoning_observation": "Official JS511 final key X (deleted). With motion normal to walls and toward one wall, first-order returns at1.0 and1.2 s, two-reflection returns at2.0 and2.4 s; first three1.0,1.2,2.0 absent from choices. Conditional on stated geometry; no scored evidence."
+  },
+  "related_source_observations": [],
+  "prerequisite_support": [
+    "PH08-08",
+    "PH08-10",
+    "PH08-13"
+  ],
+  "existing_package_pin": {
+    "path": "nsejs/physics/curriculum/topics/PH08/b01/PH08-12/physics-topic-package.v1.json",
+    "blob": "c86114ee34a0073770b83b9cea6a780b8806377e",
+    "version": "0.3.2-b01.5.ph08-12"
+  },
+  "target": {
+    "id": "PH08-12-B01-NSEJS-2018-JS511-Q16-D4-MODEL-R1",
+    "band": "D4",
+    "cell": "D4.4",
+    "primary_operation": "MODEL",
+    "task_identity": "PH08-12-B01-NSEJS-2018-JS511-Q16-D4-MODEL-R1",
+    "source_role": "AUTHORED_TRANSFER",
+    "protected_work": "Enumerate competing reflected image paths and solve moving-receiver intersections, then test an independent echo record without assuming path order equals arrival order.",
+    "decisive_route": "L=180 m, s=90 m, u=30 m/s, v=330 m/s. Predict first and second order arrival candidates before contact. Shortest valid route: Right first .5 s, left first .6 s, right second1 s, left second1.2 s, all before contact3 s.",
+    "factor_evidence": {
+      "concept_model_selection": {
+        "score": 2,
+        "evidence": "Select image-path and moving-receiver encounter models"
+      },
+      "representation_translation": {
+        "score": 2,
+        "evidence": "Coordinate unfolded paths and time-dependent receiver position"
+      },
+      "reasoning_chain_length": {
+        "score": 2,
+        "evidence": "Enumerate first and second orders, solve each encounter, compare record and validity"
+      },
+      "algebra_computational_load": {
+        "score": 1,
+        "evidence": "Several coupled time ratios"
+      },
+      "trap_exception_sensitivity": {
+        "score": 2,
+        "evidence": "Distinct return ordering, missed paths and wall contact invalidate naive stationary model"
+      }
+    },
+    "score": 9,
+    "status": "PROPOSED"
+  },
+  "core1a": {
+    "scientific_construction": "For a short pulse emitted at x=s between fixed parallel walls x=0 and x=L, receiver moves x_r=s+ut until contact. Unfold the reflecting interval to virtual sources at −s, 2L−s (first reflections) and s±2L (two reflections). In stationary medium speed v, each image arrival solves |x_r−x_image|=vt; keep only physically valid times before wall contact and correct propagation direction. For positive u<v, right-wall first arrival t=2(L−s)/(v+u); left-wall first arrival t=2s/(v−u). Two-reflection arrivals are 2L/(v±u). More distant images on each side cannot arrive earlier than a closer image on that side, but paths from different sides may interleave. Detection thresholds or pulse overlap can hide paths. The original 2018 JS511 Q16 was deleted: under normal motion its first three times are not offered. This extension is original diagnostic transfer, not scored exam evidence.",
+    "worked_anchor": {
+      "task": "Walls at0 and100 m, emission x=40 m, receiver moves right at20 m/s, v=300 m/s. First-order returns?",
+      "reasoning": "Right120/320=.375 s; left80/280≈.286 s. Nearer left arrives first despite receiver motion."
+    },
+    "model_limits": "Specified ideal or matched conditions only; supplied quantitative relations do not establish compulsory exam scope."
+  },
+  "core1b": [
+    {
+      "id": "PH08-12-B01-NSEJS-2018-JS511-Q16-D4-MODEL-R1-MAIN_PLACEHOLDER",
+      "kind": "MAIN_PLACEHOLDER",
+      "task": "Walls x=0 and240 m, emission x=90 m. Receiver moves right at40 m/s, medium speed320 m/s. List first- and second-order arrival candidates in chronological order, then verify no third-order return precedes the earliest three. An independent record has first arrivals 0.643,0.833,1.333 s (rounded). Test model; receiver stops being in interval at wall contact.",
+      "protected_work": "Enumerate competing reflected image paths and solve moving-receiver intersections, then test an independent echo record without assuming path order equals arrival order.",
+      "stages": {
+        "predict": "Predict whether moving toward the right wall guarantees that its first return precedes the left-wall return.",
+        "attempt": "Walls x=0 and240 m, emission x=90 m. Receiver moves right at40 m/s, medium speed320 m/s. List first- and second-order arrival candidates in chronological order, then verify no third-order return precedes the earliest three. An independent record has first arrivals 0.643,0.833,1.333 s (rounded). Test model; receiver stops being in interval at wall contact.",
+        "reconstruct": "Left first180/280=9/14≈.643 s; right first300/360=5/6≈.833 s; right second480/360=4/3≈1.333 s; left second480/280=12/7≈1.714 s. Third images farther on each side, no earlier. Contact150/40=3.75 s. Record fits.",
+        "diagnose": "Find where you used emission instead of receiver position, omitted one image path, or confused detected peaks with all arrivals.",
+        "repair": "Draw virtual sources on both sides, solve intersections for each, sort by time, and check contact and detection limits.",
+        "boundary_test": "If receiver instead remains fixed, what are first three distinct times?"
+      },
+      "boundary_response_criterion": "180/320=.5625 s;300/320=.9375 s; second-order pair480/320=1.5 s coincident.",
+      "attempt_policy": "PROPOSED_ONLY_PUBLIC_AUTHOR_EXPOSED",
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH08-12-B01-NSEJS-2018-JS511-Q16-D4-MODEL-R1-INSTANCE",
+      "kind": "INSTANCE",
+      "task": "A pulse is emitted at x=150 m between walls x=0 and300 m. Receiver moves left at30 m/s; speed330 m/s. Determine first four reflection-path arrival times (first and second order), their ordering, and test a detector log showing distinct leading times .833,1.000,1.667,2.000 s. Are all before contact?",
+      "protected_work": "Enumerate competing reflected image paths and solve moving-receiver intersections, then test an independent echo record without assuming path order equals arrival order.",
+      "stages": {
+        "predict": "Predict whether the two first-order returns stay coincident when emission is centred but receiver moves.",
+        "attempt": "A pulse is emitted at x=150 m between walls x=0 and300 m. Receiver moves left at30 m/s; speed330 m/s. Determine first four reflection-path arrival times (first and second order), their ordering, and test a detector log showing distinct leading times .833,1.000,1.667,2.000 s. Are all before contact?",
+        "reconstruct": "Left first300/360=5/6; right first300/300=1; left second600/360=5/3; right second600/300=2. Contact5 s; all fit. Higher-order images farther on each side.",
+        "diagnose": "Find where you used emission instead of receiver position, omitted one image path, or confused detected peaks with all arrivals.",
+        "repair": "Draw virtual sources on both sides, solve intersections for each, sort by time, and check contact and detection limits.",
+        "boundary_test": "If first left return is below threshold, what are first three detected times among these four paths?"
+      },
+      "boundary_response_criterion": "1,5/3,2 s; missing peak does not remove physical path.",
+      "attempt_policy": "PROPOSED_ONLY_PUBLIC_AUTHOR_EXPOSED",
+      "runtime_verification": "NOT_RUN"
+    }
+  ],
+  "acceptance": {
+    "b1_b7": "HOLD",
+    "canonical_integration": "NOT_SELECTED",
+    "source_admission": "HOLD",
+    "release": "HOLD"
+  }
+}

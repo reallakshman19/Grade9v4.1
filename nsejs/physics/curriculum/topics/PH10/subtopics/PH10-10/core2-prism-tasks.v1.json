@@ -1,0 +1,105 @@
+{
+  "schema": "g9v41-b02-subtopic-preview/v1",
+  "status": "DRAFT_AUTHOR_EXPOSED",
+  "owner_agent": "AGENT_2",
+  "topic_id": "PH10",
+  "subtopic_id": "PH10-10",
+  "version": "0.1.0",
+  "source_question_uid": "g9:PHYSICS:NSEJS-22-OPT-01",
+  "source_revision_sha256": "1794e79123fbb23a549c68ac957a981970739cb6d070f07b91a4f606280768e3",
+  "source_role": "AUTHORED_TRANSFER",
+  "source_return": "nsejs/physics/index.html?topic=optics&q=NSEJS-22-OPT-01#question-NSEJS-22-OPT-01",
+  "core1b": [
+    {
+      "id": "PH10-10-CORE2-PRISM-MAIN-R1",
+      "kind": "MAIN",
+      "subtopic_id": "PH10-10",
+      "qrt_target_id": "PH10-10-CORE2-PRISM-SYNTHESIZE-R1",
+      "primary_operation": "SYNTHESIZE",
+      "source_role": "AUTHORED_TRANSFER",
+      "difficulty_status": "AUTHOR_NOMINATION__INDEPENDENT_HOLD",
+      "content_revision": "0.1.0",
+      "fresh_task": "A beam enters a transparent wedge normally through a face with tangent heading 35°; it next hits a silvered face whose tangent heading φ is unknown and then a second silvered face of tangent heading 80°. Its final direction must be downward (270°). Determine the possible φ modulo 180° from direction constraints and explain why direction alone does not certify finite-segment interception.",
+      "protected_work": "Construct the two-reflection heading composition and enforce the stated exit direction, not a memorized prism angle.",
+      "stages": {
+        "predict": "State the expected relationship or outcome and your uncertainty before solving.",
+        "attempt": "A beam enters a transparent wedge normally through a face with tangent heading 35°; it next hits a silvered face whose tangent heading φ is unknown and then a second silvered face of tangent heading 80°. Its final direction must be downward (270°). Determine the possible φ modulo 180° from direction constraints and explain why direction alone does not certify finite-segment interception.",
+        "reconstruct": "θ₀=35−90=−55°. First reflection θ₁=2φ+55°. Second θ₂=160−(2φ+55)=105−2φ. Set θ₂≡270 (mod 360), so 2φ≡195 (mod 360), φ≡97.5° (mod 180). Check θ₁=250°, θ₂=−90°≡270°. Actual segment interception and reflecting side must be checked separately.",
+        "diagnose": "Only if your saved answer exhibits this error: Using one normal for both faces, or setting the outgoing heading equal to the prism base angle without tracking both reflections. Otherwise record insufficient evidence.",
+        "repair": "Write one heading transformation per reflecting face; carry the result into the next step and then test direction and aperture.",
+        "boundary_test": "If the second reflecting face is uncoated glass–air, what additional incidence/index test is required?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH10-10-CORE2-PRISM-INSTANCE-R1",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH10-10",
+      "qrt_target_id": "PH10-10-CORE2-PRISM-SYNTHESIZE-R1",
+      "primary_operation": "SYNTHESIZE",
+      "source_role": "AUTHORED_TRANSFER",
+      "difficulty_status": "INSTANCE_UNSCORED",
+      "content_revision": "0.1.0",
+      "fresh_task": "A two-mirror optical guide receives a ray heading 15°. First mirror tangent is 50°, final ray must head 145°. Find the second tangent heading modulo 180° and show whether two reflections alone imply that the ray meets both finite mirrors.",
+      "protected_work": "Construct the two-reflection heading composition and enforce the stated exit direction, not a memorized prism angle.",
+      "stages": {
+        "predict": "State the expected relationship or outcome and your uncertainty before solving.",
+        "attempt": "A two-mirror optical guide receives a ray heading 15°. First mirror tangent is 50°, final ray must head 145°. Find the second tangent heading modulo 180° and show whether two reflections alone imply that the ray meets both finite mirrors.",
+        "reconstruct": "First outgoing heading 2×50−15=85°. Second mirror φ₂ obeys 2φ₂−85≡145 mod 360, giving φ₂=115° mod 180. Direction algebra does not establish actual intersections; positions, lengths, and reflective faces are needed.",
+        "diagnose": "Only if your saved answer exhibits this error: Using one normal for both faces, or setting the outgoing heading equal to the prism base angle without tracking both reflections. Otherwise record insufficient evidence.",
+        "repair": "Write one heading transformation per reflecting face; carry the result into the next step and then test direction and aperture.",
+        "boundary_test": "If the second reflecting face is uncoated glass–air, what additional incidence/index test is required?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    }
+  ],
+  "author_main_assessment": {
+    "primary_operation": "SYNTHESIZE",
+    "band_candidate": "D3",
+    "blueprint_cell": "D3.6",
+    "factor_evidence": {
+      "concept_model_selection": {
+        "score": 1,
+        "evidence": "Choose the governing model: Construct the two-reflection heading composition and enforce the stated exit direction, not a memorized prism angle."
+      },
+      "representation_translation": {
+        "score": 2,
+        "evidence": "Translate the given geometry/measurements to the required representation: A beam enters a transparent wedge normally through a face with tangent heading 35°; it next hits a silvered face whose tangent heading φ is unknown and then a second silvered face of tangent heading 80°. Its final direction must be downward (270°). Determine the possible φ modulo 180° from direction constraints and explain why direction alone does not certify finite-segment interception."
+      },
+      "reasoning_chain_length": {
+        "score": 2,
+        "evidence": "Coordinate dependent reasoning moves: θ₀=35−90=−55°. First reflection θ₁=2φ+55°. Second θ₂=160−(2φ+55)=105−2φ. Set θ₂≡270 (mod 360), so 2φ≡195 (mod 360), φ≡97.5° (mod 180). Check θ₁=250°, θ₂=−90°≡270°. Actual segment interception and reflecting side must be checked separately."
+      },
+      "algebra_computational_load": {
+        "score": 1,
+        "evidence": "Material routine multi-step arithmetic or algebra required in the exact MAIN; no extra score for solution length."
+      },
+      "trap_exception_sensitivity": {
+        "score": 1,
+        "evidence": "Test the applicable boundary: If the second reflecting face is uncoated glass–air, what additional incidence/index test is required?"
+      }
+    },
+    "total": 7,
+    "disposition": "AUTHOR_PROPOSED_NOT_INDEPENDENT",
+    "instance_band": "NOT_SCORED"
+  },
+  "acceptance": {
+    "release": "HOLD",
+    "academic": "HOLD",
+    "native_contract": "NOT_VALIDATED",
+    "implementation": "NOT_RUN"
+  },
+  "note": "Fresh source-related authored transfer. This is not a verified examination or independent cognitive qualification."
+}

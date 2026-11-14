@@ -170,6 +170,17 @@
     }
     append(box,text("h2","Candidate "+(index+1)+" · "+q.source_id));
     const integrity = q.integrity_meta || null;
+    // Verified Core2 cards expose exact identity and content revision so native
+    // PH01 and B02 related-learning links cannot attach to unrelated/stale data.
+    // These attributes are intentionally absent from unverified authored practice.
+    if (integrity && integrity.question_uid === uidOf(q) &&
+        /^[a-f0-9]{64}$/.test(integrity.observed_question_revision_sha256 || "")) {
+      const observed = await revision(q);
+      if (observed === integrity.observed_question_revision_sha256) {
+        box.dataset.questionUid = integrity.question_uid;
+        box.dataset.contentRevision = observed;
+      }
+    }
     const opStr = (q.op || "MODEL");
     const bandStr = (q.band || "D2");
     const scoreStr = q.score ? " (Score " + q.score + ")" : "";
