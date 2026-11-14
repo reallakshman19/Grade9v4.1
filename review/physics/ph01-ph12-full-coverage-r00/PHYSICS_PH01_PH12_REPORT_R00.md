@@ -53,3 +53,11 @@ P1: select none of the B01 16 mixed MAIN proposals until independent cross-insta
 Across every chapter: establish full official 2026 syllabus-to-subtopic fidelity, authentic paper/figure/key custody, independent scientific derivation and QRT five-factor scoring, and separate B1–B7 gates.
 
 **No code, source bank, learner answer, or authored curriculum was changed.** This R00 audit is a source-qualified inventory diff, not cold R01 academic approval. Details: `PHYSICS_PH01_PH12_EVIDENCE_R00.v1.json`, `PHYSICS_PH01_PH12_MATRIX_R00.csv`, `PHYSICS_PH01_PH12_GAPS_R00.v1.json`.
+
+## Additional official-scope version check — separate from the 132-row denominator
+
+The [IAPT 2026 NSEJS homepage](https://iapt.org.in/) states Physics/Chemistry/Biology through CBSE Class X. However, its link labelled **“Syllabus for NSE-2026-27”** currently resolves to [a PDF whose URL explicitly says 2022–2023](https://iapt.org.in/wp-content/uploads/images/syllabus-for-nse-ino-2022-2023.pdf). Thus the detailed PDF is useful as a **historical** comparison, but its identity is not established as the authoritative 2026–27 detailed revision.
+
+That historical Junior Science syllabus (printed pp. 20–21) covers motion, Newton's laws/momentum, gravitation, floatation, work/energy/power, sound, electric current, magnetism, and light. It also lists conventional and non-conventional **sources of energy** under Natural Resources. No dedicated planned subtopic among the 132 titles clearly covers that last heading. This is a **possible outside-inventory gap** requiring syllabus-year and cross-subject ownership determination, not an automatic declaration that an extra Physics module is compulsory.
+
+See `PHYSICS_HISTORICAL_IAPT_SCOPE_CROSSWALK_R00.v1.json`. The full-coverage disposition remains **FAIL**, and no 100%-of-official-syllabus denominator is claimed.
