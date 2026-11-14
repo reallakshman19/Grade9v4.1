@@ -111,6 +111,16 @@
   function cleanObjectUrls(){
     for(const x of objectUrls.splice(0))URL.revokeObjectURL(x);
   }
+  function resetActivePack(){
+    view.book=null;view.practice=null;view.supplemental=[];view.visuals=null;
+    view.visualById.clear();view.revision="";view.taskId="";view.section=0;
+  }
+  function setLoading(busy){
+    lesson.setAttribute("aria-busy",String(busy));
+    $("#show-study").disabled=busy;
+    $("#show-practice").disabled=busy;
+    taskSel.disabled=true;
+  }
   function validBook(data,unit){
     return data&&data.schema==="g9v41-chemistry-textbook-reader/v1"
       &&data.unit_id===unit&&data.academic_status==="DRAFT_ACADEMIC_HOLD"
@@ -180,6 +190,8 @@
     const gen=++loadGeneration;
     ++renderGeneration;
     cleanObjectUrls();
+    resetActivePack();
+    setLoading(true);
     lesson.replaceChildren(tag("p","Loading "+unit+" author-draft Chemistry…"));
     nav.replaceChildren();taskSel.replaceChildren();message("");
     if(!isValidUnit(unit)){fail("INVALID_UNIT_ROUTE");return;}
@@ -229,6 +241,7 @@
         ?"practice":"study";
       view.taskId=taskId;
       unitSel.value=unit;
+      setLoading(false);
       renderNavigation();render(!!opts.push);
       if(opts.initial&&returnRaw&&!safeReturn)message("UNSAFE_SOURCE_RETURN_IGNORED · Only same-site Chemistry HTML routes are permitted.");
     }catch(e){
@@ -237,7 +250,11 @@
     }
   }
   function fail(code){
-    view.book=null;view.practice=null;view.supplemental=[];view.visualById.clear();
+    resetActivePack();
+    setLoading(false);
+    $("#show-study").disabled=true;
+    $("#show-practice").disabled=true;
+    nav.replaceChildren();taskSel.replaceChildren();
     lesson.replaceChildren(tag("h2","This author draft is unavailable."),tag("p",code));
     message("FAIL_CLOSED · No substitute task, answer, or academic qualification was fabricated.");
   }
@@ -303,7 +320,10 @@
     const key=revisionKey("stage-exposure",task);
     const old=storageRead(key);
     if(!old.ok)return false;
-    const levels=old.value?.levels||[];
+    const levels=old.value?.revision===revision?old.value.levels||[]:[];
+    const sequence=["S1","S2","S3"];
+    const index=sequence.indexOf(stageId);
+    if(index<0||(index>0&&!levels.includes(sequence[index-1])))return false;
     return storageWrite(key,{revision,levels:[...new Set([...levels,stageId])],
       status:"POST_COMMIT_AUTHOR_VISUAL_UNREVIEWED",source_role:"AUTHORED_PRACTICE"});
   }
@@ -334,6 +354,27 @@
     text(group,"These 3 unreviewed SVGs are optional REVIEW visuals, not approved pre-attempt hints. "+
       "All S1/S2/S3 exposure is logged separately. The first response was already committed.","small");
     const actions=tag("div",undefined,"task-actions");
+    const controls=new Map();
+    const exposure=storageRead(revisionKey("stage-exposure",task));
+    if(!exposure.ok){
+      text(group,"STAGE_EXPOSURE_STORAGE_HOLD · Visuals are unavailable.","small");
+      return;
+    }
+    const exposed=new Set(exposure.value?.revision===view.revision?
+      exposure.value.levels||[]:[]);
+    const sequence=["S1","S2","S3"];
+    function updateSequence(){
+      for(const [stageId,control] of controls){
+        const index=sequence.indexOf(stageId);
+        const permitted=index===0||exposed.has(sequence[index-1]);
+        control.disabled=!permitted;
+        control.setAttribute("aria-disabled",String(!permitted));
+        control.setAttribute("aria-label",
+          "Inspect "+stageId+(permitted?
+            " (unreviewed, post-commit)":
+            " unavailable until "+sequence[index-1]+" has been viewed"));
+      }
+    }
     for(const asset of row.stages){
       const output=tag("div",undefined,"visual-result");
       const b=button("Inspect "+asset.id+" · "+asset.role+" (unreviewed)",async()=>{
@@ -349,9 +390,10 @@
           const uri=await verifiedSvgUrl(asset);
           if(renderEpoch!==renderGeneration)return;
           if(!storeStageExposure(task,asset.id,view.revision)){
-            message("STAGE_EXPOSURE_NOT_PERSISTED · Visual remains concealed.");
-            b.disabled=false;return;
+            message("STAGE_ORDER_OR_EXPOSURE_HOLD · Visual remains concealed.");
+            b.disabled=false;updateSequence();return;
           }
+          exposed.add(asset.id);
           const figure=tag("figure",undefined,"stage-figure");
           const img=tag("img");img.src=uri;
           img.alt=asset.id+" "+asset.role+": "+asset.candidate_visual_job+
@@ -361,13 +403,16 @@
             asset.id+" · "+asset.role+" · UNREVIEWED · post-commit exposure recorded",
             "small"));
           output.replaceChildren(figure);b.textContent=asset.id+" inspected";
+          updateSequence();
         }catch(error){
           message((error.message||"STAGE_ASSET_HOLD")+" · No unverified image displayed.");
           b.disabled=false;
         }
       });
+      controls.set(asset.id,b);
       actions.append(b,output);
     }
+    updateSequence();
     group.append(actions);
   }
   function renderPractice(task,renderEpoch){
@@ -527,12 +572,15 @@
     view.taskId="";load(unitSel.value,{mode:"study",push:true});
   });
   taskSel.addEventListener("change",()=>{
+    if(!view.book||!view.practice)return;
     view.taskId=taskSel.value;render(true);
   });
   $("#show-study").addEventListener("click",()=>{
+    if(!view.book||!view.practice)return;
     view.mode="study";render(true);
   });
   $("#show-practice").addEventListener("click",()=>{
+    if(!view.book||!view.practice)return;
     view.mode="practice";render(true);
   });
   window.addEventListener("popstate",()=>{
