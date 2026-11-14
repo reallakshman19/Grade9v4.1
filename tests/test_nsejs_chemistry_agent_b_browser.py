@@ -72,23 +72,36 @@ def test_all_unit_navigation_and_tablet_viewports(browser,unit,count,viewport):
     finally:
         ctx.close()
 
+def read_pinned_v2_attempt(page, task_id):
+    """Read only the exact current v2 first attempt; reject ambiguous records."""
+    return page.evaluate("""taskId => {
+      const prefix='g9chem:attempt:v2:'+taskId+':';
+      const keys=[];
+      for(let i=0;i<localStorage.length;i++){
+        const k=localStorage.key(i);
+        if(k && k.startsWith(prefix))keys.push(k);
+      }
+      if(keys.length!==1)throw new Error('Missing or ambiguous v2 attempt');
+      return JSON.parse(localStorage.getItem(keys[0]));
+    }""", task_id)
+
 def test_persisted_original_first_attempt_and_refresh(browser):
     ctx,page=open_page(browser)
     try:
         page.get_by_role("button",name="Core1B independent practice").click()
         page.get_by_role("heading",name="Stage 2 — Independent attempt").wait_for()
-        assert page.get_by_text("Model response (post-commit)").count()==0
+        assert page.get_by_text("Model response · POST-COMMIT").count()==0
         page.locator("#prediction-answer").fill("I predict the closed-system mass remains conserved.")
         page.locator("#original-answer").fill("Magnesium combines with oxygen from the air, and the mass increase reflects oxygen uptake.")
         page.locator("#commit-attempt").click()
-        page.get_by_text("Model response (post-commit)").wait_for()
+        page.get_by_text("Model response · POST-COMMIT").wait_for()
         assert page.locator("#original-answer").get_attribute("readonly") is not None
-        record=page.evaluate("JSON.parse(localStorage.getItem('g9chem:attempt:CORE1B-C08-01-1'))")
+        record=read_pinned_v2_attempt(page, "CORE1B-C08-01-1")
         assert record["source_role"]=="AUTHORED_PRACTICE"
         assert record["attempt"].startswith("Magnesium")
         page.reload()
         page.get_by_role("button",name="Core1B independent practice").click()
-        page.get_by_text("Model response (post-commit)").wait_for()
+        page.get_by_text("Model response · POST-COMMIT").wait_for()
         assert page.locator("#original-answer").input_value()==record["attempt"]
     finally:
         ctx.close()
@@ -97,12 +110,12 @@ def test_first_attempt_hint_exposure_persisted(browser):
     ctx,page=open_page(browser)
     try:
         page.get_by_role("button",name="Core1B independent practice").click()
-        page.get_by_role("button",name="Reveal H1 (support exposure)").click()
+        page.get_by_role("button",name="Reveal H1 (assisted, logged)").click()
         page.locator("#prediction-answer").fill("I will check which substance supplies oxygen.")
         page.locator("#original-answer").fill("The product oxygen comes from outside the open crucible; conservation applies to closed systems.")
         page.locator("#commit-attempt").click()
-        page.get_by_text("Model response (post-commit)").wait_for()
-        row=page.evaluate("JSON.parse(localStorage.getItem('g9chem:attempt:CORE1B-C08-01-1'))")
+        page.get_by_text("Model response · POST-COMMIT").wait_for()
+        row=read_pinned_v2_attempt(page, "CORE1B-C08-01-1")
         assert "H1" in row["help_exposure"]
         assert "INDEPENDENT" not in str(row)
     finally:
@@ -113,7 +126,7 @@ def test_disabled_storage_prevents_answer_reveal(browser):
     try:
         page.get_by_role("button",name="Core1B independent practice").click()
         page.get_by_text("STORAGE_UNAVAILABLE").wait_for()
-        assert page.get_by_text("Model response (post-commit)").count()==0
+        assert page.get_by_text("Model response · POST-COMMIT").count()==0
         assert page.locator("#commit-attempt").count()==0
     finally:
         ctx.close()
@@ -123,14 +136,17 @@ def test_stale_revision_fails_closed_and_preserves_record(browser):
     try:
         page.get_by_role("button",name="Core1B independent practice").click()
         page.get_by_role("heading",name="Stage 1 — Predict").wait_for()
-        page.evaluate("""() => localStorage.setItem('g9chem:attempt:CORE1B-C08-01-1',
-          JSON.stringify({revision:'0000000000000000000000000000000000000000000000000000000000000000',
-          prediction:'Old attempt',attempt:'Old original kept'}))""")
+        page.evaluate("""() => {
+          const stale='0'.repeat(64);
+          localStorage.setItem('g9chem:attempt:v2:CORE1B-C08-01-1:'+stale,
+            JSON.stringify({revision:stale, prediction:'Old prediction preserved',
+              attempt:'Old original kept', source_role:'AUTHORED_PRACTICE'}));
+        }""")
         page.reload()
         page.get_by_role("button",name="Core1B independent practice").click()
         page.get_by_text("STALE_REVISION_HOLD").wait_for()
-        assert page.get_by_text("Model response (post-commit)").count()==0
-        assert page.evaluate("JSON.parse(localStorage.getItem('g9chem:attempt:CORE1B-C08-01-1')).attempt")=="Old original kept"
+        assert page.get_by_text("Model response · POST-COMMIT").count()==0
+        assert page.evaluate("JSON.parse(localStorage.getItem('g9chem:attempt:v2:CORE1B-C08-01-1:'+'0'.repeat(64))).attempt")=="Old original kept"
     finally:
         ctx.close()
 
