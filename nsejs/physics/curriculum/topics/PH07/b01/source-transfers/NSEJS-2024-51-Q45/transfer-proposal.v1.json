@@ -1,0 +1,127 @@
+{
+  "schema": "b01-source-locator-transfer-proposal/v1",
+  "status": "AUTHOR_EXPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+  "subtopic_id": "PH07-02",
+  "scope_role": "PREREQUISITE_BRIDGE",
+  "source": {
+    "locator_id": "NSEJS-2024-51-Q45",
+    "year": 2024,
+    "code": 51,
+    "question_number": 45,
+    "printed_page": 10,
+    "paper_url": "https://www.iapt.org.in/images/nse_2024/NSEJS-2024_Set_51.pdf",
+    "final_key_url": "https://www.iapt.org.in/images/nse_2024/NSEJS_-_2024_Final_Answer_Key.pdf",
+    "publisher_key": [
+      "C"
+    ],
+    "publisher_key_text_status": "OBSERVED_NOT_INDEPENDENTLY_ADMITTED",
+    "paper_visual_status": "PAGE_VISUALLY_INSPECTED",
+    "source_bytes_sha256": null,
+    "rights_status": "HOLD",
+    "exact_source_revision_status": "HOLD",
+    "academic_admission": "HOLD",
+    "source_band": "NOT_QUALIFIED",
+    "map_binding": {
+      "question_uid": "g9:pcb:physics:nsejs-2024-physics-r1:013",
+      "content_revision_sha256": "e1860c91fd4fa48cb8a9a413d7fcf0a1fc77f96ee2f3fc675e77de417fdf9266",
+      "proposed_operation": "MODEL",
+      "identity_status": "METADATA_MATCH_ONLY_EXACT_CONTENT_HOLD"
+    },
+    "bank_binding": null,
+    "notes": "Official paper p.10 inspected visually; final-key table text confirms C. This is a cross-topic electric-heating construction, not proof of thermal syllabus scope.",
+    "reasoning_observation": "At the same voltage, scaling wire length by 2 and diameter by 2 scales resistance by 1/2. Thus ideal power doubles. Matched initial/final water states require equal thermal energy, so heating time halves. No phase conversion is implied by a specified temperature rise."
+  },
+  "prerequisite_support": [
+    "PH07-08",
+    "PH07-11"
+  ],
+  "existing_package_pin": {
+    "path": "nsejs/physics/curriculum/topics/PH07/b01/PH07-02/physics-topic-package.v1.json",
+    "blob": "c0e3fe07c15dd865e19ec9ec339d704e1d3495be",
+    "version": "0.3.2-b01.5.ph07-02"
+  },
+  "target": {
+    "id": "PH07-02-B01-NSEJS-2024-51-Q45-D3-APPLY-R1",
+    "band": "D3",
+    "cell": "D3.3",
+    "primary_operation": "APPLY",
+    "task_identity": "PH07-02-B01-NSEJS-2024-51-Q45-D3-APPLY-R1",
+    "source_role": "AUTHORED_TRANSFER",
+    "protected_work": "Execute a supplied electrical power and thermal-energy model with simultaneous changes in source voltage, conductor geometry and parasitic loss; verify energy delivery at a common endpoint.",
+    "decisive_route": "An ideal model has input 90 W and loss 15 W, target energy 9000 J. A replacement model has resistance 3/4 of original at voltage 2/3 of original. Determine whether target can be reached and compare times. Shortest valid route: P₂/P₁=(2/3)²/(3/4)=16/27; P₂=160/3 W; net=115/3 W; t₂=5400/23 s≈234.78 s; t₁=120 s. Both positive. Check net power times time equals 9000 J.",
+    "factor_evidence": {
+      "concept_model_selection": {
+        "score": 1,
+        "evidence": "Model equations and boundary are explicitly supplied."
+      },
+      "representation_translation": {
+        "score": 1,
+        "evidence": "Translate diameter and length ratios into resistance and useful power."
+      },
+      "reasoning_chain_length": {
+        "score": 2,
+        "evidence": "First calculate input power; subtract stated loss; then use fixed endpoint energy and check."
+      },
+      "algebra_computational_load": {
+        "score": 2,
+        "evidence": "Several independent ratios and unit-consistent power/time arithmetic."
+      },
+      "trap_exception_sensitivity": {
+        "score": 1,
+        "evidence": "Fixed voltage and fixed current reverse scaling; loss cannot be ignored."
+      }
+    },
+    "score": 7,
+    "status": "PROPOSED"
+  },
+  "core1a": {
+    "scientific_construction": "The input to a thermal system is energy per time. If an ideal resistor has resistance R=ρL/A, at fixed potential difference V its electrical input is V²/R. For a circular uniform wire A=πD²/4, so comparing otherwise identical material wires gives R₂/R₁=(L₂/L₁)/(D₂/D₁)². At fixed current instead, P=I²R. The circuit constraint changes the scaling. In an unchanged-phase system with a prescribed energy requirement E and a constant outward loss P_loss, the useful rate is P_in−P_loss. For positive useful power, t=E/(P_in−P_loss). These equations are supplied here as cross-topic model relations; this is not a practical heater-construction or mains-wiring exercise. A constant loss is an idealization, not a general heating law. A common endpoint requires matched mass, initial temperature and final state. At nonpositive net power the stipulated endpoint cannot be reached by positive accumulation.",
+    "worked_anchor": {
+      "task": "A hypothetical thermal simulator requires 18 kJ to reach its target. Its ideal input is 120 W and loss 20 W. A second simulated resistor has twice the length and twice the area of the first, supplied at the same voltage. Compare useful power and time.",
+      "reasoning": "Resistance unchanged because L/A unchanged; both have 120 W input, 100 W useful, and 180 s heating time. Confirm by 100×180=18000 J."
+    },
+    "model_limits": "Hypothetical model only; matched energy endpoints, positive net power, constant stated parameters and no unaccounted phase conversion."
+  },
+  "core1b": [
+    {
+      "id": "PH07-02-B01-NSEJS-2024-51-Q45-D3-APPLY-R1-MAIN_PLACEHOLDER",
+      "kind": "MAIN_PLACEHOLDER",
+      "task": "A hypothetical heater model has input 180 W at fixed voltage, and the thermal system loses 30 W. Target internal-energy rise is 36000 J. A second model uses the same material, length 3/2 of the first and diameter twice the first, but the voltage is reduced to 3/4 of its original value. With the same constant loss, find resistance ratio, input and useful powers, and time ratio; verify the energy budget.",
+      "protected_work": "Execute a supplied electrical power and thermal-energy model with simultaneous changes in source voltage, conductor geometry and parasitic loss; verify energy delivery at a common endpoint.",
+      "stages": {
+        "predict": "Predict whether the reduced voltage necessarily makes the second heating process slower.",
+        "attempt": "A hypothetical heater model has input 180 W at fixed voltage, and the thermal system loses 30 W. Target internal-energy rise is 36000 J. A second model uses the same material, length 3/2 of the first and diameter twice the first, but the voltage is reduced to 3/4 of its original value. With the same constant loss, find resistance ratio, input and useful powers, and time ratio; verify the energy budget.",
+        "reconstruct": "R₂/R₁=(3/2)/4=3/8. P₂/P₁=(3/4)²/(3/8)=3/2; P₂=270 W, useful240 W. Original useful150 W, times240 s and150 s, ratio5/8. Both budgets give36000 J.",
+        "diagnose": "Identify whether you scaled diameter as area, used a fixed-current formula for fixed voltage, or omitted loss from the energy budget.",
+        "repair": "Write separate geometry, electrical input and thermal net-power ratios. Recompute the endpoint energy check.",
+        "boundary_test": "If instead input power were controlled to remain 180 W, would the geometry change alone alter heating time in this model?"
+      },
+      "boundary_response_criterion": "No. Same input and loss imply same 150 W useful power and 240 s.",
+      "attempt_policy": "PROPOSED_ONLY_PUBLIC_AUTHOR_EXPOSED",
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH07-02-B01-NSEJS-2024-51-Q45-D3-APPLY-R1-INSTANCE",
+      "kind": "INSTANCE",
+      "task": "A virtual heating unit requires 24000 J, draws 160 W and loses 40 W. Its ideal conductor model is changed to twice the length and 3/2 the diameter at the same applied voltage. Compute the new resistance ratio, useful rate and time, compare with the original time, and check the energy budget.",
+      "protected_work": "Execute a supplied electrical power and thermal-energy model with simultaneous changes in source voltage, conductor geometry and parasitic loss; verify energy delivery at a common endpoint.",
+      "stages": {
+        "predict": "Predict whether a longer conductor with a larger diameter necessarily increases its resistance.",
+        "attempt": "A virtual heating unit requires 24000 J, draws 160 W and loses 40 W. Its ideal conductor model is changed to twice the length and 3/2 the diameter at the same applied voltage. Compute the new resistance ratio, useful rate and time, compare with the original time, and check the energy budget.",
+        "reconstruct": "R₂/R₁=2/(9/4)=8/9. P₂=180 W; useful140 W; new time1200/7 s≈171.43 s. Original 200 s; ratio6/7. Net powers times times both24000 J.",
+        "diagnose": "Identify whether you scaled diameter as area, used a fixed-current formula for fixed voltage, or omitted loss from the energy budget.",
+        "repair": "Write separate geometry, electrical input and thermal net-power ratios. Recompute the endpoint energy check.",
+        "boundary_test": "If the model instead holds the original current fixed, what is new input power and heating time?"
+      },
+      "boundary_response_criterion": "Input=160×8/9=1280/9 W; net920/9 W; t=5400/23 s≈234.78 s, slower than original.",
+      "attempt_policy": "PROPOSED_ONLY_PUBLIC_AUTHOR_EXPOSED",
+      "runtime_verification": "NOT_RUN"
+    }
+  ],
+  "acceptance": {
+    "b1_b7": "HOLD",
+    "canonical_integration": "NOT_SELECTED",
+    "source_admission": "HOLD",
+    "release": "HOLD"
+  }
+}
