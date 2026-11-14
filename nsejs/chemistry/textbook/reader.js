@@ -376,6 +376,22 @@
     }
     const saved=savedResult.value;
     const legacy=storageRead("g9chem:attempt:"+id);
+    let previousV2=false;
+    try{
+      const prefix="g9chem:attempt:v2:"+id+":";
+      for(let i=0;i<localStorage.length;i++){
+        const key=localStorage.key(i);
+        if(key&&key.startsWith(prefix)&&key!==attemptKey)previousV2=true;
+      }
+    }catch(e){
+      // Current persistent storage status has already been checked above.
+    }
+    if(previousV2&&!saved){
+      block("STALE_REVISION_HOLD — earlier first response retained",
+        "This lesson or an associated hint, task or SVG source changed. Its prior "+
+        "response remains stored with its old digest and is not silently treated "+
+        "as an attempt on the new revision. You may commit a new independent answer.");
+    }
     if(legacy.ok&&legacy.value&&!saved){
       block("Earlier attempt preserved","A legacy attempt for this task exists under an earlier "+
         "partial-revision key. It has NOT been imported or reinterpreted; a new independent "+
