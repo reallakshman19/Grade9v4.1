@@ -187,7 +187,7 @@
     const meta = text("div", "Cognitive Demand: " + opStr + " · Band: " + bandStr + scoreStr + (q.crux_move_ref ? " · Crux: " + q.crux_move_ref : ""), "meta");
     append(box, meta);
 
-    const statusBadge = text("span", "{Reviewed} · B1–B7 peer review verified · Rule 13 HOLD", "status");
+    const statusBadge = text("span", "Candidate · Source/QRT academic acceptance pending · HOLD", "status");
     append(box, statusBadge);
 
     if (integrity && integrity.official_paper_year) {
