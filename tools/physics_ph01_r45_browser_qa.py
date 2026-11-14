@@ -139,7 +139,8 @@ def main():
                 for u in routes["units"]:
                     m=u["subtopic_id"][-3:]
                     pg.goto(origin+"/"+u["core1a"])
-                    pg.get_by_role("link",name=f"Open {m} R4.5 · D3/D4 practice").click();ready(pg)
+                    pg.locator("details.g9-review-versions summary").click()
+                    pg.locator("details.g9-review-versions").get_by_role("link",name=f"Open {m} R4.5 · D3/D4 practice").click();ready(pg)
                     assert set(pg.locator("#cycleSelect option").evaluate_all("(xs)=>xs.map(x=>x.value)"))==set(u["instance_ids"])
                     for c in [c for c in pack["core1b"] if c["id"] in u["instance_ids"] and c["id"].endswith("R45-INSTANCE")]:
                         journey(pg,origin+"/"+u["core1b"],c["id"],5,w)

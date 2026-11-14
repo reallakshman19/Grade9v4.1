@@ -52,7 +52,10 @@ def main():
                         assert page.locator(".example").count()==3
                         assert page.evaluate("document.documentElement.scrollWidth <= innerWidth+1")
                         page.screenshot(path=str(OUT/f"{sub}-core1a-{w}x{h}.png"),full_page=True)
-                        page.get_by_role("link",name=f"Open {sub} Core1B").click()
+                        # Historical R3.1 exercises remain verifiable behind a reviewer drawer;
+                        # student-facing navigation promotes R4.7 instead.
+                        page.locator("details.g9-review-versions summary").click()
+                        page.locator("details.g9-review-versions").get_by_role("link",name=f"Open {sub} Core1B").click()
                         page.wait_for_url("**"+b)
                         ready(page)
                         ids=page.locator("#cycleSelect option").evaluate_all("(xs)=>xs.map(x=>x.value)")

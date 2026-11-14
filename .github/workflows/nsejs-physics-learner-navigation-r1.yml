@@ -1,0 +1,36 @@
+name: NSEJS Physics Learner Navigation R1
+on:
+  pull_request:
+    paths:
+      - "nsejs/physics/**"
+      - "nsejs/js/core2-physics-reader.js"
+      - "tests/test_nsejs_physics_navigation_r1.py"
+      - "tools/physics_navigation_browser_qa.py"
+      - ".github/workflows/nsejs-physics-learner-navigation-r1.yml"
+  workflow_dispatch:
+jobs:
+  navigation:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Verify navigation and learner assets syntax
+        run: |
+          node --check nsejs/physics/learn/chapter.js
+          node --check nsejs/physics/learn/learner-nav.js
+          node --check nsejs/physics/learn/learner-home.js
+          node --check nsejs/js/core2-physics-reader.js
+      - name: Install exact browser test requirements
+        run: |
+          python -m pip install "pytest>=8,<10" "playwright==1.55.0"
+          python -m playwright install --with-deps chromium
+      - name: Verify exact published lesson routes and non-destructive controls
+        run: python -m pytest -q tests/test_nsejs_physics_navigation_r1.py
+      - name: Run portrait and landscape learner routes over HTTP Chromium
+        run: python tools/physics_navigation_browser_qa.py
+      - name: Academic boundary
+        if: always()
+        run: echo "Navigation QA is technical only. Author candidate source, QRT and science HOLD unchanged."
