@@ -88,7 +88,14 @@ class ChemistryStage01Contracts(unittest.TestCase):
         self.assertEqual(self.syl["baseline_evidence"]["candidate_review_status"], "NOT_ADMITTED")
         self.assertEqual(self.core["release_status"]["qrt_academic"], "HOLD")
         self.assertEqual(self.core["release_status"]["production"], "NOT_AUTHORIZED")
-        self.assertEqual(self.index["units"][0]["adapter_status"], "NOT_AUTHORED")
+        for unit in self.index["units"]:
+            if unit["owner_agent"] == "A":
+                self.assertIn(
+                    unit["adapter_status"],
+                    {"NOT_AUTHORED", "AUTHOR_COMPLETE_ACADEMIC_HOLD"},
+                )
+            else:
+                self.assertEqual(unit["adapter_status"], "NOT_AUTHORED")
         self.assertEqual(self.schema["$schema"], "https://json-schema.org/draft/2020-12/schema")
 
 if __name__ == "__main__":

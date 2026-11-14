@@ -1,0 +1,38 @@
+name: Architecture Audit Documentation Browser QA
+on:
+  pull_request:
+    paths:
+      - "architecture/review-guide.html"
+      - "architecture/core2-source-to-learning-pipeline.html"
+      - "architecture/pipeline-flowchart.html"
+      - "architecture/core1ab-agent-guide.html"
+      - "architecture/index.html"
+      - "index.html"
+      - "nsejs/index.html"
+      - "tools/architecture_docs_browser_qa.py"
+      - ".github/workflows/architecture-docs-browser-qa.yml"
+  workflow_dispatch:
+
+jobs:
+  architecture-chromium:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install Chromium and Playwright
+        run: |
+          python -m pip install playwright==1.55.0
+          python -m playwright install --with-deps chromium
+      - name: Test both audit pages and legacy pipeline redirect under HTTP
+        run: python tools/architecture_docs_browser_qa.py
+      - name: Upload exact-render evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: architecture-auditor-r3-chromium
+          path: review-artifacts/architecture-docs/
+          if-no-files-found: warn

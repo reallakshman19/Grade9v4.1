@@ -1,0 +1,555 @@
+{
+  "schema": "g9v41-nsejs-physics-topic-package/v1",
+  "subject_id": "PHYSICS",
+  "academic_track": "NSEJS",
+  "topic_id": "PH01",
+  "owner_agent": "AGENT_1",
+  "version": "0.1.0",
+  "status": "DRAFT_AUTHOR_EXPOSED",
+  "pins": {
+    "contracts_version": "1.0.0",
+    "blueprint": {
+      "version": "0.2.0",
+      "git_blob_sha": "700dafcbe86d76442637bcf214eeb544497cf4ea"
+    },
+    "shared_qrt_28": {
+      "version": "1.0.0",
+      "git_blob_sha": "e2409aef11ae7d98444593bfbe1a38eb00c97cef"
+    },
+    "topic_adapter_version": "0.1.0"
+  },
+  "syllabus_references": [
+    {
+      "reference_id": "IAPT-NSEJS-2026-SCOPE",
+      "locator": "https://iapt.org.in/",
+      "authority": "OFFICIAL_SYLLABUS",
+      "scope_status": "CANDIDATE"
+    },
+    {
+      "reference_id": "CBSE-IX-MOTION-REF",
+      "locator": "https://cbseacademic.nic.in/web_material/term/9science.pdf",
+      "authority": "NCERT_CBSE",
+      "scope_status": "CANDIDATE"
+    },
+    {
+      "reference_id": "CBSE-2026-27",
+      "locator": "https://cbseacademic.nic.in/curriculum_2027.html",
+      "authority": "NCERT_CBSE",
+      "scope_status": "CANDIDATE"
+    }
+  ],
+  "subtopics": [
+    {
+      "id": "PH01-M07",
+      "title": "Relative motion, signed graphs and piecewise meetings — advanced construction pilot",
+      "scope_role": "SYLLABUS_CORE_CANDIDATE",
+      "syllabus_reference_ids": [
+        "IAPT-NSEJS-2026-SCOPE",
+        "CBSE-IX-MOTION-REF",
+        "CBSE-2026-27"
+      ],
+      "prerequisite_ids": [
+        "PH01-M01",
+        "PH01-M02",
+        "PH01-M03",
+        "PH01-M05"
+      ],
+      "science_ref_ids": [
+        "PH01-SCI-DISPLACEMENT",
+        "PH01-SCI-RELATIVE",
+        "PH01-SCI-GRAPH",
+        "PH01-SCI-PIECEWISE"
+      ],
+      "learning_goal": "Translate positions, observers and stagewise movement into valid signed models, and reject physically invalid encounter times.",
+      "textbook_chapter_ref": "nsejs/physics/textbook/PH01/index.html",
+      "qrt_targets": [
+        {
+          "id": "PH01-KIN-QRT-MODEL-D3",
+          "task_identity": "AUTHORED-PH01-REF-FRAMES-R1",
+          "band": "D3",
+          "primary_operation": "MODEL",
+          "blueprint_cell": "D3.4",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Identify the frame and compose velocities correctly when a walker moves on a moving walkway; defend the chosen model.",
+          "decisive_route": "Declare east-positive ground frame; add the walker's velocity relative to the walkway to walkway velocity relative to the ground; compute closing rate and check direction.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "Select a moving-frame velocity-composition model over a single stationary-frame velocity statement."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "Translate two relative-velocity statements into a signed ground-frame description."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "The model choice must precede a closing-rate calculation, then an encounter check."
+            },
+            "algebra_computational_load": {
+              "score": 0,
+              "evidence": "One subtraction after velocity composition; simple arithmetic is not what carries the proposed demand."
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "Opposite directions and relative-velocity sign require a genuine condition check."
+            }
+          }
+        },
+        {
+          "id": "PH01-KIN-QRT-REPRESENT-D3",
+          "task_identity": "AUTHORED-PH01-PIECEWISE-GRAPH-R1",
+          "band": "D3",
+          "primary_operation": "REPRESENT",
+          "blueprint_cell": "D3.5",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Construct signed velocity-time representation from position-time data and distinguish the invariant displacement from distance.",
+          "decisive_route": "Calculate signed slopes of consecutive position-time intervals, plot corresponding velocity steps, integrate signed areas and verify original endpoints.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 1,
+              "evidence": "Choose correct piecewise slope interpretation instead of treating position as speed."
+            },
+            "representation_translation": {
+              "score": 2,
+              "evidence": "Transform a measured position table to velocity segments with sign, scale and interval boundaries preserved."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Translate the intervals, then recover signed area and back-compare final minus initial position."
+            },
+            "algebra_computational_load": {
+              "score": 0,
+              "evidence": "Arithmetic is routine and does not carry this representation challenge."
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "A zero-slope plateau and reversed direction require independent interpretation."
+            }
+          }
+        },
+        {
+          "id": "PH01-KIN-QRT-SYNTH-D3",
+          "task_identity": "AUTHORED-PH01-MULTISTAGE-MEET-R1",
+          "band": "D3",
+          "primary_operation": "SYNTHESIZE",
+          "blueprint_cell": "D3.6",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Recognize that the first-stage meeting time is outside its interval and construct a valid post-reversal or post-delay encounter model.",
+          "decisive_route": "Set up the first-stage equations, reject the mathematically valid out-of-domain root, write a second interval model, solve and substitute both positions.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "Select and switch the correct piecewise model after a physical reversal or delayed start."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "Translate a motion timeline into separate position expressions with valid domains."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Test the candidate time, repair the model and verify the meeting under its own interval."
+            },
+            "algebra_computational_load": {
+              "score": 1,
+              "evidence": "At least two linear meeting equations with interval-dependent constants."
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "An algebraically correct first-stage root can be physically invalid and must be rejected."
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "science_records": [
+    {
+      "id": "PH01-SCI-DISPLACEMENT",
+      "claim": "For a one-dimensional motion, displacement is final position minus initial position and distance is total path length.",
+      "law_or_model": "signed one-dimensional position and cumulative distance",
+      "assumptions": [
+        "One fixed coordinate axis is declared",
+        "A common reference frame for all positions"
+      ],
+      "conditions_and_limits": [
+        "The absolute value of net displacement never exceeds path length.",
+        "A coordinate reversal changes displacement sign but does not alter path distance."
+      ],
+      "units_and_signs": "x and Δx in m, east positive unless specified; distance is nonnegative.",
+      "source_refs": [
+        "CBSE-IX-MOTION-REF"
+      ],
+      "qualification_status": "HOLD"
+    },
+    {
+      "id": "PH01-SCI-RELATIVE",
+      "claim": "For two bodies' velocities measured in the same non-rotating reference frame, relative velocity along one axis is the signed difference.",
+      "law_or_model": "v(B/A) = vB − vA; Galilean composition in classical one-dimensional kinematics",
+      "assumptions": [
+        "The compared velocities are signed on the same axis",
+        "Speeds sufficiently slow that elementary Galilean composition applies",
+        "The frame is suitably inertial for subsequent Newtonian force reasoning"
+      ],
+      "conditions_and_limits": [
+        "Relative velocities stated in different intermediate frames must be composed in order.",
+        "Do not add unsigned speeds automatically or infer meeting time without initial separation."
+      ],
+      "units_and_signs": "Signed velocities in m/s, signed east positive.",
+      "source_refs": [
+        "CBSE-IX-MOTION-REF"
+      ],
+      "qualification_status": "HOLD"
+    },
+    {
+      "id": "PH01-SCI-GRAPH",
+      "claim": "On a velocity-time graph, the signed area over a time interval is displacement, whereas total distance sums the magnitudes of segment contributions.",
+      "law_or_model": "piecewise v–t area and x–t slope",
+      "assumptions": [
+        "The graphed quantities use a fixed coordinate system",
+        "Time interval is partitioned at genuine changes of velocity law"
+      ],
+      "conditions_and_limits": [
+        "Signed area is not automatically positive distance.",
+        "Vertical velocity jumps are idealizations; actual finite force implies finite-time change."
+      ],
+      "units_and_signs": "Velocity m/s; time s; signed area m; positive and negative velocities are directions.",
+      "source_refs": [
+        "CBSE-IX-MOTION-REF"
+      ],
+      "qualification_status": "HOLD"
+    },
+    {
+      "id": "PH01-SCI-PIECEWISE",
+      "claim": "Each position formula applies only over the interval whose motion conditions define it.",
+      "law_or_model": "piecewise constant-velocity motion and interval-filtered intersections",
+      "assumptions": [
+        "Correct start times and initial positions are known",
+        "Each interval's velocity law is valid only within declared bounds"
+      ],
+      "conditions_and_limits": [
+        "A solution outside its interval is inadmissible even if the algebra is correct.",
+        "After a stop, reversal or delayed departure, use a new position expression with continuity at the boundary."
+      ],
+      "units_and_signs": "Global clock t in s; positions m; each segment retains signed velocity m/s.",
+      "source_refs": [
+        "CBSE-IX-MOTION-REF"
+      ],
+      "qualification_status": "HOLD"
+    }
+  ],
+  "topic_adapter": {
+    "adapter_id": "PHYS-TOPIC-PH01",
+    "topic_id": "PH01",
+    "version": "0.1.0",
+    "for_blueprint": "PHYS-QRT-BLUEPRINT 0.2.0",
+    "status": "CANDIDATE_ONLY",
+    "cells": [
+      {
+        "cell_id": "D3.4",
+        "instance_ids": [
+          "PH01-KIN-QRT-MODEL-D3"
+        ]
+      },
+      {
+        "cell_id": "D3.5",
+        "instance_ids": [
+          "PH01-KIN-QRT-REPRESENT-D3"
+        ]
+      },
+      {
+        "cell_id": "D3.6",
+        "instance_ids": [
+          "PH01-KIN-QRT-SYNTH-D3"
+        ]
+      }
+    ]
+  },
+  "core1a": [
+    {
+      "id": "PH01-M07-CORE1A-READING-R1",
+      "subtopic_id": "PH01-M07",
+      "covered_qrt_ids": [
+        "PH01-KIN-QRT-MODEL-D3",
+        "PH01-KIN-QRT-REPRESENT-D3",
+        "PH01-KIN-QRT-SYNTH-D3"
+      ],
+      "phenomenon": "Two moving observers can assign different velocities to the same object, while a mathematical encounter time may fail because the motion model changes.",
+      "scientific_narrative": "A position has meaning only relative to a frame and an axis. A journey also has a temporal structure: the physical model for a moving segment cannot be applied after a stop or reversal. Work progressively from signed positions to velocity and acceleration, convert graphs into physical displacement using signed areas, then check the domain of each equation when constructing multi-stage meetings. The reading-first textbook presents each component with a figure, derivation, model limitation and worked check; the advanced inference is rejecting an algebraically valid but physically inadmissible interval and rebuilding the correct motion model.",
+      "prerequisites": [
+        "PH01-M01 position and signed axis",
+        "PH01-M02 displacement",
+        "PH01-M03 signed velocity",
+        "PH01-M05 motion graphs"
+      ],
+      "derivation_steps": [
+        {
+          "action": "Declare observer, object, axis and global time before assigning signs.",
+          "why_valid": "Relative position and velocity are only well-defined after fixing the measurement frame and coordinate direction.",
+          "science_ref_id": "PH01-SCI-RELATIVE"
+        },
+        {
+          "action": "Translate each position segment into a signed velocity (slope) and verify by graph area.",
+          "why_valid": "Velocity is the rate of position change; integrating a constant signed velocity across a segment gives that segment's displacement.",
+          "science_ref_id": "PH01-SCI-GRAPH"
+        },
+        {
+          "action": "Derive the encounter time within the first valid interval and test it against the interval bounds.",
+          "why_valid": "An equation inherits the domain of the motion conditions from which it was constructed; an out-of-domain root is inadmissible.",
+          "science_ref_id": "PH01-SCI-PIECEWISE"
+        },
+        {
+          "action": "Construct the second interval's position law continuously from its boundary and re-solve the encounter.",
+          "why_valid": "The object's position does not jump merely because it changes speed or direction at the transition.",
+          "science_ref_id": "PH01-SCI-PIECEWISE"
+        }
+      ],
+      "model_limits": [
+        "Elementary constant-velocity segment equations are not correct over an interval of continuously changing velocity.",
+        "A graph's signed area gives displacement, not necessarily total distance.",
+        "Relative velocity subtraction requires consistent frames and sign conventions.",
+        "A valid equation root still requires the event to fall within that equation's physical interval."
+      ],
+      "progressive_examples": [
+        {
+          "id": "PH01-M07-EX-FOUND",
+          "tier": "FOUNDATION",
+          "problem": "A traveller walks 80 m east, then 30 m west in 20 s. Find displacement and distance.",
+          "reasoning": "With east positive, displacement is +80−30=+50 m; distance is 80+30=110 m. Average velocity is +2.5 m/s and average speed 5.5 m/s.",
+          "independent_check": "Distance ≥ magnitude of displacement; units and signed direction are consistent."
+        },
+        {
+          "id": "PH01-M07-EX-CONNECT",
+          "tier": "CONNECTED",
+          "problem": "For 4 s a car has v=+3 m/s, then for 3 s v=−1 m/s. Determine graph area and total path length.",
+          "reasoning": "Signed area gives +12−3=+9 m displacement; total distance is 12+3=15 m.",
+          "independent_check": "Signed displacement is smaller in magnitude than distance and matches the change in endpoint position."
+        },
+        {
+          "id": "PH01-M07-EX-ADV",
+          "tier": "ADVANCED",
+          "problem": "A moves east from x=0 at 4 m/s for 4 s then stops; B starts x=40 m and moves west at 3 m/s. When do they meet?",
+          "reasoning": "For 0≤t≤4, 4t=40−3t yields t=40/7≈5.71 s, outside its validity. After 4 s A is at x=16, so 16=40−3t gives t=8 s and position x=16 m.",
+          "independent_check": "Both actual position models give x=16 at t=8; the first-stage root is rejected as out-of-domain."
+        }
+      ],
+      "figures": [
+        {
+          "id": "PH01-M07-FIG-PATH",
+          "reasoning_step": "Distinguish path distance and signed displacement",
+          "scene_description": "Walk from x0 to x80 and back to x50 on east-positive axis, as drawn in textbook PH01 section 1.",
+          "source_or_authorship": "AUTHOR_CREATED_INLINE_SVG"
+        },
+        {
+          "id": "PH01-M07-FIG-VT",
+          "reasoning_step": "Interpret signed area below velocity-time axis",
+          "scene_description": "Velocity +3 m/s for 4 s then −1 m/s for 3 s, with signed area colored by sign, as drawn in section 5.",
+          "source_or_authorship": "AUTHOR_CREATED_INLINE_SVG"
+        }
+      ],
+      "misconception": {
+        "wrong_model": "Treat an algebraic meeting time as valid even when its first-stage motion assumption has ended.",
+        "diagnostic": "If equation xA=4t is valid only for t≤4 s, is the solution t=5.71 s a real first-stage meeting?",
+        "repair": "Reject the out-of-domain candidate, construct xA=16 for t≥4, then recompute and verify both positions."
+      },
+      "exit_check": {
+        "task": "An object moves +3 m/s for 2 s then −1 m/s for 4 s. Compare displacement and distance and explain signs.",
+        "answer": "Displacement +6−4=+2 m; distance 6+4=10 m.",
+        "reasoning": "Velocity-time signed areas add for displacement; absolute lengths add for distance."
+      },
+      "authorship_status": "DRAFT_AUTHOR_EXPOSED"
+    }
+  ],
+  "core1b": [
+    {
+      "id": "PH01-M07-MAIN-1",
+      "kind": "MAIN",
+      "subtopic_id": "PH01-M07",
+      "qrt_target_id": "PH01-KIN-QRT-MODEL-D3",
+      "fresh_task": "A moving walkway travels east at 2 m/s. A person walks west at 3 m/s relative to the walkway. At time zero another person is at x=−20 m and walks east at 1 m/s on the ground. Formulate the ground-frame velocities, determine whether and when they meet, and justify each sign.",
+      "protected_work": "Identify the frame and compose velocities correctly when a walker moves on a moving walkway; defend the chosen model.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether ground-frame velocity has the same sign as the walker's relative-walkway velocity.",
+        "attempt": "A moving walkway travels east at 2 m/s. A person walks west at 3 m/s relative to the walkway. At time zero another person is at x=−20 m and walks east at 1 m/s on the ground. Formulate the ground-frame velocities, determine whether and when they meet, and justify each sign.",
+        "reconstruct": "The walkway person's ground velocity is 2−3=−1 m/s. Their x starts at 0, so xA=−t. Ground walker B has xB=−20+t. Equality gives −t=−20+t; t=10 s, meeting at x=−10 m. Confirm the first walker moves west although the walkway moves east.",
+        "diagnose": "Compare the saved sign choice with the actual ground-frame velocity. Did the learner add speed magnitudes, ignore the walkway, or merely err arithmetically?",
+        "repair": "Rebuild the velocity diagram on a single east-positive axis, then recompute the encounter and check positions.",
+        "boundary_test": "If the walkway speeds up to +4 m/s with the person's walk still −3 m/s relative to the walkway, which body is faster eastward and can the same initial geometry produce a meeting?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH01-M07-INSTANCE-1",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH01-M07",
+      "qrt_target_id": "PH01-KIN-QRT-MODEL-D3",
+      "fresh_task": "A kayak moves east at 4 m/s relative to the water; the current carries the water west at 1 m/s relative to shore. Another craft starts 24 m behind the kayak and travels east at 5 m/s relative to shore. Determine the kayak's shore velocity and overtaking time, stating the frame for every number.",
+      "protected_work": "Identify the frame and compose velocities correctly when a walker moves on a moving walkway; defend the chosen model.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict which motion looks eastbound to an observer moving west.",
+        "attempt": "A kayak moves east at 4 m/s relative to the water; the current carries the water west at 1 m/s relative to shore. Another craft starts 24 m behind the kayak and travels east at 5 m/s relative to shore. Determine the kayak's shore velocity and overtaking time, stating the frame for every number.",
+        "reconstruct": "Kayak velocity relative shore is +4−1=+3 m/s. The rear craft gains at +5−3=+2 m/s, so it covers the 24 m gap in 12 s. This is overtaking, not head-on motion; using 5+3 would confuse the directions.",
+        "diagnose": "Check whether frame labels or the signed closing rate were wrong; distinguish that from a division slip.",
+        "repair": "Compose water-relative and shore-relative velocities on one signed number line; use relative closing velocity.",
+        "boundary_test": "What if the rear craft moves at only +2 m/s relative to shore? Explain whether it can overtake."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH01-M07-MAIN-2",
+      "kind": "MAIN",
+      "subtopic_id": "PH01-M07",
+      "qrt_target_id": "PH01-KIN-QRT-REPRESENT-D3",
+      "fresh_task": "A device reports positions at times t=(0,2,5,7) seconds as x=(0,6,6,0) metres. Draw the piecewise velocity-time graph, state displacement and total distance, and verify by integrating signed graph areas.",
+      "protected_work": "Construct signed velocity-time representation from position-time data and distinguish the invariant displacement from distance.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Without drawing, predict whether a return to the initial position can coexist with a positive total distance.",
+        "attempt": "A device reports positions at times t=(0,2,5,7) seconds as x=(0,6,6,0) metres. Draw the piecewise velocity-time graph, state displacement and total distance, and verify by integrating signed graph areas.",
+        "reconstruct": "Slopes are +3 m/s from 0–2 s, 0 from 2–5 s, and −3 m/s from 5–7 s. Signed areas +6, 0, −6 produce net displacement 0 m, consistent with final x−initial x. Distance is 6+0+6=12 m. The plateau in position means rest, not zero displacement accumulated earlier.",
+        "diagnose": "Compare first answer: was slope confused with graph height, did the learner disregard the negative segment, or was it an arithmetic slip?",
+        "repair": "Mark each interval, calculate signed slope, then draw three velocity steps and use reverse translation to position.",
+        "boundary_test": "If the final position changes to +2 m while earlier samples stay fixed, which velocity segment and which signed area change?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH01-M07-INSTANCE-2",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH01-M07",
+      "qrt_target_id": "PH01-KIN-QRT-REPRESENT-D3",
+      "fresh_task": "An elevator's recorded vertical positions (up positive) are t=(0,3,6,8) s and y=(5,−1,−1,3) m. Construct a velocity-time diagram, calculate the net displacement and total distance, and explain the level section.",
+      "protected_work": "Construct signed velocity-time representation from position-time data and distinguish the invariant displacement from distance.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Which segments have negative velocity when an object crosses the origin?",
+        "attempt": "An elevator's recorded vertical positions (up positive) are t=(0,3,6,8) s and y=(5,−1,−1,3) m. Construct a velocity-time diagram, calculate the net displacement and total distance, and explain the level section.",
+        "reconstruct": "From 0–3 s, Δy=−6 m and v=−2 m/s; 3–6 s is stationary v=0; 6–8 s, Δy=+4 m and v=+2 m/s. Net displacement is −2 m, equal to 3−5. Total distance is 6+4=10 m.",
+        "diagnose": "Was the initial height incorrectly assumed zero? Did the learner treat the stationary segment as reversal?",
+        "repair": "Use slope per interval, back-integrate the velocity steps, and compare against the original y values.",
+        "boundary_test": "Shift every recorded position upward by 10 m. Predict how the velocity graph and displacement change."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH01-M07-MAIN-3",
+      "kind": "MAIN",
+      "subtopic_id": "PH01-M07",
+      "qrt_target_id": "PH01-KIN-QRT-SYNTH-D3",
+      "fresh_task": "Train A leaves x=0 eastbound at 6 m/s for exactly 3 s, then reverses and travels west at 2 m/s. Train B begins at x=36 m and continuously travels west at 4 m/s. At what time and position do they meet? Explicitly reject any invalid candidate.",
+      "protected_work": "Recognize that the first-stage meeting time is outside its interval and construct a valid post-reversal or post-delay encounter model.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether two trains can meet after one reverses direction even if the first-stage meeting calculation looks too late.",
+        "attempt": "Train A leaves x=0 eastbound at 6 m/s for exactly 3 s, then reverses and travels west at 2 m/s. Train B begins at x=36 m and continuously travels west at 4 m/s. At what time and position do they meet? Explicitly reject any invalid candidate.",
+        "reconstruct": "During 0≤t≤3, xA=6t and xB=36−4t, so t=3.6 s would be the meeting time if this first-stage model continued, but it does not. At t=3, A is at x=18 and reverses: xA=18−2(t−3)=24−2t. Set 24−2t=36−4t, giving t=6 s and x=12 m. Both expressions apply after t=3 and agree.",
+        "diagnose": "Identify whether the learner failed to test the first candidate against t≤3, extended the wrong position expression, or changed velocity without preserving position continuity.",
+        "repair": "Write a timeline with the reversal at t=3, start the second position model from x=18, and substitute the final meeting time into both trajectories.",
+        "boundary_test": "What changes if B's westward speed drops to 1 m/s? Analyze separation and signs after A reverses before assuming a meeting exists."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH01-M07-INSTANCE-3",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH01-M07",
+      "qrt_target_id": "PH01-KIN-QRT-SYNTH-D3",
+      "fresh_task": "Cyclist A starts at x=0 and rides east at 4 m/s from t=0. Cyclist B is at x=30 m and remains at rest until t=2 s, then rides west at 3 m/s. At which global time do they meet? Verify both time intervals.",
+      "protected_work": "Recognize that the first-stage meeting time is outside its interval and construct a valid post-reversal or post-delay encounter model.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Can delaying departure change which interval contains a meeting?",
+        "attempt": "Cyclist A starts at x=0 and rides east at 4 m/s from t=0. Cyclist B is at x=30 m and remains at rest until t=2 s, then rides west at 3 m/s. At which global time do they meet? Verify both time intervals.",
+        "reconstruct": "For 0≤t≤2, A is at x=4t≤8 and B remains at x=30, so no meeting. For t≥2, B has x=30−3(t−2)=36−3t. Equating 4t=36−3t gives t=36/7≈5.14 s, after the departure time. Meeting position is x=144/7≈20.57 m, matching B's expression.",
+        "diagnose": "Did the learner start B's clock at t=0 rather than t=2, or fail to distinguish waiting and moving stages?",
+        "repair": "Create a global clock, enforce continuity at t=2, and solve only within the correct segment.",
+        "boundary_test": "If B never departs, when does A reach x=30? Explain why this limit is not found by simply setting B's moving speed to zero while retaining the same start assumption."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    }
+  ],
+  "core2_sources": [],
+  "acceptance": {
+    "b1_b7": {
+      "B1": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B2": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B3": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B4": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B5": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B6": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B7": {
+        "status": "HOLD",
+        "evidence_refs": []
+      }
+    },
+    "gates": {
+      "source_authenticity": "HOLD",
+      "content_correctness": "HOLD",
+      "cognitive_qualification": "HOLD",
+      "teaching_sufficiency": "HOLD",
+      "assessment_validity": "HOLD",
+      "implementation": "NOT_RUN",
+      "release_authority": "HOLD"
+    },
+    "release": "HOLD",
+    "acceptance_note": "Candidate PH01-M07 source-neutral teaching and protected-task specifications only. No independent Physics/QRΤ review; no native runtime/HTTP Chromium test; MAIN combining more than one instance is not yet expressed by v1 candidate schema. Academic and release gates remain HOLD."
+  }
+}

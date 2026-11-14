@@ -1,0 +1,1054 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://reallakshman19.github.io/Grade9v4.1/nsejs/physics/curriculum/contracts/physics-topic-package.v1_1.schema.json",
+  "title": "Grade9 v4.1 NSEJS Physics author-exposed topic package C01-C08 v1.1; never confers academic admission",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "subject_id",
+    "academic_track",
+    "topic_id",
+    "owner_agent",
+    "version",
+    "status",
+    "pins",
+    "syllabus_references",
+    "subtopics",
+    "science_records",
+    "topic_adapter",
+    "core1a",
+    "core1b",
+    "core2_sources",
+    "acceptance"
+  ],
+  "properties": {
+    "schema": {
+      "const": "g9v41-nsejs-physics-topic-package/v1.1"
+    },
+    "subject_id": {
+      "const": "PHYSICS"
+    },
+    "academic_track": {
+      "const": "NSEJS"
+    },
+    "topic_id": {
+      "type": "string",
+      "pattern": "^PH(?:0[1-9]|1[0-2])$"
+    },
+    "owner_agent": {
+      "type": "string",
+      "enum": [
+        "AGENT_1",
+        "AGENT_2"
+      ]
+    },
+    "version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "const": "DRAFT_AUTHOR_EXPOSED"
+    },
+    "pins": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contracts_version",
+        "blueprint",
+        "shared_qrt_28",
+        "topic_adapter_version"
+      ],
+      "properties": {
+        "contracts_version": {
+          "const": "1.1.0"
+        },
+        "blueprint": {
+          "$ref": "#/$defs/pin"
+        },
+        "shared_qrt_28": {
+          "$ref": "#/$defs/pin"
+        },
+        "topic_adapter_version": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "syllabus_references": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "reference_id",
+          "locator",
+          "authority",
+          "scope_status"
+        ],
+        "properties": {
+          "reference_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "locator": {
+            "type": "string",
+            "minLength": 1
+          },
+          "authority": {
+            "type": "string",
+            "enum": [
+              "OFFICIAL_SYLLABUS",
+              "NCERT_CBSE",
+              "HISTORICAL_EXAM",
+              "AUTHOR_BACKGROUND"
+            ]
+          },
+          "scope_status": {
+            "type": "string",
+            "enum": [
+              "CANDIDATE",
+              "VERIFIED_REFERENCE"
+            ]
+          }
+        }
+      },
+      "minItems": 1
+    },
+    "subtopics": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/subtopic"
+      },
+      "minItems": 1
+    },
+    "science_records": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/science"
+      },
+      "minItems": 1
+    },
+    "topic_adapter": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "adapter_id",
+        "topic_id",
+        "version",
+        "for_blueprint",
+        "status",
+        "cells"
+      ],
+      "properties": {
+        "adapter_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "topic_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "for_blueprint": {
+          "const": "PHYS-QRT-BLUEPRINT 0.2.0"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "DRAFT_OWNER_REVIEW",
+            "CANDIDATE_ONLY"
+          ]
+        },
+        "cells": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "cell_id",
+              "instance_ids"
+            ],
+            "properties": {
+              "cell_id": {
+                "type": "string",
+                "pattern": "^D[34]\\.[1-7]$"
+              },
+              "instance_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "minItems": 1
+              }
+            }
+          },
+          "minItems": 1
+        }
+      }
+    },
+    "core1a": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/core1a"
+      },
+      "minItems": 1
+    },
+    "core1b": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/core1b"
+      },
+      "minItems": 1
+    },
+    "core2_sources": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/source"
+      },
+      "minItems": 0
+    },
+    "acceptance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "b1_b7",
+        "gates",
+        "release",
+        "acceptance_note"
+      ],
+      "properties": {
+        "b1_b7": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "B1",
+            "B2",
+            "B3",
+            "B4",
+            "B5",
+            "B6",
+            "B7"
+          ],
+          "properties": {
+            "B1": {
+              "$ref": "#/$defs/witness"
+            },
+            "B2": {
+              "$ref": "#/$defs/witness"
+            },
+            "B3": {
+              "$ref": "#/$defs/witness"
+            },
+            "B4": {
+              "$ref": "#/$defs/witness"
+            },
+            "B5": {
+              "$ref": "#/$defs/witness"
+            },
+            "B6": {
+              "$ref": "#/$defs/witness"
+            },
+            "B7": {
+              "$ref": "#/$defs/witness"
+            }
+          }
+        },
+        "gates": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "source_authenticity",
+            "content_correctness",
+            "cognitive_qualification",
+            "teaching_sufficiency",
+            "assessment_validity",
+            "implementation",
+            "release_authority"
+          ],
+          "properties": {
+            "source_authenticity": {
+              "type": "string",
+              "enum": [
+                "HOLD",
+                "NOT_RUN"
+              ]
+            },
+            "content_correctness": {
+              "type": "string",
+              "enum": [
+                "HOLD",
+                "NOT_RUN"
+              ]
+            },
+            "cognitive_qualification": {
+              "type": "string",
+              "enum": [
+                "HOLD",
+                "NOT_RUN"
+              ]
+            },
+            "teaching_sufficiency": {
+              "type": "string",
+              "enum": [
+                "HOLD",
+                "NOT_RUN"
+              ]
+            },
+            "assessment_validity": {
+              "type": "string",
+              "enum": [
+                "HOLD",
+                "NOT_RUN"
+              ]
+            },
+            "implementation": {
+              "type": "string",
+              "enum": [
+                "HOLD",
+                "NOT_RUN"
+              ]
+            },
+            "release_authority": {
+              "type": "string",
+              "enum": [
+                "HOLD",
+                "NOT_RUN"
+              ]
+            }
+          }
+        },
+        "release": {
+          "const": "HOLD"
+        },
+        "acceptance_note": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  },
+  "$defs": {
+    "pin": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "version",
+        "git_blob_sha"
+      ],
+      "properties": {
+        "version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "git_blob_sha": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40}$"
+        }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "score",
+        "evidence"
+      ],
+      "properties": {
+        "score": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2
+        },
+        "evidence": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "qrt_target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "task_identity",
+        "band",
+        "primary_operation",
+        "blueprint_cell",
+        "source_role",
+        "qrt_status",
+        "protected_work",
+        "decisive_route",
+        "factor_evidence"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "task_identity": {
+          "type": "string",
+          "minLength": 1
+        },
+        "band": {
+          "type": "string",
+          "enum": [
+            "D3",
+            "D4"
+          ]
+        },
+        "primary_operation": {
+          "type": "string",
+          "enum": [
+            "RETRIEVE",
+            "EXPLAIN",
+            "APPLY",
+            "MODEL",
+            "REPRESENT",
+            "SYNTHESIZE",
+            "JUSTIFY"
+          ]
+        },
+        "blueprint_cell": {
+          "type": "string",
+          "pattern": "^D[34]\\.[1-7]$"
+        },
+        "source_role": {
+          "type": "string",
+          "enum": [
+            "DIRECT_EXAM_EVIDENCE",
+            "PREREQUISITE_BRIDGE",
+            "AUTHORED_TRANSFER"
+          ]
+        },
+        "qrt_status": {
+          "type": "string",
+          "enum": [
+            "PROPOSED",
+            "HOLD"
+          ]
+        },
+        "protected_work": {
+          "type": "string",
+          "minLength": 1
+        },
+        "decisive_route": {
+          "type": "string",
+          "minLength": 1
+        },
+        "factor_evidence": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "concept_model_selection",
+            "representation_translation",
+            "reasoning_chain_length",
+            "algebra_computational_load",
+            "trap_exception_sensitivity"
+          ],
+          "properties": {
+            "concept_model_selection": {
+              "$ref": "#/$defs/evidence"
+            },
+            "representation_translation": {
+              "$ref": "#/$defs/evidence"
+            },
+            "reasoning_chain_length": {
+              "$ref": "#/$defs/evidence"
+            },
+            "algebra_computational_load": {
+              "$ref": "#/$defs/evidence"
+            },
+            "trap_exception_sensitivity": {
+              "$ref": "#/$defs/evidence"
+            }
+          }
+        }
+      }
+    },
+    "subtopic": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "title",
+        "scope_role",
+        "syllabus_reference_ids",
+        "prerequisite_ids",
+        "science_ref_ids",
+        "learning_goal",
+        "textbook_chapter_ref",
+        "qrt_targets"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^PH(?:0[1-9]|1[0-2])-[A-Z0-9-]+$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scope_role": {
+          "type": "string",
+          "enum": [
+            "SYLLABUS_CORE_CANDIDATE",
+            "PREREQUISITE_BRIDGE",
+            "EXTENSION"
+          ]
+        },
+        "syllabus_reference_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "prerequisite_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        },
+        "science_ref_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "learning_goal": {
+          "type": "string",
+          "minLength": 1
+        },
+        "textbook_chapter_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "qrt_targets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/qrt_target"
+          },
+          "minItems": 3
+        }
+      }
+    },
+    "science": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "claim",
+        "law_or_model",
+        "assumptions",
+        "conditions_and_limits",
+        "units_and_signs",
+        "source_refs",
+        "qualification_status"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "claim": {
+          "type": "string",
+          "minLength": 1
+        },
+        "law_or_model": {
+          "type": "string",
+          "minLength": 1
+        },
+        "assumptions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "conditions_and_limits": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "units_and_signs": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "qualification_status": {
+          "type": "string",
+          "enum": [
+            "HOLD",
+            "CANDIDATE_REVIEW"
+          ]
+        }
+      }
+    },
+    "derivation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "action",
+        "why_valid",
+        "science_ref_id"
+      ],
+      "properties": {
+        "action": {
+          "type": "string",
+          "minLength": 1
+        },
+        "why_valid": {
+          "type": "string",
+          "minLength": 1
+        },
+        "science_ref_id": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "example": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "tier",
+        "problem",
+        "reasoning",
+        "independent_check"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "tier": {
+          "type": "string",
+          "enum": [
+            "FOUNDATION",
+            "CONNECTED",
+            "ADVANCED"
+          ]
+        },
+        "problem": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reasoning": {
+          "type": "string",
+          "minLength": 1
+        },
+        "independent_check": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "figure": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "reasoning_step",
+        "scene_description",
+        "source_or_authorship"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reasoning_step": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scene_description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_or_authorship": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "core1a": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "subtopic_id",
+        "covered_qrt_ids",
+        "phenomenon",
+        "scientific_narrative",
+        "prerequisites",
+        "derivation_steps",
+        "model_limits",
+        "progressive_examples",
+        "figures",
+        "misconception",
+        "exit_check",
+        "authorship_status"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "subtopic_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "covered_qrt_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 3
+        },
+        "phenomenon": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scientific_narrative": {
+          "type": "string",
+          "minLength": 80
+        },
+        "prerequisites": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "derivation_steps": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/derivation"
+          },
+          "minItems": 1
+        },
+        "model_limits": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "progressive_examples": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/example"
+          },
+          "minItems": 3
+        },
+        "figures": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/figure"
+          },
+          "minItems": 0
+        },
+        "misconception": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "wrong_model",
+            "diagnostic",
+            "repair"
+          ],
+          "properties": {
+            "wrong_model": {
+              "type": "string",
+              "minLength": 1
+            },
+            "diagnostic": {
+              "type": "string",
+              "minLength": 1
+            },
+            "repair": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "exit_check": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "task",
+            "answer",
+            "reasoning"
+          ],
+          "properties": {
+            "task": {
+              "type": "string",
+              "minLength": 1
+            },
+            "answer": {
+              "type": "string",
+              "minLength": 1
+            },
+            "reasoning": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "authorship_status": {
+          "type": "string",
+          "enum": [
+            "DRAFT_AUTHOR_EXPOSED"
+          ]
+        }
+      }
+    },
+    "stages": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "predict",
+        "attempt",
+        "reconstruct",
+        "diagnose",
+        "repair",
+        "boundary_test"
+      ],
+      "properties": {
+        "predict": {
+          "type": "string",
+          "minLength": 1
+        },
+        "attempt": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reconstruct": {
+          "type": "string",
+          "minLength": 1
+        },
+        "diagnose": {
+          "type": "string",
+          "minLength": 1
+        },
+        "repair": {
+          "type": "string",
+          "minLength": 1
+        },
+        "boundary_test": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "protection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "save_first_answer_before_hint",
+        "track_help_exposure",
+        "preserve_original_revision",
+        "fail_closed_on_storage_error"
+      ],
+      "properties": {
+        "save_first_answer_before_hint": {
+          "const": true
+        },
+        "track_help_exposure": {
+          "const": true
+        },
+        "preserve_original_revision": {
+          "const": true
+        },
+        "fail_closed_on_storage_error": {
+          "const": true
+        }
+      }
+    },
+    "core1b": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "kind",
+        "subtopic_id",
+        "qrt_target_id",
+        "fresh_task",
+        "protected_work",
+        "differs_from_worked_anchor",
+        "stages",
+        "attempt_policy",
+        "runtime_verification",
+        "cell_id",
+        "instance_qrt_ids"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "MAIN",
+            "INSTANCE"
+          ]
+        },
+        "subtopic_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "qrt_target_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "fresh_task": {
+          "type": "string",
+          "minLength": 1
+        },
+        "protected_work": {
+          "type": "string",
+          "minLength": 1
+        },
+        "differs_from_worked_anchor": {
+          "const": true
+        },
+        "stages": {
+          "$ref": "#/$defs/stages"
+        },
+        "attempt_policy": {
+          "$ref": "#/$defs/protection"
+        },
+        "runtime_verification": {
+          "type": "string",
+          "enum": [
+            "NOT_RUN",
+            "HOLD",
+            "CANDIDATE_TESTED"
+          ]
+        },
+        "cell_id": {
+          "type": "string",
+          "pattern": "^D[34]\\.[1-7]$"
+        },
+        "instance_qrt_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "item_id",
+        "source_role",
+        "locator",
+        "stem_sha256",
+        "figure_status",
+        "key_status",
+        "academic_status"
+      ],
+      "properties": {
+        "item_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_role": {
+          "type": "string",
+          "enum": [
+            "DIRECT_EXAM_EVIDENCE",
+            "PREREQUISITE_BRIDGE",
+            "AUTHORED_TRANSFER"
+          ]
+        },
+        "locator": {
+          "type": "string",
+          "minLength": 1
+        },
+        "stem_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "figure_status": {
+          "type": "string",
+          "enum": [
+            "HOLD",
+            "VERIFIED",
+            "NOT_APPLICABLE"
+          ]
+        },
+        "key_status": {
+          "type": "string",
+          "enum": [
+            "HOLD",
+            "VERIFIED",
+            "NOT_APPLICABLE"
+          ]
+        },
+        "academic_status": {
+          "type": "string",
+          "enum": [
+            "HOLD",
+            "PROPOSED"
+          ]
+        }
+      }
+    },
+    "witness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "evidence_refs"
+      ],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "HOLD",
+            "CANDIDATE_EVIDENCE"
+          ]
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        }
+      }
+    }
+  },
+  "description": "Strict candidate v1.1 contract: C06 MAIN joins at least two distinct subtopic QRT instances in the same cell and covers its entire adapter binding. Versioned independently from v1."
+}

@@ -1,0 +1,26 @@
+name: Physics Evidence Gate R2
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  evidence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install schema and fault-injection test dependencies
+        run: python -m pip install jsonschema pytest
+      - name: Run adversarial quality-gate regression suite
+        run: python -m pytest -q tests/test_physics_quality_gate_r2.py
+      - name: Require source-bound packets for activated Physics production
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          python docs/agent-entry/quality-gate-r2/enforce_pr_packets.py --base "$BASE_SHA"
