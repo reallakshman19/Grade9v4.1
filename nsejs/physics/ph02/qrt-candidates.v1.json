@@ -1,0 +1,757 @@
+{
+  "schema": "g9v41-ph02-qrt-authored-candidates/v1",
+  "status": "AUTHOR_PROPOSED__INDEPENDENT_QRT_HOLD",
+  "original_exam_items": 0,
+  "namespace": "PH02",
+  "semantic_review": "OWNER_DIRECTED_ASSISTANT_CHECK_IN_PROGRESS",
+  "tasks": [
+    {
+      "id": "PH02-F01-QRT-REPRESENT-D3",
+      "unit": "PH02-F01",
+      "op": "REPRESENT",
+      "cell": "D3.5",
+      "uid": "AUTHORED-PH02-F01-QRT-REPRESENT-D3-R1",
+      "revision": "ph02-f01-qrt-represent-d3-20261114-r1",
+      "source_role": "AUTHORED_TRANSFER",
+      "qrt_status": "PROPOSED_UNREVIEWED",
+      "prediction": "Before calculating, identify the governing model, object boundary, signed direction and the first inference that will distinguish this case from a routine example.",
+      "prompt": "A 4 kg trolley experiences 13 N east and an unknown westward pull. Its measured acceleration is 1 m s⁻² west. Reconstruct a signed force diagram with all force magnitudes, identify the missing westward force, and convert the diagram into the resultant equation.",
+      "w": "Map measured signed acceleration and given forces to a completed vector-force representation, verifying arrow ownership and sign.",
+      "reconstruction": "ΣF = ma =4(−1)=−4 N. Taking east positive, +13−W=−4, so W=17 N west. Show two arrows on the trolley: 13 N east and 17 N west; net arrow 4 N west. Verify 13−17=−4 N.",
+      "alternative": "Check the derived result by substituting every force, interval or projection back into the original constraints, including sign, SI dimensions and the limiting case.",
+      "hints": [
+        "Identify the relevant object(s), physical contact and direction before choosing a formula.",
+        "Connect the selected law to the given quantitative conditions, recording what stays invariant and what changes.",
+        "Write an unknown, a governing relation and an independent validity check; leave the decisive numerical inference to your own attempt."
+      ],
+      "diagnosis": "Compare your first divergence against system boundary, interaction labels, signs, forces versus acceleration, source-target representation and validity limit; do not diagnose a misconception from an incorrect number alone.",
+      "repair": "Rewrite the earliest invalid model selection or sign/condition with an explicit physical warrant and re-evaluate its consequences.",
+      "boundaryPrompt": "If both arrows are eastward, can their resultant be west? Explain why direction is part of representation.",
+      "boundaryModel": "No. The sum of two positive eastward force components cannot be negative. At least one component must point west and exceed the eastward component by 4 N.",
+      "factor_nominations": {
+        "band": "D3",
+        "status": "AUTHOR_ONLY_NOT_QUALIFIED",
+        "scores": [
+          1,
+          2,
+          2,
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "id": "PH02-F01-QRT-JUSTIFY-D3",
+      "unit": "PH02-F01",
+      "op": "JUSTIFY",
+      "cell": "D3.7",
+      "uid": "AUTHORED-PH02-F01-QRT-JUSTIFY-D3-R1",
+      "revision": "ph02-f01-qrt-justify-d3-20261114-r1",
+      "source_role": "AUTHORED_TRANSFER",
+      "qrt_status": "PROPOSED_UNREVIEWED",
+      "prediction": "Before calculating, identify the governing model, object boundary, signed direction and the first inference that will distinguish this case from a routine example.",
+      "prompt": "Two puck observations: puck A moves east at constant 3 m s⁻¹ while two horizontal forces 5 N east and 5 N west act; puck B initially moves west at 2 m s⁻¹ while net force is 4 N east. Evaluate the claim 'a force-free or balanced object must be at rest' and give a force-and-velocity counterexample with correctly signed acceleration for puck B if its mass is 2 kg.",
+      "w": "Refute a universal claim by distinguishing acceleration from velocity with a valid counterexample and a second model check.",
+      "reconstruction": "A has zero net force yet nonzero constant velocity: direct counterexample. B has +4 N net, +2 m s⁻² acceleration but may still have westward velocity at first; after 0.5 s, v=−2+2(0.5)=−1 m s⁻¹. The net force sets change in velocity, not instantaneous motion.",
+      "alternative": "Check the derived result by substituting every force, interval or projection back into the original constraints, including sign, SI dimensions and the limiting case.",
+      "hints": [
+        "Identify the relevant object(s), physical contact and direction before choosing a formula.",
+        "Connect the selected law to the given quantitative conditions, recording what stays invariant and what changes.",
+        "Write an unknown, a governing relation and an independent validity check; leave the decisive numerical inference to your own attempt."
+      ],
+      "diagnosis": "Compare your first divergence against system boundary, interaction labels, signs, forces versus acceleration, source-target representation and validity limit; do not diagnose a misconception from an incorrect number alone.",
+      "repair": "Rewrite the earliest invalid model selection or sign/condition with an explicit physical warrant and re-evaluate its consequences.",
+      "boundaryPrompt": "If puck A began at rest instead, what would zero net force imply and does that rescue the universal claim?",
+      "boundaryModel": "It would remain at rest, but one confirming case does not prove all balanced bodies are at rest. A balanced already moving puck still coasts.",
+      "factor_nominations": {
+        "band": "D3",
+        "status": "AUTHOR_ONLY_NOT_QUALIFIED",
+        "scores": [
+          1,
+          1,
+          2,
+          0,
+          2
+        ]
+      }
+    },
+    {
+      "id": "PH02-F02-QRT-EXPLAIN-D3",
+      "unit": "PH02-F02",
+      "op": "EXPLAIN",
+      "cell": "D3.2",
+      "uid": "AUTHORED-PH02-F02-QRT-EXPLAIN-D3-R1",
+      "revision": "ph02-f02-qrt-explain-d3-20261114-r1",
+      "source_role": "AUTHORED_TRANSFER",
+      "qrt_status": "PROPOSED_UNREVIEWED",
+      "prediction": "Before calculating, identify the governing model, object boundary, signed direction and the first inference that will distinguish this case from a routine example.",
+      "prompt": "A toy rests on a smooth tray inside a tram. The tram accelerates east from 4 to 8 m s⁻¹ in 2 s while the toy has no horizontal force. A passenger reports the toy moved west relative to the tram. Construct a causal explanation in a road frame, calculate their relative displacement and explain why a backward 'inertia force' is unnecessary in that frame.",
+      "w": "Explain the appearance of rearward motion by comparing two reference-frame trajectories rather than inventing a horizontal interaction.",
+      "reconstruction": "Toy retains 4 m s⁻¹ east, travelling 8 m. Tram acceleration is (8−4)/2=2 m s⁻² east, so distance 4(2)+0.5(2)(2²)=12 m. Toy relative displacement =8−12=−4 m, i.e. toward tram rear. This follows from two ground-frame histories, with no horizontal backward force on toy.",
+      "alternative": "Check the derived result by substituting every force, interval or projection back into the original constraints, including sign, SI dimensions and the limiting case.",
+      "hints": [
+        "Identify the relevant object(s), physical contact and direction before choosing a formula.",
+        "Connect the selected law to the given quantitative conditions, recording what stays invariant and what changes.",
+        "Write an unknown, a governing relation and an independent validity check; leave the decisive numerical inference to your own attempt."
+      ],
+      "diagnosis": "Compare your first divergence against system boundary, interaction labels, signs, forces versus acceleration, source-target representation and validity limit; do not diagnose a misconception from an incorrect number alone.",
+      "repair": "Rewrite the earliest invalid model selection or sign/condition with an explicit physical warrant and re-evaluate its consequences.",
+      "boundaryPrompt": "If the toy is tied by a taut horizontal thread to the tram, what changes in the physical explanation?",
+      "boundaryModel": "The thread can supply a real eastward horizontal force accelerating the toy. ΣF_toy≠0, so the no-force first-law premise no longer holds.",
+      "factor_nominations": {
+        "band": "D3",
+        "status": "AUTHOR_ONLY_NOT_QUALIFIED",
+        "scores": [
+          1,
+          1,
+          2,
+          0,
+          2
+        ]
+      }
+    },
+    {
+      "id": "PH02-F02-QRT-REPRESENT-D3",
+      "unit": "PH02-F02",
+      "op": "REPRESENT",
+      "cell": "D3.5",
+      "uid": "AUTHORED-PH02-F02-QRT-REPRESENT-D3-R1",
+      "revision": "ph02-f02-qrt-represent-d3-20261114-r1",
+      "source_role": "AUTHORED_TRANSFER",
+      "qrt_status": "PROPOSED_UNREVIEWED",
+      "prediction": "Before calculating, identify the governing model, object boundary, signed direction and the first inference that will distinguish this case from a routine example.",
+      "prompt": "A train initially at x=0 travels east with constant 5 m s⁻¹ for 2 s, then brakes uniformly at 1 m s⁻² for another 2 s. A frictionless toy on its shelf continues at 5 m s⁻¹ east relative to the road. Construct a three-time-point table of x_train, x_toy and relative position at t=0,2,4 s. Describe the shape of the toy-minus-train relative-position graph during braking and check the sign.",
+      "w": "Translate two motion models into a signed relative-position table and curvature explanation across a stage boundary.",
+      "reconstruction": "At t=0: train=toy=0, relative 0. At t=2: both 10 m, relative 0. At t=4: train 10+5(2)−0.5(1)(2²)=18 m, toy=5(4)=20 m, relative +2 m (toy ahead). During braking with τ=t−2, x_rel=0.5τ², a concave-up parabola. Check τ=2 gives +2 m.",
+      "alternative": "Check the derived result by substituting every force, interval or projection back into the original constraints, including sign, SI dimensions and the limiting case.",
+      "hints": [
+        "Identify the relevant object(s), physical contact and direction before choosing a formula.",
+        "Connect the selected law to the given quantitative conditions, recording what stays invariant and what changes.",
+        "Write an unknown, a governing relation and an independent validity check; leave the decisive numerical inference to your own attempt."
+      ],
+      "diagnosis": "Compare your first divergence against system boundary, interaction labels, signs, forces versus acceleration, source-target representation and validity limit; do not diagnose a misconception from an incorrect number alone.",
+      "repair": "Rewrite the earliest invalid model selection or sign/condition with an explicit physical warrant and re-evaluate its consequences.",
+      "boundaryPrompt": "If the train accelerates east at +1 m s⁻² after t=2 instead, what is the sign of relative position at t=4?",
+      "boundaryModel": "x_train=10+10+2=22 m; x_toy=20 m; relative −2 m (toy behind). The parabola bends negative.",
+      "factor_nominations": {
+        "band": "D3",
+        "status": "AUTHOR_ONLY_NOT_QUALIFIED",
+        "scores": [
+          1,
+          2,
+          2,
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "id": "PH02-F03-QRT-APPLY-D3",
+      "unit": "PH02-F03",
+      "op": "APPLY",
+      "cell": "D3.3",
+      "uid": "AUTHORED-PH02-F03-QRT-APPLY-D3-R1",
+      "revision": "ph02-f03-qrt-apply-d3-20261114-r1",
+      "source_role": "AUTHORED_TRANSFER",
+      "qrt_status": "PROPOSED_UNREVIEWED",
+      "prediction": "Before calculating, identify the governing model, object boundary, signed direction and the first inference that will distinguish this case from a routine example.",
+      "prompt": "A 3 kg cart moves east at 2 m s⁻¹. For the next 2 s it experiences a 12 N east push and a constant 3 N west resistance; then the push stops while the 3 N west resistance continues for 1 s. Calculate its acceleration in both stages, final velocity and total displacement, checking each stage boundary.",
+      "w": "Execute a piecewise ΣF=ma and constant-acceleration displacement calculation with a shared state across the force switch.",
+      "reconstruction": "Stage I: net +9 N, a=+3 m s⁻², Δx=2(2)+0.5(3)(4)=10 m, v=2+3(2)=8 m s⁻¹. Stage II: net −3 N, a=−1 m s⁻², Δx=8(1)−0.5=7.5 m, v=7 m s⁻¹. Total displacement 17.5 m east. Check velocity is continuous at switch.",
+      "alternative": "Check the derived result by substituting every force, interval or projection back into the original constraints, including sign, SI dimensions and the limiting case.",
+      "hints": [
+        "Identify the relevant object(s), physical contact and direction before choosing a formula.",
+        "Connect the selected law to the given quantitative conditions, recording what stays invariant and what changes.",
+        "Write an unknown, a governing relation and an independent validity check; leave the decisive numerical inference to your own attempt."
+      ],
+      "diagnosis": "Compare your first divergence against system boundary, interaction labels, signs, forces versus acceleration, source-target representation and validity limit; do not diagnose a misconception from an incorrect number alone.",
+      "repair": "Rewrite the earliest invalid model selection or sign/condition with an explicit physical warrant and re-evaluate its consequences.",
+      "boundaryPrompt": "If the second stage lasts 3 s instead of 1 s, what is final velocity and is the cart already reversing?",
+      "boundaryModel": "v=8−1(3)=5 m s⁻¹ east: it slows but has not reversed. The displacement of stage II would be 8(3)−0.5(3²)=19.5 m.",
+      "factor_nominations": {
+        "band": "D3",
+        "status": "AUTHOR_ONLY_NOT_QUALIFIED",
+        "scores": [
+          1,
+          1,
+          2,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "PH02-F03-QRT-SYNTHESIZE-D3",
+      "unit": "PH02-F03",
+      "op": "SYNTHESIZE",
+      "cell": "D3.6",
+      "uid": "AUTHORED-PH02-F03-QRT-SYNTHESIZE-D3-R1",
+      "revision": "ph02-f03-qrt-synthesize-d3-20261114-r1",
+      "source_role": "AUTHORED_TRANSFER",
+      "qrt_status": "PROPOSED_UNREVIEWED",
+      "prediction": "Before calculating, identify the governing model, object boundary, signed direction and the first inference that will distinguish this case from a routine example.",
+      "prompt": "Two carts A and B receive an identical 10 N east applied push on separate level tracks. A has mass 2 kg, friction 2 N west, and B has mass 4 kg, unknown westward friction. Their measured accelerations are a_A=4 m s⁻² and a_B=1.5 m s⁻² east. Infer B's friction, check both carts' force balances and explain why the applied-force ratio alone cannot determine acceleration.",
+      "w": "Reconcile measured accelerations, unequal masses and unknown resistance through two independent net-force equations.",
+      "reconstruction": "A check: 10−2=8 N, 8/2=4 m s⁻². B requires net=4(1.5)=6 N east, so 10−f_B=6 and f_B=4 N west. Unequal net forces despite equal applied push; using m_A/m_B without checking friction would be wrong.",
+      "alternative": "Check the derived result by substituting every force, interval or projection back into the original constraints, including sign, SI dimensions and the limiting case.",
+      "hints": [
+        "Identify the relevant object(s), physical contact and direction before choosing a formula.",
+        "Connect the selected law to the given quantitative conditions, recording what stays invariant and what changes.",
+        "Write an unknown, a governing relation and an independent validity check; leave the decisive numerical inference to your own attempt."
+      ],
+      "diagnosis": "Compare your first divergence against system boundary, interaction labels, signs, forces versus acceleration, source-target representation and validity limit; do not diagnose a misconception from an incorrect number alone.",
+      "repair": "Rewrite the earliest invalid model selection or sign/condition with an explicit physical warrant and re-evaluate its consequences.",
+      "boundaryPrompt": "If B's friction became 10 N west, what would its acceleration become under same push?",
+      "boundaryModel": "Net becomes zero, so a_B=0. Its existing velocity would remain constant if the same forces persist.",
+      "factor_nominations": {
+        "band": "D3",
+        "status": "AUTHOR_ONLY_NOT_QUALIFIED",
+        "scores": [
+          1,
+          1,
+          2,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "PH02-F04-QRT-REPRESENT-D3",
+      "unit": "PH02-F04",
+      "op": "REPRESENT",
+      "cell": "D3.5",
+      "uid": "AUTHORED-PH02-F04-QRT-REPRESENT-D3-R1",
+      "revision": "ph02-f04-qrt-represent-d3-20261114-r1",
+      "source_role": "AUTHORED_TRANSFER",
+      "qrt_status": "PROPOSED_UNREVIEWED",
+      "prediction": "Before calculating, identify the governing model, object boundary, signed direction and the first inference that will distinguish this case from a routine example.",
+      "prompt": "A 2 kg cart A pushes a 3 kg cart B east with 9 N while on a smooth track. Separately a wall pushes A west with 2 N. Draw two body-separated horizontal force diagrams and a two-column interaction table naming 'on object by agent'. Give the net force and instantaneous acceleration of each if all forces are as stated.",
+      "w": "Represent interaction pair forces on distinct bodies and separate a third external interaction when computing two resultants.",
+      "reconstruction": "On B by A =+9 N, so net_B=+9 N and a_B=+3 m s⁻². On A by B =−9 N and on A by wall=−2 N, so net_A=−11 N and a_A=−5.5 m s⁻² (as a force snapshot; the assumed contact configuration may not persist). Diagram arrows belong on different objects. Wall-on-A has its own wall reaction outside these two carts.",
+      "alternative": "Check the derived result by substituting every force, interval or projection back into the original constraints, including sign, SI dimensions and the limiting case.",
+      "hints": [
+        "Identify the relevant object(s), physical contact and direction before choosing a formula.",
+        "Connect the selected law to the given quantitative conditions, recording what stays invariant and what changes.",
+        "Write an unknown, a governing relation and an independent validity check; leave the decisive numerical inference to your own attempt."
+      ],
+      "diagnosis": "Compare your first divergence against system boundary, interaction labels, signs, forces versus acceleration, source-target representation and validity limit; do not diagnose a misconception from an incorrect number alone.",
+      "repair": "Rewrite the earliest invalid model selection or sign/condition with an explicit physical warrant and re-evaluate its consequences.",
+      "boundaryPrompt": "If the wall stops touching A, which forces remain and what is its instantaneous acceleration?",
+      "boundaryModel": "Without wall-on-A, net_A=−9 N, so a_A=−4.5 m s⁻², while the A-on-B interaction is still +9 N if maintained.",
+      "factor_nominations": {
+        "band": "D3",
+        "status": "AUTHOR_ONLY_NOT_QUALIFIED",
+        "scores": [
+          1,
+          2,
+          2,
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "id": "PH02-F04-QRT-JUSTIFY-D3",
+      "unit": "PH02-F04",
+      "op": "JUSTIFY",
+      "cell": "D3.7",
+      "uid": "AUTHORED-PH02-F04-QRT-JUSTIFY-D3-R1",
+      "revision": "ph02-f04-qrt-justify-d3-20261114-r1",
+      "source_role": "AUTHORED_TRANSFER",
+      "qrt_status": "PROPOSED_UNREVIEWED",
+      "prediction": "Before calculating, identify the governing model, object boundary, signed direction and the first inference that will distinguish this case from a routine example.",
+      "prompt": "A system contains two carts of masses 2 kg and 3 kg. Their only horizontal interaction is a 6 N internal contact pair. Prove that the centre-of-mass acceleration is zero while the two individual cart accelerations are unequal. Explicitly state which of the two forces cancels in which equation, and why this does not imply either cart has zero acceleration.",
+      "w": "Use action-reaction and external-system summation to justify zero centre-of-mass acceleration while retaining nonzero individual accelerations.",
+      "reconstruction": "For A alone, a_A=−6/2=−3 m s⁻² if B pushes it west. For B alone, a_B=+6/3=+2 m s⁻². For A+B, internal forces −6+6=0, hence F_external=0 and (m_A+m_B)a_CM=0. Accelerations differ; centre-of-mass acceleration can vanish because weighted sums 2(−3)+3(+2)=0.",
+      "alternative": "Check the derived result by substituting every force, interval or projection back into the original constraints, including sign, SI dimensions and the limiting case.",
+      "hints": [
+        "Identify the relevant object(s), physical contact and direction before choosing a formula.",
+        "Connect the selected law to the given quantitative conditions, recording what stays invariant and what changes.",
+        "Write an unknown, a governing relation and an independent validity check; leave the decisive numerical inference to your own attempt."
+      ],
+      "diagnosis": "Compare your first divergence against system boundary, interaction labels, signs, forces versus acceleration, source-target representation and validity limit; do not diagnose a misconception from an incorrect number alone.",
+      "repair": "Rewrite the earliest invalid model selection or sign/condition with an explicit physical warrant and re-evaluate its consequences.",
+      "boundaryPrompt": "If a 5 N east external pull acts on B, what is the combined-system centre-of-mass acceleration?",
+      "boundaryModel": "External net is +5 N, total mass 5 kg, so a_CM=+1 m s⁻²; internal forces still cancel.",
+      "factor_nominations": {
+        "band": "D3",
+        "status": "AUTHOR_ONLY_NOT_QUALIFIED",
+        "scores": [
+          1,
+          1,
+          2,
+          0,
+          2
+        ]
+      }
+    },
+    {
+      "id": "PH02-F05-QRT-MODEL-D3",
+      "unit": "PH02-F05",
+      "op": "MODEL",
+      "cell": "D3.4",
+      "uid": "AUTHORED-PH02-F05-QRT-MODEL-D3-R1",
+      "revision": "ph02-f05-qrt-model-d3-20261114-r1",
+      "source_role": "AUTHORED_TRANSFER",
+      "qrt_status": "PROPOSED_UNREVIEWED",
+      "prediction": "Before calculating, identify the governing model, object boundary, signed direction and the first inference that will distinguish this case from a routine example.",
+      "prompt": "On a frictionless horizontal track a 2 kg lower platform carries a 1 kg upper block without slipping. An external 9 N east force acts only on the lower platform. Choose the system boundary that makes acceleration easiest to calculate, then change the boundary to recover the static friction on the upper block. Verify Newton's third-law partner of that friction.",
+      "w": "Choose a complete system to eliminate internal contact from acceleration, then isolate a sub-body to recover required friction.",
+      "reconstruction": "Combined mass=3 kg and net external=9 N east, so a=3 m s⁻². Upper box must have rightward friction f=1×3=3 N, provided available static friction≥3 N. The reaction on the platform is 3 N west. On lower box horizontal net 9−3=6 N=2×3. Both checks agree.",
+      "alternative": "Check the derived result by substituting every force, interval or projection back into the original constraints, including sign, SI dimensions and the limiting case.",
+      "hints": [
+        "Identify the relevant object(s), physical contact and direction before choosing a formula.",
+        "Connect the selected law to the given quantitative conditions, recording what stays invariant and what changes.",
+        "Write an unknown, a governing relation and an independent validity check; leave the decisive numerical inference to your own attempt."
+      ],
+      "diagnosis": "Compare your first divergence against system boundary, interaction labels, signs, forces versus acceleration, source-target representation and validity limit; do not diagnose a misconception from an incorrect number alone.",
+      "repair": "Rewrite the earliest invalid model selection or sign/condition with an explicit physical warrant and re-evaluate its consequences.",
+      "boundaryPrompt": "If static friction capacity is only 2 N, does shared acceleration remain valid?",
+      "boundaryModel": "No: required f=3 N exceeds maximum, so upper box slips and the no-slip combined acceleration cannot be used without a kinetic/contact model.",
+      "factor_nominations": {
+        "band": "D3",
+        "status": "AUTHOR_ONLY_NOT_QUALIFIED",
+        "scores": [
+          2,
+          1,
+          2,
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "id": "PH02-F05-QRT-SYNTHESIZE-D3",
+      "unit": "PH02-F05",
+      "op": "SYNTHESIZE",
+      "cell": "D3.6",
+      "uid": "AUTHORED-PH02-F05-QRT-SYNTHESIZE-D3-R1",
+      "revision": "ph02-f05-qrt-synthesize-d3-20261114-r1",
+      "source_role": "AUTHORED_TRANSFER",
+      "qrt_status": "PROPOSED_UNREVIEWED",
+      "prediction": "Before calculating, identify the governing model, object boundary, signed direction and the first inference that will distinguish this case from a routine example.",
+      "prompt": "A 2 kg lower sled carries a 1 kg box without slipping. A force 9 N east acts on the sled on a smooth horizontal track. The static friction limit between sled and box is 4 N. Find common acceleration, upper-box friction, lower-sled horizontal balance and an independent check that the no-slip assumption is self-consistent.",
+      "w": "Coordinate two system boundaries with an inequality to validate the shared-acceleration model before accepting its output.",
+      "reconstruction": "For both objects, a=9/(2+1)=3 m s⁻² east. On box, f_s=1×3=3 N east. The pair's reaction acts 3 N west on sled, so sled net=9−3=6 N=2×3. Required 3 N ≤ max 4 N, hence no-slip feasible. Unit and direction checks agree.",
+      "alternative": "Check the derived result by substituting every force, interval or projection back into the original constraints, including sign, SI dimensions and the limiting case.",
+      "hints": [
+        "Identify the relevant object(s), physical contact and direction before choosing a formula.",
+        "Connect the selected law to the given quantitative conditions, recording what stays invariant and what changes.",
+        "Write an unknown, a governing relation and an independent validity check; leave the decisive numerical inference to your own attempt."
+      ],
+      "diagnosis": "Compare your first divergence against system boundary, interaction labels, signs, forces versus acceleration, source-target representation and validity limit; do not diagnose a misconception from an incorrect number alone.",
+      "repair": "Rewrite the earliest invalid model selection or sign/condition with an explicit physical warrant and re-evaluate its consequences.",
+      "boundaryPrompt": "If the 9 N force increases to 15 N while static capacity stays 4 N, can they still share acceleration?",
+      "boundaryModel": "They would require a=15/3=5 m s⁻² and f=1×5=5 N, exceeding 4 N, so no-slip fails; model must change.",
+      "factor_nominations": {
+        "band": "D3",
+        "status": "AUTHOR_ONLY_NOT_QUALIFIED",
+        "scores": [
+          1,
+          1,
+          2,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "PH02-F06-QRT-MODEL-D3",
+      "unit": "PH02-F06",
+      "op": "MODEL",
+      "cell": "D3.4",
+      "uid": "AUTHORED-PH02-F06-QRT-MODEL-D3-R1",
+      "revision": "ph02-f06-qrt-model-d3-20261114-r1",
+      "source_role": "AUTHORED_TRANSFER",
+      "qrt_status": "PROPOSED_UNREVIEWED",
+      "prediction": "When required static friction exceeds its cap, can we still calculate sliding acceleration from a stated kinetic-friction value? Which law must change first?",
+      "prompt": "A 2 kg crate starts at rest on a level floor, with a 7 N east push and a 2 N west pull. Its maximum static friction is 4 N; once it slides, the kinetic friction magnitude is 3 N. Determine whether the crate can remain at rest. Choose and justify the appropriate contact model, find its initial sliding acceleration and direction, and explain why the maximum static force is not the sliding friction.",
+      "w": "Test feasibility of static balance before changing to a kinetic contact model, then form the actual signed resultant to obtain acceleration.",
+      "reconstruction": "The nonfriction tendency is +7−2=+5 N east. To remain at rest would need 5 N west static friction, exceeding the 4 N maximum, so static equilibrium is impossible. Sliding begins east, hence kinetic friction is −3 N west. The kinetic resultant is 7−2−3=+2 N east. With mass 2 kg, a_x=+2/2=+1 m s⁻². The 4 N limit is a bound on static contact, not the friction used after sliding begins.",
+      "alternative": "First solve for the friction required to keep a=0, reject it when it exceeds 4 N, then draw a separate kinetic force balance and substitute 3 N opposite the emerging eastward slip.",
+      "hints": [
+        "Identify the relevant object(s), physical contact and direction before choosing a formula.",
+        "Connect the selected law to the given quantitative conditions, recording what stays invariant and what changes.",
+        "Write an unknown, a governing relation and an independent validity check; leave the decisive numerical inference to your own attempt."
+      ],
+      "diagnosis": "If you assigned the 4 N maximum as kinetic friction, you conflated two friction regimes. If friction points east after the eastward slip begins, you reversed the relative-motion condition.",
+      "repair": "Write two force diagrams for the same crate: the hypothetical static equilibrium and actual sliding state. Reject the first model quantitatively and solve the second.",
+      "boundaryPrompt": "If the eastward push is reduced from 7 N to 6 N while the west pull is still 2 N and the crate begins at rest, can static equilibrium persist? Find actual static friction.",
+      "boundaryModel": "The nonfriction tendency is +6−2=+4 N east, exactly at the 4 N static limit. Actual static friction is 4 N west, so rest is possible at the threshold. The kinetic 3 N value is not used while contact remains static.",
+      "factor_nominations": {
+        "band": "D3",
+        "status": "AUTHOR_ONLY_NOT_QUALIFIED",
+        "scores": [
+          2,
+          1,
+          2,
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "id": "PH02-F06-QRT-JUSTIFY-D3",
+      "unit": "PH02-F06",
+      "op": "JUSTIFY",
+      "cell": "D3.7",
+      "uid": "AUTHORED-PH02-F06-QRT-JUSTIFY-D3-R1",
+      "revision": "ph02-f06-qrt-justify-d3-20261114-r1",
+      "source_role": "AUTHORED_TRANSFER",
+      "qrt_status": "PROPOSED_UNREVIEWED",
+      "prediction": "Before calculating, identify the governing model, object boundary, signed direction and the first inference that will distinguish this case from a routine example.",
+      "prompt": "A crate on a horizontal floor experiences a controllable east push P and a fixed west pull 3 N. Its maximum static friction is 5 N. Derive the exact interval of nonnegative P for which it can remain at rest, including both directions of possible friction. Prove what fails just beyond the upper boundary and state why f_s need not equal 5 N within the interval.",
+      "w": "Derive a two-sided static-friction feasibility inequality and show both boundary directions using resultant balance.",
+      "reconstruction": "For rest, 0=P−3+f_s, so f_s=3−P. Static feasibility requires |3−P|≤5, giving −2≤P≤8 N. Since P≥0, 0≤P≤8 N. At P=0, f_s=+3 N east opposing west pull; at P=8, f_s=−5 N west at impending slip. For P>8, required west friction exceeds 5 N. At P=3, actual friction is 0 N, disproving f_s always max.",
+      "alternative": "Check the derived result by substituting every force, interval or projection back into the original constraints, including sign, SI dimensions and the limiting case.",
+      "hints": [
+        "Identify the relevant object(s), physical contact and direction before choosing a formula.",
+        "Connect the selected law to the given quantitative conditions, recording what stays invariant and what changes.",
+        "Write an unknown, a governing relation and an independent validity check; leave the decisive numerical inference to your own attempt."
+      ],
+      "diagnosis": "Compare your first divergence against system boundary, interaction labels, signs, forces versus acceleration, source-target representation and validity limit; do not diagnose a misconception from an incorrect number alone.",
+      "repair": "Rewrite the earliest invalid model selection or sign/condition with an explicit physical warrant and re-evaluate its consequences.",
+      "boundaryPrompt": "If the fixed west pull becomes 6 N, what is the admissible P interval?",
+      "boundaryModel": "|6−P|≤5 gives 1≤P≤11 N; at P=0 the required eastward static friction would be 6 N and rest fails.",
+      "factor_nominations": {
+        "band": "D3",
+        "status": "AUTHOR_ONLY_NOT_QUALIFIED",
+        "scores": [
+          1,
+          1,
+          2,
+          0,
+          2
+        ]
+      }
+    },
+    {
+      "id": "PH02-F07-QRT-REPRESENT-D3",
+      "unit": "PH02-F07",
+      "op": "REPRESENT",
+      "cell": "D3.5",
+      "uid": "AUTHORED-PH02-F07-QRT-REPRESENT-D3-R1",
+      "revision": "ph02-f07-qrt-represent-d3-20261114-r1",
+      "source_role": "AUTHORED_TRANSFER",
+      "qrt_status": "PROPOSED_UNREVIEWED",
+      "prediction": "Before calculating, identify the governing model, object boundary, signed direction and the first inference that will distinguish this case from a routine example.",
+      "prompt": "On a smooth ramp at 30° above horizontal, a 4 kg block has weight mg=40 N downward. Construct a vector-component representation using axes parallel and perpendicular to the plane, identify the signs for uphill-positive and outward-positive axes, and infer the normal force. Then explain what changes if θ increases without the rope or other vertical forces.",
+      "w": "Translate a vertical gravity vector into signed parallel/perpendicular projections and normal reaction consistently.",
+      "reconstruction": "With uphill-positive, F_g,parallel=−40 sin30°=−20 N. With outward-positive normal axis, F_g,normal=−40 cos30°≈−34.6 N; support N=+34.6 N for no normal acceleration. Increasing θ increases |mg sinθ|, decreases mg cosθ and thus N until contact limit, while full weight remains 40 N.",
+      "alternative": "Check the derived result by substituting every force, interval or projection back into the original constraints, including sign, SI dimensions and the limiting case.",
+      "hints": [
+        "Identify the relevant object(s), physical contact and direction before choosing a formula.",
+        "Connect the selected law to the given quantitative conditions, recording what stays invariant and what changes.",
+        "Write an unknown, a governing relation and an independent validity check; leave the decisive numerical inference to your own attempt."
+      ],
+      "diagnosis": "Compare your first divergence against system boundary, interaction labels, signs, forces versus acceleration, source-target representation and validity limit; do not diagnose a misconception from an incorrect number alone.",
+      "repair": "Rewrite the earliest invalid model selection or sign/condition with an explicit physical warrant and re-evaluate its consequences.",
+      "boundaryPrompt": "If the ramp becomes horizontal θ=0°, give both components and N.",
+      "boundaryModel": "Parallel gravity=0; perpendicular gravity=−40 N; normal=+40 N. No downhill acceleration caused by gravity.",
+      "factor_nominations": {
+        "band": "D3",
+        "status": "AUTHOR_ONLY_NOT_QUALIFIED",
+        "scores": [
+          1,
+          2,
+          2,
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "id": "PH02-F07-QRT-SYNTHESIZE-D3",
+      "unit": "PH02-F07",
+      "op": "SYNTHESIZE",
+      "cell": "D3.6",
+      "uid": "AUTHORED-PH02-F07-QRT-SYNTHESIZE-D3-R1",
+      "revision": "ph02-f07-qrt-synthesize-d3-20261114-r1",
+      "source_role": "AUTHORED_TRANSFER",
+      "qrt_status": "PROPOSED_UNREVIEWED",
+      "prediction": "Before calculating, identify the governing model, object boundary, signed direction and the first inference that will distinguish this case from a routine example.",
+      "prompt": "A 2 kg block rests on a 30° ramp (g=10 m s⁻²) with static-friction capacity 5 N and a rope pulling upslope at constant tension T. Determine the interval of T that permits rest. Then set T=16 N: give required friction magnitude/direction and confirm the bound. Resolve forces along the ramp with signs.",
+      "w": "Combine gravity's projected component and two-sided static-friction inequality, then check a specific rope tension.",
+      "reconstruction": "Weight downslope component=mg sin30°=10 N. Upslope-positive rest requires T−10+f_s=0, so f_s=10−T. Bound |10−T|≤5 gives 5≤T≤15 N for rest. At T=16 N, required f_s=−6 N downslope, exceeding 5 N; rest impossible. The block must accelerate/slide under a kinetic-friction model not supplied.",
+      "alternative": "Check the derived result by substituting every force, interval or projection back into the original constraints, including sign, SI dimensions and the limiting case.",
+      "hints": [
+        "Identify the relevant object(s), physical contact and direction before choosing a formula.",
+        "Connect the selected law to the given quantitative conditions, recording what stays invariant and what changes.",
+        "Write an unknown, a governing relation and an independent validity check; leave the decisive numerical inference to your own attempt."
+      ],
+      "diagnosis": "Compare your first divergence against system boundary, interaction labels, signs, forces versus acceleration, source-target representation and validity limit; do not diagnose a misconception from an incorrect number alone.",
+      "repair": "Rewrite the earliest invalid model selection or sign/condition with an explicit physical warrant and re-evaluate its consequences.",
+      "boundaryPrompt": "If T=12 N, can the block rest? State friction direction and magnitude.",
+      "boundaryModel": "Yes. Required f_s=10−12=−2 N, i.e. 2 N downslope, within the 5 N limit.",
+      "factor_nominations": {
+        "band": "D3",
+        "status": "AUTHOR_ONLY_NOT_QUALIFIED",
+        "scores": [
+          1,
+          1,
+          2,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "PH02-F08-QRT-EXPLAIN-D3",
+      "unit": "PH02-F08",
+      "op": "EXPLAIN",
+      "cell": "D3.2",
+      "uid": "AUTHORED-PH02-F08-QRT-EXPLAIN-D3-R1",
+      "revision": "ph02-f08-qrt-explain-d3-20261114-r1",
+      "source_role": "AUTHORED_TRANSFER",
+      "qrt_status": "PROPOSED_UNREVIEWED",
+      "prediction": "Before calculating, identify the governing model, object boundary, signed direction and the first inference that will distinguish this case from a routine example.",
+      "prompt": "Two frictionless carts A=2 kg and B=3 kg share a taut string and move east with speed 4 m s⁻¹. A 10 N east pull on B is abruptly removed at the same instant the string is cut, without impulse. Explain how their accelerations and velocities change at that instant; identify the mistaken argument that the carts must stop when tension vanishes.",
+      "w": "Explain why loss of internal tension and external pull changes acceleration but cannot create an instantaneous velocity jump.",
+      "reconstruction": "Before release, a=10/(2+3)=2 m s⁻² east while pulling. At the instant both pull and string vanish, no horizontal forces remain, so each a=0; their velocities immediately after are still 4 m s⁻¹ east by continuity without impulse. Both then coast; no sudden stop occurs. Action-reaction tension pair no longer exists after cut.",
+      "alternative": "Check the derived result by substituting every force, interval or projection back into the original constraints, including sign, SI dimensions and the limiting case.",
+      "hints": [
+        "Identify the relevant object(s), physical contact and direction before choosing a formula.",
+        "Connect the selected law to the given quantitative conditions, recording what stays invariant and what changes.",
+        "Write an unknown, a governing relation and an independent validity check; leave the decisive numerical inference to your own attempt."
+      ],
+      "diagnosis": "Compare your first divergence against system boundary, interaction labels, signs, forces versus acceleration, source-target representation and validity limit; do not diagnose a misconception from an incorrect number alone.",
+      "repair": "Rewrite the earliest invalid model selection or sign/condition with an explicit physical warrant and re-evaluate its consequences.",
+      "boundaryPrompt": "If the pull remains on B after cutting, how does its acceleration differ from A's?",
+      "boundaryModel": "A has a=0; B has a=10/3 m s⁻² east, while both retain their instantaneous pre-cut speeds initially.",
+      "factor_nominations": {
+        "band": "D3",
+        "status": "AUTHOR_ONLY_NOT_QUALIFIED",
+        "scores": [
+          1,
+          1,
+          2,
+          0,
+          2
+        ]
+      }
+    },
+    {
+      "id": "PH02-F08-QRT-MODEL-D3",
+      "unit": "PH02-F08",
+      "op": "MODEL",
+      "cell": "D3.4",
+      "uid": "AUTHORED-PH02-F08-QRT-MODEL-D3-R1",
+      "revision": "ph02-f08-qrt-model-d3-20261114-r1",
+      "source_role": "AUTHORED_TRANSFER",
+      "qrt_status": "PROPOSED_UNREVIEWED",
+      "prediction": "Before calculating, identify the governing model, object boundary, signed direction and the first inference that will distinguish this case from a routine example.",
+      "prompt": "Two carts A=2 kg and B=3 kg touch end-to-end on a smooth track. A 12 N force pulls B east while an independent 8 N force pushes A west. A light string between them is initially slack and cannot push. Compare the acceleration models for (i) slack string and (ii) string becoming taut. State which measured evidence would justify switching to the shared-acceleration model and why the instantaneous velocity continuity must be considered.",
+      "w": "Choose separate-versus-shared system dynamics based on contact/tautness rather than blindly applying a combined-mass equation.",
+      "reconstruction": "If slack and no contact, A has a_A=−8/2=−4 m s⁻², B has a_B=+12/3=+4 m s⁻². A taut massless string can constrain accelerations only once physically taut; the combined external force is +12−8=+4 N and total mass=5 kg, so common a=+0.8 m s⁻² if a physically consistent taut state exists. Continuity of velocity at engagement may fail without modelling an impulsive tautening event; do not assert it is impulse-free without evidence.",
+      "alternative": "Check the derived result by substituting every force, interval or projection back into the original constraints, including sign, SI dimensions and the limiting case.",
+      "hints": [
+        "Identify the relevant object(s), physical contact and direction before choosing a formula.",
+        "Connect the selected law to the given quantitative conditions, recording what stays invariant and what changes.",
+        "Write an unknown, a governing relation and an independent validity check; leave the decisive numerical inference to your own attempt."
+      ],
+      "diagnosis": "Compare your first divergence against system boundary, interaction labels, signs, forces versus acceleration, source-target representation and validity limit; do not diagnose a misconception from an incorrect number alone.",
+      "repair": "Rewrite the earliest invalid model selection or sign/condition with an explicit physical warrant and re-evaluate its consequences.",
+      "boundaryPrompt": "If the string is taut from the outset and both have the same initial velocity, what is their common acceleration?",
+      "boundaryModel": "a=(12−8)/(2+3)=+0.8 m s⁻² east; check that tension can be tensile and satisfies each cart's resultant before accepting.",
+      "factor_nominations": {
+        "band": "D3",
+        "status": "AUTHOR_ONLY_NOT_QUALIFIED",
+        "scores": [
+          2,
+          1,
+          2,
+          0,
+          1
+        ]
+      }
+    }
+  ],
+  "main_cycles": [
+    {
+      "op": "EXPLAIN",
+      "unit": "PH02-F02",
+      "members": [
+        "F02",
+        "F04",
+        "F08"
+      ],
+      "prediction": "When a light string is cut and the pull is removed, predict whether two moving carts stop, keep their speed or speed up, and justify using system forces.",
+      "prompt": "On a smooth horizontal track a 2 kg cart A and 3 kg cart B start at rest, linked by a taut light string. A motor exerts 10 N east only on B for 1 s; it then switches off as the string is cut without impulse. A nearby tram separately accelerates east from rest at 1 m s⁻² throughout the full 2 s. Find the string force before the cut, the carts' speeds immediately before/after it, each cart's acceleration after it and the displacement of each cart relative to the tram at 2 s. Explain the third-law forces and inertia without using a fictitious force in the ground frame.",
+      "w": "Connect first-law coasting, opposite-body tension and a changing string/force model to explain the observed relative position.",
+      "reconstruction": "During 0–1 s, a=(10)/(2+3)=2 m s⁻² east. For A, tension=2×2=4 N east; A exerts 4 N west on the string, while string pulls B west4 N and motor pulls B east10 N, giving net6 N=3×2. Both reach v=2 m s⁻¹ east at t=1 without jump across the non-impulsive cut. Thereafter pull/tension=0, each a=0 and coasts east 2 m s⁻¹. Each cart travels 0.5(2)(1²)+2(1)=3 m by t=2. Tram travels 0.5(1)(2²)=2 m, so carts are +1 m east relative to the tram; this needs no extra forward force on them.",
+      "boundaryPrompt": "If the 10 N motor remains on B after the string is cut at 1 s, what are accelerations of A and B immediately after the cut?",
+      "boundaryModel": "After the cut A has no horizontal force, so a_A=0. B has net +10 N on 3 kg so a_B=10/3 m s⁻² east. Both velocities remain 2 m s⁻¹ immediately after the non-impulsive cut.",
+      "id": "PH02-MAIN-EXPLAIN-D3-R1",
+      "uid": "AUTHORED-PH02-MAIN-EXPLAIN-D3-R1",
+      "revision": "ph02-main-explain-20261114-r1",
+      "source_role": "AUTHORED_TRANSFER",
+      "cell": "D3.2",
+      "qrt_status": "PROPOSED_UNREVIEWED",
+      "hints": [
+        "Select one shared physical system and identify external interactions before writing numerical laws.",
+        "Draw the physical boundaries and stage transition, preserving force directions, constraints and velocity continuity.",
+        "Use signed net-force relations, solve each dependent unknown and check the initial/changed-condition model independently."
+      ],
+      "alternative": "Check all object-level balances and full-system balance independently. Verify SI dimensions, signs, domain and the changed-contact boundary.",
+      "diagnosis": "If a force pair cancels on the wrong object, return to interaction labels and the system boundary. If motion changes instantly after cutting without impulse, distinguish velocity from acceleration.",
+      "repair": "Reconstruct the first mistaken system equation or stage assumption and verify it using a distinct body or limiting case.",
+      "status": "ACADEMIC_HOLD"
+    },
+    {
+      "op": "APPLY",
+      "unit": "PH02-F03",
+      "members": [
+        "F03",
+        "F06",
+        "F07"
+      ],
+      "prediction": "Can a 2 kg block on a rough 30° ramp remain at rest under a 12 N uphill rope pull? Identify which friction model applies first.",
+      "prompt": "A 2 kg block initially rests on a 30° incline, g=10 m s⁻². The static-friction magnitude is at most 6 N; once sliding, the kinetic friction magnitude is 4 N. A rope parallel to the slope first pulls upslope at 12 N. Find actual static friction and whether rest is possible. The rope force is then increased to 20 N. Decide whether it starts moving and calculate its initial acceleration once sliding, with a signed resultant and independent unit/sign check.",
+      "w": "Apply gravity projection and two distinct friction regimes in sequence, using the no-slip inequality before changing equations.",
+      "reconstruction": "Upslope positive, mg sin30°=10 N downslope. With T=12 N, nonfriction tendency is +2 N upslope, so f_s=−2 N (downslope); |f_s|=2≤6 and rest is possible. With T=20 N the static force required would be −10 N, larger than the 6 N limit, so it moves upslope. For upslope sliding, kinetic friction=4 N downslope; net=20−10−4=+6 N and a=6/2=+3 m s⁻² upslope. Units: N/kg=m s⁻² and sign matches net.",
+      "boundaryPrompt": "Instead of 20 N, set rope pull to 4 N. Can it remain at rest initially, and which way would friction act?",
+      "boundaryModel": "T−mg sin30=4−10=−6 N tendency downslope. Static friction must be +6 N upslope, exactly the available maximum, so rest at limiting equilibrium is possible under the ideal model.",
+      "id": "PH02-MAIN-APPLY-D3-R1",
+      "uid": "AUTHORED-PH02-MAIN-APPLY-D3-R1",
+      "revision": "ph02-main-apply-20261114-r1",
+      "source_role": "AUTHORED_TRANSFER",
+      "cell": "D3.3",
+      "qrt_status": "PROPOSED_UNREVIEWED",
+      "hints": [
+        "Select one shared physical system and identify external interactions before writing numerical laws.",
+        "Draw the physical boundaries and stage transition, preserving force directions, constraints and velocity continuity.",
+        "Use signed net-force relations, solve each dependent unknown and check the initial/changed-condition model independently."
+      ],
+      "alternative": "Check all object-level balances and full-system balance independently. Verify SI dimensions, signs, domain and the changed-contact boundary.",
+      "diagnosis": "If a force pair cancels on the wrong object, return to interaction labels and the system boundary. If motion changes instantly after cutting without impulse, distinguish velocity from acceleration.",
+      "repair": "Reconstruct the first mistaken system equation or stage assumption and verify it using a distinct body or limiting case.",
+      "status": "ACADEMIC_HOLD"
+    },
+    {
+      "op": "MODEL",
+      "unit": "PH02-F05",
+      "members": [
+        "F01",
+        "F03",
+        "F05",
+        "F06",
+        "F08"
+      ],
+      "prediction": "When a taut string joining a pulled cart to a two-block sled is cut, which bodies still accelerate and which forces become zero?",
+      "prompt": "On a smooth horizontal track, platform P has mass 2 kg and carries an upper box Q of mass 1 kg without slip; the P–Q static-friction limit is 4 N. A light taut rope joins P to a separate 3 kg cart R, and a constant 18 N east pull acts only on R. Determine a shared pre-cut acceleration, the friction on Q and the rope tension. Check static friction. The rope is then cut without impulse while the 18 N pull continues on R. Determine the immediate accelerations of Q, P and R, and explain which interaction forces vanish.",
+      "w": "Choose composite and nested system boundaries, verify a contact inequality, then replace the taut-string system with independent post-cut models.",
+      "reconstruction": "Before cut total mass 2+1+3=6 kg; external force 18 N east gives a=3 m s⁻². On top Q, static friction f=1(3)=3 N east, within limit 4 N. On P+Q (3 kg), rope tension T=(3)(3)=9 N east. On R, 18−9=9 N=3×3, check. After non-impulsive cut: R alone has +18 N on 3 kg, so a_R=6 m s⁻² east. P+Q has no external horizontal pull; no friction is needed to share zero acceleration, so a_P=a_Q=0 and actual f=0. The rope tension disappears on both formerly connected bodies; existing velocities persist at the instant.",
+      "boundaryPrompt": "If the P–Q static-friction limit had been only 2 N before cutting, could the pre-cut shared-acceleration model be accepted?",
+      "boundaryModel": "No. Required f=3 N exceeds the 2 N limit. P and Q would slip before cutting and the assumed three-body shared acceleration is invalid without a kinetic-friction model.",
+      "id": "PH02-MAIN-MODEL-D3-R1",
+      "uid": "AUTHORED-PH02-MAIN-MODEL-D3-R1",
+      "revision": "ph02-main-model-20261114-r1",
+      "source_role": "AUTHORED_TRANSFER",
+      "cell": "D3.4",
+      "qrt_status": "PROPOSED_UNREVIEWED",
+      "hints": [
+        "Select one shared physical system and identify external interactions before writing numerical laws.",
+        "Draw the physical boundaries and stage transition, preserving force directions, constraints and velocity continuity.",
+        "Use signed net-force relations, solve each dependent unknown and check the initial/changed-condition model independently."
+      ],
+      "alternative": "Check all object-level balances and full-system balance independently. Verify SI dimensions, signs, domain and the changed-contact boundary.",
+      "diagnosis": "If a force pair cancels on the wrong object, return to interaction labels and the system boundary. If motion changes instantly after cutting without impulse, distinguish velocity from acceleration.",
+      "repair": "Reconstruct the first mistaken system equation or stage assumption and verify it using a distinct body or limiting case.",
+      "status": "ACADEMIC_HOLD"
+    },
+    {
+      "op": "REPRESENT",
+      "unit": "PH02-F07",
+      "members": [
+        "F01",
+        "F02",
+        "F04",
+        "F05",
+        "F07"
+      ],
+      "prediction": "Draw two distinct free-body diagrams for a block on a ramp and a cart on level ground, joined over an ideal pulley; predict the cart's motion after the string is cut.",
+      "prompt": "A 2 kg block lies on a smooth 30° ramp and is connected by a massless taut rope over an ideal pulley to a 3 kg cart on a smooth horizontal track. The geometry makes the cart move east as the block descends. They start at rest; g=10 m s⁻². Draw or specify separate force diagrams (all forces on each body), the parallel component of block weight, the tension/action-reaction agents, and a position-versus-time table for the cart at t=0,2,3 s if the string is cut without impulse at t=2 s. Give signs and independently check the post-cut cart motion.",
+      "w": "Translate one rope-constrained system into separate force representations and a piecewise kinematic trajectory after the constraint disappears.",
+      "reconstruction": "Block's downslope weight component=2×10×sin30°=10 N; ramp normal balances mg cos30≈17.32 N. Along rope coordinate, coupled mass=5 kg, so a=10/5=2 m s⁻²: block descends, cart moves east. For cart alone tension T=3×2=6 N east; for block along slope net=10−6=4 N downslope, giving a=2. Rope pulls cart east6 and cart pulls rope west6 (different bodies); similarly it pulls block upslope6. Before cut cart x=0.5(2)t², so x(0)=0, x(2)=4 m and v(2)=4 m s⁻¹ east. After cut the cart has no horizontal force; x(3)=4+4(1)=8 m. Position graph is parabola through 0 to2 s then straight line slope 4 m/s. Its velocity is continuous, acceleration changes 2→0.",
+      "boundaryPrompt": "If the string is cut at t=1 s instead, where is the cart at t=3 s?",
+      "boundaryModel": "Before cut x(1)=0.5(2)(1²)=1 m, v(1)=2 m s⁻¹. After cut 2 s coasting, x(3)=1+2(2)=5 m. No force after cut does not mean v=0.",
+      "id": "PH02-MAIN-REPRESENT-D3-R1",
+      "uid": "AUTHORED-PH02-MAIN-REPRESENT-D3-R1",
+      "revision": "ph02-main-represent-20261114-r1",
+      "source_role": "AUTHORED_TRANSFER",
+      "cell": "D3.5",
+      "qrt_status": "PROPOSED_UNREVIEWED",
+      "hints": [
+        "Select one shared physical system and identify external interactions before writing numerical laws.",
+        "Draw the physical boundaries and stage transition, preserving force directions, constraints and velocity continuity.",
+        "Use signed net-force relations, solve each dependent unknown and check the initial/changed-condition model independently."
+      ],
+      "alternative": "Check all object-level balances and full-system balance independently. Verify SI dimensions, signs, domain and the changed-contact boundary.",
+      "diagnosis": "If a force pair cancels on the wrong object, return to interaction labels and the system boundary. If motion changes instantly after cutting without impulse, distinguish velocity from acceleration.",
+      "repair": "Reconstruct the first mistaken system equation or stage assumption and verify it using a distinct body or limiting case.",
+      "status": "ACADEMIC_HOLD"
+    },
+    {
+      "op": "SYNTHESIZE",
+      "unit": "PH02-F08",
+      "members": [
+        "F02",
+        "F03",
+        "F05",
+        "F07",
+        "F08"
+      ],
+      "prediction": "If the rope is cut while two masses are moving up a smooth ramp with zero acceleration, can their velocities remain upslope just after cutting?",
+      "prompt": "Two blocks A=2 kg and B=3 kg lie on the same smooth 30° ramp (g=10 m s⁻²) connected by a taut light rope. An external 25 N upslope force pulls B; the system is initially moving upslope at 2 m s⁻¹ and the rope remains taut. Find acceleration and rope tension before a non-impulsive cut. Immediately after the cut the same external pull still acts on B but no rope force acts on A. Find both accelerations and determine their separation increase 2 s after the cut, assuming no collision and both continue on the ramp. Explain why acceleration direction does not fix immediate velocity direction.",
+      "w": "Coordinate shared-acceleration dynamics, gravity projection and a non-impulsive constraint change to predict differential motion and separation.",
+      "reconstruction": "Upslope positive. Total downslope gravity=(2+3)(10)(0.5)=25 N; external upslope pull25 N gives combined ΣF=0 and shared acceleration0; initial 2 m s⁻¹ upslope persists before cut. For A alone: T−(2×10×0.5)=0, hence T=10 N upslope. After cut A has a_A=−10/2=−5 m s⁻² downslope; B has a_B=(25−3×10×0.5)/3=+10/3 m s⁻² upslope. Both velocities at instant of cut stay +2 m s⁻¹, but their relative acceleration is 10/3−(−5)=25/3 m s⁻². Starting from zero relative separation/velocity at cutting, after 2 s separation increase =0.5(25/3)(2²)=50/3≈16.67 m, with B moving farther upslope.",
+      "boundaryPrompt": "If the external 25 N pull is also removed at the cut, what are the two immediate accelerations on the smooth ramp?",
+      "boundaryModel": "Each block then has only downslope gravity component mg sin30°, so a_A=a_B=−g sin30°=−5 m s⁻², with no growing relative acceleration from the cut alone; their velocities remain continuous at the instant.",
+      "id": "PH02-MAIN-SYNTHESIZE-D3-R1",
+      "uid": "AUTHORED-PH02-MAIN-SYNTHESIZE-D3-R1",
+      "revision": "ph02-main-synthesize-20261114-r1",
+      "source_role": "AUTHORED_TRANSFER",
+      "cell": "D3.6",
+      "qrt_status": "PROPOSED_UNREVIEWED",
+      "hints": [
+        "Select one shared physical system and identify external interactions before writing numerical laws.",
+        "Draw the physical boundaries and stage transition, preserving force directions, constraints and velocity continuity.",
+        "Use signed net-force relations, solve each dependent unknown and check the initial/changed-condition model independently."
+      ],
+      "alternative": "Check all object-level balances and full-system balance independently. Verify SI dimensions, signs, domain and the changed-contact boundary.",
+      "diagnosis": "If a force pair cancels on the wrong object, return to interaction labels and the system boundary. If motion changes instantly after cutting without impulse, distinguish velocity from acceleration.",
+      "repair": "Reconstruct the first mistaken system equation or stage assumption and verify it using a distinct body or limiting case.",
+      "status": "ACADEMIC_HOLD"
+    },
+    {
+      "op": "JUSTIFY",
+      "unit": "PH02-F06",
+      "members": [
+        "F01",
+        "F04",
+        "F06"
+      ],
+      "prediction": "Can a two-block trolley accelerate under an external pull while the upper block remains stuck? Predict how the static-friction limit constrains pull strength.",
+      "prompt": "A 2 kg top block rests on a 3 kg lower platform on a frictionless horizontal track. The two blocks share motion while no slipping occurs; friction between them has maximum magnitude 5 N. An external adjustable eastward force F≥0 acts only on the lower platform. Derive the full allowable interval of F for no-slip acceleration, proving why the internal friction forces cancel for the combined system but still accelerate the upper block. Include the F=0 coasting case and test F=15 N.",
+      "w": "Justify the no-slip force bound from system and sub-body Newton equations plus third-law internal-force cancellation, and exhibit a counterexample.",
+      "reconstruction": "For both bodies, internal static-friction pair cancels, so a=F/(2+3)=F/5 east. On top block alone, its only horizontal force is friction f=2a=2F/5 east. The equal-opposite top-on-platform friction is 2F/5 west; they cancel only when both are inside the chosen system. No slip requires |f|≤5 N, giving 2F/5≤5, so 0≤F≤12.5 N. At F=0, net force and a=0 yet the pair can coast with any existing constant velocity. At F=15 N the required f=6 N exceeds the 5 N limit, so no-slip assumption fails; use a slipping model.",
+      "boundaryPrompt": "If the top block's mass doubles to 4 kg while the platform stays 3 kg and f_max=5 N, derive the new allowable eastward F range.",
+      "boundaryModel": "Combined mass7 kg gives a=F/7. Required top friction f=4F/7≤5, hence 0≤F≤35/4=8.75 N. Greater upper mass lowers allowable pull in this model.",
+      "id": "PH02-MAIN-JUSTIFY-D3-R1",
+      "uid": "AUTHORED-PH02-MAIN-JUSTIFY-D3-R1",
+      "revision": "ph02-main-justify-20261114-r1",
+      "source_role": "AUTHORED_TRANSFER",
+      "cell": "D3.7",
+      "qrt_status": "PROPOSED_UNREVIEWED",
+      "hints": [
+        "Select one shared physical system and identify external interactions before writing numerical laws.",
+        "Draw the physical boundaries and stage transition, preserving force directions, constraints and velocity continuity.",
+        "Use signed net-force relations, solve each dependent unknown and check the initial/changed-condition model independently."
+      ],
+      "alternative": "Check all object-level balances and full-system balance independently. Verify SI dimensions, signs, domain and the changed-contact boundary.",
+      "diagnosis": "If a force pair cancels on the wrong object, return to interaction labels and the system boundary. If motion changes instantly after cutting without impulse, distinguish velocity from acceleration.",
+      "repair": "Reconstruct the first mistaken system equation or stage assumption and verify it using a distinct body or limiting case.",
+      "status": "ACADEMIC_HOLD"
+    }
+  ]
+}

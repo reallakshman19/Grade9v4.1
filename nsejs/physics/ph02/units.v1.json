@@ -1,0 +1,658 @@
+{
+  "schema": "g9v41-ph02-author-candidate-content/v1",
+  "task": "G9V41-PHYS-C1AB-A02-PH02-R1",
+  "status": "AUTHOR_EXPOSED_CANDIDATE",
+  "academic_status": "HOLD",
+  "release_status": "HOLD",
+  "source_role": "AUTHORED_TRANSFER",
+  "original_exam_identity": null,
+  "independent_qrt": "NOT_RUN",
+  "syllabus_scope": "CANDIDATE_ONLY_PENDING_EXACT_2026_27_DETAIL",
+  "source_locator_notes": [
+    {
+      "url": "https://iapt.org.in/",
+      "scope": "NSEJS PCB through Class X only",
+      "status": "OFFICIAL_HOMEPAGE_CONTEXT_NOT_ITEM_CUSTODY"
+    },
+    {
+      "url": "https://cbseacademic.nic.in/curriculum_2027.html",
+      "scope": "Current IX/X curriculum index",
+      "status": "OFFICIAL_INDEX_NOT_ROW_VERIFIED"
+    },
+    {
+      "url": "https://cbseacademic.nic.in/web_material/CurriculumMain27/SecPart1/ScienceSt_SecP1_2026-27.pdf",
+      "publisher": "CBSE",
+      "course": "Class IX Science 2026–27, Force and Laws of Motion",
+      "printed_page": 15,
+      "pdf_index_zero_based": 14,
+      "competency": "C-2.1 and C-8.1",
+      "visible_scope": "balanced/unbalanced forces; friction; Newton I/II/III; force as vector and everyday use; modelling/representations",
+      "status": "OFFICIAL_CURRICULUM_VISUALLY_CHECKED_NOT_EXAM_ITEM_ADMISSION"
+    }
+  ],
+  "base_commit": "6dd8c0000e710fc923e9d347123f78c17449ed7b",
+  "parent": "Draft PR #3 candidate C06 v1.1; not Owner-adopted",
+  "no_original_exam_claim": true,
+  "units": [
+    {
+      "id": "PH02-F01",
+      "title": "Balanced and unbalanced forces",
+      "scope": "CORE_CANDIDATE",
+      "competency": "Use signed resultant force to distinguish equilibrium from motion, and construct an unknown force for a required change in velocity.",
+      "prerequisites": [
+        "PH01-M03",
+        "PH01-M04"
+      ],
+      "phenomenon": "Two learners pull a wheeled trolley in opposite directions. It can stay still, move steadily, or accelerate. What matters for acceleration is the resultant external force, not whether any individual person pulls.",
+      "mechanism": "Select the trolley as the object. Mark an east-positive axis, name each interaction, and add eastward forces as positive and westward ones as negative. The forces can cancel while the trolley retains a nonzero constant velocity; cancellation does not erase velocity. If the total changes, the velocity changes in the direction of the acceleration, which need not be the direction of the existing velocity.",
+      "warrant": "For constant mass observed in an approximately inertial laboratory frame, F_net,x = Σ F_x = m a_x. A force is measured in newtons (1 N = 1 kg m s⁻²); mass is in kilograms and acceleration in m s⁻². This equality relates the vector sum to acceleration, not directly to position or velocity. If F_net,x = 0, a_x = 0 but v_x need not be zero.",
+      "figure": {
+        "kind": "arrows",
+        "left": "6 N west",
+        "right": "6 N east",
+        "caption": "Opposed horizontal pulls on one trolley. The equal arrows cancel only in the resultant; they do not indicate that the trolley's velocity must vanish."
+      },
+      "progression": [
+        [
+          "FOUNDATION",
+          "A trolley is pulled east with 6 N and west with 6 N.",
+          "ΣF_x = +6 − 6 = 0 N. Its acceleration is zero; it may be at rest or moving uniformly."
+        ],
+        [
+          "CONNECTED",
+          "A 2 kg trolley is pulled east with 10 N and west with 6 N.",
+          "Net force = +4 N, so a_x = +4/2 = +2 m s⁻². The positive sign locates acceleration east."
+        ],
+        [
+          "ADVANCED",
+          "A 3 kg trolley has 10 N east, 4 N west and 6 N west; then another 3 N east is applied.",
+          "Before the new pull, ΣF_x=0. After it, ΣF_x=3 N and a_x=1 m s⁻² east. This does not tell us whether it was already moving west."
+        ]
+      ],
+      "anchor": {
+        "problem": "A 3 kg cart feels 9 N east and 3 N west on a smooth floor. It was initially moving west. Find the immediate acceleration and explain whether it must reverse instantly.",
+        "solution": "ΣF_x=+9−3=+6 N; a_x=+2 m s⁻². The acceleration is east while the velocity may still be west for some time; reversal occurs only after the velocity reaches zero. Substitution: 3 kg × 2 m s⁻² = 6 N."
+      },
+      "misconception": {
+        "wrong": "If forces balance, the trolley must be at rest.",
+        "why": "The statement confuses acceleration with velocity. A trolley already moving on a low-friction track can continue steadily under zero net force.",
+        "repair": "State the initial velocity separately. A zero resultant keeps that velocity constant in the inertial-frame model."
+      },
+      "boundary": {
+        "case": "If a trolley is moving west but the resultant points east, its westward speed initially decreases; acceleration and velocity point in different directions.",
+        "check": "For v_x = −4 m s⁻¹ and a_x=+2 m s⁻², after 1 s v_x=−2 m s⁻¹; it has not yet turned."
+      },
+      "synthesis": {
+        "question": "For the same trolley, what force condition maintains a constant eastward speed of 2 m s⁻¹?",
+        "answer": "The net horizontal force must be zero. Constant speed with fixed eastward direction means zero acceleration; this does not require each force to be zero."
+      },
+      "practice": {
+        "uid": "AUTHORED-PH02-F01-TRANSFER-01",
+        "revision": "ph02-f01-20261114-r1",
+        "prediction": "If a cart is moving east but its required acceleration is west, must every force point west? State a prediction and reason.",
+        "prompt": "A 2 kg cart on a level low-friction track has 12 N east and 5 N west already acting. You may apply one additional horizontal force. Choose its direction and magnitude so that the cart accelerates at 1 m s⁻² west. Show the signed resultant equation and check it.",
+        "w": "Construct the missing applied force by reversing the usual resultant-to-acceleration calculation and preserving a signed direction.",
+        "hints": [
+          "Name the target acceleration's sign before listing the known forces.",
+          "Express the known resultant and target resultant in the same signed frame.",
+          "Represent the unknown force symbolically, then test its sum against m a; do not infer it from the cart's velocity."
+        ],
+        "reconstruction": "Choose east positive. The desired resultant is m a = 2(−1)=−2 N. The known forces sum to +12−5=+7 N. Let the added force be F: 7+F=−2, so F=−9 N, or 9 N west. Check: 12−5−9=−2 N; dividing by 2 kg gives −1 m s⁻².",
+        "alternative": "Use a force-balance diagram: the westward forces must exceed the existing 12 N east pull by 2 N, so the total westward pull must be 14 N. Since 5 N already acts west, add 9 N west.",
+        "diagnosis": "If you subtracted 12−5 and replied 7 N west, ask whether you found the existing resultant rather than the missing third force. If you used +2 N as the desired resultant, revisit the east-positive convention.",
+        "repair": "Write the target ΣF, the existing ΣF and the difference. Explain why the cart can still be moving east during westward acceleration.",
+        "boundaryPrompt": "The same cart must instead continue at a constant eastward velocity. What additional horizontal force is required? Explain why speed is not the deciding input.",
+        "boundaryModel": "Constant velocity requires a_x=0 and ΣF_x=0. The known resultant is +7 N, so the added force must be 7 N west. Its current eastward velocity need not be zero."
+      },
+      "curriculum_evidence": {
+        "ref": "CBSE_IX_2026_27_P15_C2_1_C8_1",
+        "relationship": "DIRECT_PRINTED_CBSE_FORCE_CONCEPT",
+        "nsejs_original_exam_status": "NO_SOURCE_ITEM_AUTHENTICATED",
+        "independent_scope_review": "HOLD"
+      }
+    },
+    {
+      "id": "PH02-F02",
+      "title": "Newton's first law and inertia",
+      "scope": "CORE_CANDIDATE",
+      "competency": "Predict motion in an inertial ground frame and explain apparent sliding relative to an accelerating vehicle without inventing a horizontal force.",
+      "prerequisites": [
+        "PH01-M03",
+        "PH01-M07",
+        "PH02-F01"
+      ],
+      "phenomenon": "A loose object on a bus shelf moves forward relative to passengers when the bus brakes. In the road frame the object does not spontaneously gain a forward push; it tends to continue its previous motion.",
+      "mechanism": "A body preserves its velocity if the external resultant vanishes. To analyze a bus or train, first state an approximately inertial ground frame. The vehicle can change speed while a frictionless object continues with its former ground-frame velocity. Relative displacement is object displacement minus vehicle displacement. Motion relative to a passenger can therefore emerge even without a horizontal force on the object.",
+      "warrant": "Newton's first law: in an inertial frame, net force zero implies constant vector velocity. Along one axis, Δv/Δt=0 when ΣF_x=0, and x(t)=x₀+v₀t while this condition holds. Velocity has dimensions m s⁻¹; displacement has dimensions m. A translating, accelerating bus frame is not itself inertial, so distinguish observations from model-based forces.",
+      "figure": {
+        "kind": "bus",
+        "left": "object: v₀",
+        "right": "bus: changing v",
+        "caption": "The object and the braking/accelerating vehicle can have different ground-frame displacements; the apparent relative motion needs two position histories."
+      },
+      "progression": [
+        [
+          "FOUNDATION",
+          "A puck slides east at 4 m s⁻¹ on a horizontal frictionless table with no horizontal pushes.",
+          "Net horizontal force is zero, so its velocity remains 4 m s⁻¹ east."
+        ],
+        [
+          "CONNECTED",
+          "A smooth table moves east underneath a puck initially at rest in the ground frame.",
+          "With no horizontal contact force on the puck it remains at rest relative to the ground; relative to the table it slips west."
+        ],
+        [
+          "ADVANCED",
+          "A suitcase is held by a sufficiently strong static-friction force on a braking bus floor.",
+          "Here the external horizontal force is not zero: friction decelerates the suitcase along with the bus. Inertia does not prohibit acceleration."
+        ]
+      ],
+      "anchor": {
+        "problem": "A bus moves east at 8 m s⁻¹ and begins braking. A small object on an ideal smooth horizontal shelf has no horizontal force. In the road frame, what is its velocity immediately after braking begins?",
+        "solution": "Its road-frame velocity remains 8 m s⁻¹ east because ΣF_x=0. Since the bus begins slowing, the object moves forward relative to the bus; no new forward force need act. Check: object's acceleration is 0 although bus acceleration is west."
+      },
+      "misconception": {
+        "wrong": "A suitcase is thrown forward by an extra force when a bus brakes.",
+        "why": "With negligible shelf friction, the suitcase continues its prior road-frame velocity while the bus slows.",
+        "repair": "Draw ground-frame velocity vectors for object and bus separately, then subtract to get their relative motion."
+      },
+      "boundary": {
+        "case": "If friction on the suitcase is large enough, its horizontal net force is west during braking, so the suitcase can slow with the bus instead of sliding.",
+        "check": "A changed contact condition changes the first-law premise; do not apply ΣF=0 when nonzero friction acts."
+      },
+      "synthesis": {
+        "question": "Why does an object on an accelerating train seem to slide backward even though no backward force acts on it?",
+        "answer": "Its ground-frame speed is initially unchanged, while the train accelerates forward. Relative to the faster train it falls behind."
+      },
+      "practice": {
+        "uid": "AUTHORED-PH02-F02-TRANSFER-01",
+        "revision": "ph02-f02-20261114-r1",
+        "prediction": "Can an object move toward the rear of a speeding-up train without any horizontal force acting on it? Predict in the ground frame.",
+        "prompt": "A train and a loose toy initially move east together at 6 m s⁻¹. The train then accelerates east at a constant 2 m s⁻² for 2 s. The toy rests on a perfectly smooth horizontal shelf and experiences no horizontal force. Find the toy's velocity in the road frame and its displacement relative to the train at 2 s; state the direction of relative motion.",
+        "w": "Keep two ground-frame position models separate before subtracting them for relative displacement in the accelerating train.",
+        "hints": [
+          "Choose the road frame and note which object has an external horizontal resultant.",
+          "Write the distance each travels from the same starting position during the two seconds.",
+          "Use toy displacement minus train displacement to determine the relative sign; velocity and displacement are different quantities."
+        ],
+        "reconstruction": "Take east positive and x₀=0. Toy: x_toy=6t and v_toy=6 m s⁻¹ because ΣF=0. Train: x_train=6t+(1/2)(2)t²=6t+t². At t=2 s, toy travels 12 m and train 16 m, so x_toy−x_train=−4 m. The toy is 4 m toward the rear relative to the train, without a backward horizontal force.",
+        "alternative": "Relative acceleration a_rel=0−2=−2 m s⁻² and initial relative velocity zero, giving Δx_rel=(1/2)(−2)(2²)=−4 m.",
+        "diagnosis": "If you give the toy acceleration +2 m s⁻², you have transferred the train's acceleration without a force. If you subtract speeds to claim a displacement, check the missing time integration.",
+        "repair": "List each object's horizontal force, ground acceleration and ground position equation. Only then compute the relative displacement.",
+        "boundaryPrompt": "If the same train instead accelerates west at 2 m s⁻² for 2 s while still initially moving east, where is the toy relative to the train?",
+        "boundaryModel": "Toy displacement stays 12 m east. Train displacement is 6(2)+(1/2)(−2)(2²)=8 m east. The toy is 4 m ahead of the train; the sign of relative motion reverses."
+      },
+      "curriculum_evidence": {
+        "ref": "CBSE_IX_2026_27_P15_C2_1_C8_1",
+        "relationship": "DIRECT_PRINTED_CBSE_NEWTON_1",
+        "nsejs_original_exam_status": "NO_SOURCE_ITEM_AUTHENTICATED",
+        "independent_scope_review": "HOLD"
+      }
+    },
+    {
+      "id": "PH02-F03",
+      "title": "Newton's second law, force and mass",
+      "scope": "CORE_CANDIDATE",
+      "competency": "Relate net force, constant mass and acceleration; use the relation in forward and inverse directions without confusing applied and resultant forces.",
+      "prerequisites": [
+        "PH01-M04",
+        "PH02-F01"
+      ],
+      "phenomenon": "Two trolleys receive the same horizontal net push. The lighter trolley changes velocity more quickly, showing that acceleration depends on both resultant force and inertia.",
+      "mechanism": "Choose the object, collect its external forces, compute their signed resultant, and only then divide by mass. The applied push is not necessarily the resultant because contact friction or an opposing rope can modify the total. Under the constant-mass Newtonian model, an equal net force produces acceleration inversely proportional to mass. Compare mass and acceleration only when resultant forces are known to be equal.",
+      "warrant": "ΣF_x = m a_x for constant mass in an inertial frame. m>0; acceleration has sign of the net force. Units: N = kg m s⁻². With same ΣF on two objects, m_A a_A = m_B a_B; with different net forces that equality does not follow.",
+      "figure": {
+        "kind": "arrows",
+        "left": "friction 4 N",
+        "right": "push 10 N",
+        "caption": "A push and opposing friction combine before Newton's second law is applied; the applied push alone is not ΣF."
+      },
+      "progression": [
+        [
+          "FOUNDATION",
+          "A 2 kg cart experiences a 6 N east resultant.",
+          "a_x=6/2=3 m s⁻² east."
+        ],
+        [
+          "CONNECTED",
+          "A 4 kg cart experiences the same 6 N east resultant.",
+          "a_x=6/4=1.5 m s⁻² east; doubling mass halves acceleration when force is fixed."
+        ],
+        [
+          "ADVANCED",
+          "A 4 kg crate has 10 N east push and 4 N west friction.",
+          "Net force is 6 N east and acceleration is 1.5 m s⁻² east, not 2.5."
+        ]
+      ],
+      "anchor": {
+        "problem": "A 3 kg box on a level floor has a 12 N east push and 3 N west resistive force. Determine its acceleration.",
+        "solution": "The external net horizontal force is +12−3=+9 N. Therefore a_x=9/3=+3 m s⁻². A dimensional check confirms 9 N /3 kg =3 m s⁻²."
+      },
+      "misconception": {
+        "wrong": "Any 12 N push on a 3 kg box gives 4 m s⁻² acceleration.",
+        "why": "It ignores other external forces and treats one interaction as the total.",
+        "repair": "Sum external forces for the selected body in a declared positive direction before applying F=ma."
+      },
+      "boundary": {
+        "case": "If one trolley experiences a different resistive force, an equal applied push no longer implies an equal net push.",
+        "check": "For applied 6 N and friction 2 N, net is 4 N; comparing this to a frictionless 6 N case with the equal-force ratio is invalid."
+      },
+      "synthesis": {
+        "question": "Two carts accelerate equally under different measured net forces. What relation can be inferred about their masses?",
+        "answer": "Their masses are proportional to the respective net forces because m=F_net/a for the same nonzero acceleration."
+      },
+      "practice": {
+        "uid": "AUTHORED-PH02-F03-TRANSFER-01",
+        "revision": "ph02-f03-20261114-r1",
+        "prediction": "Two carts have the same applied push but unknown or different resistances. Is it valid to equate their net forces before calculating both friction forces? Explain.",
+        "prompt": "Two carts on separate level tracks are each pushed east by the same applied force of 8 N. Cart A has mass 2 kg and measured acceleration 3 m s⁻² east; its constant westward resistance is unknown. Cart B experiences a measured 2 N westward resistance and accelerates at 1.5 m s⁻² east; its mass is unknown. Infer A's resistance and B's mass. State exactly why the resultant forces turn out to be equal, and independently verify both force equations.",
+        "w": "Distinguish applied from resultant forces; infer one resistance from measured acceleration, then recover the other mass and verify both independently.",
+        "hints": [
+          "Decide what 'the same net force' allows you to equate for A and B.",
+          "Express the two net forces symbolically before eliminating their common value.",
+          "Check whether the inferred mass is larger or smaller than A's using the acceleration comparison."
+        ],
+        "reconstruction": "For A, ΣF_A=m_Aa_A=2×3=6 N east. Applied push is 8 N east, so the unknown A resistance is 8−6=2 N west. For B, the independently given resistance is 2 N west; hence ΣF_B=8−2=6 N east. Its mass is m_B=6/1.5=4 kg. The two net forces are equal only after checking the resistances. Verify A: 8−2=2×3=6 N; B: 8−2=4×1.5=6 N.",
+        "alternative": "Do not begin by equating the net forces just because the external pushes match. Infer each net from the relevant contact information, then use F_net=m a and compare the results.",
+        "diagnosis": "If you set the masses inversely proportional without checking A's unknown resistance, you equated applied pushes with resultants prematurely. If you found 8/1.5 kg, you omitted B's westward resistance.",
+        "repair": "Separate each cart's applied and resistant forces in two signed equations, solve the unknown A resistance and B mass, then check both left-to-right.",
+        "boundaryPrompt": "B's westward resistance doubles from 2 N to 4 N while its mass remains 4 kg and the 8 N east push continues. What is B's new acceleration? Does the shared applied push now imply equal net force?",
+        "boundaryModel": "B now has resultant 8−4=4 N east and acceleration 4/4=1 m s⁻² east. A still has resultant 6 N and acceleration 3 m s⁻²; equal applied pushes no longer imply equal resultants."
+      },
+      "curriculum_evidence": {
+        "ref": "CBSE_IX_2026_27_P15_C2_1_C8_1",
+        "relationship": "DIRECT_PRINTED_CBSE_NEWTON_2",
+        "nsejs_original_exam_status": "NO_SOURCE_ITEM_AUTHENTICATED",
+        "independent_scope_review": "HOLD"
+      }
+    },
+    {
+      "id": "PH02-F04",
+      "title": "Newton's third law and interacting objects",
+      "scope": "CORE_CANDIDATE",
+      "competency": "Identify genuine interaction pairs on two distinct objects and separate equal contact forces from unequal accelerations.",
+      "prerequisites": [
+        "PH02-F03",
+        "PH02-F05"
+      ],
+      "phenomenon": "A person pushes a wall and feels the wall pushing back. The interaction is simultaneous; the two forces act on different bodies rather than canceling on one person.",
+      "mechanism": "Name the two interacting objects first. If A pushes B, B pushes A with equal magnitude and opposite direction in the same interaction. Draw the two arrows on different free-body diagrams. A single body's acceleration depends on all forces on that body and its mass; neither the equality of interaction forces nor different object masses forces equal acceleration.",
+      "warrant": "Newton's third law gives F_(A on B) = −F_(B on A). These vectors have units of N and act on distinct bodies; the relation holds for contact and gravity interactions under the Newtonian model. It does not assert that two forces acting on the *same* object are an action-reaction pair.",
+      "figure": {
+        "kind": "pair",
+        "left": "A pushes B →",
+        "right": "← B pushes A",
+        "caption": "Newton's third-law arrows belong to different bodies. Equal and opposite do not mean the net force on either body is zero."
+      },
+      "progression": [
+        [
+          "FOUNDATION",
+          "A palm pushes a wall east with 20 N.",
+          "The wall pushes the palm west with 20 N. They are on different objects."
+        ],
+        [
+          "CONNECTED",
+          "A book is at rest on a table. Its upward normal equals its downward weight.",
+          "Those two forces both act on the book and are not a third-law pair; the reaction to table-on-book is book-on-table."
+        ],
+        [
+          "ADVANCED",
+          "A 1 kg cart and 3 kg cart push each other with a 6 N horizontal contact force on a smooth track.",
+          "Their contact forces have equal magnitude, but contact-force accelerations have magnitudes 6 and 2 m s⁻², oppositely directed."
+        ]
+      ],
+      "anchor": {
+        "problem": "A book rests on a level table. Explain why its upward normal and downward weight are not a third-law pair, and name the actual reaction to the normal.",
+        "solution": "Both normal (table on book) and weight (Earth on book) act on the book; their balance explains its zero acceleration. The third-law counterpart of table-on-book is book-on-table, acting downward on the table. The reaction to Earth's gravitational pull on the book is the book's gravitational pull on Earth."
+      },
+      "misconception": {
+        "wrong": "An action and reaction cancel, so any colliding objects must have zero acceleration.",
+        "why": "Action and reaction belong to different objects and never cancel as a pair in one object's equation.",
+        "repair": "Attach 'on A by B' labels to every arrow, then form a separate resultant for each selected object."
+      },
+      "boundary": {
+        "case": "Equal forces on a very massive truck and a small cart do not imply equal acceleration; mass differs.",
+        "check": "If each receives a 12 N contact force, a 4 kg cart has 3 m s⁻² while a 1 kg cart has 12 m s⁻² before accounting for other forces."
+      },
+      "synthesis": {
+        "question": "When a person stands still on the ground, which force is the reaction to Earth's gravitational force on the person?",
+        "answer": "The person's gravitational pull on Earth, not the ground's normal reaction on the person."
+      },
+      "practice": {
+        "uid": "AUTHORED-PH02-F04-TRANSFER-01",
+        "revision": "ph02-f04-20261114-r1",
+        "prediction": "During a contact, can forces on different bodies be equal and opposite even while external actuators make the two accelerations very different? Label forces before calculating.",
+        "prompt": "Two carts A (4 kg) and B (1 kg) are in brief contact on a smooth horizontal track. A pushes B east with 12 N. An external actuator also pushes A east with 4 N, while another device pushes B west with 3 N. Identify the Newton-third-law contact pair (with each recipient labelled), calculate the instantaneous accelerations of A and B, then check the centre-of-mass acceleration from both the external resultant and the mass-weighted individual accelerations. Explain why the contact configuration may be transient.",
+        "w": "Separate action-reaction forces by recipient, add each body's external device, then reconcile body equations with the system centre of mass.",
+        "hints": [
+          "Write each force using 'on [object] by [other object]' notation.",
+          "Third-law equality compares interaction forces, not the complete mass-times-acceleration values.",
+          "Write one ΣF=ma relation per cart with its own mass and direction."
+        ],
+        "reconstruction": "B-on-A contact =−12 N (west); A-on-B contact=+12 N (east). For A, ΣF_A=+4−12=−8 N, so a_A=−8/4=−2 m s⁻². For B, ΣF_B=+12−3=+9 N, so a_B=+9/1=+9 m s⁻². The combined system's external resultant is +4−3=+1 N, total mass 5 kg and a_CM=+1/5=+0.2 m s⁻². Independent check: (4×−2+1×9)/5=+0.2 m s⁻². The contact pair cancels only in the combined system; the opposing accelerations can cause separation soon after this instantaneous snapshot.",
+        "alternative": "Calculate the contact pair on different diagrams; their sum is zero only for the combined system. Independently compute the centre-of-mass acceleration from the devices and from weighted body accelerations.",
+        "diagnosis": "If you removed the 12 N contact arrow from each separate cart, you cancelled forces on different bodies. If you used 4−3−24 N as system resultant, you incorrectly counted the internal contact pair twice.",
+        "repair": "Draw two body-labelled force diagrams, then the combined-system diagram; explicitly compare the two independent centre-of-mass computations.",
+        "boundaryPrompt": "At a moment when the same 12 N east contact force on B is still present, remove only B's 3 N west actuator. What is B's instantaneous acceleration and the combined-system centre-of-mass acceleration?",
+        "boundaryModel": "B then has +12 N net, so a_B=+12 m s⁻² east. Total external resultant becomes +4 N east on 5 kg, so a_CM=+0.8 m s⁻². The specified 12 N contact is instantaneous; whether contact persists requires a separate dynamical check."
+      },
+      "curriculum_evidence": {
+        "ref": "CBSE_IX_2026_27_P15_C2_1_C8_1",
+        "relationship": "DIRECT_PRINTED_CBSE_NEWTON_3",
+        "nsejs_original_exam_status": "NO_SOURCE_ITEM_AUTHENTICATED",
+        "independent_scope_review": "HOLD"
+      }
+    },
+    {
+      "id": "PH02-F05",
+      "title": "Free-body diagrams and object boundaries",
+      "scope": "CORE_CANDIDATE",
+      "competency": "Choose an analysis system, enumerate its external interactions, and infer a previously unlabelled contact force from its acceleration.",
+      "prerequisites": [
+        "PH02-F01",
+        "PH02-F03",
+        "PH02-F04"
+      ],
+      "phenomenon": "A box resting on a moving platform can accelerate although nobody pushes the box directly by hand. Its contact interactions change when we choose the box alone or the platform-plus-box as the system.",
+      "mechanism": "A free-body diagram represents forces acting *on the selected object*, not motion arrows or forces it exerts on others. State the system boundary first. On one box include gravity, support normal and any friction/tension acting on it; do not include its reaction on the support. For a combined multi-object system, internal contact forces cancel pairwise in the resultant, while external forces remain.",
+      "warrant": "Apply ΣF_external = m_system a for a system of fixed total mass with a shared acceleration under the stated contact constraint. Vertical equilibrium on a level platform gives N≈mg if no other vertical effects. Horizontal contact friction may point in the direction of acceleration needed to carry the upper box. A free-body diagram is not a diagram of all forces in a scene.",
+      "figure": {
+        "kind": "stack",
+        "left": "upper box: friction →",
+        "right": "weight ↓ / normal ↑",
+        "caption": "Select the upper box alone: its friction, normal and weight are external to that box. A combined-system diagram excludes internal friction between boxes."
+      },
+      "progression": [
+        [
+          "FOUNDATION",
+          "A book rests on a table.",
+          "Book alone: gravity downward and normal upward. Do not draw the book's downward force on the table in the book diagram."
+        ],
+        [
+          "CONNECTED",
+          "A crate slides right under a rightward push and leftward kinetic friction.",
+          "Show weight down, normal up, push right and friction left, and then sum horizontal forces."
+        ],
+        [
+          "ADVANCED",
+          "Two boxes move together when one is pushed.",
+          "Choose both boxes: their contact forces become internal and cancel. Choose only the upper box: horizontal static friction is external and may accelerate it."
+        ]
+      ],
+      "anchor": {
+        "problem": "Two carts A and B are joined by a taut light rope and pulled to the right on a frictionless level track. Explain which rope tensions appear in the free-body diagram of the combined A+B system and of cart A alone.",
+        "solution": "For A+B combined, the equal opposite rope pulls are internal, so no net rope term appears in ΣF_external. For A alone, the rope pull on A is an external force and must be shown. Gravity and normal are separate vertical interactions on each selected body."
+      },
+      "misconception": {
+        "wrong": "Friction always points opposite the direction an object moves.",
+        "why": "Friction opposes relative sliding or its tendency at the contact, which can require a rightward force to accelerate an upper box moving right.",
+        "repair": "Ask how the two contacting surfaces would move relative to each other without friction; draw friction to oppose that tendency."
+      },
+      "boundary": {
+        "case": "If the upper box begins slipping on the lower one, the no-slip shared-acceleration constraint no longer applies; the friction law and relative motion need a new model.",
+        "check": "Do not infer static friction = m_upper a_lower when the required magnitude exceeds its available limit."
+      },
+      "synthesis": {
+        "question": "Can internal forces accelerate the centre of mass of a complete isolated two-object system?",
+        "answer": "No. Internal action-reaction pairs cancel in the total external resultant; with zero external force the centre-of-mass acceleration is zero."
+      },
+      "practice": {
+        "uid": "AUTHORED-PH02-F05-TRANSFER-01",
+        "revision": "ph02-f05-20261114-r1",
+        "prediction": "A lower platform accelerates to the right. Can friction on a box resting on top point right as well? Predict and explain the contact tendency.",
+        "prompt": "A 1 kg box A rests without slipping on a 2 kg lower platform B. Both accelerate right at 2 m s⁻² on a level track. Only B is pushed directly from outside. Draw or describe the forces on A alone and determine the horizontal friction force on A, including direction. Explain why this force disappears from the horizontal force balance of the combined A+B system.",
+        "w": "Switch system boundaries to identify friction as the upper box's accelerating external force and the combined system's internal interaction.",
+        "hints": [
+          "Which horizontal interactions act on A itself? Do not include what A exerts on B.",
+          "Use the observed no-slip acceleration of A in its own Newton equation.",
+          "Change the boundary to include both A and B and classify that same friction pair as internal."
+        ],
+        "reconstruction": "Upper box A: weight 1g down, normal from B up, and static friction from B to the right. With horizontal acceleration +2 m s⁻², its only horizontal force is f_s=m_A a=1×2=2 N right. In A+B combined, B-on-A and A-on-B friction are equal opposite internal forces, so they cancel from the combined external horizontal resultant.",
+        "alternative": "Without friction A would keep its prior velocity while B sped right; the contact would slip with A lagging. Static friction must act right to prevent lag, and its 2 N magnitude follows from A's acceleration.",
+        "diagnosis": "If you drew friction left because the system moves right, you assumed friction always opposes absolute motion. If you counted both friction arrows on A alone, you crossed the selected body boundary.",
+        "repair": "Write two lists: interactions on A, and interactions on A+B. Mark each force's two-object labels before solving.",
+        "boundaryPrompt": "If the whole platform instead accelerates left at 2 m s⁻² with the box still not slipping, what direction and magnitude is friction on the upper box?",
+        "boundaryModel": "Its acceleration is left, so the only horizontal force on A is 2 N left. This is static friction from the platform opposing the tendency of A to lag behind the platform as it accelerates left."
+      },
+      "curriculum_evidence": {
+        "ref": "CBSE_IX_2026_27_P15_C2_1_C8_1",
+        "relationship": "SUPPORTING_C8_1_MODEL_REPRESENTATION_NOT_NAMED_SUBTOPIC",
+        "nsejs_original_exam_status": "NO_SOURCE_ITEM_AUTHENTICATED",
+        "independent_scope_review": "HOLD"
+      }
+    },
+    {
+      "id": "PH02-F06",
+      "title": "Friction and contact conditions",
+      "scope": "CORE_CANDIDATE",
+      "competency": "Distinguish adjusting static friction from its limiting value and identify when a proposed static equilibrium becomes impossible.",
+      "prerequisites": [
+        "PH02-F01",
+        "PH02-F05"
+      ],
+      "phenomenon": "A gently pushed crate does not move, even though the push is nonzero. The contact surface supplies just enough static friction to oppose the tendency to slide, up to a maximum.",
+      "mechanism": "Before choosing a friction formula, inspect whether the two surfaces are stuck or sliding. For a stationary crate, horizontal force balance determines the *actual* static friction; the coefficient only supplies an upper bound. If the required friction exceeds the limit, the no-slip assumption fails. During sliding under a simple dry-friction model, kinetic friction has approximate magnitude μ_k N opposite the relative sliding direction.",
+      "warrant": "For a dry contact at rest, |f_s| ≤ μ_s N; equality applies only at impending slip. If the object remains at rest, ΣF_x=0 determines f_s. In a basic sliding model |f_k|≈μ_k N. Coefficients are dimensionless; N and friction are newtons. The model assumes a specified normal reaction and neglects other contact complexities.",
+      "figure": {
+        "kind": "arrows",
+        "left": "static friction adapts",
+        "right": "applied tendency →",
+        "caption": "A static contact supports a range of friction values up to its limit; the actual value is fixed by the force balance."
+      },
+      "progression": [
+        [
+          "FOUNDATION",
+          "A crate is pushed east with 3 N and max static friction is 8 N.",
+          "It stays still if initially at rest, with 3 N west static friction—not 8 N."
+        ],
+        [
+          "CONNECTED",
+          "A crate is pulled with 9 N east and 5 N west; max static friction is 6 N.",
+          "Net tendency is 4 N east; static friction is 4 N west, within its limit."
+        ],
+        [
+          "ADVANCED",
+          "A crate has 11 N east and 2 N west while max static friction is 6 N.",
+          "The required 9 N west static friction exceeds its limit, so it must slip if those are the only horizontal interactions. A kinetic model is then required."
+        ]
+      ],
+      "anchor": {
+        "problem": "On a level horizontal floor a crate receives a 6 N east push. The maximum available static friction is 10 N and it starts at rest. Determine actual static friction and acceleration.",
+        "solution": "The crate can maintain rest: f_s=6 N west gives ΣF_x=0, so a_x=0. The 10 N figure is the limiting magnitude, not the friction actually present."
+      },
+      "misconception": {
+        "wrong": "Static friction always equals μ_s N.",
+        "why": "That equality specifies the largest available static friction at impending slip, not every static state.",
+        "repair": "Compute friction required for no slip, then check its magnitude against μ_s N. If the requirement is too large, switch models."
+      },
+      "boundary": {
+        "case": "Once sliding begins, static friction no longer self-adjusts to preserve equilibrium. Under the simplified kinetic model, its magnitude can be approximately μ_k N.",
+        "check": "For an 8 N east tendency and a 6 N maximum static friction, do not declare static equilibrium using an invented 8 N contact force."
+      },
+      "synthesis": {
+        "question": "If an initially resting crate has zero horizontal external pushes, must static friction equal its maximum?",
+        "answer": "No; in the ideal model actual static friction is zero because no horizontal tendency requires opposition."
+      },
+      "practice": {
+        "uid": "AUTHORED-PH02-F06-TRANSFER-01",
+        "revision": "ph02-f06-20261114-r1",
+        "prediction": "Can a crate first remain stuck under opposing pulls and then slip in the opposite direction after one pull changes? Predict the role of the maximum static friction.",
+        "prompt": "A 2 kg crate initially rests on a level floor. Static friction can reach 6 N and, once it slides, kinetic friction has magnitude 4 N opposite its motion. An 8 N east push and a 3 N west rope pull act simultaneously. Determine whether the crate remains at rest and the actual static friction. The west rope pull then increases abruptly to 16 N while the east push remains 8 N. Determine whether static equilibrium remains possible; if it slips, find its initial acceleration with direction. State which contact model applies in each stage.",
+        "w": "Apply the static feasibility inequality before and after an external change, then switch to the stated kinetic friction model only if equilibrium fails.",
+        "hints": [
+          "Temporarily remove friction and find the direction of the combined horizontal tendency.",
+          "For a possible rest state, what contact force would make ΣF_x exactly zero?",
+          "Compare the *required* magnitude with the given maximum; the limit is not automatically attained."
+        ],
+        "reconstruction": "Initially the nonfriction tendency is +8−3=+5 N east; static friction adjusts to −5 N (5 N west). Since |5|≤6 N, the crate remains at rest. With the rope raised to 16 N west, the nonfriction resultant is +8−16=−8 N (west); rest would require +8 N east static friction, exceeding its 6 N limit. The crate starts sliding west, so 4 N kinetic friction acts east. The actual net is +8−16+4=−4 N, and a=−4/2=−2 m s⁻², i.e. 2 m s⁻² west. Static limit is never substituted as actual kinetic friction.",
+        "alternative": "Compute the required contact for a=0 and compare with the static limit; once it fails, write a new kinetic force diagram with direction tied to sliding.",
+        "diagnosis": "If you answered 6 N for the initial static friction, you used maximum instead of actual. If you retained the 6 N static maximum during sliding, you failed to switch contact regimes.",
+        "repair": "Calculate each stage's signed nonfriction tendency; check the |f_s|≤6 N inequality before deciding which equation to use for acceleration.",
+        "boundaryPrompt": "If the west rope pull instead becomes 14 N while the 8 N east push remains and the crate starts at rest, can it remain at rest and what friction acts?",
+        "boundaryModel": "The nonfriction tendency is 8−14=−6 N west; exactly +6 N east static friction can balance it. Rest remains possible at the limiting static contact, although any extra westward tendency would produce slip."
+      },
+      "curriculum_evidence": {
+        "ref": "CBSE_IX_2026_27_P15_C2_1_C8_1",
+        "relationship": "DIRECT_PRINTED_CBSE_FRICTION",
+        "nsejs_original_exam_status": "NO_SOURCE_ITEM_AUTHENTICATED",
+        "independent_scope_review": "HOLD"
+      }
+    },
+    {
+      "id": "PH02-F07",
+      "title": "Inclined planes and force components",
+      "scope": "ADVANCED_REASONING_CANDIDATE",
+      "competency": "Resolve gravity along and normal to an incline, then invert the along-slope force equation for a desired acceleration.",
+      "prerequisites": [
+        "PH02-F03",
+        "PH02-F05",
+        "PH01-M01"
+      ],
+      "phenomenon": "A block on a smooth ramp accelerates downslope even though gravity points vertically downward. The ramp's orientation changes the component of gravity along the allowed motion.",
+      "mechanism": "Choose axes parallel and perpendicular to the ramp, with upslope positive if a rope pulls up. The weight vector mg points vertically downward. For a ramp at angle θ above horizontal, its parallel magnitude is mg sinθ downward and perpendicular magnitude is mg cosθ into the ramp. A frictionless support cancels the perpendicular component while it remains in contact. Write the along-ramp resultant with signs before solving for a or a required tension.",
+      "warrant": "With no perpendicular acceleration and no other perpendicular forces, N=mg cosθ. On a smooth incline of angle θ measured from horizontal, F_gravity,parallel=−mg sinθ for upslope-positive coordinates, and a_parallel=(T−mg sinθ)/m when T is an upslope applied force. Every force has newton units; g is m s⁻². With changing contact, other normal forces or acceleration perpendicular to the ramp, N=mg cosθ may not hold.",
+      "figure": {
+        "kind": "ramp",
+        "left": "mg sinθ downslope",
+        "right": "N perpendicular",
+        "caption": "Weight points vertically down. The components relative to the ramp are mg sinθ along the slope and mg cosθ into it; angles refer to ramp elevation above horizontal."
+      },
+      "progression": [
+        [
+          "FOUNDATION",
+          "A smooth ramp makes θ=30° with horizontal; a block has mass 2 kg and g=10 m s⁻².",
+          "Parallel weight is 2×10×sin30°=10 N downslope."
+        ],
+        [
+          "CONNECTED",
+          "For that same 2 kg block find the normal force while contact persists.",
+          "N=mg cos30°≈17.3 N, not 20 N; the normal is perpendicular to the ramp."
+        ],
+        [
+          "ADVANCED",
+          "A 4 kg block slides down a smooth 30° ramp with no rope.",
+          "a=g sin30°=5 m s⁻² downslope. Mass cancels from mg sinθ = ma."
+        ]
+      ],
+      "anchor": {
+        "problem": "A 4 kg block is released on a smooth ramp at 30° above horizontal, g=10 m s⁻². Find downslope acceleration and the normal contact force.",
+        "solution": "Resolve weight: parallel =4×10×0.5=20 N downhill, perpendicular =4×10×cos30°≈34.6 N into the ramp. Acceleration magnitude =20/4=5 m s⁻² downhill; normal =34.6 N outward. Check dimensions N/kg=m s⁻²."
+      },
+      "misconception": {
+        "wrong": "The normal is always mg even on a sloping surface.",
+        "why": "The normal reaction balances only the perpendicular component of weight when there is no acceleration normal to the ramp.",
+        "repair": "Rotate the coordinate axes and project the weight onto the perpendicular direction instead of using its full magnitude."
+      },
+      "boundary": {
+        "case": "If a rope pulls partly away from the ramp or the block loses contact, the normal equation changes; N cannot become a negative pulling contact force.",
+        "check": "At a separation boundary solve N=0 and change physical model rather than imposing a negative normal."
+      },
+      "synthesis": {
+        "question": "Why does a heavier block on the same ideal smooth incline not automatically have greater acceleration?",
+        "answer": "The driving parallel weight scales as m while inertia also scales as m; a=(mg sinθ)/m=g sinθ."
+      },
+      "practice": {
+        "uid": "AUTHORED-PH02-F07-TRANSFER-01",
+        "revision": "ph02-f07-20261114-r1",
+        "prediction": "To accelerate a block uphill on a smooth ramp, must a rope pull with more or less than mg sinθ? Explain the sign.",
+        "prompt": "A 5 kg block is on a smooth 30° ramp. A rope parallel to the ramp pulls upslope; g=10 m s⁻². Determine the rope tension needed for 1 m s⁻² acceleration *upslope*. Give a signed along-ramp equation, state the contact assumptions, and check both the force and the resulting acceleration.",
+        "w": "Invert the along-slope resultant for the required upslope tension rather than just calculating gravity-driven downhill acceleration.",
+        "hints": [
+          "Set positive along the ramp upslope and place gravity's along-ramp component with a sign.",
+          "Write the net force required by the stated upward acceleration before rearranging for tension.",
+          "Check that the rope not only offsets downhill gravity but supplies the additional upward net force."
+        ],
+        "reconstruction": "Choose upslope positive. Gravity along the ramp =−mg sin30°=−25 N. The required net force for a=+1 m s⁻² is m a=+5 N. T−25=+5, so T=30 N upslope. Check: (30−25)/5=1 m s⁻². Perpendicular contact is N=5×10 cos30°≈43.3 N assuming rope parallel and no normal acceleration.",
+        "alternative": "25 N of tension would produce zero acceleration; to create 5 N net upslope, add 5 N, giving 30 N.",
+        "diagnosis": "If you found 20 N, you subtracted the net-force requirement from gravity instead of adding it for uphill acceleration. If you used mg rather than mg sinθ you ignored axes.",
+        "repair": "Draw weight vertically, resolve mg sinθ downhill, and write T−mg sinθ=m a with declared upslope sign.",
+        "boundaryPrompt": "The rope is suddenly cut while the block stays in contact with the smooth ramp. What is its subsequent acceleration, including direction? Is it necessarily already moving downhill?",
+        "boundaryModel": "With T=0, a=(0−25)/5=−5 m s⁻²: 5 m s⁻² downhill. If it had been moving uphill, it can still move uphill briefly while decelerating; acceleration direction alone does not fix velocity."
+      },
+      "curriculum_evidence": {
+        "ref": "CBSE_IX_2026_27_P15_C2_1_C8_1",
+        "relationship": "ADVANCED_EXTENSION_INCLINE_NOT_NAMED_UNDER_FORCE_CHAPTER",
+        "nsejs_original_exam_status": "NO_SOURCE_ITEM_AUTHENTICATED",
+        "independent_scope_review": "HOLD"
+      }
+    },
+    {
+      "id": "PH02-F08",
+      "title": "Connected bodies and changing contact",
+      "scope": "ADVANCED_REASONING_CANDIDATE",
+      "competency": "Use a shared-acceleration system only while a taut connection exists, then reconstruct separate object dynamics when it breaks.",
+      "prerequisites": [
+        "PH02-F03",
+        "PH02-F04",
+        "PH02-F05"
+      ],
+      "phenomenon": "Two small carts connected by a light taut string accelerate together under a force on one cart. Cutting the string changes which forces act and removes the shared-acceleration constraint.",
+      "mechanism": "Before a cut, if a massless inextensible string is taut on a frictionless level track, both carts share acceleration along the string. Treat both as one system to find common acceleration from external force divided by total mass; then isolate a cart to find string tension. After cutting, tension vanishes; each cart obeys its own net-force equation. A cart without horizontal force preserves its velocity at the instant of cutting.",
+      "warrant": "Before separation: a=F_external/(m_A+m_B) for the stated ideal horizontal system; tension is internal to the pair. For cart A pulled only by the string, T=m_A a. After separation, a_A=ΣF_A/m_A, a_B=ΣF_B/m_B independently, with velocity continuous at the instant of cutting absent an impulsive external event. Forces N, masses kg, accelerations m s⁻².",
+      "figure": {
+        "kind": "connected",
+        "left": "A 2 kg — string",
+        "right": "B 3 kg → pull",
+        "caption": "Before the cut, a taut string constrains carts A and B to the same acceleration. After the cut there is no horizontal string force on either cart."
+      },
+      "progression": [
+        [
+          "FOUNDATION",
+          "A 2 kg and 3 kg cart are connected and pulled right with 10 N on a smooth horizontal track.",
+          "Both accelerate 10/(2+3)=2 m s⁻² right."
+        ],
+        [
+          "CONNECTED",
+          "The 2 kg cart receives no horizontal force except string tension.",
+          "T=2 kg×2 m s⁻²=4 N right on the lighter cart."
+        ],
+        [
+          "ADVANCED",
+          "Cut the string while the 10 N force continues on the 3 kg cart.",
+          "Immediately after the cut: the 2 kg cart's acceleration becomes zero, while the 3 kg cart's becomes 10/3 m s⁻² right. Their velocities remain continuous at the cut."
+        ]
+      ],
+      "anchor": {
+        "problem": "Two frictionless carts of 2 kg and 3 kg are connected by a taut light rope. A 10 N pull acts rightward on the 3 kg cart. Find their common acceleration and the string tension.",
+        "solution": "For the combined 5 kg system, a=10/5=2 m s⁻² right. For the 2 kg cart alone, T=2×2=4 N right. Cross-check on the 3 kg cart: 10−4=6 N=3×2. The two balances agree."
+      },
+      "misconception": {
+        "wrong": "The 10 N external pull gives each cart an acceleration of 10/m, even while connected.",
+        "why": "The taut rope constrains common acceleration; internal tension redistributes the external force between carts.",
+        "repair": "Use the combined system first when the connection is taut, then choose one cart to recover the internal tension."
+      },
+      "boundary": {
+        "case": "If the string goes slack or is cut, it cannot continue exerting a tensile force, so a shared-acceleration equation becomes invalid.",
+        "check": "Immediately after cutting a tension of 4 N cannot persist. Recompute each horizontal resultant without rope force."
+      },
+      "synthesis": {
+        "question": "Why is internal tension absent from the total system force equation but present in a single-cart equation?",
+        "answer": "Internal action-reaction tensions cancel in the total external resultant; on one cart the string is an external interaction that can accelerate it."
+      },
+      "practice": {
+        "uid": "AUTHORED-PH02-F08-TRANSFER-01",
+        "revision": "ph02-f08-20261114-r1",
+        "prediction": "If a string joining two speeding-up carts is cut, does the unpulled cart instantly stop? Predict its velocity and acceleration just after cutting.",
+        "prompt": "Two carts A=2 kg and B=3 kg move along a smooth horizontal track joined by a taut light string. A constant 15 N force pulls cart B rightward. Find their common acceleration before the string is cut. The string is then cut without an impulse while the same 15 N continues on B. Find the immediate accelerations of A and B after cutting, and state what happens to their velocities at the instant of the cut.",
+        "w": "Recognize the change of system and contact constraint at the cut, separating acceleration updates from continuous velocity.",
+        "hints": [
+          "Before the event, decide whether the two carts share acceleration and which force is external to their combined system.",
+          "At the cut, list the horizontal forces on each cart again; do not carry a rope force across the event.",
+          "Differentiate 'acceleration immediately after' from 'velocity at the instant'; a force change need not create an instantaneous velocity jump."
+        ],
+        "reconstruction": "Before cutting, total mass=2+3=5 kg, so a_common=15/5=3 m s⁻² right. After cutting, A has no horizontal force, so a_A=0; B has 15 N right on 3 kg, so a_B=5 m s⁻² right. Without an impulse, both keep the velocity they had at the cutting instant, but B then increases its speed faster while A coasts.",
+        "alternative": "Before cutting a single 15 N force accelerates 5 kg. After cutting, the same 15 N accelerates only 3 kg. The unpulled 2 kg remains on a Newton-first-law coast.",
+        "diagnosis": "If A stops immediately, velocity and acceleration have been conflated. If both still accelerate at 3 m s⁻², you carried the rope constraint beyond its actual physical existence.",
+        "repair": "Draw two time intervals, mark which external forces and constraints exist in each, and state position/velocity continuity across a non-impulsive cut.",
+        "boundaryPrompt": "Suppose the string had been slack from the start, with B pulled at 15 N and A initially moving right at 2 m s⁻¹. What are the initial accelerations of A and B?",
+        "boundaryModel": "Without a taut connection, A's horizontal net force is zero, so its acceleration is zero and it coasts at 2 m s⁻¹. B's acceleration is 15/3=5 m s⁻² right. The combined 5 kg formula is invalid from the start."
+      },
+      "curriculum_evidence": {
+        "ref": "CBSE_IX_2026_27_P15_C2_1_C8_1",
+        "relationship": "ADVANCED_EXTENSION_TWO_BODY_CONTACT_NOT_NAMED",
+        "nsejs_original_exam_status": "NO_SOURCE_ITEM_AUTHENTICATED",
+        "independent_scope_review": "HOLD"
+      }
+    }
+  ]
+}
