@@ -566,5 +566,192 @@
       }
     }
   ],
-  "main_cycles": []
+  "main_cycles": [
+    {
+      "op": "EXPLAIN",
+      "unit": "PH02-F02",
+      "members": [
+        "F02",
+        "F04",
+        "F08"
+      ],
+      "prediction": "When a light string is cut and the pull is removed, predict whether two moving carts stop, keep their speed or speed up, and justify using system forces.",
+      "prompt": "On a smooth horizontal track a 2 kg cart A and 3 kg cart B start at rest, linked by a taut light string. A motor exerts 10 N east only on B for 1 s; it then switches off as the string is cut without impulse. A nearby tram separately accelerates east from rest at 1 m s⁻² throughout the full 2 s. Find the string force before the cut, the carts' speeds immediately before/after it, each cart's acceleration after it and the displacement of each cart relative to the tram at 2 s. Explain the third-law forces and inertia without using a fictitious force in the ground frame.",
+      "w": "Connect first-law coasting, opposite-body tension and a changing string/force model to explain the observed relative position.",
+      "reconstruction": "During 0–1 s, a=(10)/(2+3)=2 m s⁻² east. For A, tension=2×2=4 N east; A exerts 4 N west on the string, while string pulls B west4 N and motor pulls B east10 N, giving net6 N=3×2. Both reach v=2 m s⁻¹ east at t=1 without jump across the non-impulsive cut. Thereafter pull/tension=0, each a=0 and coasts east 2 m s⁻¹. Each cart travels 0.5(2)(1²)+2(1)=3 m by t=2. Tram travels 0.5(1)(2²)=2 m, so carts are +1 m east relative to the tram; this needs no extra forward force on them.",
+      "boundaryPrompt": "If the 10 N motor remains on B after the string is cut at 1 s, what are accelerations of A and B immediately after the cut?",
+      "boundaryModel": "After the cut A has no horizontal force, so a_A=0. B has net +10 N on 3 kg so a_B=10/3 m s⁻² east. Both velocities remain 2 m s⁻¹ immediately after the non-impulsive cut.",
+      "id": "PH02-MAIN-EXPLAIN-D3-R1",
+      "uid": "AUTHORED-PH02-MAIN-EXPLAIN-D3-R1",
+      "revision": "ph02-main-explain-20261114-r1",
+      "source_role": "AUTHORED_TRANSFER",
+      "cell": "D3.2",
+      "qrt_status": "PROPOSED_UNREVIEWED",
+      "hints": [
+        "Select one shared physical system and identify external interactions before writing numerical laws.",
+        "Draw the physical boundaries and stage transition, preserving force directions, constraints and velocity continuity.",
+        "Use signed net-force relations, solve each dependent unknown and check the initial/changed-condition model independently."
+      ],
+      "alternative": "Check all object-level balances and full-system balance independently. Verify SI dimensions, signs, domain and the changed-contact boundary.",
+      "diagnosis": "If a force pair cancels on the wrong object, return to interaction labels and the system boundary. If motion changes instantly after cutting without impulse, distinguish velocity from acceleration.",
+      "repair": "Reconstruct the first mistaken system equation or stage assumption and verify it using a distinct body or limiting case.",
+      "status": "ACADEMIC_HOLD"
+    },
+    {
+      "op": "APPLY",
+      "unit": "PH02-F03",
+      "members": [
+        "F03",
+        "F06",
+        "F07"
+      ],
+      "prediction": "Can a 2 kg block on a rough 30° ramp remain at rest under a 12 N uphill rope pull? Identify which friction model applies first.",
+      "prompt": "A 2 kg block initially rests on a 30° incline, g=10 m s⁻². The static-friction magnitude is at most 6 N; once sliding, the kinetic friction magnitude is 4 N. A rope parallel to the slope first pulls upslope at 12 N. Find actual static friction and whether rest is possible. The rope force is then increased to 20 N. Decide whether it starts moving and calculate its initial acceleration once sliding, with a signed resultant and independent unit/sign check.",
+      "w": "Apply gravity projection and two distinct friction regimes in sequence, using the no-slip inequality before changing equations.",
+      "reconstruction": "Upslope positive, mg sin30°=10 N downslope. With T=12 N, nonfriction tendency is +2 N upslope, so f_s=−2 N (downslope); |f_s|=2≤6 and rest is possible. With T=20 N the static force required would be −10 N, larger than the 6 N limit, so it moves upslope. For upslope sliding, kinetic friction=4 N downslope; net=20−10−4=+6 N and a=6/2=+3 m s⁻² upslope. Units: N/kg=m s⁻² and sign matches net.",
+      "boundaryPrompt": "Instead of 20 N, set rope pull to 4 N. Can it remain at rest initially, and which way would friction act?",
+      "boundaryModel": "T−mg sin30=4−10=−6 N tendency downslope. Static friction must be +6 N upslope, exactly the available maximum, so rest at limiting equilibrium is possible under the ideal model.",
+      "id": "PH02-MAIN-APPLY-D3-R1",
+      "uid": "AUTHORED-PH02-MAIN-APPLY-D3-R1",
+      "revision": "ph02-main-apply-20261114-r1",
+      "source_role": "AUTHORED_TRANSFER",
+      "cell": "D3.3",
+      "qrt_status": "PROPOSED_UNREVIEWED",
+      "hints": [
+        "Select one shared physical system and identify external interactions before writing numerical laws.",
+        "Draw the physical boundaries and stage transition, preserving force directions, constraints and velocity continuity.",
+        "Use signed net-force relations, solve each dependent unknown and check the initial/changed-condition model independently."
+      ],
+      "alternative": "Check all object-level balances and full-system balance independently. Verify SI dimensions, signs, domain and the changed-contact boundary.",
+      "diagnosis": "If a force pair cancels on the wrong object, return to interaction labels and the system boundary. If motion changes instantly after cutting without impulse, distinguish velocity from acceleration.",
+      "repair": "Reconstruct the first mistaken system equation or stage assumption and verify it using a distinct body or limiting case.",
+      "status": "ACADEMIC_HOLD"
+    },
+    {
+      "op": "MODEL",
+      "unit": "PH02-F05",
+      "members": [
+        "F01",
+        "F03",
+        "F05",
+        "F06",
+        "F08"
+      ],
+      "prediction": "When a taut string joining a pulled cart to a two-block sled is cut, which bodies still accelerate and which forces become zero?",
+      "prompt": "On a smooth horizontal track, platform P has mass 2 kg and carries an upper box Q of mass 1 kg without slip; the P–Q static-friction limit is 4 N. A light taut rope joins P to a separate 3 kg cart R, and a constant 18 N east pull acts only on R. Determine a shared pre-cut acceleration, the friction on Q and the rope tension. Check static friction. The rope is then cut without impulse while the 18 N pull continues on R. Determine the immediate accelerations of Q, P and R, and explain which interaction forces vanish.",
+      "w": "Choose composite and nested system boundaries, verify a contact inequality, then replace the taut-string system with independent post-cut models.",
+      "reconstruction": "Before cut total mass 2+1+3=6 kg; external force 18 N east gives a=3 m s⁻². On top Q, static friction f=1(3)=3 N east, within limit 4 N. On P+Q (3 kg), rope tension T=(3)(3)=9 N east. On R, 18−9=9 N=3×3, check. After non-impulsive cut: R alone has +18 N on 3 kg, so a_R=6 m s⁻² east. P+Q has no external horizontal pull; no friction is needed to share zero acceleration, so a_P=a_Q=0 and actual f=0. The rope tension disappears on both formerly connected bodies; existing velocities persist at the instant.",
+      "boundaryPrompt": "If the P–Q static-friction limit had been only 2 N before cutting, could the pre-cut shared-acceleration model be accepted?",
+      "boundaryModel": "No. Required f=3 N exceeds the 2 N limit. P and Q would slip before cutting and the assumed three-body shared acceleration is invalid without a kinetic-friction model.",
+      "id": "PH02-MAIN-MODEL-D3-R1",
+      "uid": "AUTHORED-PH02-MAIN-MODEL-D3-R1",
+      "revision": "ph02-main-model-20261114-r1",
+      "source_role": "AUTHORED_TRANSFER",
+      "cell": "D3.4",
+      "qrt_status": "PROPOSED_UNREVIEWED",
+      "hints": [
+        "Select one shared physical system and identify external interactions before writing numerical laws.",
+        "Draw the physical boundaries and stage transition, preserving force directions, constraints and velocity continuity.",
+        "Use signed net-force relations, solve each dependent unknown and check the initial/changed-condition model independently."
+      ],
+      "alternative": "Check all object-level balances and full-system balance independently. Verify SI dimensions, signs, domain and the changed-contact boundary.",
+      "diagnosis": "If a force pair cancels on the wrong object, return to interaction labels and the system boundary. If motion changes instantly after cutting without impulse, distinguish velocity from acceleration.",
+      "repair": "Reconstruct the first mistaken system equation or stage assumption and verify it using a distinct body or limiting case.",
+      "status": "ACADEMIC_HOLD"
+    },
+    {
+      "op": "REPRESENT",
+      "unit": "PH02-F07",
+      "members": [
+        "F01",
+        "F02",
+        "F04",
+        "F05",
+        "F07"
+      ],
+      "prediction": "Draw two distinct free-body diagrams for a block on a ramp and a cart on level ground, joined over an ideal pulley; predict the cart's motion after the string is cut.",
+      "prompt": "A 2 kg block lies on a smooth 30° ramp and is connected by a massless taut rope over an ideal pulley to a 3 kg cart on a smooth horizontal track. The geometry makes the cart move east as the block descends. They start at rest; g=10 m s⁻². Draw or specify separate force diagrams (all forces on each body), the parallel component of block weight, the tension/action-reaction agents, and a position-versus-time table for the cart at t=0,2,3 s if the string is cut without impulse at t=2 s. Give signs and independently check the post-cut cart motion.",
+      "w": "Translate one rope-constrained system into separate force representations and a piecewise kinematic trajectory after the constraint disappears.",
+      "reconstruction": "Block's downslope weight component=2×10×sin30°=10 N; ramp normal balances mg cos30≈17.32 N. Along rope coordinate, coupled mass=5 kg, so a=10/5=2 m s⁻²: block descends, cart moves east. For cart alone tension T=3×2=6 N east; for block along slope net=10−6=4 N downslope, giving a=2. Rope pulls cart east6 and cart pulls rope west6 (different bodies); similarly it pulls block upslope6. Before cut cart x=0.5(2)t², so x(0)=0, x(2)=4 m and v(2)=4 m s⁻¹ east. After cut the cart has no horizontal force; x(3)=4+4(1)=8 m. Position graph is parabola through 0 to2 s then straight line slope 4 m/s. Its velocity is continuous, acceleration changes 2→0.",
+      "boundaryPrompt": "If the string is cut at t=1 s instead, where is the cart at t=3 s?",
+      "boundaryModel": "Before cut x(1)=0.5(2)(1²)=1 m, v(1)=2 m s⁻¹. After cut 2 s coasting, x(3)=1+2(2)=5 m. No force after cut does not mean v=0.",
+      "id": "PH02-MAIN-REPRESENT-D3-R1",
+      "uid": "AUTHORED-PH02-MAIN-REPRESENT-D3-R1",
+      "revision": "ph02-main-represent-20261114-r1",
+      "source_role": "AUTHORED_TRANSFER",
+      "cell": "D3.5",
+      "qrt_status": "PROPOSED_UNREVIEWED",
+      "hints": [
+        "Select one shared physical system and identify external interactions before writing numerical laws.",
+        "Draw the physical boundaries and stage transition, preserving force directions, constraints and velocity continuity.",
+        "Use signed net-force relations, solve each dependent unknown and check the initial/changed-condition model independently."
+      ],
+      "alternative": "Check all object-level balances and full-system balance independently. Verify SI dimensions, signs, domain and the changed-contact boundary.",
+      "diagnosis": "If a force pair cancels on the wrong object, return to interaction labels and the system boundary. If motion changes instantly after cutting without impulse, distinguish velocity from acceleration.",
+      "repair": "Reconstruct the first mistaken system equation or stage assumption and verify it using a distinct body or limiting case.",
+      "status": "ACADEMIC_HOLD"
+    },
+    {
+      "op": "SYNTHESIZE",
+      "unit": "PH02-F08",
+      "members": [
+        "F02",
+        "F03",
+        "F05",
+        "F07",
+        "F08"
+      ],
+      "prediction": "If the rope is cut while two masses are moving up a smooth ramp with zero acceleration, can their velocities remain upslope just after cutting?",
+      "prompt": "Two blocks A=2 kg and B=3 kg lie on the same smooth 30° ramp (g=10 m s⁻²) connected by a taut light rope. An external 25 N upslope force pulls B; the system is initially moving upslope at 2 m s⁻¹ and the rope remains taut. Find acceleration and rope tension before a non-impulsive cut. Immediately after the cut the same external pull still acts on B but no rope force acts on A. Find both accelerations and determine their separation increase 2 s after the cut, assuming no collision and both continue on the ramp. Explain why acceleration direction does not fix immediate velocity direction.",
+      "w": "Coordinate shared-acceleration dynamics, gravity projection and a non-impulsive constraint change to predict differential motion and separation.",
+      "reconstruction": "Upslope positive. Total downslope gravity=(2+3)(10)(0.5)=25 N; external upslope pull25 N gives combined ΣF=0 and shared acceleration0; initial 2 m s⁻¹ upslope persists before cut. For A alone: T−(2×10×0.5)=0, hence T=10 N upslope. After cut A has a_A=−10/2=−5 m s⁻² downslope; B has a_B=(25−3×10×0.5)/3=+10/3 m s⁻² upslope. Both velocities at instant of cut stay +2 m s⁻¹, but their relative acceleration is 10/3−(−5)=25/3 m s⁻². Starting from zero relative separation/velocity at cutting, after 2 s separation increase =0.5(25/3)(2²)=50/3≈16.67 m, with B moving farther upslope.",
+      "boundaryPrompt": "If the external 25 N pull is also removed at the cut, what are the two immediate accelerations on the smooth ramp?",
+      "boundaryModel": "Each block then has only downslope gravity component mg sin30°, so a_A=a_B=−g sin30°=−5 m s⁻², with no growing relative acceleration from the cut alone; their velocities remain continuous at the instant.",
+      "id": "PH02-MAIN-SYNTHESIZE-D3-R1",
+      "uid": "AUTHORED-PH02-MAIN-SYNTHESIZE-D3-R1",
+      "revision": "ph02-main-synthesize-20261114-r1",
+      "source_role": "AUTHORED_TRANSFER",
+      "cell": "D3.6",
+      "qrt_status": "PROPOSED_UNREVIEWED",
+      "hints": [
+        "Select one shared physical system and identify external interactions before writing numerical laws.",
+        "Draw the physical boundaries and stage transition, preserving force directions, constraints and velocity continuity.",
+        "Use signed net-force relations, solve each dependent unknown and check the initial/changed-condition model independently."
+      ],
+      "alternative": "Check all object-level balances and full-system balance independently. Verify SI dimensions, signs, domain and the changed-contact boundary.",
+      "diagnosis": "If a force pair cancels on the wrong object, return to interaction labels and the system boundary. If motion changes instantly after cutting without impulse, distinguish velocity from acceleration.",
+      "repair": "Reconstruct the first mistaken system equation or stage assumption and verify it using a distinct body or limiting case.",
+      "status": "ACADEMIC_HOLD"
+    },
+    {
+      "op": "JUSTIFY",
+      "unit": "PH02-F06",
+      "members": [
+        "F01",
+        "F04",
+        "F06"
+      ],
+      "prediction": "Can a two-block trolley accelerate under an external pull while the upper block remains stuck? Predict how the static-friction limit constrains pull strength.",
+      "prompt": "A 2 kg top block rests on a 3 kg lower platform on a frictionless horizontal track. The two blocks share motion while no slipping occurs; friction between them has maximum magnitude 5 N. An external adjustable eastward force F≥0 acts only on the lower platform. Derive the full allowable interval of F for no-slip acceleration, proving why the internal friction forces cancel for the combined system but still accelerate the upper block. Include the F=0 coasting case and test F=15 N.",
+      "w": "Justify the no-slip force bound from system and sub-body Newton equations plus third-law internal-force cancellation, and exhibit a counterexample.",
+      "reconstruction": "For both bodies, internal static-friction pair cancels, so a=F/(2+3)=F/5 east. On top block alone, its only horizontal force is friction f=2a=2F/5 east. The equal-opposite top-on-platform friction is 2F/5 west; they cancel only when both are inside the chosen system. No slip requires |f|≤5 N, giving 2F/5≤5, so 0≤F≤12.5 N. At F=0, net force and a=0 yet the pair can coast with any existing constant velocity. At F=15 N the required f=6 N exceeds the 5 N limit, so no-slip assumption fails; use a slipping model.",
+      "boundaryPrompt": "If the top block's mass doubles to 4 kg while the platform stays 3 kg and f_max=5 N, derive the new allowable eastward F range.",
+      "boundaryModel": "Combined mass7 kg gives a=F/7. Required top friction f=4F/7≤5, hence 0≤F≤35/4=8.75 N. Greater upper mass lowers allowable pull in this model.",
+      "id": "PH02-MAIN-JUSTIFY-D3-R1",
+      "uid": "AUTHORED-PH02-MAIN-JUSTIFY-D3-R1",
+      "revision": "ph02-main-justify-20261114-r1",
+      "source_role": "AUTHORED_TRANSFER",
+      "cell": "D3.7",
+      "qrt_status": "PROPOSED_UNREVIEWED",
+      "hints": [
+        "Select one shared physical system and identify external interactions before writing numerical laws.",
+        "Draw the physical boundaries and stage transition, preserving force directions, constraints and velocity continuity.",
+        "Use signed net-force relations, solve each dependent unknown and check the initial/changed-condition model independently."
+      ],
+      "alternative": "Check all object-level balances and full-system balance independently. Verify SI dimensions, signs, domain and the changed-contact boundary.",
+      "diagnosis": "If a force pair cancels on the wrong object, return to interaction labels and the system boundary. If motion changes instantly after cutting without impulse, distinguish velocity from acceleration.",
+      "repair": "Reconstruct the first mistaken system equation or stage assumption and verify it using a distinct body or limiting case.",
+      "status": "ACADEMIC_HOLD"
+    }
+  ]
 }
