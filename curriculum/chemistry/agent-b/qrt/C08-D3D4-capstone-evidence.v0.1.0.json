@@ -1,0 +1,93 @@
+{
+  "schema": "g9v41-chem-agent-b-qrt-task-evidence/v1",
+  "version": "0.1.0",
+  "unit_id": "C08",
+  "status": "DRAFT_HOLD",
+  "source_note": "Two cross-subtopic authored assessments; scores are unreviewed author proposals; original exam custody not asserted.",
+  "policy": {
+    "D3_range": [
+      6,
+      7
+    ],
+    "D4_range": [
+      8,
+      10
+    ],
+    "independent_qrt_review": "NOT_RUN",
+    "academic_release": "HOLD"
+  },
+  "tasks": [
+    {
+      "task_id": "C08-01-CAPSTONE-D3",
+      "subtopic_id": "CHEM-C08.01",
+      "title": "Reaction ledger under incomplete observation",
+      "band_candidate": "D3",
+      "author_task_type": "AUTHORED_TRANSFER",
+      "textbook_ref": "curriculum/chemistry/agent-b/textbook/C08.core1a.md",
+      "primary_operation": "SYNTHESIZE",
+      "template_ref": "QRT-SYNTHESIZE-D3",
+      "source_question_ref": null,
+      "original_exam_claim": "NONE",
+      "prompt": "A 2.4 g magnesium ribbon is heated in a partly open crucible. The final residue reads 3.5 g. A pale smoke escaped and oxygen was supplied from surrounding air. A second student writes 2Mg + O₂ → 2MgO and concludes the result disproves conservation because the residue gain is less than the 1.6 g expected for complete 2.4 g Mg oxidation. Explain what material boundaries are missing, which mass quantities can actually be inferred, and design two measurements that discriminate incomplete reaction from escaping product.",
+      "post_commit_worked_answer": "The 2.4 g Mg sample can incorporate oxygen from outside the measured crucible. Under complete conversion to MgO the added oxygen would be 1.6 g and 4.0 g product would be retained if no material escaped. The measured 3.5 g residue is 0.5 g below that prediction. But the record gives neither retained unreacted Mg nor mass of escaping MgO smoke, so it does not determine whether the conversion was complete. A covered/filtered collection system to capture aerosol and an independent chemical analysis of residue (Mg versus MgO) distinguish the hypotheses. Mass conservation applies to Mg plus oxygen plus all products; the open residue reading is not the closed-system total.",
+      "protected_work": "Choose the scientific model and independently reconcile at least two representations or observations, including a credible alternative or boundary.",
+      "self_score_proposal": {
+        "status": "AUTHOR_PROPOSAL_NOT_INDEPENDENT",
+        "scores": {
+          "concept_model_selection": 2,
+          "representation_translation": 1,
+          "reasoning_chain_length": 2,
+          "algebra_computational_load": 1,
+          "trap_exception_sensitivity": 1
+        },
+        "total": 7,
+        "factor_evidence": {
+          "concept_model_selection": "Choose between complete conversion, escape and incomplete conversion models.",
+          "representation_translation": "Translate measured crucible mass to a closed Mg–O–smoke ledger.",
+          "reasoning_chain_length": "Link initial mass, stoichiometric oxygen uptake, and missing product.",
+          "algebra_computational_load": "Calculate 2.4+1.6=4.0 and compare with 3.5 g.",
+          "trap_exception_sensitivity": "A mass deficit can coexist with oxygen uptake, challenging a naive conservation claim."
+        },
+        "qualification_note": "Not independently QRT-adjudicated. Difficulty may be downgraded if task is not intrinsically high demand or if scaffolding reveals the decisive work."
+      },
+      "academic_review": "HOLD",
+      "exam_source_custody": "NOT_APPLICABLE_AUTHORED_TASK"
+    },
+    {
+      "task_id": "C08-04-CAPSTONE-D4",
+      "subtopic_id": "CHEM-C08.04",
+      "title": "A white precipitate—two conflicting investigations",
+      "band_candidate": "D4",
+      "author_task_type": "AUTHORED_TRANSFER",
+      "textbook_ref": "curriculum/chemistry/agent-b/textbook/C08.core1a.md",
+      "primary_operation": "JUSTIFY",
+      "template_ref": "QRT-JUSTIFY-D4",
+      "source_question_ref": null,
+      "original_exam_claim": "NONE",
+      "prompt": "Lab A mixes BaCl₂(aq) and Na₂SO₄(aq) and reports a white solid. Lab B mixes an unknown colourless salt solution with the same sulfate reagent, also reports a white solid, but after filtration a fresh barium-ion test on the filtrate is positive. A student concludes that both white solids are pure BaSO₄ and that the positive barium test proves excess BaSO₄ had dissolved. Build two competing species ledgers consistent with the observations, identify which part of the conclusion is unsupported, and propose an experiment that can separate residual dissolved Ba²⁺ from a second unidentified precipitate. Do not assume the unknown solution is pure.",
+      "post_commit_worked_answer": "For A the plausible net precipitation Ba²⁺ + SO₄²⁻ → BaSO₄(s) conserves charge and species; Na⁺/Cl⁻ are spectators. For B the solid may include BaSO₄ if Ba²⁺ was initially present, but the unknown could contain another cation forming an insoluble sulfate or a contaminant. A positive dissolved barium test after filtration does not establish dissolution of the precipitate; it may instead reflect unreacted Ba²⁺ because sulfate was limiting, or imperfect separation/other interference. Compare measured starting Ba²⁺ and sulfate amounts, test filtered solids using suitable independently reviewed chemical methods, and perform stoichiometric/blank controls. Under no condition does a common colour alone establish a unique species. It is ungrounded to declare 'excess BaSO₄ dissolved' from a positive Ba²⁺ filtrate result.",
+      "protected_work": "Choose the scientific model and independently reconcile at least two representations or observations, including a credible alternative or boundary.",
+      "self_score_proposal": {
+        "status": "AUTHOR_PROPOSAL_NOT_INDEPENDENT",
+        "scores": {
+          "concept_model_selection": 2,
+          "representation_translation": 2,
+          "reasoning_chain_length": 2,
+          "algebra_computational_load": 0,
+          "trap_exception_sensitivity": 2
+        },
+        "total": 8,
+        "factor_evidence": {
+          "concept_model_selection": "Multiple competing precipitation/solubility and limitation models.",
+          "representation_translation": "Translate observed white solid and filtrate test to two ionic-phase ledgers.",
+          "reasoning_chain_length": "Constrain species before and after filtration, then test the original inference.",
+          "algebra_computational_load": "No advanced algebra; the difficulty is conceptual evidence reconciliation.",
+          "trap_exception_sensitivity": "A barium signal after filtration reverses the familiar 'all barium went to precipitate' inference."
+        },
+        "qualification_note": "Not independently QRT-adjudicated. Difficulty may be downgraded if task is not intrinsically high demand or if scaffolding reveals the decisive work."
+      },
+      "academic_review": "HOLD",
+      "exam_source_custody": "NOT_APPLICABLE_AUTHORED_TASK"
+    }
+  ]
+}

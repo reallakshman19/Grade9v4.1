@@ -1,0 +1,29 @@
+name: Chemistry C11 C14 source-gap native Chromium (technical only)
+on:
+  pull_request:
+    paths:
+      - "curriculum/chemistry/agent-b/learner/C11.reader.v0.1.0.json"
+      - "curriculum/chemistry/agent-b/learner/C14.reader.v0.1.0.json"
+      - "curriculum/chemistry/agent-b/core1b/C11.core1b.v0.1.0.json"
+      - "curriculum/chemistry/agent-b/core1b/C14.core1b.v0.1.0.json"
+      - "tests/test_nsejs_chemistry_syllabus_gap_browser.py"
+      - ".github/workflows/chem-three-source-gaps-browser.yml"
+  workflow_dispatch:
+jobs:
+  chemistry-source-gap-native:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install browser test environment
+        run: |
+          python -m pip install "pytest>=8,<10" "playwright>=1.49,<2"
+          python -m playwright install --with-deps chromium
+      - name: Verify exact-head native C11/C14 Core1A and protected Core1B
+        run: python -m pytest -q tests/test_nsejs_chemistry_syllabus_gap_browser.py
+      - name: Review-only status
+        if: always()
+        run: echo "No independent Chemistry, QRT, NSEJS source or production qualification is implied."

@@ -1,0 +1,1562 @@
+{
+  "schema": "g9v41-chem-core1b-six-stage-cycles/v1",
+  "version": "0.1.0",
+  "unit_id": "C13",
+  "status": "CANDIDATE_UNREVIEWED_NO_BROWSER_TEST",
+  "textbook_ref": "curriculum/chemistry/agent-b/textbook/C13.core1a.md",
+  "blueprint_ref": "CHEM-QRT-BLUEPRINT@0.1.0",
+  "cycles": [
+    {
+      "cycle_id": "CORE1B-C13-01-1",
+      "unit_id": "C13",
+      "subtopic_ref": "CHEM-C13.01",
+      "concept_ref": "CHEM-C13.01-CONCEPT",
+      "operation": "EXPLAIN",
+      "qrt_instance_ref": "C13-01-EXPLAIN-D3",
+      "qrt_template_ref": "QRT-EXPLAIN-D3",
+      "band_proposal": "D3",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Before working, predict what kind of evidence or conservation test decides this claim: Explain oxygen transfer and the paired nature of reduction/oxidation in CuO + H₂ → Cu + H₂O.",
+        "defensible_answer": "At the school level, oxidation often means oxygen gain or hydrogen loss, while reduction means oxygen loss or hydrogen gain. In CuO + H₂ → Cu + H₂O, oxygen originally belonging to CuO ends up in water. CuO loses oxygen and is reduced; H₂ gains oxygen and is oxidised. These linked changes form one redox reaction. Every element remains accounted for, so a material ledger is more informative than colour alone."
+      },
+      "attempt": {
+        "prompt": "Explain oxygen transfer and the paired nature of reduction/oxidation in CuO + H₂ → Cu + H₂O.",
+        "produces": "A warranted electron/oxygen/charge reasoning route with correct species and a separate experimental or arithmetic check.",
+        "protected_W": "The learner independently completes the causal bridge, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Name the oxidised and reduced species or the instrument conditions in Oxidation and reduction in observed reactions."
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Recall the scientific warrant: In familiar school redox examples, oxygen/hydrogen transfer links oxidation with reduction; colour change alone is not definitive."
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Write balanced half/whole material and charge ledgers; leave the final scientific inference or value for the independent attempt."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "CuO gives up O to become Cu, so it is reduced; hydrogen gains O to become water, so it is oxidised. CuO is the oxidising agent and hydrogen the reducing agent. Atoms remain conserved.",
+          "rubric": [
+            "Declare oxidant/reductant species and medium when relevant.",
+            "Balance atoms and charge or apparatus quantities correctly.",
+            "State what evidence does and does not establish."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "What is an observation versus a proposed species transformation?",
+            "why_this_ask": "Do not confuse colour or instrument readings with reaction identity.",
+            "model_response": "Black copper(II) oxide loses oxygen when hydrogen is passed over heated copper oxide, while water forms. Which substance has been reduced, and which one has been oxidised? The answer is not simply the name of the black solid."
+          },
+          {
+            "ask": "What conservation rule or redox model applies?",
+            "why_this_ask": "Identify correct oxygen/electron bookkeeping and medium.",
+            "model_response": "The terms oxidising agent and reducing agent describe the effects on the *other* species. CuO is the oxidising agent here because it supplies oxygen to hydrogen and is itself reduced. Hydrogen is the reducing agent because it removes oxygen from copper oxide and is itself oxidised. A learner who assumes the reducing agent must itself be reduced has reversed this relationship."
+          },
+          {
+            "ask": "What follows, and how can you verify it independently?",
+            "why_this_ask": "Complete the reasoning rather than a keyword match.",
+            "model_response": "CuO gives up O to become Cu, so it is reduced; hydrogen gains O to become water, so it is oxidised. CuO is the oxidising agent and hydrogen the reducing agent. Atoms remain conserved."
+          }
+        ],
+        "full_reconstruction": "CuO gives up O to become Cu, so it is reduced; hydrogen gains O to become water, so it is oxidised. CuO is the oxidising agent and hydrogen the reducing agent. Atoms remain conserved."
+      },
+      "diagnose": {
+        "wrong_idea": "Wrong path: 'The reducing agent gains electrons in the same reaction because it is called reducing.' Repair by defining an agent according to what it does to the other species and checking the agent's own net chemical change.",
+        "diagnostic_prompt": "Explain which invariant or condition this mistake violates: Wrong path: 'The reducing agent gains electrons in the same reaction because it is called reducing.' Repair by defining an agent according to what it does to the other species and checking the agent's own net chemical change.",
+        "model_response": "A colour-changing indicator may not involve redox at all. Oxidation-state or species evidence must support the conclusion rather than relying on colour alone."
+      },
+      "repair": {
+        "action": "Recreate a species and charge ledger from a verified equation or the instrument's correct readings.",
+        "explanation": "Wrong path: 'The reducing agent gains electrons in the same reaction because it is called reducing.' Repair by defining an agent according to what it does to the other species and checking the agent's own net chemical change.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C13.core1a.md (section C13.01)"
+      },
+      "boundary_test": {
+        "prompt": "If CuO loses O but colour is not observed, is reduction impossible?",
+        "answer": "No. The oxygen-transfer chemical evidence, not merely visible colour, is decisive.",
+        "confirms": "A changed reaction medium or measurement condition can invalidate the prior shortcut."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D3",
+        "adjudication": "NOT_RUN",
+        "note": "Author operation/band only; no independent reviewer receipt."
+      }
+    },
+    {
+      "cycle_id": "CORE1B-C13-01-2",
+      "unit_id": "C13",
+      "subtopic_ref": "CHEM-C13.01",
+      "concept_ref": "CHEM-C13.01-CONCEPT",
+      "operation": "APPLY",
+      "qrt_instance_ref": "C13-01-APPLY-D3",
+      "qrt_template_ref": "QRT-APPLY-D3",
+      "band_proposal": "D3",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Before working, predict what kind of evidence or conservation test decides this claim: Apply the oxygen-transfer model to ZnO + C → Zn + CO, identifying both roles.",
+        "defensible_answer": "At the school level, oxidation often means oxygen gain or hydrogen loss, while reduction means oxygen loss or hydrogen gain. In CuO + H₂ → Cu + H₂O, oxygen originally belonging to CuO ends up in water. CuO loses oxygen and is reduced; H₂ gains oxygen and is oxidised. These linked changes form one redox reaction. Every element remains accounted for, so a material ledger is more informative than colour alone."
+      },
+      "attempt": {
+        "prompt": "Apply the oxygen-transfer model to ZnO + C → Zn + CO, identifying both roles.",
+        "produces": "A warranted electron/oxygen/charge reasoning route with correct species and a separate experimental or arithmetic check.",
+        "protected_W": "The learner independently completes the decisive computation, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Name the oxidised and reduced species or the instrument conditions in Oxidation and reduction in observed reactions."
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Recall the scientific warrant: In familiar school redox examples, oxygen/hydrogen transfer links oxidation with reduction; colour change alone is not definitive."
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Write balanced half/whole material and charge ledgers; leave the final scientific inference or value for the independent attempt."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "ZnO loses oxygen and is reduced; carbon gains oxygen and is oxidised to CO. ZnO serves as oxidising agent, carbon as reducing agent under the stated equation.",
+          "rubric": [
+            "Declare oxidant/reductant species and medium when relevant.",
+            "Balance atoms and charge or apparatus quantities correctly.",
+            "State what evidence does and does not establish."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "What is an observation versus a proposed species transformation?",
+            "why_this_ask": "Do not confuse colour or instrument readings with reaction identity.",
+            "model_response": "Black copper(II) oxide loses oxygen when hydrogen is passed over heated copper oxide, while water forms. Which substance has been reduced, and which one has been oxidised? The answer is not simply the name of the black solid."
+          },
+          {
+            "ask": "What conservation rule or redox model applies?",
+            "why_this_ask": "Identify correct oxygen/electron bookkeeping and medium.",
+            "model_response": "The terms oxidising agent and reducing agent describe the effects on the *other* species. CuO is the oxidising agent here because it supplies oxygen to hydrogen and is itself reduced. Hydrogen is the reducing agent because it removes oxygen from copper oxide and is itself oxidised. A learner who assumes the reducing agent must itself be reduced has reversed this relationship."
+          },
+          {
+            "ask": "What follows, and how can you verify it independently?",
+            "why_this_ask": "Complete the reasoning rather than a keyword match.",
+            "model_response": "ZnO loses oxygen and is reduced; carbon gains oxygen and is oxidised to CO. ZnO serves as oxidising agent, carbon as reducing agent under the stated equation."
+          }
+        ],
+        "full_reconstruction": "ZnO loses oxygen and is reduced; carbon gains oxygen and is oxidised to CO. ZnO serves as oxidising agent, carbon as reducing agent under the stated equation."
+      },
+      "diagnose": {
+        "wrong_idea": "Wrong path: 'The reducing agent gains electrons in the same reaction because it is called reducing.' Repair by defining an agent according to what it does to the other species and checking the agent's own net chemical change.",
+        "diagnostic_prompt": "Explain which invariant or condition this mistake violates: Wrong path: 'The reducing agent gains electrons in the same reaction because it is called reducing.' Repair by defining an agent according to what it does to the other species and checking the agent's own net chemical change.",
+        "model_response": "A colour-changing indicator may not involve redox at all. Oxidation-state or species evidence must support the conclusion rather than relying on colour alone."
+      },
+      "repair": {
+        "action": "Recreate a species and charge ledger from a verified equation or the instrument's correct readings.",
+        "explanation": "Wrong path: 'The reducing agent gains electrons in the same reaction because it is called reducing.' Repair by defining an agent according to what it does to the other species and checking the agent's own net chemical change.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C13.core1a.md (section C13.01)"
+      },
+      "boundary_test": {
+        "prompt": "Could the same reaction be explained by atom counts alone without any oxygen-transfer interpretation?",
+        "answer": "Atom balance is necessary but does not by itself identify the redox roles.",
+        "confirms": "A changed reaction medium or measurement condition can invalidate the prior shortcut."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D3",
+        "adjudication": "NOT_RUN",
+        "note": "Author operation/band only; no independent reviewer receipt."
+      }
+    },
+    {
+      "cycle_id": "CORE1B-C13-01-3",
+      "unit_id": "C13",
+      "subtopic_ref": "CHEM-C13.01",
+      "concept_ref": "CHEM-C13.01-CONCEPT",
+      "operation": "JUSTIFY",
+      "qrt_instance_ref": "C13-01-JUSTIFY-D3",
+      "qrt_template_ref": "QRT-JUSTIFY-D3",
+      "band_proposal": "D3",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Before working, predict what kind of evidence or conservation test decides this claim: A dark solid turns reddish during heating. A student identifies both oxide reduction and the gas product from colour alone. Refute the reasoning and propose independent tests.",
+        "defensible_answer": "At the school level, oxidation often means oxygen gain or hydrogen loss, while reduction means oxygen loss or hydrogen gain. In CuO + H₂ → Cu + H₂O, oxygen originally belonging to CuO ends up in water. CuO loses oxygen and is reduced; H₂ gains oxygen and is oxidised. These linked changes form one redox reaction. Every element remains accounted for, so a material ledger is more informative than colour alone."
+      },
+      "attempt": {
+        "prompt": "A dark solid turns reddish during heating. A student identifies both oxide reduction and the gas product from colour alone. Refute the reasoning and propose independent tests.",
+        "produces": "A warranted electron/oxygen/charge reasoning route with correct species and a separate experimental or arithmetic check.",
+        "protected_W": "The learner independently completes the decisive warrant or failing boundary, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Name the oxidised and reduced species or the instrument conditions in Oxidation and reduction in observed reactions."
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Recall the scientific warrant: In familiar school redox examples, oxygen/hydrogen transfer links oxidation with reduction; colour change alone is not definitive."
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Write balanced half/whole material and charge ledgers; leave the final scientific inference or value for the independent attempt."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "One observation does not establish either initial oxide identity or all products. Require controlled solid analysis, gas reactant identity, condensed water or other product tests, plus chemical mass accounting. A plausible balanced equation is still a hypothesis.",
+          "rubric": [
+            "Declare oxidant/reductant species and medium when relevant.",
+            "Balance atoms and charge or apparatus quantities correctly.",
+            "State what evidence does and does not establish."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "What is an observation versus a proposed species transformation?",
+            "why_this_ask": "Do not confuse colour or instrument readings with reaction identity.",
+            "model_response": "Black copper(II) oxide loses oxygen when hydrogen is passed over heated copper oxide, while water forms. Which substance has been reduced, and which one has been oxidised? The answer is not simply the name of the black solid."
+          },
+          {
+            "ask": "What conservation rule or redox model applies?",
+            "why_this_ask": "Identify correct oxygen/electron bookkeeping and medium.",
+            "model_response": "The terms oxidising agent and reducing agent describe the effects on the *other* species. CuO is the oxidising agent here because it supplies oxygen to hydrogen and is itself reduced. Hydrogen is the reducing agent because it removes oxygen from copper oxide and is itself oxidised. A learner who assumes the reducing agent must itself be reduced has reversed this relationship."
+          },
+          {
+            "ask": "What follows, and how can you verify it independently?",
+            "why_this_ask": "Complete the reasoning rather than a keyword match.",
+            "model_response": "One observation does not establish either initial oxide identity or all products. Require controlled solid analysis, gas reactant identity, condensed water or other product tests, plus chemical mass accounting. A plausible balanced equation is still a hypothesis."
+          }
+        ],
+        "full_reconstruction": "One observation does not establish either initial oxide identity or all products. Require controlled solid analysis, gas reactant identity, condensed water or other product tests, plus chemical mass accounting. A plausible balanced equation is still a hypothesis."
+      },
+      "diagnose": {
+        "wrong_idea": "Wrong path: 'The reducing agent gains electrons in the same reaction because it is called reducing.' Repair by defining an agent according to what it does to the other species and checking the agent's own net chemical change.",
+        "diagnostic_prompt": "Explain which invariant or condition this mistake violates: Wrong path: 'The reducing agent gains electrons in the same reaction because it is called reducing.' Repair by defining an agent according to what it does to the other species and checking the agent's own net chemical change.",
+        "model_response": "A colour-changing indicator may not involve redox at all. Oxidation-state or species evidence must support the conclusion rather than relying on colour alone."
+      },
+      "repair": {
+        "action": "Recreate a species and charge ledger from a verified equation or the instrument's correct readings.",
+        "explanation": "Wrong path: 'The reducing agent gains electrons in the same reaction because it is called reducing.' Repair by defining an agent according to what it does to the other species and checking the agent's own net chemical change.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C13.core1a.md (section C13.01)"
+      },
+      "boundary_test": {
+        "prompt": "Would a second unrelated colour change prove oxygen transfer?",
+        "answer": "No. Colour changes can arise from other chemical or physical mechanisms.",
+        "confirms": "A changed reaction medium or measurement condition can invalidate the prior shortcut."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D3",
+        "adjudication": "NOT_RUN",
+        "note": "Author operation/band only; no independent reviewer receipt."
+      }
+    },
+    {
+      "cycle_id": "CORE1B-C13-02-1",
+      "unit_id": "C13",
+      "subtopic_ref": "CHEM-C13.02",
+      "concept_ref": "CHEM-C13.02-CONCEPT",
+      "operation": "EXPLAIN",
+      "qrt_instance_ref": "C13-02-EXPLAIN-D3",
+      "qrt_template_ref": "QRT-EXPLAIN-D3",
+      "band_proposal": "D3",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Before working, predict what kind of evidence or conservation test decides this claim: Explain why Fe²⁺ → Fe³⁺ + e⁻ is oxidation without mentioning oxygen atoms.",
+        "defensible_answer": "An ionic species Fe²⁺ can lose an electron to become Fe³⁺: Fe²⁺ → Fe³⁺ + e⁻. Losing electrons is oxidation. A separate reduction half-process must accept electrons in a full redox reaction. This electron ledger complements the oxygen-transfer language. For a genuine monatomic ion, the oxidation number equals its charge. For atoms in many covalent molecules, oxidation numbers are **formal bookkeeping values**, assigned by convention to track electron-accounting changes rather than directly measured local charges."
+      },
+      "attempt": {
+        "prompt": "Explain why Fe²⁺ → Fe³⁺ + e⁻ is oxidation without mentioning oxygen atoms.",
+        "produces": "A warranted electron/oxygen/charge reasoning route with correct species and a separate experimental or arithmetic check.",
+        "protected_W": "The learner independently completes the causal bridge, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Name the oxidised and reduced species or the instrument conditions in Electron transfer and formal oxidation numbers."
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Recall the scientific warrant: Oxidation number is formal bookkeeping, not a direct charge measurement for every covalent species."
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Write balanced half/whole material and charge ledgers; leave the final scientific inference or value for the independent attempt."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "Fe²⁺ loses one electron, becoming Fe³⁺. Electron loss is oxidation. Charge balances: left +2; right +3 plus −1 = +2.",
+          "rubric": [
+            "Declare oxidant/reductant species and medium when relevant.",
+            "Balance atoms and charge or apparatus quantities correctly.",
+            "State what evidence does and does not establish."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "What is an observation versus a proposed species transformation?",
+            "why_this_ask": "Do not confuse colour or instrument readings with reaction identity.",
+            "model_response": "A charge-balanced ionic reaction can involve oxidation even when no oxygen atom is present. How can we follow the change while avoiding the mistake that an oxidation number is always a real ionic charge?"
+          },
+          {
+            "ask": "What conservation rule or redox model applies?",
+            "why_this_ask": "Identify correct oxygen/electron bookkeeping and medium.",
+            "model_response": "Oxidation-number conventions include: an uncombined element has formal oxidation number zero; a monatomic ion uses its ionic charge; oxygen is commonly −2 in ordinary oxides but has important exceptions; hydrogen is commonly +1 with nonmetals and −1 in metal hydrides. The sum of formal oxidation numbers equals the net species charge when counted with atom multiplicities. These rules need stated species and bonding context."
+          },
+          {
+            "ask": "What follows, and how can you verify it independently?",
+            "why_this_ask": "Complete the reasoning rather than a keyword match.",
+            "model_response": "Fe²⁺ loses one electron, becoming Fe³⁺. Electron loss is oxidation. Charge balances: left +2; right +3 plus −1 = +2."
+          }
+        ],
+        "full_reconstruction": "Fe²⁺ loses one electron, becoming Fe³⁺. Electron loss is oxidation. Charge balances: left +2; right +3 plus −1 = +2."
+      },
+      "diagnose": {
+        "wrong_idea": "Wrong path: 'All atoms with oxidation number +2 physically carry +2 ionic charge.' Repair by distinguishing formal assignment from actual ionic species and the molecular bonding model.",
+        "diagnostic_prompt": "Explain which invariant or condition this mistake violates: Wrong path: 'All atoms with oxidation number +2 physically carry +2 ionic charge.' Repair by distinguishing formal assignment from actual ionic species and the molecular bonding model.",
+        "model_response": "Oxygen in peroxides is often −1, so a blindly applied O = −2 rule can break the species-charge sum. Boundary conditions decide the model."
+      },
+      "repair": {
+        "action": "Recreate a species and charge ledger from a verified equation or the instrument's correct readings.",
+        "explanation": "Wrong path: 'All atoms with oxidation number +2 physically carry +2 ionic charge.' Repair by distinguishing formal assignment from actual ionic species and the molecular bonding model.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C13.core1a.md (section C13.02)"
+      },
+      "boundary_test": {
+        "prompt": "Does every oxidised species necessarily gain oxygen?",
+        "answer": "No. Electron loss is a broader redox definition.",
+        "confirms": "A changed reaction medium or measurement condition can invalidate the prior shortcut."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D3",
+        "adjudication": "NOT_RUN",
+        "note": "Author operation/band only; no independent reviewer receipt."
+      }
+    },
+    {
+      "cycle_id": "CORE1B-C13-02-2",
+      "unit_id": "C13",
+      "subtopic_ref": "CHEM-C13.02",
+      "concept_ref": "CHEM-C13.02-CONCEPT",
+      "operation": "APPLY",
+      "qrt_instance_ref": "C13-02-APPLY-D3",
+      "qrt_template_ref": "QRT-APPLY-D3",
+      "band_proposal": "D3",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Before working, predict what kind of evidence or conservation test decides this claim: Apply oxidation-number rules to H₂O and H₂O₂, specifying why oxygen differs.",
+        "defensible_answer": "An ionic species Fe²⁺ can lose an electron to become Fe³⁺: Fe²⁺ → Fe³⁺ + e⁻. Losing electrons is oxidation. A separate reduction half-process must accept electrons in a full redox reaction. This electron ledger complements the oxygen-transfer language. For a genuine monatomic ion, the oxidation number equals its charge. For atoms in many covalent molecules, oxidation numbers are **formal bookkeeping values**, assigned by convention to track electron-accounting changes rather than directly measured local charges."
+      },
+      "attempt": {
+        "prompt": "Apply oxidation-number rules to H₂O and H₂O₂, specifying why oxygen differs.",
+        "produces": "A warranted electron/oxygen/charge reasoning route with correct species and a separate experimental or arithmetic check.",
+        "protected_W": "The learner independently completes the decisive computation, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Name the oxidised and reduced species or the instrument conditions in Electron transfer and formal oxidation numbers."
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Recall the scientific warrant: Oxidation number is formal bookkeeping, not a direct charge measurement for every covalent species."
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Write balanced half/whole material and charge ledgers; leave the final scientific inference or value for the independent attempt."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "H₂O: H +1, O −2 gives total 0. In H₂O₂ (a peroxide), each O is −1, while each H is +1; sum +2−2=0. The peroxide exception matters.",
+          "rubric": [
+            "Declare oxidant/reductant species and medium when relevant.",
+            "Balance atoms and charge or apparatus quantities correctly.",
+            "State what evidence does and does not establish."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "What is an observation versus a proposed species transformation?",
+            "why_this_ask": "Do not confuse colour or instrument readings with reaction identity.",
+            "model_response": "A charge-balanced ionic reaction can involve oxidation even when no oxygen atom is present. How can we follow the change while avoiding the mistake that an oxidation number is always a real ionic charge?"
+          },
+          {
+            "ask": "What conservation rule or redox model applies?",
+            "why_this_ask": "Identify correct oxygen/electron bookkeeping and medium.",
+            "model_response": "Oxidation-number conventions include: an uncombined element has formal oxidation number zero; a monatomic ion uses its ionic charge; oxygen is commonly −2 in ordinary oxides but has important exceptions; hydrogen is commonly +1 with nonmetals and −1 in metal hydrides. The sum of formal oxidation numbers equals the net species charge when counted with atom multiplicities. These rules need stated species and bonding context."
+          },
+          {
+            "ask": "What follows, and how can you verify it independently?",
+            "why_this_ask": "Complete the reasoning rather than a keyword match.",
+            "model_response": "H₂O: H +1, O −2 gives total 0. In H₂O₂ (a peroxide), each O is −1, while each H is +1; sum +2−2=0. The peroxide exception matters."
+          }
+        ],
+        "full_reconstruction": "H₂O: H +1, O −2 gives total 0. In H₂O₂ (a peroxide), each O is −1, while each H is +1; sum +2−2=0. The peroxide exception matters."
+      },
+      "diagnose": {
+        "wrong_idea": "Wrong path: 'All atoms with oxidation number +2 physically carry +2 ionic charge.' Repair by distinguishing formal assignment from actual ionic species and the molecular bonding model.",
+        "diagnostic_prompt": "Explain which invariant or condition this mistake violates: Wrong path: 'All atoms with oxidation number +2 physically carry +2 ionic charge.' Repair by distinguishing formal assignment from actual ionic species and the molecular bonding model.",
+        "model_response": "Oxygen in peroxides is often −1, so a blindly applied O = −2 rule can break the species-charge sum. Boundary conditions decide the model."
+      },
+      "repair": {
+        "action": "Recreate a species and charge ledger from a verified equation or the instrument's correct readings.",
+        "explanation": "Wrong path: 'All atoms with oxidation number +2 physically carry +2 ionic charge.' Repair by distinguishing formal assignment from actual ionic species and the molecular bonding model.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C13.core1a.md (section C13.02)"
+      },
+      "boundary_test": {
+        "prompt": "If an oxygen-containing formula cannot balance with O = −2, should the charge rule simply be abandoned?",
+        "answer": "No. Check valid exceptions and species identity first.",
+        "confirms": "A changed reaction medium or measurement condition can invalidate the prior shortcut."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D3",
+        "adjudication": "NOT_RUN",
+        "note": "Author operation/band only; no independent reviewer receipt."
+      }
+    },
+    {
+      "cycle_id": "CORE1B-C13-02-3",
+      "unit_id": "C13",
+      "subtopic_ref": "CHEM-C13.02",
+      "concept_ref": "CHEM-C13.02-CONCEPT",
+      "operation": "JUSTIFY",
+      "qrt_instance_ref": "C13-02-JUSTIFY-D3",
+      "qrt_template_ref": "QRT-JUSTIFY-D3",
+      "band_proposal": "D3",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Before working, predict what kind of evidence or conservation test decides this claim: A student says carbon's +4 oxidation number in CO₂ proves it exists as isolated C⁴⁺ ions in the gas. Refute the claim.",
+        "defensible_answer": "An ionic species Fe²⁺ can lose an electron to become Fe³⁺: Fe²⁺ → Fe³⁺ + e⁻. Losing electrons is oxidation. A separate reduction half-process must accept electrons in a full redox reaction. This electron ledger complements the oxygen-transfer language. For a genuine monatomic ion, the oxidation number equals its charge. For atoms in many covalent molecules, oxidation numbers are **formal bookkeeping values**, assigned by convention to track electron-accounting changes rather than directly measured local charges."
+      },
+      "attempt": {
+        "prompt": "A student says carbon's +4 oxidation number in CO₂ proves it exists as isolated C⁴⁺ ions in the gas. Refute the claim.",
+        "produces": "A warranted electron/oxygen/charge reasoning route with correct species and a separate experimental or arithmetic check.",
+        "protected_W": "The learner independently completes the decisive warrant or failing boundary, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Name the oxidised and reduced species or the instrument conditions in Electron transfer and formal oxidation numbers."
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Recall the scientific warrant: Oxidation number is formal bookkeeping, not a direct charge measurement for every covalent species."
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Write balanced half/whole material and charge ledgers; leave the final scientific inference or value for the independent attempt."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "The +4 is a formal bookkeeping oxidation state derived from the convention for O = −2 and neutral CO₂. CO₂ is a covalent molecular gas and does not consist of isolated C⁴⁺ ions plus free O²⁻ ions.",
+          "rubric": [
+            "Declare oxidant/reductant species and medium when relevant.",
+            "Balance atoms and charge or apparatus quantities correctly.",
+            "State what evidence does and does not establish."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "What is an observation versus a proposed species transformation?",
+            "why_this_ask": "Do not confuse colour or instrument readings with reaction identity.",
+            "model_response": "A charge-balanced ionic reaction can involve oxidation even when no oxygen atom is present. How can we follow the change while avoiding the mistake that an oxidation number is always a real ionic charge?"
+          },
+          {
+            "ask": "What conservation rule or redox model applies?",
+            "why_this_ask": "Identify correct oxygen/electron bookkeeping and medium.",
+            "model_response": "Oxidation-number conventions include: an uncombined element has formal oxidation number zero; a monatomic ion uses its ionic charge; oxygen is commonly −2 in ordinary oxides but has important exceptions; hydrogen is commonly +1 with nonmetals and −1 in metal hydrides. The sum of formal oxidation numbers equals the net species charge when counted with atom multiplicities. These rules need stated species and bonding context."
+          },
+          {
+            "ask": "What follows, and how can you verify it independently?",
+            "why_this_ask": "Complete the reasoning rather than a keyword match.",
+            "model_response": "The +4 is a formal bookkeeping oxidation state derived from the convention for O = −2 and neutral CO₂. CO₂ is a covalent molecular gas and does not consist of isolated C⁴⁺ ions plus free O²⁻ ions."
+          }
+        ],
+        "full_reconstruction": "The +4 is a formal bookkeeping oxidation state derived from the convention for O = −2 and neutral CO₂. CO₂ is a covalent molecular gas and does not consist of isolated C⁴⁺ ions plus free O²⁻ ions."
+      },
+      "diagnose": {
+        "wrong_idea": "Wrong path: 'All atoms with oxidation number +2 physically carry +2 ionic charge.' Repair by distinguishing formal assignment from actual ionic species and the molecular bonding model.",
+        "diagnostic_prompt": "Explain which invariant or condition this mistake violates: Wrong path: 'All atoms with oxidation number +2 physically carry +2 ionic charge.' Repair by distinguishing formal assignment from actual ionic species and the molecular bonding model.",
+        "model_response": "Oxygen in peroxides is often −1, so a blindly applied O = −2 rule can break the species-charge sum. Boundary conditions decide the model."
+      },
+      "repair": {
+        "action": "Recreate a species and charge ledger from a verified equation or the instrument's correct readings.",
+        "explanation": "Wrong path: 'All atoms with oxidation number +2 physically carry +2 ionic charge.' Repair by distinguishing formal assignment from actual ionic species and the molecular bonding model.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C13.core1a.md (section C13.02)"
+      },
+      "boundary_test": {
+        "prompt": "Can oxidation numbers always establish the sequence of elementary reaction steps?",
+        "answer": "No. Formal changes constrain net redox accounting, not necessarily mechanism.",
+        "confirms": "A changed reaction medium or measurement condition can invalidate the prior shortcut."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D3",
+        "adjudication": "NOT_RUN",
+        "note": "Author operation/band only; no independent reviewer receipt."
+      }
+    },
+    {
+      "cycle_id": "CORE1B-C13-03-1",
+      "unit_id": "C13",
+      "subtopic_ref": "CHEM-C13.03",
+      "concept_ref": "CHEM-C13.03-CONCEPT",
+      "operation": "EXPLAIN",
+      "qrt_instance_ref": "C13-03-EXPLAIN-D3",
+      "qrt_template_ref": "QRT-EXPLAIN-D3",
+      "band_proposal": "D3",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Before working, predict what kind of evidence or conservation test decides this claim: Explain why atoms and charge must both balance in the acidic permanganate/iron(II) reaction.",
+        "defensible_answer": "The ion–electron method separates oxidation and reduction into half-reactions, balances all atoms and total charge, and then cancels the electrons transferred. In acidic medium, H₂O can balance oxygen and H⁺ can balance hydrogen; electrons balance charge. In basic medium, OH⁻ and water can be used consistently after a suitable transformation. The medium is not optional decoration, because the species available for balancing differ."
+      },
+      "attempt": {
+        "prompt": "Explain why atoms and charge must both balance in the acidic permanganate/iron(II) reaction.",
+        "produces": "A warranted electron/oxygen/charge reasoning route with correct species and a separate experimental or arithmetic check.",
+        "protected_W": "The learner independently completes the causal bridge, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Name the oxidised and reduced species or the instrument conditions in Balancing redox through half-reactions (EXTENSION)."
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Recall the scientific warrant: Ion–electron balancing conserves both elements and charge and needs specified acidic/basic conditions; extension."
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Write balanced half/whole material and charge ledgers; leave the final scientific inference or value for the independent attempt."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "Both element totals and net ionic charge are conserved. For MnO₄⁻ + 8H⁺ + 5Fe²⁺ → Mn²⁺ + 4H₂O + 5Fe³⁺, left and right charges both equal +17, and all atoms match.",
+          "rubric": [
+            "Declare oxidant/reductant species and medium when relevant.",
+            "Balance atoms and charge or apparatus quantities correctly.",
+            "State what evidence does and does not establish."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "What is an observation versus a proposed species transformation?",
+            "why_this_ask": "Do not confuse colour or instrument readings with reaction identity.",
+            "model_response": "An ionic equation balances every chemical element but has different total charge on each side. Can such an equation represent a complete reaction? The missing condition is charge conservation."
+          },
+          {
+            "ask": "What conservation rule or redox model applies?",
+            "why_this_ask": "Identify correct oxygen/electron bookkeeping and medium.",
+            "model_response": "Consider Fe²⁺ oxidation: Fe²⁺ → Fe³⁺ + e⁻. A permanganate reduction in acidic solution can be expressed as MnO₄⁻ + 8H⁺ + 5e⁻ → Mn²⁺ + 4H₂O. Each side has one Mn, four O and eight H. Charge on the left is −1 + 8 − 5 = +2, equal to Mn²⁺ on the right. Multiplying the iron half-reaction by five cancels electrons when the two are added."
+          },
+          {
+            "ask": "What follows, and how can you verify it independently?",
+            "why_this_ask": "Complete the reasoning rather than a keyword match.",
+            "model_response": "Both element totals and net ionic charge are conserved. For MnO₄⁻ + 8H⁺ + 5Fe²⁺ → Mn²⁺ + 4H₂O + 5Fe³⁺, left and right charges both equal +17, and all atoms match."
+          }
+        ],
+        "full_reconstruction": "Both element totals and net ionic charge are conserved. For MnO₄⁻ + 8H⁺ + 5Fe²⁺ → Mn²⁺ + 4H₂O + 5Fe³⁺, left and right charges both equal +17, and all atoms match."
+      },
+      "diagnose": {
+        "wrong_idea": "Wrong path: 'A redox equation is balanced once each element count matches.' Repair by checking total charge in ionic equations, electron cancellation and the stated acidic/basic medium.",
+        "diagnostic_prompt": "Explain which invariant or condition this mistake violates: Wrong path: 'A redox equation is balanced once each element count matches.' Repair by checking total charge in ionic equations, electron cancellation and the stated acidic/basic medium.",
+        "model_response": "Using the acidic MnO₄⁻ to Mn²⁺ half-reaction unchanged in strongly basic conditions is invalid without medium-specific chemistry and appropriate products."
+      },
+      "repair": {
+        "action": "Recreate a species and charge ledger from a verified equation or the instrument's correct readings.",
+        "explanation": "Wrong path: 'A redox equation is balanced once each element count matches.' Repair by checking total charge in ionic equations, electron cancellation and the stated acidic/basic medium.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C13.core1a.md (section C13.03)"
+      },
+      "boundary_test": {
+        "prompt": "If the reaction medium is changed, must the same permanganate product necessarily result?",
+        "answer": "No. Permanganate reduction products are medium-dependent.",
+        "confirms": "A changed reaction medium or measurement condition can invalidate the prior shortcut."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D3",
+        "adjudication": "NOT_RUN",
+        "note": "Author operation/band only; no independent reviewer receipt."
+      }
+    },
+    {
+      "cycle_id": "CORE1B-C13-03-2",
+      "unit_id": "C13",
+      "subtopic_ref": "CHEM-C13.03",
+      "concept_ref": "CHEM-C13.03-CONCEPT",
+      "operation": "APPLY",
+      "qrt_instance_ref": "C13-03-APPLY-D3",
+      "qrt_template_ref": "QRT-APPLY-D3",
+      "band_proposal": "D3",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Before working, predict what kind of evidence or conservation test decides this claim: Apply the half-reaction method to Fe²⁺/Fe³⁺ and MnO₄⁻/Mn²⁺ in acidic medium.",
+        "defensible_answer": "The ion–electron method separates oxidation and reduction into half-reactions, balances all atoms and total charge, and then cancels the electrons transferred. In acidic medium, H₂O can balance oxygen and H⁺ can balance hydrogen; electrons balance charge. In basic medium, OH⁻ and water can be used consistently after a suitable transformation. The medium is not optional decoration, because the species available for balancing differ."
+      },
+      "attempt": {
+        "prompt": "Apply the half-reaction method to Fe²⁺/Fe³⁺ and MnO₄⁻/Mn²⁺ in acidic medium.",
+        "produces": "A warranted electron/oxygen/charge reasoning route with correct species and a separate experimental or arithmetic check.",
+        "protected_W": "The learner independently completes the decisive computation, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Name the oxidised and reduced species or the instrument conditions in Balancing redox through half-reactions (EXTENSION)."
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Recall the scientific warrant: Ion–electron balancing conserves both elements and charge and needs specified acidic/basic conditions; extension."
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Write balanced half/whole material and charge ledgers; leave the final scientific inference or value for the independent attempt."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "Fe²⁺ → Fe³⁺+e⁻; MnO₄⁻+8H⁺+5e⁻→Mn²⁺+4H₂O. Multiply the iron half by 5 and add; cancel electrons to obtain MnO₄⁻+8H⁺+5Fe²⁺→Mn²⁺+4H₂O+5Fe³⁺.",
+          "rubric": [
+            "Declare oxidant/reductant species and medium when relevant.",
+            "Balance atoms and charge or apparatus quantities correctly.",
+            "State what evidence does and does not establish."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "What is an observation versus a proposed species transformation?",
+            "why_this_ask": "Do not confuse colour or instrument readings with reaction identity.",
+            "model_response": "An ionic equation balances every chemical element but has different total charge on each side. Can such an equation represent a complete reaction? The missing condition is charge conservation."
+          },
+          {
+            "ask": "What conservation rule or redox model applies?",
+            "why_this_ask": "Identify correct oxygen/electron bookkeeping and medium.",
+            "model_response": "Consider Fe²⁺ oxidation: Fe²⁺ → Fe³⁺ + e⁻. A permanganate reduction in acidic solution can be expressed as MnO₄⁻ + 8H⁺ + 5e⁻ → Mn²⁺ + 4H₂O. Each side has one Mn, four O and eight H. Charge on the left is −1 + 8 − 5 = +2, equal to Mn²⁺ on the right. Multiplying the iron half-reaction by five cancels electrons when the two are added."
+          },
+          {
+            "ask": "What follows, and how can you verify it independently?",
+            "why_this_ask": "Complete the reasoning rather than a keyword match.",
+            "model_response": "Fe²⁺ → Fe³⁺+e⁻; MnO₄⁻+8H⁺+5e⁻→Mn²⁺+4H₂O. Multiply the iron half by 5 and add; cancel electrons to obtain MnO₄⁻+8H⁺+5Fe²⁺→Mn²⁺+4H₂O+5Fe³⁺."
+          }
+        ],
+        "full_reconstruction": "Fe²⁺ → Fe³⁺+e⁻; MnO₄⁻+8H⁺+5e⁻→Mn²⁺+4H₂O. Multiply the iron half by 5 and add; cancel electrons to obtain MnO₄⁻+8H⁺+5Fe²⁺→Mn²⁺+4H₂O+5Fe³⁺."
+      },
+      "diagnose": {
+        "wrong_idea": "Wrong path: 'A redox equation is balanced once each element count matches.' Repair by checking total charge in ionic equations, electron cancellation and the stated acidic/basic medium.",
+        "diagnostic_prompt": "Explain which invariant or condition this mistake violates: Wrong path: 'A redox equation is balanced once each element count matches.' Repair by checking total charge in ionic equations, electron cancellation and the stated acidic/basic medium.",
+        "model_response": "Using the acidic MnO₄⁻ to Mn²⁺ half-reaction unchanged in strongly basic conditions is invalid without medium-specific chemistry and appropriate products."
+      },
+      "repair": {
+        "action": "Recreate a species and charge ledger from a verified equation or the instrument's correct readings.",
+        "explanation": "Wrong path: 'A redox equation is balanced once each element count matches.' Repair by checking total charge in ionic equations, electron cancellation and the stated acidic/basic medium.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C13.core1a.md (section C13.03)"
+      },
+      "boundary_test": {
+        "prompt": "What independent check detects an arithmetic mistake in electron cancellation?",
+        "answer": "Check total net charge and every element on both sides.",
+        "confirms": "A changed reaction medium or measurement condition can invalidate the prior shortcut."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D3",
+        "adjudication": "NOT_RUN",
+        "note": "Author operation/band only; no independent reviewer receipt."
+      }
+    },
+    {
+      "cycle_id": "CORE1B-C13-03-3",
+      "unit_id": "C13",
+      "subtopic_ref": "CHEM-C13.03",
+      "concept_ref": "CHEM-C13.03-CONCEPT",
+      "operation": "JUSTIFY",
+      "qrt_instance_ref": "C13-03-JUSTIFY-D3",
+      "qrt_template_ref": "QRT-JUSTIFY-D3",
+      "band_proposal": "D3",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Before working, predict what kind of evidence or conservation test decides this claim: An equation balances Mn, Fe and O but charge differs. Refute a proposed balancing by changing the ionic species labels.",
+        "defensible_answer": "The ion–electron method separates oxidation and reduction into half-reactions, balances all atoms and total charge, and then cancels the electrons transferred. In acidic medium, H₂O can balance oxygen and H⁺ can balance hydrogen; electrons balance charge. In basic medium, OH⁻ and water can be used consistently after a suitable transformation. The medium is not optional decoration, because the species available for balancing differ."
+      },
+      "attempt": {
+        "prompt": "An equation balances Mn, Fe and O but charge differs. Refute a proposed balancing by changing the ionic species labels.",
+        "produces": "A warranted electron/oxygen/charge reasoning route with correct species and a separate experimental or arithmetic check.",
+        "protected_W": "The learner independently completes the decisive warrant or failing boundary, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Name the oxidised and reduced species or the instrument conditions in Balancing redox through half-reactions (EXTENSION)."
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Recall the scientific warrant: Ion–electron balancing conserves both elements and charge and needs specified acidic/basic conditions; extension."
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Write balanced half/whole material and charge ledgers; leave the final scientific inference or value for the independent attempt."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "Chemical identities and oxidation states are fixed by the chosen species; coefficients, water, H⁺/OH⁻ and electrons are adjusted under an explicit medium. Changing Fe³⁺ to Fe²⁺ would change the reaction, not balance it.",
+          "rubric": [
+            "Declare oxidant/reductant species and medium when relevant.",
+            "Balance atoms and charge or apparatus quantities correctly.",
+            "State what evidence does and does not establish."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "What is an observation versus a proposed species transformation?",
+            "why_this_ask": "Do not confuse colour or instrument readings with reaction identity.",
+            "model_response": "An ionic equation balances every chemical element but has different total charge on each side. Can such an equation represent a complete reaction? The missing condition is charge conservation."
+          },
+          {
+            "ask": "What conservation rule or redox model applies?",
+            "why_this_ask": "Identify correct oxygen/electron bookkeeping and medium.",
+            "model_response": "Consider Fe²⁺ oxidation: Fe²⁺ → Fe³⁺ + e⁻. A permanganate reduction in acidic solution can be expressed as MnO₄⁻ + 8H⁺ + 5e⁻ → Mn²⁺ + 4H₂O. Each side has one Mn, four O and eight H. Charge on the left is −1 + 8 − 5 = +2, equal to Mn²⁺ on the right. Multiplying the iron half-reaction by five cancels electrons when the two are added."
+          },
+          {
+            "ask": "What follows, and how can you verify it independently?",
+            "why_this_ask": "Complete the reasoning rather than a keyword match.",
+            "model_response": "Chemical identities and oxidation states are fixed by the chosen species; coefficients, water, H⁺/OH⁻ and electrons are adjusted under an explicit medium. Changing Fe³⁺ to Fe²⁺ would change the reaction, not balance it."
+          }
+        ],
+        "full_reconstruction": "Chemical identities and oxidation states are fixed by the chosen species; coefficients, water, H⁺/OH⁻ and electrons are adjusted under an explicit medium. Changing Fe³⁺ to Fe²⁺ would change the reaction, not balance it."
+      },
+      "diagnose": {
+        "wrong_idea": "Wrong path: 'A redox equation is balanced once each element count matches.' Repair by checking total charge in ionic equations, electron cancellation and the stated acidic/basic medium.",
+        "diagnostic_prompt": "Explain which invariant or condition this mistake violates: Wrong path: 'A redox equation is balanced once each element count matches.' Repair by checking total charge in ionic equations, electron cancellation and the stated acidic/basic medium.",
+        "model_response": "Using the acidic MnO₄⁻ to Mn²⁺ half-reaction unchanged in strongly basic conditions is invalid without medium-specific chemistry and appropriate products."
+      },
+      "repair": {
+        "action": "Recreate a species and charge ledger from a verified equation or the instrument's correct readings.",
+        "explanation": "Wrong path: 'A redox equation is balanced once each element count matches.' Repair by checking total charge in ionic equations, electron cancellation and the stated acidic/basic medium.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C13.core1a.md (section C13.03)"
+      },
+      "boundary_test": {
+        "prompt": "Could one transfer an acidic half-reaction unchanged to basic solution without checking species?",
+        "answer": "No. The medium changes permitted balancing species and potentially products.",
+        "confirms": "A changed reaction medium or measurement condition can invalidate the prior shortcut."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D3",
+        "adjudication": "NOT_RUN",
+        "note": "Author operation/band only; no independent reviewer receipt."
+      }
+    },
+    {
+      "cycle_id": "CORE1B-C13-04-1",
+      "unit_id": "C13",
+      "subtopic_ref": "CHEM-C13.04",
+      "concept_ref": "CHEM-C13.04-CONCEPT",
+      "operation": "EXPLAIN",
+      "qrt_instance_ref": "C13-04-EXPLAIN-D3",
+      "qrt_template_ref": "QRT-EXPLAIN-D3",
+      "band_proposal": "D3",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Before working, predict what kind of evidence or conservation test decides this claim: Explain why permanganate's reaction-specific electron factor can depend on its reduction product.",
+        "defensible_answer": "A balanced redox equation gives mole relationships between reactants; electron equivalents describe how many electrons a species gains or loses under a **specified net change**. Equivalent amount is thus reaction-specific rather than a constant label attached once to a bottle. For example, MnO₄⁻ reduced to Mn²⁺ involves a five-electron change per Mn under acidic conditions, but other permitted products can have a different electron change. The medium, products and source identities must be stated."
+      },
+      "attempt": {
+        "prompt": "Explain why permanganate's reaction-specific electron factor can depend on its reduction product.",
+        "produces": "A warranted electron/oxygen/charge reasoning route with correct species and a separate experimental or arithmetic check.",
+        "protected_W": "The learner independently completes the causal bridge, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Name the oxidised and reduced species or the instrument conditions in Redox amounts and reaction-specific equivalence (EXTENSION)."
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Recall the scientific warrant: Reaction-specific redox equivalents and mole ratios depend on balanced chemistry; extension."
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Write balanced half/whole material and charge ledgers; leave the final scientific inference or value for the independent attempt."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "The factor counts the change in Mn oxidation number under the stated conditions. Mn(VII)→Mn(II) involves five electrons, but other medium-dependent products involve a different change. The reagent name alone is insufficient.",
+          "rubric": [
+            "Declare oxidant/reductant species and medium when relevant.",
+            "Balance atoms and charge or apparatus quantities correctly.",
+            "State what evidence does and does not establish."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "What is an observation versus a proposed species transformation?",
+            "why_this_ask": "Do not confuse colour or instrument readings with reaction identity.",
+            "model_response": "A student claims one mole of any oxidising reagent always accepts the same number of electrons. Why can even the same named reagent have different electron accounting in different media?"
+          },
+          {
+            "ask": "What conservation rule or redox model applies?",
+            "why_this_ask": "Identify correct oxygen/electron bookkeeping and medium.",
+            "model_response": "Use amount-of-substance reasoning with a balanced equation before introducing equivalent terminology. In the acidic permanganate–iron(II) equation, one mole of MnO₄⁻ reacts stoichiometrically with five moles of Fe²⁺. If the Fe²⁺ sample contains 0.050 mol, ideal complete conversion requires 0.010 mol permanganate under the stated chemistry. The calculation assumes Fe²⁺ is the only reducing agent and there are no interfering side reactions."
+          },
+          {
+            "ask": "What follows, and how can you verify it independently?",
+            "why_this_ask": "Complete the reasoning rather than a keyword match.",
+            "model_response": "The factor counts the change in Mn oxidation number under the stated conditions. Mn(VII)→Mn(II) involves five electrons, but other medium-dependent products involve a different change. The reagent name alone is insufficient."
+          }
+        ],
+        "full_reconstruction": "The factor counts the change in Mn oxidation number under the stated conditions. Mn(VII)→Mn(II) involves five electrons, but other medium-dependent products involve a different change. The reagent name alone is insufficient."
+      },
+      "diagnose": {
+        "wrong_idea": "Wrong path: 'Apply the familiar 5-equivalent factor to every permanganate reaction.' Repair by identifying the product oxidation state and medium, then balancing the specific reaction before computing.",
+        "diagnostic_prompt": "Explain which invariant or condition this mistake violates: Wrong path: 'Apply the familiar 5-equivalent factor to every permanganate reaction.' Repair by identifying the product oxidation state and medium, then balancing the specific reaction before computing.",
+        "model_response": "If an oxidisable impurity is also present, the observed oxidant consumption cannot be assigned uniquely to Fe²⁺. Composition and blank controls must be specified."
+      },
+      "repair": {
+        "action": "Recreate a species and charge ledger from a verified equation or the instrument's correct readings.",
+        "explanation": "Wrong path: 'Apply the familiar 5-equivalent factor to every permanganate reaction.' Repair by identifying the product oxidation state and medium, then balancing the specific reaction before computing.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C13.core1a.md (section C13.04)"
+      },
+      "boundary_test": {
+        "prompt": "Would electron factor remain five for all permanganate reactions?",
+        "answer": "No. Product and medium control the net change.",
+        "confirms": "A changed reaction medium or measurement condition can invalidate the prior shortcut."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D3",
+        "adjudication": "NOT_RUN",
+        "note": "Author operation/band only; no independent reviewer receipt."
+      }
+    },
+    {
+      "cycle_id": "CORE1B-C13-04-2",
+      "unit_id": "C13",
+      "subtopic_ref": "CHEM-C13.04",
+      "concept_ref": "CHEM-C13.04-CONCEPT",
+      "operation": "APPLY",
+      "qrt_instance_ref": "C13-04-APPLY-D3",
+      "qrt_template_ref": "QRT-APPLY-D3",
+      "band_proposal": "D3",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Before working, predict what kind of evidence or conservation test decides this claim: Apply the acidic reaction ratio to 0.050 mol Fe²⁺ and determine permanganate amount.",
+        "defensible_answer": "A balanced redox equation gives mole relationships between reactants; electron equivalents describe how many electrons a species gains or loses under a **specified net change**. Equivalent amount is thus reaction-specific rather than a constant label attached once to a bottle. For example, MnO₄⁻ reduced to Mn²⁺ involves a five-electron change per Mn under acidic conditions, but other permitted products can have a different electron change. The medium, products and source identities must be stated."
+      },
+      "attempt": {
+        "prompt": "Apply the acidic reaction ratio to 0.050 mol Fe²⁺ and determine permanganate amount.",
+        "produces": "A warranted electron/oxygen/charge reasoning route with correct species and a separate experimental or arithmetic check.",
+        "protected_W": "The learner independently completes the decisive computation, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Name the oxidised and reduced species or the instrument conditions in Redox amounts and reaction-specific equivalence (EXTENSION)."
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Recall the scientific warrant: Reaction-specific redox equivalents and mole ratios depend on balanced chemistry; extension."
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Write balanced half/whole material and charge ledgers; leave the final scientific inference or value for the independent attempt."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "Fe²⁺ loses one electron each; acidic MnO₄⁻ accepts five. One permanganate reacts with five Fe²⁺, so 0.050/5 = 0.010 mol permanganate if complete and interference-free.",
+          "rubric": [
+            "Declare oxidant/reductant species and medium when relevant.",
+            "Balance atoms and charge or apparatus quantities correctly.",
+            "State what evidence does and does not establish."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "What is an observation versus a proposed species transformation?",
+            "why_this_ask": "Do not confuse colour or instrument readings with reaction identity.",
+            "model_response": "A student claims one mole of any oxidising reagent always accepts the same number of electrons. Why can even the same named reagent have different electron accounting in different media?"
+          },
+          {
+            "ask": "What conservation rule or redox model applies?",
+            "why_this_ask": "Identify correct oxygen/electron bookkeeping and medium.",
+            "model_response": "Use amount-of-substance reasoning with a balanced equation before introducing equivalent terminology. In the acidic permanganate–iron(II) equation, one mole of MnO₄⁻ reacts stoichiometrically with five moles of Fe²⁺. If the Fe²⁺ sample contains 0.050 mol, ideal complete conversion requires 0.010 mol permanganate under the stated chemistry. The calculation assumes Fe²⁺ is the only reducing agent and there are no interfering side reactions."
+          },
+          {
+            "ask": "What follows, and how can you verify it independently?",
+            "why_this_ask": "Complete the reasoning rather than a keyword match.",
+            "model_response": "Fe²⁺ loses one electron each; acidic MnO₄⁻ accepts five. One permanganate reacts with five Fe²⁺, so 0.050/5 = 0.010 mol permanganate if complete and interference-free."
+          }
+        ],
+        "full_reconstruction": "Fe²⁺ loses one electron each; acidic MnO₄⁻ accepts five. One permanganate reacts with five Fe²⁺, so 0.050/5 = 0.010 mol permanganate if complete and interference-free."
+      },
+      "diagnose": {
+        "wrong_idea": "Wrong path: 'Apply the familiar 5-equivalent factor to every permanganate reaction.' Repair by identifying the product oxidation state and medium, then balancing the specific reaction before computing.",
+        "diagnostic_prompt": "Explain which invariant or condition this mistake violates: Wrong path: 'Apply the familiar 5-equivalent factor to every permanganate reaction.' Repair by identifying the product oxidation state and medium, then balancing the specific reaction before computing.",
+        "model_response": "If an oxidisable impurity is also present, the observed oxidant consumption cannot be assigned uniquely to Fe²⁺. Composition and blank controls must be specified."
+      },
+      "repair": {
+        "action": "Recreate a species and charge ledger from a verified equation or the instrument's correct readings.",
+        "explanation": "Wrong path: 'Apply the familiar 5-equivalent factor to every permanganate reaction.' Repair by identifying the product oxidation state and medium, then balancing the specific reaction before computing.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C13.core1a.md (section C13.04)"
+      },
+      "boundary_test": {
+        "prompt": "If another reductant is present, can the same measured oxidant amount quantify Fe²⁺ alone?",
+        "answer": "No. Its consumption may be shared across species.",
+        "confirms": "A changed reaction medium or measurement condition can invalidate the prior shortcut."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D3",
+        "adjudication": "NOT_RUN",
+        "note": "Author operation/band only; no independent reviewer receipt."
+      }
+    },
+    {
+      "cycle_id": "CORE1B-C13-04-3",
+      "unit_id": "C13",
+      "subtopic_ref": "CHEM-C13.04",
+      "concept_ref": "CHEM-C13.04-CONCEPT",
+      "operation": "JUSTIFY",
+      "qrt_instance_ref": "C13-04-JUSTIFY-D3",
+      "qrt_template_ref": "QRT-JUSTIFY-D3",
+      "band_proposal": "D3",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Before working, predict what kind of evidence or conservation test decides this claim: A titration record gives oxidant volume but omits pH and reaction products. Justify why a unique equivalent factor cannot be assumed.",
+        "defensible_answer": "A balanced redox equation gives mole relationships between reactants; electron equivalents describe how many electrons a species gains or loses under a **specified net change**. Equivalent amount is thus reaction-specific rather than a constant label attached once to a bottle. For example, MnO₄⁻ reduced to Mn²⁺ involves a five-electron change per Mn under acidic conditions, but other permitted products can have a different electron change. The medium, products and source identities must be stated."
+      },
+      "attempt": {
+        "prompt": "A titration record gives oxidant volume but omits pH and reaction products. Justify why a unique equivalent factor cannot be assumed.",
+        "produces": "A warranted electron/oxygen/charge reasoning route with correct species and a separate experimental or arithmetic check.",
+        "protected_W": "The learner independently completes the decisive warrant or failing boundary, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Name the oxidised and reduced species or the instrument conditions in Redox amounts and reaction-specific equivalence (EXTENSION)."
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Recall the scientific warrant: Reaction-specific redox equivalents and mole ratios depend on balanced chemistry; extension."
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Write balanced half/whole material and charge ledgers; leave the final scientific inference or value for the independent attempt."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "Without the reduction pathway, one cannot determine electrons per oxidant, so the assumed molar ratio may be wrong. Request medium, products and evidence for interfering species before calculation.",
+          "rubric": [
+            "Declare oxidant/reductant species and medium when relevant.",
+            "Balance atoms and charge or apparatus quantities correctly.",
+            "State what evidence does and does not establish."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "What is an observation versus a proposed species transformation?",
+            "why_this_ask": "Do not confuse colour or instrument readings with reaction identity.",
+            "model_response": "A student claims one mole of any oxidising reagent always accepts the same number of electrons. Why can even the same named reagent have different electron accounting in different media?"
+          },
+          {
+            "ask": "What conservation rule or redox model applies?",
+            "why_this_ask": "Identify correct oxygen/electron bookkeeping and medium.",
+            "model_response": "Use amount-of-substance reasoning with a balanced equation before introducing equivalent terminology. In the acidic permanganate–iron(II) equation, one mole of MnO₄⁻ reacts stoichiometrically with five moles of Fe²⁺. If the Fe²⁺ sample contains 0.050 mol, ideal complete conversion requires 0.010 mol permanganate under the stated chemistry. The calculation assumes Fe²⁺ is the only reducing agent and there are no interfering side reactions."
+          },
+          {
+            "ask": "What follows, and how can you verify it independently?",
+            "why_this_ask": "Complete the reasoning rather than a keyword match.",
+            "model_response": "Without the reduction pathway, one cannot determine electrons per oxidant, so the assumed molar ratio may be wrong. Request medium, products and evidence for interfering species before calculation."
+          }
+        ],
+        "full_reconstruction": "Without the reduction pathway, one cannot determine electrons per oxidant, so the assumed molar ratio may be wrong. Request medium, products and evidence for interfering species before calculation."
+      },
+      "diagnose": {
+        "wrong_idea": "Wrong path: 'Apply the familiar 5-equivalent factor to every permanganate reaction.' Repair by identifying the product oxidation state and medium, then balancing the specific reaction before computing.",
+        "diagnostic_prompt": "Explain which invariant or condition this mistake violates: Wrong path: 'Apply the familiar 5-equivalent factor to every permanganate reaction.' Repair by identifying the product oxidation state and medium, then balancing the specific reaction before computing.",
+        "model_response": "If an oxidisable impurity is also present, the observed oxidant consumption cannot be assigned uniquely to Fe²⁺. Composition and blank controls must be specified."
+      },
+      "repair": {
+        "action": "Recreate a species and charge ledger from a verified equation or the instrument's correct readings.",
+        "explanation": "Wrong path: 'Apply the familiar 5-equivalent factor to every permanganate reaction.' Repair by identifying the product oxidation state and medium, then balancing the specific reaction before computing.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C13.core1a.md (section C13.04)"
+      },
+      "boundary_test": {
+        "prompt": "Does an accurately measured burette volume validate the reaction model?",
+        "answer": "No. Precision of volume and correctness of chemical stoichiometry are independent.",
+        "confirms": "A changed reaction medium or measurement condition can invalidate the prior shortcut."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D3",
+        "adjudication": "NOT_RUN",
+        "note": "Author operation/band only; no independent reviewer receipt."
+      }
+    },
+    {
+      "cycle_id": "CORE1B-C13-05-1",
+      "unit_id": "C13",
+      "subtopic_ref": "CHEM-C13.05",
+      "concept_ref": "CHEM-C13.05-CONCEPT",
+      "operation": "EXPLAIN",
+      "qrt_instance_ref": "C13-05-EXPLAIN-D3",
+      "qrt_template_ref": "QRT-EXPLAIN-D3",
+      "band_proposal": "D3",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Before working, predict what kind of evidence or conservation test decides this claim: Explain the distinction between an indicator endpoint and a chemical equivalence point.",
+        "defensible_answer": "Volumetric analysis determines an amount through solution volume, concentration and a balanced reaction. A standard solution of known concentration is delivered from a burette into an accurately measured aliquot of sample. At the **equivalence point**, the amounts satisfy the stoichiometric relation; at a visible **indicator endpoint**, the colour criterion has changed. These are not always identical because indicators respond over a range and observations have experimental uncertainty."
+      },
+      "attempt": {
+        "prompt": "Explain the distinction between an indicator endpoint and a chemical equivalence point.",
+        "produces": "A warranted electron/oxygen/charge reasoning route with correct species and a separate experimental or arithmetic check.",
+        "protected_W": "The learner independently completes the causal bridge, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Name the oxidised and reduced species or the instrument conditions in Formal volumetric analysis and measurement (ENRICHMENT)."
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Recall the scientific warrant: Titration relates endpoint observations to calibrated volume and stoichiometry; endpoint need not equal exact equivalence; enrichment."
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Write balanced half/whole material and charge ledgers; leave the final scientific inference or value for the independent attempt."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "Equivalence is defined by the reaction stoichiometry being met; indicator endpoint is the observed signal (such as a colour change). They can differ owing to transition range, experimental technique or interfering chemistry.",
+          "rubric": [
+            "Declare oxidant/reductant species and medium when relevant.",
+            "Balance atoms and charge or apparatus quantities correctly.",
+            "State what evidence does and does not establish."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "What is an observation versus a proposed species transformation?",
+            "why_this_ask": "Do not confuse colour or instrument readings with reaction identity.",
+            "model_response": "A burette shows a reproducible colour endpoint, and a student declares that the true chemical equivalence point must have been reached exactly. What is missing from that conclusion?"
+          },
+          {
+            "ask": "What conservation rule or redox model applies?",
+            "why_this_ask": "Identify correct oxygen/electron bookkeeping and medium.",
+            "model_response": "Read a burette consistently at eye level and distinguish initial from final readings. Use an appropriate endpoint indicator, known aliquot and balanced species-specific reaction, ideally with a blank or repeated concordant trials. Errors can include overshoot, parallax, air bubbles in the tip, contaminated glassware and interfering reactions. A set of different trial readings must not be averaged blindly if a trial is clearly compromised."
+          },
+          {
+            "ask": "What follows, and how can you verify it independently?",
+            "why_this_ask": "Complete the reasoning rather than a keyword match.",
+            "model_response": "Equivalence is defined by the reaction stoichiometry being met; indicator endpoint is the observed signal (such as a colour change). They can differ owing to transition range, experimental technique or interfering chemistry."
+          }
+        ],
+        "full_reconstruction": "Equivalence is defined by the reaction stoichiometry being met; indicator endpoint is the observed signal (such as a colour change). They can differ owing to transition range, experimental technique or interfering chemistry."
+      },
+      "diagnose": {
+        "wrong_idea": "Wrong path: 'Every indicator colour change establishes exact equivalence and a unique sample composition.' Repair by distinguishing indicator response from stoichiometric equality and asking whether side reactions or contamination occur.",
+        "diagnostic_prompt": "Explain which invariant or condition this mistake violates: Wrong path: 'Every indicator colour change establishes exact equivalence and a unique sample composition.' Repair by distinguishing indicator response from stoichiometric equality and asking whether side reactions or contamination occur.",
+        "model_response": "Changing indicator can shift the apparent endpoint even if the same solution pair is used. The most appropriate indicator depends on the acid-base or redox system."
+      },
+      "repair": {
+        "action": "Recreate a species and charge ledger from a verified equation or the instrument's correct readings.",
+        "explanation": "Wrong path: 'Every indicator colour change establishes exact equivalence and a unique sample composition.' Repair by distinguishing indicator response from stoichiometric equality and asking whether side reactions or contamination occur.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C13.core1a.md (section C13.05)"
+      },
+      "boundary_test": {
+        "prompt": "If colour changes sharply, must it coincide exactly with equivalence?",
+        "answer": "Not necessarily. Appropriate indicator selection and validation are needed.",
+        "confirms": "A changed reaction medium or measurement condition can invalidate the prior shortcut."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D3",
+        "adjudication": "NOT_RUN",
+        "note": "Author operation/band only; no independent reviewer receipt."
+      }
+    },
+    {
+      "cycle_id": "CORE1B-C13-05-2",
+      "unit_id": "C13",
+      "subtopic_ref": "CHEM-C13.05",
+      "concept_ref": "CHEM-C13.05-CONCEPT",
+      "operation": "APPLY",
+      "qrt_instance_ref": "C13-05-APPLY-D3",
+      "qrt_template_ref": "QRT-APPLY-D3",
+      "band_proposal": "D3",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Before working, predict what kind of evidence or conservation test decides this claim: Apply the 1:1 HCl/NaOH relation to 25.0 mL 0.100 mol/L NaOH requiring 20.0 mL HCl.",
+        "defensible_answer": "Volumetric analysis determines an amount through solution volume, concentration and a balanced reaction. A standard solution of known concentration is delivered from a burette into an accurately measured aliquot of sample. At the **equivalence point**, the amounts satisfy the stoichiometric relation; at a visible **indicator endpoint**, the colour criterion has changed. These are not always identical because indicators respond over a range and observations have experimental uncertainty."
+      },
+      "attempt": {
+        "prompt": "Apply the 1:1 HCl/NaOH relation to 25.0 mL 0.100 mol/L NaOH requiring 20.0 mL HCl.",
+        "produces": "A warranted electron/oxygen/charge reasoning route with correct species and a separate experimental or arithmetic check.",
+        "protected_W": "The learner independently completes the decisive computation, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Name the oxidised and reduced species or the instrument conditions in Formal volumetric analysis and measurement (ENRICHMENT)."
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Recall the scientific warrant: Titration relates endpoint observations to calibrated volume and stoichiometry; endpoint need not equal exact equivalence; enrichment."
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Write balanced half/whole material and charge ledgers; leave the final scientific inference or value for the independent attempt."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "NaOH moles = 0.0250 L ×0.100 mol/L =0.00250 mol. One-to-one requires HCl 0.00250 mol, so concentration HCl=0.00250/0.0200=0.125 mol/L under the model.",
+          "rubric": [
+            "Declare oxidant/reductant species and medium when relevant.",
+            "Balance atoms and charge or apparatus quantities correctly.",
+            "State what evidence does and does not establish."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "What is an observation versus a proposed species transformation?",
+            "why_this_ask": "Do not confuse colour or instrument readings with reaction identity.",
+            "model_response": "A burette shows a reproducible colour endpoint, and a student declares that the true chemical equivalence point must have been reached exactly. What is missing from that conclusion?"
+          },
+          {
+            "ask": "What conservation rule or redox model applies?",
+            "why_this_ask": "Identify correct oxygen/electron bookkeeping and medium.",
+            "model_response": "Read a burette consistently at eye level and distinguish initial from final readings. Use an appropriate endpoint indicator, known aliquot and balanced species-specific reaction, ideally with a blank or repeated concordant trials. Errors can include overshoot, parallax, air bubbles in the tip, contaminated glassware and interfering reactions. A set of different trial readings must not be averaged blindly if a trial is clearly compromised."
+          },
+          {
+            "ask": "What follows, and how can you verify it independently?",
+            "why_this_ask": "Complete the reasoning rather than a keyword match.",
+            "model_response": "NaOH moles = 0.0250 L ×0.100 mol/L =0.00250 mol. One-to-one requires HCl 0.00250 mol, so concentration HCl=0.00250/0.0200=0.125 mol/L under the model."
+          }
+        ],
+        "full_reconstruction": "NaOH moles = 0.0250 L ×0.100 mol/L =0.00250 mol. One-to-one requires HCl 0.00250 mol, so concentration HCl=0.00250/0.0200=0.125 mol/L under the model."
+      },
+      "diagnose": {
+        "wrong_idea": "Wrong path: 'Every indicator colour change establishes exact equivalence and a unique sample composition.' Repair by distinguishing indicator response from stoichiometric equality and asking whether side reactions or contamination occur.",
+        "diagnostic_prompt": "Explain which invariant or condition this mistake violates: Wrong path: 'Every indicator colour change establishes exact equivalence and a unique sample composition.' Repair by distinguishing indicator response from stoichiometric equality and asking whether side reactions or contamination occur.",
+        "model_response": "Changing indicator can shift the apparent endpoint even if the same solution pair is used. The most appropriate indicator depends on the acid-base or redox system."
+      },
+      "repair": {
+        "action": "Recreate a species and charge ledger from a verified equation or the instrument's correct readings.",
+        "explanation": "Wrong path: 'Every indicator colour change establishes exact equivalence and a unique sample composition.' Repair by distinguishing indicator response from stoichiometric equality and asking whether side reactions or contamination occur.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C13.core1a.md (section C13.05)"
+      },
+      "boundary_test": {
+        "prompt": "If two acids were present in the HCl-labelled sample, would this calculation identify HCl alone?",
+        "answer": "No. Titration would account for the total responding acid equivalents under the conditions.",
+        "confirms": "A changed reaction medium or measurement condition can invalidate the prior shortcut."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D3",
+        "adjudication": "NOT_RUN",
+        "note": "Author operation/band only; no independent reviewer receipt."
+      }
+    },
+    {
+      "cycle_id": "CORE1B-C13-05-3",
+      "unit_id": "C13",
+      "subtopic_ref": "CHEM-C13.05",
+      "concept_ref": "CHEM-C13.05-CONCEPT",
+      "operation": "JUSTIFY",
+      "qrt_instance_ref": "C13-05-JUSTIFY-D3",
+      "qrt_template_ref": "QRT-JUSTIFY-D3",
+      "band_proposal": "D3",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Before working, predict what kind of evidence or conservation test decides this claim: Two volumetric trials differ by almost 20%. Justify an investigation before accepting the mean as the final concentration.",
+        "defensible_answer": "Volumetric analysis determines an amount through solution volume, concentration and a balanced reaction. A standard solution of known concentration is delivered from a burette into an accurately measured aliquot of sample. At the **equivalence point**, the amounts satisfy the stoichiometric relation; at a visible **indicator endpoint**, the colour criterion has changed. These are not always identical because indicators respond over a range and observations have experimental uncertainty."
+      },
+      "attempt": {
+        "prompt": "Two volumetric trials differ by almost 20%. Justify an investigation before accepting the mean as the final concentration.",
+        "produces": "A warranted electron/oxygen/charge reasoning route with correct species and a separate experimental or arithmetic check.",
+        "protected_W": "The learner independently completes the decisive warrant or failing boundary, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Name the oxidised and reduced species or the instrument conditions in Formal volumetric analysis and measurement (ENRICHMENT)."
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Recall the scientific warrant: Titration relates endpoint observations to calibrated volume and stoichiometry; endpoint need not equal exact equivalence; enrichment."
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Write balanced half/whole material and charge ledgers; leave the final scientific inference or value for the independent attempt."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "Check meniscus readings, air bubbles, temperature, mixing, endpoint overshoot, titrant stability and interfering species; repeat controlled trials. Unexplained discrepancies prevent unqualified averaging.",
+          "rubric": [
+            "Declare oxidant/reductant species and medium when relevant.",
+            "Balance atoms and charge or apparatus quantities correctly.",
+            "State what evidence does and does not establish."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "What is an observation versus a proposed species transformation?",
+            "why_this_ask": "Do not confuse colour or instrument readings with reaction identity.",
+            "model_response": "A burette shows a reproducible colour endpoint, and a student declares that the true chemical equivalence point must have been reached exactly. What is missing from that conclusion?"
+          },
+          {
+            "ask": "What conservation rule or redox model applies?",
+            "why_this_ask": "Identify correct oxygen/electron bookkeeping and medium.",
+            "model_response": "Read a burette consistently at eye level and distinguish initial from final readings. Use an appropriate endpoint indicator, known aliquot and balanced species-specific reaction, ideally with a blank or repeated concordant trials. Errors can include overshoot, parallax, air bubbles in the tip, contaminated glassware and interfering reactions. A set of different trial readings must not be averaged blindly if a trial is clearly compromised."
+          },
+          {
+            "ask": "What follows, and how can you verify it independently?",
+            "why_this_ask": "Complete the reasoning rather than a keyword match.",
+            "model_response": "Check meniscus readings, air bubbles, temperature, mixing, endpoint overshoot, titrant stability and interfering species; repeat controlled trials. Unexplained discrepancies prevent unqualified averaging."
+          }
+        ],
+        "full_reconstruction": "Check meniscus readings, air bubbles, temperature, mixing, endpoint overshoot, titrant stability and interfering species; repeat controlled trials. Unexplained discrepancies prevent unqualified averaging."
+      },
+      "diagnose": {
+        "wrong_idea": "Wrong path: 'Every indicator colour change establishes exact equivalence and a unique sample composition.' Repair by distinguishing indicator response from stoichiometric equality and asking whether side reactions or contamination occur.",
+        "diagnostic_prompt": "Explain which invariant or condition this mistake violates: Wrong path: 'Every indicator colour change establishes exact equivalence and a unique sample composition.' Repair by distinguishing indicator response from stoichiometric equality and asking whether side reactions or contamination occur.",
+        "model_response": "Changing indicator can shift the apparent endpoint even if the same solution pair is used. The most appropriate indicator depends on the acid-base or redox system."
+      },
+      "repair": {
+        "action": "Recreate a species and charge ledger from a verified equation or the instrument's correct readings.",
+        "explanation": "Wrong path: 'Every indicator colour change establishes exact equivalence and a unique sample composition.' Repair by distinguishing indicator response from stoichiometric equality and asking whether side reactions or contamination occur.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C13.core1a.md (section C13.05)"
+      },
+      "boundary_test": {
+        "prompt": "Would an accurate digital burette remove all chemical-model error?",
+        "answer": "No. Equipment precision cannot establish indicator or reaction selectivity.",
+        "confirms": "A changed reaction medium or measurement condition can invalidate the prior shortcut."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D3",
+        "adjudication": "NOT_RUN",
+        "note": "Author operation/band only; no independent reviewer receipt."
+      }
+    }
+  ],
+  "release": {
+    "scientific_review": "HOLD",
+    "source_exam_admission": "HOLD",
+    "qrt_adjudication": "HOLD",
+    "runtime_first_attempt_validation": "NOT_RUN",
+    "deployment": "NOT_AUTHORIZED"
+  }
+}

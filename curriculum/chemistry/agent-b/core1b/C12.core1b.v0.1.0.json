@@ -1,0 +1,1562 @@
+{
+  "schema": "g9v41-chem-core1b-six-stage-cycles/v1",
+  "version": "0.1.0",
+  "unit_id": "C12",
+  "status": "CANDIDATE_UNREVIEWED_NO_BROWSER_TEST",
+  "textbook_ref": "curriculum/chemistry/agent-b/textbook/C12.core1a.md",
+  "blueprint_ref": "CHEM-QRT-BLUEPRINT@0.1.0",
+  "cycles": [
+    {
+      "cycle_id": "CORE1B-C12-01-1",
+      "unit_id": "C12",
+      "subtopic_ref": "CHEM-C12.01",
+      "concept_ref": "CHEM-C12.01-CONCEPT",
+      "operation": "REPRESENT",
+      "qrt_instance_ref": "C12-01-REPRESENT-D3",
+      "qrt_template_ref": "QRT-REPRESENT-D3",
+      "band_proposal": "D3",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Predict the decisive experimental condition before fully solving: Represent a heated gas in a rigid flask and in a freely moving piston, labelling fixed and changing quantities.",
+        "defensible_answer": "A gas consists of widely spaced particles whose collisions with the container produce pressure. Temperature affects typical kinetic energy and collision behaviour; the measured effect depends on which variable is constrained. A rigid sealed vessel holds volume and amount approximately fixed, so heating tends to raise pressure. A flexible vessel can expand, changing volume and possibly pressure. Without stating constraints, a prediction is not a scientific gas model."
+      },
+      "attempt": {
+        "prompt": "Represent a heated gas in a rigid flask and in a freely moving piston, labelling fixed and changing quantities.",
+        "produces": "A stage-resolved gas/species/phase model with measured variables and an independent check.",
+        "protected_W": "The learner independently completes the invariant correspondence, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Identify the gas species, phase, conditions and instrument reading in Pressure, volume, temperature and controlled comparison."
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Remember the governing condition: Gas pressure, volume and temperature must be compared with declared constraints; simple gas laws may require extension treatment."
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Draw a before/after species volume or apparatus ledger; leave the final model choice and numerical inference unresolved."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "Rigid flask: fixed n and V, rising T tends to raise P. Moving piston under roughly constant external P: V can rise with T. The same particle idea gives different observations because the constraints differ.",
+          "rubric": [
+            "Declare temperature, pressure and gas phase before comparison.",
+            "Track species amounts, conservation and stage boundaries.",
+            "Give an independent apparatus or competing-model check."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "Which gases are present and which quantities were measured?",
+            "why_this_ask": "Prevent dry/wet and reaction/collection conflation.",
+            "model_response": "A flexible balloon expands in warm water, but the same gas in a rigid sealed container may increase pressure instead. Why should the word 'heated' be insufficient to predict the measured outcome?"
+          },
+          {
+            "ask": "Which conditions and chemical equation or apparatus model hold?",
+            "why_this_ask": "Build a warranted model instead of a contraction trick.",
+            "model_response": "At foundational level, discuss compression, expansion, temperature and pressure qualitatively. Formal ideal gas proportionalities and P–V–T calculations are additional models with assumptions: dilute gas, stable amount, negligible condensation, near-ideal behaviour and use of absolute temperature. Do not use Celsius directly as a proportional absolute temperature. When gas is collected over water, water vapour complicates the species inventory; that belongs to a later section."
+          },
+          {
+            "ask": "What is the stage-by-stage conclusion and what remains uncertain?",
+            "why_this_ask": "Complete the decisive inferential bridge.",
+            "model_response": "Rigid flask: fixed n and V, rising T tends to raise P. Moving piston under roughly constant external P: V can rise with T. The same particle idea gives different observations because the constraints differ."
+          }
+        ],
+        "full_reconstruction": "Rigid flask: fixed n and V, rising T tends to raise P. Moving piston under roughly constant external P: V can rise with T. The same particle idea gives different observations because the constraints differ."
+      },
+      "diagnose": {
+        "wrong_idea": "Wrong path: 'Heating any gas always increases its volume.' Repair: identify whether the boundary is rigid, flexible or externally controlled before selecting a model.",
+        "diagnostic_prompt": "Find the hidden phase/measurement assumption in: Wrong path: 'Heating any gas always increases its volume.' Repair: identify whether the boundary is rigid, flexible or externally controlled before selecting a model.",
+        "model_response": "Condensation, leaks or chemical gas generation invalidate the fixed-amount assumption. Do not apply a gas law blindly when the chemical identity or amount changes."
+      },
+      "repair": {
+        "action": "Create a corrected species-phase inventory for each experimental stage; repeat independent volume or stoichiometric check.",
+        "explanation": "Wrong path: 'Heating any gas always increases its volume.' Repair: identify whether the boundary is rigid, flexible or externally controlled before selecting a model.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C12.core1a.md (section C12.01)"
+      },
+      "boundary_test": {
+        "prompt": "If gas leaks from the rigid flask, is fixed-n pressure reasoning still justified?",
+        "answer": "No. The amount n changes and the simple comparison fails.",
+        "confirms": "A new control, product state or absorption stage changes the answer."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D3",
+        "adjudication": "NOT_RUN",
+        "note": "Band and operation remain author proposals until exact-task QRT adjudication."
+      }
+    },
+    {
+      "cycle_id": "CORE1B-C12-01-2",
+      "unit_id": "C12",
+      "subtopic_ref": "CHEM-C12.01",
+      "concept_ref": "CHEM-C12.01-CONCEPT",
+      "operation": "MODEL",
+      "qrt_instance_ref": "C12-01-MODEL-D3",
+      "qrt_template_ref": "QRT-MODEL-D3",
+      "band_proposal": "D3",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Predict the decisive experimental condition before fully solving: Choose a model for a balloon heated at near-constant outside pressure and for a rigid cylinder; defend why one model does not fit both.",
+        "defensible_answer": "A gas consists of widely spaced particles whose collisions with the container produce pressure. Temperature affects typical kinetic energy and collision behaviour; the measured effect depends on which variable is constrained. A rigid sealed vessel holds volume and amount approximately fixed, so heating tends to raise pressure. A flexible vessel can expand, changing volume and possibly pressure. Without stating constraints, a prediction is not a scientific gas model."
+      },
+      "attempt": {
+        "prompt": "Choose a model for a balloon heated at near-constant outside pressure and for a rigid cylinder; defend why one model does not fit both.",
+        "produces": "A stage-resolved gas/species/phase model with measured variables and an independent check.",
+        "protected_W": "The learner independently completes the warranted model choice, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Identify the gas species, phase, conditions and instrument reading in Pressure, volume, temperature and controlled comparison."
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Remember the governing condition: Gas pressure, volume and temperature must be compared with declared constraints; simple gas laws may require extension treatment."
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Draw a before/after species volume or apparatus ledger; leave the final model choice and numerical inference unresolved."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "The flexible balloon can expand as particles exert pressure, while rigid cylinder volume is fixed and pressure can rise. An ideal gas approximation works only when the amount is fixed and no condensation/reaction intervenes.",
+          "rubric": [
+            "Declare temperature, pressure and gas phase before comparison.",
+            "Track species amounts, conservation and stage boundaries.",
+            "Give an independent apparatus or competing-model check."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "Which gases are present and which quantities were measured?",
+            "why_this_ask": "Prevent dry/wet and reaction/collection conflation.",
+            "model_response": "A flexible balloon expands in warm water, but the same gas in a rigid sealed container may increase pressure instead. Why should the word 'heated' be insufficient to predict the measured outcome?"
+          },
+          {
+            "ask": "Which conditions and chemical equation or apparatus model hold?",
+            "why_this_ask": "Build a warranted model instead of a contraction trick.",
+            "model_response": "At foundational level, discuss compression, expansion, temperature and pressure qualitatively. Formal ideal gas proportionalities and P–V–T calculations are additional models with assumptions: dilute gas, stable amount, negligible condensation, near-ideal behaviour and use of absolute temperature. Do not use Celsius directly as a proportional absolute temperature. When gas is collected over water, water vapour complicates the species inventory; that belongs to a later section."
+          },
+          {
+            "ask": "What is the stage-by-stage conclusion and what remains uncertain?",
+            "why_this_ask": "Complete the decisive inferential bridge.",
+            "model_response": "The flexible balloon can expand as particles exert pressure, while rigid cylinder volume is fixed and pressure can rise. An ideal gas approximation works only when the amount is fixed and no condensation/reaction intervenes."
+          }
+        ],
+        "full_reconstruction": "The flexible balloon can expand as particles exert pressure, while rigid cylinder volume is fixed and pressure can rise. An ideal gas approximation works only when the amount is fixed and no condensation/reaction intervenes."
+      },
+      "diagnose": {
+        "wrong_idea": "Wrong path: 'Heating any gas always increases its volume.' Repair: identify whether the boundary is rigid, flexible or externally controlled before selecting a model.",
+        "diagnostic_prompt": "Find the hidden phase/measurement assumption in: Wrong path: 'Heating any gas always increases its volume.' Repair: identify whether the boundary is rigid, flexible or externally controlled before selecting a model.",
+        "model_response": "Condensation, leaks or chemical gas generation invalidate the fixed-amount assumption. Do not apply a gas law blindly when the chemical identity or amount changes."
+      },
+      "repair": {
+        "action": "Create a corrected species-phase inventory for each experimental stage; repeat independent volume or stoichiometric check.",
+        "explanation": "Wrong path: 'Heating any gas always increases its volume.' Repair: identify whether the boundary is rigid, flexible or externally controlled before selecting a model.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C12.core1a.md (section C12.01)"
+      },
+      "boundary_test": {
+        "prompt": "Would using 20°C as the proportional temperature number be valid?",
+        "answer": "No. A proportional gas law requires absolute temperature in kelvin.",
+        "confirms": "A new control, product state or absorption stage changes the answer."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D3",
+        "adjudication": "NOT_RUN",
+        "note": "Band and operation remain author proposals until exact-task QRT adjudication."
+      }
+    },
+    {
+      "cycle_id": "CORE1B-C12-01-3",
+      "unit_id": "C12",
+      "subtopic_ref": "CHEM-C12.01",
+      "concept_ref": "CHEM-C12.01-CONCEPT",
+      "operation": "SYNTHESIZE",
+      "qrt_instance_ref": "C12-01-SYNTHESIZE-D3",
+      "qrt_template_ref": "QRT-SYNTHESIZE-D3",
+      "band_proposal": "D3",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Predict the decisive experimental condition before fully solving: Two reports disagree: experiment A heats a sealed rigid gas jar and finds no volume rise; experiment B finds gas volume increased. Reconcile the reports without inventing error.",
+        "defensible_answer": "A gas consists of widely spaced particles whose collisions with the container produce pressure. Temperature affects typical kinetic energy and collision behaviour; the measured effect depends on which variable is constrained. A rigid sealed vessel holds volume and amount approximately fixed, so heating tends to raise pressure. A flexible vessel can expand, changing volume and possibly pressure. Without stating constraints, a prediction is not a scientific gas model."
+      },
+      "attempt": {
+        "prompt": "Two reports disagree: experiment A heats a sealed rigid gas jar and finds no volume rise; experiment B finds gas volume increased. Reconcile the reports without inventing error.",
+        "produces": "A stage-resolved gas/species/phase model with measured variables and an independent check.",
+        "protected_W": "The learner independently completes the cross-stage bridge, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Identify the gas species, phase, conditions and instrument reading in Pressure, volume, temperature and controlled comparison."
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Remember the governing condition: Gas pressure, volume and temperature must be compared with declared constraints; simple gas laws may require extension treatment."
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Draw a before/after species volume or apparatus ledger; leave the final model choice and numerical inference unresolved."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "Experiment A fixes volume; pressure changes. Experiment B permits volume expansion with pressure constrained differently. Both observations may be compatible, and pressure/volume controls must be compared.",
+          "rubric": [
+            "Declare temperature, pressure and gas phase before comparison.",
+            "Track species amounts, conservation and stage boundaries.",
+            "Give an independent apparatus or competing-model check."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "Which gases are present and which quantities were measured?",
+            "why_this_ask": "Prevent dry/wet and reaction/collection conflation.",
+            "model_response": "A flexible balloon expands in warm water, but the same gas in a rigid sealed container may increase pressure instead. Why should the word 'heated' be insufficient to predict the measured outcome?"
+          },
+          {
+            "ask": "Which conditions and chemical equation or apparatus model hold?",
+            "why_this_ask": "Build a warranted model instead of a contraction trick.",
+            "model_response": "At foundational level, discuss compression, expansion, temperature and pressure qualitatively. Formal ideal gas proportionalities and P–V–T calculations are additional models with assumptions: dilute gas, stable amount, negligible condensation, near-ideal behaviour and use of absolute temperature. Do not use Celsius directly as a proportional absolute temperature. When gas is collected over water, water vapour complicates the species inventory; that belongs to a later section."
+          },
+          {
+            "ask": "What is the stage-by-stage conclusion and what remains uncertain?",
+            "why_this_ask": "Complete the decisive inferential bridge.",
+            "model_response": "Experiment A fixes volume; pressure changes. Experiment B permits volume expansion with pressure constrained differently. Both observations may be compatible, and pressure/volume controls must be compared."
+          }
+        ],
+        "full_reconstruction": "Experiment A fixes volume; pressure changes. Experiment B permits volume expansion with pressure constrained differently. Both observations may be compatible, and pressure/volume controls must be compared."
+      },
+      "diagnose": {
+        "wrong_idea": "Wrong path: 'Heating any gas always increases its volume.' Repair: identify whether the boundary is rigid, flexible or externally controlled before selecting a model.",
+        "diagnostic_prompt": "Find the hidden phase/measurement assumption in: Wrong path: 'Heating any gas always increases its volume.' Repair: identify whether the boundary is rigid, flexible or externally controlled before selecting a model.",
+        "model_response": "Condensation, leaks or chemical gas generation invalidate the fixed-amount assumption. Do not apply a gas law blindly when the chemical identity or amount changes."
+      },
+      "repair": {
+        "action": "Create a corrected species-phase inventory for each experimental stage; repeat independent volume or stoichiometric check.",
+        "explanation": "Wrong path: 'Heating any gas always increases its volume.' Repair: identify whether the boundary is rigid, flexible or externally controlled before selecting a model.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C12.core1a.md (section C12.01)"
+      },
+      "boundary_test": {
+        "prompt": "If A reports constant pressure and constant volume despite heating, what missing variable should be investigated?",
+        "answer": "Gas amount, leaks, reaction or sensor conditions may have changed; the simple fixed-n model may fail.",
+        "confirms": "A new control, product state or absorption stage changes the answer."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D3",
+        "adjudication": "NOT_RUN",
+        "note": "Band and operation remain author proposals until exact-task QRT adjudication."
+      }
+    },
+    {
+      "cycle_id": "CORE1B-C12-02-1",
+      "unit_id": "C12",
+      "subtopic_ref": "CHEM-C12.02",
+      "concept_ref": "CHEM-C12.02-CONCEPT",
+      "operation": "REPRESENT",
+      "qrt_instance_ref": "C12-02-REPRESENT-D3",
+      "qrt_template_ref": "QRT-REPRESENT-D3",
+      "band_proposal": "D3",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Predict the decisive experimental condition before fully solving: Represent 2H₂ + O₂ → 2H₂O before reaction, as hot vapour and after complete condensation.",
+        "defensible_answer": "Under the ideal-gas approximation, equal volumes at the same temperature and pressure contain equal numbers of particles for comparable gas mixtures. This underlies the use of gaseous volume ratios from balanced reaction coefficients when all reacting and measured species remain gases at the same reference T/P. For example, 2H₂(g) + O₂(g) → 2H₂O(g) gives two gas-volume units H₂ and one O₂ forming two units of water vapour at comparable conditions. If water condenses, the measured gas volume is no longer two units."
+      },
+      "attempt": {
+        "prompt": "Represent 2H₂ + O₂ → 2H₂O before reaction, as hot vapour and after complete condensation.",
+        "produces": "A stage-resolved gas/species/phase model with measured variables and an independent check.",
+        "protected_W": "The learner independently completes the invariant correspondence, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Identify the gas species, phase, conditions and instrument reading in Reaction-volume ratios and chemical identities (EXTENSION)."
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Remember the governing condition: Gas volume ratios can reflect balanced stoichiometry at common temperature and pressure; condensation changes what is measured."
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Draw a before/after species volume or apparatus ledger; leave the final model choice and numerical inference unresolved."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "Before: H₂ 2 volume units and O₂ 1. At common hot T/P all product as vapour: H₂O(g) 2 units. After cooling and condensation, dry gas volume can be much smaller or approximately zero without loss of atoms.",
+          "rubric": [
+            "Declare temperature, pressure and gas phase before comparison.",
+            "Track species amounts, conservation and stage boundaries.",
+            "Give an independent apparatus or competing-model check."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "Which gases are present and which quantities were measured?",
+            "why_this_ask": "Prevent dry/wet and reaction/collection conflation.",
+            "model_response": "Why can two equal volumes of different gases contain comparable particle numbers when temperature and pressure match, yet the reaction products occupy a completely different volume after cooling?"
+          },
+          {
+            "ask": "Which conditions and chemical equation or apparatus model hold?",
+            "why_this_ask": "Build a warranted model instead of a contraction trick.",
+            "model_response": "Reaction-volume analysis requires a species ledger. Start with the amount of each gas; consume reactants according to the balanced equation; produce gases or vapours, then change phase separately. Excess reactant remains and must be included in the final measured volume. The temperature, pressure, gas solubility and wetness of the measurement apparatus can invalidate a naive volume contraction calculation."
+          },
+          {
+            "ask": "What is the stage-by-stage conclusion and what remains uncertain?",
+            "why_this_ask": "Complete the decisive inferential bridge.",
+            "model_response": "Before: H₂ 2 volume units and O₂ 1. At common hot T/P all product as vapour: H₂O(g) 2 units. After cooling and condensation, dry gas volume can be much smaller or approximately zero without loss of atoms."
+          }
+        ],
+        "full_reconstruction": "Before: H₂ 2 volume units and O₂ 1. At common hot T/P all product as vapour: H₂O(g) 2 units. After cooling and condensation, dry gas volume can be much smaller or approximately zero without loss of atoms."
+      },
+      "diagnose": {
+        "wrong_idea": "Wrong path: 'Coefficients always equal measured gas-volume ratio.' Repair: enforce common reference T/P, gas phase, complete reaction and absence of excess reactants before using the ratio.",
+        "diagnostic_prompt": "Find the hidden phase/measurement assumption in: Wrong path: 'Coefficients always equal measured gas-volume ratio.' Repair: enforce common reference T/P, gas phase, complete reaction and absence of excess reactants before using the ratio.",
+        "model_response": "If one gas product dissolves into the collection liquid, the observed volume can be smaller for a reason unrelated to chemical stoichiometric contraction."
+      },
+      "repair": {
+        "action": "Create a corrected species-phase inventory for each experimental stage; repeat independent volume or stoichiometric check.",
+        "explanation": "Wrong path: 'Coefficients always equal measured gas-volume ratio.' Repair: enforce common reference T/P, gas phase, complete reaction and absence of excess reactants before using the ratio.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C12.core1a.md (section C12.02)"
+      },
+      "boundary_test": {
+        "prompt": "Would the same numerical volume relation apply at unequal temperatures?",
+        "answer": "No. Bring gas volumes to common temperature and pressure first.",
+        "confirms": "A new control, product state or absorption stage changes the answer."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D3",
+        "adjudication": "NOT_RUN",
+        "note": "Band and operation remain author proposals until exact-task QRT adjudication."
+      }
+    },
+    {
+      "cycle_id": "CORE1B-C12-02-2",
+      "unit_id": "C12",
+      "subtopic_ref": "CHEM-C12.02",
+      "concept_ref": "CHEM-C12.02-CONCEPT",
+      "operation": "MODEL",
+      "qrt_instance_ref": "C12-02-MODEL-D3",
+      "qrt_template_ref": "QRT-MODEL-D3",
+      "band_proposal": "D3",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Predict the decisive experimental condition before fully solving: A gas mixture contains excess hydrogen and some oxygen. Choose a reaction-volume ledger that predicts the residue after cooling.",
+        "defensible_answer": "Under the ideal-gas approximation, equal volumes at the same temperature and pressure contain equal numbers of particles for comparable gas mixtures. This underlies the use of gaseous volume ratios from balanced reaction coefficients when all reacting and measured species remain gases at the same reference T/P. For example, 2H₂(g) + O₂(g) → 2H₂O(g) gives two gas-volume units H₂ and one O₂ forming two units of water vapour at comparable conditions. If water condenses, the measured gas volume is no longer two units."
+      },
+      "attempt": {
+        "prompt": "A gas mixture contains excess hydrogen and some oxygen. Choose a reaction-volume ledger that predicts the residue after cooling.",
+        "produces": "A stage-resolved gas/species/phase model with measured variables and an independent check.",
+        "protected_W": "The learner independently completes the warranted model choice, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Identify the gas species, phase, conditions and instrument reading in Reaction-volume ratios and chemical identities (EXTENSION)."
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Remember the governing condition: Gas volume ratios can reflect balanced stoichiometry at common temperature and pressure; condensation changes what is measured."
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Draw a before/after species volume or apparatus ledger; leave the final model choice and numerical inference unresolved."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "Use 2H₂ per O₂ and account for leftover H₂ after oxygen is consumed; water forms and condenses on cooling. Final dry gas contains the excess hydrogen under the idealised model.",
+          "rubric": [
+            "Declare temperature, pressure and gas phase before comparison.",
+            "Track species amounts, conservation and stage boundaries.",
+            "Give an independent apparatus or competing-model check."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "Which gases are present and which quantities were measured?",
+            "why_this_ask": "Prevent dry/wet and reaction/collection conflation.",
+            "model_response": "Why can two equal volumes of different gases contain comparable particle numbers when temperature and pressure match, yet the reaction products occupy a completely different volume after cooling?"
+          },
+          {
+            "ask": "Which conditions and chemical equation or apparatus model hold?",
+            "why_this_ask": "Build a warranted model instead of a contraction trick.",
+            "model_response": "Reaction-volume analysis requires a species ledger. Start with the amount of each gas; consume reactants according to the balanced equation; produce gases or vapours, then change phase separately. Excess reactant remains and must be included in the final measured volume. The temperature, pressure, gas solubility and wetness of the measurement apparatus can invalidate a naive volume contraction calculation."
+          },
+          {
+            "ask": "What is the stage-by-stage conclusion and what remains uncertain?",
+            "why_this_ask": "Complete the decisive inferential bridge.",
+            "model_response": "Use 2H₂ per O₂ and account for leftover H₂ after oxygen is consumed; water forms and condenses on cooling. Final dry gas contains the excess hydrogen under the idealised model."
+          }
+        ],
+        "full_reconstruction": "Use 2H₂ per O₂ and account for leftover H₂ after oxygen is consumed; water forms and condenses on cooling. Final dry gas contains the excess hydrogen under the idealised model."
+      },
+      "diagnose": {
+        "wrong_idea": "Wrong path: 'Coefficients always equal measured gas-volume ratio.' Repair: enforce common reference T/P, gas phase, complete reaction and absence of excess reactants before using the ratio.",
+        "diagnostic_prompt": "Find the hidden phase/measurement assumption in: Wrong path: 'Coefficients always equal measured gas-volume ratio.' Repair: enforce common reference T/P, gas phase, complete reaction and absence of excess reactants before using the ratio.",
+        "model_response": "If one gas product dissolves into the collection liquid, the observed volume can be smaller for a reason unrelated to chemical stoichiometric contraction."
+      },
+      "repair": {
+        "action": "Create a corrected species-phase inventory for each experimental stage; repeat independent volume or stoichiometric check.",
+        "explanation": "Wrong path: 'Coefficients always equal measured gas-volume ratio.' Repair: enforce common reference T/P, gas phase, complete reaction and absence of excess reactants before using the ratio.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C12.core1a.md (section C12.02)"
+      },
+      "boundary_test": {
+        "prompt": "Would final measured contraction uniquely identify initial composition without other data?",
+        "answer": "Not always. Several initial mixtures can be compatible with one contraction value.",
+        "confirms": "A new control, product state or absorption stage changes the answer."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D3",
+        "adjudication": "NOT_RUN",
+        "note": "Band and operation remain author proposals until exact-task QRT adjudication."
+      }
+    },
+    {
+      "cycle_id": "CORE1B-C12-02-3",
+      "unit_id": "C12",
+      "subtopic_ref": "CHEM-C12.02",
+      "concept_ref": "CHEM-C12.02-CONCEPT",
+      "operation": "SYNTHESIZE",
+      "qrt_instance_ref": "C12-02-SYNTHESIZE-D3",
+      "qrt_template_ref": "QRT-SYNTHESIZE-D3",
+      "band_proposal": "D3",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Predict the decisive experimental condition before fully solving: A student infers gas composition from one final volume without recording temperature and product phase. Explain why that inference is underdetermined.",
+        "defensible_answer": "Under the ideal-gas approximation, equal volumes at the same temperature and pressure contain equal numbers of particles for comparable gas mixtures. This underlies the use of gaseous volume ratios from balanced reaction coefficients when all reacting and measured species remain gases at the same reference T/P. For example, 2H₂(g) + O₂(g) → 2H₂O(g) gives two gas-volume units H₂ and one O₂ forming two units of water vapour at comparable conditions. If water condenses, the measured gas volume is no longer two units."
+      },
+      "attempt": {
+        "prompt": "A student infers gas composition from one final volume without recording temperature and product phase. Explain why that inference is underdetermined.",
+        "produces": "A stage-resolved gas/species/phase model with measured variables and an independent check.",
+        "protected_W": "The learner independently completes the cross-stage bridge, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Identify the gas species, phase, conditions and instrument reading in Reaction-volume ratios and chemical identities (EXTENSION)."
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Remember the governing condition: Gas volume ratios can reflect balanced stoichiometry at common temperature and pressure; condensation changes what is measured."
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Draw a before/after species volume or apparatus ledger; leave the final model choice and numerical inference unresolved."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "Gas volume depends on reference T/P, condensation and excess species. A final number alone does not encode initial reactants or product state. Obtain stage-specific T/P and composition evidence.",
+          "rubric": [
+            "Declare temperature, pressure and gas phase before comparison.",
+            "Track species amounts, conservation and stage boundaries.",
+            "Give an independent apparatus or competing-model check."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "Which gases are present and which quantities were measured?",
+            "why_this_ask": "Prevent dry/wet and reaction/collection conflation.",
+            "model_response": "Why can two equal volumes of different gases contain comparable particle numbers when temperature and pressure match, yet the reaction products occupy a completely different volume after cooling?"
+          },
+          {
+            "ask": "Which conditions and chemical equation or apparatus model hold?",
+            "why_this_ask": "Build a warranted model instead of a contraction trick.",
+            "model_response": "Reaction-volume analysis requires a species ledger. Start with the amount of each gas; consume reactants according to the balanced equation; produce gases or vapours, then change phase separately. Excess reactant remains and must be included in the final measured volume. The temperature, pressure, gas solubility and wetness of the measurement apparatus can invalidate a naive volume contraction calculation."
+          },
+          {
+            "ask": "What is the stage-by-stage conclusion and what remains uncertain?",
+            "why_this_ask": "Complete the decisive inferential bridge.",
+            "model_response": "Gas volume depends on reference T/P, condensation and excess species. A final number alone does not encode initial reactants or product state. Obtain stage-specific T/P and composition evidence."
+          }
+        ],
+        "full_reconstruction": "Gas volume depends on reference T/P, condensation and excess species. A final number alone does not encode initial reactants or product state. Obtain stage-specific T/P and composition evidence."
+      },
+      "diagnose": {
+        "wrong_idea": "Wrong path: 'Coefficients always equal measured gas-volume ratio.' Repair: enforce common reference T/P, gas phase, complete reaction and absence of excess reactants before using the ratio.",
+        "diagnostic_prompt": "Find the hidden phase/measurement assumption in: Wrong path: 'Coefficients always equal measured gas-volume ratio.' Repair: enforce common reference T/P, gas phase, complete reaction and absence of excess reactants before using the ratio.",
+        "model_response": "If one gas product dissolves into the collection liquid, the observed volume can be smaller for a reason unrelated to chemical stoichiometric contraction."
+      },
+      "repair": {
+        "action": "Create a corrected species-phase inventory for each experimental stage; repeat independent volume or stoichiometric check.",
+        "explanation": "Wrong path: 'Coefficients always equal measured gas-volume ratio.' Repair: enforce common reference T/P, gas phase, complete reaction and absence of excess reactants before using the ratio.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C12.core1a.md (section C12.02)"
+      },
+      "boundary_test": {
+        "prompt": "If water remains vapour rather than liquid, would the same contraction calculation hold?",
+        "answer": "No. The vapour occupies gas volume and changes the measured residual inventory.",
+        "confirms": "A new control, product state or absorption stage changes the answer."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D3",
+        "adjudication": "NOT_RUN",
+        "note": "Band and operation remain author proposals until exact-task QRT adjudication."
+      }
+    },
+    {
+      "cycle_id": "CORE1B-C12-03-1",
+      "unit_id": "C12",
+      "subtopic_ref": "CHEM-C12.03",
+      "concept_ref": "CHEM-C12.03-CONCEPT",
+      "operation": "REPRESENT",
+      "qrt_instance_ref": "C12-03-REPRESENT-D3",
+      "qrt_template_ref": "QRT-REPRESENT-D3",
+      "band_proposal": "D3",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Predict the decisive experimental condition before fully solving: Represent water displacement for collected gas and label the difference between generated gas and measured wet gas.",
+        "defensible_answer": "Gas collection by water displacement is convenient for relatively insoluble gases, but the collection may include water vapour. A gas soluble in water can partly dissolve instead of appearing in the graduated gas space; carbon dioxide has appreciable solubility and can react with water. If the water levels inside and outside the vessel differ, the gas pressure also differs from ambient pressure. A leakage path can reduce the collected amount without changing chemical formation."
+      },
+      "attempt": {
+        "prompt": "Represent water displacement for collected gas and label the difference between generated gas and measured wet gas.",
+        "produces": "A stage-resolved gas/species/phase model with measured variables and an independent check.",
+        "protected_W": "The learner independently completes the invariant correspondence, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Identify the gas species, phase, conditions and instrument reading in Gas collection apparatus and measurement uncertainty."
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Remember the governing condition: Gas collection over water may contain vapour and dissolve some product; wet collected volume is not necessarily dry yield."
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Draw a before/after species volume or apparatus ledger; leave the final model choice and numerical inference unresolved."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "A chemical reaction generates product gas, some can dissolve, and the measured headspace contains gas plus water vapour at the apparatus pressure. The displacement gives observed wet mixture volume, not necessarily dry pure product yield.",
+          "rubric": [
+            "Declare temperature, pressure and gas phase before comparison.",
+            "Track species amounts, conservation and stage boundaries.",
+            "Give an independent apparatus or competing-model check."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "Which gases are present and which quantities were measured?",
+            "why_this_ask": "Prevent dry/wet and reaction/collection conflation.",
+            "model_response": "Gas produced in a reaction is collected over water. The graduated cylinder shows 50 mL, so a student writes '50 mL pure dry carbon dioxide'. What hidden assumptions are being made?"
+          },
+          {
+            "ask": "Which conditions and chemical equation or apparatus model hold?",
+            "why_this_ask": "Build a warranted model instead of a contraction trick.",
+            "model_response": "A gas syringe avoids direct dissolution into a water trough but introduces its own problems: dead volume, friction, small leaks and temperature changes. The method choice must fit the actual gas and experiment. An appropriate diagram labels the reaction flask, gas outlet, water/trough or syringe, collection pressure and measurement scale. Do not infer gas identity from the existence of bubbles or from a numerical volume reading."
+          },
+          {
+            "ask": "What is the stage-by-stage conclusion and what remains uncertain?",
+            "why_this_ask": "Complete the decisive inferential bridge.",
+            "model_response": "A chemical reaction generates product gas, some can dissolve, and the measured headspace contains gas plus water vapour at the apparatus pressure. The displacement gives observed wet mixture volume, not necessarily dry pure product yield."
+          }
+        ],
+        "full_reconstruction": "A chemical reaction generates product gas, some can dissolve, and the measured headspace contains gas plus water vapour at the apparatus pressure. The displacement gives observed wet mixture volume, not necessarily dry pure product yield."
+      },
+      "diagnose": {
+        "wrong_idea": "Wrong path: 'Displaced water volume is always the exact volume of dry pure gas produced.' Repair by checking gas composition, vapour, dissolution, pressure equality and leaks.",
+        "diagnostic_prompt": "Find the hidden phase/measurement assumption in: Wrong path: 'Displaced water volume is always the exact volume of dry pure gas produced.' Repair by checking gas composition, vapour, dissolution, pressure equality and leaks.",
+        "model_response": "Collection of soluble or reactive gases over water is especially unreliable. Choose a chemically suitable collection method rather than automatically applying an apparatus diagram."
+      },
+      "repair": {
+        "action": "Create a corrected species-phase inventory for each experimental stage; repeat independent volume or stoichiometric check.",
+        "explanation": "Wrong path: 'Displaced water volume is always the exact volume of dry pure gas produced.' Repair by checking gas composition, vapour, dissolution, pressure equality and leaks.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C12.core1a.md (section C12.03)"
+      },
+      "boundary_test": {
+        "prompt": "If the cylinder water level is not equal to the trough level, can one assume equal gas and atmospheric pressure?",
+        "answer": "No. A hydrostatic pressure difference may need accounting.",
+        "confirms": "A new control, product state or absorption stage changes the answer."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D3",
+        "adjudication": "NOT_RUN",
+        "note": "Band and operation remain author proposals until exact-task QRT adjudication."
+      }
+    },
+    {
+      "cycle_id": "CORE1B-C12-03-2",
+      "unit_id": "C12",
+      "subtopic_ref": "CHEM-C12.03",
+      "concept_ref": "CHEM-C12.03-CONCEPT",
+      "operation": "MODEL",
+      "qrt_instance_ref": "C12-03-MODEL-D3",
+      "qrt_template_ref": "QRT-MODEL-D3",
+      "band_proposal": "D3",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Predict the decisive experimental condition before fully solving: A water-soluble gas is being generated. Select between water displacement and gas syringe collection and justify the controls.",
+        "defensible_answer": "Gas collection by water displacement is convenient for relatively insoluble gases, but the collection may include water vapour. A gas soluble in water can partly dissolve instead of appearing in the graduated gas space; carbon dioxide has appreciable solubility and can react with water. If the water levels inside and outside the vessel differ, the gas pressure also differs from ambient pressure. A leakage path can reduce the collected amount without changing chemical formation."
+      },
+      "attempt": {
+        "prompt": "A water-soluble gas is being generated. Select between water displacement and gas syringe collection and justify the controls.",
+        "produces": "A stage-resolved gas/species/phase model with measured variables and an independent check.",
+        "protected_W": "The learner independently completes the warranted model choice, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Identify the gas species, phase, conditions and instrument reading in Gas collection apparatus and measurement uncertainty."
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Remember the governing condition: Gas collection over water may contain vapour and dissolve some product; wet collected volume is not necessarily dry yield."
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Draw a before/after species volume or apparatus ledger; leave the final model choice and numerical inference unresolved."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "A calibrated gas syringe can avoid substantial dissolution in water if chemically compatible; measure leaks, temperature and syringe friction. Water displacement risks systematic undercollection for soluble gas.",
+          "rubric": [
+            "Declare temperature, pressure and gas phase before comparison.",
+            "Track species amounts, conservation and stage boundaries.",
+            "Give an independent apparatus or competing-model check."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "Which gases are present and which quantities were measured?",
+            "why_this_ask": "Prevent dry/wet and reaction/collection conflation.",
+            "model_response": "Gas produced in a reaction is collected over water. The graduated cylinder shows 50 mL, so a student writes '50 mL pure dry carbon dioxide'. What hidden assumptions are being made?"
+          },
+          {
+            "ask": "Which conditions and chemical equation or apparatus model hold?",
+            "why_this_ask": "Build a warranted model instead of a contraction trick.",
+            "model_response": "A gas syringe avoids direct dissolution into a water trough but introduces its own problems: dead volume, friction, small leaks and temperature changes. The method choice must fit the actual gas and experiment. An appropriate diagram labels the reaction flask, gas outlet, water/trough or syringe, collection pressure and measurement scale. Do not infer gas identity from the existence of bubbles or from a numerical volume reading."
+          },
+          {
+            "ask": "What is the stage-by-stage conclusion and what remains uncertain?",
+            "why_this_ask": "Complete the decisive inferential bridge.",
+            "model_response": "A calibrated gas syringe can avoid substantial dissolution in water if chemically compatible; measure leaks, temperature and syringe friction. Water displacement risks systematic undercollection for soluble gas."
+          }
+        ],
+        "full_reconstruction": "A calibrated gas syringe can avoid substantial dissolution in water if chemically compatible; measure leaks, temperature and syringe friction. Water displacement risks systematic undercollection for soluble gas."
+      },
+      "diagnose": {
+        "wrong_idea": "Wrong path: 'Displaced water volume is always the exact volume of dry pure gas produced.' Repair by checking gas composition, vapour, dissolution, pressure equality and leaks.",
+        "diagnostic_prompt": "Find the hidden phase/measurement assumption in: Wrong path: 'Displaced water volume is always the exact volume of dry pure gas produced.' Repair by checking gas composition, vapour, dissolution, pressure equality and leaks.",
+        "model_response": "Collection of soluble or reactive gases over water is especially unreliable. Choose a chemically suitable collection method rather than automatically applying an apparatus diagram."
+      },
+      "repair": {
+        "action": "Create a corrected species-phase inventory for each experimental stage; repeat independent volume or stoichiometric check.",
+        "explanation": "Wrong path: 'Displaced water volume is always the exact volume of dry pure gas produced.' Repair by checking gas composition, vapour, dissolution, pressure equality and leaks.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C12.core1a.md (section C12.03)"
+      },
+      "boundary_test": {
+        "prompt": "Is a gas syringe automatically error-free?",
+        "answer": "No. Leakage, dead volume and friction can matter.",
+        "confirms": "A new control, product state or absorption stage changes the answer."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D3",
+        "adjudication": "NOT_RUN",
+        "note": "Band and operation remain author proposals until exact-task QRT adjudication."
+      }
+    },
+    {
+      "cycle_id": "CORE1B-C12-03-3",
+      "unit_id": "C12",
+      "subtopic_ref": "CHEM-C12.03",
+      "concept_ref": "CHEM-C12.03-CONCEPT",
+      "operation": "SYNTHESIZE",
+      "qrt_instance_ref": "C12-03-SYNTHESIZE-D3",
+      "qrt_template_ref": "QRT-SYNTHESIZE-D3",
+      "band_proposal": "D3",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Predict the decisive experimental condition before fully solving: Two apparatus report different collected CO₂ volumes for the same reaction. Synthesize an error-analysis procedure before assigning stoichiometric failure.",
+        "defensible_answer": "Gas collection by water displacement is convenient for relatively insoluble gases, but the collection may include water vapour. A gas soluble in water can partly dissolve instead of appearing in the graduated gas space; carbon dioxide has appreciable solubility and can react with water. If the water levels inside and outside the vessel differ, the gas pressure also differs from ambient pressure. A leakage path can reduce the collected amount without changing chemical formation."
+      },
+      "attempt": {
+        "prompt": "Two apparatus report different collected CO₂ volumes for the same reaction. Synthesize an error-analysis procedure before assigning stoichiometric failure.",
+        "produces": "A stage-resolved gas/species/phase model with measured variables and an independent check.",
+        "protected_W": "The learner independently completes the cross-stage bridge, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Identify the gas species, phase, conditions and instrument reading in Gas collection apparatus and measurement uncertainty."
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Remember the governing condition: Gas collection over water may contain vapour and dissolve some product; wet collected volume is not necessarily dry yield."
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Draw a before/after species volume or apparatus ledger; leave the final model choice and numerical inference unresolved."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "Compare wet versus dry collection, water dissolution, leaks, pressure, temperature, apparatus calibration and reactions. Collect control runs to separate methodological biases; chemistry may be identical despite volumes.",
+          "rubric": [
+            "Declare temperature, pressure and gas phase before comparison.",
+            "Track species amounts, conservation and stage boundaries.",
+            "Give an independent apparatus or competing-model check."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "Which gases are present and which quantities were measured?",
+            "why_this_ask": "Prevent dry/wet and reaction/collection conflation.",
+            "model_response": "Gas produced in a reaction is collected over water. The graduated cylinder shows 50 mL, so a student writes '50 mL pure dry carbon dioxide'. What hidden assumptions are being made?"
+          },
+          {
+            "ask": "Which conditions and chemical equation or apparatus model hold?",
+            "why_this_ask": "Build a warranted model instead of a contraction trick.",
+            "model_response": "A gas syringe avoids direct dissolution into a water trough but introduces its own problems: dead volume, friction, small leaks and temperature changes. The method choice must fit the actual gas and experiment. An appropriate diagram labels the reaction flask, gas outlet, water/trough or syringe, collection pressure and measurement scale. Do not infer gas identity from the existence of bubbles or from a numerical volume reading."
+          },
+          {
+            "ask": "What is the stage-by-stage conclusion and what remains uncertain?",
+            "why_this_ask": "Complete the decisive inferential bridge.",
+            "model_response": "Compare wet versus dry collection, water dissolution, leaks, pressure, temperature, apparatus calibration and reactions. Collect control runs to separate methodological biases; chemistry may be identical despite volumes."
+          }
+        ],
+        "full_reconstruction": "Compare wet versus dry collection, water dissolution, leaks, pressure, temperature, apparatus calibration and reactions. Collect control runs to separate methodological biases; chemistry may be identical despite volumes."
+      },
+      "diagnose": {
+        "wrong_idea": "Wrong path: 'Displaced water volume is always the exact volume of dry pure gas produced.' Repair by checking gas composition, vapour, dissolution, pressure equality and leaks.",
+        "diagnostic_prompt": "Find the hidden phase/measurement assumption in: Wrong path: 'Displaced water volume is always the exact volume of dry pure gas produced.' Repair by checking gas composition, vapour, dissolution, pressure equality and leaks.",
+        "model_response": "Collection of soluble or reactive gases over water is especially unreliable. Choose a chemically suitable collection method rather than automatically applying an apparatus diagram."
+      },
+      "repair": {
+        "action": "Create a corrected species-phase inventory for each experimental stage; repeat independent volume or stoichiometric check.",
+        "explanation": "Wrong path: 'Displaced water volume is always the exact volume of dry pure gas produced.' Repair by checking gas composition, vapour, dissolution, pressure equality and leaks.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C12.core1a.md (section C12.03)"
+      },
+      "boundary_test": {
+        "prompt": "If a smaller measured volume follows switching to water collection, must the reaction have produced less CO₂?",
+        "answer": "No. Increased dissolution or different measurement conditions could explain it.",
+        "confirms": "A new control, product state or absorption stage changes the answer."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D3",
+        "adjudication": "NOT_RUN",
+        "note": "Band and operation remain author proposals until exact-task QRT adjudication."
+      }
+    },
+    {
+      "cycle_id": "CORE1B-C12-04-1",
+      "unit_id": "C12",
+      "subtopic_ref": "CHEM-C12.04",
+      "concept_ref": "CHEM-C12.04-CONCEPT",
+      "operation": "REPRESENT",
+      "qrt_instance_ref": "C12-04-REPRESENT-D3",
+      "qrt_template_ref": "QRT-REPRESENT-D3",
+      "band_proposal": "D3",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Predict the decisive experimental condition before fully solving: Represent methane combustion inventory before heating, while water is vapour, and after cooling, assuming excess O₂.",
+        "defensible_answer": "For complete combustion of a hydrocarbon containing only carbon and hydrogen, the usual products are carbon dioxide and water. The general balanced formula for CₓHᵧ under sufficient oxygen is CₓHᵧ + (x + y/4)O₂ → xCO₂ + (y/2)H₂O. This equation conserves atoms, but the gas state of H₂O depends on temperature. High-temperature water vapour can condense when cooled, removing water molecules from the measured gas phase without removing them from the closed material system."
+      },
+      "attempt": {
+        "prompt": "Represent methane combustion inventory before heating, while water is vapour, and after cooling, assuming excess O₂.",
+        "produces": "A stage-resolved gas/species/phase model with measured variables and an independent check.",
+        "protected_W": "The learner independently completes the invariant correspondence, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Identify the gas species, phase, conditions and instrument reading in Combustion products, condensation and residual gases."
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Remember the governing condition: Cooling combustion products can condense water; residual gas measurements require species and phase accounting."
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Draw a before/after species volume or apparatus ledger; leave the final model choice and numerical inference unresolved."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "CH₄ + 2O₂ → CO₂ + 2H₂O. With 1 CH₄ and 3 O₂ initially, hot gas: CO₂ 1, H₂O vapour 2, O₂ 1; cool and condense water: dry CO₂ 1, O₂ 1. Atoms remain conserved.",
+          "rubric": [
+            "Declare temperature, pressure and gas phase before comparison.",
+            "Track species amounts, conservation and stage boundaries.",
+            "Give an independent apparatus or competing-model check."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "Which gases are present and which quantities were measured?",
+            "why_this_ask": "Prevent dry/wet and reaction/collection conflation.",
+            "model_response": "A hydrocarbon burns in excess oxygen and the hot gas is cooled. The total gas volume drops even though no carbon atom has vanished. Which stage accounts for the loss of measured gas?"
+          },
+          {
+            "ask": "Which conditions and chemical equation or apparatus model hold?",
+            "why_this_ask": "Build a warranted model instead of a contraction trick.",
+            "model_response": "Excess oxygen survives in the residual gas. Carbon dioxide may be absorbed later by a suitable reagent or partly dissolved in water; each operation must be treated as a separate stage. If insufficient oxygen is supplied, carbon monoxide and soot can form; the simple complete-combustion equation is no longer the full description. Distinguish products expected from an idealised chemical model from those actually established by product tests."
+          },
+          {
+            "ask": "What is the stage-by-stage conclusion and what remains uncertain?",
+            "why_this_ask": "Complete the decisive inferential bridge.",
+            "model_response": "CH₄ + 2O₂ → CO₂ + 2H₂O. With 1 CH₄ and 3 O₂ initially, hot gas: CO₂ 1, H₂O vapour 2, O₂ 1; cool and condense water: dry CO₂ 1, O₂ 1. Atoms remain conserved."
+          }
+        ],
+        "full_reconstruction": "CH₄ + 2O₂ → CO₂ + 2H₂O. With 1 CH₄ and 3 O₂ initially, hot gas: CO₂ 1, H₂O vapour 2, O₂ 1; cool and condense water: dry CO₂ 1, O₂ 1. Atoms remain conserved."
+      },
+      "diagnose": {
+        "wrong_idea": "Wrong path: 'Gas volume contraction is entirely the amount of CO₂ that formed.' Repair by separating chemical reaction, condensation and selective absorption.",
+        "diagnostic_prompt": "Find the hidden phase/measurement assumption in: Wrong path: 'Gas volume contraction is entirely the amount of CO₂ that formed.' Repair by separating chemical reaction, condensation and selective absorption.",
+        "model_response": "If the water does not fully condense or CO₂ dissolves, the measured 'dry gas' account is different. Experimental phase and collection conditions must be recorded."
+      },
+      "repair": {
+        "action": "Create a corrected species-phase inventory for each experimental stage; repeat independent volume or stoichiometric check.",
+        "explanation": "Wrong path: 'Gas volume contraction is entirely the amount of CO₂ that formed.' Repair by separating chemical reaction, condensation and selective absorption.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C12.core1a.md (section C12.04)"
+      },
+      "boundary_test": {
+        "prompt": "If the chamber is not cooled enough to condense water, should dry-gas inventory be used?",
+        "answer": "No. Include water vapour or measure and correct it.",
+        "confirms": "A new control, product state or absorption stage changes the answer."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D3",
+        "adjudication": "NOT_RUN",
+        "note": "Band and operation remain author proposals until exact-task QRT adjudication."
+      }
+    },
+    {
+      "cycle_id": "CORE1B-C12-04-2",
+      "unit_id": "C12",
+      "subtopic_ref": "CHEM-C12.04",
+      "concept_ref": "CHEM-C12.04-CONCEPT",
+      "operation": "MODEL",
+      "qrt_instance_ref": "C12-04-MODEL-D3",
+      "qrt_template_ref": "QRT-MODEL-D3",
+      "band_proposal": "D3",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Predict the decisive experimental condition before fully solving: A gas volume decreases after cooling combustion exhaust. Choose a model distinguishing condensation from absorption of CO₂.",
+        "defensible_answer": "For complete combustion of a hydrocarbon containing only carbon and hydrogen, the usual products are carbon dioxide and water. The general balanced formula for CₓHᵧ under sufficient oxygen is CₓHᵧ + (x + y/4)O₂ → xCO₂ + (y/2)H₂O. This equation conserves atoms, but the gas state of H₂O depends on temperature. High-temperature water vapour can condense when cooled, removing water molecules from the measured gas phase without removing them from the closed material system."
+      },
+      "attempt": {
+        "prompt": "A gas volume decreases after cooling combustion exhaust. Choose a model distinguishing condensation from absorption of CO₂.",
+        "produces": "A stage-resolved gas/species/phase model with measured variables and an independent check.",
+        "protected_W": "The learner independently completes the warranted model choice, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Identify the gas species, phase, conditions and instrument reading in Combustion products, condensation and residual gases."
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Remember the governing condition: Cooling combustion products can condense water; residual gas measurements require species and phase accounting."
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Draw a before/after species volume or apparatus ledger; leave the final model choice and numerical inference unresolved."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "Cooling can remove water vapour through condensation; a separate selective absorber removes CO₂. Identify temperature and gas composition at each stage before assigning volume losses.",
+          "rubric": [
+            "Declare temperature, pressure and gas phase before comparison.",
+            "Track species amounts, conservation and stage boundaries.",
+            "Give an independent apparatus or competing-model check."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "Which gases are present and which quantities were measured?",
+            "why_this_ask": "Prevent dry/wet and reaction/collection conflation.",
+            "model_response": "A hydrocarbon burns in excess oxygen and the hot gas is cooled. The total gas volume drops even though no carbon atom has vanished. Which stage accounts for the loss of measured gas?"
+          },
+          {
+            "ask": "Which conditions and chemical equation or apparatus model hold?",
+            "why_this_ask": "Build a warranted model instead of a contraction trick.",
+            "model_response": "Excess oxygen survives in the residual gas. Carbon dioxide may be absorbed later by a suitable reagent or partly dissolved in water; each operation must be treated as a separate stage. If insufficient oxygen is supplied, carbon monoxide and soot can form; the simple complete-combustion equation is no longer the full description. Distinguish products expected from an idealised chemical model from those actually established by product tests."
+          },
+          {
+            "ask": "What is the stage-by-stage conclusion and what remains uncertain?",
+            "why_this_ask": "Complete the decisive inferential bridge.",
+            "model_response": "Cooling can remove water vapour through condensation; a separate selective absorber removes CO₂. Identify temperature and gas composition at each stage before assigning volume losses."
+          }
+        ],
+        "full_reconstruction": "Cooling can remove water vapour through condensation; a separate selective absorber removes CO₂. Identify temperature and gas composition at each stage before assigning volume losses."
+      },
+      "diagnose": {
+        "wrong_idea": "Wrong path: 'Gas volume contraction is entirely the amount of CO₂ that formed.' Repair by separating chemical reaction, condensation and selective absorption.",
+        "diagnostic_prompt": "Find the hidden phase/measurement assumption in: Wrong path: 'Gas volume contraction is entirely the amount of CO₂ that formed.' Repair by separating chemical reaction, condensation and selective absorption.",
+        "model_response": "If the water does not fully condense or CO₂ dissolves, the measured 'dry gas' account is different. Experimental phase and collection conditions must be recorded."
+      },
+      "repair": {
+        "action": "Create a corrected species-phase inventory for each experimental stage; repeat independent volume or stoichiometric check.",
+        "explanation": "Wrong path: 'Gas volume contraction is entirely the amount of CO₂ that formed.' Repair by separating chemical reaction, condensation and selective absorption.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C12.core1a.md (section C12.04)"
+      },
+      "boundary_test": {
+        "prompt": "Can a decrease from condensation alone measure the fuel carbon count?",
+        "answer": "No. Water production depends on hydrogen content, not solely carbon count.",
+        "confirms": "A new control, product state or absorption stage changes the answer."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D3",
+        "adjudication": "NOT_RUN",
+        "note": "Band and operation remain author proposals until exact-task QRT adjudication."
+      }
+    },
+    {
+      "cycle_id": "CORE1B-C12-04-3",
+      "unit_id": "C12",
+      "subtopic_ref": "CHEM-C12.04",
+      "concept_ref": "CHEM-C12.04-CONCEPT",
+      "operation": "SYNTHESIZE",
+      "qrt_instance_ref": "C12-04-SYNTHESIZE-D3",
+      "qrt_template_ref": "QRT-SYNTHESIZE-D3",
+      "band_proposal": "D3",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Predict the decisive experimental condition before fully solving: Residual gas after complete hydrocarbon combustion contains CO₂ and O₂. Construct a stage ledger to show which volume loss diagnoses each species.",
+        "defensible_answer": "For complete combustion of a hydrocarbon containing only carbon and hydrogen, the usual products are carbon dioxide and water. The general balanced formula for CₓHᵧ under sufficient oxygen is CₓHᵧ + (x + y/4)O₂ → xCO₂ + (y/2)H₂O. This equation conserves atoms, but the gas state of H₂O depends on temperature. High-temperature water vapour can condense when cooled, removing water molecules from the measured gas phase without removing them from the closed material system."
+      },
+      "attempt": {
+        "prompt": "Residual gas after complete hydrocarbon combustion contains CO₂ and O₂. Construct a stage ledger to show which volume loss diagnoses each species.",
+        "produces": "A stage-resolved gas/species/phase model with measured variables and an independent check.",
+        "protected_W": "The learner independently completes the cross-stage bridge, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Identify the gas species, phase, conditions and instrument reading in Combustion products, condensation and residual gases."
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Remember the governing condition: Cooling combustion products can condense water; residual gas measurements require species and phase accounting."
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Draw a before/after species volume or apparatus ledger; leave the final model choice and numerical inference unresolved."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "First account for chemical consumption and product formation; then remove water by condensation; finally selective CO₂ absorption causes a further reduction attributable to CO₂ at common T/P. Remaining O₂ must be included.",
+          "rubric": [
+            "Declare temperature, pressure and gas phase before comparison.",
+            "Track species amounts, conservation and stage boundaries.",
+            "Give an independent apparatus or competing-model check."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "Which gases are present and which quantities were measured?",
+            "why_this_ask": "Prevent dry/wet and reaction/collection conflation.",
+            "model_response": "A hydrocarbon burns in excess oxygen and the hot gas is cooled. The total gas volume drops even though no carbon atom has vanished. Which stage accounts for the loss of measured gas?"
+          },
+          {
+            "ask": "Which conditions and chemical equation or apparatus model hold?",
+            "why_this_ask": "Build a warranted model instead of a contraction trick.",
+            "model_response": "Excess oxygen survives in the residual gas. Carbon dioxide may be absorbed later by a suitable reagent or partly dissolved in water; each operation must be treated as a separate stage. If insufficient oxygen is supplied, carbon monoxide and soot can form; the simple complete-combustion equation is no longer the full description. Distinguish products expected from an idealised chemical model from those actually established by product tests."
+          },
+          {
+            "ask": "What is the stage-by-stage conclusion and what remains uncertain?",
+            "why_this_ask": "Complete the decisive inferential bridge.",
+            "model_response": "First account for chemical consumption and product formation; then remove water by condensation; finally selective CO₂ absorption causes a further reduction attributable to CO₂ at common T/P. Remaining O₂ must be included."
+          }
+        ],
+        "full_reconstruction": "First account for chemical consumption and product formation; then remove water by condensation; finally selective CO₂ absorption causes a further reduction attributable to CO₂ at common T/P. Remaining O₂ must be included."
+      },
+      "diagnose": {
+        "wrong_idea": "Wrong path: 'Gas volume contraction is entirely the amount of CO₂ that formed.' Repair by separating chemical reaction, condensation and selective absorption.",
+        "diagnostic_prompt": "Find the hidden phase/measurement assumption in: Wrong path: 'Gas volume contraction is entirely the amount of CO₂ that formed.' Repair by separating chemical reaction, condensation and selective absorption.",
+        "model_response": "If the water does not fully condense or CO₂ dissolves, the measured 'dry gas' account is different. Experimental phase and collection conditions must be recorded."
+      },
+      "repair": {
+        "action": "Create a corrected species-phase inventory for each experimental stage; repeat independent volume or stoichiometric check.",
+        "explanation": "Wrong path: 'Gas volume contraction is entirely the amount of CO₂ that formed.' Repair by separating chemical reaction, condensation and selective absorption.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C12.core1a.md (section C12.04)"
+      },
+      "boundary_test": {
+        "prompt": "If incomplete combustion produced CO, would a CO₂-only absorber measure all product carbon?",
+        "answer": "No. CO would remain unless separately measured/processed.",
+        "confirms": "A new control, product state or absorption stage changes the answer."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D3",
+        "adjudication": "NOT_RUN",
+        "note": "Band and operation remain author proposals until exact-task QRT adjudication."
+      }
+    },
+    {
+      "cycle_id": "CORE1B-C12-05-1",
+      "unit_id": "C12",
+      "subtopic_ref": "CHEM-C12.05",
+      "concept_ref": "CHEM-C12.05-CONCEPT",
+      "operation": "REPRESENT",
+      "qrt_instance_ref": "C12-05-REPRESENT-D3",
+      "qrt_template_ref": "QRT-REPRESENT-D3",
+      "band_proposal": "D3",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Predict the decisive experimental condition before fully solving: Represent each stage of the example 10 mL CH₄ + 30 mL O₂ after reaction, cooling and CO₂ absorption.",
+        "defensible_answer": "Eudiometry is a multi-stage gas-volume analysis, generally beyond ordinary Class X Chemistry and therefore marked **ENRICHMENT**. A typical process combines a known gas with oxygen, burns it in a controlled apparatus, cools to a chosen reference condition, selectively absorbs a product such as CO₂ and measures residual volumes. The inference depends on knowing what each stage removes. A gas-volume drop after cooling may include water condensation, while a later reduction with suitable CO₂ absorber is attributed to carbon dioxide under validated selectivity."
+      },
+      "attempt": {
+        "prompt": "Represent each stage of the example 10 mL CH₄ + 30 mL O₂ after reaction, cooling and CO₂ absorption.",
+        "produces": "A stage-resolved gas/species/phase model with measured variables and an independent check.",
+        "protected_W": "The learner independently completes the invariant correspondence, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Identify the gas species, phase, conditions and instrument reading in Eudiometry: reconstructing composition from stages (ENRICHMENT)."
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Remember the governing condition: Eudiometric multi-step contraction/absorption is enrichment and needs separate species-volume ledgers and selective-absorption assumptions."
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Draw a before/after species volume or apparatus ledger; leave the final model choice and numerical inference unresolved."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "Complete reaction consumes CH₄ 10 mL and O₂ 20 mL; produces CO₂ 10 mL and water vapour 20 mL under matched gas conditions. After cooling, CO₂ 10 + excess O₂ 10 = 20 mL dry; after CO₂ absorption 10 mL O₂ remains.",
+          "rubric": [
+            "Declare temperature, pressure and gas phase before comparison.",
+            "Track species amounts, conservation and stage boundaries.",
+            "Give an independent apparatus or competing-model check."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "Which gases are present and which quantities were measured?",
+            "why_this_ask": "Prevent dry/wet and reaction/collection conflation.",
+            "model_response": "An unknown gas mixture burns, cools, then passes through a selective absorber. A single number called 'contraction' appears on the instrument. Can it reveal a complete molecular formula by itself?"
+          },
+          {
+            "ask": "Which conditions and chemical equation or apparatus model hold?",
+            "why_this_ask": "Build a warranted model instead of a contraction trick.",
+            "model_response": "To analyse a hydrocarbon CₓHᵧ, use the complete-combustion equation and amount ledger. At consistent T/P, CO₂ produced is proportional to x times hydrocarbon amount, while O₂ consumed is proportional to (x + y/4). A single contraction value may not determine both x and y; an independent measurement of CO₂, O₂ consumption or initial hydrocarbon volume can provide further constraints. When an absorber's chemistry is not selective, the problem may remain underdetermined."
+          },
+          {
+            "ask": "What is the stage-by-stage conclusion and what remains uncertain?",
+            "why_this_ask": "Complete the decisive inferential bridge.",
+            "model_response": "Complete reaction consumes CH₄ 10 mL and O₂ 20 mL; produces CO₂ 10 mL and water vapour 20 mL under matched gas conditions. After cooling, CO₂ 10 + excess O₂ 10 = 20 mL dry; after CO₂ absorption 10 mL O₂ remains."
+          }
+        ],
+        "full_reconstruction": "Complete reaction consumes CH₄ 10 mL and O₂ 20 mL; produces CO₂ 10 mL and water vapour 20 mL under matched gas conditions. After cooling, CO₂ 10 + excess O₂ 10 = 20 mL dry; after CO₂ absorption 10 mL O₂ remains."
+      },
+      "diagnose": {
+        "wrong_idea": "Wrong path: 'Contraction alone proves the hydrocarbon formula.' Repair with complete species ledger, validated absorption selectivity and independent observations.",
+        "diagnostic_prompt": "Find the hidden phase/measurement assumption in: Wrong path: 'Contraction alone proves the hydrocarbon formula.' Repair with complete species ledger, validated absorption selectivity and independent observations.",
+        "model_response": "An inert gas contaminant or partially dissolved CO₂ changes residual volumes. Identify what the absorber does not remove and whether the gas is compared at the same T/P."
+      },
+      "repair": {
+        "action": "Create a corrected species-phase inventory for each experimental stage; repeat independent volume or stoichiometric check.",
+        "explanation": "Wrong path: 'Contraction alone proves the hydrocarbon formula.' Repair with complete species ledger, validated absorption selectivity and independent observations.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C12.core1a.md (section C12.05)"
+      },
+      "boundary_test": {
+        "prompt": "If the CO₂ absorber also takes up oxygen, can the 10 mL loss be trusted as pure CO₂?",
+        "answer": "No. Selectivity must be established.",
+        "confirms": "A new control, product state or absorption stage changes the answer."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D3",
+        "adjudication": "NOT_RUN",
+        "note": "Band and operation remain author proposals until exact-task QRT adjudication."
+      }
+    },
+    {
+      "cycle_id": "CORE1B-C12-05-2",
+      "unit_id": "C12",
+      "subtopic_ref": "CHEM-C12.05",
+      "concept_ref": "CHEM-C12.05-CONCEPT",
+      "operation": "MODEL",
+      "qrt_instance_ref": "C12-05-MODEL-D3",
+      "qrt_template_ref": "QRT-MODEL-D3",
+      "band_proposal": "D3",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Predict the decisive experimental condition before fully solving: An unknown gas reacts in oxygen and the cooled gas contracts by 18 mL, with no separate CO₂ reading. Choose a model and state why composition may be underdetermined.",
+        "defensible_answer": "Eudiometry is a multi-stage gas-volume analysis, generally beyond ordinary Class X Chemistry and therefore marked **ENRICHMENT**. A typical process combines a known gas with oxygen, burns it in a controlled apparatus, cools to a chosen reference condition, selectively absorbs a product such as CO₂ and measures residual volumes. The inference depends on knowing what each stage removes. A gas-volume drop after cooling may include water condensation, while a later reduction with suitable CO₂ absorber is attributed to carbon dioxide under validated selectivity."
+      },
+      "attempt": {
+        "prompt": "An unknown gas reacts in oxygen and the cooled gas contracts by 18 mL, with no separate CO₂ reading. Choose a model and state why composition may be underdetermined.",
+        "produces": "A stage-resolved gas/species/phase model with measured variables and an independent check.",
+        "protected_W": "The learner independently completes the warranted model choice, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Identify the gas species, phase, conditions and instrument reading in Eudiometry: reconstructing composition from stages (ENRICHMENT)."
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Remember the governing condition: Eudiometric multi-step contraction/absorption is enrichment and needs separate species-volume ledgers and selective-absorption assumptions."
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Draw a before/after species volume or apparatus ledger; leave the final model choice and numerical inference unresolved."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "Different mixtures and hydrocarbon formulas may produce the same cooled contraction, depending on oxygen consumption and condensation. A second independent measurement such as selective CO₂ absorption is required.",
+          "rubric": [
+            "Declare temperature, pressure and gas phase before comparison.",
+            "Track species amounts, conservation and stage boundaries.",
+            "Give an independent apparatus or competing-model check."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "Which gases are present and which quantities were measured?",
+            "why_this_ask": "Prevent dry/wet and reaction/collection conflation.",
+            "model_response": "An unknown gas mixture burns, cools, then passes through a selective absorber. A single number called 'contraction' appears on the instrument. Can it reveal a complete molecular formula by itself?"
+          },
+          {
+            "ask": "Which conditions and chemical equation or apparatus model hold?",
+            "why_this_ask": "Build a warranted model instead of a contraction trick.",
+            "model_response": "To analyse a hydrocarbon CₓHᵧ, use the complete-combustion equation and amount ledger. At consistent T/P, CO₂ produced is proportional to x times hydrocarbon amount, while O₂ consumed is proportional to (x + y/4). A single contraction value may not determine both x and y; an independent measurement of CO₂, O₂ consumption or initial hydrocarbon volume can provide further constraints. When an absorber's chemistry is not selective, the problem may remain underdetermined."
+          },
+          {
+            "ask": "What is the stage-by-stage conclusion and what remains uncertain?",
+            "why_this_ask": "Complete the decisive inferential bridge.",
+            "model_response": "Different mixtures and hydrocarbon formulas may produce the same cooled contraction, depending on oxygen consumption and condensation. A second independent measurement such as selective CO₂ absorption is required."
+          }
+        ],
+        "full_reconstruction": "Different mixtures and hydrocarbon formulas may produce the same cooled contraction, depending on oxygen consumption and condensation. A second independent measurement such as selective CO₂ absorption is required."
+      },
+      "diagnose": {
+        "wrong_idea": "Wrong path: 'Contraction alone proves the hydrocarbon formula.' Repair with complete species ledger, validated absorption selectivity and independent observations.",
+        "diagnostic_prompt": "Find the hidden phase/measurement assumption in: Wrong path: 'Contraction alone proves the hydrocarbon formula.' Repair with complete species ledger, validated absorption selectivity and independent observations.",
+        "model_response": "An inert gas contaminant or partially dissolved CO₂ changes residual volumes. Identify what the absorber does not remove and whether the gas is compared at the same T/P."
+      },
+      "repair": {
+        "action": "Create a corrected species-phase inventory for each experimental stage; repeat independent volume or stoichiometric check.",
+        "explanation": "Wrong path: 'Contraction alone proves the hydrocarbon formula.' Repair with complete species ledger, validated absorption selectivity and independent observations.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C12.core1a.md (section C12.05)"
+      },
+      "boundary_test": {
+        "prompt": "Would one contraction automatically establish a unique carbon-to-hydrogen ratio?",
+        "answer": "No. The independent constraints may be insufficient.",
+        "confirms": "A new control, product state or absorption stage changes the answer."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D3",
+        "adjudication": "NOT_RUN",
+        "note": "Band and operation remain author proposals until exact-task QRT adjudication."
+      }
+    },
+    {
+      "cycle_id": "CORE1B-C12-05-3",
+      "unit_id": "C12",
+      "subtopic_ref": "CHEM-C12.05",
+      "concept_ref": "CHEM-C12.05-CONCEPT",
+      "operation": "SYNTHESIZE",
+      "qrt_instance_ref": "C12-05-SYNTHESIZE-D3",
+      "qrt_template_ref": "QRT-SYNTHESIZE-D3",
+      "band_proposal": "D3",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Predict the decisive experimental condition before fully solving: A record gives three volume drops but fails to state whether temperature/pressure are matched. Synthesize a valid correction and evidence request.",
+        "defensible_answer": "Eudiometry is a multi-stage gas-volume analysis, generally beyond ordinary Class X Chemistry and therefore marked **ENRICHMENT**. A typical process combines a known gas with oxygen, burns it in a controlled apparatus, cools to a chosen reference condition, selectively absorbs a product such as CO₂ and measures residual volumes. The inference depends on knowing what each stage removes. A gas-volume drop after cooling may include water condensation, while a later reduction with suitable CO₂ absorber is attributed to carbon dioxide under validated selectivity."
+      },
+      "attempt": {
+        "prompt": "A record gives three volume drops but fails to state whether temperature/pressure are matched. Synthesize a valid correction and evidence request.",
+        "produces": "A stage-resolved gas/species/phase model with measured variables and an independent check.",
+        "protected_W": "The learner independently completes the cross-stage bridge, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Identify the gas species, phase, conditions and instrument reading in Eudiometry: reconstructing composition from stages (ENRICHMENT)."
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Remember the governing condition: Eudiometric multi-step contraction/absorption is enrichment and needs separate species-volume ledgers and selective-absorption assumptions."
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Draw a before/after species volume or apparatus ledger; leave the final model choice and numerical inference unresolved."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "Ask for stage T/P, gas phases, absorber identity, selectivity, excess oxygen and blank controls. Convert valid comparisons to common conditions before interpreting volume changes; do not infer a definite formula from inconsistent measurement bases.",
+          "rubric": [
+            "Declare temperature, pressure and gas phase before comparison.",
+            "Track species amounts, conservation and stage boundaries.",
+            "Give an independent apparatus or competing-model check."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "Which gases are present and which quantities were measured?",
+            "why_this_ask": "Prevent dry/wet and reaction/collection conflation.",
+            "model_response": "An unknown gas mixture burns, cools, then passes through a selective absorber. A single number called 'contraction' appears on the instrument. Can it reveal a complete molecular formula by itself?"
+          },
+          {
+            "ask": "Which conditions and chemical equation or apparatus model hold?",
+            "why_this_ask": "Build a warranted model instead of a contraction trick.",
+            "model_response": "To analyse a hydrocarbon CₓHᵧ, use the complete-combustion equation and amount ledger. At consistent T/P, CO₂ produced is proportional to x times hydrocarbon amount, while O₂ consumed is proportional to (x + y/4). A single contraction value may not determine both x and y; an independent measurement of CO₂, O₂ consumption or initial hydrocarbon volume can provide further constraints. When an absorber's chemistry is not selective, the problem may remain underdetermined."
+          },
+          {
+            "ask": "What is the stage-by-stage conclusion and what remains uncertain?",
+            "why_this_ask": "Complete the decisive inferential bridge.",
+            "model_response": "Ask for stage T/P, gas phases, absorber identity, selectivity, excess oxygen and blank controls. Convert valid comparisons to common conditions before interpreting volume changes; do not infer a definite formula from inconsistent measurement bases."
+          }
+        ],
+        "full_reconstruction": "Ask for stage T/P, gas phases, absorber identity, selectivity, excess oxygen and blank controls. Convert valid comparisons to common conditions before interpreting volume changes; do not infer a definite formula from inconsistent measurement bases."
+      },
+      "diagnose": {
+        "wrong_idea": "Wrong path: 'Contraction alone proves the hydrocarbon formula.' Repair with complete species ledger, validated absorption selectivity and independent observations.",
+        "diagnostic_prompt": "Find the hidden phase/measurement assumption in: Wrong path: 'Contraction alone proves the hydrocarbon formula.' Repair with complete species ledger, validated absorption selectivity and independent observations.",
+        "model_response": "An inert gas contaminant or partially dissolved CO₂ changes residual volumes. Identify what the absorber does not remove and whether the gas is compared at the same T/P."
+      },
+      "repair": {
+        "action": "Create a corrected species-phase inventory for each experimental stage; repeat independent volume or stoichiometric check.",
+        "explanation": "Wrong path: 'Contraction alone proves the hydrocarbon formula.' Repair with complete species ledger, validated absorption selectivity and independent observations.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C12.core1a.md (section C12.05)"
+      },
+      "boundary_test": {
+        "prompt": "If an inert gas remains throughout all stages, may it affect total residual volumes?",
+        "answer": "Yes, and it must appear in the species ledger.",
+        "confirms": "A new control, product state or absorption stage changes the answer."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D3",
+        "adjudication": "NOT_RUN",
+        "note": "Band and operation remain author proposals until exact-task QRT adjudication."
+      }
+    }
+  ],
+  "release": {
+    "scientific_review": "HOLD",
+    "source_exam_admission": "HOLD",
+    "qrt_adjudication": "HOLD",
+    "runtime_first_attempt_validation": "NOT_RUN",
+    "deployment": "NOT_AUTHORIZED"
+  }
+}

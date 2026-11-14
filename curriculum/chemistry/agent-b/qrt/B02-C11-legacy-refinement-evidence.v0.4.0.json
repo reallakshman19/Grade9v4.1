@@ -1,0 +1,866 @@
+{
+  "schema": "g9v41-chem-b02-exact-task-evidence/v1",
+  "version": "0.4.0",
+  "status": "AUTHOR_PROPOSED__ACADEMIC_HOLD",
+  "baseline_head": "a3168fe3385ab62b2d6dc45950c468c2c5a66752",
+  "counts": {
+    "revised": 14,
+    "D3": 8,
+    "D4": 6,
+    "qualified": 0
+  },
+  "records": [
+    {
+      "subtopic_id": "CHEM-C11.01",
+      "cycle_id": "CORE1B-C11-01-2-B02-R2",
+      "qrt_instance_id": "C11-01-SYNTHESIZE-D4-B02-R2",
+      "template_ref": "QRT-SYNTHESIZE-D4",
+      "band": "D4",
+      "primary_operation": "SYNTHESIZE",
+      "exact_task": "An acyclic saturated hydrocarbon has 7 carbons, one quaternary carbon and no tertiary carbons. Combine degree counting and structural construction: find terminal and secondary counts, draw two nonidentical skeletons satisfying the data and verify formula.",
+      "protected_W": "Combine degree constraints with graph construction and non-equivalence proof.",
+      "worked_answer": "Degree sum 12. n₁+n₂=6; n₁+2n₂+4=12 => n₂=2,n₁=4. Two possible arm length sets from central carbon: 3,1,1,1 and 2,2,1,1, giving (CH₃)₃C–CH₂–CH₂–CH₃ and (CH₃)₂C(CH₂CH₃)₂. Both C₇H₁₆. Different arm-length multisets distinguish connectivity.",
+      "boundary_prompt": "Can an arm-length set 4,1,1,1 fit the same formula?",
+      "boundary_answer": "No; seven arm carbons plus center gives eight, not seven.",
+      "score": 8,
+      "factors": {
+        "concept_model_selection": {
+          "score": 1,
+          "evidence": "Choose acyclic graph"
+        },
+        "representation_translation": {
+          "score": 2,
+          "evidence": "Translate degree constraints to skeletons"
+        },
+        "reasoning_chain_length": {
+          "score": 2,
+          "evidence": "Solve counts, construct and compare"
+        },
+        "algebra_computational_load": {
+          "score": 2,
+          "evidence": "Coupled integer counts"
+        },
+        "trap_exception_sensitivity": {
+          "score": 1,
+          "evidence": "Symmetry/non-equivalence"
+        }
+      },
+      "hint_evidence": {
+        "H1": "List carbon vertex categories and total vertices.",
+        "H2": "Use degree sum and count equations, then think about four arms of the branch center.",
+        "H3": "Allocate remaining secondary vertices among four arms in different ways; verify counts and check if permutations give duplicates.",
+        "author_non_disclosure_check": "H3 provides an organising scaffold but not the completed result. Independent review pending."
+      },
+      "source_ids_related": [
+        "NSEJS-2023-C-Q26",
+        "CHEM-NSEJS-REACT-07",
+        "CHEM-NSEJS-MOLE-04",
+        "NSEJS-2024-C-Q19",
+        "NSEJS-2022-C-Q18"
+      ],
+      "source_role": "AUTHORED_PRACTICE",
+      "independent_review": "NOT_RUN",
+      "academic_status": "HOLD"
+    },
+    {
+      "subtopic_id": "CHEM-C11.01",
+      "cycle_id": "CORE1B-C11-01-3-B02-R2",
+      "qrt_instance_id": "C11-01-JUSTIFY-D4-B02-R2",
+      "template_ref": "QRT-JUSTIFY-D4",
+      "band": "D4",
+      "primary_operation": "JUSTIFY",
+      "exact_task": "A student proposes that a connected neutral saturated C₆H₁₄ structure can contain two quaternary carbons. Test the claim using degree counting and show a realizable six-carbon skeleton with the maximum number of quaternary centers.",
+      "protected_W": "Prove upper bound by contradiction and exhibit feasible witness.",
+      "worked_answer": "Tree degree sum 10. Two degree-four vertices use 8; remaining four vertices each have degree ≥1, giving ≥12, impossible. One degree-four center possible: (CH₃)₃C–CH₂–CH₃, six carbons, H=9+2+3=14. Maximum one. No isolated vertices in connected graph.",
+      "boundary_prompt": "Can C₈H₁₈ contain two adjacent quaternary centers?",
+      "boundary_answer": "Yes, (CH₃)₃C–C(CH₃)₃, 8 carbons and 18 H.",
+      "score": 8,
+      "factors": {
+        "concept_model_selection": {
+          "score": 1,
+          "evidence": "Choose graph-bound model"
+        },
+        "representation_translation": {
+          "score": 2,
+          "evidence": "Translate claim to degree inequality"
+        },
+        "reasoning_chain_length": {
+          "score": 2,
+          "evidence": "Contradict, construct witness, validate"
+        },
+        "algebra_computational_load": {
+          "score": 1,
+          "evidence": "Integer bound"
+        },
+        "trap_exception_sensitivity": {
+          "score": 2,
+          "evidence": "Local vs global consistency"
+        }
+      },
+      "hint_evidence": {
+        "H1": "Write the total degree available for six connected acyclic vertices.",
+        "H2": "Count the minimum possible degree of every remaining vertex if the two proposed centers exist.",
+        "H3": "Compare the required and available totals, then construct a feasible witness for the largest possible count.",
+        "author_non_disclosure_check": "H3 provides an organising scaffold but not the completed result. Independent review pending."
+      },
+      "source_ids_related": [
+        "NSEJS-2023-C-Q26",
+        "CHEM-NSEJS-REACT-07",
+        "CHEM-NSEJS-MOLE-04",
+        "NSEJS-2024-C-Q19",
+        "NSEJS-2022-C-Q18"
+      ],
+      "source_role": "AUTHORED_PRACTICE",
+      "independent_review": "NOT_RUN",
+      "academic_status": "HOLD"
+    },
+    {
+      "subtopic_id": "CHEM-C11.02",
+      "cycle_id": "CORE1B-C11-02-1-B02-R4",
+      "qrt_instance_id": "C11-02-REPRESENT-D3-B02-R4",
+      "template_ref": "QRT-REPRESENT-D3",
+      "band": "D3",
+      "primary_operation": "REPRESENT",
+      "exact_task": "A schematic carbon fragment A has eight vertices; six have three bonded neighbours and two have two. Fragment B has six vertices; four have four neighbours and two have two. Calculate distinct links for each, then explain whether either count proves a complete graphite or diamond lattice. Sketch a local three-neighbour planar arrangement and a four-neighbour spatial arrangement; show why boundary vertices invalidate the periodic count rule.",
+      "protected_W": "Translate nonuniform coordination into link counts and distinguish local geometry from global lattice identity.",
+      "worked_answer": "A degree sum 6×3+2×2=22, 11 links; B=4×4+2×2=20, 10 links. Counts alone do not establish allotrope: boundary coordination, geometry and electronic structure matter. Graphite local trigonal planar arrangement, diamond local tetrahedral arrangement; edge vertices have lower coordination so uniform periodic degree assumption fails. Link count does not measure bond strength.",
+      "boundary_prompt": "If one link is added between two existing vertices, by how much does degree sum increase?",
+      "boundary_answer": "Two, regardless of the vertex types, provided it is a new distinct link.",
+      "score": 7,
+      "factors": {
+        "concept_model_selection": {
+          "score": 1,
+          "evidence": "Choose nonuniform graph model"
+        },
+        "representation_translation": {
+          "score": 2,
+          "evidence": "Translate degree populations to links and local diagrams"
+        },
+        "reasoning_chain_length": {
+          "score": 2,
+          "evidence": "Compute counts, compare with periodic assumption"
+        },
+        "algebra_computational_load": {
+          "score": 1,
+          "evidence": "Weighted count and division"
+        },
+        "trap_exception_sensitivity": {
+          "score": 1,
+          "evidence": "Boundary vertices invalidate bulk inference"
+        }
+      },
+      "hint_evidence": {
+        "H1": "List each coordination class with its population.",
+        "H2": "A shared link contributes at both ends; do not assume uniform coordination.",
+        "H3": "Make a degree-frequency table and sketch only the two local geometries; decide whether the counts establish a bulk lattice.",
+        "author_non_disclosure_check": "Author scaffold leaves decisive result; blind review HOLD."
+      },
+      "source_ids_related": [
+        "NSEJS-2024-C-Q28",
+        "NSEJS-2023-C-Q31"
+      ],
+      "source_role": "AUTHORED_PRACTICE",
+      "independent_review": "NOT_RUN",
+      "academic_status": "HOLD"
+    },
+    {
+      "subtopic_id": "CHEM-C11.02",
+      "cycle_id": "CORE1B-C11-02-2-B02-R4",
+      "qrt_instance_id": "C11-02-SYNTHESIZE-D3-B02-R4",
+      "template_ref": "QRT-SYNTHESIZE-D3",
+      "band": "D3",
+      "primary_operation": "SYNTHESIZE",
+      "exact_task": "A carbon laminate is electrically measured in two directions. Rotating the sample by 90° relative to fixed electrodes exchanges the high and low readings; replacing the electrodes with different contacts changes both readings similarly. Cleavage is easy along visible planes. Combine the evidence to distinguish orientation-dependent material transport from contact resistance alone, and specify an independent measurement that would challenge the layered model.",
+      "protected_W": "Combine rotated-sample and changed-contact evidence to distinguish competing causes.",
+      "worked_answer": "Rotation-dependent exchange tracks the sample axes and supports intrinsic anisotropy, whereas common shifts with changed contacts indicate measurement contribution. Easy cleavage along planes supports layered structure. A contact-only hypothesis may still involve orientation-dependent contact geometry; control geometry and use four-probe direction-resolved measurement and structural diffraction. Neither reading proves composition or unique allotrope.",
+      "boundary_prompt": "If rotating the sample does not change the directional pattern but rotating the electrode setup does, what alternative gains support?",
+      "boundary_answer": "Instrument/contact geometry becomes a stronger explanation; structure still needs independent evidence.",
+      "score": 7,
+      "factors": {
+        "concept_model_selection": {
+          "score": 2,
+          "evidence": "Compare intrinsic and contact models"
+        },
+        "representation_translation": {
+          "score": 1,
+          "evidence": "Translate interventions into predictions"
+        },
+        "reasoning_chain_length": {
+          "score": 2,
+          "evidence": "Integrate rotation, contacts and cleavage"
+        },
+        "algebra_computational_load": {
+          "score": 0,
+          "evidence": "No calculation"
+        },
+        "trap_exception_sensitivity": {
+          "score": 2,
+          "evidence": "Apparatus effects can mimic structure"
+        }
+      },
+      "hint_evidence": {
+        "H1": "Separate what was rotated from what was replaced.",
+        "H2": "Ask which observations should follow material axes and which should follow apparatus.",
+        "H3": "Make a two-hypothesis prediction table for rotation and contact replacement; compare it with all observations.",
+        "author_non_disclosure_check": "Author scaffold leaves decisive result; blind review HOLD."
+      },
+      "source_ids_related": [
+        "NSEJS-2024-C-Q28",
+        "NSEJS-2023-C-Q31"
+      ],
+      "source_role": "AUTHORED_PRACTICE",
+      "independent_review": "NOT_RUN",
+      "academic_status": "HOLD"
+    },
+    {
+      "subtopic_id": "CHEM-C11.03",
+      "cycle_id": "CORE1B-C11-03-2-B02-R2",
+      "qrt_instance_id": "C11-03-SYNTHESIZE-D4-B02-R2",
+      "template_ref": "QRT-SYNTHESIZE-D4",
+      "band": "D4",
+      "primary_operation": "SYNTHESIZE",
+      "exact_task": "An unknown pure C₄H₆ hydrocarbon consumes exactly 2 mol H₂ per mole in an ideal complete catalytic hydrogenation that changes only multiple bonds and leaves all rings intact. The final product is acyclic C₄H₁₀. Combine hydrogen deficiency and reaction evidence, draw two starting structures compatible with both, and identify one measurement that would distinguish them.",
+      "protected_W": "Combine formula and selective reaction constraints; construct distinct compatible structures.",
+      "worked_answer": "C₄H₆ has two deficiency units relative to C₄H₁₀. Two H₂ add four H; final acyclic so initial no ring under model. But-1-yne HC≡C–CH₂–CH₃ and buta-1,3-diene CH₂=CH–CH=CH₂ both meet total uptake and yield butane. Distinguish via suitable structural spectroscopy or bond-specific evidence. Hydrogen uptake alone does not choose triple vs two doubles.",
+      "boundary_prompt": "If only one mole H₂ is taken up and rings preserved, can the original contain a ring?",
+      "boundary_answer": "Yes; one ring plus one double can account for two deficiency units, yielding C₄H₈.",
+      "score": 8,
+      "factors": {
+        "concept_model_selection": {
+          "score": 2,
+          "evidence": "Choose hydrogen-deficiency and reaction model"
+        },
+        "representation_translation": {
+          "score": 2,
+          "evidence": "Translate uptake to bond constraints"
+        },
+        "reasoning_chain_length": {
+          "score": 2,
+          "evidence": "Combine data, construct alternatives and discriminate"
+        },
+        "algebra_computational_load": {
+          "score": 1,
+          "evidence": "Hydrogen balance"
+        },
+        "trap_exception_sensitivity": {
+          "score": 1,
+          "evidence": "Nonunique bond allocation"
+        }
+      },
+      "hint_evidence": {
+        "H1": "Compare C₄H₆ with the acyclic saturated formula.",
+        "H2": "Use the stated ring-preservation assumption and total hydrogen gain to constrain multiple bonds.",
+        "H3": "List ways to distribute two unsaturation units among acyclic multiple bonds and test each against product formula.",
+        "author_non_disclosure_check": "H3 provides an organising scaffold but not the completed result. Independent review pending."
+      },
+      "source_ids_related": [
+        "CHEM-NSEJS-REACT-07",
+        "CHEM-NSEJS-MOLE-04",
+        "NSEJS-2022-C-Q27",
+        "NSEJS-2024-C-Q27",
+        "NSEJS-2022-C-Q26",
+        "NSEJS-2020-C-Q09"
+      ],
+      "source_role": "AUTHORED_PRACTICE",
+      "independent_review": "NOT_RUN",
+      "academic_status": "HOLD"
+    },
+    {
+      "subtopic_id": "CHEM-C11.03",
+      "cycle_id": "CORE1B-C11-03-3-B02-R2",
+      "qrt_instance_id": "C11-03-JUSTIFY-D3-B02-R2",
+      "template_ref": "QRT-JUSTIFY-D3",
+      "band": "D3",
+      "primary_operation": "JUSTIFY",
+      "exact_task": "A report claims every C₅H₁₀ molecule must contain a double bond and absorb one H₂ on ideal alkene hydrogenation. Construct an explicit counterexample, a valid confirming example, and show how both satisfy carbon valence; state what the formula does establish.",
+      "protected_W": "Justify or refute universal formula-to-reactivity claim with two valence-valid witnesses.",
+      "worked_answer": "Cyclopentane is five CH₂ groups in ring; no C=C and no uptake in stated ideal alkene-only model. Pent-1-ene CH₂=CH–CH₂–CH₂–CH₃ has 10 H and one C=C; ideal addition uses one H₂. Formula establishes one hydrogen deficiency relative to C₅H₁₂, not its allocation. Real reaction conditions can permit other transformations.",
+      "boundary_prompt": "Can a neutral acyclic C₅H₁₀ contain a triple bond?",
+      "boundary_answer": "No under ordinary hydrocarbon valence; triple requires two deficiency units.",
+      "score": 7,
+      "factors": {
+        "concept_model_selection": {
+          "score": 1,
+          "evidence": "Choose formula-deficiency model"
+        },
+        "representation_translation": {
+          "score": 2,
+          "evidence": "Translate to ring and double structures"
+        },
+        "reasoning_chain_length": {
+          "score": 2,
+          "evidence": "Construct counterexample and reaction implication"
+        },
+        "algebra_computational_load": {
+          "score": 1,
+          "evidence": "Hydrogen count"
+        },
+        "trap_exception_sensitivity": {
+          "score": 1,
+          "evidence": "Formula not unique"
+        }
+      },
+      "hint_evidence": {
+        "H1": "Calculate hydrogen difference relative to the saturated acyclic reference.",
+        "H2": "Identify two structural ways to remove one hydrogen pair.",
+        "H3": "Construct one witness of each type, count the H atoms and compare the allowed hydrogenation outcome.",
+        "author_non_disclosure_check": "H3 provides an organising scaffold but not the completed result. Independent review pending."
+      },
+      "source_ids_related": [
+        "CHEM-NSEJS-REACT-07",
+        "CHEM-NSEJS-MOLE-04",
+        "NSEJS-2022-C-Q27",
+        "NSEJS-2024-C-Q27",
+        "NSEJS-2022-C-Q26",
+        "NSEJS-2020-C-Q09"
+      ],
+      "source_role": "AUTHORED_PRACTICE",
+      "independent_review": "NOT_RUN",
+      "academic_status": "HOLD"
+    },
+    {
+      "subtopic_id": "CHEM-C11.04",
+      "cycle_id": "CORE1B-C11-04-1-B02-R2",
+      "qrt_instance_id": "C11-04-REPRESENT-D4-B02-R2",
+      "template_ref": "QRT-REPRESENT-D4",
+      "band": "D4",
+      "primary_operation": "REPRESENT",
+      "exact_task": "A neutral acyclic saturated monohydric alcohol has molar mass 74 g/mol (C=12,H=1,O=16). Infer molecular formula, represent all distinct alcohol connectivities (excluding ethers and stereoisomers), and verify how each differs in formula from propanol.",
+      "protected_W": "Translate mass, formula and symmetry into complete alcohol structures.",
+      "worked_answer": "Alcohol formula CₙH₂ₙ₊₂O =>14n+18=74 => n=4, C₄H₁₀O. Butan-1-ol CH₃CH₂CH₂CH₂OH; butan-2-ol CH₃CH(OH)CH₂CH₃; 2-methylpropan-1-ol (CH₃)₂CHCH₂OH; 2-methylpropan-2-ol (CH₃)₃COH. Straight and branched skeleton each two inequivalent positions. C₃H₈O differs by CH₂. Enantiomers excluded.",
+      "boundary_prompt": "Would counting stereoisomers add a new type of distinction for butan-2-ol?",
+      "boundary_answer": "Yes, it has a stereogenic center; enantiomers are a separate enrichment classification.",
+      "score": 8,
+      "factors": {
+        "concept_model_selection": {
+          "score": 1,
+          "evidence": "Choose homologous formula"
+        },
+        "representation_translation": {
+          "score": 2,
+          "evidence": "Translate mass to structures"
+        },
+        "reasoning_chain_length": {
+          "score": 2,
+          "evidence": "Infer formula and exhaustive positions"
+        },
+        "algebra_computational_load": {
+          "score": 2,
+          "evidence": "Algebra and enumeration"
+        },
+        "trap_exception_sensitivity": {
+          "score": 1,
+          "evidence": "Symmetry and scope"
+        }
+      },
+      "hint_evidence": {
+        "H1": "Use the stated alcohol restriction to derive the formula from the carbon count.",
+        "H2": "Enumerate the carbon skeletons before placing the OH group.",
+        "H3": "For each skeleton identify symmetry-equivalent carbon positions; draw the inequivalent OH placements and check formula.",
+        "author_non_disclosure_check": "H3 provides an organising scaffold but not the completed result. Independent review pending."
+      },
+      "source_ids_related": [
+        "NSEJS-2023-C-Q26",
+        "CHEM-NSEJS-REACT-07",
+        "NSEJS-2022-C-Q27",
+        "NSEJS-2024-C-Q27"
+      ],
+      "source_role": "AUTHORED_PRACTICE",
+      "independent_review": "NOT_RUN",
+      "academic_status": "HOLD"
+    },
+    {
+      "subtopic_id": "CHEM-C11.04",
+      "cycle_id": "CORE1B-C11-04-3-B02-R4",
+      "qrt_instance_id": "C11-04-JUSTIFY-D3-B02-R4",
+      "template_ref": "QRT-JUSTIFY-D3",
+      "band": "D3",
+      "primary_operation": "JUSTIFY",
+      "exact_task": "Three C₄H₁₀O candidates are butan-1-ol, butan-2-ol and 2-methylpropan-2-ol. A model labels each carbon by the number of carbon neighbours and reports that the OH-bearing carbon has exactly one carbon neighbour. A student says this identifies butan-1-ol uniquely among all acyclic saturated monohydric alcohols. Test the claim by drawing an omitted constitutional candidate and explaining why numbering reversal cannot create it.",
+      "protected_W": "Refute an inverse structural identification with a valid omitted witness and graph invariant.",
+      "worked_answer": "Butan-1-ol OH carbon degree 1; butan-2-ol degree 2; 2-methylpropan-2-ol degree 3. Omitted 2-methylpropan-1-ol (CH₃)₂CHCH₂OH also degree 1 and C₄H₁₀O. Its carbon graph is branched, unlike butan-1-ol; reversal cannot change vertex degree distribution. Measurement supports two candidates, not unique identity; need branching evidence.",
+      "boundary_prompt": "Would evidence that no carbon has three carbon neighbours distinguish the two degree-one candidates?",
+      "boundary_answer": "Yes within the stated candidates: straight butan-1-ol has maximum carbon degree two; branched alternative has a degree-three carbon.",
+      "score": 7,
+      "factors": {
+        "concept_model_selection": {
+          "score": 1,
+          "evidence": "Select local vs global connectivity"
+        },
+        "representation_translation": {
+          "score": 2,
+          "evidence": "Translate local measurement to graph constraints"
+        },
+        "reasoning_chain_length": {
+          "score": 2,
+          "evidence": "Test claim with omitted witness and discriminator"
+        },
+        "algebra_computational_load": {
+          "score": 0,
+          "evidence": "No numerical calculation"
+        },
+        "trap_exception_sensitivity": {
+          "score": 2,
+          "evidence": "Local feature not unique global identity"
+        }
+      },
+      "hint_evidence": {
+        "H1": "Separate the local OH-bearing carbon condition from the complete carbon skeleton.",
+        "H2": "Draw the candidates and count carbon neighbours, not all bonded atoms.",
+        "H3": "Search the allowed skeleton classes for an omitted witness and compare an invariant under numbering reversal.",
+        "author_non_disclosure_check": "Author scaffold leaves decisive result; blind review HOLD."
+      },
+      "source_ids_related": [
+        "NSEJS-2023-C-Q26",
+        "CHEM-NSEJS-REACT-07",
+        "NSEJS-2022-C-Q27",
+        "NSEJS-2024-C-Q27"
+      ],
+      "source_role": "AUTHORED_PRACTICE",
+      "independent_review": "NOT_RUN",
+      "academic_status": "HOLD"
+    },
+    {
+      "subtopic_id": "CHEM-C11.05",
+      "cycle_id": "CORE1B-C11-05-1-B02-R2",
+      "qrt_instance_id": "C11-05-REPRESENT-D3-B02-R2",
+      "template_ref": "QRT-REPRESENT-D3",
+      "band": "D3",
+      "primary_operation": "REPRESENT",
+      "exact_task": "Three neutral acyclic compounds have formula C₃H₆O: an aldehyde, a ketone, and an alcohol containing one C=C. Draw one valid structure for each, verify every carbon valence and identify which pair shares a carbonyl and which contains OH.",
+      "protected_W": "Construct three valid representations from functional and formula constraints.",
+      "worked_answer": "Propanal CH₃CH₂CHO; propanone CH₃COCH₃; prop-2-en-1-ol CH₂=CHCH₂OH. All C₃H₆O; aldehyde and ketone have C=O, third has O–H and C=C. Each carbon bond-order sum four, O valence two. Formula alone cannot distinguish multiple bond allocation. Unsaturated alcohol context extension.",
+      "boundary_prompt": "A new neutral sample has formula C₃H₇Cl. Independently draw two valid chain structures with chlorine on different carbon atoms; name the functional-group class, verify carbon/halogen valence, and explain why the formula alone does not establish the substitution position. Compare the group with the –OH in ethanol.",
+      "boundary_answer": "1-chloropropane CH₃CH₂CH₂Cl and 2-chloropropane CH₃CH(Cl)CH₃ both satisfy C₃H₇Cl. Both are haloalkanes (chloro group –Cl), with a single covalent C–Cl bond and ordinary carbon valence four; neither contains free chloride ions. Ethanol CH₃CH₂OH has an alcohol –OH group instead. Formula alone cannot determine the attachment position; a separate structural observation is required.",
+      "score": 7,
+      "factors": {
+        "concept_model_selection": {
+          "score": 1,
+          "evidence": "Choose functional-group patterns"
+        },
+        "representation_translation": {
+          "score": 2,
+          "evidence": "Translate formula to three structures"
+        },
+        "reasoning_chain_length": {
+          "score": 2,
+          "evidence": "Construct and verify"
+        },
+        "algebra_computational_load": {
+          "score": 1,
+          "evidence": "Atom/bond counts"
+        },
+        "trap_exception_sensitivity": {
+          "score": 1,
+          "evidence": "Nonunique allocation"
+        }
+      },
+      "hint_evidence": {
+        "H1": "List the required functional patterns for aldehyde, ketone and unsaturated alcohol.",
+        "H2": "Count carbon and hydrogen after inserting each functional pattern.",
+        "H3": "Draw one three-carbon skeleton for each, then use bond-order and atom ledgers to test all three independently.",
+        "author_non_disclosure_check": "H3 provides an organising scaffold but not the completed result. Independent review pending."
+      },
+      "source_ids_related": [
+        "NSEJS-2024-C-Q27",
+        "NSEJS-2022-C-Q17",
+        "NSEJS-2023-C-Q24",
+        "NSEJS-2020-C-Q09",
+        "NSEJS-2020-C-Q11"
+      ],
+      "source_role": "AUTHORED_PRACTICE",
+      "independent_review": "NOT_RUN",
+      "academic_status": "HOLD"
+    },
+    {
+      "subtopic_id": "CHEM-C11.05",
+      "cycle_id": "CORE1B-C11-05-2-B02-R4",
+      "qrt_instance_id": "C11-05-SYNTHESIZE-D3-B02-R4",
+      "template_ref": "QRT-SYNTHESIZE-D3",
+      "band": "D3",
+      "primary_operation": "SYNTHESIZE",
+      "exact_task": "An unknown pure neutral C₃H₈O compound is one of propan-1-ol, propan-2-ol or methoxyethane. A calibrated O–H signal is present. A specified selective oxidation preserves the carbon skeleton and produces C₃H₆O, but the product could be an aldehyde or ketone. Which initial models remain? Construct two product structures and select one additional structural observation to distinguish them.",
+      "protected_W": "Combine positive O–H evidence and nonunique product formula; construct competing pathways and decisive observation.",
+      "worked_answer": "O–H supports either alcohol, excludes ether within pure candidates. Propan-1-ol→propanal CH₃CH₂CHO; propan-2-ol→propanone CH₃COCH₃ under stated selective oxidation. Both C₃H₆O, so formula insufficient. Identify carbonyl carbon bonded to H (aldehyde) vs two carbon groups (ketone) using structural evidence, not just carbonyl presence. Conditions and purity matter.",
+      "boundary_prompt": "If product is independently identified as propanone, which starting candidate fits the stipulated pathway?",
+      "boundary_answer": "Propan-2-ol under the given selective, skeleton-preserving model.",
+      "score": 7,
+      "factors": {
+        "concept_model_selection": {
+          "score": 2,
+          "evidence": "Compare primary/secondary alcohol and ether"
+        },
+        "representation_translation": {
+          "score": 2,
+          "evidence": "Translate product formula to alternative structures"
+        },
+        "reasoning_chain_length": {
+          "score": 2,
+          "evidence": "Integrate evidence and choose discriminating observation"
+        },
+        "algebra_computational_load": {
+          "score": 0,
+          "evidence": "No computation"
+        },
+        "trap_exception_sensitivity": {
+          "score": 1,
+          "evidence": "Nonunique product formula"
+        }
+      },
+      "hint_evidence": {
+        "H1": "Identify what the O–H observation excludes and what it leaves open.",
+        "H2": "Compare possible carbonyl connectivity patterns on the same carbon skeleton.",
+        "H3": "Build a candidate-to-product matrix and look for an additional observation distinguishing the remaining rows.",
+        "author_non_disclosure_check": "Author scaffold leaves decisive result; blind review HOLD."
+      },
+      "source_ids_related": [
+        "NSEJS-2024-C-Q27",
+        "NSEJS-2022-C-Q17",
+        "NSEJS-2023-C-Q24",
+        "NSEJS-2020-C-Q09",
+        "NSEJS-2020-C-Q11"
+      ],
+      "source_role": "AUTHORED_PRACTICE",
+      "independent_review": "NOT_RUN",
+      "academic_status": "HOLD"
+    },
+    {
+      "subtopic_id": "CHEM-C11.06",
+      "cycle_id": "CORE1B-C11-06-1-B02-R4",
+      "qrt_instance_id": "C11-06-REPRESENT-D3-B02-R4",
+      "template_ref": "QRT-REPRESENT-D3",
+      "band": "D3",
+      "primary_operation": "REPRESENT",
+      "exact_task": "A theoretical combustion record for 0.10 mol methane contains 0.06 mol CO₂, 0.04 mol CO and 0.20 mol H₂O. Represent it as a single balanced equation using the smallest integer coefficients, calculate oxygen consumption, and compare with the all-CO₂ model. Explain what would fail if soot were also present but unmeasured.",
+      "protected_W": "Translate mixed product measurements into balanced integer equation and verify independent atom conservation.",
+      "worked_answer": "Per .10 mol CH₄, oxygen atoms .12+.04+.20=.36 mol, O₂=.18 mol. Ratio multiplying by 50: 5CH₄+9O₂→3CO₂+2CO+10H₂O. All CO₂ uses .20 mol O₂. Carbon ledger .06+.04=.10; if additional soot present at same measured gas amounts, carbon conservation fails unless record/inputs differ. Model only, not experiment.",
+      "boundary_prompt": "If CO₂ and CO amounts are .05 mol each with same fuel and water, what O₂ amount is implied?",
+      "boundary_answer": "(.10+.05+.20)/2=.175 mol O₂.",
+      "score": 7,
+      "factors": {
+        "concept_model_selection": {
+          "score": 1,
+          "evidence": "Select mixed-product conservation model"
+        },
+        "representation_translation": {
+          "score": 2,
+          "evidence": "Translate observed amounts to integer equation"
+        },
+        "reasoning_chain_length": {
+          "score": 2,
+          "evidence": "Balance, compare and check hidden soot"
+        },
+        "algebra_computational_load": {
+          "score": 1,
+          "evidence": "Molar atom arithmetic"
+        },
+        "trap_exception_sensitivity": {
+          "score": 1,
+          "evidence": "Unmeasured products can violate ledger"
+        }
+      },
+      "hint_evidence": {
+        "H1": "List measured carbon- and hydrogen-containing products separately.",
+        "H2": "Use atom conservation to find oxygen atoms on the product side before converting to O₂.",
+        "H3": "Construct a species mole ledger, scale all coefficients together to integers, then check carbon independently.",
+        "author_non_disclosure_check": "Author scaffold leaves decisive result; blind review HOLD."
+      },
+      "source_ids_related": [
+        "NSEJS-2023-C-Q24",
+        "NSEJS-2022-C-Q26",
+        "NSEJS-2020-C-Q09",
+        "NSEJS-2024-C-Q32",
+        "CHEM-NSEJS-REACT-08",
+        "NSEJS-2022-C-Q24"
+      ],
+      "source_role": "AUTHORED_PRACTICE",
+      "independent_review": "NOT_RUN",
+      "academic_status": "HOLD"
+    },
+    {
+      "subtopic_id": "CHEM-C11.06",
+      "cycle_id": "CORE1B-C11-06-3-B02-R4",
+      "qrt_instance_id": "C11-06-JUSTIFY-D4-B02-R4",
+      "template_ref": "QRT-JUSTIFY-D4",
+      "band": "D4",
+      "primary_operation": "JUSTIFY",
+      "exact_task": "A theoretical methane substitution record has 0.10 mol completely reacted methane and 0.18 mol HCl. The only carbon products are CH₃Cl, CH₂Cl₂ and CHCl₃. A separate measurement gives 0.04 mol CH₂Cl₂. Derive all three amounts, check the average substitutions, and justify whether the two original totals without the separate measurement would uniquely identify the products.",
+      "protected_W": "Justify identifiability by solving an augmented three-product ledger and constructing two countermodels without the extra measurement.",
+      "worked_answer": "Let x,y,z be mono/di/tri amounts. x+y+z=.10; x+2y+3z=.18; y=.04. x+z=.06; x+3z=.10 -> z=.02,x=.04. Check .04+.08+.06=.18; average 1.8. Without y measurement, e.g. x=.06,y=0,z=.04 or x=.02,y=.08,z=0 both fit. Thus two totals insufficient; third independent constraint resolves.",
+      "boundary_prompt": "If reported y=.10 mol, can the given HCl amount .18 be consistent?",
+      "boundary_answer": "No; all carbon would be dichlorinated and HCl=.20 mol.",
+      "score": 8,
+      "factors": {
+        "concept_model_selection": {
+          "score": 2,
+          "evidence": "Choose three-product inverse model"
+        },
+        "representation_translation": {
+          "score": 1,
+          "evidence": "Translate totals to independent constraints"
+        },
+        "reasoning_chain_length": {
+          "score": 2,
+          "evidence": "Solve with third observation and prove nonuniqueness without it"
+        },
+        "algebra_computational_load": {
+          "score": 2,
+          "evidence": "Three-variable balances"
+        },
+        "trap_exception_sensitivity": {
+          "score": 1,
+          "evidence": "Nonnegative countermodels"
+        }
+      },
+      "hint_evidence": {
+        "H1": "Identify the three unknown amounts and the independent measurements.",
+        "H2": "Use carbon conservation and number of substitutions per molecule to formulate aggregate constraints.",
+        "H3": "Compare the number of independent constraints with unknowns; try alternative nonnegative distributions before deciding uniqueness.",
+        "author_non_disclosure_check": "Author scaffold leaves decisive result; blind review HOLD."
+      },
+      "source_ids_related": [
+        "NSEJS-2023-C-Q24",
+        "NSEJS-2022-C-Q26",
+        "NSEJS-2020-C-Q09",
+        "NSEJS-2024-C-Q32",
+        "CHEM-NSEJS-REACT-08",
+        "NSEJS-2022-C-Q24"
+      ],
+      "source_role": "AUTHORED_PRACTICE",
+      "independent_review": "NOT_RUN",
+      "academic_status": "HOLD"
+    },
+    {
+      "subtopic_id": "CHEM-C11.07",
+      "cycle_id": "CORE1B-C11-07-1-B02-R2",
+      "qrt_instance_id": "C11-07-REPRESENT-D3-B02-R2",
+      "template_ref": "QRT-REPRESENT-D3",
+      "band": "D3",
+      "primary_operation": "REPRESENT",
+      "exact_task": "Two ideal surfactant sketches show (A) heads at the water-facing surface and tails toward an oil droplet, (B) heads buried in oil and tails facing water. Represent both with labelled water/oil regions and explain which orientation supports an oil-in-water dispersion. Predict what changes when calcium binds the soap heads.",
+      "protected_W": "Construct labelled molecular orientation and connect changed head chemistry to dispersion.",
+      "worked_answer": "A is compatible with aqueous dispersion: hydrophobic tails associate with oil, ionic hydrophilic heads contact water. B reversed orientation is not typical oil-in-water arrangement. Ca²⁺ can form sparingly soluble carboxylate salt, reducing available active soap; not every remaining aggregate behaves identically. Foam not a direct measure of removal.",
+      "boundary_prompt": "Would the same orientation necessarily hold in an oil-continuous reverse-micelle model?",
+      "boundary_answer": "No; solvent geometry can favour reversed aggregates, an extension case.",
+      "score": 7,
+      "factors": {
+        "concept_model_selection": {
+          "score": 1,
+          "evidence": "Choose interface/precipitation models"
+        },
+        "representation_translation": {
+          "score": 2,
+          "evidence": "Translate orientation to labelled sketch"
+        },
+        "reasoning_chain_length": {
+          "score": 2,
+          "evidence": "Compare arrangements and perturbation"
+        },
+        "algebra_computational_load": {
+          "score": 0,
+          "evidence": "No calculation"
+        },
+        "trap_exception_sensitivity": {
+          "score": 2,
+          "evidence": "Medium and precipitate distinction"
+        }
+      },
+      "hint_evidence": {
+        "H1": "Identify continuous phase and droplet phase in both sketches.",
+        "H2": "Match head and tail interactions with surrounding media.",
+        "H3": "Draw both interfaces using distinct head/tail symbols; then add a separate ion-binding representation and reason about available surfactant.",
+        "author_non_disclosure_check": "H3 provides an organising scaffold but not the completed result. Independent review pending."
+      },
+      "source_ids_related": [
+        "NSEJS-2022-C-Q17",
+        "NSEJS-2024-C-Q32",
+        "CHEM-NSEJS-REACT-08",
+        "NSEJS-2023-C-Q32",
+        "NSEJS-2021-C-Q30",
+        "NSEJS-2020-C-Q11"
+      ],
+      "source_role": "AUTHORED_PRACTICE",
+      "independent_review": "NOT_RUN",
+      "academic_status": "HOLD"
+    },
+    {
+      "subtopic_id": "CHEM-C11.07",
+      "cycle_id": "CORE1B-C11-07-3-B02-R2",
+      "qrt_instance_id": "C11-07-JUSTIFY-D4-B02-R2",
+      "template_ref": "QRT-JUSTIFY-D4",
+      "band": "D4",
+      "primary_operation": "JUSTIFY",
+      "exact_task": "Two pure liquids are ethanol and ethanoic acid. In ideal separate tests an equal 0.050 mol portion of each is contacted with excess hydrogen carbonate; one generates 0.050 mol CO₂ and the other none. Equal portions are then combined in a theoretical 1:1 esterification with 60% conversion. Justify identification, calculate ester/water and remaining reactants, and explain why the initial gas observation does not establish a real mixture's purity.",
+      "protected_W": "Justify identification and cross-check reaction amounts under stated conversion and purity assumptions.",
+      "worked_answer": "Acid + HCO₃⁻→CH₃COO⁻+CO₂+H₂O; ethanoic acid gives .050 mol CO₂, ethanol no analogous response. CH₃COOH+C₂H₅OH⇌CH₃COOC₂H₅+H₂O. .030 mol ester and water; .020 mol acid and ethanol remain. Gas identifies acidic behaviour within pure candidates, not arbitrary mixtures. Separate portions, no practical instructions.",
+      "boundary_prompt": "If 0.040 mol acid and .050 mol ethanol react at 60% conversion of acid, how much ester?",
+      "boundary_answer": "0.024 mol ester; .016 mol acid and .026 mol ethanol remain.",
+      "score": 8,
+      "factors": {
+        "concept_model_selection": {
+          "score": 2,
+          "evidence": "Select acid and esterification models"
+        },
+        "representation_translation": {
+          "score": 1,
+          "evidence": "Translate gas and conversion to equations"
+        },
+        "reasoning_chain_length": {
+          "score": 2,
+          "evidence": "Identify, compute, check purity"
+        },
+        "algebra_computational_load": {
+          "score": 2,
+          "evidence": "Linked balances"
+        },
+        "trap_exception_sensitivity": {
+          "score": 1,
+          "evidence": "Equilibrium/purity distinction"
+        }
+      },
+      "hint_evidence": {
+        "H1": "Separate the identification test from the independent reaction portions.",
+        "H2": "Use acid–carbonate evidence and balance the esterification before applying conversion.",
+        "H3": "Build a reactant/product ledger from the stated limiting conversion; check residual acid and alcohol separately.",
+        "author_non_disclosure_check": "H3 provides an organising scaffold but not the completed result. Independent review pending."
+      },
+      "source_ids_related": [
+        "NSEJS-2022-C-Q17",
+        "NSEJS-2024-C-Q32",
+        "CHEM-NSEJS-REACT-08",
+        "NSEJS-2023-C-Q32",
+        "NSEJS-2021-C-Q30",
+        "NSEJS-2020-C-Q11"
+      ],
+      "source_role": "AUTHORED_PRACTICE",
+      "independent_review": "NOT_RUN",
+      "academic_status": "HOLD"
+    }
+  ],
+  "migrations": [
+    {
+      "subtopic_id": "CHEM-C11.01",
+      "old_cycle_id": "CORE1B-C11-01-2",
+      "new_cycle_id": "CORE1B-C11-01-2-B02-R2",
+      "old_qrt_instance": "C11-01-SYNTHESIZE-D3",
+      "new_qrt_instance": "C11-01-SYNTHESIZE-D4-B02-R2",
+      "old_attempt_policy": "Keep prior key intact; no automatic migration."
+    },
+    {
+      "subtopic_id": "CHEM-C11.01",
+      "old_cycle_id": "CORE1B-C11-01-3",
+      "new_cycle_id": "CORE1B-C11-01-3-B02-R2",
+      "old_qrt_instance": "C11-01-JUSTIFY-D3",
+      "new_qrt_instance": "C11-01-JUSTIFY-D4-B02-R2",
+      "old_attempt_policy": "Keep prior key intact; no automatic migration."
+    },
+    {
+      "subtopic_id": "CHEM-C11.02",
+      "old_cycle_id": "CORE1B-C11-02-1",
+      "new_cycle_id": "CORE1B-C11-02-1-B02-R4",
+      "old_qrt_instance": "C11-02-REPRESENT-D3",
+      "new_qrt_instance": "C11-02-REPRESENT-D3-B02-R4",
+      "old_attempt_policy": "Keep prior key intact; no automatic migration.",
+      "previous_revision_cycle_id": "CORE1B-C11-02-1-B02-R2",
+      "previous_revision_qrt_instance": "C11-02-REPRESENT-D3-B02-R2"
+    },
+    {
+      "subtopic_id": "CHEM-C11.02",
+      "old_cycle_id": "CORE1B-C11-02-2",
+      "new_cycle_id": "CORE1B-C11-02-2-B02-R4",
+      "old_qrt_instance": "C11-02-SYNTHESIZE-D3",
+      "new_qrt_instance": "C11-02-SYNTHESIZE-D3-B02-R4",
+      "old_attempt_policy": "Keep prior key intact; no automatic migration.",
+      "previous_revision_cycle_id": "CORE1B-C11-02-2-B02-R2",
+      "previous_revision_qrt_instance": "C11-02-SYNTHESIZE-D3-B02-R2"
+    },
+    {
+      "subtopic_id": "CHEM-C11.03",
+      "old_cycle_id": "CORE1B-C11-03-2",
+      "new_cycle_id": "CORE1B-C11-03-2-B02-R2",
+      "old_qrt_instance": "C11-03-SYNTHESIZE-D3",
+      "new_qrt_instance": "C11-03-SYNTHESIZE-D4-B02-R2",
+      "old_attempt_policy": "Keep prior key intact; no automatic migration."
+    },
+    {
+      "subtopic_id": "CHEM-C11.03",
+      "old_cycle_id": "CORE1B-C11-03-3",
+      "new_cycle_id": "CORE1B-C11-03-3-B02-R2",
+      "old_qrt_instance": "C11-03-JUSTIFY-D3",
+      "new_qrt_instance": "C11-03-JUSTIFY-D3-B02-R2",
+      "old_attempt_policy": "Keep prior key intact; no automatic migration."
+    },
+    {
+      "subtopic_id": "CHEM-C11.04",
+      "old_cycle_id": "CORE1B-C11-04-1",
+      "new_cycle_id": "CORE1B-C11-04-1-B02-R2",
+      "old_qrt_instance": "C11-04-REPRESENT-D3",
+      "new_qrt_instance": "C11-04-REPRESENT-D4-B02-R2",
+      "old_attempt_policy": "Keep prior key intact; no automatic migration."
+    },
+    {
+      "subtopic_id": "CHEM-C11.04",
+      "old_cycle_id": "CORE1B-C11-04-3",
+      "new_cycle_id": "CORE1B-C11-04-3-B02-R4",
+      "old_qrt_instance": "C11-04-JUSTIFY-D3",
+      "new_qrt_instance": "C11-04-JUSTIFY-D3-B02-R4",
+      "old_attempt_policy": "Keep prior key intact; no automatic migration.",
+      "previous_revision_cycle_id": "CORE1B-C11-04-3-B02-R2",
+      "previous_revision_qrt_instance": "C11-04-JUSTIFY-D3-B02-R2"
+    },
+    {
+      "subtopic_id": "CHEM-C11.05",
+      "old_cycle_id": "CORE1B-C11-05-1",
+      "new_cycle_id": "CORE1B-C11-05-1-B02-R2",
+      "old_qrt_instance": "C11-05-REPRESENT-D3",
+      "new_qrt_instance": "C11-05-REPRESENT-D3-B02-R2",
+      "old_attempt_policy": "Keep prior key intact; no automatic migration."
+    },
+    {
+      "subtopic_id": "CHEM-C11.05",
+      "old_cycle_id": "CORE1B-C11-05-2",
+      "new_cycle_id": "CORE1B-C11-05-2-B02-R4",
+      "old_qrt_instance": "C11-05-SYNTHESIZE-D3",
+      "new_qrt_instance": "C11-05-SYNTHESIZE-D3-B02-R4",
+      "old_attempt_policy": "Keep prior key intact; no automatic migration.",
+      "previous_revision_cycle_id": "CORE1B-C11-05-2-B02-R2",
+      "previous_revision_qrt_instance": "C11-05-SYNTHESIZE-D3-B02-R2"
+    },
+    {
+      "subtopic_id": "CHEM-C11.06",
+      "old_cycle_id": "CORE1B-C11-06-1",
+      "new_cycle_id": "CORE1B-C11-06-1-B02-R4",
+      "old_qrt_instance": "C11-06-REPRESENT-D3",
+      "new_qrt_instance": "C11-06-REPRESENT-D3-B02-R4",
+      "old_attempt_policy": "Keep prior key intact; no automatic migration.",
+      "previous_revision_cycle_id": "CORE1B-C11-06-1-B02-R2",
+      "previous_revision_qrt_instance": "C11-06-REPRESENT-D3-B02-R2"
+    },
+    {
+      "subtopic_id": "CHEM-C11.06",
+      "old_cycle_id": "CORE1B-C11-06-3",
+      "new_cycle_id": "CORE1B-C11-06-3-B02-R4",
+      "old_qrt_instance": "C11-06-JUSTIFY-D3",
+      "new_qrt_instance": "C11-06-JUSTIFY-D4-B02-R4",
+      "old_attempt_policy": "Keep prior key intact; no automatic migration.",
+      "previous_revision_cycle_id": "CORE1B-C11-06-3-B02-R2",
+      "previous_revision_qrt_instance": "C11-06-JUSTIFY-D4-B02-R2"
+    },
+    {
+      "subtopic_id": "CHEM-C11.07",
+      "old_cycle_id": "CORE1B-C11-07-1",
+      "new_cycle_id": "CORE1B-C11-07-1-B02-R2",
+      "old_qrt_instance": "C11-07-REPRESENT-D3",
+      "new_qrt_instance": "C11-07-REPRESENT-D3-B02-R2",
+      "old_attempt_policy": "Keep prior key intact; no automatic migration."
+    },
+    {
+      "subtopic_id": "CHEM-C11.07",
+      "old_cycle_id": "CORE1B-C11-07-3",
+      "new_cycle_id": "CORE1B-C11-07-3-B02-R2",
+      "old_qrt_instance": "C11-07-JUSTIFY-D3",
+      "new_qrt_instance": "C11-07-JUSTIFY-D4-B02-R2",
+      "old_attempt_policy": "Keep prior key intact; no automatic migration."
+    }
+  ]
+}

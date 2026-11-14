@@ -1,0 +1,1878 @@
+{
+  "schema": "g9v41-chem-core1b-six-stage-cycles/v1",
+  "version": "0.1.0",
+  "status": "CANDIDATE_UNREVIEWED_NO_BROWSER_TEST",
+  "unit_id": "C09",
+  "pilot": "Acids, Bases, Salts and Oxyacids",
+  "textbook_ref": "curriculum/chemistry/agent-b/textbook/C09.core1a.md",
+  "agent_a_contract_ref": "chem-core-authority.v0.1.0.json@0.1.0",
+  "blueprint_ref": "CHEM-QRT-BLUEPRINT@0.1.0",
+  "roles": "One Core1B task for each C09 QRT binding; protected first attempts required in any future renderer.",
+  "units": {
+    "subtopics": 6,
+    "qrt_ops_per_subtopic": 3
+  },
+  "cycles": [
+    {
+      "cycle_id": "CORE1B-C09-01-1",
+      "subtopic_ref": "CHEM-C09.01",
+      "concept_ref": "CHEM-C09.01-CONCEPT",
+      "operation": "EXPLAIN",
+      "qrt_instance_ref": "C09-01-EXPLAIN-D3",
+      "qrt_template_ref": "QRT-EXPLAIN-D3",
+      "scope": "CORE_CANDIDATE",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Before computing, predict whether the simplest familiar rule is sufficient for the following case: A dry blue litmus strip remains blue in dry HCl gas, while a wetted strip reddens. Explain the different observations using a particle-level aqueous model.",
+        "defensible_answer": "A prediction must identify the relevant condition, possible exception and what is not yet known. The specific model outcome is resolved only after the attempt."
+      },
+      "attempt": {
+        "prompt": "A dry blue litmus strip remains blue in dry HCl gas, while a wetted strip reddens. Explain the different observations using a particle-level aqueous model.",
+        "produces": "A reasoned written scientific claim with species/conditions/diagram or calculation, the decisive inference, and an independent check.",
+        "protected_W": "The learner independently completes the causal bridge, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Name the observed data, species and precise claim. What is given, and what remains unknown?"
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Recall the relevant science of Acid/base definitions and indicators. Which conditions or conserved quantities matter?"
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Write two candidate explanations or representations, check their assumptions, and leave the final comparison or inference for your own answer."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "Water allows HCl to transfer a proton to water, forming H3O+ and Cl−; the wetted indicator responds to the acidic aqueous environment. A properly dry strip does not provide this medium.",
+          "rubric": [
+            "Name the correct chemical entities, model conditions and conservation basis.",
+            "Show the nontrivial scientific link rather than simply state an answer.",
+            "Provide an independent observation, counterexample, check or boundary."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "What chemical species, states, data or structures are provided?",
+            "why_this_ask": "Prevent a formula or indicator becoming an unsupported claim.",
+            "model_response": "Extract the precise givens and distinguish observed data from inferred species."
+          },
+          {
+            "ask": "Which chemical principle or model is justified by the stated conditions?",
+            "why_this_ask": "Require an explicit warrant before applying a learned rule.",
+            "model_response": "Select the model whose assumptions match the data; reject alternatives not supported by evidence."
+          },
+          {
+            "ask": "How does the model yield the conclusion, and what independent check is possible?",
+            "why_this_ask": "Close the original decisive inference and verify it independently.",
+            "model_response": "Water allows HCl to transfer a proton to water, forming H3O+ and Cl−; the wetted indicator responds to the acidic aqueous environment. A properly dry strip does not provide this medium."
+          }
+        ],
+        "full_reconstruction": "Water allows HCl to transfer a proton to water, forming H3O+ and Cl−; the wetted indicator responds to the acidic aqueous environment. A properly dry strip does not provide this medium."
+      },
+      "diagnose": {
+        "wrong_idea": "HCl must cease being an acid when it is dry.",
+        "diagnostic_prompt": "Suppose a learner argues 'HCl must cease being an acid when it is dry.' What stated condition or experiment can discriminate that error from the correct reasoning?",
+        "model_response": "This is an invalid generalisation. Water allows HCl to transfer a proton to water, forming H3O+ and Cl−; the wetted indicator responds to the acidic aqueous environment. A properly dry strip does not provide this medium."
+      },
+      "repair": {
+        "action": "Compare a wetted control strip and dry strip under equivalent gas exposure.",
+        "explanation": "Rebuild the species/observation ledger, state the valid domain, and revise the original claim.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C09.core1a.md (section CHEM-C09.01)"
+      },
+      "boundary_test": {
+        "prompt": "If the gas meets a slightly damp strip rather than a fully dry strip, predict whether the observation must remain identical.",
+        "answer": "The damp strip may redden if enough aqueous acidic medium forms. Moisture, not merely the HCl label, is decisive.",
+        "confirms": "A changed condition or counterexample, not verbatim recall of the original task."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D3",
+        "adjudication": "NOT_RUN",
+        "score_components": "NOT_SCORED_INDEPENDENTLY",
+        "note": "Band is hypothesis from Agent A plan and B adapter. Do not promote without exact-task five-factor review."
+      }
+    },
+    {
+      "cycle_id": "CORE1B-C09-01-2",
+      "subtopic_ref": "CHEM-C09.01",
+      "concept_ref": "CHEM-C09.01-CONCEPT",
+      "operation": "MODEL",
+      "qrt_instance_ref": "C09-01-MODEL-D3",
+      "qrt_template_ref": "QRT-MODEL-D3",
+      "scope": "CORE_CANDIDATE",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Before computing, predict whether the simplest familiar rule is sufficient for the following case: An unknown colourless aqueous sample turns blue litmus red, but its chemical identity is unlabelled. Choose between models 'hydrochloric acid specifically' and 'acidic aqueous species present'; defend the defensible model.",
+        "defensible_answer": "A prediction must identify the relevant condition, possible exception and what is not yet known. The specific model outcome is resolved only after the attempt."
+      },
+      "attempt": {
+        "prompt": "An unknown colourless aqueous sample turns blue litmus red, but its chemical identity is unlabelled. Choose between models 'hydrochloric acid specifically' and 'acidic aqueous species present'; defend the defensible model.",
+        "produces": "A reasoned written scientific claim with species/conditions/diagram or calculation, the decisive inference, and an independent check.",
+        "protected_W": "The learner independently completes the warranted model choice, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Name the observed data, species and precise claim. What is given, and what remains unknown?"
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Recall the relevant science of Acid/base definitions and indicators. Which conditions or conserved quantities matter?"
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Write two candidate explanations or representations, check their assumptions, and leave the final comparison or inference for your own answer."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "The observation supports acidity under the test conditions but not the identity HCl. Many acidic species can redden litmus; confirmatory chemical analyses are needed to identify them.",
+          "rubric": [
+            "Name the correct chemical entities, model conditions and conservation basis.",
+            "Show the nontrivial scientific link rather than simply state an answer.",
+            "Provide an independent observation, counterexample, check or boundary."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "What chemical species, states, data or structures are provided?",
+            "why_this_ask": "Prevent a formula or indicator becoming an unsupported claim.",
+            "model_response": "Extract the precise givens and distinguish observed data from inferred species."
+          },
+          {
+            "ask": "Which chemical principle or model is justified by the stated conditions?",
+            "why_this_ask": "Require an explicit warrant before applying a learned rule.",
+            "model_response": "Select the model whose assumptions match the data; reject alternatives not supported by evidence."
+          },
+          {
+            "ask": "How does the model yield the conclusion, and what independent check is possible?",
+            "why_this_ask": "Close the original decisive inference and verify it independently.",
+            "model_response": "The observation supports acidity under the test conditions but not the identity HCl. Many acidic species can redden litmus; confirmatory chemical analyses are needed to identify them."
+          }
+        ],
+        "full_reconstruction": "The observation supports acidity under the test conditions but not the identity HCl. Many acidic species can redden litmus; confirmatory chemical analyses are needed to identify them."
+      },
+      "diagnose": {
+        "wrong_idea": "One indicator uniquely identifies the acid.",
+        "diagnostic_prompt": "Suppose a learner argues 'One indicator uniquely identifies the acid.' What stated condition or experiment can discriminate that error from the correct reasoning?",
+        "model_response": "This is an invalid generalisation. The observation supports acidity under the test conditions but not the identity HCl. Many acidic species can redden litmus; confirmatory chemical analyses are needed to identify them."
+      },
+      "repair": {
+        "action": "Design a second controlled test and explain why a second indicator may still not identify the species uniquely.",
+        "explanation": "Rebuild the species/observation ledger, state the valid domain, and revise the original claim.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C09.core1a.md (section CHEM-C09.01)"
+      },
+      "boundary_test": {
+        "prompt": "Another colourless aqueous sample produces the same litmus change but has an unknown dissolved salt. Does the litmus result prove absence of the salt?",
+        "answer": "No. Indicator colour does not determine all dissolved species.",
+        "confirms": "A changed condition or counterexample, not verbatim recall of the original task."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D3",
+        "adjudication": "NOT_RUN",
+        "score_components": "NOT_SCORED_INDEPENDENTLY",
+        "note": "Band is hypothesis from Agent A plan and B adapter. Do not promote without exact-task five-factor review."
+      }
+    },
+    {
+      "cycle_id": "CORE1B-C09-01-3",
+      "subtopic_ref": "CHEM-C09.01",
+      "concept_ref": "CHEM-C09.01-CONCEPT",
+      "operation": "JUSTIFY",
+      "qrt_instance_ref": "C09-01-JUSTIFY-D4",
+      "qrt_template_ref": "QRT-JUSTIFY-D4",
+      "scope": "CORE_CANDIDATE",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Before computing, predict whether the simplest familiar rule is sufficient for the following case: A student observes a red indicator colour in a wet unknown and claims it proves the bottle contained concentrated strong hydrochloric acid. Evaluate the claim and propose two discriminating measurements.",
+        "defensible_answer": "A prediction must identify the relevant condition, possible exception and what is not yet known. The specific model outcome is resolved only after the attempt."
+      },
+      "attempt": {
+        "prompt": "A student observes a red indicator colour in a wet unknown and claims it proves the bottle contained concentrated strong hydrochloric acid. Evaluate the claim and propose two discriminating measurements.",
+        "produces": "A reasoned written scientific claim with species/conditions/diagram or calculation, the decisive inference, and an independent check.",
+        "protected_W": "The learner independently completes the decisive warrant or failing boundary, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Name the observed data, species and precise claim. What is given, and what remains unknown?"
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Recall the relevant science of Acid/base definitions and indicators. Which conditions or conserved quantities matter?"
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Write two candidate explanations or representations, check their assumptions, and leave the final comparison or inference for your own answer."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "Acidity is supported if the indicator and controls are valid. HCl identity, strength in the dissociation sense, and concentration are three separate claims; none is fixed by the single colour reading. Measurement plus species identification would be needed.",
+          "rubric": [
+            "Name the correct chemical entities, model conditions and conservation basis.",
+            "Show the nontrivial scientific link rather than simply state an answer.",
+            "Provide an independent observation, counterexample, check or boundary."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "What chemical species, states, data or structures are provided?",
+            "why_this_ask": "Prevent a formula or indicator becoming an unsupported claim.",
+            "model_response": "Extract the precise givens and distinguish observed data from inferred species."
+          },
+          {
+            "ask": "Which chemical principle or model is justified by the stated conditions?",
+            "why_this_ask": "Require an explicit warrant before applying a learned rule.",
+            "model_response": "Select the model whose assumptions match the data; reject alternatives not supported by evidence."
+          },
+          {
+            "ask": "How does the model yield the conclusion, and what independent check is possible?",
+            "why_this_ask": "Close the original decisive inference and verify it independently.",
+            "model_response": "Acidity is supported if the indicator and controls are valid. HCl identity, strength in the dissociation sense, and concentration are three separate claims; none is fixed by the single colour reading. Measurement plus species identification would be needed."
+          }
+        ],
+        "full_reconstruction": "Acidity is supported if the indicator and controls are valid. HCl identity, strength in the dissociation sense, and concentration are three separate claims; none is fixed by the single colour reading. Measurement plus species identification would be needed."
+      },
+      "diagnose": {
+        "wrong_idea": "A colour observation proves substance, strength and concentration simultaneously.",
+        "diagnostic_prompt": "Suppose a learner argues 'A colour observation proves substance, strength and concentration simultaneously.' What stated condition or experiment can discriminate that error from the correct reasoning?",
+        "model_response": "This is an invalid generalisation. Acidity is supported if the indicator and controls are valid. HCl identity, strength in the dissociation sense, and concentration are three separate claims; none is fixed by the single colour reading. Measurement plus species identification would be needed."
+      },
+      "repair": {
+        "action": "Separate the three claims in a table, labeling each supported, unsupported or requiring a new test.",
+        "explanation": "Rebuild the species/observation ledger, state the valid domain, and revise the original claim.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C09.core1a.md (section CHEM-C09.01)"
+      },
+      "boundary_test": {
+        "prompt": "If a very dilute strong acid and a more concentrated weak acid give similar indicator colours, does the colour rank their absolute concentrations?",
+        "answer": "No. Similar colour ranges cannot establish the concentrations or identities without quantitative evidence.",
+        "confirms": "A changed condition or counterexample, not verbatim recall of the original task."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D4",
+        "adjudication": "NOT_RUN",
+        "score_components": "NOT_SCORED_INDEPENDENTLY",
+        "note": "Band is hypothesis from Agent A plan and B adapter. Do not promote without exact-task five-factor review."
+      }
+    },
+    {
+      "cycle_id": "CORE1B-C09-02-1",
+      "subtopic_ref": "CHEM-C09.02",
+      "concept_ref": "CHEM-C09.02-CONCEPT",
+      "operation": "EXPLAIN",
+      "qrt_instance_ref": "C09-02-EXPLAIN-D3",
+      "qrt_template_ref": "QRT-EXPLAIN-D3",
+      "scope": "CORE_CANDIDATE",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Before computing, predict whether the simplest familiar rule is sufficient for the following case: Aqueous HCl and NaOH are mixed and NaCl remains dissolved. Explain, using ions, which species actually form water and which remain spectator ions.",
+        "defensible_answer": "A prediction must identify the relevant condition, possible exception and what is not yet known. The specific model outcome is resolved only after the attempt."
+      },
+      "attempt": {
+        "prompt": "Aqueous HCl and NaOH are mixed and NaCl remains dissolved. Explain, using ions, which species actually form water and which remain spectator ions.",
+        "produces": "A reasoned written scientific claim with species/conditions/diagram or calculation, the decisive inference, and an independent check.",
+        "protected_W": "The learner independently completes the causal bridge, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Name the observed data, species and precise claim. What is given, and what remains unknown?"
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Recall the relevant science of Neutralisation and salt formation. Which conditions or conserved quantities matter?"
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Write two candidate explanations or representations, check their assumptions, and leave the final comparison or inference for your own answer."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "H3O+ and OH− react to give water; Na+ and Cl− are spectator ions in the simple complete-dissociation account. The molecular equation names the salt and water; the ionic equation reveals the particle-level change.",
+          "rubric": [
+            "Name the correct chemical entities, model conditions and conservation basis.",
+            "Show the nontrivial scientific link rather than simply state an answer.",
+            "Provide an independent observation, counterexample, check or boundary."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "What chemical species, states, data or structures are provided?",
+            "why_this_ask": "Prevent a formula or indicator becoming an unsupported claim.",
+            "model_response": "Extract the precise givens and distinguish observed data from inferred species."
+          },
+          {
+            "ask": "Which chemical principle or model is justified by the stated conditions?",
+            "why_this_ask": "Require an explicit warrant before applying a learned rule.",
+            "model_response": "Select the model whose assumptions match the data; reject alternatives not supported by evidence."
+          },
+          {
+            "ask": "How does the model yield the conclusion, and what independent check is possible?",
+            "why_this_ask": "Close the original decisive inference and verify it independently.",
+            "model_response": "H3O+ and OH− react to give water; Na+ and Cl− are spectator ions in the simple complete-dissociation account. The molecular equation names the salt and water; the ionic equation reveals the particle-level change."
+          }
+        ],
+        "full_reconstruction": "H3O+ and OH− react to give water; Na+ and Cl− are spectator ions in the simple complete-dissociation account. The molecular equation names the salt and water; the ionic equation reveals the particle-level change."
+      },
+      "diagnose": {
+        "wrong_idea": "Na+ and Cl− themselves become water.",
+        "diagnostic_prompt": "Suppose a learner argues 'Na+ and Cl− themselves become water.' What stated condition or experiment can discriminate that error from the correct reasoning?",
+        "model_response": "This is an invalid generalisation. H3O+ and OH− react to give water; Na+ and Cl− are spectator ions in the simple complete-dissociation account. The molecular equation names the salt and water; the ionic equation reveals the particle-level change."
+      },
+      "repair": {
+        "action": "List initial and final chemical species and check charge conservation.",
+        "explanation": "Rebuild the species/observation ledger, state the valid domain, and revise the original claim.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C09.core1a.md (section CHEM-C09.02)"
+      },
+      "boundary_test": {
+        "prompt": "Would NaCl form a solid precipitate simply because the balanced equation writes 'NaCl'?",
+        "answer": "No. Under ordinary dilute aqueous conditions NaCl is soluble and remains ionic in solution.",
+        "confirms": "A changed condition or counterexample, not verbatim recall of the original task."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D3",
+        "adjudication": "NOT_RUN",
+        "score_components": "NOT_SCORED_INDEPENDENTLY",
+        "note": "Band is hypothesis from Agent A plan and B adapter. Do not promote without exact-task five-factor review."
+      }
+    },
+    {
+      "cycle_id": "CORE1B-C09-02-2",
+      "subtopic_ref": "CHEM-C09.02",
+      "concept_ref": "CHEM-C09.02-CONCEPT",
+      "operation": "MODEL",
+      "qrt_instance_ref": "C09-02-MODEL-D3",
+      "qrt_template_ref": "QRT-MODEL-D3",
+      "scope": "CORE_CANDIDATE",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Before computing, predict whether the simplest familiar rule is sufficient for the following case: Mix 20 mL of 0.10 mol/L HCl with 10 mL of 0.10 mol/L NaOH. Under full dissociation, select the excess-species model and predict acidic/basic outcome.",
+        "defensible_answer": "A prediction must identify the relevant condition, possible exception and what is not yet known. The specific model outcome is resolved only after the attempt."
+      },
+      "attempt": {
+        "prompt": "Mix 20 mL of 0.10 mol/L HCl with 10 mL of 0.10 mol/L NaOH. Under full dissociation, select the excess-species model and predict acidic/basic outcome.",
+        "produces": "A reasoned written scientific claim with species/conditions/diagram or calculation, the decisive inference, and an independent check.",
+        "protected_W": "The learner independently completes the warranted model choice, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Name the observed data, species and precise claim. What is given, and what remains unknown?"
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Recall the relevant science of Neutralisation and salt formation. Which conditions or conserved quantities matter?"
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Write two candidate explanations or representations, check their assumptions, and leave the final comparison or inference for your own answer."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "Initial HCl = 2.0 mmol; NaOH = 1.0 mmol; 1.0 mmol HCl-equivalent remains after neutralisation. The solution remains acidic under the stated approximations.",
+          "rubric": [
+            "Name the correct chemical entities, model conditions and conservation basis.",
+            "Show the nontrivial scientific link rather than simply state an answer.",
+            "Provide an independent observation, counterexample, check or boundary."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "What chemical species, states, data or structures are provided?",
+            "why_this_ask": "Prevent a formula or indicator becoming an unsupported claim.",
+            "model_response": "Extract the precise givens and distinguish observed data from inferred species."
+          },
+          {
+            "ask": "Which chemical principle or model is justified by the stated conditions?",
+            "why_this_ask": "Require an explicit warrant before applying a learned rule.",
+            "model_response": "Select the model whose assumptions match the data; reject alternatives not supported by evidence."
+          },
+          {
+            "ask": "How does the model yield the conclusion, and what independent check is possible?",
+            "why_this_ask": "Close the original decisive inference and verify it independently.",
+            "model_response": "Initial HCl = 2.0 mmol; NaOH = 1.0 mmol; 1.0 mmol HCl-equivalent remains after neutralisation. The solution remains acidic under the stated approximations."
+          }
+        ],
+        "full_reconstruction": "Initial HCl = 2.0 mmol; NaOH = 1.0 mmol; 1.0 mmol HCl-equivalent remains after neutralisation. The solution remains acidic under the stated approximations."
+      },
+      "diagnose": {
+        "wrong_idea": "Any base addition to acid ensures neutrality.",
+        "diagnostic_prompt": "Suppose a learner argues 'Any base addition to acid ensures neutrality.' What stated condition or experiment can discriminate that error from the correct reasoning?",
+        "model_response": "This is an invalid generalisation. Initial HCl = 2.0 mmol; NaOH = 1.0 mmol; 1.0 mmol HCl-equivalent remains after neutralisation. The solution remains acidic under the stated approximations."
+      },
+      "repair": {
+        "action": "Write an amount ledger for acid equivalents and hydroxide equivalents before choosing the result.",
+        "explanation": "Rebuild the species/observation ledger, state the valid domain, and revise the original claim.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C09.core1a.md (section CHEM-C09.02)"
+      },
+      "boundary_test": {
+        "prompt": "Repeat with 10 mL HCl and 20 mL NaOH of the same concentration.",
+        "answer": "Hydroxide is in 1.0 mmol excess; outcome is basic under the stated model.",
+        "confirms": "A changed condition or counterexample, not verbatim recall of the original task."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D3",
+        "adjudication": "NOT_RUN",
+        "score_components": "NOT_SCORED_INDEPENDENTLY",
+        "note": "Band is hypothesis from Agent A plan and B adapter. Do not promote without exact-task five-factor review."
+      }
+    },
+    {
+      "cycle_id": "CORE1B-C09-02-3",
+      "subtopic_ref": "CHEM-C09.02",
+      "concept_ref": "CHEM-C09.02-CONCEPT",
+      "operation": "JUSTIFY",
+      "qrt_instance_ref": "C09-02-JUSTIFY-D4",
+      "qrt_template_ref": "QRT-JUSTIFY-D4",
+      "scope": "CORE_CANDIDATE",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Before computing, predict whether the simplest familiar rule is sufficient for the following case: A near-neutral indicator reading follows mixing two unknown solutions, one acid-like and one base-like. Does this prove that NaCl is the only dissolved salt? Defend an inference and propose evidence.",
+        "defensible_answer": "A prediction must identify the relevant condition, possible exception and what is not yet known. The specific model outcome is resolved only after the attempt."
+      },
+      "attempt": {
+        "prompt": "A near-neutral indicator reading follows mixing two unknown solutions, one acid-like and one base-like. Does this prove that NaCl is the only dissolved salt? Defend an inference and propose evidence.",
+        "produces": "A reasoned written scientific claim with species/conditions/diagram or calculation, the decisive inference, and an independent check.",
+        "protected_W": "The learner independently completes the decisive warrant or failing boundary, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Name the observed data, species and precise claim. What is given, and what remains unknown?"
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Recall the relevant science of Neutralisation and salt formation. Which conditions or conserved quantities matter?"
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Write two candidate explanations or representations, check their assumptions, and leave the final comparison or inference for your own answer."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "No: the original acid and base identities and possible spectator ions are unspecified. A pH/indicator observation alone does not specify the dissolved salts; assess reagents and composition independently.",
+          "rubric": [
+            "Name the correct chemical entities, model conditions and conservation basis.",
+            "Show the nontrivial scientific link rather than simply state an answer.",
+            "Provide an independent observation, counterexample, check or boundary."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "What chemical species, states, data or structures are provided?",
+            "why_this_ask": "Prevent a formula or indicator becoming an unsupported claim.",
+            "model_response": "Extract the precise givens and distinguish observed data from inferred species."
+          },
+          {
+            "ask": "Which chemical principle or model is justified by the stated conditions?",
+            "why_this_ask": "Require an explicit warrant before applying a learned rule.",
+            "model_response": "Select the model whose assumptions match the data; reject alternatives not supported by evidence."
+          },
+          {
+            "ask": "How does the model yield the conclusion, and what independent check is possible?",
+            "why_this_ask": "Close the original decisive inference and verify it independently.",
+            "model_response": "No: the original acid and base identities and possible spectator ions are unspecified. A pH/indicator observation alone does not specify the dissolved salts; assess reagents and composition independently."
+          }
+        ],
+        "full_reconstruction": "No: the original acid and base identities and possible spectator ions are unspecified. A pH/indicator observation alone does not specify the dissolved salts; assess reagents and composition independently."
+      },
+      "diagnose": {
+        "wrong_idea": "Neutral colour proves pure sodium chloride.",
+        "diagnostic_prompt": "Suppose a learner argues 'Neutral colour proves pure sodium chloride.' What stated condition or experiment can discriminate that error from the correct reasoning?",
+        "model_response": "This is an invalid generalisation. No: the original acid and base identities and possible spectator ions are unspecified. A pH/indicator observation alone does not specify the dissolved salts; assess reagents and composition independently."
+      },
+      "repair": {
+        "action": "Draw separate evidence boxes: pH, ions present, reagent identity, concentration.",
+        "explanation": "Rebuild the species/observation ledger, state the valid domain, and revise the original claim.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C09.core1a.md (section CHEM-C09.02)"
+      },
+      "boundary_test": {
+        "prompt": "If the base is KOH rather than NaOH, but the acid is HCl, what soluble salt follows in the simple model?",
+        "answer": "KCl, not NaCl; neutralisation outcome does not establish a fixed cation.",
+        "confirms": "A changed condition or counterexample, not verbatim recall of the original task."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D4",
+        "adjudication": "NOT_RUN",
+        "score_components": "NOT_SCORED_INDEPENDENTLY",
+        "note": "Band is hypothesis from Agent A plan and B adapter. Do not promote without exact-task five-factor review."
+      }
+    },
+    {
+      "cycle_id": "CORE1B-C09-03-1",
+      "subtopic_ref": "CHEM-C09.03",
+      "concept_ref": "CHEM-C09.03-CONCEPT",
+      "operation": "EXPLAIN",
+      "qrt_instance_ref": "C09-03-EXPLAIN-D3",
+      "qrt_template_ref": "QRT-EXPLAIN-D3",
+      "scope": "CORE_CANDIDATE",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Before computing, predict whether the simplest familiar rule is sufficient for the following case: A dilute acid sample becomes less acidic when clean water is added, but no base is present. Explain why this does not count as neutralisation.",
+        "defensible_answer": "A prediction must identify the relevant condition, possible exception and what is not yet known. The specific model outcome is resolved only after the attempt."
+      },
+      "attempt": {
+        "prompt": "A dilute acid sample becomes less acidic when clean water is added, but no base is present. Explain why this does not count as neutralisation.",
+        "produces": "A reasoned written scientific claim with species/conditions/diagram or calculation, the decisive inference, and an independent check.",
+        "protected_W": "The learner independently completes the causal bridge, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Name the observed data, species and precise claim. What is given, and what remains unknown?"
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Recall the relevant science of pH scale and applications (no logarithmic derivation required). Which conditions or conserved quantities matter?"
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Write two candidate explanations or representations, check their assumptions, and leave the final comparison or inference for your own answer."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "Water increases the solution volume and reduces acid-derived hydronium concentration/activity under the school model; no acid-base stoichiometric consumption of acid is implied.",
+          "rubric": [
+            "Name the correct chemical entities, model conditions and conservation basis.",
+            "Show the nontrivial scientific link rather than simply state an answer.",
+            "Provide an independent observation, counterexample, check or boundary."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "What chemical species, states, data or structures are provided?",
+            "why_this_ask": "Prevent a formula or indicator becoming an unsupported claim.",
+            "model_response": "Extract the precise givens and distinguish observed data from inferred species."
+          },
+          {
+            "ask": "Which chemical principle or model is justified by the stated conditions?",
+            "why_this_ask": "Require an explicit warrant before applying a learned rule.",
+            "model_response": "Select the model whose assumptions match the data; reject alternatives not supported by evidence."
+          },
+          {
+            "ask": "How does the model yield the conclusion, and what independent check is possible?",
+            "why_this_ask": "Close the original decisive inference and verify it independently.",
+            "model_response": "Water increases the solution volume and reduces acid-derived hydronium concentration/activity under the school model; no acid-base stoichiometric consumption of acid is implied."
+          }
+        ],
+        "full_reconstruction": "Water increases the solution volume and reduces acid-derived hydronium concentration/activity under the school model; no acid-base stoichiometric consumption of acid is implied."
+      },
+      "diagnose": {
+        "wrong_idea": "Dilution chemically destroys the acid.",
+        "diagnostic_prompt": "Suppose a learner argues 'Dilution chemically destroys the acid.' What stated condition or experiment can discriminate that error from the correct reasoning?",
+        "model_response": "This is an invalid generalisation. Water increases the solution volume and reduces acid-derived hydronium concentration/activity under the school model; no acid-base stoichiometric consumption of acid is implied."
+      },
+      "repair": {
+        "action": "Track original solute amount and total solution volume separately.",
+        "explanation": "Rebuild the species/observation ledger, state the valid domain, and revise the original claim.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C09.core1a.md (section CHEM-C09.03)"
+      },
+      "boundary_test": {
+        "prompt": "If further water is added, must the mixture become strongly basic?",
+        "answer": "No; dilution alone does not create a large hydroxide excess.",
+        "confirms": "A changed condition or counterexample, not verbatim recall of the original task."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D3",
+        "adjudication": "NOT_RUN",
+        "score_components": "NOT_SCORED_INDEPENDENTLY",
+        "note": "Band is hypothesis from Agent A plan and B adapter. Do not promote without exact-task five-factor review."
+      }
+    },
+    {
+      "cycle_id": "CORE1B-C09-03-2",
+      "subtopic_ref": "CHEM-C09.03",
+      "concept_ref": "CHEM-C09.03-CONCEPT",
+      "operation": "MODEL",
+      "qrt_instance_ref": "C09-03-MODEL-D3",
+      "qrt_template_ref": "QRT-MODEL-D3",
+      "scope": "CORE_CANDIDATE",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Before computing, predict whether the simplest familiar rule is sufficient for the following case: An acid is diluted and one indicator changes colour while another does not. Model how two different transition ranges can give compatible reports.",
+        "defensible_answer": "A prediction must identify the relevant condition, possible exception and what is not yet known. The specific model outcome is resolved only after the attempt."
+      },
+      "attempt": {
+        "prompt": "An acid is diluted and one indicator changes colour while another does not. Model how two different transition ranges can give compatible reports.",
+        "produces": "A reasoned written scientific claim with species/conditions/diagram or calculation, the decisive inference, and an independent check.",
+        "protected_W": "The learner independently completes the warranted model choice, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Name the observed data, species and precise claim. What is given, and what remains unknown?"
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Recall the relevant science of pH scale and applications (no logarithmic derivation required). Which conditions or conserved quantities matter?"
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Write two candidate explanations or representations, check their assumptions, and leave the final comparison or inference for your own answer."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "Indicators respond over their own transition ranges; a pH shift may cross one colour boundary and not the other. Select a range-based model before claiming one test is faulty.",
+          "rubric": [
+            "Name the correct chemical entities, model conditions and conservation basis.",
+            "Show the nontrivial scientific link rather than simply state an answer.",
+            "Provide an independent observation, counterexample, check or boundary."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "What chemical species, states, data or structures are provided?",
+            "why_this_ask": "Prevent a formula or indicator becoming an unsupported claim.",
+            "model_response": "Extract the precise givens and distinguish observed data from inferred species."
+          },
+          {
+            "ask": "Which chemical principle or model is justified by the stated conditions?",
+            "why_this_ask": "Require an explicit warrant before applying a learned rule.",
+            "model_response": "Select the model whose assumptions match the data; reject alternatives not supported by evidence."
+          },
+          {
+            "ask": "How does the model yield the conclusion, and what independent check is possible?",
+            "why_this_ask": "Close the original decisive inference and verify it independently.",
+            "model_response": "Indicators respond over their own transition ranges; a pH shift may cross one colour boundary and not the other. Select a range-based model before claiming one test is faulty."
+          }
+        ],
+        "full_reconstruction": "Indicators respond over their own transition ranges; a pH shift may cross one colour boundary and not the other. Select a range-based model before claiming one test is faulty."
+      },
+      "diagnose": {
+        "wrong_idea": "Two indicators disagree, so one must be broken.",
+        "diagnostic_prompt": "Suppose a learner argues 'Two indicators disagree, so one must be broken.' What stated condition or experiment can discriminate that error from the correct reasoning?",
+        "model_response": "This is an invalid generalisation. Indicators respond over their own transition ranges; a pH shift may cross one colour boundary and not the other. Select a range-based model before claiming one test is faulty."
+      },
+      "repair": {
+        "action": "Draw generic overlapping transition intervals and place before/after values without claiming exact chemistry.",
+        "explanation": "Rebuild the species/observation ledger, state the valid domain, and revise the original claim.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C09.core1a.md (section CHEM-C09.03)"
+      },
+      "boundary_test": {
+        "prompt": "If both indicators stay the same colour, does it prove pH is unchanged?",
+        "answer": "No. Both may be insensitive within the observed pH interval.",
+        "confirms": "A changed condition or counterexample, not verbatim recall of the original task."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D3",
+        "adjudication": "NOT_RUN",
+        "score_components": "NOT_SCORED_INDEPENDENTLY",
+        "note": "Band is hypothesis from Agent A plan and B adapter. Do not promote without exact-task five-factor review."
+      }
+    },
+    {
+      "cycle_id": "CORE1B-C09-03-3",
+      "subtopic_ref": "CHEM-C09.03",
+      "concept_ref": "CHEM-C09.03-CONCEPT",
+      "operation": "JUSTIFY",
+      "qrt_instance_ref": "C09-03-JUSTIFY-D4",
+      "qrt_template_ref": "QRT-JUSTIFY-D4",
+      "scope": "CORE_CANDIDATE",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Before computing, predict whether the simplest familiar rule is sufficient for the following case: A student states: 'Adding water to pH 3 solution consumes all acid because its pH rises to 5.' Justify acceptance or rejection and propose an independent check.",
+        "defensible_answer": "A prediction must identify the relevant condition, possible exception and what is not yet known. The specific model outcome is resolved only after the attempt."
+      },
+      "attempt": {
+        "prompt": "A student states: 'Adding water to pH 3 solution consumes all acid because its pH rises to 5.' Justify acceptance or rejection and propose an independent check.",
+        "produces": "A reasoned written scientific claim with species/conditions/diagram or calculation, the decisive inference, and an independent check.",
+        "protected_W": "The learner independently completes the decisive warrant or failing boundary, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Name the observed data, species and precise claim. What is given, and what remains unknown?"
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Recall the relevant science of pH scale and applications (no logarithmic derivation required). Which conditions or conserved quantities matter?"
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Write two candidate explanations or representations, check their assumptions, and leave the final comparison or inference for your own answer."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "Reject. pH increasing indicates reduced acidity, not necessarily chemical consumption. Check known added species, total acid amount, controls and titration if appropriate.",
+          "rubric": [
+            "Name the correct chemical entities, model conditions and conservation basis.",
+            "Show the nontrivial scientific link rather than simply state an answer.",
+            "Provide an independent observation, counterexample, check or boundary."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "What chemical species, states, data or structures are provided?",
+            "why_this_ask": "Prevent a formula or indicator becoming an unsupported claim.",
+            "model_response": "Extract the precise givens and distinguish observed data from inferred species."
+          },
+          {
+            "ask": "Which chemical principle or model is justified by the stated conditions?",
+            "why_this_ask": "Require an explicit warrant before applying a learned rule.",
+            "model_response": "Select the model whose assumptions match the data; reject alternatives not supported by evidence."
+          },
+          {
+            "ask": "How does the model yield the conclusion, and what independent check is possible?",
+            "why_this_ask": "Close the original decisive inference and verify it independently.",
+            "model_response": "Reject. pH increasing indicates reduced acidity, not necessarily chemical consumption. Check known added species, total acid amount, controls and titration if appropriate."
+          }
+        ],
+        "full_reconstruction": "Reject. pH increasing indicates reduced acidity, not necessarily chemical consumption. Check known added species, total acid amount, controls and titration if appropriate."
+      },
+      "diagnose": {
+        "wrong_idea": "A higher pH always means fewer total acid molecules because they reacted.",
+        "diagnostic_prompt": "Suppose a learner argues 'A higher pH always means fewer total acid molecules because they reacted.' What stated condition or experiment can discriminate that error from the correct reasoning?",
+        "model_response": "This is an invalid generalisation. Reject. pH increasing indicates reduced acidity, not necessarily chemical consumption. Check known added species, total acid amount, controls and titration if appropriate."
+      },
+      "repair": {
+        "action": "Compare the before/after molar amount and distinguish concentration from total amount.",
+        "explanation": "Rebuild the species/observation ledger, state the valid domain, and revise the original claim.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C09.core1a.md (section CHEM-C09.03)"
+      },
+      "boundary_test": {
+        "prompt": "If a base is actually added instead of pure water, what new evidence would distinguish chemical reaction from mere dilution?",
+        "answer": "Measure or establish the added reactant's identity and a neutralisation stoichiometry; pH trend alone remains insufficient.",
+        "confirms": "A changed condition or counterexample, not verbatim recall of the original task."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D4",
+        "adjudication": "NOT_RUN",
+        "score_components": "NOT_SCORED_INDEPENDENTLY",
+        "note": "Band is hypothesis from Agent A plan and B adapter. Do not promote without exact-task five-factor review."
+      }
+    },
+    {
+      "cycle_id": "CORE1B-C09-04-1",
+      "subtopic_ref": "CHEM-C09.04",
+      "concept_ref": "CHEM-C09.04-CONCEPT",
+      "operation": "EXPLAIN",
+      "qrt_instance_ref": "C09-04-EXPLAIN-D3",
+      "qrt_template_ref": "QRT-EXPLAIN-D3",
+      "scope": "CORE_CANDIDATE",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Before computing, predict whether the simplest familiar rule is sufficient for the following case: Both NaHCO3 and Na2CO3 contain sodium and carbonate-related species. Explain why they are different substances with different thermal and acid reactions.",
+        "defensible_answer": "A prediction must identify the relevant condition, possible exception and what is not yet known. The specific model outcome is resolved only after the attempt."
+      },
+      "attempt": {
+        "prompt": "Both NaHCO3 and Na2CO3 contain sodium and carbonate-related species. Explain why they are different substances with different thermal and acid reactions.",
+        "produces": "A reasoned written scientific claim with species/conditions/diagram or calculation, the decisive inference, and an independent check.",
+        "protected_W": "The learner independently completes the causal bridge, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Name the observed data, species and precise claim. What is given, and what remains unknown?"
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Recall the relevant science of Common salts: soda, bleaching powder and plaster of Paris. Which conditions or conserved quantities matter?"
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Write two candidate explanations or representations, check their assumptions, and leave the final comparison or inference for your own answer."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "The anions HCO3− and CO3²− differ in composition/charge, giving different stoichiometry and conditions. Baking soda NaHCO3 can decompose on heating; washing soda is Na2CO3·10H2O.",
+          "rubric": [
+            "Name the correct chemical entities, model conditions and conservation basis.",
+            "Show the nontrivial scientific link rather than simply state an answer.",
+            "Provide an independent observation, counterexample, check or boundary."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "What chemical species, states, data or structures are provided?",
+            "why_this_ask": "Prevent a formula or indicator becoming an unsupported claim.",
+            "model_response": "Extract the precise givens and distinguish observed data from inferred species."
+          },
+          {
+            "ask": "Which chemical principle or model is justified by the stated conditions?",
+            "why_this_ask": "Require an explicit warrant before applying a learned rule.",
+            "model_response": "Select the model whose assumptions match the data; reject alternatives not supported by evidence."
+          },
+          {
+            "ask": "How does the model yield the conclusion, and what independent check is possible?",
+            "why_this_ask": "Close the original decisive inference and verify it independently.",
+            "model_response": "The anions HCO3− and CO3²− differ in composition/charge, giving different stoichiometry and conditions. Baking soda NaHCO3 can decompose on heating; washing soda is Na2CO3·10H2O."
+          }
+        ],
+        "full_reconstruction": "The anions HCO3− and CO3²− differ in composition/charge, giving different stoichiometry and conditions. Baking soda NaHCO3 can decompose on heating; washing soda is Na2CO3·10H2O."
+      },
+      "diagnose": {
+        "wrong_idea": "Any sodium carbonate-containing powder is identical.",
+        "diagnostic_prompt": "Suppose a learner argues 'Any sodium carbonate-containing powder is identical.' What stated condition or experiment can discriminate that error from the correct reasoning?",
+        "model_response": "This is an invalid generalisation. The anions HCO3− and CO3²− differ in composition/charge, giving different stoichiometry and conditions. Baking soda NaHCO3 can decompose on heating; washing soda is Na2CO3·10H2O."
+      },
+      "repair": {
+        "action": "Write each formula, decompose ion identity and check net charge.",
+        "explanation": "Rebuild the species/observation ledger, state the valid domain, and revise the original claim.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C09.core1a.md (section CHEM-C09.04)"
+      },
+      "boundary_test": {
+        "prompt": "Could a sample of washing soda lose mass when heated even without producing a new sodium salt?",
+        "answer": "Yes: it can lose hydration water, changing hydrate state rather than creating a different basic anion.",
+        "confirms": "A changed condition or counterexample, not verbatim recall of the original task."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D3",
+        "adjudication": "NOT_RUN",
+        "score_components": "NOT_SCORED_INDEPENDENTLY",
+        "note": "Band is hypothesis from Agent A plan and B adapter. Do not promote without exact-task five-factor review."
+      }
+    },
+    {
+      "cycle_id": "CORE1B-C09-04-2",
+      "subtopic_ref": "CHEM-C09.04",
+      "concept_ref": "CHEM-C09.04-CONCEPT",
+      "operation": "MODEL",
+      "qrt_instance_ref": "C09-04-MODEL-D3",
+      "qrt_template_ref": "QRT-MODEL-D3",
+      "scope": "CORE_CANDIDATE",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Before computing, predict whether the simplest familiar rule is sufficient for the following case: The formulas for gypsum and Plaster of Paris are CaSO4·2H2O and CaSO4·1/2H2O. Model a balanced dehydration across two sulfate units.",
+        "defensible_answer": "A prediction must identify the relevant condition, possible exception and what is not yet known. The specific model outcome is resolved only after the attempt."
+      },
+      "attempt": {
+        "prompt": "The formulas for gypsum and Plaster of Paris are CaSO4·2H2O and CaSO4·1/2H2O. Model a balanced dehydration across two sulfate units.",
+        "produces": "A reasoned written scientific claim with species/conditions/diagram or calculation, the decisive inference, and an independent check.",
+        "protected_W": "The learner independently completes the warranted model choice, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Name the observed data, species and precise claim. What is given, and what remains unknown?"
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Recall the relevant science of Common salts: soda, bleaching powder and plaster of Paris. Which conditions or conserved quantities matter?"
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Write two candidate explanations or representations, check their assumptions, and leave the final comparison or inference for your own answer."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "2(CaSO4·2H2O) → 2(CaSO4·1/2H2O) + 3H2O. There are four hydrate-water units initially, one in the two hemihydrate products and three released.",
+          "rubric": [
+            "Name the correct chemical entities, model conditions and conservation basis.",
+            "Show the nontrivial scientific link rather than simply state an answer.",
+            "Provide an independent observation, counterexample, check or boundary."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "What chemical species, states, data or structures are provided?",
+            "why_this_ask": "Prevent a formula or indicator becoming an unsupported claim.",
+            "model_response": "Extract the precise givens and distinguish observed data from inferred species."
+          },
+          {
+            "ask": "Which chemical principle or model is justified by the stated conditions?",
+            "why_this_ask": "Require an explicit warrant before applying a learned rule.",
+            "model_response": "Select the model whose assumptions match the data; reject alternatives not supported by evidence."
+          },
+          {
+            "ask": "How does the model yield the conclusion, and what independent check is possible?",
+            "why_this_ask": "Close the original decisive inference and verify it independently.",
+            "model_response": "2(CaSO4·2H2O) → 2(CaSO4·1/2H2O) + 3H2O. There are four hydrate-water units initially, one in the two hemihydrate products and three released."
+          }
+        ],
+        "full_reconstruction": "2(CaSO4·2H2O) → 2(CaSO4·1/2H2O) + 3H2O. There are four hydrate-water units initially, one in the two hemihydrate products and three released."
+      },
+      "diagnose": {
+        "wrong_idea": "The 1/2 means an impossible free half-water molecule must leave.",
+        "diagnostic_prompt": "Suppose a learner argues 'The 1/2 means an impossible free half-water molecule must leave.' What stated condition or experiment can discriminate that error from the correct reasoning?",
+        "model_response": "This is an invalid generalisation. 2(CaSO4·2H2O) → 2(CaSO4·1/2H2O) + 3H2O. There are four hydrate-water units initially, one in the two hemihydrate products and three released."
+      },
+      "repair": {
+        "action": "Multiply the formula unit count until all hydration coefficients are whole in the reaction.",
+        "explanation": "Rebuild the species/observation ledger, state the valid domain, and revise the original claim.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C09.core1a.md (section CHEM-C09.04)"
+      },
+      "boundary_test": {
+        "prompt": "In the reverse setting reaction, how many water units must be incorporated per two CaSO4 hemihydrate formula units?",
+        "answer": "Three water molecules per two hemihydrate formula units, in the idealised stoichiometric representation.",
+        "confirms": "A changed condition or counterexample, not verbatim recall of the original task."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D3",
+        "adjudication": "NOT_RUN",
+        "score_components": "NOT_SCORED_INDEPENDENTLY",
+        "note": "Band is hypothesis from Agent A plan and B adapter. Do not promote without exact-task five-factor review."
+      }
+    },
+    {
+      "cycle_id": "CORE1B-C09-04-3",
+      "subtopic_ref": "CHEM-C09.04",
+      "concept_ref": "CHEM-C09.04-CONCEPT",
+      "operation": "JUSTIFY",
+      "qrt_instance_ref": "C09-04-JUSTIFY-D4",
+      "qrt_template_ref": "QRT-JUSTIFY-D4",
+      "scope": "CORE_CANDIDATE",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Before computing, predict whether the simplest familiar rule is sufficient for the following case: A white solid fizzes with dilute acid. A student says this proves the solid is sodium hydrogen carbonate. Is the evidence unique?",
+        "defensible_answer": "A prediction must identify the relevant condition, possible exception and what is not yet known. The specific model outcome is resolved only after the attempt."
+      },
+      "attempt": {
+        "prompt": "A white solid fizzes with dilute acid. A student says this proves the solid is sodium hydrogen carbonate. Is the evidence unique?",
+        "produces": "A reasoned written scientific claim with species/conditions/diagram or calculation, the decisive inference, and an independent check.",
+        "protected_W": "The learner independently completes the decisive warrant or failing boundary, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Name the observed data, species and precise claim. What is given, and what remains unknown?"
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Recall the relevant science of Common salts: soda, bleaching powder and plaster of Paris. Which conditions or conserved quantities matter?"
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Write two candidate explanations or representations, check their assumptions, and leave the final comparison or inference for your own answer."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "No. Carbonates and hydrogen carbonates both generate CO2 with suitable acids. More identification evidence is needed, including tests for cations and the relevant anion distinction.",
+          "rubric": [
+            "Name the correct chemical entities, model conditions and conservation basis.",
+            "Show the nontrivial scientific link rather than simply state an answer.",
+            "Provide an independent observation, counterexample, check or boundary."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "What chemical species, states, data or structures are provided?",
+            "why_this_ask": "Prevent a formula or indicator becoming an unsupported claim.",
+            "model_response": "Extract the precise givens and distinguish observed data from inferred species."
+          },
+          {
+            "ask": "Which chemical principle or model is justified by the stated conditions?",
+            "why_this_ask": "Require an explicit warrant before applying a learned rule.",
+            "model_response": "Select the model whose assumptions match the data; reject alternatives not supported by evidence."
+          },
+          {
+            "ask": "How does the model yield the conclusion, and what independent check is possible?",
+            "why_this_ask": "Close the original decisive inference and verify it independently.",
+            "model_response": "No. Carbonates and hydrogen carbonates both generate CO2 with suitable acids. More identification evidence is needed, including tests for cations and the relevant anion distinction."
+          }
+        ],
+        "full_reconstruction": "No. Carbonates and hydrogen carbonates both generate CO2 with suitable acids. More identification evidence is needed, including tests for cations and the relevant anion distinction."
+      },
+      "diagnose": {
+        "wrong_idea": "One observed gas uniquely identifies a solid reagent.",
+        "diagnostic_prompt": "Suppose a learner argues 'One observed gas uniquely identifies a solid reagent.' What stated condition or experiment can discriminate that error from the correct reasoning?",
+        "model_response": "This is an invalid generalisation. No. Carbonates and hydrogen carbonates both generate CO2 with suitable acids. More identification evidence is needed, including tests for cations and the relevant anion distinction."
+      },
+      "repair": {
+        "action": "List at least two distinct candidate solids compatible with the same observation.",
+        "explanation": "Rebuild the species/observation ledger, state the valid domain, and revise the original claim.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C09.core1a.md (section CHEM-C09.04)"
+      },
+      "boundary_test": {
+        "prompt": "Would an acid reaction alone distinguish CaCO3 from NaHCO3 if both liberate CO2?",
+        "answer": "No. Both can give CO2; distinguish the cation and other properties.",
+        "confirms": "A changed condition or counterexample, not verbatim recall of the original task."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D4",
+        "adjudication": "NOT_RUN",
+        "score_components": "NOT_SCORED_INDEPENDENTLY",
+        "note": "Band is hypothesis from Agent A plan and B adapter. Do not promote without exact-task five-factor review."
+      }
+    },
+    {
+      "cycle_id": "CORE1B-C09-05-1",
+      "subtopic_ref": "CHEM-C09.05",
+      "concept_ref": "CHEM-C09.05-CONCEPT",
+      "operation": "EXPLAIN",
+      "qrt_instance_ref": "C09-05-EXPLAIN-D3",
+      "qrt_template_ref": "QRT-EXPLAIN-D3",
+      "scope": "CORE_CANDIDATE",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Before computing, predict whether the simplest familiar rule is sufficient for the following case: Zinc and calcium carbonate each effervesce with dilute HCl. Explain why the gas products differ and how to test the models.",
+        "defensible_answer": "A prediction must identify the relevant condition, possible exception and what is not yet known. The specific model outcome is resolved only after the attempt."
+      },
+      "attempt": {
+        "prompt": "Zinc and calcium carbonate each effervesce with dilute HCl. Explain why the gas products differ and how to test the models.",
+        "produces": "A reasoned written scientific claim with species/conditions/diagram or calculation, the decisive inference, and an independent check.",
+        "protected_W": "The learner independently completes the causal bridge, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Name the observed data, species and precise claim. What is given, and what remains unknown?"
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Recall the relevant science of Acid reactions with metals and carbonates. Which conditions or conserved quantities matter?"
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Write two candidate explanations or representations, check their assumptions, and leave the final comparison or inference for your own answer."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "Zn + 2HCl gives ZnCl2 + H2 for suitable reactive metal/dilute nonoxidising acid; CaCO3 + 2HCl gives CaCl2 + H2O + CO2. Hydrogen and carbon dioxide need distinct supervised confirming tests.",
+          "rubric": [
+            "Name the correct chemical entities, model conditions and conservation basis.",
+            "Show the nontrivial scientific link rather than simply state an answer.",
+            "Provide an independent observation, counterexample, check or boundary."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "What chemical species, states, data or structures are provided?",
+            "why_this_ask": "Prevent a formula or indicator becoming an unsupported claim.",
+            "model_response": "Extract the precise givens and distinguish observed data from inferred species."
+          },
+          {
+            "ask": "Which chemical principle or model is justified by the stated conditions?",
+            "why_this_ask": "Require an explicit warrant before applying a learned rule.",
+            "model_response": "Select the model whose assumptions match the data; reject alternatives not supported by evidence."
+          },
+          {
+            "ask": "How does the model yield the conclusion, and what independent check is possible?",
+            "why_this_ask": "Close the original decisive inference and verify it independently.",
+            "model_response": "Zn + 2HCl gives ZnCl2 + H2 for suitable reactive metal/dilute nonoxidising acid; CaCO3 + 2HCl gives CaCl2 + H2O + CO2. Hydrogen and carbon dioxide need distinct supervised confirming tests."
+          }
+        ],
+        "full_reconstruction": "Zn + 2HCl gives ZnCl2 + H2 for suitable reactive metal/dilute nonoxidising acid; CaCO3 + 2HCl gives CaCl2 + H2O + CO2. Hydrogen and carbon dioxide need distinct supervised confirming tests."
+      },
+      "diagnose": {
+        "wrong_idea": "All acid-related bubbling is hydrogen.",
+        "diagnostic_prompt": "Suppose a learner argues 'All acid-related bubbling is hydrogen.' What stated condition or experiment can discriminate that error from the correct reasoning?",
+        "model_response": "This is an invalid generalisation. Zn + 2HCl gives ZnCl2 + H2 for suitable reactive metal/dilute nonoxidising acid; CaCO3 + 2HCl gives CaCl2 + H2O + CO2. Hydrogen and carbon dioxide need distinct supervised confirming tests."
+      },
+      "repair": {
+        "action": "Write both balanced equations and check Zn, Ca, C, H, O, Cl counts.",
+        "explanation": "Rebuild the species/observation ledger, state the valid domain, and revise the original claim.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C09.core1a.md (section CHEM-C09.05)"
+      },
+      "boundary_test": {
+        "prompt": "If a carbonate sample has already partly reacted, does reduced bubbling alone prove a different gas?",
+        "answer": "No. Gas generation rate/amount depends on available reagent, area and conditions, not necessarily gas identity.",
+        "confirms": "A changed condition or counterexample, not verbatim recall of the original task."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D3",
+        "adjudication": "NOT_RUN",
+        "score_components": "NOT_SCORED_INDEPENDENTLY",
+        "note": "Band is hypothesis from Agent A plan and B adapter. Do not promote without exact-task five-factor review."
+      }
+    },
+    {
+      "cycle_id": "CORE1B-C09-05-2",
+      "subtopic_ref": "CHEM-C09.05",
+      "concept_ref": "CHEM-C09.05-CONCEPT",
+      "operation": "MODEL",
+      "qrt_instance_ref": "C09-05-MODEL-D3",
+      "qrt_template_ref": "QRT-MODEL-D3",
+      "scope": "CORE_CANDIDATE",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Before computing, predict whether the simplest familiar rule is sufficient for the following case: Two unknown samples effervesce with acid; gas A clouds limewater, gas B does not. Choose the better gas-type hypothesis without assuming B is definitely hydrogen.",
+        "defensible_answer": "A prediction must identify the relevant condition, possible exception and what is not yet known. The specific model outcome is resolved only after the attempt."
+      },
+      "attempt": {
+        "prompt": "Two unknown samples effervesce with acid; gas A clouds limewater, gas B does not. Choose the better gas-type hypothesis without assuming B is definitely hydrogen.",
+        "produces": "A reasoned written scientific claim with species/conditions/diagram or calculation, the decisive inference, and an independent check.",
+        "protected_W": "The learner independently completes the warranted model choice, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Name the observed data, species and precise claim. What is given, and what remains unknown?"
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Recall the relevant science of Acid reactions with metals and carbonates. Which conditions or conserved quantities matter?"
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Write two candidate explanations or representations, check their assumptions, and leave the final comparison or inference for your own answer."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "A is consistent with CO2 under the limewater test. B is not thereby identified: lack of cloudiness alone does not uniquely prove hydrogen; an appropriate independent confirmation is required.",
+          "rubric": [
+            "Name the correct chemical entities, model conditions and conservation basis.",
+            "Show the nontrivial scientific link rather than simply state an answer.",
+            "Provide an independent observation, counterexample, check or boundary."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "What chemical species, states, data or structures are provided?",
+            "why_this_ask": "Prevent a formula or indicator becoming an unsupported claim.",
+            "model_response": "Extract the precise givens and distinguish observed data from inferred species."
+          },
+          {
+            "ask": "Which chemical principle or model is justified by the stated conditions?",
+            "why_this_ask": "Require an explicit warrant before applying a learned rule.",
+            "model_response": "Select the model whose assumptions match the data; reject alternatives not supported by evidence."
+          },
+          {
+            "ask": "How does the model yield the conclusion, and what independent check is possible?",
+            "why_this_ask": "Close the original decisive inference and verify it independently.",
+            "model_response": "A is consistent with CO2 under the limewater test. B is not thereby identified: lack of cloudiness alone does not uniquely prove hydrogen; an appropriate independent confirmation is required."
+          }
+        ],
+        "full_reconstruction": "A is consistent with CO2 under the limewater test. B is not thereby identified: lack of cloudiness alone does not uniquely prove hydrogen; an appropriate independent confirmation is required."
+      },
+      "diagnose": {
+        "wrong_idea": "If one gas is CO2, the other must be H2.",
+        "diagnostic_prompt": "Suppose a learner argues 'If one gas is CO2, the other must be H2.' What stated condition or experiment can discriminate that error from the correct reasoning?",
+        "model_response": "This is an invalid generalisation. A is consistent with CO2 under the limewater test. B is not thereby identified: lack of cloudiness alone does not uniquely prove hydrogen; an appropriate independent confirmation is required."
+      },
+      "repair": {
+        "action": "Draw alternative candidate-gas tree and propose an independent discriminator.",
+        "explanation": "Rebuild the species/observation ledger, state the valid domain, and revise the original claim.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C09.core1a.md (section CHEM-C09.05)"
+      },
+      "boundary_test": {
+        "prompt": "If an excessive flow of CO2 later clears the limewater, does that disprove the initial CO2 identification?",
+        "answer": "No. Soluble hydrogen carbonate can form under excess CO2, making the observation time-dependent.",
+        "confirms": "A changed condition or counterexample, not verbatim recall of the original task."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D3",
+        "adjudication": "NOT_RUN",
+        "score_components": "NOT_SCORED_INDEPENDENTLY",
+        "note": "Band is hypothesis from Agent A plan and B adapter. Do not promote without exact-task five-factor review."
+      }
+    },
+    {
+      "cycle_id": "CORE1B-C09-05-3",
+      "subtopic_ref": "CHEM-C09.05",
+      "concept_ref": "CHEM-C09.05-CONCEPT",
+      "operation": "JUSTIFY",
+      "qrt_instance_ref": "C09-05-JUSTIFY-D4",
+      "qrt_template_ref": "QRT-JUSTIFY-D4",
+      "scope": "CORE_CANDIDATE",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Before computing, predict whether the simplest familiar rule is sufficient for the following case: A student writes 'every metal + every acid produces H2'. Find a defensible counterexample and explain why the universal claim fails.",
+        "defensible_answer": "A prediction must identify the relevant condition, possible exception and what is not yet known. The specific model outcome is resolved only after the attempt."
+      },
+      "attempt": {
+        "prompt": "A student writes 'every metal + every acid produces H2'. Find a defensible counterexample and explain why the universal claim fails.",
+        "produces": "A reasoned written scientific claim with species/conditions/diagram or calculation, the decisive inference, and an independent check.",
+        "protected_W": "The learner independently completes the decisive warrant or failing boundary, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Name the observed data, species and precise claim. What is given, and what remains unknown?"
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Recall the relevant science of Acid reactions with metals and carbonates. Which conditions or conserved quantities matter?"
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Write two candidate explanations or representations, check their assumptions, and leave the final comparison or inference for your own answer."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "Copper does not ordinarily liberate H2 with dilute HCl. Oxidising acids such as HNO3 may react through other pathways; acid type, metal reactivity and conditions must be specified.",
+          "rubric": [
+            "Name the correct chemical entities, model conditions and conservation basis.",
+            "Show the nontrivial scientific link rather than simply state an answer.",
+            "Provide an independent observation, counterexample, check or boundary."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "What chemical species, states, data or structures are provided?",
+            "why_this_ask": "Prevent a formula or indicator becoming an unsupported claim.",
+            "model_response": "Extract the precise givens and distinguish observed data from inferred species."
+          },
+          {
+            "ask": "Which chemical principle or model is justified by the stated conditions?",
+            "why_this_ask": "Require an explicit warrant before applying a learned rule.",
+            "model_response": "Select the model whose assumptions match the data; reject alternatives not supported by evidence."
+          },
+          {
+            "ask": "How does the model yield the conclusion, and what independent check is possible?",
+            "why_this_ask": "Close the original decisive inference and verify it independently.",
+            "model_response": "Copper does not ordinarily liberate H2 with dilute HCl. Oxidising acids such as HNO3 may react through other pathways; acid type, metal reactivity and conditions must be specified."
+          }
+        ],
+        "full_reconstruction": "Copper does not ordinarily liberate H2 with dilute HCl. Oxidising acids such as HNO3 may react through other pathways; acid type, metal reactivity and conditions must be specified."
+      },
+      "diagnose": {
+        "wrong_idea": "The word 'metal' alone is sufficient to predict hydrogen.",
+        "diagnostic_prompt": "Suppose a learner argues 'The word 'metal' alone is sufficient to predict hydrogen.' What stated condition or experiment can discriminate that error from the correct reasoning?",
+        "model_response": "This is an invalid generalisation. Copper does not ordinarily liberate H2 with dilute HCl. Oxidising acids such as HNO3 may react through other pathways; acid type, metal reactivity and conditions must be specified."
+      },
+      "repair": {
+        "action": "State reagent identity and reaction conditions before applying a conditional rule.",
+        "explanation": "Rebuild the species/observation ledger, state the valid domain, and revise the original claim.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C09.core1a.md (section CHEM-C09.05)"
+      },
+      "boundary_test": {
+        "prompt": "If zinc reacts with dilute HCl, does that single success prove H2 is formed for all metals?",
+        "answer": "No. One confirming instance cannot establish a universal claim.",
+        "confirms": "A changed condition or counterexample, not verbatim recall of the original task."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D4",
+        "adjudication": "NOT_RUN",
+        "score_components": "NOT_SCORED_INDEPENDENTLY",
+        "note": "Band is hypothesis from Agent A plan and B adapter. Do not promote without exact-task five-factor review."
+      }
+    },
+    {
+      "cycle_id": "CORE1B-C09-06-1",
+      "subtopic_ref": "CHEM-C09.06",
+      "concept_ref": "CHEM-C09.06-CONCEPT",
+      "operation": "EXPLAIN",
+      "qrt_instance_ref": "C09-06-EXPLAIN-D3",
+      "qrt_template_ref": "QRT-EXPLAIN-D3",
+      "scope": "EXTENSION",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Before computing, predict whether the simplest familiar rule is sufficient for the following case: Compare H3PO2 and H3PO4. Explain why counting total H atoms does not give both acids the same structural basicity.",
+        "defensible_answer": "A prediction must identify the relevant condition, possible exception and what is not yet known. The specific model outcome is resolved only after the attempt."
+      },
+      "attempt": {
+        "prompt": "Compare H3PO2 and H3PO4. Explain why counting total H atoms does not give both acids the same structural basicity.",
+        "produces": "A reasoned written scientific claim with species/conditions/diagram or calculation, the decisive inference, and an independent check.",
+        "protected_W": "The learner independently completes the causal bridge, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Name the observed data, species and precise claim. What is given, and what remains unknown?"
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Recall the relevant science of Polyprotic acids and phosphorus oxyacid structures (extension). Which conditions or conserved quantities matter?"
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Write two candidate explanations or representations, check their assumptions, and leave the final comparison or inference for your own answer."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "H3PO2 has one P–OH group and two P–H bonds, so is monobasic in the structural school extension; H3PO4 has three P–OH groups, so is tribasic. Proton count depends on O–H connectivity.",
+          "rubric": [
+            "Name the correct chemical entities, model conditions and conservation basis.",
+            "Show the nontrivial scientific link rather than simply state an answer.",
+            "Provide an independent observation, counterexample, check or boundary."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "What chemical species, states, data or structures are provided?",
+            "why_this_ask": "Prevent a formula or indicator becoming an unsupported claim.",
+            "model_response": "Extract the precise givens and distinguish observed data from inferred species."
+          },
+          {
+            "ask": "Which chemical principle or model is justified by the stated conditions?",
+            "why_this_ask": "Require an explicit warrant before applying a learned rule.",
+            "model_response": "Select the model whose assumptions match the data; reject alternatives not supported by evidence."
+          },
+          {
+            "ask": "How does the model yield the conclusion, and what independent check is possible?",
+            "why_this_ask": "Close the original decisive inference and verify it independently.",
+            "model_response": "H3PO2 has one P–OH group and two P–H bonds, so is monobasic in the structural school extension; H3PO4 has three P–OH groups, so is tribasic. Proton count depends on O–H connectivity."
+          }
+        ],
+        "full_reconstruction": "H3PO2 has one P–OH group and two P–H bonds, so is monobasic in the structural school extension; H3PO4 has three P–OH groups, so is tribasic. Proton count depends on O–H connectivity."
+      },
+      "diagnose": {
+        "wrong_idea": "Every hydrogen atom in an acid formula is acid-ionisable.",
+        "diagnostic_prompt": "Suppose a learner argues 'Every hydrogen atom in an acid formula is acid-ionisable.' What stated condition or experiment can discriminate that error from the correct reasoning?",
+        "model_response": "This is an invalid generalisation. H3PO2 has one P–OH group and two P–H bonds, so is monobasic in the structural school extension; H3PO4 has three P–OH groups, so is tribasic. Proton count depends on O–H connectivity."
+      },
+      "repair": {
+        "action": "Draw P–OH and P–H bonds explicitly, then count each class separately.",
+        "explanation": "Rebuild the species/observation ledger, state the valid domain, and revise the original claim.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C09.core1a.md (section CHEM-C09.06)"
+      },
+      "boundary_test": {
+        "prompt": "What is H3PO3 basicity under the same rule?",
+        "answer": "Dibasic, because its structure has two P–OH bonds and one P–H bond.",
+        "confirms": "A changed condition or counterexample, not verbatim recall of the original task."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D3",
+        "adjudication": "NOT_RUN",
+        "score_components": "NOT_SCORED_INDEPENDENTLY",
+        "note": "Band is hypothesis from Agent A plan and B adapter. Do not promote without exact-task five-factor review."
+      }
+    },
+    {
+      "cycle_id": "CORE1B-C09-06-2",
+      "subtopic_ref": "CHEM-C09.06",
+      "concept_ref": "CHEM-C09.06-CONCEPT",
+      "operation": "MODEL",
+      "qrt_instance_ref": "C09-06-MODEL-D3",
+      "qrt_template_ref": "QRT-MODEL-D3",
+      "scope": "EXTENSION",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Before computing, predict whether the simplest familiar rule is sufficient for the following case: Given hypothetical structural sketches with one, two and three P–OH groups, model which correspond to H3PO2, H3PO3 and H3PO4, checking all atom counts.",
+        "defensible_answer": "A prediction must identify the relevant condition, possible exception and what is not yet known. The specific model outcome is resolved only after the attempt."
+      },
+      "attempt": {
+        "prompt": "Given hypothetical structural sketches with one, two and three P–OH groups, model which correspond to H3PO2, H3PO3 and H3PO4, checking all atom counts.",
+        "produces": "A reasoned written scientific claim with species/conditions/diagram or calculation, the decisive inference, and an independent check.",
+        "protected_W": "The learner independently completes the warranted model choice, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Name the observed data, species and precise claim. What is given, and what remains unknown?"
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Recall the relevant science of Polyprotic acids and phosphorus oxyacid structures (extension). Which conditions or conserved quantities matter?"
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Write two candidate explanations or representations, check their assumptions, and leave the final comparison or inference for your own answer."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "The connectivity models are H2P(=O)OH, HP(=O)(OH)2 and P(=O)(OH)3. Their P–OH counts give basicity 1,2,3 respectively. Count total H separately.",
+          "rubric": [
+            "Name the correct chemical entities, model conditions and conservation basis.",
+            "Show the nontrivial scientific link rather than simply state an answer.",
+            "Provide an independent observation, counterexample, check or boundary."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "What chemical species, states, data or structures are provided?",
+            "why_this_ask": "Prevent a formula or indicator becoming an unsupported claim.",
+            "model_response": "Extract the precise givens and distinguish observed data from inferred species."
+          },
+          {
+            "ask": "Which chemical principle or model is justified by the stated conditions?",
+            "why_this_ask": "Require an explicit warrant before applying a learned rule.",
+            "model_response": "Select the model whose assumptions match the data; reject alternatives not supported by evidence."
+          },
+          {
+            "ask": "How does the model yield the conclusion, and what independent check is possible?",
+            "why_this_ask": "Close the original decisive inference and verify it independently.",
+            "model_response": "The connectivity models are H2P(=O)OH, HP(=O)(OH)2 and P(=O)(OH)3. Their P–OH counts give basicity 1,2,3 respectively. Count total H separately."
+          }
+        ],
+        "full_reconstruction": "The connectivity models are H2P(=O)OH, HP(=O)(OH)2 and P(=O)(OH)3. Their P–OH counts give basicity 1,2,3 respectively. Count total H separately."
+      },
+      "diagnose": {
+        "wrong_idea": "The same total H3 allows identical structural O–H arrangements.",
+        "diagnostic_prompt": "Suppose a learner argues 'The same total H3 allows identical structural O–H arrangements.' What stated condition or experiment can discriminate that error from the correct reasoning?",
+        "model_response": "This is an invalid generalisation. The connectivity models are H2P(=O)OH, HP(=O)(OH)2 and P(=O)(OH)3. Their P–OH counts give basicity 1,2,3 respectively. Count total H separately."
+      },
+      "repair": {
+        "action": "Explicitly separate formula H-count from the oxygen-linked H-count.",
+        "explanation": "Rebuild the species/observation ledger, state the valid domain, and revise the original claim.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C09.core1a.md (section CHEM-C09.06)"
+      },
+      "boundary_test": {
+        "prompt": "If one P–H bond were incorrectly drawn as P–OH without changing oxygen inventory, what fails?",
+        "answer": "The atom/bond connectivity and oxygen count would become inconsistent; check the formula, not just the ionisation claim.",
+        "confirms": "A changed condition or counterexample, not verbatim recall of the original task."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D3",
+        "adjudication": "NOT_RUN",
+        "score_components": "NOT_SCORED_INDEPENDENTLY",
+        "note": "Band is hypothesis from Agent A plan and B adapter. Do not promote without exact-task five-factor review."
+      }
+    },
+    {
+      "cycle_id": "CORE1B-C09-06-3",
+      "subtopic_ref": "CHEM-C09.06",
+      "concept_ref": "CHEM-C09.06-CONCEPT",
+      "operation": "JUSTIFY",
+      "qrt_instance_ref": "C09-06-JUSTIFY-D4",
+      "qrt_template_ref": "QRT-JUSTIFY-D4",
+      "scope": "EXTENSION",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "predict": {
+        "prompt": "Before computing, predict whether the simplest familiar rule is sufficient for the following case: A proposed rule states: 'All three-hydrogen phosphorus oxyacids are tribasic and none can be reducing.' Evaluate both claims using structural evidence.",
+        "defensible_answer": "A prediction must identify the relevant condition, possible exception and what is not yet known. The specific model outcome is resolved only after the attempt."
+      },
+      "attempt": {
+        "prompt": "A proposed rule states: 'All three-hydrogen phosphorus oxyacids are tribasic and none can be reducing.' Evaluate both claims using structural evidence.",
+        "produces": "A reasoned written scientific claim with species/conditions/diagram or calculation, the decisive inference, and an independent check.",
+        "protected_W": "The learner independently completes the decisive warrant or failing boundary, not exposed before first attempt.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "verb": "CLARIFY",
+            "text": "Name the observed data, species and precise claim. What is given, and what remains unknown?"
+          },
+          {
+            "id": "H2",
+            "verb": "CORRELATE",
+            "text": "Recall the relevant science of Polyprotic acids and phosphorus oxyacid structures (extension). Which conditions or conserved quantities matter?"
+          },
+          {
+            "id": "H3",
+            "verb": "OPEN_THE_WAY",
+            "text": "Write two candidate explanations or representations, check their assumptions, and leave the final comparison or inference for your own answer."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "Both universal claims fail. Basicity follows P–OH count, which varies 1,2,3. P–H bonds in lower oxyacids are associated with reducing behaviour under appropriate reactions, a separate property from acid dissociation.",
+          "rubric": [
+            "Name the correct chemical entities, model conditions and conservation basis.",
+            "Show the nontrivial scientific link rather than simply state an answer.",
+            "Provide an independent observation, counterexample, check or boundary."
+          ]
+        }
+      },
+      "reconstruct": {
+        "asks": [
+          {
+            "ask": "What chemical species, states, data or structures are provided?",
+            "why_this_ask": "Prevent a formula or indicator becoming an unsupported claim.",
+            "model_response": "Extract the precise givens and distinguish observed data from inferred species."
+          },
+          {
+            "ask": "Which chemical principle or model is justified by the stated conditions?",
+            "why_this_ask": "Require an explicit warrant before applying a learned rule.",
+            "model_response": "Select the model whose assumptions match the data; reject alternatives not supported by evidence."
+          },
+          {
+            "ask": "How does the model yield the conclusion, and what independent check is possible?",
+            "why_this_ask": "Close the original decisive inference and verify it independently.",
+            "model_response": "Both universal claims fail. Basicity follows P–OH count, which varies 1,2,3. P–H bonds in lower oxyacids are associated with reducing behaviour under appropriate reactions, a separate property from acid dissociation."
+          }
+        ],
+        "full_reconstruction": "Both universal claims fail. Basicity follows P–OH count, which varies 1,2,3. P–H bonds in lower oxyacids are associated with reducing behaviour under appropriate reactions, a separate property from acid dissociation."
+      },
+      "diagnose": {
+        "wrong_idea": "One structural feature determines basicity and every redox property.",
+        "diagnostic_prompt": "Suppose a learner argues 'One structural feature determines basicity and every redox property.' What stated condition or experiment can discriminate that error from the correct reasoning?",
+        "model_response": "This is an invalid generalisation. Both universal claims fail. Basicity follows P–OH count, which varies 1,2,3. P–H bonds in lower oxyacids are associated with reducing behaviour under appropriate reactions, a separate property from acid dissociation."
+      },
+      "repair": {
+        "action": "Build two property columns, structural acidic O–H and possible reducing P–H, without conflating them.",
+        "explanation": "Rebuild the species/observation ledger, state the valid domain, and revise the original claim.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C09.core1a.md (section CHEM-C09.06)"
+      },
+      "boundary_test": {
+        "prompt": "Can the number of P–H bonds alone determine a numerical redox potential or reaction rate?",
+        "answer": "No. Those require specific redox species, medium and quantitative chemistry beyond simple bond-count statements.",
+        "confirms": "A changed condition or counterexample, not verbatim recall of the original task."
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "demand_author_evidence": {
+        "band": "D4",
+        "adjudication": "NOT_RUN",
+        "score_components": "NOT_SCORED_INDEPENDENTLY",
+        "note": "Band is hypothesis from Agent A plan and B adapter. Do not promote without exact-task five-factor review."
+      }
+    }
+  ],
+  "release": {
+    "scientific_review": "HOLD",
+    "source_exam_admission": "HOLD",
+    "qrt_adjudication": "HOLD",
+    "runtime_first_attempt_validation": "NOT_RUN",
+    "deployment": "NOT_AUTHORIZED"
+  }
+}
