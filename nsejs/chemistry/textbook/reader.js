@@ -101,8 +101,30 @@
     return digestHex("SHA-256",new TextEncoder().encode(canonical));
   }
   function storageRead(key){
-    try {const raw=localStorage.getItem(key);return {ok:true,value:raw?JSON.parse(raw):null};}
-    catch(e){return {ok:false,value:null};}
+    try{
+      const raw=localStorage.getItem(key);
+      if(raw===null)return {ok:true,value:null};
+      try{return {ok:true,value:JSON.parse(raw)};}
+      catch(e){return {ok:false,value:null,corrupt:true};}
+    }catch(e){return {ok:false,value:null,corrupt:false};}
+  }
+  function validAttemptRecord(record,task,revision){
+    if(!record||typeof record!=="object"||Array.isArray(record))return false;
+    const expectedRole=isSupplemental(task)?
+      "AUTHORED_TRANSFER_NOT_ORIGINAL_EXAM":"AUTHORED_PRACTICE";
+    const substantive=(value,length)=>typeof value==="string"&&
+      value.trim().length>=length&&value.length<=50000;
+    const levels=record.help_exposure;
+    if(record.id!==idOf(task)||record.revision!==revision||
+       record.source_role!==expectedRole||
+       !substantive(record.prediction,8)||!substantive(record.attempt,20)||
+       !Array.isArray(levels)||levels.length>3||
+       levels.some((v,i)=>v!==["H1","H2","H3"][i])||
+       record.learner_status!==(levels.length?"ASSISTED":"FIRST_ATTEMPT_UNAIDED")||
+       typeof record.recorded_at!=="string"||
+       !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/.test(record.recorded_at)||
+       !Number.isFinite(Date.parse(record.recorded_at)))return false;
+    return true;
   }
   function storageWrite(key,value){
     try {const raw=JSON.stringify(value);localStorage.setItem(key,raw);return localStorage.getItem(key)===raw;}
@@ -166,7 +188,8 @@
       seen.add(row.task_id);
       for(let i=0;i<3;i++){
         const s=row.stages[i];
-        if(s.id!=="S"+(i+1)||!["CLARIFY","CORRELATE","OPEN_THE_WAY"].includes(s.role)
+        if(s.id!=="S"+(i+1)||
+            s.role!==["CLARIFY","CORRELATE","OPEN_THE_WAY"][i]
            ||s.independent_status!=="UNREVIEWED"
            ||s.exposure!=="P00_SEQUENCED_OPTIONAL_PRE_ATTEMPT_HOLD"
            ||typeof s.git_blob!=="string"||!/^[a-f0-9]{40}$/.test(s.git_blob)
@@ -341,8 +364,23 @@
        ||/\bon[a-z]+\s*=/i.test(svg)
        ||/\b(?:href|xlink:href)\s*=/i.test(svg))throw new Error("UNSAFE_SVG_HOLD");
     const xml=new DOMParser().parseFromString(svg,"image/svg+xml");
-    if(xml.querySelector("parsererror")||xml.documentElement.localName!=="svg")
+    const SVG_NS="http://www.w3.org/2000/svg";
+    const forbidden=new Set(["script","foreignObject","iframe","image","a","use",
+      "animate","animateTransform","animateMotion","set","audio","video","object","embed"]);
+    if(xml.querySelector("parsererror")||xml.documentElement.localName!=="svg"||
+       xml.documentElement.namespaceURI!==SVG_NS)
       throw new Error("INVALID_SVG_HOLD");
+    for(const element of xml.getElementsByTagName("*")){
+      if(element.namespaceURI!==SVG_NS||forbidden.has(element.localName))
+        throw new Error("UNSAFE_SVG_ELEMENT_HOLD");
+      for(const attr of element.attributes){
+        const name=attr.localName.toLowerCase();
+        if(/^on[a-z]+/.test(name)||name==="href"||
+           attr.namespaceURI==="http://www.w3.org/1999/xlink"||
+           /url\s*\(|@import|javascript:|data:/i.test(attr.value))
+          throw new Error("UNSAFE_SVG_ATTRIBUTE_HOLD");
+      }
+    }
     const url=URL.createObjectURL(new Blob([bytes],{type:"image/svg+xml"}));
     objectUrls.push(url);
     return url;
@@ -380,8 +418,8 @@
         b.disabled=true;
         if(renderEpoch!==renderGeneration)return;
         const saved=storageRead(revisionKey("attempt",task));
-        if(!saved.ok||saved.value?.revision!==view.revision){
-          message("VISUAL_REVEAL_HELD · Commit a first response for the exact revision.");
+        if(!saved.ok||!validAttemptRecord(saved.value,task,view.revision)){
+          message("ATTEMPT_RECORD_HOLD · Visual requires a valid first attempt.");
           b.disabled=false;return;
         }
         try {
@@ -425,12 +463,27 @@
     const attemptKey=revisionKey("attempt",task);
     const savedResult=storageRead(attemptKey);
     if(!savedResult.ok){
-      block("Storage unavailable","First attempts cannot be certified; model answers and S1–S3 candidate "+
-        "visuals remain concealed. Enable local storage for this review-only self-tutor.");
-      message("STORAGE_UNAVAILABLE · Fail closed.");
+      if(savedResult.corrupt){
+        block("ATTEMPT_RECORD_HOLD — corrupted saved attempt",
+          "The saved first response is unreadable. It is preserved, not overwritten. "+
+          "Answers and visuals remain concealed pending review.");
+        message("ATTEMPT_RECORD_HOLD · Invalid JSON, no feedback released.");
+      }else{
+        block("Storage unavailable","First attempts cannot be certified; model answers and S1–S3 candidate "+
+          "visuals remain concealed. Enable local storage for this review-only self-tutor.");
+        message("STORAGE_UNAVAILABLE · Fail closed.");
+      }
       return;
     }
     const saved=savedResult.value;
+    if(saved!==null&&!validAttemptRecord(saved,task,revision)){
+      block("ATTEMPT_RECORD_HOLD — invalid saved attempt",
+        "The stored answer does not match the exact task, content revision, "+
+        "answer fields or help-exposure requirements. It is retained unchanged; "+
+        "model feedback and visuals remain concealed.");
+      message("ATTEMPT_RECORD_HOLD · Malformed saved answer cannot unlock feedback.");
+      return;
+    }
     const legacy=storageRead("g9chem:attempt:"+id);
     let previousV2=false;
     try{
@@ -562,7 +615,7 @@
           message("Write your changed-condition reasoning first.");return;
         }
         const original=storageRead(attemptKey);
-        if(!original.ok||original.value?.revision!==revision){
+        if(!original.ok||!validAttemptRecord(original.value,task,revision)){
           message("BOUNDARY_REVISION_HOLD · First attempt unavailable.");return;
         }
         if(!storageWrite(bKey,{revision,response:boundaryInput.value,
