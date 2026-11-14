@@ -1,0 +1,48 @@
+name: Chemistry C01-C14 unified learner navigation HTTP QA
+on:
+  pull_request:
+    paths:
+      - "nsejs/chemistry/**"
+      - "curriculum/chemistry/preview/**"
+      - "nsejs/core2/question-map.html"
+      - "chemistry/index.html"
+      - "tests/test_chemistry_unified_navigation.py"
+      - "tools/chemistry_navigation_browser_qa.py"
+      - ".github/workflows/chemistry-unified-navigation-browser.yml"
+  push:
+    branches:
+      - fix/nsejs-chemistry-c01-c14-unified-learner-navigation-r1
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  chemistry-navigation:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install Chromium and QA dependencies
+        run: |
+          python -m pip install "pytest>=8,<10" "playwright==1.55.0"
+          python -m playwright install --with-deps chromium
+      - name: Syntax-validate shared and both reader scripts
+        run: |
+          node --check nsejs/chemistry/learner-navigation.js
+          node --check curriculum/chemistry/preview/reader.js
+          node --check nsejs/chemistry/textbook/reader.js
+      - name: Verify exact 14/84 registry, links, source status and return contracts
+        run: python -m pytest -q tests/test_chemistry_unified_navigation.py
+      - name: Browser walkthrough of all subtopics at both 12.7-inch tablet orientations
+        run: python tools/chemistry_navigation_browser_qa.py
+      - name: Upload navigation screenshots and raw receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: chemistry-c01-c14-unified-navigation
+          path: review-artifacts/chemistry-navigation/
+          if-no-files-found: warn

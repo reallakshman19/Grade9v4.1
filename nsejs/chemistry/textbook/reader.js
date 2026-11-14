@@ -323,6 +323,8 @@
       renderPractice(selected,renderGeneration);
     }
     updateUrl(push);updateSourceReturn();
+    // Same learner path as C01-C07; never rewrites a Core1B task ID or saved attempt.
+    if(window.ChemLearnerNav)window.ChemLearnerNav.mountNative(lesson,view.unit,section.id,view.mode);
   }
   function renderStudy(section){
     add(lesson,tag("h3","Start with the scientific phenomenon"),tag("p",section.hook,"hook"),
