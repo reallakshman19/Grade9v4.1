@@ -24,6 +24,8 @@ jobs:
       - name: Compare pinned source bytes, identities and academic gates
         working-directory: ph01-stack
         run: python tools/physics_ph01_r47_source_reconcile.py --stack-root . --main-root ../pinned-main
+      - name: Install isolated test runner
+        run: python -m pip install pytest==8.4.2
       - name: Static R01 blind-intake test
         working-directory: ph01-stack
         run: python -m pytest -q tests/test_nsejs_physics_ph01_r47_source_review.py
