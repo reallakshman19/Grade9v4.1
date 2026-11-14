@@ -65,10 +65,22 @@ def test_every_published_route_exists_and_has_canonical_bar():
             assert full.is_file(), p
             expected.add(full)
     assert len(expected) == 156
+    # B01 R14 pins bind the exact learner HTML and embedded SVG.
+    # Navigation wraps those 50 routes from the chapter instead of rewriting them.
+    pinned = {
+        (PH/u[role]).resolve()
+        for c in CAT["chapters"] if c["id"] in ("PH07","PH08")
+        for u in c["units"] for role in ("learn","practice")
+    }
+    assert len(pinned) == 50
     nav_path = (PH/"learn/learner-nav.js").resolve()
     for page in expected:
         source = page.read_text(encoding="utf-8")
         matches = re.findall(r'<script defer src="([^"]+)" data-g9-learner-nav></script>',source)
+        if page in pinned:
+            assert matches == [], page
+            assert "Core1B" in source or "Core1A" in source
+            continue
         assert len(matches)==1, page
         assert (page.parent/matches[0]).resolve() == nav_path, page
 
