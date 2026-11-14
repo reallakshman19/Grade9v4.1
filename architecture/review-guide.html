@@ -284,21 +284,53 @@
       <!-- STAGE 05 -->
       <section class="chapter" id="stage-5">
         <h2>Stage 05 · Native Core2 Interactive Tablet Module</h2>
-        <p>Audit 12.7-inch tablet ergonomics, commitment-first interaction, vector SVG diagram integrity, attempt evaluation highlighting, retry workflows, and progressive hint scaffolding.</p>
+        <p>Audit 12.7-inch tablet ergonomics, commitment-first interaction, vector SVG diagram integrity, attempt evaluation highlighting, retry workflows, and progressive hint scaffolding. Evaluated against the <b>4 Pillars of Core 2 Engineering Quality</b>:</p>
+
+        <!-- PILLAR 1: PROCEDURE -->
+        <div style="background:#f0fdf4;border:1.5px solid #86efac;border-radius:10px;padding:14px 18px;margin:16px 0 12px;">
+          <h3 style="margin:0 0 8px;font-size:16px;color:#166534;">Pillar 1 · Procedure (Execution Sequence &amp; Lifecycle Standards)</h3>
+          <div class="check-item"><span class="check-box">✓</span><span><b>Linear 8-Step Build Sequence:</b> Ingestion ➔ Slot $X,Y,Z,W$ decomposition ➔ $H_1..H_3$ hints ➔ W3C SVG dual-sync ➔ Reader DOM binding ➔ Navigation hardening ➔ Search index rebuild ➔ Automated link/test gate.</span></div>
+          <div class="check-item"><span class="check-box">✓</span><span><b>W3C SVG Dual-Directory Parity:</b> Every referenced diagram is authored with responsive <span class="code">viewBox</span>, width="100%", height="100%", and typography $\ge 14\text{px}$, and placed synchronously in <b>both</b> <span class="code">nsejs/assets/</span> and subject <span class="code">assets/</span>.</span></div>
+          <div class="check-item"><span class="check-box">✓</span><span><b>Search Index Synchronization:</b> Every bank or topic update triggers <span class="code">python tools/build_search_index.py</span> to regenerate discovery indices and seal the manifest SHA-256 pin.</span></div>
+        </div>
+
+        <!-- PILLAR 2: WORKFLOW -->
+        <div style="background:#eff6ff;border:1.5px solid #93c5fd;border-radius:10px;padding:14px 18px;margin:12px 0;">
+          <h3 style="margin:0 0 8px;font-size:16px;color:#1e40af;">Pillar 2 · Workflow (Handoffs, States, Navigation &amp; Routing)</h3>
+          <div class="check-item"><span class="check-box">✓</span><span><b>3-State Evaluation Lifecycle:</b> <span class="code">Uncommitted</span> (inputs active, derivation hidden) ➔ <span class="code">Committed</span> (inputs frozen, derivation revealed, <span class="code">.attempt-feedback-banner</span> active, badges applied) ⇌ <span class="code">Reset</span> (<span class="code">[🔄 Reset &amp; Try Again]</span> clears <span class="code">localStorage</span> and restores inputs without page refresh).</span></div>
+          <div class="check-item"><span class="check-box">✓</span><span><b>Topic Workspace State Machine:</b> <span class="code">Overview Grid</span> ⇌ <span class="code">Deep-Dive Workspace</span> with URL parameter sync (<span class="code">?topic=...&amp;q=...</span>) via <span class="code">history.replaceState</span> and smooth auto-scroll (<span class="code">scrollIntoView</span>).</span></div>
+          <div class="check-item"><span class="check-box">✓</span><span><b>Disciplinary De-siloing:</b> All questions organized under the 6 Disciplinary Topics, eradicating fragmented "Recovery" silos and exam-year navigation barriers.</span></div>
+          <div class="check-item"><span class="check-box">✓</span><span><b>Two-Tier Search Engine Integration:</b> Global Command Palette (Search 1, Ctrl/Cmd+K) with subject filters + Question Bank inline filter bar (Search 2) with real-time facet filtering.</span></div>
+        </div>
+
+        <!-- PILLAR 3: SELF-CHECK -->
+        <div style="background:#fffbeb;border:1.5px solid #fcd34d;border-radius:10px;padding:14px 18px;margin:12px 0;">
+          <h3 style="margin:0 0 8px;font-size:16px;color:#92400e;">Pillar 3 · Self-Check (Automated Pre-Flight Quality Linters)</h3>
+          <div class="check-item"><span class="check-box">✓</span><span><b>Zero Dead Anchors Linter:</b> Zero dummy <span class="code">href="#topic-view"</span> links or unhandled hidden workspaces.</span></div>
+          <div class="check-item"><span class="check-box">✓</span><span><b>Clean Quote Syntax Linter:</b> Zero backslash-escaped quotes (<span class="code">r"\'"</span>) inside inline HTML attributes (e.g. <span class="code">onclick</span>).</span></div>
+          <div class="check-item"><span class="check-box">✓</span><span><b>Figure DOM Rendering Linter:</b> Every question declaring <span class="code">source_figures</span> renders an <span class="code">&lt;img&gt;</span> in the reader DOM with an <span class="code">onerror</span> secondary directory fallback.</span></div>
+          <div class="check-item"><span class="check-box">✓</span><span><b>Stem Digest Parity &amp; Deduplication:</b> Zero duplicate question IDs; 100% bit-for-bit stem SHA-256 match (<span class="code">declared_matches_observed: true</span>).</span></div>
+          <div class="check-item"><span class="check-box">✓</span><span><b>Adversarial Jargon Linter:</b> Zero occurrences of developer mock strings (<span class="code">producer proposal</span>, <span class="code">differs from producer</span>).</span></div>
+        </div>
+
+        <!-- PILLAR 4: EVIDENCES -->
+        <div style="background:#faf5ff;border:1.5px solid #d8b4fe;border-radius:10px;padding:14px 18px;margin:12px 0 16px;">
+          <h3 style="margin:0 0 8px;font-size:16px;color:#6b21a8;">Pillar 4 · Evidences (Tangible Deliverables &amp; Sealing Receipts)</h3>
+          <div class="check-item"><span class="check-box">✓</span><span><b>Evidence 1 (Site-Wide Link Crawler Receipt):</b> Verbatim stdout of <span class="code">python tools/audit_nsejs_pages.py</span> certifying 43/43 pages pass with 0 broken links.</span></div>
+          <div class="check-item"><span class="check-box">✓</span><span><b>Evidence 2 (Subject-Specific Pytest Receipt):</b> Verbatim stdout of <span class="code">py -3.14 -m pytest tests/test_&lt;subject&gt;_core2.py</span> proving all Gate 0–3 invariants pass with exit code 0.</span></div>
+          <div class="check-item"><span class="check-box">✓</span><span><b>Evidence 3 (Inline Filter Pytest Receipt):</b> Verbatim stdout of <span class="code">tests/test_qb_inline_filter.py</span> verifying attempt evaluation, reset workflows, and quote syntax.</span></div>
+          <div class="check-item"><span class="check-box">✓</span><span><b>Evidence 4 (Search Index Manifest Pin):</b> Pinned SHA-256 digest in <span class="code">learner-search-manifest.v1.json</span>.</span></div>
+          <div class="check-item"><span class="check-box">✓</span><span><b>Evidence 5 (Post-Commitment Visual Proof):</b> Timestamped screenshots capturing both incorrect option state (red badge + green key highlight) and reset state.</span></div>
+        </div>
+
+        <!-- TABLET ERGONOMICS INVARIANTS -->
         <div class="check-item"><span class="check-box">✓</span><span><b>0px Horizontal Overflow:</b> Verified on $1280\times800$, $1024\times768$, $900\times1280$, $800\times1280$, and $375\times812$.</span></div>
         <div class="check-item"><span class="check-box">✓</span><span><b>Zero Iframes:</b> <span class="code">document.querySelectorAll('iframe').length === 0</span>.</span></div>
         <div class="check-item"><span class="check-box">✓</span><span><b>WCAG Touch Targets:</b> Interactive buttons, radio labels, and options strictly $\ge 48\text{px}$ (WCAG AAA standard).</span></div>
-        <div class="check-item"><span class="check-box">✓</span><span><b>SVG Vector Typography:</b> Vector text, axis labels, and annotations strictly $\ge 14\text{px}$ (`font-size="14"` or larger). No optical cramping.</span></div>
-        <div class="check-item"><span class="check-box">✓</span><span><b>W3C SVG Parity &amp; Strictness:</b> Referenced diagrams exist in both <span class="code">nsejs/assets/</span> and subject <span class="code">assets/</span>, with responsive <span class="code">viewBox</span>, width="100%", height="100%", and valid XML entities (avoiding unescaped raw characters like <span class="code">&lt;</span> or <span class="code">&amp;</span> that break browser XML parsers).</span></div>
         <div class="check-item"><span class="check-box">✓</span><span><b>Vector Diagram Zero Leakage:</b> Inspect SVG `<text>` elements in Tab 1. The diagram must depict only the physical setup (symbolic vector labels $\vec{F}_B, \vec{T}$, initial parameters) and <b>ZERO post-derivation numerical values or solved ratios</b>.</span></div>
         <div class="check-item"><span class="check-box">✓</span><span><b>Commitment-First Derivations:</b> Explanations inert (<span class="code">display: none</span>) until answer commit.</span></div>
-        <div class="check-item"><span class="check-box">✓</span><span><b>Interactive Attempt Evaluation &amp; Option Highlighting:</b> Immediate visual state feedback on commit: <span class="code">.opt-user-correct</span> (emerald background with <span class="code">✓ Correct (Your Choice)</span> badge), <span class="code">.opt-user-wrong</span> (soft red background with <span class="code">✗ Your Choice (Incorrect)</span> badge), <span class="code">.opt-correct-key</span> (emerald border with <span class="code">✓ Correct Option</span> badge on official key), and <span class="code">.opt-neutral-disabled</span>. Top-level <span class="code">.attempt-feedback-banner</span> renders high-contrast <span class="code">✅ CORRECT</span> or <span class="code">❌ INCORRECT</span> feedback naming selected vs official key options.</span></div>
-        <div class="check-item"><span class="check-box">✓</span><span><b>Retry &amp; State Reset Control:</b> Every question card provides a <span class="code">[🔄 Reset &amp; Try Again]</span> control that clears local attempts in <span class="code">localStorage</span>, clears option highlighting and badges, re-enables inputs, and hides derivations without page refresh.</span></div>
-        <div class="check-item"><span class="check-box">✓</span><span><b>Purge of Defensive / Adversarial Jargon:</b> Zero occurrences of developer mock strings (<span class="code">PRODUCER-PROPOSED · NOT SELECTED</span>, <span class="code">differs from producer proposal</span>). All messaging is polished, student-facing, and pedagogical. Cryptographic hash details are encapsulated in collapsed <span class="code">&lt;details&gt;</span> summaries.</span></div>
-        <div class="check-item"><span class="check-box">✓</span><span><b>In-Page Navigation &amp; Link Integrity:</b> Zero dead anchors (e.g. <span class="code">href="#topic-view"</span> or <span class="code">#topicWorkspace</span> without unhiding the workspace). Navigating to deep-dive workspaces via hash or topic buttons must unhide the section and smoothly scroll (<span class="code">scrollIntoView({ behavior: 'smooth', block: 'start' })</span>) into view.</span></div>
-        <div class="check-item"><span class="check-box">✓</span><span><b>HTML Attribute Quote Syntax Strictness:</b> Zero backslash-escaped quotes in inline HTML attributes (e.g. <span class="code">onclick="window.selectTopic(\'...\')"</span>). Always use clean unescaped single quotes inside double quotes (<span class="code">onclick="window.selectTopic('...')"</span>) to avoid parser truncation.</span></div>
-        <div class="check-item"><span class="check-box">✓</span><span><b>Two-Tier Search Engine Integration:</b> Global Command Palette (Search 1, Ctrl/Cmd+K) for portal-wide fuzzy search with subject-scoped filters; inline filter bar (Search 2) for instant client-side filtering by query, topic, difficulty, and exam year with state URL synchronization.</span></div>
         <div class="check-item"><span class="check-box">✓</span><span><b>Progressive Hints ($H_1, H_2, H_3$):</b> Scaffolding never leaks Slot $W$ (the decisive crux).</span></div>
+
         <div class="benchmark-box falsifier">
           <span class="benchmark-title">Strict Falsifiers</span>Horizontal scrollbar, hint leaking Slot $W$, SVG diagram displaying solved numbers ($T = 24\text{ N}, u_1 = 30$), dead anchor links (`#topic-view`), escaped quote syntax errors (`\'`), adversarial "producer" jargon, or derivations accessible in DOM/alt text before commit fails tablet audit immediately.
         </div>
