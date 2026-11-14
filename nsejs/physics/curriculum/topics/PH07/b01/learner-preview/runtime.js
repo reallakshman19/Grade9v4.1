@@ -8,7 +8,9 @@
   const HOME = '../../../../../../../';  // repo root relative to b01/learner-preview/
   const ROOT = new URL(HOME, location.href);
   const PREVIEW = 'g9-b01-r1:';
-  const state = { tasks: [], current: null, record: null, digest: null, ready: false, source: null, storageOK: false };
+  const PINS_PATH = 'nsejs/physics/curriculum/topics/PH07/b01/learner-preview/author-page-pins.r14.json';
+  const state = { tasks: [], current: null, record: null, digest: null, sourceDigest: null,
+    pagePins: new Map(), ready: false, source: null, storageOK: false, selection: 0 };
   function status(text, kind) { $('status').textContent = text; $('status').dataset.kind = kind || 'info'; }
   function bool(id, show) { $(id).hidden = !show; }
   function lock(reason) {
@@ -26,8 +28,10 @@
     body.set(head); body.set(data, head.length);
     return hex(await crypto.subtle.digest('SHA-1', body));
   }
-  async function request(path, expectedBlob) {
-    if (!/^[\w./-]+\.json$/.test(path) || path.includes('..')) throw Error('Invalid source path');
+  async function requestText(path, expectedBlob, extension) {
+    if (!/^[\w./-]+$/.test(path) || !path.endsWith(extension) || path.startsWith('/') ||
+        path.includes('..')) throw Error('Invalid source path');
+    if(expectedBlob && !/^[0-9a-f]{40}$/.test(expectedBlob)) throw Error('Invalid Git blob pin');
     const url = new URL(path, ROOT);
     if (url.origin !== location.origin) throw Error('Untrusted source origin');
     const res = await fetch(url.href, {cache:'no-store', credentials:'same-origin'});
@@ -35,7 +39,11 @@
     const raw = await res.text();
     if (expectedBlob && await gitBlob(raw) !== expectedBlob)
       throw Error('Pinned Git blob mismatch: ' + path);
-    return { json: JSON.parse(raw), raw };
+    return { raw };
+  }
+  async function request(path, expectedBlob) {
+    const {raw}=await requestText(path,expectedBlob,'.json');
+    return {json:JSON.parse(raw),raw};
   }
   function storageProbe() {
     try { const k=PREVIEW+'probe'; localStorage.setItem(k,'ok');
@@ -48,12 +56,49 @@
       first_answer:null,help_exposure:[],diagnosis_notes:[],repairs:[],boundary_attempts:[],
       mastery_status:'UNASSESSED'};
   }
+  const HINTS=['H1','H2','H3'];
+  const EXPOSURE_KINDS=[...HINTS,'TEXTBOOK','ORIGINAL_CORE1B','RECONSTRUCT','BOUNDARY_MODEL'];
+  function isISO(value) {
+    return typeof value==='string' && /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/.test(value) &&
+      Number.isFinite(Date.parse(value));
+  }
   function valid(r) {
-    return r && r.schema==='g9-b01-attempt-r1' && r.task_id===state.current.id &&
-      r.content_revision===state.digest && (r.first_answer===null ||
-        (typeof r.first_answer.prediction==='string' && typeof r.first_answer.answer==='string')) &&
-      ['help_exposure','diagnosis_notes','repairs','boundary_attempts'].every(k=>Array.isArray(r[k])) &&
-      r.mastery_status==='UNASSESSED';
+    if(!r ||typeof r!=='object'||Array.isArray(r)||r.schema!=='g9-b01-attempt-r1'||
+       r.task_id!==state.current?.id||r.content_revision!==state.digest||
+       r.mastery_status!=='UNASSESSED')return false;
+    const first=r.first_answer;
+    if(first!==null && (!first||typeof first!=='object'||Array.isArray(first)||
+       typeof first.prediction!=='string'||!first.prediction.trim()||
+       typeof first.answer!=='string'||!first.answer.trim()||!isISO(first.saved_at)||
+       (first.help_before_first!==undefined && (!Array.isArray(first.help_before_first)||
+         !first.help_before_first.every(k=>EXPOSURE_KINDS.includes(k) && k!=='RECONSTRUCT' && k!=='BOUNDARY_MODEL')))))return false;
+    const keys=['help_exposure','diagnosis_notes','repairs','boundary_attempts'];
+    if(!keys.every(k=>Array.isArray(r[k])&&r[k].length<=(k==='help_exposure'?100:1)))return false;
+    const kinds=[];
+    for(const item of r.help_exposure) {
+      if(!item||!EXPOSURE_KINDS.includes(item.kind)||!isISO(item.at))return false;
+      if(['H1','H2','H3','RECONSTRUCT','BOUNDARY_MODEL'].includes(item.kind) && kinds.includes(item.kind))return false;
+      if(item.kind==='H2'&&!kinds.includes('H1'))return false;
+      if(item.kind==='H3'&&!kinds.includes('H2'))return false;
+      if(item.kind==='RECONSTRUCT'&&!first)return false;
+      if(item.kind==='BOUNDARY_MODEL'&&r.boundary_attempts.length===0)return false;
+      kinds.push(item.kind);
+    }
+    if(!first && (r.diagnosis_notes.length||r.repairs.length||r.boundary_attempts.length||
+                  kinds.includes('RECONSTRUCT')||kinds.includes('BOUNDARY_MODEL')))return false;
+    if(r.diagnosis_notes.length&&!kinds.includes('RECONSTRUCT'))return false;
+    if(r.repairs.length!==0&&!r.diagnosis_notes.length)return false;
+    if(r.boundary_attempts.length!==0&&!r.repairs.length)return false;
+    for(const field of ['diagnosis_notes','repairs','boundary_attempts']) {
+      for(const item of r[field]) {
+        if(!item||typeof item.text!=='string'||!item.text.trim()||!isISO(item.at)||
+           item.kind!==(field==='diagnosis_notes'?'LEARNER_SELF_REPORT_NOT_AUTOMATIC_DIAGNOSIS':'LEARNER_REVISION_NOT_SCORED')||
+           !Array.isArray(item.exposed_before_attempt)||
+           !item.exposed_before_attempt.every(k=>EXPOSURE_KINDS.includes(k)&&kinds.includes(k))||
+           item.exposed_before_attempt.includes('BOUNDARY_MODEL'))return false;
+      }
+    }
+    return true;
   }
   function read() {
     try { const x=localStorage.getItem(key()); if(!x) return blank();
@@ -63,13 +108,27 @@
   function write(r) {
     if (!valid(r)) return false;
     try {
-      const raw=JSON.stringify(r);localStorage.setItem(key(),raw);
+      const currentRaw=localStorage.getItem(key());
+      const current=currentRaw===null?null:JSON.parse(currentRaw);
+      // Reject stale-tab writes and changed, corrupted or deleted first answers.
+      if((current!==null&&!valid(current)) ||
+         (current===null && state.record && state.record.first_answer!==null) ||
+         (current!==null && JSON.stringify(current)!==JSON.stringify(state.record)))return false;
+      if(current?.first_answer && JSON.stringify(current.first_answer)!==JSON.stringify(r.first_answer))return false;
+      const raw=JSON.stringify(r);
+      localStorage.setItem(key(),raw);
       if (localStorage.getItem(key())!==raw) return false;
       state.record=r;return true;
     } catch (_) {return false;}
   }
   function logExposure(kind) {
-    if(!state.ready || !state.record) return false;
+    if(!state.ready || !state.record || !EXPOSURE_KINDS.includes(kind))return false;
+    const kinds=state.record.help_exposure.map(e=>e.kind);
+    if(['H1','H2','H3','RECONSTRUCT','BOUNDARY_MODEL'].includes(kind)&&kinds.includes(kind))return false;
+    if(kind==='H2'&&!kinds.includes('H1'))return false;
+    if(kind==='H3'&&!kinds.includes('H2'))return false;
+    if(kind==='RECONSTRUCT'&&!state.record.first_answer)return false;
+    if(kind==='BOUNDARY_MODEL'&&!state.record.boundary_attempts.length)return false;
     const next=structuredClone(state.record);
     next.help_exposure.push({kind,at:new Date().toISOString()});
     if(!write(next)){lock('Could not save help exposure');return false;}
