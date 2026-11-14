@@ -185,7 +185,7 @@ def test_reject_bad_evidence_role_and_deleted_negative(tmp_path):
     p["science"]["primary_derivation_ref"]=p["science"]["independent_check_ref"]
     assert_blocked(p,tmp_path,"EVIDENCE_ROLE_MISMATCH")
     p=case(tmp_path)
-    p["negative_tests"]=[x for x in p["negative_tests"] if x["case"]!="HINT_LEAK"]
+    next(x for x in p["negative_tests"] if x["case"]=="HINT_LEAK")["case"]="SAVE_FAILURE"
     assert_blocked(p,tmp_path,"MISSING_ADVERSARIAL_TEST")
 
 
@@ -226,3 +226,9 @@ def test_reject_open_author_defects_or_holds(tmp_path):
     p=case(tmp_path)
     p["self_audit"]["known_defects"]=["The science figure is currently wrong."]
     assert_blocked(p,tmp_path,"OPEN_DEFECTS_NOT_CLOSED")
+
+
+def test_reject_relabelled_negative_control_log(tmp_path):
+    p=case(tmp_path)
+    next(x for x in p["negative_tests"] if x["case"]=="HINT_LEAK")["case"]="SAVE_FAILURE"
+    assert_blocked(p,tmp_path,"NEGATIVE_CASE_LOG_MISMATCH")
