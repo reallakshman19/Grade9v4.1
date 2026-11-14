@@ -1,0 +1,730 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/reallakshman19/Grade9v4.1/tree/main/docs/agent-entry/quality-gate-r2/evidence-packet.schema.json",
+  "title": "NSEJS Physics noncompensatory evidence packet R2",
+  "description": "Mechanical evidence contract for author drafts; independent scientific/academic truth is outside this schema.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "task",
+    "declarations",
+    "evidence",
+    "science",
+    "core1a",
+    "core1b",
+    "core2",
+    "negative_tests",
+    "browser",
+    "self_audit"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "g9v41-physics-evidence-packet/v2"
+    },
+    "task": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "task_id",
+        "owner_workpack",
+        "topic_id",
+        "subtopic_id",
+        "base_sha",
+        "head_sha",
+        "contract_version",
+        "blueprint_version",
+        "golden_sample_sha",
+        "delivery_kind"
+      ],
+      "properties": {
+        "task_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$"
+        },
+        "owner_workpack": {
+          "type": "string",
+          "minLength": 1
+        },
+        "topic_id": {
+          "type": "string",
+          "pattern": "^PH(0[1-9]|1[0-2])$"
+        },
+        "subtopic_id": {
+          "type": "string",
+          "pattern": "^PH(0[1-9]|1[0-2])-[A-Za-z0-9_.-]+$"
+        },
+        "base_sha": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40}$"
+        },
+        "head_sha": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40}$"
+        },
+        "contract_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "blueprint_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "golden_sample_sha": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40}$"
+        },
+        "delivery_kind": {
+          "enum": [
+            "GOLDEN_SAMPLE",
+            "BATCH_ITEM"
+          ]
+        }
+      }
+    },
+    "declarations": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_status",
+        "science_status",
+        "qrt_status",
+        "academic_status",
+        "owner_release_status",
+        "reviewer_independent"
+      ],
+      "properties": {
+        "source_status": {
+          "enum": [
+            "HOLD",
+            "AUTHOR_CREATED_NO_EXAM_SOURCE",
+            "SOURCE_ONLY_CANDIDATE"
+          ]
+        },
+        "science_status": {
+          "const": "AUTHOR_UNVERIFIED"
+        },
+        "qrt_status": {
+          "const": "AUTHOR_PROPOSED"
+        },
+        "academic_status": {
+          "const": "HOLD"
+        },
+        "owner_release_status": {
+          "const": "NOT_REQUESTED"
+        },
+        "reviewer_independent": {
+          "const": false
+        }
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "minItems": 15,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "role",
+          "path",
+          "sha256",
+          "start_line",
+          "end_line",
+          "excerpt",
+          "claim",
+          "why_this_proves_claim"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$"
+          },
+          "role": {
+            "enum": [
+              "SCIENCE_PRIMARY_DERIVATION",
+              "SCIENCE_INDEPENDENT_CHECK",
+              "SCIENCE_UNITS_AND_SIGNS",
+              "SCIENCE_ASSUMPTIONS_AND_LIMIT",
+              "SCIENCE_COUNTEREXAMPLE",
+              "CORE1A_PHENOMENON",
+              "CORE1A_CAUSAL_EXPLANATION",
+              "CORE1A_PREREQUISITE",
+              "CORE1A_DIAGRAM",
+              "CORE1A_WORKED_FOUNDATION",
+              "CORE1A_WORKED_CONNECTED",
+              "CORE1A_WORKED_ADVANCED",
+              "CORE1A_MISCONCEPTION_REPAIR",
+              "CORE1A_SYNTHESIS",
+              "CORE1B_FRESH_TASK",
+              "CORE1B_MODEL_ROUTE",
+              "CORE1B_BOUNDARY_TRANSFER",
+              "CORE1B_HINT_NONLEAK",
+              "CORE1B_FIRST_SAVE",
+              "CORE1B_REVISION_RETURN",
+              "CORE2_STEM_AND_FIGURE",
+              "CORE2_REASONING_KEY",
+              "QA_NEGATIVE_LOG",
+              "QA_BROWSER_RECEIPT"
+            ]
+          },
+          "path": {
+            "type": "string",
+            "pattern": "^(?!/)(?!.*\\\\)(?!.*\\.\\./)[A-Za-z0-9_.\\-/]+$"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "start_line": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "end_line": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "excerpt": {
+            "type": "string",
+            "minLength": 24
+          },
+          "claim": {
+            "type": "string",
+            "minLength": 30
+          },
+          "why_this_proves_claim": {
+            "type": "string",
+            "minLength": 45
+          }
+        }
+      }
+    },
+    "science": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "primary_derivation_ref",
+        "independent_check_ref",
+        "units_signs_ref",
+        "assumptions_limit_ref",
+        "counterexample_ref",
+        "model_version"
+      ],
+      "properties": {
+        "primary_derivation_ref": {
+          "type": "string",
+          "minLength": 5
+        },
+        "independent_check_ref": {
+          "type": "string",
+          "minLength": 5
+        },
+        "units_signs_ref": {
+          "type": "string",
+          "minLength": 5
+        },
+        "assumptions_limit_ref": {
+          "type": "string",
+          "minLength": 5
+        },
+        "counterexample_ref": {
+          "type": "string",
+          "minLength": 5
+        },
+        "model_version": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "core1a": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "student_ready_path",
+        "phenomenon_ref",
+        "prerequisite_ref",
+        "causal_explanation_ref",
+        "diagram_ref",
+        "foundation_ref",
+        "connected_ref",
+        "advanced_ref",
+        "misconception_ref",
+        "synthesis_ref",
+        "self_teaching_test"
+      ],
+      "properties": {
+        "student_ready_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "phenomenon_ref": {
+          "type": "string",
+          "minLength": 5
+        },
+        "prerequisite_ref": {
+          "type": "string",
+          "minLength": 5
+        },
+        "causal_explanation_ref": {
+          "type": "string",
+          "minLength": 5
+        },
+        "diagram_ref": {
+          "type": "string",
+          "minLength": 5
+        },
+        "foundation_ref": {
+          "type": "string",
+          "minLength": 5
+        },
+        "connected_ref": {
+          "type": "string",
+          "minLength": 5
+        },
+        "advanced_ref": {
+          "type": "string",
+          "minLength": 5
+        },
+        "misconception_ref": {
+          "type": "string",
+          "minLength": 5
+        },
+        "synthesis_ref": {
+          "type": "string",
+          "minLength": 5
+        },
+        "self_teaching_test": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "learner_can_explain",
+            "novice_dependency_check",
+            "unassisted_question",
+            "expected_reasoning",
+            "counterfactual_reasoning"
+          ],
+          "properties": {
+            "learner_can_explain": {
+              "type": "string",
+              "minLength": 90
+            },
+            "novice_dependency_check": {
+              "type": "string",
+              "minLength": 100
+            },
+            "unassisted_question": {
+              "type": "string",
+              "minLength": 60
+            },
+            "expected_reasoning": {
+              "type": "string",
+              "minLength": 120
+            },
+            "counterfactual_reasoning": {
+              "type": "string",
+              "minLength": 120
+            }
+          }
+        }
+      }
+    },
+    "core1b": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "student_ready_path",
+        "anchor_problem",
+        "new_problem",
+        "anchor_crux",
+        "new_crux",
+        "novelty_mechanism",
+        "numeric_swap_rejected",
+        "fresh_task_ref",
+        "model_route_ref",
+        "boundary_ref",
+        "hint_nonleak_ref",
+        "first_save_ref",
+        "revision_return_ref",
+        "stages",
+        "hints",
+        "multiple_subtopic_main"
+      ],
+      "properties": {
+        "student_ready_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "anchor_problem": {
+          "type": "string",
+          "minLength": 100
+        },
+        "new_problem": {
+          "type": "string",
+          "minLength": 100
+        },
+        "anchor_crux": {
+          "type": "string",
+          "minLength": 80
+        },
+        "new_crux": {
+          "type": "string",
+          "minLength": 80
+        },
+        "novelty_mechanism": {
+          "enum": [
+            "DIFFERENT_MODEL_SELECTION",
+            "INVERSE_CONSTRAINT",
+            "CHANGED_ASSUMPTIONS",
+            "MULTI_STAGE_BOUNDARY",
+            "REPRESENTATION_TRANSFER",
+            "COUNTEREXAMPLE_PROOF"
+          ]
+        },
+        "numeric_swap_rejected": {
+          "type": "string",
+          "minLength": 120
+        },
+        "fresh_task_ref": {
+          "type": "string",
+          "minLength": 5
+        },
+        "model_route_ref": {
+          "type": "string",
+          "minLength": 5
+        },
+        "boundary_ref": {
+          "type": "string",
+          "minLength": 5
+        },
+        "hint_nonleak_ref": {
+          "type": "string",
+          "minLength": 5
+        },
+        "first_save_ref": {
+          "type": "string",
+          "minLength": 5
+        },
+        "revision_return_ref": {
+          "type": "string",
+          "minLength": 5
+        },
+        "stages": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "predict",
+            "attempt",
+            "reconstruct",
+            "diagnose",
+            "repair",
+            "boundary_test"
+          ],
+          "properties": {
+            "predict": {
+              "type": "string",
+              "minLength": 50
+            },
+            "attempt": {
+              "type": "string",
+              "minLength": 50
+            },
+            "reconstruct": {
+              "type": "string",
+              "minLength": 50
+            },
+            "diagnose": {
+              "type": "string",
+              "minLength": 50
+            },
+            "repair": {
+              "type": "string",
+              "minLength": 50
+            },
+            "boundary_test": {
+              "type": "string",
+              "minLength": 50
+            }
+          }
+        },
+        "hints": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "H1",
+            "H2",
+            "H3",
+            "blocked_until_first_save"
+          ],
+          "properties": {
+            "H1": {
+              "type": "string",
+              "minLength": 40
+            },
+            "H2": {
+              "type": "string",
+              "minLength": 40
+            },
+            "H3": {
+              "type": "string",
+              "minLength": 40
+            },
+            "blocked_until_first_save": {
+              "const": true
+            }
+          }
+        },
+        "multiple_subtopic_main": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "contract_applies",
+            "instance_ids",
+            "subtopic_ids",
+            "integrated_reasoning"
+          ],
+          "properties": {
+            "contract_applies": {
+              "type": "boolean"
+            },
+            "instance_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$"
+              },
+              "uniqueItems": true
+            },
+            "subtopic_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$"
+              },
+              "uniqueItems": true
+            },
+            "integrated_reasoning": {
+              "type": "string",
+              "minLength": 80
+            }
+          }
+        }
+      }
+    },
+    "core2": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "identity",
+        "source_role",
+        "stem_figure_ref",
+        "derivation_key_ref",
+        "figure_need",
+        "figure_status",
+        "original_source_fidelity",
+        "exam_question_count_claim"
+      ],
+      "properties": {
+        "identity": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$"
+        },
+        "source_role": {
+          "enum": [
+            "AUTHORED_TRANSFER",
+            "DIRECT_EXAM_CANDIDATE",
+            "PREREQUISITE_BRIDGE"
+          ]
+        },
+        "stem_figure_ref": {
+          "type": "string",
+          "minLength": 5
+        },
+        "derivation_key_ref": {
+          "type": "string",
+          "minLength": 5
+        },
+        "figure_need": {
+          "enum": [
+            "REQUIRED",
+            "NOT_REQUIRED"
+          ]
+        },
+        "figure_status": {
+          "enum": [
+            "PRESENT_AND_INSPECTED",
+            "NO_FIGURE_NEEDED",
+            "MISSING_HOLD"
+          ]
+        },
+        "original_source_fidelity": {
+          "const": "NOT_SELF_APPROVED"
+        },
+        "exam_question_count_claim": {
+          "const": 0
+        }
+      }
+    },
+    "negative_tests": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "case",
+          "mutation",
+          "expected_failure",
+          "observed_failure",
+          "reproduction_command",
+          "log_ref"
+        ],
+        "properties": {
+          "case": {
+            "enum": [
+              "WRONG_DIMENSION",
+              "WRONG_SIGN_OR_LIMIT",
+              "NUMERIC_CLONE",
+              "HINT_LEAK",
+              "BAD_SOURCE_FIGURE",
+              "SAVE_FAILURE",
+              "STALE_REVISION",
+              "FALSE_REVIEW_BADGE"
+            ]
+          },
+          "mutation": {
+            "type": "string",
+            "minLength": 45
+          },
+          "expected_failure": {
+            "type": "string",
+            "minLength": 40
+          },
+          "observed_failure": {
+            "type": "string",
+            "minLength": 12
+          },
+          "reproduction_command": {
+            "type": "string",
+            "minLength": 8
+          },
+          "log_ref": {
+            "type": "string",
+            "minLength": 5
+          }
+        }
+      }
+    },
+    "browser": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "head_sha",
+        "portrait_receipt_ref",
+        "landscape_receipt_ref",
+        "keyboard_and_touch",
+        "storage_failure",
+        "stale_revision",
+        "pre_first_help",
+        "figure_render",
+        "outcome"
+      ],
+      "properties": {
+        "head_sha": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40}$"
+        },
+        "portrait_receipt_ref": {
+          "type": "string",
+          "minLength": 5
+        },
+        "landscape_receipt_ref": {
+          "type": "string",
+          "minLength": 5
+        },
+        "keyboard_and_touch": {
+          "enum": [
+            "PASS",
+            "HOLD"
+          ]
+        },
+        "storage_failure": {
+          "enum": [
+            "PASS",
+            "HOLD"
+          ]
+        },
+        "stale_revision": {
+          "enum": [
+            "PASS",
+            "HOLD"
+          ]
+        },
+        "pre_first_help": {
+          "enum": [
+            "PASS",
+            "HOLD"
+          ]
+        },
+        "figure_render": {
+          "enum": [
+            "PASS",
+            "HOLD"
+          ]
+        },
+        "outcome": {
+          "const": "MECHANICAL_ONLY_NOT_ACADEMIC_APPROVAL"
+        }
+      }
+    },
+    "self_audit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "red_team_hypotheses",
+        "known_defects",
+        "rejected_alternatives",
+        "evidence_completeness",
+        "self_disposition",
+        "review_requested"
+      ],
+      "properties": {
+        "red_team_hypotheses": {
+          "type": "array",
+          "minItems": 3,
+          "items": {
+            "type": "string",
+            "minLength": 70
+          }
+        },
+        "known_defects": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "rejected_alternatives": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "string",
+            "minLength": 70
+          }
+        },
+        "evidence_completeness": {
+          "enum": [
+            "AUTHOR_ASSERTED_COMPLETE",
+            "INCOMPLETE_HOLD"
+          ]
+        },
+        "self_disposition": {
+          "const": "CANDIDATE_REVIEW_REQUESTED"
+        },
+        "review_requested": {
+          "const": true
+        }
+      }
+    }
+  }
+}

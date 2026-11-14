@@ -1,0 +1,170 @@
+[
+  {
+    "n": 33,
+    "m": "M06",
+    "cell": "D4.4",
+    "op": "MODEL",
+    "science": "PH01-SCI-CONSTANT-ACCEL",
+    "w": "Choose the constrained intercept model on disjoint observation windows; distinguish excluded tangency, endpoint optima and a global comparison across regimes.",
+    "task": "A service cart travels along a straight rail according to x=12+2t+t² metres, t≥0 in seconds. A technician starts at x=0 at t=2 s and runs at chosen positive constant speed U. A contact sensor registers coincidence only during t∈[3,4] s or t∈[8,9] s, including endpoints; the technician continues running through the gap and an earlier unregistered coincidence is not counted. Find the smallest U permitting at least one registered coincidence, and prove it is the global minimum over both windows. A controller proposes the unrestricted tangency speed; test it. If the late window is unavailable, find the new threshold.",
+    "ans": "Let s=t−2, so admissible elapsed times are [1,2]∪[6,7]. Target position is 20+6s+s²; runner Us. Required speed f(s)=6+s+20/s. Its unrestricted minimum 6+2√20 occurs at s=√20 by AM–GM, excluded from both windows. For s1<s2, f(s1)−f(s2)=(s2−s1)(20/(s1s2)−1). On [1,2] this is positive, so minimum f(2)=18 at t=4. On [6,7] it is negative, so minimum f(6)=46/3 at t=8. Compare: 46/3<18; global minimum is 46/3 m/s at t=8. With late window unavailable, 18 m/s. This permits unregistered prior crossings but no claimed registration outside the sensor windows. Tangency alone fails because its time is excluded.",
+    "bound": "The windows are joined into a single continuous interval [3,9] s. Find the new threshold and registration time, with justification.",
+    "sol": "Now s∈[1,7] contains √20. AM–GM gives U=6+2√20 at t=2+√20; this is smaller than both former endpoint minima. The feasible-time domain changed.",
+    "h": [
+      "Reset the clock at runner release; keep the two allowed windows separate.",
+      "Express required U as f(s); use AM–GM to find the unrestricted minimum and locate it relative to both windows.",
+      "Compare f at the correct endpoint of each window using f(s1)−f(s2); then compare the two window minima."
+    ],
+    "diag": "Wrong models: run from t=0, use unrestricted discriminant-zero root without checking windows, search only the earliest window, or interpolate across the gap. Identify your first invalid assumption.",
+    "repair": "Build both positions on the delayed clock; derive f(s); prove monotonic direction separately on each allowed window, compare endpoint minima, and test the changed connected domain.",
+    "scores": [
+      2,
+      1,
+      2,
+      2,
+      2
+    ],
+    "ev": [
+      "Choose constrained optimization and distinguish unregistered crossing from permitted contact.",
+      "Translate two clocks and disconnected intervals into a common position history.",
+      "Derive required speed, prove opposite monotonic regimes, compare minima and changed domain.",
+      "Rational function, inequality and exact radical.",
+      "Excluded tangency, discontinuous observation domain and late-window optimum."
+    ],
+    "teach": "For delayed interception, reset elapsed time at the pursuer's start. If target position relative to the start is D+Vs+As²/2, constant pursuer speed required for contact is D/s+V+As/2 for s>0. An unrestricted minimum for D,A>0 occurs at s=√(2D/A), but a finite time window may exclude it. Compare required speeds over the actual domain; endpoint contact can be optimal. Worked anchor: D=9 m, V=1 m/s, A=2 m/s² gives required speed 1+s+9/s, minimum 7 m/s at s=3 s when allowed; with a 2 s window the smallest speed is 7.5 m/s at closure. Check the interval before interpreting a double root.",
+    "source": "2025/51/Q33",
+    "sourceW": "Threshold contact between uniform runner and accelerating target; source candidate MODEL, band HOLD.",
+    "gap": "Delayed release plus disjoint observation windows; separate endpoint minima and compare them globally; unrestricted tangency excluded.",
+    "id": "PH01-M06-QRT-MODEL-D4-R46-SOURCE33",
+    "cid": "PH01-M06-QRT-MODEL-D4-R46-SOURCE33-INSTANCE",
+    "core1a": "nsejs/physics/textbook/PH01/M06/index.html",
+    "core1b": "nsejs/physics/core1/ph01-m06-r46/index.html",
+    "academic": "HOLD"
+  },
+  {
+    "n": 41,
+    "m": "M08",
+    "cell": "D4.4",
+    "op": "MODEL",
+    "science": "PH01-SCI-UNIFORM-CIRCULAR",
+    "w": "Select a periodic signed-coordinate meeting model across a direction switch and distinguish first positive wrap from ordinary linear crossing.",
+    "task": "Two point markers move on a circular track of circumference 60 m, clockwise positive. At t=0 A is at arc coordinate 0 and B at 18 m. A travels clockwise at 5 m/s throughout. B travels clockwise at 2 m/s until t=4 s, then anticlockwise at 4 m/s. Find the first meeting and the next meeting, with global times and arc coordinates modulo 60 m. A technician says the first meeting is at t=6 s using the initial closing speed; another says no meeting is possible after reversal because velocities have opposite signs. Test both models. Then determine whether the first meeting changes if B reverses instead at t=7 s.",
+    "ans": "Use unwrapped signed coordinates. For t≤4, A−B=3t−18, from −18 to −6, no multiple of 60. For t≥4, B=26−4(t−4)=42−4t, A−B=9t−42. It increases from −6; first multiple 0 gives t=14/3 s, x_A=70/3 m. Next multiple 60 gives t=34/3 s, x_A=170/3 m (both below 60). The initial 6 s root is outside its regime; opposite directions increase relative closing speed. If reversal at 7, first meeting occurs t=6 in the first regime, x=30 m. Do not count unwrapped equality as the only possible encounter; every integer multiple represents coincidence.",
+    "bound": "With the original t=4 reversal but initial B coordinate 58 m, determine the first positive meeting.",
+    "sol": "Before reversal A−B=3t−58, from −58 to −46, no multiple. Afterward B=82−4t, difference 9t−82. First next multiple 0 at t=82/9 s; x_A=410/9 m. The −60 multiple is behind the initial difference and cannot occur while it increases.",
+    "h": [
+      "Unwrap the circle into a signed arc coordinate, keeping the circumference as a periodic equivalence.",
+      "Write each relative coordinate law in its valid interval and carry continuity across reversal.",
+      "Search integer multiples of circumference in time order, not just the zero of one extrapolated equation."
+    ],
+    "diag": "Wrong models: initial-speed extrapolation beyond switch; treating an opposite sign as non-closing; only checking equality rather than all circumference multiples. Locate the first invalid inference.",
+    "repair": "Make a continuous signed relative-position table at the switch, list successive multiples of circumference reached, solve in their own intervals, and reduce meeting coordinates modulo circumference.",
+    "scores": [
+      2,
+      2,
+      2,
+      1,
+      2
+    ],
+    "ev": [
+      "Choose periodic equivalence plus a piecewise relative model.",
+      "Translate circular oriented arc, signed reversal and unwrapped positions.",
+      "Check first regime, next two modular roots and changed switch.",
+      "Linear roots and modular reduction.",
+      "Wrong extrapolation, missed wrap and sign."
+    ],
+    "teach": "On a closed track of circumference L, two signed unwrapped arc coordinates sA,sB denote the same point exactly when sA−sB=kL for integer k. Keep each velocity regime and its time domain. Worked anchor: L=40 m, A starts at 0 with +3 m/s, B at 10 with −1 m/s. Relative coordinate −10+4t reaches 0 at 2.5 s and 40 at 12.5 s. If a direction switch occurs, carry the relative coordinate continuously to the switch and search multiples separately. A first positive contact may occur at k≠0.",
+    "source": "2025/51/Q41",
+    "sourceW": "First positive meeting on a closed track using lap difference; likely short MODEL, band HOLD.",
+    "gap": "Direction switch, first and second modular meetings, interval rejection.",
+    "id": "PH01-M08-QRT-MODEL-D4-R46-SOURCE41",
+    "cid": "PH01-M08-QRT-MODEL-D4-R46-SOURCE41-INSTANCE",
+    "core1a": "nsejs/physics/textbook/PH01/M08/index.html",
+    "core1b": "nsejs/physics/core1/ph01-m08-r46/index.html",
+    "academic": "HOLD"
+  },
+  {
+    "n": 43,
+    "m": "M04",
+    "cell": "D3.3",
+    "op": "APPLY",
+    "science": "PH01-SCI-SIGNED-ACCELERATION",
+    "w": "Execute the prescribed signed constant-acceleration equations for two different launch magnitudes and a shared depth; eliminate depth and check physical event times.",
+    "task": "Two probes are launched simultaneously from the same platform above a sensor. Down is positive and g=10 m/s². A is launched downward at unknown speed u; B upward at speed 2u. A reaches the sensor after 2 s, B after 5 s. Use H=v0t+½gt² for each probe to find u and H. Determine B's turning time, both sensor velocities and whether the sensor is reached on B's upward leg. A colleague uses the equal-launch-magnitude shortcut g(tB−tA)/2. Explain why it fails here.",
+    "ans": "A: H=2u+20. B: H=−10u+125. Equate: 12u=105, u=35/4 m/s, H=75/2 m. B turns at 2u/g=7/4 s, before its 5 s reading. A velocity u+20=115/4 m/s; B −2u+50=65/2 m/s, both downward. The equal-magnitude shortcut assumes initial velocities +u and −u, not −2u. B's upward branch is above the launch platform, so cannot hit a sensor below it.",
+    "bound": "If B is launched upward at u rather than 2u but the two readings stay 2 s and 5 s, find u,H and compare.",
+    "sol": "H=2u+20=−5u+125; u=15 m/s, H=50 m. Here the equal-magnitude shortcut agrees, and B turns at 1.5 s.",
+    "h": [
+      "Use down-positive initial velocities +u and −2u.",
+      "Set the two expressions for the same H equal; do not substitute the equal-magnitude shortcut.",
+      "Use v=v0+gt and turning time to check the event belongs to the downward branch."
+    ],
+    "diag": "Wrong models: use +2u for upward B; assume equal launch magnitudes; treat the 5 s reading as an upward event. Identify the first error.",
+    "repair": "Write both signed equations, eliminate shared depth, recover the depth and signed terminal velocities, and check the turning time against the sensor time.",
+    "scores": [
+      1,
+      1,
+      2,
+      1,
+      2
+    ],
+    "ev": [
+      "Specified constant-g model; execute it under unequal launch conditions.",
+      "Translate opposite launch signs and shared depth.",
+      "Eliminate depth, recover values, check turn and changed assumption.",
+      "Linear elimination and fractions.",
+      "Wrong equal-magnitude shortcut and branch validity."
+    ],
+    "teach": "For two projectiles launched from one height with the same constant g, choose one downward-positive axis and use H=u_i t_i+gt_i²/2 for each. Equal depth is an equation, not permission to equate launch speeds. Worked anchor: one starts at rest, reaches a lower sensor at 3 s with g=8 m/s², so H=36 m. Another launched upward at 5 m/s reaches that depth when −5t+4t²=36; retain the positive root and check it follows the turn. The shortcut u=g(t₂−t₁)/2 holds only for equal opposite magnitudes.",
+    "source": "2025/51/Q43",
+    "sourceW": "Equal-depth opposite-launch time symmetry, source D2/D3 boundary HOLD.",
+    "gap": "Unequal launch magnitudes and branch validation, known equation execution.",
+    "id": "PH01-M04-QRT-APPLY-D3-R46-SOURCE43",
+    "cid": "PH01-M04-QRT-APPLY-D3-R46-SOURCE43-INSTANCE",
+    "core1a": "nsejs/physics/textbook/PH01/M04/index.html",
+    "core1b": "nsejs/physics/core1/ph01-m04-r46/index.html",
+    "academic": "HOLD"
+  },
+  {
+    "n": 48,
+    "m": "M03",
+    "cell": "D3.3",
+    "op": "APPLY",
+    "science": "PH01-SCI-SPEED-AVERAGES",
+    "w": "Execute a specified equal-distance reciprocal-time relation with dwell and moving-only time, reject physically invalid current roots and verify both leg times.",
+    "task": "A powered survey boat travels 360 m downstream and returns 360 m upstream. Its speed relative to water is constant 5 m/s, current speed c≥0 is uniform, and it waits 30 s at the far dock. An elapsed clock reads 180 s. Use t=d/v for each leg and the moving-time relation to determine c, both leg durations and overall average speed. A report treats 180 s as moving time and another accepts c=−1 m/s. Explain which clock and sign assumptions are valid. Check the upstream feasibility condition.",
+    "ans": "Moving time=150 s. 360/(5+c)+360/(5−c)=150 with 0≤c<5. Sum=3600/(25−c²), so 25−c²=24, c=1 m/s; negative root violates defined nonnegative downstream current. Downstream duration 60 s, upstream 90 s; sum with wait=180 s. Overall average speed 720/180=4 m/s; moving-only 720/150=4.8 m/s; signed average velocity zero. Using elapsed time without subtracting dwell gives c²=5 and violates the clock ledger. Upstream speed 4>0.",
+    "bound": "If the same clock instead reads 170 s including the same wait, is any nonnegative current compatible?",
+    "sol": "Moving time 140 s; 3600/(25−c²)=140 implies c²=−5/7, impossible. Even zero current needs 144 s moving and 174 s elapsed; the reading is inconsistent.",
+    "h": [
+      "Separate moving time from elapsed time, and write the signed ground speeds.",
+      "Use the given equal-distance time sum and enforce the upstream positive-speed domain.",
+      "Check both leg durations against the elapsed clock and compare the boundary to the zero-current minimum."
+    ],
+    "diag": "Wrong models: arithmetic mean of downstream/upstream speeds; leave dwell in moving time; accept a negative current magnitude or c≥5. Identify the first invalid equation/domain.",
+    "repair": "Build the two leg time ledger plus dwell, solve the reciprocal equation in the physical domain, and substitute both leg times into the original clock. Check the minimum elapsed time at zero current.",
+    "scores": [
+      1,
+      1,
+      2,
+      1,
+      2
+    ],
+    "ev": [
+      "Specified relative-speed/time model.",
+      "Translate elapsed/moving ledger and directed speeds.",
+      "Solve relation, check roots, durations, average and altered clock.",
+      "Simple rational elimination.",
+      "Dwell and invalid sign/domain or impossible clock."
+    ],
+    "teach": "For equal out-and-return distances d at constant water-relative speed v and current c, the ground speeds are v+c and v−c. A return requires 0≤c<v. Moving time is d/(v+c)+d/(v−c)=2dv/(v²−c²); elapsed time includes any dwell. Worked anchor: d=120 m, v=4 m/s, c=2 m/s gives moving times 20 s and 60 s, total 80 s. A 10 s wait makes 90 s elapsed; average speed is 240/90, not (6+2)/2. To infer c from a clock, subtract dwell first and reject nonreal or domain-invalid results. This is a current/relative-velocity model, not a general law of wind-driven boats.",
+    "source": "2025/51/Q48",
+    "sourceW": "Inverse equal-distance reciprocal-time equation under idealized additive velocities; likely short APPLY/MODEL, band HOLD.",
+    "gap": "Dwell, physical root/domain, impossible-clock boundary.",
+    "id": "PH01-M03-QRT-APPLY-D3-R46-SOURCE48",
+    "cid": "PH01-M03-QRT-APPLY-D3-R46-SOURCE48-INSTANCE",
+    "core1a": "nsejs/physics/textbook/PH01/M03/index.html",
+    "core1b": "nsejs/physics/core1/ph01-m03-r46/index.html",
+    "academic": "HOLD"
+  }
+]

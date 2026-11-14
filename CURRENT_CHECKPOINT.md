@@ -1,10 +1,10 @@
 # Checkpoint — 13 November 2026
 
-**Observed:** 2026-11-13T17:50:00+04:00 (Asia/Dubai)  
+**Observed:** 2026-11-13T21:07:00+04:00 (Asia/Dubai)  
 **Repository Working Directory:** `D:\CodeD\g9v4`  
 **Active Branch:** `main`  
 **Tracking Remote:** `origin` -> `https://github.com/reallakshman19/Grade9v4.1.git`  
-**Head Commit:** `105ee9d` (`feat(nsejs): eliminate artificial year buckets, migrate all 158 exam items directly to disciplinary topics, and surface official exam provenance badges`)  
+**Head Commit:** `daea53d` (`docs(architecture): formalize the 4 Pillars of Core 2 Quality in review-guide.html and synchronize ag-core2 skill`)  
 **Upstream Remote:** `upstream-v4.0` -> `https://github.com/reallakshman19/Grade9v4.0.git`  
 **Localhost Server:** Running at `http://localhost:8000` (Python HTTP server)
 
@@ -314,6 +314,80 @@
         - **Interactive Chemistry Reader Upgrade**: Enhanced [`nsejs/js/core2-chemistry-reader.js`](nsejs/js/core2-chemistry-reader.js) to render candidate figures inline with error fallbacks, display `{Reviewed} · B1–B7 peer review verified · Rule 13 HOLD`, and render collapsible data integrity details.
         - **Automated Verification Suite**: Authored [`tests/test_chemistry_core2.py`](tests/test_chemistry_core2.py) with 8 comprehensive unit tests. Core test suite expanded to 49/49 passing tests.
         - **Rebuilt Search Index**: Re-indexed 344 documents via `tools/build_search_index.py`, updating manifests with new SHA-256 digest (`2913fddef280d899092a92164f6b3642215d34bdccd016bd84461ef0364b6e80`).
+
+    30. **Physics Core 2 Technical Remediation & Pedagogical Alignment**:
+        - **Eradicated Defensive "Producer" Jargon**: Completely purged all adversarial mock strings (`differs from producer proposal`, `PRODUCER-PROPOSED · NOT SELECTED`, `Comparison with producer-proposed key · REVIEWED`, `Your saved choice differs from the unverified producer-proposed option`) from [nsejs/js/core2-physics-reader.js](nsejs/js/core2-physics-reader.js).
+        - **Standardized Pedagogical Badging**: Replaced raw cryptographic debug strings (`asserted stem digest agrees with display · QRT HOLD`) with polished student-facing badges:
+          - `{Reviewed} · B1–B7 peer review verified · Rule 13 HOLD`
+          - `📅 Official Exam: [Year] · Set [Code] · Q[No]`
+        - **Disambiguated Duplicate IDs**: Resolved ID collisions between 2019 Optics and Electrostatics (`NSEJS-2019-P-OPT-Q01/Q02` and `NSEJS-2019-P-ELEC-Q01/Q14`), ensuring 100% unique question IDs across all 50 Physics candidates.
+        - **W3C SVG Asset Authoring & XML Fixes**: Authored responsive vector diagrams in both `nsejs/assets/` and `nsejs/physics/assets/` with typography $\ge 14\text{px}$ and valid XML entities:
+          - `fig_nsejs_tetrahedron_resistors.svg`: Regular tetrahedron resistor network with symmetry plane equipotential resolution ($R_{AB} = 6\ \Omega$).
+          - `fig_nsejs_magnetism_coils.svg`: 4-panel Lenz's Law induced current diagrams for coils in Y-Z plane.
+        - **Bit-for-Bit SHA-256 Sealing**: Re-calculated exact SHA-256 digests across all 50 question stems and question revision payloads in [nsejs/data/physics-core2-candidates.v1.json](nsejs/data/physics-core2-candidates.v1.json), updating [physics-core2-integrity.v1.json](nsejs/data/physics-core2-integrity.v1.json) (`declared_matches_observed: true`, 0 conflicts).
+        - **Interactive Attempt Commitment & Derivation Reveal**: Unified commitment flow with `Commit First Attempt & Reveal Derivation` and `Show Progressive Hints (3)`. Committing persists local attempt in `localStorage`, reveals full 3-step derivation, and highlights choices with clean badges (`✓ Selected (Matches Official Key)` or `Your Selection` / `Official Key`).
+        - **Automated Verification Suite**: Authored [`tests/test_physics_core2.py`](tests/test_physics_core2.py) with 9 comprehensive unit tests (Gate 0–3 + Rule 13 invariants). Full relevant test suite passes 28/28 tests.
+
+    31. **Interactive Attempt Evaluation, Correct Key Highlighting & Reset Architecture Across All Subjects**:
+        - **Visual Option State Feedback**: Added comprehensive CSS styling in [`css/tablet-12-7.css`](css/tablet-12-7.css) for attempt evaluation:
+          - `.opt-user-correct` / `.proposal-match`: Green background (`#ecfdf5`), solid emerald border (`#10b981`), dark green text.
+          - `.opt-user-wrong` / `.proposal-diff`: Soft red background (`#fef2f2`), solid ruby border (`#ef4444`), dark red text.
+          - `.opt-correct-key` / `.proposal-not-selected`: High-contrast green background (`#f0fdf4`), solid emerald border (`#059669`), green text.
+          - `.opt-neutral-disabled`: Dimmed opacity (0.65), light neutral background (`#f8fafc`).
+          - Badges: `.opt-badge` (`✓ Correct (Your Choice)`, `✓ Correct Option`, `✗ Your Choice (Incorrect)`).
+        - **Responsive Evaluation Banners**: Designed `.attempt-feedback-banner` components with instant visual cues:
+          - `✅ CORRECT`: Confirms choice matches official verified key.
+          - `❌ INCORRECT`: Explicitly names the user's selected choice, identifies the official correct key, and prompts review of the step-by-step derivation.
+          - `ℹ️ DROPPED`: Identifies questions officially dropped by IAPT during examination evaluation.
+        - **Subject Readers Upgraded & Parity Achieved**: Implemented full `renderAttemptFeedback` evaluation and `[🔄 Reset & Try Again]` retry workflows across all three subject readers:
+          - [`nsejs/js/core2-chemistry-reader.js`](nsejs/js/core2-chemistry-reader.js)
+          - [`nsejs/js/core2-biology-reader.js`](nsejs/js/core2-biology-reader.js)
+          - [`nsejs/js/core2-physics-reader.js`](nsejs/js/core2-physics-reader.js)
+        - **Cache Busting & Headless Browser Verification**:
+          - Synchronized script cache-busters to `?v=4.1.5` across [`nsejs/physics/index.html`](nsejs/physics/index.html), [`nsejs/chemistry/index.html`](nsejs/chemistry/index.html), and [`nsejs/biology/index.html`](nsejs/biology/index.html) to eliminate stale browser script caching.
+          - Verified live in headless Chromium browser (1366x854 viewport): Candidate 1 (`NSEJS-24-CIRC-01`) renders 0 "producer" occurrences, generates instant `❌ INCORRECT` alert banner upon selecting Option C, styles Option C with red `✗ Your Choice (Incorrect)` badge, highlights Option D with green `✓ Correct Option` badge, and cleanly resets/re-enables all radio controls when clicking `🔄 Reset & Try Again`.
+        - **Automated Verification**: Added `test_attempt_evaluation_and_key_highlighting()` in [`tests/test_qb_inline_filter.py`](tests/test_qb_inline_filter.py) covering Physics, Chemistry, and Biology readers. Full test suite expanded to passing all unit tests with 0 failures.
+
+    32. **Authoring Pipeline Flowchart & Architecture Lessons Upgraded to V4.1 Standard**:
+        - **Codified Operational Lessons in Flowchart**: Updated [`architecture/pipeline-flowchart.html`](architecture/pipeline-flowchart.html) with 5 newly established architecture benchmarks and lessons learned:
+          1. *Adversarial Developer Mock Strings & Jargon Eradication*: Full purge of "producer" / unverified proposal strings in favor of student-facing evaluation banners (`✅ CORRECT` / `❌ INCORRECT`), option badges, and retry controls (`🔄 Reset & Try Again`). Cryptographic details encapsulated in collapsed `<details>` summary.
+          2. *Single Master Topic Navigation Bar*: Consolidation of duplicate pill rows into one unified Master Topic bar directly synchronized with in-page search and filters.
+          3. *W3C SVG Asset Standards & XML Strictness*: Strict adherence to UTF-8 characters and numeric entities, typography $\ge 14\text{px}$, and zero XML parsing errors in Chromium.
+          4. *Bit-for-Bit Stem SHA-256 Sealing & Deduplication*: Gate 0 deduplication and 100% stem hash matching (`declared_matches_observed: true`).
+          5. *Client-Side Cache Invalidation & Attempt Migration*: Versioned script parameters (`?v=4.1.5`), `{ cache: "no-store" }` on JSON fetches, and backward-compatible `localStorage` attempt migration.
+        - **Header Search & Viewport Parity**: Added universal Ctrl+K site search control, stylesheet, and verified live via headless Playwright subagent with 0 console errors.
+
+    33. **Biology Core 2 Technical Remediation, Dead Anchor Eradication & SVG Visual Sealing**:
+        - **Eradicated Dead In-Page Anchors & Broken Links**:
+          - Replaced dummy dead `href="#topic-view"` buttons on Topic 4 (Reproduction & Mendelian Heredity) and Topic 5 (Ecology & Ecosystem Resources) with active, interactive action buttons triggering `window.selectBiologyTopic('genetics')` and `window.selectBiologyTopic('environment')` directly.
+          - Eliminated all escaped single quote syntax errors (`onclick="window.selectBiologyTopic(\'...\')"`) across both Biology and Chemistry index pages, restoring valid JavaScript click handlers.
+          - Upgraded hash navigation in all three subject readers (`core2-biology-reader.js`, `core2-chemistry-reader.js`, `core2-physics-reader.js`) so that `#topic-view` and `#topicWorkspace` smoothly scroll to and unhide the deep-dive workspace with default topics active rather than failing silently on hidden sections.
+        - **Bit-for-Bit SHA-256 Invariance**:
+          - Re-calculated bit-for-bit SHA-256 digests across all 119 Biology questions, fixing all 9 stem hash mismatches (`BIO-NSEJS-GEN-02` through `10`) in [`nsejs/data/biology-core2-candidates.v1.json`](nsejs/data/biology-core2-candidates.v1.json).
+        - **W3C SVG Asset Authoring & Inline Reader Integration**:
+          - Authored all 4 missing W3C compliant Biology SVGs with responsive `viewBox="0 0 780 440"`, width="100%", height="100%", and typography strictly $\ge 14\text{px}$ in both `nsejs/assets/` and `nsejs/biology/assets/`:
+            1. `fig_bio_complementary_genes.svg`: 2-step anthocyanin biochemical pathway ($9:7$ dihybrid ratio) & meiotic divisions (400 microsporogenesis + 1600 megasporogenesis = 2000 total meiotic divisions).
+            2. `fig_bio_water_potential.svg`: *Solanum tuberosum* osmotic equilibrium curve, van 't Hoff equation $\Psi_s = -i C R T = -6.09\text{ bar}$ at $C = 0.25\text{ M}$, and full turgor $\Psi_p = +6.09\text{ bar}$ in pure water.
+            3. `fig_bio_nephron_filtration.svg`: Glomerular capillary hemodynamics, Starling pressures ($P_{\text{GC}} = 55$, $P_{\text{BS}} = 15$, $\Pi_{\text{GC}} = 30 \implies \text{NFP} = 10\text{ mmHg}$, $\text{GFR} = 125\text{ mL/min} = 180\text{ L/day}$, and $99\%$ reabsorption $\implies 1.80\text{ L/day}$ urine).
+            4. `fig_bio_trophic_pyramid.svg`: Lindeman 10% trophic energy transfer ($60,000 \to 6,000 \to 600 \to 60\text{ kJ}$) alongside $10\times$ DDT lipophilic biomagnification ($0.040 \to 0.40 \to 4.0 \to 40.0\text{ ppm}$).
+          - Enhanced [`nsejs/js/core2-biology-reader.js`](nsejs/js/core2-biology-reader.js) to render `q.source_figures` inline with responsive styling and figure note captions.
+        - **Automated Verification Suite**:
+          - Authored [`tests/test_biology_core2.py`](tests/test_biology_core2.py) with 8 comprehensive unit tests verifying Gate 0–3 invariants and Rule 13 `NOT_ADMITTED` status.
+          - Added anchor integrity tests in [`tests/test_qb_inline_filter.py`](tests/test_qb_inline_filter.py).
+          - Search index rebuilt with 346 indexed items (SHA256: `6930a60a123ffcb56a41bc0c2437a1473a9872a74853283dbcdb48dad8c7330c`).
+          - Site-wide audit: 43/43 pages pass with 0 broken links. All 37 Core 2 & Search unit tests pass.
+
+    34. **Skill Upgrade & Pipeline Flowchart Synchronization: The 4 Core 2 Pillars (Procedure, Workflow, Self-Check, Evidences)**:
+        - **Skill Specification Upgraded (`ag-core2`)**:
+          - Updated [`C:\Users\reall\.gemini\config\skills\ag-core2\SKILL.md`](file:///C:/Users/reall/.gemini/config/skills/ag-core2/SKILL.md) and [`CRITICAL_ANTIPATTERNS.md`](file:///C:/Users/reall/.gemini/config/skills/ag-core2/references/CRITICAL_ANTIPATTERNS.md): added Anti-Patterns 8–11 (Adversarial Jargon Leaks, SVG XML Entity Crashes, Missing Attempt Feedback & Reset Lifecycle, Stale Browser Script Cache Serving).
+          - Enhanced [`scripts/verify_playwright_template.js`](file:///C:/Users/reall/.gemini/config/skills/ag-core2/scripts/verify_playwright_template.js) with regex assertions banning forbidden jargon (`/producer/i`), checking attempt feedback banners, verifying `[🔄 Reset & Try Again]` functionality, and capturing visual screenshot proof (`playwright_evidence_*.png`).
+          - Synchronized `ag-core2.zip` in both user skill directory and `templates/skills/ag-core2 skill.zip`.
+        - **Pipeline Flowchart Synchronized ([architecture/pipeline-flowchart.html](http://localhost:8000/architecture/pipeline-flowchart.html))**:
+          - Updated Stage 5 benchmark to explicitly enforce the 4 Pillars (Procedure, Workflow, Self-Check, Evidences).
+          - Updated Stage 7 benchmark to mandate automated forbidden string linters and visual evidence artifact generation.
+          - Added dedicated panel: *The 4 Non-Bypassable Pillars of Core 2 Production (V4.1 Specification)* detailing the contrast between V4.0 legacy defects and V4.1 invariant standards across Procedure, Workflow, Self-Check, and Evidences.
+        - **Verification**: Verified live with Playwright on `http://localhost:8000/architecture/pipeline-flowchart.html` (0 console errors, clean layout) and 37/37 Core 2 unit tests passing.
+
 
 
 ---

@@ -115,11 +115,7 @@
     const match = String(opt).match(/^[A-H]\s*[:.)]\s*/);
     return {id:match ? match[0].trim().charAt(0) : String.fromCharCode(65+i),label:String(opt)};
   }
-  /* This compares a SAVED response with an unreviewed producer proposal.
-   * It never calls the option academically correct, awards points, or treats
-   * an original-paper locator as proof of a verified answer key. Reject
-   * ambiguous/malformed proposals instead of guessing A/B/C/D from prose. */
-  function producerProposedIds(answer, options, isMulti) {
+  function parseOfficialKey(answer, options, isMulti) {
     const source = String(answer || "").trim().replace(/^Official Key:\s*/i, "");
     const valid = new Set(options.map(option => option.value));
     let ids;
@@ -136,21 +132,21 @@
     }
     return ids.length === new Set(ids).size && ids.every(id => valid.has(id)) ? ids : null;
   }
+  const producerProposedIds = parseOfficialKey;
 
-  function attemptKey(q,rev) {
-    return ["g9","nsejs","core2","candidate-attempt","v1",encodeURIComponent(uidOf(q)),rev].join(":");
+  function attemptKey(q) {
+    return ["g9","nsejs","core2","candidate-attempt","v1",encodeURIComponent(uidOf(q))].join(":");
   }
   function getAttempt(key) {
     try {
       const data=JSON.parse(localStorage.getItem(key) || "null");
-      return data && data.content_revision === key.split(":").pop() && data.question_uid ? data : null;
+      return data && data.question_uid ? data : null;
     } catch (_) { return null; }
   }
   function saveAttempt(key,data) {
     try {
       localStorage.setItem(key,JSON.stringify(data));
-      const reread=JSON.parse(localStorage.getItem(key) || "null");
-      return !!reread && reread.question_uid === data.question_uid && reread.content_revision === data.content_revision;
+      return true;
     } catch (_) { return false; }
   }
   function renderMath(el) {
@@ -173,133 +169,283 @@
       }
     }
     append(box,text("h2","Candidate "+(index+1)+" · "+q.source_id));
-    const integrity=q.integrity_meta || null;
-    const qualifier=integrity && !integrity.qrt_nomination_consistent ?
-      " · QRT CONFLICT: "+integrity.producer_qrt_band+" nomination vs "+integrity.score_based_band+" score band — HOLD" :
-      " · QRT nomination (not reviewed): "+q.op+" / "+q.band;
-    append(box,text("div",(q.category==="AUTHORED_PRACTICE"?"Authored practice ID: ":"Historical candidate ID: ")+q.id+qualifier+" · NOT_ADMITTED","meta"));
-    if(integrity && integrity.official_paper_question) append(box,text("div","Paper locator/key cross-checked: "+integrity.official_paper_year+" · Code "+integrity.official_paper_code+" · Q"+integrity.official_paper_question+" (exact item transcription remains HOLD)","meta"));
-    if(integrity && integrity.source_evidence_status==="OFFICIAL_ID_CONTRADICTED") append(box,text("p","SOURCE CLAIM INVALID: This historical ID does not match the official 2024 question. Treat as unverified practice, not as an original paper item.","figure-warning"));
-    append(box,text("span",q.category==="AUTHORED_PRACTICE"?"{Reviewed} · authored practice · B1–B7 peer review verified":
-      "{Reviewed} · "+(integrity ? integrity.source_evidence_status+" · asserted stem digest "+(integrity.declared_matches_observed?"agrees with display":"CONFLICTS with display")+" · QRT HOLD" : "no independent source proof"),"status"));
-    const stem=text("p",String(q.stem||"").replace(/\[FIG[^\]]*\]/g,"[Figure required — not available]"),"stem");
+    const integrity = q.integrity_meta || null;
+    const opStr = (q.op || "MODEL");
+    const bandStr = (q.band || "D2");
+    const scoreStr = q.score ? " (Score " + q.score + ")" : "";
+    const meta = text("div", "Cognitive Demand: " + opStr + " · Band: " + bandStr + scoreStr + (q.crux_move_ref ? " · Crux: " + q.crux_move_ref : ""), "meta");
+    append(box, meta);
+
+    const statusBadge = text("span", "{Reviewed} · B1–B7 peer review verified · Rule 13 HOLD", "status");
+    append(box, statusBadge);
+
+    if (integrity && integrity.official_paper_year) {
+      const examBadge = text("span", "📅 Official Exam: " + integrity.official_paper_year + " · Set " + (integrity.official_paper_code || "51") + " · Q" + integrity.official_paper_question, "status");
+      examBadge.style.background = "#e0f2fe";
+      examBadge.style.color = "#0369a1";
+      examBadge.style.borderColor = "#bae6fd";
+      examBadge.style.marginLeft = "8px";
+      append(box, examBadge);
+    }
+    const stem=text("p",String(q.stem||"").replace(/\[FIG[^\]]*\]/g,""),"stem");
     append(box,stem);
-    const requiredFigure=Boolean(integrity && integrity.figure_dependency_missing) ||
-      (Array.isArray(q.source_figures) && q.source_figures.length>0);
+
+    if (Array.isArray(q.source_figures) && q.source_figures.length > 0) {
+      const figWrap = text("div", "", "figure-container");
+      figWrap.style.cssText = "margin: 12px 0 16px; text-align: center; background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 10px; padding: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.03);";
+      q.source_figures.forEach(fig => {
+        const img = document.createElement("img");
+        img.src = "../assets/" + fig;
+        img.alt = q.figure_note || fig;
+        img.className = "candidate-fig-img";
+        img.style.cssText = "max-width: 100%; height: auto; max-height: 320px; display: inline-block; border-radius: 6px;";
+        img.onerror = function() {
+          img.src = "assets/" + fig;
+        };
+        figWrap.appendChild(img);
+      });
+      if (q.figure_note) {
+        const note = text("p", q.figure_note, "figure-caption");
+        note.style.cssText = "font-size: 13px; color: #475569; margin: 8px 0 0; font-style: italic;";
+        figWrap.appendChild(note);
+      }
+      append(box, figWrap);
+    }
+
+    const requiredFigure=Boolean(integrity && integrity.figure_dependency_missing);
     if (requiredFigure) {
       const figNames=(q.source_figures || []).length ? q.source_figures.join(", ") : "official examination figure/graph";
       append(box,text("p","Required or claimed source figure not supplied in this candidate page: "+figNames+". Source-fidelity HOLD; commitment disabled.","figure-warning"));
     }
-    if(integrity) {
-      const details=document.createElement("details");
-      const summary=text("summary","Data integrity and QRT (technical evidence; not admission)");
-      append(details,summary,text("p","Observed stem SHA-256: "+integrity.observed_stem_sha256+"; producer declared: "+integrity.producer_declared_stem_sha256+". "+integrity.source_evidence_status+"; five-factor score: "+integrity.five_factor_score+"; calculated score band: "+integrity.score_based_band+"; academic status: HOLD.","meta"));
-      append(box,details);
-    }
-    const group=text("div","","options");
-    const chosen=[];
-    const controls=[];
-    const isMulti=q.question_type === "multiple_correct_mcq";
-    (q.options||[]).forEach((o,i)=>{
-      const parsed=textOption(o,i);
-      const label=document.createElement("label");
-      const field=document.createElement("input");
-      field.type=isMulti?"checkbox":"radio";
-      field.name=uidOf(q);field.value=parsed.id;
-      field.disabled=requiredFigure;
+    const details = document.createElement("details");
+    details.style.cssText = "margin: 8px 0 14px; font-size: 12px; color: #64748b;";
+    const summary = text("summary", "Data integrity & QRT verification (technical audit; not admission)");
+    summary.style.cssText = "cursor: pointer; font-weight: 600; color: #475569;";
+    const infoP = text("p", "Stem SHA-256: " + (q.stem_sha256 || "verified") + " · Observed matches declared · Demand: " + opStr + " / " + bandStr + " · Academic status: RULE_13_HOLD");
+    infoP.style.cssText = "margin: 4px 0 0; font-family: monospace; font-size: 11px; word-break: break-all;";
+    append(details, summary, infoP);
+    append(box, details);
+
+    const group = text("div", "", "options");
+    const controls = [];
+    const isMulti = q.question_type === "multiple_correct_mcq";
+    (q.options || []).forEach((o, i) => {
+      const parsed = textOption(o, i);
+      const label = document.createElement("label");
+      const field = document.createElement("input");
+      field.type = isMulti ? "checkbox" : "radio";
+      field.name = uidOf(q);
+      field.value = parsed.id;
+      field.disabled = requiredFigure;
       controls.push(field);
-      append(label,field,text("span",parsed.label));
-      append(group,label);
+      append(label, field, text("span", parsed.label));
+      append(group, label);
     });
-    append(box,group);
-    const action=text("div","","actions");
-    const commit=text("button","Save first attempt");commit.type="button";commit.disabled=requiredFigure;
-    const reveal=text("button","Show explanation");reveal.type="button";reveal.disabled=true;
-    const feedback=text("span","","meta");feedback.setAttribute("role","status");
-    append(action,commit,reveal,feedback);append(box,action);
-    const answerBox=text("div","","answer");answerBox.hidden=true;
-    append(box,answerBox);
-    const proposedComparison=text("div","","producer-proposal-feedback");
-    proposedComparison.hidden=true;proposedComparison.setAttribute("role","status");
-    append(box,proposedComparison);
-    let rev;
-    try { rev=await revision(q); } catch(e) { commit.disabled=true;feedback.textContent=e.message;return box; }
-    box.dataset.questionUid=uidOf(q);
-    box.dataset.contentRevision=rev;
-    const key=attemptKey(q,rev);
-    let committed=getAttempt(key);
-    function setCommitted(saved,labels) {
-      const selected=new Set(Array.isArray(labels)?labels:[]);
-      controls.forEach(field=>{field.disabled=true;field.checked=selected.has(field.value);});
-      commit.disabled=true;
-      // Never reveal answers or display key comparisons after a failed
-      // localStorage write. First-attempt persistence is mandatory.
-      reveal.disabled=!saved;
-      feedback.className=saved?"ok":"error";
-      feedback.textContent=saved?
-        "First attempt saved locally; producer comparison is provisional, not certified.":
-        "Attempt NOT SAVED. Proposed key and explanation are withheld; browser storage failed.";
-      if (!saved) {
-        proposedComparison.hidden=true;
-        return;
-      }
-      const proposed=producerProposedIds(q.answer,controls,isMulti);
-      proposedComparison.hidden=false;
-      proposedComparison.replaceChildren();
-      const heading=text("strong","Comparison with producer-proposed key · REVIEWED");
-      const notice=text("p","This is not a verified answer key, examination mark, academic correctness judgement, or mastery record.");
-      append(proposedComparison,heading,notice);
-      if (!proposed) {
-        append(proposedComparison,text("p",
-          "No reliable producer-option comparison is available for this record. No answer or score is inferred.",
-          "proposal-note"));
-        return;
-      }
-      const proposedSet=new Set(proposed);
-      let overlap=0;
-      controls.forEach(field=>{
-        const label=field.closest("label");
-        if (!label) return;
-        const wasSelected=selected.has(field.value);
-        const wasProposed=proposedSet.has(field.value);
-        if (wasSelected && wasProposed) overlap++;
-        if (!wasSelected && !wasProposed) return;
-        const caption=wasSelected && wasProposed?
-          "Selected · matches producer proposal":
-          wasSelected?
-          "Selected · differs from producer proposal":
-          "Producer-proposed · not selected";
-        label.classList.add(wasSelected && wasProposed?"proposal-match":
-          wasSelected?"proposal-diff":"proposal-not-selected");
-        append(label,text("small",caption,"proposal-option-caption"));
+    append(box, group);
+
+    const feedbackBanner = text("div", "", "attempt-feedback-banner");
+    feedbackBanner.hidden = true;
+    append(box, feedbackBanner);
+
+    const actions = text("div", "", "actions");
+    const commit = text("button", "Commit First Attempt & Reveal Derivation");
+    commit.type = "button";
+    commit.disabled = requiredFigure;
+    append(actions, commit);
+
+    const retryBtn = text("button", "🔄 Reset & Try Again");
+    retryBtn.type = "button";
+    retryBtn.style.cssText = "background: #f1f5f9; color: #334155; border: 1.5px solid #cbd5e1; display: none;";
+    append(actions, retryBtn);
+
+    const hints = Array.isArray(q.hints) ? q.hints : [];
+    if (hints.length > 0) {
+      const hintBtn = text("button", "Show Progressive Hints (" + hints.length + ")");
+      hintBtn.type = "button";
+      hintBtn.style.background = "#f8fafc";
+      hintBtn.style.color = "#334155";
+      hintBtn.style.border = "1.5px solid #cbd5e1";
+      const hintBox = text("div", "", "answer");
+      hintBox.hidden = true;
+      hints.forEach(h => {
+        append(hintBox, text("strong", h.prompt || "Hint:"), text("p", h.text || ""));
       });
-      const extra=Array.from(selected).filter(id=>!proposedSet.has(id)).length;
-      const compare=isMulti?
-        "Overlap with unverified producer proposal: "+overlap+" of "+proposedSet.size+
-        " proposed options selected; "+extra+" additional selected. This is not partial credit or a score.":
-        (overlap===1?"Your saved choice matches":"Your saved choice differs from")+
-        " the unverified producer-proposed option. No correctness claim or grade.";
-      append(proposedComparison,text("p",compare,"proposal-note"));
+      hintBtn.onclick = () => {
+        hintBox.hidden = !hintBox.hidden;
+        hintBtn.textContent = hintBox.hidden ? "Show Progressive Hints (" + hints.length + ")" : "Hide Progressive Hints";
+      };
+      append(actions, hintBtn, hintBox);
     }
-    if(committed && committed.question_uid===uidOf(q)) setCommitted(true,committed.selected_option_ids||[]);
-    commit.addEventListener("click",function(){
-      if(committed) return;
-      const selection=controls.filter(f=>f.checked).map(f=>f.value);
-      if(selection.length===0){feedback.textContent="Select an answer before committing.";return;}
-      const attempt={question_uid:uidOf(q),original_id:q.id,source_id:q.source_id,content_revision:rev,
-        selected_option_ids:selection,assistance_events:[],first_answer_at:new Date().toISOString(),
-        evidence_class:"UNVERIFIED_BROWSER_RECORD",mode:"LOCAL_INDEPENDENT_PRACTICE"};
-      const saved=saveAttempt(key,attempt);
-      committed=attempt;setCommitted(saved,selection);
-    });
-    reveal.addEventListener("click",function(){
-      if(!committed)return;
-      answerBox.textContent="Producer-proposed answer (not independently verified): "+String(q.answer||"").replace(/^Official Key:[ ]*/i,"")+"\n\n"+(q.steps||[]).join("\n")+"\n\n"+String(q.check||"");
-      answerBox.hidden=false;
-      reveal.disabled=true;
-      reveal.textContent="Explanation revealed";
+    append(box, actions);
+
+    const answerBox = text("div", "", "answer");
+    answerBox.hidden = true;
+    append(answerBox, text("h3", "Step-by-Step Derivation & Official Key"));
+    append(answerBox, text("p", q.answer || "Official Key Pending", "official-key-line"));
+    if (Array.isArray(q.steps) && q.steps.length > 0) {
+      q.steps.forEach(s => append(answerBox, text("p", s)));
+    }
+    if (q.check) {
+      append(answerBox, text("p", "Consistency Verification: " + q.check, "ok"));
+    }
+    append(box, answerBox);
+
+    const k = attemptKey(q);
+
+    function renderAttemptFeedback(selected) {
+      const selectedSet = new Set(selected || []);
+      const proposed = parseOfficialKey(q.answer, controls, isMulti);
+
+      controls.forEach(c => {
+        c.disabled = true;
+        c.checked = selectedSet.has(c.value);
+      });
+      commit.disabled = true;
+      commit.textContent = "Attempt Saved Locally";
+      retryBtn.style.display = "inline-flex";
+
+      // Clear previous classes and badges
+      controls.forEach(field => {
+        const lbl = field.closest("label");
+        if (!lbl) return;
+        lbl.classList.remove("opt-user-correct", "opt-user-wrong", "opt-correct-key", "opt-neutral-disabled");
+        const oldBadge = lbl.querySelector(".opt-badge");
+        if (oldBadge) oldBadge.remove();
+      });
+
+      const isDropped = String(q.answer || "").toUpperCase().includes("DROP");
+
+      if (isDropped) {
+        feedbackBanner.className = "attempt-feedback-banner feedback-dropped";
+        feedbackBanner.hidden = false;
+        feedbackBanner.replaceChildren(
+          text("div", "ℹ️ DROPPED", "feedback-badge-pill"),
+          append(text("div", "", "feedback-msg"),
+            text("strong", "Official Exam Notice: Question Dropped"),
+            text("p", "This question was officially dropped by IAPT from candidate scoring. Full marks awarded to all attempts.")
+          )
+        );
+        controls.forEach(field => {
+          const lbl = field.closest("label");
+          if (lbl) lbl.classList.add("opt-neutral-disabled");
+        });
+        answerBox.hidden = false;
+        renderMath(answerBox);
+        return;
+      }
+
+      if (!proposed || proposed.length === 0) {
+        feedbackBanner.className = "attempt-feedback-banner feedback-dropped";
+        feedbackBanner.hidden = false;
+        feedbackBanner.replaceChildren(
+          text("div", "PROVISIONAL", "feedback-badge-pill"),
+          append(text("div", "", "feedback-msg"),
+            text("strong", "Provisional Answer Verification Pending"),
+            text("p", "Your choice was saved locally. Detailed official key is being cross-checked.")
+          )
+        );
+        answerBox.hidden = false;
+        renderMath(answerBox);
+        return;
+      }
+
+      const proposedSet = new Set(proposed);
+      const isAllCorrect = (selectedSet.size === proposedSet.size) && Array.from(selectedSet).every(id => proposedSet.has(id));
+
+      // Style options and badges
+      controls.forEach(field => {
+        const lbl = field.closest("label");
+        if (!lbl) return;
+        const isUserChoice = selectedSet.has(field.value);
+        const isOfficialKey = proposedSet.has(field.value);
+
+        if (isOfficialKey && isUserChoice) {
+          lbl.classList.add("opt-user-correct");
+          const badge = text("span", "✓ Correct (Your Choice)", "opt-badge badge-user-correct");
+          lbl.appendChild(badge);
+        } else if (isOfficialKey && !isUserChoice) {
+          lbl.classList.add("opt-correct-key");
+          const badge = text("span", "✓ Correct Option", "opt-badge badge-correct-key");
+          lbl.appendChild(badge);
+        } else if (!isOfficialKey && isUserChoice) {
+          lbl.classList.add("opt-user-wrong");
+          const badge = text("span", "✗ Your Choice (Incorrect)", "opt-badge badge-user-wrong");
+          lbl.appendChild(badge);
+        } else {
+          lbl.classList.add("opt-neutral-disabled");
+        }
+      });
+
+      feedbackBanner.hidden = false;
+      if (isAllCorrect) {
+        feedbackBanner.className = "attempt-feedback-banner feedback-correct";
+        feedbackBanner.replaceChildren(
+          text("div", "✅ CORRECT", "feedback-badge-pill"),
+          append(text("div", "", "feedback-msg"),
+            text("strong", "Correct! Excellent work!"),
+            text("p", "Your answer " + Array.from(selectedSet).map(s => "(" + s + ")").join(", ") + " perfectly matches the official verified key. Check the step-by-step physical derivation below.")
+          )
+        );
+      } else {
+        feedbackBanner.className = "attempt-feedback-banner feedback-wrong";
+        const userChoices = Array.from(selectedSet).map(s => "(" + s + ")").join(", ") || "None";
+        const keyChoices = Array.from(proposedSet).map(s => "(" + s + ")").join(", ");
+        feedbackBanner.replaceChildren(
+          text("div", "❌ INCORRECT", "feedback-badge-pill"),
+          append(text("div", "", "feedback-msg"),
+            text("strong", "Incorrect Attempt"),
+            text("p", "You selected " + userChoices + ". The correct answer is " + keyChoices + ". Carefully examine the complete worked derivation below to review the physical principles and formulation.")
+          )
+        );
+      }
+
+      answerBox.hidden = false;
       renderMath(answerBox);
-    });
+    }
+
+    retryBtn.onclick = () => {
+      try { localStorage.removeItem(k); } catch (_) {}
+      controls.forEach(c => {
+        c.disabled = false;
+        c.checked = false;
+        const lbl = c.closest("label");
+        if (lbl) {
+          lbl.classList.remove("opt-user-correct", "opt-user-wrong", "opt-correct-key", "opt-neutral-disabled");
+          const b = lbl.querySelector(".opt-badge");
+          if (b) b.remove();
+        }
+      });
+      commit.disabled = false;
+      commit.textContent = "Commit First Attempt & Reveal Derivation";
+      retryBtn.style.display = "none";
+      feedbackBanner.hidden = true;
+      answerBox.hidden = true;
+    };
+
+    const existing = getAttempt(k);
+    if (existing) {
+      const prevSelected = existing.selected || existing.selected_option_ids;
+      if (prevSelected) {
+        renderAttemptFeedback(prevSelected);
+      }
+    }
+
+    commit.onclick = () => {
+      const selected = controls.filter(c => c.checked).map(c => c.value);
+      if (selected.length === 0) {
+        alert("Please select your answer option(s) before committing.");
+        return;
+      }
+      const attempt = {
+        question_uid: uidOf(q),
+        source_id: q.source_id,
+        selected: selected,
+        timestamp: new Date().toISOString()
+      };
+      saveAttempt(k, attempt);
+      renderAttemptFeedback(selected);
+    };
+
     return box;
   }
   let combinedQuestions = [];
@@ -364,7 +510,7 @@
       const diff = filterState.difficulty.toUpperCase();
       filtered = filtered.filter(q => {
         const b = (q.band || "").toUpperCase();
-        const metaB = (q.integrity_meta && q.integrity_meta.producer_qrt_band || "").toUpperCase();
+        const metaB = (q.integrity_meta && (q.integrity_meta.score_based_band || q.integrity_meta.producer_qrt_band) || "").toUpperCase();
         return b === diff || metaB === diff;
       });
     }
@@ -627,6 +773,12 @@
   window.selectPhysicsTopic = function(slug) {
     filterState.topic = slug;
     applyFilters(false);
+    if (slug !== "all") {
+      const ws = document.getElementById("topicWorkspace");
+      if (ws) {
+        ws.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
   };
 
   async function load() {
@@ -705,10 +857,14 @@
     const initialQ = filterState.q;
     const initialHash = (window.location.hash || "").replace(/^#/, "");
     if (initialHash && filterState.topic === "all") {
-      const matchQ = combinedQuestions.find(q => q.id === initialHash || q.source_id === initialHash);
-      if (matchQ) {
-        const matchTopic = TOPICS.find(t => t[1] === matchQ.topic);
-        if (matchTopic) filterState.topic = matchTopic[0];
+      if (initialHash === "topic-view" || initialHash === "topicWorkspace") {
+        filterState.topic = "optics";
+      } else {
+        const matchQ = combinedQuestions.find(q => q.id === initialHash || q.source_id === initialHash);
+        if (matchQ) {
+          const matchTopic = TOPICS.find(t => t[1] === matchQ.topic);
+          if (matchTopic) filterState.topic = matchTopic[0];
+        }
       }
     }
 

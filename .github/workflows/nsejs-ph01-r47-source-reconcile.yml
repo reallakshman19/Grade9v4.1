@@ -1,0 +1,31 @@
+name: NSEJS PH01 R4.7 pinned source reconciliation
+on:
+  pull_request:
+    paths:
+      - "nsejs/physics/curriculum/agent1/PH01/PH01_R47_SOURCE_REVISION_R00*"
+      - "nsejs/physics/curriculum/agent1/PH01/PH01_R47_R01_BLIND_INTAKE*"
+      - "tools/physics_ph01_r47_source_reconcile.py"
+      - "tests/test_nsejs_physics_ph01_r47_source_review.py"
+      - ".github/workflows/nsejs-ph01-r47-source-reconcile.yml"
+jobs:
+  pinned-source-reconciliation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout PR stack
+        uses: actions/checkout@v4
+        with:
+          path: ph01-stack
+      - name: Checkout independently pinned main snapshot
+        uses: actions/checkout@v4
+        with:
+          ref: 44f29f8c077505db0616c91fbec2c90464e9c92f
+          path: pinned-main
+      - name: Compare pinned source bytes, identities and academic gates
+        working-directory: ph01-stack
+        run: python tools/physics_ph01_r47_source_reconcile.py --stack-root . --main-root ../pinned-main
+      - name: Install isolated test runner
+        run: python -m pip install pytest==8.4.2
+      - name: Static R01 blind-intake test
+        working-directory: ph01-stack
+        run: python -m pytest -q tests/test_nsejs_physics_ph01_r47_source_review.py

@@ -43,3 +43,37 @@ def test_qb_filter_js_logic_present():
         assert "initFilterBar" in content, f"initFilterBar missing in {script}"
         assert "resetFilters" in content, f"resetFilters missing in {script}"
         assert "qb-card-anchor" in content or "data-qid" in content, f"anchor linking missing in {script}"
+
+def test_attempt_evaluation_and_key_highlighting():
+    # 1. Verify CSS styles for attempt evaluation and correct-key highlights
+    css_content = (ROOT / "css" / "tablet-12-7.css").read_text(encoding="utf-8")
+    assert ".opt-user-correct" in css_content
+    assert ".opt-user-wrong" in css_content
+    assert ".opt-correct-key" in css_content
+    assert ".attempt-feedback-banner" in css_content
+    assert ".feedback-correct" in css_content
+    assert ".feedback-wrong" in css_content
+
+    # 2. Verify reader scripts evaluate attempts and highlight correct keys
+    readers = [
+        ROOT / "nsejs" / "js" / "core2-physics-reader.js",
+        ROOT / "nsejs" / "js" / "core2-chemistry-reader.js",
+        ROOT / "nsejs" / "js" / "core2-biology-reader.js",
+    ]
+    for reader in readers:
+        code = reader.read_text(encoding="utf-8")
+        assert "renderAttemptFeedback" in code, f"renderAttemptFeedback missing in {reader}"
+        assert "opt-correct-key" in code, f"opt-correct-key highlighting missing in {reader}"
+        assert "opt-user-wrong" in code, f"opt-user-wrong highlighting missing in {reader}"
+        assert "attempt-feedback-banner" in code, f"attempt-feedback-banner missing in {reader}"
+        assert "retryBtn" in code, f"retryBtn missing in {reader}"
+
+
+def test_no_broken_anchor_links_or_escaped_onclicks():
+    # Verify no pages have broken dead href="#topic-view" on primary buttons
+    # and no onclick attributes with escaped single quotes (\')
+    for html_file in ROOT.glob("nsejs/**/*.html"):
+        content = html_file.read_text(encoding="utf-8")
+        assert r"\'" not in content, f"Escaped quote syntax found in {html_file}"
+        assert 'href="#topic-view"' not in content, f"Dead anchor href='#topic-view' found in {html_file}"
+

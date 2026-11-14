@@ -1,0 +1,117 @@
+{
+  "schema": "g9v41-chemistry-r00-post-audit-delta/v2",
+  "date": "2026-11-14",
+  "baseline": {
+    "audit_pr": 27,
+    "audit_head": "b717ef858a4082a8dd4861f61271a89ff97a64f6",
+    "author_inventory": 84,
+    "author_cycles": 252,
+    "original_r00_status": {
+      "PASS": 0,
+      "FAIL": 3,
+      "HOLD": 81
+    },
+    "frozen_register": "CHEMISTRY_MISSING_CONTENT_AND_GATES_R1.json",
+    "frozen_matrix": "CHEMISTRY_C01_C14_EVIDENCE_MATRIX_R1.json"
+  },
+  "correction_source": {
+    "b02_pr": 13,
+    "verified_head": "8afb6a0469bf5a1decfb03d30698fa491873ca9f",
+    "source_prs": [
+      30,
+      31
+    ],
+    "role": "AUTHOR_CORRECTED_CANDIDATE"
+  },
+  "caveat": "Historical R00 source snapshot is intentionally not rewritten. This delta establishes that authoring corrections exist at a newer pinned candidate head, NOT independent R01 science/QRT/source approval or a full current syllabus census.",
+  "post_correction": {
+    "named_omissions_remediated_at_candidate_level": 3,
+    "unreviewed_scientific_subtopics": 84,
+    "independently_qualified_subtopics": 0,
+    "qualification_status": "HOLD",
+    "official_complete_syllabus_claim": "NOT_ESTABLISHED",
+    "no_original_exam_admission": true
+  },
+  "corrections": [
+    {
+      "issue_id": "CHEM-FC-001",
+      "subtopic_id": "CHEM-C11.05",
+      "topic": "halo/halogen functional groups",
+      "snapshot_status": "FAIL",
+      "candidate_status": "AUTHOR_CANDIDATE_REMEDIATED",
+      "academic_status": "R01_R02_HOLD",
+      "files": [
+        {
+          "path": "curriculum/chemistry/agent-b/textbook/C11.core1a.md",
+          "blob_sha": "beef96a9fd392f2684fd2a14ee03d9adc87e4305"
+        },
+        {
+          "path": "curriculum/chemistry/agent-b/core1b/C11.core1b.v0.1.0.json",
+          "blob_sha": "ae9e94a0c7d737c7647e28ffae66244c6b002ff8"
+        }
+      ],
+      "evidence": "Textbook now explicitly describes haloalkanes, covalent C–Cl, chloro/bromo examples; existing REPRESENT task has a C3H7Cl position-isomer boundary transfer. Core1B identity is retained.",
+      "pending": "R01 source-science and R02 blinded task/transfer review; postcommit-stage leakage recheck"
+    },
+    {
+      "issue_id": "CHEM-FC-002",
+      "subtopic_id": "CHEM-C14.01",
+      "topic": "stratospheric ozone depletion",
+      "snapshot_status": "FAIL",
+      "candidate_status": "AUTHOR_CANDIDATE_REMEDIATED",
+      "academic_status": "R01_R02_HOLD",
+      "files": [
+        {
+          "path": "curriculum/chemistry/agent-b/textbook/C14.core1a.md",
+          "blob_sha": "90b643040e9307236d5440b0296e684ae9d9d3d2"
+        },
+        {
+          "path": "curriculum/chemistry/agent-b/core1b/C14.core1b.v0.1.0.json",
+          "blob_sha": "3a7da2266fad0c2ddc6ffb7a922f9fb874ad92e7"
+        }
+      ],
+      "evidence": "Textbook distinguishes protective stratospheric ozone and harmful ground-level ozone; describes CFC photolysis and catalytic O3 loss; MODEL response requires separate causal models and measurements.",
+      "pending": "Cold scientific review of bounded reaction mechanism, measurement claims, task difficulty and browser journey"
+    },
+    {
+      "issue_id": "CHEM-FC-013",
+      "subtopic_id": "CHEM-C14.05",
+      "topic": "biodegradable versus non-biodegradable",
+      "snapshot_status": "FAIL",
+      "candidate_status": "AUTHOR_CANDIDATE_REMEDIATED",
+      "academic_status": "R01_R02_HOLD",
+      "files": [
+        {
+          "path": "curriculum/chemistry/agent-b/textbook/C14.core1a.md",
+          "blob_sha": "90b643040e9307236d5440b0296e684ae9d9d3d2"
+        },
+        {
+          "path": "curriculum/chemistry/agent-b/core1b/C14.core1b.v0.1.0.json",
+          "blob_sha": "3a7da2266fad0c2ddc6ffb7a922f9fb874ad92e7"
+        }
+      ],
+      "evidence": "Textbook explicitly distinguishes biological decomposition from recyclability and physical fragmentation; EXPLAIN task compares paper, PE and glass, with changed-condition reasoning.",
+      "pending": "Independent scientific treatment of conditions, environmental scope and blinded task transfer qualification"
+    }
+  ],
+  "technical_evidence": {
+    "authored_coverage_tests": "tests/test_nsejs_chemistry_three_syllabus_gaps_r1.py",
+    "p00_browser_caveat": "Author-branch Chromium tests do not certify independent R01/R02 academic admission",
+    "head13_python_run": 43568654671,
+    "head13_source_gap_browser_run": 43568654680,
+    "head13_p00_browser_run": 43568654659
+  },
+  "crosscutting_holds": [
+    "CHEM-FC-003",
+    "CHEM-FC-004",
+    "CHEM-FC-005",
+    "CHEM-FC-006",
+    "CHEM-FC-007",
+    "CHEM-FC-008",
+    "CHEM-FC-009",
+    "CHEM-FC-010",
+    "CHEM-FC-011",
+    "CHEM-FC-012",
+    "CHEM-FC-014"
+  ]
+}

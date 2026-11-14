@@ -1,0 +1,577 @@
+{
+  "schema": "g9v41-nsejs-chemistry-qrt-blueprint/v1",
+  "blueprint_id": "CHEM-QRT-BLUEPRINT",
+  "version": "0.1.0",
+  "status": "DRAFT_OWNER_ACADEMIC_REVIEW",
+  "date": "2026-11-13",
+  "pins": {
+    "template_library": {
+      "repository": "reallakshman19/Grade9v3.5",
+      "path": "Shared/quality/question-demand-templates.v1.json",
+      "git_blob_sha": "e2409aef11ae7d98444593bfbe1a38eb00c97cef",
+      "template_count": 28,
+      "version": "1.0.0"
+    },
+    "source_matrix": {
+      "repository": "reallakshman19/Grade9v3.5",
+      "path": "Shared/quality/question-demand-matrix.v1.json",
+      "git_blob_sha": "3779a53ae7d20efbb4644bc3f9243909e93dc145"
+    }
+  },
+  "subject": "CHEMISTRY",
+  "scope": "D3_D4_CELLS_ONLY_PLUS_28_TEMPLATE_BINDING",
+  "operation_order": [
+    "RETRIEVE",
+    "EXPLAIN",
+    "APPLY",
+    "MODEL",
+    "REPRESENT",
+    "SYNTHESIZE",
+    "JUSTIFY"
+  ],
+  "bands": {
+    "D3": {
+      "score_range": [
+        6,
+        7
+      ],
+      "protected": "Learner owns the bridge between separately taught chemical concepts"
+    },
+    "D4": {
+      "score_range": [
+        8,
+        10
+      ],
+      "protected": "Learner owns decisive model/strategy/exception/warrant under unfamiliar conditions"
+    }
+  },
+  "common": {
+    "canonical_truth": "Reference the Chemistry concept library; never derive scientific truth from source item labels",
+    "unit_scope": "Class X NSEJS; extension/enrichment explicitly marked",
+    "per_subtopic_min_distinct_ops": 3,
+    "template_review_asks": [
+      "H1",
+      "H2",
+      "H3",
+      "S1",
+      "S2",
+      "S3",
+      "P1",
+      "P2",
+      "P3",
+      "M1",
+      "M2",
+      "M3"
+    ],
+    "representation_binding": "Diagrams must bind exact species, state, coefficients, bonds, apparatus and measured quantities to reasoning steps",
+    "core1a": "Teach assumptions/definitions, mechanism, derivation, worked construction, plausible wrong path, repair, independent checks for all mapped demands",
+    "core1b": "Predict; commit; reconstruct; diagnose; repair; boundary with complete closure, preserved attempt and no hint leaking W",
+    "qrt_band_evidence": [
+      "concept_model_selection",
+      "representation_translation",
+      "reasoning_chain_length",
+      "algebra_computational_load",
+      "trap_exception_sensitivity"
+    ],
+    "gap_policy": "Builder changes adapter only; missing subject-wide capability yields documented blueprint gap. No silent shared QRT edits.",
+    "review_status": "A draft subject layer does not authorize 14 published tiles or QRT acceptance"
+  },
+  "cells": {
+    "D3.1": {
+      "template_ref": "QRT-RETRIEVE-D3",
+      "operation": "RETRIEVE",
+      "band": "D3",
+      "decisive_act": "Reconstruct or select a fact, category, definition, property, unit, or condition.",
+      "shared_slots": [
+        "X",
+        "Y",
+        "Z",
+        "W"
+      ],
+      "protected_work": "Leave the important bridge between ideas, representations, or models to the learner; support may expose the component ideas separately.",
+      "hint_posture": "Orient dependencies and component ideas, but do not make the bridge or ordering decision for the learner.",
+      "chemistry_warrant": "Decide by defining chemical condition, species and phase rather than keywords",
+      "chemistry_evidence_target": "Discriminate similar compounds or states using multiple independent chemical conditions",
+      "plausible_wrong_route": "Keyword recall substitutes for chemical classification",
+      "representation_job": "Comparison table showing discriminating chemical features",
+      "independent_check": "verify against the definition, unit, category boundary, or a counterexample",
+      "example_kind": "Author a grounded multi-step bridge with independently checkable conditions",
+      "status": "CANDIDATE_NOT_QRT_APPROVED",
+      "reviewer_questions": [
+        "H1",
+        "H2",
+        "H3",
+        "S1",
+        "S2",
+        "S3",
+        "P1",
+        "P2",
+        "P3",
+        "M1",
+        "M2",
+        "M3"
+      ]
+    },
+    "D3.2": {
+      "template_ref": "QRT-EXPLAIN-D3",
+      "operation": "EXPLAIN",
+      "band": "D3",
+      "decisive_act": "Explain why a relation, mechanism, pattern, or result holds.",
+      "shared_slots": [
+        "X",
+        "Y",
+        "Z",
+        "W"
+      ],
+      "protected_work": "Leave the important bridge between ideas, representations, or models to the learner; support may expose the component ideas separately.",
+      "hint_posture": "Orient dependencies and component ideas, but do not make the bridge or ordering decision for the learner.",
+      "chemistry_warrant": "Build a causal link from structure/particles/electrons/conditions to observation",
+      "chemistry_evidence_target": "Explain how a changed microscopic assumption causes an observed chemical change",
+      "plausible_wrong_route": "Restates outcome without molecular/chemical mechanism",
+      "representation_job": "Mechanism stages, particle or bond diagrams linked to each explanatory step",
+      "independent_check": "test the explanation against a changed condition, counterexample, or predicted consequence",
+      "example_kind": "Author a grounded multi-step bridge with independently checkable conditions",
+      "status": "CANDIDATE_NOT_QRT_APPROVED",
+      "reviewer_questions": [
+        "H1",
+        "H2",
+        "H3",
+        "S1",
+        "S2",
+        "S3",
+        "P1",
+        "P2",
+        "P3",
+        "M1",
+        "M2",
+        "M3"
+      ]
+    },
+    "D3.3": {
+      "template_ref": "QRT-APPLY-D3",
+      "operation": "APPLY",
+      "band": "D3",
+      "decisive_act": "Execute a known model, algorithm, relation, or procedure under the right conditions.",
+      "shared_slots": [
+        "X",
+        "Y",
+        "Z",
+        "W"
+      ],
+      "protected_work": "Leave the important bridge between ideas, representations, or models to the learner; support may expose the component ideas separately.",
+      "hint_posture": "Orient dependencies and component ideas, but do not make the bridge or ordering decision for the learner.",
+      "chemistry_warrant": "Check reaction balance, units, limiting species, state and applicability before computing",
+      "chemistry_evidence_target": "Quantify a reaction in multi-stage conditions, including a genuine domain check",
+      "plausible_wrong_route": "Runs formula with wrong species, coefficients, or boundary",
+      "representation_job": "Known/unknown reaction ledger and data diagram",
+      "independent_check": "verify by units, substitution-back, a special value, inverse operation, or an alternate computation",
+      "example_kind": "Author a grounded multi-step bridge with independently checkable conditions",
+      "status": "CANDIDATE_NOT_QRT_APPROVED",
+      "reviewer_questions": [
+        "H1",
+        "H2",
+        "H3",
+        "S1",
+        "S2",
+        "S3",
+        "P1",
+        "P2",
+        "P3",
+        "M1",
+        "M2",
+        "M3"
+      ]
+    },
+    "D3.4": {
+      "template_ref": "QRT-MODEL-D3",
+      "operation": "MODEL",
+      "band": "D3",
+      "decisive_act": "Choose or formulate the governing model, law, variables, process, or strategy.",
+      "shared_slots": [
+        "X",
+        "Y",
+        "Z",
+        "W"
+      ],
+      "protected_work": "Leave the important bridge between ideas, representations, or models to the learner; support may expose the component ideas separately.",
+      "hint_posture": "Orient dependencies and component ideas, but do not make the bridge or ordering decision for the learner.",
+      "chemistry_warrant": "Select defensible chemistry model from evidence and its assumptions",
+      "chemistry_evidence_target": "Choose between bonding, solution, reaction, gas, mixture or redox models by validation",
+      "plausible_wrong_route": "Uses favorite chemical law without satisfying assumptions",
+      "representation_job": "Candidate model diagrams with assumptions but not preferred answer",
+      "independent_check": "test the chosen model against its assumptions, dimensions, limiting cases, or a plausible alternative model",
+      "example_kind": "Author a grounded multi-step bridge with independently checkable conditions",
+      "status": "CANDIDATE_NOT_QRT_APPROVED",
+      "reviewer_questions": [
+        "H1",
+        "H2",
+        "H3",
+        "S1",
+        "S2",
+        "S3",
+        "P1",
+        "P2",
+        "P3",
+        "M1",
+        "M2",
+        "M3"
+      ]
+    },
+    "D3.5": {
+      "template_ref": "QRT-REPRESENT-D3",
+      "operation": "REPRESENT",
+      "band": "D3",
+      "decisive_act": "Preserve meaning while translating between representations.",
+      "shared_slots": [
+        "X",
+        "Y",
+        "Z",
+        "W"
+      ],
+      "protected_work": "Leave the important bridge between ideas, representations, or models to the learner; support may expose the component ideas separately.",
+      "hint_posture": "Orient dependencies and component ideas, but do not make the bridge or ordering decision for the learner.",
+      "chemistry_warrant": "Preserve atoms, charge, formula, stoichiometry, phase, graph scale and connectivity when translating",
+      "chemistry_evidence_target": "Translate chemical narrative ⇄ formula/diagram/table/graph with invariant checks",
+      "plausible_wrong_route": "Copies coefficients or bond symbols with changed meaning",
+      "representation_job": "Stagewise bond/particle/chemical-equation correspondence",
+      "independent_check": "translate back or compare an invariant or value in both representations",
+      "example_kind": "Author a grounded multi-step bridge with independently checkable conditions",
+      "status": "CANDIDATE_NOT_QRT_APPROVED",
+      "reviewer_questions": [
+        "H1",
+        "H2",
+        "H3",
+        "S1",
+        "S2",
+        "S3",
+        "P1",
+        "P2",
+        "P3",
+        "M1",
+        "M2",
+        "M3"
+      ]
+    },
+    "D3.6": {
+      "template_ref": "QRT-SYNTHESIZE-D3",
+      "operation": "SYNTHESIZE",
+      "band": "D3",
+      "decisive_act": "Coordinate dependent ideas or steps where route selection is part of the difficulty.",
+      "shared_slots": [
+        "X",
+        "Y",
+        "Z",
+        "W"
+      ],
+      "protected_work": "Leave the important bridge between ideas, representations, or models to the learner; support may expose the component ideas separately.",
+      "hint_posture": "Orient dependencies and component ideas, but do not make the bridge or ordering decision for the learner.",
+      "chemistry_warrant": "Coordinate reaction and observation dependencies while maintaining mass/charge/electron invariants",
+      "chemistry_evidence_target": "Connect two to three constraints in correct dependency order; where appropriate model independent measurements",
+      "plausible_wrong_route": "Solves each observation independently or uses inconsistent intermediate quantities",
+      "representation_job": "Experiment/reaction dependency graph with final bridge hidden pre-attempt",
+      "independent_check": "verify through an independent invariant, alternate route, limiting case, or consistency relation",
+      "example_kind": "Author a grounded multi-step bridge with independently checkable conditions",
+      "status": "CANDIDATE_NOT_QRT_APPROVED",
+      "reviewer_questions": [
+        "H1",
+        "H2",
+        "H3",
+        "S1",
+        "S2",
+        "S3",
+        "P1",
+        "P2",
+        "P3",
+        "M1",
+        "M2",
+        "M3"
+      ]
+    },
+    "D3.7": {
+      "template_ref": "QRT-JUSTIFY-D3",
+      "operation": "JUSTIFY",
+      "band": "D3",
+      "decisive_act": "Establish a conclusion from explicit warrants or evidence.",
+      "shared_slots": [
+        "X",
+        "Y",
+        "Z",
+        "W"
+      ],
+      "protected_work": "Leave the important bridge between ideas, representations, or models to the learner; support may expose the component ideas separately.",
+      "hint_posture": "Orient dependencies and component ideas, but do not make the bridge or ordering decision for the learner.",
+      "chemistry_warrant": "Defend chemical claim through structure, balanced evidence, appropriate conditions and counterexamples",
+      "chemistry_evidence_target": "Construct valid proof/refutation and identify what measurements cannot decide",
+      "plausible_wrong_route": "Treats a memorized example or a single measurement as universal proof",
+      "representation_job": "Claim–evidence–warrant chart with alternative hypotheses",
+      "independent_check": "challenge the argument with a counterexample, converse, boundary case, independent derivation, or evidence-consistency test",
+      "example_kind": "Author a grounded multi-step bridge with independently checkable conditions",
+      "status": "CANDIDATE_NOT_QRT_APPROVED",
+      "reviewer_questions": [
+        "H1",
+        "H2",
+        "H3",
+        "S1",
+        "S2",
+        "S3",
+        "P1",
+        "P2",
+        "P3",
+        "M1",
+        "M2",
+        "M3"
+      ]
+    },
+    "D4.1": {
+      "template_ref": "QRT-RETRIEVE-D4",
+      "operation": "RETRIEVE",
+      "band": "D4",
+      "decisive_act": "Reconstruct or select a fact, category, definition, property, unit, or condition.",
+      "shared_slots": [
+        "X",
+        "Y",
+        "Z",
+        "W"
+      ],
+      "protected_work": "Leave the decisive model, strategy, synthesis, exception, or warrant itself to the learner; support may clarify constraints and invariants only.",
+      "hint_posture": "Preserve the decisive abstraction or strategy choice even when additional optional support is available later.",
+      "chemistry_warrant": "Decide by defining chemical condition, species and phase rather than keywords",
+      "chemistry_evidence_target": "Discriminate similar compounds or states using multiple independent chemical conditions",
+      "plausible_wrong_route": "Keyword recall substitutes for chemical classification",
+      "representation_job": "Comparison table showing discriminating chemical features",
+      "independent_check": "verify against the definition, unit, category boundary, or a counterexample",
+      "example_kind": "Author an unfamiliar exception-/model-sensitive variant with a decisive learner-owned choice",
+      "status": "CANDIDATE_PEDAGOGY_PROOF_REQUIRED",
+      "reviewer_questions": [
+        "H1",
+        "H2",
+        "H3",
+        "S1",
+        "S2",
+        "S3",
+        "P1",
+        "P2",
+        "P3",
+        "M1",
+        "M2",
+        "M3"
+      ]
+    },
+    "D4.2": {
+      "template_ref": "QRT-EXPLAIN-D4",
+      "operation": "EXPLAIN",
+      "band": "D4",
+      "decisive_act": "Explain why a relation, mechanism, pattern, or result holds.",
+      "shared_slots": [
+        "X",
+        "Y",
+        "Z",
+        "W"
+      ],
+      "protected_work": "Leave the decisive model, strategy, synthesis, exception, or warrant itself to the learner; support may clarify constraints and invariants only.",
+      "hint_posture": "Preserve the decisive abstraction or strategy choice even when additional optional support is available later.",
+      "chemistry_warrant": "Build a causal link from structure/particles/electrons/conditions to observation",
+      "chemistry_evidence_target": "Explain how a changed microscopic assumption causes an observed chemical change",
+      "plausible_wrong_route": "Restates outcome without molecular/chemical mechanism",
+      "representation_job": "Mechanism stages, particle or bond diagrams linked to each explanatory step",
+      "independent_check": "test the explanation against a changed condition, counterexample, or predicted consequence",
+      "example_kind": "Author an unfamiliar exception-/model-sensitive variant with a decisive learner-owned choice",
+      "status": "CANDIDATE_NOT_QRT_APPROVED",
+      "reviewer_questions": [
+        "H1",
+        "H2",
+        "H3",
+        "S1",
+        "S2",
+        "S3",
+        "P1",
+        "P2",
+        "P3",
+        "M1",
+        "M2",
+        "M3"
+      ]
+    },
+    "D4.3": {
+      "template_ref": "QRT-APPLY-D4",
+      "operation": "APPLY",
+      "band": "D4",
+      "decisive_act": "Execute a known model, algorithm, relation, or procedure under the right conditions.",
+      "shared_slots": [
+        "X",
+        "Y",
+        "Z",
+        "W"
+      ],
+      "protected_work": "Leave the decisive model, strategy, synthesis, exception, or warrant itself to the learner; support may clarify constraints and invariants only.",
+      "hint_posture": "Preserve the decisive abstraction or strategy choice even when additional optional support is available later.",
+      "chemistry_warrant": "Check reaction balance, units, limiting species, state and applicability before computing",
+      "chemistry_evidence_target": "Quantify a reaction in multi-stage conditions, including a genuine domain check",
+      "plausible_wrong_route": "Runs formula with wrong species, coefficients, or boundary",
+      "representation_job": "Known/unknown reaction ledger and data diagram",
+      "independent_check": "verify by units, substitution-back, a special value, inverse operation, or an alternate computation",
+      "example_kind": "Author an unfamiliar exception-/model-sensitive variant with a decisive learner-owned choice",
+      "status": "CANDIDATE_NOT_QRT_APPROVED",
+      "reviewer_questions": [
+        "H1",
+        "H2",
+        "H3",
+        "S1",
+        "S2",
+        "S3",
+        "P1",
+        "P2",
+        "P3",
+        "M1",
+        "M2",
+        "M3"
+      ]
+    },
+    "D4.4": {
+      "template_ref": "QRT-MODEL-D4",
+      "operation": "MODEL",
+      "band": "D4",
+      "decisive_act": "Choose or formulate the governing model, law, variables, process, or strategy.",
+      "shared_slots": [
+        "X",
+        "Y",
+        "Z",
+        "W"
+      ],
+      "protected_work": "Leave the decisive model, strategy, synthesis, exception, or warrant itself to the learner; support may clarify constraints and invariants only.",
+      "hint_posture": "Preserve the decisive abstraction or strategy choice even when additional optional support is available later.",
+      "chemistry_warrant": "Select defensible chemistry model from evidence and its assumptions",
+      "chemistry_evidence_target": "Choose between bonding, solution, reaction, gas, mixture or redox models by validation",
+      "plausible_wrong_route": "Uses favorite chemical law without satisfying assumptions",
+      "representation_job": "Candidate model diagrams with assumptions but not preferred answer",
+      "independent_check": "test the chosen model against its assumptions, dimensions, limiting cases, or a plausible alternative model",
+      "example_kind": "Author an unfamiliar exception-/model-sensitive variant with a decisive learner-owned choice",
+      "status": "CANDIDATE_NOT_QRT_APPROVED",
+      "reviewer_questions": [
+        "H1",
+        "H2",
+        "H3",
+        "S1",
+        "S2",
+        "S3",
+        "P1",
+        "P2",
+        "P3",
+        "M1",
+        "M2",
+        "M3"
+      ]
+    },
+    "D4.5": {
+      "template_ref": "QRT-REPRESENT-D4",
+      "operation": "REPRESENT",
+      "band": "D4",
+      "decisive_act": "Preserve meaning while translating between representations.",
+      "shared_slots": [
+        "X",
+        "Y",
+        "Z",
+        "W"
+      ],
+      "protected_work": "Leave the decisive model, strategy, synthesis, exception, or warrant itself to the learner; support may clarify constraints and invariants only.",
+      "hint_posture": "Preserve the decisive abstraction or strategy choice even when additional optional support is available later.",
+      "chemistry_warrant": "Preserve atoms, charge, formula, stoichiometry, phase, graph scale and connectivity when translating",
+      "chemistry_evidence_target": "Translate chemical narrative ⇄ formula/diagram/table/graph with invariant checks",
+      "plausible_wrong_route": "Copies coefficients or bond symbols with changed meaning",
+      "representation_job": "Stagewise bond/particle/chemical-equation correspondence",
+      "independent_check": "translate back or compare an invariant or value in both representations",
+      "example_kind": "Author an unfamiliar exception-/model-sensitive variant with a decisive learner-owned choice",
+      "status": "CANDIDATE_NOT_QRT_APPROVED",
+      "reviewer_questions": [
+        "H1",
+        "H2",
+        "H3",
+        "S1",
+        "S2",
+        "S3",
+        "P1",
+        "P2",
+        "P3",
+        "M1",
+        "M2",
+        "M3"
+      ]
+    },
+    "D4.6": {
+      "template_ref": "QRT-SYNTHESIZE-D4",
+      "operation": "SYNTHESIZE",
+      "band": "D4",
+      "decisive_act": "Coordinate dependent ideas or steps where route selection is part of the difficulty.",
+      "shared_slots": [
+        "X",
+        "Y",
+        "Z",
+        "W"
+      ],
+      "protected_work": "Leave the decisive model, strategy, synthesis, exception, or warrant itself to the learner; support may clarify constraints and invariants only.",
+      "hint_posture": "Preserve the decisive abstraction or strategy choice even when additional optional support is available later.",
+      "chemistry_warrant": "Coordinate reaction and observation dependencies while maintaining mass/charge/electron invariants",
+      "chemistry_evidence_target": "Connect two to three constraints in correct dependency order; where appropriate model independent measurements",
+      "plausible_wrong_route": "Solves each observation independently or uses inconsistent intermediate quantities",
+      "representation_job": "Experiment/reaction dependency graph with final bridge hidden pre-attempt",
+      "independent_check": "verify through an independent invariant, alternate route, limiting case, or consistency relation",
+      "example_kind": "Author an unfamiliar exception-/model-sensitive variant with a decisive learner-owned choice",
+      "status": "CANDIDATE_NOT_QRT_APPROVED",
+      "reviewer_questions": [
+        "H1",
+        "H2",
+        "H3",
+        "S1",
+        "S2",
+        "S3",
+        "P1",
+        "P2",
+        "P3",
+        "M1",
+        "M2",
+        "M3"
+      ]
+    },
+    "D4.7": {
+      "template_ref": "QRT-JUSTIFY-D4",
+      "operation": "JUSTIFY",
+      "band": "D4",
+      "decisive_act": "Establish a conclusion from explicit warrants or evidence.",
+      "shared_slots": [
+        "X",
+        "Y",
+        "Z",
+        "W"
+      ],
+      "protected_work": "Leave the decisive model, strategy, synthesis, exception, or warrant itself to the learner; support may clarify constraints and invariants only.",
+      "hint_posture": "Preserve the decisive abstraction or strategy choice even when additional optional support is available later.",
+      "chemistry_warrant": "Defend chemical claim through structure, balanced evidence, appropriate conditions and counterexamples",
+      "chemistry_evidence_target": "Construct valid proof/refutation and identify what measurements cannot decide",
+      "plausible_wrong_route": "Treats a memorized example or a single measurement as universal proof",
+      "representation_job": "Claim–evidence–warrant chart with alternative hypotheses",
+      "independent_check": "challenge the argument with a counterexample, converse, boundary case, independent derivation, or evidence-consistency test",
+      "example_kind": "Author an unfamiliar exception-/model-sensitive variant with a decisive learner-owned choice",
+      "status": "CANDIDATE_NOT_QRT_APPROVED",
+      "reviewer_questions": [
+        "H1",
+        "H2",
+        "H3",
+        "S1",
+        "S2",
+        "S3",
+        "P1",
+        "P2",
+        "P3",
+        "M1",
+        "M2",
+        "M3"
+      ]
+    }
+  },
+  "not_authorized": [
+    "copying Physics assumptions into Chemistry",
+    "using official exam identifiers for authored tasks",
+    "publishing unreviewed Core2 sources",
+    "claiming 28 populated learner pages from this 14-cell definition"
+  ]
+}

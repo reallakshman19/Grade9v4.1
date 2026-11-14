@@ -18,6 +18,9 @@ HERE = Path(__file__).resolve().parent.parent
 REPO_ROOT = HERE.parents[3]
 CONTRACT_FILE = HERE / "core-contracts.v1.json"
 SCHEMA_FILE = HERE / "physics-topic-package.v1.schema.json"
+CONTRACT_FILE_V1_1 = HERE / "core-contracts.v1_1.json"
+SCHEMA_FILE_V1_1 = HERE / "physics-topic-package.v1_1.schema.json"
+PACKAGE_SCHEMA_V1_1 = "g9v41-nsejs-physics-topic-package/v1.1"
 
 GATES = (
     "source_authenticity", "content_correctness", "cognitive_qualification",
@@ -72,8 +75,11 @@ def validate_manifest(
     contract: dict[str, Any], repo_root: Path = REPO_ROOT
 ) -> list[str]:
     issues: list[str] = []
-    if contract.get("schema") != "g9v41-nsejs-physics-core-contracts/v1":
-        issues.append("MANIFEST_SCHEMA_MISMATCH")
+    if (contract.get("schema"), contract.get("version")) not in (
+        ("g9v41-nsejs-physics-core-contracts/v1", "1.0.0"),
+        ("g9v41-nsejs-physics-core-contracts/v1.1", "1.1.0"),
+    ):
+        issues.append("MANIFEST_SCHEMA_VERSION_MISMATCH")
     if contract.get("state") != "ENGINEERING_CANDIDATE__ACADEMIC_HOLD":
         issues.append("MANIFEST_AUTHORITY_ESCALATION")
     if contract.get("subject_id") != "PHYSICS" or contract.get("academic_track") != "NSEJS":
@@ -252,6 +258,7 @@ def validate_topic(
         if core1a_coverage.get(target, 0) != 1:
             problems.append(f"CORE1A_COVERAGE_NOT_UNIQUE:{target}")
 
+    is_v1_1 = package["schema"] == PACKAGE_SCHEMA_V1_1
     cycle_coverage: set[tuple[str, str]] = set()
     main_by_cell: dict[str, int] = {}
     for cycle in package["core1b"]:
@@ -264,8 +271,37 @@ def validate_topic(
         if key in cycle_coverage:
             problems.append(f"CORE1B_DUPLICATE_CYCLE:{qid}:{cycle['kind']}")
         cycle_coverage.add(key)
-        if cycle["kind"] == "MAIN":
-            cell = target[1]["blueprint_cell"]
+        cell = target[1]["blueprint_cell"]
+        if is_v1_1:
+            if cycle["cell_id"] != cell:
+                problems.append(f"CORE1B_CELL_ID_MISMATCH:{cycle['id']}")
+            refs = cycle["instance_qrt_ids"]
+            if cycle["kind"] == "INSTANCE":
+                if refs != [qid]:
+                    problems.append(f"CORE1B_INSTANCE_REFERENCES_NOT_EXACT:{cycle['id']}")
+            else:
+                # A MAIN must combine distinct subtopic *instances* under one
+                # cognitive operation; two exercises for the same subtopic
+                # cannot masquerade as an integrated MAIN.
+                main_by_cell[cell] = main_by_cell.get(cell, 0) + 1
+                if qid not in refs:
+                    problems.append(f"CORE1B_MAIN_PRIMARY_NOT_MEMBER:{cycle['id']}")
+                if len(refs) < 2:
+                    problems.append(f"CORE1B_MAIN_TOO_FEW_INSTANCES:{cell}")
+                referenced_subtopics = set()
+                for instance_id in refs:
+                    instance = target_by_id.get(instance_id)
+                    if instance is None:
+                        problems.append(f"CORE1B_MAIN_UNKNOWN_INSTANCE:{cell}:{instance_id}")
+                        continue
+                    referenced_subtopics.add(instance[0])
+                    if instance[1]["blueprint_cell"] != cell:
+                        problems.append(f"CORE1B_MAIN_CROSS_CELL:{cell}:{instance_id}")
+                if len(referenced_subtopics) < 2:
+                    problems.append(f"CORE1B_MAIN_NOT_MULTI_SUBTOPIC:{cell}")
+                if set(refs) != adapter_cells.get(cell, set()):
+                    problems.append(f"CORE1B_MAIN_INCOMPLETE_CELL_COVERAGE:{cell}")
+        elif cycle["kind"] == "MAIN":
             main_by_cell[cell] = main_by_cell.get(cell, 0) + 1
         # A string/bool claim cannot prove genuine novelty. It must be reviewed.
         anchor_texts = [ex["problem"].strip().casefold()
@@ -277,7 +313,11 @@ def validate_topic(
         if (qid, "INSTANCE") not in cycle_coverage:
             problems.append(f"CORE1B_INSTANCE_MISSING:{qid}")
     for cell in adapter_cells:
-        if main_by_cell.get(cell, 0) < 1:
+        count = main_by_cell.get(cell, 0)
+        if is_v1_1:
+            if count != 1:
+                problems.append(f"CORE1B_MAIN_NOT_EXACTLY_ONE:{cell}:{count}")
+        elif count < 1:
             problems.append(f"CORE1B_MAIN_MISSING:{cell}")
 
     if package["acceptance"]["release"] != "HOLD":
@@ -291,11 +331,22 @@ def validate_topic(
 def inspect_package(
     path: Path, repo_root: Path = REPO_ROOT
 ) -> dict[str, Any]:
-    contract = read_json(CONTRACT_FILE)
-    schema = read_json(SCHEMA_FILE)
+    package = read_json(path)
+    if package.get("schema") == PACKAGE_SCHEMA_V1_1:
+        contract_file, schema_file = CONTRACT_FILE_V1_1, SCHEMA_FILE_V1_1
+    elif package.get("schema") == "g9v41-nsejs-physics-topic-package/v1":
+        contract_file, schema_file = CONTRACT_FILE, SCHEMA_FILE
+    else:
+        return {
+            "file": str(path), "mechanical_status": "FAIL",
+            "academic_status": "HOLD", "release_status": "HOLD",
+            "warnings": ["Unknown contract version is never inferred."],
+            "issues": ["UNSUPPORTED_PACKAGE_SCHEMA"],
+        }
+    contract = read_json(contract_file)
+    schema = read_json(schema_file)
     Draft202012Validator.check_schema(schema)
     issues = validate_manifest(contract, repo_root)
-    package = read_json(path)
     issues.extend(validate_topic(package, contract, schema))
     return {
         "file": str(path),
