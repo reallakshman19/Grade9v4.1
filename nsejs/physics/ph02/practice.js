@@ -113,12 +113,27 @@ async function init(){
   if(!mount||!uid)throw Error("Missing exact practice identity");
   const response=await fetch(new URL("./units.v1.json",import.meta.url),{cache:"no-store"});
   if(!response.ok)throw Error("candidate data HTTP "+response.status);
-  const data=await response.json();const u=data.units.find(x=>x.id===uid);
-  if(data.schema!=="g9v41-ph02-author-candidate-content/v1"||data.academic_status!=="HOLD"||!u||!u.practice)throw Error("unrecognized candidate or academic status");
-  ptask=u.practice;key="G9V41:PH02:"+ptask.uid+":"+ptask.revision;
-  const lessonHref="../../../textbook/PH02/"+uid.split("-").at(-1)+"/index.html";
-  document.title=uid+" · Core1B protected transfer (candidate)";
-  mount.innerHTML='<h1>'+esc(uid)+" · "+esc(u.title)+'</h1><p class="notice"><strong>AUTHOR CANDIDATE · ACADEMIC/QRT HOLD.</strong> This is authored practice, not a validated NSEJS paper or qualification of learner mastery. Browser storage protects learning sequence but is not a secure invigilation boundary.</p>'+
+  const data=await response.json();
+  const qresp=await fetch(new URL("./qrt-candidates.v1.json",import.meta.url),{cache:"no-store"});
+  if(!qresp.ok)throw Error("QRT source unavailable: HTTP "+qresp.status);
+  const qdata=await qresp.json();
+  if(data.schema!=="g9v41-ph02-author-candidate-content/v1"||data.academic_status!=="HOLD"||
+      qdata.schema!=="g9v41-ph02-qrt-authored-candidates/v1"||qdata.original_exam_items!==0||
+      qdata.status!=="AUTHOR_PROPOSED__INDEPENDENT_QRT_HOLD")throw Error("Invalid source/schema/status; HOLD");
+  const isMain=uid==="PH02-MAIN";
+  const requested=new URL(location.href).searchParams.get("task");
+  const own=data.units.find(x=>x.id===uid);
+  const candidates=isMain?qdata.main_cycles:(own?[own.practice,...qdata.tasks.filter(t=>t.unit===uid)]:[]);
+  if(!candidates.length)throw Error("Missing exact candidate unit/cycles");
+  ptask=requested?candidates.find(t=>t.uid===requested):candidates[0];
+  if(!ptask||!ptask.uid||!ptask.revision)throw Error("Unknown or stale task UID; HOLD");
+  const u=isMain?data.units.find(x=>x.id===ptask.unit):own;
+  if(!u)throw Error("Cross-topic task owner missing; HOLD");
+  key="G9V41:PH02:"+ptask.uid+":"+ptask.revision;
+  const lessonHref=isMain?"../../../textbook/PH02/"+ptask.unit.slice(-3)+"/index.html":"../../../textbook/PH02/"+uid.split("-").at(-1)+"/index.html";
+  const taskNav='<div id="taskNav" class="card"><strong>'+ (isMain?"Integrated MAIN candidates":"This subtopic's three operation candidates")+'</strong><div>'+candidates.map(t=>'<a class="action" href="?task='+encodeURIComponent(t.uid)+'">'+esc(t.id||t.op||t.uid)+(t.uid===ptask.uid?" · current":"")+'</a>').join('')+'</div></div>';
+  document.title=uid+" · "+ptask.uid+" · Core1B protected transfer (candidate)";
+  mount.innerHTML='<h1>'+esc(uid)+" · "+esc(u.title)+'</h1>'+taskNav+'<p class="notice"><strong>AUTHOR CANDIDATE · ACADEMIC/QRT HOLD.</strong> This is authored practice, not a validated NSEJS paper or qualification of learner mastery. Browser storage protects learning sequence but is not a secure invigilation boundary.</p>'+
    '<p class="fine">Exact authored UID: '+esc(ptask.uid)+' · revision: '+esc(ptask.revision)+'</p><p id="runtimeStatus" class="status" role="status">Loading…</p><p id="revisionNote" class="fine"></p>'+
    '<section class="step"><h2>1 · Predict before solving</h2>'+p(ptask.prediction)+'<label for="prediction">Your prediction and reason</label><textarea id="prediction"></textarea></section>'+
    '<section class="step"><h2>2 · Attempt: protect your decisive work</h2>'+p(ptask.prompt)+'<label for="attempt">Your independent calculation, model and check</label><textarea id="attempt"></textarea><button id="firstCommit" type="button">Commit prediction + first reasoning</button><p id="firstIntegrity" class="fine"></p><p><a id="helpLink" href="'+lessonHref+'">Consult this subtopic’s Core1A textbook (help exposure tracked)</a></p></section>'+
