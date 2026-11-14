@@ -25,7 +25,8 @@ def main():
                     m=u["subtopic_id"][-3:]
                     page.goto(origin+"/"+u["core1a"])
                     assert page.locator("#core2-source-links").count()==1
-                    page.get_by_role("link",name=f"Open {m} R4.2 · D3/D4 practice").click()
+                    page.locator("details.g9-review-versions summary").click()
+                    page.locator("details.g9-review-versions").get_by_role("link",name=f"Open {m} R4.2 · D3/D4 practice").click()
                     page.wait_for_url("**/"+u["core1b"]);ready(page)
                     assert set(page.locator("#cycleSelect option").evaluate_all("(xs)=>xs.map(x=>x.value)"))==set(u["instance_ids"])
                     cid=next(c["id"] for c in pack["core1b"] if c["id"] in u["instance_ids"] and c["cell_id"].startswith("D4."))
