@@ -1,6 +1,7 @@
 """Reviewer-only ledger: complete scope inventory, immutable pins and no source admission."""
 import hashlib,json
 from pathlib import Path
+from tools.ph01_source_pin_custody import pinned_blob_sha
 from collections import Counter
 ROOT=Path(__file__).resolve().parents[1]
 PH="nsejs/physics/curriculum/agent1/PH01/"
@@ -10,7 +11,7 @@ def blob(path):
     return hashlib.sha1(b"blob "+str(len(b)).encode()+b"\0"+b).hexdigest()
 def test_coverage_ledger_inventory_and_pins():
     a=read(PH+"ph01-coverage-review.r4_6.json")
-    for pin in a["pins"].values():assert blob(pin["path"])==pin["blob"]
+    for pin in a["pins"].values():assert pinned_blob_sha(ROOT,{"path":pin["path"],"git_blob_sha":pin["blob"]})==pin["blob"]
     q={x["question_uid"]:x for x in read(a["pins"]["registry"]["path"])["questions"] if x["subject"]=="PHYSICS"}
     rows=a["registry_dispositions"]
     assert len(rows)==len(q)==95 and set(x["question_uid"] for x in rows)==set(q)

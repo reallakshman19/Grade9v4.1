@@ -1,6 +1,7 @@
 """PH01 R4.2 native package, source identities, preserved revisions and route checks."""
 import hashlib, importlib.util, json
 from pathlib import Path
+from tools.ph01_source_pin_custody import pinned_blob_sha
 ROOT=Path(__file__).resolve().parents[1]
 PH=ROOT/"nsejs/physics/curriculum/agent1/PH01/"
 def load(path): return json.loads((ROOT/path).read_text(encoding="utf-8"))
@@ -28,7 +29,7 @@ def test_r42_source_registry():
     m=load("nsejs/physics/curriculum/agent1/PH01/ph01-core2-construction-map.r4_2.json")
     assert m["counts"]=={"locators":15,"canonical_records":16,"bank_records":4,"primary":7,"cross_topic":7,"dropped":1,"qualified":0}
     for item in m["source_inventory"].values():
-        if isinstance(item,dict) and "git_blob_sha" in item: assert blob(item["path"])==item["git_blob_sha"]
+        if isinstance(item,dict) and "git_blob_sha" in item: assert pinned_blob_sha(ROOT,item)==item["git_blob_sha"]
     c={q["question_uid"]:q for q in load("nsejs/core2/question-map.v1.json")["questions"]}
     p=load("nsejs/physics/curriculum/agent1/PH01/physics-topic-package.v1_1.r4_2.json")
     for rec in m["records"]:
