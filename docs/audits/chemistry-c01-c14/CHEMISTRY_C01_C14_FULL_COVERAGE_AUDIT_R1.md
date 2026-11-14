@@ -3,7 +3,7 @@
 **Task:** G9V41-NSEJS-CHEM-C01-C14-FULL-COVERAGE-R00-R1  
 **Audit date:** 2026-11-14  
 **Mode:** R00 author-exposed technical/source coverage audit; not cold scientific or blind QRT acceptance.  
-**Disposition:** INTERNAL AUTHORING 84/84 PASS; EXTERNAL CURRICULUM 2 FAIL; ACADEMIC QUALIFICATION 0 PASS / 2 FAIL / 82 HOLD; CLAIM OF 100% CHEMISTRY COVERAGE REJECTED; NO MERGE/DEPLOY.
+**Disposition:** INTERNAL AUTHORING 84/84 PASS; EXTERNAL CURRICULUM 3 FAIL; ACADEMIC QUALIFICATION 0 PASS / 3 FAIL / 81 HOLD; CLAIM OF 100% CHEMISTRY COVERAGE REJECTED; NO MERGE/DEPLOY.
 
 ## Exact source custody
 
@@ -42,7 +42,7 @@ The auditor joined each Stage0 subtopic by exact CHEM-Cnn.nn ID to its author's 
 | Other canonical task cycles without B02 staged visual binding | 213/252 | Visual need must be assessed, not automatically treated as 213 missing diagrams |
 | Independently science-qualified rows | 0/84 evidenced | HOLD |
 | Independently QRT-qualified tasks | 0/252 evidenced | HOLD |
-| Overall qualified outcome | **0 PASS / 2 FAIL / 82 HOLD** | 100% external syllabus coverage not verified |
+| Overall qualified outcome | **0 PASS / 3 FAIL / 81 HOLD** | 100% external syllabus coverage not verified |
 
 **Scope flags:** 65 CORE_CANDIDATE, 5 FOUNDATION_RECONCILE, 3 SCOPE_REVIEW, 6 EXTENSION, 5 ENRICHMENT. Core candidate does not mean independently admitted. The absent QRT D3/D4 identity cells are RETRIEVE-D3, RETRIEVE-D4, EXPLAIN-D4 and APPLY-D4. Do not invent filler for unsuitable templates.
 
@@ -63,14 +63,16 @@ The auditor joined each Stage0 subtopic by exact CHEM-Cnn.nn ID to its author's 
 | C11 | 7/7 | **1 (C11.05)** | 6 | 0 | 21 |
 | C12 | 5/5 | 0 | 5 | 2 | 0 |
 | C13 | 5/5 | 0 | 5 | 3 | 0 |
-| C14 | 5/5 | **1 (C14.01)** | 4 | 0 | 0 |
-| **Total** | **84/84** | **2** | **82** | **19** | **39** |
+| C14 | 5/5 | **2 (C14.01 and C14.05)** | 3 | 0 | 0 |
+| **Total** | **84/84** | **3** | **81** | **19** | **39** |
 
-## Two confirmed named source-content misses
+## Three confirmed named source-content misses
 
 **CHEM-FC-001 · FAIL · C11.05 halogen functional group.** CBSE Class X 2026–27 Carbon and its Compounds explicitly names **halogens** with alcohols, ketones and aldehydes among functional groups (Class X PDF viewer index 4). The current C11 Core1A manuscript and reader teach carbonyl, OH and ether groups, but contain no explicit halo functional group or haloalkane structural teaching. Mention of methane substitution elsewhere does not satisfy this content outcome. B02 should add a source-aligned haloalkane example, bond/connectivity misconception, a genuine transfer task and R01/R02 review.
 
 **CHEM-FC-002 · FAIL · C14.01 stratospheric ozone depletion.** CBSE Class X Our Environment explicitly names **ozone depletion** (Class X PDF viewer index 5). C14 contrasts beneficial stratospheric and harmful ground-level ozone, but neither the full C14 textbook/reader nor its Core1B pack explains ozone depletion or ozone-depleting compounds such as CFCs and associated chemical causality. B03 should add a safe, accurate cause–consequence model and changed-condition learner task, with R01 review. C14.03 can cross-link the chemistry.
+
+**CHEM-FC-013 · FAIL · C14.05 biodegradable versus non-biodegradable substances.** CBSE Class X Our Environment names both categories. Current C14 teaching uses biodegradability and recycling but never introduces or compares non-biodegradable substances in the full textbook, reader or Core1B tasks. B03 must construct both categories with the chemical/environmental conditions of decomposition, worked contrasts and an independent transfer test.
 
 These are source-specific missing *taught concepts*, not absent subtopic IDs. They disprove an unconditional 100% Chemistry syllabus statement.
 
@@ -85,13 +87,13 @@ These are source-specific missing *taught concepts*, not absent subtopic IDs. Th
 
 ## Correction sequence and authority
 
-**B02:** C11.05 functional groups; **B03:** C14.01 ozone depletion and waste mapping; **A01/source custodian:** exact lower-grade references and negative-space review; **A/B authors + R01:** reconcile scope and chemical text; **R02:** independently adjudicate 252 exact QRT demands and 24 additional B capstones; **P00:** resolve stored-record validation and construct/test non-destructive 14-unit integration, including a 252-task route matrix; **Owner:** approve any source admission, contract changes, merge or deployment.
+**B02:** C11.05 functional groups; **B03:** C14.01 ozone depletion and C14.05 non-biodegradable teaching; **A01/source custodian:** exact lower-grade references and negative-space review; **A/B authors + R01:** reconcile scope and chemical text; **R02:** independently adjudicate 252 exact QRT demands and 24 additional B capstones; **P00:** resolve stored-record validation and construct/test non-destructive 14-unit integration, including a 252-task route matrix; **Owner:** approve any source admission, contract changes, merge or deployment.
 
 ## Native evidence outputs
 
 - CHEMISTRY_C01_C14_EVIDENCE_MATRIX_R1.csv — **all 84 rows**, one per original Stage0 subtopic, with source SHA, links, flags and PASS/FAIL/HOLD.
 - CHEMISTRY_C01_C14_EVIDENCE_MATRIX_R1.json — full row and unit machine-readable status and 10/14 QRT identity set.
-- CHEMISTRY_MISSING_CONTENT_AND_GATES_R1.json — 14 findings (2 named source-content FAIL, 12 HOLD) with owners, exact evidence and acceptance conditions.
+- CHEMISTRY_MISSING_CONTENT_AND_GATES_R1.json — 14 findings (3 named source-content FAIL, 11 HOLD) with owners, exact evidence and acceptance conditions.
 - Four rows-C01-C04, C05-C07, C08-C11 and C12-C14 evidence partitions preserve source joins.
 
-**Final disposition:** Internal authoring presence 84/84 PASS. True exhaustive NSEJS Chemistry content coverage: **FAIL for two named CBSE items and otherwise not independently qualified**. Academic and release approval: **HOLD**. No code or scientific source files were edited by this R00 audit; no merge/deploy occurred.
+**Final disposition:** Internal authoring presence 84/84 PASS. True exhaustive NSEJS Chemistry content coverage: **FAIL for three named CBSE items and otherwise not independently qualified**. Academic and release approval: **HOLD**. No code or scientific source files were edited by this R00 audit; no merge/deploy occurred.

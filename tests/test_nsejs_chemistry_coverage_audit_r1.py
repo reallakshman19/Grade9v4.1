@@ -39,8 +39,8 @@ class ChemistryCoverageAuditR1(unittest.TestCase):
     def test_explicit_source_failures_cannot_be_silently_approved(self):
         rows = self.matrix["rows"]
         failed = {r["subtopic_id"] for r in rows if r["qualification_disposition"] == "FAIL"}
-        self.assertEqual(failed, {"CHEM-C11.05", "CHEM-C14.01"})
-        self.assertEqual(sum(r["qualification_disposition"] == "HOLD" for r in rows), 82)
+        self.assertEqual(failed, {"CHEM-C11.05", "CHEM-C14.01", "CHEM-C14.05"})
+        self.assertEqual(sum(r["qualification_disposition"] == "HOLD" for r in rows), 81)
         self.assertEqual(sum(r["qualification_disposition"] == "PASS" for r in rows), 0)
         self.assertEqual(self.matrix["counts"]["inventory_PASS"], 84)
         self.assertEqual(self.matrix["counts"]["overall_PASS"], 0)
@@ -59,8 +59,8 @@ class ChemistryCoverageAuditR1(unittest.TestCase):
 
     def test_gap_register_and_source_shas_are_custodial(self):
         self.assertEqual(len(self.gaps["issues"]), 14)
-        self.assertEqual(sum(x["status"] == "FAIL" for x in self.gaps["issues"]), 2)
-        self.assertEqual(sum(x["status"] == "HOLD" for x in self.gaps["issues"]), 12)
+        self.assertEqual(sum(x["status"] == "FAIL" for x in self.gaps["issues"]), 3)
+        self.assertEqual(sum(x["status"] == "HOLD" for x in self.gaps["issues"]), 11)
         pins = self.matrix["source_heads"]
         self.assertEqual(pins["agent_A_PR6"], "fb5cf6626088a1312743d60d0c39d06a4a3f8133")
         self.assertEqual(pins["P00_PR17_B_combined"], "df3b77723e59974bab107ee8e11d12b625418579")
