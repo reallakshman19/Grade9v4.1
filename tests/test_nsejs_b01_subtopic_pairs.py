@@ -6,6 +6,7 @@ import hashlib
 from urllib.parse import urlsplit, parse_qs
 import runpy
 from pathlib import Path
+from tools.ph01_source_pin_custody import pinned_json, HISTORICAL_BLOBS
 from html.parser import HTMLParser
 
 import pytest
@@ -78,8 +79,9 @@ def test_exact_existing_core2_candidate_binding(sid):
     folder = CURRICULUM / "topics" / sid[:4] / "b01" / sid
     meta = json.loads((folder / "core2-link.v1.json").read_text(encoding="utf-8"))
     candidate = meta["candidate"]
-    bank = json.loads((ROOT / candidate["path"]).read_text(encoding="utf-8"))
-    ledger = json.loads((ROOT / "nsejs/data/physics-core2-integrity.v1.json").read_text(encoding="utf-8"))
+    bank = pinned_json(ROOT, candidate)
+    ledger = pinned_json(ROOT, {"path":"nsejs/data/physics-core2-integrity.v1.json",
+        "git_blob_sha":HISTORICAL_BLOBS["nsejs/data/physics-core2-integrity.v1.json"][0]})
     question, = [q for q in bank["questions"] if q["source_id"] == candidate["source_id"]]
     record, = [q for q in ledger["items"] if q["source_id"] == candidate["source_id"]]
     assert question["id"] == candidate["id"]
@@ -87,6 +89,12 @@ def test_exact_existing_core2_candidate_binding(sid):
     assert record["observed_question_revision_sha256"] == candidate["observed_question_revision_sha256"]
     assert hashlib.sha256(question["stem"].replace("\r\n", "\n").encode()).hexdigest() == candidate["observed_stem_sha256"]
     assert record["figure_dependency_missing"] == candidate["figure_dependency_missing"]
+    # A later source bank may correct figure/producer metadata; preserve the
+    # historical source pin, but independently guard the live stem and ID.
+    live = json.loads((ROOT / candidate["path"]).read_text(encoding="utf-8"))
+    live_question, = [q for q in live["questions"] if q["source_id"] == candidate["source_id"]]
+    assert live_question["id"] == candidate["id"]
+    assert hashlib.sha256(live_question["stem"].replace("\r\n", "\n").encode()).hexdigest() == candidate["observed_stem_sha256"]
     assert meta["academic_status"] == "HOLD"
     route = urlsplit(meta["core2_return"])
     assert (ROOT / route.path).is_file()

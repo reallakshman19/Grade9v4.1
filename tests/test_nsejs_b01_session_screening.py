@@ -2,6 +2,7 @@
 import hashlib
 import json
 from pathlib import Path
+from tools.ph01_source_pin_custody import pinned_json, pinned_blob_sha
 from fractions import Fraction as F
 from html.parser import HTMLParser
 from urllib.parse import urlsplit
@@ -11,7 +12,7 @@ DIR=ROOT/"nsejs/physics/curriculum/topics/PH07/b01"
 S=json.loads((DIR/"B01_2018_2020_2021_SCREENING.v1.json").read_text(encoding="utf-8"))
 C=json.loads((DIR/"B01_CUMULATIVE_SOURCE_TO_LEARNING.v1.json").read_text(encoding="utf-8"))
 MAP=json.loads((ROOT/"nsejs/core2/question-map.v1.json").read_text(encoding="utf-8"))["questions"]
-BANK=json.loads((ROOT/"nsejs/data/physics-core2-candidates.v1.json").read_text(encoding="utf-8"))["questions"]
+BANK=pinned_json(ROOT,{"path":"nsejs/data/physics-core2-candidates.v1.json","git_blob_sha":S["source_pins"]["candidate_corpus"]})["questions"]
 
 def blob(path):
     raw=path.read_bytes()
@@ -35,7 +36,7 @@ def local_links(file):
 def test_session_source_identity_and_custody():
     pins={"question_map":ROOT/"nsejs/core2/question-map.v1.json","candidate_corpus":ROOT/"nsejs/data/physics-core2-candidates.v1.json","adapter_registry":DIR/"B01_ADAPTER_RECONCILIATION.v1.json","previous_supplement":DIR/"B01_PUBLISHER_LOCATOR_SUPPLEMENT.v1.json","earlier_screening":DIR/"B01_EARLIER_PUBLISHER_SCREENING.v1.json","base_coverage":DIR/"B01_CORE2_COVERAGE.v1.json","reverse_routes":DIR/"B01_CORE2_REVERSE_ROUTE_PROPOSAL.v1.json"}
     for k,p in pins.items():
-        assert S["source_pins"][k]==C["source_pins"][k]==blob(p)
+        assert S["source_pins"][k]==C["source_pins"][k]==(pinned_blob_sha(ROOT,{"path":"nsejs/data/physics-core2-candidates.v1.json","git_blob_sha":S["source_pins"][k]}) if k=="candidate_corpus" else blob(p))
     observed=S["observations"]
     assert len(observed)==len({x["locator_id"] for x in observed})==11
     assert sum(x["map_binding"] is not None for x in observed)==6

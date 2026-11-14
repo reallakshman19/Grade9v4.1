@@ -2,6 +2,7 @@
 import hashlib
 import json
 from pathlib import Path
+from tools.ph01_source_pin_custody import pinned_json, pinned_blob_sha
 from fractions import Fraction as F
 from html.parser import HTMLParser
 from urllib.parse import urlsplit
@@ -10,7 +11,7 @@ ROOT=Path(__file__).resolve().parents[1]
 DIR=ROOT/"nsejs/physics/curriculum/topics/PH07/b01"
 LEDGER=json.loads((DIR/"B01_EARLIER_PUBLISHER_SCREENING.v1.json").read_text(encoding="utf-8"))
 MAP=json.loads((ROOT/"nsejs/core2/question-map.v1.json").read_text(encoding="utf-8"))["questions"]
-BANK=json.loads((ROOT/"nsejs/data/physics-core2-candidates.v1.json").read_text(encoding="utf-8"))["questions"]
+BANK=pinned_json(ROOT,{"path":"nsejs/data/physics-core2-candidates.v1.json","git_blob_sha":LEDGER["source_pins"]["candidate_corpus"]})["questions"]
 
 def blob(path):
     raw=path.read_bytes()
@@ -28,7 +29,7 @@ class Links(HTMLParser):
 def test_earlier_publisher_locator_identity_and_drop():
     pins=LEDGER["source_pins"]
     assert pins["question_map"]==blob(ROOT/"nsejs/core2/question-map.v1.json")
-    assert pins["candidate_corpus"]==blob(ROOT/"nsejs/data/physics-core2-candidates.v1.json")
+    assert pins["candidate_corpus"]==pinned_blob_sha(ROOT,{"path":"nsejs/data/physics-core2-candidates.v1.json","git_blob_sha":pins["candidate_corpus"]})
     assert pins["adapter_registry"]==blob(DIR/"B01_ADAPTER_RECONCILIATION.v1.json")
     assert pins["previous_supplement"]==blob(DIR/"B01_PUBLISHER_LOCATOR_SUPPLEMENT.v1.json")
     observed=LEDGER["observations"]
