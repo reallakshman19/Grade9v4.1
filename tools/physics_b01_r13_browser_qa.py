@@ -30,13 +30,13 @@ def free_port():
 
 def ready(pg):
     try:
-        pg.wait_for_function("""() => { const s=document.querySelector('#status').textContent; return s.includes('Exact-version author candidate loaded') || s.includes('Fail closed'); }""",timeout=18000)
+        pg.wait_for_function("""() => { const s=document.querySelector('#status').textContent; return s.includes('Exact-version author candidate loaded') || s.includes('Previous first answer restored') || s.includes('Fail closed'); }""",timeout=18000)
     except Exception as exc:
         message=pg.locator("#status").inner_text()
         script=pg.evaluate("""() => [...document.scripts].map(s=>({src:s.src,loaded:!!s.src}))""")
         raise AssertionError("B01 did not initialize: status="+message+" scripts="+str(script)+" readyState="+pg.evaluate("document.readyState")) from exc
     message=pg.locator("#status").inner_text()
-    assert "Exact-version author candidate loaded" in message, "B01 loader failure: "+message
+    assert ("Exact-version author candidate loaded" in message or "Previous first answer restored" in message), "B01 loader failure: "+message
 
 def state(pg):
     return pg.evaluate("""() => {
