@@ -44,6 +44,13 @@ def check_evidence(e, refs):
 def verify():
     audit=json.loads(EVID.read_text(encoding="utf-8"))
     gaps=json.loads(GAPS.read_text(encoding="utf-8"))
+    historic=json.loads((DIR/"PHYSICS_HISTORICAL_IAPT_SCOPE_CROSSWALK_R00.v1.json").read_text(encoding="utf-8"))
+    assert historic["status"]=="HISTORICAL_DOCUMENT_REVIEW_ONLY__2026_OFFICIAL_REVISION_NOT_ESTABLISHED"
+    assert historic["sources"]["resolved_pdf"].endswith("syllabus-for-nse-ino-2022-2023.pdf")
+    assert len(historic["segments"])==10
+    assert next(x for x in historic["segments"] if x["source_segment"]=="SOURCES_OF_ENERGY")["candidate_topic_ids"]==[]
+    assert all(x["official_2026_acceptance"]=="HOLD" for x in historic["segments"])
+    assert any(x["code"]=="OUTSIDE_132_SOURCES_OF_ENERGY_SCOPE" for x in gaps["crosscutting"])
     refs=audit["pinned_commits"]
     assert audit["schema"]=="g9v41-physics-full-coverage-r00/v1"
     assert audit["mode"]=="R00_AUTHOR_EXPOSED_TECHNICAL_COVERAGE__NOT_R01"
