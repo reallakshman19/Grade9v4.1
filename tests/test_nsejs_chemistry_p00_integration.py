@@ -142,3 +142,22 @@ def test_browser_qa_exercises_reviewed_failure_paths():
     assert 'page.keyboard.press("Tab")' in script
     assert 'page.keyboard.press("Enter")' in script
     assert 'page.keyboard.press("Space")' in script
+
+
+def test_audit_hardening_attempt_xml_and_stage_role_contracts():
+    reader=(R/"reader.js").read_text(encoding="utf-8")
+    browser=(ROOT/"tools/chemistry_p00_b02_browser_qa.py").read_text(encoding="utf-8")
+    assert "function validAttemptRecord(record,task,revision)" in reader
+    assert 'record.id!==idOf(task)||record.revision!==revision' in reader
+    assert 'substantive(record.prediction,8)' in reader
+    assert 'substantive(record.attempt,20)' in reader
+    assert "ATTEMPT_RECORD_HOLD" in reader
+    assert "validAttemptRecord(saved.value,task,view.revision)" in reader
+    assert "validAttemptRecord(original.value,task,revision)" in reader
+    assert 'element.namespaceURI!==SVG_NS' in reader
+    assert 'for(const element of xml.getElementsByTagName("*"))' in reader
+    assert 's.role!==["CLARIFY","CORRELATE","OPEN_THE_WAY"][i]' in reader
+    for test in ("check_corrupted_saved_attempts_fail_closed",
+                 "check_svg_xml_namespaces_and_stage_role_negative"):
+        assert "def "+test+"(" in browser
+        assert "\\n                "+test+"(browser,ids)" in browser
