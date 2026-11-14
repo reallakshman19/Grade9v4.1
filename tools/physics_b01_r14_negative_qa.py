@@ -206,7 +206,7 @@ def main():
             for orientation,w,h in (("portrait",1000,1600),("landscape",1600,1000)):
                 receipt["cases"]+=adversarial(browser,origin,orientation,w,h)
             browser.close()
-        assert len(receipt["cases"])==10
+        assert len(receipt["cases"])==12
         receipt["status"]="R00_NEGATIVE_CONTROLS_PASS__ACADEMIC_HOLD"
         (OUT/"r14-negative-qa.json").write_text(json.dumps(receipt,indent=2)+"\n")
         print(json.dumps(receipt,indent=2))
