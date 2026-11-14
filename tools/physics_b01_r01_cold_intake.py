@@ -74,8 +74,8 @@ def collect():
     for item in items:
         stages=item["cycle"]["stages"]
         assert isinstance(stages.get("attempt"),str) and len(stages["attempt"].strip())>20
-    # Deterministically shuffle without exposing D-band, operations or topic IDs.
-    items.sort(key=lambda x:hashlib.sha256(("cold-stage-a/"+x["cycle"]["id"]).encode()).hexdigest())
+    # Stable author-side ordering; the blind packet exposes only opaque sequential IDs.
+    items.sort(key=lambda x:x["cycle"]["id"])
     candidates=[]
     crosswalk=[]
     for index,item in enumerate(items,1):
