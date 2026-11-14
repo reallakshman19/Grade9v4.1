@@ -1,565 +1,319 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Architecture Review & Audit Guide: A comprehensive, actionable audit protocol and falsifiable checklist from raw question intake to qualified Core1A/Core1B learning modules.">
-  <title>Architecture Review &amp; Audit Guide · Grade9 v4.1</title>
-  <link rel="stylesheet" href="../site.css">
-  <style>
-    .flow-card {
-      background: white;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 22px 26px;
-      margin: 20px 0;
-      box-shadow: 0 4px 14px #173a540a;
-    }
-    .flow-stage-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 14px;
-      border-bottom: 1px solid var(--line);
-      padding-bottom: 10px;
-    }
-    .flow-stage-header h3 {
-      margin: 0;
-      font-size: 1.22rem;
-    }
-    .stage-badge {
-      display: inline-block;
-      padding: 3px 10px;
-      border-radius: 12px;
-      font-size: .75rem;
-      font-weight: 800;
-      background: #e1f2ec;
-      color: #136c5f;
-      text-transform: uppercase;
-    }
-    .stage-badge.release {
-      background: #fef3c7;
-      color: #92400e;
-    }
-    .tool-badge {
-      display: inline-block;
-      background: #edf3f7;
-      color: #1f4963;
-      border: 1px solid #c9dce6;
-      padding: 2px 7px;
-      border-radius: 6px;
-      font-family: ui-monospace, monospace;
-      font-size: .82rem;
-    }
-    .benchmark-box {
-      background: #f9fbfd;
-      border: 1px solid #d5e4ed;
-      border-left: 4px solid #147b70;
-      padding: 12px 16px;
-      border-radius: 6px;
-      margin-top: 12px;
-      font-size: .9rem;
-    }
-    .benchmark-box.falsifier {
-      border-left-color: #c4473a;
-      background: #fffaf9;
-    }
-    .benchmark-title {
-      font-weight: 800;
-      color: #103b4d;
-      display: block;
-      margin-bottom: 3px;
-    }
-    .benchmark-box.falsifier .benchmark-title {
-      color: #9e2a1e;
-    }
-    .qa-table {
-      overflow-x: auto;
-    }
-    .qa-table table {
-      border-collapse: collapse;
-      width: 100%;
-      min-width: 720px;
-      font-size: .88rem;
-    }
-    .qa-table th, .qa-table td {
-      padding: 12px 10px;
-      text-align: left;
-      vertical-align: top;
-      border-bottom: 1px solid #d7e3e9;
-    }
-    .qa-table th {
-      background: #eef6f7;
-    }
-    .code {
-      font-family: ui-monospace, monospace;
-      background: #eff5f8;
-      border-radius: 4px;
-      padding: 2px 5px;
-      font-size: .86em;
-    }
-    .check-item {
-      margin: 9px 0;
-      padding-left: 4px;
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-    }
-    .check-box {
-      font-weight: 800;
-      color: #147b70;
-      flex-shrink: 0;
-    }
-    .receipt-block {
-      background: #112a3d;
-      color: #d5e5ed;
-      padding: 20px 24px;
-      border-radius: 12px;
-      font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
-      font-size: .85rem;
-      line-height: 1.65;
-      overflow-x: auto;
-      white-space: pre;
-    }
-    .json-sample {
-      background: #0b1f2e;
-      color: #e2f1f8;
-      padding: 16px 20px;
-      border-radius: 10px;
-      font-family: ui-monospace, monospace;
-      font-size: .84rem;
-      line-height: 1.6;
-      overflow-x: auto;
-      white-space: pre;
-      margin: 12px 0;
-      border: 1px solid #1e3a50;
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Grade9 v4.1 Independent Audit Field Guide: exact-head R00 technical checks, blind R01 Physics/QRT review, falsifiable evidence, Core1A/1B/Core2 quality and one-time Golden Sample governance.">
+<title>Independent Audit Field Guide · R00 / R01 · Grade9 v4.1</title>
+<link rel="stylesheet" href="../site.css">
+<style>
+  :root { --audit-ink:#163a50; --audit-accent:#096b70; --audit-muted:#52687a; --audit-rule:#cbdde4; }
+  html { scroll-behavior:smooth; scroll-padding-top:20px; }
+  .auditor-shell { display:grid; grid-template-columns:240px minmax(0,1fr); gap:28px; align-items:start; }
+  .auditor-toc { position:sticky; top:18px; border:1px solid var(--audit-rule); border-radius:14px; padding:16px; background:#fff; max-height:calc(100vh - 36px); overflow:auto; }
+  .auditor-toc b { display:block; margin-bottom:10px; color:var(--audit-ink); }
+  .auditor-toc a { display:block; color:#155c71; text-decoration:none; padding:7px 5px; border-radius:5px; font-size:.88rem; }
+  .auditor-toc a:hover, .auditor-toc a:focus-visible { background:#e7f3f6; text-decoration:underline; }
+  .audit-section { background:white; border:1px solid var(--audit-rule); border-radius:14px; padding:clamp(18px,2.8vw,32px); margin-bottom:20px; min-width:0; }
+  .audit-section h2 { margin-top:0; font-size:1.45rem; color:#0c5665; }
+  .audit-section h3 { margin-top:22px; font-size:1.08rem; color:#214b65; }
+  .audit-section p, .audit-section li { line-height:1.66; }
+  .audit-section ul, .audit-section ol { padding-left:23px; }
+  .audit-section li { margin-bottom:9px; }
+  .audit-rule { border-left:4px solid #11796e; border-radius:7px; padding:13px 16px; background:#f0f8f6; margin:16px 0; }
+  .audit-rule.warning { background:#fff8ed; border-color:#ad7327; }
+  .audit-rule.failure { background:#fff5f4; border-color:#b74338; }
+  .audit-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:13px; }
+  .audit-tile { border:1px solid var(--audit-rule); border-radius:10px; padding:16px; background:#f8fbfc; }
+  .audit-tile strong { display:block; margin-bottom:5px; color:#123e50; }
+  .audit-table { overflow-x:auto; border:1px solid var(--audit-rule); border-radius:10px; margin:15px 0; }
+  .audit-table table { border-collapse:collapse; width:100%; min-width:690px; font-size:.91rem; }
+  .audit-table th,.audit-table td { padding:11px 12px; border-bottom:1px solid #d9e5e9; text-align:left; vertical-align:top; }
+  .audit-table th { background:#edf4f7; color:#194356; font-weight:750; }
+  .audit-table tr:last-child td { border-bottom:0; }
+  .audit-code { background:#102b3a; color:#e9f3f7; border-radius:10px; padding:16px; font: .85rem/1.7 ui-monospace,SFMono-Regular,Consolas,monospace; overflow:auto; white-space:pre; }
+  .audit-label { display:inline-block; font:700 .74rem/1.2 system-ui,sans-serif; letter-spacing:.04em; padding:5px 10px; color:#165966; background:#e4f2f3; border-radius:999px; margin:4px 7px 4px 0; }
+  .audit-label.hold { background:#fff1db; color:#835513; }
+  .audit-links { display:flex; flex-wrap:wrap; gap:10px; margin:14px 0; }
+  .audit-links a { display:inline-block; padding:9px 12px; background:#eaf5f6; color:#0a5a72; border:1px solid #c4e0e3; border-radius:9px; font-weight:650; text-decoration:none; }
+  .audit-links a:hover { text-decoration:underline; }
+  .audit-foot { color:var(--audit-muted); font-size:.88rem; }
+  .audit-inline { color:#214f67; background:#edf5f8; padding:1px 5px; border-radius:4px; font-family:ui-monospace,Consolas,monospace; }
+  .audit-steps { counter-reset:review; list-style:none; padding:0!important; }
+  .audit-steps li { counter-increment:review; position:relative; padding:12px 14px 12px 51px; background:#f8fbfc; border:1px solid #d9e6eb; border-radius:9px; margin:9px 0; }
+  .audit-steps li::before { content:counter(review); position:absolute; top:13px; left:13px; height:27px; width:27px; display:grid; place-items:center; border-radius:50%; color:white; background:#116d76; font-size:.85rem; font-weight:750; }
+  .audit-steps strong { color:#154d61; }
+  .sr-only { position:absolute; height:1px; width:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0; }
+  :focus-visible { outline:3px solid #bc5a13; outline-offset:3px; }
+  @media (max-width:930px) { .auditor-shell { grid-template-columns:1fr; } .auditor-toc { position:static; max-height:none; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); column-gap:8px; } .auditor-toc b { grid-column:1/-1; } }
+  @media (max-width:620px) { .auditor-toc { grid-template-columns:1fr; } .audit-grid { grid-template-columns:1fr; } .audit-section { padding:17px; } }
+  @media print { .auditor-toc,.tabs { display:none!important; } .auditor-shell { display:block; } .audit-section { break-inside:avoid; box-shadow:none; } }
+</style>
 </head>
 <body>
 <header class="mast">
-  <div class="container top">
-    <a class="logo" href="../index.html"><i>G9</i>Grade9 v4.1</a>
-    <nav class="tabs" aria-label="Main sections">
-      <a href="../physics/index.html"><span class="nav-icon" aria-hidden="true">⚛️</span> Physics</a>
-      <a href="../mathematics/index.html"><span class="nav-icon" aria-hidden="true">📐</span> Mathematics</a>
-      <a href="../chemistry/index.html"><span class="nav-icon" aria-hidden="true">🧪</span> Chemistry</a>
-      <a href="../nsejs/index.html"><span class="nav-icon" aria-hidden="true">🏆</span> NSEJS</a>
-      <a href="index.html" aria-current="page"><span class="nav-icon" aria-hidden="true">🧭</span> Architecture</a>
-    </nav>
-  </div>
-  <div class="container hero">
-    <div class="kicker">Architecture / Review &amp; Quality Audit Guide · 13 November 2026</div>
-    <h1>Review &amp; Audit Guide</h1>
-    <p>A step-by-step evaluation protocol for human auditors, content authors, and autonomous agents to review, audit, and remediate modules against the Blueprint, QRT standards, 12.7-inch tablet requirements, and Stage 8 release authority.</p>
-    <div class="breadcrumbs">
-      <a href="../index.html">Home</a> / <a href="index.html">Architecture</a> / Review Guide
-    </div>
-  </div>
+<div class="container top">
+  <a class="logo" href="../index.html"><i>G9</i>Grade9 v4.1</a>
+  <nav class="tabs" aria-label="Main sections">
+    <a href="../physics/index.html">Physics</a>
+    <a href="../mathematics/index.html">Mathematics</a>
+    <a href="../chemistry/index.html">Chemistry</a>
+    <a href="../nsejs/index.html">NSEJS</a>
+    <a href="index.html" aria-current="page">Architecture</a>
+  </nav>
+</div>
+<div class="container hero">
+  <div class="kicker">Architecture / Review authority · Independent audit protocol R2</div>
+  <h1>Independent Audit Field Guide</h1>
+  <p>For R00 technical reviewers and R01 independent Physics/QRT reviewers: audit the actual learner experience, test the science from first principles, challenge submitted evidence, and return a reproducible exact-revision verdict.</p>
+  <div class="breadcrumbs"><a href="../index.html">Home</a> / <a href="index.html">Architecture</a> / Independent Audit</div>
+</div>
 </header>
-
-<main class="container main">
-  <div class="status">
-    <strong>Universal Governance Invariant (Rule 13 · AGENTS.md)</strong>
-    <p>Green software test suites (unit tests, schema validators, headless Playwright viewports) certify <b>mechanical, layout, and syntactic compliance only</b>. They <b>never grant academic release or student admission</b>. All newly authored or remediated items remain on <code>HOLD: ACADEMIC_ADMISSION</code> until authorized independent expert review certificates are signed.</p>
-  </div>
-
-  <div class="guide-layout">
-    <aside class="toc" aria-label="Review Guide contents">
-      <b>Review Guide Contents</b>
-      <a href="#triage">01 · Governance &amp; Triage</a>
-      <a href="#routes">02 · Two Routes &amp; The Join</a>
-      <a href="#stage-1">Stage 01 · Custody &amp; Parity</a>
-      <a href="#stage-2">Stage 02 · Demand Profiling</a>
-      <a href="#stage-3">Stage 03 · Blind QRT Review</a>
-      <a href="#stage-4">Stage 04 · Warrants &amp; Adapters</a>
-      <a href="#stage-5">Stage 05 · Core2 Tablet UX</a>
-      <a href="#stage-6">Stage 06 · B1–B7 Witnesses</a>
-      <a href="#stage-7">Stage 07 · Dual-Engine QA</a>
-      <a href="#stage-8">Stage 08 · Academic Release Gate</a>
-      <a href="#matrix">09 · Code vs Authority Matrix</a>
-      <a href="#receipt">10 · Evidence Receipt Form</a>
-      <a href="guidebook.html">Architecture Guidebook ↗</a>
-      <a href="pipeline-flowchart.html">Pipeline Flowchart ↗</a>
-      <a href="production-checklist.html">Tablet Checklist ↗</a>
-    </aside>
-
-    <div>
-      <!-- 01 GOVERNANCE & TRIAGE -->
-      <section class="chapter" id="triage">
-        <h2>01 · Governance &amp; Fail-Closed Triage</h2>
-        <p>Every review must operate under strict fail-closed triage: a missing trusted receipt is <code>HOLD</code>; a contradictory claim is <code>FAIL</code>. Never assume <code>APPROVED</code>.</p>
-        <div class="flowchart"><pre>
-               ┌────────────────────────────────────────────────────────┐
-               │          Module / Question Under Evaluation            │
-               └───────────────────────────┬────────────────────────────┘
-                                           │
-                        ┌──────────────────┴──────────────────┐
-                        ▼                                     ▼
-             [ Mechanical Audits ]                  [ Academic & Custody ]
-             - Schema validation                    - Sealed blind QRT review
-             - SHA-256 byte parity                  - Blueprint / adapter pin
-             - 12.7" Tablet layout                  - Qualified scientific warrant
-             - 5-Factor demand sum                  - B1–B7 witness ledger
-                        │                                     │
-              Pass? ────┼─────────┐                 Pass? ────┼─────────┐
-             (No)       │        (Yes)             (No)       │        (Yes)
-              │         │         │                 │         │         │
-              ▼         │         ▼                 ▼         │         ▼
-            FAIL        │        PASS              HOLD       │      APPROVED
-                        └───────────────────────────┬─────────┘
-                                                    ▼
-                                         [ Final Disposition ]
-                                        HOLD: ACADEMIC_ADMISSION
-</pre></div>
-        <div class="callout">
-          <strong>Blind Review Protocol:</strong> Fresh independent reviewers must receive a sealed, source-only packet (<a href="../docs/agent-entry/07-independent-review.md">07-independent-review.md</a>) with hints, classifications, and answer keys withheld until the first pass is cryptographically sealed. Authors or agents exposed to prior classifications are <strong>author-exposed</strong> and barred from blind review.
-        </div>
-      </section>
-
-      <!-- 02 TWO ROUTES -->
-      <section class="chapter" id="routes">
-        <h2>02 · The Two Evidence Routes &amp; The Join</h2>
-        <p>Curriculum authoring proceeds along two parallel evidence paths that meet at the construction requirement:</p>
-        <ul>
-          <li><b>Route A (Question Route):</b> Exact source task → SL1 custody → optional P1 (real attempt only) → SL2 proposal → independent QRT adjudication → native Core2 card.</li>
-          <li><b>Route B (Exposition Route):</b> Syllabus/textbook units → condition/claim register → qualified disciplinary warrants → construction obligations → Core1A master lesson.</li>
-        </ul>
-        <p><b>The Join Rule:</b> Keyword matching (e.g. "gravity" or "energy") does not establish a join. The reviewer must verify the explicit connection between the exact task's decisive transformation and the specific warranted law and conditions.</p>
-      </section>
-
-      <!-- STAGE 01 -->
-      <section class="chapter" id="stage-1">
-        <h2>Stage 01 · Question Intake, Source Custody &amp; Fingerprinting</h2>
-        <p>Verify that source stems, figures, and answer keys are segregated into Git-excluded custody with immutable fingerprints.</p>
-        <div class="check-item"><span class="check-box">✓</span><span><b>SHA-256 Byte Parity:</b> Exact 64-character hash match between disk bytes and metadata records. Declared <span class="code">stem_sha256</span> strictly matches computed SHA-256 of the question stem string (<span class="code">declared_matches_observed: true</span>). Zero dummy hashes (e.g. mock hashes like <span class="code">chem_atom_02_sha</span>) or stale digests.</span></div>
-        <div class="check-item"><span class="check-box">✓</span><span><b>Unique Stable IDs &amp; Deduplication:</b> Zero duplicate question IDs across the entire repository. Strict cross-topic namespace deduplication prevents collisions (e.g. distinguishing <span class="code">CHEM-NSEJS-ATOM</span> vs <span class="code">BOND</span>, <span class="code">OPT</span> vs <span class="code">ELEC</span>).</span></div>
-        <div class="check-item"><span class="check-box">✓</span><span><b>Custody Role Tagging:</b> Item clearly designated as <code>EXAM_PAPER</code>, <code>TEXTBOOK</code>, or <code>AUTHORED_TRANSFER</code>.</span></div>
-        <div class="check-item"><span class="check-box">✓</span><span><b>Diagram Custody &amp; Parity:</b> Original figures intact; redrawn diagrams tagged as <code>DERIVED_FIGURE</code>. Referenced diagrams physically exist in both <span class="code">nsejs/assets/</span> and subject assets.</span></div>
-        <div class="benchmark-box falsifier">
-          <span class="benchmark-title">Strict Falsifier</span>Single-character stem modification or swapped diagram locator trips <code>INTEGRITY_FAIL</code>.
-        </div>
-      </section>
-
-      <!-- STAGE 02 -->
-      <section class="chapter" id="stage-2">
-        <h2>Stage 02 · Cognitive Demand Profiling (SL1 ➔ SL2)</h2>
-        <p>Derive demand from the shortest valid solution route, scored across 5 intrinsic factors in $[0..2]$.</p>
-        <div class="check-item"><span class="check-box">✓</span><span><b>Shortest Route:</b> Evaluated on the shortest legitimate path, not verbose derivations.</span></div>
-        <div class="check-item"><span class="check-box">✓</span><span><b>5 Factors in [0..2]:</b> <code>concept_model_selection</code>, <code>representation_translation</code>, <code>reasoning_chain_length</code>, <code>algebra_computational_load</code>, <code>trap_exception_sensitivity</code>.</span></div>
-        <div class="check-item"><span class="check-box">✓</span><span><b>Sum Monotonicity:</b> $\sum c_i = \text{score} \in [0, 10]$ strictly matching D-bands (D1: 0–2, D2: 3–5, D3: 6–7, D4: 8–10).</span></div>
-        <div class="check-item"><span class="check-box">✓</span><span><b>P1 Honesty:</b> Real student attempt data recorded or explicitly set to <code>NOT_APPLICABLE</code>.</span></div>
-        <div class="check-item"><span class="check-box">✓</span><span><b>Status Label:</b> Explicitly marked <code>PROPOSED / UNREVIEWED</code> until independent QRT review.</span></div>
-        <div class="benchmark-box falsifier">
-          <span class="benchmark-title">Strict Falsifier</span>Factor sum mismatch trips <code>BAND_MISMATCH</code>. Generic rationale trips <code>MISSING_DEMAND_EVIDENCE</code>.
-        </div>
-      </section>
-
-      <!-- STAGE 03 -->
-      <section class="chapter" id="stage-3">
-        <h2>Stage 03 · Independent Blind QRT Adjudication</h2>
-        <p>Ensure independent determination of cognitive operations, demand vectors, and coverage roles.</p>
-        <div class="check-item"><span class="check-box">✓</span><span><b>7 Canonical Operations:</b> Verb belongs strictly to <code>RETRIEVE</code>, <code>EXPLAIN</code>, <code>APPLY</code>, <code>MODEL</code>, <code>REPRESENT</code>, <code>SYNTHESIZE</code>, <code>JUSTIFY</code>.</span></div>
-        <div class="check-item"><span class="check-box">✓</span><span><b>Sealed First Pass:</b> SHA-256 digest of first-pass review sealed before answer key exposure.</span></div>
-        <div class="check-item"><span class="check-box">✓</span><span><b>Coverage Role Discrimination:</b> <code>DIRECT_EXAM_EVIDENCE</code> (fills exam quotas), <code>PREREQUISITE_BRIDGE</code> (support), or <code>AUTHORED_TRANSFER</code> (synthetic check).</span></div>
-        <div class="benchmark-box falsifier">
-          <span class="benchmark-title">Strict Falsifier</span>Non-canonical verbs (e.g. <code>CALCULATE</code>, <code>SOLVE</code>) or unsealed first-pass evaluations trip immediate rejection.
-        </div>
-      </section>
-
-      <!-- STAGE 04 -->
-      <section class="chapter" id="stage-4">
-        <h2>Stage 04 · Disciplinary Warrants &amp; Topic Adapter</h2>
-        <p>Verify that physical laws and topic slices are bound with explicit validity limits and directional parity.</p>
-        <div class="check-item"><span class="check-box">✓</span><span><b>Non-Empty Warrant Bounds:</b> Explicit <code>assumptions</code>, <code>validity_domain</code>, and <code>exceptions</code>.</span></div>
-        <div class="check-item"><span class="check-box">✓</span><span><b>Directional Parity ($A \to B \neq B \to A$):</b> Taught direction matches tested direction.</span></div>
-        <div class="check-item"><span class="check-box">✓</span><span><b>Topic Adapter Only Rule:</b> Builders edit only the Topic Adapter slice. Missing common slots require a formal <b>Blueprint Gap Note</b>, never ad-hoc Blueprint edits.</span></div>
-        <div class="check-item"><span class="check-box">✓</span><span><b>Subject Scoping:</b> WPE is Physics-only; Mathematics and Chemistry require separate Blueprints and adapters.</span></div>
-        <div class="benchmark-box falsifier">
-          <span class="benchmark-title">Strict Falsifier</span>Reversing directional claims or omitting boundary limits trips <code>WARRANT_DIRECTION_MISMATCH</code>.
-        </div>
-      </section>
-
-      <!-- STAGE 05 -->
-      <section class="chapter" id="stage-5">
-        <h2>Stage 05 · Native Core2 Interactive Tablet Module</h2>
-        <p>Audit 12.7-inch tablet ergonomics, commitment-first interaction, vector SVG diagram integrity, attempt evaluation highlighting, retry workflows, and progressive hint scaffolding. Evaluated against the <b>4 Pillars of Core 2 Engineering Quality</b>:</p>
-
-        <!-- PILLAR 1: PROCEDURE -->
-        <div style="background:#f0fdf4;border:1.5px solid #86efac;border-radius:10px;padding:14px 18px;margin:16px 0 12px;">
-          <h3 style="margin:0 0 8px;font-size:16px;color:#166534;">Pillar 1 · Procedure (Execution Sequence &amp; Lifecycle Standards)</h3>
-          <div class="check-item"><span class="check-box">✓</span><span><b>Linear 8-Step Build Sequence:</b> Ingestion ➔ Slot $X,Y,Z,W$ decomposition ➔ $H_1..H_3$ hints ➔ W3C SVG dual-sync ➔ Reader DOM binding ➔ Navigation hardening ➔ Search index rebuild ➔ Automated link/test gate.</span></div>
-          <div class="check-item"><span class="check-box">✓</span><span><b>W3C SVG Dual-Directory Parity:</b> Every referenced diagram is authored with responsive <span class="code">viewBox</span>, width="100%", height="100%", and typography $\ge 14\text{px}$, and placed synchronously in <b>both</b> <span class="code">nsejs/assets/</span> and subject <span class="code">assets/</span>.</span></div>
-          <div class="check-item"><span class="check-box">✓</span><span><b>Search Index Synchronization:</b> Every bank or topic update triggers <span class="code">python tools/build_search_index.py</span> to regenerate discovery indices and seal the manifest SHA-256 pin.</span></div>
-        </div>
-
-        <!-- PILLAR 2: WORKFLOW -->
-        <div style="background:#eff6ff;border:1.5px solid #93c5fd;border-radius:10px;padding:14px 18px;margin:12px 0;">
-          <h3 style="margin:0 0 8px;font-size:16px;color:#1e40af;">Pillar 2 · Workflow (Handoffs, States, Navigation &amp; Routing)</h3>
-          <div class="check-item"><span class="check-box">✓</span><span><b>3-State Evaluation Lifecycle:</b> <span class="code">Uncommitted</span> (inputs active, derivation hidden) ➔ <span class="code">Committed</span> (inputs frozen, derivation revealed, <span class="code">.attempt-feedback-banner</span> active, badges applied) ⇌ <span class="code">Reset</span> (<span class="code">[🔄 Reset &amp; Try Again]</span> clears <span class="code">localStorage</span> and restores inputs without page refresh).</span></div>
-          <div class="check-item"><span class="check-box">✓</span><span><b>Topic Workspace State Machine:</b> <span class="code">Overview Grid</span> ⇌ <span class="code">Deep-Dive Workspace</span> with URL parameter sync (<span class="code">?topic=...&amp;q=...</span>) via <span class="code">history.replaceState</span> and smooth auto-scroll (<span class="code">scrollIntoView</span>).</span></div>
-          <div class="check-item"><span class="check-box">✓</span><span><b>Disciplinary De-siloing:</b> All questions organized under the 6 Disciplinary Topics, eradicating fragmented "Recovery" silos and exam-year navigation barriers.</span></div>
-          <div class="check-item"><span class="check-box">✓</span><span><b>Two-Tier Search Engine Integration:</b> Global Command Palette (Search 1, Ctrl/Cmd+K) with subject filters + Question Bank inline filter bar (Search 2) with real-time facet filtering.</span></div>
-        </div>
-
-        <!-- PILLAR 3: SELF-CHECK -->
-        <div style="background:#fffbeb;border:1.5px solid #fcd34d;border-radius:10px;padding:14px 18px;margin:12px 0;">
-          <h3 style="margin:0 0 8px;font-size:16px;color:#92400e;">Pillar 3 · Self-Check (Automated Pre-Flight Quality Linters)</h3>
-          <div class="check-item"><span class="check-box">✓</span><span><b>Zero Dead Anchors Linter:</b> Zero dummy <span class="code">href="#topic-view"</span> links or unhandled hidden workspaces.</span></div>
-          <div class="check-item"><span class="check-box">✓</span><span><b>Clean Quote Syntax Linter:</b> Zero backslash-escaped quotes (<span class="code">r"\'"</span>) inside inline HTML attributes (e.g. <span class="code">onclick</span>).</span></div>
-          <div class="check-item"><span class="check-box">✓</span><span><b>Figure DOM Rendering Linter:</b> Every question declaring <span class="code">source_figures</span> renders an <span class="code">&lt;img&gt;</span> in the reader DOM with an <span class="code">onerror</span> secondary directory fallback.</span></div>
-          <div class="check-item"><span class="check-box">✓</span><span><b>Stem Digest Parity &amp; Deduplication:</b> Zero duplicate question IDs; 100% bit-for-bit stem SHA-256 match (<span class="code">declared_matches_observed: true</span>).</span></div>
-          <div class="check-item"><span class="check-box">✓</span><span><b>Adversarial Jargon Linter:</b> Zero occurrences of developer mock strings (<span class="code">producer proposal</span>, <span class="code">differs from producer</span>).</span></div>
-        </div>
-
-        <!-- PILLAR 4: EVIDENCES -->
-        <div style="background:#faf5ff;border:1.5px solid #d8b4fe;border-radius:10px;padding:14px 18px;margin:12px 0 16px;">
-          <h3 style="margin:0 0 8px;font-size:16px;color:#6b21a8;">Pillar 4 · Evidences (Tangible Deliverables &amp; Sealing Receipts)</h3>
-          <div class="check-item"><span class="check-box">✓</span><span><b>Evidence 1 (Site-Wide Link Crawler Receipt):</b> Verbatim stdout of <span class="code">python tools/audit_nsejs_pages.py</span> certifying 43/43 pages pass with 0 broken links.</span></div>
-          <div class="check-item"><span class="check-box">✓</span><span><b>Evidence 2 (Subject-Specific Pytest Receipt):</b> Verbatim stdout of <span class="code">py -3.14 -m pytest tests/test_&lt;subject&gt;_core2.py</span> proving all Gate 0–3 invariants pass with exit code 0.</span></div>
-          <div class="check-item"><span class="check-box">✓</span><span><b>Evidence 3 (Inline Filter Pytest Receipt):</b> Verbatim stdout of <span class="code">tests/test_qb_inline_filter.py</span> verifying attempt evaluation, reset workflows, and quote syntax.</span></div>
-          <div class="check-item"><span class="check-box">✓</span><span><b>Evidence 4 (Search Index Manifest Pin):</b> Pinned SHA-256 digest in <span class="code">learner-search-manifest.v1.json</span>.</span></div>
-          <div class="check-item"><span class="check-box">✓</span><span><b>Evidence 5 (Post-Commitment Visual Proof):</b> Timestamped screenshots capturing both incorrect option state (red badge + green key highlight) and reset state.</span></div>
-        </div>
-
-        <!-- TABLET ERGONOMICS INVARIANTS -->
-        <div class="check-item"><span class="check-box">✓</span><span><b>0px Horizontal Overflow:</b> Verified on $1280\times800$, $1024\times768$, $900\times1280$, $800\times1280$, and $375\times812$.</span></div>
-        <div class="check-item"><span class="check-box">✓</span><span><b>Zero Iframes:</b> <span class="code">document.querySelectorAll('iframe').length === 0</span>.</span></div>
-        <div class="check-item"><span class="check-box">✓</span><span><b>WCAG Touch Targets:</b> Interactive buttons, radio labels, and options strictly $\ge 48\text{px}$ (WCAG AAA standard).</span></div>
-        <div class="check-item"><span class="check-box">✓</span><span><b>Vector Diagram Zero Leakage:</b> Inspect SVG `<text>` elements in Tab 1. The diagram must depict only the physical setup (symbolic vector labels $\vec{F}_B, \vec{T}$, initial parameters) and <b>ZERO post-derivation numerical values or solved ratios</b>.</span></div>
-        <div class="check-item"><span class="check-box">✓</span><span><b>Commitment-First Derivations:</b> Explanations inert (<span class="code">display: none</span>) until answer commit.</span></div>
-        <div class="check-item"><span class="check-box">✓</span><span><b>Progressive Hints ($H_1, H_2, H_3$):</b> Scaffolding never leaks Slot $W$ (the decisive crux).</span></div>
-
-        <div class="benchmark-box falsifier">
-          <span class="benchmark-title">Strict Falsifiers</span>Horizontal scrollbar, hint leaking Slot $W$, SVG diagram displaying solved numbers ($T = 24\text{ N}, u_1 = 30$), dead anchor links (`#topic-view`), escaped quote syntax errors (`\'`), adversarial "producer" jargon, or derivations accessible in DOM/alt text before commit fails tablet audit immediately.
-        </div>
-      </section>
-
-      <!-- STAGE 06 -->
-      <section class="chapter" id="stage-6">
-        <h2>Stage 06 · Core1A Master Lesson &amp; Core1B Fresh Transfer (B1–B7)</h2>
-        <p>Evaluate lesson modules against the non-compensatory 7-witness rubric.</p>
-        <table>
-          <thead>
-            <tr>
-              <th>Witness</th>
-              <th>Verification Criterion</th>
-              <th>Failure Trigger</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><b>B1 Target</b></td>
-              <td>Explicit cognitive demand documented. Tab 1 must render the complete, self-contained reference stem, vector SVG, and interactive options; never an empty legal disclaimer.</td>
-              <td>Vague target requirement or empty disclaimer without problem statement.</td>
-            </tr>
-            <tr>
-              <td><b>B2 Signature</b></td>
-              <td>Distinctive mental pivot and prerequisite model identified with one of the 7 canonical verbs.</td>
-              <td>Routine formula plug-in without pivot or non-canonical verb.</td>
-            </tr>
-            <tr>
-              <td><b>B3 Sufficiency</b></td>
-              <td>Core1A fully teaches the decisive crux without leaking the Core 2 numerical answer in exposition or vector diagrams.</td>
-              <td>Explanations skip non-trivial steps or SVG diagram prints solved values.</td>
-            </tr>
-            <tr>
-              <td><b>B4 Reconstruction</b></td>
-              <td>Core1B is a <b>fresh, unseen twin</b> testing the same invariant under altered physical boundary conditions (e.g. asymmetric masses, differing acceleration frame).</td>
-              <td><b>Anti-Isomorphism Falsifier:</b> Verbatim repetition of Core 2 problem or cosmetic number swap without altered boundaries.</td>
-            </tr>
-            <tr>
-              <td><b>B5 Protection</b></td>
-              <td>Real unassisted first attempt secured and frozen ($\ge 20$ chars or radio selection) before hints or solutions unlock.</td>
-              <td>Hints or worked derivations visible or accessible prior to commitment.</td>
-            </tr>
-            <tr>
-              <td><b>B6 Diagnosis</b></td>
-              <td>Structured diagnostic catalog classifying common student failure modes (traps) with concrete, falsifiable repair steps.</td>
-              <td>Generic "Incorrect" notice without diagnostic mental model mapping.</td>
-            </tr>
-            <tr>
-              <td><b>B7 Provenance</b></td>
-              <td>Verified disciplinary warrant, bounded validity domain, and immutable SHA-256 asset pins.</td>
-              <td>Missing reviewer hash, unpinned assets, or unbounded formulas.</td>
-            </tr>
-          </tbody>
-        </table>
-        <div class="benchmark-box falsifier">
-          <span class="benchmark-title">Non-Compensatory Rule</span>Failing any single witness holds the entire lesson module. High scores in other witnesses cannot compensate.
-        </div>
-      </section>
-
-      <!-- STAGE 07 -->
-      <section class="chapter" id="stage-7">
-        <h2>Stage 07 · Dual-Engine Verification &amp; Technical Preview Gate</h2>
-        <p>Execute automated unit tests, static link crawlers, and Playwright headless browser viewport audits.</p>
-        <div class="check-item"><span class="check-box">✓</span><span><b>100% Pytest Pass:</b> Unit tests, schema checks, and DAG cycle audits pass completely.</span></div>
-        <div class="check-item"><span class="check-box">✓</span><span><b>Subject-Specific Gate 0–3 Pytest Suites:</b> Dedicated test suites (<span class="code">test_physics_core2.py</span>, <span class="code">test_chemistry_core2.py</span>, <span class="code">test_biology_core2.py</span>, <span class="code">test_qb_inline_filter.py</span>) pass 100% verifying schema integrity, zero duplicate IDs, bit-for-bit SHA-256 invariance, 3-tier progressive hint scaffolds, canonical 7 verbs, typography $\ge 14\text{px}$, and Rule 13 <span class="code">NOT_ADMITTED</span> status.</span></div>
-        <div class="check-item"><span class="check-box">✓</span><span><b>Site-Wide Link Crawler Audit:</b> Automated site crawler (<span class="code">python tools/audit_nsejs_pages.py</span>) audits all 43+ pages and 690+ internal links, verifying 0 broken links and 0 dead anchors.</span></div>
-        <div class="check-item"><span class="check-box">✓</span><span><b>Search Index Manifest Sealing:</b> Search index built (<span class="code">python tools/build_search_index.py</span>) with SHA-256 manifest pinning and 100% pass in <span class="code">tests/test_search_engine.py</span>.</span></div>
-        <div class="check-item"><span class="check-box">✓</span><span><b>100% Playwright Pass:</b> Tablet regression audits pass across all 5 standard viewports (0px overflow, 0 console errors).</span></div>
-        <div class="check-item"><span class="check-box">✓</span><span><b>Fail-Closed Gate Retained:</b> Status explicitly output as <code>HOLD: ACADEMIC_ADMISSION</code>. All questions strictly labeled <code>{Unvalidated}</code>.</span></div>
-        <div class="benchmark-box falsifier">
-          <span class="benchmark-title">Strict Falsifier</span>Test failures, broken internal links, console errors, or auto-generated human approval receipts abort publication immediately. Green CI never implies academic approval.
-        </div>
-      </section>
-
-      <!-- STAGE 08 -->
-      <section class="chapter" id="stage-8">
-        <h2>Stage 08 · Independent Academic Release Authority &amp; Admission Gate</h2>
-        <p>The definitive non-compensatory gateway to student release. Independent subject matter experts (human Olympiad faculty) conduct scientific peer review, verify educational sufficiency, validate licensing/provenance, and issue cryptographically signed review receipts.</p>
-        
-        <div class="benchmark-box">
-          <span class="benchmark-title">The 4 Mandatory Conditions to Remove {Unvalidated} &amp; Rule 13 Banners</span>
-          The <b>{Unvalidated}</b> and <b>{Core 2: Unvalidated}</b> badges and Rule 13 HOLD banners are removed <b>ONLY</b> when all 4 conditions are satisfied:
-          <ol style="margin:8px 0 4px 20px;padding:0;line-height:1.65;">
-            <li><b>Human Scientific Sign-off:</b> Independent subject matter expert certifies zero scientific contradictions, valid approximations, and accurate derivations.</li>
-            <li><b>Signed B1–B7 Review Ledger:</b> Complete human verification of target demand, teaching sufficiency, and fresh transfer twin validity.</li>
-            <li><b>Source Rights Clearance:</b> Legitimate examination copyright licensing or verified original authoring provenance.</li>
-            <li><b>Cryptographic Receipt Promotion:</b> Externally provided, scoped review receipt JSON placed in repository, switching status from <code>HOLD</code> to <code>APPROVED</code>.</li>
-          </ol>
-        </div>
-
-        <p>Upon satisfaction, status transitions to <code>{Academically Admitted}</code>, and the warning banner converts to a signed, timestamped <b>Academic Certification Dossier</b>.</p>
-
-        <h3>External Human Faculty Review Receipt Schema</h3>
-        <p>When an authorized human examiner conducts the review, they commit an external signed receipt JSON matching <span class="code">schemas/v1/receipt.schema.json</span>:</p>
-        <div class="json-sample">{
-  "$schema": "https://raw.githubusercontent.com/reallakshman19/Grade9v4.1/main/schemas/v1/receipt.schema.json",
-  "receipt_id": "G9-RECEIPT-PHYS-FLUID-OPTICS-20261113-001",
-  "review_timestamp": "2026-11-13T14:52:00Z",
-  "reviewer": {
-    "identity": "External Human Faculty Reviewer",
-    "role": "Senior Olympiad Physics Examiner",
-    "affiliation": "Independent Curriculum Audit Committee"
-  },
-  "audit_scope": [
-    "PHYS-NSEJS-FLUID-01",
-    "PHYS-NSEJS-FLUID-04",
-    "PHYS-NSEJS-2024-P-Q57"
-  ],
-  "witness_ledger_verdict": {
-    "B1_target_fidelity": 2,
-    "B2_canonical_verb": 2,
-    "B3_core1a_zero_leakage": 2,
-    "B4_core1b_fresh_transfer": 2,
-    "B5_attempt_protection": 2,
-    "B6_misconception_diagnosis": 2,
-    "B7_scientific_warrant": 2
-  },
-  "academic_admission": "APPROVED",
-  "unvalidated_badge_removal_authorized": true
-}</div>
-
-        <div class="benchmark-box falsifier">
-          <span class="benchmark-title">Strict Governance Falsifier (Rules 6, 8, 13)</span>
-          AI agents generating synthetic review receipts, stripping <code>{Unvalidated}</code> solely based on passing CI/pytest, or releasing questions without signed human expert authority trips <code>UNAUTHORIZED_ACADEMIC_PROMOTION / HARD_FAIL</code>.
-        </div>
-      </section>
-
-      <!-- 09 CODE VS AUTHORITY MATRIX -->
-      <section class="chapter" id="matrix">
-        <h2>09 · Code vs. Authority Action Matrix</h2>
-        <p>Reviewers and agents must strictly separate mechanical repairs from authority-bound gates:</p>
-        <div class="qa-table">
-          <table>
-            <thead>
-              <tr>
-                <th>Subsystem</th>
-                <th>What Can Be Fixed Mechanically</th>
-                <th>What Requires External Authority (HOLD)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><b>Sources</b></td>
-                <td>Path bindings, file formatting, JSON schema alignment, stem SHA-256 digest recalculation, and question ID deduplication</td>
-                <td>Official examination authenticity, answer-key provenance</td>
-              </tr>
-              <tr>
-                <td><b>Demand &amp; SL2</b></td>
-                <td>Score arithmetic ($\sum c_i$), evidence field formatting</td>
-                <td>Real student attempt history (P1), D-band qualification</td>
-              </tr>
-              <tr>
-                <td><b>QRT Adjudication</b></td>
-                <td>Schema conformance, canonical verb validation</td>
-                <td>Decisive operation selection, direct-vs-bridge role</td>
-              </tr>
-              <tr>
-                <td><b>Warrants &amp; Blueprint</b></td>
-                <td>Schema syntax, cell mapping, hash pins</td>
-                <td>Scientific law correctness, Blueprint approval</td>
-              </tr>
-              <tr>
-                <td><b>Core2 Tablet UX</b></td>
-                <td>Viewport overflows, touch targets ($\ge 48\text{px}$), SVG typography ($\ge 14\text{px}$), inert derivations, attempt evaluation highlighting, retry button flows, dead anchor repairs, quote syntax fixes, and search index builds</td>
-                <td>Academic admission to curriculum reader</td>
-              </tr>
-              <tr>
-                <td><b>Core1A / Core1B</b></td>
-                <td>Layout, DOM structure, purging SVG answer leaks, button states</td>
-                <td>B3 teaching sufficiency, B4 fresh twin validity</td>
-              </tr>
-              <tr>
-                <td><b>Release Gate</b></td>
-                <td>Test harnesses, linting, Playwright regression</td>
-                <td>Removing <code>{Unvalidated}</code> label, student release authorization</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <!-- 10 EVIDENCE RECEIPT FORM -->
-      <section class="chapter" id="receipt">
-        <h2>10 · Standard Review &amp; Evidence Receipt Form</h2>
-        <p>Every review-and-fix session must conclude with this structured delivery receipt:</p>
-        <div class="receipt-block">### Architecture Review & Audit Receipt
-
-#### Part 1 · Identity & Custody
-- Subject / Topic: [e.g. PHYSICS / WPE]
-- Task ID(s): [e.g. WPE-N01]
-- Source Custody Role: [EXAM_PAPER / TEXTBOOK / AUTHORED_TRANSFER]
-- SHA-256 Parity: [MATCH / MISMATCH]
-
-#### Part 2 · Cognitive Demand & QRT
-- Shortest Valid Route: [Verified / Unverified]
-- Proposed Operation: [RETRIEVE / EXPLAIN / APPLY / MODEL / REPRESENT / SYNTHESIZE / JUSTIFY]
-- 5-Factor Demand Vector: [c1, c2, c3, c4, c5] -> Total: S -> Band: [D1/D2/D3/D4]
-- QRT Adjudication Status: [SEALED_BLIND_REVIEWED / PROPOSED_UNREVIEWED / HOLD]
-
-#### Part 3 · Warrants & Adapter Binding
-- Blueprint Ref: [e.g. PHYS-QRT-BLUEPRINT v0.2.0 (DRAFT_OWNER_REVIEW)]
-- Topic Adapter Ref: [e.g. PHYS-TOPIC-WPE]
-- Directional Consistency (A -> B): [VERIFIED / VIOLATION]
-- Warrant Domains & Assumptions: [COMPLETE / DEFECTIVE]
-
-#### Part 4 · Construction & Tablet Witnesses
-- Core2 Tablet Viewport Audit: [PASS (0px overflow, >=48px touch, >=14px SVG) / FAIL]
-- Attempt Evaluation & Correct Key Highlighting: [PASS (user correct/wrong badges, key highlight, reset/retry) / FAIL]
-- In-Page Navigation & Link Integrity: [PASS (0 dead anchors, 0 escaped quote errors, smooth scroll) / FAIL]
-- Vector SVG Zero Leakage: [PASS (setup only; 0 solved values in SVG) / LEAK]
-- Commitment-First Derivations: [PASS (inert until commit) / LEAK]
-- B1–B7 Non-Compensatory Status: [B1:✓ B2:✓ B3:✓ B4:✓ B5:✓ B6:✓ B7:✓ / HOLD]
-
-#### Part 5 · Disposition & Gate Verdict
-- Mechanical Status: [PASS / FAIL]
-- Academic Gate: HOLD: ACADEMIC_ADMISSION
-- Blocked By: [Explicit list of missing external evidence]
-- Governance Invariant: No academic approval inferred from software validation.</div>
-      </section>
-    </div>
-  </div>
+<main class="container main" id="top">
+<div class="status">
+ <strong>Reviewer rule: attempt to falsify the author's claims.</strong>
+ <p>A file hash proves which bytes were examined; CI proves specific software behavior. Neither proves scientific accuracy, textbook teaching sufficiency, new cognitive demand or independent student mastery. Author evidence, R00 technical review, independent R01 review and Owner acceptance are different authorities.</p>
+</div>
+<div class="auditor-shell">
+<aside class="auditor-toc" aria-label="Audit guide contents">
+  <b>Auditor contents</b>
+  <a href="#scope">00 · Scope and status</a>
+  <a href="#roles">01 · Roles and independence</a>
+  <a href="#intake">02 · Exact-head intake</a>
+  <a href="#science">03 · Physics science audit</a>
+  <a href="#core1a">04 · Core1A textbook audit</a>
+  <a href="#core1b">05 · Core1B transfer audit</a>
+  <a href="#core2">06 · Core2 source/reader audit</a>
+  <a href="#qrt">07 · QRT and B1–B7</a>
+  <a href="#runtime">08 · Browser and negative tests</a>
+  <a href="#coverage">09 · Coverage and integration</a>
+  <a href="#findings">10 · Findings and stop rules</a>
+  <a href="#receipt">11 · Exact-head audit return</a>
+  <a href="#golden">12 · Golden and batch review</a>
+  <a href="#references">13 · Reading order and references</a>
+  <a href="core1ab-agent-guide.html">Authoring guide</a>
+  <a href="core2-source-to-learning-pipeline.html">Core2-led pipeline</a>
+</aside>
+<div>
+<section class="audit-section" id="scope">
+ <h2>00 · What this guide does—and does not—govern</h2>
+ <span class="audit-label">R00 · Technical</span><span class="audit-label">R01 · Independent academic</span><span class="audit-label hold">R2 policy currently PILOT</span>
+ <p>This page is the <strong>auditor-facing operating manual</strong>. The <a href="core1ab-agent-guide.html">Core1A/Core1B Agent Field Guide</a> explains how agents author curriculum-first textbook and protected learning journeys. The <a href="core2-source-to-learning-pipeline.html">Core2-Led Source-to-Learning Pipeline</a> explains the examination-question-first eight-stage route. Neither substitutes for this independent audit.</p>
+ <div class="audit-grid">
+  <div class="audit-tile"><strong>Curriculum-first evidence</strong> Audit complete scientific teaching, the subtopic scope and genuinely new Core1B tasks even when no authenticated exam question is available. Core2 linkage may remain explicitly unqualified.</div>
+  <div class="audit-tile"><strong>Core2-led evidence</strong> Audit source question identity, stem/figure/key fidelity, cognitive profiling, the native question reader and justified connections to Core1A and Core1B.</div>
+ </div>
+ <div class="audit-rule warning"><strong>Current activation fact:</strong> the repository's <a href="../docs/agent-entry/quality-gate-r2/quality-policy.v1.json">R2 policy</a> remains <code>PILOT_AWAITING_OWNER_GOLDEN</code> and <code>production_enabled=false</code>. A green pilot workflow is not proof that authors are blocked by production branch protection. Do not claim the Golden Sample was accepted unless a real Owner receipt and active policy exist.</div>
+ <p><strong>Scope boundary:</strong> this protocol evaluates education, science, source identity and runtime evidence. Redistribution-rights assessment is excluded from this quality audit at Owner direction. Source authenticity and figure completeness are still required.</p>
+</section>
+<section class="audit-section" id="roles">
+ <h2>01 · Authority, independence and reviewer eligibility</h2>
+ <div class="audit-table"><table><thead><tr><th>Role</th><th>Permitted actions</th><th>Prohibited claims/actions</th></tr></thead><tbody>
+  <tr><td><strong>Author</strong></td><td>Construct teaching, solve problems, run self-checks, inject negative faults and submit an author evidence packet.</td><td>Cannot sign R00/R01/Owner receipts or promote its own D-band, science, QRT or release claims.</td></tr>
+  <tr><td><strong>R00 — Technical auditor</strong></td><td>Verify scope, exact files, hashes, CI/browser, actual learner state, coverage and contradictions; issue technical PASS-pending-academic, REQUEST_CHANGES or HOLD_BLOCKER.</td><td>Cannot turn a green test into academic approval, forge R01 evidence or quietly rewrite the author's chapter under reviewer-only mode.</td></tr>
+  <tr><td><strong>R01 — Independent Physics/QRT reviewer</strong></td><td>Independently solve unseen tasks before reading the key, derive Physics, assess Core1A sufficiency, Core1B freshness, B1–B7 and exact cognitive demand.</td><td>Cannot claim blind review if exposed to the solution, or approve an uninspected source/revision.</td></tr>
+  <tr><td><strong>Owner</strong></td><td>Select and approve one representative Golden exemplar and standard, delegate routine batch review, authorize exceptional specification changes.</td><td><strong>Not required to approve each subsequent question.</strong></td></tr>
+ </tbody></table></div>
+ <p><strong>Exposure declaration is mandatory.</strong> R00 previously contributed to PH01 and the C06 v1.1 interface. R00 may audit those technically but cannot independently issue a cold R01 academic verdict on them. A reviewer who has viewed an author's answer before the independent attempt must record <code>EXPOSED</code>.</p>
+ <div class="audit-rule">In reviewer-only mode, corrections belong to the author/coding agent. The auditor returns an exact reproduction and required fix, then inspects the revised commit. If the Owner changes the auditor's role to fixer, disclose that role change and do not count the subsequent self-review as independent.</div>
+</section>
+<section class="audit-section" id="intake">
+ <h2>02 · Audit intake: freeze the real object under review</h2>
+ <ol class="audit-steps">
+  <li><strong>Pin exact identity.</strong> Record PR and exact head/base SHA, branch, author workpack, topic/subtopic IDs, source item UIDs and the proposed denominator. Check merge status and parents; an unmerged PR is not production.</li>
+  <li><strong>Pin contracts.</strong> Record C01–C08 version, selected C06 v1/v1.1 rule, Shared 28-QRT source/blob, subject Physics Blueprint, adapter and any Golden Sample pin. Unselected or paused rules remain HOLD.</li>
+  <li><strong>Compare actual changed files.</strong> Enumerate full PR diff, deleted/renamed assets, other agents' paths, new figures, content packages, generated pages and tests. Challenge unexpected scope and silent rewriting of historical evidence.</li>
+  <li><strong>Verify author packet from bytes.</strong> Inspect the actual <a href="../docs/agent-entry/quality-gate-r2/EVIDENCE_PACKET.template.json">R2 packet schema</a> and run the <a href="../docs/agent-entry/quality-gate-r2/verify_evidence_packet.py">evidence validator</a>. Confirm every cited file SHA-256, smallest relevant line span and verbatim excerpt. Reject recycled quotes or fake log labels.</li>
+  <li><strong>Compare declared with observed.</strong> The author may describe a passing suite, scientific law, learner behavior or source status. Independently check the underlying code/page, test trace, artifact receipt or source record before repeating that claim.</li>
+ </ol>
+ <div class="audit-rule failure"><strong>Automatic HOLD:</strong> wrong branch/contract, missing governing source, unresolvable citation, contradicted SHA, fabricated reviewer receipt, unowned path edit, or a new source claim with no authentication evidence. Continue unrelated review where safe, but do not certify the affected item.</div>
+</section>
+<section class="audit-section" id="science">
+ <h2>03 · Physics science: five independently inspectable witnesses</h2>
+ <p>The auditor must check physical truth, not just whether an equation exists. For R01, solve the task <strong>before opening the authored model solution</strong>; record an independent derivation and compare only afterwards.</p>
+ <div class="audit-table"><table><thead><tr><th>Witness</th><th>Required evidence</th><th>Auditor's falsifier</th></tr></thead><tbody>
+ <tr><td>Primary law and derivation</td><td>Physical model, defined variables, assumptions, starting principle, valid steps and stated conclusion.</td><td>Re-derive from first principles; locate the first unjustified inference.</td></tr>
+ <tr><td>Independent check</td><td>Different reasoning route, conservation check, graphical reconstruction or independent numeric substitution.</td><td>Reproduce without copying the author's algebra.</td></tr>
+ <tr><td>Units and signs</td><td>Dimensions of both sides, coordinate convention, sign of physical quantity, conversions.</td><td>Inject an omitted density/mass factor or reverse the axis; should expose a contradiction.</td></tr>
+ <tr><td>Model limits</td><td>Validity domain, regime assumptions and meaningful limiting cases.</td><td>Apply at a boundary or beyond the valid interval and show the failure.</td></tr>
+ <tr><td>Counterexample/figure</td><td>A counterexample to an attractive false generalization, physically accurate scientific diagram.</td><td>Flip a force or ray, remove an axis or test impossible values; determine if the intended inference changes.</td></tr>
+ </tbody></table></div>
+ <p><strong>Example mandatory unit trap:</strong> for upward-positive height in a uniformly accelerating fluid container, <span class="audit-inline">dP/dy = −ρ(g+a)</span>, not <span class="audit-inline">−(g+a)</span>. The latter has incorrect dimensions; a lesson with the wrong scientific relation must not pass because its surrounding prose looks complete.</p>
+ <div class="audit-rule">Scoring: each of law fidelity, causal teaching, representation, misconception diagnosis and independent checking is 0–3. A zero is HOLD, a one requires changes; a high average cannot compensate for a wrong equation. Mechanical hash compliance does not adjudicate Physics.</div>
+</section>
+<section class="audit-section" id="core1a">
+ <h2>04 · Core1A: audit a real textbook, not answer scaffolding</h2>
+ <p>Hide the Core2 source question, key and worked solution. Ask whether the chapter remains a coherent independent lesson and whether a new learner can reconstruct the required scientific idea from its own explanation.</p>
+ <div class="audit-grid">
+   <div class="audit-tile"><strong>A1–A3 · Intuition and mechanism</strong> Observable phenomenon, necessary prerequisites, conceptual cause before formula. No unexplained new variable or unsupported model jump.</div>
+   <div class="audit-tile"><strong>A4–A5 · Warrant and visuals</strong> Derivation, assumptions, validity, accurate scientific axes/labels and a meaningful diagram that supports reasoning rather than decoration.</div>
+   <div class="audit-tile"><strong>A6–A7 · Worked progression and misconception</strong> Foundation / Connected / Advanced examples with genuinely increasing reasoning; specific plausible wrong model, first error and repair.</div>
+   <div class="audit-tile"><strong>A8–A9 · Boundary and synthesis</strong> Counterexample, limitations, an independently solvable concept check and an expected scientific explanation.</div>
+ </div>
+ <h3>Auditor challenges</h3>
+ <ul>
+  <li>Remove the source question. Can the reader still explain why the law works, not merely use it?</li>
+  <li>Hide the worked anchor. Could the reader answer a <em>new</em> conceptual challenge using only the chapter's taught prerequisites?</li>
+  <li>Does the advanced example add a genuine physical inference or only more arithmetic and changed numbers?</li>
+  <li>Is every critical equation unit/sign checked and every graph/figure consistent with its scientific claim?</li>
+ </ul>
+ <div class="audit-rule failure"><strong>Reject B3 teaching sufficiency</strong> when the chapter consists only of formula boxes, abbreviated worked answers or stock hints; when the decisive physical move is not taught; or when diagrams are missing/misleading. Word count, headings and three examples alone are never proof of textbook quality.</div>
+</section>
+<section class="audit-section" id="core1b">
+ <h2>05 · Core1B: prove genuinely fresh learner-owned work W</h2>
+ <p>For each proposed INSTANCE and MAIN, inspect actual student-visible text—not only metadata. Create a side-by-side anchor-versus-transfer comparison and independently solve the shortest valid route.</p>
+ <div class="audit-table"><table><thead><tr><th>Compare</th><th>Core1A worked anchor</th><th>Core1B fresh task</th></tr></thead><tbody>
+  <tr><td>Given information and model</td><td>Actual stated premises and assumptions</td><td>Actual materially different premises/assumptions</td></tr>
+  <tr><td>Decisive work W</td><td>Model choice, inference or proof already taught</td><td>Which decision the learner must now independently make</td></tr>
+  <tr><td>Shortest valid solution</td><td>Verified full route</td><td>Verified full independent route and constraints</td></tr>
+  <tr><td>Competing wrong model</td><td>Known shortcut and its failure</td><td>New boundary or misconception that makes blind copying fail</td></tr>
+  <tr><td>QRT operation</td><td>Teaching aim, not automatically a QRT band</td><td>One proposed primary operation and independently checked five-factor demand</td></tr>
+ </tbody></table></div>
+ <div class="audit-rule failure"><strong>Hard freshness rejection:</strong> remove numerical values from both problems. If the same model, algorithm or exact proof solves both without any new inference, mark B4 HOLD even if the wording or context changes. In addition, inspect the Core1A explanation for exact symbolic identities that give away the Core1B proof.</div>
+ <h3>Six-stage protection and diagnosis</h3>
+ <ol>
+  <li><strong>Predict:</strong> learner commits a meaningful model/sign expectation, not an answer copied from a hint.</li>
+  <li><strong>Attempt:</strong> an independent first answer and content SHA are persisted before explanations or H1–H3 unlock. Storage failure is fail-closed.</li>
+  <li><strong>Reconstruct:</strong> full correct scientific solution is revealed only after successful saving; previous first answer immutable.</li>
+  <li><strong>Diagnose:</strong> identify a plausible first wrong inference, not a generic “check your calculation” message.</li>
+  <li><strong>Repair:</strong> learner writes revised reasoning separately without overwriting the first attempt.</li>
+  <li><strong>Boundary:</strong> learner first tackles a materially changed condition before seeing its model solution.</li>
+ </ol>
+ <p><strong>H1/H2/H3:</strong> clarify observation → correlate relevant relationships → open a route without disclosing decisive W. Check hints, pre-rendered DOM, SVG labels and source-return links for early solution leakage.</p>
+ <p><strong>C06 v1.1 integrated MAIN:</strong> one MAIN per populated QRT cell with at least two distinct subtopic instances, all bound members and a genuine joint inference. Metadata listing several instances is not proof that the task uses them together.</p>
+</section>
+<section class="audit-section" id="core2">
+ <h2>06 · Core2: examination fidelity, reasoning and honest reader status</h2>
+ <p>Keep <strong>DIRECT_EXAM_EVIDENCE</strong>, <strong>PREREQUISITE_BRIDGE</strong> and <strong>AUTHORED_TRANSFER</strong> distinct. Audit original paper/year/set/question, exact source stem/options/figure/key digest when an original is claimed. A candidate or preparation association is not an authenticated exam question.</p>
+ <ul>
+  <li><strong>Complete visual question:</strong> if a required graph, force diagram, ray or circuit figure is missing, the affected question remains HOLD. Do not silently delete a <span class="audit-inline">[FIG]</span> marker and proceed as if complete.</li>
+  <li><strong>Independent answer:</strong> derive the correct result with units, constraints and explanation. A key letter without a physically coherent route is not sufficient.</li>
+  <li><strong>Commitment-first UX:</strong> feedback and key remain locked until the first response is saved. Retry creates a linked revision, never deletes the original attempt.</li>
+  <li><strong>Canonical status:</strong> the displayed badge is derived from genuine qualified source/academic state; hardcoded <span class="audit-inline">{Reviewed}</span> or peer-audit claims are prohibited without receipts.</li>
+  <li><strong>Learning join:</strong> verify exact question UID → scientific demand → Core1A teaching → fresh Core1B task. If qualification is missing, show a truthful gap instead of invented completeness.</li>
+ </ul>
+ <div class="audit-rule warning">The question-first Core2 production stages are documented in the separately renamed <a href="core2-source-to-learning-pipeline.html">Core2-Led Source-to-Learning Pipeline</a>. A curriculum-first Core1A chapter may proceed without authentic Core2 exam coverage; the missing exam-source link must remain explicit.</div>
+</section>
+<section class="audit-section" id="qrt">
+ <h2>07 · QRT and B1–B7: verify the mental move independently</h2>
+ <p>For a claimed QRT task, determine one <strong>primary</strong> operation from the actual shortest reasoning route, not the author's title. The seven Shared operations are RETRIEVE, EXPLAIN, APPLY, MODEL, REPRESENT, SYNTHESIZE and JUSTIFY. Apply the source-pinned five factors (each 0–2), and disclose disputed or paused Blueprint cells. A long calculation is not automatically D4.</p>
+ <div class="audit-table"><table><thead><tr><th>Witness</th><th>Minimum auditor finding</th></tr></thead><tbody>
+ <tr><td><strong>B1 Target</strong></td><td>Appropriate scientific learning target, prerequisites and scoped source.</td></tr>
+ <tr><td><strong>B2 Construction</strong></td><td>Correct primary operation, protected W and five-factor demand evidence.</td></tr>
+ <tr><td><strong>B3 Core1A</strong></td><td>Actual teaching of the decisive inference, checked cold-read and full concept explanation.</td></tr>
+ <tr><td><strong>B4 Core1B</strong></td><td>Unseen transfer requiring a new genuine inference, not a numerical clone.</td></tr>
+ <tr><td><strong>B5 Protection</strong></td><td>Immutable first response, revision-specific digest, pre-first help state and no leak.</td></tr>
+ <tr><td><strong>B6 Repair/Boundary</strong></td><td>Specific first-error diagnosis, learner repair and changed-condition reasoning.</td></tr>
+ <tr><td><strong>B7 Physics/Provenance</strong></td><td>Defensible laws, sign/limits, diagram, source-role fidelity and exact revision.</td></tr>
+ </tbody></table></div>
+ <p>R00 may validate task bindings, score arithmetic and evidence integrity. Only an eligible, genuinely unexposed R01 can present an independent scientific/QRT/B1–B7 academic determination. Every witness is noncompensatory: another PASS cannot substitute for a HOLD.</p>
+</section>
+<section class="audit-section" id="runtime">
+ <h2>08 · Exact-head engineering, HTTP Chromium and fault injection</h2>
+ <p>Run or independently inspect unchanged full Python QA and real served HTTP Chromium. Confirm the **same exact content head** as the audited PR, and record job IDs, artifacts and untested paths. A successful synthetic fixture is not a student-page end-to-end receipt.</p>
+ <div class="audit-grid">
+ <div class="audit-tile"><strong>12.7-inch tablet</strong> 1000×1600 portrait and 1600×1000 landscape; keyboard/touch, no horizontal overflow, navigation, refresh, readable figures.</div>
+ <div class="audit-tile"><strong>Protected evidence</strong> First answer/choice before hint or solution; failed storage, reset, stale content, source/textbook return, H1–H3 exposure and boundary gating.</div>
+ </div>
+ <h3>Eight Golden Sample negative controls</h3>
+ <div class="audit-table"><table><thead><tr><th>Mutation</th><th>Expected observed rejection</th></tr></thead><tbody>
+  <tr><td>WRONG_DIMENSION</td><td>Units check rejects omitted density/mass or dimensional inconsistency.</td></tr>
+  <tr><td>WRONG_SIGN_OR_LIMIT</td><td>Scientific check rejects wrong frame, reversed sign or invalid model domain.</td></tr>
+  <tr><td>NUMERIC_CLONE</td><td>Freshness audit rejects Core1A answer with only new numbers.</td></tr>
+  <tr><td>HINT_LEAK</td><td>Early H1–H3/DOM/diagram disclosure is detected.</td></tr>
+  <tr><td>BAD_SOURCE_FIGURE</td><td>Missing or inverted critical figure blocks question.</td></tr>
+  <tr><td>SAVE_FAILURE</td><td>Failed persistence does not unlock solution or claim a first attempt.</td></tr>
+  <tr><td>STALE_REVISION</td><td>Old content digest cannot be treated as an attempt on new revision.</td></tr>
+  <tr><td>FALSE_REVIEW_BADGE</td><td>Unqualified item cannot display independent approval labels.</td></tr>
+ </tbody></table></div>
+ <p>Golden: all eight families. Subsequent item packets: at least wrong-dimension, numeric-clone and hint-leak tests, plus inherited batch-wide runtime/figure regressions. The reviewer must check <em>actual injection, command, observed rejection log and reason for rejection</em>. A handwritten <span class="audit-inline">REJECTED</span> string does not prove a test ran.</p>
+ <div class="audit-code">python -m pytest -q
+python -m pytest -q tests/test_physics_quality_gate_r2.py
+python docs/agent-entry/quality-gate-r2/verify_evidence_packet.py \
+  review/quality-packets/physics/PHxx/&lt;task-uid&gt;.packet.json
+python docs/agent-entry/quality-gate-r2/enforce_pr_packets.py \
+  --base &lt;exact-parent-SHA&gt;</div>
+ <p class="audit-foot">The packet validator can report EVIDENCE_STRUCTURALLY_GROUNDED while academic_status remains HOLD. Pilot PR enforcement may report PILOT_NOT_ENFORCED; do not mislabel either as educational acceptance.</p>
+</section>
+<section class="audit-section" id="coverage">
+ <h2>09 · Question-level coverage and cross-agent reconciliation</h2>
+ <p>Audit a <strong>stable UID + exact revision</strong> per task. Reconcile every source question to its exact Core1A teaching and Core1B INSTANCE/MAIN coverage. Record source roles, missing dependencies, duplicate IDs, historical aliases and the selected contract version. Never substitute 56 authored cycles for 56 independently qualified exam questions.</p>
+ <div class="audit-table"><table><thead><tr><th>Separate denominator</th><th>What may be counted</th></tr></thead><tbody>
+  <tr><td>Candidate syllabus subtopics</td><td>Stable inventoried subtopic IDs; not proof of fully taught lessons.</td></tr>
+  <tr><td>Core1A authored / qualified</td><td>Substantive student-readable modules versus independently accepted B3.</td></tr>
+  <tr><td>Core1B INSTANCE / MAIN</td><td>Actually authored and runtime-tested cycles versus independently classified QRT/B4–B6.</td></tr>
+  <tr><td>Core2 preparation links</td><td>Authored question-to-learning associations; not authenticated source items.</td></tr>
+  <tr><td>Authenticated original Core2</td><td>Only items with verified source identity, figure, answer and appropriate scoped review.</td></tr>
+  <tr><td>Owner/Golden or batch release</td><td>Actual approved exemplar and delegated policy receipt, not a green workflow alone.</td></tr>
+ </tbody></table></div>
+ <div class="audit-rule">If a parent/stacked branch has changed, inspect all intervening diffs. Do not auto-rebase away student source identity, accept a contract downgrade or count an unmerged PR as deployed. Each author owns its assigned PHxx files; R00 reviews but does not silently author fixes.</div>
+</section>
+<section class="audit-section" id="findings">
+ <h2>10 · Decisions, P0/P1/P2 and noncompensatory STOP rules</h2>
+ <div class="audit-table"><table><thead><tr><th>Severity</th><th>Examples</th><th>Required action</th></tr></thead><tbody>
+  <tr><td><strong>P0 — HOLD_BLOCKER</strong></td><td>Materially wrong Physics, forged evidence, false source/approval label, leaked protected W, failed first save bypass, harmful merged ownership, silent schema downgrade.</td><td>Hold affected task/batch, independently inspect same defect family, return exact reproduction and protect against release.</td></tr>
+  <tr><td><strong>P1 — REQUEST_CHANGES</strong></td><td>Core1A too thin, Core1B clone, incorrect or incomplete example, inadequate diagnosis, missing evidence, broken keyboard state, source/coverage overclaim.</td><td>Agent fixes actual content and regenerates packet/tests; reviewer reevaluates exact revision.</td></tr>
+  <tr><td><strong>P2 — DOCUMENT_FOLLOWUP</strong></td><td>Nonblocking wording, figure readability, extra explanatory example, presentation improvement without misrepresentation.</td><td>Record with owner and due condition; promote if it affects teaching or safety of conclusions.</td></tr>
+ </tbody></table></div>
+ <p><strong>R00 dispositions:</strong> <span class="audit-inline">HOLD_BLOCKER</span>, <span class="audit-inline">REQUEST_CHANGES</span>, <span class="audit-inline">TECHNICAL_PASS_PENDING_ACADEMIC</span>. An independent R01 receipt has its own scoped decision and cannot be created by the author or R00 impersonation. A reviewer should never suppress uncertainty to get a green badge.</p>
+ <div class="audit-rule failure"><strong>Stop escalation:</strong> a P0 holds the affected batch and triggers full same-family inspection; repeated P1 failures require remediation and a fresh bounded demonstration before continued production. All test failures/warnings and new D4 proofs receive targeted review. “All tests pass” cannot override one incorrect scientific law.</div>
+</section>
+<section class="audit-section" id="receipt">
+ <h2>11 · Copy-ready exact-head R00 review return</h2>
+ <p>Auditor receipts must be written and stored under reviewer-owned authority. Use the full <a href="../docs/agent-entry/quality-gate-r2/REVIEWER_AND_GOLDEN_TEMPLATES.md">R00/R01/Owner/Batch forms</a>; this shortened version shows the minimum factual return. In reviewer-only mode, submit findings as an auditable PR comment or review receipt, not as a stealth code patch.</p>
+ <div class="audit-code">REVIEW TASK / REVIEWER ROLE / EXPOSURE STATUS:
+REPO / PR / EXACT HEAD / BASE SHA:
+AUTHOR WORKPACK / TOPIC / SUBTOPIC / ITEM UIDs:
+PINNED C01–C08 / QRT / BLUEPRINT / ADAPTER / GOLDEN:
+CHANGED FILES / UNAUTHORIZED COLLISIONS:
+AUTHOR PACKET PATH + BYTE SHA / VERIFIER FINDINGS:
+INDEPENDENT SCIENCE DERIVATION / UNIT + LIMIT CHECK:
+CORE1A ACTUAL TEACHING / DIAGRAM / MISCONCEPTION:
+CORE1B ANCHOR W vs FRESH W / MAIN + INSTANCE / HINTS:
+CORE2 STEM / FIGURE / KEY / SOURCE ROLE / STATUS:
+B1–B7 FINDINGS (R01 only for independent academic verdict):
+FULL PYTHON / HTTP CHROMIUM JOBS / EXACT SOURCE HEAD:
+FAULT INJECTIONS / COMMANDS / OBSERVED REJECTIONS:
+P0/P1/P2 FINDINGS — FILE:LINE / REPRO / REQUIRED FIX:
+QUESTION-LEVEL DENOMINATORS / UNREVIEWED ITEMS:
+R00 DECISION: HOLD_BLOCKER | REQUEST_CHANGES |
+              TECHNICAL_PASS_PENDING_ACADEMIC
+R01 ACADEMIC FINDING: SEPARATE RECEIPT / HOLD
+OWNER GOLDEN APPROVAL: NOT ASSUMED
+MERGE / RELEASE STATUS: NOT AUTOMATIC
+NO ACADEMIC APPROVAL INFERRED FROM SOFTWARE PASS.</div>
+ <div class="audit-rule warning">The R2 packet template is intentionally incomplete; its placeholder text must fail the checker. An auditor's duty is to review the actual file and log, not accept the author's claim that a form was filled. If a source or browser state could not be inspected, record <strong>NOT_OBSERVED</strong> and keep the corresponding scope HOLD.</div>
+</section>
+<section class="audit-section" id="golden">
+ <h2>12 · One-time Golden Sample, then delegated risk-based batches</h2>
+ <ol class="audit-steps">
+  <li><strong>Select one representative exemplar.</strong> Complete Core2 + substantial scientific Core1A + genuinely fresh protected Core1B, with all eight negative-test families and full source/figure/science witnesses.</li>
+  <li><strong>Audit it independently.</strong> R00 tests bytes/code/browser; a separate eligible R01 cold-solves and examines cognitive, science and B1–B7. The Owner then accepts the <strong>exact Golden standard once</strong>, not question by question.</li>
+  <li><strong>Activate policy explicitly.</strong> Pin Golden SHA and Owner receipt; configure real GitHub required status checks, protected reviewer-owned receipt paths and CODEOWNERS. The policy file alone does not enforce permissions.</li>
+  <li><strong>Delegate continuing batches.</strong> Require an evidence packet for every new/changed item; independently review a reproducible reviewer-selected sample of <strong>at least 20% and one per topic per batch</strong> (proposed policy), with 100% targeted inspection for new laws, D4 proofs, key disputes, source contradictions and defects.</li>
+  <li><strong>Escalate by evidence.</strong> A P0 holds the affected batch; review 100% of the defect family. Report individually reviewed versus accepted-by-delegated-policy versus not-reviewed counts separately.</li>
+ </ol>
+ <div class="audit-rule"><strong>No repeated Owner approval for routine questions.</strong> Owner intervention is reserved for the first accepted Golden, material changes to the standard, and exceptional disputes requiring Owner authority. This risk-sampling policy is a proposed production contract until actually activated.</div>
+</section>
+<section class="audit-section" id="references">
+ <h2>13 · Source of truth and reading order</h2>
+ <div class="audit-links">
+  <a href="core1ab-agent-guide.html">Core1A/B Agent Field Guide</a>
+  <a href="core2-source-to-learning-pipeline.html">Core2-Led Source-to-Learning Pipeline</a>
+  <a href="guidebook.html">Architecture Guidebook</a>
+  <a href="../docs/agent-entry/07-independent-review.md">Independent reviewer source-only entry</a>
+  <a href="../docs/agent-entry/quality-gate-r2/AUTHORING_QUALITY_CONTRACT_R2.md">R2 Quality Contract</a>
+  <a href="../docs/agent-entry/quality-gate-r2/REVIEWER_AND_GOLDEN_TEMPLATES.md">Reviewer and Golden templates</a>
+  <a href="../docs/agent-entry/quality-gate-r2/evidence-packet.schema.json">Evidence Packet Schema</a>
+  <a href="../docs/agent-entry/quality-gate-r2/verify_evidence_packet.py">Evidence Validator</a>
+  <a href="../docs/agent-entry/quality-gate-r2/quality-policy.v1.json">Current Policy State</a>
+ </div>
+ <p><strong>Reading order:</strong> reviewer assignment and exposure declaration → governing source-only task intake (if blind) → exact author packet and native sources → independent scientific derivation → Core1A/B/Core2 learner-page audit → adversarial browser/software tests → formal R00 or R01 return. For source-only blind review, avoid author-exposed solved examples before the first independent attempt.</p>
+ <p class="audit-foot">This page documents auditing practice and the current pilot contract. It cannot appoint independent reviewers, grant release authority, certify an examination question, or guarantee that every future lesson is high quality.</p>
+</section>
+</div>
+</div>
 </main>
-
-<footer class="footer">
-  <div class="container">
-    <span>Architecture Review &amp; Audit Guide · Technical review / not academic admission</span>
-    <a href="index.html">Architecture Index</a>
-  </div>
-</footer>
+<footer class="footer"><div class="container"><span>Grade9 v4.1 · Reviewer-facing quality protocol · Evidence before approval</span><a href="index.html">Architecture index</a></div></footer>
 </body>
 </html>
