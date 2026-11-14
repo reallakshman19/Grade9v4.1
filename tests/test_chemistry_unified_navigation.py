@@ -84,7 +84,7 @@ def test_both_readers_expose_same_journey_without_copying_attempts():
     assert "Previous · " in shared and "Next · " in shared
     assert "Chapter list" in shared
     assert "return" in shared and "question-map.html" in shared
-    assert 'mode==="practice"' in preview
+    assert 'requested.get("mode")==="practice"' in preview
     assert 'wrap.id="practice-"+safeId(subId)' in preview
     assert "const key=\"g9chem-first-attempt:\"" in preview
     assert "field.disabled=true" in preview
