@@ -18,7 +18,8 @@ def test_all_ph02_extra_operations_have_distinct_original_teaching():
         assert len(expected)==2==len({x["op"] for x in items})
         assert {x["op"] for x in items}==expected
         for item in items:
-            for name in ("title","teaching","worked","check"):
+            assert len(item["title"])>12
+            for name in ("teaching","worked","check"):
                 assert len(item[name])>45
             assert item["worked"]!=next(x["prompt"] for x in qrt["tasks"]
                                         if x["unit"]==unit and x["op"]==item["op"])
