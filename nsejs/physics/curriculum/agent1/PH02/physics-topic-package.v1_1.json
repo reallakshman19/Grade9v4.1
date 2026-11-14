@@ -298,8 +298,8 @@
           "blueprint_cell": "D3.4",
           "source_role": "AUTHORED_TRANSFER",
           "qrt_status": "HOLD",
-          "protected_work": "Infer an unknown mass from equal *net* forces and inverse mass-acceleration proportionality, not by direct forward substitution.",
-          "decisive_route": "Equal net forces imply m_A a_A = m_B a_B. So 2 kg×3 m s⁻² = m_B×1.5 m s⁻², giving m_B=4 kg. Independent check: both forces are 6 N east; B's larger mass has smaller acceleration as expected.",
+          "protected_work": "Distinguish applied from resultant forces; infer one resistance from measured acceleration, then recover the other mass and verify both independently.",
+          "decisive_route": "For A, ΣF_A=m_Aa_A=2×3=6 N east. Applied push is 8 N east, so the unknown A resistance is 8−6=2 N west. For B, the independently given resistance is 2 N west; hence ΣF_B=8−2=6 N east. Its mass is m_B=6/1.5=4 kg. The two net forces are equal only after checking the resistances. Verify A: 8−2=2×3=6 N; B: 8−2=4×1.5=6 N.",
           "factor_evidence": {
             "concept_model_selection": {
               "score": 2,
@@ -417,8 +417,8 @@
           "blueprint_cell": "D3.2",
           "source_role": "AUTHORED_TRANSFER",
           "qrt_status": "HOLD",
-          "protected_work": "Pair forces by interacting bodies first; only then compute separate accelerations from distinct masses.",
-          "decisive_route": "Force on B by A is +12 N east, while force on A by B is −12 N west. If these are the only horizontal forces during the contact, a_A=−12/4=−3 m s⁻² and a_B=+12/1=+12 m s⁻². Forces are equal and opposite, accelerations differ because masses differ.",
+          "protected_work": "Separate action-reaction forces by recipient, add each body's external device, then reconcile body equations with the system centre of mass.",
+          "decisive_route": "B-on-A contact =−12 N (west); A-on-B contact=+12 N (east). For A, ΣF_A=+4−12=−8 N, so a_A=−8/4=−2 m s⁻². For B, ΣF_B=+12−3=+9 N, so a_B=+9/1=+9 m s⁻². The combined system's external resultant is +4−3=+1 N, total mass 5 kg and a_CM=+1/5=+0.2 m s⁻². Independent check: (4×−2+1×9)/5=+0.2 m s⁻². The contact pair cancels only in the combined system; the opposing accelerations can cause separation soon after this instantaneous snapshot.",
           "factor_evidence": {
             "concept_model_selection": {
               "score": 1,
@@ -656,8 +656,8 @@
           "blueprint_cell": "D3.3",
           "source_role": "AUTHORED_TRANSFER",
           "qrt_status": "HOLD",
-          "protected_work": "Compute net impending-slip tendency from multiple applied interactions, then compare the required static friction with its bound.",
-          "decisive_route": "The nonfriction tendency is +8−3=+5 N east. To remain at rest, static friction must be −5 N, i.e. 5 N west. Its magnitude 5 N is at most the 6 N limit, so rest is possible. The actual friction is 5 N, not 6 N.",
+          "protected_work": "Apply the static feasibility inequality before and after an external change, then switch to the stated kinetic friction model only if equilibrium fails.",
+          "decisive_route": "Initially the nonfriction tendency is +8−3=+5 N east; static friction adjusts to −5 N (5 N west). Since |5|≤6 N, the crate remains at rest. With the rope raised to 16 N west, the nonfriction resultant is +8−16=−8 N (west); rest would require +8 N east static friction, exceeding its 6 N limit. The crate starts sliding west, so 4 N kinetic friction acts east. The actual net is +8−16+4=−4 N, and a=−4/2=−2 m s⁻², i.e. 2 m s⁻² west. Static limit is never substituted as actual kinetic friction.",
           "factor_evidence": {
             "concept_model_selection": {
               "score": 1,
@@ -689,8 +689,8 @@
           "blueprint_cell": "D3.4",
           "source_role": "AUTHORED_TRANSFER",
           "qrt_status": "HOLD",
-          "protected_work": "Select static equilibrium feasibility by comparing required friction to its physical limit rather than applying an automatic f=μN.",
-          "decisive_route": "Nonfriction tendency=+7−2=+5 N. Static rest requires friction 5 N west, but capacity is 4 N, so rest is impossible in the stated model. To compute sliding acceleration require crate mass and kinetic-friction magnitude/coefficient. One cannot infer acceleration from static maximum alone.",
+          "protected_work": "Test feasibility of static balance before changing to a kinetic contact model, then form the actual signed resultant to obtain acceleration.",
+          "decisive_route": "The nonfriction tendency is +7−2=+5 N east. To remain at rest would need 5 N west static friction, exceeding the 4 N maximum, so static equilibrium is impossible. Sliding begins east, hence kinetic friction is −3 N west. The kinetic resultant is 7−2−3=+2 N east. With mass 2 kg, a_x=+2/2=+1 m s⁻². The 4 N limit is a bound on static contact, not the friction used after sliding begins.",
           "factor_evidence": {
             "concept_model_selection": {
               "score": 2,
@@ -1851,16 +1851,16 @@
       "kind": "INSTANCE",
       "subtopic_id": "PH02-F03",
       "qrt_target_id": "PH02-F03-QRT-MODEL-D3",
-      "fresh_task": "Two frictionless carts receive the same horizontal constant net force. Cart A has mass 2 kg and acceleration 3 m s⁻² east. Cart B accelerates 1.5 m s⁻² east. Find B's mass without being told the common force directly. Justify the equality you use and check the units.",
-      "protected_work": "Infer an unknown mass from equal *net* forces and inverse mass-acceleration proportionality, not by direct forward substitution.",
+      "fresh_task": "Two carts on separate level tracks are each pushed east by the same applied force of 8 N. Cart A has mass 2 kg and measured acceleration 3 m s⁻² east; its constant westward resistance is unknown. Cart B experiences a measured 2 N westward resistance and accelerates at 1.5 m s⁻² east; its mass is unknown. Infer A's resistance and B's mass. State exactly why the resultant forces turn out to be equal, and independently verify both force equations.",
+      "protected_work": "Distinguish applied from resultant forces; infer one resistance from measured acceleration, then recover the other mass and verify both independently.",
       "differs_from_worked_anchor": true,
       "stages": {
-        "predict": "When the same net push acts on a lighter and a heavier trolley, which accelerates more? Explain what must be held equal.",
-        "attempt": "Two frictionless carts receive the same horizontal constant net force. Cart A has mass 2 kg and acceleration 3 m s⁻² east. Cart B accelerates 1.5 m s⁻² east. Find B's mass without being told the common force directly. Justify the equality you use and check the units.",
-        "reconstruct": "Equal net forces imply m_A a_A = m_B a_B. So 2 kg×3 m s⁻² = m_B×1.5 m s⁻², giving m_B=4 kg. Independent check: both forces are 6 N east; B's larger mass has smaller acceleration as expected.",
-        "diagnose": "If you answered 1 kg, you treated mass and acceleration as directly proportional under equal force. If you used the applied force without checking equality of net forces, revisit the premise.",
-        "repair": "Write the two ΣF=ma equations, eliminate the common quantity, and explain the inverse relationship in words.",
-        "boundary_test": "The same experiment is repeated, but B now has net friction of 2 N west while the same 6 N east applied force acts on both. What is B's acceleration if its mass is 4 kg? Post-attempt boundary model: B's net force is 6−2=4 N east, so a_B=4/4=1 m s⁻². Equal applied force is no longer equal net force."
+        "predict": "Two carts have the same applied push but unknown or different resistances. Is it valid to equate their net forces before calculating both friction forces? Explain.",
+        "attempt": "Two carts on separate level tracks are each pushed east by the same applied force of 8 N. Cart A has mass 2 kg and measured acceleration 3 m s⁻² east; its constant westward resistance is unknown. Cart B experiences a measured 2 N westward resistance and accelerates at 1.5 m s⁻² east; its mass is unknown. Infer A's resistance and B's mass. State exactly why the resultant forces turn out to be equal, and independently verify both force equations.",
+        "reconstruct": "For A, ΣF_A=m_Aa_A=2×3=6 N east. Applied push is 8 N east, so the unknown A resistance is 8−6=2 N west. For B, the independently given resistance is 2 N west; hence ΣF_B=8−2=6 N east. Its mass is m_B=6/1.5=4 kg. The two net forces are equal only after checking the resistances. Verify A: 8−2=2×3=6 N; B: 8−2=4×1.5=6 N.",
+        "diagnose": "If you set the masses inversely proportional without checking A's unknown resistance, you equated applied pushes with resultants prematurely. If you found 8/1.5 kg, you omitted B's westward resistance.",
+        "repair": "Separate each cart's applied and resistant forces in two signed equations, solve the unknown A resistance and B mass, then check both left-to-right.",
+        "boundary_test": "B's westward resistance doubles from 2 N to 4 N while its mass remains 4 kg and the 8 N east push continues. What is B's new acceleration? Does the shared applied push now imply equal net force? Post-attempt boundary model: B now has resultant 8−4=4 N east and acceleration 4/4=1 m s⁻² east. A still has resultant 6 N and acceleration 3 m s⁻²; equal applied pushes no longer imply equal resultants."
       },
       "attempt_policy": {
         "save_first_answer_before_hint": true,
@@ -1879,16 +1879,16 @@
       "kind": "INSTANCE",
       "subtopic_id": "PH02-F04",
       "qrt_target_id": "PH02-F04-QRT-EXPLAIN-D3",
-      "fresh_task": "During a brief horizontal contact on a smooth track, cart A (4 kg) pushes cart B (1 kg) with force 12 N east. Identify the force on A by B, then compare each cart's instantaneous acceleration due to these contact forces. Explain precisely why unequal accelerations do not contradict Newton's third law.",
-      "protected_work": "Pair forces by interacting bodies first; only then compute separate accelerations from distinct masses.",
+      "fresh_task": "Two carts A (4 kg) and B (1 kg) are in brief contact on a smooth horizontal track. A pushes B east with 12 N. An external actuator also pushes A east with 4 N, while another device pushes B west with 3 N. Identify the Newton-third-law contact pair (with each recipient labelled), calculate the instantaneous accelerations of A and B, then check the centre-of-mass acceleration from both the external resultant and the mass-weighted individual accelerations. Explain why the contact configuration may be transient.",
+      "protected_work": "Separate action-reaction forces by recipient, add each body's external device, then reconcile body equations with the system centre of mass.",
       "differs_from_worked_anchor": true,
       "stages": {
-        "predict": "Does a lighter cart push on a heavier cart with a smaller contact force during their collision? Predict before calculating.",
-        "attempt": "During a brief horizontal contact on a smooth track, cart A (4 kg) pushes cart B (1 kg) with force 12 N east. Identify the force on A by B, then compare each cart's instantaneous acceleration due to these contact forces. Explain precisely why unequal accelerations do not contradict Newton's third law.",
-        "reconstruct": "Force on B by A is +12 N east, while force on A by B is −12 N west. If these are the only horizontal forces during the contact, a_A=−12/4=−3 m s⁻² and a_B=+12/1=+12 m s⁻². Forces are equal and opposite, accelerations differ because masses differ.",
-        "diagnose": "If you said the truck/cart forces are unequal, you may have confused force with acceleration. If you cancelled the two 12 N arrows on cart B, you mixed forces acting on different bodies.",
-        "repair": "Draw two separate free-body diagrams and place one interaction arrow on each. Explain why masses enter only after identifying the pair.",
-        "boundary_test": "If cart B's mass becomes 3 kg but the contact force magnitude remains 12 N, how do the two accelerations change? Post-attempt boundary model: a_A stays 3 m s⁻² west for the 4 kg cart; a_B becomes 4 m s⁻² east for the 3 kg cart. Third-law force equality is unchanged."
+        "predict": "During a contact, can forces on different bodies be equal and opposite even while external actuators make the two accelerations very different? Label forces before calculating.",
+        "attempt": "Two carts A (4 kg) and B (1 kg) are in brief contact on a smooth horizontal track. A pushes B east with 12 N. An external actuator also pushes A east with 4 N, while another device pushes B west with 3 N. Identify the Newton-third-law contact pair (with each recipient labelled), calculate the instantaneous accelerations of A and B, then check the centre-of-mass acceleration from both the external resultant and the mass-weighted individual accelerations. Explain why the contact configuration may be transient.",
+        "reconstruct": "B-on-A contact =−12 N (west); A-on-B contact=+12 N (east). For A, ΣF_A=+4−12=−8 N, so a_A=−8/4=−2 m s⁻². For B, ΣF_B=+12−3=+9 N, so a_B=+9/1=+9 m s⁻². The combined system's external resultant is +4−3=+1 N, total mass 5 kg and a_CM=+1/5=+0.2 m s⁻². Independent check: (4×−2+1×9)/5=+0.2 m s⁻². The contact pair cancels only in the combined system; the opposing accelerations can cause separation soon after this instantaneous snapshot.",
+        "diagnose": "If you removed the 12 N contact arrow from each separate cart, you cancelled forces on different bodies. If you used 4−3−24 N as system resultant, you incorrectly counted the internal contact pair twice.",
+        "repair": "Draw two body-labelled force diagrams, then the combined-system diagram; explicitly compare the two independent centre-of-mass computations.",
+        "boundary_test": "At a moment when the same 12 N east contact force on B is still present, remove only B's 3 N west actuator. What is B's instantaneous acceleration and the combined-system centre-of-mass acceleration? Post-attempt boundary model: B then has +12 N net, so a_B=+12 m s⁻² east. Total external resultant becomes +4 N east on 5 kg, so a_CM=+0.8 m s⁻². The specified 12 N contact is instantaneous; whether contact persists requires a separate dynamical check."
       },
       "attempt_policy": {
         "save_first_answer_before_hint": true,
@@ -1935,16 +1935,16 @@
       "kind": "INSTANCE",
       "subtopic_id": "PH02-F06",
       "qrt_target_id": "PH02-F06-QRT-APPLY-D3",
-      "fresh_task": "A crate initially rests on a level floor. One person pushes east with 8 N while a rope pulls west with 3 N. The maximum static friction is 6 N. Determine whether it stays at rest and find actual friction including direction. Justify why it is not simply the limiting value.",
-      "protected_work": "Compute net impending-slip tendency from multiple applied interactions, then compare the required static friction with its bound.",
+      "fresh_task": "A 2 kg crate initially rests on a level floor. Static friction can reach 6 N and, once it slides, kinetic friction has magnitude 4 N opposite its motion. An 8 N east push and a 3 N west rope pull act simultaneously. Determine whether the crate remains at rest and the actual static friction. The west rope pull then increases abruptly to 16 N while the east push remains 8 N. Determine whether static equilibrium remains possible; if it slips, find its initial acceleration with direction. State which contact model applies in each stage.",
+      "protected_work": "Apply the static feasibility inequality before and after an external change, then switch to the stated kinetic friction model only if equilibrium fails.",
       "differs_from_worked_anchor": true,
       "stages": {
-        "predict": "With two opposed pushes, is the friction magnitude always equal to the larger individual push? Predict and justify.",
-        "attempt": "A crate initially rests on a level floor. One person pushes east with 8 N while a rope pulls west with 3 N. The maximum static friction is 6 N. Determine whether it stays at rest and find actual friction including direction. Justify why it is not simply the limiting value.",
-        "reconstruct": "The nonfriction tendency is +8−3=+5 N east. To remain at rest, static friction must be −5 N, i.e. 5 N west. Its magnitude 5 N is at most the 6 N limit, so rest is possible. The actual friction is 5 N, not 6 N.",
-        "diagnose": "If you replied 6 N, you treated the maximum as the actual static force. If you chose eastward friction, you did not identify the slip tendency from the other pushes.",
-        "repair": "Calculate the signed nonfriction sum, propose the equal opposite required friction, and test its absolute value against the limit.",
-        "boundary_test": "Now increase the eastward push to 11 N but leave the 3 N west rope and 6 N maximum static friction unchanged. Can the crate remain at rest? What additional information is needed to compute its sliding acceleration? Post-attempt boundary model: The nonfriction tendency is +11−3=+8 N. Required static friction would be 8 N west, greater than the 6 N maximum, so no static equilibrium is possible. Mass and kinetic-friction model/value are needed for sliding acceleration."
+        "predict": "Can a crate first remain stuck under opposing pulls and then slip in the opposite direction after one pull changes? Predict the role of the maximum static friction.",
+        "attempt": "A 2 kg crate initially rests on a level floor. Static friction can reach 6 N and, once it slides, kinetic friction has magnitude 4 N opposite its motion. An 8 N east push and a 3 N west rope pull act simultaneously. Determine whether the crate remains at rest and the actual static friction. The west rope pull then increases abruptly to 16 N while the east push remains 8 N. Determine whether static equilibrium remains possible; if it slips, find its initial acceleration with direction. State which contact model applies in each stage.",
+        "reconstruct": "Initially the nonfriction tendency is +8−3=+5 N east; static friction adjusts to −5 N (5 N west). Since |5|≤6 N, the crate remains at rest. With the rope raised to 16 N west, the nonfriction resultant is +8−16=−8 N (west); rest would require +8 N east static friction, exceeding its 6 N limit. The crate starts sliding west, so 4 N kinetic friction acts east. The actual net is +8−16+4=−4 N, and a=−4/2=−2 m s⁻², i.e. 2 m s⁻² west. Static limit is never substituted as actual kinetic friction.",
+        "diagnose": "If you answered 6 N for the initial static friction, you used maximum instead of actual. If you retained the 6 N static maximum during sliding, you failed to switch contact regimes.",
+        "repair": "Calculate each stage's signed nonfriction tendency; check the |f_s|≤6 N inequality before deciding which equation to use for acceleration.",
+        "boundary_test": "If the west rope pull instead becomes 14 N while the 8 N east push remains and the crate starts at rest, can it remain at rest and what friction acts? Post-attempt boundary model: The nonfriction tendency is 8−14=−6 N west; exactly +6 N east static friction can balance it. Rest remains possible at the limiting static contact, although any extra westward tendency would produce slip."
       },
       "attempt_policy": {
         "save_first_answer_before_hint": true,
@@ -2299,16 +2299,16 @@
       "kind": "INSTANCE",
       "subtopic_id": "PH02-F06",
       "qrt_target_id": "PH02-F06-QRT-MODEL-D3",
-      "fresh_task": "A crate at rest on a level floor is acted on by 7 N east and 2 N west, with static-friction capacity 4 N. A learner insists the crate remains still because 'static friction is always available'. Determine whether static or sliding contact is the appropriate next model; identify the missing kinetic information needed for acceleration.",
-      "protected_work": "Select static equilibrium feasibility by comparing required friction to its physical limit rather than applying an automatic f=μN.",
+      "fresh_task": "A 2 kg crate starts at rest on a level floor, with a 7 N east push and a 2 N west pull. Its maximum static friction is 4 N; once it slides, the kinetic friction magnitude is 3 N. Determine whether the crate can remain at rest. Choose and justify the appropriate contact model, find its initial sliding acceleration and direction, and explain why the maximum static force is not the sliding friction.",
+      "protected_work": "Test feasibility of static balance before changing to a kinetic contact model, then form the actual signed resultant to obtain acceleration.",
       "differs_from_worked_anchor": true,
       "stages": {
-        "predict": "Before calculating, identify the governing model, object boundary, signed direction and the first inference that will distinguish this case from a routine example.",
-        "attempt": "A crate at rest on a level floor is acted on by 7 N east and 2 N west, with static-friction capacity 4 N. A learner insists the crate remains still because 'static friction is always available'. Determine whether static or sliding contact is the appropriate next model; identify the missing kinetic information needed for acceleration.",
-        "reconstruct": "Nonfriction tendency=+7−2=+5 N. Static rest requires friction 5 N west, but capacity is 4 N, so rest is impossible in the stated model. To compute sliding acceleration require crate mass and kinetic-friction magnitude/coefficient. One cannot infer acceleration from static maximum alone.",
-        "diagnose": "Compare your first divergence against system boundary, interaction labels, signs, forces versus acceleration, source-target representation and validity limit; do not diagnose a misconception from an incorrect number alone.",
-        "repair": "Rewrite the earliest invalid model selection or sign/condition with an explicit physical warrant and re-evaluate its consequences.",
-        "boundary_test": "If the westward force were 4 N rather than 2 N, what would actual static friction be? Post-attempt boundary model: Tendency becomes +3 N; actual static friction is 3 N west, below the 4 N limit, so rest is possible."
+        "predict": "When required static friction exceeds its cap, can we still calculate sliding acceleration from a stated kinetic-friction value? Which law must change first?",
+        "attempt": "A 2 kg crate starts at rest on a level floor, with a 7 N east push and a 2 N west pull. Its maximum static friction is 4 N; once it slides, the kinetic friction magnitude is 3 N. Determine whether the crate can remain at rest. Choose and justify the appropriate contact model, find its initial sliding acceleration and direction, and explain why the maximum static force is not the sliding friction.",
+        "reconstruct": "The nonfriction tendency is +7−2=+5 N east. To remain at rest would need 5 N west static friction, exceeding the 4 N maximum, so static equilibrium is impossible. Sliding begins east, hence kinetic friction is −3 N west. The kinetic resultant is 7−2−3=+2 N east. With mass 2 kg, a_x=+2/2=+1 m s⁻². The 4 N limit is a bound on static contact, not the friction used after sliding begins.",
+        "diagnose": "If you assigned the 4 N maximum as kinetic friction, you conflated two friction regimes. If friction points east after the eastward slip begins, you reversed the relative-motion condition.",
+        "repair": "Write two force diagrams for the same crate: the hypothetical static equilibrium and actual sliding state. Reject the first model quantitatively and solve the second.",
+        "boundary_test": "If the eastward push is reduced from 7 N to 6 N while the west pull is still 2 N and the crate begins at rest, can static equilibrium persist? Find actual static friction. Post-attempt boundary model: The nonfriction tendency is +6−2=+4 N east, exactly at the 4 N static limit. Actual static friction is 4 N west, so rest is possible at the threshold. The kinetic 3 N value is not used while contact remains static."
       },
       "attempt_policy": {
         "save_first_answer_before_hint": true,
@@ -2691,6 +2691,6 @@
       "release_authority": "HOLD"
     },
     "release": "HOLD",
-    "acceptance_note": "Native candidate C01–C08 mechanical mapping: 8 Core1A records, 24 D3 author nominations, 24 INSTANCE records and six integrated MAIN proposals. Neither scientific correctness, QRT D3 band, fresh W nor B1–B7 is independently qualified; zero authenticated Core2 items."
+    "acceptance_note": "Owner-directed AI self-review is being applied to authored PH02 study material; external independent review is not claimed. This native v1.1 contract retains its formal academic HOLD marker and zero authenticated Core2 items. Release of clearly labelled authored learning material follows separate Owner-directed decision."
   }
 }
