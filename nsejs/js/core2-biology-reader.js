@@ -151,6 +151,28 @@
     const stem = text("p", String(q.stem || "").replace(/\[FIG[^\]]*\]/g, ""), "stem");
     append(box, stem);
 
+    if (Array.isArray(q.source_figures) && q.source_figures.length > 0) {
+      const figWrap = text("div", "", "figure-container");
+      figWrap.style.cssText = "margin: 12px 0 16px; text-align: center; background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 10px; padding: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.03);";
+      q.source_figures.forEach(fig => {
+        const img = document.createElement("img");
+        img.src = "../assets/" + fig;
+        img.alt = q.figure_note || fig;
+        img.className = "candidate-fig-img";
+        img.style.cssText = "max-width: 100%; height: auto; max-height: 320px; display: inline-block; border-radius: 6px;";
+        img.onerror = function() {
+          img.src = "assets/" + fig;
+        };
+        figWrap.appendChild(img);
+      });
+      if (q.figure_note) {
+        const caption = text("p", q.figure_note, "figure-caption");
+        caption.style.cssText = "font-size: 13px; color: #64748b; font-style: italic; margin-top: 6px;";
+        figWrap.appendChild(caption);
+      }
+      box.appendChild(figWrap);
+    }
+
     const group = text("div", "", "options");
     const controls = [];
     const isMulti = q.question_type === "multiple_correct_mcq";
@@ -167,10 +189,19 @@
     });
     append(box, group);
 
+    const feedbackBanner = text("div", "", "attempt-feedback-banner");
+    feedbackBanner.hidden = true;
+    append(box, feedbackBanner);
+
     const actions = text("div", "", "actions");
     const commit = text("button", "Commit First Attempt & Reveal Derivation");
     commit.type = "button";
     append(actions, commit);
+
+    const retryBtn = text("button", "🔄 Reset & Try Again");
+    retryBtn.type = "button";
+    retryBtn.style.cssText = "background: #f1f5f9; color: #334155; border: 1.5px solid #cbd5e1; display: none;";
+    append(actions, retryBtn);
 
     const hints = Array.isArray(q.hints) ? q.hints : [];
     if (hints.length > 0) {
@@ -205,15 +236,140 @@
     append(box, answerBox);
 
     const k = attemptKey(q);
-    const existing = getAttempt(k);
-    if (existing) {
+
+    function renderAttemptFeedback(selected) {
+      const selectedSet = new Set(selected || []);
+      const proposed = producerProposedIds(q.answer, controls, isMulti);
+
       controls.forEach(c => {
         c.disabled = true;
-        if (existing.selected && existing.selected.includes(c.value)) c.checked = true;
+        c.checked = selectedSet.has(c.value);
       });
       commit.disabled = true;
       commit.textContent = "Attempt Saved Locally";
+      retryBtn.style.display = "inline-flex";
+
+      // Clear previous classes and badges
+      controls.forEach(field => {
+        const lbl = field.closest("label");
+        if (!lbl) return;
+        lbl.classList.remove("opt-user-correct", "opt-user-wrong", "opt-correct-key", "opt-neutral-disabled");
+        const oldBadge = lbl.querySelector(".opt-badge");
+        if (oldBadge) oldBadge.remove();
+      });
+
+      const isDropped = String(q.answer || "").toUpperCase().includes("DROP");
+
+      if (isDropped) {
+        feedbackBanner.className = "attempt-feedback-banner feedback-dropped";
+        feedbackBanner.hidden = false;
+        feedbackBanner.replaceChildren(
+          text("div", "ℹ️ DROPPED", "feedback-badge-pill"),
+          append(text("div", "", "feedback-msg"),
+            text("strong", "Official Exam Notice: Question Dropped"),
+            text("p", "This question was officially dropped by IAPT from candidate scoring. Full credit awarded for all attempts.")
+          )
+        );
+        controls.forEach(field => {
+          const lbl = field.closest("label");
+          if (lbl) lbl.classList.add("opt-neutral-disabled");
+        });
+        answerBox.hidden = false;
+        renderMath(answerBox);
+        return;
+      }
+
+      if (!proposed || proposed.length === 0) {
+        feedbackBanner.className = "attempt-feedback-banner feedback-dropped";
+        feedbackBanner.hidden = false;
+        feedbackBanner.replaceChildren(
+          text("div", "PROVISIONAL", "feedback-badge-pill"),
+          append(text("div", "", "feedback-msg"),
+            text("strong", "Provisional Answer Verification Pending"),
+            text("p", "Your choice was saved locally. Detailed official key is being cross-checked.")
+          )
+        );
+        answerBox.hidden = false;
+        renderMath(answerBox);
+        return;
+      }
+
+      const proposedSet = new Set(proposed);
+      const isAllCorrect = (selectedSet.size === proposedSet.size) && Array.from(selectedSet).every(id => proposedSet.has(id));
+
+      // Style options and badges
+      controls.forEach(field => {
+        const lbl = field.closest("label");
+        if (!lbl) return;
+        const isUserChoice = selectedSet.has(field.value);
+        const isOfficialKey = proposedSet.has(field.value);
+
+        if (isOfficialKey && isUserChoice) {
+          lbl.classList.add("opt-user-correct");
+          const badge = text("span", "✓ Correct (Your Choice)", "opt-badge badge-user-correct");
+          lbl.appendChild(badge);
+        } else if (isOfficialKey && !isUserChoice) {
+          lbl.classList.add("opt-correct-key");
+          const badge = text("span", "✓ Correct Option", "opt-badge badge-correct-key");
+          lbl.appendChild(badge);
+        } else if (!isOfficialKey && isUserChoice) {
+          lbl.classList.add("opt-user-wrong");
+          const badge = text("span", "✗ Your Choice (Incorrect)", "opt-badge badge-user-wrong");
+          lbl.appendChild(badge);
+        } else {
+          lbl.classList.add("opt-neutral-disabled");
+        }
+      });
+
+      feedbackBanner.hidden = false;
+      if (isAllCorrect) {
+        feedbackBanner.className = "attempt-feedback-banner feedback-correct";
+        feedbackBanner.replaceChildren(
+          text("div", "✅ CORRECT", "feedback-badge-pill"),
+          append(text("div", "", "feedback-msg"),
+            text("strong", "Correct! Excellent work!"),
+            text("p", "Your answer " + Array.from(selectedSet).map(s => "(" + s + ")").join(", ") + " perfectly matches the official verified key. Check the detailed biological rationale below.")
+          )
+        );
+      } else {
+        feedbackBanner.className = "attempt-feedback-banner feedback-wrong";
+        const userChoices = Array.from(selectedSet).map(s => "(" + s + ")").join(", ") || "None";
+        const keyChoices = Array.from(proposedSet).map(s => "(" + s + ")").join(", ");
+        feedbackBanner.replaceChildren(
+          text("div", "❌ INCORRECT", "feedback-badge-pill"),
+          append(text("div", "", "feedback-msg"),
+            text("strong", "Incorrect Attempt"),
+            text("p", "You selected " + userChoices + ". The correct answer is " + keyChoices + ". Carefully examine the complete worked derivation below to review the biological pathway.")
+          )
+        );
+      }
+
       answerBox.hidden = false;
+      renderMath(answerBox);
+    }
+
+    retryBtn.onclick = () => {
+      try { localStorage.removeItem(k); } catch (_) {}
+      controls.forEach(c => {
+        c.disabled = false;
+        c.checked = false;
+        const lbl = c.closest("label");
+        if (lbl) {
+          lbl.classList.remove("opt-user-correct", "opt-user-wrong", "opt-correct-key", "opt-neutral-disabled");
+          const b = lbl.querySelector(".opt-badge");
+          if (b) b.remove();
+        }
+      });
+      commit.disabled = false;
+      commit.textContent = "Commit First Attempt & Reveal Derivation";
+      retryBtn.style.display = "none";
+      feedbackBanner.hidden = true;
+      answerBox.hidden = true;
+    };
+
+    const existing = getAttempt(k);
+    if (existing && existing.selected) {
+      renderAttemptFeedback(existing.selected);
     }
 
     commit.onclick = () => {
@@ -227,11 +383,7 @@
         selected: selected,
         timestamp: new Date().toISOString()
       });
-      controls.forEach(c => c.disabled = true);
-      commit.disabled = true;
-      commit.textContent = "Attempt Saved Locally";
-      answerBox.hidden = false;
-      renderMath(answerBox);
+      renderAttemptFeedback(selected);
     };
 
     return box;
@@ -557,6 +709,12 @@
   window.selectBiologyTopic = function(slug) {
     filterState.topic = slug;
     applyFilters(false);
+    if (slug !== "all") {
+      const ws = document.getElementById("topicWorkspace");
+      if (ws) {
+        ws.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
   };
 
   async function loadData() {
@@ -606,10 +764,14 @@
       const initialQ = filterState.q;
       const initialHash = (window.location.hash || "").replace(/^#/, "");
       if (initialHash && filterState.topic === "all") {
-        const matchQ = allBiologyQuestions.find(q => q.id === initialHash || q.source_id === initialHash);
-        if (matchQ) {
-          const matchTopic = TOPICS.find(t => t[1] === matchQ.topic);
-          if (matchTopic) filterState.topic = matchTopic[0];
+        if (initialHash === "topic-view" || initialHash === "topicWorkspace") {
+          filterState.topic = "living_world";
+        } else {
+          const matchQ = allBiologyQuestions.find(q => q.id === initialHash || q.source_id === initialHash);
+          if (matchQ) {
+            const matchTopic = TOPICS.find(t => t[1] === matchQ.topic);
+            if (matchTopic) filterState.topic = matchTopic[0];
+          }
         }
       }
 

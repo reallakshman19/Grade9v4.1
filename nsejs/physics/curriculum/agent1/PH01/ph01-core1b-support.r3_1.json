@@ -1,0 +1,172 @@
+{
+  "schema": "g9v41-ph01-core1b-support/v1",
+  "status": "AUTHOR_EXPOSED_CANDIDATE__ACADEMIC_HOLD",
+  "topic_id": "PH01",
+  "package_version": "0.3.0",
+  "purpose": "Post-attempt support after protected first answer is saved; no machine-diagnosis or independent QRT admission",
+  "hints_policy": "H1 CLARIFY, H2 CORRELATE, H3 OPEN_THE_WAY; candidate texts require separate protected-W content review. All hints remain locked until first answer persists in the current runtime.",
+  "cycles": [
+    {
+      "cycle_id": "PH01-MAIN-D3.4-R31",
+      "hints": {
+        "H1": "Identify the calibration anchors, sample times, and the interval in which the proposed meeting must occur.",
+        "H2": "Compare the signed slopes and the distance-based average before choosing a model for later motion.",
+        "H3": "Construct both position laws in the same ground axis and check the candidate root against the required interval."
+      },
+      "boundary_solution": "At t5 A=10 m and B=3 m. Both then have +1 m/s, keeping a 7 m separation. There is no post-t5 meeting; prior average speed does not determine the separation."
+    },
+    {
+      "cycle_id": "PH01-MAIN-D3.5-R31",
+      "hints": {
+        "H1": "Keep the logger scale, ground coordinate and observer coordinate in separate columns.",
+        "H2": "Find physical position at each time and distinguish accumulated path from signed displacement.",
+        "H3": "Use interval slopes in both frames and check the totals by the corresponding signed areas."
+      },
+      "boundary_solution": "O positions −1,−4,−6,−10 m; relative positions 8,5,7,19 m. Relative velocities −1,+1,+3 m/s; relative displacement 11 m. Ground path 14 m and ground displacement +2 m are unchanged."
+    },
+    {
+      "cycle_id": "PH01-MAIN-D3.6-R31",
+      "hints": {
+        "H1": "Identify the calibrated starting position and how long each motion law applies.",
+        "H2": "Separate the two leg lengths using the odometer and the known westward stage.",
+        "H3": "Recover the turning point before forming both stage equations; check each root and any equal-slope interval."
+      },
+      "boundary_solution": "First stage 4+4t=22−2t gives t=3 s and x=16 m, exactly the turn boundary. Afterward both laws equal 22−2t, so they remain co-located in the ideal point-cart kinematic model; real collision dynamics are outside this model."
+    },
+    {
+      "cycle_id": "PH01-M03-QRT-MODEL-D3-INSTANCE-R2",
+      "hints": {
+        "H1": "Ask what total duration includes the stopped interval.",
+        "H2": "Create separate totals for path length and signed displacement.",
+        "H3": "Choose the numerator demanded by each average; divide both by the same total elapsed time."
+      },
+      "boundary_solution": "Replacing the 12 m west leg by 24 m west makes total path length 24+24=48 m over 12 s, so average speed=4 m/s. Signed displacement is 24−24=0 and average velocity becomes 0. Speed changes; velocity becomes zero."
+    },
+    {
+      "cycle_id": "PH01-M03-QRT-REPRESENT-D3-INSTANCE-R2",
+      "hints": {
+        "H1": "Mark x=0 and east-positive before plotting the first leg.",
+        "H2": "The table gives leg changes, not absolute positions; keep cumulative position after each leg.",
+        "H3": "Each straight segment's slope preserves the signed velocity; test your endpoint against net displacement."
+      },
+      "boundary_solution": "Shifting origin to initial position −5 m moves all cumulative positions down by 5 m: −5, +4, 0 and +7 m. The signed slopes are unchanged (+3, −2 and +7 m/s). Displacement stays +12 m."
+    },
+    {
+      "cycle_id": "PH01-M03-QRT-SYNTHESIZE-D3-INSTANCE-R2",
+      "hints": {
+        "H1": "Which statement counts both legs positively and which measures their net direction?",
+        "H2": "Write a distance equation and a signed displacement equation with two unknown lengths.",
+        "H3": "Solve the two relationships jointly and verify the recovered numbers satisfy both constraints."
+      },
+      "boundary_solution": "Impossible. For any journey, |net displacement|≤total distance; here 100 m exceeds the proposed 90 m path. Solving E+W=90 and E−W=100 gives W=−5 m, not a physically valid nonnegative westward leg length."
+    },
+    {
+      "cycle_id": "PH01-M05-QRT-MODEL-D3-INSTANCE-R2",
+      "hints": {
+        "H1": "Identify the quantity on the vertical axis and its unit.",
+        "H2": "Review what a horizontal segment means for position rather than velocity.",
+        "H3": "Choose the graph operation whose output has the unit of velocity, and apply it to the requested interval."
+      },
+      "boundary_solution": "An additive +20 m shift to every x-value changes position graph height but not any Δx/Δt slope. The velocity at t=5 s remains zero."
+    },
+    {
+      "cycle_id": "PH01-M05-QRT-REPRESENT-D3-INSTANCE-R2",
+      "hints": {
+        "H1": "Keep the starting position; do not assume it is zero.",
+        "H2": "Compute the signed slope separately for each pair of consecutive samples.",
+        "H3": "Translate those slopes into time segments; back-check the signed area against endpoint displacement."
+      },
+      "boundary_solution": "Doubling every timestamp doubles each duration without changing the position increments, so velocities halve: 0, −1 and +1 m/s. Net displacement remains −4 m, and total distance remains 12 m."
+    },
+    {
+      "cycle_id": "PH01-M05-QRT-SYNTHESIZE-D3-INSTANCE-R2",
+      "hints": {
+        "H1": "Separate each time interval before using its velocity.",
+        "H2": "Represent the unknown segment by its signed area and let the total displacement constrain it.",
+        "H3": "Solve the missing segment, check its sign, then compute total path length independently."
+      },
+      "boundary_solution": "The first two intervals contribute +12−4=+8 m. A total +14 m requires +6 m in the last 3 seconds, so last velocity becomes +2 m/s, reversing from the original westward −1 m/s."
+    },
+    {
+      "cycle_id": "PH01-M07-INSTANCE-1",
+      "hints": {
+        "H1": "Name shore-relative and water-relative velocities separately.",
+        "H2": "Put each craft's velocity on the same signed shore-axis.",
+        "H3": "Use separation and relative closing velocity, checking whether the rear craft actually gains ground."
+      },
+      "boundary_solution": "With kayak shore velocity +3 m/s and rear craft shore velocity +2 m/s, the rear craft is slower and its 24 m initial gap grows. Overtaking does not occur under these constant velocities."
+    },
+    {
+      "cycle_id": "PH01-M07-INSTANCE-2",
+      "hints": {
+        "H1": "The input is a position table with a nonzero initial height.",
+        "H2": "Calculate the signed slope of every segment including the stationary segment.",
+        "H3": "After drawing the velocity representation, back-integrate signed areas to recover the endpoint."
+      },
+      "boundary_solution": "Adding +10 m to all elevator positions changes the graph's height, not its slopes. Velocities remain −2, 0, +2 m/s; net displacement remains −2 m and path distance remains 10 m."
+    },
+    {
+      "cycle_id": "PH01-M07-INSTANCE-3",
+      "hints": {
+        "H1": "Use a single global clock for both cyclists; check whether either cyclist is initially stationary.",
+        "H2": "Write a separate stationary and moving model for the body whose departure is delayed.",
+        "H3": "Check the meeting root against the moving interval and substitute into both positions."
+      },
+      "boundary_solution": "If B stays at x=30 m forever, cyclist A at xA=4t reaches it at t=7.5 s. This is a different constant-position model from B's delayed-departure expression xB=36−3t; the earlier expression must be replaced entirely."
+    },
+    {
+      "cycle_id": "PH01-M01-QRT-MODEL-D3-INSTANCE-R31",
+      "hints": {
+        "H1": "Notice which values describe physical metres and which are logger divisions.",
+        "H2": "Compare the change between two common marks before considering the third report.",
+        "H3": "Write a candidate calibration and test a measurement that was not used to construct it."
+      },
+      "boundary_solution": "All three reports fit x=22−2r. This is evidence of consistency at these marks, not proof of uniform spacing everywhere."
+    },
+    {
+      "cycle_id": "PH01-M01-QRT-REPRESENT-D3-INSTANCE-R31",
+      "hints": {
+        "H1": "Identify each scale's zero, positive direction and physical length of one division.",
+        "H2": "Translate every reading to a common physical position before building the second table.",
+        "H3": "Keep the times aligned and check which signs change when the coordinate convention changes."
+      },
+      "boundary_solution": "B′=x−12 gives −10,−2,−2,−8 divisions. The signs reverse relative to B; the physical path and stationary interval are unchanged."
+    },
+    {
+      "cycle_id": "PH01-M01-QRT-SYNTHESIZE-D3-INSTANCE-R31",
+      "hints": {
+        "H1": "Separate the physical displacement from the numbers recorded by the two scales.",
+        "H2": "Use the two shared markers to relate the unknown scale to physical metres.",
+        "H3": "Recover the start first, then apply the signed physical change and invert both maps."
+      },
+      "boundary_solution": "Final x=16 m; P=22/3 divisions, Q=−1 division. Negative Q is a valid extrapolated coordinate if the uniform scale extends that far."
+    },
+    {
+      "cycle_id": "PH01-M02-QRT-MODEL-D3-INSTANCE-R31",
+      "hints": {
+        "H1": "Identify which positions are actually observed and which intermediate positions remain unknown.",
+        "H2": "Compare the shortest route between successive checkpoint pairs with a route containing a detour.",
+        "H3": "Use an explicit list of possible turning positions to test the supervisor's assertion."
+      },
+      "boundary_solution": "Then D=9+4=13 m exactly and Δx=+5 m. The 19 m claim requires an extra reversal and contradicts the new condition."
+    },
+    {
+      "cycle_id": "PH01-M02-QRT-REPRESENT-D3-INSTANCE-R31",
+      "hints": {
+        "H1": "Distinguish the absolute odometer reading from distance accumulated after A.",
+        "H2": "Recover each interval length from neighbouring odometer readings, then use its reported direction.",
+        "H3": "Align position and cumulative distance by checkpoint; inspect the signs of consecutive positions."
+      },
+      "boundary_solution": "Last change becomes +6 m, so final position is +12 m and displacement +9 m. Cumulative distance remains 25 m because odometer changes are unchanged."
+    },
+    {
+      "cycle_id": "PH01-M02-QRT-SYNTHESIZE-D3-INSTANCE-R31",
+      "hints": {
+        "H1": "Mark the direction order and the known second turn on a number line.",
+        "H2": "Write each leg length with the sign implied by its direction, keeping P unknown.",
+        "H3": "Use the measured total and then verify the recovered turning point against the assumed ordering."
+      },
+      "boundary_solution": "The formal equation 2P+6=8 gives P=1 m, making the westward leg zero. Strictly monotone nonzero legs require P>1, so D>8 m; a total of 8 m is impossible under these conditions."
+    }
+  ]
+}

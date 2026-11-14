@@ -1,0 +1,33 @@
+{
+  "schema_version": "g9v41-physics-quality-policy/v1",
+  "activation": "PILOT_AWAITING_OWNER_GOLDEN",
+  "owner_accepted_golden_head": null,
+  "owner_golden_receipt_path": null,
+  "production_enabled": false,
+  "description": "Only the Owner may activate after one fully reviewed Golden Sample; routine batch items thereafter require no per-item Owner signature.",
+  "protected_paths": [
+    "nsejs/physics/textbook/",
+    "nsejs/physics/core1/",
+    "nsejs/physics/curriculum/agent1/",
+    "nsejs/physics/curriculum/topics/",
+    "nsejs/data/physics-core2-candidates.v1.json",
+    "nsejs/js/core2-physics-reader.js"
+  ],
+  "packet_glob": "review/quality-packets/physics/**/*.packet.json",
+  "minimum_independent_sample_fraction": 0.2,
+  "high_risk_review_scope": [
+    "ALL_NEW_SCIENCE_MODELS",
+    "ALL_D4_PROOFS",
+    "ALL_KEY_DISPUTES",
+    "ALL_SOURCE_CONTRADICTIONS",
+    "ALL_FAILED_CHECKS"
+  ],
+  "reviewer_controls": {
+    "owner_per_item": false,
+    "owner_golden_once": true,
+    "r00_technical": true,
+    "r01_independent_science_qrt": true,
+    "protect_policy_changes_via_codeowners": true
+  },
+  "additional_note": "The workflow verifies packet byte grounding and item coverage. Semantic science quality and actual reviewer credentials cannot be decided by this JSON configuration."
+}

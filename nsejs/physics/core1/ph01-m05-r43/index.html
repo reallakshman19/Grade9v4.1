@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="PH01 candidate Core1B independent reconstruction; draft tasks and protected-first-attempt workflow, not exam questions or academic qualification.">
+<title>PH01-M05 · Position-time and velocity-time graphs — Core1B</title>
+<link rel="stylesheet" href="../../../../site.css">
+<link rel="icon" href="data:,">
+<style>
+:root{--ink:#16354c;--dim:#526679;--border:#c9d8e1;--blue:#075c79;--paper:#fff;--faint:#f3f8fc;--focus:#a34e17}
+*{box-sizing:border-box}body{margin:0;background:#edf4f8;color:var(--ink);font:18px/1.65 system-ui,-apple-system,"Segoe UI",sans-serif}
+header{background:#123851;color:#fff;padding:26px max(22px,calc((100vw - 1170px)/2))}
+header a{color:#e4f5fb}header h1{font-size:clamp(1.8rem,3vw,2.8rem);line-height:1.19;margin:16px 0 12px}
+header p{max-width:900px;color:#d8edf6;margin:4px 0}main{max-width:1170px;margin:25px auto;padding:0 20px}
+.panel{background:var(--paper);border:1px solid var(--border);border-radius:15px;padding:clamp(17px,3vw,34px);margin-bottom:20px}
+h2{color:#14536f;font-size:1.45rem;margin:0 0 13px}h3{font-size:1.14rem;color:#075b60;margin:22px 0 9px}
+p{max-width:78ch}.notice{background:#fff5e3;border-left:5px solid #b77923;padding:15px 18px;border-radius:4px}
+label{display:block;font-weight:750;margin:13px 0 7px}select,textarea,input{font:inherit;color:var(--ink);border:2px solid #94adbf;border-radius:8px;padding:11px;background:#fff}
+select{display:block;width:100%;max-width:780px;min-height:52px}textarea{display:block;width:100%;min-height:130px;resize:vertical}
+button{font:650 1rem/1.4 system-ui,sans-serif;min-height:52px;padding:12px 18px;border-radius:8px;border:2px solid #146582;background:#146582;color:#fff;cursor:pointer;margin:7px 8px 7px 0}
+button.secondary{color:#145c78;background:#fff}button:disabled{cursor:not-allowed;opacity:.55}
+button:focus-visible,a:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+.stage{border:1px solid #c6d7e1;background:#f7fbff;padding:18px;border-radius:11px;margin-top:16px}
+.readonly{white-space:pre-wrap;background:#ecf5f6;padding:14px 17px;border-radius:7px}
+.answers{background:#eef7f4;border-left:4px solid #0b756a;padding:15px 20px;border-radius:4px;white-space:pre-wrap}
+.warning{color:#762b0e;background:#fff1eb;padding:12px 15px;border-radius:7px}
+.small{color:var(--dim);font-size:.85rem}.status{font-weight:750;padding:11px 14px;background:#e9f5f9;border-radius:8px}
+.meta{display:flex;flex-wrap:wrap;gap:12px;margin:10px 0}.meta span{border:1px solid #aac3d1;border-radius:20px;padding:2px 10px;font-size:.8rem}
+[hidden]{display:none!important}.phase{display:block;color:#697f90;font-size:.83rem;letter-spacing:.04em;font-weight:700;text-transform:uppercase}
+footer{max-width:1170px;margin:15px auto;padding:20px;color:var(--dim);font-size:.82rem}
+@media(max-width:760px){.grid{grid-template-columns:1fr}main{padding:0 10px}.panel{padding:17px}body{font-size:16px}button{width:100%;margin:6px 0}}
+</style>
+</head>
+<body data-scope="PH01-M05">
+<header>
+<nav><a href="../../index.html">NSEJS Physics</a> · <a href="../../textbook/PH01/M05/index.html" data-textbook-help>M05 Core1A textbook</a> · Candidate Core1B</nav>
+<h1>M05 · Position-time and velocity-time graphs</h1>
+<p>Apply PH01-M05 science to 5 fresh tasks in your own Core1B learning unit. The first response is saved before hints or the model explanation. You can repair it later without overwriting the original.</p>
+</header>
+<main>
+<section class="panel" aria-labelledby="notice-title">
+<h2 id="notice-title">Practice candidate · Not an authenticated NSEJS question</h2>
+<p class="notice">These tasks are author-created and their D3/D4 operation labels remain proposed. Recording an answer or completing all stages is not proof of mastery. Physics, QRT, B1–B7 and release reviews remain on HOLD. This page stores responses locally in your browser only; it does not transmit answers to a server.</p>
+<p class="small">Content changes are bound to a new SHA-256 revision. Earlier revision attempts are not silently reused. If private-mode storage is blocked, the system will keep explanations locked rather than pretend to save a first attempt.</p>
+</section>
+
+<section class="panel" aria-labelledby="select-title">
+<h2 id="select-title">Choose a construction</h2>
+<label for="cycleSelect">QRT learning cycle</label>
+<select id="cycleSelect" aria-describedby="cycleHelp"></select>
+<p id="cycleHelp" class="small">4 D3 candidates (MODEL, REPRESENT, SYNTHESIZE, JUSTIFY) and one D4 candidate for M05. All have protected first-attempt and changed-condition stages. Chapter MAIN practice is separate.</p>
+<div class="meta"><span id="metaType">Not loaded</span><span id="metaCell">D3 candidate</span><span id="metaRevision">Revision</span></div>
+<div id="runtimeStatus" class="status" role="status" aria-live="polite">Loading candidate content…</div>
+</section>
+
+<section class="panel" id="journey" hidden aria-label="PH01 learner journey">
+<div class="stage">
+<span class="phase">Stage 1 · Predict</span>
+<h2>Commit to a prediction</h2>
+<p id="predictPrompt"></p>
+<label for="predictInput">Your initial prediction (before solving)</label>
+<textarea id="predictInput" autocomplete="off" placeholder="Predict the sign, relevant model or likely physical outcome."></textarea>
+</div>
+<div class="stage">
+<span class="phase">Stage 2 · Independent attempt</span>
+<h2>Construct your response</h2>
+<p id="attemptPrompt"></p>
+<label for="attemptInput">Your reasoning, including the decisive decision and its check</label>
+<textarea id="attemptInput" autocomplete="off" placeholder="Show your model, calculation or representation; give the reason why it is valid."></textarea>
+<button id="saveFirst">Save protected first attempt</button>
+<div id="savedFirst" class="readonly" hidden></div>
+<p id="saveStatus" class="small" role="status" aria-live="polite"></p>
+</div>
+<section id="postAttempt" hidden aria-label="After saved first attempt">
+<div class="stage">
+<span class="phase">Hints · H1 → H2 → H3</span>
+<h2>Optional route support</h2>
+<p class="small">Hints unlock in sequence after the first answer has been persisted. Opened hints are recorded as help exposure; they are not counted as independent demonstration.</p>
+<div id="hintButtons"></div>
+<div id="hintsOpened" class="readonly" aria-live="polite"></div>
+</div>
+<div class="stage">
+<span class="phase">Stage 3 · Reconstruct</span>
+<h2>Compare your construction</h2>
+<p id="reconstructPrompt"></p>
+<button id="showReconstruct" class="secondary">Show complete model reasoning</button>
+<div id="reconstructAnswer" class="answers" hidden></div>
+</div>
+<div class="stage">
+<span class="phase">Stage 4 · Diagnose</span>
+<h2>Identify your first divergence</h2>
+<p id="diagnosePrompt"></p>
+<p class="small">This is your self-report. The app does not infer that you hold a misconception merely from a checkbox or a final number.</p>
+<label for="diagnoseInput">What differed between your first response and the verified reasoning?</label>
+<textarea id="diagnoseInput"></textarea>
+<button id="saveDiagnose" class="secondary">Save diagnosis note</button>
+</div>
+<div class="stage">
+<span class="phase">Stage 5 · Repair</span>
+<h2>Rebuild the decisive step</h2>
+<p id="repairPrompt"></p>
+<label for="repairInput">Your revised explanation (kept separately)</label>
+<textarea id="repairInput"></textarea>
+<button id="saveRepair" class="secondary">Save revised reasoning</button>
+</div>
+<div class="stage">
+<span class="phase">Stage 6 · Changed-condition transfer</span>
+<h2>Test the boundary</h2>
+<p id="boundaryPrompt"></p>
+<label for="boundaryInput">Your changed-condition reasoning before seeing the model</label>
+<textarea id="boundaryInput"></textarea>
+<button id="saveBoundary" class="secondary">Save boundary response</button>
+<button id="showBoundary" class="secondary" disabled>Show boundary model</button>
+<div id="boundaryAnswer" class="answers" hidden></div>
+</div>
+</section>
+</section>
+<section class="panel">
+<h2>Source, rights and exposure</h2>
+<p>These 5 tasks are original practice, linked to draft Physics Blueprint v0.2.0 cells D3.4, D3.5, D3.6, D3.7, D4.6. They use no claimed authenticated examination stem or answer key. Core1A textbook lessons remain readable independently. The complete source and review ledger is in the candidate package; no independent QRT status is supplied here.</p>
+<p><a href="../../textbook/PH01/M05/index.html" id="textbookLink" data-textbook-help>Read the M05 Core1A textbook</a> · <a href="https://github.com/reallakshman19/Grade9v4.1/pull/3">Parent implementation Draft PR #3</a></p>
+<p class="small">Local storage controls are browser-dependent. This candidate is not a secure examination invigilation or real learner mastery certification service.</p>
+</section>
+<section class="panel"><h2>Continue learning</h2><p><a href="../../textbook/PH01/index.html" data-textbook-help>PH01 chapter overview</a> · <a href="../ph01-main-r43/index.html">Integrated PH01 MAIN practice (after subtopic learning)</a></p></section></main>
+<footer>Grade9 v4.1 · PH01 author-exposed Core1B candidate · No automatic academic admission, release or approved D3 claim</footer>
+
+<script src="../ph01-qrt-r43/scoped-runtime.js" defer></script>
+</body>
+</html>

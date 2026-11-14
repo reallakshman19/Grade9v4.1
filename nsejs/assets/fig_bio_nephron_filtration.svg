@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 440" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgNep" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fff7ed"/>
+      <stop offset="100%" stop-color="#ffedd5"/>
+    </linearGradient>
+    <filter id="shadowNep" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="2" dy="3" stdDeviation="3" flood-opacity="0.12"/>
+    </filter>
+    <marker id="arrowFilt" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 Z" fill="#ea580c"/>
+    </marker>
+    <marker id="arrowOpp" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 Z" fill="#dc2626"/>
+    </marker>
+  </defs>
+
+  <rect width="780" height="440" fill="url(#bgNep)" rx="16"/>
+  <rect x="16" y="16" width="748" height="408" fill="#ffffff" rx="12" stroke="#fdba74" stroke-width="2" filter="url(#shadowNep)"/>
+
+  <!-- Header -->
+  <text x="390" y="44" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="800" fill="#9a3412">Glomerular Filtration Hemodynamics &amp; Starling Forces</text>
+  <text x="390" y="68" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#c2410c">Net Filtration Pressure (NFP), Glomerular Filtration Rate (GFR), and 99.0% Reabsorption</text>
+
+  <!-- Left: Glomerular Capillary Diagram & Starling Forces -->
+  <rect x="36" y="86" width="410" height="318" rx="10" fill="#fffbeb" stroke="#fcd34d" stroke-width="1.5"/>
+  <text x="241" y="112" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="800" fill="#b45309">Renal Corpuscle Starling Pressures</text>
+
+  <!-- Afferent and Efferent Arteriole lines -->
+  <path d="M 50 160 L 140 180" stroke="#ef4444" stroke-width="7" stroke-linecap="round"/>
+  <text x="75" y="150" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="800" fill="#b91c1c">Afferent</text>
+
+  <path d="M 280 180 L 370 160" stroke="#ef4444" stroke-width="4.5" stroke-linecap="round"/>
+  <text x="305" y="150" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="800" fill="#b91c1c">Efferent</text>
+
+  <!-- Glomerulus Capillary Tuft Circle -->
+  <circle cx="210" cy="205" r="55" fill="#fecaca" stroke="#dc2626" stroke-width="3"/>
+  <text x="210" y="196" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="800" fill="#991b1b">Capillary Tuft</text>
+  <text x="210" y="216" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="800" fill="#b91c1c">P_GC = 55 mmHg</text>
+
+  <!-- Bowman's Capsule Contour -->
+  <path d="M 120 160 C 110 280, 310 280, 300 160" fill="none" stroke="#f59e0b" stroke-width="3.5"/>
+  <text x="210" y="272" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="800" fill="#92400e">Bowman's Space (P_BS = 15 mmHg)</text>
+
+  <!-- Starling Vector Arrows -->
+  <line x1="210" y1="225" x2="210" y2="252" stroke="#ea580c" stroke-width="3" marker-end="url(#arrowFilt)"/>
+  <text x="220" y="242" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="800" fill="#ea580c">NFP ↓</text>
+
+  <!-- Balance Table -->
+  <rect x="52" y="286" width="378" height="106" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="64" y="308" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#15803d">✔ Favors Filtration: Hydrostatic P_GC = + 55.0 mmHg</text>
+  <text x="64" y="332" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#dc2626">✖ Opposes Filtration: Hydrostatic P_BS = - 15.0 mmHg</text>
+  <text x="64" y="356" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#dc2626">✖ Opposes Filtration: Oncotic Π_GC = - 30.0 mmHg</text>
+  <text x="64" y="380" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="800" fill="#0f172a">Net Filtration: NFP = 55.0 - (15.0 + 30.0) = + 10.0 mmHg</text>
+
+  <!-- Right: GFR & Tubular Balance -->
+  <rect x="460" y="86" width="284" height="318" rx="10" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="602" y="112" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="800" fill="#0f172a">GFR &amp; Tubular Output</text>
+
+  <!-- Kf and GFR Box -->
+  <rect x="475" y="126" width="254" height="85" rx="8" fill="#ffffff" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="602" y="148" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="800" fill="#0369a1">Filtration Coefficient: Kf = 12.5</text>
+  <text x="602" y="172" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="800" fill="#0284c7">GFR = Kf × NFP = 125.0 mL/min</text>
+  <text x="602" y="196" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="800" fill="#0369a1">Daily GFR = 180.0 Liters/day</text>
+
+  <!-- Tubular Reabsorption Box -->
+  <rect x="475" y="222" width="254" height="168" rx="8" fill="#eff6ff" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="602" y="246" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="800" fill="#1e40af">Tubular Processing (99.0%)</text>
+
+  <text x="490" y="276" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#0f172a">• 99.0% Filtered Volume Reabsorbed</text>
+  <text x="490" y="302" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#166534">  Reabsorption = 178.2 L/day</text>
+  <text x="490" y="332" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="800" fill="#ea580c">• Daily Urine Excreted (1.0%):</text>
+  <text x="602" y="362" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="17" font-weight="800" fill="#c2410c">V_urine = 1.80 Liters/day</text>
+</svg>

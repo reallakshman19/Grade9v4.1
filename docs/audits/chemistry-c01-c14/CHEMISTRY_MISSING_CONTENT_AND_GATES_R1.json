@@ -1,0 +1,246 @@
+{
+  "schema": "g9v41-chemistry-full-coverage-gap-register/v1",
+  "version": "1.0.0",
+  "date": "2026-11-14",
+  "audit_mode": "R00_SOURCE_TECHNICAL_AUTHOR_EXPOSED",
+  "summary": {
+    "issues": 14,
+    "statuses": {
+      "FAIL": 3,
+      "HOLD": 11
+    },
+    "concrete_content_fails": 3,
+    "independent_academic_qualified": 0
+  },
+  "notes": [
+    "FAIL means a specifically named primary curriculum topic is absent from the authored manuscript/reader, not that its internal row is missing.",
+    "HOLD means evidence or qualification is insufficient, not proof of content error.",
+    "The published 84-row internal taxonomy is an authoring design; this register cannot certify the negative space of all VI-VIII and older IX/X versions.",
+    "C14.05 was promoted from HOLD to a direct named source-content FAIL after confirming that non-biodegradable is absent from full manuscript, reader and all C14 core1b records."
+  ],
+  "issues": [
+    {
+      "id": "CHEM-FC-001",
+      "severity": "HIGH",
+      "gate": "EXTERNAL_CURRICULUM_COVERAGE",
+      "status": "FAIL",
+      "affected": [
+        "CHEM-C11.05"
+      ],
+      "owner": "B02_C10_C11_AUTHOR",
+      "source": "CBSE Class X Science 2026-27 Unit I Carbon and its Compounds; PDF physical p4 (zero-index), PDF printed p5",
+      "evidence": "The official functional-group summary names halogens alongside alcohols, ketones and aldehydes; C11 author reader and textbook contain no halo-, chloromethane, fluoro- or halogen-group discussion. Carbon substitution with Cl2 elsewhere is not a full lesson on the halogen functional group.",
+      "fix": "Amend C11.05 Core1A with halogen substitution as structural functional-group identity and class-appropriate haloalkane examples; add at least one independent Core1B REPRESENT / MODEL task and a misconception boundary. Preserve all existing C11 tasks; do not claim official source-question identity.",
+      "acceptance": "Exact CBSE item mapped to new reader subsection, source-appropriate explanation and task, negative test for missing halogen group, new independent academic review."
+    },
+    {
+      "id": "CHEM-FC-002",
+      "severity": "HIGH",
+      "gate": "EXTERNAL_CURRICULUM_COVERAGE",
+      "status": "FAIL",
+      "affected": [
+        "CHEM-C14.01",
+        "CHEM-C14.03"
+      ],
+      "owner": "B03_C12_C14_AUTHOR",
+      "source": "CBSE Class X Science 2026-27 Unit V Natural Resources, Our Environment, PDF physical p5 (zero-index)",
+      "evidence": "CBSE explicitly lists ozone depletion. C14 textbook/reader/core1b contain no ozone depletion, chlorofluorocarbon, CFC or chlorine-catalysed depletion model. C14.01 contrasts stratospheric protective ozone with ground-level pollution but does not teach depletion.",
+      "fix": "Add complete age-appropriate stratospheric ozone-depletion cause/effect, responsible ozone-depleting chemicals, UV protection and misconceptions about ground-level ozone, with carefully bounded chemistry and one changed-condition transfer. Link C14.01 or add a stable subtopic only through Agent A schema governance.",
+      "acceptance": "Primary curriculum clause linked to a real explanatory lesson and Core1B task; independent scientific review on reaction mechanism and environmental claims."
+    },
+    {
+      "id": "CHEM-FC-003",
+      "severity": "HIGH",
+      "gate": "EARLIER_FOUNDATION_SOURCE_CUSTODY",
+      "status": "HOLD",
+      "affected": [
+        "CHEM-C01.01",
+        "CHEM-C01.02",
+        "CHEM-C01.03",
+        "CHEM-C01.04",
+        "CHEM-C01.05"
+      ],
+      "owner": "A01_C01_C02_AUTHOR",
+      "source": "Stage 0 EARLIER-FOUNDATIONS-PENDING; HBCSE/IAPT secondary Class X boundary includes lower foundations.",
+      "evidence": "Five C01 subtopics are explicitly marked FOUNDATION_RECONCILE and linked to an unresolved earlier-grade source placeholder; no exact VI-VIII edition/page citations or systematic negative-gap map.",
+      "fix": "Reconcile official NCERT/CBSE VI-VIII versions, record edition/year/page/learning outcome and identify any further foundational items beyond the existing 84-row taxonomy.",
+      "acceptance": "Per-row cited earlier-grade source and two-direction curriculum mapping, independently accepted."
+    },
+    {
+      "id": "CHEM-FC-004",
+      "severity": "HIGH",
+      "gate": "SCOPE_BOUNDARY",
+      "status": "HOLD",
+      "affected": [
+        "CHEM-C01.06",
+        "CHEM-C04.01",
+        "CHEM-C04.02",
+        "CHEM-C04.05",
+        "CHEM-C04.06",
+        "CHEM-C05.06",
+        "CHEM-C06.06",
+        "CHEM-C07.07",
+        "CHEM-C09.06",
+        "CHEM-C12.02",
+        "CHEM-C12.05",
+        "CHEM-C13.03",
+        "CHEM-C13.04",
+        "CHEM-C13.05"
+      ],
+      "owner": "A_B_AUTHOR_WITH_R01",
+      "source": "Stage0 syllabus scope flags; CBSE IX/X official curriculum",
+      "evidence": "Three SCOPE_REVIEW and eleven EXTENSION/ENRICHMENT rows are authored, but that does not establish compulsory exam scope. The distinction is correctly flagged in the candidate taxonomy and must remain visible downstream.",
+      "fix": "Review item-specific syllabus scope and ensure reader navigation and recommendations never silently treat enrichments as mandatory 2026 NSEJS content.",
+      "acceptance": "Dated authoritative source decision per item; optional material remains labelled or moved to enrichment track."
+    },
+    {
+      "id": "CHEM-FC-005",
+      "severity": "MEDIUM",
+      "gate": "QRT_TEMPLATE_CELL_COVERAGE",
+      "status": "HOLD",
+      "affected": [
+        "ALL_84"
+      ],
+      "owner": "QRT_BLUEPRINT_OWNER_PLUS_R02",
+      "source": "252 authored canonical task bindings from PR6 and P00-inherited PR4",
+      "evidence": "10 of 14 possible D3/D4 template identity cells are instantiated. Missing: QRT-RETRIEVE-D3, QRT-RETRIEVE-D4, QRT-EXPLAIN-D4 and QRT-APPLY-D4. The blueprint does not itself justify inventing contrived D4 retrieval tasks.",
+      "fix": "Review whether each missing cell is an actual curriculum demand or a legitimate nonapplicable operation; document justification. Only author scientifically defensible new tasks under a versioned Owner-approved plan.",
+      "acceptance": "14-cell matrix contains an accepted task or an explicit reviewed N/A rationale for each cell, not forced filler."
+    },
+    {
+      "id": "CHEM-FC-006",
+      "severity": "HIGH",
+      "gate": "COGNITIVE_DEMAND_INDEPENDENT_REVIEW",
+      "status": "HOLD",
+      "affected": [
+        "ALL_84"
+      ],
+      "owner": "R02_BLIND_QRT_REVIEWER",
+      "source": "252 authored task records, Agent A QRT evidence, Agent B 24 capstones, shared 28 QRT identities",
+      "evidence": "All 252 candidate records have D3/D4 labels and three distinct operation identities per subtopic, but no independent five-factor or protected W adjudication. Some apparently simple author-labelled D4 tasks (e.g., C01.01 dye mass inference) warrant downgrading review.",
+      "fix": "Blindly score exact prompt and W; compare independent representation and transfer difficulty, hint leakage and boundary demand; record PASS/FAIL/HOLD task-by-task. Do not infer D4 from verbose text.",
+      "acceptance": "252 scoped external receipts or item-specific documented N/A; review separate 24 capstones and 8 supplemental tasks."
+    },
+    {
+      "id": "CHEM-FC-007",
+      "severity": "CRITICAL",
+      "gate": "SCIENTIFIC_ACADEMIC_QUALIFICATION",
+      "status": "HOLD",
+      "affected": [
+        "ALL_84"
+      ],
+      "owner": "R01_COLD_CHEMISTRY_REVIEWER",
+      "source": "PR6 + PR4 B02 exact manuscript and figure heads",
+      "evidence": "All 84 authored units/subtopics contain worked and misconception fields; technical presence does not verify 100% chemical accuracy, phase and charge ledgers, diagrams, equipment safety, or textbook-level scientific depth. R00 is author-exposed for C08–C14.",
+      "fix": "Conduct cold review of every exact text, equation, representation, answer and SVG against primary sources and accepted chemistry; correct defects via author branches and re-review.",
+      "acceptance": "84/84 item-level cold receipts with no unresolved HIGH scientific defects and exact source SHA."
+    },
+    {
+      "id": "CHEM-FC-008",
+      "severity": "HIGH",
+      "gate": "CROSS_BRANCH_NATIVE_LEARNER_INTEGRATION",
+      "status": "HOLD",
+      "affected": [
+        "ALL_84"
+      ],
+      "owner": "P00_PLATFORM_INTEGRATION",
+      "source": "PR6 A-side preview; PR4 B-side native reader; PR13 visual staging; PR17 P00 changes",
+      "evidence": "The 14 units exist on different unmerged sibling branches and use different authored book schemas and separate readers. No pinned single integrated 14-unit route with 252 complete learner cycles has passed exact-head HTTP Chromium.",
+      "fix": "After Owner authorizes non-destructive integration, build versioned A/B format adapter preserving scientific concept IDs, connect all unit navigation and test all 252 original task IDs and cross-module prerequisites under HTTP.",
+      "acceptance": "One exact-head integration evidence run covering all 14 units, 252 task IDs, six stages, keyboard/tablet, source return and storage/revision fail-close."
+    },
+    {
+      "id": "CHEM-FC-009",
+      "severity": "HIGH",
+      "gate": "ORIGINAL_EXAM_SOURCE_CUSTODY",
+      "status": "HOLD",
+      "affected": [
+        "CORE2_SOURCE_TRACK"
+      ],
+      "owner": "SOURCE_CUSTODY_AGENT_R01",
+      "source": "main @4f04677c nsejs/data/chemistry-core2-candidates.v1.json (119); nsejs/core2/question-map.v1.json (87 Chemistry rows)",
+      "evidence": "119 candidate Chemistry bank entries (40 EXAM_CLAIM, 79 EXAM_PAPER) and 87 separate Chemistry map metadata rows use different denominators; question-map academic_admission HOLD, source_originals_published 0. Cannot equate with 252 original authored self-tutor tasks.",
+      "fix": "Reconcile original exam year/paper/code/figure/key and rights, deduplicate stable IDs and link each admitted original to canonical concept lessons; retain separate authored/source badges.",
+      "acceptance": "Exact source/year/paper/figure/key custody per admitted question, no fabricated mappings; 119 vs 87 delta explained."
+    },
+    {
+      "id": "CHEM-FC-010",
+      "severity": "MEDIUM",
+      "gate": "VISUAL_STAGE_COVERAGE",
+      "status": "HOLD",
+      "affected": [
+        "C01_C09",
+        "C12_C14"
+      ],
+      "owner": "P00_AND_TOPIC_VISUAL_AUTHORS",
+      "source": "PR13 B02 47-task visual manifest, PR17 P00 browser tests",
+      "evidence": "The 141 stage SVGs cover 47 C10/C11 task routes: 39 native subtopic Core1B cycle IDs plus eight supplemental routes. They are not 141 unique Chemistry subtopics and do not establish S1-S3 visual coverage of remaining 213 canonical task cycles.",
+      "fix": "Define evidence requirements by actual visual need and implement/qualify stage assets per appropriate task; avoid automatic quota of three SVGs per task if scientifically unnecessary. Validate stage ownership and accessibility.",
+      "acceptance": "Reconciled 252-task visual-need register with fulfilled or justified-N/A stage slots and exact-head browser results."
+    },
+    {
+      "id": "CHEM-FC-011",
+      "severity": "HIGH",
+      "gate": "P00_ATTEMPT_FAIL_CLOSED",
+      "status": "HOLD",
+      "affected": [
+        "C10",
+        "C11"
+      ],
+      "owner": "P00_PLATFORM_AGENT",
+      "source": "PR17 exact head df3b7772, prior R00 review P00-AUD-04",
+      "evidence": "The P00 reader treats any truthy stored attempt as sufficient for answer reveal without validating record revision, task identity and substantive answer fields. Previous review requested hardening; not shown resolved at pinned head.",
+      "fix": "Reject malformed/noncurrent stored payload before feedback; preserve data, enter ATTEMPT_RECORD_HOLD, add real Chromium corrupted-storage regression. Include prefixed SVG validators and exact S1/S2/S3 role relation low findings.",
+      "acceptance": "PR17 follow-up head demonstrates fail-closed corrupted-record test and unchanged existing HTTP/keyboard behavior."
+    },
+    {
+      "id": "CHEM-FC-012",
+      "severity": "MEDIUM",
+      "gate": "ADVANCED_CHEMISTRY_SCOPE",
+      "status": "HOLD",
+      "affected": [
+        "CHEM-C11.07",
+        "CHEM-C13.02",
+        "CHEM-C10.05",
+        "CHEM-C12.01"
+      ],
+      "owner": "B02_B03_SCOPE_AND_R01",
+      "source": "CBSE X official wording and B source scope register",
+      "evidence": "C11.07 includes esterification beyond the CBSE X emphasis on ethanol/ethanoic acid 'only properties and uses'; C13.02 formal oxidation numbers, C12.01 quantitative gas laws and C10.05 amphoterism require explicit approved boundaries or source-depth support.",
+      "fix": "Mark clearly which sub-explanations are contextual extensions versus syllabus-core; retain them where useful without counting them as directly prescribed.",
+      "acceptance": "Source-specific classification accepted for each disputed depth claim."
+    },
+    {
+      "id": "CHEM-FC-013",
+      "severity": "HIGH",
+      "gate": "EXTERNAL_CURRICULUM_COVERAGE",
+      "status": "FAIL",
+      "affected": [
+        "CHEM-C14.05"
+      ],
+      "owner": "B03_AUTHOR_R01",
+      "source": "CBSE Class X Unit V waste production and solutions",
+      "evidence": "Official CBSE X Our Environment expressly lists biodegradable and non-biodegradable substances. Current C14.05 textbook, reader and Core1B records use biodegradable/recycling concepts but never explicitly define non-biodegradable substances or contrast chemical breakdown and persistent waste examples.",
+      "fix": "Add explicit scientifically correct biodegradable versus non-biodegradable classification, conditions, comparative examples and waste-handling implications to the Core1A section. Bind an independent changed-condition Core1B task and evidence of actual learning rather than a generic recycling discussion.",
+      "acceptance": "Reviewer-observable two-category explanation, representative counterexamples, scope-linked C14.05 reconstruction and independent scientific/transfer qualification."
+    },
+    {
+      "id": "CHEM-FC-014",
+      "severity": "MEDIUM",
+      "gate": "PERIODIC_CLASSIFICATION_ASSESSMENT_POLICY",
+      "status": "HOLD",
+      "affected": [
+        "CHEM-C06.01",
+        "CHEM-C06.02",
+        "CHEM-C06.03",
+        "CHEM-C06.04",
+        "CHEM-C06.05"
+      ],
+      "owner": "A03_R01",
+      "source": "CBSE Class X Science 2026-27 Unit I p3 and teacher note p5",
+      "evidence": "Periodic classification is syllabus-included but assessed formatively, not in CBSE Class X year-end examination. Agent A author book notes formative-only, but learner-facing practice must not imply an absent NSEJS restriction or an official D3/D4 paper question.",
+      "fix": "Carry accurate school assessment label through final learning navigation; keep relevant NSEJS-level knowledge because exam scope remains broadly secondary science.",
+      "acceptance": "Exact distinction documented, no false external exam claim."
+    }
+  ]
+}
