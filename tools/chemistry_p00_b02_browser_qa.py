@@ -409,6 +409,107 @@ def check_keyboard_only_read_attempt_and_stages(browser, ids):
     ctx.close()
 
 
+
+def check_corrupted_saved_attempts_fail_closed(browser,ids):
+    """Corrupt JSON and semantic fields must never unlock model, visuals or overwrite a first attempt."""
+    from urllib.parse import urlencode
+    task_id=next(k for k,v in ids.items() if v[0]=="C10" and v[2]=="native")
+    unit,subtopic,_=ids[task_id]
+    ctx=browser.new_context(viewport={"width":1000,"height":1600})
+    page=ctx.new_page()
+    route=BASE+"?"+urlencode({"unit":unit,"subtopic":subtopic,"mode":"practice","task":task_id})
+    page.goto(route);wait_loaded(page,task_id)
+    page.locator("#prediction-answer").fill("I predict the result depends on the starting chemical model.")
+    page.locator("#original-answer").fill("I compare the alternative mechanisms and validate the conservation constraints.")
+    page.locator("#commit-attempt").click()
+    page.get_by_role("heading",name="Stage 3 — Reconstruct").wait_for(timeout=15000)
+    record=page.evaluate("""id => {
+      const key=Object.keys(localStorage).find(k=>k.startsWith("g9chem:attempt:v2:"+id+":"));
+      return {key,body:JSON.parse(localStorage.getItem(key))};
+    }""",task_id)
+    check(record["key"] is not None,"Missing saved attempt fixture")
+    variants=[
+        ("wrong-task",dict(record["body"],id="FOREIGN-TASK")),
+        ("wrong-revision",dict(record["body"],revision="0"*64)),
+        ("missing-answer",{k:v for k,v in record["body"].items() if k!="attempt"}),
+        ("blank-answer",dict(record["body"],attempt=" ")),
+        ("wrong-help",dict(record["body"],help_exposure=["H3"])),
+        ("invalid-json","{broken-json")
+    ]
+    for label,modified in variants:
+        raw=modified if isinstance(modified,str) else json.dumps(modified)
+        page.evaluate("([k,v]) => localStorage.setItem(k,v)",[record["key"],raw])
+        page.reload()
+        page.locator("#notice").get_by_text("ATTEMPT_RECORD_HOLD",exact=False).wait_for(timeout=15000)
+        check(page.locator("text=Model response · POST-COMMIT").count()==0,
+              f"{label}: model leaked from invalid stored attempt")
+        check(page.locator(".stage-figure").count()==0 and
+              page.locator("text=S1–S3 candidate visual support (post-commit only)").count()==0,
+              f"{label}: review visuals unlocked")
+        check(page.locator("#commit-attempt").count()==0,
+              f"{label}: malformed first attempt overwritten via commit")
+        check(page.evaluate("k=>localStorage.getItem(k)",record["key"])==raw,
+              f"{label}: corrupt original unexpectedly modified")
+    page.evaluate("([k,v])=>localStorage.setItem(k,JSON.stringify(v))",
+                  [record["key"],record["body"]])
+    page.reload()
+    page.get_by_role("heading",name="Stage 3 — Reconstruct").wait_for(timeout=15000)
+    ctx.close()
+
+
+def check_svg_xml_namespaces_and_stage_role_negative(browser,ids):
+    """Use Git-blob-matching malicious SVG fixtures so the XML parser, not SHA mismatch, rejects."""
+    import hashlib
+    from urllib.parse import urlencode
+    task_id=next(k for k,v in ids.items() if v[0]=="C10" and v[2]=="native")
+    unit,subtopic,_=ids[task_id]
+    fixtures=[
+      ("prefixed-script",'<svg xmlns="http://www.w3.org/2000/svg" xmlns:p="http://www.w3.org/2000/svg"><title>Candidate</title><desc>Test</desc><p:script>bad()</p:script></svg>'),
+      ("foreign-namespace",'<svg xmlns="http://www.w3.org/2000/svg" xmlns:evil="urn:untrusted"><title>Candidate</title><desc>Test</desc><evil:rect width="1" height="1"/></svg>'),
+      ("prefixed-image",'<svg xmlns="http://www.w3.org/2000/svg" xmlns:q="http://www.w3.org/2000/svg"><title>Candidate</title><desc>Test</desc><q:image href="https://invalid.example/"/></svg>')
+    ]
+    for label,fixture in fixtures:
+        payload=fixture.encode("utf-8")
+        git_blob=hashlib.sha1(b"blob "+str(len(payload)).encode()+b"\0"+payload).hexdigest()
+        ctx=browser.new_context(viewport={"width":1600,"height":1000})
+        page=ctx.new_page()
+        def patch_manifest(route):
+            manifest=route.fetch().json()
+            target=next(r for r in manifest["records"] if r["task_id"]==task_id)
+            target["stages"][0]["git_blob"]=git_blob
+            route.fulfill(status=200,content_type="application/json",body=json.dumps(manifest))
+        page.route("**/B02-C10-C11-staged-visuals.v0.7.0.json",patch_manifest)
+        def swap_svg(route):
+            route.fulfill(status=200,content_type="image/svg+xml",body=fixture)
+        page.route("**/b02-stages/*.svg",swap_svg)
+        page.goto(BASE+"?"+urlencode({
+            "unit":unit,"subtopic":subtopic,"mode":"practice","task":task_id
+        }))
+        wait_loaded(page,task_id)
+        page.locator("#prediction-answer").fill("I predict the chemical identity depends on a model.")
+        page.locator("#original-answer").fill("I compare candidate observations and constraints before deciding.")
+        page.locator("#commit-attempt").click()
+        page.get_by_role("button",name="Inspect S1 · CLARIFY (unreviewed)").click()
+        page.locator("#notice").get_by_text("UNSAFE_SVG",exact=False).wait_for(timeout=15000)
+        check(page.locator(".stage-figure").count()==0,f"{label}: unsafe SVG rendered")
+        ctx.close()
+    ctx=browser.new_context(viewport={"width":1600,"height":1000})
+    page=ctx.new_page()
+    def wrong_stage_role(route):
+        manifest=route.fetch().json()
+        target=next(r for r in manifest["records"] if r["task_id"]==task_id)
+        target["stages"][0]["role"]="CORRELATE"
+        route.fulfill(status=200,content_type="application/json",body=json.dumps(manifest))
+    page.route("**/B02-C10-C11-staged-visuals.v0.7.0.json",wrong_stage_role)
+    page.goto(BASE+"?"+urlencode({
+        "unit":unit,"subtopic":subtopic,"mode":"practice","task":task_id
+    }))
+    page.locator("text=B02_STAGE_OR_TASK_JOIN_HOLD").wait_for(timeout=15000)
+    check(page.locator("#original-answer").count()==0,
+          "Mismatched S1 role must fail before exposing task")
+    ctx.close()
+
+
 def check_all_units_still_load(browser):
     ctx=browser.new_context(viewport={"width":1000,"height":1600})
     page=ctx.new_page()
@@ -466,6 +567,8 @@ def main():
                 check_delayed_unit_load_never_renders_previous_pack(browser,ids)
                 check_stage_order_survives_refresh(browser,ids)
                 check_keyboard_only_read_attempt_and_stages(browser,ids)
+                check_corrupted_saved_attempts_fail_closed(browser,ids)
+                check_svg_xml_namespaces_and_stage_role_negative(browser,ids)
             finally:
                 browser.close()
         print(
