@@ -1,0 +1,129 @@
+{
+  "schema": "b01-source-locator-transfer-proposal/v1",
+  "status": "AUTHOR_EXPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+  "subtopic_id": "PH07-05",
+  "scope_role": "SYLLABUS_CORE_CANDIDATE",
+  "source": {
+    "locator_id": "NSEJS-2018-JS511-Q15",
+    "year": 2018,
+    "session": "2018-19",
+    "exam_date": null,
+    "paper_code": "JS511",
+    "question_number": 15,
+    "printed_page": 5,
+    "subject": "PHYSICS",
+    "paper_url": "https://mail.iapt.org.in/images/nse2018/QP-NSEJS--JS511.pdf",
+    "visual_copy_url": "https://www.nsejs.com/wp-content/uploads/2024/11/nsejs-2018.pdf",
+    "final_key_url": "https://iapt.org.in/wp-content/uploads/Final-answer-keys-for-NSEJS.pdf",
+    "publisher_key": [
+      "C"
+    ],
+    "publisher_disposition": "KEY_OBSERVED",
+    "paper_visual_status": "PUBLISHER_TEXT_AND_MATCHING_ARCHIVE_PAGE_VISUALLY_INSPECTED",
+    "key_visual_status": "FINAL_KEY_VISUALLY_INSPECTED",
+    "source_bytes_sha256": null,
+    "rights_status": "HOLD",
+    "exact_source_revision_status": "HOLD",
+    "academic_admission": "HOLD",
+    "source_band": "NOT_QUALIFIED",
+    "map_binding": null,
+    "bank_binding": null,
+    "bank_identity_conflict": [],
+    "subtopic_id": "PH07-05",
+    "reasoning_observation": "Publisher key chooses black. At equal temperature, visible appearance depends on spectral emissivity in the emitting band and conditions, not room-temperature color labels alone; graybody ranking needs assumptions. Preserve key and refer to R01."
+  },
+  "related_source_observations": [],
+  "prerequisite_support": [
+    "PH07-10",
+    "PH07-02"
+  ],
+  "existing_package_pin": {
+    "path": "nsejs/physics/curriculum/topics/PH07/b01/PH07-05/physics-topic-package.v1.json",
+    "blob": "b944d121188a511ec8c03a834fce8d73b1960ca7",
+    "version": "0.3.3-b01.8.ph07-05"
+  },
+  "target": {
+    "id": "PH07-05-B01-NSEJS-2018-JS511-Q15-D3-JUSTIFY-R1",
+    "band": "D3",
+    "cell": "D3.7",
+    "primary_operation": "JUSTIFY",
+    "task_identity": "PH07-05-B01-NSEJS-2018-JS511-Q15-D3-JUSTIFY-R1",
+    "source_role": "AUTHORED_TRANSFER",
+    "protected_work": "Evaluate an emission ranking from ordinary color labels by distinguishing reflected illumination, spectral emissivity and controlled thermal observations.",
+    "decisive_route": "Two equal-temperature panels have identical visible-band emissivity but different infrared emissivity. Does equal visible brightness establish equal total radiated power? Shortest valid route: No; spectral emissivity elsewhere can differ. Measure calibrated emission over relevant bands.",
+    "factor_evidence": {
+      "concept_model_selection": {
+        "score": 2,
+        "evidence": "Competing reflected-light and thermal-emission models"
+      },
+      "representation_translation": {
+        "score": 1,
+        "evidence": "Interpret band-limited brightness versus total radiation"
+      },
+      "reasoning_chain_length": {
+        "score": 2,
+        "evidence": "Construct countermodels and a discriminating measurement"
+      },
+      "algebra_computational_load": {
+        "score": 0,
+        "evidence": "No substantial arithmetic"
+      },
+      "trap_exception_sensitivity": {
+        "score": 2,
+        "evidence": "Visible color at low temperature is not universal hot-surface emissivity"
+      }
+    },
+    "score": 7,
+    "status": "PROPOSED"
+  },
+  "core1a": {
+    "scientific_construction": "A surface can reflect incident light and emit thermal radiation. Its ordinary visible color describes reflected light under illumination; it does not by itself specify spectral emissivity at high temperature. At fixed temperature and comparable geometry, thermal radiance in a given band is emissivity in that band times blackbody radiance. In a supplied graybody model with equal area and environment, larger emissivity means larger net radiative power when hotter than surroundings. A coating can change with temperature, and total infrared power need not rank visible brightness. Therefore the textbook black-surface rule requires a stated spectral or gray approximation. Work with simulated data, not incandescent objects.",
+    "worked_anchor": {
+      "task": "At one common temperature, two opaque model surfaces have visible-band emissivities0.8 and0.3. Which has greater emitted radiance in that band?",
+      "reasoning": "First, ratio8/3 for equal blackbody radiance in the specified band."
+    },
+    "model_limits": "Specified ideal or matched conditions only; supplied quantitative relations do not establish compulsory exam scope."
+  },
+  "core1b": [
+    {
+      "id": "PH07-05-B01-NSEJS-2018-JS511-Q15-D3-JUSTIFY-R1-MAIN_PLACEHOLDER",
+      "kind": "MAIN_PLACEHOLDER",
+      "task": "Two equal-area model surfaces are observed at the same known high temperature in darkness. A is dark in ordinary illumination, B is pale. A report concludes A must emit more visible light and more total radiation. Construct two compatible spectral emissivity scenarios that make the visible ranking differ; specify independent evidence needed for total-power ranking.",
+      "protected_work": "Evaluate an emission ranking from ordinary color labels by distinguishing reflected illumination, spectral emissivity and controlled thermal observations.",
+      "stages": {
+        "predict": "Predict whether ordinary visible color alone is enough to rank emitted brightness at a different temperature.",
+        "attempt": "Two equal-area model surfaces are observed at the same known high temperature in darkness. A is dark in ordinary illumination, B is pale. A report concludes A must emit more visible light and more total radiation. Construct two compatible spectral emissivity scenarios that make the visible ranking differ; specify independent evidence needed for total-power ranking.",
+        "reconstruct": "Ordinary reflected color alone does not bind high-temperature spectral values. Scenario1 visible emissivity A=.8 B=.3; scenario2 A=.3 B=.8 at the operating state; both can be compatible with low-temperature color labels absent stability assumptions. Measure operating-temperature spectral emissivities or calibrated emitted spectrum, control area, T and background; total-power ranking needs full relevant spectrum.",
+        "diagnose": "Identify where you replaced spectral measurement by a color label or confused radiation with total energy loss.",
+        "repair": "State the operating band, temperature, emissivity and comparison conditions; provide compatible alternative and a discriminator.",
+        "boundary_test": "If both are explicitly gray surfaces with stable emissivities .8 and .3, same area and T hotter than surroundings, what follows?"
+      },
+      "boundary_response_criterion": "A has greater modeled net radiative power; ratio8/3 if surroundings and geometry matched.",
+      "attempt_policy": "PROPOSED_ONLY_PUBLIC_AUTHOR_EXPOSED",
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH07-05-B01-NSEJS-2018-JS511-Q15-D3-JUSTIFY-R1-INSTANCE",
+      "kind": "INSTANCE",
+      "task": "A thermal-imaging model reports two panels at equal temperature and geometry. Panel X has higher measured infrared radiance than Y in the sensor band. A student claims X is visibly brighter and necessarily cools faster. Assess both claims and propose a test that separates emissivity from other energy-loss paths.",
+      "protected_work": "Evaluate an emission ranking from ordinary color labels by distinguishing reflected illumination, spectral emissivity and controlled thermal observations.",
+      "stages": {
+        "predict": "Predict whether higher infrared radiance alone establishes faster cooling.",
+        "attempt": "A thermal-imaging model reports two panels at equal temperature and geometry. Panel X has higher measured infrared radiance than Y in the sensor band. A student claims X is visibly brighter and necessarily cools faster. Assess both claims and propose a test that separates emissivity from other energy-loss paths.",
+        "reconstruct": "IR-band ordering alone does not fix visible emissivity or total loss; cooling also depends on thermal capacity, conduction, convection and full spectral emission. Measure visible-band radiance and matched-state steady power or heat capacity plus loss-path controls.",
+        "diagnose": "Identify where you replaced spectral measurement by a color label or confused radiation with total energy loss.",
+        "repair": "State the operating band, temperature, emissivity and comparison conditions; provide compatible alternative and a discriminator.",
+        "boundary_test": "If total net radiative power is independently greater for X but X has twice the thermal capacity, must its temperature initially fall faster?"
+      },
+      "boundary_response_criterion": "No; compare P_loss/C, including other paths.",
+      "attempt_policy": "PROPOSED_ONLY_PUBLIC_AUTHOR_EXPOSED",
+      "runtime_verification": "NOT_RUN"
+    }
+  ],
+  "acceptance": {
+    "b1_b7": "HOLD",
+    "canonical_integration": "NOT_SELECTED",
+    "source_admission": "HOLD",
+    "release": "HOLD"
+  }
+}

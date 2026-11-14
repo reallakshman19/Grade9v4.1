@@ -1,0 +1,494 @@
+{
+  "schema": "g9v41-nsejs-physics-topic-package/v1",
+  "subject_id": "PHYSICS",
+  "academic_track": "NSEJS",
+  "topic_id": "PH07",
+  "owner_agent": "AGENT_2",
+  "version": "0.3.2-b01.5.ph07-02",
+  "status": "DRAFT_AUTHOR_EXPOSED",
+  "pins": {
+    "contracts_version": "1.0.0",
+    "blueprint": {
+      "version": "0.2.0",
+      "git_blob_sha": "700dafcbe86d76442637bcf214eeb544497cf4ea"
+    },
+    "shared_qrt_28": {
+      "version": "1.0.0",
+      "git_blob_sha": "e2409aef11ae7d98444593bfbe1a38eb00c97cef"
+    },
+    "topic_adapter_version": "0.3.2-b01.5.ph07-02"
+  },
+  "syllabus_references": [
+    {
+      "reference_id": "PH07-NCERT6-THERMOMETRY",
+      "locator": "https://ncert.nic.in/textbook/pdf/fecu107.pdf — Curiosity Grade 6 chapter 7; official URL fetch unavailable; corroborated chapter metadata and text at https://www.ncertbooks.net/textbook/pdf/fecu107.pdf",
+      "authority": "NCERT_CBSE",
+      "scope_status": "CANDIDATE"
+    },
+    {
+      "reference_id": "PH07-CBSE",
+      "locator": "https://cbseacademic.nic.in/web_material/CurriculumMain27/SecPart1/ScienceSt_SecP1_2026-27.pdf — thermal foundations and energy transfer; cross-topic power balance is authored enrichment",
+      "authority": "OFFICIAL_SYLLABUS",
+      "scope_status": "CANDIDATE"
+    }
+  ],
+  "subtopics": [
+    {
+      "id": "PH07-02",
+      "title": "Heat, temperature, thermal equilibrium and steady energy balance",
+      "scope_role": "PREREQUISITE_BRIDGE",
+      "syllabus_reference_ids": [
+        "PH07-NCERT6-THERMOMETRY",
+        "PH07-CBSE"
+      ],
+      "prerequisite_ids": [
+        "PH07-01"
+      ],
+      "science_ref_ids": [
+        "PH07-02-SCI-01"
+      ],
+      "learning_goal": "Distinguish thermal state, heat transfer and internal energy; choose energy-balance models and evaluate their limits.",
+      "textbook_chapter_ref": "nsejs/physics/curriculum/topics/PH07/b01/PH07-02/core1a.html",
+      "qrt_targets": [
+        {
+          "id": "PH07-02-B01-D3-MODEL-01",
+          "task_identity": "G9-B01-PH07-02-MODEL-R1",
+          "band": "D3",
+          "primary_operation": "MODEL",
+          "blueprint_cell": "D3.4",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Choose a system-boundary energy-rate model and distinguish driven steady state from equilibrium and constant-temperature phase change.",
+          "decisive_route": "Three objects are observed at constant temperature: a sealed copper block in a room at the same temperature with no heater; a hotter unchanged-phase plate receiving 50 W while losing 50 W; a melting pure solid at its melting point receiving 18 W with negligible loss. Construct energy-path models for all three and determine which descriptions justify zero internal-energy change and thermal equilibrium. Shortest valid route: Block: no net heat transfer, equilibrium with room and no work, ΔU=0. Plate: 50 W in and 50 W out, dU/dt=0, but not equilibrium with cooler room. Melting solid: input 18 W, dU/dt=18 W despite constant T; energy changes phase. Temperature alone is insufficient.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "Competing models must be selected from energy paths and phase condition."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "Translate observations into three system-boundary energy-flow descriptions."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Establish energy rates before deciding internal-energy and equilibrium implications."
+            },
+            "algebra_computational_load": {
+              "score": 0,
+              "evidence": "Arithmetic absent."
+            },
+            "trap_exception_sensitivity": {
+              "score": 2,
+              "evidence": "Constant-temperature phase change is a decisive counterexample."
+            }
+          }
+        },
+        {
+          "id": "PH07-02-B01-D3-SYNTHESIZE-01",
+          "task_identity": "G9-B01-PH07-02-SYNTHESIZE-R1",
+          "band": "D3",
+          "primary_operation": "SYNTHESIZE",
+          "blueprint_cell": "D3.6",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Combine geometry-specific input and heat-loss models through conservation, then check how an additional loss path invalidates a simple scaling law.",
+          "decisive_route": "Two long cylindrical elements of equal length are maintained at the same target surface temperature. Their input power per length is proportional to S²/r², where S is a controllable drive variable. Lateral heat loss per length is proportional to r. Derive the ratio of S for radii r and 4r. Explain whether the same scaling follows if end heat leakage becomes important. Shortest valid route: Steady balance S²/r² ∝ r, so S² ∝ r³, S ∝ r^(3/2); radius ratio 4 gives drive ratio 8. End heat loss can introduce a differently scaling term and invalidate the lateral-only relation. Need its dependence before predicting new scaling.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 1,
+              "evidence": "Identify steady balance under stated unchanged-phase conditions."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "Connect cross-section-dependent drive and lateral-area loss."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Combine separate proportionalities through energy conservation before boundary check."
+            },
+            "algebra_computational_load": {
+              "score": 1,
+              "evidence": "Routine power-law manipulation and ratio."
+            },
+            "trap_exception_sensitivity": {
+              "score": 2,
+              "evidence": "An omitted loss path changes the scaling."
+            }
+          }
+        },
+        {
+          "id": "PH07-02-B01-D3-JUSTIFY-01",
+          "task_identity": "G9-B01-PH07-02-JUSTIFY-R1",
+          "band": "D3",
+          "primary_operation": "JUSTIFY",
+          "blueprint_cell": "D3.7",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Judge whether a constant-temperature observation warrants claims about heat transfer and internal energy by constructing discriminating counterexamples.",
+          "decisive_route": "A student argues: 'Two bodies at equal temperature have equal internal energy; any object at constant temperature has zero heat transfer.' Use two separate physically specified counterexamples, including a measured energy-rate case, and state the restricted conditions under which a zero internal-energy change follows. Shortest valid route: Different masses of the same substance at equal T can have different internal energy relative to a common reference. A hot unchanged-phase body kept steady with 20 W input and 20 W outward heat transfer has zero net accumulation but nonzero heat loss. A phase-changing body can also gain energy at constant T. Zero ΔU needs balanced energy accounting or fixed mass, composition, phase and other state variables, not constant T alone.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "Distinguish internal energy, temperature and heat transfer."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "Express measured energy flows and state variables in counterexamples."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Refute each claim independently, then formulate conditions."
+            },
+            "algebra_computational_load": {
+              "score": 0,
+              "evidence": "No substantive calculation required."
+            },
+            "trap_exception_sensitivity": {
+              "score": 2,
+              "evidence": "Phase change and non-equilibrium steady state invalidate blanket inference."
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "science_records": [
+    {
+      "id": "PH07-02-SCI-01",
+      "claim": "Spontaneous net heat transfer follows temperature difference. For a stated system, net energy input controls internal-energy accumulation under the stated assumptions; steady state is not necessarily equilibrium.",
+      "law_or_model": "ΔU=E_in−E_out; dU/dt=P_in−P_out",
+      "assumptions": [
+        "Defined fixed-mass system, other stores/work accounted for",
+        "Constant power over intervals where used",
+        "Fixed state for steady-temperature inference; surface loss scaling only under matched conditions"
+      ],
+      "conditions_and_limits": [
+        "Heat is energy transferred because of temperature difference; internally generated energy or electrical work is not itself heat transfer.",
+        "Thermal equilibrium between bodies in contact means no net heat flow between them; a driven steady state can sustain nonzero energy fluxes.",
+        "Use P_in−P_out=dU/dt for the stated system; P in watts (J/s), U in joules.",
+        "Inferring temperature change from internal-energy change assumes unchanged phase and positive heat capacity; detailed calorimetry belongs to PH07-11.",
+        "For power-law surface loss, area proportionality assumes fixed surface temperature, ambient conditions, surface properties and heat-loss flux per unit area. This is a model, not a general fuse law."
+      ],
+      "units_and_signs": "U and energy in J; power in W; input positive and outward loss subtracted; temperature in °C or K.",
+      "source_refs": [
+        "PH07-NCERT6-THERMOMETRY",
+        "PH07-CBSE"
+      ],
+      "qualification_status": "HOLD"
+    }
+  ],
+  "topic_adapter": {
+    "adapter_id": "PHYS-TOPIC-PH07",
+    "topic_id": "PH07",
+    "version": "0.3.2-b01.5.ph07-02",
+    "for_blueprint": "PHYS-QRT-BLUEPRINT 0.2.0",
+    "status": "CANDIDATE_ONLY",
+    "cells": [
+      {
+        "cell_id": "D3.4",
+        "instance_ids": [
+          "PH07-02-B01-D3-MODEL-01"
+        ]
+      },
+      {
+        "cell_id": "D3.6",
+        "instance_ids": [
+          "PH07-02-B01-D3-SYNTHESIZE-01"
+        ]
+      },
+      {
+        "cell_id": "D3.7",
+        "instance_ids": [
+          "PH07-02-B01-D3-JUSTIFY-01"
+        ]
+      }
+    ]
+  },
+  "core1a": [
+    {
+      "id": "PH07-02-B01-CORE1A-R1",
+      "subtopic_id": "PH07-02",
+      "covered_qrt_ids": [
+        "PH07-02-B01-D3-MODEL-01",
+        "PH07-02-B01-D3-SYNTHESIZE-01",
+        "PH07-02-B01-D3-JUSTIFY-01"
+      ],
+      "phenomenon": "A heater can maintain a body at constant temperature while it continuously loses heat.",
+      "scientific_narrative": "A cup of hot water left in a cooler room loses energy to its surroundings. The cup's temperature falls, but temperature and energy are not interchangeable quantities. Temperature describes thermal state and determines the direction of spontaneous net heat transfer. Internal energy is energy associated with the microscopic state of a system, and depends on how much matter is present and its state as well as temperature. A large amount of lukewarm water may contain more internal energy relative to a common reference than a small amount of hotter water. Heat is the energy transferred across a boundary because of a temperature difference, not a substance stored in a body.\n\nWhen two initially unequal-temperature objects are placed in thermal contact, energy is spontaneously transferred from the hotter object to the cooler one. In an isolated pair with no external work, energy lost by one equals energy gained by the other. Their temperatures approach a common value. When they are in mutual thermal equilibrium, there is no net heat transfer between them. Equal temperature does not mean equal mass, equal total internal energy or no microscopic motion. A thermometer works because its sensor approaches equilibrium with the object. A temperature gradient within a conducting material is instead evidence of a possible heat-flow path.\n\nA system may maintain a constant temperature for another reason. A heated plate in a room may receive energy electrically while continuously losing energy to the air and surrounding surfaces. For the chosen plate as system, conservation of energy gives ΔU=E_in−E_out, neglecting other energy stores and mechanical work; the rate form is P_in−P_out=dU/dt. If input exceeds loss, internal energy rises. At a steady temperature with unchanged phase and material state, internal energy is constant, so input and output rates balance. This is a driven thermal steady state, not thermal equilibrium with the cooler room. If the heater stops, the previously balanced state does not persist. The direction of spontaneous heat loss is still from hotter plate to cooler surroundings.\n\nMany advanced problems involve comparing rates at a specified target temperature rather than finding a final equilibrium temperature. Suppose uniform panels of the same material are kept at the same fixed surface temperature in identical surroundings. If heat loss per unit exposed area is the same, the total loss is proportional to exposed area. Doubling exposed area doubles the necessary input power under those assumptions. A cylindrical surface has lateral area 2πrL, while its cross-section is πr². These are different geometric measures. A process depending on cross-section must not be confused with one depending on exposed surface. In a cross-topic electrical model, resistance of a uniform wire is proportional to L/r² and electrical input power is I²R. At fixed temperature, a surface loss proportional to rL can be balanced against input, yielding I²/r² proportional to r and hence I proportional to r^(3/2). This is an optional conceptual bridge to PH11-10: it assumes fixed resistivity, uniform wire temperature, neglected end losses, and identical thermal boundary conditions. It is not a safe engineering design rule and does not authorize fuse experiments.\n\nA final distinction: at a phase transition a body can gain internal energy while its temperature stays constant, even without balancing an equal heat loss. Therefore constant temperature alone does not prove energy-rate balance. Establish the system, the energy paths, and whether phase or other state variables change before choosing a model. PH07-06 and PH07-11 develop these limitations.",
+      "prerequisites": [
+        "PH07-01"
+      ],
+      "derivation_steps": [
+        {
+          "action": "Choose the physical system and draw energy paths across its boundary.",
+          "why_valid": "Conservation relates changes of internal energy to transfers and work across that boundary.",
+          "science_ref_id": "PH07-02-SCI-01"
+        },
+        {
+          "action": "Compare input and output powers; integrate over a constant-rate interval.",
+          "why_valid": "Power is energy per unit time; net power controls internal-energy accumulation.",
+          "science_ref_id": "PH07-02-SCI-01"
+        },
+        {
+          "action": "Distinguish zero net transfer between contacting bodies from balanced nonzero rates.",
+          "why_valid": "A steady temperature with constant internal energy can coexist with a continuous energy flow.",
+          "science_ref_id": "PH07-02-SCI-01"
+        },
+        {
+          "action": "Compare surface and cross-sectional geometric measures only under specified conditions.",
+          "why_valid": "Distinct mechanisms depend on distinct geometric variables; model assumptions justify scaling.",
+          "science_ref_id": "PH07-02-SCI-01"
+        }
+      ],
+      "model_limits": [
+        "Heat is energy transferred because of temperature difference; internally generated energy or electrical work is not itself heat transfer.",
+        "Thermal equilibrium between bodies in contact means no net heat flow between them; a driven steady state can sustain nonzero energy fluxes.",
+        "Use P_in−P_out=dU/dt for the stated system; P in watts (J/s), U in joules.",
+        "Inferring temperature change from internal-energy change assumes unchanged phase and positive heat capacity; detailed calorimetry belongs to PH07-11.",
+        "For power-law surface loss, area proportionality assumes fixed surface temperature, ambient conditions, surface properties and heat-loss flux per unit area. This is a model, not a general fuse law."
+      ],
+      "progressive_examples": [
+        {
+          "id": "PH07-02-B01-EX1",
+          "tier": "FOUNDATION",
+          "problem": "A warm ceramic tile transfers 90 J to a cooler metal tile in an otherwise isolated pair. What are the energy changes?",
+          "reasoning": "Warm tile ΔU=−90 J; cooler tile ΔU=+90 J, assuming no other stores or work.",
+          "independent_check": "Their summed internal-energy change is zero."
+        },
+        {
+          "id": "PH07-02-B01-EX2",
+          "tier": "CONNECTED",
+          "problem": "An unchanged-phase plate receives 42 W and loses 30 W. Over 15 s the rates stay constant. Find its energy change and temperature trend.",
+          "reasoning": "Net rate is 12 W, so ΔU=180 J. Temperature rises if the heat capacity is positive and no other state variable changes.",
+          "independent_check": "Input 630 J minus loss 450 J equals 180 J."
+        },
+        {
+          "id": "PH07-02-B01-EX3",
+          "tier": "ADVANCED",
+          "problem": "Two identical-temperature flat plates have exposed areas 0.20 m² and 0.50 m². The first needs 24 W to remain steady. If area-specific loss and all other conditions are equal, what input maintains the second?",
+          "reasoning": "Loss flux=120 W/m². Second plate needs 60 W; it is in a driven steady state, not equilibrium with the room.",
+          "independent_check": "60/0.50=24/0.20=120 W/m²."
+        }
+      ],
+      "figures": [
+        {
+          "id": "PH07-02-FIG-BALANCE",
+          "reasoning_step": "Distinguish no net heat flow at equilibrium from continuous balanced input and output in a driven steady state.",
+          "scene_description": "Original paired thermal system diagram in Core1A.",
+          "source_or_authorship": "ORIGINAL_B01_SVG_INLINE"
+        }
+      ],
+      "misconception": {
+        "wrong_model": "Constant temperature means no heat transfer; all equal-temperature objects have equal internal energy.",
+        "diagnostic": "A heater continuously supplies power to an unchanged-temperature plate. Where does that energy go? Does equal temperature tell you the amount of matter?",
+        "repair": "Separate thermal state from internal energy and transfer; balance energy rates and check phase."
+      },
+      "exit_check": {
+        "task": "A steady warm solid receives 18 W and loses 18 W. It is hotter than the room. Is it in equilibrium with the room? What happens to its internal energy over 20 s?",
+        "answer": "No; internal-energy change is zero under the unchanged-state assumptions.",
+        "reasoning": "Input and loss are each 360 J; nonzero heat flow persists across a temperature difference."
+      },
+      "authorship_status": "DRAFT_AUTHOR_EXPOSED"
+    }
+  ],
+  "core1b": [
+    {
+      "id": "PH07-02-B01-MAIN-MODEL-R2",
+      "kind": "MAIN",
+      "subtopic_id": "PH07-02",
+      "qrt_target_id": "PH07-02-B01-D3-MODEL-01",
+      "fresh_task": "An insulated thermos is left undriven at room temperature, a warm incubator uses 32 W to maintain temperature above the room, and a melting sample receives 12 W without measurable loss. All readings remain constant. Construct a model for each, including whether internal energy changes and whether the surroundings are in equilibrium with it.",
+      "protected_work": "Choose a system-boundary energy-rate model and distinguish driven steady state from equilibrium and constant-temperature phase change.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Before drawing any diagrams, predict whether the thermos, incubator and melting sample have the same energy behaviour or different behaviour. Give one initial reason.",
+        "attempt": "An insulated thermos is left undriven at room temperature, a warm incubator uses 32 W to maintain temperature above the room, and a melting sample receives 12 W without measurable loss. All readings remain constant. Construct a model for each, including whether internal energy changes and whether the surroundings are in equilibrium with it.",
+        "reconstruct": "Thermos at same temperature: no net transfer, unchanged energy under assumptions. Incubator: nonzero balanced rates at steady state, not equilibrium with room. Melting sample: positive accumulation at constant T due to phase change. Distinguish observed constant T from the necessary system conditions.",
+        "diagnose": "Compare your energy paths with the observations: did you equate constant temperature with no energy transfer or overlook phase change?",
+        "repair": "Draw the system boundary, label input and loss rates, and only then infer the internal-energy and equilibrium conditions.",
+        "boundary_test": "If the incubator heater is disconnected, which energy-path inference changes first?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH07-02-B01-INSTANCE-MODEL-R2",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH07-02",
+      "qrt_target_id": "PH07-02-B01-D3-MODEL-01",
+      "fresh_task": "An unheated object matches the surroundings at 20 °C; a hotter electronically warmed solid loses 26 W and receives 26 W; an ice-water mixture receives 15 W while remaining at its melting point. Compare their energy diagrams and identify which are genuine equilibrium or steady-state examples.",
+      "protected_work": "Choose a system-boundary energy-rate model and distinguish driven steady state from equilibrium and constant-temperature phase change.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Which of the three objects do you initially think is accumulating energy? Record your prediction and reasoning before building diagrams.",
+        "attempt": "An unheated object matches the surroundings at 20 °C; a hotter electronically warmed solid loses 26 W and receives 26 W; an ice-water mixture receives 15 W while remaining at its melting point. Compare their energy diagrams and identify which are genuine equilibrium or steady-state examples.",
+        "reconstruct": "First is thermal equilibrium under stated conditions. Second is driven steady state with zero accumulation but nonzero transfer. Third gains internal energy despite constant temperature, as long as phase change persists and loss is negligible.",
+        "diagnose": "Compare your energy paths with the observations: did you equate constant temperature with no energy transfer or overlook phase change?",
+        "repair": "Draw the system boundary, label input and loss rates, and only then infer the internal-energy and equilibrium conditions.",
+        "boundary_test": "If the mixture also loses 15 W, what can be concluded about its net energy change, and what cannot be inferred from temperature alone?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH07-02-B01-MAIN-SYNTHESIZE-R2",
+      "kind": "MAIN",
+      "subtopic_id": "PH07-02",
+      "qrt_target_id": "PH07-02-B01-D3-SYNTHESIZE-01",
+      "fresh_task": "Two geometrically similar thin-walled warm shells have a drive power proportional to D²/a, and heat loss proportional to a², where a is size and D is drive setting. At the same fixed surface temperature, predict the ratio of D when size grows by factor 9; then discuss an extra loss independent of size.",
+      "protected_work": "Combine geometry-specific input and heat-loss models through conservation, then check how an additional loss path invalidates a simple scaling law.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "When the shell size increases ninefold, predict whether the required drive increases, decreases or stays constant. Give your initial reasoning.",
+        "attempt": "Two geometrically similar thin-walled warm shells have a drive power proportional to D²/a, and heat loss proportional to a², where a is size and D is drive setting. At the same fixed surface temperature, predict the ratio of D when size grows by factor 9; then discuss an extra loss independent of size.",
+        "reconstruct": "Steady balance D²/a ∝ a² gives D ∝ a^(3/2), ratio 27. A size-independent heat loss adds a term: D² ∝ a³ plus a term proportional to a, so the pure power law is no longer universal.",
+        "diagnose": "Identify the first point at which your calculation treated a cross-section and a surface as interchangeable, or ignored the extra heat loss.",
+        "repair": "Rebuild the two rate models independently and equate them only at the stated steady condition; retest any altered heat path.",
+        "boundary_test": "If all heat loss were size-independent, what drive exponent follows instead?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH07-02-B01-INSTANCE-SYNTHESIZE-R2",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH07-02",
+      "qrt_target_id": "PH07-02-B01-D3-SYNTHESIZE-01",
+      "fresh_task": "A heated cylindrical model has input power per unit length K X²/r² and lateral loss per unit length H r at a fixed temperature. A redesigned surface has radius 2r and doubles H, with K unchanged. Find the required factor change in X and identify the assumption needed for the prediction.",
+      "protected_work": "Combine geometry-specific input and heat-loss models through conservation, then check how an additional loss path invalidates a simple scaling law.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether the redesigned cylinder needs a larger, smaller or unchanged drive. Record your initial reason before finding its factor.",
+        "attempt": "A heated cylindrical model has input power per unit length K X²/r² and lateral loss per unit length H r at a fixed temperature. A redesigned surface has radius 2r and doubles H, with K unchanged. Find the required factor change in X and identify the assumption needed for the prediction.",
+        "reconstruct": "X²=H r³/K; changing H by 2 and r by 2 multiplies X² by 16, so X increases by 4. This requires the assumed fixed-temperature loss model and negligible other paths.",
+        "diagnose": "Identify the first point at which your calculation treated a cross-section and a surface as interchangeable, or ignored the extra heat loss.",
+        "repair": "Rebuild the two rate models independently and equate them only at the stated steady condition; retest any altered heat path.",
+        "boundary_test": "If H falls with increasing surface temperature, does this comparison at equal specified temperature justify predictions at a different temperature?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH07-02-B01-MAIN-JUSTIFY-R2",
+      "kind": "MAIN",
+      "subtopic_id": "PH07-02",
+      "qrt_target_id": "PH07-02-B01-D3-JUSTIFY-01",
+      "fresh_task": "A small cup and a much larger tank contain water at the same temperature; a heater maintains a separate warm vessel at that temperature while a meter records 60 W input. A technician says all three store the same thermal energy and none loses energy. Assess the claims and specify a measurement or assumption for each.",
+      "protected_work": "Judge whether a constant-temperature observation warrants claims about heat transfer and internal energy by constructing discriminating counterexamples.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Would you accept both of the technician's claims about the cup, tank and heated vessel? Record separate initial verdicts.",
+        "attempt": "A small cup and a much larger tank contain water at the same temperature; a heater maintains a separate warm vessel at that temperature while a meter records 60 W input. A technician says all three store the same thermal energy and none loses energy. Assess the claims and specify a measurement or assumption for each.",
+        "reconstruct": "Equal T does not imply equal U for different masses. The driven vessel at steady unchanged phase can lose 60 W despite stable temperature; verify loss with a system energy balance. Temperature alone does not determine U or the energy paths.",
+        "diagnose": "Identify the specific physical counterexample that defeats each general statement; check if you used temperature in place of an energy quantity.",
+        "repair": "State the system, mass and phase, identify the energy paths, and qualify each inference with its actual conditions.",
+        "boundary_test": "If the heated vessel is boiling with a fixed temperature but changing mass, why is the previous steady-state energy argument insufficient?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH07-02-B01-INSTANCE-JUSTIFY-R2",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH07-02",
+      "qrt_target_id": "PH07-02-B01-D3-JUSTIFY-01",
+      "fresh_task": "Two metal blocks at identical temperature have masses 1 kg and 4 kg; a third block at constant higher temperature receives 10 W continuously. A claim says the first two must contain equal energy and the third cannot exchange heat. Supply counterexamples and state what needs to be checked before inferring zero net accumulation.",
+      "protected_work": "Judge whether a constant-temperature observation warrants claims about heat transfer and internal energy by constructing discriminating counterexamples.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Before calculating, record whether you agree with each claim about the two blocks and the third heated block. Explain your initial basis.",
+        "attempt": "Two metal blocks at identical temperature have masses 1 kg and 4 kg; a third block at constant higher temperature receives 10 W continuously. A claim says the first two must contain equal energy and the third cannot exchange heat. Supply counterexamples and state what needs to be checked before inferring zero net accumulation.",
+        "reconstruct": "For identical material and common reference, different masses generally have different internal energy; equality of temperature only prevents net spontaneous heat transfer when in mutual thermal contact. Third block could lose 10 W at steady unchanged state; energy rates and phase must be checked.",
+        "diagnose": "Identify the specific physical counterexample that defeats each general statement; check if you used temperature in place of an energy quantity.",
+        "repair": "State the system, mass and phase, identify the energy paths, and qualify each inference with its actual conditions.",
+        "boundary_test": "If there is no input or work and the third block is hotter than its environment, what trend should follow under ordinary heat-loss conditions?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    }
+  ],
+  "core2_sources": [
+    {
+      "item_id": "NSEJS-FND-CIRC-04",
+      "source_role": "PREREQUISITE_BRIDGE",
+      "locator": "nsejs/physics/index.html?topic=circuits&q=NSEJS-FND-CIRC-04#NSEJS-FND-CIRC-04; existing foundation fuse candidate; observed display digest only, not original source digest",
+      "stem_sha256": "1fdcffaa02d1441a2cea832002471a25d62912036bcee0215aa321d4435bc9c5",
+      "figure_status": "NOT_APPLICABLE",
+      "key_status": "HOLD",
+      "academic_status": "HOLD"
+    }
+  ],
+  "acceptance": {
+    "b1_b7": {
+      "B1": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B2": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B3": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B4": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B5": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B6": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B7": {
+        "status": "HOLD",
+        "evidence_refs": []
+      }
+    },
+    "gates": {
+      "source_authenticity": "HOLD",
+      "content_correctness": "HOLD",
+      "cognitive_qualification": "HOLD",
+      "teaching_sufficiency": "HOLD",
+      "assessment_validity": "HOLD",
+      "implementation": "NOT_RUN",
+      "release_authority": "HOLD"
+    },
+    "release": "HOLD",
+    "acceptance_note": "B01 source-related isolated slice. Existing fuse candidate is a D2-labelled cross-topic bridge, not verified direct exam evidence; advanced scaling is authored transfer. C06 v1 MAIN placeholders, integrated tile MAIN pending. No academic approval inferred from software validation. R00 correction: all six predictions revised for exact tasks; cycle IDs R2 and uniquely versioned isolated slice (0.3.0-b01.2 history retained at reviewed commit). No final stage implementation or protected custody implied; inherited runtime still groups post-attempt stages. B5 HOLD."
+  }
+}

@@ -1,0 +1,50 @@
+name: Physics B01 + PH01 ephemeral integrated-tree QA
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/nsejs-physics-b01-ph01-crossbranch.yml"
+      - "tools/physics_b01_ph01_same_origin_qa.py"
+      - "nsejs/physics/curriculum/topics/PH07/b01/learner-preview/**"
+      - "nsejs/physics/curriculum/agent2/core1b-runtime.js"
+jobs:
+  crossbranch-technical-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Ephemeral merge of pinned PH01 R4.7 review stack (never push)
+        run: |
+          git config user.name "Ephemeral test merge"
+          git config user.email "test-merge@example.invalid"
+          git fetch origin b5472589a067593e55edd23fd0866c21704d1574
+          git merge --no-commit --no-ff FETCH_HEAD
+          test -f tools/physics_ph01_r47_browser_qa.py
+          test -f tools/physics_b01_r15_p00_browser_qa.py
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install QA and Chromium dependencies
+        run: |
+          python -m pip install -e '.[dev]'
+          python -m pip install playwright==1.55.0 pytest==8.4.2
+          python -m playwright install --with-deps chromium
+      - name: Full combined Python suite
+        run: python -m pytest -q
+      - name: B01 R15 browser gateway, 25 routes and PH09-PH12 regressions
+        run: python tools/physics_b01_r15_p00_browser_qa.py
+      - name: PH01 R4.7 original source and learning journeys
+        run: python tools/physics_ph01_r47_browser_qa.py
+      - name: PH01 and B01 first-attempt isolation on SAME HTTP origin
+        run: python tools/physics_b01_ph01_same_origin_qa.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: b01-ph01-ephemeral-qa-receipts
+          path: |
+            review-artifacts/physics-b01-r15-p00/
+            review-artifacts/physics-r47/
+            review-artifacts/physics-b01-ph01/
+          if-no-files-found: ignore

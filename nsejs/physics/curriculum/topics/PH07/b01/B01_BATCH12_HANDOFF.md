@@ -1,0 +1,13 @@
+# B01 Batch 12 — source identity corrections and integrated author curriculum proposal
+
+Parent: `574676dbf837741b071c95363fd2da842ca1565c`. All 25 base pairs, 14 supplementary pairs, existing adapters, shared reader, source bank, question map, and historical v1 registers remain unchanged. This is additive review preparation.
+
+## Source custody and identity
+
+Focused 2015 JS521, 2016 JS530 and 2017 JS534 screening, not an exhaustive paper census. Five additional observations: 2015 Q10 evaporation; 2016 Q36 infrared/dipole criterion (Chemistry bridge, provisional key only); 2017 Q1 pulse overlap, Q3 expansion of a hole and Q10 evaporative cooling. All route to existing learning; no copied question figure or new transfer pair. 2015 official paper/key visually inspected; 2016 archive page and provisional key text; 2017 third-party visual pages plus post-review key text. No final 2016 key located. Official 2020–21 paper and key screenshots still fail 404, but code51 Q4 was visually corroborated in an explicitly third-party solution copy. No publisher byte/rights custody.
+
+2018 JS511 Q9 and 2017 JS534 Q1 conflict with magnetic-braking and electrostatic bank labels respectively. 2018's previous metadata-only UID was also inappropriate: effective v2 mapping rejects it while retaining historical source records, reducing the effective metadata count from 13 to 12. Neither shared record is changed. Bank owner must quarantine the external claim or establish an exact alternate paper-code locator. 31 publisher locators + 1 bank-only candidate =32 source rows; 14 primary and 10 supporting-only subtopics, one without any source observation (PH08-09). PH07-03 receives only a supporting misconception bridge via 2017 Q10, not direct exam coverage. Zero direct exam admissions.
+
+## Author-side integration
+
+All 75 base INSTANCE candidates and 14 supplementary INSTANCE candidates now have exact version/blob bindings to 16 topic-cell groups. All 89 individual MAIN placeholders remain historical. The previous 15 mixed MAIN proposals are preserved; one new PH07 D3.3 mixed APPLY proposal combines PH07-02 fixed-voltage heating with PH07-11 calorimetry. It is explicitly EXTENSION_DEPENDENT; no compulsory-core gap closure. 16 potential mixed MAINs, zero canonical selections. 89 target and 16 mixed MAIN review rows have null independent scores/operations. The review HTML links every dedicated and supplemental pair; no protected runtime, no selection or actual admission. Existing 64 D3/25 D4 author nominations and 178 provisional cycles unchanged; mixed MAINs are separate drafts. B1–B7, source custody, academic qualification, platform and release gates HOLD. R00/R01/P00/Owner review required. No merge/deployment.

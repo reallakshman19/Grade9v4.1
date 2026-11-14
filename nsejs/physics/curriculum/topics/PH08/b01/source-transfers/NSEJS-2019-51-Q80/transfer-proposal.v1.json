@@ -1,0 +1,126 @@
+{
+  "schema": "b01-source-locator-transfer-proposal/v1",
+  "status": "AUTHOR_EXPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+  "subtopic_id": "PH08-11",
+  "scope_role": "SYLLABUS_CORE_CANDIDATE",
+  "source": {
+    "locator_id": "NSEJS-2019-51-Q80",
+    "year": 2019,
+    "code": 51,
+    "question_number": 80,
+    "printed_page": 18,
+    "paper_url": "https://iapt.org.in/wp-content/uploads/NSEJS_QP-2019.pdf",
+    "final_key_url": "https://iapt.org.in/wp-content/uploads/NSEJS_FINAL_ANSWER_KEY_2019.pdf",
+    "publisher_key": [
+      "D"
+    ],
+    "publisher_disposition": "KEY_OBSERVED",
+    "paper_visual_status": "PAGE_VISUALLY_INSPECTED",
+    "key_visual_status": "FINAL_KEY_VISUALLY_INSPECTED",
+    "source_bytes_sha256": null,
+    "rights_status": "HOLD",
+    "exact_source_revision_status": "HOLD",
+    "academic_admission": "HOLD",
+    "source_band": "NOT_QUALIFIED",
+    "map_binding": null,
+    "bank_binding": null,
+    "subtopic_id": "PH08-11",
+    "reasoning_observation": "Transverse motion of string and airborne longitudinal sound differ; common frequency does not imply equal wavelength. Publisher key D accepts an amplitude-squared loudness assertion; physically, intensity scales with pressure amplitude squared under matched impedance, while perceived loudness is not generally proportional and string-to-air coupling matters. Flag for R01."
+  },
+  "related_source_observations": [],
+  "prerequisite_support": [
+    "PH08-01",
+    "PH08-02",
+    "PH08-04",
+    "PH08-06"
+  ],
+  "existing_package_pin": {
+    "path": "nsejs/physics/curriculum/topics/PH08/b01/PH08-11/physics-topic-package.v1.json",
+    "blob": "7be5cc31d4ef89c0e291a71fe9e459ebe28284d1",
+    "version": "0.3.2-b01.8.ph08-11"
+  },
+  "target": {
+    "id": "PH08-11-B01-NSEJS-2019-51-Q80-D3-JUSTIFY-R1",
+    "band": "D3",
+    "cell": "D3.7",
+    "primary_operation": "JUSTIFY",
+    "task_identity": "PH08-11-B01-NSEJS-2019-51-Q80-D3-JUSTIFY-R1",
+    "source_role": "AUTHORED_TRANSFER",
+    "protected_work": "Evaluate claims of equal wavelength and amplitude-based loudness by constructing compatible countermodels and identifying independent measurements of coupling and propagation.",
+    "decisive_route": "Two sources have same measured string displacement amplitude but one radiates twice the pressure amplitude at a matched sensor. Can equal string amplitude prove equal intensity? Shortest valid route: No; different coupling gives different pressure. At same impedance, intensity ratio4, but loudness not fixed.",
+    "factor_evidence": {
+      "concept_model_selection": {
+        "score": 2,
+        "evidence": "Distinguish string transverse motion, airborne longitudinal propagation and perception."
+      },
+      "representation_translation": {
+        "score": 1,
+        "evidence": "Relate same-frequency boundary coupling to different medium wave speeds."
+      },
+      "reasoning_chain_length": {
+        "score": 2,
+        "evidence": "Construct counterexamples and discriminating calibrated measurements."
+      },
+      "algebra_computational_load": {
+        "score": 0,
+        "evidence": "Simple ratios incidental."
+      },
+      "trap_exception_sensitivity": {
+        "score": 2,
+        "evidence": "Intensity proportionality does not establish perceived loudness or universal string coupling."
+      }
+    },
+    "score": 7,
+    "status": "PROPOSED"
+  },
+  "core1a": {
+    "scientific_construction": "An ideal stretched string supports transverse displacement waves. It can drive air through its motion and a sounding body, generating longitudinal pressure disturbances. At a stationary coupling boundary driven periodically, the transmitted tone can share the source frequency while its wavelength changes because λ=v/f and wave speeds in string and air differ. The string displacement amplitude is not the airborne pressure amplitude. In a linear progressive sinusoidal acoustic field of fixed impedance Z, time-averaged intensity is p_peak²/(2Z); if pressure amplitude doubles at unchanged Z, intensity quadruples. The coupling from string displacement to pressure depends on frequency, geometry, damping, direction and radiation. Perceived loudness is not a universal linear function of intensity. A school-level amplitude-squared statement needs an explicitly limited physical model; keep publisher key unchanged and distinguish measured quantities.",
+    "worked_anchor": {
+      "task": "A string supports a 200 Hz wave at100 m/s; airborne tone has speed340 m/s. Compare wavelengths.",
+      "reasoning": "String 0.5 m; air1.7 m. Common frequency does not make wavelengths equal."
+    },
+    "model_limits": "Only specified ideal/matched conditions; extension relations are supplied, not independently warranted compulsory syllabus scope."
+  },
+  "core1b": [
+    {
+      "id": "PH08-11-B01-NSEJS-2019-51-Q80-D3-JUSTIFY-R1-MAIN_PLACEHOLDER",
+      "kind": "MAIN_PLACEHOLDER",
+      "task": "Two sounding boards carry identical strings whose measured periodic motions have equal frequency and equal displacement amplitude. One board produces a calibrated microphone pressure amplitude twice the other at the same location in the same air. A report states the strings must have different frequencies and the louder board's wave must have twice the wavelength. Evaluate the claims, construct a consistent alternative and identify measurements that could test it.",
+      "protected_work": "Evaluate claims of equal wavelength and amplitude-based loudness by constructing compatible countermodels and identifying independent measurements of coupling and propagation.",
+      "stages": {
+        "predict": "Predict whether a larger microphone reading requires different fundamental frequency.",
+        "attempt": "Two sounding boards carry identical strings whose measured periodic motions have equal frequency and equal displacement amplitude. One board produces a calibrated microphone pressure amplitude twice the other at the same location in the same air. A report states the strings must have different frequencies and the louder board's wave must have twice the wavelength. Evaluate the claims, construct a consistent alternative and identify measurements that could test it.",
+        "reconstruct": "Same measured f and same air speed imply same airborne λ; changed coupling may double pressure without frequency change. Under matched linear progressive conditions intensity ratio4, not automatically perceived loudness ratio. Measure source motion, air speed, calibrated pressure and angular/field response.",
+        "diagnose": "Identify confusion between source displacement, sound pressure, intensity and loudness, or between shared frequency and wavelength.",
+        "repair": "Label each medium and measured variable, calculate λ separately, compare calibrated intensities only under stated impedance and field assumptions.",
+        "boundary_test": "If the microphones are in different gases with unknown impedances, can pressure ratio alone establish intensity ratio4?"
+      },
+      "boundary_response_criterion": "No; I_A/I_B=4Z_B/Z_A under stated acoustic model.",
+      "attempt_policy": "PROPOSED_ONLY_PUBLIC_AUTHOR_EXPOSED",
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH08-11-B01-NSEJS-2019-51-Q80-D3-JUSTIFY-R1-INSTANCE",
+      "kind": "INSTANCE",
+      "task": "A string wave and radiated airborne tone have common frequency 250 Hz. String speed125 m/s; air speed350 m/s. Two configurations use the same string displacement amplitude but different sounding bodies, with pressure amplitudes 3 and 6 Pa in matched progressive air fields. A student claims the wavelengths are equal and the second configuration is four times as loud. Assess both claims and state a defensible quantitative conclusion.",
+      "protected_work": "Evaluate claims of equal wavelength and amplitude-based loudness by constructing compatible countermodels and identifying independent measurements of coupling and propagation.",
+      "stages": {
+        "predict": "Predict which of the two claims, if either, follows from a common source frequency.",
+        "attempt": "A string wave and radiated airborne tone have common frequency 250 Hz. String speed125 m/s; air speed350 m/s. Two configurations use the same string displacement amplitude but different sounding bodies, with pressure amplitudes 3 and 6 Pa in matched progressive air fields. A student claims the wavelengths are equal and the second configuration is four times as loud. Assess both claims and state a defensible quantitative conclusion.",
+        "reconstruct": "String λ=0.5 m, air λ=1.4 m, not equal. Same impedance gives intensity ratio4; loudness ratio not established. Coupling can account for pressure difference without string displacement change.",
+        "diagnose": "Identify confusion between source displacement, sound pressure, intensity and loudness, or between shared frequency and wavelength.",
+        "repair": "Label each medium and measured variable, calculate λ separately, compare calibrated intensities only under stated impedance and field assumptions.",
+        "boundary_test": "If the air speed becomes125 m/s while f stays250 Hz, what changes in the wavelength claim?"
+      },
+      "boundary_response_criterion": "Both wavelengths become0.5 m under given models, but equality is conditional on matching wave speed and frequency.",
+      "attempt_policy": "PROPOSED_ONLY_PUBLIC_AUTHOR_EXPOSED",
+      "runtime_verification": "NOT_RUN"
+    }
+  ],
+  "acceptance": {
+    "b1_b7": "HOLD",
+    "canonical_integration": "NOT_SELECTED",
+    "source_admission": "HOLD",
+    "release": "HOLD"
+  }
+}

@@ -1,0 +1,1803 @@
+{
+  "schema": "b01-mixed-main-integration-proposal/v1",
+  "status": "AUTHOR_PROPOSAL_ONLY__INTEGRATION_HOLD",
+  "source_commit": "60fcfb207ac45fe0b9e3a3f90f4d35c59f82d88d",
+  "blueprint": {
+    "path": "templates/physics-blueprint/physics-blueprint.D3-D4.resolved.v0.2.0.json",
+    "blob": "b53b970d9ff99e696e84fe6b77805dbf25e0c544",
+    "version": "0.2.0"
+  },
+  "registry_blob": "9c8bde7e19ac5c8d96f3c86a21ac6cc86bb9705f",
+  "authority": "R01 qualifies scientific operation/band and cross-instance equivalence; P00/R00 verify implementation; Owner selects canonical adapter and MAIN.",
+  "rule": "One proposed mixed MAIN per multi-instance topic/cell group, plus all selected isolated INSTANCE bindings. Previous 75 MAINs are placeholders, preserved as history; not extra canonical MAINs. A mixed MAIN samples at least two instances; unmixed instances still require independent equivalence review. No selection or runtime implementation.",
+  "groups": [
+    {
+      "tile_id": "PHY-PH07-D3.2",
+      "adapter_id": "PHYS-TOPIC-PH07",
+      "cell": "D3.2",
+      "selected_canonical_main": null,
+      "proposed_mixed_main": {
+        "id": "B01-PH07-D3.2-MIXED-MAIN-PROPOSAL-R1",
+        "status": "AUTHOR_PROPOSED_NOT_QUALIFIED",
+        "band": "D3",
+        "primary_operation": "EXPLAIN",
+        "mixed_subtopics": [
+          "PH07-03",
+          "PH07-04"
+        ],
+        "scope_role": "CANDIDATE",
+        "protected_work": "Distinguish conductive and buoyancy-driven energy routes in an apparatus where a material change and a flow intervention give different observations.",
+        "first_attempt": "A sealed box has two identical-temperature hot plates on insulating feet. Plate A touches a metal rail that reaches the cool wall; plate B has no rail. A fan changes the steady power needed for both plates, but removing A's rail reduces only A's required power. Explain the two interventions and why a single material property cannot explain both results. Propose a matched control.",
+        "predict": "Predict whether removing the rail and switching the fan off necessarily affect the same energy path.",
+        "reconstruct": "Rail supplies a conductive bypass; fan changes external convection; steady input measures total loss, not a unique component. Compare rail present/absent and fan on/off at matched face temperatures, supports and surroundings. Radiation remains a possible path.",
+        "diagnose": "Compare your saved reasoning with the reconstructed route. Identify the first invalid assumption, missing constraint or mismatched representation in this specific problem.",
+        "repair": "Rebuild the decisive construction using the cited subtopic instances and verify the result against the independent observation or boundary condition.",
+        "boundary_test": "If the air is replaced by ideal vacuum while the rail remains, which named path is removed and which can persist?",
+        "boundary_response_criterion": "Air convection is removed; rail conduction and radiation can persist.",
+        "factor_evidence": {
+          "concept_model_selection": {
+            "score": 2,
+            "evidence": "Two mechanisms must be selected"
+          },
+          "representation_translation": {
+            "score": 1,
+            "evidence": "apparatus interventions map to paths"
+          },
+          "reasoning_chain_length": {
+            "score": 2,
+            "evidence": "causal chain and matched control"
+          },
+          "algebra_computational_load": {
+            "score": 0,
+            "evidence": "arithmetic immaterial"
+          },
+          "trap_exception_sensitivity": {
+            "score": 2,
+            "evidence": "equal temperatures and combined loss can mislead."
+          }
+        },
+        "score": 7,
+        "academic_status": "HOLD",
+        "runtime_status": "NOT_IMPLEMENTED",
+        "direct_exam_admission": "HOLD"
+      },
+      "instances": [
+        {
+          "subtopic_id": "PH07-03",
+          "target_id": "PH07-03-B01-D3-EXPLAIN-01",
+          "task_identity": "G9-B01-PH07-03-EXPLAIN-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH07/b01/PH07-03/physics-topic-package.v1.json",
+          "package_blob": "3b65c82ffe80911375bc037454e8e178bdb822bc",
+          "package_version": "0.3.3-b01.6.ph07-03",
+          "instance_cycle": "PH07-03-B01-INSTANCE-EXPLAIN-R2",
+          "prior_main_placeholder": "PH07-03-B01-MAIN-EXPLAIN-R2"
+        },
+        {
+          "subtopic_id": "PH07-04",
+          "target_id": "PH07-04-B01-D3-EXPLAIN-01",
+          "task_identity": "G9-B01-PH07-04-EXPLAIN-R2",
+          "package_path": "nsejs/physics/curriculum/topics/PH07/b01/PH07-04/physics-topic-package.v1.json",
+          "package_blob": "0493a60b39d9ebc6e3a3f312d0cc544717531ae6",
+          "package_version": "0.3.3-b01.8.ph07-04",
+          "instance_cycle": "PH07-04-B01-INSTANCE-EXPLAIN-R3",
+          "prior_main_placeholder": "PH07-04-B01-MAIN-EXPLAIN-R3"
+        },
+        {
+          "subtopic_id": "PH07-05",
+          "target_id": "PH07-05-B01-D3-EXPLAIN-01",
+          "task_identity": "G9-B01-PH07-05-EXPLAIN-R2",
+          "package_path": "nsejs/physics/curriculum/topics/PH07/b01/PH07-05/physics-topic-package.v1.json",
+          "package_blob": "b944d121188a511ec8c03a834fce8d73b1960ca7",
+          "package_version": "0.3.3-b01.8.ph07-05",
+          "instance_cycle": "PH07-05-B01-INSTANCE-EXPLAIN-R3",
+          "prior_main_placeholder": "PH07-05-B01-MAIN-EXPLAIN-R3"
+        },
+        {
+          "subtopic_id": "PH07-06",
+          "target_id": "PH07-06-B01-D3-EXPLAIN-01",
+          "task_identity": "G9-B01-PH07-06-EXPLAIN-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH07/b01/PH07-06/physics-topic-package.v1.json",
+          "package_blob": "9f53962e02ff87ac31c66fe1dbc8a9b3130e7525",
+          "package_version": "0.3.2-b01.5.ph07-06",
+          "instance_cycle": "PH07-06-B01-INSTANCE-EXPLAIN-R2",
+          "prior_main_placeholder": "PH07-06-B01-MAIN-EXPLAIN-R2"
+        },
+        {
+          "subtopic_id": "PH07-07",
+          "target_id": "PH07-07-B01-D3-EXPLAIN-01",
+          "task_identity": "G9-B01-PH07-07-EXPLAIN-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH07/b01/PH07-07/physics-topic-package.v1.json",
+          "package_blob": "ecf4116c599a27d6d3f4ae0737a8c759dba2d527",
+          "package_version": "0.3.2-b01.5.ph07-07",
+          "instance_cycle": "PH07-07-B01-INSTANCE-EXPLAIN-R2",
+          "prior_main_placeholder": "PH07-07-B01-MAIN-EXPLAIN-R2"
+        },
+        {
+          "subtopic_id": "PH07-09",
+          "target_id": "PH07-09-B01-D3-EXPLAIN-01",
+          "task_identity": "G9-B01-PH07-09-EXPLAIN-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH07/b01/PH07-09/physics-topic-package.v1.json",
+          "package_blob": "cbebfdc90c1a8aea35fa446c69dfe25cb1ef22a0",
+          "package_version": "0.3.2-b01.7.ph07-09",
+          "instance_cycle": "PH07-09-B01-INSTANCE-EXPLAIN-R2",
+          "prior_main_placeholder": "PH07-09-B01-MAIN-EXPLAIN-R2"
+        }
+      ],
+      "legacy_candidates": [
+        {
+          "subtopic_id": "PH07-05",
+          "target_id": "PH07-LEAD-EXPLAIN-D3",
+          "task_identity": "G9-AUTH-PH07-EXPLAIN-001",
+          "package_blob": "6dbb424be53b65bea169dd813299cae479f18c89",
+          "package_version": "0.2.0",
+          "kind": "LEGACY"
+        },
+        {
+          "subtopic_id": "PH07-07",
+          "target_id": "PH07-07-D3-EXPLAIN-02",
+          "task_identity": "G9-AUTH-PH07-07-EXPLAIN-002",
+          "package_blob": "6dbb424be53b65bea169dd813299cae479f18c89",
+          "package_version": "0.2.0",
+          "kind": "LEGACY"
+        }
+      ],
+      "compatibility_status": "NOT_QUALIFIED",
+      "unmixed_instances": [
+        "PH07-05",
+        "PH07-06",
+        "PH07-07",
+        "PH07-09"
+      ],
+      "gap": null
+    },
+    {
+      "tile_id": "PHY-PH07-D3.4",
+      "adapter_id": "PHYS-TOPIC-PH07",
+      "cell": "D3.4",
+      "selected_canonical_main": null,
+      "proposed_mixed_main": {
+        "id": "B01-PH07-D3.4-MIXED-MAIN-PROPOSAL-R1",
+        "status": "AUTHOR_PROPOSED_NOT_QUALIFIED",
+        "band": "D3",
+        "primary_operation": "MODEL",
+        "mixed_subtopics": [
+          "PH07-01",
+          "PH07-02"
+        ],
+        "scope_role": "CANDIDATE",
+        "protected_work": "Use independently calibrated temperature and power evidence to distinguish equilibrium from driven steady state.",
+        "first_attempt": "A raw sensor reads 20 in a 0 °C bath and 80 in a 60 °C bath; a 30 °C check reads 50. Two identical dry blocks each read 60 in a 25 °C room. Block A's heater delivers 12 W and measured outward loss is 12 W; B has no heater and its reading falls over time. Calibrate the shared initial temperature and choose a state/energy model for each. Explain which observation discriminates the models.",
+        "predict": "Predict whether the equal initial readings establish identical energy-transfer behaviour.",
+        "reconstruct": "θ=r−20 gives 40 °C and independent midpoint fits. A is driven steady state with equal nonzero input/loss; B is cooling, not equilibrium with room. Identical initial T does not establish identical rates. Calibration alone cannot distinguish energy model.",
+        "diagnose": "Compare your saved reasoning with the reconstructed route. Identify the first invalid assumption, missing constraint or mismatched representation in this specific problem.",
+        "repair": "Rebuild the decisive construction using the cited subtopic instances and verify the result against the independent observation or boundary condition.",
+        "boundary_test": "If the midpoint instead reads 54 exactly, can the initial 40 °C value be certified from the offset model?",
+        "boundary_response_criterion": "No. Third point contradicts the offset-only linear fit; temperature estimate conditional, though heater/loss measurements still bear on energy accounting.",
+        "factor_evidence": {
+          "concept_model_selection": {
+            "score": 2,
+            "evidence": "Select scale and state models"
+          },
+          "representation_translation": {
+            "score": 1,
+            "evidence": "translate raw/physical readings"
+          },
+          "reasoning_chain_length": {
+            "score": 2,
+            "evidence": "calibrate then interpret independent power evidence"
+          },
+          "algebra_computational_load": {
+            "score": 1,
+            "evidence": "routine subtraction"
+          },
+          "trap_exception_sensitivity": {
+            "score": 1,
+            "evidence": "same state reading not same process."
+          }
+        },
+        "score": 7,
+        "academic_status": "HOLD",
+        "runtime_status": "NOT_IMPLEMENTED",
+        "direct_exam_admission": "HOLD"
+      },
+      "instances": [
+        {
+          "subtopic_id": "PH07-01",
+          "target_id": "PH07-01-B01-D3-MODEL-01",
+          "task_identity": "G9-B01-PH07-01-MODEL-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH07/b01/PH07-01/physics-topic-package.v1.json",
+          "package_blob": "65bea0d422b7c76bfb64946748ad873f2270262f",
+          "package_version": "0.3.2-b01.5.ph07-01",
+          "instance_cycle": "PH07-01-B01-INSTANCE-MODEL-R2",
+          "prior_main_placeholder": "PH07-01-B01-MAIN-MODEL-R2"
+        },
+        {
+          "subtopic_id": "PH07-02",
+          "target_id": "PH07-02-B01-D3-MODEL-01",
+          "task_identity": "G9-B01-PH07-02-MODEL-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH07/b01/PH07-02/physics-topic-package.v1.json",
+          "package_blob": "c0e3fe07c15dd865e19ec9ec339d704e1d3495be",
+          "package_version": "0.3.2-b01.5.ph07-02",
+          "instance_cycle": "PH07-02-B01-INSTANCE-MODEL-R2",
+          "prior_main_placeholder": "PH07-02-B01-MAIN-MODEL-R2"
+        },
+        {
+          "subtopic_id": "PH07-04",
+          "target_id": "PH07-04-B01-D3-MODEL-01",
+          "task_identity": "G9-B01-PH07-04-MODEL-R2",
+          "package_path": "nsejs/physics/curriculum/topics/PH07/b01/PH07-04/physics-topic-package.v1.json",
+          "package_blob": "0493a60b39d9ebc6e3a3f312d0cc544717531ae6",
+          "package_version": "0.3.3-b01.8.ph07-04",
+          "instance_cycle": "PH07-04-B01-INSTANCE-MODEL-R3",
+          "prior_main_placeholder": "PH07-04-B01-MAIN-MODEL-R3"
+        },
+        {
+          "subtopic_id": "PH07-09",
+          "target_id": "PH07-09-B01-D3-MODEL-01",
+          "task_identity": "G9-B01-PH07-09-MODEL-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH07/b01/PH07-09/physics-topic-package.v1.json",
+          "package_blob": "cbebfdc90c1a8aea35fa446c69dfe25cb1ef22a0",
+          "package_version": "0.3.2-b01.7.ph07-09",
+          "instance_cycle": "PH07-09-B01-INSTANCE-MODEL-R2",
+          "prior_main_placeholder": "PH07-09-B01-MAIN-MODEL-R2"
+        }
+      ],
+      "legacy_candidates": [
+        {
+          "subtopic_id": "PH07-05",
+          "target_id": "PH07-LEAD-MODEL-D3",
+          "task_identity": "G9-AUTH-PH07-MODEL-001",
+          "package_blob": "6dbb424be53b65bea169dd813299cae479f18c89",
+          "package_version": "0.2.0",
+          "kind": "LEGACY"
+        },
+        {
+          "subtopic_id": "PH07-07",
+          "target_id": "PH07-07-D3-MODEL-02",
+          "task_identity": "G9-AUTH-PH07-07-MODEL-002",
+          "package_blob": "6dbb424be53b65bea169dd813299cae479f18c89",
+          "package_version": "0.2.0",
+          "kind": "LEGACY"
+        }
+      ],
+      "compatibility_status": "NOT_QUALIFIED",
+      "unmixed_instances": [
+        "PH07-04",
+        "PH07-09"
+      ],
+      "gap": null
+    },
+    {
+      "tile_id": "PHY-PH07-D3.6",
+      "adapter_id": "PHYS-TOPIC-PH07",
+      "cell": "D3.6",
+      "selected_canonical_main": null,
+      "proposed_mixed_main": {
+        "id": "B01-PH07-D3.6-MIXED-MAIN-PROPOSAL-R1",
+        "status": "AUTHOR_PROPOSED_NOT_QUALIFIED",
+        "band": "D3",
+        "primary_operation": "SYNTHESIZE",
+        "mixed_subtopics": [
+          "PH07-05",
+          "PH07-07"
+        ],
+        "scope_role": "CANDIDATE",
+        "protected_work": "Combine absorbed radiation, evaporation and other heat losses to determine and test the direction of temperature change.",
+        "first_attempt": "A wet dark surface absorbs 48 W of light and loses 18 W through non-evaporative paths. Its measured true evaporation rate is 0.010 g/s; supplied vaporization energy is 2400 J/g and effective capacity is 300 J/K. Determine its initial temperature trend and the threshold evaporation rate for no net accumulation. A dry reference absorbs the same power with identical other losses; compare its initial slope.",
+        "predict": "Predict whether the wet surface must cool merely because it evaporates.",
+        "reconstruct": "Evaporation24 W; wet net+6 W, slope0.02 K/s. Threshold(48−18)/2400=0.0125 g/s. Dry net30 W, slope0.10 K/s if same effective capacity. Both warm, dry faster under matched assumptions.",
+        "diagnose": "Compare your saved reasoning with the reconstructed route. Identify the first invalid assumption, missing constraint or mismatched representation in this specific problem.",
+        "repair": "Rebuild the decisive construction using the cited subtopic instances and verify the result against the independent observation or boundary condition.",
+        "boundary_test": "If a fan adds 12 W to other wet-surface loss while evaporation stays fixed, what changes?",
+        "boundary_response_criterion": "Wet net−6 W and slope−0.02 K/s under fixed capacity; threshold becomes0.0075 g/s.",
+        "factor_evidence": {
+          "concept_model_selection": {
+            "score": 2,
+            "evidence": "Combine radiation/evaporation models"
+          },
+          "representation_translation": {
+            "score": 1,
+            "evidence": "align rates in one account"
+          },
+          "reasoning_chain_length": {
+            "score": 2,
+            "evidence": "calculate threshold and compare dry reference"
+          },
+          "algebra_computational_load": {
+            "score": 1,
+            "evidence": "material arithmetic"
+          },
+          "trap_exception_sensitivity": {
+            "score": 1,
+            "evidence": "evaporation need not cause cooling."
+          }
+        },
+        "score": 7,
+        "academic_status": "HOLD",
+        "runtime_status": "NOT_IMPLEMENTED",
+        "direct_exam_admission": "HOLD"
+      },
+      "instances": [
+        {
+          "subtopic_id": "PH07-02",
+          "target_id": "PH07-02-B01-D3-SYNTHESIZE-01",
+          "task_identity": "G9-B01-PH07-02-SYNTHESIZE-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH07/b01/PH07-02/physics-topic-package.v1.json",
+          "package_blob": "c0e3fe07c15dd865e19ec9ec339d704e1d3495be",
+          "package_version": "0.3.2-b01.5.ph07-02",
+          "instance_cycle": "PH07-02-B01-INSTANCE-SYNTHESIZE-R2",
+          "prior_main_placeholder": "PH07-02-B01-MAIN-SYNTHESIZE-R2"
+        },
+        {
+          "subtopic_id": "PH07-05",
+          "target_id": "PH07-05-B01-D3-SYNTHESIZE-01",
+          "task_identity": "G9-B01-PH07-05-SYNTHESIZE-R2",
+          "package_path": "nsejs/physics/curriculum/topics/PH07/b01/PH07-05/physics-topic-package.v1.json",
+          "package_blob": "b944d121188a511ec8c03a834fce8d73b1960ca7",
+          "package_version": "0.3.3-b01.8.ph07-05",
+          "instance_cycle": "PH07-05-B01-INSTANCE-SYNTHESIZE-R3",
+          "prior_main_placeholder": "PH07-05-B01-MAIN-SYNTHESIZE-R3"
+        },
+        {
+          "subtopic_id": "PH07-07",
+          "target_id": "PH07-07-B01-D3-SYNTHESIZE-01",
+          "task_identity": "G9-B01-PH07-07-SYNTHESIZE-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH07/b01/PH07-07/physics-topic-package.v1.json",
+          "package_blob": "ecf4116c599a27d6d3f4ae0737a8c759dba2d527",
+          "package_version": "0.3.2-b01.5.ph07-07",
+          "instance_cycle": "PH07-07-B01-INSTANCE-SYNTHESIZE-R2",
+          "prior_main_placeholder": "PH07-07-B01-MAIN-SYNTHESIZE-R2"
+        }
+      ],
+      "legacy_candidates": [
+        {
+          "subtopic_id": "PH07-05",
+          "target_id": "PH07-LEAD-SYNTHESIZE-D3",
+          "task_identity": "G9-AUTH-PH07-SYNTHESIZE-001",
+          "package_blob": "6dbb424be53b65bea169dd813299cae479f18c89",
+          "package_version": "0.2.0",
+          "kind": "LEGACY"
+        },
+        {
+          "subtopic_id": "PH07-07",
+          "target_id": "PH07-07-D3-SYNTHESIZE-02",
+          "task_identity": "G9-AUTH-PH07-07-SYNTHESIZE-002",
+          "package_blob": "6dbb424be53b65bea169dd813299cae479f18c89",
+          "package_version": "0.2.0",
+          "kind": "LEGACY"
+        }
+      ],
+      "compatibility_status": "NOT_QUALIFIED",
+      "unmixed_instances": [
+        "PH07-02"
+      ],
+      "gap": null
+    },
+    {
+      "tile_id": "PHY-PH08-D3.4",
+      "adapter_id": "PHYS-TOPIC-PH08",
+      "cell": "D3.4",
+      "selected_canonical_main": null,
+      "proposed_mixed_main": {
+        "id": "B01-PH08-D3.4-MIXED-MAIN-PROPOSAL-R1",
+        "status": "AUTHOR_PROPOSED_NOT_QUALIFIED",
+        "band": "D3",
+        "primary_operation": "MODEL",
+        "mixed_subtopics": [
+          "PH08-05",
+          "PH08-10"
+        ],
+        "scope_role": "CANDIDATE",
+        "protected_work": "Choose a shared propagation-speed and timing-offset model using independent one-way and round-trip observations.",
+        "first_attempt": "A timing apparatus records one-way arrivals at known separations 1.2 m and 3.0 m after 6 and 12 ms. In a separate normal pulse-echo mode the same instrument delay is stipulated, and a known reflector 2.4 m away returns at 18 ms. Fit speed and common offset from one-way data, test the echo reading, and give conditional range for a new return at 24 ms.",
+        "predict": "Predict whether raw times alone establish a single speed and range without calibration.",
+        "reconstruct": "v=1.8/0.006=300 m/s; offset=2 ms. Echo predicted2+2×2.4/300×1000=18 ms, fits. New corrected22 ms → range3.3 m. Common delay and normal round trip stipulated, not universal.",
+        "diagnose": "Compare your saved reasoning with the reconstructed route. Identify the first invalid assumption, missing constraint or mismatched representation in this specific problem.",
+        "repair": "Rebuild the decisive construction using the cited subtopic instances and verify the result against the independent observation or boundary condition.",
+        "boundary_test": "If reference echo instead arrives at 20 ms exactly, what should change in the conclusion?",
+        "boundary_response_criterion": "Common one-way/echo timing model fails; range estimate remains conditional until delay or path discrepancy resolved.",
+        "factor_evidence": {
+          "concept_model_selection": {
+            "score": 2,
+            "evidence": "Select common offset and path model"
+          },
+          "representation_translation": {
+            "score": 1,
+            "evidence": "translate two experiment types"
+          },
+          "reasoning_chain_length": {
+            "score": 2,
+            "evidence": "fit then independently check"
+          },
+          "algebra_computational_load": {
+            "score": 1,
+            "evidence": "routine coupled arithmetic"
+          },
+          "trap_exception_sensitivity": {
+            "score": 1,
+            "evidence": "raw time includes delay."
+          }
+        },
+        "score": 7,
+        "academic_status": "HOLD",
+        "runtime_status": "NOT_IMPLEMENTED",
+        "direct_exam_admission": "HOLD"
+      },
+      "instances": [
+        {
+          "subtopic_id": "PH08-01",
+          "target_id": "PH08-01-B01-D3-MODEL-01",
+          "task_identity": "G9-B01-PH08-01-MODEL-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH08/b01/PH08-01/physics-topic-package.v1.json",
+          "package_blob": "9c0f6dbe1939a1f20b78a807408575513220c2bf",
+          "package_version": "0.3.2-b01.6.ph08-01",
+          "instance_cycle": "PH08-01-B01-INSTANCE-MODEL-R2",
+          "prior_main_placeholder": "PH08-01-B01-MAIN-MODEL-R2"
+        },
+        {
+          "subtopic_id": "PH08-03",
+          "target_id": "PH08-03-B01-D3-MODEL-01",
+          "task_identity": "G9-B01-PH08-03-MODEL-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH08/b01/PH08-03/physics-topic-package.v1.json",
+          "package_blob": "73b9a1b8d547c16b46c842e7ae22ebac7c4941d6",
+          "package_version": "0.3.2-b01.7.ph08-03",
+          "instance_cycle": "PH08-03-B01-INSTANCE-MODEL-R2",
+          "prior_main_placeholder": "PH08-03-B01-MAIN-MODEL-R2"
+        },
+        {
+          "subtopic_id": "PH08-05",
+          "target_id": "PH08-05-B01-D3-MODEL-01",
+          "task_identity": "G9-B01-PH08-05-MODEL-R2",
+          "package_path": "nsejs/physics/curriculum/topics/PH08/b01/PH08-05/physics-topic-package.v1.json",
+          "package_blob": "580213b3e051fe2b26905a058db1f135aa7f0d92",
+          "package_version": "0.3.3-b01.8.ph08-05",
+          "instance_cycle": "PH08-05-B01-INSTANCE-MODEL-R3",
+          "prior_main_placeholder": "PH08-05-B01-MAIN-MODEL-R3"
+        },
+        {
+          "subtopic_id": "PH08-06",
+          "target_id": "PH08-06-B01-D3-MODEL-01",
+          "task_identity": "G9-B01-PH08-06-MODEL-R2",
+          "package_path": "nsejs/physics/curriculum/topics/PH08/b01/PH08-06/physics-topic-package.v1.json",
+          "package_blob": "342e72db58e2c1a7347138ac0425258cc35549eb",
+          "package_version": "0.3.3-b01.8.ph08-06",
+          "instance_cycle": "PH08-06-B01-INSTANCE-MODEL-R3",
+          "prior_main_placeholder": "PH08-06-B01-MAIN-MODEL-R3"
+        },
+        {
+          "subtopic_id": "PH08-08",
+          "target_id": "PH08-08-B01-D3-MODEL-01",
+          "task_identity": "G9-B01-PH08-08-MODEL-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH08/b01/PH08-08/physics-topic-package.v1.json",
+          "package_blob": "5c49278b7fa7f62ba0e3d443c5c25a003402c8c4",
+          "package_version": "0.3.2-b01.5.ph08-08",
+          "instance_cycle": "PH08-08-B01-INSTANCE-MODEL-R2",
+          "prior_main_placeholder": "PH08-08-B01-MAIN-MODEL-R2"
+        },
+        {
+          "subtopic_id": "PH08-10",
+          "target_id": "PH08-10-B01-D3-MODEL-01",
+          "task_identity": "G9-B01-PH08-10-MODEL-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH08/b01/PH08-10/physics-topic-package.v1.json",
+          "package_blob": "c251a934b1d992b5b92361cb65ebb8a6addb8204",
+          "package_version": "0.3.2-b01.7.ph08-10",
+          "instance_cycle": "PH08-10-B01-INSTANCE-MODEL-R2",
+          "prior_main_placeholder": "PH08-10-B01-MAIN-MODEL-R2"
+        },
+        {
+          "subtopic_id": "PH08-11",
+          "target_id": "PH08-11-B01-D3-MODEL-01",
+          "task_identity": "G9-B01-PH08-11-MODEL-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH08/b01/PH08-11/physics-topic-package.v1.json",
+          "package_blob": "7be5cc31d4ef89c0e291a71fe9e459ebe28284d1",
+          "package_version": "0.3.2-b01.8.ph08-11",
+          "instance_cycle": "PH08-11-B01-INSTANCE-MODEL-R2",
+          "prior_main_placeholder": "PH08-11-B01-MAIN-MODEL-R2"
+        }
+      ],
+      "legacy_candidates": [
+        {
+          "subtopic_id": "PH08-08",
+          "target_id": "PH08-LEAD-MODEL-D3",
+          "task_identity": "G9-AUTH-PH08-MODEL-001",
+          "package_blob": "0e7ddad0b150da4e03af7feedafc9a1dea461440",
+          "package_version": "0.2.0",
+          "kind": "LEGACY"
+        }
+      ],
+      "compatibility_status": "NOT_QUALIFIED",
+      "unmixed_instances": [
+        "PH08-01",
+        "PH08-03",
+        "PH08-06",
+        "PH08-08",
+        "PH08-11"
+      ],
+      "gap": null
+    },
+    {
+      "tile_id": "PHY-PH08-D3.3",
+      "adapter_id": "PHYS-TOPIC-PH08",
+      "cell": "D3.3",
+      "selected_canonical_main": null,
+      "proposed_mixed_main": {
+        "id": "B01-PH08-D3.3-MIXED-MAIN-PROPOSAL-R1",
+        "status": "AUTHOR_PROPOSED_NOT_QUALIFIED",
+        "band": "D3",
+        "primary_operation": "APPLY",
+        "mixed_subtopics": [
+          "PH08-04",
+          "PH08-08"
+        ],
+        "scope_role": "CANDIDATE",
+        "protected_work": "Execute a wave-speed measurement and separated-source echo geometry calculation with the correct timing reference.",
+        "first_attempt": "Successive pressure compressions are 0.68 m apart and successive microphone maxima are 2 ms apart in a uniform medium. A pulse experiment in that medium has source and receiver 6 m apart parallel to a large wall, both at equal normal distance; the reflection arrives 11.765 ms after direct sound (rounded). Infer wave speed, reflected length and wall distance, then verify the predicted excess delay.",
+        "predict": "Predict whether multiplying only the excess delay by speed and dividing by two gives the wall distance.",
+        "reconstruct": "f=500 Hz, v=340 m/s. Direct6 m, excess path≈4 m, reflected≈10 m. Image path sqrt((2d)^2+6²)=10 ⇒ d≈4 m. Check (10−6)/340≈11.765 ms.",
+        "diagnose": "Compare your saved reasoning with the reconstructed route. Identify the first invalid assumption, missing constraint or mismatched representation in this specific problem.",
+        "repair": "Rebuild the decisive construction using the cited subtopic instances and verify the result against the independent observation or boundary condition.",
+        "boundary_test": "If the reported 11.765 ms were elapsed time from emission, could this be the same reflected path?",
+        "boundary_response_criterion": "No. It would imply≈4 m path, shorter than direct6 m.",
+        "factor_evidence": {
+          "concept_model_selection": {
+            "score": 1,
+            "evidence": "Apply known periodic and image-path models"
+          },
+          "representation_translation": {
+            "score": 1,
+            "evidence": "translate delay reference"
+          },
+          "reasoning_chain_length": {
+            "score": 2,
+            "evidence": "calculate speed, length, distance and verify"
+          },
+          "algebra_computational_load": {
+            "score": 2,
+            "evidence": "square root and conversions"
+          },
+          "trap_exception_sensitivity": {
+            "score": 1,
+            "evidence": "excess delay not total."
+          }
+        },
+        "score": 7,
+        "academic_status": "HOLD",
+        "runtime_status": "NOT_IMPLEMENTED",
+        "direct_exam_admission": "HOLD"
+      },
+      "instances": [
+        {
+          "subtopic_id": "PH08-04",
+          "target_id": "PH08-04-B01-D3-APPLY-01",
+          "task_identity": "G9-B01-PH08-04-APPLY-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH08/b01/PH08-04/physics-topic-package.v1.json",
+          "package_blob": "55d684eafacb3187404c079427a24a260532ddb8",
+          "package_version": "0.3.3-b01.8.ph08-04",
+          "instance_cycle": "PH08-04-B01-INSTANCE-APPLY-R2",
+          "prior_main_placeholder": "PH08-04-B01-MAIN-APPLY-R2"
+        },
+        {
+          "subtopic_id": "PH08-08",
+          "target_id": "PH08-08-B01-D3-APPLY-01",
+          "task_identity": "G9-B01-PH08-08-APPLY-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH08/b01/PH08-08/physics-topic-package.v1.json",
+          "package_blob": "5c49278b7fa7f62ba0e3d443c5c25a003402c8c4",
+          "package_version": "0.3.2-b01.5.ph08-08",
+          "instance_cycle": "PH08-08-B01-INSTANCE-APPLY-R2",
+          "prior_main_placeholder": "PH08-08-B01-MAIN-APPLY-R2"
+        },
+        {
+          "subtopic_id": "PH08-10",
+          "target_id": "PH08-10-B01-D3-APPLY-01",
+          "task_identity": "G9-B01-PH08-10-APPLY-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH08/b01/PH08-10/physics-topic-package.v1.json",
+          "package_blob": "c251a934b1d992b5b92361cb65ebb8a6addb8204",
+          "package_version": "0.3.2-b01.7.ph08-10",
+          "instance_cycle": "PH08-10-B01-INSTANCE-APPLY-R2",
+          "prior_main_placeholder": "PH08-10-B01-MAIN-APPLY-R2"
+        }
+      ],
+      "legacy_candidates": [
+        {
+          "subtopic_id": "PH08-08",
+          "target_id": "PH08-LEAD-APPLY-D3",
+          "task_identity": "G9-AUTH-PH08-APPLY-001",
+          "package_blob": "0e7ddad0b150da4e03af7feedafc9a1dea461440",
+          "package_version": "0.2.0",
+          "kind": "LEGACY"
+        },
+        {
+          "subtopic_id": "PH08-05",
+          "target_id": "PH08-05-D3-APPLY-02",
+          "task_identity": "G9-AUTH-PH08-05-APPLY-002",
+          "package_blob": "0e7ddad0b150da4e03af7feedafc9a1dea461440",
+          "package_version": "0.2.0",
+          "kind": "LEGACY"
+        }
+      ],
+      "compatibility_status": "NOT_QUALIFIED",
+      "unmixed_instances": [
+        "PH08-10"
+      ],
+      "gap": null
+    },
+    {
+      "tile_id": "PHY-PH08-D3.5",
+      "adapter_id": "PHYS-TOPIC-PH08",
+      "cell": "D3.5",
+      "selected_canonical_main": null,
+      "proposed_mixed_main": {
+        "id": "B01-PH08-D3.5-MIXED-MAIN-PROPOSAL-R1",
+        "status": "AUTHOR_PROPOSED_NOT_QUALIFIED",
+        "band": "D3",
+        "primary_operation": "REPRESENT",
+        "mixed_subtopics": [
+          "PH08-02",
+          "PH08-04"
+        ],
+        "scope_role": "CANDIDATE",
+        "protected_work": "Represent sampled longitudinal displacement, actual spacing and periodic time evidence without conflating fields or axes.",
+        "first_attempt": "Five particles at equilibrium x=0,10,20,30,40 mm have displacements 0,+1,0,−1,0 mm at one instant; assume this is one complete sinusoidal displacement wavelength. A time trace of the same progressive wave repeats every 0.20 ms. Draw labelled displacement snapshot, qualitative interval pressure signs and one complete time cycle (phase arbitrary); find wave speed. Explain why the two vertical scales are not automatically identical.",
+        "predict": "Predict whether positive displacement identifies high pressure at that location.",
+        "reconstruct": "Actual positions0,11,20,29,40; gaps11,9,9,11; pressure signs −,+,+,−. λ=0.04 m, T=0.00020 s, v=200 m/s. Time trace repeats once in0.20 ms; specify whether it is displacement or pressure, no phase alignment without extra information.",
+        "diagnose": "Compare your saved reasoning with the reconstructed route. Identify the first invalid assumption, missing constraint or mismatched representation in this specific problem.",
+        "repair": "Rebuild the decisive construction using the cited subtopic instances and verify the result against the independent observation or boundary condition.",
+        "boundary_test": "If every displacement in snapshot increases by 2 mm, what happens to the spacing/pressure representation?",
+        "boundary_response_criterion": "All differences unchanged; in the linear snapshot model pressure signs unchanged, although absolute displacements shift.",
+        "factor_evidence": {
+          "concept_model_selection": {
+            "score": 1,
+            "evidence": "Recognize stated periodic and spacing model"
+          },
+          "representation_translation": {
+            "score": 2,
+            "evidence": "coordinate positions and graphs"
+          },
+          "reasoning_chain_length": {
+            "score": 2,
+            "evidence": "recover spacing then wavelength/time"
+          },
+          "algebra_computational_load": {
+            "score": 1,
+            "evidence": "conversions"
+          },
+          "trap_exception_sensitivity": {
+            "score": 1,
+            "evidence": "pressure is not displacement height."
+          }
+        },
+        "score": 7,
+        "academic_status": "HOLD",
+        "runtime_status": "NOT_IMPLEMENTED",
+        "direct_exam_admission": "HOLD"
+      },
+      "instances": [
+        {
+          "subtopic_id": "PH08-01",
+          "target_id": "PH08-01-B01-D3-REPRESENT-01",
+          "task_identity": "G9-B01-PH08-01-REPRESENT-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH08/b01/PH08-01/physics-topic-package.v1.json",
+          "package_blob": "9c0f6dbe1939a1f20b78a807408575513220c2bf",
+          "package_version": "0.3.2-b01.6.ph08-01",
+          "instance_cycle": "PH08-01-B01-INSTANCE-REPRESENT-R2",
+          "prior_main_placeholder": "PH08-01-B01-MAIN-REPRESENT-R2"
+        },
+        {
+          "subtopic_id": "PH08-02",
+          "target_id": "PH08-02-B01-D3-REPRESENT-01",
+          "task_identity": "G9-B01-PH08-02-REPRESENT-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH08/b01/PH08-02/physics-topic-package.v1.json",
+          "package_blob": "4e2db293b5643edabad91138abcb8de7d74d500f",
+          "package_version": "0.3.3-b01.6.ph08-02",
+          "instance_cycle": "PH08-02-B01-INSTANCE-REPRESENT-R2",
+          "prior_main_placeholder": "PH08-02-B01-MAIN-REPRESENT-R2"
+        },
+        {
+          "subtopic_id": "PH08-03",
+          "target_id": "PH08-03-B01-D3-REPRESENT-01",
+          "task_identity": "G9-B01-PH08-03-REPRESENT-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH08/b01/PH08-03/physics-topic-package.v1.json",
+          "package_blob": "73b9a1b8d547c16b46c842e7ae22ebac7c4941d6",
+          "package_version": "0.3.2-b01.7.ph08-03",
+          "instance_cycle": "PH08-03-B01-INSTANCE-REPRESENT-R2",
+          "prior_main_placeholder": "PH08-03-B01-MAIN-REPRESENT-R2"
+        },
+        {
+          "subtopic_id": "PH08-04",
+          "target_id": "PH08-04-B01-D3-REPRESENT-01",
+          "task_identity": "G9-B01-PH08-04-REPRESENT-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH08/b01/PH08-04/physics-topic-package.v1.json",
+          "package_blob": "55d684eafacb3187404c079427a24a260532ddb8",
+          "package_version": "0.3.3-b01.8.ph08-04",
+          "instance_cycle": "PH08-04-B01-INSTANCE-REPRESENT-R3",
+          "prior_main_placeholder": "PH08-04-B01-MAIN-REPRESENT-R3"
+        },
+        {
+          "subtopic_id": "PH08-05",
+          "target_id": "PH08-05-B01-D3-REPRESENT-01",
+          "task_identity": "G9-B01-PH08-05-REPRESENT-R2",
+          "package_path": "nsejs/physics/curriculum/topics/PH08/b01/PH08-05/physics-topic-package.v1.json",
+          "package_blob": "580213b3e051fe2b26905a058db1f135aa7f0d92",
+          "package_version": "0.3.3-b01.8.ph08-05",
+          "instance_cycle": "PH08-05-B01-INSTANCE-REPRESENT-R3",
+          "prior_main_placeholder": "PH08-05-B01-MAIN-REPRESENT-R3"
+        },
+        {
+          "subtopic_id": "PH08-06",
+          "target_id": "PH08-06-B01-D3-REPRESENT-01",
+          "task_identity": "G9-B01-PH08-06-REPRESENT-R2",
+          "package_path": "nsejs/physics/curriculum/topics/PH08/b01/PH08-06/physics-topic-package.v1.json",
+          "package_blob": "342e72db58e2c1a7347138ac0425258cc35549eb",
+          "package_version": "0.3.3-b01.8.ph08-06",
+          "instance_cycle": "PH08-06-B01-INSTANCE-REPRESENT-R3",
+          "prior_main_placeholder": "PH08-06-B01-MAIN-REPRESENT-R3"
+        },
+        {
+          "subtopic_id": "PH08-07",
+          "target_id": "PH08-07-B01-D3-REPRESENT-01",
+          "task_identity": "G9-B01-PH08-07-REPRESENT-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH08/b01/PH08-07/physics-topic-package.v1.json",
+          "package_blob": "b744adbdb8c7aa4281674cdb6812f2cc5aa56999",
+          "package_version": "0.3.2-b01.5.ph08-07",
+          "instance_cycle": "PH08-07-B01-INSTANCE-REPRESENT-R2",
+          "prior_main_placeholder": "PH08-07-B01-MAIN-REPRESENT-R2"
+        },
+        {
+          "subtopic_id": "PH08-08",
+          "target_id": "PH08-08-B01-D3-REPRESENT-01",
+          "task_identity": "G9-B01-PH08-08-REPRESENT-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH08/b01/PH08-08/physics-topic-package.v1.json",
+          "package_blob": "5c49278b7fa7f62ba0e3d443c5c25a003402c8c4",
+          "package_version": "0.3.2-b01.5.ph08-08",
+          "instance_cycle": "PH08-08-B01-INSTANCE-REPRESENT-R2",
+          "prior_main_placeholder": "PH08-08-B01-MAIN-REPRESENT-R2"
+        },
+        {
+          "subtopic_id": "PH08-12",
+          "target_id": "PH08-12-B01-D3-REPRESENT-01",
+          "task_identity": "G9-B01-PH08-12-REPRESENT-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH08/b01/PH08-12/physics-topic-package.v1.json",
+          "package_blob": "c86114ee34a0073770b83b9cea6a780b8806377e",
+          "package_version": "0.3.2-b01.5.ph08-12",
+          "instance_cycle": "PH08-12-B01-INSTANCE-REPRESENT-R2",
+          "prior_main_placeholder": "PH08-12-B01-MAIN-REPRESENT-R2"
+        },
+        {
+          "subtopic_id": "PH08-13",
+          "target_id": "PH08-13-B01-D3-REPRESENT-01",
+          "task_identity": "G9-B01-PH08-13-REPRESENT-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH08/b01/PH08-13/physics-topic-package.v1.json",
+          "package_blob": "36dc2b597a5cddc50892709fcc61f0794670401f",
+          "package_version": "0.3.2-b01.8.ph08-13",
+          "instance_cycle": "PH08-13-B01-INSTANCE-REPRESENT-R2",
+          "prior_main_placeholder": "PH08-13-B01-MAIN-REPRESENT-R2"
+        }
+      ],
+      "legacy_candidates": [
+        {
+          "subtopic_id": "PH08-08",
+          "target_id": "PH08-LEAD-REPRESENT-D3",
+          "task_identity": "G9-AUTH-PH08-REPRESENT-001",
+          "package_blob": "0e7ddad0b150da4e03af7feedafc9a1dea461440",
+          "package_version": "0.2.0",
+          "kind": "LEGACY"
+        },
+        {
+          "subtopic_id": "PH08-05",
+          "target_id": "PH08-05-D3-REPRESENT-02",
+          "task_identity": "G9-AUTH-PH08-05-REPRESENT-002",
+          "package_blob": "0e7ddad0b150da4e03af7feedafc9a1dea461440",
+          "package_version": "0.2.0",
+          "kind": "LEGACY"
+        }
+      ],
+      "compatibility_status": "NOT_QUALIFIED",
+      "unmixed_instances": [
+        "PH08-01",
+        "PH08-03",
+        "PH08-05",
+        "PH08-06",
+        "PH08-07",
+        "PH08-08",
+        "PH08-12",
+        "PH08-13"
+      ],
+      "gap": null
+    },
+    {
+      "tile_id": "PHY-PH08-D3.7",
+      "adapter_id": "PHYS-TOPIC-PH08",
+      "cell": "D3.7",
+      "selected_canonical_main": null,
+      "proposed_mixed_main": {
+        "id": "B01-PH08-D3.7-MIXED-MAIN-PROPOSAL-R1",
+        "status": "AUTHOR_PROPOSED_NOT_QUALIFIED",
+        "band": "D3",
+        "primary_operation": "JUSTIFY",
+        "mixed_subtopics": [
+          "PH08-07",
+          "PH08-09"
+        ],
+        "scope_role": "CANDIDATE",
+        "protected_work": "Justify why identical or unresolved wave records do not identify a unique propagation history or reflection count.",
+        "first_attempt": "A periodic wave gives identical spatial snapshots 5 ms apart. In the same lab a finite pulse produces one late unresolved group. A report concludes the wave did not propagate and the pulse had exactly one reflected path. Construct independent compatible counterexamples and propose one discriminating measurement for each claim.",
+        "predict": "Predict whether either observed record by itself uniquely establishes the reported conclusion.",
+        "reconstruct": "A periodic translating wave can move a whole wavelength in5 ms and reproduce the snapshot; sample at a noncommensurate interval or time a marked pulse. Two coincident or closely spaced reflected paths can yield one group; shorten pulse, change geometry or use sufficiently sensitive independent sensor. Observational equivalence is not unique physical history.",
+        "diagnose": "Compare your saved reasoning with the reconstructed route. Identify the first invalid assumption, missing constraint or mismatched representation in this specific problem.",
+        "repair": "Rebuild the decisive construction using the cited subtopic instances and verify the result against the independent observation or boundary condition.",
+        "boundary_test": "If two paths have exactly equal arrival time, does shortening pulse duration alone separate them?",
+        "boundary_response_criterion": "No; change geometry or observe another distinguishing quantity.",
+        "factor_evidence": {
+          "concept_model_selection": {
+            "score": 2,
+            "evidence": "Competing propagation/path models"
+          },
+          "representation_translation": {
+            "score": 1,
+            "evidence": "interpret two records as limited evidence"
+          },
+          "reasoning_chain_length": {
+            "score": 2,
+            "evidence": "construct counterexamples and discriminating tests"
+          },
+          "algebra_computational_load": {
+            "score": 0,
+            "evidence": "no substantive arithmetic"
+          },
+          "trap_exception_sensitivity": {
+            "score": 2,
+            "evidence": "aliases and unresolved returns decisive."
+          }
+        },
+        "score": 7,
+        "academic_status": "HOLD",
+        "runtime_status": "NOT_IMPLEMENTED",
+        "direct_exam_admission": "HOLD"
+      },
+      "instances": [
+        {
+          "subtopic_id": "PH08-02",
+          "target_id": "PH08-02-B01-D3-JUSTIFY-01",
+          "task_identity": "G9-B01-PH08-02-JUSTIFY-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH08/b01/PH08-02/physics-topic-package.v1.json",
+          "package_blob": "4e2db293b5643edabad91138abcb8de7d74d500f",
+          "package_version": "0.3.3-b01.6.ph08-02",
+          "instance_cycle": "PH08-02-B01-INSTANCE-JUSTIFY-R3",
+          "prior_main_placeholder": "PH08-02-B01-MAIN-JUSTIFY-R3"
+        },
+        {
+          "subtopic_id": "PH08-04",
+          "target_id": "PH08-04-B01-D3-JUSTIFY-01",
+          "task_identity": "G9-B01-PH08-04-JUSTIFY-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH08/b01/PH08-04/physics-topic-package.v1.json",
+          "package_blob": "55d684eafacb3187404c079427a24a260532ddb8",
+          "package_version": "0.3.3-b01.8.ph08-04",
+          "instance_cycle": "PH08-04-B01-INSTANCE-JUSTIFY-R2",
+          "prior_main_placeholder": "PH08-04-B01-MAIN-JUSTIFY-R2"
+        },
+        {
+          "subtopic_id": "PH08-07",
+          "target_id": "PH08-07-B01-D3-JUSTIFY-01",
+          "task_identity": "G9-B01-PH08-07-JUSTIFY-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH08/b01/PH08-07/physics-topic-package.v1.json",
+          "package_blob": "b744adbdb8c7aa4281674cdb6812f2cc5aa56999",
+          "package_version": "0.3.2-b01.5.ph08-07",
+          "instance_cycle": "PH08-07-B01-INSTANCE-JUSTIFY-R2",
+          "prior_main_placeholder": "PH08-07-B01-MAIN-JUSTIFY-R2"
+        },
+        {
+          "subtopic_id": "PH08-09",
+          "target_id": "PH08-09-B01-D3-JUSTIFY-01",
+          "task_identity": "G9-B01-PH08-09-JUSTIFY-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH08/b01/PH08-09/physics-topic-package.v1.json",
+          "package_blob": "3fbb36c32fe2335d68576a37302c1eed49bc1aa8",
+          "package_version": "0.3.2-b01.7.ph08-09",
+          "instance_cycle": "PH08-09-B01-INSTANCE-JUSTIFY-R2",
+          "prior_main_placeholder": "PH08-09-B01-MAIN-JUSTIFY-R2"
+        },
+        {
+          "subtopic_id": "PH08-11",
+          "target_id": "PH08-11-B01-D3-JUSTIFY-01",
+          "task_identity": "G9-B01-PH08-11-JUSTIFY-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH08/b01/PH08-11/physics-topic-package.v1.json",
+          "package_blob": "7be5cc31d4ef89c0e291a71fe9e459ebe28284d1",
+          "package_version": "0.3.2-b01.8.ph08-11",
+          "instance_cycle": "PH08-11-B01-INSTANCE-JUSTIFY-R2",
+          "prior_main_placeholder": "PH08-11-B01-MAIN-JUSTIFY-R2"
+        }
+      ],
+      "legacy_candidates": [
+        {
+          "subtopic_id": "PH08-05",
+          "target_id": "PH08-05-D3-JUSTIFY-02",
+          "task_identity": "G9-AUTH-PH08-05-JUSTIFY-002",
+          "package_blob": "0e7ddad0b150da4e03af7feedafc9a1dea461440",
+          "package_version": "0.2.0",
+          "kind": "LEGACY"
+        }
+      ],
+      "compatibility_status": "NOT_QUALIFIED",
+      "unmixed_instances": [
+        "PH08-02",
+        "PH08-04",
+        "PH08-11"
+      ],
+      "gap": null
+    },
+    {
+      "tile_id": "PHY-PH07-D3.5",
+      "adapter_id": "PHYS-TOPIC-PH07",
+      "cell": "D3.5",
+      "selected_canonical_main": null,
+      "proposed_mixed_main": {
+        "id": "B01-PH07-D3.5-MIXED-MAIN-PROPOSAL-R1",
+        "status": "AUTHOR_PROPOSED_NOT_QUALIFIED",
+        "band": "D3",
+        "primary_operation": "REPRESENT",
+        "mixed_subtopics": [
+          "PH07-01",
+          "PH07-08"
+        ],
+        "scope_role": "CANDIDATE",
+        "protected_work": "Translate calibrated raw readings into a physical temperature history and an aligned net-power graph.",
+        "first_attempt": "A linear probe reads 10 at 0 °C and 110 at 50 °C. An unchanged-phase sample of C=200 J/K gives raw readings 50, 58, 58, 54 at times 0, 20, 40, 60 s. Draw raw-to-temperature calibration, T(t) and mean net-power intervals on aligned time axes. Identify the energy change in each interval.",
+        "predict": "Predict whether the flat raw interval is enough to identify a phase change.",
+        "reconstruct": "θ=(r−10)/2: T=20,24,24,22 °C. Net energies +800,0,−400 J; mean powers +40,0,−20 W. Plot intervals and keep raw scale separate; no phase change stipulated.",
+        "diagnose": "Compare your saved reasoning with the reconstructed route. Identify the first invalid assumption, missing constraint or mismatched representation in this specific problem.",
+        "repair": "Rebuild the decisive construction using the cited subtopic instances and verify the result against the independent observation or boundary condition.",
+        "boundary_test": "If the raw sensor has an additional constant +2 raw-unit offset during all four samples, how do T and inferred energy changes differ?",
+        "boundary_response_criterion": "All inferred T values shift +1 K if old calibration used, but differences and calculated interval energies unchanged; absolute T inaccurate.",
+        "factor_evidence": {
+          "concept_model_selection": {
+            "score": 1,
+            "evidence": "Recognize stated calibration and capacity"
+          },
+          "representation_translation": {
+            "score": 2,
+            "evidence": "coordinate three representations"
+          },
+          "reasoning_chain_length": {
+            "score": 2,
+            "evidence": "map readings then slopes and interval energies"
+          },
+          "algebra_computational_load": {
+            "score": 1,
+            "evidence": "routine arithmetic"
+          },
+          "trap_exception_sensitivity": {
+            "score": 1,
+            "evidence": "offset affects absolute state not differences."
+          }
+        },
+        "score": 7,
+        "academic_status": "HOLD",
+        "runtime_status": "NOT_IMPLEMENTED",
+        "direct_exam_admission": "HOLD"
+      },
+      "instances": [
+        {
+          "subtopic_id": "PH07-01",
+          "target_id": "PH07-01-B01-D3-REPRESENT-01",
+          "task_identity": "G9-B01-PH07-01-REPRESENT-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH07/b01/PH07-01/physics-topic-package.v1.json",
+          "package_blob": "65bea0d422b7c76bfb64946748ad873f2270262f",
+          "package_version": "0.3.2-b01.5.ph07-01",
+          "instance_cycle": "PH07-01-B01-INSTANCE-REPRESENT-R2",
+          "prior_main_placeholder": "PH07-01-B01-MAIN-REPRESENT-R2"
+        },
+        {
+          "subtopic_id": "PH07-03",
+          "target_id": "PH07-03-B01-D3-REPRESENT-01",
+          "task_identity": "G9-B01-PH07-03-REPRESENT-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH07/b01/PH07-03/physics-topic-package.v1.json",
+          "package_blob": "3b65c82ffe80911375bc037454e8e178bdb822bc",
+          "package_version": "0.3.3-b01.6.ph07-03",
+          "instance_cycle": "PH07-03-B01-INSTANCE-REPRESENT-R2",
+          "prior_main_placeholder": "PH07-03-B01-MAIN-REPRESENT-R2"
+        },
+        {
+          "subtopic_id": "PH07-06",
+          "target_id": "PH07-06-B01-D3-REPRESENT-01",
+          "task_identity": "G9-B01-PH07-06-REPRESENT-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH07/b01/PH07-06/physics-topic-package.v1.json",
+          "package_blob": "9f53962e02ff87ac31c66fe1dbc8a9b3130e7525",
+          "package_version": "0.3.2-b01.5.ph07-06",
+          "instance_cycle": "PH07-06-B01-INSTANCE-REPRESENT-R2",
+          "prior_main_placeholder": "PH07-06-B01-MAIN-REPRESENT-R2"
+        },
+        {
+          "subtopic_id": "PH07-08",
+          "target_id": "PH07-08-B01-D3-REPRESENT-01",
+          "task_identity": "G9-B01-PH07-08-REPRESENT-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH07/b01/PH07-08/physics-topic-package.v1.json",
+          "package_blob": "daf7cf3ed102afe7276420dc4f50199f52efab9c",
+          "package_version": "0.3.2-b01.6.ph07-08",
+          "instance_cycle": "PH07-08-B01-INSTANCE-REPRESENT-R2",
+          "prior_main_placeholder": "PH07-08-B01-MAIN-REPRESENT-R2"
+        },
+        {
+          "subtopic_id": "PH07-10",
+          "target_id": "PH07-10-B01-D3-REPRESENT-01",
+          "task_identity": "G9-B01-PH07-10-REPRESENT-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH07/b01/PH07-10/physics-topic-package.v1.json",
+          "package_blob": "b8f2080cae4dbfbaa440e36907a49cd5d2b9b8f1",
+          "package_version": "0.3.2-b01.8.ph07-10",
+          "instance_cycle": "PH07-10-B01-INSTANCE-REPRESENT-R2",
+          "prior_main_placeholder": "PH07-10-B01-MAIN-REPRESENT-R2"
+        }
+      ],
+      "legacy_candidates": [],
+      "compatibility_status": "NOT_QUALIFIED",
+      "unmixed_instances": [
+        "PH07-03",
+        "PH07-06",
+        "PH07-10"
+      ],
+      "gap": null
+    },
+    {
+      "tile_id": "PHY-PH07-D3.7",
+      "adapter_id": "PHYS-TOPIC-PH07",
+      "cell": "D3.7",
+      "selected_canonical_main": null,
+      "proposed_mixed_main": {
+        "id": "B01-PH07-D3.7-MIXED-MAIN-PROPOSAL-R1",
+        "status": "AUTHOR_PROPOSED_NOT_QUALIFIED",
+        "band": "D3",
+        "primary_operation": "JUSTIFY",
+        "mixed_subtopics": [
+          "PH07-09",
+          "PH07-10"
+        ],
+        "scope_role": "CANDIDATE",
+        "protected_work": "Evaluate an expansion-coefficient claim from confounded measurements by constructing a geometrical counterexample and fair comparison.",
+        "first_attempt": "Two rods have equal length and temperature rise. One is centre-fixed, the other fixed at its left end. Their right ends move by equal distances. An observer concludes their materials have equal expansion coefficients and that repeating the same setup proves it. Assess the claim and specify a measurement that could distinguish coefficient from anchor geometry.",
+        "predict": "Predict whether equal endpoint advance alone proves equal coefficients.",
+        "reconstruct": "In free motion, centre-fixed right end moves α_c LΔT/2, left-fixed right end α_l LΔT; equal advance implies α_c=2α_l under assumptions, not equality. Measure total free length change at known equal ΔT or use matched anchors; repeat cannot remove systematic geometric confound.",
+        "diagnose": "Compare your saved reasoning with the reconstructed route. Identify the first invalid assumption, missing constraint or mismatched representation in this specific problem.",
+        "repair": "Rebuild the decisive construction using the cited subtopic instances and verify the result against the independent observation or boundary condition.",
+        "boundary_test": "If both rods later use the same left-end anchor with matched ΔT and equal free total length changes, what is supported?",
+        "boundary_response_criterion": "Equal effective α in tested range under uniform free expansion model; no universal claim beyond it.",
+        "factor_evidence": {
+          "concept_model_selection": {
+            "score": 2,
+            "evidence": "Distinguish coefficient from anchor effects"
+          },
+          "representation_translation": {
+            "score": 1,
+            "evidence": "interpret displacement evidence"
+          },
+          "reasoning_chain_length": {
+            "score": 2,
+            "evidence": "construct counterexample and matched test"
+          },
+          "algebra_computational_load": {
+            "score": 0,
+            "evidence": "arithmetic incidental"
+          },
+          "trap_exception_sensitivity": {
+            "score": 2,
+            "evidence": "repetition cannot eliminate confounding."
+          }
+        },
+        "score": 7,
+        "academic_status": "HOLD",
+        "runtime_status": "NOT_IMPLEMENTED",
+        "direct_exam_admission": "HOLD"
+      },
+      "instances": [
+        {
+          "subtopic_id": "PH07-01",
+          "target_id": "PH07-01-B01-D3-JUSTIFY-01",
+          "task_identity": "G9-B01-PH07-01-JUSTIFY-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH07/b01/PH07-01/physics-topic-package.v1.json",
+          "package_blob": "65bea0d422b7c76bfb64946748ad873f2270262f",
+          "package_version": "0.3.2-b01.5.ph07-01",
+          "instance_cycle": "PH07-01-B01-INSTANCE-JUSTIFY-R2",
+          "prior_main_placeholder": "PH07-01-B01-MAIN-JUSTIFY-R2"
+        },
+        {
+          "subtopic_id": "PH07-02",
+          "target_id": "PH07-02-B01-D3-JUSTIFY-01",
+          "task_identity": "G9-B01-PH07-02-JUSTIFY-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH07/b01/PH07-02/physics-topic-package.v1.json",
+          "package_blob": "c0e3fe07c15dd865e19ec9ec339d704e1d3495be",
+          "package_version": "0.3.2-b01.5.ph07-02",
+          "instance_cycle": "PH07-02-B01-INSTANCE-JUSTIFY-R2",
+          "prior_main_placeholder": "PH07-02-B01-MAIN-JUSTIFY-R2"
+        },
+        {
+          "subtopic_id": "PH07-04",
+          "target_id": "PH07-04-B01-D3-JUSTIFY-01",
+          "task_identity": "G9-B01-PH07-04-JUSTIFY-R2",
+          "package_path": "nsejs/physics/curriculum/topics/PH07/b01/PH07-04/physics-topic-package.v1.json",
+          "package_blob": "0493a60b39d9ebc6e3a3f312d0cc544717531ae6",
+          "package_version": "0.3.3-b01.8.ph07-04",
+          "instance_cycle": "PH07-04-B01-INSTANCE-JUSTIFY-R3",
+          "prior_main_placeholder": "PH07-04-B01-MAIN-JUSTIFY-R3"
+        },
+        {
+          "subtopic_id": "PH07-06",
+          "target_id": "PH07-06-B01-D3-JUSTIFY-01",
+          "task_identity": "G9-B01-PH07-06-JUSTIFY-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH07/b01/PH07-06/physics-topic-package.v1.json",
+          "package_blob": "9f53962e02ff87ac31c66fe1dbc8a9b3130e7525",
+          "package_version": "0.3.2-b01.5.ph07-06",
+          "instance_cycle": "PH07-06-B01-INSTANCE-JUSTIFY-R2",
+          "prior_main_placeholder": "PH07-06-B01-MAIN-JUSTIFY-R2"
+        },
+        {
+          "subtopic_id": "PH07-08",
+          "target_id": "PH07-08-B01-D3-JUSTIFY-01",
+          "task_identity": "G9-B01-PH07-08-JUSTIFY-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH07/b01/PH07-08/physics-topic-package.v1.json",
+          "package_blob": "daf7cf3ed102afe7276420dc4f50199f52efab9c",
+          "package_version": "0.3.2-b01.6.ph07-08",
+          "instance_cycle": "PH07-08-B01-INSTANCE-JUSTIFY-R2",
+          "prior_main_placeholder": "PH07-08-B01-MAIN-JUSTIFY-R2"
+        },
+        {
+          "subtopic_id": "PH07-09",
+          "target_id": "PH07-09-B01-D3-JUSTIFY-01",
+          "task_identity": "G9-B01-PH07-09-JUSTIFY-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH07/b01/PH07-09/physics-topic-package.v1.json",
+          "package_blob": "cbebfdc90c1a8aea35fa446c69dfe25cb1ef22a0",
+          "package_version": "0.3.2-b01.7.ph07-09",
+          "instance_cycle": "PH07-09-B01-INSTANCE-JUSTIFY-R2",
+          "prior_main_placeholder": "PH07-09-B01-MAIN-JUSTIFY-R2"
+        },
+        {
+          "subtopic_id": "PH07-10",
+          "target_id": "PH07-10-B01-D3-JUSTIFY-01",
+          "task_identity": "G9-B01-PH07-10-JUSTIFY-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH07/b01/PH07-10/physics-topic-package.v1.json",
+          "package_blob": "b8f2080cae4dbfbaa440e36907a49cd5d2b9b8f1",
+          "package_version": "0.3.2-b01.8.ph07-10",
+          "instance_cycle": "PH07-10-B01-INSTANCE-JUSTIFY-R2",
+          "prior_main_placeholder": "PH07-10-B01-MAIN-JUSTIFY-R2"
+        },
+        {
+          "subtopic_id": "PH07-12",
+          "target_id": "PH07-12-B01-D3-JUSTIFY-01",
+          "task_identity": "G9-B01-PH07-12-JUSTIFY-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH07/b01/PH07-12/physics-topic-package.v1.json",
+          "package_blob": "80715e0d69a9015a1cdd16fd1cd63e1c4fa77bc7",
+          "package_version": "0.3.2-b01.8.ph07-12",
+          "instance_cycle": "PH07-12-B01-INSTANCE-JUSTIFY-R2",
+          "prior_main_placeholder": "PH07-12-B01-MAIN-JUSTIFY-R2"
+        }
+      ],
+      "legacy_candidates": [],
+      "compatibility_status": "NOT_QUALIFIED",
+      "unmixed_instances": [
+        "PH07-01",
+        "PH07-02",
+        "PH07-04",
+        "PH07-06",
+        "PH07-08",
+        "PH07-12"
+      ],
+      "gap": null
+    },
+    {
+      "tile_id": "PHY-PH07-D4.4",
+      "adapter_id": "PHYS-TOPIC-PH07",
+      "cell": "D4.4",
+      "selected_canonical_main": null,
+      "proposed_mixed_main": {
+        "id": "B01-PH07-D4.4-MIXED-MAIN-PROPOSAL-R1",
+        "status": "AUTHOR_PROPOSED_NOT_QUALIFIED",
+        "band": "D4",
+        "primary_operation": "MODEL",
+        "mixed_subtopics": [
+          "PH07-05",
+          "PH07-07",
+          "PH07-08"
+        ],
+        "scope_role": "CANDIDATE",
+        "protected_work": "Fit and discriminate competing loss models using radiation-powered slope data and an independent evaporation observation.",
+        "first_attempt": "A wet sample has C=400 J/K. At one matched initial state, incident powers 100 and 180 W give slopes 0.025 and 0.125 K/s. A dry reference establishes non-evaporative loss 20 W in each run, with equal absorption assumed. Model A treats evaporation as fixed extra loss; model B says evaporation consumes 20% of absorbed power, with unknown absorptivity. Both models may fit the two slopes. An independently measured evaporation rate in the 100 W run corresponds to 20 W latent power. Fit and test both models, and predict the 140 W slope under the survivor.",
+        "predict": "Predict whether two warming slopes alone distinguish a fixed extra loss from a proportional loss.",
+        "reconstruct": "Net powers10,50 W. A: α=40/80=0.5, fixed evaporation=50−20−10=20 W. B: effective 0.8α=0.5, α=0.625, net at100=50−20=30 W, not10; B as stated cannot fit both slopes because intercept is −20 not −40. To fit slope and first observation B would require an additional fixed 20 W loss, excluded by measured dry reference. Independent evaporation agrees A, B predicts12.5 W at100. A at140 gives70−20−20=30 W, slope0.075 K/s. Conditions and measurement uncertainty govern inference.",
+        "diagnose": "Compare your saved reasoning with the reconstructed route. Identify the first invalid assumption, missing constraint or mismatched representation in this specific problem.",
+        "repair": "Rebuild the decisive construction using the cited subtopic instances and verify the result against the independent observation or boundary condition.",
+        "boundary_test": "If an unmeasured wet-specific fixed loss of 20 W is admitted, can the two slopes alone distinguish A from the augmented B?",
+        "boundary_response_criterion": "No: augmented B with α=0.625 and fixed extra20 W fits slopes; evaporation observation remains discriminating (12.5 W vs20 W).",
+        "factor_evidence": {
+          "concept_model_selection": {
+            "score": 2,
+            "evidence": "Competing loss models"
+          },
+          "representation_translation": {
+            "score": 2,
+            "evidence": "coordinate slopes, measured capacity and independent rate"
+          },
+          "reasoning_chain_length": {
+            "score": 2,
+            "evidence": "fit and test constraints plus changed model"
+          },
+          "algebra_computational_load": {
+            "score": 1,
+            "evidence": "coupled calculations"
+          },
+          "trap_exception_sensitivity": {
+            "score": 2,
+            "evidence": "model degeneracy and independent observation decisive."
+          }
+        },
+        "score": 9,
+        "academic_status": "HOLD",
+        "runtime_status": "NOT_IMPLEMENTED",
+        "direct_exam_admission": "HOLD"
+      },
+      "instances": [
+        {
+          "subtopic_id": "PH07-03",
+          "target_id": "PH07-03-B01-D4-MODEL-01",
+          "task_identity": "G9-B01-PH07-03-MODEL-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH07/b01/PH07-03/physics-topic-package.v1.json",
+          "package_blob": "3b65c82ffe80911375bc037454e8e178bdb822bc",
+          "package_version": "0.3.3-b01.6.ph07-03",
+          "instance_cycle": "PH07-03-B01-INSTANCE-MODEL-R3",
+          "prior_main_placeholder": "PH07-03-B01-MAIN-MODEL-R3"
+        },
+        {
+          "subtopic_id": "PH07-05",
+          "target_id": "PH07-05-B01-D4-MODEL-01",
+          "task_identity": "G9-B01-PH07-05-MODEL-R2",
+          "package_path": "nsejs/physics/curriculum/topics/PH07/b01/PH07-05/physics-topic-package.v1.json",
+          "package_blob": "b944d121188a511ec8c03a834fce8d73b1960ca7",
+          "package_version": "0.3.3-b01.8.ph07-05",
+          "instance_cycle": "PH07-05-B01-INSTANCE-MODEL-R3",
+          "prior_main_placeholder": "PH07-05-B01-MAIN-MODEL-R3"
+        },
+        {
+          "subtopic_id": "PH07-07",
+          "target_id": "PH07-07-B01-D4-MODEL-01",
+          "task_identity": "G9-B01-PH07-07-MODEL-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH07/b01/PH07-07/physics-topic-package.v1.json",
+          "package_blob": "ecf4116c599a27d6d3f4ae0737a8c759dba2d527",
+          "package_version": "0.3.2-b01.5.ph07-07",
+          "instance_cycle": "PH07-07-B01-INSTANCE-MODEL-R2",
+          "prior_main_placeholder": "PH07-07-B01-MAIN-MODEL-R2"
+        },
+        {
+          "subtopic_id": "PH07-08",
+          "target_id": "PH07-08-B01-D4-MODEL-01",
+          "task_identity": "G9-B01-PH07-08-MODEL-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH07/b01/PH07-08/physics-topic-package.v1.json",
+          "package_blob": "daf7cf3ed102afe7276420dc4f50199f52efab9c",
+          "package_version": "0.3.2-b01.6.ph07-08",
+          "instance_cycle": "PH07-08-B01-INSTANCE-MODEL-R2",
+          "prior_main_placeholder": "PH07-08-B01-MAIN-MODEL-R2"
+        },
+        {
+          "subtopic_id": "PH07-10",
+          "target_id": "PH07-10-B01-D4-MODEL-01",
+          "task_identity": "G9-B01-PH07-10-MODEL-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH07/b01/PH07-10/physics-topic-package.v1.json",
+          "package_blob": "b8f2080cae4dbfbaa440e36907a49cd5d2b9b8f1",
+          "package_version": "0.3.2-b01.8.ph07-10",
+          "instance_cycle": "PH07-10-B01-INSTANCE-MODEL-R2",
+          "prior_main_placeholder": "PH07-10-B01-MAIN-MODEL-R2"
+        },
+        {
+          "subtopic_id": "PH07-11",
+          "target_id": "PH07-11-B01-D4-MODEL-01",
+          "task_identity": "G9-B01-PH07-11-MODEL-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH07/b01/PH07-11/physics-topic-package.v1.json",
+          "package_blob": "e3b99477a5fff7a9d050383b55def61733989378",
+          "package_version": "0.3.2-b01.8.ph07-11",
+          "instance_cycle": "PH07-11-B01-INSTANCE-MODEL-R2",
+          "prior_main_placeholder": "PH07-11-B01-MAIN-MODEL-R2"
+        },
+        {
+          "subtopic_id": "PH07-12",
+          "target_id": "PH07-12-B01-D4-MODEL-01",
+          "task_identity": "G9-B01-PH07-12-MODEL-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH07/b01/PH07-12/physics-topic-package.v1.json",
+          "package_blob": "80715e0d69a9015a1cdd16fd1cd63e1c4fa77bc7",
+          "package_version": "0.3.2-b01.8.ph07-12",
+          "instance_cycle": "PH07-12-B01-INSTANCE-MODEL-R2",
+          "prior_main_placeholder": "PH07-12-B01-MAIN-MODEL-R2"
+        }
+      ],
+      "legacy_candidates": [],
+      "compatibility_status": "NOT_QUALIFIED",
+      "unmixed_instances": [
+        "PH07-03",
+        "PH07-10",
+        "PH07-11",
+        "PH07-12"
+      ],
+      "gap": null
+    },
+    {
+      "tile_id": "PHY-PH07-D3.3",
+      "adapter_id": "PHYS-TOPIC-PH07",
+      "cell": "D3.3",
+      "selected_canonical_main": null,
+      "proposed_mixed_main": null,
+      "instances": [
+        {
+          "subtopic_id": "PH07-11",
+          "target_id": "PH07-11-B01-D3-APPLY-01",
+          "task_identity": "G9-B01-PH07-11-APPLY-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH07/b01/PH07-11/physics-topic-package.v1.json",
+          "package_blob": "e3b99477a5fff7a9d050383b55def61733989378",
+          "package_version": "0.3.2-b01.8.ph07-11",
+          "instance_cycle": "PH07-11-B01-INSTANCE-APPLY-R2",
+          "prior_main_placeholder": "PH07-11-B01-MAIN-APPLY-R2"
+        }
+      ],
+      "legacy_candidates": [],
+      "compatibility_status": "NOT_QUALIFIED",
+      "unmixed_instances": [
+        "PH07-11"
+      ],
+      "gap": "Only one isolated instance in this group; cannot satisfy mixed-instance MAIN without an additional independently warranted instance. Existing extension must not be promoted to compulsory scope."
+    },
+    {
+      "tile_id": "PHY-PH07-D4.6",
+      "adapter_id": "PHYS-TOPIC-PH07",
+      "cell": "D4.6",
+      "selected_canonical_main": null,
+      "proposed_mixed_main": {
+        "id": "B01-PH07-D4.6-MIXED-MAIN-PROPOSAL-R1",
+        "status": "AUTHOR_PROPOSED_NOT_QUALIFIED",
+        "band": "D4",
+        "primary_operation": "SYNTHESIZE",
+        "mixed_subtopics": [
+          "PH07-11",
+          "PH07-12"
+        ],
+        "scope_role": "EXTENSION_DEPENDENT",
+        "protected_work": "Combine calorimeter capacity calibration, engine rejection and phase-regime selection, using an independent observation to test the transfer account.",
+        "first_attempt": "EXTENSION. A calorimeter alone absorbs 1200 J and warms by 8 K. Initially it and 0.05 kg ice are at 0 °C. A cyclic engine receives 30000 J, delivers 9000 J work, and a measured 80% of its rejected heat reaches this calorimeter. Given L_f=300000 J/kg and c_water=4000 J/(kg K), find predicted final state and temperature. An independent final thermometer reads 4 °C exactly. Assess the model and infer captured energy consistent with that reading.",
+        "predict": "Predict whether calibration and engine energy accounting are enough to determine the phase regime under the stated conditions.",
+        "reconstruct": "Vessel C=150 J/K. Engine rejection21000 J, captured16800 J. Ice melt15000 J; surplus1800 J heats C_total=350 J/K to 36/7≈5.143 °C. Observed4 °C implies15000+1400=16400 J, 400 J less. Model fails exact data; cannot uniquely attribute cause. Engine efficiency30%.",
+        "diagnose": "Compare your saved reasoning with the reconstructed route. Identify the first invalid assumption, missing constraint or mismatched representation in this specific problem.",
+        "repair": "Rebuild the decisive construction using the cited subtopic instances and verify the result against the independent observation or boundary condition.",
+        "boundary_test": "If actual capture falls to 2/3, what is final state?",
+        "boundary_response_criterion": "14000 J reaches vessel; at0 °C 0.046667 kg melts, 0.003333 kg ice remains.",
+        "factor_evidence": {
+          "concept_model_selection": {
+            "score": 2,
+            "evidence": "Combine engine, calibration and phase models"
+          },
+          "representation_translation": {
+            "score": 2,
+            "evidence": "coordinate two system boundaries"
+          },
+          "reasoning_chain_length": {
+            "score": 2,
+            "evidence": "infer capacities, compare regime, predict and test"
+          },
+          "algebra_computational_load": {
+            "score": 1,
+            "evidence": "multiple energy calculations"
+          },
+          "trap_exception_sensitivity": {
+            "score": 2,
+            "evidence": "phase threshold and leakage ambiguity decisive."
+          }
+        },
+        "score": 9,
+        "academic_status": "HOLD",
+        "runtime_status": "NOT_IMPLEMENTED",
+        "direct_exam_admission": "HOLD"
+      },
+      "instances": [
+        {
+          "subtopic_id": "PH07-11",
+          "target_id": "PH07-11-B01-D4-SYNTHESIZE-01",
+          "task_identity": "G9-B01-PH07-11-SYNTHESIZE-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH07/b01/PH07-11/physics-topic-package.v1.json",
+          "package_blob": "e3b99477a5fff7a9d050383b55def61733989378",
+          "package_version": "0.3.2-b01.8.ph07-11",
+          "instance_cycle": "PH07-11-B01-INSTANCE-SYNTHESIZE-R2",
+          "prior_main_placeholder": "PH07-11-B01-MAIN-SYNTHESIZE-R2"
+        },
+        {
+          "subtopic_id": "PH07-12",
+          "target_id": "PH07-12-B01-D4-SYNTHESIZE-01",
+          "task_identity": "G9-B01-PH07-12-SYNTHESIZE-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH07/b01/PH07-12/physics-topic-package.v1.json",
+          "package_blob": "80715e0d69a9015a1cdd16fd1cd63e1c4fa77bc7",
+          "package_version": "0.3.2-b01.8.ph07-12",
+          "instance_cycle": "PH07-12-B01-INSTANCE-SYNTHESIZE-R2",
+          "prior_main_placeholder": "PH07-12-B01-MAIN-SYNTHESIZE-R2"
+        }
+      ],
+      "legacy_candidates": [],
+      "compatibility_status": "NOT_QUALIFIED",
+      "unmixed_instances": [],
+      "gap": null
+    },
+    {
+      "tile_id": "PHY-PH08-D3.2",
+      "adapter_id": "PHYS-TOPIC-PH08",
+      "cell": "D3.2",
+      "selected_canonical_main": null,
+      "proposed_mixed_main": {
+        "id": "B01-PH08-D3.2-MIXED-MAIN-PROPOSAL-R1",
+        "status": "AUTHOR_PROPOSED_NOT_QUALIFIED",
+        "band": "D3",
+        "primary_operation": "EXPLAIN",
+        "mixed_subtopics": [
+          "PH08-01",
+          "PH08-11"
+        ],
+        "scope_role": "CANDIDATE",
+        "protected_work": "Explain how a change in instrument coupling alters receiver sound without necessarily changing source frequency or amplitude.",
+        "first_attempt": "A plucked string's measured displacement and period are unchanged when it is attached to a larger sounding board. A microphone records stronger output but unchanged fundamental. Explain the energy-transfer chain and why the receiver observation does not establish a different source vibration. Propose a control separating source and radiation effects.",
+        "predict": "Predict whether a louder microphone signal requires a higher source frequency.",
+        "reconstruct": "Source motion drives body and air; larger board can change radiation coupling, with unchanged period and measured displacement. Match excitation and sensor position/calibration, measure source motion independently and compare receiver output. Pitch and radiated amplitude distinct.",
+        "diagnose": "Compare your saved reasoning with the reconstructed route. Identify the first invalid assumption, missing constraint or mismatched representation in this specific problem.",
+        "repair": "Rebuild the decisive construction using the cited subtopic instances and verify the result against the independent observation or boundary condition.",
+        "boundary_test": "If a microphone is attached directly to the board, what alternative path must be considered?",
+        "boundary_response_criterion": "Structure-borne mechanical vibration through attachment, not just airborne sound.",
+        "factor_evidence": {
+          "concept_model_selection": {
+            "score": 2,
+            "evidence": "Competing source/coupling explanations"
+          },
+          "representation_translation": {
+            "score": 1,
+            "evidence": "map source and detector evidence"
+          },
+          "reasoning_chain_length": {
+            "score": 2,
+            "evidence": "causal chain and control"
+          },
+          "algebra_computational_load": {
+            "score": 0,
+            "evidence": "arithmetic unnecessary"
+          },
+          "trap_exception_sensitivity": {
+            "score": 2,
+            "evidence": "detector response may contain alternative route."
+          }
+        },
+        "score": 7,
+        "academic_status": "HOLD",
+        "runtime_status": "NOT_IMPLEMENTED",
+        "direct_exam_admission": "HOLD"
+      },
+      "instances": [
+        {
+          "subtopic_id": "PH08-01",
+          "target_id": "PH08-01-B01-D3-EXPLAIN-01",
+          "task_identity": "G9-B01-PH08-01-EXPLAIN-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH08/b01/PH08-01/physics-topic-package.v1.json",
+          "package_blob": "9c0f6dbe1939a1f20b78a807408575513220c2bf",
+          "package_version": "0.3.2-b01.6.ph08-01",
+          "instance_cycle": "PH08-01-B01-INSTANCE-EXPLAIN-R2",
+          "prior_main_placeholder": "PH08-01-B01-MAIN-EXPLAIN-R2"
+        },
+        {
+          "subtopic_id": "PH08-02",
+          "target_id": "PH08-02-B01-D3-EXPLAIN-01",
+          "task_identity": "G9-B01-PH08-02-EXPLAIN-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH08/b01/PH08-02/physics-topic-package.v1.json",
+          "package_blob": "4e2db293b5643edabad91138abcb8de7d74d500f",
+          "package_version": "0.3.3-b01.6.ph08-02",
+          "instance_cycle": "PH08-02-B01-INSTANCE-EXPLAIN-R2",
+          "prior_main_placeholder": "PH08-02-B01-MAIN-EXPLAIN-R2"
+        },
+        {
+          "subtopic_id": "PH08-03",
+          "target_id": "PH08-03-B01-D3-EXPLAIN-01",
+          "task_identity": "G9-B01-PH08-03-EXPLAIN-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH08/b01/PH08-03/physics-topic-package.v1.json",
+          "package_blob": "73b9a1b8d547c16b46c842e7ae22ebac7c4941d6",
+          "package_version": "0.3.2-b01.7.ph08-03",
+          "instance_cycle": "PH08-03-B01-INSTANCE-EXPLAIN-R2",
+          "prior_main_placeholder": "PH08-03-B01-MAIN-EXPLAIN-R2"
+        },
+        {
+          "subtopic_id": "PH08-09",
+          "target_id": "PH08-09-B01-D3-EXPLAIN-01",
+          "task_identity": "G9-B01-PH08-09-EXPLAIN-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH08/b01/PH08-09/physics-topic-package.v1.json",
+          "package_blob": "3fbb36c32fe2335d68576a37302c1eed49bc1aa8",
+          "package_version": "0.3.2-b01.7.ph08-09",
+          "instance_cycle": "PH08-09-B01-INSTANCE-EXPLAIN-R2",
+          "prior_main_placeholder": "PH08-09-B01-MAIN-EXPLAIN-R2"
+        },
+        {
+          "subtopic_id": "PH08-11",
+          "target_id": "PH08-11-B01-D3-EXPLAIN-01",
+          "task_identity": "G9-B01-PH08-11-EXPLAIN-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH08/b01/PH08-11/physics-topic-package.v1.json",
+          "package_blob": "7be5cc31d4ef89c0e291a71fe9e459ebe28284d1",
+          "package_version": "0.3.2-b01.8.ph08-11",
+          "instance_cycle": "PH08-11-B01-INSTANCE-EXPLAIN-R2",
+          "prior_main_placeholder": "PH08-11-B01-MAIN-EXPLAIN-R2"
+        }
+      ],
+      "legacy_candidates": [],
+      "compatibility_status": "NOT_QUALIFIED",
+      "unmixed_instances": [
+        "PH08-02",
+        "PH08-03",
+        "PH08-09"
+      ],
+      "gap": null
+    },
+    {
+      "tile_id": "PHY-PH08-D4.6",
+      "adapter_id": "PHYS-TOPIC-PH08",
+      "cell": "D4.6",
+      "selected_canonical_main": null,
+      "proposed_mixed_main": {
+        "id": "B01-PH08-D4.6-MIXED-MAIN-PROPOSAL-R1",
+        "status": "AUTHOR_PROPOSED_NOT_QUALIFIED",
+        "band": "D4",
+        "primary_operation": "SYNTHESIZE",
+        "mixed_subtopics": [
+          "PH08-05",
+          "PH08-10",
+          "PH08-12"
+        ],
+        "scope_role": "CANDIDATE",
+        "protected_work": "Combine independent propagation calibration, common round-trip timing offset and multi-reflector geometry to recover candidate wall distances, then discriminate orientation with a moved measurement.",
+        "first_attempt": "A one-way calibration in a uniform medium gives arrivals 7 ms at1.5 m and 12 ms at3.0 m, with common offset also used by a colocated pulse-echo receiver between parallel walls. An identified first-order return is observed at22 ms and common second-order return at62 ms; the other first return is missed. Move receiver/source 1 m right: both first returns are then observed at approximately28.667 and35.333 ms. Recover speed, offset, original left/right distances and predicted missing first return, checking all observations.",
+        "predict": "Predict whether the first and second-order records fix left and right wall labels before the moved observation.",
+        "reconstruct": "Calibration v=300 m/s, offset2 ms. Corrected first20 ms→one distance3 m; corrected second60 ms→L=9 m; other6 m. Candidate (3,6)→(4,5) after shift, observed28.667 and35.333 ms; mirror (6,3)→(7,2) predicts48.667 and15.333 ms, rejected. Missing original first corrected40 ms, observed42 ms. Width unchanged.",
+        "diagnose": "Compare your saved reasoning with the reconstructed route. Identify the first invalid assumption, missing constraint or mismatched representation in this specific problem.",
+        "repair": "Rebuild the decisive construction using the cited subtopic instances and verify the result against the independent observation or boundary condition.",
+        "boundary_test": "If moved data unavailable, what original alternatives remain and does common second-order time change on moving?",
+        "boundary_response_criterion": "(3,6) and (6,3) remain; common second time stays62 ms with same width/offset.",
+        "factor_evidence": {
+          "concept_model_selection": {
+            "score": 2,
+            "evidence": "Combine calibration and reflection-order models"
+          },
+          "representation_translation": {
+            "score": 2,
+            "evidence": "coordinate two data types and shifted geometry"
+          },
+          "reasoning_chain_length": {
+            "score": 2,
+            "evidence": "solve, enumerate and check"
+          },
+          "algebra_computational_load": {
+            "score": 1,
+            "evidence": "coupled time and length computations"
+          },
+          "trap_exception_sensitivity": {
+            "score": 2,
+            "evidence": "missing peak and mirror ambiguity decisive."
+          }
+        },
+        "score": 9,
+        "academic_status": "HOLD",
+        "runtime_status": "NOT_IMPLEMENTED",
+        "direct_exam_admission": "HOLD"
+      },
+      "instances": [
+        {
+          "subtopic_id": "PH08-05",
+          "target_id": "PH08-05-B01-D4-SYNTHESIZE-01",
+          "task_identity": "G9-B01-PH08-05-SYNTHESIZE-R2",
+          "package_path": "nsejs/physics/curriculum/topics/PH08/b01/PH08-05/physics-topic-package.v1.json",
+          "package_blob": "580213b3e051fe2b26905a058db1f135aa7f0d92",
+          "package_version": "0.3.3-b01.8.ph08-05",
+          "instance_cycle": "PH08-05-B01-INSTANCE-SYNTHESIZE-R3",
+          "prior_main_placeholder": "PH08-05-B01-MAIN-SYNTHESIZE-R3"
+        },
+        {
+          "subtopic_id": "PH08-10",
+          "target_id": "PH08-10-B01-D4-SYNTHESIZE-01",
+          "task_identity": "G9-B01-PH08-10-SYNTHESIZE-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH08/b01/PH08-10/physics-topic-package.v1.json",
+          "package_blob": "c251a934b1d992b5b92361cb65ebb8a6addb8204",
+          "package_version": "0.3.2-b01.7.ph08-10",
+          "instance_cycle": "PH08-10-B01-INSTANCE-SYNTHESIZE-R2",
+          "prior_main_placeholder": "PH08-10-B01-MAIN-SYNTHESIZE-R2"
+        },
+        {
+          "subtopic_id": "PH08-12",
+          "target_id": "PH08-12-B01-D4-SYNTHESIZE-01",
+          "task_identity": "G9-B01-PH08-12-SYNTHESIZE-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH08/b01/PH08-12/physics-topic-package.v1.json",
+          "package_blob": "c86114ee34a0073770b83b9cea6a780b8806377e",
+          "package_version": "0.3.2-b01.5.ph08-12",
+          "instance_cycle": "PH08-12-B01-INSTANCE-SYNTHESIZE-R2",
+          "prior_main_placeholder": "PH08-12-B01-MAIN-SYNTHESIZE-R2"
+        },
+        {
+          "subtopic_id": "PH08-13",
+          "target_id": "PH08-13-B01-D4-SYNTHESIZE-01",
+          "task_identity": "G9-B01-PH08-13-SYNTHESIZE-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH08/b01/PH08-13/physics-topic-package.v1.json",
+          "package_blob": "36dc2b597a5cddc50892709fcc61f0794670401f",
+          "package_version": "0.3.2-b01.8.ph08-13",
+          "instance_cycle": "PH08-13-B01-INSTANCE-SYNTHESIZE-R2",
+          "prior_main_placeholder": "PH08-13-B01-MAIN-SYNTHESIZE-R2"
+        }
+      ],
+      "legacy_candidates": [],
+      "compatibility_status": "NOT_QUALIFIED",
+      "unmixed_instances": [
+        "PH08-13"
+      ],
+      "gap": null
+    },
+    {
+      "tile_id": "PHY-PH08-D4.7",
+      "adapter_id": "PHYS-TOPIC-PH08",
+      "cell": "D4.7",
+      "selected_canonical_main": null,
+      "proposed_mixed_main": {
+        "id": "B01-PH08-D4.7-MIXED-MAIN-PROPOSAL-R1",
+        "status": "AUTHOR_PROPOSED_NOT_QUALIFIED",
+        "band": "D4",
+        "primary_operation": "JUSTIFY",
+        "mixed_subtopics": [
+          "PH08-06",
+          "PH08-12"
+        ],
+        "scope_role": "CANDIDATE",
+        "protected_work": "Evaluate combined timing and intensity claims by constructing distinct physical countermodels consistent with limited observations and proposing independent discriminators.",
+        "first_attempt": "Two receivers report a single common second-order echo at60 ms from a source between parallel walls in medium speed300 m/s. Only this labelled return is detected in each timing run. Separately, calibrated pressure peaks in two different media have ratio p_A/p_B=2; their impedances are unknown. A report claims the source is centred between the walls and A necessarily has four times B's intensity. Construct two wall geometries and two impedance ratios that reproduce the stated observations while defeating the conclusions. Specify the minimum discriminating evidence for each.",
+        "predict": "Predict whether one labelled second-order time or a pressure ratio alone uniquely determines the corresponding physical claim.",
+        "reconstruct": "L=9 m; centred(4.5,4.5) and asymmetric(3,6) both yield60 ms second-order. First returns centred30 ms coincident vs20/40 ms; independently identify first-order times with adequate detection. I_A/I_B=4Z_B/Z_A; equal at Z_A/Z_B=4, A weaker at ratio8; measure impedances/calibrated pressure. Neither claim is forced.",
+        "diagnose": "Compare your saved reasoning with the reconstructed route. Identify the first invalid assumption, missing constraint or mismatched representation in this specific problem.",
+        "repair": "Rebuild the decisive construction using the cited subtopic instances and verify the result against the independent observation or boundary condition.",
+        "boundary_test": "If independent first-order return at30 ms is correctly identified and impedances are equal, what is then established under the models?",
+        "boundary_response_criterion": "One wall distance4.5 m and L=9 imply centred; intensity ratio4 under linear progressive wave model. Loudness not established.",
+        "factor_evidence": {
+          "concept_model_selection": {
+            "score": 2,
+            "evidence": "Different inverse models"
+          },
+          "representation_translation": {
+            "score": 2,
+            "evidence": "map timing loci and pressure/impedance relation"
+          },
+          "reasoning_chain_length": {
+            "score": 2,
+            "evidence": "countermodels and decisive measurements"
+          },
+          "algebra_computational_load": {
+            "score": 0,
+            "evidence": "calculations incidental"
+          },
+          "trap_exception_sensitivity": {
+            "score": 2,
+            "evidence": "missing paths and unknown impedance reverse claims."
+          }
+        },
+        "score": 8,
+        "academic_status": "HOLD",
+        "runtime_status": "NOT_IMPLEMENTED",
+        "direct_exam_admission": "HOLD"
+      },
+      "instances": [
+        {
+          "subtopic_id": "PH08-06",
+          "target_id": "PH08-06-B01-D4-JUSTIFY-01",
+          "task_identity": "G9-B01-PH08-06-JUSTIFY-R2",
+          "package_path": "nsejs/physics/curriculum/topics/PH08/b01/PH08-06/physics-topic-package.v1.json",
+          "package_blob": "342e72db58e2c1a7347138ac0425258cc35549eb",
+          "package_version": "0.3.3-b01.8.ph08-06",
+          "instance_cycle": "PH08-06-B01-INSTANCE-JUSTIFY-R3",
+          "prior_main_placeholder": "PH08-06-B01-MAIN-JUSTIFY-R3"
+        },
+        {
+          "subtopic_id": "PH08-12",
+          "target_id": "PH08-12-B01-D4-JUSTIFY-01",
+          "task_identity": "G9-B01-PH08-12-JUSTIFY-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH08/b01/PH08-12/physics-topic-package.v1.json",
+          "package_blob": "c86114ee34a0073770b83b9cea6a780b8806377e",
+          "package_version": "0.3.2-b01.5.ph08-12",
+          "instance_cycle": "PH08-12-B01-INSTANCE-JUSTIFY-R2",
+          "prior_main_placeholder": "PH08-12-B01-MAIN-JUSTIFY-R2"
+        }
+      ],
+      "legacy_candidates": [],
+      "compatibility_status": "NOT_QUALIFIED",
+      "unmixed_instances": [],
+      "gap": null
+    },
+    {
+      "tile_id": "PHY-PH08-D4.4",
+      "adapter_id": "PHYS-TOPIC-PH08",
+      "cell": "D4.4",
+      "selected_canonical_main": null,
+      "proposed_mixed_main": {
+        "id": "B01-PH08-D4.4-MIXED-MAIN-PROPOSAL-R1",
+        "status": "AUTHOR_PROPOSED_NOT_QUALIFIED",
+        "band": "D4",
+        "primary_operation": "MODEL",
+        "mixed_subtopics": [
+          "PH08-07",
+          "PH08-09"
+        ],
+        "scope_role": "CANDIDATE",
+        "protected_work": "Discriminate phase-aliased propagation-speed models by predicting independent reflected pulse clusters under a specified detector rule.",
+        "first_attempt": "A right-moving periodic pressure wave has λ=0.60 m. Snapshots 4 ms apart show crest offset +0.20 m modulo λ; speed is between100 and400 m/s inclusive. The same uniform nondispersive medium carries pulses along two known reflected paths with excess lengths 1.0 and 2.0 m relative to direct. Direct and returns have equal duration 2 ms and all amplitudes exceed threshold; a detector separates groups only with quiet gap ≥1 ms. An independent pulse record shows one group whose last end is 8.154 ms after direct leading time (rounded). Enumerate speeds and predict grouping and final end for each; test the record.",
+        "predict": "Predict whether the periodic snapshot alone determines one speed and whether pulse timing can distinguish aliases.",
+        "reconstruct": "u=(0.20+0.60n)/0.004; within bounds200 and350 m/s (n=1,2). At200: starts0,5,10 ms, ends2,7,12; quiet gaps3 ms each, three groups, final12 ms. At350: starts0,2.857,5.714 ms, gaps0.857<1; one group, final7.714 ms. The reported8.154 ms matches neither exact prediction; neither model accepted without resolving discrepancy. One group alone supports350 relative to200, but full record rejects both.",
+        "diagnose": "Compare your saved reasoning with the reconstructed route. Identify the first invalid assumption, missing constraint or mismatched representation in this specific problem.",
+        "repair": "Rebuild the decisive construction using the cited subtopic instances and verify the result against the independent observation or boundary condition.",
+        "boundary_test": "If the independent final end is instead7.714 ms rounded, which candidate survives?",
+        "boundary_response_criterion": "350 m/s, under stated path/detector model; other assumptions still require review.",
+        "factor_evidence": {
+          "concept_model_selection": {
+            "score": 2,
+            "evidence": "Competing periodic alias models"
+          },
+          "representation_translation": {
+            "score": 2,
+            "evidence": "coordinate spatial phase and finite pulse traces"
+          },
+          "reasoning_chain_length": {
+            "score": 2,
+            "evidence": "enumerate, predict, compare both group and end evidence"
+          },
+          "algebra_computational_load": {
+            "score": 1,
+            "evidence": "multiple interval calculations"
+          },
+          "trap_exception_sensitivity": {
+            "score": 2,
+            "evidence": "a partial match cannot rescue inconsistent full data."
+          }
+        },
+        "score": 9,
+        "academic_status": "HOLD",
+        "runtime_status": "NOT_IMPLEMENTED",
+        "direct_exam_admission": "HOLD"
+      },
+      "instances": [
+        {
+          "subtopic_id": "PH08-07",
+          "target_id": "PH08-07-B01-D4-MODEL-01",
+          "task_identity": "G9-B01-PH08-07-MODEL-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH08/b01/PH08-07/physics-topic-package.v1.json",
+          "package_blob": "b744adbdb8c7aa4281674cdb6812f2cc5aa56999",
+          "package_version": "0.3.2-b01.5.ph08-07",
+          "instance_cycle": "PH08-07-B01-INSTANCE-MODEL-R2",
+          "prior_main_placeholder": "PH08-07-B01-MAIN-MODEL-R2"
+        },
+        {
+          "subtopic_id": "PH08-09",
+          "target_id": "PH08-09-B01-D4-MODEL-01",
+          "task_identity": "G9-B01-PH08-09-MODEL-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH08/b01/PH08-09/physics-topic-package.v1.json",
+          "package_blob": "3fbb36c32fe2335d68576a37302c1eed49bc1aa8",
+          "package_version": "0.3.2-b01.7.ph08-09",
+          "instance_cycle": "PH08-09-B01-INSTANCE-MODEL-R2",
+          "prior_main_placeholder": "PH08-09-B01-MAIN-MODEL-R2"
+        },
+        {
+          "subtopic_id": "PH08-13",
+          "target_id": "PH08-13-B01-D4-MODEL-01",
+          "task_identity": "G9-B01-PH08-13-MODEL-R1",
+          "package_path": "nsejs/physics/curriculum/topics/PH08/b01/PH08-13/physics-topic-package.v1.json",
+          "package_blob": "36dc2b597a5cddc50892709fcc61f0794670401f",
+          "package_version": "0.3.2-b01.8.ph08-13",
+          "instance_cycle": "PH08-13-B01-INSTANCE-MODEL-R2",
+          "prior_main_placeholder": "PH08-13-B01-MAIN-MODEL-R2"
+        }
+      ],
+      "legacy_candidates": [],
+      "compatibility_status": "NOT_QUALIFIED",
+      "unmixed_instances": [
+        "PH08-13"
+      ],
+      "gap": null
+    }
+  ],
+  "review_checks": [
+    "Compare protected W and primary operation across MAIN and every bound INSTANCE, not merely same operation label.",
+    "Independently re-solve fresh MAIN and check five factors, score, alternative valid routes and boundary counterexamples.",
+    "Verify each mixed MAIN has genuine dependency or conceptual transfer across named instances, rather than unrelated subtasks.",
+    "Review pre-attempt prediction/hints for semantic leakage; criteria public and author-exposed, cannot qualify unseen assessment.",
+    "Check scope and source eligibility, especially extension-dependent proposals; no direct exam claims.",
+    "P00 must deliver separate stage receipts and protected payloads before execution; R00 real browser acceptance required."
+  ]
+}
