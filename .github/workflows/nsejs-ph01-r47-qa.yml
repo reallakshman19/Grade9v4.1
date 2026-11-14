@@ -1,0 +1,31 @@
+name: NSEJS PH01 R4.7 focused browser QA
+on:
+  pull_request:
+    paths:
+      - "tests/test_nsejs_physics_ph01_r47.py"
+      - "tools/physics_ph01_r47_browser_qa.py"
+      - ".github/workflows/nsejs-ph01-r47-qa.yml"
+      - "nsejs/physics/core1/ph01-qrt-r47/**"
+      - "nsejs/physics/core1/ph01-*-r47/**"
+      - "nsejs/physics/curriculum/agent1/PH01/*r4_7.json"
+jobs:
+  focused-chromium:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install Playwright and Chromium
+        run: |
+          python -m pip install playwright==1.55.0
+          python -m playwright install --with-deps chromium
+      - name: Verify R4.7 new source-specific browser journeys
+        run: python tools/physics_ph01_r47_browser_qa.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ph01-r47-focused-receipts
+          path: review-artifacts/physics-r47/
+          if-no-files-found: ignore
