@@ -140,7 +140,7 @@ def test_b01_takeover_runtime_boundaries_are_explicit():
         if term.startswith("NON_EXISTENT"):
             assert term not in js
         else:
-            assert term in js or (term=="crypto.subtle.digest('SHA-1'" and "hash('SHA-1'" in js) or (term=="crypto.subtle.digest('SHA-256'" and "hash(revisionMaterial,'SHA-256')" in js)
+            assert term in js or (term=="crypto.subtle.digest('SHA-1'" and "hash('SHA-1'" in js) or (term=="crypto.subtle.digest('SHA-256'" and "state.sourceDigest=await hash(legacyRevisionMaterial" in js)
     assert "No verified hint taxonomy" in html
     assert "not secure or tamper-proof" in html
     assert "automatic grading" in js
