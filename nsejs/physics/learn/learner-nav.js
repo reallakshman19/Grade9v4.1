@@ -51,6 +51,18 @@ async function load(){
     if(here===new URL(unit.practice,root).pathname)matches.push({ch,role:"practice",unit,index});
    });
   }
+  // B01 PH07/PH08 primary Core1B pages redirect to the protected R14
+  // shared reader; preserve their chapter and subtopic context after redirect.
+  // No modification of byte-pinned Core1A/B teaching source HTML.
+  const inB01=/\/curriculum\/topics\/PH07\/b01\/learner-preview\/index\.html$/.test(here);
+  if(inB01){
+    const subtopic=new URLSearchParams(location.search).get("subtopic")||"";
+    if(/^PH(?:07|08)-\d{2}$/.test(subtopic)){
+      const chapter=data.chapters.find(c=>c.id===subtopic.slice(0,4));
+      const index=chapter?.units.findIndex(u=>u.id===subtopic)??-1;
+      if(chapter&&index>=0)matches.push({ch:chapter,role:"practice",unit:chapter.units[index],index});
+    }
+  }
   if(!matches.length){simpleFallback();return;}
   // Recovery routes may serve several chapters; use explicit context only.
   const from=new URLSearchParams(location.search).get("from");

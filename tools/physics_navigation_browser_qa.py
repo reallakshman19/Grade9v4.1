@@ -39,6 +39,17 @@ def run(origin, browser, size):
         assert "Try it" in page.locator("#g9-learner-nav").inner_text()
         page.locator('#g9-learner-nav a').filter(has_text="Chapter").first.click()
         page.locator("#M01").wait_for()
+        # B01 primary Core1B redirects to a six-stage shared reader. It must
+        # preserve the originating PH07 subtopic and chapter return context.
+        page.goto(origin+"/nsejs/physics/curriculum/topics/PH07/b01/PH07-01/core1b.html",
+                  wait_until="domcontentloaded")
+        page.wait_for_url("**/learner-preview/index.html?subtopic=PH07-01")
+        page.locator("#g9-learner-nav .g9-study-actions a").filter(has_text="← Chapter").wait_for()
+        assert "PH07-01" in page.locator("#g9-learner-nav").inner_text()
+        page.locator("#g9-learner-nav .g9-study-actions a").filter(has_text="← Chapter").click()
+        page.locator("#PH07-01 .g9-lesson-actions a").first.wait_for()
+        assert "ph=PH07" in page.url
+
         # B02 subtopic topology uses the same controls, despite different file tree.
         page.goto(home,wait_until="domcontentloaded")
         page.locator("#chapter-PH09 .g9-chapter-open").click()
