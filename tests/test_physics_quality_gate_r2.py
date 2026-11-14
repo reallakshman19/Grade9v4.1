@@ -175,8 +175,8 @@ def test_reject_fake_quote_and_wrong_line(tmp_path):
 
 def test_reject_numeric_swap_even_when_author_says_it_is_fresh(tmp_path):
     p=case(tmp_path)
-    p["core1b"]["anchor_problem"]="Find speed of object after 4 m in 2 s."
-    p["core1b"]["new_problem"]="Find speed of object after 9 m in 6 s."
+    p["core1b"]["anchor_problem"]="An object moves at constant speed in a straight line from one marker to another, travelling 4 metres in 2 seconds. Calculate the average speed in metres per second."
+    p["core1b"]["new_problem"]="An object moves at constant speed in a straight line from one marker to another, travelling 9 metres in 6 seconds. Calculate the average speed in metres per second."
     assert_blocked(p,tmp_path,"NUMERIC_REPARAMETERIZATION_DETECTED")
 
 
