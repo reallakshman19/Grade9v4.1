@@ -259,6 +259,156 @@ def check_visual_blob_tampering_fail_closed(browser,ids):
     context.close()
 
 
+
+def check_delayed_unit_load_never_renders_previous_pack(browser, ids):
+    """Intercept a slow C11 book fetch and try to trigger old C10 mode controls."""
+    from urllib.parse import urlencode
+    task_id = next(k for k,v in ids.items() if v[0]=="C10" and v[2]=="native")
+    unit,subtopic,_ = ids[task_id]
+    ctx = browser.new_context(viewport={"width":1000,"height":1600}, has_touch=True)
+    page = ctx.new_page()
+    page.add_init_script("""(() => {
+      const originalFetch = window.fetch.bind(window);
+      window.fetch = (url, ...args) => {
+        if (String(url).includes("learner/C11.reader.v0.1.0.json")) {
+          return new Promise(resolve => setTimeout(
+            () => resolve(originalFetch(url, ...args)), 1500));
+        }
+        return originalFetch(url, ...args);
+      };
+    })();""")
+    page.goto(BASE+"?"+urlencode({
+        "unit":unit,"subtopic":subtopic,"mode":"practice","task":task_id
+    }))
+    wait_loaded(page, task_id)
+    check("CHEM-C10" in page.locator("#lesson").inner_text(),
+          "C10 must exist before changing units")
+    page.locator("#unit-select").select_option("C11")
+    check(page.locator("#lesson").inner_text().startswith("Loading C11"),
+          "Previous pack must be removed immediately during C11 loading")
+    check(page.locator("#lesson").get_attribute("aria-busy")=="true",
+          "Loading must be announced to assistive technology")
+    check(page.locator("#show-practice").is_disabled()
+          and page.locator("#show-study").is_disabled(),
+          "Stale C10 mode actions must be disabled during pending load")
+    check(page.locator("#original-answer").count()==0 and
+          page.locator("#sections button").count()==0,
+          "Stale task or section control remained during loading")
+    # Even a programmatic click must not re-render the previous unit.
+    page.evaluate("() => document.querySelector('#show-practice').click()")
+    check(page.locator("#lesson").inner_text().startswith("Loading C11"),
+          "Programmatic mode click exposed stale C10 while C11 loaded")
+    page.locator("#lesson .eyebrow").wait_for(timeout=25000)
+    check(page.locator("#lesson .eyebrow").inner_text().startswith("CHEM-C11."),
+          "Final loaded content was not C11")
+    check(page.locator("#lesson").get_attribute("aria-busy")=="false",
+          "Successful load must clear the busy status")
+    check(page.locator("#show-practice").is_enabled() and
+          page.locator("#show-study").is_enabled(),
+          "Successful load must restore the study/practice controls")
+    ctx.close()
+
+
+def check_stage_order_survives_refresh(browser, ids):
+    """No S2 or S3 before a separately persisted predecessor exposure."""
+    from urllib.parse import urlencode
+    task_id = next(k for k,v in ids.items() if v[0]=="C10" and v[2]=="native")
+    unit,subtopic,_ = ids[task_id]
+    ctx=browser.new_context(viewport={"width":1600,"height":1000},has_touch=True)
+    page=ctx.new_page()
+    page.goto(BASE+"?"+urlencode({
+        "unit":unit,"subtopic":subtopic,"mode":"practice","task":task_id
+    }))
+    wait_loaded(page,task_id)
+    page.locator("#prediction-answer").fill(
+        "The predicted trend depends on the correct chemical identity.")
+    page.locator("#original-answer").fill(
+        "I will compare the candidate mechanism with each observed fact.")
+    page.locator("#commit-attempt").click()
+    page.get_by_role("button",name="Inspect S1 · CLARIFY (unreviewed)").wait_for()
+    s1=page.get_by_role("button",name="Inspect S1 · CLARIFY (unreviewed)")
+    s2=page.get_by_role("button",name="Inspect S2 · CORRELATE (unreviewed)")
+    s3=page.get_by_role("button",name="Inspect S3 · OPEN_THE_WAY (unreviewed)")
+    check(s1.is_enabled() and s2.is_disabled() and s3.is_disabled(),
+          "S2/S3 must not be available before S1")
+    s1.click()
+    page.locator(".stage-figure").first.wait_for(timeout=15000)
+    check(s2.is_enabled() and s3.is_disabled(),
+          "S1 should unlock only S2")
+    page.reload()
+    page.get_by_role("button",name="Inspect S2 · CORRELATE (unreviewed)").wait_for()
+    check(page.get_by_role("button",name="Inspect S2 · CORRELATE (unreviewed)").is_enabled()
+          and page.get_by_role("button",name="Inspect S3 · OPEN_THE_WAY (unreviewed)").is_disabled(),
+          "S1 exposure must survive refresh without silently unlocking S3")
+    page.get_by_role("button",name="Inspect S2 · CORRELATE (unreviewed)").click()
+    page.locator(".stage-figure").first.wait_for(timeout=15000)
+    check(page.get_by_role("button",name="Inspect S3 · OPEN_THE_WAY (unreviewed)").is_enabled(),
+          "Persisted S2 exposure must unlock S3")
+    page.get_by_role("button",name="Inspect S3 · OPEN_THE_WAY (unreviewed)").click()
+    page.locator(".stage-figure").nth(1).wait_for(timeout=15000)
+    entry=page.evaluate("""id => Object.keys(localStorage)
+        .filter(k=>k.startsWith("g9chem:stage-exposure:v2:"+id+":"))
+        .map(k=>JSON.parse(localStorage.getItem(k)))""",task_id)
+    check(len(entry)==1 and entry[0]["levels"]==["S1","S2","S3"],
+          "Exposure register must retain sequential S1/S2/S3 history")
+    ctx.close()
+
+
+def check_keyboard_only_read_attempt_and_stages(browser, ids):
+    """Exercise real keyboard event paths at the portrait tablet viewport."""
+    from urllib.parse import urlencode
+    task_id = next(k for k,v in ids.items() if v[0]=="C11" and v[2]=="native")
+    unit,subtopic,_ = ids[task_id]
+    ctx=browser.new_context(viewport={"width":1000,"height":1600})
+    page=ctx.new_page()
+    page.goto(BASE+"?"+urlencode({
+        "unit":unit,"subtopic":subtopic,"mode":"study",
+        "return":"../index.html"
+    }))
+    page.locator("#lesson .eyebrow").wait_for(timeout=15000)
+    link=page.locator("#source-return a")
+    check(link.count()==1 and link.get_attribute("href").endswith("/nsejs/chemistry/index.html"),
+          "Accessible source return missing")
+    link.focus()
+    check(page.evaluate("() => document.activeElement.tagName")=="A",
+          "Source link cannot receive keyboard focus")
+    page.locator("#show-practice").focus()
+    page.keyboard.press("Enter")
+    page.locator("#original-answer").wait_for(timeout=15000)
+    page.locator("#task-select").select_option(task_id)
+    check(page.locator("#task-select").input_value()==task_id,
+          "Keyboard review target not selected")
+    page.locator("#prediction-answer").focus()
+    page.keyboard.type("I predict a change in this system under stated conditions.")
+    page.keyboard.press("Tab")
+    check(page.evaluate("() => document.activeElement.id")=="original-answer",
+          "Tab from prediction must reach independent answer field")
+    page.keyboard.type(
+        "I compare the original mechanism against the changed experiment.")
+    page.locator("#commit-attempt").focus()
+    page.keyboard.press("Enter")
+    page.get_by_role("heading",name="Stage 3 — Reconstruct").wait_for(timeout=15000)
+    check(page.evaluate("() => document.activeElement.textContent")
+          .startswith("Stage 3 — Reconstruct"),
+          "Keyboard focus must move to newly revealed reconstruction")
+    s1=page.get_by_role("button",name="Inspect S1 · CLARIFY (unreviewed)")
+    s1.focus()
+    page.keyboard.press("Enter")
+    page.locator(".stage-figure").first.wait_for(timeout=15000)
+    s2=page.get_by_role("button",name="Inspect S2 · CORRELATE (unreviewed)")
+    check(s2.is_enabled(),"Keyboard S1 activation did not unlock S2")
+    s2.focus()
+    page.keyboard.press("Space")
+    page.locator(".stage-figure").nth(1).wait_for(timeout=15000)
+    s3=page.get_by_role("button",name="Inspect S3 · OPEN_THE_WAY (unreviewed)")
+    s3.focus()
+    page.keyboard.press("Enter")
+    page.locator(".stage-figure").nth(2).wait_for(timeout=15000)
+    check(page.evaluate("() => document.activeElement.tagName")=="BUTTON",
+          "Stage keyboard control lost its focus unexpectedly")
+    ctx.close()
+
+
 def check_all_units_still_load(browser):
     ctx=browser.new_context(viewport={"width":1000,"height":1600})
     page=ctx.new_page()
@@ -313,6 +463,9 @@ def main():
                 check_all_units_still_load(browser)
                 check_task_only_deep_link_and_history(browser,ids)
                 check_visual_blob_tampering_fail_closed(browser,ids)
+                check_delayed_unit_load_never_renders_previous_pack(browser,ids)
+                check_stage_order_survives_refresh(browser,ids)
+                check_keyboard_only_read_attempt_and_stages(browser,ids)
             finally:
                 browser.close()
         print(
