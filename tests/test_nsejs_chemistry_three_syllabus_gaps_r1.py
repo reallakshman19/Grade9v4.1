@@ -110,3 +110,50 @@ def test_source_remediation_not_equal_to_independent_qualification():
     for u in ("C11","C14"):
         data=read(u,"learner","reader.v0.1.0.json")
         assert data["academic_status"]=="DRAFT_ACADEMIC_HOLD"
+
+
+def test_c14_revised_qrt_slots_and_canonical_truth_match_native_pack():
+    adapter=json.loads((ROOT/"curriculum/chemistry/adapters/C14.v1.json").read_text(encoding="utf-8"))
+    canonical=json.loads((B/"canonical/C14.concepts.v0.1.0.json").read_text(encoding="utf-8"))
+    pack=read("C14","core1b","core1b.v0.1.0.json")
+    book=read("C14","learner","reader.v0.1.0.json")
+    for cycle_id in ("CORE1B-C14-01-2","CORE1B-C14-05-1"):
+        cycle=next(c for c in pack["cycles"] if c["cycle_id"]==cycle_id)
+        sid=cycle["subtopic_ref"]
+        sub=next(s for s in adapter["subtopics"] if s["subtopic_id"]==sid)
+        q=next(q for q in sub["qrt_instances"]
+               if q["instance_id"]==cycle["qrt_instance_ref"])
+        concept=next(c for c in canonical["concepts"] if c["subtopic_id"]==sid)
+        section=next(s for s in book["sections"] if s["id"]==sid)
+        assert q["slots"]["X"]==cycle["attempt"]["prompt"]
+        assert q["slots"]["W"]==cycle["attempt"]["protected_W"]
+        assert q["slots"]["Z"]==cycle["attempt"]["post_commit_closure"]["model_response"]
+        assert q["slots"]["Y"] in concept["scientific_exposition"]
+        assert q["slots"]["Y"] in section["teaching"]
+        assert q["status"]=="ACADEMIC_HOLD"
+        assert concept["academic_status"]=="DRAFT_UNREVIEWED"
+
+
+def test_c11_canonical_halo_authority_contains_both_isomers():
+    canonical=json.loads((B/"canonical/C11.concepts.v0.1.0.json").read_text(encoding="utf-8"))
+    c=next(x for x in canonical["concepts"] if x["subtopic_id"]=="CHEM-C11.05")
+    prose=" ".join(c["scientific_exposition"])
+    assert "haloalkane" in prose.lower()
+    assert "1-chloropropane" in prose and "2-chloropropane" in prose
+    assert c["academic_status"]=="DRAFT_UNREVIEWED"
+
+
+def test_revised_c11_boundary_has_exact_author_evidence_blob_pin():
+    import hashlib
+    ledger=json.loads((B/"qrt/B02-C10-C11-author-coverage.v0.4.0.json").read_text(encoding="utf-8"))
+    evidence=next(x for x in ledger["evidence_files"] if x["path"].endswith(
+        "B02-C11-legacy-refinement-evidence.v0.4.0.json"))
+    raw=(ROOT/evidence["path"]).read_bytes()
+    assert hashlib.sha1(("blob "+str(len(raw))+"\\0").encode()+raw).hexdigest()==evidence["blob_sha"]
+    records=json.loads(raw.decode("utf-8"))["records"]
+    item=next(x for x in records if x["cycle_id"]=="CORE1B-C11-05-1-B02-R2")
+    cycle=next(x for x in read("C11","core1b","core1b.v0.1.0.json")["cycles"]
+               if x["cycle_id"]==item["cycle_id"])
+    assert item["boundary_prompt"]==cycle["boundary_test"]["prompt"]
+    assert item["boundary_answer"]==cycle["boundary_test"]["answer"]
+    assert item["independent_review"]=="NOT_RUN" and item["academic_status"]=="HOLD"
