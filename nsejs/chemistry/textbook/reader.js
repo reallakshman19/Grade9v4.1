@@ -72,7 +72,7 @@
       target.append(tag("span"," · Context: "+sourceContext+" (not an admitted NSEJS question)","small"));
     }
   }
-  function updateUrl(){
+  function updateUrl(push=false){
     const query=new URLSearchParams();
     query.set("unit",view.unit);
     if(currentSection())query.set("subtopic",currentSection().id);
@@ -80,7 +80,12 @@
     if(view.mode==="practice"&&view.taskId)query.set("task",view.taskId);
     if(sourceContext&&/^[A-Za-z0-9_.-]{1,100}$/.test(sourceContext))query.set("source",sourceContext);
     if(safeReturn)query.set("return",returnRaw);
-    history.replaceState(null,"",location.pathname+"?"+query.toString());
+    const target=location.pathname+"?"+query.toString();
+    const current=location.pathname+location.search;
+    if(target!==current){
+      if(push)history.pushState(null,"",target);
+      else history.replaceState(null,"",target);
+    }
   }
   async function digestHex(algorithm,bytes){
     if(!globalThis.crypto?.subtle)throw new Error("NO_SECURE_REVISION_HASH");
@@ -220,10 +225,11 @@
       view.visualById=new Map(extra?visuals.records.map(x=>[x.task_id,x]):[]);
       view.revision=revision;view.unit=unit;
       view.section=opts.subtopic?book.sections.findIndex(x=>x.id===opts.subtopic):sectionIdx;
-      view.mode=opts.mode==="practice"?"practice":"study";
+      view.mode=opts.mode==="practice"||(opts.task&&opts.mode!=="study")
+        ?"practice":"study";
       view.taskId=taskId;
       unitSel.value=unit;
-      renderNavigation();render();
+      renderNavigation();render(!!opts.push);
       if(opts.initial&&returnRaw&&!safeReturn)message("UNSAFE_SOURCE_RETURN_IGNORED · Only same-site Chemistry HTML routes are permitted.");
     }catch(e){
       if(gen!==loadGeneration)return;
@@ -239,7 +245,7 @@
     nav.replaceChildren();
     for(const [i,s] of view.book.sections.entries()){
       const b=button(s.id.split(".")[1]+" · "+s.title,()=>{
-        view.section=i;view.taskId="";renderNavigation();render();
+        view.section=i;view.taskId="";renderNavigation();render(true);
       });
       b.setAttribute("aria-current",String(i===view.section));
       nav.append(b);
@@ -249,7 +255,7 @@
     add(lesson,tag("div",section.id+" · "+section.scope+" · UNREVIEWED","eyebrow"),
       tag("h2",section.title));
   }
-  function render(){
+  function render(push=false){
     if(!view.book||!view.practice)return;
     ++renderGeneration;cleanObjectUrls();
     const section=currentSection();
@@ -273,7 +279,7 @@
       view.taskId=idOf(selected);taskSel.value=view.taskId;
       renderPractice(selected,renderGeneration);
     }
-    updateUrl();updateSourceReturn();
+    updateUrl(push);updateSourceReturn();
   }
   function renderStudy(section){
     add(lesson,tag("h3","Start with the scientific phenomenon"),tag("p",section.hook,"hook"),
@@ -518,16 +524,16 @@
     if(B02.has(view.unit))visualStages(task,renderEpoch);
   }
   unitSel.addEventListener("change",()=>{
-    view.taskId="";load(unitSel.value,{mode:"study"});
+    view.taskId="";load(unitSel.value,{mode:"study",push:true});
   });
   taskSel.addEventListener("change",()=>{
-    view.taskId=taskSel.value;render();
+    view.taskId=taskSel.value;render(true);
   });
   $("#show-study").addEventListener("click",()=>{
-    view.mode="study";render();
+    view.mode="study";render(true);
   });
   $("#show-practice").addEventListener("click",()=>{
-    view.mode="practice";render();
+    view.mode="practice";render(true);
   });
   window.addEventListener("popstate",()=>{
     const q=new URLSearchParams(location.search);
