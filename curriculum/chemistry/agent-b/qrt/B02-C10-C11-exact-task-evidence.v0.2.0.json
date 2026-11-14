@@ -1,0 +1,916 @@
+{
+  "schema": "g9v41-chem-b02-exact-task-evidence/v1",
+  "version": "0.3.0",
+  "status": "AUTHOR_PROPOSED__ACADEMIC_HOLD",
+  "baseline_head": "b8e4f6f99a9bb8000fb243ee6a2a2765fc5d2509",
+  "counts": {
+    "revised": 13,
+    "D3": 8,
+    "D4": 5,
+    "retained_legacy_cycles": 26,
+    "qualified": 0
+  },
+  "records": [
+    {
+      "subtopic_id": "CHEM-C10.01",
+      "cycle_id": "CORE1B-C10-01-2-B02-R3",
+      "qrt_instance_id": "C10-01-MODEL-D3-B02-R3",
+      "template_ref": "QRT-MODEL-D3",
+      "band": "D3",
+      "primary_operation": "MODEL",
+      "exact_task": "A black solid P conducts along its flat faces but weakly across stacked layers; Q is shiny and conducts in all three measured directions; R is nonconducting when solid but its melt conducts. Assign plausible bonding models, identify which assignments are nonunique and propose independent tests.",
+      "protected_W": "Compare carrier models, directional and phase evidence, and distinguish consistency from identification.",
+      "worked_answer": "P fits layered graphite with delocalised electrons preferentially moving within layers. Q fits metallic electron conduction but lustre/conductivity do not prove metallic identity. R fits mobile ions in a melt; composition must confirm ionic bonding. Control geometry and contacts; obtain composition/structural evidence for each.",
+      "boundary_prompt": "If a molecular solid produces conducting solution, does that establish that the original solid is ionic?",
+      "boundary_answer": "No; molecular substances can ionise or react with water. Solution carriers do not establish original bonding.",
+      "score": 7,
+      "factors": {
+        "concept_model_selection": {
+          "score": 2,
+          "evidence": "Choose among three carrier models"
+        },
+        "representation_translation": {
+          "score": 1,
+          "evidence": "Translate direction/phase observations"
+        },
+        "reasoning_chain_length": {
+          "score": 2,
+          "evidence": "Infer models and test unique identification"
+        },
+        "algebra_computational_load": {
+          "score": 0,
+          "evidence": "No calculation"
+        },
+        "trap_exception_sensitivity": {
+          "score": 2,
+          "evidence": "Graphite and ion-forming solutes are counterexamples"
+        }
+      },
+      "source_ids_related": [
+        "NSEJS-2022-C-Q28",
+        "NSEJS-2021-C-Q12"
+      ],
+      "source_role": "AUTHORED_PRACTICE",
+      "independent_review": "NOT_RUN",
+      "academic_status": "HOLD",
+      "hint_evidence": {
+        "H1": "Separate each observation into direction, physical state and electrical response; do not name substances yet.",
+        "H2": "For each sample, ask whether electrons or ions could move in the observed state, and whether mobility depends on direction.",
+        "H3": "Make a three-row table with columns possible carrier, alternative model, and a measurement that could reject one model; leave the assignments and final discrimination to yourself.",
+        "author_non_disclosure_check": "H3 supplies an organising representation or equation setup, not the final task-specific conclusion, calculated values or completed structure. Independent review pending."
+      }
+    },
+    {
+      "subtopic_id": "CHEM-C10.02",
+      "cycle_id": "CORE1B-C10-02-3-B02-R3",
+      "qrt_instance_id": "C10-02-SYNTHESIZE-D4-B02-R3",
+      "template_ref": "QRT-SYNTHESIZE-D4",
+      "band": "D4",
+      "primary_operation": "SYNTHESIZE",
+      "exact_task": "Clean P displaces Q²⁺ and clean R displaces Q²⁺ in matched conditions. Coated P does not visibly react with R²⁺. Separately 0.030 mol P dissolves as P²⁺ while 0.020 mol Q deposits. Infer partial order, test whether sole displacement explains amounts and propose controls.",
+      "protected_W": "Combine partial order and electron ledger, reject inconsistent single-reaction account.",
+      "worked_answer": "P>Q, R>Q; P versus R unresolved. P→P²⁺+2e⁻ gives 0.060 mol e⁻; Q²⁺+2e⁻→Q consumes 0.040 mol. Sole reaction requires equal moles, so 0.020 mol e⁻ unaccounted; check side reduction, incomplete collection, measurement. Compare cleaned reciprocal P/R tests.",
+      "boundary_prompt": "If R³⁺ is sole acceptor, how much R deposits per 0.030 mol P dissolved?",
+      "boundary_answer": "0.060/3=0.020 mol R; assumes complete collection and sole reaction.",
+      "score": 8,
+      "factors": {
+        "concept_model_selection": {
+          "score": 2,
+          "evidence": "Select partial-order and electron models"
+        },
+        "representation_translation": {
+          "score": 1,
+          "evidence": "Translate evidence into directed edges and electron amounts"
+        },
+        "reasoning_chain_length": {
+          "score": 2,
+          "evidence": "Infer order, reconcile imbalance, select controls"
+        },
+        "algebra_computational_load": {
+          "score": 1,
+          "evidence": "Two molar electron balances"
+        },
+        "trap_exception_sensitivity": {
+          "score": 2,
+          "evidence": "Coating and alternative acceptors"
+        }
+      },
+      "source_ids_related": [
+        "CHEM-NSEJS-REACT-02",
+        "CHEM-NSEJS-REACT-03",
+        "NSEJS-2020-C-Q10",
+        "NSEJS-2020-C-Q28"
+      ],
+      "source_role": "AUTHORED_PRACTICE",
+      "independent_review": "NOT_RUN",
+      "academic_status": "HOLD",
+      "hint_evidence": {
+        "H1": "Separate the clean positive tests from the coated negative test and from the measured molar amounts.",
+        "H2": "Represent the positive tests as arrows from displacing metal to displaced ion. For the quantitative test, consider the charge change per atom independently.",
+        "H3": "Write two half-reaction skeletons, then set up an electron-in/electron-out ledger. Compare the totals yourself before deciding what experiment is needed.",
+        "author_non_disclosure_check": "H3 supplies an organising representation or equation setup, not the final task-specific conclusion, calculated values or completed structure. Independent review pending."
+      }
+    },
+    {
+      "subtopic_id": "CHEM-C10.03",
+      "cycle_id": "CORE1B-C10-03-2-B02-R3",
+      "qrt_instance_id": "C10-03-MODEL-D3-B02-R3",
+      "template_ref": "QRT-MODEL-D3",
+      "band": "D3",
+      "primary_operation": "MODEL",
+      "exact_task": "Dry salts contain A³⁺/X⁻ and B²⁺/Y²⁻. 0.020 mol each dissolves completely in equal final volumes without further reaction. Construct formulas, compare ion amounts and decide whether the result establishes relative conductivity or dry-solid conductivity.",
+      "protected_W": "Build neutral formula and dissociation ledger, then distinguish carrier number from mobility.",
+      "worked_answer": "AX₃ and BY are neutral. AX₃ produces 0.080 mol ions; BY 0.040 mol. Conductivity also depends on charge, mobility and interactions, so count alone cannot rank it. Ordinary dry ionic lattices have largely fixed ions; solid electrolytes are exceptions.",
+      "boundary_prompt": "If AX₃ only partly dissociates, is 0.080 mol an observed ion count?",
+      "boundary_answer": "No; association, dissolution and reaction must be accounted for.",
+      "score": 7,
+      "factors": {
+        "concept_model_selection": {
+          "score": 1,
+          "evidence": "Choose charge neutrality and dissociation"
+        },
+        "representation_translation": {
+          "score": 2,
+          "evidence": "Translate charges to formula and count"
+        },
+        "reasoning_chain_length": {
+          "score": 2,
+          "evidence": "Balance, count and test interpretation"
+        },
+        "algebra_computational_load": {
+          "score": 1,
+          "evidence": "Routine multiplication"
+        },
+        "trap_exception_sensitivity": {
+          "score": 1,
+          "evidence": "Mobility and dissociation limits"
+        }
+      },
+      "source_ids_related": [
+        "CHEM-NSEJS-ATOM-10",
+        "CHEM-NSEJS-BOND-06",
+        "NSEJS-2022-C-Q32"
+      ],
+      "source_role": "AUTHORED_PRACTICE",
+      "independent_review": "NOT_RUN",
+      "academic_status": "HOLD",
+      "hint_evidence": {
+        "H1": "Underline each ion charge and distinguish moles of salt from moles of individual ions.",
+        "H2": "For each pair, choose the smallest whole-number coefficients that give zero total charge. Treat complete dissolution as a model assumption.",
+        "H3": "Set up a table of formula-unit amount, number of ions per unit and ion amount. Separately list what would be needed to rank current; complete the values and conclusion yourself.",
+        "author_non_disclosure_check": "H3 supplies an organising representation or equation setup, not the final task-specific conclusion, calculated values or completed structure. Independent review pending."
+      }
+    },
+    {
+      "subtopic_id": "CHEM-C10.04",
+      "cycle_id": "CORE1B-C10-04-3-B02-R3",
+      "qrt_instance_id": "C10-04-SYNTHESIZE-D3-B02-R3",
+      "template_ref": "QRT-SYNTHESIZE-D3",
+      "band": "D3",
+      "primary_operation": "SYNTHESIZE",
+      "exact_task": "An ideal ore contains 0.20 mol ZnCO₃ and 0.10 mol inert SiO₂. Carbonate becomes ZnO then Zn via carbon reduction, with CO the sole carbon-containing reduction product. Balance both steps; find maximum Zn, CO₂ and CO amounts. Explain why NaCl cannot use the same route.",
+      "protected_W": "Combine sequential material balances and test metal-reactivity applicability.",
+      "worked_answer": "ZnCO₃→ZnO+CO₂; ZnO+C→Zn+CO. Each gives 0.20 mol of respective product: Zn, CO₂, CO. Inert SiO₂ is an assumption. Highly reactive sodium requires appropriate electrolysis, not ordinary carbon reduction. Industrial recovery differs from conversion.",
+      "boundary_prompt": "75% of ideal zinc is collected. Does this establish actual CO amount?",
+      "boundary_answer": "0.15 mol Zn collected; recovery loss does not establish reaction conversion or CO output.",
+      "score": 7,
+      "factors": {
+        "concept_model_selection": {
+          "score": 1,
+          "evidence": "Choose sequential extraction model"
+        },
+        "representation_translation": {
+          "score": 1,
+          "evidence": "Translate ore to equations"
+        },
+        "reasoning_chain_length": {
+          "score": 2,
+          "evidence": "Combine stages and compare sodium route"
+        },
+        "algebra_computational_load": {
+          "score": 1,
+          "evidence": "Molar ratios"
+        },
+        "trap_exception_sensitivity": {
+          "score": 2,
+          "evidence": "Recovery and reactivity domain"
+        }
+      },
+      "source_ids_related": [
+        "CHEM-NSEJS-REACT-01",
+        "CHEM-NSEJS-MOLE-10",
+        "NSEJS-2021-C-Q11",
+        "NSEJS-2022-C-Q54"
+      ],
+      "source_role": "AUTHORED_PRACTICE",
+      "independent_review": "NOT_RUN",
+      "academic_status": "HOLD",
+      "hint_evidence": {
+        "H1": "Separate the carbonate conversion step, oxide reduction step and inert material in the feed.",
+        "H2": "Track Zn, C and O separately; the stated carbon-containing gas fixes a constraint on each equation.",
+        "H3": "Make two rows for the balanced equations and one column for Zn-containing species. Compare the required extraction model for sodium without assuming all metals behave alike; fill coefficients and amounts yourself.",
+        "author_non_disclosure_check": "H3 supplies an organising representation or equation setup, not the final task-specific conclusion, calculated values or completed structure. Independent review pending."
+      }
+    },
+    {
+      "subtopic_id": "CHEM-C10.05",
+      "cycle_id": "CORE1B-C10-05-2-B02-R3",
+      "qrt_instance_id": "C10-05-MODEL-D4-B02-R3",
+      "template_ref": "QRT-MODEL-D4",
+      "band": "D4",
+      "primary_operation": "MODEL",
+      "exact_task": "An ideal M₂O₃ reacts completely with acid and strong aqueous base to form [M(OH)₄]⁻. A 2.04 g sample consumes 0.120 mol H⁺. Infer M atomic mass, balance both ionic reactions, and explain why acid dissolution alone does not establish amphoterism. O=16.",
+      "protected_W": "Infer oxide identity and balance phase-specific ionic reactions; distinguish dual evidence.",
+      "worked_answer": "M₂O₃+6H⁺→2M³⁺+3H₂O. Oxide amount 0.020 mol; molar mass 102; 2M+48=102 gives M=27, consistent with Al. Base: M₂O₃+2OH⁻+3H₂O→2[M(OH)₄]⁻. Atom and charge conserved. Acid response also fits basic oxide; need base/product evidence.",
+      "boundary_prompt": "A 1.02 g sample reacts only halfway. What apparent molar mass would full-conversion assumption give?",
+      "boundary_answer": "0.030 mol H⁺ corresponds to 0.005 mol presumed oxide; apparent 204 g/mol, incorrect.",
+      "score": 8,
+      "factors": {
+        "concept_model_selection": {
+          "score": 2,
+          "evidence": "Choose acid and hydroxo-complex models"
+        },
+        "representation_translation": {
+          "score": 2,
+          "evidence": "Translate acid equivalents and ionic equations"
+        },
+        "reasoning_chain_length": {
+          "score": 2,
+          "evidence": "Infer identity, balance both reactions"
+        },
+        "algebra_computational_load": {
+          "score": 1,
+          "evidence": "Routine stoichiometry"
+        },
+        "trap_exception_sensitivity": {
+          "score": 1,
+          "evidence": "Dual reaction and conditions"
+        }
+      },
+      "source_ids_related": [
+        "CHEM-NSEJS-REACT-01",
+        "NSEJS-2022-C-Q54"
+      ],
+      "source_role": "AUTHORED_PRACTICE",
+      "independent_review": "NOT_RUN",
+      "academic_status": "HOLD",
+      "hint_evidence": {
+        "H1": "Identify the stated oxide formula, acid amount, sample mass and aqueous product; do not assume a metal identity.",
+        "H2": "Use atom and charge conservation to determine how many H⁺ are consumed by one formula unit. For the base reaction, allow water as a species.",
+        "H3": "Set up oxide amount from acid equivalents and a molar-mass expression using unknown atomic mass M; independently balance the hydroxo product equation. Complete the arithmetic and classification yourself.",
+        "author_non_disclosure_check": "H3 supplies an organising representation or equation setup, not the final task-specific conclusion, calculated values or completed structure. Independent review pending."
+      }
+    },
+    {
+      "subtopic_id": "CHEM-C10.06",
+      "cycle_id": "CORE1B-C10-06-3-B02-R3",
+      "qrt_instance_id": "C10-06-SYNTHESIZE-D3-B02-R3",
+      "template_ref": "QRT-SYNTHESIZE-D3",
+      "band": "D3",
+      "primary_operation": "SYNTHESIZE",
+      "exact_task": "Matched iron coupons show negligible rust in dry air, some in aerated fresh water, more in aerated salt water, much less in deoxygenated salt water. Scratched zinc-coated iron corrodes less than bare iron in aerated salt water. Explain the pattern with oxidation/reduction, distinguish salt from oxygen and propose a coating control.",
+      "protected_W": "Reconcile controlled observations with electrochemical mechanism and protection requirements.",
+      "worked_answer": "Fe→Fe²⁺+2e⁻; in aerated neutral water O₂+2H₂O+4e⁻→4OH⁻. Water electrolyte, salt often increases ionic conductivity; oxygen accepts electrons. Zinc preferentially oxidises when electrically connected; paint mainly blocks access. Control exposed iron area, contact, oxygen. Rust products vary, not one pure phase.",
+      "boundary_prompt": "Can electrically isolated nearby zinc guarantee sacrificial protection?",
+      "boundary_answer": "No; electronic connection and electrolyte path are needed.",
+      "score": 7,
+      "factors": {
+        "concept_model_selection": {
+          "score": 2,
+          "evidence": "Select electrochemical model"
+        },
+        "representation_translation": {
+          "score": 1,
+          "evidence": "Translate observations into causal variables"
+        },
+        "reasoning_chain_length": {
+          "score": 2,
+          "evidence": "Connect oxidation, reduction and coating"
+        },
+        "algebra_computational_load": {
+          "score": 0,
+          "evidence": "No calculation"
+        },
+        "trap_exception_sensitivity": {
+          "score": 2,
+          "evidence": "Oxygen and electrical contact"
+        }
+      },
+      "source_ids_related": [],
+      "source_role": "AUTHORED_PRACTICE",
+      "independent_review": "NOT_RUN",
+      "academic_status": "HOLD",
+      "hint_evidence": {
+        "H1": "Compare coupon pairs that differ in moisture, oxygen or dissolved salt; separate the zinc-coated observation.",
+        "H2": "Locate a possible oxidation site and a possible reduction site; distinguish the roles of an electron acceptor and an ionic conductor.",
+        "H3": "Draw two arrows for electron movement and ionic movement in the wet system; add a separate coating comparison with exposed area held constant. Decide which conditions explain each observation.",
+        "author_non_disclosure_check": "H3 supplies an organising representation or equation setup, not the final task-specific conclusion, calculated values or completed structure. Independent review pending."
+      }
+    },
+    {
+      "subtopic_id": "CHEM-C11.01",
+      "cycle_id": "CORE1B-C11-01-1-B02-R3",
+      "qrt_instance_id": "C11-01-REPRESENT-D4-B02-R3",
+      "template_ref": "QRT-REPRESENT-D4",
+      "band": "D4",
+      "primary_operation": "REPRESENT",
+      "exact_task": "An acyclic saturated hydrocarbon contains 9 carbons, exactly two quaternary and no tertiary carbons. Infer terminal methyl and secondary CH₂ counts, construct a valid skeleton, verify formula and explain why the rule changes for a ring.",
+      "protected_W": "Translate valence and tree-degree constraints into realizable structure.",
+      "worked_answer": "Tree degree sum 2(9−1)=16. n₁+n₂=7, n₁+2n₂+8=16 => n₂=1,n₁=6. (CH₃)₃C–CH₂–C(CH₃)₃ has 18+2=20 H, C₉H₂₀. A ring adds an edge and changes degree sum.",
+      "boundary_prompt": "Add one ring without changing carbon number; what formula?",
+      "boundary_answer": "One extra C–C single bond replaces two C–H bonds, giving C₉H₁₈.",
+      "score": 8,
+      "factors": {
+        "concept_model_selection": {
+          "score": 1,
+          "evidence": "Select acyclic saturated graph"
+        },
+        "representation_translation": {
+          "score": 2,
+          "evidence": "Convert carbon classes to equations and skeleton"
+        },
+        "reasoning_chain_length": {
+          "score": 2,
+          "evidence": "Derive counts, realize structure, check formula"
+        },
+        "algebra_computational_load": {
+          "score": 2,
+          "evidence": "Coupled integer equations"
+        },
+        "trap_exception_sensitivity": {
+          "score": 1,
+          "evidence": "Ring changes invariant"
+        }
+      },
+      "source_ids_related": [
+        "NSEJS-2023-C-Q26",
+        "CHEM-NSEJS-REACT-07",
+        "CHEM-NSEJS-MOLE-04",
+        "NSEJS-2024-C-Q19",
+        "NSEJS-2022-C-Q18"
+      ],
+      "source_role": "AUTHORED_PRACTICE",
+      "independent_review": "NOT_RUN",
+      "academic_status": "HOLD",
+      "hint_evidence": {
+        "H1": "List the four possible carbon-neighbour counts and the given counts of quaternary and tertiary vertices.",
+        "H2": "In an acyclic connected graph, each edge contributes twice to the sum of neighbour counts. The total number of vertices is also fixed.",
+        "H3": "Write one equation for total carbon vertices and one for total carbon-neighbour counts. Leave unknown terminal and secondary counts unsolved, then sketch a graph that might satisfy your solution.",
+        "author_non_disclosure_check": "H3 supplies an organising representation or equation setup, not the final task-specific conclusion, calculated values or completed structure. Independent review pending."
+      }
+    },
+    {
+      "subtopic_id": "CHEM-C11.02",
+      "cycle_id": "CORE1B-C11-02-3-B02-R3",
+      "qrt_instance_id": "C11-02-JUSTIFY-D3-B02-R3",
+      "template_ref": "QRT-JUSTIFY-D3",
+      "band": "D3",
+      "primary_operation": "JUSTIFY",
+      "exact_task": "Equal-mass elemental carbon samples P and Q have same isotopic composition. P conducts along layers and cleaves easily; Q resists scratching and ordinarily does not conduct. A report claims Q contains fewer atoms and stronger individual C–C bonds. Evaluate both claims and explain property contrast.",
+      "protected_W": "Reject two claims using elemental composition, network and observed properties.",
+      "worked_answer": "Equal masses and isotopic composition imply equal atom counts. P fits graphite: in-plane delocalised electrons and interlayer slip. Q fits diamond: 3D covalent network, normally no mobile carriers. Hardness depends on deformation and network geometry, not isolated bond strength. Confirm structure independently.",
+      "boundary_prompt": "Does easy graphite cleavage show every in-plane bond is weak?",
+      "boundary_answer": "No; cleavage can separate layers without breaking strong in-plane bonds.",
+      "score": 7,
+      "factors": {
+        "concept_model_selection": {
+          "score": 1,
+          "evidence": "Select network models"
+        },
+        "representation_translation": {
+          "score": 2,
+          "evidence": "Translate property and composition observations"
+        },
+        "reasoning_chain_length": {
+          "score": 2,
+          "evidence": "Reject atom count and bond strength claims"
+        },
+        "algebra_computational_load": {
+          "score": 0,
+          "evidence": "No calculation"
+        },
+        "trap_exception_sensitivity": {
+          "score": 2,
+          "evidence": "Network versus individual bond"
+        }
+      },
+      "source_ids_related": [
+        "NSEJS-2024-C-Q28",
+        "NSEJS-2023-C-Q31"
+      ],
+      "source_role": "AUTHORED_PRACTICE",
+      "independent_review": "NOT_RUN",
+      "academic_status": "HOLD",
+      "hint_evidence": {
+        "H1": "Separate the equal-mass composition fact from directional conductivity, cleavage and hardness observations.",
+        "H2": "Think about whether atoms are counted by elemental mass or by the arrangement of bonds, and whether deformation must break every bond in a solid.",
+        "H3": "Create two rows, one for the atom-count claim and one for the bond-strength claim; identify an independent warrant for each without accepting or rejecting either yet.",
+        "author_non_disclosure_check": "H3 supplies an organising representation or equation setup, not the final task-specific conclusion, calculated values or completed structure. Independent review pending."
+      }
+    },
+    {
+      "subtopic_id": "CHEM-C11.03",
+      "cycle_id": "CORE1B-C11-03-1-B02-R4",
+      "qrt_instance_id": "C11-03-REPRESENT-D3-B02-R4",
+      "template_ref": "QRT-REPRESENT-D3",
+      "band": "D3",
+      "primary_operation": "REPRESENT",
+      "exact_task": "Two proposed connected hydrocarbons have six carbons. A is acyclic with two C=C bonds; B has one ring and one C≡C bond. A student labels both C₆H₁₀. Construct valid explicit examples, count hydrogens from bond orders, correct the labels, and decide whether ideal multiple-bond hydrogenation (rings unchanged) makes the products have equal formulas.",
+      "protected_W": "Translate structural constraints to two valid graphs and compare independent atom counts before and after reaction.",
+      "worked_answer": "A: hexa-1,3-diene CH₂=CH–CH=CH–CH₂–CH₃, C₆H₁₀. B: ethynylcyclobutane, C₄H₇–C≡CH, C₆H₈; the ring contributes one deficit and triple two. A adds 2H₂→C₆H₁₄; B adds 2H₂→C₆H₁₂ (ring remains), under stated model. Not equal. Check carbon valence and H counts: B has one ring CH, three ring CH₂ and one terminal alkyne H.",
+      "boundary_prompt": "If B loses the ring constraint by adding two H in a hypothetical ring-opening step, what saturated formula follows?",
+      "boundary_answer": "C₆H₁₄, provided all multiple bonds are already reduced and no atoms lost.",
+      "score": 7,
+      "factors": {
+        "concept_model_selection": {
+          "score": 1,
+          "evidence": "Select valence and ring-preservation model"
+        },
+        "representation_translation": {
+          "score": 2,
+          "evidence": "Translate graph constraints to formulas and transformations"
+        },
+        "reasoning_chain_length": {
+          "score": 2,
+          "evidence": "Construct, correct labels, compare products"
+        },
+        "algebra_computational_load": {
+          "score": 1,
+          "evidence": "Hydrogen accounting"
+        },
+        "trap_exception_sensitivity": {
+          "score": 1,
+          "evidence": "Triple and ring contribute different deficits"
+        }
+      },
+      "source_ids_related": [
+        "CHEM-NSEJS-REACT-07",
+        "CHEM-NSEJS-MOLE-04",
+        "NSEJS-2022-C-Q27",
+        "NSEJS-2024-C-Q27",
+        "NSEJS-2022-C-Q26",
+        "NSEJS-2020-C-Q09"
+      ],
+      "source_role": "AUTHORED_PRACTICE",
+      "independent_review": "NOT_RUN",
+      "academic_status": "HOLD",
+      "hint_evidence": {
+        "H1": "List the constraints for A and B separately, including which feature persists.",
+        "H2": "Use typical carbon bond-order sum four to count attached H; a triple uses three bond units.",
+        "H3": "Sketch a valid graph for each and build a before/after atom ledger for ideal hydrogenation; check every carbon.",
+        "author_non_disclosure_check": "Author scaffold leaves decisive result; blind review HOLD."
+      }
+    },
+    {
+      "subtopic_id": "CHEM-C11.04",
+      "cycle_id": "CORE1B-C11-04-2-B02-R3",
+      "qrt_instance_id": "C11-04-SYNTHESIZE-D3-B02-R3",
+      "template_ref": "QRT-SYNTHESIZE-D3",
+      "band": "D3",
+      "primary_operation": "SYNTHESIZE",
+      "exact_task": "An acyclic saturated hydrocarbon has molar mass 72 g/mol (C=12,H=1). Infer formula, enumerate every distinct carbon skeleton and name each. Explain why 3-methylbutane is not an extra isomer.",
+      "protected_W": "Combine molar mass, systematic enumeration and symmetry.",
+      "worked_answer": "14n+2=72 => n=5, C₅H₁₂. Longest chain 5: pentane; length 4: 2-methylbutane; length 3: 2,2-dimethylpropane. Reversing numbering makes 3-methylbutane same as 2-methylbutane. Exhaust by longest-chain lengths 5,4,3; shorter impossible for connected five-carbon tree.",
+      "boundary_prompt": "Does replacing one H by chlorine preserve the count of possible constitutional isomers?",
+      "boundary_answer": "No; symmetry-inequivalent substitution positions introduce additional connectivities.",
+      "score": 7,
+      "factors": {
+        "concept_model_selection": {
+          "score": 1,
+          "evidence": "Choose saturated formula"
+        },
+        "representation_translation": {
+          "score": 2,
+          "evidence": "Convert mass to graph cases"
+        },
+        "reasoning_chain_length": {
+          "score": 2,
+          "evidence": "Infer formula, enumerate, deduplicate"
+        },
+        "algebra_computational_load": {
+          "score": 1,
+          "evidence": "Routine algebra"
+        },
+        "trap_exception_sensitivity": {
+          "score": 1,
+          "evidence": "Symmetry equivalent positions"
+        }
+      },
+      "source_ids_related": [
+        "NSEJS-2023-C-Q26",
+        "CHEM-NSEJS-REACT-07",
+        "NSEJS-2022-C-Q27",
+        "NSEJS-2024-C-Q27"
+      ],
+      "source_role": "AUTHORED_PRACTICE",
+      "independent_review": "NOT_RUN",
+      "academic_status": "HOLD",
+      "hint_evidence": {
+        "H1": "Use the restriction acyclic saturated and the stated atomic masses to express molar mass in terms of carbon count.",
+        "H2": "Once the carbon count is known, organise possible skeletons by the longest continuous chain, not by the number of drawings.",
+        "H3": "Build a longest-chain case table and use reversal or symmetry to test duplicate drawings. Work out the cases, names and completeness yourself.",
+        "author_non_disclosure_check": "H3 supplies an organising representation or equation setup, not the final task-specific conclusion, calculated values or completed structure. Independent review pending."
+      }
+    },
+    {
+      "subtopic_id": "CHEM-C11.05",
+      "cycle_id": "CORE1B-C11-05-3-B02-R3",
+      "qrt_instance_id": "C11-05-JUSTIFY-D3-B02-R3",
+      "template_ref": "QRT-JUSTIFY-D3",
+      "band": "D3",
+      "primary_operation": "JUSTIFY",
+      "exact_task": "Three neutral organic candidates share C₂H₄O₂: CH₃COOH, HCOOCH₃ and HOCH₂CHO. An unknown produces identified CO₂ with hydrogen carbonate under controlled conditions. Verify formulas, identify supported model and explain why a mixture would defeat unique identity.",
+      "protected_W": "Justify discrimination from connectivity and reaction evidence, not formula alone.",
+      "worked_answer": "All C₂H₄O₂: acid, ester, hydroxyaldehyde. CH₃COOH+HCO₃⁻→CH₃COO⁻+CO₂+H₂O. Neutral ester and hydroxyaldehyde do not ordinarily cause this acid-driven response. Supports acid among clean candidates; contaminants/other acids can also produce gas. Confirm composition/structure.",
+      "boundary_prompt": "If a minor acidic contaminant is present, does CO₂ prove the major component is an acid?",
+      "boundary_answer": "No; minor acid can cause the observation.",
+      "score": 7,
+      "factors": {
+        "concept_model_selection": {
+          "score": 1,
+          "evidence": "Select acid-base evidence model"
+        },
+        "representation_translation": {
+          "score": 2,
+          "evidence": "Translate formulas and ionic reaction"
+        },
+        "reasoning_chain_length": {
+          "score": 2,
+          "evidence": "Verify counts, select and qualify conclusion"
+        },
+        "algebra_computational_load": {
+          "score": 0,
+          "evidence": "No numerical computation"
+        },
+        "trap_exception_sensitivity": {
+          "score": 2,
+          "evidence": "Contamination defeats unique inference"
+        }
+      },
+      "source_ids_related": [
+        "NSEJS-2024-C-Q27",
+        "NSEJS-2022-C-Q17",
+        "NSEJS-2023-C-Q24",
+        "NSEJS-2020-C-Q09",
+        "NSEJS-2020-C-Q11"
+      ],
+      "source_role": "AUTHORED_PRACTICE",
+      "independent_review": "NOT_RUN",
+      "academic_status": "HOLD",
+      "hint_evidence": {
+        "H1": "Count C, H and O in each proposal and mark the complete connectivity pattern around oxygen.",
+        "H2": "A carbonate test involves transfer of a proton and gas evolution; identify which proposed functional groups could support that under the stated model.",
+        "H3": "Make a candidate-versus-observation table and write a generic acid plus hydrogen carbonate equation. Decide which specific candidate fits and what a mixture would change.",
+        "author_non_disclosure_check": "H3 supplies an organising representation or equation setup, not the final task-specific conclusion, calculated values or completed structure. Independent review pending."
+      }
+    },
+    {
+      "subtopic_id": "CHEM-C11.06",
+      "cycle_id": "CORE1B-C11-06-2-B02-R3",
+      "qrt_instance_id": "C11-06-SYNTHESIZE-D4-B02-R3",
+      "template_ref": "QRT-SYNTHESIZE-D4",
+      "band": "D4",
+      "primary_operation": "SYNTHESIZE",
+      "exact_task": "0.10 mol ethene is split equally. One portion completely hydrogenates, the other completely combusts. Write both equations and consumption/output; test whether complete combustion of hydrogenated portion gives same CO₂ but more water.",
+      "protected_W": "Combine reaction network and material balances, verify independent carbon check.",
+      "worked_answer": "C₂H₄+H₂→C₂H₆: 0.050 mol H₂, 0.050 mol ethane. C₂H₄+3O₂→2CO₂+2H₂O: 0.150 mol O₂, 0.100 mol CO₂ and H₂O. 2C₂H₆+7O₂→4CO₂+6H₂O: 0.050 mol ethane yields 0.100 mol CO₂, 0.150 mol H₂O, consumes 0.175 mol O₂. Report consistent; carbon conserved, hydrogen added.",
+      "boundary_prompt": "Only 60% of the 0.050 mol portion hydrogenates. Find water on complete combustion.",
+      "boundary_answer": "0.030 mol ethane gives 0.090 mol H₂O; 0.020 mol ethene gives 0.040 mol; total 0.130 mol.",
+      "score": 8,
+      "factors": {
+        "concept_model_selection": {
+          "score": 1,
+          "evidence": "Select addition/combustion"
+        },
+        "representation_translation": {
+          "score": 2,
+          "evidence": "Translate three reactions"
+        },
+        "reasoning_chain_length": {
+          "score": 2,
+          "evidence": "Track aliquots, products and carbon check"
+        },
+        "algebra_computational_load": {
+          "score": 2,
+          "evidence": "Multiple linked balances"
+        },
+        "trap_exception_sensitivity": {
+          "score": 1,
+          "evidence": "Incomplete conversion"
+        }
+      },
+      "source_ids_related": [
+        "NSEJS-2023-C-Q24",
+        "NSEJS-2022-C-Q26",
+        "NSEJS-2020-C-Q09",
+        "NSEJS-2024-C-Q32",
+        "CHEM-NSEJS-REACT-08",
+        "NSEJS-2022-C-Q24"
+      ],
+      "source_role": "AUTHORED_PRACTICE",
+      "independent_review": "NOT_RUN",
+      "academic_status": "HOLD",
+      "hint_evidence": {
+        "H1": "Keep the two equal portions separate, and distinguish hydrogenation products from combustion products.",
+        "H2": "Balance carbon and hydrogen before oxygen for combustion; the addition reaction changes the hydrogen count per molecule.",
+        "H3": "Set up a three-row reaction ledger for addition, original fuel combustion and product combustion, with columns for input and output amounts. Compute and compare the results yourself.",
+        "author_non_disclosure_check": "H3 supplies an organising representation or equation setup, not the final task-specific conclusion, calculated values or completed structure. Independent review pending."
+      }
+    },
+    {
+      "subtopic_id": "CHEM-C11.07",
+      "cycle_id": "CORE1B-C11-07-2-B02-R4",
+      "qrt_instance_id": "C11-07-SYNTHESIZE-D4-B02-R4",
+      "template_ref": "QRT-SYNTHESIZE-D4",
+      "band": "D4",
+      "primary_operation": "SYNTHESIZE",
+      "exact_task": "Two water samples each receive 0.014 mol soap ions in a hypothetical quantitative precipitation model. Sample A contains 0.004 mol Ca²⁺ and unknown Mg²⁺; 0.002 mol soap remains. Sample B contains the same total divalent-ion amount but starts with only half as much soap. Infer A's Mg²⁺ amount, decide whether B removes all hardness, and propose a discriminating measurement if foam heights happen to match.",
+      "protected_W": "Infer hidden hardness from residual soap then change limiting reagent and distinguish remaining ion identity from total.",
+      "worked_answer": "A consumes .012 mol soap, total divalent .006 mol; Mg=.002 mol. B starts .007 mol soap, precipitates at most .0035 mol divalent, leaving .0025 mol divalent and zero free soap under model. Composition of remaining Ca/Mg not determined without selectivity data. Matched foam does not establish equal residual hardness; independently measure residual ions/free surfactant under controlled conditions.",
+      "boundary_prompt": "If A had .004 mol soap left instead, what total divalent amount would its record imply?",
+      "boundary_answer": "(.014−.004)/2=.005 mol under complete precipitation; Mg=.001 mol with given Ca.",
+      "score": 8,
+      "factors": {
+        "concept_model_selection": {
+          "score": 2,
+          "evidence": "Select inverse precipitation and limiting-reactant models"
+        },
+        "representation_translation": {
+          "score": 1,
+          "evidence": "Translate residual amount to hardness ledger"
+        },
+        "reasoning_chain_length": {
+          "score": 2,
+          "evidence": "Infer unknown, change limiting reagent, discriminate evidence"
+        },
+        "algebra_computational_load": {
+          "score": 1,
+          "evidence": "Molar difference and ratio"
+        },
+        "trap_exception_sensitivity": {
+          "score": 2,
+          "evidence": "Total residual vs individual ion and foam ambiguity"
+        }
+      },
+      "source_ids_related": [
+        "NSEJS-2022-C-Q17",
+        "NSEJS-2024-C-Q32",
+        "CHEM-NSEJS-REACT-08",
+        "NSEJS-2023-C-Q32",
+        "NSEJS-2021-C-Q30",
+        "NSEJS-2020-C-Q11"
+      ],
+      "source_role": "AUTHORED_PRACTICE",
+      "independent_review": "NOT_RUN",
+      "academic_status": "HOLD",
+      "hint_evidence": {
+        "H1": "Separate initial soap from residual soap and identify unknown hardness.",
+        "H2": "Use charge-neutral precipitate stoichiometry to connect removed soap and total divalent ions.",
+        "H3": "Build initial/consumed/remaining ledgers for A and B separately; check which reagent runs out in each before interpreting foam.",
+        "author_non_disclosure_check": "Author scaffold leaves decisive result; blind review HOLD."
+      }
+    }
+  ],
+  "migrations": [
+    {
+      "subtopic_id": "CHEM-C10.01",
+      "old_cycle_id": "CORE1B-C10-01-2",
+      "new_cycle_id": "CORE1B-C10-01-2-B02-R3",
+      "old_qrt_instance": "C10-01-MODEL-D3",
+      "new_qrt_instance": "C10-01-MODEL-D3-B02-R3",
+      "old_attempt_policy": "Old localStorage key remains untouched; no automatic migration.",
+      "baseline_head": "b8e4f6f99a9bb8000fb243ee6a2a2765fc5d2509",
+      "intermediate_cycle_id": "CORE1B-C10-01-2-B02-R2",
+      "intermediate_qrt_instance": "C10-01-MODEL-D3-B02-R2"
+    },
+    {
+      "subtopic_id": "CHEM-C10.02",
+      "old_cycle_id": "CORE1B-C10-02-3",
+      "new_cycle_id": "CORE1B-C10-02-3-B02-R3",
+      "old_qrt_instance": "C10-02-SYNTHESIZE-D3",
+      "new_qrt_instance": "C10-02-SYNTHESIZE-D4-B02-R3",
+      "old_attempt_policy": "Old localStorage key remains untouched; no automatic migration.",
+      "baseline_head": "b8e4f6f99a9bb8000fb243ee6a2a2765fc5d2509",
+      "intermediate_cycle_id": "CORE1B-C10-02-3-B02-R2",
+      "intermediate_qrt_instance": "C10-02-SYNTHESIZE-D4-B02-R2"
+    },
+    {
+      "subtopic_id": "CHEM-C10.03",
+      "old_cycle_id": "CORE1B-C10-03-2",
+      "new_cycle_id": "CORE1B-C10-03-2-B02-R3",
+      "old_qrt_instance": "C10-03-MODEL-D3",
+      "new_qrt_instance": "C10-03-MODEL-D3-B02-R3",
+      "old_attempt_policy": "Old localStorage key remains untouched; no automatic migration.",
+      "baseline_head": "b8e4f6f99a9bb8000fb243ee6a2a2765fc5d2509",
+      "intermediate_cycle_id": "CORE1B-C10-03-2-B02-R2",
+      "intermediate_qrt_instance": "C10-03-MODEL-D3-B02-R2"
+    },
+    {
+      "subtopic_id": "CHEM-C10.04",
+      "old_cycle_id": "CORE1B-C10-04-3",
+      "new_cycle_id": "CORE1B-C10-04-3-B02-R3",
+      "old_qrt_instance": "C10-04-SYNTHESIZE-D3",
+      "new_qrt_instance": "C10-04-SYNTHESIZE-D3-B02-R3",
+      "old_attempt_policy": "Old localStorage key remains untouched; no automatic migration.",
+      "baseline_head": "b8e4f6f99a9bb8000fb243ee6a2a2765fc5d2509",
+      "intermediate_cycle_id": "CORE1B-C10-04-3-B02-R2",
+      "intermediate_qrt_instance": "C10-04-SYNTHESIZE-D3-B02-R2"
+    },
+    {
+      "subtopic_id": "CHEM-C10.05",
+      "old_cycle_id": "CORE1B-C10-05-2",
+      "new_cycle_id": "CORE1B-C10-05-2-B02-R3",
+      "old_qrt_instance": "C10-05-MODEL-D3",
+      "new_qrt_instance": "C10-05-MODEL-D4-B02-R3",
+      "old_attempt_policy": "Old localStorage key remains untouched; no automatic migration.",
+      "baseline_head": "b8e4f6f99a9bb8000fb243ee6a2a2765fc5d2509",
+      "intermediate_cycle_id": "CORE1B-C10-05-2-B02-R2",
+      "intermediate_qrt_instance": "C10-05-MODEL-D4-B02-R2"
+    },
+    {
+      "subtopic_id": "CHEM-C10.06",
+      "old_cycle_id": "CORE1B-C10-06-3",
+      "new_cycle_id": "CORE1B-C10-06-3-B02-R3",
+      "old_qrt_instance": "C10-06-SYNTHESIZE-D3",
+      "new_qrt_instance": "C10-06-SYNTHESIZE-D3-B02-R3",
+      "old_attempt_policy": "Old localStorage key remains untouched; no automatic migration.",
+      "baseline_head": "b8e4f6f99a9bb8000fb243ee6a2a2765fc5d2509",
+      "intermediate_cycle_id": "CORE1B-C10-06-3-B02-R2",
+      "intermediate_qrt_instance": "C10-06-SYNTHESIZE-D3-B02-R2"
+    },
+    {
+      "subtopic_id": "CHEM-C11.01",
+      "old_cycle_id": "CORE1B-C11-01-1",
+      "new_cycle_id": "CORE1B-C11-01-1-B02-R3",
+      "old_qrt_instance": "C11-01-REPRESENT-D3",
+      "new_qrt_instance": "C11-01-REPRESENT-D4-B02-R3",
+      "old_attempt_policy": "Old localStorage key remains untouched; no automatic migration.",
+      "baseline_head": "b8e4f6f99a9bb8000fb243ee6a2a2765fc5d2509",
+      "intermediate_cycle_id": "CORE1B-C11-01-1-B02-R2",
+      "intermediate_qrt_instance": "C11-01-REPRESENT-D4-B02-R2"
+    },
+    {
+      "subtopic_id": "CHEM-C11.02",
+      "old_cycle_id": "CORE1B-C11-02-3",
+      "new_cycle_id": "CORE1B-C11-02-3-B02-R3",
+      "old_qrt_instance": "C11-02-JUSTIFY-D3",
+      "new_qrt_instance": "C11-02-JUSTIFY-D3-B02-R3",
+      "old_attempt_policy": "Old localStorage key remains untouched; no automatic migration.",
+      "baseline_head": "b8e4f6f99a9bb8000fb243ee6a2a2765fc5d2509",
+      "intermediate_cycle_id": "CORE1B-C11-02-3-B02-R2",
+      "intermediate_qrt_instance": "C11-02-JUSTIFY-D3-B02-R2"
+    },
+    {
+      "subtopic_id": "CHEM-C11.03",
+      "old_cycle_id": "CORE1B-C11-03-1",
+      "new_cycle_id": "CORE1B-C11-03-1-B02-R4",
+      "old_qrt_instance": "C11-03-REPRESENT-D3",
+      "new_qrt_instance": "C11-03-REPRESENT-D3-B02-R4",
+      "old_attempt_policy": "Old localStorage key remains untouched; no automatic migration.",
+      "baseline_head": "b8e4f6f99a9bb8000fb243ee6a2a2765fc5d2509",
+      "intermediate_cycle_id": "CORE1B-C11-03-1-B02-R2",
+      "intermediate_qrt_instance": "C11-03-REPRESENT-D3-B02-R2",
+      "previous_revision_cycle_id": "CORE1B-C11-03-1-B02-R3",
+      "previous_revision_qrt_instance": "C11-03-REPRESENT-D3-B02-R3"
+    },
+    {
+      "subtopic_id": "CHEM-C11.04",
+      "old_cycle_id": "CORE1B-C11-04-2",
+      "new_cycle_id": "CORE1B-C11-04-2-B02-R3",
+      "old_qrt_instance": "C11-04-SYNTHESIZE-D3",
+      "new_qrt_instance": "C11-04-SYNTHESIZE-D3-B02-R3",
+      "old_attempt_policy": "Old localStorage key remains untouched; no automatic migration.",
+      "baseline_head": "b8e4f6f99a9bb8000fb243ee6a2a2765fc5d2509",
+      "intermediate_cycle_id": "CORE1B-C11-04-2-B02-R2",
+      "intermediate_qrt_instance": "C11-04-SYNTHESIZE-D3-B02-R2"
+    },
+    {
+      "subtopic_id": "CHEM-C11.05",
+      "old_cycle_id": "CORE1B-C11-05-3",
+      "new_cycle_id": "CORE1B-C11-05-3-B02-R3",
+      "old_qrt_instance": "C11-05-JUSTIFY-D3",
+      "new_qrt_instance": "C11-05-JUSTIFY-D3-B02-R3",
+      "old_attempt_policy": "Old localStorage key remains untouched; no automatic migration.",
+      "baseline_head": "b8e4f6f99a9bb8000fb243ee6a2a2765fc5d2509",
+      "intermediate_cycle_id": "CORE1B-C11-05-3-B02-R2",
+      "intermediate_qrt_instance": "C11-05-JUSTIFY-D3-B02-R2"
+    },
+    {
+      "subtopic_id": "CHEM-C11.06",
+      "old_cycle_id": "CORE1B-C11-06-2",
+      "new_cycle_id": "CORE1B-C11-06-2-B02-R3",
+      "old_qrt_instance": "C11-06-SYNTHESIZE-D3",
+      "new_qrt_instance": "C11-06-SYNTHESIZE-D4-B02-R3",
+      "old_attempt_policy": "Old localStorage key remains untouched; no automatic migration.",
+      "baseline_head": "b8e4f6f99a9bb8000fb243ee6a2a2765fc5d2509",
+      "intermediate_cycle_id": "CORE1B-C11-06-2-B02-R2",
+      "intermediate_qrt_instance": "C11-06-SYNTHESIZE-D4-B02-R2"
+    },
+    {
+      "subtopic_id": "CHEM-C11.07",
+      "old_cycle_id": "CORE1B-C11-07-2",
+      "new_cycle_id": "CORE1B-C11-07-2-B02-R4",
+      "old_qrt_instance": "C11-07-SYNTHESIZE-D3",
+      "new_qrt_instance": "C11-07-SYNTHESIZE-D4-B02-R4",
+      "old_attempt_policy": "Old localStorage key remains untouched; no automatic migration.",
+      "baseline_head": "b8e4f6f99a9bb8000fb243ee6a2a2765fc5d2509",
+      "intermediate_cycle_id": "CORE1B-C11-07-2-B02-R2",
+      "intermediate_qrt_instance": "C11-07-SYNTHESIZE-D4-B02-R2",
+      "previous_revision_cycle_id": "CORE1B-C11-07-2-B02-R3",
+      "previous_revision_qrt_instance": "C11-07-SYNTHESIZE-D4-B02-R3"
+    }
+  ],
+  "hint_revision_history": [
+    {
+      "previous_cycle": "CORE1B-C10-01-2-B02-R2",
+      "new_cycle": "CORE1B-C10-01-2-B02-R3",
+      "previous_instance": "C10-01-MODEL-D3-B02-R2",
+      "new_instance": "C10-01-MODEL-D3-B02-R3",
+      "reason": "task-specific hints; new storage key prevents stale reuse under existing incomplete digest"
+    },
+    {
+      "previous_cycle": "CORE1B-C10-02-3-B02-R2",
+      "new_cycle": "CORE1B-C10-02-3-B02-R3",
+      "previous_instance": "C10-02-SYNTHESIZE-D4-B02-R2",
+      "new_instance": "C10-02-SYNTHESIZE-D4-B02-R3",
+      "reason": "task-specific hints; new storage key prevents stale reuse under existing incomplete digest"
+    },
+    {
+      "previous_cycle": "CORE1B-C10-03-2-B02-R2",
+      "new_cycle": "CORE1B-C10-03-2-B02-R3",
+      "previous_instance": "C10-03-MODEL-D3-B02-R2",
+      "new_instance": "C10-03-MODEL-D3-B02-R3",
+      "reason": "task-specific hints; new storage key prevents stale reuse under existing incomplete digest"
+    },
+    {
+      "previous_cycle": "CORE1B-C10-04-3-B02-R2",
+      "new_cycle": "CORE1B-C10-04-3-B02-R3",
+      "previous_instance": "C10-04-SYNTHESIZE-D3-B02-R2",
+      "new_instance": "C10-04-SYNTHESIZE-D3-B02-R3",
+      "reason": "task-specific hints; new storage key prevents stale reuse under existing incomplete digest"
+    },
+    {
+      "previous_cycle": "CORE1B-C10-05-2-B02-R2",
+      "new_cycle": "CORE1B-C10-05-2-B02-R3",
+      "previous_instance": "C10-05-MODEL-D4-B02-R2",
+      "new_instance": "C10-05-MODEL-D4-B02-R3",
+      "reason": "task-specific hints; new storage key prevents stale reuse under existing incomplete digest"
+    },
+    {
+      "previous_cycle": "CORE1B-C10-06-3-B02-R2",
+      "new_cycle": "CORE1B-C10-06-3-B02-R3",
+      "previous_instance": "C10-06-SYNTHESIZE-D3-B02-R2",
+      "new_instance": "C10-06-SYNTHESIZE-D3-B02-R3",
+      "reason": "task-specific hints; new storage key prevents stale reuse under existing incomplete digest"
+    },
+    {
+      "previous_cycle": "CORE1B-C11-01-1-B02-R2",
+      "new_cycle": "CORE1B-C11-01-1-B02-R3",
+      "previous_instance": "C11-01-REPRESENT-D4-B02-R2",
+      "new_instance": "C11-01-REPRESENT-D4-B02-R3",
+      "reason": "task-specific hints; new storage key prevents stale reuse under existing incomplete digest"
+    },
+    {
+      "previous_cycle": "CORE1B-C11-02-3-B02-R2",
+      "new_cycle": "CORE1B-C11-02-3-B02-R3",
+      "previous_instance": "C11-02-JUSTIFY-D3-B02-R2",
+      "new_instance": "C11-02-JUSTIFY-D3-B02-R3",
+      "reason": "task-specific hints; new storage key prevents stale reuse under existing incomplete digest"
+    },
+    {
+      "previous_cycle": "CORE1B-C11-03-1-B02-R2",
+      "new_cycle": "CORE1B-C11-03-1-B02-R3",
+      "previous_instance": "C11-03-REPRESENT-D3-B02-R2",
+      "new_instance": "C11-03-REPRESENT-D3-B02-R3",
+      "reason": "task-specific hints; new storage key prevents stale reuse under existing incomplete digest"
+    },
+    {
+      "previous_cycle": "CORE1B-C11-04-2-B02-R2",
+      "new_cycle": "CORE1B-C11-04-2-B02-R3",
+      "previous_instance": "C11-04-SYNTHESIZE-D3-B02-R2",
+      "new_instance": "C11-04-SYNTHESIZE-D3-B02-R3",
+      "reason": "task-specific hints; new storage key prevents stale reuse under existing incomplete digest"
+    },
+    {
+      "previous_cycle": "CORE1B-C11-05-3-B02-R2",
+      "new_cycle": "CORE1B-C11-05-3-B02-R3",
+      "previous_instance": "C11-05-JUSTIFY-D3-B02-R2",
+      "new_instance": "C11-05-JUSTIFY-D3-B02-R3",
+      "reason": "task-specific hints; new storage key prevents stale reuse under existing incomplete digest"
+    },
+    {
+      "previous_cycle": "CORE1B-C11-06-2-B02-R2",
+      "new_cycle": "CORE1B-C11-06-2-B02-R3",
+      "previous_instance": "C11-06-SYNTHESIZE-D4-B02-R2",
+      "new_instance": "C11-06-SYNTHESIZE-D4-B02-R3",
+      "reason": "task-specific hints; new storage key prevents stale reuse under existing incomplete digest"
+    },
+    {
+      "previous_cycle": "CORE1B-C11-07-2-B02-R2",
+      "new_cycle": "CORE1B-C11-07-2-B02-R3",
+      "previous_instance": "C11-07-SYNTHESIZE-D4-B02-R2",
+      "new_instance": "C11-07-SYNTHESIZE-D4-B02-R3",
+      "reason": "task-specific hints; new storage key prevents stale reuse under existing incomplete digest"
+    }
+  ]
+}

@@ -122,34 +122,34 @@
       "source_exam_question_id": null,
       "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
       "predict": {
-        "prompt": "Decide which missing evidence or environmental boundary may matter: Choose a chemical and transport model for local NO₂ measurements versus downwind ozone changes.",
-        "defensible_answer": "Air is a mixture dominated by nitrogen and oxygen with argon, carbon dioxide, variable water vapour and many trace species. Chemical identity matters more than the vague label 'gas': molecular oxygen is essential to life, carbon dioxide participates in carbon cycling and climate, sulfur dioxide and nitrogen oxides can transform into secondary pollutants. Whether a trace constituent is a pollutant depends on concentration, exposure, context and effects; small concentration alone is not a sufficient definition."
+        "prompt": "Before committing any detailed reasoning, predict which explanatory model may hold, noting its assumptions: Two reports concern ozone: near-city downwind ozone increases on a sunny day, while satellite observations indicate a thinner protective stratospheric ozone layer. Build separate causal models for (A) local NOₓ/VOC sunlight-driven surface ozone and (B) long-lived CFC compounds releasing reactive chlorine under stratospheric UV that can destroy ozone catalytically. Explain why a local surface ozone reading cannot determine stratospheric ozone depletion and propose a distinct measurement for each.",
+        "defensible_answer": "The two ozone observations require different atmospheric altitudes, precursor sources and measurements; surface ozone may be high while stratospheric ozone is depleted, without logical contradiction."
       },
       "attempt": {
-        "prompt": "Choose a chemical and transport model for local NO₂ measurements versus downwind ozone changes.",
-        "produces": "A causal model that separates chemical identity, observation, measurement, confounders and a defensible independent check.",
-        "protected_W": "The learner independently completes the warranted model choice, not exposed before first attempt.",
+        "prompt": "Two reports concern ozone: near-city downwind ozone increases on a sunny day, while satellite observations indicate a thinner protective stratospheric ozone layer. Build separate causal models for (A) local NOₓ/VOC sunlight-driven surface ozone and (B) long-lived CFC compounds releasing reactive chlorine under stratospheric UV that can destroy ozone catalytically. Explain why a local surface ozone reading cannot determine stratospheric ozone depletion and propose a distinct measurement for each.",
+        "produces": "Construct and discriminate two altitude-dependent ozone chemical models, identify the catalytic species and choose independent evidence for each.",
+        "protected_W": "Construct and discriminate two altitude-dependent ozone chemical models, identify the catalytic species and choose independent evidence for each.",
         "first_attempt_must_be_saved_before_feedback": true,
         "initial_answer_visibility": "HIDDEN",
         "hints": [
           {
             "id": "H1",
             "verb": "CLARIFY",
-            "text": "Separate observation, source, transformation and measured outcome for Air composition, pollutants and chemical evidence."
+            "text": "Separate the two observation locations and decide which ozone is protective versus harmful."
           },
           {
             "id": "H2",
             "verb": "CORRELATE",
-            "text": "Relevant concept: Air pollutant concentration depends on chemical identity, emissions, transport and transformation; correlation alone does not prove cause."
+            "text": "Trace emission, transport, radiation and chemical reactions for the two environments independently."
           },
           {
             "id": "H3",
             "verb": "OPEN_THE_WAY",
-            "text": "Propose two plausible causal accounts and a controlled discriminator; do not reveal which account is supported."
+            "text": "Sketch two source→mechanism→observed-product chains, then ask what each measuring instrument actually samples."
           }
         ],
         "post_commit_closure": {
-          "model_response": "NOₓ emissions and sunlight-driven atmospheric chemistry can support secondary ground-level ozone formation; downwind transport and meteorology matter. Direct emission and secondary product concentrations need different explanatory routes.",
+          "model_response": "For ground-level ozone, NOₓ and volatile organic compounds can undergo sunlight-driven photochemistry and downwind transport that enhances O₃ near the surface under suitable conditions. For stratospheric depletion, some long-lived CFCs reach upper air, undergo UV photolysis, and release reactive Cl·. A simplified catalytic cycle Cl·+O₃→ClO·+O₂, ClO·+O→Cl·+O₂ regenerates chlorine, net O₃+O→2O₂. The model is bounded: real ozone chemistry depends on additional atmospheric conditions. Satellite/ozonesonde vertical stratospheric measurements address protective ozone; ground-level calibrated sensors address local pollution. One does not establish the other.",
           "rubric": [
             "Identify substances, system boundary and relevant chemical transformations.",
             "Build a warranted causal or competing-model explanation.",
@@ -160,37 +160,37 @@
       "reconstruct": {
         "asks": [
           {
-            "ask": "What was observed, and which chemical identities are actually established?",
-            "why_this_ask": "Avoid treating a correlation as source identity.",
-            "model_response": "Two neighbourhood sensors report different nitrogen dioxide values even though traffic counts are nearly identical. Does that mean one sensor is defective—or that a pollutant's journey through the atmosphere matters?"
+            "ask": "Which altitude and source species belong to each observation?",
+            "why_this_ask": "Avoid conflating ozone at different heights.",
+            "model_response": "Near-surface O₃ can be a secondary pollutant related to precursor chemistry and transport; stratospheric O₃ absorbs harmful UV, and long-lived chlorine-bearing compounds can alter its balance."
           },
           {
-            "ask": "What chemical process, transport or separation assumptions matter?",
-            "why_this_ask": "Make hidden system boundaries explicit.",
-            "model_response": "Emissions become measured concentrations after transport, dilution, deposition and chemical reaction. Vehicle emissions can contain nitrogen oxides; sunlight and other reactive species participate in formation of ground-level ozone under suitable conditions. Ozone high in the stratosphere absorbs harmful ultraviolet radiation, while elevated ozone near the ground is a respiratory pollutant. A learner must not confuse identical molecular formula O₃ with identical environmental role independent of location."
+            "ask": "What makes chlorine-mediated loss catalytic rather than one-for-one?",
+            "why_this_ask": "Check a valid bounded chemical mechanism.",
+            "model_response": "A chlorine radical participates in an ozone-destroying step and is regenerated in a later step, enabling repeated ozone loss under suitable conditions; the elementary pair is not a complete polar ozone-hole model."
           },
           {
-            "ask": "What conclusion is warranted and what remains untested?",
-            "why_this_ask": "Separate evidence from overclaim.",
-            "model_response": "NOₓ emissions and sunlight-driven atmospheric chemistry can support secondary ground-level ozone formation; downwind transport and meteorology matter. Direct emission and secondary product concentrations need different explanatory routes."
+            "ask": "Which independent measurements discriminate the two processes?",
+            "why_this_ask": "Prevent unwarranted inference from one ozone reading.",
+            "model_response": "Use vertically resolved stratospheric ozone observations, precursor and meteorology evidence for upper-atmosphere depletion; use surface ozone and local NOₓ/VOC/weather data for ground-level photochemical smog."
           }
         ],
-        "full_reconstruction": "NOₓ emissions and sunlight-driven atmospheric chemistry can support secondary ground-level ozone formation; downwind transport and meteorology matter. Direct emission and secondary product concentrations need different explanatory routes."
+        "full_reconstruction": "For ground-level ozone, NOₓ and volatile organic compounds can undergo sunlight-driven photochemistry and downwind transport that enhances O₃ near the surface under suitable conditions. For stratospheric depletion, some long-lived CFCs reach upper air, undergo UV photolysis, and release reactive Cl·. A simplified catalytic cycle Cl·+O₃→ClO·+O₂, ClO·+O→Cl·+O₂ regenerates chlorine, net O₃+O→2O₂. The model is bounded: real ozone chemistry depends on additional atmospheric conditions. Satellite/ozonesonde vertical stratospheric measurements address protective ozone; ground-level calibrated sensors address local pollution. One does not establish the other."
       },
       "diagnose": {
-        "wrong_idea": "Wrong path: 'Equal traffic means equal pollutant concentration' or 'every ozone molecule is harmful regardless of altitude.' Repair by separating production, transport, conversion and exposure conditions.",
-        "diagnostic_prompt": "Which omitted control or model assumption makes this inference unreliable? Wrong path: 'Equal traffic means equal pollutant concentration' or 'every ozone molecule is harmful regardless of altitude.' Repair by separating production, transport, conversion and exposure conditions.",
-        "model_response": "A rise after a factory opens is temporal evidence, not a causal proof without comparison locations and weather controls."
+        "wrong_idea": "Wrong path: interpreting a high street-level ozone concentration as evidence that the protective ozone layer is healthy, or treating an emitted chlorine radical as permanently consumed in the first ozone loss.",
+        "diagnostic_prompt": "Identify whether your saved first answer makes this mistake, then produce a specific counterargument.",
+        "model_response": "Compare the two altitude-specific models, track the chlorine radical through regeneration, state the atmospheric assumptions, and select observations that directly measure the relevant region."
       },
       "repair": {
-        "action": "Redraw a source–transport–transformation–measurement map and add the missing controls or flow ledger.",
-        "explanation": "Wrong path: 'Equal traffic means equal pollutant concentration' or 'every ozone molecule is harmful regardless of altitude.' Repair by separating production, transport, conversion and exposure conditions.",
+        "action": "Rebuild the competing causal model and independently test the boundary condition.",
+        "explanation": "Compare the two altitude-specific models, track the chlorine radical through regeneration, state the atmospheric assumptions, and select observations that directly measure the relevant region.",
         "core1a_ref": "curriculum/chemistry/agent-b/textbook/C14.core1a.md (section C14.01)"
       },
       "boundary_test": {
-        "prompt": "Is ozone in the stratosphere environmentally equivalent to ozone in inhaled ground-level air?",
-        "answer": "No. Altitude and exposure give different roles despite the same molecule.",
-        "confirms": "Different environmental conditions, transport or boundaries alter the inference."
+        "prompt": "A policy sharply reduces new CFC emissions this year. Does this guarantee full stratospheric ozone restoration next month, even if surface smog ozone falls? Explain using atmospheric persistence.",
+        "answer": "No. Many ozone-depleting substances remain in the atmosphere for years to decades and recovery can be delayed; ground-level smog changes have different precursors and timescales. An emissions reduction supports longer-term ozone protection but is not instantaneous restoration.",
+        "confirms": "Source-specific changed-condition Core1B transfer, author candidate; independent R01/R02 review HOLD."
       },
       "reviews": {
         "H1": "UNREVIEWED",
@@ -1255,34 +1255,34 @@
       "source_exam_question_id": null,
       "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
       "predict": {
-        "prompt": "Decide which missing evidence or environmental boundary may matter: Explain why a biodegradable bag does not necessarily have lower total environmental impact than a recyclable bag.",
-        "defensible_answer": "An applied chemical decision compares alternatives across defined system boundaries: raw-material extraction, manufacture, transport, use, collection, recycling/disposal and the emissions or waste from each stage. A biodegradable material can break down under suitable conditions, but degradation rates and products depend on oxygen, moisture, temperature and treatment. A recyclable material can be recovered in principle, but collection rates and recycling energy matter. Neither label alone establishes a complete environmental outcome."
+        "prompt": "Before committing any detailed reasoning, predict which explanatory model may hold, noting its assumptions: A school compares three used packages: untreated paper placed in warm, moist managed compost, a polyethylene (PE) wrapper discarded outdoors, and a glass bottle collected for recycling. Classify each as biodegradable or ordinarily non-biodegradable under the stated conditions, distinguish microbial conversion from physical fragmentation and recyclability, then explain why these labels alone cannot decide which package has the lowest full-life-cycle impact.",
+        "defensible_answer": "Paper is the biodegradable candidate under appropriate microbial conditions; PE and glass are normally non-biodegradable, while glass recyclability is a different property and lifecycle superiority needs more evidence."
       },
       "attempt": {
-        "prompt": "Explain why a biodegradable bag does not necessarily have lower total environmental impact than a recyclable bag.",
-        "produces": "A causal model that separates chemical identity, observation, measurement, confounders and a defensible independent check.",
-        "protected_W": "The learner independently completes the causal bridge, not exposed before first attempt.",
+        "prompt": "A school compares three used packages: untreated paper placed in warm, moist managed compost, a polyethylene (PE) wrapper discarded outdoors, and a glass bottle collected for recycling. Classify each as biodegradable or ordinarily non-biodegradable under the stated conditions, distinguish microbial conversion from physical fragmentation and recyclability, then explain why these labels alone cannot decide which package has the lowest full-life-cycle impact.",
+        "produces": "Build the biodegradable/non-biodegradable classification using disposal conditions and distinguish it from reuse/recycling and lifecycle impact.",
+        "protected_W": "Build the biodegradable/non-biodegradable classification using disposal conditions and distinguish it from reuse/recycling and lifecycle impact.",
         "first_attempt_must_be_saved_before_feedback": true,
         "initial_answer_visibility": "HIDDEN",
         "hints": [
           {
             "id": "H1",
             "verb": "CLARIFY",
-            "text": "Separate observation, source, transformation and measured outcome for Applied decisions, lifecycle boundaries and uncertainty."
+            "text": "Separate biological decomposition from materials merely being collected or broken into smaller pieces."
           },
           {
             "id": "H2",
             "verb": "CORRELATE",
-            "text": "Relevant concept: Sustainability comparisons depend on system boundaries, hazards, resources and evidence, not a green label."
+            "text": "Check the actual microbe/moisture/temperature conditions for paper, plastic and glass; a single environmental label has limited meaning."
           },
           {
             "id": "H3",
             "verb": "OPEN_THE_WAY",
-            "text": "Propose two plausible causal accounts and a controlled discriminator; do not reveal which account is supported."
+            "text": "Set up a three-row classification and a second independent lifecycle comparison, checking where missing data prevent a ranking."
           }
         ],
         "post_commit_closure": {
-          "model_response": "Manufacturing, transport, degradation conditions, actual collection and pollution products matter across the lifecycle. Biodegradability alone describes a property under conditions, not all impacts.",
+          "model_response": "Untreated paper is usually biodegradable under suitable warm moist microbial compost conditions, although decomposition can be much slower in dry or anaerobic disposal. Conventional polyethylene is generally non-biodegradable on ordinary environmental timescales; fragmenting into microplastics is not complete microbial mineralisation. Glass is non-biodegradable but may be reused or recycled, depending on collection and processing. Biodegradability, recyclability and total environmental impact are distinct. Production, transport, use, treatment and fate determine the lifecycle comparison; the stated labels alone do not establish a universal winner.",
           "rubric": [
             "Identify substances, system boundary and relevant chemical transformations.",
             "Build a warranted causal or competing-model explanation.",
@@ -1293,37 +1293,37 @@
       "reconstruct": {
         "asks": [
           {
-            "ask": "What was observed, and which chemical identities are actually established?",
-            "why_this_ask": "Avoid treating a correlation as source identity.",
-            "model_response": "One packaging material is labelled biodegradable, another recyclable. Which one is more sustainable? Without defining the environmental goal and the whole product life cycle, the question cannot be decided."
+            "ask": "What process is being classified and under which conditions?",
+            "why_this_ask": "Do not confuse terms that describe different operations.",
+            "model_response": "Biodegradation requires biological conversion by microorganisms under conditions; recycling is collection and processing; fragmentation alone does not prove biodegradation."
           },
           {
-            "ask": "What chemical process, transport or separation assumptions matter?",
-            "why_this_ask": "Make hidden system boundaries explicit.",
-            "model_response": "Choose measurable criteria—energy consumed, greenhouse-gas emissions, water use, persistent pollutants, toxic byproducts, resource scarcity and uncertainty. Specify functional equivalence: two water treatments must deliver comparable quality before energy impacts are compared. Mixing unequal units or comparing a single production step with a whole lifecycle is a boundary error. A careful science answer states assumptions and the conditions under which its preference might reverse."
+            "ask": "Which materials satisfy the two categories?",
+            "why_this_ask": "Ground conclusions in material chemistry rather than marketing labels.",
+            "model_response": "Untreated paper can be biodegradable in managed compost; conventional PE and glass are ordinarily non-biodegradable, although glass can be recovered for recycling."
           },
           {
-            "ask": "What conclusion is warranted and what remains untested?",
-            "why_this_ask": "Separate evidence from overclaim.",
-            "model_response": "Manufacturing, transport, degradation conditions, actual collection and pollution products matter across the lifecycle. Biodegradability alone describes a property under conditions, not all impacts."
+            "ask": "Can a category establish lifecycle sustainability?",
+            "why_this_ask": "Expose missing functional units and boundaries.",
+            "model_response": "No; compare equivalent use, manufacture, logistics, fate, recycling energy and environmental endpoints before choosing."
           }
         ],
-        "full_reconstruction": "Manufacturing, transport, degradation conditions, actual collection and pollution products matter across the lifecycle. Biodegradability alone describes a property under conditions, not all impacts."
+        "full_reconstruction": "Untreated paper is usually biodegradable under suitable warm moist microbial compost conditions, although decomposition can be much slower in dry or anaerobic disposal. Conventional polyethylene is generally non-biodegradable on ordinary environmental timescales; fragmenting into microplastics is not complete microbial mineralisation. Glass is non-biodegradable but may be reused or recycled, depending on collection and processing. Biodegradability, recyclability and total environmental impact are distinct. Production, transport, use, treatment and fate determine the lifecycle comparison; the stated labels alone do not establish a universal winner."
       },
       "diagnose": {
-        "wrong_idea": "Wrong path: 'Biodegradable automatically means best, or the lowest-energy unit operation means lowest total impact.' Repair by defining the functional unit, performance threshold, lifecycle boundary and measured chemical waste.",
-        "diagnostic_prompt": "Which omitted control or model assumption makes this inference unreliable? Wrong path: 'Biodegradable automatically means best, or the lowest-energy unit operation means lowest total impact.' Repair by defining the functional unit, performance threshold, lifecycle boundary and measured chemical waste.",
-        "model_response": "Changing the environmental endpoint (e.g., water contamination versus climate emissions) can reverse the preferred option. State the criterion before announcing a winner."
+        "wrong_idea": "Wrong path: a recyclable glass bottle must be biodegradable, or a polyethylene wrapper becoming smaller means it has biologically decomposed.",
+        "diagnostic_prompt": "Identify whether your saved first answer makes this mistake, then produce a specific counterargument.",
+        "model_response": "Check microbial conversion and products, identify applicable timescale and conditions, and independently model reuse/recycling as a different process from decomposition."
       },
       "repair": {
-        "action": "Redraw a source–transport–transformation–measurement map and add the missing controls or flow ledger.",
-        "explanation": "Wrong path: 'Biodegradable automatically means best, or the lowest-energy unit operation means lowest total impact.' Repair by defining the functional unit, performance threshold, lifecycle boundary and measured chemical waste.",
+        "action": "Rebuild the competing causal model and independently test the boundary condition.",
+        "explanation": "Check microbial conversion and products, identify applicable timescale and conditions, and independently model reuse/recycling as a different process from decomposition.",
         "core1a_ref": "curriculum/chemistry/agent-b/textbook/C14.core1a.md (section C14.05)"
       },
       "boundary_test": {
-        "prompt": "Would biodegradation occur at the same rate in cold dry landfill and warm moist compost?",
-        "answer": "No. Conditions alter decomposition.",
-        "confirms": "Different environmental conditions, transport or boundaries alter the inference."
+        "prompt": "If untreated paper moves from wet, aerated compost to a cold, dry landfill, does it automatically become chemically non-biodegradable? Compare expected rate with a conventional PE wrapper.",
+        "answer": "No. The paper remains a material capable of biodegradation, but its actual rate can slow markedly without suitable moisture, oxygen and microbial activity. Conventional PE is not readily biodegraded in either setting under normal conditions; persistence and overall environmental preference require further evidence.",
+        "confirms": "Source-specific changed-condition Core1B transfer, author candidate; independent R01/R02 review HOLD."
       },
       "reviews": {
         "H1": "UNREVIEWED",

@@ -1,0 +1,778 @@
+{
+  "schema": "g9v41-chem-b02-source-targeted-transfer/v1",
+  "version": "0.6.0",
+  "source_head": "48cc083d58863038d9f71d4dbaea328688fe61c2",
+  "status": "AUTHOR_DRAFT_SOURCE_AND_RUNTIME_HOLD",
+  "counts": {
+    "pairs": 4,
+    "tasks": 8,
+    "D3": 2,
+    "D4": 6,
+    "native_cycles_added": 0,
+    "qualified": 0
+  },
+  "records": [
+    {
+      "task_id": "B02-OXIDE-PRODUCT-MASS-MAIN-R1",
+      "kind": "MAIN",
+      "subtopic_id": "CHEM-C10.05",
+      "source_candidate_id": "CHEM-NSEJS-REACT-01",
+      "source_stem_sha256": "eea081835442bc0696f02c475a758afc6187fe1d214097d1a1653285de0bc829",
+      "source_role": "AUTHORED_TRANSFER_NOT_ORIGINAL_EXAM",
+      "source_admission": "HOLD",
+      "runtime_status": "SUPPLEMENTAL_P00_INTEGRATION_HOLD",
+      "scope": "EXTENSION_MODEL",
+      "template_ref": "QRT-MODEL-D4",
+      "operation": "MODEL",
+      "band_author": "D4",
+      "slots": {
+        "X": "A hypothetical M₂O₃ oxide of mass 4.08 g is quantitatively converted to dry NaMO₂ (6.56 g), with no impurity or loss. Infer M atomic mass, then calculate the volume of 0.80 mol/L HCl needed for 2.04 g of the same oxide. Explain why the isolated formula cannot automatically be used as aqueous speciation.",
+        "Y": "An inverse mass balance can identify an oxide when a defined anhydrous product is isolated quantitatively. For ideal M₂O₃ → 2NaMO₂, the two products contain the original two M atoms and add a net 62 g per mole of oxide (2Na + O). A sample of 3.00 g giving 4.86 g product therefore represents 0.030 mol oxide, with molar mass 100 g/mol and M atomic mass 26. This is a hypothetical element mass, not a claim about a real oxide. In acid, one formula unit consumes 6 H⁺; 0.030 mol oxide consumes 0.180 mol H⁺. In aqueous base the actual species can be hydroxo complexes; the anhydrous formula applies only to the isolated product under the model. Check masses, charge and isolation assumptions separately.",
+        "Z": "Mass gain 2.48 g = 62 g/mol × oxide amount, so .040 mol. Oxide molar mass 102, M=27. A 2.04 g portion is .020 mol, consumes .120 mol H⁺; volume .120/.80=.150 L. In strong aqueous base hydroxo species may exist; dry NaMO₂ is an isolated-product assumption. Atom and charge ledger: M₂O₃+6H⁺→2M³⁺+3H₂O.",
+        "W": "Infer oxide amount from independent mass gain before using acid equivalents; distinguish phase-specific species."
+      },
+      "predict": {
+        "prompt": "State an initial model and the assumption you will test."
+      },
+      "attempt": {
+        "prompt": "A hypothetical M₂O₃ oxide of mass 4.08 g is quantitatively converted to dry NaMO₂ (6.56 g), with no impurity or loss. Infer M atomic mass, then calculate the volume of 0.80 mol/L HCl needed for 2.04 g of the same oxide. Explain why the isolated formula cannot automatically be used as aqueous speciation.",
+        "protected_W": "Infer oxide amount from independent mass gain before using acid equivalents; distinguish phase-specific species.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "text": "Write an oxide-to-product atom ledger with two M atoms conserved."
+          },
+          {
+            "id": "H2",
+            "text": "Find the change in mass of non-M atoms per mole of oxide; it does not require knowing M."
+          },
+          {
+            "id": "H3",
+            "text": "Use the observed mass gain to establish oxide amount, then set up the acid equation and volume relationship; finish values yourself."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "Mass gain 2.48 g = 62 g/mol × oxide amount, so .040 mol. Oxide molar mass 102, M=27. A 2.04 g portion is .020 mol, consumes .120 mol H⁺; volume .120/.80=.150 L. In strong aqueous base hydroxo species may exist; dry NaMO₂ is an isolated-product assumption. Atom and charge ledger: M₂O₃+6H⁺→2M³⁺+3H₂O."
+        }
+      },
+      "reconstruct": {
+        "prompt": "Rebuild the calculation and check the independent conserved quantity.",
+        "model_response": "Mass gain 2.48 g = 62 g/mol × oxide amount, so .040 mol. Oxide molar mass 102, M=27. A 2.04 g portion is .020 mol, consumes .120 mol H⁺; volume .120/.80=.150 L. In strong aqueous base hydroxo species may exist; dry NaMO₂ is an isolated-product assumption. Atom and charge ledger: M₂O₃+6H⁺→2M³⁺+3H₂O."
+      },
+      "diagnose": {
+        "prompt": "Compare the saved response with the model; identify a specific unsupported assumption or arithmetic/representation error, or record insufficient evidence."
+      },
+      "repair": {
+        "prompt": "Recompute with a complete species or amount ledger, checking assumptions.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C10.core1a.md"
+      },
+      "boundary_test": {
+        "prompt": "If the dry product contains unmeasured water, is the inferred metal mass reliable?",
+        "answer": "No; the additional mass is no longer solely due to 2Na+O per mole of oxide."
+      },
+      "author_demand": {
+        "scores": {
+          "concept_model_selection": 2,
+          "representation_translation": 2,
+          "reasoning_chain_length": 2,
+          "algebra_computational_load": 1,
+          "trap_exception_sensitivity": 1
+        },
+        "total": 8,
+        "reason": "Exact task: model selection, translation to formula/ledger, linked inference, required quantitative operations and changed-assumption trap. R02 must verify shortest path.",
+        "independent": "NOT_RUN",
+        "factor_evidence": {
+          "concept_model_selection": "Choose inverse dry-product mass balance instead of direct acid titre.",
+          "representation_translation": "Translate formulas to mass-gain ledger and acid equation.",
+          "reasoning_chain_length": "Infer oxide amount, molar mass, metal mass and independently compute acid volume.",
+          "algebra_computational_load": "Two divisions, molar mass algebra and concentration conversion.",
+          "trap_exception_sensitivity": "Dry isolation versus aqueous species or mass loss changes inference."
+        }
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "academic_status": "HOLD"
+    },
+    {
+      "task_id": "B02-OXIDE-PRODUCT-MASS-INSTANCE-R1",
+      "kind": "INSTANCE",
+      "subtopic_id": "CHEM-C10.05",
+      "source_candidate_id": "CHEM-NSEJS-REACT-01",
+      "source_stem_sha256": "eea081835442bc0696f02c475a758afc6187fe1d214097d1a1653285de0bc829",
+      "source_role": "AUTHORED_TRANSFER_NOT_ORIGINAL_EXAM",
+      "source_admission": "HOLD",
+      "runtime_status": "SUPPLEMENTAL_P00_INTEGRATION_HOLD",
+      "scope": "EXTENSION_MODEL",
+      "template_ref": "QRT-MODEL-D4",
+      "operation": "MODEL",
+      "band_author": "D4",
+      "slots": {
+        "X": "An ideal M₂O₃ sample of 3.06 g produces 4.92 g dry NaMO₂. A second sample of 1.53 g is treated with 0.60 mol/L HCl. Determine M atomic mass and minimum acid volume; explain the effect of a 10% loss of dry product on the inverse inference.",
+        "Y": "An inverse mass balance can identify an oxide when a defined anhydrous product is isolated quantitatively. For ideal M₂O₃ → 2NaMO₂, the two products contain the original two M atoms and add a net 62 g per mole of oxide (2Na + O). A sample of 3.00 g giving 4.86 g product therefore represents 0.030 mol oxide, with molar mass 100 g/mol and M atomic mass 26. This is a hypothetical element mass, not a claim about a real oxide. In acid, one formula unit consumes 6 H⁺; 0.030 mol oxide consumes 0.180 mol H⁺. In aqueous base the actual species can be hydroxo complexes; the anhydrous formula applies only to the isolated product under the model. Check masses, charge and isolation assumptions separately.",
+        "Z": "Gain 1.86 g => .030 mol oxide; molar mass 102, M=27. Second sample .015 mol, H⁺ .090 mol, volume .150 L. Product loss lowers observed gain, causing an underestimate of oxide moles and overestimate of molar mass if ignored.",
+        "W": "Reconstruct inverse mass-gain and acid-volume model; test product-loss direction."
+      },
+      "predict": {
+        "prompt": "State an initial model and the assumption you will test."
+      },
+      "attempt": {
+        "prompt": "An ideal M₂O₃ sample of 3.06 g produces 4.92 g dry NaMO₂. A second sample of 1.53 g is treated with 0.60 mol/L HCl. Determine M atomic mass and minimum acid volume; explain the effect of a 10% loss of dry product on the inverse inference.",
+        "protected_W": "Reconstruct inverse mass-gain and acid-volume model; test product-loss direction.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "text": "Separate the first sample’s isolation result from the second sample’s acid treatment."
+          },
+          {
+            "id": "H2",
+            "text": "Compare formula masses by conserving the metal atoms in both products."
+          },
+          {
+            "id": "H3",
+            "text": "Create a mass-difference ledger followed by a separate acid-equivalent calculation; then test the sign of a product-loss error."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "Gain 1.86 g => .030 mol oxide; molar mass 102, M=27. Second sample .015 mol, H⁺ .090 mol, volume .150 L. Product loss lowers observed gain, causing an underestimate of oxide moles and overestimate of molar mass if ignored."
+        }
+      },
+      "reconstruct": {
+        "prompt": "Rebuild the calculation and check the independent conserved quantity.",
+        "model_response": "Gain 1.86 g => .030 mol oxide; molar mass 102, M=27. Second sample .015 mol, H⁺ .090 mol, volume .150 L. Product loss lowers observed gain, causing an underestimate of oxide moles and overestimate of molar mass if ignored."
+      },
+      "diagnose": {
+        "prompt": "Compare the saved response with the model; identify a specific unsupported assumption or arithmetic/representation error, or record insufficient evidence."
+      },
+      "repair": {
+        "prompt": "Recompute with a complete species or amount ledger, checking assumptions.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C10.core1a.md"
+      },
+      "boundary_test": {
+        "prompt": "If the gain were zero because of product loss, could the model infer oxide amount?",
+        "answer": "No; the quantitative isolation premise has failed."
+      },
+      "author_demand": {
+        "scores": {
+          "concept_model_selection": 2,
+          "representation_translation": 2,
+          "reasoning_chain_length": 2,
+          "algebra_computational_load": 1,
+          "trap_exception_sensitivity": 1
+        },
+        "total": 8,
+        "reason": "Exact task: model selection, translation to formula/ledger, linked inference, required quantitative operations and changed-assumption trap. R02 must verify shortest path.",
+        "independent": "NOT_RUN",
+        "factor_evidence": {
+          "concept_model_selection": "Select same inverse model, then test alternative isolation loss.",
+          "representation_translation": "Use formula-mass difference and separate acid sample.",
+          "reasoning_chain_length": "Infer atomic mass and acid volume; reason direction of mass-loss bias.",
+          "algebra_computational_load": "Linked mass, amount and volume calculations.",
+          "trap_exception_sensitivity": "Zero/negative observed gain and isolation failure defeat model."
+        }
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "academic_status": "HOLD"
+    },
+    {
+      "task_id": "B02-CARBONATE-RESIDUE-MAIN-R1",
+      "kind": "MAIN",
+      "subtopic_id": "CHEM-C10.04",
+      "source_candidate_id": "NSEJS-2021-C-Q11",
+      "source_stem_sha256": "e16d7e6bffb30afc0668da04d1deae5683b5fc076f0f7e58e54e239cba2d1613",
+      "source_role": "AUTHORED_TRANSFER_NOT_ORIGINAL_EXAM",
+      "source_admission": "HOLD",
+      "runtime_status": "SUPPLEMENTAL_P00_INTEGRATION_HOLD",
+      "scope": "CORE_CANDIDATE_WITH_STOICHIOMETRY_PREREQUISITE",
+      "template_ref": "QRT-SYNTHESIZE-D3",
+      "operation": "SYNTHESIZE",
+      "band_author": "D3",
+      "slots": {
+        "X": "A 12.00 g ideal ZnCO₃/ZnO mixture loses 2.64 g on complete heating; ZnCO₃→ZnO+CO₂. Use Zn=65, C=12, O=16. Infer both initial masses and independently reconstruct residue mass. Explain why partial conversion breaks the inference.",
+        "Y": "A residue mass can reveal a mixture only when the escaping product and retained material are known. Example: an ideal 10.0 g mixture of MgCO₃ and MgO loses 2.20 g on complete carbonate decomposition. MgCO₃ → MgO + CO₂; 2.20/44 = 0.050 mol carbonate, mass 4.20 g (MgCO₃=84). Initial MgO=5.80 g. The residue is 7.80 g, consisting of 5.80 g original oxide and 2.00 g new oxide. An inert impurity or partial conversion introduces additional unknowns.",
+        "Z": "CO₂ .060 mol; carbonate 125×.060=7.50 g; original ZnO=4.50 g. New ZnO=.060×81=4.86 g. Residue=9.36 g, agrees 12−2.64. Partial conversion reduces loss and cannot distinguish carbonate amount from conversion without another observation.",
+        "W": "Infer initial composition from gas loss, independently check residue and identify conversion assumption."
+      },
+      "predict": {
+        "prompt": "State an initial model and the assumption you will test."
+      },
+      "attempt": {
+        "prompt": "A 12.00 g ideal ZnCO₃/ZnO mixture loses 2.64 g on complete heating; ZnCO₃→ZnO+CO₂. Use Zn=65, C=12, O=16. Infer both initial masses and independently reconstruct residue mass. Explain why partial conversion breaks the inference.",
+        "protected_W": "Infer initial composition from gas loss, independently check residue and identify conversion assumption.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "text": "Distinguish initial oxide from oxide newly formed."
+          },
+          {
+            "id": "H2",
+            "text": "Relate mass loss to moles of the escaping gas, not directly to carbonate mass."
+          },
+          {
+            "id": "H3",
+            "text": "Set up a two-component initial ledger and an independent final residue ledger; finish all amounts."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "CO₂ .060 mol; carbonate 125×.060=7.50 g; original ZnO=4.50 g. New ZnO=.060×81=4.86 g. Residue=9.36 g, agrees 12−2.64. Partial conversion reduces loss and cannot distinguish carbonate amount from conversion without another observation."
+        }
+      },
+      "reconstruct": {
+        "prompt": "Rebuild the calculation and check the independent conserved quantity.",
+        "model_response": "CO₂ .060 mol; carbonate 125×.060=7.50 g; original ZnO=4.50 g. New ZnO=.060×81=4.86 g. Residue=9.36 g, agrees 12−2.64. Partial conversion reduces loss and cannot distinguish carbonate amount from conversion without another observation."
+      },
+      "diagnose": {
+        "prompt": "Compare the saved response with the model; identify a specific unsupported assumption or arithmetic/representation error, or record insufficient evidence."
+      },
+      "repair": {
+        "prompt": "Recompute with a complete species or amount ledger, checking assumptions.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C10.core1a.md"
+      },
+      "boundary_test": {
+        "prompt": "If heating converts only half the carbonate, is the same observed loss compatible with more initial carbonate?",
+        "answer": "Yes in principle, but the resulting calculated carbonate mass must also fit the total initial mass; conversion and composition are not uniquely determined."
+      },
+      "author_demand": {
+        "scores": {
+          "concept_model_selection": 1,
+          "representation_translation": 2,
+          "reasoning_chain_length": 2,
+          "algebra_computational_load": 1,
+          "trap_exception_sensitivity": 1
+        },
+        "total": 7,
+        "reason": "Exact task: model selection, translation to formula/ledger, linked inference, required quantitative operations and changed-assumption trap. R02 must verify shortest path.",
+        "independent": "NOT_RUN",
+        "factor_evidence": {
+          "concept_model_selection": "Choose complete selective carbonate decomposition.",
+          "representation_translation": "Translate gas loss into initial and final species inventories.",
+          "reasoning_chain_length": "Infer composition and independently reconstruct residue.",
+          "algebra_computational_load": "Molar mass and mole-to-mass conversion.",
+          "trap_exception_sensitivity": "Partial conversion introduces unknown extent."
+        }
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "academic_status": "HOLD"
+    },
+    {
+      "task_id": "B02-CARBONATE-RESIDUE-INSTANCE-R1",
+      "kind": "INSTANCE",
+      "subtopic_id": "CHEM-C10.04",
+      "source_candidate_id": "NSEJS-2021-C-Q11",
+      "source_stem_sha256": "e16d7e6bffb30afc0668da04d1deae5683b5fc076f0f7e58e54e239cba2d1613",
+      "source_role": "AUTHORED_TRANSFER_NOT_ORIGINAL_EXAM",
+      "source_admission": "HOLD",
+      "runtime_status": "SUPPLEMENTAL_P00_INTEGRATION_HOLD",
+      "scope": "CORE_CANDIDATE_WITH_STOICHIOMETRY_PREREQUISITE",
+      "template_ref": "QRT-SYNTHESIZE-D3",
+      "operation": "SYNTHESIZE",
+      "band_author": "D3",
+      "slots": {
+        "X": "A 9.00 g ideal MgCO₃/MgO mixture gives 7.24 g residue after complete heating. Use Mg=24, C=12, O=16. Calculate initial oxide mass percentage, new oxide mass and residue check; assess an unmeasured volatile impurity.",
+        "Y": "A residue mass can reveal a mixture only when the escaping product and retained material are known. Example: an ideal 10.0 g mixture of MgCO₃ and MgO loses 2.20 g on complete carbonate decomposition. MgCO₃ → MgO + CO₂; 2.20/44 = 0.050 mol carbonate, mass 4.20 g (MgCO₃=84). Initial MgO=5.80 g. The residue is 7.80 g, consisting of 5.80 g original oxide and 2.00 g new oxide. An inert impurity or partial conversion introduces additional unknowns.",
+        "Z": "Loss 1.76 g CO₂=.040 mol; carbonate 3.36 g; initial oxide 5.64 g, 62.67%. New oxide 1.60 g; residue 7.24 g. Volatile impurity adds mass loss, overestimates carbonate if all loss assigned to CO₂.",
+        "W": "Reverse residue measurement to composition and test model against an alternative mass-loss cause."
+      },
+      "predict": {
+        "prompt": "State an initial model and the assumption you will test."
+      },
+      "attempt": {
+        "prompt": "A 9.00 g ideal MgCO₃/MgO mixture gives 7.24 g residue after complete heating. Use Mg=24, C=12, O=16. Calculate initial oxide mass percentage, new oxide mass and residue check; assess an unmeasured volatile impurity.",
+        "protected_W": "Reverse residue measurement to composition and test model against an alternative mass-loss cause.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "text": "Subtract residue from initial sample to obtain total lost mass."
+          },
+          {
+            "id": "H2",
+            "text": "Translate escaping CO₂ into consumed carbonate using its balanced equation."
+          },
+          {
+            "id": "H3",
+            "text": "Separate initial and newly formed oxide in the residue; compare their sum with observed residue and assess the impurity hypothesis."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "Loss 1.76 g CO₂=.040 mol; carbonate 3.36 g; initial oxide 5.64 g, 62.67%. New oxide 1.60 g; residue 7.24 g. Volatile impurity adds mass loss, overestimates carbonate if all loss assigned to CO₂."
+        }
+      },
+      "reconstruct": {
+        "prompt": "Rebuild the calculation and check the independent conserved quantity.",
+        "model_response": "Loss 1.76 g CO₂=.040 mol; carbonate 3.36 g; initial oxide 5.64 g, 62.67%. New oxide 1.60 g; residue 7.24 g. Volatile impurity adds mass loss, overestimates carbonate if all loss assigned to CO₂."
+      },
+      "diagnose": {
+        "prompt": "Compare the saved response with the model; identify a specific unsupported assumption or arithmetic/representation error, or record insufficient evidence."
+      },
+      "repair": {
+        "prompt": "Recompute with a complete species or amount ledger, checking assumptions.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C10.core1a.md"
+      },
+      "boundary_test": {
+        "prompt": "Would identification of CO₂ alone prove that no other gas escaped?",
+        "answer": "No; gas composition and completeness of collection must be established."
+      },
+      "author_demand": {
+        "scores": {
+          "concept_model_selection": 1,
+          "representation_translation": 2,
+          "reasoning_chain_length": 2,
+          "algebra_computational_load": 1,
+          "trap_exception_sensitivity": 1
+        },
+        "total": 7,
+        "reason": "Exact task: model selection, translation to formula/ledger, linked inference, required quantitative operations and changed-assumption trap. R02 must verify shortest path.",
+        "independent": "NOT_RUN",
+        "factor_evidence": {
+          "concept_model_selection": "Choose residue difference as selective CO₂ mass.",
+          "representation_translation": "Translate initial and residue masses into two-component ledger.",
+          "reasoning_chain_length": "Infer carbonate and oxide percentage, cross-check final mass.",
+          "algebra_computational_load": "Moles, mass, percentage.",
+          "trap_exception_sensitivity": "Additional volatile species bias inverse inference."
+        }
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "academic_status": "HOLD"
+    },
+    {
+      "task_id": "B02-ISOMERS-COMBUSTION-MAIN-R2",
+      "kind": "MAIN",
+      "subtopic_id": "CHEM-C11.04",
+      "source_candidate_id": "CHEM-NSEJS-REACT-07",
+      "source_stem_sha256": "77822abc8ea68a9b850a2e081d0bf492b5b012f254133c911f6b371265f0f83f",
+      "source_role": "AUTHORED_TRANSFER_NOT_ORIGINAL_EXAM",
+      "source_admission": "HOLD",
+      "runtime_status": "SUPPLEMENTAL_P00_INTEGRATION_HOLD",
+      "scope": "CORE_CANDIDATE_WITH_STOICHIOMETRY_PREREQUISITE",
+      "template_ref": "QRT-SYNTHESIZE-D4",
+      "operation": "SYNTHESIZE",
+      "band_author": "D4",
+      "slots": {
+        "X": "An equimolar mixture contains two pure acyclic alkanes whose carbon counts differ by one. Complete combustion of 0.040 mol total fuel gives 0.180 mol CO₂. Infer both molecular formulas, enumerate all chain skeletons of the smaller alkane, compute oxygen volume at 24.0 L/mol and explain why combustion cannot determine the smaller component's particular skeleton.",
+        "Y": "Chain isomers have identical elemental formula, so their ideal complete combustion requires the same oxygen per mole despite different connectivity. Example: an acyclic alkane of molar mass 86 has 14n+2=86, so C₆H₁₄. Its complete combustion is 2C₆H₁₄+19O₂→12CO₂+14H₂O. Every C₆H₁₄ chain isomer uses 9.5 mol O₂ per mole under this model. Enumerate structures separately by longest-chain length and symmetry; oxygen demand cannot identify the individual isomer.",
+        "Z": "Each alkane .020 mol. Carbon ledger .020n+.020(n+1)=.180 -> 2n+1=9 -> n=4. C₄H₁₀ and C₅H₁₂; smaller: butane and 2-methylpropane (longest chain four or three). O₂ demand .020×6.5+.020×8=.290 mol=6.96 L; H₂O .020×5+.020×6=.220 mol. Both smaller skeletons have same formula and complete-combustion demand; connectivity not identified.",
+        "W": "Infer two adjacent alkane formulas from mixture combustion, enumerate the smaller component and check independent oxygen balance."
+      },
+      "predict": {
+        "prompt": "Predict whether the observed average corresponds to one molecule or a mixture before computing.",
+        "defensible_answer": "It is a mixture average, not a fractional molecular carbon count."
+      },
+      "attempt": {
+        "prompt": "An equimolar mixture contains two pure acyclic alkanes whose carbon counts differ by one. Complete combustion of 0.040 mol total fuel gives 0.180 mol CO₂. Infer both molecular formulas, enumerate all chain skeletons of the smaller alkane, compute oxygen volume at 24.0 L/mol and explain why combustion cannot determine the smaller component's particular skeleton.",
+        "protected_W": "Infer two adjacent alkane formulas from mixture combustion, enumerate the smaller component and check independent oxygen balance.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "text": "Identify the mixture constraints and distinguish total fuel from each component amount."
+          },
+          {
+            "id": "H2",
+            "text": "Relate CO₂ amount to total carbon atoms; the adjacent carbon counts can be represented by unknown integers."
+          },
+          {
+            "id": "H3",
+            "text": "Make a two-component atom ledger with unknown carbon counts, then use the inferred formulas for oxygen demand and structural enumeration."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "Each alkane .020 mol. Carbon ledger .020n+.020(n+1)=.180 -> 2n+1=9 -> n=4. C₄H₁₀ and C₅H₁₂; smaller: butane and 2-methylpropane (longest chain four or three). O₂ demand .020×6.5+.020×8=.290 mol=6.96 L; H₂O .020×5+.020×6=.220 mol. Both smaller skeletons have same formula and complete-combustion demand; connectivity not identified."
+        }
+      },
+      "reconstruct": {
+        "prompt": "Rebuild the mixture carbon ledger, then independently check oxygen and water balances.",
+        "model_response": "Each alkane .020 mol. Carbon ledger .020n+.020(n+1)=.180 -> 2n+1=9 -> n=4. C₄H₁₀ and C₅H₁₂; smaller: butane and 2-methylpropane (longest chain four or three). O₂ demand .020×6.5+.020×8=.290 mol=6.96 L; H₂O .020×5+.020×6=.220 mol. Both smaller skeletons have same formula and complete-combustion demand; connectivity not identified."
+      },
+      "diagnose": {
+        "prompt": "Could a single alkane have 4.5 carbon atoms per molecule, or is that an average of a mixture?",
+        "wrong_idea": "Treat the average carbon count as a molecular formula or infer a specific isomer from oxygen demand."
+      },
+      "repair": {
+        "prompt": "Separate mixture averages from molecular formulas, then construct both component ledgers.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C11.core1a.md"
+      },
+      "boundary_test": {
+        "prompt": "If equimolarity is removed, does the same CO₂ measurement uniquely determine the adjacent formulas and proportions?",
+        "answer": "With exact adjacent integer counts and mean 4.5, only C4/C5 with equal amounts fits positive fractions; if the adjacency assumption is also removed, multiple mixtures fit. Thus equimolarity is redundant here, but adjacency matters."
+      },
+      "author_demand": {
+        "scores": {
+          "concept_model_selection": 1,
+          "representation_translation": 2,
+          "reasoning_chain_length": 2,
+          "algebra_computational_load": 2,
+          "trap_exception_sensitivity": 1
+        },
+        "total": 8,
+        "reason": "Exact task: model selection, translation to formula/ledger, linked inference, required quantitative operations and changed-assumption trap. R02 must verify shortest path.",
+        "independent": "NOT_RUN",
+        "factor_evidence": {
+          "concept_model_selection": "Choose adjacent-alkane mixture inverse model",
+          "representation_translation": "Translate gas amount to carbon-count equations and skeletons",
+          "reasoning_chain_length": "Infer formulas, enumerate and compute oxygen independently",
+          "algebra_computational_load": "Linked integer/molar/volume calculations",
+          "trap_exception_sensitivity": "Average not molecular identity; adjacency constraint"
+        }
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "academic_status": "HOLD"
+    },
+    {
+      "task_id": "B02-ISOMERS-COMBUSTION-INSTANCE-R1",
+      "kind": "INSTANCE",
+      "subtopic_id": "CHEM-C11.04",
+      "source_candidate_id": "CHEM-NSEJS-REACT-07",
+      "source_stem_sha256": "77822abc8ea68a9b850a2e081d0bf492b5b012f254133c911f6b371265f0f83f",
+      "source_role": "AUTHORED_TRANSFER_NOT_ORIGINAL_EXAM",
+      "source_admission": "HOLD",
+      "runtime_status": "SUPPLEMENTAL_P00_INTEGRATION_HOLD",
+      "scope": "CORE_CANDIDATE_WITH_STOICHIOMETRY_PREREQUISITE",
+      "template_ref": "QRT-SYNTHESIZE-D4",
+      "operation": "SYNTHESIZE",
+      "band_author": "D4",
+      "slots": {
+        "X": "An acyclic alkane of molar mass 86 g/mol has 0.020 mol completely combusted at gas molar volume 25.0 L/mol. Enumerate its five distinct chain isomers by longest-chain cases, compute O₂ volume, and test a claim that the most branched structure consumes less oxygen.",
+        "Y": "Chain isomers have identical elemental formula, so their ideal complete combustion requires the same oxygen per mole despite different connectivity. Example: an acyclic alkane of molar mass 86 has 14n+2=86, so C₆H₁₄. Its complete combustion is 2C₆H₁₄+19O₂→12CO₂+14H₂O. Every C₆H₁₄ chain isomer uses 9.5 mol O₂ per mole under this model. Enumerate structures separately by longest-chain length and symmetry; oxygen demand cannot identify the individual isomer.",
+        "Z": "C₆H₁₄; hexane; 2- and 3-methylpentane; 2,2- and 2,3-dimethylbutane. Chain lengths 6,5,4, shorter impossible for six vertices of degree ≤4 and diameter ≤2. 2C₆H₁₄+19O₂→12CO₂+14H₂O. .020×9.5=.190 mol O₂=4.75 L. Same formula, same ideal demand.",
+        "W": "Independently enumerate isomer classes and reject branching-dependent stoichiometry claim."
+      },
+      "predict": {
+        "prompt": "State an initial model and the assumption you will test."
+      },
+      "attempt": {
+        "prompt": "An acyclic alkane of molar mass 86 g/mol has 0.020 mol completely combusted at gas molar volume 25.0 L/mol. Enumerate its five distinct chain isomers by longest-chain cases, compute O₂ volume, and test a claim that the most branched structure consumes less oxygen.",
+        "protected_W": "Independently enumerate isomer classes and reject branching-dependent stoichiometry claim.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "text": "Infer carbon number from molar mass and write the formula."
+          },
+          {
+            "id": "H2",
+            "text": "Partition candidate skeletons by longest-chain length; reverse numbering to remove duplicates."
+          },
+          {
+            "id": "H3",
+            "text": "Write the atom balance for complete combustion, then compare its coefficients across the enumerated structures."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "C₆H₁₄; hexane; 2- and 3-methylpentane; 2,2- and 2,3-dimethylbutane. Chain lengths 6,5,4, shorter impossible for six vertices of degree ≤4 and diameter ≤2. 2C₆H₁₄+19O₂→12CO₂+14H₂O. .020×9.5=.190 mol O₂=4.75 L. Same formula, same ideal demand."
+        }
+      },
+      "reconstruct": {
+        "prompt": "Rebuild the calculation and check the independent conserved quantity.",
+        "model_response": "C₆H₁₄; hexane; 2- and 3-methylpentane; 2,2- and 2,3-dimethylbutane. Chain lengths 6,5,4, shorter impossible for six vertices of degree ≤4 and diameter ≤2. 2C₆H₁₄+19O₂→12CO₂+14H₂O. .020×9.5=.190 mol O₂=4.75 L. Same formula, same ideal demand."
+      },
+      "diagnose": {
+        "prompt": "Compare the saved response with the model; identify a specific unsupported assumption or arithmetic/representation error, or record insufficient evidence."
+      },
+      "repair": {
+        "prompt": "Recompute with a complete species or amount ledger, checking assumptions.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C11.core1a.md"
+      },
+      "boundary_test": {
+        "prompt": "If two isomers burn at different observed rates, does that contradict equal ideal oxygen demand?",
+        "answer": "No; rate and total stoichiometric demand are different."
+      },
+      "author_demand": {
+        "scores": {
+          "concept_model_selection": 1,
+          "representation_translation": 2,
+          "reasoning_chain_length": 2,
+          "algebra_computational_load": 2,
+          "trap_exception_sensitivity": 1
+        },
+        "total": 8,
+        "reason": "Exact task: model selection, translation to formula/ledger, linked inference, required quantitative operations and changed-assumption trap. R02 must verify shortest path.",
+        "independent": "NOT_RUN",
+        "factor_evidence": {
+          "concept_model_selection": "Choose acyclic saturated formula and atom conservation.",
+          "representation_translation": "Translate molar mass to five connectivity classes and equation.",
+          "reasoning_chain_length": "Exhaust by longest chain, calculate gas volume and refute branching claim.",
+          "algebra_computational_load": "Integer enumeration, stoichiometric ratios and volume.",
+          "trap_exception_sensitivity": "Rate versus total stoichiometric demand."
+        }
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "academic_status": "HOLD"
+    },
+    {
+      "task_id": "B02-ESTER-ISOLATED-YIELD-MAIN-R1",
+      "kind": "MAIN",
+      "subtopic_id": "CHEM-C11.07",
+      "source_candidate_id": "CHEM-NSEJS-REACT-08",
+      "source_stem_sha256": "44d8e9b73a50e44c63f4f47f52f17ca96de87bec79c1b822a6381a967fbbf105",
+      "source_role": "AUTHORED_TRANSFER_NOT_ORIGINAL_EXAM",
+      "source_admission": "HOLD",
+      "runtime_status": "SUPPLEMENTAL_P00_INTEGRATION_HOLD",
+      "scope": "CORE_CANDIDATE_WITH_STOICHIOMETRY_PREREQUISITE",
+      "template_ref": "QRT-SYNTHESIZE-D4",
+      "operation": "SYNTHESIZE",
+      "band_author": "D4",
+      "slots": {
+        "X": "An ideal ethanoic-acid/ethanol esterification begins with 9.00 g acid and 4.60 g ethanol. Molar masses 60,46,88 g/mol for acid, alcohol, ester. Isolated yield is 70% of theoretical maximum. Identify limiting reactant, compute isolated ester mass, and decide whether residual acid can be inferred uniquely from the yield.",
+        "Y": "For ethanoic acid + ethanol ⇌ ethyl ethanoate + water, the ideal stoichiometric ratio is 1:1:1:1. If 0.12 mol acid meets 0.08 mol alcohol, the theoretical maximum is 0.08 mol ester (88 g/mol), or 7.04 g. If the isolated yield is 50%, 3.52 g is collected. This does not prove only half the limiting reactant reacted: equilibrium, side reactions and isolation loss may all contribute. A material balance requires conversion and recovery separately. The example is a calculation model, not a laboratory procedure.",
+        "Z": "Acid .150 mol, ethanol .100 mol; ethanol limiting. Theoretical ester .100×88=8.80 g; isolated .70×8.80=6.16 g. Yield alone does not determine conversion vs recovery; residual acid cannot be uniquely inferred without conversion and side-reaction information.",
+        "W": "Derive limiting amount and isolated mass, then distinguish observed yield from reaction conversion."
+      },
+      "predict": {
+        "prompt": "State an initial model and the assumption you will test."
+      },
+      "attempt": {
+        "prompt": "An ideal ethanoic-acid/ethanol esterification begins with 9.00 g acid and 4.60 g ethanol. Molar masses 60,46,88 g/mol for acid, alcohol, ester. Isolated yield is 70% of theoretical maximum. Identify limiting reactant, compute isolated ester mass, and decide whether residual acid can be inferred uniquely from the yield.",
+        "protected_W": "Derive limiting amount and isolated mass, then distinguish observed yield from reaction conversion.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "text": "Convert both starting masses to amounts before comparing."
+          },
+          {
+            "id": "H2",
+            "text": "Use balanced esterification ratio to establish theoretical maximum, independently of isolation."
+          },
+          {
+            "id": "H3",
+            "text": "Make separate columns for reaction extent and isolated product; calculate collected mass and decide which residual amounts lack evidence."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "Acid .150 mol, ethanol .100 mol; ethanol limiting. Theoretical ester .100×88=8.80 g; isolated .70×8.80=6.16 g. Yield alone does not determine conversion vs recovery; residual acid cannot be uniquely inferred without conversion and side-reaction information."
+        }
+      },
+      "reconstruct": {
+        "prompt": "Rebuild the calculation and check the independent conserved quantity.",
+        "model_response": "Acid .150 mol, ethanol .100 mol; ethanol limiting. Theoretical ester .100×88=8.80 g; isolated .70×8.80=6.16 g. Yield alone does not determine conversion vs recovery; residual acid cannot be uniquely inferred without conversion and side-reaction information."
+      },
+      "diagnose": {
+        "prompt": "Compare the saved response with the model; identify a specific unsupported assumption or arithmetic/representation error, or record insufficient evidence."
+      },
+      "repair": {
+        "prompt": "Recompute with a complete species or amount ledger, checking assumptions.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C11.core1a.md"
+      },
+      "boundary_test": {
+        "prompt": "If reaction conversion of ethanol is 80% and all other assumptions hold, what acid remains?",
+        "answer": "0.150−0.080=.070 mol acid, regardless of isolated yield if recovery is separately specified."
+      },
+      "author_demand": {
+        "scores": {
+          "concept_model_selection": 2,
+          "representation_translation": 1,
+          "reasoning_chain_length": 2,
+          "algebra_computational_load": 2,
+          "trap_exception_sensitivity": 1
+        },
+        "total": 8,
+        "reason": "Exact task: model selection, translation to formula/ledger, linked inference, required quantitative operations and changed-assumption trap. R02 must verify shortest path.",
+        "independent": "NOT_RUN",
+        "factor_evidence": {
+          "concept_model_selection": "Select limiting-reagent and isolated-yield model, not equal feed or complete conversion.",
+          "representation_translation": "Translate masses into a separate theoretical/isolated-product ledger.",
+          "reasoning_chain_length": "Identify limiting reactant, compute collection and distinguish unknown residual acid.",
+          "algebra_computational_load": "Molar mass and yield arithmetic with limiting comparison.",
+          "trap_exception_sensitivity": "Yield alone does not determine conversion or recovery."
+        }
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "academic_status": "HOLD"
+    },
+    {
+      "task_id": "B02-ESTER-ISOLATED-YIELD-INSTANCE-R1",
+      "kind": "INSTANCE",
+      "subtopic_id": "CHEM-C11.07",
+      "source_candidate_id": "CHEM-NSEJS-REACT-08",
+      "source_stem_sha256": "44d8e9b73a50e44c63f4f47f52f17ca96de87bec79c1b822a6381a967fbbf105",
+      "source_role": "AUTHORED_TRANSFER_NOT_ORIGINAL_EXAM",
+      "source_admission": "HOLD",
+      "runtime_status": "SUPPLEMENTAL_P00_INTEGRATION_HOLD",
+      "scope": "CORE_CANDIDATE_WITH_STOICHIOMETRY_PREREQUISITE",
+      "template_ref": "QRT-SYNTHESIZE-D4",
+      "operation": "SYNTHESIZE",
+      "band_author": "D4",
+      "slots": {
+        "X": "An ideal esterification begins with 3.60 g ethanoic acid and 4.60 g ethanol (60 and 46 g/mol). Ethyl ethanoate is 88 g/mol. Isolated ester mass is 3.96 g. Calculate percentage isolated yield, limiting reactant, and determine whether a report of 90% conversion and 5/6 recovery fits.",
+        "Y": "For ethanoic acid + ethanol ⇌ ethyl ethanoate + water, the ideal stoichiometric ratio is 1:1:1:1. If 0.12 mol acid meets 0.08 mol alcohol, the theoretical maximum is 0.08 mol ester (88 g/mol), or 7.04 g. If the isolated yield is 50%, 3.52 g is collected. This does not prove only half the limiting reactant reacted: equilibrium, side reactions and isolation loss may all contribute. A material balance requires conversion and recovery separately. The example is a calculation model, not a laboratory procedure.",
+        "Z": "Acid .060 mol, ethanol .100 mol; acid limiting. Theoretical 5.28 g; yield 3.96/5.28=.75=75%. At 90% conversion, .054 mol ester produced; 5/6 recovery gives .045 mol or 3.96 g, consistent. Other conversion/recovery pairs could also fit.",
+        "W": "Reconcile limiting-reactant yield with two-stage conversion/recovery model."
+      },
+      "predict": {
+        "prompt": "State an initial model and the assumption you will test."
+      },
+      "attempt": {
+        "prompt": "An ideal esterification begins with 3.60 g ethanoic acid and 4.60 g ethanol (60 and 46 g/mol). Ethyl ethanoate is 88 g/mol. Isolated ester mass is 3.96 g. Calculate percentage isolated yield, limiting reactant, and determine whether a report of 90% conversion and 5/6 recovery fits.",
+        "protected_W": "Reconcile limiting-reactant yield with two-stage conversion/recovery model.",
+        "first_attempt_must_be_saved_before_feedback": true,
+        "initial_answer_visibility": "HIDDEN",
+        "hints": [
+          {
+            "id": "H1",
+            "text": "Find initial mole amounts using the supplied molar masses."
+          },
+          {
+            "id": "H2",
+            "text": "Separate theoretical ester, actually formed ester and recovered ester."
+          },
+          {
+            "id": "H3",
+            "text": "Construct conversion × recovery relationship and check the reported pair against measured isolated mass."
+          }
+        ],
+        "post_commit_closure": {
+          "model_response": "Acid .060 mol, ethanol .100 mol; acid limiting. Theoretical 5.28 g; yield 3.96/5.28=.75=75%. At 90% conversion, .054 mol ester produced; 5/6 recovery gives .045 mol or 3.96 g, consistent. Other conversion/recovery pairs could also fit."
+        }
+      },
+      "reconstruct": {
+        "prompt": "Rebuild the calculation and check the independent conserved quantity.",
+        "model_response": "Acid .060 mol, ethanol .100 mol; acid limiting. Theoretical 5.28 g; yield 3.96/5.28=.75=75%. At 90% conversion, .054 mol ester produced; 5/6 recovery gives .045 mol or 3.96 g, consistent. Other conversion/recovery pairs could also fit."
+      },
+      "diagnose": {
+        "prompt": "Compare the saved response with the model; identify a specific unsupported assumption or arithmetic/representation error, or record insufficient evidence."
+      },
+      "repair": {
+        "prompt": "Recompute with a complete species or amount ledger, checking assumptions.",
+        "core1a_ref": "curriculum/chemistry/agent-b/textbook/C11.core1a.md"
+      },
+      "boundary_test": {
+        "prompt": "Could 70% conversion with no side reactions explain 75% isolated yield if recovery is at most 100%?",
+        "answer": "No; isolated yield cannot exceed conversion under the stated one-to-one model."
+      },
+      "author_demand": {
+        "scores": {
+          "concept_model_selection": 2,
+          "representation_translation": 1,
+          "reasoning_chain_length": 2,
+          "algebra_computational_load": 2,
+          "trap_exception_sensitivity": 1
+        },
+        "total": 8,
+        "reason": "Exact task: model selection, translation to formula/ledger, linked inference, required quantitative operations and changed-assumption trap. R02 must verify shortest path.",
+        "independent": "NOT_RUN",
+        "factor_evidence": {
+          "concept_model_selection": "Select limiting reactant and two-stage conversion/recovery model.",
+          "representation_translation": "Translate measured mass and proposed fractions into amount ledger.",
+          "reasoning_chain_length": "Infer limiting amount and yield; independently test reported conversion/recovery.",
+          "algebra_computational_load": "Ratio calculations and multiplication.",
+          "trap_exception_sensitivity": "Recovery constraint and nonunique inverse fit."
+        }
+      },
+      "reviews": {
+        "H1": "UNREVIEWED",
+        "H2": "UNREVIEWED",
+        "H3": "UNREVIEWED",
+        "S1": "UNREVIEWED",
+        "S2": "UNREVIEWED",
+        "S3": "UNREVIEWED",
+        "P1": "UNREVIEWED",
+        "P2": "UNREVIEWED",
+        "P3": "UNREVIEWED",
+        "M1": "UNREVIEWED",
+        "M2": "UNREVIEWED",
+        "M3": "UNREVIEWED"
+      },
+      "academic_status": "HOLD"
+    }
+  ]
+}
