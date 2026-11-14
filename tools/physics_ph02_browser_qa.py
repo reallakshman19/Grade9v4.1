@@ -153,6 +153,34 @@ def main():
                 assert page.locator("#runtimeStatus").inner_text().startswith("HOLD:")
                 receipt["checks"].append({"negative":"SAVE_FAILURE","result":"REJECTED","first_input_copyable":True})
                 context.close()
+                stale_context=browser.new_context()
+                stale=stale_context.new_page()
+                stale.goto(target)
+                loaded(stale)
+                stale.locator("#prediction").fill("First prediction before revision change.")
+                stale.locator("#attempt").fill("Saved first response before a test-only revision mutation.")
+                stale.locator("#firstCommit").click()
+                original=state(stale,"AUTHORED-PH02-F01-TRANSFER-01")
+                assert original and original["first_answer"]
+                stale.evaluate("""() => {
+                    const k=Object.keys(localStorage).find(x=>x.startsWith('G9V41:PH02:AUTHORED-PH02-F01-TRANSFER-01:') && !x.endsWith(':prehelp'));
+                    const v=JSON.parse(localStorage.getItem(k));
+                    v.revision='QA_MUTATED_STALE_REVISION';
+                    localStorage.setItem(k,JSON.stringify(v));
+                }""")
+                stale.reload()
+                assert stale.locator("#runtimeStatus").inner_text().startswith("HOLD:")
+                assert stale.locator("#postAttempt").is_hidden()
+                assert stale.locator("#firstCommit").is_disabled()
+                receipt["checks"].append({"negative":"STALE_REVISION","result":"REJECTED","original_not_promoted":True})
+                stale_context.close()
+                wrong_context=browser.new_context()
+                wrong=wrong_context.new_page()
+                wrong.goto(target+"?task=AUTHORED-FAKE-SOURCE-UID")
+                wrong.wait_for_function("() => document.querySelector('[data-ph02-practice]')?.textContent.includes('HOLD')")
+                assert wrong.locator("#firstCommit").count()==0
+                receipt["checks"].append({"negative":"UNKNOWN_TASK_UID","result":"REJECTED"})
+                wrong_context.close()
             finally:
                 browser.close()
         receipt["disposition"]="MECHANICAL_CHROMIUM_PASS__ACADEMIC_HOLD"
