@@ -1,0 +1,102 @@
+{
+  "schema": "g9v41-b02-subtopic-preview/v1",
+  "status": "DRAFT_AUTHOR_EXPOSED",
+  "owner_agent": "AGENT_2",
+  "topic_id": "PH09",
+  "subtopic_id": "PH09-01",
+  "version": "0.1.0",
+  "source_role": "AUTHORED_TRANSFER",
+  "source_status": "NO_QUALIFIED_SOURCE_YET",
+  "core1b": [
+    {
+      "id": "PH09-01-B02-REFLECTION-INVERSE-MAIN-R1",
+      "kind": "MAIN",
+      "subtopic_id": "PH09-01",
+      "qrt_target_id": "PH09-01-REPRESENT-D3-REFLECTION-INVERSE-R1",
+      "primary_operation": "REPRESENT",
+      "source_role": "AUTHORED_TRANSFER",
+      "difficulty_status": "AUTHOR_NOMINATION__INDEPENDENT_HOLD",
+      "content_revision": "0.1.0",
+      "fresh_task": "Two rays travel from P=(−4,0) and Q=(0,−4) toward the origin, respectively east and north. A single plane mirror through the origin allegedly sends the east-going ray north and the north-going ray east. Draw both directed rays, infer the mirror line, then decide whether a one-sided mirror can reflect both rays from the same physical face.",
+      "protected_work": "Reconstruct a common reflecting-line orientation from multiple directed ray observations, then test whether a finite mirror can realize the observed paths.",
+      "stages": {
+        "predict": "Before solving, predict the outcome or relationship and record uncertainty.",
+        "attempt": "Two rays travel from P=(−4,0) and Q=(0,−4) toward the origin, respectively east and north. A single plane mirror through the origin allegedly sends the east-going ray north and the north-going ray east. Draw both directed rays, infer the mirror line, then decide whether a one-sided mirror can reflect both rays from the same physical face.",
+        "reconstruct": "Both heading pairs imply φ=45° mod 180°, so mirror y=x. But P lies on y−x=+4 and Q on y−x=−4, opposite sides. Thus the direction equations agree while a one-sided mirror cannot accept both incident rays. A two-sided ideal reflecting plane could.",
+        "diagnose": "Only if your saved response exhibits this error: Checking only equal angles without checking which side rays arrive from. Otherwise record insufficient evidence.",
+        "repair": "Draw vectors and reflect them; separately test signed distances from the mirror line for each incident origin.",
+        "boundary_test": "Can a ray with heading parallel to the mirror line be treated as an ordinary point reflection? Explain."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH09-01-B02-REFLECTION-INVERSE-INSTANCE-R1",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH09-01",
+      "qrt_target_id": "PH09-01-REPRESENT-D3-REFLECTION-INVERSE-R1",
+      "primary_operation": "REPRESENT",
+      "source_role": "AUTHORED_TRANSFER",
+      "difficulty_status": "INSTANCE_UNSCORED",
+      "content_revision": "0.1.0",
+      "fresh_task": "Two rays approach origin from (−3,−1) and (−3,1). A claimed vertical mirror x=0 sends their respective direction vectors (3,1),(3,−1) into (−3,1),(−3,−1). Draw both and decide whether one reflecting face suffices. What changes if the second ray instead arrives from (3,1)?",
+      "protected_work": "Reconstruct a common reflecting-line orientation from multiple directed ray observations, then test whether a finite mirror can realize the observed paths.",
+      "stages": {
+        "predict": "Before solving, predict the outcome or relationship and record uncertainty.",
+        "attempt": "Two rays approach origin from (−3,−1) and (−3,1). A claimed vertical mirror x=0 sends their respective direction vectors (3,1),(3,−1) into (−3,1),(−3,−1). Draw both and decide whether one reflecting face suffices. What changes if the second ray instead arrives from (3,1)?",
+        "reconstruct": "Both original paths approach from x<0, and reflection negates x component while preserving y; one left-facing mirror suffices. The altered source lies at x>0, so it cannot hit the same reflecting face from its reflective side.",
+        "diagnose": "Only if your saved response exhibits this error: Checking only equal angles without checking which side rays arrive from. Otherwise record insufficient evidence.",
+        "repair": "Draw vectors and reflect them; separately test signed distances from the mirror line for each incident origin.",
+        "boundary_test": "Can a ray with heading parallel to the mirror line be treated as an ordinary point reflection? Explain."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    }
+  ],
+  "author_main_assessment": {
+    "primary_operation": "REPRESENT",
+    "band_candidate": "D3",
+    "blueprint_cell": "D3.5",
+    "factor_evidence": {
+      "concept_model_selection": {
+        "score": 1,
+        "evidence": "Choose plane reflection rather than rotate ray independently."
+      },
+      "representation_translation": {
+        "score": 2,
+        "evidence": "Translate two coordinate paths into directed rays and a common mirror line."
+      },
+      "reasoning_chain_length": {
+        "score": 2,
+        "evidence": "Infer common orientation, then test incident-side compatibility."
+      },
+      "algebra_computational_load": {
+        "score": 0,
+        "evidence": "Only signs and elementary geometry; no material algebra."
+      },
+      "trap_exception_sensitivity": {
+        "score": 2,
+        "evidence": "One-sided reflecting-face condition changes feasibility."
+      }
+    },
+    "total": 7,
+    "disposition": "AUTHOR_PROPOSED_NOT_INDEPENDENT",
+    "instance_band": "NOT_SCORED"
+  },
+  "acceptance": {
+    "release": "HOLD",
+    "academic": "HOLD",
+    "native_contract": "NOT_VALIDATED",
+    "implementation": "NOT_RUN"
+  }
+}

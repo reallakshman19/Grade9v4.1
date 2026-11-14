@@ -1,0 +1,182 @@
+{
+  "schema": "g9v41-b02-subtopic-preview/v1",
+  "status": "DRAFT_AUTHOR_EXPOSED",
+  "owner_agent": "AGENT_2",
+  "topic_id": "PH09",
+  "subtopic_id": "PH09-12",
+  "version": "0.1.0",
+  "base_commit": "de3d55e05a35150b1111f25aee3ba8acd4ef47e5",
+  "source_role": "AUTHORED_TRANSFER",
+  "source_scope": "ADVANCED_APPLICATION_CANDIDATE",
+  "core1b": [
+    {
+      "id": "PH09-12-B02-MODEL-MAIN-R1",
+      "kind": "MAIN",
+      "subtopic_id": "PH09-12",
+      "qrt_target_id": "PH09-12-MODEL-UNCLASSIFIED",
+      "primary_operation": "MODEL",
+      "source_role": "AUTHORED_TRANSFER",
+      "difficulty_status": "UNCLASSIFIED_PENDING_FIVE_FACTOR_REVIEW",
+      "content_revision": "0.1.0",
+      "fresh_task": "Trial A d=24,q=48; trial B d=32,q=32; trial C d=48,q=30 cm. Are all compatible with one ideal mirror ignoring uncertainty?",
+      "protected_work": "Infer whether paired measurements fit a fixed paraxial focal length.",
+      "stages": {
+        "predict": "State your expected result, direction or relationship before solving. Record uncertainty if needed.",
+        "attempt": "Trial A d=24,q=48; trial B d=32,q=32; trial C d=48,q=30 cm. Are all compatible with one ideal mirror ignoring uncertainty?",
+        "reconstruct": "A F=16; B F=16; C F=1440/78≈18.46. C inconsistent; investigate datum, alignment or data before changing model.",
+        "diagnose": "Only if your saved answer demonstrates this error: Averaging incompatible results without checking the conjugate model. Otherwise record insufficient evidence; compare your actual reasoning with the reconstruction.",
+        "repair": "Calculate each F and compare with measurement uncertainty.",
+        "boundary_test": "What if all distances share the same wrong zero?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH09-12-B02-MODEL-INSTANCE-R1",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH09-12",
+      "qrt_target_id": "PH09-12-MODEL-UNCLASSIFIED",
+      "primary_operation": "MODEL",
+      "source_role": "AUTHORED_TRANSFER",
+      "difficulty_status": "UNCLASSIFIED_PENDING_FIVE_FACTOR_REVIEW",
+      "content_revision": "0.1.0",
+      "fresh_task": "Trials (d,q)=(30,60),(45,36),(60,30). Check focal estimates.",
+      "protected_work": "Infer whether paired measurements fit a fixed paraxial focal length.",
+      "stages": {
+        "predict": "State your expected result, direction or relationship before solving. Record uncertainty if needed.",
+        "attempt": "Trials (d,q)=(30,60),(45,36),(60,30). Check focal estimates.",
+        "reconstruct": "20,20,20 cm respectively; mutually consistent, not proof of zero systematic error.",
+        "diagnose": "Only if your saved answer demonstrates this error: Averaging incompatible results without checking the conjugate model. Otherwise record insufficient evidence; compare your actual reasoning with the reconstruction.",
+        "repair": "Calculate each F and compare with measurement uncertainty.",
+        "boundary_test": "What if all distances share the same wrong zero?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH09-12-B02-REPRESENT-MAIN-R1",
+      "kind": "MAIN",
+      "subtopic_id": "PH09-12",
+      "qrt_target_id": "PH09-12-REPRESENT-UNCLASSIFIED",
+      "primary_operation": "REPRESENT",
+      "source_role": "AUTHORED_TRANSFER",
+      "difficulty_status": "UNCLASSIFIED_PENDING_FIVE_FACTOR_REVIEW",
+      "content_revision": "0.1.0",
+      "fresh_task": "A mirror setup records real object distances 18 and 30 cm, screen distances 36 and 20. Write signed u,v and compute f; identify a useful graph.",
+      "protected_work": "Build an experimental table and translate distances into signed positions.",
+      "stages": {
+        "predict": "State your expected result, direction or relationship before solving. Record uncertainty if needed.",
+        "attempt": "A mirror setup records real object distances 18 and 30 cm, screen distances 36 and 20. Write signed u,v and compute f; identify a useful graph.",
+        "reconstruct": "u=−18,v=−36 gives f=−12; u=−30,v=−20 gives f=−12. Plot 1/v against 1/u: intercept 1/f, slope −1.",
+        "diagnose": "Only if your saved answer demonstrates this error: Graphing unsigned 1/d as if it were signed 1/u. Otherwise record insufficient evidence; compare your actual reasoning with the reconstruction.",
+        "repair": "Label axes and sign convention explicitly; preserve units.",
+        "boundary_test": "What effect does a pole-position offset have on reciprocal linearity?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH09-12-B02-REPRESENT-INSTANCE-R1",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH09-12",
+      "qrt_target_id": "PH09-12-REPRESENT-UNCLASSIFIED",
+      "primary_operation": "REPRESENT",
+      "source_role": "AUTHORED_TRANSFER",
+      "difficulty_status": "UNCLASSIFIED_PENDING_FIVE_FACTOR_REVIEW",
+      "content_revision": "0.1.0",
+      "fresh_task": "Trials d=20,q=20 and d=15,q=30. Make a reciprocal coordinate table and check slope/intercept.",
+      "protected_work": "Build an experimental table and translate distances into signed positions.",
+      "stages": {
+        "predict": "State your expected result, direction or relationship before solving. Record uncertainty if needed.",
+        "attempt": "Trials d=20,q=20 and d=15,q=30. Make a reciprocal coordinate table and check slope/intercept.",
+        "reconstruct": "(−0.05,−0.05),(−1/15,−1/30) cm⁻¹; slope −1 and intercept −0.1, f=−10 cm.",
+        "diagnose": "Only if your saved answer demonstrates this error: Graphing unsigned 1/d as if it were signed 1/u. Otherwise record insufficient evidence; compare your actual reasoning with the reconstruction.",
+        "repair": "Label axes and sign convention explicitly; preserve units.",
+        "boundary_test": "What effect does a pole-position offset have on reciprocal linearity?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH09-12-B02-JUSTIFY-MAIN-R1",
+      "kind": "MAIN",
+      "subtopic_id": "PH09-12",
+      "qrt_target_id": "PH09-12-JUSTIFY-UNCLASSIFIED",
+      "primary_operation": "JUSTIFY",
+      "source_role": "AUTHORED_TRANSFER",
+      "difficulty_status": "UNCLASSIFIED_PENDING_FIVE_FACTOR_REVIEW",
+      "content_revision": "0.1.0",
+      "fresh_task": "A student obtains repeatable sharp screen positions but uses a ruler zero at the rear of a thick mount rather than the reflecting pole. Explain why repeatability is not accuracy and propose a repair.",
+      "protected_work": "Discriminate systematic error from random variation using a physical check.",
+      "stages": {
+        "predict": "State your expected result, direction or relationship before solving. Record uncertainty if needed.",
+        "attempt": "A student obtains repeatable sharp screen positions but uses a ruler zero at the rear of a thick mount rather than the reflecting pole. Explain why repeatability is not accuracy and propose a repair.",
+        "reconstruct": "All distances share a datum error; repeated readings may agree but inferred F is biased. Locate actual pole, remeasure object/screen positions, repeat at multiple d.",
+        "diagnose": "Only if your saved answer demonstrates this error: Concluding repeated agreement proves the ideal model. Otherwise record insufficient evidence; compare your actual reasoning with the reconstruction.",
+        "repair": "Separate datum calibration, aperture and alignment from random scatter.",
+        "boundary_test": "If aperture reduction also lowers brightness, how can sharpness comparisons be controlled?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH09-12-B02-JUSTIFY-INSTANCE-R1",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH09-12",
+      "qrt_target_id": "PH09-12-JUSTIFY-UNCLASSIFIED",
+      "primary_operation": "JUSTIFY",
+      "source_role": "AUTHORED_TRANSFER",
+      "difficulty_status": "UNCLASSIFIED_PENDING_FIVE_FACTOR_REVIEW",
+      "content_revision": "0.1.0",
+      "fresh_task": "A second group sees a broad focus with a wide mirror, sharper after masking its edges. Justify a plausible physical reason and a test.",
+      "protected_work": "Discriminate systematic error from random variation using a physical check.",
+      "stages": {
+        "predict": "State your expected result, direction or relationship before solving. Record uncertainty if needed.",
+        "attempt": "A second group sees a broad focus with a wide mirror, sharper after masking its edges. Justify a plausible physical reason and a test.",
+        "reconstruct": "Marginal rays meet at differing axial positions (spherical aberration); smaller aperture favors paraxial rays. Compare measured blur/positions for different aperture sizes and fixed object.",
+        "diagnose": "Only if your saved answer demonstrates this error: Concluding repeated agreement proves the ideal model. Otherwise record insufficient evidence; compare your actual reasoning with the reconstruction.",
+        "repair": "Separate datum calibration, aperture and alignment from random scatter.",
+        "boundary_test": "If aperture reduction also lowers brightness, how can sharpness comparisons be controlled?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    }
+  ],
+  "acceptance": {
+    "release": "HOLD",
+    "academic": "HOLD",
+    "native_contract": "NOT_VALIDATED",
+    "implementation": "NOT_RUN"
+  },
+  "note": "Dedicated per-subtopic runtime preview, not a C01-C08 native topic package. Legacy packages remain unchanged; P00 runtime acceptance pending."
+}

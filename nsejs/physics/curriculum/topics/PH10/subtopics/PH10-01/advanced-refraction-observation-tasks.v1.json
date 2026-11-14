@@ -1,0 +1,102 @@
+{
+  "schema": "g9v41-b02-subtopic-preview/v1",
+  "status": "DRAFT_AUTHOR_EXPOSED",
+  "owner_agent": "AGENT_2",
+  "topic_id": "PH10",
+  "subtopic_id": "PH10-01",
+  "version": "0.1.0",
+  "source_role": "AUTHORED_TRANSFER",
+  "source_status": "NO_QUALIFIED_SOURCE_YET",
+  "core1b": [
+    {
+      "id": "PH10-01-B02-REFRACTION-OBSERVATION-MAIN-R1",
+      "kind": "MAIN",
+      "subtopic_id": "PH10-01",
+      "qrt_target_id": "PH10-01-MODEL-D4-REFRACTION-OBSERVATION-R1",
+      "primary_operation": "MODEL",
+      "source_role": "AUTHORED_TRANSFER",
+      "difficulty_status": "AUTHOR_NOMINATION__INDEPENDENT_HOLD",
+      "content_revision": "0.1.0",
+      "fresh_task": "A monochromatic beam enters a transparent material from air. The measured wavelength changes from 720 nm to 480 nm. A technician records the incoming angle as 30° to the normal and the outgoing angle as 19.47°, but does not say whether the latter is to the normal or surface. Determine which interpretation is consistent, then predict the speed ratio and explain whether a second normally incident beam alone can verify the index.",
+      "protected_work": "Combine independent wavelength and angular observations to identify a consistent optical-index model and reject an ambiguous angle convention.",
+      "stages": {
+        "predict": "Before solving, predict the outcome or relationship and record uncertainty.",
+        "attempt": "A monochromatic beam enters a transparent material from air. The measured wavelength changes from 720 nm to 480 nm. A technician records the incoming angle as 30° to the normal and the outgoing angle as 19.47°, but does not say whether the latter is to the normal or surface. Determine which interpretation is consistent, then predict the speed ratio and explain whether a second normally incident beam alone can verify the index.",
+        "reconstruct": "Frequency unchanged gives n₂/n₁=720/480=1.5 and v₂/v₁=2/3. Snell gives sin r=sin30/1.5=1/3, r≈19.47° to the normal. If measured to surface, normal angle would be 70.53°, inconsistent. Normal beam remains collinear regardless of index ratio; directional measurement alone cannot verify n.",
+        "diagnose": "Only if your saved response exhibits this error: Inferring index from bending alone while ignoring wavelength ratio or impossible transmission domain. Otherwise record insufficient evidence.",
+        "repair": "Use frequency conservation to get index ratio, then test Snell sine domain and angular reference independently.",
+        "boundary_test": "What optical observation besides direction could verify index at normal incidence?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH10-01-B02-REFRACTION-OBSERVATION-INSTANCE-R1",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH10-01",
+      "qrt_target_id": "PH10-01-MODEL-D4-REFRACTION-OBSERVATION-R1",
+      "primary_operation": "MODEL",
+      "source_role": "AUTHORED_TRANSFER",
+      "difficulty_status": "INSTANCE_UNSCORED",
+      "content_revision": "0.1.0",
+      "fresh_task": "A beam travels from unknown liquid into air. Its wavelength rises from 400 to 600 nm. The incident angle is 45° to the normal; a colleague reports an emergent angle of 60°. Use both independent observations to test whether a propagating refracted ray is possible and explain the discrepancy.",
+      "protected_work": "Combine independent wavelength and angular observations to identify a consistent optical-index model and reject an ambiguous angle convention.",
+      "stages": {
+        "predict": "Before solving, predict the outcome or relationship and record uncertainty.",
+        "attempt": "A beam travels from unknown liquid into air. Its wavelength rises from 400 to 600 nm. The incident angle is 45° to the normal; a colleague reports an emergent angle of 60°. Use both independent observations to test whether a propagating refracted ray is possible and explain the discrepancy.",
+        "reconstruct": "n_liquid/n_air=600/400=1.5. Required sin r=1.5 sin45≈1.061>1, so no propagating emergent ray in the ideal model. The proposed 60° cannot be the transmitted direction; check medium/angle identification or whether reflection was observed.",
+        "diagnose": "Only if your saved response exhibits this error: Inferring index from bending alone while ignoring wavelength ratio or impossible transmission domain. Otherwise record insufficient evidence.",
+        "repair": "Use frequency conservation to get index ratio, then test Snell sine domain and angular reference independently.",
+        "boundary_test": "What optical observation besides direction could verify index at normal incidence?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    }
+  ],
+  "author_main_assessment": {
+    "primary_operation": "MODEL",
+    "band_candidate": "D4",
+    "blueprint_cell": "D4.4",
+    "factor_evidence": {
+      "concept_model_selection": {
+        "score": 1,
+        "evidence": "Select stationary-interface model and conservation of frequency."
+      },
+      "representation_translation": {
+        "score": 2,
+        "evidence": "Translate wavelength ratio and ambiguous angular reference into one physical model."
+      },
+      "reasoning_chain_length": {
+        "score": 2,
+        "evidence": "Infer index, predict angle, test alternative convention and normal-incidence identifiability."
+      },
+      "algebra_computational_load": {
+        "score": 1,
+        "evidence": "Routine ratio and sine calculations are necessary."
+      },
+      "trap_exception_sensitivity": {
+        "score": 2,
+        "evidence": "Angle-reference ambiguity or forbidden transmission changes validity."
+      }
+    },
+    "total": 8,
+    "disposition": "AUTHOR_PROPOSED_NOT_INDEPENDENT",
+    "instance_band": "NOT_SCORED"
+  },
+  "acceptance": {
+    "release": "HOLD",
+    "academic": "HOLD",
+    "native_contract": "NOT_VALIDATED",
+    "implementation": "NOT_RUN"
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "schema": "g9v41-b02-subtopic-preview/v1",
+  "status": "DRAFT_AUTHOR_EXPOSED",
+  "owner_agent": "AGENT_2",
+  "topic_id": "PH10",
+  "subtopic_id": "PH10-07",
+  "version": "0.1.0",
+  "source_question_uid": "g9:PHYSICS:IOQJS-21-OPT-01",
+  "source_revision_sha256": "328b8e8cb592cdc5e6edccff94735500cce3a835d1520d05b290d92d41aba656",
+  "source_role": "AUTHORED_TRANSFER",
+  "source_return": "nsejs/physics/index.html?topic=optics&q=IOQJS-21-OPT-01#question-IOQJS-21-OPT-01",
+  "core1b": [
+    {
+      "id": "PH10-07-CORE2-OPPOSITE-CONJUGATES-MAIN-R1",
+      "kind": "MAIN",
+      "subtopic_id": "PH10-07",
+      "qrt_target_id": "PH10-07-CORE2-OPPOSITE-CONJUGATES-SYNTHESIZE-R1",
+      "primary_operation": "SYNTHESIZE",
+      "source_role": "AUTHORED_TRANSFER",
+      "difficulty_status": "AUTHOR_NOMINATION__INDEPENDENT_HOLD",
+      "content_revision": "0.1.0",
+      "fresh_task": "Two point sources are 30 cm apart on opposite sides of an ideal converging lens of f=12 cm. Their images are at the same finite global position. Find both source distances, identify which gives the real image, and verify the common global coordinate when the farther source is on the left.",
+      "protected_work": "Translate two local lens axes to one laboratory axis, derive the shared-image constraint and reject degenerate solutions.",
+      "stages": {
+        "predict": "State the expected relationship or outcome and your uncertainty before solving.",
+        "attempt": "Two point sources are 30 cm apart on opposite sides of an ideal converging lens of f=12 cm. Their images are at the same finite global position. Find both source distances, identify which gives the real image, and verify the common global coordinate when the farther source is on the left.",
+        "reconstruct": "Let p+r=30. Equality of x_L=Fp/(p−F) and x_R=−Fr/(r−F) gives pr=FS/2=180. Roots z=(30±√180)/2≈21.708,8.292 cm. Farther p>12 forms real image x≈26.83 cm; nearer right r<12 gives local v≈−26.83 cm, global x≈+26.83 cm. Both coincide; reversing assignments flips global side.",
+        "diagnose": "Only if your saved answer exhibits this error: Using the same positive incident axis for both objects or accepting the double root at both focal points as a finite image. Otherwise record insufficient evidence.",
+        "repair": "Use local incident directions separately, convert v back to global x, and verify finite denominators and co-location.",
+        "boundary_test": "If both sources are on the same side of the lens, can two distinct finite object coordinates have one finite conjugate in the ideal thin-lens model?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH10-07-CORE2-OPPOSITE-CONJUGATES-INSTANCE-R1",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH10-07",
+      "qrt_target_id": "PH10-07-CORE2-OPPOSITE-CONJUGATES-SYNTHESIZE-R1",
+      "primary_operation": "SYNTHESIZE",
+      "source_role": "AUTHORED_TRANSFER",
+      "difficulty_status": "INSTANCE_UNSCORED",
+      "content_revision": "0.1.0",
+      "fresh_task": "Opposite-side sources are separated by S=16 cm; lens f=8 cm. A student claims the symmetric placement yields a common finite image. Test the claim, then explain how increasing S above 16 cm changes the root/domain structure.",
+      "protected_work": "Translate two local lens axes to one laboratory axis, derive the shared-image constraint and reject degenerate solutions.",
+      "stages": {
+        "predict": "State the expected relationship or outcome and your uncertainty before solving.",
+        "attempt": "Opposite-side sources are separated by S=16 cm; lens f=8 cm. A student claims the symmetric placement yields a common finite image. Test the claim, then explain how increasing S above 16 cm changes the root/domain structure.",
+        "reconstruct": "pr=FS/2=64, p+r=16 gives p=r=8=F. Both rays emerge parallel, no finite image. For S>2F roots are distinct positive, product and polynomial evaluated at F imply one root below F and one above, giving one real and one virtual image at same global coordinate when axes are reversed.",
+        "diagnose": "Only if your saved answer exhibits this error: Using the same positive incident axis for both objects or accepting the double root at both focal points as a finite image. Otherwise record insufficient evidence.",
+        "repair": "Use local incident directions separately, convert v back to global x, and verify finite denominators and co-location.",
+        "boundary_test": "If both sources are on the same side of the lens, can two distinct finite object coordinates have one finite conjugate in the ideal thin-lens model?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    }
+  ],
+  "author_main_assessment": {
+    "primary_operation": "SYNTHESIZE",
+    "band_candidate": "D4",
+    "blueprint_cell": "D4.6",
+    "factor_evidence": {
+      "concept_model_selection": {
+        "score": 1,
+        "evidence": "Choose the governing model: Translate two local lens axes to one laboratory axis, derive the shared-image constraint and reject degenerate solutions."
+      },
+      "representation_translation": {
+        "score": 2,
+        "evidence": "Translate the given geometry/measurements to the required representation: Two point sources are 30 cm apart on opposite sides of an ideal converging lens of f=12 cm. Their images are at the same finite global position. Find both source distances, identify which gives the real image, and verify the common global coordinate when the farther source is on the left."
+      },
+      "reasoning_chain_length": {
+        "score": 2,
+        "evidence": "Coordinate dependent reasoning moves: Let p+r=30. Equality of x_L=Fp/(p−F) and x_R=−Fr/(r−F) gives pr=FS/2=180. Roots z=(30±√180)/2≈21.708,8.292 cm. Farther p>12 forms real image x≈26.83 cm; nearer right r<12 gives local v≈−26.83 cm, global x≈+26.83 cm. Both coincide; reversing assignments flips global side."
+      },
+      "algebra_computational_load": {
+        "score": 1,
+        "evidence": "Material routine multi-step arithmetic or algebra required in the exact MAIN; no extra score for solution length."
+      },
+      "trap_exception_sensitivity": {
+        "score": 2,
+        "evidence": "Test the applicable boundary: If both sources are on the same side of the lens, can two distinct finite object coordinates have one finite conjugate in the ideal thin-lens model?"
+      }
+    },
+    "total": 8,
+    "disposition": "AUTHOR_PROPOSED_NOT_INDEPENDENT",
+    "instance_band": "NOT_SCORED"
+  },
+  "acceptance": {
+    "release": "HOLD",
+    "academic": "HOLD",
+    "native_contract": "NOT_VALIDATED",
+    "implementation": "NOT_RUN"
+  },
+  "note": "Fresh source-related authored transfer. This is not a verified examination or independent cognitive qualification."
+}
