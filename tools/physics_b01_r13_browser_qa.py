@@ -52,7 +52,7 @@ def all_routes(origin):
     for path in paths:
         with urllib.request.urlopen(origin+"/"+path,timeout=4) as response:
             assert response.status==200,path
-            assert "<html" in response.read(512).decode("utf-8"),path
+            assert "<html" in response.read(512).decode("utf-8",errors="ignore"),path
     return len(paths)
 
 def journey(browser,origin,orientation,w,h,name,cid,kind):
