@@ -55,3 +55,12 @@ Run the last two commands on **actual completed packets**, not on the untouched 
 5. Thereafter, **every changed governed Physics content file and newly changed Core2 question ID needs a grounded author packet**. R00/R01 inspect samples/risk cases per the versioned audit protocol. Neither repeated Owner-per-question approval nor automatic academic self-certification is permitted.
 
 The workflow is present as a proposal; **this repository's policy is not currently active**. A green Pilot workflow must be reported as PILOT, not as evidence that all authors are already constrained. Source authenticity and scientific meaning still require independent human examination: no finite set of automated checks can guarantee that every future lesson is excellent.
+
+
+## Canonical entry-point integration — Core1A/Core1B Agent Field Guide
+
+The student-teaching method remains the original [cross-subject Core1A/Core1B Agent Field Guide](../../../architecture/core1ab-agent-guide.html). For **NSEJS Physics**, every newly delegated author should read **section 00A — Physics R2 evidence-gated author submission** first, then use the unchanged substantive chapters 01–27 for the teaching method. That section provides the exact task-to-evidence mapping, required mutations, validator commands, review authority and one-time Golden policy.
+
+Source-of-truth order: **(1)** pinned Owner workpack + selected native C01–C08/QRT/Blueprint, **(2)** existing guide for authoring method, **(3)** this R2 evidence contract for the Physics submission floor after adoption, **(4)** actual schema/validator for mechanical integrity, **(5)** independent R01 and delegated batch receipts for science/teaching/cognitive judgment. Neither the guide nor the evidence validator can self-approve educational quality.
+
+**Activation:** This branch contains the guide integration, but policy remains \`PILOT_AWAITING_OWNER_GOLDEN\`. The guide is not sufficient to make it binding across existing agent branches until the Owner accepts a Golden exemplar, the approved contract is made accessible on the production branch, and GitHub required checks/reviewer permissions are enabled. No per-question Owner approval after the accepted exemplar.
