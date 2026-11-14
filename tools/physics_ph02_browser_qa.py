@@ -27,7 +27,7 @@ def free_port():
 
 def loaded(page):
     page.wait_for_function(
-        "() => document.querySelector('#runtimeStatus')?.textContent.includes('Candidate task loaded')"
+        "() => ['Candidate task loaded','Candidate cycle loaded'].some(x => document.querySelector('#runtimeStatus')?.textContent.includes(x))"
     )
 
 
@@ -72,7 +72,7 @@ def test_one(page, uid):
     page.locator("#boundaryRevealBtn").click()
     assert page.locator("#boundaryModel").is_visible()
     page.reload()
-    loaded(page) if page.locator("#runtimeStatus").inner_text().startswith("Loading") else None
+    loaded(page)
     assert page.locator("#attempt").input_value().startswith("Independent signed")
     assert page.locator("#attempt").is_disabled()
     assert page.locator("#boundaryModel").is_visible()
