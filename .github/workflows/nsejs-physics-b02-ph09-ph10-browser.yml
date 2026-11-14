@@ -1,0 +1,33 @@
+name: NSEJS Physics B02 PH09-PH10 native tablet Chromium QA
+on:
+  pull_request:
+    paths:
+      - "nsejs/physics/curriculum/topics/PH09/subtopics/**"
+      - "nsejs/physics/curriculum/topics/PH10/subtopics/**"
+      - "nsejs/physics/curriculum/agent2/core1b-runtime.js"
+      - "tools/physics_b02_ph09_ph10_browser_qa.py"
+      - "tests/test_nsejs_physics_b02_native_labels.py"
+      - ".github/workflows/nsejs-physics-b02-ph09-ph10-browser.yml"
+jobs:
+  b02-native-tablet-chromium:
+    runs-on: ubuntu-latest
+    timeout-minutes: 24
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install Chromium browser QA dependencies
+        run: |
+          python -m pip install playwright==1.55.0 pytest==8.4.2
+          python -m playwright install --with-deps chromium
+      - name: Static 29 route and HOLD checks
+        run: python -m pytest -q tests/test_nsejs_physics_b02_native_labels.py tests/test_nsejs_physics_b02_core2_routes.py
+      - name: Real HTTP Chromium 29 native pairs, portrait and landscape
+        run: python tools/physics_b02_ph09_ph10_browser_qa.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: physics-b02-29-native-tablet-qa-receipt
+          path: review-artifacts/physics-b02-ph09-ph10/
+          if-no-files-found: ignore
