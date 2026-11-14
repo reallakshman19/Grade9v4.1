@@ -1,0 +1,125 @@
+{
+  "schema": "b01-source-locator-transfer-proposal/v1",
+  "status": "AUTHOR_EXPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+  "subtopic_id": "PH07-09",
+  "scope_role": "PREREQUISITE_BRIDGE",
+  "source": {
+    "locator_id": "NSEJS-2019-51-Q72",
+    "year": 2019,
+    "code": 51,
+    "question_number": 72,
+    "printed_page": 15,
+    "paper_url": "https://iapt.org.in/wp-content/uploads/NSEJS_QP-2019.pdf",
+    "final_key_url": "https://iapt.org.in/wp-content/uploads/NSEJS_FINAL_ANSWER_KEY_2019.pdf",
+    "publisher_key": [
+      "A"
+    ],
+    "publisher_disposition": "KEY_OBSERVED",
+    "paper_visual_status": "PAGE_VISUALLY_INSPECTED",
+    "key_visual_status": "FINAL_KEY_VISUALLY_INSPECTED",
+    "source_bytes_sha256": null,
+    "rights_status": "HOLD",
+    "exact_source_revision_status": "HOLD",
+    "academic_admission": "HOLD",
+    "source_band": "NOT_QUALIFIED",
+    "map_binding": null,
+    "bank_binding": null,
+    "subtopic_id": "PH07-09",
+    "reasoning_observation": "Water density has a maximum near 4 °C; if melting cools the water below this temperature, the total liquid volume rises relative to displaced mass at 4 °C. If final water returns to 4 °C and vessel unchanged, no rise. Publisher key A preserved; final thermal conditions require independent adjudication."
+  },
+  "related_source_observations": [],
+  "prerequisite_support": [
+    "PH07-06",
+    "PH07-11",
+    "PH07-12"
+  ],
+  "existing_package_pin": {
+    "path": "nsejs/physics/curriculum/topics/PH07/b01/PH07-09/physics-topic-package.v1.json",
+    "blob": "cbebfdc90c1a8aea35fa446c69dfe25cb1ef22a0",
+    "version": "0.3.2-b01.7.ph07-09"
+  },
+  "target": {
+    "id": "PH07-09-B01-NSEJS-2019-51-Q72-D4-SYNTHESIZE-R1",
+    "band": "D4",
+    "cell": "D4.6",
+    "primary_operation": "SYNTHESIZE",
+    "task_identity": "PH07-09-B01-NSEJS-2019-51-Q72-D4-SYNTHESIZE-R1",
+    "source_role": "AUTHORED_TRANSFER",
+    "protected_work": "Combine buoyancy displacement with mass conservation and a temperature-dependent density table to predict level change and test competing final-state claims.",
+    "decisive_route": "A rigid 100 cm² beaker holds 600 g water and 200 g floating pure ice. Initial liquid density1.000 g/cm³; final liquid density0.998 g/cm³. Find level change and compare same-density model. Shortest valid route: Initial800 cm³; final800/0.998≈801.603 cm³, rise≈0.01603 cm=0.1603 mm. Same density predicts zero.",
+    "factor_evidence": {
+      "concept_model_selection": {
+        "score": 2,
+        "evidence": "Select floating-displacement and final-density models rather than solid volume alone."
+      },
+      "representation_translation": {
+        "score": 2,
+        "evidence": "Translate mass/density states into volume and height comparisons."
+      },
+      "reasoning_chain_length": {
+        "score": 2,
+        "evidence": "Account for initial displaced mass, final liquid mass, changed density and independent observation."
+      },
+      "algebra_computational_load": {
+        "score": 1,
+        "evidence": "Multiple volume ratios and unit conversion."
+      },
+      "trap_exception_sensitivity": {
+        "score": 2,
+        "evidence": "Final temperature and vessel assumptions can reverse or erase a claimed effect."
+      }
+    },
+    "score": 9,
+    "status": "PROPOSED"
+  },
+  "core1a": {
+    "scientific_construction": "For a floating object in equilibrium, displaced liquid mass equals object mass (neglect air buoyancy). In a vertical-sided vessel, the volume below the water surface equals the initial liquid volume plus the submerged displacement. If pure floating ice melts completely into the same water and no mass is lost, the final liquid mass is the sum of original liquid and ice mass. At the same liquid density and unchanged vessel geometry, the final level is unchanged: the melt replaces exactly its displaced volume. Water is unusual: pure liquid water near ordinary pressure has maximum density near 4 °C. Cooling it below that temperature reduces density and raises volume at fixed mass. If initially at 4 °C and the final mixture is colder, the level may rise; if allowed to return to 4 °C it need not. A full thermal prediction requires initial ice temperature, masses, heat input and heat losses; no final temperature follows merely from melting. For quantitative reasoning use supplied density data and a rigid constant-area vessel.",
+    "worked_anchor": {
+      "task": "A 100 g ice piece floats in 900 g water with density1 g/cm³. After melting at the same density, find initial and final volume below surface.",
+      "reasoning": "Initial 900+100=1000 cm³; final 1000/1=1000 cm³. Level unchanged."
+    },
+    "model_limits": "Only specified ideal/matched conditions; extension relations are supplied, not independently warranted compulsory syllabus scope."
+  },
+  "core1b": [
+    {
+      "id": "PH07-09-B01-NSEJS-2019-51-Q72-D4-SYNTHESIZE-R1-MAIN_PLACEHOLDER",
+      "kind": "MAIN_PLACEHOLDER",
+      "task": "A rigid vertical-sided vessel of area 80 cm² contains 720 g water at 4 °C and 80 g floating ice. Use supplied densities ρ(4 °C)=1.000 g/cm³ and ρ(0 °C)=0.9998 g/cm³. All ice melts, no mass lost. Rival model X assumes final water returns to 4 °C; model Y assumes final uniform 0 °C. Predict level change for each and test an independently measured rise of approximately 0.020 mm (rounded). Does melting alone establish the final temperature?",
+      "protected_work": "Combine buoyancy displacement with mass conservation and a temperature-dependent density table to predict level change and test competing final-state claims.",
+      "stages": {
+        "predict": "Predict whether the water level must remain unchanged for every possible final temperature.",
+        "attempt": "A rigid vertical-sided vessel of area 80 cm² contains 720 g water at 4 °C and 80 g floating ice. Use supplied densities ρ(4 °C)=1.000 g/cm³ and ρ(0 °C)=0.9998 g/cm³. All ice melts, no mass lost. Rival model X assumes final water returns to 4 °C; model Y assumes final uniform 0 °C. Predict level change for each and test an independently measured rise of approximately 0.020 mm (rounded). Does melting alone establish the final temperature?",
+        "reconstruct": "Initial displacement+liquid=800 cm³. X final800, Δh=0. Y final800/0.9998≈800.160032 cm³; Δh≈0.0020004 cm=0.020004 mm. Observation supports Y among stated models; not unique temperature inference without calibrated density, vessel and uncertainty. Melting alone does not fix final state.",
+        "diagnose": "Check whether you compared the entire ice volume with melted volume instead of displaced mass, or treated density as constant across states.",
+        "repair": "Write initial displaced-liquid volume and final total liquid volume separately, include mass-loss hypothesis, divide by vessel area and check measurement precision.",
+        "boundary_test": "If the vessel later equilibrates back to 4 °C without mass loss, what level follows?"
+      },
+      "boundary_response_criterion": "Returns to initial level in rigid vessel with same liquid density.",
+      "attempt_policy": "PROPOSED_ONLY_PUBLIC_AUTHOR_EXPOSED",
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH07-09-B01-NSEJS-2019-51-Q72-D4-SYNTHESIZE-R1-INSTANCE",
+      "kind": "INSTANCE",
+      "task": "A rigid column area 50 cm² holds 450 g of water and 50 g floating ice; initial density1.000 g/cm³. Final density is measured as0.998 g/cm³ after all ice melts. Compare predicted change with a level sensor reporting +0.200 mm exactly. Check whether evaporation of 1 g would make the level higher or lower than the no-loss prediction.",
+      "protected_work": "Combine buoyancy displacement with mass conservation and a temperature-dependent density table to predict level change and test competing final-state claims.",
+      "stages": {
+        "predict": "Predict whether a small mass loss could cancel the level rise caused by reduced density.",
+        "attempt": "A rigid column area 50 cm² holds 450 g of water and 50 g floating ice; initial density1.000 g/cm³. Final density is measured as0.998 g/cm³ after all ice melts. Compare predicted change with a level sensor reporting +0.200 mm exactly. Check whether evaporation of 1 g would make the level higher or lower than the no-loss prediction.",
+        "reconstruct": "Initial500 cm³, final500/0.998≈501.002004; rise≈0.2004008 mm, not exactly0.200 unless rounded/uncertain. Losing1 g gives499/0.998=500 cm³, unchanged level. Loss lowers it. No unique interpretation from level alone.",
+        "diagnose": "Check whether you compared the entire ice volume with melted volume instead of displaced mass, or treated density as constant across states.",
+        "repair": "Write initial displaced-liquid volume and final total liquid volume separately, include mass-loss hypothesis, divide by vessel area and check measurement precision.",
+        "boundary_test": "If sensor resolution is 0.01 mm, is +0.20 mm consistent with the no-loss prediction?"
+      },
+      "boundary_response_criterion": "Yes, 0.2004 mm rounds to0.20 mm; resolution does not prove absence of mass loss.",
+      "attempt_policy": "PROPOSED_ONLY_PUBLIC_AUTHOR_EXPOSED",
+      "runtime_verification": "NOT_RUN"
+    }
+  ],
+  "acceptance": {
+    "b1_b7": "HOLD",
+    "canonical_integration": "NOT_SELECTED",
+    "source_admission": "HOLD",
+    "release": "HOLD"
+  }
+}

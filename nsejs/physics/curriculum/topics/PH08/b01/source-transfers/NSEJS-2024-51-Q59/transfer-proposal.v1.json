@@ -1,0 +1,131 @@
+{
+  "schema": "b01-source-locator-transfer-proposal/v1",
+  "status": "AUTHOR_EXPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+  "subtopic_id": "PH08-13",
+  "scope_role": "EXTENSION",
+  "source": {
+    "locator_id": "NSEJS-2024-51-Q59",
+    "year": 2024,
+    "code": 51,
+    "question_number": 59,
+    "printed_page": 13,
+    "paper_url": "https://www.iapt.org.in/images/nse_2024/NSEJS-2024_Set_51.pdf",
+    "final_key_url": "https://www.iapt.org.in/images/nse_2024/NSEJS_-_2024_Final_Answer_Key.pdf",
+    "publisher_key": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ],
+    "publisher_key_text_status": "OBSERVED_NOT_INDEPENDENTLY_ADMITTED",
+    "paper_visual_status": "PAGE_VISUALLY_INSPECTED",
+    "source_bytes_sha256": null,
+    "rights_status": "HOLD",
+    "exact_source_revision_status": "HOLD",
+    "academic_admission": "HOLD",
+    "source_band": "NOT_QUALIFIED",
+    "map_binding": {
+      "question_uid": "g9:pcb:physics:nsejs-2024-physics-r1:019",
+      "content_revision_sha256": "7f4d598f89c2a38f9501b5238c830813f72b16e3cf7df0b9a540e0a15344533d",
+      "proposed_operation": "SYNTHESIZE",
+      "identity_status": "METADATA_MATCH_ONLY_EXACT_CONTENT_HOLD"
+    },
+    "bank_binding": null,
+    "notes": "Official paper page 13 inspected visually, final key lists all four options. Timing and moving-receiver distance are consistent; the wavelength option is convention-sensitive and requires independent scientific adjudication. No silent correction of publisher key.",
+    "reasoning_observation": "Let initial wall distance d=1200 m, train speed u=30 m/s and medium speed v=330 m/s. A pulse reflects and meets the advancing train when vt=2d−ut, giving t=20/3 s and remaining distance1000 m. The printed wavelength choice is v/f=0.60 m, which matches the stationary-source reference, not actual forward wavefront spacing (v−u)/f=6/11 m in the stationary-air moving-source model. Publisher key includes C; preserve disagreement and ask R01 to adjudicate interpretation. No claim that the original is D4."
+  },
+  "prerequisite_support": [
+    "PH08-08",
+    "PH08-10",
+    "PH08-05"
+  ],
+  "existing_package_pin": {
+    "path": "nsejs/physics/curriculum/topics/PH08/b01/PH08-13/physics-topic-package.v1.json",
+    "blob": "36dc2b597a5cddc50892709fcc61f0794670401f",
+    "version": "0.3.2-b01.8.ph08-13"
+  },
+  "target": {
+    "id": "PH08-13-B01-NSEJS-2024-51-Q59-D4-SYNTHESIZE-R1",
+    "band": "D4",
+    "cell": "D4.6",
+    "primary_operation": "SYNTHESIZE",
+    "task_identity": "PH08-13-B01-NSEJS-2024-51-Q59-D4-SYNTHESIZE-R1",
+    "source_role": "AUTHORED_TRANSFER",
+    "protected_work": "Combine medium-frame wavefront emission, moving-receiver echo intersection and a reserved frequency observation to distinguish moving-source from stationary-source wavelength assumptions.",
+    "decisive_route": "A source/receiver approaches a wall at20 m/s from160 m, v=320 m/s and f_s=400 Hz. Derive first echo time and returned frequency, compare with an independent echo frequency450 Hz. Shortest valid route: t=320/340=16/17 s; λ_ahead=300/400=0.75 m. Reflected encounter frequency340/0.75=1360/3≈453.33 Hz. Exact450 Hz is inconsistent with the ideal model, not proof of a unique cause.",
+    "factor_evidence": {
+      "concept_model_selection": {
+        "score": 2,
+        "evidence": "Select moving-source and moving-receiver geometry instead of stationary round-trip formula."
+      },
+      "representation_translation": {
+        "score": 2,
+        "evidence": "Coordinate emitted fronts, wall reflection and receiver worldline."
+      },
+      "reasoning_chain_length": {
+        "score": 2,
+        "evidence": "Compute first echo, forward/behind wavelengths, reflected encounter frequency and independent consistency check."
+      },
+      "algebra_computational_load": {
+        "score": 1,
+        "evidence": "Several coupled timing and frequency ratios."
+      },
+      "trap_exception_sensitivity": {
+        "score": 2,
+        "evidence": "Stationary-source wavelength is not actual spacing; wall-reflected frequency in medium is preserved but encounter rate changes."
+      }
+    },
+    "score": 9,
+    "status": "PROPOSED"
+  },
+  "core1a": {
+    "scientific_construction": "In a stationary uniform medium, a subsonic source moving toward a stationary wall emits wavefronts at intervals T_s=1/f_s. Ahead of it the spacing is (v−u)T_s, behind it (v+u)T_s. A pulse emitted at initial wall distance d takes d/v to reach the wall. Its reflected path then meets the moving receiver on the source. If source and receiver remain colocated and approach at speed u, total propagation distance is 2d−ut, so t=2d/(v+u), provided reflection and reception occur before wall contact. A stationary wall reflects the incident frequency in the medium's frame without shifting it. Ahead-of-source frequency at the wall is v f_s/(v−u); for the reflected fronts moving back toward the approaching receiver, encounter rate is (v+u) divided by the forward spacing. Thus f_echo=(v+u)f_s/(v−u). The echo delay is not 2d/v for a moving receiver. These are optional ideal-model extensions; real airflow, motion changes, reflection geometry and source bandwidth require additional constraints. A source at rest has reference wavelength v/f_s; that is not the forward spacing of a moving source.",
+    "worked_anchor": {
+      "task": "A moving acoustic cart is 90 m from a wall, travels toward it at10 m/s, v=350 m/s, f_s=200 Hz. Predict first pulse return and forward spacing.",
+      "reasoning": "t=180/360=0.5 s; receiver advances5 m and remains85 m away. Forward spacing340/200=1.7 m; stationary-source reference1.75 m."
+    },
+    "model_limits": "Stationary medium, uniform subsonic speed, collinear fixed wall, specified ideal reflection."
+  },
+  "core1b": [
+    {
+      "id": "PH08-13-B01-NSEJS-2024-51-Q59-D4-SYNTHESIZE-R1-MAIN_PLACEHOLDER",
+      "kind": "MAIN_PLACEHOLDER",
+      "task": "An acoustic cart emits a short tone at rest frequency300 Hz while moving toward a fixed wall at20 m/s. Initially it is140 m away, stationary air speed340 m/s. Source and receiver are colocated. Calculate first reflected pulse arrival, distance to wall then, actual forward spacing and the frequency received from the wall during steady reflection. A second observer claims forward wavelength is 340/300 m. Evaluate the claim and verify the encounter geometry.",
+      "protected_work": "Combine medium-frame wavefront emission, moving-receiver echo intersection and a reserved frequency observation to distinguish moving-source from stationary-source wavelength assumptions.",
+      "stages": {
+        "predict": "Predict whether moving toward the wall affects both the echo travel time and the actual spacing of successive emitted fronts.",
+        "attempt": "An acoustic cart emits a short tone at rest frequency300 Hz while moving toward a fixed wall at20 m/s. Initially it is140 m away, stationary air speed340 m/s. Source and receiver are colocated. Calculate first reflected pulse arrival, distance to wall then, actual forward spacing and the frequency received from the wall during steady reflection. A second observer claims forward wavelength is 340/300 m. Evaluate the claim and verify the encounter geometry.",
+        "reconstruct": "t=280/360=7/9 s. Remaining distance140−140/9=1120/9 m≈124.44 m. Forward λ=320/300=16/15 m; wall frequency340/(16/15)=318.75 Hz. Reflected encounter frequency360/(16/15)=337.5 Hz. 340/300 is stationary-source reference, not forward spacing; check 340t=140+remaining distance.",
+        "diagnose": "Check whether your diagram uses the receiver position at emission instead of reception, or whether you used v/f_s as moving-source spacing.",
+        "repair": "Draw emission, reflection and reception events; solve the meeting equation in the medium frame, then derive front spacing from successive emission positions and check the reflected encounter rate.",
+        "boundary_test": "If the cart stops immediately after emitting the first short pulse, at initial position, what changes in first arrival?"
+      },
+      "boundary_response_criterion": "Ideal instantaneous stop at emission point: receiver fixed, pulse travels 280 m, t=14/17 s≈0.824 s. Already emitted wavefront positions are not retroactively changed.",
+      "attempt_policy": "PROPOSED_ONLY_PUBLIC_AUTHOR_EXPOSED",
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH08-13-B01-NSEJS-2024-51-Q59-D4-SYNTHESIZE-R1-INSTANCE",
+      "kind": "INSTANCE",
+      "task": "A source/receiver travels away from a fixed wall at 15 m/s, initially 105 m away. Sound speed in stationary medium is315 m/s and source frequency300 Hz. Find first echo delay and reception distance; derive spacing of fronts emitted toward the wall (behind source), and reflected encounter frequency. A measured steady echo frequency is exactly270 Hz. Test the ideal account.",
+      "protected_work": "Combine medium-frame wavefront emission, moving-receiver echo intersection and a reserved frequency observation to distinguish moving-source from stationary-source wavelength assumptions.",
+      "stages": {
+        "predict": "Predict whether recession makes the round-trip time longer than for a stationary receiver and whether wallward front spacing is larger than the stationary reference.",
+        "attempt": "A source/receiver travels away from a fixed wall at 15 m/s, initially 105 m away. Sound speed in stationary medium is315 m/s and source frequency300 Hz. Find first echo delay and reception distance; derive spacing of fronts emitted toward the wall (behind source), and reflected encounter frequency. A measured steady echo frequency is exactly270 Hz. Test the ideal account.",
+        "reconstruct": "t=210/(315−15)=0.7 s; reception distance115.5 m. Wallward spacing=(315+15)/300=1.1 m; reflected fronts chase receding receiver at300 m/s, so f_echo=300/1.1=3000/11≈272.73 Hz. Exact270 differs; investigate medium, motion, measurement. Check 315×0.7=105+115.5.",
+        "diagnose": "Check whether your diagram uses the receiver position at emission instead of reception, or whether you used v/f_s as moving-source spacing.",
+        "repair": "Draw emission, reflection and reception events; solve the meeting equation in the medium frame, then derive front spacing from successive emission positions and check the reflected encounter rate.",
+        "boundary_test": "If source frequency becomes330 Hz at unchanged speeds, what steady echo frequency is predicted?"
+      },
+      "boundary_response_criterion": "λ_wallward=330/330=1 m, encounter rate300 Hz. Pulse delay unchanged.",
+      "attempt_policy": "PROPOSED_ONLY_PUBLIC_AUTHOR_EXPOSED",
+      "runtime_verification": "NOT_RUN"
+    }
+  ],
+  "acceptance": {
+    "b1_b7": "HOLD",
+    "canonical_integration": "NOT_SELECTED",
+    "source_admission": "HOLD",
+    "release": "HOLD"
+  }
+}

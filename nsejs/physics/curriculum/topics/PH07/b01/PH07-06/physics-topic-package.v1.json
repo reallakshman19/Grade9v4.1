@@ -1,0 +1,491 @@
+{
+  "schema": "g9v41-nsejs-physics-topic-package/v1",
+  "subject_id": "PHYSICS",
+  "academic_track": "NSEJS",
+  "topic_id": "PH07",
+  "owner_agent": "AGENT_2",
+  "version": "0.3.2-b01.5.ph07-06",
+  "status": "DRAFT_AUTHOR_EXPOSED",
+  "pins": {
+    "contracts_version": "1.0.0",
+    "blueprint": {
+      "version": "0.2.0",
+      "git_blob_sha": "700dafcbe86d76442637bcf214eeb544497cf4ea"
+    },
+    "shared_qrt_28": {
+      "version": "1.0.0",
+      "git_blob_sha": "e2409aef11ae7d98444593bfbe1a38eb00c97cef"
+    },
+    "topic_adapter_version": "0.3.2-b01.5.ph07-06"
+  },
+  "syllabus_references": [
+    {
+      "reference_id": "PH07-CBSE",
+      "locator": "https://cbseacademic.nic.in/web_material/CurriculumMain27/SecPart1/ScienceSt_SecP1_2026-27.pdf",
+      "authority": "OFFICIAL_SYLLABUS",
+      "scope_status": "CANDIDATE"
+    },
+    {
+      "reference_id": "PH07-NCERT-HIST",
+      "locator": "https://sathee.iitk.ac.in/ncert-books/class-09/nb-science-09/sci-09-chapter-1-matter-in-our-surroundings/",
+      "authority": "NCERT_CBSE",
+      "scope_status": "CANDIDATE"
+    }
+  ],
+  "subtopics": [
+    {
+      "id": "PH07-06",
+      "title": "Phase changes: particle models and constant-temperature transitions",
+      "scope_role": "PREREQUISITE_BRIDGE",
+      "syllabus_reference_ids": [
+        "PH07-CBSE",
+        "PH07-NCERT-HIST"
+      ],
+      "prerequisite_ids": [
+        "PH07-02"
+      ],
+      "science_ref_ids": [
+        "PH07-06-SCI-01"
+      ],
+      "learning_goal": "Temperature and phase are independent state descriptors; during equilibrium phase coexistence at fixed pressure, energy transfer can change the phase fraction without changing temperature.",
+      "textbook_chapter_ref": "nsejs/physics/curriculum/topics/PH07/b01/PH07-06/core1a.html",
+      "qrt_targets": [
+        {
+          "id": "PH07-06-B01-D3-REPRESENT-01",
+          "task_identity": "G9-B01-PH07-06-REPRESENT-R1",
+          "band": "D3",
+          "primary_operation": "REPRESENT",
+          "blueprint_cell": "D3.5",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Construct aligned temperature and phase-fraction timelines, using net heating rather than graph slope alone to determine state.",
+          "decisive_route": "A pure sample at its melting point receives constant net power 12 W for 40 s before melting finishes. It then warms for 20 s. Sketch temperature and liquid fraction versus time. Repeat with 24 W and the same initial phase fraction, considering only melting. Shortest valid route: First temperature flat for 40 s, then rises; liquid fraction increases to 1 at 40 s and stays 1. Net melting energy 480 J; second plateau 20 s; no different melting temperature at same pressure.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 1,
+              "evidence": "Recognize equilibrium pure-sample transitions."
+            },
+            "representation_translation": {
+              "score": 2,
+              "evidence": "Coordinate time/temperature with phase fraction and energy intervals."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Order events, determine durations and cross-check phase completion."
+            },
+            "algebra_computational_load": {
+              "score": 1,
+              "evidence": "Compute rate×time and proportional duration."
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "Plateau does not imply zero input; both phases coexist."
+            }
+          }
+        },
+        {
+          "id": "PH07-06-B01-D3-EXPLAIN-01",
+          "task_identity": "G9-B01-PH07-06-EXPLAIN-R1",
+          "band": "D3",
+          "primary_operation": "EXPLAIN",
+          "blueprint_cell": "D3.2",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Explain apparently contradictory temperature and energy observations by tracing phase coexistence versus steady-state heat exchange.",
+          "decisive_route": "Two containers show flat temperature traces under continuous heating. One contains a melting pure solid and the other a dry metal plate with unchanged state. Explain the different possible energy accounts. Shortest valid route: Melting consumes energy through phase conversion; plate can balance energy input against loss. Need phase and power data; same trace is not equivalent state.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "Distinguish phase-change and steady-state models."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "Connect state observations to energy paths."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Explain energy direction, phase change and alternative cause."
+            },
+            "algebra_computational_load": {
+              "score": 0,
+              "evidence": "No substantial arithmetic."
+            },
+            "trap_exception_sensitivity": {
+              "score": 2,
+              "evidence": "Identical temperature histories permit different physical states."
+            }
+          }
+        },
+        {
+          "id": "PH07-06-B01-D3-JUSTIFY-01",
+          "task_identity": "G9-B01-PH07-06-JUSTIFY-R1",
+          "band": "D3",
+          "primary_operation": "JUSTIFY",
+          "blueprint_cell": "D3.7",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Assess whether two measured transition durations establish a material difference, using controlled net energy and phase-state constraints.",
+          "decisive_route": "Identical-mass pure samples melt in 30 s and 60 s with heater inputs 20 W and 20 W. Losses are 0 and 10 W. A student asserts the second has twice the latent energy. Assess. Shortest valid route: Net energies 600 and 600 J. Equal transition fractions and fixed pressure would be consistent with the same latent energy; raw time alone misleads.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "Choose mass/material versus heat-loss explanation."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "Translate input/loss measurements into comparable net power."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Compute transition energy, compare equal fractions, assess limitations."
+            },
+            "algebra_computational_load": {
+              "score": 1,
+              "evidence": "Simple power-time arithmetic is decisive."
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "Gross heater power is not net energy supplied."
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "science_records": [
+    {
+      "id": "PH07-06-SCI-01",
+      "claim": "Temperature and phase are independent state descriptors; during equilibrium phase coexistence at fixed pressure, energy transfer can change the phase fraction without changing temperature.",
+      "law_or_model": "ΔU=E_in−E_out (fixed system with other work accounted for); Q=mcΔT within a single phase; Q=mL for complete phase change under specified conditions (enrichment)",
+      "assumptions": [
+        "Pure substance, fixed pressure and near-equilibrium coexistence for an ideal transition plateau.",
+        "Distinguish net energy transfer, expansion work and phase change; temperature alone does not establish ΔU."
+      ],
+      "conditions_and_limits": [
+        "Pure substance, fixed pressure and near-equilibrium coexistence for an ideal transition plateau.",
+        "Distinguish net energy transfer, expansion work and phase change; temperature alone does not establish ΔU.",
+        "Constant net input for time-ratio comparisons; equal mass/material and identical initial/final phase fractions.",
+        "Mixtures, supercooling, pressure changes and sensor limitations can alter observed curves."
+      ],
+      "units_and_signs": "Energy in J, temperature in K or °C; phase fraction dimensionless; c in J/(kg K), L in J/kg when used.",
+      "source_refs": [
+        "PH07-CBSE",
+        "PH07-NCERT-HIST"
+      ],
+      "qualification_status": "HOLD"
+    }
+  ],
+  "topic_adapter": {
+    "adapter_id": "PHYS-TOPIC-PH07",
+    "topic_id": "PH07",
+    "version": "0.3.2-b01.5.ph07-06",
+    "for_blueprint": "PHYS-QRT-BLUEPRINT 0.2.0",
+    "status": "CANDIDATE_ONLY",
+    "cells": [
+      {
+        "cell_id": "D3.5",
+        "instance_ids": [
+          "PH07-06-B01-D3-REPRESENT-01"
+        ]
+      },
+      {
+        "cell_id": "D3.2",
+        "instance_ids": [
+          "PH07-06-B01-D3-EXPLAIN-01"
+        ]
+      },
+      {
+        "cell_id": "D3.7",
+        "instance_ids": [
+          "PH07-06-B01-D3-JUSTIFY-01"
+        ]
+      }
+    ]
+  },
+  "core1a": [
+    {
+      "id": "PH07-06-B01-CORE1A-R1",
+      "subtopic_id": "PH07-06",
+      "covered_qrt_ids": [
+        "PH07-06-B01-D3-REPRESENT-01",
+        "PH07-06-B01-D3-EXPLAIN-01",
+        "PH07-06-B01-D3-JUSTIFY-01"
+      ],
+      "phenomenon": "A pure substance can absorb energy while its temperature stays nearly constant during a change of state.",
+      "scientific_narrative": "Solids, liquids and gases contain moving particles. In a solid, particles generally oscillate about relatively fixed positions; in a liquid they can rearrange and flow; in a gas they are widely separated on average and move freely between collisions. Heating usually increases the temperature within a single phase. It can also change the arrangement and interaction energy of particles. A phase transition is not a chemical change merely because the physical properties change.\n\nFor a pure substance at a specified pressure, solid and liquid can coexist at a melting temperature. With a slow supply of energy, an equilibrium mixture may remain at that temperature while more solid becomes liquid. On freezing, energy is released to surroundings while the liquid fraction decreases. At a specified pressure, a pure liquid can boil when its vapour pressure equals the surrounding pressure; vapour bubbles can persist within the bulk liquid. Condensation reverses the liquid-to-vapour transition. Evaporation occurs at the surface even below the boiling point and will be distinguished in PH07-07. Melting and boiling temperatures are not universal for all materials, and a mixture may change phase over a range.\n\nDraw a temperature-versus-time graph for a pure sample initially below its melting point with constant positive net heating. Temperature rises to the melting temperature, remains approximately level during coexistence, rises again once the solid is gone, and can reach the boiling plateau if the energy supply continues and pressure is fixed. During a plateau, net energy input need not be zero. It may increase the enthalpy of the system through changed phase fraction; at fixed pressure expansion work is also relevant. Do not assume every horizontal segment means phase change. A heater and heat loss may balance at a steady temperature, the heater may be off, or the instrument may be unresponsive. A phase observation or independent energy measurement distinguishes these possibilities.\n\nWhen cooling, the sign of net energy transfer reverses. Ideal equilibrium freezing may also produce a plateau while latent energy leaves the sample. In actual observations, supercooling, mixtures, pressure changes and thermal gradients can alter curves. Heating rate changes the duration of a plateau when net energy input changes; it does not necessarily change the equilibrium transition temperature. For example, with constant net power P, the energy delivered over an interval Δt is PΔt. If identical samples undergo the same transition, twice the net power gives half the transition time in this idealization. Quantitative latent-heat treatment is enrichment for PH07-12, not presumed compulsory here.\n\nThe existing Core2 fuse candidate uses a fixed melting-temperature energy balance for a wire. It is a related phase-state prerequisite, not an authenticated phase-transition question. The distinction between a phase-changing sample and an unchanged-state steady-temperature wire is essential: maintaining a constant temperature alone does not establish that net energy transfer is zero.",
+      "prerequisites": [
+        "PH07-02"
+      ],
+      "derivation_steps": [
+        {
+          "action": "Identify whether the substance is single phase or in phase coexistence.",
+          "why_valid": "The same temperature can correspond to different phase fractions.",
+          "science_ref_id": "PH07-06-SCI-01"
+        },
+        {
+          "action": "Trace energy direction and phase change together.",
+          "why_valid": "Energy absorbed or released can change state without raising or lowering equilibrium temperature.",
+          "science_ref_id": "PH07-06-SCI-01"
+        },
+        {
+          "action": "Compare net input over the interval and look for an independent phase observation.",
+          "why_valid": "A horizontal graph alone is not proof of latent energy transfer.",
+          "science_ref_id": "PH07-06-SCI-01"
+        },
+        {
+          "action": "Test pressure, purity and heating/cooling assumptions.",
+          "why_valid": "Transition temperatures and curve shapes depend on the physical conditions.",
+          "science_ref_id": "PH07-06-SCI-01"
+        }
+      ],
+      "model_limits": [
+        "Pure substance, fixed pressure and near-equilibrium coexistence for an ideal transition plateau.",
+        "Distinguish net energy transfer, expansion work and phase change; temperature alone does not establish ΔU.",
+        "Constant net input for time-ratio comparisons; equal mass/material and identical initial/final phase fractions.",
+        "Mixtures, supercooling, pressure changes and sensor limitations can alter observed curves."
+      ],
+      "progressive_examples": [
+        {
+          "id": "PH07-06-B01-EX1",
+          "tier": "FOUNDATION",
+          "problem": "An ice-water mixture at 0 °C receives energy slowly at ordinary pressure. What changes first?",
+          "reasoning": "The ice fraction decreases while the equilibrium temperature remains near 0 °C until ice is gone.",
+          "independent_check": "Observe both phases rather than use a temperature reading alone."
+        },
+        {
+          "id": "PH07-06-B01-EX2",
+          "tier": "CONNECTED",
+          "problem": "Two equal pure samples melt completely at net input powers 10 W and 20 W. First plateau lasts 120 s. Predict the second plateau.",
+          "reasoning": "Both transitions require the same energy under matched conditions; 10×120=20×t, so t=60 s.",
+          "independent_check": "Both receive 1200 J of net energy during melting."
+        },
+        {
+          "id": "PH07-06-B01-EX3",
+          "tier": "ADVANCED",
+          "problem": "A heated pure sample has a flat temperature segment and no visible phase change. It receives 15 W and loses 15 W. Is melting established?",
+          "reasoning": "No. Balanced rates in unchanged phase provide an alternative explanation. Check phase fraction or independent heat input/loss.",
+          "independent_check": "The net input is zero under the stated rate balance."
+        }
+      ],
+      "figures": [
+        {
+          "id": "PH07-06-FIG-01",
+          "reasoning_step": "Ideal pure-substance heating curve",
+          "scene_description": "Two plateaus mark equilibrium phase coexistence under constant positive net heating; a real curve may differ. Original inline SVG; not an exam figure.",
+          "source_or_authorship": "ORIGINAL_B01_SVG_INLINE"
+        }
+      ],
+      "misconception": {
+        "wrong_model": "Every temperature plateau means melting or boiling, and constant temperature proves no energy enters.",
+        "diagnostic": "Compare a melting sample with a dry plate held at a fixed temperature by equal input and loss. Which extra observation discriminates the models?",
+        "repair": "Combine phase-state observations and energy-flow data; do not infer phase or net energy from temperature alone."
+      },
+      "exit_check": {
+        "task": "An equilibrium liquid freezes at constant pressure while losing energy. Does its temperature necessarily fall throughout the transition?",
+        "answer": "No; solid fraction can grow at the fixed freezing temperature.",
+        "reasoning": "Energy leaves while the phase changes; subsequent solid cooling can lower temperature."
+      },
+      "authorship_status": "DRAFT_AUTHOR_EXPOSED"
+    }
+  ],
+  "core1b": [
+    {
+      "id": "PH07-06-B01-MAIN-REPRESENT-R2",
+      "kind": "MAIN",
+      "subtopic_id": "PH07-06",
+      "qrt_target_id": "PH07-06-B01-D3-REPRESENT-01",
+      "fresh_task": "A pure solid initially below melting warms for 30 s, melts for 60 s, and then warms as liquid for 20 s. Net power is 10 W throughout. Draw temperature and phase fraction versus time, and mark energy transferred during melting separately from later liquid heating.",
+      "protected_work": "Construct aligned temperature and phase-fraction timelines, using net heating rather than graph slope alone to determine state.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Sketch in words your expected trends for temperature and liquid fraction over the 110 s. Record where you expect the major changes, before drawing the graphs.",
+        "attempt": "A pure solid initially below melting warms for 30 s, melts for 60 s, and then warms as liquid for 20 s. Net power is 10 W throughout. Draw temperature and phase fraction versus time, and mark energy transferred during melting separately from later liquid heating.",
+        "reconstruct": "Temperature rises 0–30 s, plateaus 30–90 s, rises 90–110 s. Liquid fraction 0 before 30 s, increases to 1 during plateau, stays 1. Transition receives 600 J; later liquid 200 J. The two axes encode different state variables.",
+        "diagnose": "Locate the interval in which the phase fraction changes. Did you equate a flat temperature segment with zero energy transfer, or put the fraction on the wrong axis?",
+        "repair": "Align the phase-fraction endpoints with the transition boundaries; label the temperature plateau and compute energy using the net rate rather than slope.",
+        "boundary_test": "If the heater is switched off but the sample remains at the transition temperature with negligible loss, how does the phase-fraction graph change?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH07-06-B01-INSTANCE-REPRESENT-R2",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH07-06",
+      "qrt_target_id": "PH07-06-B01-D3-REPRESENT-01",
+      "fresh_task": "An initially all-liquid pure sample at its freezing point loses net energy at 18 W for 50 s until fully solid. It then cools for 25 s. Construct temperature and solid-fraction graphs and compare energy leaving in the two intervals.",
+      "protected_work": "Construct aligned temperature and phase-fraction timelines, using net heating rather than graph slope alone to determine state.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether the freezing sample's temperature and solid fraction vary in the same way during the first 50 s. State your initial view.",
+        "attempt": "An initially all-liquid pure sample at its freezing point loses net energy at 18 W for 50 s until fully solid. It then cools for 25 s. Construct temperature and solid-fraction graphs and compare energy leaving in the two intervals.",
+        "reconstruct": "Temperature plateau 0–50 s then decreases; solid fraction rises from 0 to 1, stays 1. Energy removed 900 J then 450 J; not inferred from slope alone.",
+        "diagnose": "Locate the interval in which the phase fraction changes. Did you equate a flat temperature segment with zero energy transfer, or put the fraction on the wrong axis?",
+        "repair": "Align the phase-fraction endpoints with the transition boundaries; label the temperature plateau and compute energy using the net rate rather than slope.",
+        "boundary_test": "For half the net cooling power during freezing, under identical conditions, what plateau duration follows?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH07-06-B01-MAIN-EXPLAIN-R2",
+      "kind": "MAIN",
+      "subtopic_id": "PH07-06",
+      "qrt_target_id": "PH07-06-B01-D3-EXPLAIN-01",
+      "fresh_task": "A pure liquid boils at fixed pressure with continuous net energy input. A sealed constant-temperature solid receives electrical energy and rejects equal power. Explain why both temperatures can remain steady despite different internal changes.",
+      "protected_work": "Explain apparently contradictory temperature and energy observations by tracing phase coexistence versus steady-state heat exchange.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Do you expect the boiling liquid and heated solid to have identical internal changes because both temperatures remain steady? Record your initial answer.",
+        "attempt": "A pure liquid boils at fixed pressure with continuous net energy input. A sealed constant-temperature solid receives electrical energy and rejects equal power. Explain why both temperatures can remain steady despite different internal changes.",
+        "reconstruct": "Boiling converts liquid to vapour and requires energy; if vapour escapes, system mass/enthalpy flow must be accounted for. Solid with balanced input/output and unchanged state has zero net accumulation. Temperature alone cannot separate mechanisms.",
+        "diagnose": "Which energy path in your explanation is unsupported by the observation of constant temperature alone? Did you identify coexistence or balanced loss?",
+        "repair": "Separate the phase-changing and unchanged-state cases, state energy direction and a phase observation that distinguishes them.",
+        "boundary_test": "What happens to an equilibrium boiling temperature when surrounding pressure is changed?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH07-06-B01-INSTANCE-EXPLAIN-R2",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH07-06",
+      "qrt_target_id": "PH07-06-B01-D3-EXPLAIN-01",
+      "fresh_task": "One sample freezes in a cooling bath while a second pure solid at the bath temperature shows a flat trace. Explain the different energy pathways and identify an observation that distinguishes them.",
+      "protected_work": "Explain apparently contradictory temperature and energy observations by tracing phase coexistence versus steady-state heat exchange.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether the freezing sample and the second solid have the same energy behaviour. Give your initial reason.",
+        "attempt": "One sample freezes in a cooling bath while a second pure solid at the bath temperature shows a flat trace. Explain the different energy pathways and identify an observation that distinguishes them.",
+        "reconstruct": "Freezing releases energy while solid fraction increases at fixed pressure. Second sample in equilibrium need not have net heat flow. Observe phase fraction and measure transferred energy; constant temperature is not a common energy account.",
+        "diagnose": "Which energy path in your explanation is unsupported by the observation of constant temperature alone? Did you identify coexistence or balanced loss?",
+        "repair": "Separate the phase-changing and unchanged-state cases, state energy direction and a phase observation that distinguishes them.",
+        "boundary_test": "If a mixture freezes over a range, must it produce a perfectly flat plateau?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH07-06-B01-MAIN-JUSTIFY-R2",
+      "kind": "MAIN",
+      "subtopic_id": "PH07-06",
+      "qrt_target_id": "PH07-06-B01-D3-JUSTIFY-01",
+      "fresh_task": "Two equal masses of the same pure material melt fully in 100 s and 150 s. Heater powers are 30 and 30 W, measured losses 6 and 14 W. Does the longer time establish a different latent energy? Justify.",
+      "protected_work": "Assess whether two measured transition durations establish a material difference, using controlled net energy and phase-state constraints.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Does the 150 s melting duration make you expect a larger energy requirement than the 100 s duration? State your initial judgement.",
+        "attempt": "Two equal masses of the same pure material melt fully in 100 s and 150 s. Heater powers are 30 and 30 W, measured losses 6 and 14 W. Does the longer time establish a different latent energy? Justify.",
+        "reconstruct": "Net powers 24 and 16 W; both receive 2400 J. No different energy requirement established; assumptions include equal transition fractions and fixed pressure.",
+        "diagnose": "Compare gross and net power. Which assumption about equal mass and complete transition was necessary?",
+        "repair": "Calculate net energy over each plateau, compare like phase changes, then qualify the inference if state fractions or heat losses are uncertain.",
+        "boundary_test": "If the second initially contains some liquid, can equal net energies still be interpreted as equal latent heat per mass?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH07-06-B01-INSTANCE-JUSTIFY-R2",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH07-06",
+      "qrt_target_id": "PH07-06-B01-D3-JUSTIFY-01",
+      "fresh_task": "Equal masses melt in 40 s and 75 s. The first has input 25 W and loss 10 W, the second input 12 W and loss 4 W. Evaluate a claim that the longer transition necessarily has greater energy requirement.",
+      "protected_work": "Assess whether two measured transition durations establish a material difference, using controlled net energy and phase-state constraints.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Before using the powers, predict whether the 75 s sample necessarily requires more transition energy than the 40 s sample. Explain your initial view.",
+        "attempt": "Equal masses melt in 40 s and 75 s. The first has input 25 W and loss 10 W, the second input 12 W and loss 4 W. Evaluate a claim that the longer transition necessarily has greater energy requirement.",
+        "reconstruct": "Net energies 15×40=600 J and 8×75=600 J. Equal if complete phase conversion and same pressure; longer duration arises from lower net power.",
+        "diagnose": "Compare gross and net power. Which assumption about equal mass and complete transition was necessary?",
+        "repair": "Calculate net energy over each plateau, compare like phase changes, then qualify the inference if state fractions or heat losses are uncertain.",
+        "boundary_test": "If loss estimates have unknown systematic error, what independent measurement would help test the energy comparison?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    }
+  ],
+  "core2_sources": [
+    {
+      "item_id": "NSEJS-FND-CIRC-04",
+      "source_role": "PREREQUISITE_BRIDGE",
+      "locator": "nsejs/physics/index.html?topic=circuits&q=NSEJS-FND-CIRC-04#NSEJS-FND-CIRC-04; existing foundation fuse candidate; observed display digest only, not original source digest; supporting phase-state prerequisite for PH07-06",
+      "stem_sha256": "1fdcffaa02d1441a2cea832002471a25d62912036bcee0215aa321d4435bc9c5",
+      "figure_status": "NOT_APPLICABLE",
+      "key_status": "HOLD",
+      "academic_status": "HOLD"
+    }
+  ],
+  "acceptance": {
+    "b1_b7": {
+      "B1": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B2": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B3": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B4": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B5": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B6": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B7": {
+        "status": "HOLD",
+        "evidence_refs": []
+      }
+    },
+    "gates": {
+      "source_authenticity": "HOLD",
+      "content_correctness": "HOLD",
+      "cognitive_qualification": "HOLD",
+      "teaching_sufficiency": "HOLD",
+      "assessment_validity": "HOLD",
+      "implementation": "NOT_RUN",
+      "release_authority": "HOLD"
+    },
+    "release": "HOLD",
+    "acceptance_note": "Dedicated B01 slice; Existing fuse Core2 candidate is a supporting PREREQUISITE_BRIDGE, producer D2 and source HOLD. New advanced tasks AUTHORED_TRANSFER, not direct exam evidence. Per-target MAIN placeholders pending approved cross-instance tile design. No academic approval inferred from software validation. R00 correction: all six predictions revised for exact tasks; cycle IDs R2 and uniquely versioned isolated slice (0.3.0-b01.4 history retained at reviewed commit). No final stage implementation or protected custody implied; inherited runtime still groups post-attempt stages. B5 HOLD."
+  }
+}

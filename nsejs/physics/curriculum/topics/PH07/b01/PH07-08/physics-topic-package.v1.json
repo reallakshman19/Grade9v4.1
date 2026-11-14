@@ -1,0 +1,481 @@
+{
+  "schema": "g9v41-nsejs-physics-topic-package/v1",
+  "subject_id": "PHYSICS",
+  "academic_track": "NSEJS",
+  "topic_id": "PH07",
+  "owner_agent": "AGENT_2",
+  "version": "0.3.2-b01.6.ph07-08",
+  "status": "DRAFT_AUTHOR_EXPOSED",
+  "pins": {
+    "contracts_version": "1.0.0",
+    "blueprint": {
+      "version": "0.2.0",
+      "git_blob_sha": "700dafcbe86d76442637bcf214eeb544497cf4ea"
+    },
+    "shared_qrt_28": {
+      "version": "1.0.0",
+      "git_blob_sha": "e2409aef11ae7d98444593bfbe1a38eb00c97cef"
+    },
+    "topic_adapter_version": "0.3.2-b01.6.ph07-08"
+  },
+  "syllabus_references": [
+    {
+      "reference_id": "PH07-CBSE",
+      "locator": "https://cbseacademic.nic.in/web_material/CurriculumMain27/SecPart1/ScienceSt_SecP1_2026-27.pdf",
+      "authority": "OFFICIAL_SYLLABUS",
+      "scope_status": "CANDIDATE"
+    },
+    {
+      "reference_id": "PH07-NCERT-HIST",
+      "locator": "https://sathee.iitk.ac.in/ncert-books/class-09/nb-science-09/sci-09-chapter-1-matter-in-our-surroundings/",
+      "authority": "NCERT_CBSE",
+      "scope_status": "CANDIDATE"
+    }
+  ],
+  "subtopics": [
+    {
+      "id": "PH07-08",
+      "title": "Heating and cooling curves: reconstructing energy and state histories",
+      "scope_role": "SYLLABUS_CORE_CANDIDATE",
+      "syllabus_reference_ids": [
+        "PH07-CBSE",
+        "PH07-NCERT-HIST"
+      ],
+      "prerequisite_ids": [
+        "PH07-06"
+      ],
+      "science_ref_ids": [
+        "PH07-08-SCI-01"
+      ],
+      "learning_goal": "Temperature-time slope constrains net energy accumulation only under an appropriate single-phase capacity model; plateaus require separate state and transfer evidence.",
+      "textbook_chapter_ref": "nsejs/physics/curriculum/topics/PH07/b01/PH07-08/core1a.html",
+      "qrt_targets": [
+        {
+          "id": "PH07-08-B01-D3-REPRESENT-01",
+          "task_identity": "G9-B01-PH07-08-REPRESENT-R1",
+          "band": "D3",
+          "primary_operation": "REPRESENT",
+          "blueprint_cell": "D3.5",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Construct aligned temperature-time and net-power-time graphs for a piecewise experiment and preserve energy signs.",
+          "decisive_route": "A 100 J/K solid receives net +20 W for 10 s, zero for 10 s, and −10 W for 20 s. Sketch both graphs from 25 °C. Shortest valid route: T 25→27→27→25 °C; powers +20,0,−10 W; total net zero.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 1,
+              "evidence": "Identify single-phase constant capacity model."
+            },
+            "representation_translation": {
+              "score": 2,
+              "evidence": "Coordinate two different axes and interval boundaries."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Calculate net rates, temperature changes and cumulative energy."
+            },
+            "algebra_computational_load": {
+              "score": 1,
+              "evidence": "Piecewise arithmetic."
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "Temperature graph area is not energy."
+            }
+          }
+        },
+        {
+          "id": "PH07-08-B01-D4-MODEL-01",
+          "task_identity": "G9-B01-PH07-08-MODEL-R1",
+          "band": "D4",
+          "primary_operation": "MODEL",
+          "blueprint_cell": "D4.4",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Identify capacity and common loss from independent initial-slope runs, then reject or retain the model using an unused observation and physical constraints.",
+          "decisive_route": "At matched initial T, heater 30 W gives slope 0.10 K/s and 60 W gives 0.25 K/s. Third run at 50 W gives 0.18 K/s. Fit and assess exact data. Shortest valid route: C=200 J/K, loss=10 W; third predicts 0.20, not 0.18. Fixed common parameters refuted.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "Competing capacity/loss combinations and varying-loss models."
+            },
+            "representation_translation": {
+              "score": 2,
+              "evidence": "Translate slopes and powers into independent equations."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Eliminate loss, infer C, back-substitute, test third run and assess assumptions."
+            },
+            "algebra_computational_load": {
+              "score": 1,
+              "evidence": "Coupled linear arithmetic."
+            },
+            "trap_exception_sensitivity": {
+              "score": 2,
+              "evidence": "One slope is insufficient; changing initial temperature invalidates common-loss inference."
+            }
+          }
+        },
+        {
+          "id": "PH07-08-B01-D3-JUSTIFY-01",
+          "task_identity": "G9-B01-PH07-08-JUSTIFY-R1",
+          "band": "D3",
+          "primary_operation": "JUSTIFY",
+          "blueprint_cell": "D3.7",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Evaluate what a temperature-time trace establishes by constructing physically distinct energy or phase histories with identical observed temperature behaviour.",
+          "decisive_route": "Two graphs show constant T for 60 s. Claim both undergo melting. Give two compatible alternatives and test. Shortest valid route: One could have balanced heater/loss or zero transfers; melting needs phase evidence and energy.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "Competing equilibrium, phase conversion and rate-balance explanations."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "Map same graph to different physical histories."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Construct countermodels and a discriminating observation."
+            },
+            "algebra_computational_load": {
+              "score": 0,
+              "evidence": "Arithmetic incidental."
+            },
+            "trap_exception_sensitivity": {
+              "score": 2,
+              "evidence": "Same trace does not establish phase change or input."
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "science_records": [
+    {
+      "id": "PH07-08-SCI-01",
+      "claim": "Temperature-time slope constrains net energy accumulation only under an appropriate single-phase capacity model; plateaus require separate state and transfer evidence.",
+      "law_or_model": "C dT/dt=P_in−P_loss in a fixed-state constant-C model; E_net=∫P_net dt; during phase coexistence, energy may change phase fraction.",
+      "assumptions": [
+        "Fixed mass, composition and phase and approximately constant effective C for the slope equation.",
+        "Input and loss rates measured independently where possible; no assumption of constant power over an entire graph."
+      ],
+      "conditions_and_limits": [
+        "Fixed mass, composition and phase and approximately constant effective C for the slope equation.",
+        "Input and loss rates measured independently where possible; no assumption of constant power over an entire graph.",
+        "Phase plateaus require phase-state and pressure evidence; sensor lag and gradients can distort traces.",
+        "Common-loss inverse fit applies only to matched initial conditions and independently changed inputs."
+      ],
+      "units_and_signs": "C in J/K, slope in K/s, power in W, energy in J; graph axes and time intervals explicit.",
+      "source_refs": [
+        "PH07-CBSE",
+        "PH07-NCERT-HIST"
+      ],
+      "qualification_status": "HOLD"
+    }
+  ],
+  "topic_adapter": {
+    "adapter_id": "PHYS-TOPIC-PH07",
+    "topic_id": "PH07",
+    "version": "0.3.2-b01.6.ph07-08",
+    "for_blueprint": "PHYS-QRT-BLUEPRINT 0.2.0",
+    "status": "CANDIDATE_ONLY",
+    "cells": [
+      {
+        "cell_id": "D3.5",
+        "instance_ids": [
+          "PH07-08-B01-D3-REPRESENT-01"
+        ]
+      },
+      {
+        "cell_id": "D4.4",
+        "instance_ids": [
+          "PH07-08-B01-D4-MODEL-01"
+        ]
+      },
+      {
+        "cell_id": "D3.7",
+        "instance_ids": [
+          "PH07-08-B01-D3-JUSTIFY-01"
+        ]
+      }
+    ]
+  },
+  "core1a": [
+    {
+      "id": "PH07-08-B01-CORE1A-R1",
+      "subtopic_id": "PH07-08",
+      "covered_qrt_ids": [
+        "PH07-08-B01-D3-REPRESENT-01",
+        "PH07-08-B01-D4-MODEL-01",
+        "PH07-08-B01-D3-JUSTIFY-01"
+      ],
+      "phenomenon": "Two samples can have identical temperature-time curves while receiving different energy inputs.",
+      "scientific_narrative": "A temperature-time graph shows a state measurement, not a direct measurement of energy. A rising trace indicates increasing temperature, a falling trace indicates decreasing temperature, and a horizontal segment indicates constant measured temperature. To infer energy flow we need to know the sample state, its thermal capacity and the energy paths. In a fixed-mass single phase at constant effective capacity C, a net energy change CΔT corresponds to a temperature change. Over a short interval with constant net power, the slope is P_net/C. This model is an authored quantitative extension of qualitative heating and cooling curves.\n\nThe same slope can be produced by larger power and larger capacity or by smaller power and smaller capacity. Two equal slopes are not proof of equal absorbed power. If input power is known but heat loss is not, the graph determines net power only when C is known. A steady plateau with an active heater might have equal input and loss; a phase-change plateau can have positive net input. A sensor response lag can also distort an apparent transition. Phase identity and independent energy measurements matter.\n\nFor piecewise constant rates, divide the graph at changes in heater setting, loss, state or slope. Use the slope in each unchanged-phase segment to recover net energy rate if capacity is known. For a time interval, the energy transferred is the area under a power-time graph, not the area under a temperature-time graph. When power varies, add the energy in each interval, or use an appropriate integral. A negative net power gives a falling temperature under the stated single-phase model; it is not negative absolute temperature.\n\nAn inverse experiment can use multiple controlled runs at the same initial temperature. If the sample remains single phase, capacity C and a common constant loss L give slopes s₁=(P₁−L)/C and s₂=(P₂−L)/C. Subtracting eliminates L, giving C=(P₂−P₁)/(s₂−s₁), provided the slopes differ and assumptions hold. Then L=P₁−Cs₁. An unused run tests the fitted model. If its slope disagrees, the initial model is not supported as one common C and L; do not simply discard the third result.\n\nDuring a cooling curve, losses often decrease as the sample approaches ambient temperature. A curved trace can thus result from changing loss without changing phase or capacity. Conversely, a phase transition can change heat capacity or produce a plateau. A graph is evidence but does not by itself identify the mechanism. This unit follows PH07-06, which teaches phase coexistence; here the decisive reasoning is reconstruction of independent temperature and power histories. No authenticated matching Core2 item has been located in the inspectable bank.",
+      "prerequisites": [
+        "PH07-06"
+      ],
+      "derivation_steps": [
+        {
+          "action": "Partition the trace at slope, state or power changes.",
+          "why_valid": "A single formula need not describe every segment.",
+          "science_ref_id": "PH07-08-SCI-01"
+        },
+        {
+          "action": "Connect temperature change to net energy only in the specified single phase.",
+          "why_valid": "CΔT is a model with state assumptions, not the area under T(t).",
+          "science_ref_id": "PH07-08-SCI-01"
+        },
+        {
+          "action": "Build a separate power-time account for the intervals.",
+          "why_valid": "Integrating power over time gives energy; sign distinguishes accumulation and loss.",
+          "science_ref_id": "PH07-08-SCI-01"
+        },
+        {
+          "action": "Fit and test an inverse model with independent observations.",
+          "why_valid": "Two equations may identify two parameters under assumptions; a third tests them.",
+          "science_ref_id": "PH07-08-SCI-01"
+        }
+      ],
+      "model_limits": [
+        "Fixed mass, composition and phase and approximately constant effective C for the slope equation.",
+        "Input and loss rates measured independently where possible; no assumption of constant power over an entire graph.",
+        "Phase plateaus require phase-state and pressure evidence; sensor lag and gradients can distort traces.",
+        "Common-loss inverse fit applies only to matched initial conditions and independently changed inputs."
+      ],
+      "progressive_examples": [
+        {
+          "id": "PH07-08-B01-EX1",
+          "tier": "FOUNDATION",
+          "problem": "A solid with C=200 J/K warms 3 K in 30 s at constant net power. Find energy and power.",
+          "reasoning": "600 J and 20 W.",
+          "independent_check": "Slope 0.1 K/s ×200 J/K=20 W."
+        },
+        {
+          "id": "PH07-08-B01-EX2",
+          "tier": "CONNECTED",
+          "problem": "A heater supplies 30 W for 40 s and then 10 W for 20 s. Constant loss is 10 W; sample stays single phase with C=200 J/K. Describe T.",
+          "reasoning": "First net 20 W, rise 4 K; second net zero, plateau 20 s with no phase change.",
+          "independent_check": "Input 1400 J, loss 600 J, net 800 J."
+        },
+        {
+          "id": "PH07-08-B01-EX3",
+          "tier": "ADVANCED",
+          "problem": "Initial slopes at heater powers 40 and 70 W are 0.10 and 0.25 K/s. Fit common C and loss.",
+          "reasoning": "C=30/0.15=200 J/K; L=40−20=20 W. At 50 W slope predicts 0.15 K/s.",
+          "independent_check": "Check both fitted powers and reserve an unused run."
+        }
+      ],
+      "figures": [
+        {
+          "id": "PH07-08-FIG-01",
+          "reasoning_step": "Temperature and net power histories",
+          "scene_description": "The upper trace rises then levels; the lower trace shows positive net power then zero for an unchanged-phase example. Original inline SVG.",
+          "source_or_authorship": "ORIGINAL_B01_SVG_INLINE"
+        }
+      ],
+      "misconception": {
+        "wrong_model": "A flat temperature trace proves a phase change; a steeper trace proves more gross heater power.",
+        "diagnostic": "Could an unchanged-phase sample with equal heater and loss powers have a plateau? Could a smaller sample warm more steeply?",
+        "repair": "Separate temperature, phase and power data before interpreting slopes and plateaus."
+      },
+      "exit_check": {
+        "task": "An unchanged-phase sample at C=400 J/K warms at 0.05 K/s with heater 35 W. Estimate loss.",
+        "answer": "15 W.",
+        "reasoning": "Net=20 W, loss=35−20=15 W."
+      },
+      "authorship_status": "DRAFT_AUTHOR_EXPOSED"
+    }
+  ],
+  "core1b": [
+    {
+      "id": "PH07-08-B01-MAIN-REPRESENT-R2",
+      "kind": "MAIN",
+      "subtopic_id": "PH07-08",
+      "qrt_target_id": "PH07-08-B01-D3-REPRESENT-01",
+      "fresh_task": "A 200 J/K solid starts at 20 °C. Input is 50 W for 20 s, then 20 W for 30 s, then zero for 10 s; loss stays 20 W. Draw T(t) and P_net(t), and give final T and net energy.",
+      "protected_work": "Construct aligned temperature-time and net-power-time graphs for a piecewise experiment and preserve energy signs.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether the sample ends above, below or at its initial temperature, before calculating or sketching.",
+        "attempt": "A 200 J/K solid starts at 20 °C. Input is 50 W for 20 s, then 20 W for 30 s, then zero for 10 s; loss stays 20 W. Draw T(t) and P_net(t), and give final T and net energy.",
+        "reconstruct": "Net powers +30,0,−20 W; T 20→23→23→22 °C; net 600−200=400 J.",
+        "diagnose": "Check that your temperature slope corresponds to net, not gross, power and that each change occurs at its correct time.",
+        "repair": "Recalculate each interval energy and temperature increment, then plot the two histories on aligned time axes.",
+        "boundary_test": "If the final interval lasts 30 s instead, what is final T?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH07-08-B01-INSTANCE-REPRESENT-R2",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH07-08",
+      "qrt_target_id": "PH07-08-B01-D3-REPRESENT-01",
+      "fresh_task": "A 300 J/K unchanged-phase sample begins at 25 °C. Net powers are +30 W for 20 s, −15 W for 20 s and zero for 10 s. Draw both histories and calculate energy for each interval and final T.",
+      "protected_work": "Construct aligned temperature-time and net-power-time graphs for a piecewise experiment and preserve energy signs.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether the final plateau will be above or below 25 °C. Give an initial reason.",
+        "attempt": "A 300 J/K unchanged-phase sample begins at 25 °C. Net powers are +30 W for 20 s, −15 W for 20 s and zero for 10 s. Draw both histories and calculate energy for each interval and final T.",
+        "reconstruct": "Energy +600,−300,0 J; T 25→27→26→26 °C; net +300 J.",
+        "diagnose": "Check that your temperature slope corresponds to net, not gross, power and that each change occurs at its correct time.",
+        "repair": "Recalculate each interval energy and temperature increment, then plot the two histories on aligned time axes.",
+        "boundary_test": "If the 20 s negative-power interval occurs first, what is final T and what changes in the trace?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH07-08-B01-MAIN-MODEL-R2",
+      "kind": "MAIN",
+      "subtopic_id": "PH07-08",
+      "qrt_target_id": "PH07-08-B01-D4-MODEL-01",
+      "fresh_task": "A solid at matched initial temperature warms at 0.08 K/s under 36 W and 0.20 K/s under 60 W. An unused 48 W trial gives 0.14 K/s. Fit C and common loss, test the third, and determine whether the first run alone would have sufficed.",
+      "protected_work": "Identify capacity and common loss from independent initial-slope runs, then reject or retain the model using an unused observation and physical constraints.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether all three runs are consistent with one capacity and one loss. State your initial confidence.",
+        "attempt": "A solid at matched initial temperature warms at 0.08 K/s under 36 W and 0.20 K/s under 60 W. An unused 48 W trial gives 0.14 K/s. Fit C and common loss, test the third, and determine whether the first run alone would have sufficed.",
+        "reconstruct": "C=24/0.12=200 J/K, loss=20 W. Third (48−20)/200=0.14 K/s agrees; one slope leaves L=36−0.08C family.",
+        "diagnose": "Find which observation was used to fit parameters and which was independent. Did you confuse gross heater power with net accumulation?",
+        "repair": "Write separate slope equations, eliminate the shared unknown, test the unused observation, and state what the result does not identify.",
+        "boundary_test": "If the third trial instead begins much hotter and gives 0.10 K/s, does it alone refute the matched-temperature model?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH07-08-B01-INSTANCE-MODEL-R2",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH07-08",
+      "qrt_target_id": "PH07-08-B01-D4-MODEL-01",
+      "fresh_task": "At same initial temperature, powers 45 and 75 W give slopes 0.10 and 0.22 K/s. At 60 W an unused trial gives 0.19 K/s. Infer C and loss, and assess whether one common pair explains all exact data.",
+      "protected_work": "Identify capacity and common loss from independent initial-slope runs, then reject or retain the model using an unused observation and physical constraints.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Before fitting, predict whether the 60 W trial supports the same model as the two other trials.",
+        "attempt": "At same initial temperature, powers 45 and 75 W give slopes 0.10 and 0.22 K/s. At 60 W an unused trial gives 0.19 K/s. Infer C and loss, and assess whether one common pair explains all exact data.",
+        "reconstruct": "C=30/0.12=250 J/K, loss=45−25=20 W. Third predicts 40/250=0.16, not 0.19. Exact model inconsistent; test losses, capacity or uncertainty independently.",
+        "diagnose": "Find which observation was used to fit parameters and which was independent. Did you confuse gross heater power with net accumulation?",
+        "repair": "Write separate slope equations, eliminate the shared unknown, test the unused observation, and state what the result does not identify.",
+        "boundary_test": "If all slopes were measured only at 45 W and repeated precisely, could both C and loss be recovered?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH07-08-B01-MAIN-JUSTIFY-R2",
+      "kind": "MAIN",
+      "subtopic_id": "PH07-08",
+      "qrt_target_id": "PH07-08-B01-D3-JUSTIFY-01",
+      "fresh_task": "Two identical rising temperature traces are recorded from samples with unknown masses and powers. A report says their heater powers must be equal. Construct two single-phase scenarios with the same slope but different gross powers and state a decisive measurement.",
+      "protected_work": "Evaluate what a temperature-time trace establishes by constructing physically distinct energy or phase histories with identical observed temperature behaviour.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Would you accept equal slopes as proof of equal heater powers? Give your initial reasoning.",
+        "attempt": "Two identical rising temperature traces are recorded from samples with unknown masses and powers. A report says their heater powers must be equal. Construct two single-phase scenarios with the same slope but different gross powers and state a decisive measurement.",
+        "reconstruct": "For slope 0.1 K/s, C=100,L=5 gives P=15 W; C=200,L=10 gives P=30 W. Same slope. Measure input directly, or independently C and loss.",
+        "diagnose": "Identify the first inference that treats a graph feature as a unique cause without state or power data.",
+        "repair": "Construct two physically compatible histories with the same measured trace and specify an observation that separates them.",
+        "boundary_test": "If both C and loss are independently equal, does equal slope then imply equal heater power?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH07-08-B01-INSTANCE-JUSTIFY-R2",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH07-08",
+      "qrt_target_id": "PH07-08-B01-D3-JUSTIFY-01",
+      "fresh_task": "A pure sample and a dry plate have identical flat traces while both heaters operate. A student concludes both must be melting. Construct compatible distinct histories and identify observations to discriminate.",
+      "protected_work": "Evaluate what a temperature-time trace establishes by constructing physically distinct energy or phase histories with identical observed temperature behaviour.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Before explaining, decide whether the two flat traces uniquely establish melting. Give your initial judgement.",
+        "attempt": "A pure sample and a dry plate have identical flat traces while both heaters operate. A student concludes both must be melting. Construct compatible distinct histories and identify observations to discriminate.",
+        "reconstruct": "Sample may melt with positive net input and changing phase fraction; dry plate may remain unchanged with equal input/loss. Observe state and independently measure energy paths.",
+        "diagnose": "Identify the first inference that treats a graph feature as a unique cause without state or power data.",
+        "repair": "Construct two physically compatible histories with the same measured trace and specify an observation that separates them.",
+        "boundary_test": "If both show a flat trace with heaters off, can freezing still occur? Under what condition?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    }
+  ],
+  "core2_sources": [],
+  "acceptance": {
+    "b1_b7": {
+      "B1": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B2": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B3": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B4": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B5": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B6": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B7": {
+        "status": "HOLD",
+        "evidence_refs": []
+      }
+    },
+    "gates": {
+      "source_authenticity": "HOLD",
+      "content_correctness": "HOLD",
+      "cognitive_qualification": "HOLD",
+      "teaching_sufficiency": "HOLD",
+      "assessment_validity": "HOLD",
+      "implementation": "NOT_RUN",
+      "release_authority": "HOLD"
+    },
+    "release": "HOLD",
+    "acceptance_note": "Isolated author-exposed candidate. No matched Core2 item in inspectable bank; all targets AUTHORED_TRANSFER. Unique version and R2 cycle convention; no canonical C04 selection. Separate stage criteria in B01 author handoff, not implemented runtime. Full JSON is author-exposed; B5 HOLD. Per-target MAIN provisional pending C06 adoption. No academic approval inferred from software validation."
+  }
+}

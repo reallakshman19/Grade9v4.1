@@ -1,0 +1,122 @@
+{
+  "schema": "b01-source-locator-transfer-proposal/v1",
+  "status": "AUTHOR_EXPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+  "subtopic_id": "PH07-08",
+  "scope_role": "SYLLABUS_CORE_CANDIDATE",
+  "source": {
+    "locator_id": "NSEJS-2025-51-Q38",
+    "year": 2025,
+    "code": 51,
+    "question_number": 38,
+    "printed_page": 8,
+    "paper_url": "https://mail.iapt.org.in/images/nse_2025/Question-papers/NSEJS_-_2025_Set_511.pdf",
+    "final_key_url": "https://iapt.org.in/images/nse_2025/Answer_key/NSEJS_-_2025_Final_Answer_key.pdf",
+    "publisher_key": [
+      "D"
+    ],
+    "publisher_key_text_status": "OBSERVED_NOT_INDEPENDENTLY_ADMITTED",
+    "paper_visual_status": "TEXT_RETRIEVED_PAGE_SCREENSHOT_FAILED_502",
+    "source_bytes_sha256": null,
+    "rights_status": "HOLD",
+    "exact_source_revision_status": "HOLD",
+    "academic_admission": "HOLD",
+    "source_band": "NOT_QUALIFIED",
+    "map_binding": null,
+    "bank_binding": null,
+    "notes": "Publisher paper text and final-key text retrieved, but the relevant page screenshot failed twice (HTTP 502); no visual fidelity, PDF byte or rights claim. The source is not in the existing candidate bank or canonical question map.",
+    "reasoning_observation": "For equal required energy E and ideal independent powers, reciprocal times add: 1/t_AB=1/t_A+1/t_B. The source gives a 4-minute single trial and 3-minute joint trial, hence the other alone is 12 minutes. This conclusion is conditional on the common energy endpoint and ideal loss assumption."
+  },
+  "prerequisite_support": [
+    "PH07-02",
+    "PH07-11"
+  ],
+  "existing_package_pin": {
+    "path": "nsejs/physics/curriculum/topics/PH07/b01/PH07-08/physics-topic-package.v1.json",
+    "blob": "daf7cf3ed102afe7276420dc4f50199f52efab9c",
+    "version": "0.3.2-b01.6.ph07-08"
+  },
+  "target": {
+    "id": "PH07-08-B01-NSEJS-2025-51-Q38-D4-MODEL-R1",
+    "band": "D4",
+    "cell": "D4.4",
+    "primary_operation": "MODEL",
+    "task_identity": "PH07-08-B01-NSEJS-2025-51-Q38-D4-MODEL-R1",
+    "source_role": "AUTHORED_TRANSFER",
+    "protected_work": "Discriminate a common fixed heat-loss model from a changed joint-operation loss model by combining independent input measurements, endpoint times and a reserved trial.",
+    "decisive_route": "An unchanged-phase target needs18000 J. Inputs A=100 W and B=140 W. A alone reaches target in225 s; joint operation reaches it in90 s. B alone is an unused trial. Fit a common loss from A, test it against joint and predict B; an observed B time150 s is then provided. Shortest valid route: A useful80 W so common loss20 W. Joint prediction220 W →900/11≈81.82 s, not90 s (observed net200 W, loss40 W). B alone predicted120 W→150 s, fits. Changed joint loss model supported among stated alternatives.",
+    "factor_evidence": {
+      "concept_model_selection": {
+        "score": 2,
+        "evidence": "Competing fixed-loss and joint-operation-loss models can explain incomplete timing observations."
+      },
+      "representation_translation": {
+        "score": 2,
+        "evidence": "Translate reciprocal endpoint times into useful powers and compare independently measured input."
+      },
+      "reasoning_chain_length": {
+        "score": 2,
+        "evidence": "Fit loss parameters, predict independent trial and distinguish incompatible models."
+      },
+      "algebra_computational_load": {
+        "score": 1,
+        "evidence": "Coupled energy/time calculations."
+      },
+      "trap_exception_sensitivity": {
+        "score": 2,
+        "evidence": "Useful powers do not add if a common loss is counted twice; a reserved observation tests the model."
+      }
+    },
+    "score": 9,
+    "status": "PROPOSED"
+  },
+  "core1a": {
+    "scientific_construction": "The time to reach a common thermal endpoint is E divided by net energy accumulation rate. With two independently controlled ideal power sources A and B, their measured input powers add if their operation does not alter each other's electrical input. If loss is negligible, reciprocal endpoint times add. If a common fixed outward loss L acts once on the whole system, then 1/t_A=(P_A−L)/E, 1/t_B=(P_B−L)/E and 1/t_AB=(P_A+P_B−L)/E. Adding the two single-source net rates counts the same loss twice. The useful joint rate is their sum plus L. A changed joint-operation loss must be treated as another parameter, not silently assigned to either source. An independently measured energy requirement and electrical input make a loss hypothesis testable. Equal temperature endpoints alone do not guarantee equal energy requirements if mass, phase or capacity changes.",
+    "worked_anchor": {
+      "task": "A simulator needs 12000 J. Inputs A=100 W, B=80 W and fixed loss20 W. Calculate single and joint times.",
+      "reasoning": "A useful80 W →150 s; B60 W →200 s; joint160 W →75 s. 1/150+1/200=7/600, not 1/75=8/600 because the common loss is counted once."
+    },
+    "model_limits": "Hypothetical model only; matched energy endpoints, positive net power, constant stated parameters and no unaccounted phase conversion."
+  },
+  "core1b": [
+    {
+      "id": "PH07-08-B01-NSEJS-2025-51-Q38-D4-MODEL-R1-MAIN_PLACEHOLDER",
+      "kind": "MAIN_PLACEHOLDER",
+      "task": "An ideal thermal test cell needs 24000 J to reach its specified unchanged-phase endpoint. Input A=150 W and B=100 W. A alone takes200 s, B alone takes300 s. Joint operation takes120 s. Compare model X (one common fixed loss in every trial) with model Y (same loss in either single trial, a possibly different loss in joint operation). Determine which model fits, infer losses and predict time if joint input is reduced to220 W while the inferred joint loss remains fixed.",
+      "protected_work": "Discriminate a common fixed heat-loss model from a changed joint-operation loss model by combining independent input measurements, endpoint times and a reserved trial.",
+      "stages": {
+        "predict": "Predict whether either loss model must fit just because all three trials reach the same endpoint.",
+        "attempt": "An ideal thermal test cell needs 24000 J to reach its specified unchanged-phase endpoint. Input A=150 W and B=100 W. A alone takes200 s, B alone takes300 s. Joint operation takes120 s. Compare model X (one common fixed loss in every trial) with model Y (same loss in either single trial, a possibly different loss in joint operation). Determine which model fits, infer losses and predict time if joint input is reduced to220 W while the inferred joint loss remains fixed.",
+        "reconstruct": "Single net rates120 and80 W give losses30 and20 W, so neither model as stated fits even the singles! Joint net200 W gives loss50 W. A more general per-configuration loss model fits 30,20,50 W; conditional new joint time24000/(220−50)=2400/17≈141.18 s. No accepted X or Y; independent data expose both assumptions.",
+        "diagnose": "Locate where you added useful rates as though each independent trial's loss were a separate simultaneous drain, or where you accepted a model without checking both single trials.",
+        "repair": "Convert each endpoint time into net energy rate, infer each loss from independent input, test the model's equality constraints and reserve a prediction.",
+        "boundary_test": "If B alone instead takes 24000/70 s, do the single trials support equal loss? Does X fit the joint trial?"
+      },
+      "boundary_response_criterion": "B net70 W, loss30 W agrees A. Joint measured loss50 W, so X still fails; Y fits with joint loss50 W.",
+      "attempt_policy": "PROPOSED_ONLY_PUBLIC_AUTHOR_EXPOSED",
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH07-08-B01-NSEJS-2025-51-Q38-D4-MODEL-R1-INSTANCE",
+      "kind": "INSTANCE",
+      "task": "A thermal simulator requires 18000 J. Independent input measurements give A=120 W and B=90 W. A alone takes180 s, B alone takes 18000/70 s. Model X assumes common fixed loss for all trials; model Y allows another loss only when both inputs operate. Joint trial takes 100 s. Fit and test X and Y, then predict an unused joint trial at total input190 W if joint loss stays unchanged.",
+      "protected_work": "Discriminate a common fixed heat-loss model from a changed joint-operation loss model by combining independent input measurements, endpoint times and a reserved trial.",
+      "stages": {
+        "predict": "Predict whether the two single trials establish the joint-operation loss without testing joint operation.",
+        "attempt": "A thermal simulator requires 18000 J. Independent input measurements give A=120 W and B=90 W. A alone takes180 s, B alone takes 18000/70 s. Model X assumes common fixed loss for all trials; model Y allows another loss only when both inputs operate. Joint trial takes 100 s. Fit and test X and Y, then predict an unused joint trial at total input190 W if joint loss stays unchanged.",
+        "reconstruct": "Single net100 and70 W, loss20 W each. X joint net190 W, time1800/19≈94.74 s, not100; observed net180 W and joint loss30 W, so Y fits stated exact data. New joint net160 W, predicted112.5 s. Model remains conditional.",
+        "diagnose": "Locate where you added useful rates as though each independent trial's loss were a separate simultaneous drain, or where you accepted a model without checking both single trials.",
+        "repair": "Convert each endpoint time into net energy rate, infer each loss from independent input, test the model's equality constraints and reserve a prediction.",
+        "boundary_test": "If the 100 s measurement were only known to lie between94 and101 s, could it alone exclude X?"
+      },
+      "boundary_response_criterion": "No, 94.74 s lies inside bounds; improved precision or independent loss measurement needed.",
+      "attempt_policy": "PROPOSED_ONLY_PUBLIC_AUTHOR_EXPOSED",
+      "runtime_verification": "NOT_RUN"
+    }
+  ],
+  "acceptance": {
+    "b1_b7": "HOLD",
+    "canonical_integration": "NOT_SELECTED",
+    "source_admission": "HOLD",
+    "release": "HOLD"
+  }
+}

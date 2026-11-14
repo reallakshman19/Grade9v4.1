@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>B01 — Heat &amp; Sound protected-sequence learner prototype</title>
+  <link rel="stylesheet" href="./runtime.css">
+</head>
+<body>
+<main>
+  <header>
+    <p class="eyebrow">Grade9 v4.1 · NSEJS Physics · B01 PH07–PH08</p>
+    <h1>Independent reasoning workbench</h1>
+    <p class="warning"><strong>Candidate preview · academic HOLD.</strong> This prototype presents the 89 proposed INSTANCE tasks from 25 primary and 14 supplemental author packages. It does not select any of the 16 mixed MAIN proposals, authenticate past-paper questions, or certify mastery. Solutions and protected reasoning are present in public JSON; localStorage is not secure or tamper-proof. Independent P00 and R01 acceptance remains necessary.</p>
+    <p><a href="../integrated-curriculum-review.html">Return to all 39 Core1A/Core1B author-review pairs</a> · <a href="../B01_R01_REVIEW_QUEUE.v1.json">Independent review queue</a></p>
+  </header>
+  <section class="panel">
+    <h2>Choose a candidate</h2>
+    <label for="task-select">Proposed INSTANCE task</label>
+    <select id="task-select" disabled><option>Loading exact-version author packages…</option></select>
+    <p id="status" role="status" aria-live="polite">Verifying source pins, learner state and academic HOLD.</p>
+    <p id="revision" class="muted"></p>
+    <div id="task-info" hidden>
+      <p class="tag" id="task-meta"></p>
+      <h3 id="task-heading"></h3>
+      <p id="task-source-role"></p>
+      <p><a id="core1a-link" href="#">Open Core1A teaching</a> · <a id="original-core1b-link" href="#">Original author candidate</a></p>
+    </div>
+  </section>
+  <section class="panel" id="learner" hidden>
+    <h2>1. Predict</h2><p id="predict-prompt"></p>
+    <label for="predict-input">Initial prediction (before decisive help)</label>
+    <textarea id="predict-input" rows="3"></textarea>
+    <h2>2. Attempt independently</h2><p id="attempt-prompt"></p>
+    <label for="attempt-input">My physical reasoning, assumptions and result</label>
+    <textarea id="attempt-input" rows="6"></textarea>
+    <div class="help"><p>Optional nondecisive orientation: opening each tier is recorded. No verified hint taxonomy or automatic diagnosis is claimed.</p>
+      <button id="h1" type="button">Open H1</button>
+      <button id="h2" type="button" disabled>Open H2</button>
+      <button id="h3" type="button" disabled>Open H3</button>
+      <p id="help-text" aria-live="polite"></p>
+    </div>
+    <button id="save-first" type="button">Commit immutable first answer</button>
+    <p id="saved-first" class="muted"></p>
+  </section>
+  <section class="panel" id="after-first" hidden>
+    <h2>3. Reconstruct</h2>
+    <p>Compare your recorded reasoning with the candidate author's full route only after confirming the first answer was saved.</p>
+    <button id="reveal" type="button">Reveal candidate reconstruction</button>
+    <p id="reconstruct-model" class="model" hidden></p>
+    <section id="diagnosis-stage" hidden>
+      <h2>4. Diagnose</h2><p id="diagnose-prompt"></p>
+      <label for="diagnose-input">Where did my first reasoning differ? Write evidence.</label>
+      <textarea id="diagnose-input" rows="4"></textarea>
+      <button id="save-diagnosis" type="button">Save learner diagnosis</button>
+    </section>
+    <section id="repair-stage" hidden>
+      <h2>5. Repair</h2><p id="repair-prompt"></p>
+      <label for="repair-input">My revised reasoning, with corrected conditions</label>
+      <textarea id="repair-input" rows="5"></textarea>
+      <button id="save-repair" type="button">Save distinct repair</button>
+    </section>
+    <section id="boundary-stage" hidden>
+      <h2>6. Boundary test</h2><p id="boundary-prompt"></p>
+      <label for="boundary-input">Solve the changed condition before inspecting any criterion</label>
+      <textarea id="boundary-input" rows="5"></textarea>
+      <button id="save-boundary" type="button">Save boundary response</button>
+      <button id="show-boundary" type="button" disabled>Reveal boundary criterion (if authored)</button>
+      <p id="boundary-model" class="model" hidden></p>
+    </section>
+    <p id="completion" class="muted"></p>
+  </section>
+  <footer class="muted">Engineering preview. No secure examination attempt, automated assessment, validated scientific mastery, or independent B1–B7 approval. No iframes.</footer>
+</main>
+<script src="./runtime.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+{
+  "schema": "b01-source-locator-transfer-proposal/v1",
+  "status": "AUTHOR_EXPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+  "subtopic_id": "PH08-07",
+  "scope_role": "SYLLABUS_CORE_CANDIDATE",
+  "source": {
+    "locator_id": "NSEJS-2019-51-Q67",
+    "year": 2019,
+    "code": 51,
+    "question_number": 67,
+    "printed_page": 14,
+    "paper_url": "https://iapt.org.in/wp-content/uploads/NSEJS_QP-2019.pdf",
+    "final_key_url": "https://iapt.org.in/wp-content/uploads/NSEJS_FINAL_ANSWER_KEY_2019.pdf",
+    "publisher_key": [
+      "B"
+    ],
+    "publisher_disposition": "KEY_OBSERVED",
+    "paper_visual_status": "PAGE_VISUALLY_INSPECTED",
+    "key_visual_status": "FINAL_KEY_VISUALLY_INSPECTED",
+    "source_bytes_sha256": null,
+    "rights_status": "HOLD",
+    "exact_source_revision_status": "HOLD",
+    "academic_admission": "HOLD",
+    "source_band": "NOT_QUALIFIED",
+    "map_binding": null,
+    "bank_binding": null,
+    "subtopic_id": "PH08-07",
+    "reasoning_observation": "Graphical signed pointwise superposition; under equal scales, cancellation of opposite components distinguishes the combinations. Publisher graph observed; no reproduction or digital figure custody."
+  },
+  "related_source_observations": [],
+  "prerequisite_support": [
+    "PH08-02",
+    "PH08-04",
+    "PH08-13"
+  ],
+  "existing_package_pin": {
+    "path": "nsejs/physics/curriculum/topics/PH08/b01/PH08-07/physics-topic-package.v1.json",
+    "blob": "b744adbdb8c7aa4281674cdb6812f2cc5aa56999",
+    "version": "0.3.2-b01.5.ph08-07"
+  },
+  "target": {
+    "id": "PH08-07-B01-NSEJS-2019-51-Q67-D3-REPRESENT-R1",
+    "band": "D3",
+    "cell": "D3.5",
+    "primary_operation": "REPRESENT",
+    "task_identity": "PH08-07-B01-NSEJS-2019-51-Q67-D3-REPRESENT-R1",
+    "source_role": "AUTHORED_TRANSFER",
+    "protected_work": "Translate simultaneous signed waveforms into a resultant and inverse missing-component trace, preserving common time bins and physical units.",
+    "decisive_route": "Measured R=[1,−2,3,0] Pa and component A=[−1,1,2,−2] Pa. Reconstruct B and verify. Shortest valid route: B=[2,−3,1,2] Pa; add bin by bin. Without A, R alone is not a unique decomposition.",
+    "factor_evidence": {
+      "concept_model_selection": {
+        "score": 1,
+        "evidence": "Use stipulated linear superposition of same physical variable."
+      },
+      "representation_translation": {
+        "score": 2,
+        "evidence": "Coordinate sampled component and resultant time representations."
+      },
+      "reasoning_chain_length": {
+        "score": 2,
+        "evidence": "Add pointwise, recover missing component by subtraction, check each interval."
+      },
+      "algebra_computational_load": {
+        "score": 1,
+        "evidence": "Several signed arithmetic operations."
+      },
+      "trap_exception_sensitivity": {
+        "score": 1,
+        "evidence": "Cancellation at a detector is not absence of underlying waves."
+      }
+    },
+    "score": 7,
+    "status": "PROPOSED"
+  },
+  "core1a": {
+    "scientific_construction": "In a linear small-amplitude model, disturbances of the same physical quantity at the same position and time superpose by signed addition. Do not add magnitudes or multiply waveforms. Pressure perturbations add to pressure perturbations, not to displacement in metres. A resultant trace can be smaller than either component due to destructive interference; zero resultant at one instant or position does not show that each wave vanishes or that energy is destroyed. For an inverse problem R=A+B, B=R−A pointwise if A and R are measured on the same scale with synchronized clocks. If both components are unknown, infinitely many pairs can fit the resultant. For sampled piecewise-constant signals define each time interval and use actual signed values, not merely graph shape.",
+    "worked_anchor": {
+      "task": "At four equal time bins, A=[2,−1,1,0] Pa and B=[−2,3,0,−1] Pa. Construct resultant.",
+      "reasoning": "R=[0,2,1,−1] Pa. First bin cancellation, not no component."
+    },
+    "model_limits": "Only specified ideal/matched conditions; extension relations are supplied, not independently warranted compulsory syllabus scope."
+  },
+  "core1b": [
+    {
+      "id": "PH08-07-B01-NSEJS-2019-51-Q67-D3-REPRESENT-R1-MAIN_PLACEHOLDER",
+      "kind": "MAIN_PLACEHOLDER",
+      "task": "Four consecutive 1 ms bins have pressure A=[3,−2,0,1] Pa and B=[−1,2,−3,1] Pa. Draw both step traces and the resultant on aligned time axes. A later run with A unchanged yields R'=[0,1,−1,3] Pa. Reconstruct the changed B' and label bins with cancellation.",
+      "protected_work": "Translate simultaneous signed waveforms into a resultant and inverse missing-component trace, preserving common time bins and physical units.",
+      "stages": {
+        "predict": "Predict whether zero resultant in a bin requires both components to be zero.",
+        "attempt": "Four consecutive 1 ms bins have pressure A=[3,−2,0,1] Pa and B=[−1,2,−3,1] Pa. Draw both step traces and the resultant on aligned time axes. A later run with A unchanged yields R'=[0,1,−1,3] Pa. Reconstruct the changed B' and label bins with cancellation.",
+        "reconstruct": "R=[2,0,−3,2] Pa; original cancellation second bin. B'=R'−A=[−3,3,−1,2] Pa; new cancellation first bin. All traces use same 1 ms bins and Pa axes.",
+        "diagnose": "Check bin alignment, signed rather than magnitude addition, and physical units.",
+        "repair": "Tabulate A, B and R with one row per interval; subtract the known component, add back, and redraw the aligned step traces.",
+        "boundary_test": "If B' instead is measured one time bin late and the time reference is unknown, is simple pointwise subtraction still valid?"
+      },
+      "boundary_response_criterion": "No; align clocks or estimate lag independently before subtracting corresponding physical events.",
+      "attempt_policy": "PROPOSED_ONLY_PUBLIC_AUTHOR_EXPOSED",
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH08-07-B01-NSEJS-2019-51-Q67-D3-REPRESENT-R1-INSTANCE",
+      "kind": "INSTANCE",
+      "task": "A calibrated pressure detector records R=[−2,4,0,1,−3] Pa over five 2 ms bins. Source A alone gives [1,2,−1,0,−2] Pa under matched linear conditions. Reconstruct source B's contribution, draw all three traces, and predict resultant if B's polarity reverses while A is unchanged.",
+      "protected_work": "Translate simultaneous signed waveforms into a resultant and inverse missing-component trace, preserving common time bins and physical units.",
+      "stages": {
+        "predict": "Predict whether the same resultant uniquely identifies both source traces when only their sum is known.",
+        "attempt": "A calibrated pressure detector records R=[−2,4,0,1,−3] Pa over five 2 ms bins. Source A alone gives [1,2,−1,0,−2] Pa under matched linear conditions. Reconstruct source B's contribution, draw all three traces, and predict resultant if B's polarity reverses while A is unchanged.",
+        "reconstruct": "B=[−3,2,1,1,−1] Pa. New A−B=[4,0,−2,−1,−1] Pa. Original cancellation bin3, new cancellation bin2. Verify by addition.",
+        "diagnose": "Check bin alignment, signed rather than magnitude addition, and physical units.",
+        "repair": "Tabulate A, B and R with one row per interval; subtract the known component, add back, and redraw the aligned step traces.",
+        "boundary_test": "If A is a displacement reading in mm instead of pressure, can the same subtraction recover B in Pa?"
+      },
+      "boundary_response_criterion": "No; incompatible variables require a specified physical transfer/calibration model.",
+      "attempt_policy": "PROPOSED_ONLY_PUBLIC_AUTHOR_EXPOSED",
+      "runtime_verification": "NOT_RUN"
+    }
+  ],
+  "acceptance": {
+    "b1_b7": "HOLD",
+    "canonical_integration": "NOT_SELECTED",
+    "source_admission": "HOLD",
+    "release": "HOLD"
+  }
+}

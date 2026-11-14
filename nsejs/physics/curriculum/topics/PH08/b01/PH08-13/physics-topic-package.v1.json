@@ -1,0 +1,477 @@
+{
+  "schema": "g9v41-nsejs-physics-topic-package/v1",
+  "subject_id": "PHYSICS",
+  "academic_track": "NSEJS",
+  "topic_id": "PH08",
+  "owner_agent": "AGENT_2",
+  "version": "0.3.2-b01.8.ph08-13",
+  "status": "DRAFT_AUTHOR_EXPOSED",
+  "pins": {
+    "contracts_version": "1.0.0",
+    "blueprint": {
+      "version": "0.2.0",
+      "git_blob_sha": "700dafcbe86d76442637bcf214eeb544497cf4ea"
+    },
+    "shared_qrt_28": {
+      "version": "1.0.0",
+      "git_blob_sha": "e2409aef11ae7d98444593bfbe1a38eb00c97cef"
+    },
+    "topic_adapter_version": "0.3.2-b01.8.ph08-13"
+  },
+  "syllabus_references": [
+    {
+      "reference_id": "PH08-CBSE-2026-SOUND",
+      "locator": "https://cbseacademic.nic.in/web_material/CurriculumMain27/SecPart1/ScienceSt_SecP1_2026-27.pdf — Class IX Science 086, Sound, pp. 17–18 (PDF pages 17–18)",
+      "authority": "OFFICIAL_SYLLABUS",
+      "scope_status": "CANDIDATE"
+    }
+  ],
+  "subtopics": [
+    {
+      "id": "PH08-13",
+      "title": "Doppler effect, standing waves and resonance",
+      "scope_role": "EXTENSION",
+      "syllabus_reference_ids": [
+        "PH08-CBSE-2026-SOUND"
+      ],
+      "prerequisite_ids": [
+        "PH08-05",
+        "PH08-06",
+        "PH08-11"
+      ],
+      "science_ref_ids": [
+        "PH08-13-SCI-01"
+      ],
+      "learning_goal": "Moving-source Doppler shifts follow wavefront spacing in the medium; standing-wave frequencies depend on boundary conditions, and resonance is strong response to suitable forcing.",
+      "textbook_chapter_ref": "nsejs/physics/curriculum/topics/PH08/b01/PH08-13/core1a.html",
+      "qrt_targets": [
+        {
+          "id": "PH08-13-B01-D4-MODEL-01",
+          "task_identity": "G9-B01-PH08-13-MODEL-R1",
+          "band": "D4",
+          "primary_operation": "MODEL",
+          "blueprint_cell": "D4.4",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Discriminate moving-source and moving-observer Doppler models using independent approach/recession observations and a known source frequency.",
+          "decisive_route": "v=300, f_s=300. Approach measured375 Hz. Infer source-speed and observer-speed candidates; recession observed250 Hz. Which fits? Shortest valid route: Source u=60, recession250; observer u=75, recession225. Source model fits.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "Two distinct wavefront/encounter models may fit one observed shift."
+            },
+            "representation_translation": {
+              "score": 2,
+              "evidence": "Translate approach/recession data into medium-frame predictions."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Infer a candidate speed per model, predict a second measurement and reject incompatible model."
+            },
+            "algebra_computational_load": {
+              "score": 1,
+              "evidence": "Coupled ratio calculations."
+            },
+            "trap_exception_sensitivity": {
+              "score": 2,
+              "evidence": "Acoustic source/observer motion asymmetry is decisive."
+            }
+          }
+        },
+        {
+          "id": "PH08-13-B01-D3-REPRESENT-01",
+          "task_identity": "G9-B01-PH08-13-REPRESENT-R1",
+          "band": "D3",
+          "primary_operation": "REPRESENT",
+          "blueprint_cell": "D3.5",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Construct displacement-node mode diagrams and associated spectral sequences for distinct ideal boundary conditions, preserving pressure/displacement distinctions.",
+          "decisive_route": "v=320, L=0.8 m. Draw first two displacement modes for open-open and closed-open tubes and label frequencies. Shortest valid route: Open-open200,400 Hz; closed-open100,300 Hz; antinode both ends vs node/antinode.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 1,
+              "evidence": "Identify ideal open-open and closed-open boundaries."
+            },
+            "representation_translation": {
+              "score": 2,
+              "evidence": "Translate node/antinode diagrams into wavelength and frequency families."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Construct first modes, compare peaks and check a changed boundary."
+            },
+            "algebra_computational_load": {
+              "score": 1,
+              "evidence": "Routine mode and frequency ratios."
+            },
+            "trap_exception_sensitivity": {
+              "score": 1,
+              "evidence": "Pressure and displacement node types are complementary."
+            }
+          }
+        },
+        {
+          "id": "PH08-13-B01-D4-SYNTHESIZE-01",
+          "task_identity": "G9-B01-PH08-13-SYNTHESIZE-R1",
+          "band": "D4",
+          "primary_operation": "SYNTHESIZE",
+          "blueprint_cell": "D4.6",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Combine moving-source frequency reconstruction with rival resonator boundary models and a second forcing condition to discriminate mode compatibility.",
+          "decisive_route": "v=300, source f_s=240 moves toward tube at60. Two candidate tubes have open-open L=0.5 m and closed-open L=0.25 m. Both fundamental300. If forcing changes to600, compare modes. Shortest valid route: First received300, both match. 600 is second open-open mode, not closed-open odd sequence; strong 600 response supports open-open if mode conditions hold.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "Choose Doppler shift and competing resonance boundary models."
+            },
+            "representation_translation": {
+              "score": 2,
+              "evidence": "Coordinate source wavefront spacing, tube length and mode sequence."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Calculate two forcing frequencies, enumerate candidate modes, test independent response and qualify inference."
+            },
+            "algebra_computational_load": {
+              "score": 1,
+              "evidence": "Multiple coupled frequency and ratio calculations."
+            },
+            "trap_exception_sensitivity": {
+              "score": 2,
+              "evidence": "One resonance frequency can fit multiple geometries; additional response or boundary data matters."
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "science_records": [
+    {
+      "id": "PH08-13-SCI-01",
+      "claim": "Moving-source Doppler shifts follow wavefront spacing in the medium; standing-wave frequencies depend on boundary conditions, and resonance is strong response to suitable forcing.",
+      "law_or_model": "Stationary medium, moving source: λ_ahead=(v−u_s)/f_s; f_obs=v/λ_ahead for stationary observer. Ideal fixed-fixed/open-open f_n=nv/(2L); ideal closed-open f_n=(2n−1)v/(4L), n≥1.",
+      "assumptions": [
+        "Explicit EXTENSION, not an asserted compulsory NSEJS topic.",
+        "Stationary homogeneous medium, subsonic source, collinear motion and stationary observer unless stated otherwise."
+      ],
+      "conditions_and_limits": [
+        "Explicit EXTENSION, not an asserted compulsory NSEJS topic.",
+        "Stationary homogeneous medium, subsonic source, collinear motion and stationary observer unless stated otherwise.",
+        "Ideal string/air-column boundary models; open end corrections, damping and real geometry ignored only as stipulated.",
+        "Observed peaks may be missing because of excitation/detection; resonance does not by itself establish unique boundary or mode."
+      ],
+      "units_and_signs": "v,u_s m/s, f Hz, L and λ m; source motion positive toward observer in the stated ahead-of-source case; node type (displacement or pressure) specified.",
+      "source_refs": [
+        "PH08-CBSE-2026-SOUND"
+      ],
+      "qualification_status": "HOLD"
+    }
+  ],
+  "topic_adapter": {
+    "adapter_id": "PHYS-TOPIC-PH08",
+    "topic_id": "PH08",
+    "version": "0.3.2-b01.8.ph08-13",
+    "for_blueprint": "PHYS-QRT-BLUEPRINT 0.2.0",
+    "status": "CANDIDATE_ONLY",
+    "cells": [
+      {
+        "cell_id": "D4.4",
+        "instance_ids": [
+          "PH08-13-B01-D4-MODEL-01"
+        ]
+      },
+      {
+        "cell_id": "D3.5",
+        "instance_ids": [
+          "PH08-13-B01-D3-REPRESENT-01"
+        ]
+      },
+      {
+        "cell_id": "D4.6",
+        "instance_ids": [
+          "PH08-13-B01-D4-SYNTHESIZE-01"
+        ]
+      }
+    ]
+  },
+  "core1a": [
+    {
+      "id": "PH08-13-B01-CORE1A-R1",
+      "subtopic_id": "PH08-13",
+      "covered_qrt_ids": [
+        "PH08-13-B01-D4-MODEL-01",
+        "PH08-13-B01-D3-REPRESENT-01",
+        "PH08-13-B01-D4-SYNTHESIZE-01"
+      ],
+      "phenomenon": "A moving source can change the frequency received by a stationary observer, while a stationary resonator selects particular vibration modes.",
+      "scientific_narrative": "EXTENSION — quantitative Doppler effect, standing waves and resonance are higher-level comparison material, not established compulsory NSEJS content. The Doppler effect is a change in observed frequency when source and observer motion alter the rate of arriving wavefronts. Work in the rest frame of a stationary medium. A source emitting at frequency f_s emits successive wavefronts separated in time by T_s=1/f_s. During that period a previous wavefront advances vT_s; if the source moves toward a stationary observer by u_sT_s, the next wavefront starts closer to the previous one. Ahead of a subsonic source, their spacing is (v−u_s)T_s. A stationary observer sees wavefronts pass at speed v, so f_obs=vf_s/(v−u_s). Behind the source the spacing is (v+u_s)T_s and the observed frequency is lower. These expressions assume uniform straight motion and a stationary medium, with source speed below wave speed.\n\nA moving observer with stationary source is a different model. The emitted spacing remains v/f_s in the medium; an observer moving toward the wavefronts meets them at a greater relative speed, giving f_obs=(v+u_o)f_s/v for that specified geometry. Do not treat source and observer speeds as interchangeable in all acoustic cases. If motion directions or medium flow differ, derive the arrival rate using a consistent frame. Amplitude or intensity changes alone do not establish Doppler frequency shifts.\n\nStanding waves arise from superposition of oppositely travelling waves of the same frequency under suitable boundary conditions. In an ideal fixed-end string, displacement nodes are at both ends. Allowed wavelengths satisfy L=nλ/2, giving f_n=nv/(2L). In an ideal open-open air column, displacement antinodes occur near both open ends, with the same frequency sequence in the simple model. In an ideal closed-open air column, displacement node at the closed end and antinode at the open end give L=(2n−1)λ/4, so only odd multiples of the lowest frequency occur. Pressure boundary descriptions are complementary; do not mix pressure nodes with displacement nodes. Real air columns have end corrections and losses.\n\nResonance occurs when periodic forcing excites a mode efficiently near its natural frequency. Damping affects the strength and width of the response; the driving frequency determines steady forced oscillation frequency in a linear model. A large amplitude need not prove a particular mode unless the mode shape, boundary conditions and excitation are known. If only some spectral peaks are visible, missing modes may be weakly excited or below threshold rather than forbidden. A mode identification problem must compare complete candidate frequency sets and additional mode-shape evidence.\n\nAdvanced reasoning connects frequency shifts with mode selection without conflating the two mechanisms. A moving source can deliver a shifted forcing frequency to a stationary resonator. Determine wavefront spacing first, then compare the received frequency with the possible modes of the resonator. A stationary instrument with a changed length can produce a different natural frequency without any Doppler shift. Independent source motion or boundary evidence distinguishes these models. The tasks use explicitly supplied ideal formulas; no exact matching Core2 question was found in the inspected bank.",
+      "prerequisites": [
+        "PH08-05",
+        "PH08-06",
+        "PH08-11"
+      ],
+      "derivation_steps": [
+        {
+          "action": "Draw successive emissions and motion relative to the medium.",
+          "why_valid": "Source motion changes front spacing; observer motion changes encounter rate.",
+          "science_ref_id": "PH08-13-SCI-01"
+        },
+        {
+          "action": "Compute received frequency using the appropriate wavefront model.",
+          "why_valid": "Do not apply moving-source and moving-observer expressions interchangeably.",
+          "science_ref_id": "PH08-13-SCI-01"
+        },
+        {
+          "action": "Draw displacement nodes/antinodes and derive allowed wavelength family.",
+          "why_valid": "Boundary type determines half-wave versus odd-quarter-wave condition.",
+          "science_ref_id": "PH08-13-SCI-01"
+        },
+        {
+          "action": "Compare received forcing with mode predictions and check independent evidence.",
+          "why_valid": "A frequency match is conditional evidence of resonance, not unique identification of all properties.",
+          "science_ref_id": "PH08-13-SCI-01"
+        }
+      ],
+      "model_limits": [
+        "Explicit EXTENSION, not an asserted compulsory NSEJS topic.",
+        "Stationary homogeneous medium, subsonic source, collinear motion and stationary observer unless stated otherwise.",
+        "Ideal string/air-column boundary models; open end corrections, damping and real geometry ignored only as stipulated.",
+        "Observed peaks may be missing because of excitation/detection; resonance does not by itself establish unique boundary or mode."
+      ],
+      "progressive_examples": [
+        {
+          "id": "PH08-13-B01-EX1",
+          "tier": "FOUNDATION",
+          "problem": "A stationary observer is ahead of source f_s=300 Hz moving at30 m/s in medium v=330 m/s. Find observed f.",
+          "reasoning": "330 Hz.",
+          "independent_check": "λ_ahead=(330−30)/300=1 m; v/λ=330 Hz."
+        },
+        {
+          "id": "PH08-13-B01-EX2",
+          "tier": "CONNECTED",
+          "problem": "An ideal closed-open tube length0.5 m, sound speed340 m/s. Find first two allowed frequencies.",
+          "reasoning": "170 and510 Hz.",
+          "independent_check": "Odd multiples of170; next is third harmonic."
+        },
+        {
+          "id": "PH08-13-B01-EX3",
+          "tier": "ADVANCED",
+          "problem": "A 300 Hz source approaches a stationary resonator at30 m/s with v=330. Ideal open-open tube L=0.5 m. Is received forcing at a mode?",
+          "reasoning": "Received330 Hz; tube fundamental330 Hz, match under ideal model.",
+          "independent_check": "Verify f_1=v/(2L)=330."
+        }
+      ],
+      "figures": [
+        {
+          "id": "PH08-13-FIG-01",
+          "reasoning_step": "Moving-source wavefronts and resonator boundaries",
+          "scene_description": "Wavefronts ahead of a moving source are closer; an ideal closed-open tube has a displacement node and antinode at opposite ends. Original inline SVG.",
+          "source_or_authorship": "ORIGINAL_B01_SVG_INLINE"
+        }
+      ],
+      "misconception": {
+        "wrong_model": "Source and observer motion produce identical formulas, every tube allows every harmonic, and every large signal proves resonance.",
+        "diagnostic": "Does a moving observer change the spacing emitted into stationary air? Which end of a closed-open tube is a displacement node?",
+        "repair": "Derive wavefront spacing or encounter rate separately; impose the actual boundary conditions and compare frequency/mode evidence."
+      },
+      "exit_check": {
+        "task": "Ideal closed-open tube has fundamental100 Hz. Is 200 Hz an allowed ideal mode?",
+        "answer": "No; allowed sequence100,300,500,… Hz.",
+        "reasoning": "Odd-quarter-wave boundary condition."
+      },
+      "authorship_status": "DRAFT_AUTHOR_EXPOSED"
+    }
+  ],
+  "core1b": [
+    {
+      "id": "PH08-13-B01-MAIN-MODEL-R2",
+      "kind": "MAIN",
+      "subtopic_id": "PH08-13",
+      "qrt_target_id": "PH08-13-B01-D4-MODEL-01",
+      "fresh_task": "Medium v=340 m/s, source rest frequency340 Hz. An approaching configuration produces425 Hz. Either source moves and observer stationary, or observer moves and source stationary, at constant speed magnitude in each model. Reverse the motion; observed frequency is approximately283.333 Hz. Infer speeds and test both models.",
+      "protected_work": "Discriminate moving-source and moving-observer Doppler models using independent approach/recession observations and a known source frequency.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether the same approach shift can be produced by both types of motion.",
+        "attempt": "Medium v=340 m/s, source rest frequency340 Hz. An approaching configuration produces425 Hz. Either source moves and observer stationary, or observer moves and source stationary, at constant speed magnitude in each model. Reverse the motion; observed frequency is approximately283.333 Hz. Infer speeds and test both models.",
+        "reconstruct": "Moving source u=68; recession340²/(408)=283.333 Hz. Moving observer u=85; recession255 Hz. Source model fits rounded measurement. Only stated models compared.",
+        "diagnose": "Locate where you applied one formula to both cases or assumed the same inferred physical speed from the same frequency shift.",
+        "repair": "Derive front spacing for source motion and encounter rate for observer motion, fit each approach result, then predict recession independently.",
+        "boundary_test": "If the recession frequency were instead255 Hz, which stated model would fit?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH08-13-B01-INSTANCE-MODEL-R2",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH08-13",
+      "qrt_target_id": "PH08-13-B01-D4-MODEL-01",
+      "fresh_task": "v=330 m/s, emitted f_s=330 Hz. Approach frequency440 Hz. Rival models: moving source or moving observer, other stationary. With same speed magnitude reversed, observed recession220 Hz. Infer both speeds and compare predictions.",
+      "protected_work": "Discriminate moving-source and moving-observer Doppler models using independent approach/recession observations and a known source frequency.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether the reversed-motion observation will distinguish the two candidate explanations.",
+        "attempt": "v=330 m/s, emitted f_s=330 Hz. Approach frequency440 Hz. Rival models: moving source or moving observer, other stationary. With same speed magnitude reversed, observed recession220 Hz. Infer both speeds and compare predictions.",
+        "reconstruct": "Source u=82.5 m/s, recession264 Hz; observer u=110 m/s, recession220 Hz. Observer model fits. A single approach value did not distinguish them.",
+        "diagnose": "Locate where you applied one formula to both cases or assumed the same inferred physical speed from the same frequency shift.",
+        "repair": "Derive front spacing for source motion and encounter rate for observer motion, fit each approach result, then predict recession independently.",
+        "boundary_test": "If the reversal changes speed magnitude unknown, can the second reading still distinguish the original models uniquely?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH08-13-B01-MAIN-REPRESENT-R2",
+      "kind": "MAIN",
+      "subtopic_id": "PH08-13",
+      "qrt_target_id": "PH08-13-B01-D3-REPRESENT-01",
+      "fresh_task": "Two ideal air columns length0.6 m, v=360 m/s: one open at both ends, one closed at one end. Draw first two allowed displacement modes and aligned frequency spectra, identifying each end type.",
+      "protected_work": "Construct displacement-node mode diagrams and associated spectral sequences for distinct ideal boundary conditions, preserving pressure/displacement distinctions.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict which tube has the lower fundamental and whether its second allowed mode is twice its first.",
+        "attempt": "Two ideal air columns length0.6 m, v=360 m/s: one open at both ends, one closed at one end. Draw first two allowed displacement modes and aligned frequency spectra, identifying each end type.",
+        "reconstruct": "Open-open f=300,600 Hz, displacement antinodes at ends. Closed-open f=150,450 Hz, displacement node closed end, antinode open end. Draw half-wave and full-wave vs quarter and three-quarter wavelengths.",
+        "diagnose": "Check node type, end boundary and whether you assigned all integer harmonics to a closed-open tube.",
+        "repair": "Sketch the allowable quarter/half wave patterns with explicit end conditions, then derive each spectral line from wavelength.",
+        "boundary_test": "If the diagrams instead show pressure variation, what changes at the ends?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH08-13-B01-INSTANCE-REPRESENT-R2",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH08-13",
+      "qrt_target_id": "PH08-13-B01-D3-REPRESENT-01",
+      "fresh_task": "At v=340 m/s, an ideal open-open tube length0.85 m and a closed-open tube length0.425 m are compared. Draw first two mode families and spectra; explain how equal fundamentals coexist with different higher modes.",
+      "protected_work": "Construct displacement-node mode diagrams and associated spectral sequences for distinct ideal boundary conditions, preserving pressure/displacement distinctions.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether the two tubes can have the same fundamental while their second allowed modes differ.",
+        "attempt": "At v=340 m/s, an ideal open-open tube length0.85 m and a closed-open tube length0.425 m are compared. Draw first two mode families and spectra; explain how equal fundamentals coexist with different higher modes.",
+        "reconstruct": "Both f_1=200 Hz. Open-open second400; closed-open second600. End displacement conditions differ despite equal fundamental.",
+        "diagnose": "Check node type, end boundary and whether you assigned all integer harmonics to a closed-open tube.",
+        "repair": "Sketch the allowable quarter/half wave patterns with explicit end conditions, then derive each spectral line from wavelength.",
+        "boundary_test": "If the open-open tube is closed at one end at unchanged length, find its new fundamental."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH08-13-B01-MAIN-SYNTHESIZE-R2",
+      "kind": "MAIN",
+      "subtopic_id": "PH08-13",
+      "qrt_target_id": "PH08-13-B01-D4-SYNTHESIZE-01",
+      "fresh_task": "v=340 m/s, f_s=240 Hz moving toward a stationary tube at68 m/s. Rival ideal tubes are open-open L=340/600 m and closed-open L=340/1200 m. Both give strong first response. Source frequency is then doubled with speed unchanged and strong response occurs at600 Hz. Identify received frequencies, allowed modes and compatible tube model.",
+      "protected_work": "Combine moving-source frequency reconstruction with rival resonator boundary models and a second forcing condition to discriminate mode compatibility.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether the first response alone distinguishes the tube models, and whether a second forcing condition could help.",
+        "attempt": "v=340 m/s, f_s=240 Hz moving toward a stationary tube at68 m/s. Rival ideal tubes are open-open L=340/600 m and closed-open L=340/1200 m. Both give strong first response. Source frequency is then doubled with speed unchanged and strong response occurs at600 Hz. Identify received frequencies, allowed modes and compatible tube model.",
+        "reconstruct": "Doppler factor340/272=1.25, frequencies300 and600. Both fundamental300; open-open allows600; closed-open allows300,900,… . Strong modal response at600 supports open-open among stated ideal models; check excitation and actual boundaries.",
+        "diagnose": "Identify whether you compared emitted instead of received frequency with resonant modes, or assumed missing response proves a forbidden mode.",
+        "repair": "Compute medium-frame received frequencies first, enumerate modes for each boundary, compare independent observations and state residual uncertainty.",
+        "boundary_test": "If strong response at600 is absent, does that alone prove closed-open?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH08-13-B01-INSTANCE-SYNTHESIZE-R2",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH08-13",
+      "qrt_target_id": "PH08-13-B01-D4-SYNTHESIZE-01",
+      "fresh_task": "v=320 m/s, source f_s=225 Hz approaches stationary resonator at80 m/s. Candidate A open-open length320/600 m; B closed-open length320/1200 m. First response strong. Raise emitted f_s to450 Hz with motion unchanged. Observed strong response at600 Hz; independently observed displacement antinodes at both ends. Infer received frequencies, compare candidates and verify conclusion.",
+      "protected_work": "Combine moving-source frequency reconstruction with rival resonator boundary models and a second forcing condition to discriminate mode compatibility.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether frequency evidence and end-motion evidence will support the same candidate, or could conflict.",
+        "attempt": "v=320 m/s, source f_s=225 Hz approaches stationary resonator at80 m/s. Candidate A open-open length320/600 m; B closed-open length320/1200 m. First response strong. Raise emitted f_s to450 Hz with motion unchanged. Observed strong response at600 Hz; independently observed displacement antinodes at both ends. Infer received frequencies, compare candidates and verify conclusion.",
+        "reconstruct": "Doppler factor320/240=4/3; received300 then600. Both fundamental300; A second600 and antinodes both ends. B next900 and closed end node. Both independent observations support A under stated model.",
+        "diagnose": "Identify whether you compared emitted instead of received frequency with resonant modes, or assumed missing response proves a forbidden mode.",
+        "repair": "Compute medium-frame received frequencies first, enumerate modes for each boundary, compare independent observations and state residual uncertainty.",
+        "boundary_test": "If only the 300 Hz response were observed and end information unavailable, what remains?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    }
+  ],
+  "core2_sources": [],
+  "acceptance": {
+    "b1_b7": {
+      "B1": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B2": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B3": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B4": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B5": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B6": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B7": {
+        "status": "HOLD",
+        "evidence_refs": []
+      }
+    },
+    "gates": {
+      "source_authenticity": "HOLD",
+      "content_correctness": "HOLD",
+      "cognitive_qualification": "HOLD",
+      "teaching_sufficiency": "HOLD",
+      "assessment_validity": "HOLD",
+      "implementation": "NOT_RUN",
+      "release_authority": "HOLD"
+    },
+    "release": "HOLD",
+    "acceptance_note": "Isolated author-exposed candidate. No matched exact Core2 item in inspectable bank; all targets AUTHORED_TRANSFER. Unique version and R2 cycle convention; no canonical C04 selection. Separate stage criteria in B01 author handoff, not implemented runtime. Full JSON is author-exposed; B5 HOLD. Per-target MAIN provisional pending C06 adoption. No academic approval inferred from software validation. Explicit EXTENSION only: higher-level comparison and supplied ideal models, no compulsory NSEJS scope warrant; independent source/scope review pending."
+  }
+}

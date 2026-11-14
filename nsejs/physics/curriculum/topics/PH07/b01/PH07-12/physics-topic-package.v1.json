@@ -1,0 +1,483 @@
+{
+  "schema": "g9v41-nsejs-physics-topic-package/v1",
+  "subject_id": "PHYSICS",
+  "academic_track": "NSEJS",
+  "topic_id": "PH07",
+  "owner_agent": "AGENT_2",
+  "version": "0.3.2-b01.8.ph07-12",
+  "status": "DRAFT_AUTHOR_EXPOSED",
+  "pins": {
+    "contracts_version": "1.0.0",
+    "blueprint": {
+      "version": "0.2.0",
+      "git_blob_sha": "700dafcbe86d76442637bcf214eeb544497cf4ea"
+    },
+    "shared_qrt_28": {
+      "version": "1.0.0",
+      "git_blob_sha": "e2409aef11ae7d98444593bfbe1a38eb00c97cef"
+    },
+    "topic_adapter_version": "0.3.2-b01.8.ph07-12"
+  },
+  "syllabus_references": [
+    {
+      "reference_id": "PH07-CBSE",
+      "locator": "https://cbseacademic.nic.in/web_material/CurriculumMain27/SecPart1/ScienceSt_SecP1_2026-27.pdf",
+      "authority": "OFFICIAL_SYLLABUS",
+      "scope_status": "CANDIDATE"
+    },
+    {
+      "reference_id": "PH07-NCERT-HIST",
+      "locator": "https://sathee.iitk.ac.in/ncert-books/class-09/nb-science-09/sci-09-chapter-1-matter-in-our-surroundings/",
+      "authority": "NCERT_CBSE",
+      "scope_status": "CANDIDATE"
+    }
+  ],
+  "subtopics": [
+    {
+      "id": "PH07-12",
+      "title": "Latent heat, composite calorimeters and thermal engines",
+      "scope_role": "EXTENSION",
+      "syllabus_reference_ids": [
+        "PH07-CBSE",
+        "PH07-NCERT-HIST"
+      ],
+      "prerequisite_ids": [
+        "PH07-06",
+        "PH07-11"
+      ],
+      "science_ref_ids": [
+        "PH07-12-SCI-01"
+      ],
+      "learning_goal": "Phase-aware calorimetry uses sequential sensible and latent energy accounts; cyclic heat engines convert only part of input heat to work and reject the remainder.",
+      "textbook_chapter_ref": "nsejs/physics/curriculum/topics/PH07/b01/PH07-12/core1a.html",
+      "qrt_targets": [
+        {
+          "id": "PH07-12-B01-D4-MODEL-01",
+          "task_identity": "G9-B01-PH07-12-MODEL-R1",
+          "band": "D4",
+          "primary_operation": "MODEL",
+          "blueprint_cell": "D4.4",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Choose between partial melting and all-liquid warming by comparing available and required energy, then solve the physically admissible phase regime.",
+          "decisive_route": "Warm liquid and vessel total C=500 J/K at30 °C meet0.06 kg ice at0 °C; L=300000. Find final regime. Shortest valid route: Available15000 J, melt requirement18000 J; melts0.05 kg, remains0.01 kg at0 °C.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "Competing mixed-phase and all-liquid final-state models."
+            },
+            "representation_translation": {
+              "score": 2,
+              "evidence": "Translate initial states and vessel capacity into piecewise energy diagrams."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Calculate threshold, select regime, solve and verify phase fraction or final temperature."
+            },
+            "algebra_computational_load": {
+              "score": 1,
+              "evidence": "Multiple energy calculations."
+            },
+            "trap_exception_sensitivity": {
+              "score": 2,
+              "evidence": "Incorrect regime can yield impossible coexistence or negative mass."
+            }
+          }
+        },
+        {
+          "id": "PH07-12-B01-D4-SYNTHESIZE-01",
+          "task_identity": "G9-B01-PH07-12-SYNTHESIZE-R1",
+          "band": "D4",
+          "primary_operation": "SYNTHESIZE",
+          "blueprint_cell": "D4.6",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Connect a measured engine-cycle energy balance to a downstream phase-change calorimeter, separating rejected heat from work and independently testing the transfer model.",
+          "decisive_route": "Engine takes10000 J and does3000 J work; 60% rejection reaches ice at0 °C, L=300000. Ice mass0.02 kg. Find state. Shortest valid route: Rejected7000, delivered4200; melts0.014 kg, remains0.006.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "Choose system boundaries and heat/work accounting."
+            },
+            "representation_translation": {
+              "score": 2,
+              "evidence": "Coordinate cycle energy arrows with piecewise calorimeter state."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Infer rejection, delivered fraction, melt regime and test independent phase observation."
+            },
+            "algebra_computational_load": {
+              "score": 1,
+              "evidence": "Several coupled energy/phase calculations."
+            },
+            "trap_exception_sensitivity": {
+              "score": 2,
+              "evidence": "Rejected energy is not all captured; phase regime and efficiency constraints matter."
+            }
+          }
+        },
+        {
+          "id": "PH07-12-B01-D3-JUSTIFY-01",
+          "task_identity": "G9-B01-PH07-12-JUSTIFY-R1",
+          "band": "D3",
+          "primary_operation": "JUSTIFY",
+          "blueprint_cell": "D3.7",
+          "source_role": "AUTHORED_TRANSFER",
+          "qrt_status": "PROPOSED",
+          "protected_work": "Evaluate an energy or efficiency claim by distinguishing necessary conservation from sufficient thermodynamic or phase evidence.",
+          "decisive_route": "A cyclic engine receives1000 J, outputs1000 J work, rejects zero. Claim conservation proves possible. Shortest valid route: First-law balance holds, but a cyclic engine taking heat from a single reservoir cannot wholly convert it to work; second law matters.",
+          "factor_evidence": {
+            "concept_model_selection": {
+              "score": 2,
+              "evidence": "Competing first-law-only and full physical-constraint accounts."
+            },
+            "representation_translation": {
+              "score": 1,
+              "evidence": "Use energy and state observations as conditional evidence."
+            },
+            "reasoning_chain_length": {
+              "score": 2,
+              "evidence": "Construct counterexamples or reject infeasible claims, specify missing evidence."
+            },
+            "algebra_computational_load": {
+              "score": 0,
+              "evidence": "Arithmetic incidental."
+            },
+            "trap_exception_sensitivity": {
+              "score": 2,
+              "evidence": "Energy conservation alone cannot guarantee cyclic engine feasibility or final phase."
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "science_records": [
+    {
+      "id": "PH07-12-SCI-01",
+      "claim": "Phase-aware calorimetry uses sequential sensible and latent energy accounts; cyclic heat engines convert only part of input heat to work and reject the remainder.",
+      "law_or_model": "Q_sensible=mcΔT; Q_latent=mL; for a complete cycle W_out=Q_in−Q_out; η=W_out/Q_in. Models are higher-level enrichment.",
+      "assumptions": [
+        "Explicit EXTENSION; phase-change and engine models are not established compulsory content.",
+        "Pure ice/water at stated transition temperature and pressure, equilibrium, no evaporation unless specified, supplied constant coefficients."
+      ],
+      "conditions_and_limits": [
+        "Explicit EXTENSION; phase-change and engine models are not established compulsory content.",
+        "Pure ice/water at stated transition temperature and pressure, equilibrium, no evaporation unless specified, supplied constant coefficients.",
+        "Check energy regime before assuming all ice melts; simplified examples start ice at 0 °C and sufficient energy to reach coexistence.",
+        "Engine first-law accounting is over a complete cycle; second-law constraints and device efficiency require separate physical conditions."
+      ],
+      "units_and_signs": "Energy/work J, L J/kg, c J/(kg K), mass kg, η dimensionless; absolute temperatures K only if using thermodynamic temperature limits.",
+      "source_refs": [
+        "PH07-CBSE",
+        "PH07-NCERT-HIST"
+      ],
+      "qualification_status": "HOLD"
+    }
+  ],
+  "topic_adapter": {
+    "adapter_id": "PHYS-TOPIC-PH07",
+    "topic_id": "PH07",
+    "version": "0.3.2-b01.8.ph07-12",
+    "for_blueprint": "PHYS-QRT-BLUEPRINT 0.2.0",
+    "status": "CANDIDATE_ONLY",
+    "cells": [
+      {
+        "cell_id": "D4.4",
+        "instance_ids": [
+          "PH07-12-B01-D4-MODEL-01"
+        ]
+      },
+      {
+        "cell_id": "D4.6",
+        "instance_ids": [
+          "PH07-12-B01-D4-SYNTHESIZE-01"
+        ]
+      },
+      {
+        "cell_id": "D3.7",
+        "instance_ids": [
+          "PH07-12-B01-D3-JUSTIFY-01"
+        ]
+      }
+    ]
+  },
+  "core1a": [
+    {
+      "id": "PH07-12-B01-CORE1A-R1",
+      "subtopic_id": "PH07-12",
+      "covered_qrt_ids": [
+        "PH07-12-B01-D4-MODEL-01",
+        "PH07-12-B01-D4-SYNTHESIZE-01",
+        "PH07-12-B01-D3-JUSTIFY-01"
+      ],
+      "phenomenon": "Ice can absorb a large amount of energy without warming above its melting temperature while some ice remains.",
+      "scientific_narrative": "EXTENSION — latent-heat calorimetry and thermal engines are higher-level comparisons, not established compulsory NSEJS content. An unchanged-phase sample changes temperature when it gains or loses energy, as modelled in PH07-11. During equilibrium melting at fixed pressure, adding energy can instead change the amount of liquid while temperature remains at the melting point. The latent heat of fusion L_f is energy per unit mass for melting under specified conditions. For vaporization the corresponding coefficient is L_v. These energy requirements are different from specific heat: Q=mL involves a phase fraction change, whereas Q=mcΔT describes a temperature interval within a phase.\n\nA composite calorimeter with ice and warm water must be solved by considering possible final states before applying a single equation. If ice begins below its melting point, energy first warms the ice to that point. Then energy is required to melt it. Only after all ice has melted can the resulting liquid warm above the melting temperature under the usual ideal equilibrium conditions. Warm water, vessel and any other bodies supply or absorb energy according to their own temperature changes. Do not apply one liquid specific heat to an interval crossing solid, melting and liquid stages.\n\nFor a useful decision procedure, first calculate energy available from warm bodies cooling to the transition temperature, including vessel capacity and accounted external transfer. Compare it with energy needed to warm the cold solid to the transition temperature and melt it. If enough energy reaches the transition but not enough melts all solid, the final equilibrium has both phases at the transition temperature; calculate the melted mass from the remaining energy. If exactly enough melts all solid, the final liquid can be at the transition temperature. If extra energy remains, solve the final liquid warming balance including all participating capacities. If energy is insufficient even to reach the transition, another sub-transition state model may be needed; for water, cooling/freezing of initially liquid water can matter. Do not use the simplified procedure outside its stated regime.\n\nA different kind of energy balance applies to a cyclic heat engine. During a complete cycle the working substance returns to its initial state, so its internal energy change is zero. For a model receiving heat Q_in and rejecting Q_out, net work delivered is W_out=Q_in−Q_out. Thermal efficiency is W_out/Q_in. An ordinary heat engine operating between thermal reservoirs cannot convert all heat from one reservoir into net work in a cycle; the second law constrains it, not just the first-law balance. This unit uses energy accounting and efficiency only; detailed Carnot bounds and cycles are not required. An engine's rejected heat can warm a separate body, but that is another system; count energy transfer once, not as both work and heat.\n\nThe advanced task is selecting the phase regime or energy-system boundary, then checking a proposed observation independently. A final temperature at melting does not reveal whether all ice has melted without phase or energy evidence. A claimed engine efficiency does not follow from output work alone unless input is known. These authored constructions are not direct exam admissions; no exact Core2 item was located.",
+      "prerequisites": [
+        "PH07-06",
+        "PH07-11"
+      ],
+      "derivation_steps": [
+        {
+          "action": "List phases and initial temperatures; identify possible final regimes.",
+          "why_valid": "Sensible heating and latent energy are different terms.",
+          "science_ref_id": "PH07-12-SCI-01"
+        },
+        {
+          "action": "Compare energy available at transition temperature with energy required for phase conversion.",
+          "why_valid": "The comparison determines whether a mixed-phase or all-liquid model is valid.",
+          "science_ref_id": "PH07-12-SCI-01"
+        },
+        {
+          "action": "Solve only the appropriate regime and verify phase fraction and energy balance.",
+          "why_valid": "A negative melt mass or an above-transition equilibrium with remaining ice is inconsistent under assumptions.",
+          "science_ref_id": "PH07-12-SCI-01"
+        },
+        {
+          "action": "For an engine draw separate heat input, rejection and work arrows over a cycle.",
+          "why_valid": "The working substance returns to its initial state; rejected energy is not work.",
+          "science_ref_id": "PH07-12-SCI-01"
+        }
+      ],
+      "model_limits": [
+        "Explicit EXTENSION; phase-change and engine models are not established compulsory content.",
+        "Pure ice/water at stated transition temperature and pressure, equilibrium, no evaporation unless specified, supplied constant coefficients.",
+        "Check energy regime before assuming all ice melts; simplified examples start ice at 0 °C and sufficient energy to reach coexistence.",
+        "Engine first-law accounting is over a complete cycle; second-law constraints and device efficiency require separate physical conditions."
+      ],
+      "progressive_examples": [
+        {
+          "id": "PH07-12-B01-EX1",
+          "tier": "FOUNDATION",
+          "problem": "0.05 kg ice at0 °C melts completely; L_f=334000 J/kg. Find required energy.",
+          "reasoning": "16700 J.",
+          "independent_check": "Mass × latent coefficient."
+        },
+        {
+          "id": "PH07-12-B01-EX2",
+          "tier": "CONNECTED",
+          "problem": "Warm water plus vessel releases10020 J cooling to0 °C. Ice at0 °C has mass0.05 kg; L_f=334000. Find final state.",
+          "reasoning": "0.03 kg melts, 0.02 kg ice remains; equilibrium0 °C.",
+          "independent_check": "Available energy <16700 J needed for all ice."
+        },
+        {
+          "id": "PH07-12-B01-EX3",
+          "tier": "ADVANCED",
+          "problem": "An engine absorbs2000 J and rejects1500 J per cycle. Find work and efficiency.",
+          "reasoning": "500 J, 25%.",
+          "independent_check": "Energy balance 2000=1500+500; not all heat becomes work."
+        }
+      ],
+      "figures": [
+        {
+          "id": "PH07-12-FIG-01",
+          "reasoning_step": "Piecewise energy and cyclic engine balances",
+          "scene_description": "Melting consumes energy at fixed temperature; a complete engine cycle separates work and rejected heat. Original inline SVG.",
+          "source_or_authorship": "ORIGINAL_B01_SVG_INLINE"
+        }
+      ],
+      "misconception": {
+        "wrong_model": "Every calorimetry task can be solved using one mcΔT equation; an engine can turn all input heat into work because energy is conserved.",
+        "diagnostic": "Can ice remain at 0 °C with added energy? Does conservation alone establish a physically possible cyclic engine?",
+        "repair": "Choose phase regime before calculating; distinguish first-law accounting from second-law feasibility."
+      },
+      "exit_check": {
+        "task": "An engine receives1200 J, rejects900 J per cycle. Find work and efficiency.",
+        "answer": "300 J, 25%.",
+        "reasoning": "Net work=1200−900; fraction300/1200."
+      },
+      "authorship_status": "DRAFT_AUTHOR_EXPOSED"
+    }
+  ],
+  "core1b": [
+    {
+      "id": "PH07-12-B01-MAIN-MODEL-R2",
+      "kind": "MAIN",
+      "subtopic_id": "PH07-12",
+      "qrt_target_id": "PH07-12-B01-D4-MODEL-01",
+      "fresh_task": "Warm water and vessel have total C=800 J/K at25 °C. Add0.05 kg ice at0 °C. Given L_f=300000 J/kg, c_water=4000 J/(kg K), negligible loss. Determine phase regime and equilibrium T.",
+      "protected_work": "Choose between partial melting and all-liquid warming by comparing available and required energy, then solve the physically admissible phase regime.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether all ice melts before any final temperature above zero can occur.",
+        "attempt": "Warm water and vessel have total C=800 J/K at25 °C. Add0.05 kg ice at0 °C. Given L_f=300000 J/kg, c_water=4000 J/(kg K), negligible loss. Determine phase regime and equilibrium T.",
+        "reconstruct": "Available20000 J, melt15000 J; all ice melts, surplus5000 J warms total C=1000 J/K, final5 °C. Check original warm bodies lose16000 J, ice melts15000 and warms1000.",
+        "diagnose": "Identify whether you assumed the final phase before comparing energy available with latent requirement.",
+        "repair": "Evaluate the zero-degree energy budget first, select the valid regime, solve melt mass or liquid warming, and check conservation.",
+        "boundary_test": "If ice mass is increased to0.08 kg, what final state follows?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH07-12-B01-INSTANCE-MODEL-R2",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH07-12",
+      "qrt_target_id": "PH07-12-B01-D4-MODEL-01",
+      "fresh_task": "Water and vessel total C=600 J/K at20 °C receive0.05 kg ice at0 °C. L=300000 J/kg; c_water=4000. Determine state and amount of ice remaining, then find the critical initial warm-body temperature for complete melting at0 °C.",
+      "protected_work": "Choose between partial melting and all-liquid warming by comparing available and required energy, then solve the physically admissible phase regime.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether the 20 °C initial state supplies enough energy for complete melting.",
+        "attempt": "Water and vessel total C=600 J/K at20 °C receive0.05 kg ice at0 °C. L=300000 J/kg; c_water=4000. Determine state and amount of ice remaining, then find the critical initial warm-body temperature for complete melting at0 °C.",
+        "reconstruct": "Available12000 J, need15000; melt0.04 kg, remain0.01 kg; final0 °C. Critical temperature25 °C.",
+        "diagnose": "Identify whether you assumed the final phase before comparing energy available with latent requirement.",
+        "repair": "Evaluate the zero-degree energy budget first, select the valid regime, solve melt mass or liquid warming, and check conservation.",
+        "boundary_test": "If initial warm-body T=30 °C, find final equilibrium temperature."
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH07-12-B01-MAIN-SYNTHESIZE-R2",
+      "kind": "MAIN",
+      "subtopic_id": "PH07-12",
+      "qrt_target_id": "PH07-12-B01-D4-SYNTHESIZE-01",
+      "fresh_task": "A cyclic engine receives20000 J and delivers5000 J work. A measured fraction 80% of its rejected heat reaches0.05 kg ice at0 °C, L=300000 J/kg. Determine efficiency, calorimeter phase state and predicted melted mass; observed melt is0.035 kg exactly. Test the stated transfer model.",
+      "protected_work": "Connect a measured engine-cycle energy balance to a downstream phase-change calorimeter, separating rejected heat from work and independently testing the transfer model.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether the engine's work or its rejected heat is the relevant input to the ice calorimeter.",
+        "attempt": "A cyclic engine receives20000 J and delivers5000 J work. A measured fraction 80% of its rejected heat reaches0.05 kg ice at0 °C, L=300000 J/kg. Determine efficiency, calorimeter phase state and predicted melted mass; observed melt is0.035 kg exactly. Test the stated transfer model.",
+        "reconstruct": "η25%, rejection15000 J, captured12000 J; melt0.04 kg, remains0.01; observation implies10500 J, residual1500 J. Exact model inconsistent, not unique cause.",
+        "diagnose": "Check whether engine work was counted as rejected heat, whether captured fraction was applied, and whether the final phase was chosen correctly.",
+        "repair": "Balance the engine over a cycle, trace only the stated heat capture to the calorimeter, calculate the phase budget, and test the unused observation.",
+        "boundary_test": "If capture fraction instead is70%, does the observed melt agree?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH07-12-B01-INSTANCE-SYNTHESIZE-R2",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH07-12",
+      "qrt_target_id": "PH07-12-B01-D4-SYNTHESIZE-01",
+      "fresh_task": "A complete engine cycle absorbs18000 J, rejects12000 J; 75% of rejected heat reaches a vessel with0.02 kg ice at0 °C and negligible vessel capacity. L=300000, c_water=4000. Predict work, efficiency and final state. A separate probe reports final liquid20 °C. Test consistency.",
+      "protected_work": "Connect a measured engine-cycle energy balance to a downstream phase-change calorimeter, separating rejected heat from work and independently testing the transfer model.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether all ice melts and whether the temperature reading can independently check the transfer model.",
+        "attempt": "A complete engine cycle absorbs18000 J, rejects12000 J; 75% of rejected heat reaches a vessel with0.02 kg ice at0 °C and negligible vessel capacity. L=300000, c_water=4000. Predict work, efficiency and final state. A separate probe reports final liquid20 °C. Test consistency.",
+        "reconstruct": "Work6000 J, η1/3; delivered9000 J, melt6000 J, surplus3000 J, water capacity80 J/K, final37.5 °C. Measured20 °C requires7600 J total, inconsistent with exact delivery; need loss/fraction data.",
+        "diagnose": "Check whether engine work was counted as rejected heat, whether captured fraction was applied, and whether the final phase was chosen correctly.",
+        "repair": "Balance the engine over a cycle, trace only the stated heat capture to the calorimeter, calculate the phase budget, and test the unused observation.",
+        "boundary_test": "If only two-thirds of rejected heat is delivered, what final T is predicted?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH07-12-B01-MAIN-JUSTIFY-R2",
+      "kind": "MAIN",
+      "subtopic_id": "PH07-12",
+      "qrt_target_id": "PH07-12-B01-D3-JUSTIFY-01",
+      "fresh_task": "Two ice-water calorimeters are both at0 °C. A report says their absorbed energies must be identical because temperatures match. Give compatible differing histories and identify an independent measurement.",
+      "protected_work": "Evaluate an energy or efficiency claim by distinguishing necessary conservation from sufficient thermodynamic or phase evidence.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Predict whether the common final temperature establishes equal energy input.",
+        "attempt": "Two ice-water calorimeters are both at0 °C. A report says their absorbed energies must be identical because temperatures match. Give compatible differing histories and identify an independent measurement.",
+        "reconstruct": "Different amounts of ice can melt at the same T; e.g. 0.01 vs0.02 kg converted at same L. Measure initial and remaining phase masses and losses.",
+        "diagnose": "Locate the inference from a necessary energy balance to a unique phase state or physically possible cyclic process.",
+        "repair": "State the appropriate system and additional phase/thermodynamic condition; provide a counterexample or explicit missing observation.",
+        "boundary_test": "If both samples are fully liquid at0 °C with identical initial ice masses and states and no leakage, can required energy differ under the model?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH07-12-B01-INSTANCE-JUSTIFY-R2",
+      "kind": "INSTANCE",
+      "subtopic_id": "PH07-12",
+      "qrt_target_id": "PH07-12-B01-D3-JUSTIFY-01",
+      "fresh_task": "A proposed ordinary cyclic heat engine between reservoirs takes heat from a single hot reservoir and claims 100% conversion to work with no other effect. The developer argues that Q_in=W satisfies conservation. Assess the argument and distinguish energy-balance consistency from physical feasibility.",
+      "protected_work": "Evaluate an energy or efficiency claim by distinguishing necessary conservation from sufficient thermodynamic or phase evidence.",
+      "differs_from_worked_anchor": true,
+      "stages": {
+        "predict": "Would you accept conservation alone as evidence that the proposed cyclic device is physically possible?",
+        "attempt": "A proposed ordinary cyclic heat engine between reservoirs takes heat from a single hot reservoir and claims 100% conversion to work with no other effect. The developer argues that Q_in=W satisfies conservation. Assess the argument and distinguish energy-balance consistency from physical feasibility.",
+        "reconstruct": "First-law equality is necessary but not sufficient; a cyclic engine cannot have sole effect of extracting heat from one reservoir and converting it entirely into work. Need rejected heat/other effects and second-law feasibility, not merely bookkeeping.",
+        "diagnose": "Locate the inference from a necessary energy balance to a unique phase state or physically possible cyclic process.",
+        "repair": "State the appropriate system and additional phase/thermodynamic condition; provide a counterexample or explicit missing observation.",
+        "boundary_test": "If an engine receives2000 J and delivers500 J work, what does first-law cyclic balance require for net heat rejected in the stated two-transfer model?"
+      },
+      "attempt_policy": {
+        "save_first_answer_before_hint": true,
+        "track_help_exposure": true,
+        "preserve_original_revision": true,
+        "fail_closed_on_storage_error": true
+      },
+      "runtime_verification": "NOT_RUN"
+    }
+  ],
+  "core2_sources": [],
+  "acceptance": {
+    "b1_b7": {
+      "B1": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B2": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B3": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B4": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B5": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B6": {
+        "status": "HOLD",
+        "evidence_refs": []
+      },
+      "B7": {
+        "status": "HOLD",
+        "evidence_refs": []
+      }
+    },
+    "gates": {
+      "source_authenticity": "HOLD",
+      "content_correctness": "HOLD",
+      "cognitive_qualification": "HOLD",
+      "teaching_sufficiency": "HOLD",
+      "assessment_validity": "HOLD",
+      "implementation": "NOT_RUN",
+      "release_authority": "HOLD"
+    },
+    "release": "HOLD",
+    "acceptance_note": "Isolated author-exposed candidate. No matched exact Core2 item in inspectable bank; all targets AUTHORED_TRANSFER. Unique version and R2 cycle convention; no canonical C04 selection. Separate stage criteria in B01 author handoff, not implemented runtime. Full JSON is author-exposed; B5 HOLD. Per-target MAIN provisional pending C06 adoption. No academic approval inferred from software validation. Explicit EXTENSION only: higher-level comparison and supplied ideal models, no compulsory NSEJS scope warrant; independent source/scope review pending."
+  }
+}

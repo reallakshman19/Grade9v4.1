@@ -1,0 +1,172 @@
+{
+  "schema": "b01-source-locator-transfer-proposal/v1",
+  "status": "AUTHOR_EXPOSED_NOT_INDEPENDENTLY_QUALIFIED",
+  "subtopic_id": "PH07-09",
+  "scope_role": "PREREQUISITE_BRIDGE",
+  "source": {
+    "locator_id": "NSEJS-2018-JS511-Q20",
+    "year": 2018,
+    "session": "2018-19",
+    "exam_date": null,
+    "paper_code": "JS511",
+    "question_number": 20,
+    "printed_page": 6,
+    "subject": "PHYSICS",
+    "paper_url": "https://mail.iapt.org.in/images/nse2018/QP-NSEJS--JS511.pdf",
+    "visual_copy_url": "https://www.nsejs.com/wp-content/uploads/2024/11/nsejs-2018.pdf",
+    "final_key_url": "https://iapt.org.in/wp-content/uploads/Final-answer-keys-for-NSEJS.pdf",
+    "publisher_key": [
+      "C"
+    ],
+    "publisher_disposition": "KEY_OBSERVED",
+    "paper_visual_status": "PUBLISHER_TEXT_AND_MATCHING_ARCHIVE_PAGE_VISUALLY_INSPECTED",
+    "key_visual_status": "FINAL_KEY_VISUALLY_INSPECTED",
+    "source_bytes_sha256": null,
+    "rights_status": "HOLD",
+    "exact_source_revision_status": "HOLD",
+    "academic_admission": "HOLD",
+    "source_band": "NOT_QUALIFIED",
+    "map_binding": null,
+    "bank_binding": null,
+    "bank_identity_conflict": [],
+    "subtopic_id": "PH07-09",
+    "reasoning_observation": "Publisher key says overflow on heating and cooling from 4 °C. Water volume grows away from density maximum, but container capacity may change too; relative volumes determine actual overflow. R01 review of assumption."
+  },
+  "related_source_observations": [
+    {
+      "locator_id": "NSEJS-2018-JS511-Q9",
+      "year": 2018,
+      "session": "2018-19",
+      "exam_date": null,
+      "paper_code": "JS511",
+      "question_number": 9,
+      "printed_page": 4,
+      "subject": "PHYSICS",
+      "paper_url": "https://mail.iapt.org.in/images/nse2018/QP-NSEJS--JS511.pdf",
+      "visual_copy_url": "https://www.nsejs.com/wp-content/uploads/2024/11/nsejs-2018.pdf",
+      "final_key_url": "https://iapt.org.in/wp-content/uploads/Final-answer-keys-for-NSEJS.pdf",
+      "publisher_key": [
+        "C"
+      ],
+      "publisher_disposition": "KEY_OBSERVED",
+      "paper_visual_status": "PUBLISHER_TEXT_AND_MATCHING_ARCHIVE_PAGE_VISUALLY_INSPECTED",
+      "key_visual_status": "FINAL_KEY_VISUALLY_INSPECTED",
+      "source_bytes_sha256": null,
+      "rights_status": "HOLD",
+      "exact_source_revision_status": "HOLD",
+      "academic_admission": "HOLD",
+      "source_band": "NOT_QUALIFIED",
+      "map_binding": {
+        "question_uid": "g9:pcb:physics:nsejs-magnetism-terminal-d3-r1:001",
+        "content_revision_sha256": "9cc932980c436764e943a3aab6ba478f2ac9a374e12a0109aa259ce77bc87214",
+        "proposed_operation": "SYNTHESIZE",
+        "identity_status": "METADATA_MATCH_ONLY_EXACT_CONTENT_HOLD"
+      },
+      "bank_binding": null,
+      "bank_identity_conflict": [
+        {
+          "claimed_id": "NSEJS-2018-P-Q09",
+          "source_id": "NSEJS-18-MAG-01",
+          "topic": "MAGNETISM_AND_EMI",
+          "reason": "Exact locator number is not sufficient; JS511 Q9 is expansion, not this magnetic-braking stem.",
+          "status": "REJECTED_IDENTITY_BINDING"
+        }
+      ],
+      "subtopic_id": "PH07-09",
+      "reasoning_observation": "The product αΔT is dimensionless, hence α in K⁻¹. Exact JS511 stem contradicts the same-number bank magnetic-braking claim; no identity binding."
+    }
+  ],
+  "prerequisite_support": [
+    "PH07-10",
+    "PH07-11"
+  ],
+  "existing_package_pin": {
+    "path": "nsejs/physics/curriculum/topics/PH07/b01/PH07-09/physics-topic-package.v1.json",
+    "blob": "cbebfdc90c1a8aea35fa446c69dfe25cb1ef22a0",
+    "version": "0.3.2-b01.7.ph07-09"
+  },
+  "target": {
+    "id": "PH07-09-B01-NSEJS-2018-JS511-Q20-D4-MODEL-R1",
+    "band": "D4",
+    "cell": "D4.4",
+    "primary_operation": "MODEL",
+    "task_identity": "PH07-09-B01-NSEJS-2018-JS511-Q20-D4-MODEL-R1",
+    "source_role": "AUTHORED_TRANSFER",
+    "protected_work": "Discriminate rigid-vessel and expanding-vessel models using independent density and capacity data and physically admissible overflow measurements.",
+    "decisive_route": "A full 200 cm³ vessel with200 g liquid reaches density .995 g/cm³ and capacity202 cm³. Compare rigid vs expanding model. Shortest valid route: No-spill volume≈201.005; rigid spill1 g, expanding no spill and≈0.995 cm³ headspace.",
+    "factor_evidence": {
+      "concept_model_selection": {
+        "score": 2,
+        "evidence": "Rival capacity models fit some observations"
+      },
+      "representation_translation": {
+        "score": 2,
+        "evidence": "Coordinate liquid mass/density with vessel expansion and overflow constraint"
+      },
+      "reasoning_chain_length": {
+        "score": 2,
+        "evidence": "Predict both signs, lost mass and reserved test"
+      },
+      "algebra_computational_load": {
+        "score": 1,
+        "evidence": "Several coupled volume computations"
+      },
+      "trap_exception_sensitivity": {
+        "score": 2,
+        "evidence": "Water expansion alone cannot establish overflow; overflow changes remaining mass"
+      }
+    },
+    "score": 9,
+    "status": "PROPOSED"
+  },
+  "core1a": {
+    "scientific_construction": "Near 4 °C pure water has maximum density at ordinary pressure. For fixed mass m its volume is m/ρ(T). A full vessel's internal capacity also changes with temperature. In a specified freely expanding isotropic solid, small-strain volume capacity is approximately V₀(1+3αΔT); α has unit K⁻¹. Compare hypothetical no-spill liquid volume with actual vessel capacity at the same temperature. If the liquid is larger, overflow may occur; if smaller, headspace remains. Overflow reduces mass and subsequent states require the new mass. Use independent trials that restart at the same initial state. The supplied density table and capacity model are idealized; no claim about every real vessel.",
+    "worked_anchor": {
+      "task": "A full 1000 cm³ rigid vessel holds1000 g water. At a changed state density .999 g/cm³. Find hypothetical volume and overflow mass.",
+      "reasoning": "Volume1000/.999≈1001.001 cm³; full capacity holds999 g, so1 g overflows."
+    },
+    "model_limits": "Specified ideal or matched conditions only; supplied quantitative relations do not establish compulsory exam scope."
+  },
+  "core1b": [
+    {
+      "id": "PH07-09-B01-NSEJS-2018-JS511-Q20-D4-MODEL-R1-MAIN_PLACEHOLDER",
+      "kind": "MAIN_PLACEHOLDER",
+      "task": "Separate identical trials start with a full 500 cm³ vessel and 500 g water at4 °C. At a colder state density is .9998 g/cm³ and measured vessel capacity499.9 cm³. At a warmer state density .999 g/cm³ and capacity501 cm³. Compare rigid and measured-capacity models for both trials; predict overflow mass or headspace. A reserved warm trial shows no overflow; assess the models.",
+      "protected_work": "Discriminate rigid-vessel and expanding-vessel models using independent density and capacity data and physically admissible overflow measurements.",
+      "stages": {
+        "predict": "Predict whether water expanding away from 4 °C is sufficient by itself to guarantee overflow in both trials.",
+        "attempt": "Separate identical trials start with a full 500 cm³ vessel and 500 g water at4 °C. At a colder state density is .9998 g/cm³ and measured vessel capacity499.9 cm³. At a warmer state density .999 g/cm³ and capacity501 cm³. Compare rigid and measured-capacity models for both trials; predict overflow mass or headspace. A reserved warm trial shows no overflow; assess the models.",
+        "reconstruct": "Cold no-spill500/.9998≈500.1000; measured capacity499.9, spill mass500−499.9×.9998=.19998 g; rigid spill .1 g. Warm no-spill500/.999≈500.5005; measured501 gives headspace≈.4995 cm³, no spill; rigid spill .5 g. Warm observation rejects rigid model under exact assumptions.",
+        "diagnose": "Find the missing capacity term, overflow mass update, or use of dimensional α without temperature interval.",
+        "repair": "Compute no-spill volume, compare capacity, calculate remaining/spilled mass and use independent trial evidence.",
+        "boundary_test": "If the warm vessel instead holds500.2 cm³, what happens?"
+      },
+      "boundary_response_criterion": "Spill mass500−500.2×.999=.3002 g.",
+      "attempt_policy": "PROPOSED_ONLY_PUBLIC_AUTHOR_EXPOSED",
+      "runtime_verification": "NOT_RUN"
+    },
+    {
+      "id": "PH07-09-B01-NSEJS-2018-JS511-Q20-D4-MODEL-R1-INSTANCE",
+      "kind": "INSTANCE",
+      "task": "A full model vessel at4 °C holds1000 g water in1000 cm³. At a warmer state, density .998 g/cm³. Model X assumes unchanged capacity; Y uses independently measured capacity1003 cm³. Compare predicted overflow and test a reserved measured headspace of about .996 cm³. Then suppose a separate cold trial has density .9999 and capacity999.5 cm³; calculate spill mass.",
+      "protected_work": "Discriminate rigid-vessel and expanding-vessel models using independent density and capacity data and physically admissible overflow measurements.",
+      "stages": {
+        "predict": "Predict whether the larger measured capacity can prevent overflow despite a decreased water density.",
+        "attempt": "A full model vessel at4 °C holds1000 g water in1000 cm³. At a warmer state, density .998 g/cm³. Model X assumes unchanged capacity; Y uses independently measured capacity1003 cm³. Compare predicted overflow and test a reserved measured headspace of about .996 cm³. Then suppose a separate cold trial has density .9999 and capacity999.5 cm³; calculate spill mass.",
+        "reconstruct": "Warm no-spill≈1002.004; X spills2 g, Y has headspace≈.996 cm³, supports Y. Cold spill=1000−999.5×.9999=.59995 g. Separate trials, not sequential mass assumption.",
+        "diagnose": "Find the missing capacity term, overflow mass update, or use of dimensional α without temperature interval.",
+        "repair": "Compute no-spill volume, compare capacity, calculate remaining/spilled mass and use independent trial evidence.",
+        "boundary_test": "If cold and warm trials were sequential after cold spill, can you reuse initial1000 g?"
+      },
+      "boundary_response_criterion": "No; remaining mass after spill must be carried forward, absent replenishment.",
+      "attempt_policy": "PROPOSED_ONLY_PUBLIC_AUTHOR_EXPOSED",
+      "runtime_verification": "NOT_RUN"
+    }
+  ],
+  "acceptance": {
+    "b1_b7": "HOLD",
+    "canonical_integration": "NOT_SELECTED",
+    "source_admission": "HOLD",
+    "release": "HOLD"
+  }
+}
