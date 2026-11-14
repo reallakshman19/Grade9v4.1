@@ -27,7 +27,7 @@ def free_port():
 
 def loaded(page):
     page.wait_for_function(
-        "() => ['Candidate task loaded','Candidate cycle loaded'].some(x => document.querySelector('#runtimeStatus')?.textContent.includes(x))"
+        "() => ['Candidate task loaded','Candidate cycle loaded'].some(x => document.querySelector('#runtimeStatus')?.textContent.includes(x))", timeout=8000
     )
 
 
@@ -46,7 +46,8 @@ def test_one(page, uid, task_uid=None, main=False):
     url = f"/nsejs/physics/core1/PH02/{'main' if main else uid}/index.html"
     if main or task_uid != f"AUTHORED-PH02-{uid}-TRANSFER-01":
         url += f"?task={task_uid}"
-    page.goto(page.url.split("/nsejs/")[0] + url, wait_until="load")
+    print("PH02_BROWSER_START", task_uid, "main", main, flush=True)
+    page.goto(page.url.split("/nsejs/")[0] + url, wait_until="load", timeout=12000)
     loaded(page)
     assert page.locator("#postAttempt").is_hidden()
     assert page.locator("#hintBtn").is_hidden()
@@ -57,7 +58,7 @@ def test_one(page, uid, task_uid=None, main=False):
     page.locator("#prediction").fill("My reasoned prediction before support.")
     page.locator("#attempt").fill("Independent signed force model and warrant; this is learner-like test input.")
     page.locator("#firstCommit").click()
-    page.wait_for_function("() => !document.querySelector('#postAttempt').hidden")
+    page.wait_for_function("() => !document.querySelector('#postAttempt').hidden", timeout=8000)
     old = state(page,task_uid)
     assert old and old["first_answer"].startswith("Independent signed")
     assert old["revision"] and old["first_prediction"]
@@ -84,6 +85,7 @@ def test_one(page, uid, task_uid=None, main=False):
     assert page.locator("#boundaryModel").is_visible()
     assert state(page,task_uid)["first_answer"] == old["first_answer"]
     assert page.evaluate("document.documentElement.scrollWidth <= innerWidth") 
+    print("PH02_BROWSER_PASS", task_uid, flush=True)
     return {"unit":uid,"task_uid":task_uid,"main":main,"first_immutable":True,"hint_order":3,"six_stages":True,"refresh":True}
 
 
