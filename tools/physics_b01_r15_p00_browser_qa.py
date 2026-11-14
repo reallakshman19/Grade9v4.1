@@ -44,8 +44,8 @@ def route_cases():
     assert len([x for x in keys if x.startswith("PH08")])==13
     return sorted(keys)
 
-def regression(page,topic):
-    page.goto(page.context._p00_origin+BASE+"/"+topic+"/core1b-preview.html")
+def regression(page,topic,origin):
+    page.goto(origin+BASE+"/"+topic+"/core1b-preview.html")
     page.wait_for_function("""() => {
        const s=document.querySelector('#status').textContent;
        return s.includes('Predict and attempt independently') ||
@@ -120,10 +120,9 @@ def main():
                         # PH09-PH12 must continue to load and retain prior in-app first attempts.
                         for topic in ["PH09","PH10","PH11","PH12"]:
                             new=browser.new_context(viewport={"width":w,"height":h})
-                            new._p00_origin=origin
                             other=new.new_page()
                             try:
-                                result=regression(other,topic)
+                                result=regression(other,topic,origin)
                                 result["orientation"]=orientation
                                 result["case"]="AGENT2_SHARED_RUNTIME_REGRESSION"
                                 receipt["cases"].append(result)
