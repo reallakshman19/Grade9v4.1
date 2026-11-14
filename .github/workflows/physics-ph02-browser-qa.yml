@@ -21,7 +21,7 @@ permissions:
 jobs:
   ph02-chromium:
     runs-on: ubuntu-24.04
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -36,6 +36,9 @@ jobs:
         run: python -m pytest -q tests/test_ph02_candidate_routes.py
       - name: PH02 six-stage HTTP Chromium, 12.7in tablet orientations and save-failure control
         run: python tools/physics_ph02_browser_qa.py
+      - name: Generate exact-byte SHA256 and line-quoted author evidence preparation
+        if: always()
+        run: python tools/physics_ph02_author_evidence_prep.py
       - name: Upload PH02 browser evidence even on failure
         if: always()
         uses: actions/upload-artifact@v4
