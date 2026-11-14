@@ -29,7 +29,9 @@ def free_port():
         return s.getsockname()[1]
 
 def ready(pg):
-    pg.wait_for_function("""() => document.querySelector('#status').textContent.includes('Exact-version author candidate loaded')""",timeout=40000)
+    pg.wait_for_function("""() => { const s=document.querySelector('#status').textContent; return s.includes('Exact-version author candidate loaded') || s.includes('Fail closed'); }""",timeout=40000)
+    message=pg.locator("#status").inner_text()
+    assert "Exact-version author candidate loaded" in message, "B01 loader failure: "+message
 
 def state(pg):
     return pg.evaluate("""() => {
