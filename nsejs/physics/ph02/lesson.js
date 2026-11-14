@@ -32,11 +32,11 @@ function figure(u){
  return '<figure class="figure"><svg '+base+'>'+defs+shapes+'</svg><figcaption>'+title+'</figcaption></figure>';
 }
 function render(u){
- document.title=u.id+" · "+u.title+" — PH02 textbook candidate";
+ document.title=u.id+" · "+u.title+" — PH02 authored textbook";
  const lessonPath="../../../core1/PH02/"+u.id.split("-").at(-1)+"/index.html";
  el.innerHTML='<h1>'+esc(u.title)+'</h1>'+
- '<p class="notice"><strong>AUTHOR-EXPOSED CANDIDATE · ACADEMIC HOLD.</strong> This original lesson is not a verified exam item, approved QRT tile or published course standard.</p>'+
- '<p class="fine">Stable subtopic: '+esc(u.id)+' · Scope: '+esc(u.scope)+' · Source/exam custody: HOLD</p>'+
+ '<p class="notice"><strong>OWNER-AUTHORIZED AUTHORED LESSON · AI-CHECKED.</strong> Original educational material for self-study; not an authenticated past NSEJS paper or an independently certified curriculum.</p>'+
+ '<p class="fine">Stable subtopic: '+esc(u.id)+' · Scope: '+esc(u.scope)+' · Source identity: original authored material; no past-paper admission</p>'+
  '<section><h2>A1 · Observe and ask</h2>'+p(u.phenomenon)+'<h3>Learning target</h3>'+p(u.competency)+'</section>'+
  '<section><h2>A2 · What you already need</h2><p>Read any unfamiliar prerequisite first; this text does not certify those prerequisite lessons.</p><ul>'+u.prerequisites.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul></section>'+
  '<section><h2>A3 · Construct the model</h2>'+p(u.mechanism)+'</section>'+
