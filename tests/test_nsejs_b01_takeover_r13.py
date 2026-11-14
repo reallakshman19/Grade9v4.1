@@ -184,3 +184,17 @@ def test_b01_r14_stage_order_and_non_destructive_storage_guards_exist():
     assert "field==='boundary_attempts'&&!state.record.repairs.length" in js
     assert "'TEXTBOOK'" in js and "'ORIGINAL_CORE1B'" in js
     assert "No automatic" not in js or "UNASSESSED" in js
+
+
+def test_b01_r14_historical_r13_first_answer_migration_is_provenance_scoped():
+    js=(ROOT/B01/"learner-preview/runtime.js").read_text(encoding="utf-8")
+    assert "state.legacyDigest=await hash(legacyRevisionMaterial,'SHA-256')" in js
+    assert "readWithHistoricalR13" in js
+    assert "localStorage.getItem(legacyKey)" in js
+    assert "if(!valid(legacy,state.legacyDigest))" in js
+    assert "migrated.content_revision=state.digest" in js
+    assert "figure_identity_at_old_attempt:'NOT_ESTABLISHED_R13'" in js
+    assert "localStorage.setItem(key(),revised)" in js
+    assert "Historical R13" in js
+    # Distinct receipts must retain distinct academic and source roles.
+    assert "source_admission" in (ROOT/B01/"B01_INTEGRATED_CURRICULUM_PROPOSAL.v1.json").read_text()
