@@ -98,7 +98,10 @@ def adversarial(browser,origin,orientation,width,height):
     page=context.new_page()
     try:
         page.goto(url);ready(page)
+        # A fresh attempt is still in memory; persist a legitimate H1 first.
+        page.locator("#h1").click()
         key,record=saved(page)
+        assert record is not None
         record["help_exposure"]=[{"kind":"RECONSTRUCT","at":"2026-11-14T00:00:00.000Z"}]
         page.evaluate("(p)=>localStorage.setItem(p[0],JSON.stringify(p[1]))",[key,record])
         page.reload()
