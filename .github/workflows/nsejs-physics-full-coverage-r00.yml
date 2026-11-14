@@ -1,0 +1,26 @@
+name: NSEJS Physics PH01-PH12 full coverage audit R00
+on:
+  pull_request:
+    paths:
+      - "review/physics/ph01-ph12-full-coverage-r00/**"
+      - "tools/physics_full_coverage_r00_validate.py"
+      - ".github/workflows/nsejs-physics-full-coverage-r00.yml"
+jobs:
+  pinned-132-row-evidence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Checkout audit-only PR
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Fetch independent pinned Physics authoring heads
+        run: |
+          git fetch --no-tags origin b5472589a067593e55edd23fd0866c21704d1574
+          git fetch --no-tags origin 7e1dcc8de824308f4643c3aa162725ad23440b95
+          git fetch --no-tags origin 6e7e3b39958605c69643260b06c6084b71838cbc
+          git fetch --no-tags origin 4f04677cb161d9eb32f6cd701411201ad0764421
+      - name: Verify 132 rows against pinned source blobs and native package gates
+        run: python tools/physics_full_coverage_r00_validate.py
+      - name: Validate Python syntax for audit utility
+        run: python -m py_compile tools/physics_full_coverage_r00_validate.py
