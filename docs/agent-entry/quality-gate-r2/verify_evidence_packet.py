@@ -172,6 +172,8 @@ def validate(packet: dict, root: Path) -> dict:
             findings.append("NEGATIVE_TEST_LOG_NOT_EVIDENCED:"+test["case"])
         elif test["observed_failure"] not in e["excerpt"]:
             findings.append("NEGATIVE_FAILURE_NOT_IN_LOG:"+test["case"])
+        if e and test["case"] not in e["excerpt"]:
+            findings.append("NEGATIVE_CASE_LOG_MISMATCH:"+test["case"])
         if not re.search(r"\b(REJECTED|BLOCKED|FAIL_CLOSED)\b", test["observed_failure"], re.I):
             findings.append("NEGATIVE_TEST_HAS_NO_REJECTION:"+test["case"])
 
