@@ -261,7 +261,9 @@
       $('repair-prompt').textContent=task.stages.repair;
       $('boundary-prompt').textContent=task.stages.boundary_test;
       $('core1a-link').href=new URL(task.core1a,ROOT).href;
-      $('original-core1b-link').href=new URL(task.core1b,ROOT).href;
+      const originalUrl=new URL(task.core1b,ROOT);
+      originalUrl.searchParams.set('legacy','1');
+      $('original-core1b-link').href=originalUrl.href;
       bool('task-info',true);
       state.ready=true;
       $('task-select').disabled=false;
@@ -401,8 +403,14 @@
         op.textContent=task.subtopic_id+' · '+task.cell+' · '+(task.source_kind==='SUPPLEMENTAL'?'source transfer':'primary')+' · '+task.id;
         select.appendChild(op);
       }
-      const wanted=new URL(location.href).searchParams.get('task');
+      const params=new URL(location.href).searchParams;
+      const wanted=params.get('task');
+      const subtopic=params.get('subtopic');
       if(wanted&&state.tasks.some(t=>t.id===wanted))select.value=wanted;
+      else if(subtopic&&/^PH(?:07|08)-\d{2}$/.test(subtopic)) {
+        const first=state.tasks.find(t=>t.subtopic_id===subtopic);
+        if(first)select.value=first.id;
+      }
       select.addEventListener('change',()=>{void choose(select.value);});
       await choose(select.value);
     }catch(err){lock('Package/revision verification failed: '+String(err.message));}
