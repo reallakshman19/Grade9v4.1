@@ -104,3 +104,41 @@ def test_other_five_chemistry_reader_units_remain_available():
         assert book["academic_status"]=="DRAFT_ACADEMIC_HOLD"
         assert native["release"]["scientific_review"]=="HOLD"
         assert len(native["cycles"])==len(book["sections"])*3
+
+
+def test_loading_never_reuses_previous_unit_state():
+    reader=(R/"reader.js").read_text(encoding="utf-8")
+    assert "function resetActivePack()" in reader
+    assert "function setLoading(busy)" in reader
+    load=reader[reader.index("async function load("):reader.index("function fail(code)")]
+    assert "resetActivePack();" in load
+    assert load.index("resetActivePack();") < load.index("await Promise.all(urls.map(fetchJson))")
+    assert "setLoading(true);" in load
+    assert load.index("setLoading(true);") < load.index("await Promise.all(urls.map(fetchJson))")
+    assert load.index("setLoading(false);") > load.index("view.book=book")
+    assert 'lesson.setAttribute("aria-busy",String(busy));' in reader
+    assert reader.count("if(!view.book||!view.practice)return;") >= 4
+
+
+def test_progressive_stage_controls_enforce_persisted_order():
+    reader=(R/"reader.js").read_text(encoding="utf-8")
+    assert 'const sequence=["S1","S2","S3"];' in reader
+    assert 'index>0&&!levels.includes(sequence[index-1])' in reader
+    assert 'exposed.add(asset.id);' in reader
+    assert 'control.disabled=!permitted;' in reader
+    assert 'exposure.value?.revision===view.revision' in reader
+    assert 'STAGE_ORDER_OR_EXPOSURE_HOLD' in reader
+    assert 'Progression: inspect S1 first, then S2, then S3.' in reader
+
+
+def test_browser_qa_exercises_reviewed_failure_paths():
+    script=(ROOT/"tools/chemistry_p00_b02_browser_qa.py").read_text(encoding="utf-8")
+    for check_name in ("check_delayed_unit_load_never_renders_previous_pack",
+                       "check_stage_order_survives_refresh",
+                       "check_keyboard_only_read_attempt_and_stages",
+                       "check_visual_blob_tampering_fail_closed"):
+        assert f"def {check_name}(" in script
+        assert script.count(check_name+"(browser,ids)") == 1
+    assert 'page.keyboard.press("Tab")' in script
+    assert 'page.keyboard.press("Enter")' in script
+    assert 'page.keyboard.press("Space")' in script
