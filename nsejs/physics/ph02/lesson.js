@@ -21,7 +21,9 @@ function figure(u){
    shapes='<rect x="180" y="152" width="310" height="50" rx="7" fill="#c6dae4" stroke="#1d536a" stroke-width="3"/><rect x="277" y="99" width="116" height="51" rx="7" fill="#f8d8a6" stroke="#87602c" stroke-width="3"/>'+text(320,132,"A")+text(310,184,"B")+line(390,122,492,122)+line(298,115,298,50)+line(355,130,355,209)+text(405,104,"friction →")+text(152,43,"normal ↑")+text(371,224,"weight ↓");
    break;
  case "ramp":
-   shapes='<path d="M110 190 L520 190 L520 50 Z" fill="#e3e8f1" stroke="#2c5569" stroke-width="3"/><rect x="340" y="90" width="56" height="40" rx="5" transform="rotate(-18.9 368 110)" fill="#f9d6a4" stroke="#76563b" stroke-width="3"/>'+line(365,100,365,175)+line(365,100,315,132)+line(365,100,333,42)+text(378,168,"mg ↓")+text(203,149,"mg sinθ ↙")+text(310,35,"N ↖")+text(490,210,"θ");
+   // Rise=185, run=320, so tan(theta)=185/320≈tan(30°) for the taught ramp.
+   // The normal arrow is perpendicular to the slope; gravity remains vertically downward.
+   shapes='<path d="M125 205 L445 205 L445 20 Z" fill="#e3e8f1" stroke="#2c5569" stroke-width="3"/><rect x="304" y="51" width="56" height="35" rx="5" transform="rotate(-30 332 70)" fill="#f9d6a4" stroke="#76563b" stroke-width="3"/>'+line(332,72,332,164)+line(332,72,283,100)+line(332,72,301,19)+text(344,158,"mg ↓")+text(170,124,"mg sinθ ↙")+text(260,21,"N ↖")+text(165,197,"θ");
    break;
  case "connected":
    shapes='<rect x="118" y="120" width="135" height="72" rx="7" fill="#d2e6ef" stroke="#24566a" stroke-width="3"/><rect x="350" y="120" width="150" height="72" rx="7" fill="#d6ecdf" stroke="#176348" stroke-width="3"/><line x1="253" y1="150" x2="350" y2="150" stroke="#555" stroke-width="4"/><circle cx="150" cy="194" r="14" fill="#3e5365"/><circle cx="215" cy="194" r="14" fill="#3e5365"/><circle cx="385" cy="194" r="14" fill="#3e5365"/><circle cx="465" cy="194" r="14" fill="#3e5365"/>'+line(500,148,603,148)+text(152,150,"A · 2 kg")+text(386,150,"B · 3 kg")+text(535,125,"pull");
