@@ -6,6 +6,9 @@ on:
       - "tests/test_nsejs_b01_takeover_r13.py"
       - "tools/physics_b01_r13_browser_qa.py"
       - "tools/physics_b01_r14_negative_qa.py"
+      - "tools/physics_b01_r15_p00_browser_qa.py"
+      - "nsejs/physics/curriculum/agent2/core1b-runtime.js"
+      - "tests/test_nsejs_b01_p00_r15.py"
       - ".github/workflows/nsejs-physics-b01-r13-browser.yml"
       - "nsejs/physics/curriculum/topics/PH07/b01/integrated-curriculum-review.html"
 jobs:
@@ -29,6 +32,10 @@ jobs:
         run: python tools/physics_b01_r13_browser_qa.py
       - name: HTTP Chromium R14 adversarial record and figure checks
         run: python tools/physics_b01_r14_negative_qa.py
+      - name: P00 R15 candidate bridge and PH09-PH12 regressions
+        run: python tools/physics_b01_r15_p00_browser_qa.py
+      - name: Agent 2 unchanged shared-runtime Node smoke
+        run: node nsejs/physics/curriculum/agent2/tests/runtime-smoke.cjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -36,4 +43,5 @@ jobs:
           path: |
             review-artifacts/physics-b01-r13/
             review-artifacts/physics-b01-r14/
+            review-artifacts/physics-b01-r15-p00/
           if-no-files-found: ignore
