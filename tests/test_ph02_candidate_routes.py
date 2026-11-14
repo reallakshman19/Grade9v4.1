@@ -88,4 +88,4 @@ def test_ph02_core1a_uses_science_figures_and_not_authentic_badge():
                   "A7 · Worked", "A8 · Diagnose", "A9 · Counterexample",
                   'role="img"', "<svg", "Core1B transfer"):
         assert token in script
-    assert "ACADEMIC HOLD" in script
+    assert "OWNER-AUTHORIZED AUTHORED LESSON" in script
