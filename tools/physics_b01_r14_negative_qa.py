@@ -165,7 +165,11 @@ def adversarial(browser,origin,orientation,width,height):
             "document.querySelector('#status').textContent.includes('Historical R13 first answer carried forward')",
             timeout=22000,
         )
-        new_key,linked=saved(page)
+        new_key,linked=page.evaluate("""(old)=> {
+            const key=Object.keys(localStorage).find(k=>
+                k.startsWith('g9-b01-r1:') && k.endsWith(':'+old.split(':').pop()) && k!==old);
+            return [key,key?JSON.parse(localStorage.getItem(key)):null];
+        }""",old_key)
         assert new_key is not None and new_key != old_key
         assert linked["first_answer"]==record["first_answer"]
         assert linked["migration_provenance"]["from_digest"]==legacy_r13_digest()
