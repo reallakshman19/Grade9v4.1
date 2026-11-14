@@ -104,8 +104,11 @@
     try{
       const raw=localStorage.getItem(key);
       if(raw===null)return {ok:true,value:null};
-      try{return {ok:true,value:JSON.parse(raw)};}
-      catch(e){return {ok:false,value:null,corrupt:true};}
+      try{
+        const value=JSON.parse(raw);
+        if(value===null)return {ok:false,value:null,corrupt:true};
+        return {ok:true,value};
+      }catch(e){return {ok:false,value:null,corrupt:true};}
     }catch(e){return {ok:false,value:null,corrupt:false};}
   }
   function validAttemptRecord(record,task,revision){
