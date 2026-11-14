@@ -1,78 +1,46 @@
-# A02 / PH02 Forces — eight authored native-route candidates (R1)
+# PH02 Forces — A02 R2 native integration and evidence handoff
 
-**Task**: `G9V41-PHYS-C1AB-A02-PH02-R1`  
-**Issue**: [#33](https://github.com/reallakshman19/Grade9v4.1/issues/33)  
-**Parent**: Draft PR #3 branch `feat/nsejs-physics-agent1-ph01-kinematics-r1`, starting commit `6dd8c0000e710fc923e9d347123f78c17449ed7b`  
-**Mode**: `AUTHOR_EXPOSED_CANDIDATE · EDUCATIONAL_SOURCE_FIRST · FAIL_CLOSED`  
-**Academic**: `HOLD` · **Original exam items authenticated**: 0 · **Independent QRT**: 0 · **Merge/deploy**: prohibited without independent review and Owner approval.
+**Task:** `G9V41-PHYS-C1AB-A02-PH02-R1` · [Issue #33](https://github.com/reallakshman19/Grade9v4.1/issues/33) · [Draft PR #34](https://github.com/reallakshman19/Grade9v4.1/pull/34).  
+**Base:** PH01 PR #3 branch; starting SHA `6dd8c0000e710fc923e9d347123f78c17449ed7b`.  
+**Scope:** A02 / PH02 only; candidate-only content with a narrowly scoped inherited CI runner fix.  
+**Status:** `AUTHOR_EXPOSED · MECHANICAL_CANDIDATE · SCIENCE_HOLD · SOURCE_HOLD · QRT_HOLD · B1_B7_HOLD · NO_RELEASE`.
 
-This workpack is a *draft authoring slice*, not a completed C01–C08 native topic package or a production-ready lesson. No change to Shared, the Physics Blueprint, C01–C08 contracts, PH01 content, root nav, main, or the 132-row R00 independent-qualification matrix is included.
+## Implemented content
 
-## Source custody and scope
+- **Eight** independently addressable Core1A units at `nsejs/physics/textbook/PH02/F01...F08/index.html`. Chapter navigation: `nsejs/physics/textbook/PH02/index.html`.
+- **Twenty-four** original Core1B INSTANCE task identities, three proposed distinct cognitive operations for each of the eight subtopics, using `?task=<exact-authored-UID>` on each subtopic route.
+- **Six** cross-subtopic candidate MAIN cycles (EXPLAIN, APPLY, MODEL, REPRESENT, SYNTHESIZE, JUSTIFY), all accessible through `nsejs/physics/core1/PH02/main/index.html`. These are physically integrated author proposals, not validated B4 or D3 admissions.
+- **Eight** native Core1A records, 24 QRT targets, 24 native INSTANCE and 6 MAIN records in `physics-topic-package.v1_1.json`; standalone adapter `topic-adapter.PH02.v0.1.0.json`. C01–C08 v1.1 mechanical package test added.
+- Full authored content and science assumptions in `nsejs/physics/ph02/units.v1.json`; 16 additional non-clone candidate constructions + six integrated MAIN problems in `nsejs/physics/ph02/qrt-candidates.v1.json`.
+- Controlled learning runtime: first prediction and explanation saved together, same task-revision immutable original, help H1/H2/H3 after successful persistence, reconstructed solution/diagnosis/repair in separate stages, fresh boundary attempt before its answer, fail-closed on denied storage, prior-revision keys retained. Public JS remains inspectable: not secure high-stakes invigilation.
+- Dedicated Chromium workflow `.github/workflows/physics-ph02-browser-qa.yml` pinned to ubuntu-24.04; one-line inherited PH01 workflow compatibility fix in `.github/workflows/nsejs-physics-textbook-qa.yml` for Playwright 1.55.0.
 
-- **Official IAPT NSEJS 2026 announcement**: [IAPT](https://iapt.org.in/) describes NSEJS scope as Physics/Chemistry/Biology up to CBSE Class X. This does not authenticate any past-paper question.
-- **2026–27 CBSE Class IX Science (086)**: [official curriculum PDF](https://cbseacademic.nic.in/web_material/CurriculumMain27/SecPart1/ScienceSt_SecP1_2026-27.pdf), **printed page 15, PDF zero-based index 14**, section *Force and Laws of Motion*, competencies **C-2.1 and C-8.1**. The official table visibly specifies balanced/unbalanced forces, friction, Newton's first/second/third laws, force direction, SI unit and modelling. The chapter carries 13 periods.
-- **Boundary**: PH02-F05 is a teaching construction under model/representation outcomes, not a separately named 2026–27 CBSE heading; F07 (inclined-plane components) and F08 (two-body changing contact) are **advanced authored extensions** without a claim of named Force-chapter coverage. Reconcile cross-topic placement and NSEJS inclusion independently.
-- **Authentic Core2 source custody**: no original paper/printed source item, figure, option order or final key verified, admitted or copied. All Core1B tasks in this branch are *authored transfer*, not past NSEJS items. Source-to-question matching remains HOLD.
+## Verification receipts (exact revisions matter)
 
-## Candidate route tally
+- [Run 43578559003](https://github.com/reallakshman19/Grade9v4.1/actions/runs/43578559003): unchanged Python 3.11 + 3.12 full suites, **393 passed, 1 warning** each, including new C01–C08 PH02 validator checks at that historical candidate SHA.
+- [Run 43578558958](https://github.com/reallakshman19/Grade9v4.1/actions/runs/43578558958): supported-runner PH02 Chromium **61 checks**; 24 INSTANCE+6 MAIN ×2 viewports + failed-storage negative; reports `MECHANICAL_CHROMIUM_PASS__ACADEMIC_HOLD`.
+- [Run 43579185656](https://github.com/reallakshman19/Grade9v4.1/actions/runs/43579185656): **inherited Physics textbook browser workflow PASS** after the ubuntu-24.04 pin.
+- Newest exact HEAD requires its own CI inspection; older green runs are not inherited as approval for modified bytes.
 
-| Subtopic | Core1A HTML | Core1B HTML | Native C01–C08 package | Academic |
-| --- | --- | --- | --- | --- |
-| F01 Balanced/unbalanced | `nsejs/physics/textbook/PH02/F01/index.html` | `nsejs/physics/core1/PH02/F01/index.html` | NOT_BUILT | HOLD |
-| F02 First law/inertia | `nsejs/physics/textbook/PH02/F02/index.html` | `nsejs/physics/core1/PH02/F02/index.html` | NOT_BUILT | HOLD |
-| F03 Second law/mass | `nsejs/physics/textbook/PH02/F03/index.html` | `nsejs/physics/core1/PH02/F03/index.html` | NOT_BUILT | HOLD |
-| F04 Third law/interactions | `nsejs/physics/textbook/PH02/F04/index.html` | `nsejs/physics/core1/PH02/F04/index.html` | NOT_BUILT | HOLD |
-| F05 Free-body diagrams | `nsejs/physics/textbook/PH02/F05/index.html` | `nsejs/physics/core1/PH02/F05/index.html` | NOT_BUILT | HOLD |
-| F06 Friction/contact | `nsejs/physics/textbook/PH02/F06/index.html` | `nsejs/physics/core1/PH02/F06/index.html` | NOT_BUILT | HOLD |
-| F07 Inclined planes | `nsejs/physics/textbook/PH02/F07/index.html` | `nsejs/physics/core1/PH02/F07/index.html` | NOT_BUILT | HOLD |
-| F08 Connected bodies | `nsejs/physics/textbook/PH02/F08/index.html` | `nsejs/physics/core1/PH02/F08/index.html` | NOT_BUILT | HOLD |
+## Official curriculum and exam custody
 
-**16 physical HTML URLs (8 original authoring pairs), 8 authored transfer prompts, 8 distinct content-revision identifiers.** They load a shared candidate-only content ledger. This is **not** equivalent to eight verified C01–C08 native package pairs, QRT D3/D4 cycles, Main integrations, or independent B1–B7 approval.
+1. [CBSE Class IX 2026–27 Science curriculum](https://cbseacademic.nic.in/web_material/CurriculumMain27/SecPart1/ScienceSt_SecP1_2026-27.pdf), Force and Laws of Motion section, printed p.15: primary Newton laws/balanced force/friction; F05 representation support. F07 inclined planes and F08 connected-body events remain **advanced-extension scope HOLD**.
+2. [IAPT 2026](https://iapt.org.in/) identifies NSEJS as PCB up to Class X; this is an examination scope statement, not an original question identity.
+3. `official-2025-source-locators.v1.json` records publisher **2025 code 51 Q34** (string breaking, final key B) and **Q35** (bicycle friction, final key D). Source paper/text and final-key tables were publisher-indexed, but live visual PDF screenshot failed (502/challenge). Neither original PDF bytes nor stem/figure hash was acquired. These are **external locator-only source proposals**; the native Core2 source array correctly remains empty. DO NOT import their question text or keys into public learner runtime without source/rights/reviewer gates.
 
-## Implementation structure and learner protection
+## R2 evidence packet status
 
-`nsejs/physics/ph02/units.v1.json` owns original teaching cases, Figure captions, the nine A1–A9 teaching witnesses and one differentiated transfer/diagnosis/boundary task per subtopic. `lesson.js` renders the Core1A page; `practice.js` implements the six-stage learner journey (predict → attempt → reconstruct → diagnose → repair → boundary), with revision-bound immutable first response, sequential H1–H3 after persistence, separate diagnosis/repair, and closed answer gates when storage fails. It retains earlier revision keys and does not award mastery. Browser source inspection remains possible: this is an educational exposure contract, **not** secure examination invigilation.
+The R2 quality policy on `main` is `PILOT_AWAITING_OWNER_GOLDEN`, `production_enabled=false`. The parent PR #3 branch does not yet include the R2 v2 schema/validator; the Owner-accepted Golden Sample SHA and scoped R01 reviewer receipts are missing.
 
-The figures are original schematic SVG. A diagram/data/geometry audit remains compulsory, especially the incline figure (schematic, not drawn to numerical scale). No exam figure is copied or reconstructed.
+`tools/physics_ph02_author_evidence_prep.py` generates eight **byte-grounded PREP, not official R2 packets**, from checked-out source lines, with actual SHA-256 and quoted snippets. The CI workflow uploads these as inspectable artifacts. It does **not** fabricate a Golden SHA, eight fault-family negative cases, authenticated original source, independent reviewers or an `EVIDENCE_STRUCTURALLY_GROUNDED` R2 result.
 
-## Engineering checks
+## Required next acceptance, in order
 
-Added `tests/test_ph02_candidate_routes.py` (data integrity, physical routes, script guards, title/attempt coverage) and `tools/physics_ph02_browser_qa.py` (HTTP Chromium, 1000×1600 and 1600×1000; full journey for eight cases, refresh and storage denial).
-
-**Execution status at author handoff:** Exact Python suite: **NOT_RUN**. New pytest: **NOT_RUN**. HTTP Chromium: **NOT_RUN**. CI: **NOT_YET_RECONCILED**. Source-file JavaScript parse check was performed by stripping module-only tokens and compiling via a V8 parser: lesson.js and practice.js syntax **PARSE_PASS**, which is not a browser test.
-
-Required commands from a checked-out exact head:
-
-```sh
-git rev-parse HEAD
-python -m pytest -q tests/test_ph02_candidate_routes.py
-python -m pytest -q
-python tools/physics_ph02_browser_qa.py
-```
-
-Do not claim these tests passed without actual output and SHA-bound receipts.
-
-## Gate-by-gate disposition
-
-| Gate | Current | Next witness |
-|---|---|---|
-| G0 checkout/collision | CANDIDATE isolated | Rebase/check exact-head PR3, ownership and branch collision |
-| G1 source/curriculum | PARTIAL / HOLD | Review official IX/X detailed scope, authenticate individual Core2 originals and rights |
-| G2 Core1A | AUTHOR DRAFT | Full scientific, sufficiency, figure and independent checks under R2 |
-| G3 QRT/binder | HOLD | Resolve shortest W, operation, five factors, source role and native package; no forced D3/D4 |
-| G4 Core1B | AUTHOR DRAFT | Independent freshness audit, leakage and six-stage browser receipts |
-| G5 technical | NOT_RUN | Native validator + unchanged pytest + HTTP Chromium + faults |
-| G6 academic/release | HOLD | R00 review, genuinely independent R01 Physics/QRT B1–B7 and Owner release |
-
-**R2**: `PILOT_AWAITING_OWNER_GOLDEN` (not active). An R2 `*.packet.json` **has not been produced or validated**: exact SHA-256/line quotes, negative logs, real browser receipts and independent reviewer-owned forms are prerequisites. Do not create fake PASSED evidence or edit `quality-policy.v1.json` to make a candidate eligible.
-
-## Next technical correction batch
-
-1. Independently check every worked derivation, unit/sign/limit and every figure for physical fidelity; confirm F05–F08 prerequisite readiness and cross-topic scope.
-2. Run and fix new tests, unchanged full pytest, two-orientation Chromium, blocked storage, stale revisions, keyboard, accessible diagrams and source return.
-3. Build a valid C01–C08 v1.1 native topic package, topic adapter, warrant ledger, INSTANCE and genuinely integrated MAIN obligations **only for defensible cells**, preserving candidate status and dependencies.
-4. Create per-task R2 evidence packets with actual repository byte SHA-256, source line excerpts and observed failure-injection logs; seek independent R00/R01 receipts.
-5. Update the Issue #33 matrix **only after new pinned implementation and corresponding evidence exists**; do not count these draft pages as independently qualified.
+1. Exact-head QA: confirm full pytest, both browser workflows, 30-cycle native QA, real evidence-prep artifacts. Verify keyboard, stale content-revision and precommit hint attacks individually.
+2. Independently review science derivations, figure physics, source scope and actual learner sufficiency for all eight; specifically challenge potential F04 instantaneous-contact, F08 taut-string and F07 incline caveats.
+3. Cold source-only reviewer R01 must solve and score every actual target (shortest W and five factors, no D3 by assumption), verify B1–B7, anchor→fresh novelty and MAIN integration. Any failed item returns to author with exact SHA.
+4. Source custodian must verify original examination papers, key version, figures and rights; admit authentic Core2 UIDs only after identity/version custody. External locators do not grant reader admission.
+5. Owner selects a single representative complete Golden exemplar after genuine R00/R01 receipts; activate R2 policy/branch protection separately. Only then submit compatible R2 v2 packets for each governed content revision and risk-based batch review.
+6. Do not merge/deploy or promote academic/release labels until Owner explicitly authorizes the exact reviewed revision. No Owner signature for every routine candidate after Golden adoption.
 
 **No academic approval inferred from software validation.**
