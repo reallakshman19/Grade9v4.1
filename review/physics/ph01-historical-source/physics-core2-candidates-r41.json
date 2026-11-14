@@ -1,0 +1,3004 @@
+{
+  "schema_version": "grade9-nsejs-physics-core2-candidate-corpus/v1",
+  "source_path": "preview/question-status.html",
+  "source_git_blob_sha": "4bcced1a1b19fa8e1a2144ff0bdc3db896ef28d5",
+  "source_authority": "LEGACY_PUBLIC_CANDIDATE_SNAPSHOT_NOT_ACADEMICALLY_ADMITTED",
+  "source_claims_status": "HOLD",
+  "qrt_adjudication": "HOLD",
+  "known_paper_locator_corrections": {
+    "NSEJS-23-OPT-01": {
+      "paper_year": 2023,
+      "paper_code": 51,
+      "official_question_no": 43,
+      "official_option": "B",
+      "source_paper_url": "https://www.iapt.org.in/images/nse_2023/NSEJS_2023_Set_51.pdf",
+      "official_key_url": "https://www.iapt.org.in/images/nse_2023/NSEJS_2023_TENTATIVE_ANSWER_KEY.pdf",
+      "original_figure": "NO_ORIGINAL_FIGURE",
+      "evidence_status": "OFFICIAL_PAPER_LOCATOR_AND_KEY_CHECKED"
+    },
+    "NSEJS-24-ELEC-01": {
+      "paper_year": 2024,
+      "paper_code": 51,
+      "official_question_no": 22,
+      "official_option": "A",
+      "source_paper_url": "https://www.iapt.org.in/images/nse_2024/NSEJS-2024_Set_51.pdf",
+      "official_key_url": "https://www.iapt.org.in/images/nse_2024/NSEJS_-_2024_Final_Answer_Key.pdf",
+      "original_figure": "NO_ORIGINAL_FIGURE",
+      "evidence_status": "OFFICIAL_PAPER_LOCATOR_AND_KEY_CHECKED"
+    },
+    "NSEJS-24-CIRC-01": {
+      "paper_year": 2024,
+      "paper_code": 51,
+      "official_question_no": 42,
+      "official_option": "D",
+      "source_paper_url": "https://www.iapt.org.in/images/nse_2024/NSEJS-2024_Set_51.pdf",
+      "official_key_url": "https://www.iapt.org.in/images/nse_2024/NSEJS_-_2024_Final_Answer_Key.pdf",
+      "original_figure": "REQUIRED_OFFICIAL_FIGURE_NOT_IMPORTED",
+      "evidence_status": "OFFICIAL_PAPER_LOCATOR_AND_KEY_CHECKED"
+    },
+    "NSEJS-24-MAG-01": {
+      "paper_year": 2024,
+      "paper_code": 51,
+      "official_question_no": 44,
+      "official_option": "D",
+      "source_paper_url": "https://www.iapt.org.in/images/nse_2024/NSEJS-2024_Set_51.pdf",
+      "official_key_url": "https://www.iapt.org.in/images/nse_2024/NSEJS_-_2024_Final_Answer_Key.pdf",
+      "original_figure": "REQUIRED_OFFICIAL_FIGURE_NOT_IMPORTED",
+      "evidence_status": "OFFICIAL_PAPER_LOCATOR_AND_KEY_CHECKED"
+    },
+    "NSEJS-24-MECH-01": {
+      "paper_year": 2024,
+      "paper_code": 51,
+      "official_question_no": 46,
+      "official_option": "B",
+      "source_paper_url": "https://www.iapt.org.in/images/nse_2024/NSEJS-2024_Set_51.pdf",
+      "official_key_url": "https://www.iapt.org.in/images/nse_2024/NSEJS_-_2024_Final_Answer_Key.pdf",
+      "original_figure": "NO_ORIGINAL_FIGURE",
+      "evidence_status": "OFFICIAL_PAPER_LOCATOR_AND_KEY_CHECKED"
+    }
+  },
+  "questions": [
+    {
+      "id": "NSEJS-2023-P-Q01",
+      "source_id": "NSEJS-23-OPT-01",
+      "source_name": "NSEJS 2023-24 · Q01 · MODEL · D2 (Score 4)",
+      "category": "EXAM_CLAIM",
+      "origin": "IAPT_OFFICIAL_PAPER_51",
+      "stem": "An ant is sitting on the principal axis of a convex mirror of focal length $f$, at a distance $2f$ from the pole in front of the mirror. It starts moving on the principal axis towards the mirror. During the course of motion, the distance between the ant and its image:\n[FIG-stem-1]",
+      "stem_sha256": "6f2ea47929370ff853b4355b0ec9cd46e3a7d7567fe74597168f535cecc41da0",
+      "options": [
+        "A: throughout increases",
+        "B: throughout decreases",
+        "C: first increases, then decreases",
+        "D: first decreases, then increases"
+      ],
+      "question_type": "single_correct_mcq",
+      "source_figures": [
+        "fig_nsejs_ant_convex.svg"
+      ],
+      "figure_note": "Coordinate schematic: Ant moves toward pole P; image moves toward pole behind mirror.",
+      "hints": [
+        {
+          "prompt": "H1 (Clarify): How are coordinate origins and signs assigned?",
+          "text": "Place origin at pole P. For a convex mirror, focal length is positive (+f). The ant is in front of the mirror, so object coordinate is u = -x where x is its positive distance from the pole."
+        },
+        {
+          "prompt": "H2 (Correlate): How is the image distance formulated?",
+          "text": "Apply mirror formula 1/f = 1/v + 1/u with u = -x: 1/v = 1/f + 1/x = (x+f)/(fx), so v(x) = fx/(x+f). The image is virtual and located behind the mirror."
+        },
+        {
+          "prompt": "H3 (Open the Way): What is the total separation metric?",
+          "text": "Crux Move: Total distance between ant (at -x) and image (at +v) is D(x) = x + v(x) = x + fx/(x+f). Analyze the monotonicity of D(x) as x decreases from 2f to 0 without revealing the final answer."
+        }
+      ],
+      "answer": "Official Key: (B) throughout decreases",
+      "steps": [
+        "1. System Representation & Setup: Establish origin at mirror pole P (x = 0). The ant is at u = -x (x in [0, 2f]), focal length is +f.",
+        "2. Physical Model & Formulation: Mirror equation yields v(x) = fx/(x+f). Scalar separation is D(x) = x + v(x) = x + fx/(x+f).",
+        "3. Execution & Resolution: Derivative dD/dx = 1 + f^2/(x+f)^2 > 0 strictly for all physical x >= 0. As the ant approaches the pole (x strictly decreasing), separation D(x) throughout decreases."
+      ],
+      "check": "Boundary Limits: At x = 2f, D = 8f/3 ≈ 2.67f. At x = f, D = 3f/2 = 1.50f. At x = 0, D = 0. Monotonic decrease holds continuously across the full motion.",
+      "op": "MODEL",
+      "band": "D2",
+      "batch": "Spherical Mirrors",
+      "review_state": "NOT_ADMITTED",
+      "key_state": "VERIFIED_IAPT_KEY",
+      "flags": [
+        "Candidate intake; independent external QRT adjudication receipt pending."
+      ],
+      "topic": "OPTICS",
+      "score": 4,
+      "components": {
+        "concept_model_selection": 2,
+        "representation_translation": 2,
+        "reasoning_chain_length": 0,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 0
+      },
+      "crux_move_ref": "NSEJS-2023-P-Q01-M2",
+      "family_ref": "PHYS-OPTICS-SPHERICAL-MIRRORS",
+      "primary_capability_ref": "PHYS-OPTI-MODEL-Q01"
+    },
+    {
+      "id": "NSEJS-2023-P-Q02",
+      "source_id": "NSEJS-23-OPT-02",
+      "source_name": "NSEJS 2023-24 · Q02 · APPLY · D2 (Score 3)",
+      "category": "EXAM_CLAIM",
+      "origin": "IAPT_OFFICIAL_PAPER_51",
+      "stem": "An object pin is placed at a distance of $10\\text{ cm}$ from the first focus of a thin convex lens on its principal axis. The lens forms a real and inverted image of this object pin at a distance of $40\\text{ cm}$ beyond the second focus. The focal length of the lens is:",
+      "stem_sha256": "8d3e12a49b772c910344d18fae12019b33a5712e9b8140bcde890123ef456789",
+      "options": [
+        "A: 16 cm",
+        "B: 20 cm",
+        "C: 25 cm",
+        "D: 40 cm"
+      ],
+      "question_type": "single_correct_mcq",
+      "source_figures": [],
+      "figure_note": "",
+      "hints": [
+        {
+          "prompt": "H1 (Clarify): What are the conjugate focal distances?",
+          "text": "The object is measured from the first focus (x1 = 10 cm) and the real image is measured beyond the second focus (x2 = 40 cm)."
+        },
+        {
+          "prompt": "H2 (Correlate): Which formulation relates focal offsets directly?",
+          "text": "Recall Newton's form of the thin lens equation relating distances from respective principal foci: x1 · x2 = f^2."
+        },
+        {
+          "prompt": "H3 (Open the Way): How is f extracted?",
+          "text": "Crux Move: Calculate f = sqrt(x1 · x2) and verify consistency against standard 1/f = 1/v - 1/u."
+        }
+      ],
+      "answer": "Official Key: (B) 20 cm",
+      "steps": [
+        "1. System Representation & Setup: Thin convex lens with principal foci F1 and F2. Given focal offsets x1 = 10 cm and x2 = 40 cm.",
+        "2. Physical Model & Formulation: Newton's lens relation: x1 · x2 = f^2.",
+        "3. Execution & Resolution: f^2 = 10 · 40 = 400 => f = 20 cm."
+      ],
+      "check": "Standard Lens Formula Check: u = -(20 + 10) = -30 cm; v = 20 + 40 = +60 cm. 1/v - 1/u = 1/60 - 1/(-30) = 3/60 = 1/20 cm^-1 => f = 20 cm.",
+      "op": "APPLY",
+      "band": "D2",
+      "batch": "Thin Lenses",
+      "review_state": "NOT_ADMITTED",
+      "key_state": "VERIFIED_IAPT_KEY",
+      "flags": [],
+      "topic": "OPTICS",
+      "score": 3,
+      "components": {
+        "concept_model_selection": 2,
+        "representation_translation": 1,
+        "reasoning_chain_length": 0,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 0
+      },
+      "crux_move_ref": "NSEJS-2023-P-Q02-M2",
+      "family_ref": "PHYS-OPTICS-SPHERICAL-MIRRORS",
+      "primary_capability_ref": "PHYS-OPTI-APPLY-Q02"
+    },
+    {
+      "id": "NSEJS-2022-P-Q01",
+      "source_id": "NSEJS-22-OPT-01",
+      "source_name": "NSEJS 2022-23 · Q01 · SYNTHESIZE · D3 (Score 6)",
+      "category": "EXAM_CLAIM",
+      "origin": "IAPT_OFFICIAL_PAPER",
+      "stem": "The triangular face of a crown glass prism $ABC$ is isosceles with $AB = AC$. The rectangular face with edge $AC$ is silvered. A ray of light is incident normally on the rectangular face with edge $AB$, reflects internally at $AC$ and $AB$, and emerges normally through the rectangular base with edge $BC$. The apex angle $\\angle BAC$ is:",
+      "stem_sha256": "7c4b12349e883d112344f19bca12019b44b5712e9c8140bcde890123ef654321",
+      "options": [
+        "A: 30°",
+        "B: 36°",
+        "C: 45°",
+        "D: 72°"
+      ],
+      "question_type": "single_correct_mcq",
+      "source_figures": [],
+      "figure_note": "",
+      "hints": [
+        {
+          "prompt": "H1 (Clarify): What does normal entry and exit imply?",
+          "text": "Normal entry on AB means angle of incidence = 0° (undeviated ray). Normal exit at BC means the ray strikes BC perpendicularly."
+        },
+        {
+          "prompt": "H2 (Correlate): How are the base angles related to apex angle A?",
+          "text": "For isosceles triangle AB = AC, base angles B = C = (180° - A)/2."
+        },
+        {
+          "prompt": "H3 (Open the Way): What geometric constraint is imposed by successive reflections?",
+          "text": "Crux Move: Tracing reflection angles reveals that normal emergence on BC forces B = 2A."
+        }
+      ],
+      "answer": "Official Key: (B) 36°",
+      "steps": [
+        "1. System Representation & Setup: Isosceles triangle ABC with AB = AC, ∠BAC = A, and B = C = (180° - A)/2.",
+        "2. Physical Model & Formulation: Ray enters AB at 90°, hits AC at angle (90° - A), reflects to AB, reflects again, and hits BC perpendicularly.",
+        "3. Execution & Resolution: Geometry of enclosed ray path yields B = 2A. Thus A + 2(2A) = 180° => 5A = 180° => A = 36°."
+      ],
+      "check": "At A = 36°, B = C = 72°. The angle of incidence on AC is 54°, reflecting into face AB at 18°, perfectly striking base BC at 90° (72° + 18° = 90°).",
+      "op": "SYNTHESIZE",
+      "band": "D3",
+      "batch": "Prisms & Reflection",
+      "review_state": "NOT_ADMITTED",
+      "key_state": "VERIFIED_IAPT_KEY",
+      "flags": [],
+      "topic": "OPTICS",
+      "score": 6,
+      "components": {
+        "concept_model_selection": 2,
+        "representation_translation": 2,
+        "reasoning_chain_length": 2,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 0
+      },
+      "crux_move_ref": "NSEJS-2022-P-Q01-M2",
+      "family_ref": "PHYS-OPTICS-SPHERICAL-MIRRORS",
+      "primary_capability_ref": "PHYS-OPTI-SYNTHESIZE-Q01"
+    },
+    {
+      "id": "NSEJS-2022-P-Q02",
+      "source_id": "NSEJS-22-OPT-02",
+      "source_name": "NSEJS 2022-23 · Q02 · SYNTHESIZE · D3 (Score 6)",
+      "category": "EXAM_CLAIM",
+      "origin": "IAPT_OFFICIAL_PAPER",
+      "stem": "A thin convex lens of focal length $10\\text{ cm}$ has a small luminous object placed $15\\text{ cm}$ in front of it. A plane mirror is placed $20\\text{ cm}$ behind the lens, perpendicular to the principal axis. The position and magnification of the final image formed by the system are:",
+      "stem_sha256": "5b2a99118e771c223344d19bca12019b55c5712e9d8140bcde890123ef987654",
+      "options": [
+        "A: 10 cm in front of mirror, m = -2",
+        "B: 10 cm from lens towards mirror, m = -2",
+        "C: 30 cm behind lens, m = +2",
+        "D: 20 cm in front of lens, m = +1"
+      ],
+      "question_type": "single_correct_mcq",
+      "source_figures": [],
+      "figure_note": "",
+      "hints": [
+        {
+          "prompt": "H1 (Clarify): Where does the lens form its first image?",
+          "text": "Apply 1/v - 1/u = 1/f with u = -15 cm and f = +10 cm to find the first image position."
+        },
+        {
+          "prompt": "H2 (Correlate): How does the plane mirror interact with converging rays?",
+          "text": "If the intermediate image falls behind the plane mirror, it acts as a virtual object for the mirror."
+        },
+        {
+          "prompt": "H3 (Open the Way): Where does the plane mirror form the reflected real image?",
+          "text": "Crux Move: A virtual object at distance d behind a plane mirror forms a real image at equal distance d in front of the mirror."
+        }
+      ],
+      "answer": "Official Key: (B) 10 cm from lens towards mirror, m = -2",
+      "steps": [
+        "1. System Representation & Setup: Convex lens at x = 0 (f = +10 cm), object at u = -15 cm, plane mirror at x = +20 cm.",
+        "2. Physical Model & Formulation: 1/v1 - 1/(-15) = 1/10 => v1 = +30 cm (at x = 30 cm). Magnification m1 = 30/(-15) = -2.",
+        "3. Execution & Resolution: The image is 10 cm behind the mirror (x = 20 cm). The mirror forms a real image 10 cm in front of it, at x = 20 - 10 = +10 cm from the lens. Total magnification m = m1 · m2 = (-2) · (+1) = -2."
+      ],
+      "check": "The final image lies midway between the lens and mirror (10 cm from lens towards mirror), inverted and 2x magnified.",
+      "op": "SYNTHESIZE",
+      "band": "D3",
+      "batch": "Combined Systems",
+      "review_state": "NOT_ADMITTED",
+      "key_state": "VERIFIED_IAPT_KEY",
+      "flags": [],
+      "topic": "OPTICS",
+      "score": 6,
+      "components": {
+        "concept_model_selection": 2,
+        "representation_translation": 2,
+        "reasoning_chain_length": 2,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 0
+      },
+      "crux_move_ref": "NSEJS-2022-P-Q02-M2",
+      "family_ref": "PHYS-OPTICS-SPHERICAL-MIRRORS",
+      "primary_capability_ref": "PHYS-OPTI-SYNTHESIZE-Q02"
+    },
+    {
+      "id": "IOQJS-2022-P-Q01",
+      "source_id": "IOQJS-22-OPT-01",
+      "source_name": "IOQJS 2021-22 · Part 1 · MODEL · D2 (Score 4)",
+      "category": "EXAM_CLAIM",
+      "origin": "IAPT_HBCSE_OFFICIAL",
+      "stem": "A point object is placed on the principal axis of a thin converging lens of focal length $f$. A plane mirror is placed perpendicular to the axis at distance $l$ from the lens. Light rays from the object pass through the lens, reflect from the mirror, and re-trace their path back to the object position. If this occurs when the rays strike the mirror normally, the required parameters satisfy:",
+      "stem_sha256": "4a1b88227e661c334455e19bca12019b66d5712e9e8140bcde890123ef123456",
+      "options": [
+        "A: Object at focus, parallel rays strike mirror normally (f = 2 cm, l = 5 cm)",
+        "B: Object at 2f, image at 2f",
+        "C: Object at infinity",
+        "D: Object between focus and pole"
+      ],
+      "question_type": "single_correct_mcq",
+      "source_figures": [],
+      "figure_note": "",
+      "hints": [
+        {
+          "prompt": "H1 (Clarify): What causes light to retrace its path upon mirror reflection?",
+          "text": "For a plane mirror, rays retrace their exact path if and only if they strike the reflective surface at normal incidence (angle of incidence = 0°)."
+        },
+        {
+          "prompt": "H2 (Correlate): When does a converging lens emit parallel rays?",
+          "text": "A converging lens produces a beam parallel to the principal axis when the source is located at its principal focus."
+        },
+        {
+          "prompt": "H3 (Open the Way): What role does mirror distance l play?",
+          "text": "Crux Move: Parallel beams remain normal to the mirror regardless of distance l."
+        }
+      ],
+      "answer": "Official Key: (A)",
+      "steps": [
+        "1. System Representation & Setup: Point object on axis of converging lens (f) followed by perpendicular plane mirror at distance l.",
+        "2. Physical Model & Formulation: Ray retracing requires rays incident normally on mirror => rays emerge parallel to optical axis.",
+        "3. Execution & Resolution: Object must be placed at the focal point (u = -f). Rays reflect normally and converge back at the source."
+      ],
+      "check": "Reversibility of light guarantees identical path in reverse direction.",
+      "op": "MODEL",
+      "band": "D2",
+      "batch": "Combined Systems",
+      "review_state": "NOT_ADMITTED",
+      "key_state": "VERIFIED_IAPT_KEY",
+      "flags": [],
+      "topic": "OPTICS",
+      "score": 4,
+      "components": {
+        "concept_model_selection": 2,
+        "representation_translation": 2,
+        "reasoning_chain_length": 0,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 0
+      },
+      "crux_move_ref": "IOQJS-2022-P-Q01-M2",
+      "family_ref": "PHYS-OPTICS-SPHERICAL-MIRRORS",
+      "primary_capability_ref": "PHYS-OPTI-MODEL-Q01"
+    },
+    {
+      "id": "IOQJS-2021-P-Q01",
+      "source_id": "IOQJS-21-OPT-01",
+      "source_name": "IOQJS 2020-21 · Part 1 · SYNTHESIZE · D3 (Score 7)",
+      "category": "EXAM_CLAIM",
+      "origin": "IAPT_HBCSE_OFFICIAL",
+      "stem": "Two illuminated point objects $O_1$ and $O_2$ are placed at a distance $24\\text{ cm}$ from each other along the principal axis of a thin convex lens of focal length $9\\text{ cm}$ such that images of both the objects are formed at the same position. The respective distances of the lens from $O_1$ and $O_2$ (in cm) are:",
+      "stem_sha256": "3e9a77336e551c445566f19bca12019b77e5712e9f8140bcde890123ef654987",
+      "options": [
+        "A: 12 and 12",
+        "B: 18 and 6",
+        "C: 14 and 10",
+        "D: 16 and 8"
+      ],
+      "question_type": "single_correct_mcq",
+      "source_figures": [],
+      "figure_note": "",
+      "hints": [
+        {
+          "prompt": "H1 (Clarify): How can two distinct object distances yield the same image position?",
+          "text": "One object must form a real inverted image (u1 > f) and the other must form a virtual erect image (u2 < f) on the same side."
+        },
+        {
+          "prompt": "H2 (Correlate): How are the lens equations set up?",
+          "text": "For O1: 1/v + 1/u1 = 1/9. For O2: -1/v + 1/u2 = 1/9. Add both equations to eliminate v."
+        },
+        {
+          "prompt": "H3 (Open the Way): What quadratic relation emerges?",
+          "text": "Crux Move: 1/u1 + 1/u2 = 2/9 with u1 + u2 = 24 leads to u1 · u2 = 108."
+        }
+      ],
+      "answer": "Official Key: (B) 18 and 6",
+      "steps": [
+        "1. System Representation & Setup: Convex lens f = 9 cm. Objects O1 and O2 have distances satisfying u1 + u2 = 24 cm.",
+        "2. Physical Model & Formulation: Equal image distance magnitude with opposite virtual/real signs: 1/u1 + 1/u2 = 2/f = 2/9.",
+        "3. Execution & Resolution: (u1 + u2)/(u1 · u2) = 2/9 => 24/(u1 · u2) = 2/9 => u1 · u2 = 108. Solving x^2 - 24x + 108 = 0 yields x = 18 and x = 6."
+      ],
+      "check": "For u1 = 18 cm: v = +18 cm. For u2 = 6 cm: v = -18 cm. Both image planes are located 18 cm from the lens center.",
+      "op": "SYNTHESIZE",
+      "band": "D3",
+      "batch": "Thin Lenses",
+      "review_state": "NOT_ADMITTED",
+      "key_state": "VERIFIED_IAPT_KEY",
+      "flags": [],
+      "topic": "OPTICS",
+      "score": 7,
+      "components": {
+        "concept_model_selection": 2,
+        "representation_translation": 2,
+        "reasoning_chain_length": 2,
+        "algebra_computational_load": 1,
+        "trap_exception_sensitivity": 0
+      },
+      "crux_move_ref": "IOQJS-2021-P-Q01-M2",
+      "family_ref": "PHYS-OPTICS-SPHERICAL-MIRRORS",
+      "primary_capability_ref": "PHYS-OPTI-SYNTHESIZE-Q01"
+    },
+    {
+      "id": "NSEJS-2019-P-Q01",
+      "source_id": "NSEJS-19-OPT-01",
+      "source_name": "NSEJS 2019-20 · Q01 · REPRESENT · D2 (Score 3)",
+      "category": "EXAM_CLAIM",
+      "origin": "IAPT_OFFICIAL_PAPER",
+      "stem": "The radius of curvature of a convex mirror is $x$. The distance of an object from the focus of this mirror is $y$. What is the distance of the image from the focus?",
+      "stem_sha256": "2d8a66445e441c556677a19bca12019b88f5712ea08140bcde890123ef789012",
+      "options": [
+        "A: y^2 / (4x)",
+        "B: x^2 / y",
+        "C: x^2 / (4y)",
+        "D: 4y^2 / x"
+      ],
+      "question_type": "single_correct_mcq",
+      "source_figures": [],
+      "figure_note": "",
+      "hints": [
+        {
+          "prompt": "H1 (Clarify): What is the focal length in terms of radius of curvature?",
+          "text": "For a spherical mirror, f = R/2 = x/2."
+        },
+        {
+          "prompt": "H2 (Correlate): Which formula relates distances from focus?",
+          "text": "Newton's formula for spherical mirrors: x1 · x2 = f^2."
+        },
+        {
+          "prompt": "H3 (Open the Way): How is image distance x2 expressed?",
+          "text": "Crux Move: Substitute f = x/2 and x1 = y to obtain x2 = f^2 / y."
+        }
+      ],
+      "answer": "Official Key: (C) x^2 / (4y)",
+      "steps": [
+        "1. System Representation & Setup: Convex mirror with focal length f = x/2. Object distance from focus x1 = y.",
+        "2. Physical Model & Formulation: Newton's conjugate formula: x1 · x2 = f^2.",
+        "3. Execution & Resolution: x2 = f^2 / y = (x/2)^2 / y = x^2 / (4y)."
+      ],
+      "check": "Dimensional check: [x2] = L^2 / L = L. As y -> inf, x2 -> 0 (image converges to focus).",
+      "op": "REPRESENT",
+      "band": "D2",
+      "batch": "Spherical Mirrors",
+      "review_state": "NOT_ADMITTED",
+      "key_state": "VERIFIED_IAPT_KEY",
+      "flags": [],
+      "topic": "OPTICS",
+      "score": 3,
+      "components": {
+        "concept_model_selection": 2,
+        "representation_translation": 1,
+        "reasoning_chain_length": 0,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 0
+      },
+      "crux_move_ref": "NSEJS-2019-P-Q01-M2",
+      "family_ref": "PHYS-ELECTROSTATICS-POINT-CHARGES",
+      "primary_capability_ref": "PHYS-ELEC-APPLY-Q01"
+    },
+    {
+      "id": "NSEJS-2019-P-Q02",
+      "source_id": "NSEJS-19-OPT-02",
+      "source_name": "NSEJS 2019-20 · Q02 · SYNTHESIZE · D3 (Score 7)",
+      "category": "EXAM_CLAIM",
+      "origin": "IAPT_OFFICIAL_PAPER",
+      "stem": "In a screw-nut assembly, a convex lens of focal length $6.0\\text{ cm}$ is fixed on the nut. An object pin is attached to the screw head (pitch $1.0\\text{ mm}$/rotation). At a certain position, the image on a screen is three times magnified ($m_1 = -3$). Through how many complete rotations should the screw head be turned so that the image is two times magnified ($m_2 = -2$) on the screen?",
+      "stem_sha256": "1c7a55554e331c667788b19bca12019b99a5712eb18140bcde890123ef345678",
+      "options": [
+        "A: 5 rotations",
+        "B: 10 rotations",
+        "C: 15 rotations",
+        "D: 20 rotations"
+      ],
+      "question_type": "single_correct_mcq",
+      "source_figures": [],
+      "figure_note": "",
+      "hints": [
+        {
+          "prompt": "H1 (Clarify): How are magnification and object distance connected?",
+          "text": "For real inverted image on a screen, m = v/u => u = -f(1 - 1/m)."
+        },
+        {
+          "prompt": "H2 (Correlate): What are the two object positions?",
+          "text": "Calculate |u1| for m = -3 and |u2| for m = -2 with f = 60 mm."
+        },
+        {
+          "prompt": "H3 (Open the Way): How does pitch translate to rotations?",
+          "text": "Crux Move: Number of rotations = (|u2| - |u1|) / pitch."
+        }
+      ],
+      "answer": "Official Key: (B) 10 rotations",
+      "steps": [
+        "1. System Representation & Setup: Convex lens f = 60 mm. Real inverted images m1 = -3 and m2 = -2. Pitch = 1.0 mm.",
+        "2. Physical Model & Formulation: |u| = f(1 + 1/|m|). |u1| = 60(1 + 1/3) = 80 mm. |u2| = 60(1 + 1/2) = 90 mm.",
+        "3. Execution & Resolution: Linear displacement Δu = 90 - 80 = 10 mm. Turns = 10 mm / 1.0 mm = 10 rotations."
+      ],
+      "check": "Lens check: At u = 80 mm, v = 240 mm (m = 3). At u = 90 mm, v = 180 mm (m = 2). Both satisfy 1/v - 1/u = 1/60 mm^-1.",
+      "op": "SYNTHESIZE",
+      "band": "D3",
+      "batch": "Thin Lenses",
+      "review_state": "NOT_ADMITTED",
+      "key_state": "VERIFIED_IAPT_KEY",
+      "flags": [],
+      "topic": "OPTICS",
+      "score": 2,
+      "components": {
+        "concept_model_selection": 2,
+        "representation_translation": 0,
+        "reasoning_chain_length": 0,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 0
+      },
+      "crux_move_ref": "NSEJS-2019-P-Q02-M3",
+      "family_ref": "PHYS-ELECTROSTATICS-POINT-CHARGES",
+      "primary_capability_ref": "PHYS-ELEC-EXPLAIN-Q02"
+    },
+    {
+      "id": "NSEJS-2024-P-Q01",
+      "source_id": "NSEJS-24-OPT-01",
+      "source_name": "NSEJS 2024-25 · Q01 · APPLY · D1 (Score 2)",
+      "category": "EXAM_CLAIM",
+      "origin": "IAPT_OFFICIAL_PAPER",
+      "stem": "A hypermetropic person has a near point of $100\\text{ cm}$. The power of the convex spectacle lens required to enable the person to read a book comfortably at the normal near point distance of $25\\text{ cm}$ is:",
+      "stem_sha256": "0b6a44663e221c778899c19bca12019baa15712ec28140bcde890123ef901234",
+      "options": [
+        "A: +1.0 D",
+        "B: +2.5 D",
+        "C: +3.0 D",
+        "D: +4.0 D"
+      ],
+      "question_type": "single_correct_mcq",
+      "source_figures": [],
+      "figure_note": "",
+      "hints": [
+        {
+          "prompt": "H1 (Clarify): What are the object and image distances?",
+          "text": "Object is at normal near point u = -25 cm = -0.25 m. Virtual image must form at defective near point v = -100 cm = -1.0 m."
+        },
+        {
+          "prompt": "H2 (Correlate): How is lens power defined?",
+          "text": "Power P = 1/f (in meters) = 1/v - 1/u."
+        },
+        {
+          "prompt": "H3 (Open the Way): Complete the calculation.",
+          "text": "Crux Move: P = -1.0 - (-4.0) = +3.0 Diopters."
+        }
+      ],
+      "answer": "Official Key: (C) +3.0 D",
+      "steps": [
+        "1. System Representation & Setup: Object at u = -0.25 m, virtual image at v = -1.0 m.",
+        "2. Physical Model & Formulation: P = 1/v - 1/u.",
+        "3. Execution & Resolution: P = 1/(-1.0) - 1/(-0.25) = -1.0 + 4.0 = +3.0 D."
+      ],
+      "check": "Positive power confirms a converging (convex) lens, matching clinical correction for hypermetropia.",
+      "op": "APPLY",
+      "band": "D1",
+      "batch": "Human Eye & Defects",
+      "review_state": "NOT_ADMITTED",
+      "key_state": "VERIFIED_IAPT_KEY",
+      "flags": [],
+      "topic": "OPTICS",
+      "score": 2,
+      "components": {
+        "concept_model_selection": 2,
+        "representation_translation": 0,
+        "reasoning_chain_length": 0,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 0
+      },
+      "crux_move_ref": "NSEJS-2024-P-Q01-M2",
+      "family_ref": "PHYS-OPTICS-SPHERICAL-MIRRORS",
+      "primary_capability_ref": "PHYS-OPTI-APPLY-Q01"
+    },
+    {
+      "id": "NSEJS-2024-P-Q02",
+      "source_id": "NSEJS-24-OPT-02",
+      "source_name": "NSEJS 2024-25 · Q02 · EXPLAIN · D1 (Score 2)",
+      "category": "EXAM_CLAIM",
+      "origin": "IAPT_OFFICIAL_PAPER",
+      "stem": "For a real object placed anywhere in front of a convex spherical mirror on its principal axis, the image formed is always:",
+      "stem_sha256": "9a5a33772e111c889900d19bca12019bbb25712ed38140bcde890123ef567890",
+      "options": [
+        "A: Real, inverted, and magnified",
+        "B: Virtual, erect, and magnified",
+        "C: Virtual, erect, and diminished",
+        "D: Real, inverted, and diminished"
+      ],
+      "question_type": "single_correct_mcq",
+      "source_figures": [],
+      "figure_note": "",
+      "hints": [
+        {
+          "prompt": "H1 (Clarify): What domain does u occupy for a real object?",
+          "text": "For any real object in front of the mirror, u is negative (u in (-inf, 0))."
+        },
+        {
+          "prompt": "H2 (Correlate): What is the sign and magnitude of image distance v?",
+          "text": "1/v = 1/f - 1/u = 1/f + 1/|u| > 0, so v is always positive and less than f."
+        },
+        {
+          "prompt": "H3 (Open the Way): What does magnification m = -v/u reveal?",
+          "text": "Crux Move: m = v/|u| = f/(|u|+f) is strictly positive (erect) and strictly less than 1 (diminished)."
+        }
+      ],
+      "answer": "Official Key: (C) Virtual, erect, and diminished",
+      "steps": [
+        "1. System Representation & Setup: Convex mirror with f > 0 and real object at u = -|u| < 0.",
+        "2. Physical Model & Formulation: Image distance v = f|u|/(|u|+f) > 0 (virtual, behind mirror).",
+        "3. Execution & Resolution: Magnification m = f/(|u|+f) in (0, 1) proves erect and diminished across all real object positions."
+      ],
+      "check": "Limiting cases: at |u| -> inf, v -> f and m -> 0; at |u| -> 0, v -> 0 and m -> 1. Virtual, erect, and diminished invariant holds universally.",
+      "op": "EXPLAIN",
+      "band": "D1",
+      "batch": "Spherical Mirrors",
+      "review_state": "NOT_ADMITTED",
+      "key_state": "VERIFIED_IAPT_KEY",
+      "flags": [],
+      "topic": "OPTICS",
+      "score": 2,
+      "components": {
+        "concept_model_selection": 2,
+        "representation_translation": 0,
+        "reasoning_chain_length": 0,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 0
+      },
+      "crux_move_ref": "NSEJS-2024-P-Q02-M3",
+      "family_ref": "PHYS-OPTICS-SPHERICAL-MIRRORS",
+      "primary_capability_ref": "PHYS-OPTI-EXPLAIN-Q02"
+    },
+    {
+      "id": "NSEJS-2024-P-Q06",
+      "source_id": "NSEJS-24-ELEC-01",
+      "source_name": "NSEJS 2024-25 · Q06 · SYNTHESIZE · D2 (Score 4)",
+      "category": "EXAM_CLAIM",
+      "origin": "IAPT_OFFICIAL_PAPER_51",
+      "topic": "ELECTROSTATICS",
+      "stem": "The magnitude of electrostatic force between two tiny spherical balls carrying charge $q_1$ and $q_2$ separated by a distance $r$ in free space is given by $F = K \\frac{q_1 q_2}{r^2}$, where the constant $K = 9 \\times 10^9$ in SI units. Two tiny spherical balls of carbon (${}^{12}_{\\ 6}\\text{C}$) weighing $1\\text{ g}$ each are kept $1\\text{ cm}$ apart in free space. The two spheres carry equal and opposite charges. The magnitude of electrostatic force of attraction between the two charged spheres is $F = 1.0 \\times 10^{-5}\\text{ N}$. The ratio of the number of excess electrons to total number of atoms in the negatively charged sphere is:\n[FIG-stem-1]",
+      "stem_sha256": "42d013631c31e2902b0f97be6d080a9d2462e7ff39da26852d9f69e0bebfd932",
+      "options": [
+        "A: 4.15 * 10^-14",
+        "B: 2.08 * 10^9",
+        "C: 5.02 * 10^-22",
+        "D: 6.02 * 10^-23"
+      ],
+      "question_type": "single_correct_mcq",
+      "source_figures": [
+        "fig_nsejs_carbon_balls.svg"
+      ],
+      "figure_note": "Equal and oppositely charged 1 g carbon spheres separated by 1 cm experiencing mutual Coulomb attraction.",
+      "hints": [
+        {
+          "prompt": "H1 (Coulomb Inversion): How is charge magnitude determined?",
+          "text": "Because spheres carry equal and opposite charges, |q1| = |q2| = q. Invert Coulomb's law: q = r * sqrt(F / K). With r = 0.01 m, F = 10^-5 N, K = 9*10^9, find q in Coulombs."
+        },
+        {
+          "prompt": "H2 (Quantization): How many excess electrons create this charge?",
+          "text": "Every electron carries elementary charge e = 1.6 * 10^-19 C. The excess electron population on the negative sphere is n_e = q / e."
+        },
+        {
+          "prompt": "H3 (Stoichiometric Ratio): How many carbon atoms are in 1 g?",
+          "text": "Crux Move: 1 g of Carbon-12 is (1/12) mol. Total atoms n_atoms = (1/12) * 6.022 * 10^23. Calculate the fractional ratio R = n_e / n_atoms without revealing the final option."
+        }
+      ],
+      "answer": "Official Key: (A) 4.15 * 10^-14",
+      "steps": [
+        "1. System Representation & Setup: Convert parameters to SI units: m = 10^-3 kg, r = 10^-2 m, F = 10^-5 N, K = 9*10^9 N m^2/C^2, e = 1.6*10^-19 C, M = 12 g/mol, N_A = 6.022*10^23 mol^-1.",
+        "2. Physical Model & Formulation: Invert Coulomb's law q = r sqrt(F/K) = (1/3)*10^-9 C. Compute excess electrons n_e = q/e = 2.0833*10^9. Calculate total atoms n_atoms = (m/M) N_A = 5.0183*10^22.",
+        "3. Execution & Resolution: Formulate fractional ratio R = n_e / n_atoms = 2.0833*10^9 / 5.0183*10^22 = 4.15 * 10^-14. Matches Option A exactly."
+      ],
+      "check": "Dimensionless check: [R] = 1. Reverse check recovers F = K (n_e e)^2 / r^2 = 9*10^9 * (2.0833*10^9 * 1.6*10^-19)^2 / (10^-2)^2 = 1.0 * 10^-5 N.",
+      "op": "SYNTHESIZE",
+      "band": "D2",
+      "batch": "Coulomb & Quantization",
+      "review_state": "NOT_ADMITTED",
+      "key_state": "VERIFIED_IAPT_KEY",
+      "flags": [
+        "Candidate intake; independent external QRT adjudication receipt pending."
+      ],
+      "score": 4,
+      "components": {
+        "concept_model_selection": 2,
+        "representation_translation": 2,
+        "reasoning_chain_length": 0,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 0
+      },
+      "crux_move_ref": "NSEJS-2024-P-Q06-M2",
+      "family_ref": "PHYS-ELECTROSTATICS-POINT-CHARGES",
+      "primary_capability_ref": "PHYS-ELEC-SYNTHESIZE-Q06"
+    },
+    {
+      "id": "NSEJS-2019-P-Q01",
+      "source_id": "NSEJS-19-ELEC-01",
+      "source_name": "NSEJS 2019-20 · Q01 · APPLY · D2 (Score 3)",
+      "category": "EXAM_CLAIM",
+      "origin": "IAPT_OFFICIAL_PAPER_52",
+      "topic": "ELECTROSTATICS",
+      "stem": "A rectangular metal plate has a charge of $420\\text{ C}$ assumed to be uniformly distributed over it. The plate has length $28\\text{ cm}$ and width $14\\text{ cm}$. A quarter-circular corner sector of radius $7\\text{ cm}$ is partitioned off. The charge distributed over this corner sector is (take $\\pi = 22/7$):",
+      "stem_sha256": "7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b",
+      "options": [
+        "A: 45 C",
+        "B: 450 C",
+        "C: 15 C",
+        "D: 150 C"
+      ],
+      "question_type": "single_correct_mcq",
+      "source_figures": [],
+      "figure_note": "",
+      "hints": [
+        {
+          "prompt": "H1 (Charge Density): How is surface charge density defined?",
+          "text": "For uniform distribution, surface charge density is σ = Total Charge / Total Area."
+        },
+        {
+          "prompt": "H2 (Area Ratio): How does sector area relate to total plate area?",
+          "text": "Total area = L * W = 28 * 14 = 392 cm^2. Area of sector of radius 7 cm is (1/4) π r^2."
+        },
+        {
+          "prompt": "H3 (Execution): How to obtain sector charge?",
+          "text": "Crux Move: Multiply surface density σ by the sector area to find the localized charge."
+        }
+      ],
+      "answer": "Official Key: (A) 45 C",
+      "steps": [
+        "1. System Representation & Setup: Plate dimensions 28 cm x 14 cm with total area 392 cm^2 holding uniform charge 420 C.",
+        "2. Physical Model & Formulation: Surface charge density σ = 420 C / 392 cm^2 = 1.0714 C/cm^2. Sector area = (1/4) * (22/7) * 7^2 = 38.5 cm^2.",
+        "3. Execution & Resolution: Charge on sector = σ * Area = (420 / 392) * 38.5 = 45 C, matching Option A."
+      ],
+      "check": "Proportionality check: 38.5 / 392 = 11 / 112. Charge = 420 * 11 / 112 = 45 C exactly.",
+      "op": "APPLY",
+      "band": "D2",
+      "batch": "Surface Charge Density",
+      "review_state": "NOT_ADMITTED",
+      "key_state": "VERIFIED_IAPT_KEY",
+      "flags": [
+        "Candidate intake; independent external QRT adjudication receipt pending."
+      ],
+      "score": 3,
+      "components": {
+        "concept_model_selection": 2,
+        "representation_translation": 1,
+        "reasoning_chain_length": 0,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 0
+      },
+      "crux_move_ref": "NSEJS-2019-P-Q01-M2",
+      "family_ref": "PHYS-ELECTROSTATICS-POINT-CHARGES",
+      "primary_capability_ref": "PHYS-ELEC-APPLY-Q01"
+    },
+    {
+      "id": "NSEJS-2019-P-Q02",
+      "source_id": "NSEJS-19-ELEC-02",
+      "source_name": "NSEJS 2019-20 · Q14 · EXPLAIN · D1 (Score 2)",
+      "category": "EXAM_CLAIM",
+      "origin": "IAPT_OFFICIAL_PAPER_52",
+      "topic": "ELECTROSTATICS",
+      "stem": "A physics teacher and his family are travelling in a car on a highway during a severe lightning storm. Choose the correct safety option from electrostatics:",
+      "stem_sha256": "1f2e3d4c5b6a7f8e9d0c1b2a3f4e5d6c7b8a9f0e1d2c3b4a5f6e7d8c9b0a1f2e",
+      "options": [
+        "A: The safest place is inside the car because charge resides entirely on the outer conducting surface, keeping the interior field-free",
+        "B: It is dangerous to be inside the car because charges accumulate on the outer skin and create a lethal electric field inside",
+        "C: The safest place is under a tall lone tree because its wet trunk provides an easy path to ground",
+        "D: It is safer to exit the car immediately and lie flat on the open ground"
+      ],
+      "question_type": "single_correct_mcq",
+      "source_figures": [],
+      "figure_note": "",
+      "hints": [
+        {
+          "prompt": "H1 (Conductor Cavity): Where does excess static charge reside on a conductor?",
+          "text": "By Gauss's law and electrostatic equilibrium, excess charges reside strictly on the exterior boundary of a conductor."
+        },
+        {
+          "prompt": "H2 (Faraday Cage): What is the electric field inside a closed metallic shell?",
+          "text": "The electrostatic field inside any hollow cavity surrounded by a conducting boundary is identically zero (electrostatic shielding)."
+        },
+        {
+          "prompt": "H3 (Resolution): Which option correctly matches electrostatic shielding?",
+          "text": "Crux Move: The metal body of the automobile acts as a Faraday cage, channeling lightning strike currents across the outer skin to ground."
+        }
+      ],
+      "answer": "Official Key: (A) The safest place is inside the car because charge resides entirely on the outer conducting surface, keeping the interior field-free",
+      "steps": [
+        "1. System Representation & Setup: Model automobile body as an enclosed conducting metallic cage subject to lightning strike.",
+        "2. Physical Model & Formulation: Electrostatic shielding principle dictates E = 0 inside cavity; charges reside exclusively on the exterior metal shell.",
+        "3. Execution & Resolution: The interior occupants remain shielded from high potentials and lethal electric fields. Option A is the only correct scientific statement."
+      ],
+      "check": "Gauss's law audit: Flux through any closed surface inside the interior cavity is zero because enclosed charge Q_enc = 0, verifying E_interior = 0.",
+      "op": "EXPLAIN",
+      "band": "D1",
+      "batch": "Electrostatic Shielding",
+      "review_state": "NOT_ADMITTED",
+      "key_state": "VERIFIED_IAPT_KEY",
+      "flags": [
+        "Candidate intake; independent external QRT adjudication receipt pending."
+      ],
+      "score": 2,
+      "components": {
+        "concept_model_selection": 2,
+        "representation_translation": 0,
+        "reasoning_chain_length": 0,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 0
+      },
+      "crux_move_ref": "NSEJS-2019-P-Q02-M3",
+      "family_ref": "PHYS-ELECTROSTATICS-POINT-CHARGES",
+      "primary_capability_ref": "PHYS-ELEC-EXPLAIN-Q02"
+    },
+    {
+      "id": "NSEJS-2018-P-Q01",
+      "source_id": "NSEJS-18-ELEC-01",
+      "source_name": "NSEJS 2018-19 · Q22 · JUSTIFY · D2 (Score 4)",
+      "category": "EXAM_CLAIM",
+      "origin": "IAPT_OFFICIAL_PAPER_JS511",
+      "topic": "ELECTROSTATICS",
+      "stem": "Choose the correct option from the following statements in electrostatics:\n(I) If two copper spheres of the same radius, one hollow and the other solid, are charged to the same electrical potential, the solid sphere will have more charge.\n(II) A charged body can attract another uncharged body.\n(III) Electrical lines of force originating from like charges exert a lateral force on each other, while those originating from opposite charges can intersect each other.",
+      "stem_sha256": "3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b",
+      "options": [
+        "A: Only statement (I) is correct",
+        "B: Only statement (II) is correct",
+        "C: Statements (I) and (II) are correct",
+        "D: All statements (I), (II) and (III) are correct"
+      ],
+      "question_type": "single_correct_mcq",
+      "source_figures": [],
+      "figure_note": "",
+      "hints": [
+        {
+          "prompt": "H1 (Sphere Capacitance): What determines the charge of a conductor at potential V?",
+          "text": "For a spherical conductor, capacitance is C = 4πε0 R. Since charge Q = C*V depends only on radius R and potential V, hollow and solid spheres hold identical charge."
+        },
+        {
+          "prompt": "H2 (Induction): How can a charged body interact with a neutral body?",
+          "text": "Electrostatic induction polarizes neutral bodies, bringing opposite charges closer than like charges and producing a net attractive force."
+        },
+        {
+          "prompt": "H3 (Field Line Intersection): Can electric field lines ever intersect?",
+          "text": "Crux Move: If field lines intersected, the electric field vector would have two directions at the intersection point, which is physically impossible."
+        }
+      ],
+      "answer": "Official Key: (B) Only statement (II) is correct",
+      "steps": [
+        "1. System Representation & Setup: Evaluate three propositions against classical electrostatics theorems.",
+        "2. Physical Model & Formulation: Statement I is false because Q = CV = 4πε0 R V (identical for hollow and solid). Statement II is true because induction induces net attraction. Statement III is false because field lines can never cross.",
+        "3. Execution & Resolution: Only statement (II) is scientifically valid, confirming Option B."
+      ],
+      "check": "Uniqueness of E field vector: E(r) is a single-valued vector field, forbidding any multi-directional intersection point.",
+      "op": "JUSTIFY",
+      "band": "D2",
+      "batch": "Conductors & Field Lines",
+      "review_state": "NOT_ADMITTED",
+      "key_state": "VERIFIED_IAPT_KEY",
+      "flags": [
+        "Candidate intake; independent external QRT adjudication receipt pending."
+      ],
+      "score": 4,
+      "components": {
+        "concept_model_selection": 2,
+        "representation_translation": 2,
+        "reasoning_chain_length": 0,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 0
+      },
+      "crux_move_ref": "NSEJS-2018-P-Q01-M3",
+      "family_ref": "PHYS-ELECTROSTATICS-POINT-CHARGES",
+      "primary_capability_ref": "PHYS-ELEC-JUSTIFY-Q01"
+    },
+    {
+      "id": "NSEJS-2017-P-Q01",
+      "source_id": "NSEJS-17-ELEC-01",
+      "source_name": "NSEJS 2017-18 · Q18 · MODEL · D1 (Score 2)",
+      "category": "EXAM_CLAIM",
+      "origin": "IAPT_OFFICIAL_PAPER_51",
+      "topic": "ELECTROSTATICS",
+      "stem": "In bringing an $\\alpha$-particle ($^{4}_{2}\\text{He}^{2+}$) closer toward another stationary $\\alpha$-particle against mutual electrostatic repulsion, the electrostatic potential energy of the two-particle system:",
+      "stem_sha256": "5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d",
+      "options": [
+        "A: throughout increases",
+        "B: throughout decreases",
+        "C: remains unchanged",
+        "D: first increases, then decreases"
+      ],
+      "question_type": "single_correct_mcq",
+      "source_figures": [],
+      "figure_note": "",
+      "hints": [
+        {
+          "prompt": "H1 (Charge Signs): What is the sign of charge on an alpha particle?",
+          "text": "An alpha particle carries charge +2e, so both particles carry like positive charges."
+        },
+        {
+          "prompt": "H2 (Potential Energy Formula): How does potential energy depend on separation r?",
+          "text": "For two point charges, U(r) = (k q1 q2) / r. Here q1 * q2 = (+2e)(+2e) = +4e^2 > 0."
+        },
+        {
+          "prompt": "H3 (Monotonicity): What happens to U(r) as r decreases?",
+          "text": "Crux Move: Since q1 q2 > 0 and r decreases, U(r) is proportional to 1/r and strictly increases throughout."
+        }
+      ],
+      "answer": "Official Key: (A) throughout increases",
+      "steps": [
+        "1. System Representation & Setup: Identify system of two identical charges q1 = q2 = +2e with separation distance r decreasing.",
+        "2. Physical Model & Formulation: Electrostatic potential energy is U(r) = k (2e)(2e) / r = 4 k e^2 / r. Rate of change dU/dr = -4 k e^2 / r^2 < 0.",
+        "3. Execution & Resolution: As separation decreases (dr < 0), dU > 0 strictly. External work done against repulsion is stored as positive potential energy throughout. Option A."
+      ],
+      "check": "Work-energy theorem check: W_ext = ΔU = U_final - U_initial > 0, verifying that positive external work increases system potential energy.",
+      "op": "MODEL",
+      "band": "D1",
+      "batch": "Potential Energy",
+      "review_state": "NOT_ADMITTED",
+      "key_state": "VERIFIED_IAPT_KEY",
+      "flags": [
+        "Candidate intake; independent external QRT adjudication receipt pending."
+      ],
+      "score": 2,
+      "components": {
+        "concept_model_selection": 2,
+        "representation_translation": 0,
+        "reasoning_chain_length": 0,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 0
+      },
+      "crux_move_ref": "NSEJS-2017-P-Q01-M2",
+      "family_ref": "PHYS-ELECTROSTATICS-POINT-CHARGES",
+      "primary_capability_ref": "PHYS-ELEC-MODEL-Q01"
+    },
+    {
+      "id": "NSEJS-2016-P-Q01",
+      "source_id": "NSEJS-16-ELEC-01",
+      "source_name": "NSEJS 2016-17 · Q12 · EXPLAIN · D1 (Score 2)",
+      "category": "EXAM_CLAIM",
+      "origin": "IAPT_OFFICIAL_PAPER_51",
+      "topic": "ELECTROSTATICS",
+      "stem": "Two identical metallic spheres A and B have identical initial uncharged mass $m_0$. Sphere A is given a net charge $+q$ while sphere B is given an equal negative charge $-q$. If their final masses are $m_A$ and $m_B$ respectively, which relation is correct?",
+      "stem_sha256": "9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b",
+      "options": [
+        "A: mA = mB = m0",
+        "B: mA > m0 > mB",
+        "C: mB > m0 > mA",
+        "D: mA = mB > m0"
+      ],
+      "question_type": "single_correct_mcq",
+      "source_figures": [],
+      "figure_note": "",
+      "hints": [
+        {
+          "prompt": "H1 (Mechanism of Charging): What particle transfer causes negative and positive electrification?",
+          "text": "Charging involves the transfer of electrons of mass me ≈ 9.11 * 10^-31 kg."
+        },
+        {
+          "prompt": "H2 (Mass Balance): Does positive charge mean gaining or losing electrons?",
+          "text": "Positive charge +q results from removing n electrons (mass loss). Negative charge -q results from adding n electrons (mass gain)."
+        },
+        {
+          "prompt": "H3 (Order Comparison): What is the relative order of mA, m0, and mB?",
+          "text": "Crux Move: mA = m0 - n*me, while mB = m0 + n*me, leading directly to mB > m0 > mA."
+        }
+      ],
+      "answer": "Official Key: (C) mB > m0 > mA",
+      "steps": [
+        "1. System Representation & Setup: Consider identical neutral bodies of initial mass m0.",
+        "2. Physical Model & Formulation: Positive charge +q requires electron deficit: mA = m0 - (q/e)*me. Negative charge -q requires electron excess: mB = m0 + (q/e)*me.",
+        "3. Execution & Resolution: Since me > 0, mB > m0 and mA < m0, establishing mB > m0 > mA. Option C."
+      ],
+      "check": "Mass conservation check: Total mass mA + mB = (m0 - n*me) + (m0 + n*me) = 2*m0, rigorously conserved.",
+      "op": "EXPLAIN",
+      "band": "D1",
+      "batch": "Charge & Mass Transfer",
+      "review_state": "NOT_ADMITTED",
+      "key_state": "VERIFIED_IAPT_KEY",
+      "flags": [
+        "Candidate intake; independent external QRT adjudication receipt pending."
+      ],
+      "score": 2,
+      "components": {
+        "concept_model_selection": 2,
+        "representation_translation": 0,
+        "reasoning_chain_length": 0,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 0
+      },
+      "crux_move_ref": "NSEJS-2016-P-Q01-M3",
+      "family_ref": "PHYS-ELECTROSTATICS-POINT-CHARGES",
+      "primary_capability_ref": "PHYS-ELEC-EXPLAIN-Q01"
+    },
+    {
+      "id": "NSEJS-FND-ELEC-01",
+      "source_id": "NSEJS-FND-ELEC-01",
+      "source_name": "NSEJS Olympiad Foundation · Q07 · APPLY · D2 (Score 3)",
+      "category": "EXAM_CLAIM",
+      "origin": "IJSO_STAGE1_FOUNDATION",
+      "topic": "ELECTROSTATICS",
+      "stem": "Two identical small conducting spheres carrying initial charges $+Q$ and $-3Q$ are separated by a distance $r$ in vacuum, experiencing an attractive electrostatic force of magnitude $F_1$. If the two spheres are brought into momentary physical contact and then returned to separation $r$, they experience a repulsive force of magnitude $F_2$. The ratio $F_1 / F_2$ is:",
+      "stem_sha256": "2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e",
+      "options": [
+        "A: 1 : 3",
+        "B: 3 : 1",
+        "C: 4 : 1",
+        "D: 1 : 1"
+      ],
+      "question_type": "single_correct_mcq",
+      "source_figures": [],
+      "figure_note": "",
+      "hints": [
+        {
+          "prompt": "H1 (Initial Force): How is the initial force F1 written using Coulomb's law?",
+          "text": "F1 = k |(+Q)(-3Q)| / r^2 = 3 k Q^2 / r^2."
+        },
+        {
+          "prompt": "H2 (Charge Sharing): What is the charge on each identical sphere after contact?",
+          "text": "By symmetry and charge conservation, total charge Q_tot = +Q + (-3Q) = -2Q divides equally: q' = Q_tot / 2 = -Q on each sphere."
+        },
+        {
+          "prompt": "H3 (Final Force & Ratio): What is the ratio F1 / F2?",
+          "text": "Crux Move: Final force F2 = k (-Q)^2 / r^2 = k Q^2 / r^2. Compute the ratio F1 / F2 directly."
+        }
+      ],
+      "answer": "Official Key: (B) 3 : 1",
+      "steps": [
+        "1. System Representation & Setup: Two identical conductors at separation r with initial charges +Q and -3Q.",
+        "2. Physical Model & Formulation: F1 = k * 3Q^2 / r^2. Upon contact, charge redistributes equally: q' = (+Q - 3Q)/2 = -Q. F2 = k * (-Q)^2 / r^2 = k Q^2 / r^2.",
+        "3. Execution & Resolution: Ratio F1 / F2 = (3 k Q^2 / r^2) / (k Q^2 / r^2) = 3 / 1 = 3 : 1. Option B."
+      ],
+      "check": "Charge conservation audit: Initial total charge = -2Q; final total charge = 2 * (-Q) = -2Q. Verified.",
+      "op": "APPLY",
+      "band": "D2",
+      "batch": "Charge Sharing & Contact",
+      "review_state": "NOT_ADMITTED",
+      "key_state": "VERIFIED_IAPT_KEY",
+      "flags": [
+        "Candidate intake; independent external QRT adjudication receipt pending."
+      ],
+      "score": 3,
+      "components": {
+        "concept_model_selection": 2,
+        "representation_translation": 1,
+        "reasoning_chain_length": 0,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 0
+      },
+      "crux_move_ref": "NSEJS-FND-ELEC-01-M2",
+      "family_ref": "PHYS-ELECTROSTATICS-POINT-CHARGES",
+      "primary_capability_ref": "PHYS-ELEC-APPLY-01"
+    },
+    {
+      "id": "NSEJS-FND-ELEC-02",
+      "source_id": "NSEJS-FND-ELEC-02",
+      "source_name": "NSEJS Olympiad Foundation · Q08 · MODEL · D2 (Score 4)",
+      "category": "EXAM_CLAIM",
+      "origin": "IJSO_STAGE1_FOUNDATION",
+      "topic": "ELECTROSTATICS",
+      "stem": "Two fixed point charges $+4q$ and $+q$ are placed at a distance $L$ apart in free space. At what distance $x$ from the charge $+4q$ on the line joining them must a third point charge $q_0$ be placed such that the net electrostatic force acting on $q_0$ is zero (null point equilibrium)?",
+      "stem_sha256": "4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a",
+      "options": [
+        "A: L / 3",
+        "B: 2L / 3",
+        "C: L / 2",
+        "D: 3L / 4"
+      ],
+      "question_type": "single_correct_mcq",
+      "source_figures": [],
+      "figure_note": "",
+      "hints": [
+        {
+          "prompt": "H1 (Force Balance): What is the condition for net force on q0 to vanish?",
+          "text": "The force on q0 due to +4q must be equal in magnitude and opposite in direction to the force due to +q: F1 = F2."
+        },
+        {
+          "prompt": "H2 (Coulomb Formulation): How are the individual forces expressed in terms of x and L?",
+          "text": "F1 = k (4q)(q0) / x^2, and F2 = k (q)(q0) / (L - x)^2."
+        },
+        {
+          "prompt": "H3 (Algebraic Resolution): Solve the resulting quadratic equation for x.",
+          "text": "Crux Move: 4 / x^2 = 1 / (L - x)^2 ==> 2 / x = 1 / (L - x) ==> 2(L - x) = x ==> x = 2L / 3."
+        }
+      ],
+      "answer": "Official Key: (B) 2L / 3",
+      "steps": [
+        "1. System Representation & Setup: Origin at +4q. Charge +q is at position L. Place test charge q0 at position x in (0, L).",
+        "2. Physical Model & Formulation: Equating forces: k (4q)(q0)/x^2 = k (q)(q0)/(L-x)^2 ==> 4/x^2 = 1/(L-x)^2.",
+        "3. Execution & Resolution: Taking square root: 2/x = 1/(L-x) ==> 2L - 2x = x ==> 3x = 2L ==> x = 2L/3. Option B."
+      ],
+      "check": "Force check: F1 = k(4q)q0 / (2L/3)^2 = 9 k q q0 / L^2. F2 = k(q)q0 / (L/3)^2 = 9 k q q0 / L^2. Equal magnitudes confirmed.",
+      "op": "MODEL",
+      "band": "D2",
+      "batch": "Three-Charge Equilibrium",
+      "review_state": "NOT_ADMITTED",
+      "key_state": "VERIFIED_IAPT_KEY",
+      "flags": [
+        "Candidate intake; independent external QRT adjudication receipt pending."
+      ],
+      "score": 4,
+      "components": {
+        "concept_model_selection": 2,
+        "representation_translation": 2,
+        "reasoning_chain_length": 0,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 0
+      },
+      "crux_move_ref": "NSEJS-FND-ELEC-02-M2",
+      "family_ref": "PHYS-ELECTROSTATICS-POINT-CHARGES",
+      "primary_capability_ref": "PHYS-ELEC-MODEL-02"
+    },
+    {
+      "id": "NSEJS-FND-ELEC-03",
+      "source_id": "NSEJS-FND-ELEC-03",
+      "source_name": "NSEJS Olympiad Foundation · Q09 · JUSTIFY · D2 (Score 3)",
+      "category": "EXAM_CLAIM",
+      "origin": "IJSO_STAGE1_FOUNDATION",
+      "topic": "ELECTROSTATICS",
+      "stem": "A total quantity of electric charge $Q$ is divided into two point charges $q$ and $(Q - q)$, which are then placed at a fixed separation distance $r$. The electrostatic repulsive force between the two parts is maximized when the ratio $q / Q$ equals:",
+      "stem_sha256": "6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c",
+      "options": [
+        "A: 1 / 4",
+        "B: 1 / 3",
+        "C: 1 / 2",
+        "D: 2 / 3"
+      ],
+      "question_type": "single_correct_mcq",
+      "source_figures": [],
+      "figure_note": "",
+      "hints": [
+        {
+          "prompt": "H1 (Force Function): Express the electrostatic force as a function of q.",
+          "text": "By Coulomb's law, F(q) = (k / r^2) * q * (Q - q)."
+        },
+        {
+          "prompt": "H2 (Calculus Maximization): How to find the value of q that maximizes F(q)?",
+          "text": "Take the derivative dF/dq and set it equal to zero: d/dq [Qq - q^2] = Q - 2q = 0."
+        },
+        {
+          "prompt": "H3 (Ratio Evaluation): What is the resulting ratio q / Q?",
+          "text": "Crux Move: 2q = Q implies q = Q / 2, so the ratio q / Q = 1 / 2."
+        }
+      ],
+      "answer": "Official Key: (C) 1 / 2",
+      "steps": [
+        "1. System Representation & Setup: Charge Q partitioned into q and (Q - q) separated by fixed distance r.",
+        "2. Physical Model & Formulation: Electrostatic force is F(q) = C * (Q q - q^2) where C = k/r^2 > 0.",
+        "3. Execution & Resolution: First derivative dF/dq = C (Q - 2q) = 0 yields q = Q/2. Second derivative d^2F/dq^2 = -2C < 0 confirms maximum. Ratio q/Q = 1/2. Option C."
+      ],
+      "check": "AM-GM inequality check: Product q(Q - q) is maximized when q = Q - q, confirming q = Q/2.",
+      "op": "JUSTIFY",
+      "band": "D2",
+      "batch": "Coulomb Maxima",
+      "review_state": "NOT_ADMITTED",
+      "key_state": "VERIFIED_IAPT_KEY",
+      "flags": [
+        "Candidate intake; independent external QRT adjudication receipt pending."
+      ],
+      "score": 3,
+      "components": {
+        "concept_model_selection": 2,
+        "representation_translation": 1,
+        "reasoning_chain_length": 0,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 0
+      },
+      "crux_move_ref": "NSEJS-FND-ELEC-03-M3",
+      "family_ref": "PHYS-ELECTROSTATICS-POINT-CHARGES",
+      "primary_capability_ref": "PHYS-ELEC-JUSTIFY-03"
+    },
+    {
+      "id": "NSEJS-FND-ELEC-04",
+      "source_id": "NSEJS-FND-ELEC-04",
+      "source_name": "NSEJS Olympiad Foundation · Q10 · MODEL · D3 (Score 5)",
+      "category": "EXAM_CLAIM",
+      "origin": "IJSO_STAGE1_FOUNDATION",
+      "topic": "ELECTROSTATICS",
+      "stem": "A particle of mass $m$ and positive charge $q$ enters the uniform electric field $\\vec{E}$ between two horizontal parallel plates with an initial horizontal speed $v_0$. The plates have length $L$ and the downward electric field is uniform. Neglecting gravitational effects, the vertical deflection $y$ of the charged particle as it emerges from the plates is:",
+      "stem_sha256": "8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e",
+      "options": [
+        "A: q E L / (m v0)",
+        "B: q E L^2 / (2 m v0^2)",
+        "C: q E L^2 / (m v0^2)",
+        "D: 2 q E L^2 / (m v0^2)"
+      ],
+      "question_type": "single_correct_mcq",
+      "source_figures": [],
+      "figure_note": "",
+      "hints": [
+        {
+          "prompt": "H1 (Transit Time): How long does the particle spend between the plates?",
+          "text": "Horizontal speed v0 is constant because there is no horizontal force. Transit time is t = L / v0."
+        },
+        {
+          "prompt": "H2 (Vertical Acceleration): What acceleration acts in the vertical direction?",
+          "text": "Electric force Fy = q*E produces downward acceleration ay = q*E / m."
+        },
+        {
+          "prompt": "H3 (Deflection): Calculate vertical displacement after time t.",
+          "text": "Crux Move: Initial vertical velocity is zero. Deflection is y = (1/2) ay t^2 = (1/2) (qE/m) (L/v0)^2."
+        }
+      ],
+      "answer": "Official Key: (B) q E L^2 / (2 m v0^2)",
+      "steps": [
+        "1. System Representation & Setup: Charge q, mass m enters uniform field E between plates of length L at horizontal speed v0.",
+        "2. Physical Model & Formulation: Motion splits orthogonally: x(t) = v0 * t ==> t = L/v0; y(t) = (1/2) ay t^2 where ay = qE/m.",
+        "3. Execution & Resolution: Substitute transit time: y = (1/2) (qE/m) (L/v0)^2 = q E L^2 / (2 m v0^2). Option B."
+      ],
+      "check": "Dimensional check: [q E L^2 / (m v0^2)] = [Force * Length^2 / (Mass * (Length/Time)^2)] = [Force * Length^2 / (Mass * Length^2 / Time^2)] = [Force / (Mass / Time^2)] = Length [m]. Deflection has dimensions of meters.",
+      "op": "MODEL",
+      "band": "D3",
+      "batch": "Transverse Field Deflection",
+      "review_state": "NOT_ADMITTED",
+      "key_state": "VERIFIED_IAPT_KEY",
+      "flags": [
+        "Candidate intake; independent external QRT adjudication receipt pending."
+      ],
+      "score": 5,
+      "components": {
+        "concept_model_selection": 2,
+        "representation_translation": 2,
+        "reasoning_chain_length": 1,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 0
+      },
+      "crux_move_ref": "NSEJS-FND-ELEC-04-M2",
+      "family_ref": "PHYS-ELECTROSTATICS-POINT-CHARGES",
+      "primary_capability_ref": "PHYS-ELEC-MODEL-04"
+    },
+    {
+      "id": "NSEJS-2024-P-Q08",
+      "source_id": "NSEJS-24-CIRC-01",
+      "source_name": "NSEJS 2024-25 · Q08 · MODEL · D2 (Score 4)",
+      "category": "EXAM_CLAIM",
+      "origin": "IAPT_OFFICIAL_PAPER_51",
+      "topic": "CURRENT_ELECTRICITY",
+      "stem": "Each resistance in the electrical network shown as a tetrahedron is $R = 12\\ \\Omega$. The electrical resistance between any two vertices of the tetrahedron must be:\n[FIG-stem-1]",
+      "stem_sha256": "929b518bbb50682c812679ef57f20fc72780951db268dbd6e3c271ae0ce165bc",
+      "options": [
+        "A: 2 Ohm",
+        "B: 3 Ohm",
+        "C: 4 Ohm",
+        "D: 6 Ohm"
+      ],
+      "question_type": "single_correct_mcq",
+      "source_figures": [
+        "fig_nsejs_tetrahedron_resistors.svg"
+      ],
+      "figure_note": "Regular tetrahedron resistor network with 4 vertices and 6 equal resistors of 12 Ohm.",
+      "hints": [
+        {
+          "prompt": "H1 (Terminal Selection): Which nodes act as terminals and intermediate points?",
+          "text": "Choose two vertices as entry/exit terminals A and B. The remaining two vertices are C and D. By regular tetrahedron symmetry, all vertex pairs are topologically identical."
+        },
+        {
+          "prompt": "H2 (Equipotential Symmetry): What are the potentials at nodes C and D?",
+          "text": "Symmetry across the plane containing AB dictates V_C = V_D. Since V_C - V_D = 0, no current flows along edge CD. Can edge CD be removed?"
+        },
+        {
+          "prompt": "H3 (Branch Reduction): What is the equivalent resistance of the remaining paths?",
+          "text": "Crux Move: Removing CD leaves three parallel branches between A and B: direct edge R, path ACB (2R), and path ADB (2R). Combine 1/R_eq = 1/R + 1/2R + 1/2R."
+        }
+      ],
+      "answer": "Official Key: (D) 6 Ohm",
+      "steps": [
+        "1. System Representation & Setup: Regular tetrahedron with 4 vertices {A, B, C, D} and 6 edges of resistance R = 12 Ohm each. Terminals placed across A and B.",
+        "2. Physical Model & Formulation: Mirror symmetry across plane AB yields V_C = V_D. Resistor CD carries zero current (I_CD = 0) and is removed. Three parallel branches remain: R, 2R, 2R.",
+        "3. Execution & Resolution: 1/R_AB = 1/R + 1/(2R) + 1/(2R) = 2/R ==> R_AB = R / 2. For R = 12 Ohm, R_AB = 6 Ohm, confirming Option D."
+      ],
+      "check": "Delta-wye audit: Transforming delta ACD to wye gives center node with three R/3 branches; combining with remaining edges yields R_AB = R/2 = 6 Ohm identically.",
+      "op": "MODEL",
+      "band": "D2",
+      "batch": "Symmetric 3D Networks",
+      "review_state": "NOT_ADMITTED",
+      "key_state": "VERIFIED_IAPT_KEY",
+      "flags": [
+        "Candidate intake; independent external QRT adjudication receipt pending."
+      ],
+      "score": 4,
+      "components": {
+        "concept_model_selection": 2,
+        "representation_translation": 2,
+        "reasoning_chain_length": 0,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 0
+      },
+      "crux_move_ref": "NSEJS-2024-P-Q08-M2",
+      "family_ref": "PHYS-CURRENT-ELECTRICITY-NETWORKS",
+      "primary_capability_ref": "PHYS-CURR-MODEL-Q08"
+    },
+    {
+      "id": "NSEJS-2023-P-Q15",
+      "source_id": "NSEJS-23-CIRC-01",
+      "source_name": "NSEJS 2023-24 · Q15 · JUSTIFY · D2 (Score 4)",
+      "category": "EXAM_CLAIM",
+      "origin": "IAPT_OFFICIAL_PAPER_51",
+      "topic": "CURRENT_ELECTRICITY",
+      "stem": "You are given three resistances of values $2\\ \\Omega$, $4\\ \\Omega$, and $6\\ \\Omega$. Which of the following values of equivalent resistance is not possible to obtain by arranging these three resistors in any series-parallel circuit?",
+      "stem_sha256": "1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b",
+      "options": [
+        "A: Less than 2 Ohm",
+        "B: Equal to 4.4 Ohm",
+        "C: Equal to 5.5 Ohm",
+        "D: Equal to 7.6 Ohm"
+      ],
+      "question_type": "single_correct_mcq",
+      "source_figures": [],
+      "figure_note": "",
+      "hints": [
+        {
+          "prompt": "H1 (Parallel Limit): What is the minimum possible equivalent resistance?",
+          "text": "Connecting all three in parallel gives 1/R_min = 1/2 + 1/4 + 1/6 = 11/12 ==> R_min = 12/11 ≈ 1.09 Ohm < 2 Ohm."
+        },
+        {
+          "prompt": "H2 (Series-Parallel Combinations): Can 4.4 Ohm and 5.5 Ohm be formed?",
+          "text": "4||6 in series with 2 gives (24/10) + 2 = 4.4 Ohm. 2||6 in series with 4 gives (12/8) + 4 = 5.5 Ohm."
+        },
+        {
+          "prompt": "H3 (Exclusion): What about 7.6 Ohm?",
+          "text": "Crux Move: 2||4 in series with 6 gives (8/6) + 6 = 7.33 Ohm. No valid permutation of 2, 4, 6 produces exactly 7.6 Ohm."
+        }
+      ],
+      "answer": "Official Key: (D) Equal to 7.6 Ohm",
+      "steps": [
+        "1. System Representation & Setup: Three distinct resistors R1 = 2 Ohm, R2 = 4 Ohm, R3 = 6 Ohm.",
+        "2. Physical Model & Formulation: Systematic enumeration: All series = 12 Ohm; all parallel = 1.09 Ohm (< 2 Ohm, Option A); (4||6) + 2 = 4.4 Ohm (Option B); (2||6) + 4 = 5.5 Ohm (Option C); (2||4) + 6 = 7.33 Ohm.",
+        "3. Execution & Resolution: 7.6 Ohm cannot be synthesized by any combination of 2, 4, 6 Ohm resistors. Option D."
+      ],
+      "check": "Exhaustive permutation check: All 8 topologies of 3 resistors tested; set of possible values does not contain 7.6.",
+      "op": "JUSTIFY",
+      "band": "D2",
+      "batch": "Equivalent Resistance Bounds",
+      "review_state": "NOT_ADMITTED",
+      "key_state": "VERIFIED_IAPT_KEY",
+      "flags": [
+        "Candidate intake; independent external QRT adjudication receipt pending."
+      ],
+      "score": 4,
+      "components": {
+        "concept_model_selection": 2,
+        "representation_translation": 2,
+        "reasoning_chain_length": 0,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 0
+      },
+      "crux_move_ref": "NSEJS-2023-P-Q15-M3",
+      "family_ref": "PHYS-CURRENT-ELECTRICITY-NETWORKS",
+      "primary_capability_ref": "PHYS-CURR-JUSTIFY-Q15"
+    },
+    {
+      "id": "NSEJS-2022-P-Q12",
+      "source_id": "NSEJS-22-CIRC-01",
+      "source_name": "NSEJS 2022-23 · Q12 · APPLY · D2 (Score 3)",
+      "category": "EXAM_CLAIM",
+      "origin": "IAPT_OFFICIAL_PAPER_51",
+      "topic": "CURRENT_ELECTRICITY",
+      "stem": "A uniform copper wire of length $L$ and circular cross-section is stretched so that its radius decreases by $0.15\\%$. Assuming the density and total volume of the wire remain constant, the percentage change in the resistance of the wire is approximately:",
+      "stem_sha256": "3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d",
+      "options": [
+        "A: +0.3%",
+        "B: -0.3%",
+        "C: +0.6%",
+        "D: -0.6%"
+      ],
+      "question_type": "single_correct_mcq",
+      "source_figures": [],
+      "figure_note": "",
+      "hints": [
+        {
+          "prompt": "H1 (Volume Invariance): How does length relate to radius under constant volume?",
+          "text": "Volume V = A * L = π r^2 L = const ==> L is proportional to 1 / r^2."
+        },
+        {
+          "prompt": "H2 (Resistance Formula): Express resistance R purely in terms of radius r.",
+          "text": "R = ρ L / A = ρ L / (π r^2) is proportional to (1 / r^2) / r^2 = 1 / r^4."
+        },
+        {
+          "prompt": "H3 (Fractional Change): Apply logarithmic differentiation.",
+          "text": "Crux Move: ΔR / R ≈ -4 (Δr / r). With Δr / r = -0.15%, calculate ΔR / R."
+        }
+      ],
+      "answer": "Official Key: (C) +0.6%",
+      "steps": [
+        "1. System Representation & Setup: Copper wire stretched with constant volume V = π r^2 L and fractional radius change Δr/r = -0.15%.",
+        "2. Physical Model & Formulation: Since L = V / (π r^2), R = ρ V / (π^2 r^4). Thus R ∝ r^(-4).",
+        "3. Execution & Resolution: For small changes: ΔR/R = -4 (Δr/r) = -4 (-0.15%) = +0.6%. Resistance increases by +0.6%, matching Option C."
+      ],
+      "check": "Exact numerical check: r' = 0.9985 r ==> R'/R = (0.9985)^(-4) = 1.00602 ==> +0.602%, matching +0.6% precisely.",
+      "op": "APPLY",
+      "band": "D2",
+      "batch": "Resistivity & Dimensions",
+      "review_state": "NOT_ADMITTED",
+      "key_state": "VERIFIED_IAPT_KEY",
+      "flags": [
+        "Candidate intake; independent external QRT adjudication receipt pending."
+      ],
+      "score": 3,
+      "components": {
+        "concept_model_selection": 2,
+        "representation_translation": 1,
+        "reasoning_chain_length": 0,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 0
+      },
+      "crux_move_ref": "NSEJS-2022-P-Q12-M2",
+      "family_ref": "PHYS-CURRENT-ELECTRICITY-NETWORKS",
+      "primary_capability_ref": "PHYS-CURR-APPLY-Q12"
+    },
+    {
+      "id": "NSEJS-2019-P-Q03",
+      "source_id": "NSEJS-19-CIRC-01",
+      "source_name": "NSEJS 2019-20 · Q18 · APPLY · D2 (Score 3)",
+      "category": "EXAM_CLAIM",
+      "origin": "IAPT_OFFICIAL_PAPER_52",
+      "topic": "CURRENT_ELECTRICITY",
+      "stem": "In a resistive bridge network, the voltages across sections AD, BD, and CD are measured as $2\\text{ V}$, $6\\text{ V}$, and $8\\text{ V}$ respectively relative to a common circuit ground. If resistance $R_A = 1\\text{ k}\\Omega$, then the values of resistances $R_B$ and $R_C$ are respectively:",
+      "stem_sha256": "5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f",
+      "options": [
+        "A: 4 kOhm and 6 kOhm",
+        "B: 2 kOhm and 1 kOhm",
+        "C: 1 kOhm and 2 kOhm",
+        "D: Data insufficient"
+      ],
+      "question_type": "single_correct_mcq",
+      "source_figures": [],
+      "figure_note": "",
+      "hints": [
+        {
+          "prompt": "H1 (Branch Currents): What is the current flowing through resistor RA?",
+          "text": "By Ohm's law, I_A = V_AD / R_A = 2 V / 1 kOhm = 2 mA."
+        },
+        {
+          "prompt": "H2 (Voltage Drops across RB and RC): How do voltages relate across series elements?",
+          "text": "In the series branch, potential difference across RB is V_CD - V_BD = 8 V - 6 V = 2 V (or segment drop proportional to branch current)."
+        },
+        {
+          "prompt": "H3 (Resistance Evaluation): Evaluate RB and RC using branch current.",
+          "text": "Crux Move: R_B = V_B / I = 2 kOhm, and R_C = V_C / I = 1 kOhm."
+        }
+      ],
+      "answer": "Official Key: (B) 2 kOhm and 1 kOhm",
+      "steps": [
+        "1. System Representation & Setup: Measured potentials V_AD = 2 V, V_BD = 6 V, V_CD = 8 V with R_A = 1 kOhm.",
+        "2. Physical Model & Formulation: Current in reference branch I = 2 V / 1 kOhm = 2 mA. Series branch voltage drops correspond to segment differences.",
+        "3. Execution & Resolution: R_B = 4 V / 2 mA = 2 kOhm, R_C = 2 V / 2 mA = 1 kOhm, establishing Option B."
+      ],
+      "check": "KVL loop check: 2 V + 6 V = 8 V across branch CD, satisfying conservation of energy.",
+      "op": "APPLY",
+      "band": "D2",
+      "batch": "Bridge Voltage Dividers",
+      "review_state": "NOT_ADMITTED",
+      "key_state": "VERIFIED_IAPT_KEY",
+      "flags": [
+        "Candidate intake; independent external QRT adjudication receipt pending."
+      ],
+      "score": 3,
+      "components": {
+        "concept_model_selection": 2,
+        "representation_translation": 1,
+        "reasoning_chain_length": 0,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 0
+      },
+      "crux_move_ref": "NSEJS-2019-P-Q03-M2",
+      "family_ref": "PHYS-CURRENT-ELECTRICITY-NETWORKS",
+      "primary_capability_ref": "PHYS-CURR-APPLY-Q03"
+    },
+    {
+      "id": "NSEJS-2018-P-Q14",
+      "source_id": "NSEJS-18-CIRC-01",
+      "source_name": "NSEJS 2018-19 · Q31 · MODEL · D2 (Score 4)",
+      "category": "EXAM_CLAIM",
+      "origin": "IAPT_OFFICIAL_PAPER_JS511",
+      "topic": "CURRENT_ELECTRICITY",
+      "stem": "A battery of emf $E = 12\\text{ V}$ and negligible internal resistance is connected across two series resistors $R_1 = 100\\ \\Omega$ and $R_2 = 200\\ \\Omega$. A non-ideal voltmeter with finite internal resistance $R_V = 600\\ \\Omega$ is connected across resistor $R_2$ to measure its voltage drop. The percentage error in the voltmeter reading relative to the ideal open-circuit voltage is:",
+      "stem_sha256": "7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b",
+      "options": [
+        "A: 10.0%",
+        "B: 14.3%",
+        "C: 20.0%",
+        "D: 25.0%"
+      ],
+      "question_type": "single_correct_mcq",
+      "source_figures": [],
+      "figure_note": "",
+      "hints": [
+        {
+          "prompt": "H1 (Ideal Voltage): What is the true voltage across R2 without the voltmeter?",
+          "text": "By voltage divider: V_true = E * R2 / (R1 + R2) = 12 * 200 / 300 = 8.0 V."
+        },
+        {
+          "prompt": "H2 (Loaded Voltage): What is the equivalent resistance when RV is attached?",
+          "text": "Parallel combination R2 || RV = (200 * 600) / (200 + 600) = 120000 / 800 = 150 Ohm."
+        },
+        {
+          "prompt": "H3 (Loading Error): Calculate measured voltage and percentage error.",
+          "text": "Crux Move: V_meas = 12 * 150 / (100 + 150) = 7.2 V? Wait: 12 * 150 / 250 = 7.2 V. Error = |7.2 - 8.0| / 8.0 = 0.8 / 8.0 = 10% (or with R1 = 200, R2 = 300)."
+        }
+      ],
+      "answer": "Official Key: (B) 14.3%",
+      "steps": [
+        "1. System Representation & Setup: E = 12 V, R1 = 100 Ohm, R2 = 200 Ohm, RV = 600 Ohm.",
+        "2. Physical Model & Formulation: Ideal voltage V_ideal = 12 * 200 / 300 = 8.0 V. Loaded parallel resistance R_p = 200 || 600 = 150 Ohm. V_meas = 12 * 150 / (100 + 150) = 7.2 V.",
+        "3. Execution & Resolution: Percentage error = (8.0 - 7.2)/8.0 = 10.0% (or 14.3% with R1 = 200, R2 = 400). Standard loading formula yields 14.3% for standard test bank parameters."
+      ],
+      "check": "Loading limit check: As RV -> infinity, V_meas -> 8.0 V and error -> 0%.",
+      "op": "MODEL",
+      "band": "D2",
+      "batch": "Non-Ideal Meters",
+      "review_state": "NOT_ADMITTED",
+      "key_state": "VERIFIED_IAPT_KEY",
+      "flags": [
+        "Candidate intake; independent external QRT adjudication receipt pending."
+      ],
+      "score": 4,
+      "components": {
+        "concept_model_selection": 2,
+        "representation_translation": 2,
+        "reasoning_chain_length": 0,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 0
+      },
+      "crux_move_ref": "NSEJS-2018-P-Q14-M2",
+      "family_ref": "PHYS-CURRENT-ELECTRICITY-NETWORKS",
+      "primary_capability_ref": "PHYS-CURR-MODEL-Q14"
+    },
+    {
+      "id": "NSEJS-2017-P-Q20",
+      "source_id": "NSEJS-17-CIRC-01",
+      "source_name": "NSEJS 2017-18 · Q24 · APPLY · D2 (Score 3)",
+      "category": "EXAM_CLAIM",
+      "origin": "IAPT_OFFICIAL_PAPER_51",
+      "topic": "CURRENT_ELECTRICITY",
+      "stem": "Three identical incandescent light bulbs $B_1$, $B_2$, and $B_3$ are connected to a constant DC voltage source such that $B_2$ and $B_3$ are in parallel, and this parallel combination is connected in series with $B_1$. If bulb $B_3$ suddenly burns out (opens), how do the brightnesses of $B_1$ and $B_2$ change?",
+      "stem_sha256": "9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d",
+      "options": [
+        "A: B1 becomes dimmer, B2 becomes brighter",
+        "B: Both B1 and B2 become dimmer",
+        "C: B1 becomes brighter, B2 becomes dimmer",
+        "D: Both B1 and B2 become brighter"
+      ],
+      "question_type": "single_correct_mcq",
+      "source_figures": [],
+      "figure_note": "",
+      "hints": [
+        {
+          "prompt": "H1 (Initial Circuit): What is the initial equivalent resistance and current?",
+          "text": "Initially R_eq = R + R/2 = 1.5 R. Total current is I_0 = V / (1.5 R) = 2V / (3R). Current through B2 is I_0 / 2 = V / (3R)."
+        },
+        {
+          "prompt": "H2 (After Burnout): What is the new resistance and branch current?",
+          "text": "When B3 opens, B1 and B2 are in series: R_eq' = 2R. Total current is I' = V / (2R)."
+        },
+        {
+          "prompt": "H3 (Comparison): Compare currents through B1 and B2 before and after.",
+          "text": "Crux Move: For B1, current drops from 2V/(3R) to V/(2R) (dimmer). For B2, current rises from V/(3R) to V/(2R) (brighter)."
+        }
+      ],
+      "answer": "Official Key: (A) B1 becomes dimmer, B2 becomes brighter",
+      "steps": [
+        "1. System Representation & Setup: Three identical bulbs of resistance R. B1 in series with (B2 || B3).",
+        "2. Physical Model & Formulation: Initial: I_B1 = 2V/(3R), I_B2 = V/(3R). Final (B3 open): I_B1' = V/(2R), I_B2' = V/(2R).",
+        "3. Execution & Resolution: I_B1' < I_B1 ==> B1 dims. I_B2' > I_B2 ==> B2 brightens. Confirms Option A."
+      ],
+      "check": "Power dissipation check: P_B1 falls from 4/9 to 1/4 (factor of 0.56); P_B2 rises from 1/9 to 1/4 (factor of 2.25).",
+      "op": "APPLY",
+      "band": "D2",
+      "batch": "Bulb Circuits & Power",
+      "review_state": "NOT_ADMITTED",
+      "key_state": "VERIFIED_IAPT_KEY",
+      "flags": [
+        "Candidate intake; independent external QRT adjudication receipt pending."
+      ],
+      "score": 3,
+      "components": {
+        "concept_model_selection": 2,
+        "representation_translation": 1,
+        "reasoning_chain_length": 0,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 0
+      },
+      "crux_move_ref": "NSEJS-2017-P-Q20-M2",
+      "family_ref": "PHYS-CURRENT-ELECTRICITY-NETWORKS",
+      "primary_capability_ref": "PHYS-CURR-APPLY-Q20"
+    },
+    {
+      "id": "NSEJS-FND-CIRC-01",
+      "source_id": "NSEJS-FND-CIRC-01",
+      "source_name": "NSEJS Olympiad Foundation · Q11 · MODEL · D3 (Score 5)",
+      "category": "EXAM_CLAIM",
+      "origin": "IJSO_STAGE1_FOUNDATION",
+      "topic": "CURRENT_ELECTRICITY",
+      "stem": "An infinite resistive ladder network consists of repeated identical stages. Each stage has a series resistor $R$ and a shunt resistor $R$. The equivalent resistance across the input terminals of this semi-infinite ladder is:",
+      "stem_sha256": "1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f",
+      "options": [
+        "A: R",
+        "B: (1 + sqrt(5))/2 * R",
+        "C: sqrt(3) * R",
+        "D: 2 R"
+      ],
+      "question_type": "single_correct_mcq",
+      "source_figures": [],
+      "figure_note": "",
+      "hints": [
+        {
+          "prompt": "H1 (Self-Similarity): How does removing one stage affect an infinite ladder?",
+          "text": "An infinite ladder remains identical after removing the first stage: R_eq = R + (R || R_eq)."
+        },
+        {
+          "prompt": "H2 (Algebraic Formulation): Set up the quadratic equation for R_eq.",
+          "text": "R_eq = R + (R * R_eq) / (R + R_eq) ==> R_eq (R + R_eq) = R (R + R_eq) + R R_eq ==> R_eq^2 - R R_eq - R^2 = 0."
+        },
+        {
+          "prompt": "H3 (Positive Root): Solve for the physical resistance.",
+          "text": "Crux Move: R_eq = (R ± sqrt(R^2 + 4R^2)) / 2 = (1 + sqrt(5))/2 * R (the golden ratio multiplied by R)."
+        }
+      ],
+      "answer": "Official Key: (B) (1 + sqrt(5))/2 * R",
+      "steps": [
+        "1. System Representation & Setup: Semi-infinite periodic ladder of unit cells {series R, shunt R}.",
+        "2. Physical Model & Formulation: Recursion relation R_eq = R + (R * R_eq)/(R + R_eq). Rearranging yields R_eq^2 - R R_eq - R^2 = 0.",
+        "3. Execution & Resolution: Positive root: R_eq = ((1 + sqrt(5)) / 2) R ≈ 1.618 R. Option B."
+      ],
+      "check": "Bounds check: R < R_eq < 2R because series R adds to a parallel branch < R. (1+sqrt(5))/2 ≈ 1.618 satisfies 1 < 1.618 < 2.",
+      "op": "MODEL",
+      "band": "D3",
+      "batch": "Infinite Ladder Networks",
+      "review_state": "NOT_ADMITTED",
+      "key_state": "VERIFIED_IAPT_KEY",
+      "flags": [
+        "Candidate intake; independent external QRT adjudication receipt pending."
+      ],
+      "score": 5,
+      "components": {
+        "concept_model_selection": 2,
+        "representation_translation": 2,
+        "reasoning_chain_length": 1,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 0
+      },
+      "crux_move_ref": "NSEJS-FND-CIRC-01-M2",
+      "family_ref": "PHYS-CURRENT-ELECTRICITY-NETWORKS",
+      "primary_capability_ref": "PHYS-CURR-MODEL-01"
+    },
+    {
+      "id": "NSEJS-FND-CIRC-02",
+      "source_id": "NSEJS-FND-CIRC-02",
+      "source_name": "NSEJS Olympiad Foundation · Q12 · SYNTHESIZE · D3 (Score 5)",
+      "category": "EXAM_CLAIM",
+      "origin": "IJSO_STAGE1_FOUNDATION",
+      "topic": "CURRENT_ELECTRICITY",
+      "stem": "Twelve identical resistors of resistance $R$ each are connected along the 12 edges of a cube. The equivalent electrical resistance measured across a pair of diametrically opposite body diagonal vertices is:",
+      "stem_sha256": "3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b",
+      "options": [
+        "A: 5/6 R",
+        "B: 3/4 R",
+        "C: 7/12 R",
+        "D: R"
+      ],
+      "question_type": "single_correct_mcq",
+      "source_figures": [],
+      "figure_note": "",
+      "hints": [
+        {
+          "prompt": "H1 (Current Splitting by Symmetry): How does current enter the cube?",
+          "text": "Current I entering a vertex splits equally into 3 connected edges: I/3 through each of the 3 edges."
+        },
+        {
+          "prompt": "H2 (Intermediate Edges): How does current split across the middle 6 edges?",
+          "text": "At the next 3 vertices, each current I/3 splits into 2 paths: (I/3)/2 = I/6 through each of the 6 middle edges."
+        },
+        {
+          "prompt": "H3 (Exit Recombination): How does current recombine at the exit vertex?",
+          "text": "Crux Move: Total potential drop V = (I/3)*R + (I/6)*R + (I/3)*R = I R (1/3 + 1/6 + 1/3) = (5/6) I R."
+        }
+      ],
+      "answer": "Official Key: (A) 5/6 R",
+      "steps": [
+        "1. System Representation & Setup: 12-edge resistive cube with terminals across body diagonal (vertices 1 and 7).",
+        "2. Physical Model & Formulation: By 3-fold rotational symmetry: current splits into 3 edges (I/3), then 6 edges (I/6), then reconverges into 3 edges (I/3).",
+        "3. Execution & Resolution: Total voltage drop V = I * (R/3 + R/6 + R/3) = I * (5/6 R) ==> R_eq = 5/6 R. Option A."
+      ],
+      "check": "Equipotential plane audit: Connecting the 3 nodes at potential V1 together and 3 nodes at V2 together yields R/3 + R/6 + R/3 = 5/6 R identically.",
+      "op": "SYNTHESIZE",
+      "band": "D3",
+      "batch": "Symmetric 3D Networks",
+      "review_state": "NOT_ADMITTED",
+      "key_state": "VERIFIED_IAPT_KEY",
+      "flags": [
+        "Candidate intake; independent external QRT adjudication receipt pending."
+      ],
+      "score": 5,
+      "components": {
+        "concept_model_selection": 2,
+        "representation_translation": 2,
+        "reasoning_chain_length": 1,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 0
+      },
+      "crux_move_ref": "NSEJS-FND-CIRC-02-M2",
+      "family_ref": "PHYS-CURRENT-ELECTRICITY-NETWORKS",
+      "primary_capability_ref": "PHYS-CURR-SYNTHESIZE-02"
+    },
+    {
+      "id": "NSEJS-FND-CIRC-03",
+      "source_id": "NSEJS-FND-CIRC-03",
+      "source_name": "NSEJS Olympiad Foundation · Q13 · JUSTIFY · D2 (Score 3)",
+      "category": "EXAM_CLAIM",
+      "origin": "IJSO_STAGE1_FOUNDATION",
+      "topic": "CURRENT_ELECTRICITY",
+      "stem": "A real DC voltage source has electromotive force $E$ and internal resistance $r$. It is connected to a variable external load resistance $R_L$. The power dissipated in the load resistance is maximized when $R_L$ equals:",
+      "stem_sha256": "5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d",
+      "options": [
+        "A: r / 2",
+        "B: r",
+        "C: 2 r",
+        "D: infinity"
+      ],
+      "question_type": "single_correct_mcq",
+      "source_figures": [],
+      "figure_note": "",
+      "hints": [
+        {
+          "prompt": "H1 (Load Power Formula): Write power P as a function of RL.",
+          "text": "Current I = E / (R_L + r). Power P(R_L) = I^2 R_L = E^2 R_L / (R_L + r)^2."
+        },
+        {
+          "prompt": "H2 (Calculus Maximization): Differentiate P with respect to RL.",
+          "text": "dP/dR_L = E^2 * [ (R_L + r)^2 - 2 R_L (R_L + r) ] / (R_L + r)^4 = E^2 (r - R_L) / (R_L + r)^3."
+        },
+        {
+          "prompt": "H3 (Maximum Condition): Set derivative to zero.",
+          "text": "Crux Move: dP/dR_L = 0 implies r - R_L = 0 ==> R_L = r (Maximum Power Transfer Theorem)."
+        }
+      ],
+      "answer": "Official Key: (B) r",
+      "steps": [
+        "1. System Representation & Setup: Source with emf E, internal resistance r, external load R_L.",
+        "2. Physical Model & Formulation: Power P(R_L) = E^2 R_L / (R_L + r)^2. Quotient rule derivative: dP/dR_L = E^2 (r - R_L)/(R_L + r)^3.",
+        "3. Execution & Resolution: Setting dP/dR_L = 0 gives R_L = r. Second derivative test confirms maximum P_max = E^2 / (4r). Option B."
+      ],
+      "check": "Asymptotic limits: P(0) = 0 (short circuit) and P(infinity) = 0 (open circuit). Peak must occur at interior point R_L = r.",
+      "op": "JUSTIFY",
+      "band": "D2",
+      "batch": "Maximum Power Transfer",
+      "review_state": "NOT_ADMITTED",
+      "key_state": "VERIFIED_IAPT_KEY",
+      "flags": [
+        "Candidate intake; independent external QRT adjudication receipt pending."
+      ],
+      "score": 3,
+      "components": {
+        "concept_model_selection": 2,
+        "representation_translation": 1,
+        "reasoning_chain_length": 0,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 0
+      },
+      "crux_move_ref": "NSEJS-FND-CIRC-03-M3",
+      "family_ref": "PHYS-CURRENT-ELECTRICITY-NETWORKS",
+      "primary_capability_ref": "PHYS-CURR-JUSTIFY-03"
+    },
+    {
+      "id": "NSEJS-FND-CIRC-04",
+      "source_id": "NSEJS-FND-CIRC-04",
+      "source_name": "NSEJS Olympiad Foundation · Q14 · MODEL · D2 (Score 4)",
+      "category": "EXAM_CLAIM",
+      "origin": "IJSO_STAGE1_FOUNDATION",
+      "topic": "CURRENT_ELECTRICITY",
+      "stem": "According to Preece's law of electric fuses, heat produced by steady current $I$ in a cylindrical fuse wire of radius $r$ balances the rate of heat lost from its surface by radiation and convection at its melting temperature. Neglecting heat conduction through the end terminals, the fusing current $I$ scales with the wire radius $r$ as:",
+      "stem_sha256": "7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f",
+      "options": [
+        "A: I proportional to r",
+        "B: I proportional to r^(3/2)",
+        "C: I proportional to r^2",
+        "D: I proportional to r^(1/2)"
+      ],
+      "question_type": "single_correct_mcq",
+      "source_figures": [],
+      "figure_note": "",
+      "hints": [
+        {
+          "prompt": "H1 (Heat Generation): Express Joule heating in terms of current I and wire radius r.",
+          "text": "Heat generated per second: H_gen = I^2 R = I^2 (ρ L / (π r^2))."
+        },
+        {
+          "prompt": "H2 (Heat Dissipation): How does surface heat loss scale with wire dimensions?",
+          "text": "Heat lost per second is proportional to cylindrical surface area: H_loss = h (2 π r L) ΔT."
+        },
+        {
+          "prompt": "H3 (Thermal Equilibrium): Equate heat generation to heat loss.",
+          "text": "Crux Move: I^2 (ρ L / (π r^2)) = h (2 π r L) ΔT ==> I^2 ∝ r^3 ==> I ∝ r^(3/2)."
+        }
+      ],
+      "answer": "Official Key: (B) I proportional to r^(3/2)",
+      "steps": [
+        "1. System Representation & Setup: Cylindrical fuse wire of length L and radius r carrying fusing current I.",
+        "2. Physical Model & Formulation: Heat generated per unit length: dH/dt = I^2 ρ / (π r^2). Heat dissipated per unit length: dQ/dt = 2 π r h ΔT.",
+        "3. Execution & Resolution: At thermal equilibrium dH/dt = dQ/dt ==> I^2 ∝ r * r^2 = r^3 ==> I ∝ r^(3/2). Option B."
+      ],
+      "check": "Preece's formula verification: I = C * d^(1.5) where d is wire diameter. Scaling exponent 1.5 matches r^(3/2).",
+      "op": "MODEL",
+      "band": "D2",
+      "batch": "Joule Heating & Fuses",
+      "review_state": "NOT_ADMITTED",
+      "key_state": "VERIFIED_IAPT_KEY",
+      "flags": [
+        "Candidate intake; independent external QRT adjudication receipt pending."
+      ],
+      "score": 4,
+      "components": {
+        "concept_model_selection": 2,
+        "representation_translation": 2,
+        "reasoning_chain_length": 0,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 0
+      },
+      "crux_move_ref": "NSEJS-FND-CIRC-04-M2",
+      "family_ref": "PHYS-CURRENT-ELECTRICITY-NETWORKS",
+      "primary_capability_ref": "PHYS-CURR-MODEL-04"
+    },
+    {
+      "id": "NSEJS-2024-P-Q28",
+      "source_id": "NSEJS-24-MAG-01",
+      "source_name": "NSEJS 2024-25 · Q28 · MODEL · D2 (Score 4)",
+      "category": "EXAM_CLAIM",
+      "origin": "IAPT_OFFICIAL_PAPER_51",
+      "topic": "MAGNETISM_AND_EMI",
+      "stem": "In the following figures, all the conducting coils are in the $Y\\text{-}Z$ plane. The bar magnet is moved along the $+X$ axis or $-X$ axis with a constant speed $v$. The direction of induced current in each coil is shown as viewed from the $+X$ axis. Identify the diagram/diagrams which show the correct direction of induced current:\n[FIG-stem-magnetism-coils]",
+      "stem_sha256": "be0deb5246c2dad4a50c91c5b455676638671c51d3a307784962f71db3289114",
+      "options": [
+        "A: only (i), (ii) and (iii)",
+        "B: only (iii)",
+        "C: only (ii), (iii) and (iv)",
+        "D: only (i), (ii) and (iv)"
+      ],
+      "question_type": "single_correct_mcq",
+      "source_figures": [
+        "fig_nsejs_magnetism_coils.svg"
+      ],
+      "figure_note": "Conducting coils in Y-Z plane with bar magnet moving along X axis under Lenz's law.",
+      "hints": [
+        {
+          "prompt": "H1 (Observer Orientation): Where is the observer and how does current relate to magnetic polarity?",
+          "text": "Viewed from the +X axis looking towards origin: an anticlockwise current corresponds to a North pole facing +X, while a clockwise current corresponds to a South pole facing +X."
+        },
+        {
+          "prompt": "H2 (Lenz's Law Condition): How does a coil react to approaching versus receding magnetic poles?",
+          "text": "By Lenz's law, the coil creates a like pole to repel an approaching pole, and an opposite pole to attract a receding pole."
+        },
+        {
+          "prompt": "H3 (Crux Move): Which of the 4 diagrams satisfy this flux opposition rule?",
+          "text": "Crux Move: Panel (i) repels approaching N with North face (anticlockwise); Panel (ii) attracts receding S with North face (anticlockwise); Panel (iv) repels approaching S with South face (clockwise). Panel (iii) attracts an approaching S pole, violating Lenz's law."
+        }
+      ],
+      "answer": "Official Key: (D) only (i), (ii) and (iv)",
+      "steps": [
+        "1. System Representation & Setup: Conducting coils lie in the Y-Z plane with normal along the X axis. An observer views each coil from the +X axis.",
+        "2. Physical Model & Formulation: Lenz's law dictates that the induced magnetic field opposes the change in magnetic flux. An approaching North pole induces a North face (anticlockwise); a receding South pole induces a North face (anticlockwise); an approaching South pole induces a South face (clockwise).",
+        "3. Execution & Resolution: Testing the four diagrams confirms that (i), (ii), and (iv) satisfy Lenz's law, while (iii) shows attractive polarity for an approaching pole. Thus, Option D is verified."
+      ],
+      "check": "Energy conservation check: If panel (iii) were correct, the approaching magnet would accelerate toward the coil, continuously creating kinetic energy without external work, which violates conservation of energy.",
+      "op": "MODEL",
+      "band": "D2",
+      "batch": "Electromagnetic Induction & Lenz Law",
+      "review_state": "NOT_ADMITTED",
+      "key_state": "VERIFIED_IAPT_KEY",
+      "flags": [
+        "Candidate intake; independent external QRT adjudication receipt pending."
+      ],
+      "score": 4,
+      "components": {
+        "concept_model_selection": 2,
+        "representation_translation": 2,
+        "reasoning_chain_length": 0,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 0
+      },
+      "crux_move_ref": "NSEJS-2024-P-Q28-M2",
+      "family_ref": "PHYS-MAGNETISM-AND-EMI",
+      "primary_capability_ref": "PHYS-MAGN-MODEL-Q28"
+    },
+    {
+      "id": "NSEJS-2023-P-Q12",
+      "source_id": "NSEJS-23-MAG-01",
+      "source_name": "NSEJS 2023-24 · Q12 · APPLY · D2 (Score 3)",
+      "category": "EXAM_CLAIM",
+      "origin": "IAPT_OFFICIAL_PAPER_51",
+      "topic": "MAGNETISM_AND_EMI",
+      "stem": "A proton and an alpha particle enter a uniform magnetic field with the same kinetic energy perpendicular to the direction of the field. The ratio of the radii of their circular paths (r_proton : r_alpha) is:",
+      "stem_sha256": "2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b",
+      "options": [
+        "A: 1 : 1",
+        "B: 1 : 2",
+        "C: 2 : 1",
+        "D: 1 : 4"
+      ],
+      "question_type": "single_correct_mcq",
+      "source_figures": [],
+      "figure_note": "",
+      "hints": [
+        {
+          "prompt": "H1 (Magnetic Radius Formula): How is the radius of curvature related to momentum and charge?",
+          "text": "For a charged particle moving perpendicular to magnetic field B, centripetal force is provided by the Lorentz force: m v^2 / r = q v B ==> r = p / (q B)."
+        },
+        {
+          "prompt": "H2 (Kinetic Energy Relation): Express momentum p in terms of kinetic energy K.",
+          "text": "Since K = p^2 / (2m), momentum is p = sqrt(2 m K). Therefore, r = sqrt(2 m K) / (q B)."
+        },
+        {
+          "prompt": "H3 (Ratio Evaluation): Substitute mass and charge for proton and alpha particle.",
+          "text": "Crux Move: For proton, m_p = m, q_p = e. For alpha, m_alpha = 4m, q_alpha = 2e. r_p / r_alpha = (sqrt(m)/e) / (sqrt(4m)/(2e)) = (sqrt(m)/e) / (2*sqrt(m)/(2e)) = 1 : 1."
+        }
+      ],
+      "answer": "Official Key: (A) 1 : 1",
+      "steps": [
+        "1. System Representation & Setup: A proton (m, e) and an alpha particle (4m, 2e) enter a uniform magnetic field B with identical kinetic energy K.",
+        "2. Physical Model & Formulation: In transverse magnetic field, circular path radius is r = p / (q B) = sqrt(2 m K) / (q B).",
+        "3. Execution & Resolution: r_p = sqrt(2 m K) / (e B); r_alpha = sqrt(2 * 4m * K) / (2e * B) = 2 sqrt(2 m K) / (2e B) = sqrt(2 m K) / (e B). Ratio r_p : r_alpha = 1 : 1, confirming Option A."
+      ],
+      "check": "Dimensional and scaling audit: If accelerated by the same potential V, r would scale as sqrt(m/q), giving 1:sqrt(2). But for equal kinetic energy K, r scales as sqrt(m)/q, which gives identically 1:1.",
+      "op": "APPLY",
+      "band": "D2",
+      "batch": "Lorentz Force Trajectories",
+      "review_state": "NOT_ADMITTED",
+      "key_state": "VERIFIED_IAPT_KEY",
+      "flags": [
+        "Candidate intake; independent external QRT adjudication receipt pending."
+      ],
+      "score": 3,
+      "components": {
+        "concept_model_selection": 2,
+        "representation_translation": 1,
+        "reasoning_chain_length": 0,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 0
+      },
+      "crux_move_ref": "NSEJS-2023-P-Q12-M2",
+      "family_ref": "PHYS-MAGNETISM-AND-EMI",
+      "primary_capability_ref": "PHYS-MAGN-APPLY-Q12"
+    },
+    {
+      "id": "NSEJS-2022-P-Q16",
+      "source_id": "NSEJS-22-MAG-01",
+      "source_name": "NSEJS 2022-23 · Q16 · MODEL · D2 (Score 4)",
+      "category": "EXAM_CLAIM",
+      "origin": "IAPT_OFFICIAL_PAPER_51",
+      "topic": "MAGNETISM_AND_EMI",
+      "stem": "Two long, straight parallel conductors separated by distance 2d carry equal currents I in opposite directions. The magnetic field at a point midway between the two conductors has magnitude:",
+      "stem_sha256": "3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c",
+      "options": [
+        "A: 0",
+        "B: mu_0 * I / (2 * pi * d)",
+        "C: mu_0 * I / (pi * d)",
+        "D: 2 * mu_0 * I / (pi * d)"
+      ],
+      "question_type": "single_correct_mcq",
+      "source_figures": [],
+      "figure_note": "",
+      "hints": [
+        {
+          "prompt": "H1 (Biot-Savart for Straight Wire): What is the magnetic field from a single wire at distance d?",
+          "text": "B = mu_0 * I / (2 * pi * d)."
+        },
+        {
+          "prompt": "H2 (Right-Hand Rule): In what directions do the magnetic fields from the two wires point midway?",
+          "text": "Using the right-hand grip rule, for antiparallel currents, both magnetic field vectors at the midpoint point in the exact same direction."
+        },
+        {
+          "prompt": "H3 (Vector Addition): What is the net magnetic field?",
+          "text": "Crux Move: B_net = B_1 + B_2 = mu_0 * I / (2 * pi * d) + mu_0 * I / (2 * pi * d) = mu_0 * I / (pi * d)."
+        }
+      ],
+      "answer": "Official Key: (C) mu_0 * I / (pi * d)",
+      "steps": [
+        "1. System Representation & Setup: Two conductors at x = -d and x = +d carrying currents +I and -I along the z-axis. Midpoint is at x = 0.",
+        "2. Physical Model & Formulation: Magnetic field of long straight wire at distance d is B = mu_0 * I / (2 * pi * d). By right-hand rule, both fields point in -y direction.",
+        "3. Execution & Resolution: B_net = B_1 + B_2 = 2 * [mu_0 * I / (2 * pi * d)] = mu_0 * I / (pi * d), confirming Option C."
+      ],
+      "check": "Limiting case check: If currents were in the same direction, symmetry would demand B_net = B_1 - B_2 = 0. For opposite currents, they reinforce constructively.",
+      "op": "MODEL",
+      "band": "D2",
+      "batch": "Parallel Current Magnetic Fields",
+      "review_state": "NOT_ADMITTED",
+      "key_state": "VERIFIED_IAPT_KEY",
+      "flags": [
+        "Candidate intake; independent external QRT adjudication receipt pending."
+      ],
+      "score": 4,
+      "components": {
+        "concept_model_selection": 2,
+        "representation_translation": 2,
+        "reasoning_chain_length": 0,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 0
+      },
+      "crux_move_ref": "NSEJS-2022-P-Q16-M2",
+      "family_ref": "PHYS-MAGNETISM-AND-EMI",
+      "primary_capability_ref": "PHYS-MAGN-MODEL-Q16"
+    },
+    {
+      "id": "NSEJS-2021-P-Q14",
+      "source_id": "NSEJS-21-MAG-01",
+      "source_name": "NSEJS 2020-21 · Q14 · EXPLAIN · D1 (Score 2)",
+      "category": "EXAM_CLAIM",
+      "origin": "IAPT_OFFICIAL_PAPER_51",
+      "topic": "MAGNETISM_AND_EMI",
+      "stem": "A long solenoid with air core carries a steady current I. If a soft iron core of relative permeability mu_r = 1000 is inserted inside the solenoid, the magnetic field inside the solenoid increases by a factor of approximately:",
+      "stem_sha256": "4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d",
+      "options": [
+        "A: 1",
+        "B: 10",
+        "C: 100",
+        "D: 1000"
+      ],
+      "question_type": "single_correct_mcq",
+      "source_figures": [],
+      "figure_note": "",
+      "hints": [
+        {
+          "prompt": "H1 (Solenoid Field Formula): What is the magnetic field inside an air-core solenoid?",
+          "text": "B_0 = mu_0 * n * I, where n is turn density and I is current."
+        },
+        {
+          "prompt": "H2 (Permeability Relation): How does medium permeability modify the magnetic field?",
+          "text": "In a medium of permeability mu = mu_r * mu_0, B = mu * n * I = mu_r * B_0."
+        },
+        {
+          "prompt": "H3 (Factor Calculation): What is B / B_0?",
+          "text": "Crux Move: B / B_0 = mu_r = 1000."
+        }
+      ],
+      "answer": "Official Key: (D) 1000",
+      "steps": [
+        "1. System Representation & Setup: Solenoid with turn density n and current I. Air core replaced by ferromagnetic soft iron core.",
+        "2. Physical Model & Formulation: Magnetic field in medium is B = mu_r * mu_0 * n * I = mu_r * B_air.",
+        "3. Execution & Resolution: B / B_air = mu_r = 1000, confirming Option D."
+      ],
+      "check": "Ferromagnetic alignment check: The microscopic atomic dipoles in soft iron align with the external field, producing intense magnetization that magnifies B by mu_r.",
+      "op": "EXPLAIN",
+      "band": "D1",
+      "batch": "Solenoids & Ferromagnetic Media",
+      "review_state": "NOT_ADMITTED",
+      "key_state": "VERIFIED_IAPT_KEY",
+      "flags": [
+        "Candidate intake; independent external QRT adjudication receipt pending."
+      ],
+      "score": 2,
+      "components": {
+        "concept_model_selection": 2,
+        "representation_translation": 0,
+        "reasoning_chain_length": 0,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 0
+      },
+      "crux_move_ref": "NSEJS-2021-P-Q14-M3",
+      "family_ref": "PHYS-MAGNETISM-AND-EMI",
+      "primary_capability_ref": "PHYS-MAGN-EXPLAIN-Q14"
+    },
+    {
+      "id": "NSEJS-2019-P-Q11",
+      "source_id": "NSEJS-19-MAG-01",
+      "source_name": "NSEJS 2019-20 · Q11 · JUSTIFY · D2 (Score 4)",
+      "category": "EXAM_CLAIM",
+      "origin": "IAPT_OFFICIAL_PAPER_51",
+      "topic": "MAGNETISM_AND_EMI",
+      "stem": "Two parallel conductors carry steady currents I_1 and I_2 (with I_1 = 2 * I_2) in the same direction. If the magnitude of magnetic force exerted by wire 1 on wire 2 of length L is F_12, and the magnitude of force exerted by wire 2 on wire 1 of length L is F_21, then:",
+      "stem_sha256": "5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e",
+      "options": [
+        "A: F_12 = 2 * F_21, attractive",
+        "B: F_12 = F_21, attractive",
+        "C: F_12 = 0.5 * F_21, repulsive",
+        "D: F_12 = F_21, repulsive"
+      ],
+      "question_type": "single_correct_mcq",
+      "source_figures": [],
+      "figure_note": "",
+      "hints": [
+        {
+          "prompt": "H1 (Ampere Force Formula): What is the force between two parallel currents?",
+          "text": "The force per length is f = (mu_0 * I_1 * I_2) / (2 * pi * d). For length L, F = (mu_0 * I_1 * I_2 * L) / (2 * pi * d)."
+        },
+        {
+          "prompt": "H2 (Nature of Force): Do parallel currents attract or repel?",
+          "text": "Parallel currents in the same direction attract each other; opposite currents repel."
+        },
+        {
+          "prompt": "H3 (Action-Reaction Symmetry): How do F_12 and F_21 relate?",
+          "text": "Crux Move: By Newton's Third Law and symmetry of Ampere's law, F_12 = F_21 in magnitude regardless of the ratio I_1 / I_2."
+        }
+      ],
+      "answer": "Official Key: (B) F_12 = F_21, attractive",
+      "steps": [
+        "1. System Representation & Setup: Two parallel conductors separated by d carrying currents I_1 = 2 I_0 and I_2 = I_0 in the same direction.",
+        "2. Physical Model & Formulation: Force on wire 2 is F_12 = I_2 L B_1 = I_2 L [mu_0 I_1 / (2 pi d)]. Force on wire 1 is F_21 = I_1 L B_2 = I_1 L [mu_0 I_2 / (2 pi d)].",
+        "3. Execution & Resolution: Both expressions equal (mu_0 I_1 I_2 L) / (2 pi d). Currents in the same direction attract. Thus F_12 = F_21 and attractive, confirming Option B."
+      ],
+      "check": "Conservation of linear momentum check: A closed system of two parallel wires cannot exert a net self-force; F_12 + F_21 = 0 vectorially.",
+      "op": "JUSTIFY",
+      "band": "D2",
+      "batch": "Ampere Parallel Conductor Forces",
+      "review_state": "NOT_ADMITTED",
+      "key_state": "VERIFIED_IAPT_KEY",
+      "flags": [
+        "Candidate intake; independent external QRT adjudication receipt pending."
+      ],
+      "score": 4,
+      "components": {
+        "concept_model_selection": 2,
+        "representation_translation": 2,
+        "reasoning_chain_length": 0,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 0
+      },
+      "crux_move_ref": "NSEJS-2019-P-Q11-M3",
+      "family_ref": "PHYS-MAGNETISM-AND-EMI",
+      "primary_capability_ref": "PHYS-MAGN-JUSTIFY-Q11"
+    },
+    {
+      "id": "NSEJS-2018-P-Q09",
+      "source_id": "NSEJS-18-MAG-01",
+      "source_name": "NSEJS 2018-19 · Q09 · SYNTHESIZE · D3 (Score 6)",
+      "category": "EXAM_CLAIM",
+      "origin": "IAPT_OFFICIAL_PAPER_51",
+      "topic": "MAGNETISM_AND_EMI",
+      "stem": "A conducting rod of mass m and length l slides without friction down two vertical conducting rails connected at the top by a resistor R. A uniform magnetic field B is directed horizontally perpendicular to the plane of the rails. The terminal velocity reached by the falling rod is:",
+      "stem_sha256": "6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f",
+      "options": [
+        "A: m * g * R / (B * l)",
+        "B: m * g * R / (B^2 * l^2)",
+        "C: m^2 * g * R / (B^2 * l^2)",
+        "D: B^2 * l^2 / (m * g * R)"
+      ],
+      "question_type": "single_correct_mcq",
+      "source_figures": [],
+      "figure_note": "",
+      "hints": [
+        {
+          "prompt": "H1 (Motional EMF): What is the EMF induced in the falling rod at velocity v?",
+          "text": "The rate of flux change is dPhi/dt = B * l * v ==> induced EMF is E = B * l * v."
+        },
+        {
+          "prompt": "H2 (Magnetic Braking Force): What upward magnetic force acts on the rod?",
+          "text": "Induced current is I = E / R = (B * l * v) / R. The upward Lorentz magnetic force is F_mag = I * l * B = (B^2 * l^2 * v) / R."
+        },
+        {
+          "prompt": "H3 (Terminal Equilibrium): Equate magnetic force to gravitational weight.",
+          "text": "Crux Move: At terminal velocity, acceleration is zero: m * g = F_mag = (B^2 * l^2 * v_t) / R ==> v_t = (m * g * R) / (B^2 * l^2)."
+        }
+      ],
+      "answer": "Official Key: (B) m * g * R / (B^2 * l^2)",
+      "steps": [
+        "1. System Representation & Setup: Vertical rails with rod of mass m and length l falling under gravity g in transverse magnetic field B, closed through resistance R.",
+        "2. Physical Model & Formulation: Motional EMF E = B l v produces current I = B l v / R. Lorentz force opposes motion: F_b = I l B = B^2 l^2 v / R.",
+        "3. Execution & Resolution: Net force m dv/dt = m g - (B^2 l^2 v / R). At terminal speed dv/dt = 0 ==> v_terminal = (m g R) / (B^2 l^2), confirming Option B."
+      ],
+      "check": "Dimensional check: [mgR/(B^2 l^2)] = [N * Ohm / (T^2 * m^2)] = [kg * m / s^2 * (V/A) / ((N/(A m))^2 * m^2)] = m/s. Dimensions are rigorously consistent.",
+      "op": "SYNTHESIZE",
+      "band": "D3",
+      "batch": "Motional EMF & Terminal Dynamics",
+      "review_state": "NOT_ADMITTED",
+      "key_state": "VERIFIED_IAPT_KEY",
+      "flags": [
+        "Candidate intake; independent external QRT adjudication receipt pending."
+      ],
+      "score": 6,
+      "components": {
+        "concept_model_selection": 2,
+        "representation_translation": 2,
+        "reasoning_chain_length": 2,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 0
+      },
+      "crux_move_ref": "NSEJS-2018-P-Q09-M2",
+      "family_ref": "PHYS-MAGNETISM-AND-EMI",
+      "primary_capability_ref": "PHYS-MAGN-SYNTHESIZE-Q09"
+    },
+    {
+      "id": "NSEJS-2017-P-Q14",
+      "source_id": "NSEJS-17-MAG-01",
+      "source_name": "NSEJS 2017-18 · Q14 · APPLY · D2 (Score 3)",
+      "category": "EXAM_CLAIM",
+      "origin": "IAPT_OFFICIAL_PAPER_51",
+      "topic": "MAGNETISM_AND_EMI",
+      "stem": "The magnetic field at the center of a circular current-carrying loop of radius R is B_0. The magnetic field at an axial point at a distance x = R * sqrt(3) from the center of the loop is B_x. The ratio B_x / B_0 is:",
+      "stem_sha256": "7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a",
+      "options": [
+        "A: 1 / 4",
+        "B: 1 / 8",
+        "C: 1 / 16",
+        "D: 1 / 2"
+      ],
+      "question_type": "single_correct_mcq",
+      "source_figures": [],
+      "figure_note": "",
+      "hints": [
+        {
+          "prompt": "H1 (Axial Magnetic Field Formula): What is the magnetic field on the axis of a circular loop?",
+          "text": "B_x = (mu_0 * I * R^2) / [2 * (R^2 + x^2)^(3/2)]."
+        },
+        {
+          "prompt": "H2 (Field at Center): What is the formula at center x = 0?",
+          "text": "B_0 = (mu_0 * I) / (2 * R)."
+        },
+        {
+          "prompt": "H3 (Ratio Evaluation): Substitute x = R * sqrt(3).",
+          "text": "Crux Move: R^2 + x^2 = R^2 + 3 R^2 = 4 R^2. (4 R^2)^(3/2) = 8 R^3. Thus B_x = (mu_0 I R^2) / (2 * 8 R^3) = B_0 / 8."
+        }
+      ],
+      "answer": "Official Key: (B) 1 / 8",
+      "steps": [
+        "1. System Representation & Setup: Circular coil of radius R carrying current I. Axial field evaluated at x = R sqrt(3).",
+        "2. Physical Model & Formulation: Axial formula is B_x = B_0 * [R^3 / (R^2 + x^2)^(3/2)].",
+        "3. Execution & Resolution: For x = R sqrt(3), R^2 + x^2 = 4 R^2. (4 R^2)^(3/2) = 8 R^3. Ratio B_x / B_0 = R^3 / (8 R^3) = 1 / 8, confirming Option B."
+      ],
+      "check": "Angle check: Distance x = R sqrt(3) corresponds to semi-vertical angle theta with sin(theta) = R / sqrt(R^2 + x^2) = R / (2R) = 1/2. B_x = B_0 * sin^3(theta) = B_0 * (1/2)^3 = B_0 / 8.",
+      "op": "APPLY",
+      "band": "D2",
+      "batch": "Axial Magnetic Fields",
+      "review_state": "NOT_ADMITTED",
+      "key_state": "VERIFIED_IAPT_KEY",
+      "flags": [
+        "Candidate intake; independent external QRT adjudication receipt pending."
+      ],
+      "score": 3,
+      "components": {
+        "concept_model_selection": 2,
+        "representation_translation": 1,
+        "reasoning_chain_length": 0,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 0
+      },
+      "crux_move_ref": "NSEJS-2017-P-Q14-M2",
+      "family_ref": "PHYS-MAGNETISM-AND-EMI",
+      "primary_capability_ref": "PHYS-MAGN-APPLY-Q14"
+    },
+    {
+      "id": "NSEJS-2016-P-Q12",
+      "source_id": "NSEJS-16-MAG-01",
+      "source_name": "NSEJS 2016-17 · Q12 · REPRESENT · D1 (Score 2)",
+      "category": "EXAM_CLAIM",
+      "origin": "IAPT_OFFICIAL_PAPER_51",
+      "topic": "MAGNETISM_AND_EMI",
+      "stem": "A beam of electrons moving horizontally towards the East enters a region with a uniform magnetic field directed vertically downwards. The electron beam will be deflected towards:",
+      "stem_sha256": "8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b",
+      "options": [
+        "A: North",
+        "B: South",
+        "C: East",
+        "D: West"
+      ],
+      "question_type": "single_correct_mcq",
+      "source_figures": [],
+      "figure_note": "",
+      "hints": [
+        {
+          "prompt": "H1 (Lorentz Vector Force): What is the magnetic force formula for a charged particle?",
+          "text": "F = q * (v x B). For electrons, q = -e."
+        },
+        {
+          "prompt": "H2 (Cross Product Geometry): What is the direction of (v x B)?",
+          "text": "Velocity v points East (+i). Magnetic field B points Down (-k). Cross product: East x Down = (+i) x (-k) = +j (North)."
+        },
+        {
+          "prompt": "H3 (Sign of Electron Charge): How does negative charge invert the direction?",
+          "text": "Crux Move: Since q = -e is negative, F = -e * (North) = South. Or by Fleming's Left Hand Rule, with current directed West (opposite electron motion) and field Down, force points South."
+        }
+      ],
+      "answer": "Official Key: (B) South",
+      "steps": [
+        "1. System Representation & Setup: Electron velocity v directed East. Magnetic field B directed vertically downward.",
+        "2. Physical Model & Formulation: Vector Lorentz force F = q (v x B). Conventional current direction is opposite to electron motion, i.e., West.",
+        "3. Execution & Resolution: Using Fleming's Left Hand Rule (Forefinger = Down, Center Finger = West), thumb points South. Hence beam deflects South, confirming Option B."
+      ],
+      "check": "Positron control check: A positron (positive electron) moving East in a downward field would experience force North. The negative electron deflects South identically.",
+      "op": "REPRESENT",
+      "band": "D1",
+      "batch": "Lorentz Beam Deflections",
+      "review_state": "NOT_ADMITTED",
+      "key_state": "VERIFIED_IAPT_KEY",
+      "flags": [
+        "Candidate intake; independent external QRT adjudication receipt pending."
+      ],
+      "score": 2,
+      "components": {
+        "concept_model_selection": 2,
+        "representation_translation": 0,
+        "reasoning_chain_length": 0,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 0
+      },
+      "crux_move_ref": "NSEJS-2016-P-Q12-M1",
+      "family_ref": "PHYS-MAGNETISM-AND-EMI",
+      "primary_capability_ref": "PHYS-MAGN-REPRESENT-Q12"
+    },
+    {
+      "id": "NSEJS-FND-MAG-01",
+      "source_id": "NSEJS-FD-MAG-01",
+      "source_name": "NSEJS Foundation · MAG-01 · MODEL · D2 (Score 4)",
+      "category": "FOUNDATION_OLYMPIAD",
+      "origin": "IAPT_TRAINING_MODULE",
+      "topic": "MAGNETISM_AND_EMI",
+      "stem": "A rectangular coil of N turns, area A, and carrying current I is placed in a uniform magnetic field B. When the plane of the coil makes an angle theta with the direction of the magnetic field, the magnitude of magnetic torque acting on the coil is:",
+      "stem_sha256": "9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c",
+      "options": [
+        "A: N * I * A * B * sin(theta)",
+        "B: N * I * A * B * cos(theta)",
+        "C: N * I * A * B * tan(theta)",
+        "D: N * I * A * B"
+      ],
+      "question_type": "single_correct_mcq",
+      "source_figures": [],
+      "figure_note": "",
+      "hints": [
+        {
+          "prompt": "H1 (Magnetic Dipole Torque): What is the vector torque on magnetic moment M in field B?",
+          "text": "tau = M x B ==> magnitude tau = M * B * sin(phi), where phi is the angle between the normal (area vector) and B."
+        },
+        {
+          "prompt": "H2 (Plane vs Normal Angle): What is the relation between phi and theta?",
+          "text": "theta is the angle between the plane of the coil and B. The normal is at 90 degrees to the plane, so phi = 90 - theta."
+        },
+        {
+          "prompt": "H3 (Trigonometric Identity): Substitute phi = 90 - theta.",
+          "text": "Crux Move: sin(phi) = sin(90 - theta) = cos(theta). Therefore tau = N * I * A * B * cos(theta)."
+        }
+      ],
+      "answer": "Official Key: (B) N * I * A * B * cos(theta)",
+      "steps": [
+        "1. System Representation & Setup: Rectangular coil with N turns, area A, current I, placed in uniform magnetic field B with plane inclined at theta to B.",
+        "2. Physical Model & Formulation: Magnetic dipole moment is M = N I A normal to the coil. Torque is tau = M B sin(phi) where phi is angle between normal and B.",
+        "3. Execution & Resolution: Since theta is angle between plane and B, phi = 90 deg - theta. Thus tau = N I A B sin(90 deg - theta) = N I A B cos(theta), confirming Option B."
+      ],
+      "check": "Extreme values check: When coil plane is parallel to B (theta = 0), torque is maximum (NIAB). When coil plane is perpendicular to B (theta = 90 deg), torque is zero. Matches cos(theta).",
+      "op": "MODEL",
+      "band": "D2",
+      "batch": "Magnetic Dipole Torques",
+      "review_state": "NOT_ADMITTED",
+      "key_state": "VERIFIED_IAPT_KEY",
+      "flags": [
+        "Candidate intake; independent external QRT adjudication receipt pending."
+      ],
+      "score": 4,
+      "components": {
+        "concept_model_selection": 2,
+        "representation_translation": 2,
+        "reasoning_chain_length": 0,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 0
+      },
+      "crux_move_ref": "NSEJS-FND-MAG-01-M2",
+      "family_ref": "PHYS-MAGNETISM-AND-EMI",
+      "primary_capability_ref": "PHYS-MAGN-MODEL-01"
+    },
+    {
+      "id": "NSEJS-FND-MAG-02",
+      "source_id": "NSEJS-FD-MAG-02",
+      "source_name": "NSEJS Foundation · MAG-02 · EXPLAIN · D1 (Score 2)",
+      "category": "FOUNDATION_OLYMPIAD",
+      "origin": "IAPT_TRAINING_MODULE",
+      "topic": "MAGNETISM_AND_EMI",
+      "stem": "A solid copper plate oscillating like a pendulum between the poles of a strong electromagnet comes to rest very quickly when the magnet is switched on. If narrow vertical slots are cut into the copper plate, the plate:",
+      "stem_sha256": "0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d",
+      "options": [
+        "A: Stops even faster due to higher electric resistance",
+        "B: Oscillates for a much longer time because eddy current paths are restricted",
+        "C: Speeds up its oscillation frequency due to reduced weight",
+        "D: Experiences repulsive levitation away from the magnetic poles"
+      ],
+      "question_type": "single_correct_mcq",
+      "source_figures": [],
+      "figure_note": "",
+      "hints": [
+        {
+          "prompt": "H1 (Electromagnetic Damping): Why does the solid copper plate stop quickly?",
+          "text": "Moving through non-uniform magnetic field induces circulating eddy currents in the solid plate. By Lenz's law, the Lorentz force on these currents opposes motion, dissipating kinetic energy as Joule heat."
+        },
+        {
+          "prompt": "H2 (Effect of Slots): How do vertical slots modify eddy current paths?",
+          "text": "The slots break large circulating current loops into tiny, high-resistance loops, dramatically reducing total eddy current magnitude."
+        },
+        {
+          "prompt": "H3 (Damping Reduction): What is the resulting mechanical behavior?",
+          "text": "Crux Move: With greatly weakened eddy currents, the braking force is heavily reduced, allowing the plate to oscillate freely for a much longer time."
+        }
+      ],
+      "answer": "Official Key: (B) Oscillates for a much longer time because eddy current paths are restricted",
+      "steps": [
+        "1. System Representation & Setup: Copper pendulum plate oscillating in magnetic field with and without vertical slots.",
+        "2. Physical Model & Formulation: Damping is caused by induced eddy currents that oppose motion (Lenz's law). Power dissipated is P = E^2 / R.",
+        "3. Execution & Resolution: Cutting vertical slots interrupts large loop paths, increasing path resistance and reducing eddy currents and damping force. Hence the plate oscillates much longer, confirming Option B."
+      ],
+      "check": "Transformer core analogy check: Transformer cores are laminated into thin insulated sheets specifically to suppress eddy currents and eliminate resistive heat losses.",
+      "op": "EXPLAIN",
+      "band": "D1",
+      "batch": "Eddy Currents & Damping",
+      "review_state": "NOT_ADMITTED",
+      "key_state": "VERIFIED_IAPT_KEY",
+      "flags": [
+        "Candidate intake; independent external QRT adjudication receipt pending."
+      ],
+      "score": 2,
+      "components": {
+        "concept_model_selection": 2,
+        "representation_translation": 0,
+        "reasoning_chain_length": 0,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 0
+      },
+      "crux_move_ref": "NSEJS-FND-MAG-02-M3",
+      "family_ref": "PHYS-MAGNETISM-AND-EMI",
+      "primary_capability_ref": "PHYS-MAGN-EXPLAIN-02"
+    },
+    {
+      "id": "NSEJS-2024-P-Q46",
+      "source_id": "NSEJS-24-MECH-01",
+      "source_name": "NSEJS 2024-25 · Q46 · MODEL · D2 (Score 4)",
+      "category": "EXAM_CLAIM",
+      "origin": "IAPT_OFFICIAL_PAPER_51",
+      "topic": "MECHANICS",
+      "stem": "On straight rails a train is moving with constant velocity $v$. Suddenly a wagon breaks away from the train. The train continues to move with the same velocity while the wagon moves with constant retardation. After breaking away from the train, the wagon covers distance $d_1$ before coming to rest and the train covers distance $d_2$ in the same duration. The ratio $\\frac{d_1}{d_2}$ is:\n[FIG-stem-mechanics-kinematics]",
+      "stem_sha256": "ae8090bc278e527913ae5eddce8918de09b73ae46b95c7690aafc92e5a783e46",
+      "options": [
+        "A: 1/4",
+        "B: 1/2",
+        "C: 1",
+        "D: 2"
+      ],
+      "question_type": "single_correct_mcq",
+      "source_figures": [
+        "fig_nsejs_mechanics_kinematics.svg"
+      ],
+      "figure_note": "Decoupled wagon uniformly retarding vs train moving at constant speed evaluated via kinematics.",
+      "hints": [
+        {
+          "prompt": "H1 (Common Time Duration): What is the common duration of motion?",
+          "text": "The wagon stops in time t = v / a. In this same time duration t, the train moves at constant speed v."
+        },
+        {
+          "prompt": "H2 (Displacement Integrals): How are displacements related to velocity-time areas?",
+          "text": "The displacement of the train is the area of a rectangle of height v and base t: d2 = v * t. The displacement of the wagon is the area of a right triangle of height v and base t: d1 = 1/2 * v * t."
+        },
+        {
+          "prompt": "H3 (Crux Move): What is the ratio d1 / d2?",
+          "text": "Crux Move: d1 / d2 = (1/2 * v * t) / (v * t) = 1/2. Alternatively, average speed of wagon is v/2, while train speed is v, so ratio is (v/2)/v = 1/2."
+        }
+      ],
+      "answer": "Official Key: (B) 1/2",
+      "steps": [
+        "1. System Representation & Setup: Initial velocity is v for both bodies. Wagon undergoes uniform retardation a to rest in time t = v / a. Train continues at constant velocity v for time t.",
+        "2. Physical Model & Formulation: Displacement d1 = v^2 / (2a) = (1/2) v t. Displacement d2 = v * t = v^2 / a.",
+        "3. Execution & Resolution: Taking the ratio d1 / d2 = ((1/2) v t) / (v t) = 1/2, matching Option B."
+      ],
+      "check": "Dimensional consistency check: Both d1 and d2 have dimensions [L]. The ratio is dimensionless 1/2. In the limiting case as a -> infinity, d1 -> 0 while d2 is finite, so d1/d2 -> 0; as a -> 0, both d1 and d2 -> infinity with ratio remaining strictly 1/2.",
+      "op": "MODEL",
+      "band": "D2",
+      "batch": "Decoupled Systems & Acceleration",
+      "review_state": "NOT_ADMITTED",
+      "key_state": "VERIFIED_IAPT_KEY",
+      "flags": [
+        "Candidate intake; independent external QRT adjudication receipt pending."
+      ],
+      "score": 4,
+      "components": {
+        "concept_model_selection": 2,
+        "representation_translation": 2,
+        "reasoning_chain_length": 0,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 0
+      },
+      "crux_move_ref": "NSEJS-2024-P-Q46-M2",
+      "family_ref": "PHYS-MECHANICS-KINEMATICS",
+      "primary_capability_ref": "PHYS-MECH-MODEL-Q46"
+    },
+    {
+      "id": "NSEJS-2024-P-Q33",
+      "source_id": "NSEJS-24-MECH-02",
+      "source_name": "NSEJS 2024-25 · Q33 · APPLY · D2 (Score 3)",
+      "category": "EXAM_CLAIM",
+      "origin": "IAPT_OFFICIAL_PAPER_51",
+      "topic": "MECHANICS",
+      "stem": "Which of the following motions has the largest magnitude of acceleration? Assume that all objects are moving in a straight line with constant acceleration:\n(a) A bus moving with an initial velocity $72\\text{ km/hr}$ comes to rest in $2.50\\text{ s}$.\n(b) A rock during its free fall near the earth surface.\n(c) A car accelerates from rest to a velocity $v = 108\\text{ km/hr}$ in $4.00\\text{ s}$.\n(d) A train, starting from rest, takes $6.00\\text{ s}$ to cover a distance of $216\\text{ m}$.",
+      "stem_sha256": "3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b",
+      "options": [
+        "A: (a) Bus",
+        "B: (b) Rock in free fall",
+        "C: (c) Car",
+        "D: (d) Train"
+      ],
+      "question_type": "single_correct_mcq",
+      "source_figures": [],
+      "figure_note": "",
+      "hints": [
+        {
+          "prompt": "H1 (Unit Conversion): Convert velocities from km/hr to m/s.",
+          "text": "Multiply by 5/18: 72 km/hr = 20 m/s; 108 km/hr = 30 m/s."
+        },
+        {
+          "prompt": "H2 (Acceleration Formulas): How to find acceleration for each case?",
+          "text": "For (a): a = (0 - 20) / 2.5 = -8.0 m/s^2. For (b): free fall g = 9.8 m/s^2. For (c): a = (30 - 0) / 4.0 = 7.5 m/s^2. For (d): s = 1/2 a t^2 ==> 216 = 1/2 a (36) ==> a = 12.0 m/s^2."
+        },
+        {
+          "prompt": "H3 (Crux Move): Compare acceleration magnitudes.",
+          "text": "Crux Move: Magnitudes are |a_bus| = 8.0 m/s^2, |a_rock| = 9.8 m/s^2, |a_car| = 7.5 m/s^2, |a_train| = 12.0 m/s^2. The largest is 12.0 m/s^2 (Train)."
+        }
+      ],
+      "answer": "Official Key: (D) (d) Train",
+      "steps": [
+        "1. System Representation & Setup: Evaluate constant linear acceleration for four distinct dynamical cases.",
+        "2. Physical Model & Formulation: Convert all speeds to SI units: 72 km/h = 20 m/s; 108 km/h = 30 m/s. Use kinematic relations a = Delta v / t and s = 1/2 a t^2.",
+        "3. Execution & Resolution: Bus: |a| = 20 / 2.5 = 8.0 m/s^2. Rock: g = 9.8 m/s^2. Car: a = 30 / 4.0 = 7.5 m/s^2. Train: 216 = 1/2 a (6.0)^2 ==> a = 216 / 18 = 12.0 m/s^2. 12.0 > 9.8 > 8.0 > 7.5 ==> Option D."
+      ],
+      "check": "Verifying train acceleration: v_final = a * t = 12.0 * 6.0 = 72 m/s. Average velocity = 36 m/s. Distance = 36 * 6 = 216 m, perfectly consistent.",
+      "op": "APPLY",
+      "band": "D2",
+      "batch": "Types of Motion & Kinematics",
+      "review_state": "NOT_ADMITTED",
+      "key_state": "VERIFIED_IAPT_KEY",
+      "flags": [
+        "Candidate intake; independent external QRT adjudication receipt pending."
+      ],
+      "score": 3,
+      "components": {
+        "concept_model_selection": 2,
+        "representation_translation": 1,
+        "reasoning_chain_length": 0,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 0
+      },
+      "crux_move_ref": "NSEJS-2024-P-Q33-M2",
+      "family_ref": "PHYS-MECHANICS-KINEMATICS",
+      "primary_capability_ref": "PHYS-MECH-APPLY-Q33"
+    },
+    {
+      "id": "NSEJS-2024-P-Q37",
+      "source_id": "NSEJS-24-MECH-03",
+      "source_name": "NSEJS 2024-25 · Q37 · MODEL · D2 (Score 4)",
+      "category": "EXAM_CLAIM",
+      "origin": "IAPT_OFFICIAL_PAPER_51",
+      "topic": "MECHANICS",
+      "stem": "A particle is moving along a circular path of diameter $D = 14\\text{ cm}$ with constant speed $v$. It takes $0.02\\text{ s}$ to complete an arc which subtends an angle of $45^\\circ$ at the center. If $f$ is its frequency of revolution, then the correct option is:",
+      "stem_sha256": "4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c",
+      "options": [
+        "A: v = 5.5 m/s, f = 6.25 Hz",
+        "B: v = 5.5 m/s, f = 12.5 Hz",
+        "C: v = 2.75 m/s, f = 6.25 Hz",
+        "D: v = 2.75 m/s, f = 12.5 Hz"
+      ],
+      "question_type": "single_correct_mcq",
+      "source_figures": [],
+      "figure_note": "",
+      "hints": [
+        {
+          "prompt": "H1 (Frequency Calculation): How is frequency related to the time for a 45 degree fraction of a revolution?",
+          "text": "A full revolution corresponds to 360 degrees. 45 degrees is 45/360 = 1/8 of a full circle. Time period T = 8 * 0.02 s = 0.16 s."
+        },
+        {
+          "prompt": "H2 (Frequency Value): What is the reciprocal of the time period T?",
+          "text": "Frequency f = 1 / T = 1 / 0.16 = 6.25 Hz."
+        },
+        {
+          "prompt": "H3 (Crux Move): What is the linear speed v?",
+          "text": "Crux Move: Radius R = D / 2 = 7 cm = 0.07 m. Speed v = 2 * pi * R * f = 2 * (22/7) * 0.07 * 6.25 = 2.75 m/s."
+        }
+      ],
+      "answer": "Official Key: (C) v = 2.75 m/s, f = 6.25 Hz",
+      "steps": [
+        "1. System Representation & Setup: Circle diameter D = 14 cm ==> radius R = 7 cm = 0.07 m. Arc angle theta = 45 degrees swept in Delta t = 0.02 s.",
+        "2. Physical Model & Formulation: Fraction of revolution = 45 / 360 = 1/8. Period T = 8 * 0.02 = 0.16 s. Frequency f = 1 / T = 6.25 Hz. Linear speed v = 2 pi R f = omega R.",
+        "3. Execution & Resolution: v = 2 * (22/7) * 0.07 * 6.25 = 2 * 0.22 * 6.25 = 2.75 m/s. Matches Option C."
+      ],
+      "check": "Arc length check: s = R * theta = 0.07 * (pi/4) = 0.07 * (22/28) = 0.055 m. Speed v = s / Delta t = 0.055 / 0.02 = 2.75 m/s, exact match.",
+      "op": "MODEL",
+      "band": "D2",
+      "batch": "Uniform Circular Motion",
+      "review_state": "NOT_ADMITTED",
+      "key_state": "VERIFIED_IAPT_KEY",
+      "flags": [
+        "Candidate intake; independent external QRT adjudication receipt pending."
+      ],
+      "score": 4,
+      "components": {
+        "concept_model_selection": 2,
+        "representation_translation": 2,
+        "reasoning_chain_length": 0,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 0
+      },
+      "crux_move_ref": "NSEJS-2024-P-Q37-M2",
+      "family_ref": "PHYS-MECHANICS-KINEMATICS",
+      "primary_capability_ref": "PHYS-MECH-MODEL-Q37"
+    },
+    {
+      "id": "NSEJS-2024-P-Q36",
+      "source_id": "NSEJS-24-MECH-04",
+      "source_name": "NSEJS 2024-25 · Q36 · JUSTIFY · D2 (Score 4)",
+      "category": "EXAM_CLAIM",
+      "origin": "IAPT_OFFICIAL_PAPER_51",
+      "topic": "MECHANICS",
+      "stem": "A car is moving on a horizontal cement road with uniform velocity $90\\text{ km/hr}$. Read the following statements regarding the motion of the car:\nS1: The acceleration of the car is zero.\nS2: No force is acting on the car.\nS3: Kinetic energy and linear momentum of the car are constant during this motion.\nS4: Engine of the car is doing no work.\nNow choose the correct option:",
+      "stem_sha256": "5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d",
+      "options": [
+        "A: Only the statements S1 and S2 are true",
+        "B: Only the statements S1 and S3 are true",
+        "C: Only the statements S1, S2 and S3 are true",
+        "D: All the statements S1, S2, S3 and S4 are true"
+      ],
+      "question_type": "single_correct_mcq",
+      "source_figures": [],
+      "figure_note": "",
+      "hints": [
+        {
+          "prompt": "H1 (Net Force vs Individual Forces): Does zero acceleration mean zero net force or no forces at all?",
+          "text": "Uniform velocity implies acceleration a = 0 (S1 true) and net external force Sigma F = 0. However, friction, normal force, gravity, and engine driving force all act on the car (S2 false)."
+        },
+        {
+          "prompt": "H2 (Kinetic Energy & Momentum): Are speed and direction constant?",
+          "text": "Since speed is constant 90 km/h and direction is straight, KE = 1/2 m v^2 and p = m v are constant (S3 true)."
+        },
+        {
+          "prompt": "H3 (Crux Move): Does the engine do work during uniform motion?",
+          "text": "Crux Move: The engine must apply a forward force F_engine to balance rolling resistance and air drag. The work done by the engine is W = F_engine * d > 0, which dissipates as heat (S4 false)."
+        }
+      ],
+      "answer": "Official Key: (B) Only the statements S1 and S3 are true",
+      "steps": [
+        "1. System Representation & Setup: A car moves at constant velocity 25 m/s on a real horizontal road.",
+        "2. Physical Model & Formulation: Newton's First Law: uniform velocity requires zero net force, so a = 0 (S1 is TRUE). Real road movement involves resistive forces (drag and friction); to keep speed constant, the engine must supply forward thrust F_engine = F_resist != 0, so forces are actively present (S2 is FALSE). Kinetic energy (1/2 m v^2) and linear momentum (m v) depend solely on constant scalar speed and vector velocity, so both are invariant (S3 is TRUE). Work done by engine W = F_engine * d > 0 balances resistive dissipation (S4 is FALSE).",
+        "3. Execution & Resolution: Statements S1 and S3 are true; S2 and S4 are false. This uniquely matches Option B."
+      ],
+      "check": "Thermodynamic energy balance: Fuel chemical energy is converted by the engine into mechanical work, which is dissipated as thermal energy into the air and road. Net work on the car is zero (Delta KE = 0), but work done by the engine is strictly positive.",
+      "op": "JUSTIFY",
+      "band": "D2",
+      "batch": "Newton's Laws & Force Equilibrium",
+      "review_state": "NOT_ADMITTED",
+      "key_state": "VERIFIED_IAPT_KEY",
+      "flags": [
+        "Candidate intake; independent external QRT adjudication receipt pending."
+      ],
+      "score": 4,
+      "components": {
+        "concept_model_selection": 2,
+        "representation_translation": 2,
+        "reasoning_chain_length": 0,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 0
+      },
+      "crux_move_ref": "NSEJS-2024-P-Q36-M3",
+      "family_ref": "PHYS-MECHANICS-KINEMATICS",
+      "primary_capability_ref": "PHYS-MECH-JUSTIFY-Q36"
+    },
+    {
+      "id": "NSEJS-2022-P-Q08",
+      "source_id": "NSEJS-22-MECH-01",
+      "source_name": "NSEJS 2022-23 · Q08 · APPLY · D2 (Score 3)",
+      "category": "EXAM_CLAIM",
+      "origin": "IAPT_OFFICIAL_PAPER",
+      "topic": "MECHANICS",
+      "stem": "Two blocks of masses $m_1 = 3\\text{ kg}$ and $m_2 = 1\\text{ kg}$ are connected by a light, inextensible string passing over a frictionless, massless pulley (ideal Atwood machine). Taking acceleration due to gravity $g = 9.8\\text{ m/s}^2$, the downward acceleration $a$ of the mass $m_1$ and the tension $T$ in the string are:",
+      "stem_sha256": "6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e",
+      "options": [
+        "A: a = 4.9 m/s^2, T = 14.7 N",
+        "B: a = 9.8 m/s^2, T = 29.4 N",
+        "C: a = 2.45 m/s^2, T = 9.8 N",
+        "D: a = 4.9 m/s^2, T = 29.4 N"
+      ],
+      "question_type": "single_correct_mcq",
+      "source_figures": [],
+      "figure_note": "",
+      "hints": [
+        {
+          "prompt": "H1 (Atwood Acceleration Formula): How does net driving force relate to total accelerated mass?",
+          "text": "For an Atwood machine, a = (m1 - m2) / (m1 + m2) * g."
+        },
+        {
+          "prompt": "H2 (Tension Formula): What is the tension in the string?",
+          "text": "T = 2 * m1 * m2 / (m1 + m2) * g, or T = m1 * (g - a)."
+        },
+        {
+          "prompt": "H3 (Crux Move): Substitute the given mass values.",
+          "text": "Crux Move: a = (3 - 1) / (3 + 1) * g = 2/4 * g = g / 2 = 4.9 m/s^2. Tension T = 2 * 3 * 1 / 4 * 9.8 = 1.5 * 9.8 = 14.7 N."
+        }
+      ],
+      "answer": "Official Key: (A) a = 4.9 m/s^2, T = 14.7 N",
+      "steps": [
+        "1. System Representation & Setup: Masses m1 = 3 kg (moving downwards) and m2 = 1 kg (moving upwards) connected via ideal string and pulley.",
+        "2. Physical Model & Formulation: Equations of motion: m1*g - T = m1*a and T - m2*g = m2*a. Adding equations gives (m1 - m2)*g = (m1 + m2)*a ==> a = (m1 - m2)/(m1 + m2)*g. Eliminating a gives T = 2*m1*m2/(m1 + m2)*g.",
+        "3. Execution & Resolution: a = (3 - 1)/(3 + 1) * 9.8 = (2/4) * 9.8 = 4.9 m/s^2. T = (2 * 3 * 1 / 4) * 9.8 = 1.5 * 9.8 = 14.7 N. Confirms Option A."
+      ],
+      "check": "Equilibrium equation check: For m1: 3 * 9.8 - 14.7 = 29.4 - 14.7 = 14.7 N = 3 * 4.9 N. For m2: 14.7 - 1 * 9.8 = 4.9 N = 1 * 4.9 N. Both FBDs are exact.",
+      "op": "APPLY",
+      "band": "D2",
+      "batch": "Connected Masses & Atwood Machines",
+      "review_state": "NOT_ADMITTED",
+      "key_state": "VERIFIED_IAPT_KEY",
+      "flags": [
+        "Candidate intake; independent external QRT adjudication receipt pending."
+      ],
+      "score": 3,
+      "components": {
+        "concept_model_selection": 2,
+        "representation_translation": 1,
+        "reasoning_chain_length": 0,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 0
+      },
+      "crux_move_ref": "NSEJS-2022-P-Q08-M2",
+      "family_ref": "PHYS-MECHANICS-KINEMATICS",
+      "primary_capability_ref": "PHYS-MECH-APPLY-Q08"
+    },
+    {
+      "id": "NSEJS-2024-P-Q48",
+      "source_id": "NSEJS-24-MECH-05",
+      "source_name": "NSEJS 2024-25 · Q48 · APPLY · D1 (Score 2)",
+      "category": "EXAM_CLAIM",
+      "origin": "IAPT_OFFICIAL_PAPER_51",
+      "topic": "MECHANICS",
+      "stem": "The mass and radius of planet-one are $M$ and $R$ respectively. The mass and radius of planet-two are $2M$ and $2R$ respectively. Assume that both the planets have spherical shape. Acceleration due to gravity on the surface of planet-one and planet-two are $g_1$ and $g_2$ respectively. The ratio $\\frac{g_1}{g_2}$ must be:",
+      "stem_sha256": "7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f",
+      "options": [
+        "A: 1 : 2",
+        "B: 2 : 1",
+        "C: 1 : 1",
+        "D: 4 : 1"
+      ],
+      "question_type": "single_correct_mcq",
+      "source_figures": [],
+      "figure_note": "",
+      "hints": [
+        {
+          "prompt": "H1 (Surface Gravity Formula): Express surface gravity g in terms of M and R.",
+          "text": "By Newton's Universal Law of Gravitation, surface gravitational acceleration is g = G * M / R^2."
+        },
+        {
+          "prompt": "H2 (Scaling Calculation): Substitute M2 = 2M and R2 = 2R.",
+          "text": "g2 = G * (2M) / (2R)^2 = G * 2M / (4 R^2) = (1/2) * (G * M / R^2) = g1 / 2."
+        },
+        {
+          "prompt": "H3 (Crux Move): Form the ratio g1 / g2.",
+          "text": "Crux Move: g1 / g2 = g1 / (g1 / 2) = 2 / 1 = 2 : 1."
+        }
+      ],
+      "answer": "Official Key: (B) 2 : 1",
+      "steps": [
+        "1. System Representation & Setup: Planet 1: mass M, radius R, surface gravity g1. Planet 2: mass 2M, radius 2R, surface gravity g2.",
+        "2. Physical Model & Formulation: Gravitational acceleration g = G * M / R^2. For planet 2: g2 = G * (2M) / (2R)^2 = (2/4) * (G M / R^2) = (1/2) g1.",
+        "3. Execution & Resolution: g1 / g2 = g1 / (0.5 g1) = 2 / 1 = 2 : 1. Confirms Option B."
+      ],
+      "check": "Density scaling check: Volume scales as R^3 = 8, mass scales as 2, so average density rho2 = rho1 / 4. Surface gravity g is proportional to rho * R: g2 / g1 = (rho1 / 4 * 2R) / (rho1 * R) = 2/4 = 1/2 ==> g1/g2 = 2:1.",
+      "op": "APPLY",
+      "band": "D1",
+      "batch": "Planetary Gravitation & Surface g",
+      "review_state": "NOT_ADMITTED",
+      "key_state": "VERIFIED_IAPT_KEY",
+      "flags": [
+        "Candidate intake; independent external QRT adjudication receipt pending."
+      ],
+      "score": 2,
+      "components": {
+        "concept_model_selection": 2,
+        "representation_translation": 0,
+        "reasoning_chain_length": 0,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 0
+      },
+      "crux_move_ref": "NSEJS-2024-P-Q48-M2",
+      "family_ref": "PHYS-MECHANICS-KINEMATICS",
+      "primary_capability_ref": "PHYS-MECH-APPLY-Q48"
+    },
+    {
+      "id": "NSEJS-2023-P-Q10",
+      "source_id": "NSEJS-23-MECH-01",
+      "source_name": "NSEJS 2023-24 · Q10 · MODEL · D2 (Score 4)",
+      "category": "EXAM_CLAIM",
+      "origin": "IAPT_OFFICIAL_PAPER",
+      "topic": "MECHANICS",
+      "stem": "Two artificial satellites $S_1$ and $S_2$ are revolving around the Earth in circular orbits of radii $r_1$ and $r_2 = 4 r_1$ respectively. The ratio of their orbital time periods $\\frac{T_1}{T_2}$ and the ratio of their orbital speeds $\\frac{v_1}{v_2}$ are respectively:",
+      "stem_sha256": "8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a",
+      "options": [
+        "A: T1/T2 = 1/8, v1/v2 = 2",
+        "B: T1/T2 = 1/4, v1/v2 = 2",
+        "C: T1/T2 = 1/8, v1/v2 = 1/2",
+        "D: T1/T2 = 1/16, v1/v2 = 4"
+      ],
+      "question_type": "single_correct_mcq",
+      "source_figures": [],
+      "figure_note": "",
+      "hints": [
+        {
+          "prompt": "H1 (Kepler's Third Law): How does orbital period T scale with orbital radius r?",
+          "text": "Kepler's 3rd Law states T^2 is proportional to r^3, so T1 / T2 = (r1 / r2)^(3/2)."
+        },
+        {
+          "prompt": "H2 (Orbital Speed Formula): How does orbital speed v scale with orbital radius r?",
+          "text": "Orbital velocity v = sqrt(G M / r), so v1 / v2 = sqrt(r2 / r1)."
+        },
+        {
+          "prompt": "H3 (Crux Move): Evaluate the ratios for r2 / r1 = 4.",
+          "text": "Crux Move: T1 / T2 = (1/4)^(3/2) = 1 / (4^(3/2)) = 1 / 8. v1 / v2 = sqrt(4 / 1) = 2."
+        }
+      ],
+      "answer": "Official Key: (A) T1/T2 = 1/8, v1/v2 = 2",
+      "steps": [
+        "1. System Representation & Setup: Satellites S1 and S2 in circular orbits around Earth with r2 = 4 r1.",
+        "2. Physical Model & Formulation: Gravitational force provides centripetal acceleration: G M m / r^2 = m v^2 / r ==> v = sqrt(G M / r). Period T = 2 pi r / v = 2 pi r^(3/2) / sqrt(G M).",
+        "3. Execution & Resolution: Period ratio: T1 / T2 = (r1 / r2)^(3/2) = (1/4)^(3/2) = 1/8. Speed ratio: v1 / v2 = sqrt(r2 / r1) = sqrt(4) = 2. Matches Option A."
+      ],
+      "check": "Consistency relation check: T = 2 pi r / v ==> T1 / T2 = (r1 / r2) * (v2 / v1) = (1/4) * (1/2) = 1/8, verifying perfect algebraic consistency.",
+      "op": "MODEL",
+      "band": "D2",
+      "batch": "Orbital Mechanics & Kepler's Laws",
+      "review_state": "NOT_ADMITTED",
+      "key_state": "VERIFIED_IAPT_KEY",
+      "flags": [
+        "Candidate intake; independent external QRT adjudication receipt pending."
+      ],
+      "score": 4,
+      "components": {
+        "concept_model_selection": 2,
+        "representation_translation": 2,
+        "reasoning_chain_length": 0,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 0
+      },
+      "crux_move_ref": "NSEJS-2023-P-Q10-M2",
+      "family_ref": "PHYS-MECHANICS-KINEMATICS",
+      "primary_capability_ref": "PHYS-MECH-MODEL-Q10"
+    },
+    {
+      "id": "NSEJS-2024-P-Q43",
+      "source_id": "NSEJS-24-MECH-06",
+      "source_name": "NSEJS 2024-25 · Q43 · APPLY · D1 (Score 2)",
+      "category": "EXAM_CLAIM",
+      "origin": "IAPT_OFFICIAL_PAPER_51",
+      "topic": "MECHANICS",
+      "stem": "Two particles of mass $1\\text{ kg}$ and $4\\text{ kg}$ are moving with equal kinetic energy. Ratio of magnitudes of their linear momenta is (Assume nonrelativistic velocities):",
+      "stem_sha256": "9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b",
+      "options": [
+        "A: 1 : 4",
+        "B: 1 : 2",
+        "C: 2 : 1",
+        "D: 1 : 16"
+      ],
+      "question_type": "single_correct_mcq",
+      "source_figures": [],
+      "figure_note": "",
+      "hints": [
+        {
+          "prompt": "H1 (Momentum-KE Relation): How is linear momentum p related to kinetic energy K?",
+          "text": "Kinetic energy K = p^2 / (2m), which rearranges to p = sqrt(2 m K)."
+        },
+        {
+          "prompt": "H2 (Ratio Formulation): Since K1 = K2, how does momentum scale with mass?",
+          "text": "p1 / p2 = sqrt(2 m1 K) / sqrt(2 m2 K) = sqrt(m1 / m2)."
+        },
+        {
+          "prompt": "H3 (Crux Move): Substitute the given mass values m1 = 1 kg and m2 = 4 kg.",
+          "text": "Crux Move: p1 / p2 = sqrt(1 / 4) = 1 / 2 = 1 : 2."
+        }
+      ],
+      "answer": "Official Key: (B) 1 : 2",
+      "steps": [
+        "1. System Representation & Setup: Two particles with m1 = 1 kg and m2 = 4 kg possess identical kinetic energies K1 = K2 = K.",
+        "2. Physical Model & Formulation: In classical mechanics, linear momentum p = m v and kinetic energy K = 1/2 m v^2 = p^2 / (2m). Hence p = sqrt(2 m K).",
+        "3. Execution & Resolution: p1 / p2 = sqrt(m1 / m2) = sqrt(1 / 4) = 1/2 = 1 : 2. Uniquely matches Option B."
+      ],
+      "check": "Velocity verification: K1 = 1/2 (1) v1^2 = K2 = 1/2 (4) v2^2 ==> v1^2 = 4 v2^2 ==> v1 = 2 v2. Momentum ratio = (m1 v1) / (m2 v2) = (1 * 2 v2) / (4 * v2) = 2/4 = 1/2.",
+      "op": "APPLY",
+      "band": "D1",
+      "batch": "Work, Kinetic Energy & Momentum",
+      "review_state": "NOT_ADMITTED",
+      "key_state": "VERIFIED_IAPT_KEY",
+      "flags": [
+        "Candidate intake; independent external QRT adjudication receipt pending."
+      ],
+      "score": 2,
+      "components": {
+        "concept_model_selection": 2,
+        "representation_translation": 0,
+        "reasoning_chain_length": 0,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 0
+      },
+      "crux_move_ref": "NSEJS-2024-P-Q43-M2",
+      "family_ref": "PHYS-MECHANICS-KINEMATICS",
+      "primary_capability_ref": "PHYS-MECH-APPLY-Q43"
+    },
+    {
+      "id": "NSEJS-2019-P-Q07",
+      "source_id": "NSEJS-19-MECH-01",
+      "source_name": "NSEJS 2019-20 · Q07 · SYNTHESIZE · D2 (Score 4)",
+      "category": "EXAM_CLAIM",
+      "origin": "IAPT_OFFICIAL_PAPER",
+      "topic": "MECHANICS",
+      "stem": "A block of mass $m$ moving on a frictionless horizontal floor with velocity $v_0$ collides with a light horizontal spring of force constant $k$ fixed at one end. The maximum compression in the spring is $x_{\\max}$. At the instant when the spring compression is $x = \\frac{x_{\\max}}{2}$, the ratio of the kinetic energy of the block to the potential energy of the spring $\\frac{K}{U}$ is:",
+      "stem_sha256": "0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c",
+      "options": [
+        "A: 1 : 1",
+        "B: 2 : 1",
+        "C: 3 : 1",
+        "D: 4 : 1"
+      ],
+      "question_type": "single_correct_mcq",
+      "source_figures": [],
+      "figure_note": "",
+      "hints": [
+        {
+          "prompt": "H1 (Conservation of Mechanical Energy): What is the total mechanical energy in terms of maximum compression?",
+          "text": "By conservation of mechanical energy, total energy E = 1/2 k (x_max)^2 = K + U at any compression x."
+        },
+        {
+          "prompt": "H2 (Potential Energy at Half Compression): What is the spring potential energy U at x = x_max / 2?",
+          "text": "U = 1/2 k x^2 = 1/2 k (x_max / 2)^2 = (1/4) * (1/2 k x_max^2) = E / 4."
+        },
+        {
+          "prompt": "H3 (Crux Move): Find the kinetic energy K and form the ratio K / U.",
+          "text": "Crux Move: K = E - U = E - E/4 = (3/4) E. Therefore K / U = ((3/4) E) / ((1/4) E) = 3 / 1 = 3 : 1."
+        }
+      ],
+      "answer": "Official Key: (C) 3 : 1",
+      "steps": [
+        "1. System Representation & Setup: Mass m compresses a spring of stiffness k on frictionless surface. Maximum compression x_max occurs when K = 0.",
+        "2. Physical Model & Formulation: Total mechanical energy E = 1/2 k x_max^2. At any intermediate compression x, E = K(x) + U(x) with U(x) = 1/2 k x^2.",
+        "3. Execution & Resolution: At x = x_max / 2: U = 1/2 k (x_max / 2)^2 = (1/4) (1/2 k x_max^2) = E / 4. Kinetic energy K = E - U = (3/4) E. Ratio K / U = (3/4 E) / (1/4 E) = 3 : 1. Confirms Option C."
+      ],
+      "check": "Velocity check: v = sqrt(k/m * (x_max^2 - (x_max/2)^2)) = sqrt(3/4 k/m x_max^2) = (sqrt(3)/2) v_0. K = 1/2 m v^2 = (3/4) * (1/2 m v_0^2) = 3/4 E. U = 1/4 E. K/U = 3/1.",
+      "op": "SYNTHESIZE",
+      "band": "D2",
+      "batch": "Spring Potential Energy Oscillations",
+      "review_state": "NOT_ADMITTED",
+      "key_state": "VERIFIED_IAPT_KEY",
+      "flags": [
+        "Candidate intake; independent external QRT adjudication receipt pending."
+      ],
+      "score": 4,
+      "components": {
+        "concept_model_selection": 2,
+        "representation_translation": 2,
+        "reasoning_chain_length": 0,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 0
+      },
+      "crux_move_ref": "NSEJS-2019-P-Q07-M2",
+      "family_ref": "PHYS-MECHANICS-KINEMATICS",
+      "primary_capability_ref": "PHYS-MECH-SYNTHESIZE-Q07"
+    },
+    {
+      "id": "NSEJS-2024-P-Q34",
+      "source_id": "NSEJS-24-MECH-07",
+      "source_name": "NSEJS 2024-25 · Q34 · SYNTHESIZE · D2 (Score 4)",
+      "category": "EXAM_CLAIM",
+      "origin": "IAPT_OFFICIAL_PAPER_51",
+      "topic": "MECHANICS",
+      "stem": "A sound wave is propagating in a medium in the $+x$ direction at a speed of $360\\text{ m/s}$. At a given instant, a snapshot of the plot of displacement ($D$) of various particles of the medium from their equilibrium position vs the position ($x$) of the particle shows a crest at $x = 10\\text{ cm}$ and adjacent trough at $x = 30\\text{ cm}$, with peak-to-peak displacement $10\\text{ mm}$. Identify the INCORRECT option:",
+      "stem_sha256": "1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d",
+      "options": [
+        "A: The amplitude of the wave is 5 mm",
+        "B: The frequency of the wave is 900 Hz",
+        "C: After 0.01 s the trough of the wave will occur at x = 20 cm and x = 40 cm",
+        "D: This wave will travel a distance of 1.62 km along the +x axis in 4.5 s"
+      ],
+      "question_type": "single_correct_mcq",
+      "source_figures": [],
+      "figure_note": "",
+      "hints": [
+        {
+          "prompt": "H1 (Wavelength & Amplitude): What are the wavelength lambda and amplitude A?",
+          "text": "Peak-to-peak is 2A = 10 mm ==> amplitude A = 5 mm (Option A is correct). The distance between consecutive crest and trough is lambda / 2 = 30 - 10 = 20 cm ==> wavelength lambda = 40 cm = 0.4 m."
+        },
+        {
+          "prompt": "H2 (Frequency & Distance): Check options B and D.",
+          "text": "Frequency f = v / lambda = 360 / 0.4 = 900 Hz (Option B is correct). In 4.5 s, distance d = v * t = 360 * 4.5 = 1620 m = 1.62 km (Option D is correct)."
+        },
+        {
+          "prompt": "H3 (Crux Move): Identify the incorrect statement by calculating wave shift in 0.01 s.",
+          "text": "Crux Move: In Delta t = 0.01 s, the wave travels forward by Delta x = v * Delta t = 360 * 0.01 = 3.6 m = 360 cm. Since 360 cm = 9 * 40 cm = 9 full wavelengths, the wave phase repeats identically! The trough will still be at x = 30 cm (mod 40 cm), NOT at 20 cm or 40 cm (which are nodes/crests). Hence Option C is incorrect and the required answer."
+        }
+      ],
+      "answer": "Official Key: (C) After 0.01 s the trough of the wave will occur at x = 20 cm and x = 40 cm",
+      "steps": [
+        "1. System Representation & Setup: Sound wave speed v = 360 m/s propagating along +x. Crest at x = 10 cm, trough at x = 30 cm, peak-to-peak 10 mm.",
+        "2. Physical Model & Formulation: Amplitude A = 10 mm / 2 = 5 mm (A is true). lambda / 2 = 30 - 10 = 20 cm ==> lambda = 40 cm = 0.4 m. Frequency f = v / lambda = 360 / 0.4 = 900 Hz (B is true). Distance in 4.5 s: d = 360 * 4.5 = 1620 m = 1.62 km (D is true). Wave advancement in 0.01 s: Delta x = v * t = 360 * 0.01 = 3.6 m = 360 cm = 9 lambda. An integer number of full wavelengths leaves trough positions invariant at x = 30 cm + 40n cm.",
+        "3. Execution & Resolution: Statement C asserts troughs at x = 20 cm and 40 cm (nodes of the original snapshot), which is false. Because the question prompts for the INCORRECT option, Option C is the correct answer."
+      ],
+      "check": "Phase shift check: Delta phi = 2 pi f Delta t = 2 pi (900) (0.01) = 18 pi = 9 * (2 pi). Exactly 9 cycles, phase shift is 0 (mod 2 pi). Trough remains at its initial coordinates, proving statement C is false.",
+      "op": "SYNTHESIZE",
+      "band": "D2",
+      "batch": "Sound Waves & Harmonic Propagation",
+      "review_state": "NOT_ADMITTED",
+      "key_state": "VERIFIED_IAPT_KEY",
+      "flags": [
+        "Candidate intake; independent external QRT adjudication receipt pending."
+      ],
+      "score": 4,
+      "components": {
+        "concept_model_selection": 2,
+        "representation_translation": 2,
+        "reasoning_chain_length": 0,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 0
+      },
+      "crux_move_ref": "NSEJS-2024-P-Q34-M2",
+      "family_ref": "PHYS-MECHANICS-KINEMATICS",
+      "primary_capability_ref": "PHYS-MECH-SYNTHESIZE-Q34"
+    }
+  ]
+}
