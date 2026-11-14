@@ -1,0 +1,93 @@
+{
+  "schema": "g9v41-chem-agent-b-qrt-task-evidence/v1",
+  "version": "0.1.0",
+  "unit_id": "C12",
+  "status": "DRAFT_HOLD",
+  "source_note": "Two cross-subtopic authored assessments; scores are unreviewed author proposals; original exam custody not asserted.",
+  "policy": {
+    "D3_range": [
+      6,
+      7
+    ],
+    "D4_range": [
+      8,
+      10
+    ],
+    "independent_qrt_review": "NOT_RUN",
+    "academic_release": "HOLD"
+  },
+  "tasks": [
+    {
+      "task_id": "C12-04-CAPSTONE-D3",
+      "subtopic_id": "CHEM-C12.04",
+      "title": "Gas contraction is not carbon dioxide production",
+      "band_candidate": "D3",
+      "author_task_type": "AUTHORED_TRANSFER",
+      "textbook_ref": "curriculum/chemistry/agent-b/textbook/C12.core1a.md",
+      "primary_operation": "SYNTHESIZE",
+      "template_ref": "QRT-SYNTHESIZE-D3",
+      "source_question_ref": null,
+      "original_exam_claim": "NONE",
+      "prompt": "A sealed idealised chamber begins with 1 mol CH₄ and 3 mol O₂; complete combustion occurs. Measure the gas inventory hot enough that all water is vapour, then cool enough to condense water completely. Construct both gas inventories and infer how much apparent gas 'disappears' at the cooling step and what species remain. Explain why that contraction is not the amount of CO₂ produced.",
+      "post_commit_worked_answer": "CH₄ + 2O₂ → CO₂ + 2H₂O. With O₂ initially 3 mol, 1 mol O₂ remains. Hot product gas: CO₂ 1 mol + O₂ 1 mol + water vapour 2 mol = 4 mol gas. Cooled, the water moves to liquid phase; dry gas is CO₂ 1 + O₂ 1 = 2 mol. Two mol gas-phase H₂O were removed by condensation, not destroyed, and CO₂ formation was one mol. Atom conservation is maintained across phases.",
+      "protected_work": "Choose the scientific model and independently reconcile at least two representations or observations, including a credible alternative or boundary.",
+      "self_score_proposal": {
+        "status": "AUTHOR_PROPOSAL_NOT_INDEPENDENT",
+        "scores": {
+          "concept_model_selection": 2,
+          "representation_translation": 1,
+          "reasoning_chain_length": 2,
+          "algebra_computational_load": 1,
+          "trap_exception_sensitivity": 1
+        },
+        "total": 7,
+        "factor_evidence": {
+          "concept_model_selection": "Choose chemical-combustion then phase-change model.",
+          "representation_translation": "Translate chemical species into hot/cool gas inventories.",
+          "reasoning_chain_length": "Track two dependent stage changes.",
+          "algebra_computational_load": "Count 1+1+2=4 and 1+1=2.",
+          "trap_exception_sensitivity": "Gas contraction is not automatically CO₂ amount."
+        },
+        "qualification_note": "Not independently QRT-adjudicated. Difficulty may be downgraded if task is not intrinsically high demand or if scaffolding reveals the decisive work."
+      },
+      "academic_review": "HOLD",
+      "exam_source_custody": "NOT_APPLICABLE_AUTHORED_TASK"
+    },
+    {
+      "task_id": "C12-05-CAPSTONE-D4",
+      "subtopic_id": "CHEM-C12.05",
+      "title": "Unknown gas mixture and selective absorption boundary",
+      "band_candidate": "D4",
+      "author_task_type": "AUTHORED_TRANSFER",
+      "textbook_ref": "curriculum/chemistry/agent-b/textbook/C12.core1a.md",
+      "primary_operation": "SYNTHESIZE",
+      "template_ref": "QRT-SYNTHESIZE-D4",
+      "source_question_ref": null,
+      "original_exam_claim": "NONE",
+      "prompt": "At identical reference temperature and pressure an unknown *pure* hydrocarbon gas occupies 10 mL. It reacts completely with 40 mL O₂. After cooling and complete water condensation, 30 mL dry gas remains; selective, verified CO₂ absorption leaves 10 mL residual O₂. A second student claims this proves the hydrocarbon is methane because 10 mL hydrocarbon produced 20 mL CO₂. Reconstruct carbon count and oxygen consumption, infer the simplest chemical formula consistent with the data assuming a single saturated hydrocarbon, and explain whether a 1:1 mixture of different hydrocarbons could yield the same measurements if purity were not guaranteed.",
+      "post_commit_worked_answer": "CO₂ absorption removes 30−10=20 mL CO₂. For 10 mL pure hydrocarbon at common T/P, this corresponds to 2 carbon atoms per molecule. O₂ consumption was 40−10=30 mL, i.e. 3 O₂ per hydrocarbon molecule. The combustion equation C₂Hᵧ+3O₂→2CO₂+(y/2)H₂O requires oxygen 3=(2+y/4), giving y=4. The pure hydrocarbon is therefore C₂H₄ (ethene), not methane: the student has confused CO₂/hydrocarbon volume ratio. If purity is not guaranteed, e.g. an equal-volume mixture of methane (CH₄) and propane (C₃H₈) averages C=2 but O₂ consumption per molecule averages (2+5)/2=3.5, so that particular mixture is ruled out; an equal-volume mixture of methane CH₄ and ethyne C₂H₂ averages C=1.5 and is ruled out. However mixture examples can share the same average C=2 and H=4; e.g. 5 mL methane CH₄ and 5 mL propadiene C₃H₄ average C₂H₄ but consume oxygen (2 + 4)/2=3 oxygen volumes per hydrocarbon volume, so it reproduces the gas measurements without a pure hydrocarbon. A unique molecular formula therefore requires a purity assumption. These are conceptual ideal-gas volume relations; real experiment needs validated gas phases, absorption specificity and safe apparatus.",
+      "protected_work": "Choose the scientific model and independently reconcile at least two representations or observations, including a credible alternative or boundary.",
+      "self_score_proposal": {
+        "status": "AUTHOR_PROPOSAL_NOT_INDEPENDENT",
+        "scores": {
+          "concept_model_selection": 2,
+          "representation_translation": 2,
+          "reasoning_chain_length": 2,
+          "algebra_computational_load": 1,
+          "trap_exception_sensitivity": 1
+        },
+        "total": 8,
+        "factor_evidence": {
+          "concept_model_selection": "Need identify pure/mixture and reaction model.",
+          "representation_translation": "Translate volume stages to CO₂, O₂, C and H counts.",
+          "reasoning_chain_length": "Infer formula then examine nonuniqueness via mixed gases.",
+          "algebra_computational_load": "Compute the volume ratios and solve simple hydrogen count.",
+          "trap_exception_sensitivity": "Purity assumption is the decisive exception; verified contraction alone does not prove one species."
+        },
+        "qualification_note": "Not independently QRT-adjudicated. Difficulty may be downgraded if task is not intrinsically high demand or if scaffolding reveals the decisive work."
+      },
+      "academic_review": "HOLD",
+      "exam_source_custody": "NOT_APPLICABLE_AUTHORED_TASK"
+    }
+  ]
+}
