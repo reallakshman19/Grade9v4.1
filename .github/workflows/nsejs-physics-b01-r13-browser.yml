@@ -5,6 +5,7 @@ on:
       - "nsejs/physics/curriculum/topics/PH07/b01/learner-preview/**"
       - "tests/test_nsejs_b01_takeover_r13.py"
       - "tools/physics_b01_r13_browser_qa.py"
+      - "tools/physics_b01_r14_negative_qa.py"
       - ".github/workflows/nsejs-physics-b01-r13-browser.yml"
       - "nsejs/physics/curriculum/topics/PH07/b01/integrated-curriculum-review.html"
 jobs:
@@ -26,9 +27,13 @@ jobs:
         run: python -m pytest -q tests/test_nsejs_b01_takeover_r13.py
       - name: HTTP Chromium candidate learner journeys
         run: python tools/physics_b01_r13_browser_qa.py
+      - name: HTTP Chromium R14 adversarial record and figure checks
+        run: python tools/physics_b01_r14_negative_qa.py
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: b01-r13-http-chromium-candidate-receipts
-          path: review-artifacts/physics-b01-r13/
+          path: |
+            review-artifacts/physics-b01-r13/
+            review-artifacts/physics-b01-r14/
           if-no-files-found: ignore
