@@ -325,3 +325,10 @@ OWNER MERGE AND RELEASE AUTHORITY: NOT REQUESTED / HOLD
 
 ---
 **Repository status:** Spec is an onboarding **proposal**. All content PRs are separate, draft, and unmerged; this document itself grants no permission to merge or deploy.
+
+
+## Binding R2 production addendum — supersedes weak self-check and per-item Owner approval language
+
+The stronger [Evidence-Bound Core1A/Core1B/Core2 Authoring Contract R2](quality-gate-r2/AUTHORING_QUALITY_CONTRACT_R2.md), [strict packet template](quality-gate-r2/EVIDENCE_PACKET.template.json), [validator](quality-gate-r2/verify_evidence_packet.py) and [independent review + one-time Golden Sample forms](quality-gate-r2/REVIEWER_AND_GOLDEN_TEMPLATES.md) supersede any weaker R1 author-completion implication **once the Owner approves the first Golden Sample and adopts the contract**.
+
+Owner acceptance is required **once for the Golden Sample standard**, not separately for each later question. Subsequent work requires every-item evidence packets, fail-closed automatic checks, red-team science/transfer witnesses, delegated risk-based independent batch review, and cross-checked exact artifact SHAs. This addendum does not auto-approve academic content, does not alter older PRs, and does not itself activate GitHub branch protection. A passing evidence validator only establishes a mechanically grounded candidate; true science, QRT and B1–B7 remain reviewer responsibilities. Redistribution-rights assessment is outside this educational quality addendum.
