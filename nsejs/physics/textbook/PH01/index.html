@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="NSEJS Physics self-study textbook: motion, velocity, acceleration, graphs, relative motion and model validity. Author-exposed candidate; not academically qualified.">
+<title>PH01 · Motion and Kinematics — Grade9 Physics Textbook</title>
+<link rel="stylesheet" href="../../../../site.css">
+<link rel="icon" href="data:,">
+<style>
+:root{color-scheme:light;--ink:#152d43;--muted:#52677b;--paper:#fff;--line:#cbd9e5;--teal:#075c61;--surface:#f3f7fb;--focus:#9e4510}
+*{box-sizing:border-box}body{background:#eef4f8;color:var(--ink);font:18px/1.7 system-ui,-apple-system,"Segoe UI",sans-serif;margin:0}
+a{color:#07599c}a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+.mast{background:#123851;color:#fff;padding:24px max(24px,calc((100vw - 1260px)/2))}
+.mast a{color:#e9f7ff}.mast nav{display:flex;flex-wrap:wrap;gap:18px;font-size:.88rem}
+.mast h1{font-size:clamp(2rem,3.1vw,3.1rem);line-height:1.2;max-width:920px;margin:22px 0 8px}
+.mast p{max-width:850px;color:#d7e8f3;margin:6px 0 18px}
+.meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}.meta span{border:1px solid #7897ab;border-radius:30px;padding:3px 12px;font-size:.78rem}
+.layout{display:grid;grid-template-columns:240px minmax(0,1fr);gap:24px;max-width:1260px;margin:24px auto;padding:0 24px}
+.toc{position:sticky;top:18px;align-self:start;background:#fff;border:1px solid var(--line);border-radius:15px;padding:18px}
+.toc strong{display:block;color:var(--teal);margin-bottom:10px}.toc a{display:block;min-height:42px;padding:6px 0;font-size:.83rem;border-bottom:1px solid #e9eef3;text-decoration:none}
+article{min-width:0;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:clamp(20px,3vw,52px);box-shadow:0 12px 36px #123a5210}
+article h2{font-size:1.65rem;line-height:1.22;margin:52px 0 14px;color:#164b65;scroll-margin-top:20px}
+article h3{font-size:1.18rem;margin:28px 0 8px;color:var(--teal)}article p{max-width:78ch}article li{margin-bottom:8px}
+.lead{font-size:1.18rem;line-height:1.75}.notice{border-left:5px solid #9b6b1a;background:#fff6e2;padding:14px 18px;border-radius:5px;color:#56411f}
+.idea{border-left:5px solid #0f766e;background:#e8f7f2;padding:15px 19px;margin:20px 0;border-radius:6px}
+.figure{border:1px solid var(--line);background:#f9fcff;padding:14px;margin:24px 0;border-radius:12px}
+.figure svg{display:block;width:100%;height:auto;max-height:330px}.figure figcaption{font-size:.83rem;color:var(--muted);text-align:center;line-height:1.5;margin-top:10px}
+.equation{font:600 1.19rem/1.65 "Cambria Math",Georgia,serif;background:#f1f6fb;padding:14px 20px;margin:20px 0;border-radius:10px;overflow-x:auto}
+.example{border:1px solid #b9d1e5;border-radius:13px;padding:22px;background:#f8fcff;margin:28px 0}
+.example header{font-size:.81rem;font-weight:750;letter-spacing:.06em;color:#075c61;text-transform:uppercase}
+.misconception{background:#fff4ed;border:1px solid #ffcaa8;border-radius:12px;padding:18px;margin:20px 0}
+.inquiry{background:#f0f7fb;border:1px solid #aecbd9;border-radius:12px;padding:20px;margin:26px 0}
+.inquiry h3{margin-top:0}.inquiry label{display:block;font-weight:700;margin-top:12px}
+input[type=range]{width:100%;min-height:48px;accent-color:#087e7a}.stat-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.stat{background:#fff;border:1px solid #d4e2ec;border-radius:9px;padding:12px;font-size:.86rem}
+.stat output{font-weight:800;font-size:1.45rem;display:block;color:#114e6a}
+.exercise{padding:17px 21px;border:1px solid #d1dfe9;border-radius:11px;margin:18px 0}
+.exercise h3{margin:0}.exercise details{margin-top:13px;border-top:1px solid #d1dfe9;padding-top:8px}
+.exercise summary{cursor:pointer;min-height:48px;font-weight:700;color:#075c61}
+.sources{border-top:1px solid var(--line);margin-top:52px;padding-top:18px;font-size:.88rem;color:var(--muted)}
+footer{padding:24px;text-align:center;color:var(--muted);font-size:.84rem}
+@media(max-width:890px){.layout{grid-template-columns:1fr}.toc{position:static}.toc a{display:inline-block;margin-right:18px}.stat-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.layout{padding:0 10px;margin:12px auto;gap:12px}article{padding:20px}body{font-size:16px}.stat-grid{grid-template-columns:1fr}.mast{padding:20px}article h2{font-size:1.45rem}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header class="mast">
+<nav aria-label="Breadcrumbs"><a href="../../../../index.html">Grade9</a> <span>›</span> <a href="../../index.html">NSEJS Physics</a> <span>›</span> <span>PH01 Textbook</span></nav>
+<h1>Motion and Kinematics</h1>
+<p>Where are you, which way are you moving, and what does a graph actually tell you? A connected, illustrated chapter from the meaning of position to multi-stage motion.</p>
+<div class="meta"><span>PH01 · Agent 1</span><span>Textbook-first teaching</span><span>D3/D4 reasoning preparation</span><span>Candidate · Academic HOLD</span></div>
+</header>
+<div class="layout">
+<aside class="toc" aria-label="Chapter sections">
+<strong>In this chapter</strong>
+<a href="#observe">1 · Begin with a journey</a>
+<a href="#distance">2 · Distance and displacement</a>
+<a href="#speed">3 · Speed versus velocity</a>
+<a href="#accel">4 · Acceleration and direction</a>
+<a href="#graphs">5 · Read motion graphs</a>
+<a href="#derive">6 · Derive the equations</a>
+<a href="#relative">7 · Relative motion</a>
+<a href="#stages">8 · Multi-stage motion</a>
+<a href="#circular">9 · Circular motion</a>
+<a href="#transfer">10 · Investigations</a>
+<a href="#next">11 · What you now own</a>
+</aside>
+<article>
+<p class="notice"><strong>Publication status:</strong> Authored instructional candidate, not an independently reviewed textbook or a qualified exam question. The examples are new teaching examples; their demand bands are not automatically authenticated QRT verdicts. Worked explanations here are deliberately visible; protected first attempts belong in the separate Core1B practice.</p>
+<section id="observe">
+<h2>1. A journey can have two different answers</h2>
+<p class="lead">Suppose you walk 80 metres east to a library, then turn back 30 metres west to a bus stop. Your shoes have carried you 110 metres along the ground. Yet the bus stop is only 50 metres east of where you began.</p>
+<p>Both measurements are true. They answer different questions. <strong>Distance</strong> describes the total length of your path; <strong>displacement</strong> describes the change from starting position to finishing position. One tracks the journey; the other tracks the overall change in position.</p>
+<figure class="figure">
+<svg viewBox="0 0 760 210" role="img" aria-labelledby="journey-title journey-description" xmlns="http://www.w3.org/2000/svg">
+<title id="journey-title">Walking east then partly west</title>
+<desc id="journey-description">The walker moves from x=0 to x=80 metres, then returns to x=50 metres. Total path length is 110 metres while displacement is positive 50 metres.</desc>
+<line x1="76" y1="147" x2="694" y2="147" stroke="#425a6b" stroke-width="3"/>
+<polygon points="702,147 687,139 687,155" fill="#425a6b"/>
+<g fill="#213e53" font-size="16" text-anchor="middle"><text x="88" y="174">0</text><text x="430" y="174">50 m</text><text x="640" y="174">80 m</text><text x="712" y="147">E</text></g>
+<g stroke="#688091" stroke-width="2"><line x1="88" y1="135" x2="88" y2="157"/><line x1="430" y1="135" x2="430" y2="157"/><line x1="640" y1="135" x2="640" y2="157"/></g>
+<line x1="88" y1="58" x2="640" y2="58" stroke="#10736f" stroke-width="6"/><polygon points="640,58 622,49 622,67" fill="#10736f"/>
+<text x="355" y="44" fill="#075e58" font-size="16" text-anchor="middle">Walk +80 m east</text>
+<line x1="640" y1="94" x2="430" y2="94" stroke="#a4521b" stroke-width="6"/><polygon points="430,94 447,85 447,103" fill="#a4521b"/>
+<text x="534" y="119" fill="#904516" font-size="16" text-anchor="middle">Return 30 m west</text>
+</svg>
+<figcaption>The walker changes direction, so the path length and net displacement are different. East is defined as the positive direction.</figcaption>
+</figure>
+<div class="idea"><strong>Scientist's habit:</strong> Before writing an equation, define an object, an observer and a positive direction. A number such as “+50 m” becomes meaningful only after that choice.</div>
+</section>
+<section id="distance">
+<h2>2. Position, path and displacement</h2>
+<p>Place a number line along a straight road, with the school's gate at zero and east positive. A bus at the 120 m marker has position <em>x = +120 m</em>. If it ends at <em>x = −20 m</em>, its displacement is −140 m, even if it takes a longer, indirect route.</p>
+<div class="equation">Displacement Δx = final position − initial position</div>
+<p>Displacement is a <strong>signed quantity</strong> in one dimension. The negative sign reports direction; it is not a declaration of an error. Distance is never negative because it adds up lengths of actual travel.</p>
+<p>A route with several turns is handled one segment at a time. For example, +8 m, −13 m and +9 m produce net displacement +4 m, but a distance of 30 m. If a traveller returns to the starting point, displacement is zero while distance can be very large.</p>
+<h3>Why does this distinction matter at NSEJS level?</h3>
+<p>Many multi-step questions involve a vehicle going forward, reversing or waiting. Using total distance where displacement is required makes even a well-executed calculation physically wrong. The decisive skill is not recognizing a formula: it is identifying the quantity that the situation actually asks for.</p>
+</section>
+<section id="speed">
+<h2>3. Speed and velocity are not interchangeable</h2>
+<p>Speed tells you how quickly distance is accumulated. Velocity tells you how quickly position changes in a specified direction. To report a velocity accurately, we must say who observes the motion and what direction counts as positive.</p>
+<div class="equation">Average speed = total distance ÷ elapsed time<br>Average velocity = displacement ÷ elapsed time</div>
+<div class="example"><header>Worked anchor · Different averages</header>
+<p>For the 80 m east, 30 m west walk, suppose the whole journey takes 20 seconds. The average speed is 110/20 = <strong>5.5 m/s</strong>. The average velocity, taking east positive, is 50/20 = <strong>+2.5 m/s</strong>.</p>
+<p>If the walker returned all the way home in 20 seconds, their average velocity would be zero, but their average speed would still be positive. Their instantaneous speed at any moment need not equal either average.</p>
+</div>
+<p>When motion is uniform along a straight line, position increases or decreases by equal amounts in equal times. If the motion turns around, the instantaneous velocity can change sign while speed remains a nonnegative magnitude.</p>
+</section>
+<section id="accel">
+<h2>4. Acceleration measures a change in velocity</h2>
+<p>A car can be moving east while accelerating west: it is slowing down. A car can also be moving west while accelerating west: it is speeding up. Acceleration is a signed rate of <em>velocity change</em>, not simply “getting faster.”</p>
+<div class="equation">Average acceleration = (final velocity − initial velocity) ÷ time interval</div>
+<p>For example, a car's velocity changes uniformly from +4 m/s to −2 m/s in 3 s. Its acceleration is (−2−4)/3 = <strong>−2 m/s²</strong>. During the interval it slows to rest, then reverses direction. The negative acceleration describes the direction of the change, not the sign of the speed.</p>
+<div class="misconception"><strong>Misconception to repair:</strong> “Negative acceleration always means an object is slowing down.”<p>Counterexample: A vehicle moving at −2 m/s increases its westward speed to −6 m/s in two seconds. Its acceleration is −2 m/s², yet its speed increases from 2 m/s to 6 m/s.</p></div>
+<p>Acceleration can also arise from changing <em>direction</em> while speed stays constant. We will return to this with circular motion.</p>
+</section>
+<section id="graphs">
+<h2>5. Motion graphs are physical stories</h2>
+<p>A position–time graph records where something is at each moment. Its slope indicates velocity: a steep upward segment represents a large positive velocity, a horizontal segment means the object is stationary, and a downward segment means a negative velocity.</p>
+<p>A velocity–time graph tells a different story. Its slope represents acceleration, while the <em>signed area</em> between the graph and the time axis gives displacement. Segments below the axis contribute negative area. For distance, add the magnitudes of those areas instead.</p>
+<figure class="figure">
+<svg viewBox="0 0 760 340" role="img" aria-labelledby="graph-title graph-desc" xmlns="http://www.w3.org/2000/svg">
+<title id="graph-title">Two-interval velocity-time graph with a reversal</title>
+<desc id="graph-desc">From time 0 to 4 seconds, velocity is positive 3 metres per second. From 4 to 7 seconds, velocity is negative 1 metre per second. The signed areas are plus 12 and minus 3 metres.</desc>
+<line x1="90" y1="242" x2="705" y2="242" stroke="#344f61" stroke-width="3"/><polygon points="716,242 697,234 697,250" fill="#344f61"/>
+<line x1="90" y1="306" x2="90" y2="36" stroke="#344f61" stroke-width="3"/><polygon points="90,26 82,44 98,44" fill="#344f61"/>
+<rect x="90" y="73" width="322" height="169" fill="#b9e8dc" opacity=".75"/>
+<rect x="412" y="242" width="244" height="55" fill="#f4c7a9" opacity=".9"/>
+<path d="M90 73 H412 V297 H656" fill="none" stroke="#076d64" stroke-width="5"/>
+<g stroke="#8799aa" stroke-width="1.5"><line x1="412" y1="68" x2="412" y2="307" stroke-dasharray="5 5"/><line x1="656" y1="68" x2="656" y2="307" stroke-dasharray="5 5"/></g>
+<g font-size="17" fill="#223f52"><text x="21" y="32">v (m/s)</text><text x="716" y="277">t (s)</text><text x="60" y="248">0</text><text x="56" y="80">+3</text><text x="59" y="302">−1</text><text x="82" y="264">0</text><text x="404" y="265">4</text><text x="650" y="265">7</text><text x="216" y="158" fill="#075c61" font-weight="bold">+12 m</text><text x="507" y="287" fill="#943e0e" font-weight="bold">−3 m</text></g>
+</svg>
+<figcaption>The green area gives +12 m displacement; the orange area gives −3 m. Net displacement is +9 m. Total distance is 15 m. The vertical jump represents an idealized instantaneous velocity change, not a finite real acceleration.</figcaption>
+</figure>
+<div class="example"><header>Worked anchor · Translating the graph</header>
+<p>For 4 seconds an object moves with velocity +3 m/s, then for 3 seconds it moves at −1 m/s. The first segment contributes +12 m; the second contributes −3 m. Therefore, displacement is <strong>+9 m</strong> while distance is <strong>15 m</strong>.</p>
+<p><strong>Independent check:</strong> Since the object moves in opposite directions, the total distance must be greater than or equal to the magnitude of displacement. Here 15 ≥ 9, as expected.</p>
+</div>
+<p>Not every line on a graph is a physical path through space. The graph axes are mathematical quantities: a line that slopes downward on a velocity–time graph does not mean the vehicle is moving down a hill. It means velocity is decreasing in the chosen signed coordinate.</p>
+</section>
+<section id="derive">
+<h2>6. Derive the constant-acceleration relations</h2>
+<p>For constant acceleration, velocity changes at the same rate throughout the interval. A velocity–time graph is therefore a straight line. Its slope is <em>a</em>, so after time <em>t</em>, the final velocity is the initial velocity plus the accumulated change.</p>
+<div class="equation">v = u + at</div>
+<p>The displacement equals the area under that straight-line velocity graph. The area is a rectangle of height <em>u</em> plus a signed triangle of height <em>at</em> and base <em>t</em>. This is why the displacement formula has a one-half term rather than merely multiplying final speed by time.</p>
+<div class="equation">Δx = ut + ½at²</div>
+<p>Alternatively, for constant acceleration, average velocity is (u + v)/2. Multiplying by elapsed time gives Δx = ½(u + v)t. Eliminating time from the first relation then gives:</p>
+<div class="equation">v² = u² + 2aΔx</div>
+<div class="idea"><strong>Model boundary:</strong> These relations require constant acceleration along the chosen axis. If acceleration changes during the journey, divide the timeline into valid intervals, use the actual graph, or apply an appropriate more general model. Never treat a stage-averaged acceleration as a guarantee that the entire trajectory follows one constant-acceleration law.</div>
+<p>A dimensional check can catch some errors: in Δx = ut + ½at², both terms have dimensions of metres. But dimensional consistency alone cannot prove that the model assumptions were true.</p>
+</section>
+<section id="relative">
+<h2>7. Relative motion depends on the observer</h2>
+<p>You may be stationary relative to your seat in a moving bus, while another observer on the pavement sees you moving. Neither observation is contradictory. Position and velocity are measured relative to an explicitly chosen frame.</p>
+<div class="equation">Relative velocity of B as seen from A: v(B/A) = vB − vA</div>
+<p>This subtraction uses <em>signed</em> velocities. If A moves east at +6 m/s and B moves west at −2 m/s, A sees B move at −8 m/s. If they both move east at +6 and +2 m/s, the relative velocity is −4 m/s.</p>
+<div class="inquiry" aria-labelledby="lab-title">
+<h3 id="lab-title">Exploration · Move the observer</h3>
+<p>A cyclist B travels east at +3 m/s. Change observer A's velocity; notice that the same cyclist has different relative velocities without changing their own motion.</p>
+<label for="observer">Observer A's velocity (east positive)</label>
+<input id="observer" type="range" min="-6" max="8" value="1" step="1" aria-describedby="observer-help">
+<p id="observer-help">Use the left/right arrow keys on the slider to change its value.</p>
+<div class="stat-grid" aria-live="polite">
+<div class="stat">Observer A<output id="a-output" for="observer">+1 m/s</output></div>
+<div class="stat">Cyclist B<output>+3 m/s</output></div>
+<div class="stat">B relative to A<output id="rel-output" for="observer">+2 m/s</output></div>
+</div>
+<p id="lab-meaning">From A's moving viewpoint B moves east at 2 m/s.</p>
+</div>
+<p><strong>Why this becomes difficult:</strong> In a meeting or overtaking problem, we need the <em>initial separation</em> as well as the <em>relative velocity</em>. A correct relative-speed subtraction does not by itself tell us which motion interval contains the encounter.</p>
+</section>
+<section id="stages">
+<h2>8. Multi-stage motion: test every interval</h2>
+<p>Consider this new worked problem. Cyclist A starts at x = 0 and moves east at +4 m/s for 4 seconds, then stops at x = 16 m. Cyclist B starts at x = 40 m and rides west at −3 m/s without stopping. When do they meet?</p>
+<div class="example"><header>Advanced worked construction · Do not skip the model-validity check</header>
+<p><strong>Step 1 — Make the interval model.</strong> For 0 ≤ t ≤ 4, A has position xA = 4t and B has xB = 40 − 3t. Equating these gives t = 40/7 ≈ 5.71 s.</p>
+<p><strong>Step 2 — Reject the impossible candidate.</strong> That answer is later than the interval in which A is moving. The equation xA = 4t is no longer true after 4 seconds; therefore 5.71 seconds is not a solution to the actual journey.</p>
+<p><strong>Step 3 — Construct the new stage.</strong> After t = 4 s, A stays at x = 16 m. B continues along xB = 40 − 3t. Set 16 = 40 − 3t. Hence they meet at <strong>t = 8 seconds</strong>, at x = 16 m.</p>
+<p><strong>Step 4 — Check both positions.</strong> At t = 8, A remains at x = 16 and B has position 40 − 24 = 16 m. Both objects occupy the same place at the same time, and the model is valid for t ≥ 4.</p>
+</div>
+<p>The important thinking move was not algebraic difficulty. It was recognizing that a mathematically correct solution to an equation can be physically invalid when used outside its assumed time interval.</p>
+<div class="misconception"><strong>Misconception to repair:</strong> “If two position equations give the same x at a calculated time, the bodies meet.”<p>The equations must represent the bodies' actual motion at that time. An equation for the first 4 seconds cannot be extrapolated unchanged to 8 seconds if the body has stopped.</p></div>
+</section>
+<section id="circular">
+<h2>9. Uniform circular motion is not constant velocity</h2>
+<p>Walk around a circular track at constant speed. Your speed may be unchanged, yet your direction changes continuously. Velocity includes direction, so velocity is changing even when the speedometer reading is steady.</p>
+<p>For a circle of radius r and one revolution completed in time T, the distance travelled in one revolution is 2πr. Average speed over that revolution is 2πr/T, while the displacement over a complete revolution is zero, so average velocity is zero.</p>
+<p>This distinction makes a powerful bridge from kinematics to Newton's laws. A changing velocity requires acceleration; the physical interaction causing that directional change is explored in PH02. Quantitative centripetal-force extensions are tracked separately until their syllabus and QRT scope are reviewed.</p>
+</section>
+<section id="transfer">
+<h2>10. Investigations: think before revealing</h2>
+<p>These are <strong>textbook self-checks</strong>, not protected Core1B attempts and not authenticated NSEJS questions. Try each first; then open the worked explanation. Dedicated QRT tasks use separate protected attempt storage.</p>
+<div class="exercise">
+<h3>Investigation A · Can the speed be large while the average velocity is zero?</h3>
+<p>A runner completes one full lap of a circular track in 60 seconds. Explain whether their average speed and average velocity can both be zero.</p>
+<details><summary>Reveal the reasoning and check</summary><p>The runner covers the nonzero circumference of the track, so average speed is positive. The final position equals the starting position, so displacement and therefore average velocity are zero. The answer depends on which quantity is being averaged.</p></details>
+</div>
+<div class="exercise">
+<h3>Investigation B · Change the positive direction</h3>
+<p>A vehicle has velocity −5 m/s and acceleration −1 m/s². Predict whether its speed grows during the next second, assuming constant acceleration.</p>
+<details><summary>Reveal the reasoning and check</summary><p>After 1 s, velocity is −6 m/s. Its speed increases from 5 m/s to 6 m/s. The negative acceleration points in the same direction as the negative velocity, so the magnitude grows. Reversing the coordinate axis would change both signs, not the physical conclusion.</p></details>
+</div>
+<div class="exercise">
+<h3>Investigation C · A graph with negative area</h3>
+<p>Velocity is +2 m/s for 5 s and −3 m/s for 2 s. Find signed displacement, total distance, and average velocity over the seven-second interval.</p>
+<details><summary>Reveal the reasoning and check</summary><p>First displacement: +10 m. Second displacement: −6 m. Net displacement: +4 m. Distance: 10 + 6 = 16 m. Average velocity: 4/7 m/s east. Since motion reverses, the distance is greater than |displacement|.</p></details>
+</div>
+<div class="exercise">
+<h3>Investigation D · When does the encounter occur?</h3>
+<p>A starts at 0 and moves east at 5 m/s for 3 s, then waits at x = 15 m. B begins at x = 36 m and moves west at 2 m/s. Find their meeting time and explain why an apparently simpler calculation fails.</p>
+<details><summary>Reveal the reasoning and check</summary><p>If both continued moving, 5t = 36−2t gives 36/7 ≈ 5.14 s, which falls outside A's 0–3 s moving stage. After 3 s, A is fixed at x=15. Solving 15 = 36−2t gives <strong>10.5 s</strong>. Substituting into both actual position models confirms the encounter.</p></details>
+</div>
+<div class="exercise">
+<h3>Investigation E · Prove or refute</h3>
+<p>Someone argues: “If the average velocity is positive, the vehicle must have moved only in the positive direction.” Is that true under every circumstance?</p>
+<details><summary>Reveal the reasoning and check</summary><p>No. Positive average velocity only requires net displacement to be positive. A vehicle may move +20 m, then −8 m, for net displacement +12 m. A single example refutes the universal claim, because the claim said “must” or “every.”</p></details>
+</div>
+</section>
+<section id="next">
+<h2>11. What you now own—and what comes next</h2>
+<p>You should now be able to distinguish path length from displacement, define a coordinate frame before assigning velocity signs, read motion graphs as statements about physical quantities, derive the constant-acceleration formulas rather than memorize them, and reject solutions that violate a stage's domain.</p>
+<p>The next step is not another answer key. It is <strong>independent reconstruction</strong>: fresh MODEL, REPRESENT and SYNTHESIZE situations where you make and defend the decisive decision before looking at hints. These tasks remain authored candidates, not qualified NSEJS questions.</p>
+<p><a href="../../core1/ph01-qrt-r2/index.html">Open PH01 Core1B candidate practice — 3 integrated MAIN and 9 INSTANCE cycles</a>. This is a self-study preview with first-answer protection and explicit academic HOLD, not an approved mastery examination.</p>
+<p>Forces in PH02 and work–energy in PH04 will refer back to this chapter's frame, displacement and graph conventions. The Physics laws remain consistent across those chapters instead of being restated differently for each problem type.</p>
+</section>
+<section class="sources">
+<h3>Scope and provenance</h3>
+<p>Authored instructional candidate; not an official NSEJS question. The current NSEJS examination scope is Physics, Chemistry and Biology up to Class 10 CBSE, as stated by IAPT. Historical official CBSE materials describe straight-line motion, graphical interpretation and elementary circular motion. Relative-motion and piecewise reasoning here are teaching extensions requiring task-specific demand review.</p>
+<p><a href="https://iapt.org.in/">IAPT NSEJS information</a> · <a href="https://cbseacademic.nic.in/curriculum_2027.html">CBSE 2026–27 curriculum</a> · <a href="https://cbseacademic.nic.in/web_material/term/9science.pdf">CBSE Motion teaching reference (historical)</a></p>
+<p>Review status: source-scope candidate; independent Physics/QRT review HOLD; B1–B7 HOLD; Core1B HTTP Chromium engineering regression PASS on candidate tasks, while native academic qualification remains HOLD. This page is reading material and contains no authenticated examination answer key.</p>
+</section>
+</article>
+</div>
+<footer>Grade9 v4.1 · PH01 candidate textbook · Agent 1 · No academic approval or release authorization implied</footer>
+<script>
+(function(){
+  const slider = document.getElementById('observer');
+  const aOut = document.getElementById('a-output');
+  const rOut = document.getElementById('rel-output');
+  const meaning = document.getElementById('lab-meaning');
+  if (!slider || !aOut || !rOut || !meaning) return;
+  function signed(n){return (n > 0 ? '+' : '') + n;}
+  function update(){
+    const a = Number(slider.value);
+    const rel = 3 - a;
+    aOut.textContent = signed(a) + ' m/s';
+    rOut.textContent = signed(rel) + ' m/s';
+    meaning.textContent = rel > 0
+      ? 'From A’s viewpoint, cyclist B moves east at ' + rel + ' m/s.'
+      : rel < 0
+      ? 'From A’s viewpoint, cyclist B moves west at ' + Math.abs(rel) + ' m/s.'
+      : 'Cyclist B is instantaneously stationary relative to observer A.';
+  }
+  slider.addEventListener('input', update);
+  update();
+})();
+</script>
+</body>
+</html>

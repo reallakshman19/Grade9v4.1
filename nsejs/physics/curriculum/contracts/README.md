@@ -171,3 +171,17 @@ It does **not** establish actual Physics correctness, authenticated external QRT
 4. Physics Blueprint v0.2.0 remains DRAFT_OWNER_REVIEW, D3.1 PAUSED; the D1/D2 shared Blueprint remains SPEC_PENDING.
 5. The present contract fixture and tests are synthetic, and no authored PH01–PH12 chapter is academically qualified by this PR.
 6. Topic-by-topic official syllabus scope, source rights, independent science review and real-browser acceptance still require separate evidence.
+
+
+## C06 v1.1 candidate amendment — PH01 R2 integration
+
+The original C01–C08 v1.0.0 manifest and v1 topic package remain immutable, supported regression baselines. The PH01 follow-up introduces **separate candidate files**, not an in-place redefinition:
+
+- **core-contracts.v1_1.json** — version 1.1.0 with explicit C06 multi-instance MAIN responsibility
+- **physics-topic-package.v1_1.schema.json** — requires each Core1B cycle to declare its Blueprint cell and the QRT instance IDs it represents
+- **validate_physics_contracts.py** — version-sensitive selection, exact-one MAIN per cell, all cell-instance membership, ≥2 distinct subtopics in each MAIN, no cross-cell references, one fresh INSTANCE per QRT target
+- **tests/test_nsejs_physics_c06_v11.py** — positive and negative synthetic regression cases, including v1 compatibility
+
+The published Physics Blueprint already requires a single integrated MAIN per tile. This amendment closes a **candidate interface/validator gap**, not an academic, pedagogical or Blueprint defect. Contract v1.1 may be adopted by other topic agents only after the required Owner/contract review; their v1.0 work must not be rewritten or silently invalidated.
+
+The PH01 R2 learner page exercises protected first-response storage, hint history and repair/transfer under HTTP Chromium, but cannot certify original examination custody, the independent QRT classification or learner mastery. This amendment does not approve D3.1 or change the parent 28 shared QRT templates. All academic and release gates remain HOLD.

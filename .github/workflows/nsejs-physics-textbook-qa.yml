@@ -1,0 +1,45 @@
+name: NSEJS Physics textbook browser QA
+
+on:
+  pull_request:
+    paths:
+      - "nsejs/physics/textbook/**"
+      - "nsejs/physics/curriculum/**"
+      - "tools/physics_textbook_browser_qa.py"
+      - "tools/physics_ph01_core1b_browser_qa.py"
+      - "nsejs/physics/core1/ph01-qrt-r2/**"
+      - ".github/workflows/nsejs-physics-textbook-qa.yml"
+  push:
+    branches: ["feat/nsejs-physics-agent1-**"]
+    paths:
+      - "nsejs/physics/textbook/**"
+      - "nsejs/physics/curriculum/**"
+      - "nsejs/physics/core1/ph01-qrt-r2/**"
+      - "tools/physics_textbook_browser_qa.py"
+      - "tools/physics_ph01_core1b_browser_qa.py"
+      - ".github/workflows/nsejs-physics-textbook-qa.yml"
+jobs:
+  chromium:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install Playwright and Chromium
+        run: |
+          python -m pip install playwright==1.55.0
+          python -m playwright install --with-deps chromium
+      - name: Verify PH01 HTTP textbook tablet behavior
+        run: python tools/physics_textbook_browser_qa.py
+      - name: Verify PH01 Core1B protected learning runtime
+        run: python tools/physics_ph01_core1b_browser_qa.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ph01-textbook-tablet-receipts
+          path: |
+            review-artifacts/physics-textbook/
+            review-artifacts/physics-core1b/
+          if-no-files-found: ignore
