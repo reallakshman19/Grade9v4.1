@@ -83,7 +83,7 @@ def visit_task(page, unit, subtopic, task_id, orientation, run_stages):
     )
     page.locator("#commit-attempt").click()
     page.locator("text=Model response · POST-COMMIT").wait_for(timeout=15000)
-    check(page.locator("#original-answer").is_readonly(), "First answer not locked")
+    check(page.locator("#original-answer").evaluate("(e) => e.readOnly"), "First answer not locked")
     check(page.locator(".stage-figure").count() == 0,
           "Visual should require explicit postcommit selection")
     revealed = 0
@@ -115,7 +115,7 @@ def check_revision_protection(page, ids):
     })
     page.goto(route)
     page.locator("#original-answer").wait_for()
-    check(page.locator("#original-answer").is_readonly(),
+    check(page.locator("#original-answer").evaluate("(e) => e.readOnly"),
           "Original answer should survive unchanged refresh")
     stored = page.evaluate("""id => Object.keys(localStorage)
         .filter(k => k.startsWith("g9chem:attempt:v2:"+id+":"))
@@ -134,7 +134,7 @@ def check_revision_protection(page, ids):
     page.route("**/curriculum/chemistry/agent-b/learner/C10.reader.v0.1.0.json", mutate)
     page.goto(route)
     page.locator("#commit-attempt").wait_for(timeout=15000)
-    check(not page.locator("#original-answer").is_readonly(),
+    check(not page.locator("#original-answer").evaluate("(e) => e.readOnly"),
           "Changed lesson incorrectly reused first attempt")
     check(page.locator(".stage-figure").count()==0, "Revised task exposed old visuals")
     preserved=page.evaluate("""id => Object.keys(localStorage)
