@@ -165,3 +165,8 @@ RELEASE: HOLD · NO MERGE · NO DEPLOY
 \`\`\`
 
 **Do not treat this document itself as Owner delegation.** For B01–B03 the existing Agent 2 retains topic ownership until an explicit reassignment is issued.
+
+
+## MANDATORY R2 appendix for every newly assigned authoring agent
+
+On receipt of an Owner-approved Golden Sample version, prepend [R2 Evidence-Bound Authoring Contract](quality-gate-r2/AUTHORING_QUALITY_CONTRACT_R2.md) to the workpack. Each author must deliver a copy of [the full evidence packet template](quality-gate-r2/EVIDENCE_PACKET.template.json) filled with **actual file paths, exact SHA-256, line-level quotations, independent science proof, unit/sign counterexample, Core1A teaching witnesses, anchor-vs-fresh W, protected-attempt/visual checks and adversarial log receipts**. Untested or missing claims are HOLD, not self-verified PASS. Run the [R2 packet validator](quality-gate-r2/verify_evidence_packet.py) and its negative tests. Any author statement of 'qualified' without separate R01 evidence is rejected. Owner signs the initial Golden Sample only; routine batches proceed through delegated reviewers and required CI, not per-question Owner approval.
