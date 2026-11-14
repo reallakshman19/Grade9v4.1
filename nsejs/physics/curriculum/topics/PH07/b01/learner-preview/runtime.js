@@ -389,10 +389,11 @@
           .some(k=>typeof t.stages[k]!=='string'||!t.stages[k].trim()))
           throw Error('Incomplete six-stage author task: '+t.id);
       }
-      const revisionMaterial=registry.raw+'\n'+pinResource.raw+'\n'+
+      const legacyRevisionMaterial=registry.raw+'\n'+
         urls.map(x=>x.path+':'+x.blob).sort().join('\n')+'\n'+
         x.supplements.map(y=>y.proposal_path+':'+y.proposal_blob).sort().join('\n');
-      state.sourceDigest=await hash(revisionMaterial,'SHA-256');
+      state.legacyDigest=await hash(legacyRevisionMaterial,'SHA-256');
+      state.sourceDigest=await hash(legacyRevisionMaterial+'\n'+pinResource.raw,'SHA-256');
       state.tasks.sort((a,b)=>a.subtopic_id.localeCompare(b.subtopic_id)||a.id.localeCompare(b.id));
       const select=$('task-select');select.replaceChildren();
       for(const task of state.tasks) {
