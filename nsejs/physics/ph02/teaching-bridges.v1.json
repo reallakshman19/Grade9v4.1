@@ -1,0 +1,136 @@
+{
+  "schema": "g9v41-ph02-core1a-operation-bridges/v1",
+  "status": "AUTHOR_EXPOSED_CANDIDATE__ACADEMIC_HOLD",
+  "source_type": "ORIGINAL_AUTHORED_TEACHING",
+  "purpose": "Teach additional operation prerequisites without disclosing their protected assessment solutions",
+  "bridges": {
+    "PH02-F01": [
+      {
+        "op": "REPRESENT",
+        "title": "Translate arrows into a signed resultant",
+        "teaching": "Select a body and a positive axis before drawing forces. The length of an arrow represents magnitude, but the signed component is determined by direction. For a trolley with two opposite horizontal forces, first label each physical interaction; then a vector diagram becomes a one-dimensional equation. A net-force arrow is a derived summary, not an additional external force. Back-translate your equation into the diagram to check that all forces on the chosen body are represented exactly once.",
+        "worked": "A trolley has 7 N east and 3 N west acting. With east positive, ΣF=+7−3=+4 N east; show both 7 N and 3 N interaction arrows plus a separately distinguished 4 N resultant annotation.",
+        "check": "If you reverse your coordinate axis, individual signed components and the resultant all reverse sign, but the physical eastward direction does not change."
+      },
+      {
+        "op": "JUSTIFY",
+        "title": "Prove or refute claims about balanced forces",
+        "teaching": "A universal statement about forces is tested against the exact conclusion of Newton's law. For constant mass in an inertial frame, zero resultant implies zero acceleration, hence constant vector velocity. It does not demand that the constant be zero. A single nonzero constant-velocity example is enough to refute the claim that all balanced objects are stationary. To prove the weaker correct statement, integrate or reason from zero change in velocity over any time interval.",
+        "worked": "A smooth puck moves west at 2 m s⁻¹ with zero horizontal resultant. After 3 s it has moved another 6 m west; its speed has not vanished. This is a counterexample to 'balanced means at rest.'",
+        "check": "At rest is one possible constant velocity, so the counterexample changes only the initial state, not Newton's law."
+      }
+    ],
+    "PH02-F02": [
+      {
+        "op": "EXPLAIN",
+        "title": "Why apparent backward motion does not imply backward force",
+        "teaching": "The causal explanation begins with an inertial road frame. A frictionless object retains its road-frame horizontal velocity while its support can change velocity under a separate external force. A passenger measures the object's displacement relative to the support: Δx_object − Δx_support. That difference can point backward although no backward road-frame force acts on the object. In a non-inertial passenger frame one may introduce a model-dependent pseudo-force, but do not confuse it with a physical contact interaction in the road frame.",
+        "worked": "If a smooth tray moves east 3 m while a toy coasts east only 2 m in the same interval, the toy finishes 1 m to the rear relative to the tray. The sign follows from 2−3=−1 m, not from a backward push on the toy.",
+        "check": "Tying the toy to the support changes the force condition and can make both accelerate together; the premise of zero horizontal force then no longer holds."
+      },
+      {
+        "op": "REPRESENT",
+        "title": "Build two ground-frame histories before a relative-position graph",
+        "teaching": "An accelerating vehicle and a coasting object need separate position functions. Choose the same origin and global time. Build a table at each stage boundary, then subtract the vehicle coordinate from the object coordinate to plot relative position. Equal position at a single instant does not mean equal velocity; slope of the relative-position graph gives relative velocity. A change in the vehicle acceleration changes curvature of the relative-position graph while position and velocity remain continuous if no impulse occurs.",
+        "worked": "A toy and trolley start at x=0 and v=2 m s⁻¹ east. Over 1 s the trolley accelerates east at 2 m s⁻² while the toy coasts: toy travels 2 m, trolley 3 m; relative position becomes −1 m.",
+        "check": "For zero trolley acceleration the relative curve would remain at zero because both histories would be identical."
+      }
+    ],
+    "PH02-F03": [
+      {
+        "op": "APPLY",
+        "title": "Carry state across a force change",
+        "teaching": "Force can change suddenly while a non-impulsive motion keeps position and velocity continuous. Split time at each force change; calculate ΣF/m for each stage and use the outgoing velocity of one stage as the next stage's initial velocity. For constant acceleration in a stage, v_next=v_start+aΔt and Δx=v_startΔt+½aΔt². Do not reuse the original speed for later stages or add speeds without respecting signs.",
+        "worked": "A 2 kg cart starts with v=1 m s⁻¹ east. A +4 N resultant acts for 1 s, giving a=+2 m s⁻² and v=3 m s⁻¹; the resultant then becomes zero for 2 s, so it coasts 6 m farther at 3 m s⁻¹.",
+        "check": "Units of F/m are m s⁻² and stage distances have length units. Constant velocity in stage two agrees with zero resultant."
+      },
+      {
+        "op": "SYNTHESIZE",
+        "title": "Separate applied and resultant forces across objects",
+        "teaching": "When comparing two accelerated objects, equality of applied pushes is not enough to equate resultant forces. Create a small force ledger for each body: ΣF=F_push−F_resistance, then substitute mass times its measured acceleration. If a resistance is unknown, the measured acceleration determines the net force, so rearrange to infer the missing interaction. This is a constrained inverse calculation, not a proportional shortcut. Check both equations and compare with a limiting zero-resistance case.",
+        "worked": "Two 2 kg carts have identical 8 N east pushes. One has no resistance and accelerates at 4 m s⁻²; the other has 2 N west resistance and accelerates at 3 m s⁻². Equal applied push did not produce equal net force.",
+        "check": "If both resistances vanished, their equal masses and equal pushes would restore equal accelerations."
+      }
+    ],
+    "PH02-F04": [
+      {
+        "op": "REPRESENT",
+        "title": "Interaction labels before force arrows",
+        "teaching": "Every Newton-third-law statement needs two agents and two recipients. Write each force as 'force ON A BY B.' Put the B-on-A arrow only on A's free-body diagram and its counterpart A-on-B only on B's diagram. An arrow pointing opposite the first is not sufficient evidence of an interaction pair: two opposing forces on the same book (normal and gravity) are not each other's reactions. For combined systems, internal pairs may cancel in the total force ledger.",
+        "worked": "When a hand pushes a door east with 8 N, show hand-on-door +8 N on the door drawing and door-on-hand −8 N on the hand drawing, not both on the door.",
+        "check": "If another person pushes the door west with 5 N, that is a separate interaction and changes the door's net force; it does not change the first third-law pair's equality."
+      },
+      {
+        "op": "JUSTIFY",
+        "title": "Why equal forces do not require equal acceleration",
+        "teaching": "A force pair has equal magnitude by the interaction law, but the two bodies can have different masses and other external forces. For an isolated two-object system, the internal pair contributes F and −F to the sum of forces, so the centre-of-mass acceleration is governed only by external force. Individual accelerations are obtained by dividing each body's own resultant by its own mass. Do not add action and reaction in a single-body equation, and do not infer equal accelerations from force equality.",
+        "worked": "A 2 kg body receives 6 N east while its 3 kg partner receives 6 N west. Ignoring other forces, their accelerations have magnitudes 3 and 2 m s⁻² respectively; the mass-weighted acceleration sum is 2(3)+3(−2)=0.",
+        "check": "Replacing either mass changes that body's acceleration without changing the equal-and-opposite pair for the stated contact force."
+      }
+    ],
+    "PH02-F05": [
+      {
+        "op": "MODEL",
+        "title": "Choose a system boundary before solving contact forces",
+        "teaching": "For a group of bodies sharing motion, a combined-system diagram can eliminate internal interactions and reveal acceleration from external forces alone. Once acceleration is known, redraw a single-body diagram to recover the internal contact force needed to sustain that motion. The two equations are not competing answers: they answer different questions. Explicitly verify that a string remains taut or friction can sustain no slip before imposing common acceleration.",
+        "worked": "A 1 kg upper box rests on a 2 kg sled; a 6 N east push accelerates both along a frictionless track. If no slip occurs, combined acceleration is 6/3=2 m s⁻², and the upper box requires 2 N east static friction.",
+        "check": "On the lower sled, push minus the reaction friction equals 6−2=4 N, which is 2 kg×2 m s⁻²."
+      },
+      {
+        "op": "SYNTHESIZE",
+        "title": "Use both force balance and the static contact limit",
+        "teaching": "A common acceleration is an assumption to test, not a right earned by drawing the objects together. First calculate the acceleration they would share if no slipping occurred. Isolate the upper object to compute the horizontal contact force required. Compare that number against the maximum available static friction. If the inequality fails, discard the shared-acceleration model and use separate dynamics under an appropriate sliding-friction law. Do not hide the failed constraint by reporting the hypothetical acceleration as physical.",
+        "worked": "A 1 kg box on a 3 kg platform under a 4 N push would need a=1 m s⁻² and 1 N upper-box friction. If the available limit is 2 N, shared acceleration is feasible; if the limit is 0.5 N, it is not.",
+        "check": "For the feasible case, the platform equation 4−1=3 N equals 3 kg×1 m s⁻²."
+      }
+    ],
+    "PH02-F06": [
+      {
+        "op": "MODEL",
+        "title": "Decide whether friction adjusts or slips",
+        "teaching": "For a body that might remain stuck, compute the friction that *would* make the net tangential force zero. Static friction can take any necessary value within −μ_sN≤f_s≤+μ_sN; its limiting value is not always attained. If required magnitude exceeds that interval, static equilibrium is impossible and the contact must be reclassified. Once sliding, friction may be approximated as kinetic with magnitude μ_kN opposite relative slip, but only if μ_k and the normal force are actually supplied or justified.",
+        "worked": "Two horizontal forces add to 5 N east while maximum static friction is 7 N. The crate can stay at rest with 5 N west friction, not automatically 7 N west.",
+        "check": "At 8 N east tendency the required 8 N friction exceeds the 7 N limit, so the static model breaks."
+      },
+      {
+        "op": "JUSTIFY",
+        "title": "Derive a two-sided interval of feasible pushes",
+        "teaching": "Static balance gives f_s=−(P−Q), where P is eastward and Q westward applied force. The condition |f_s|≤F_max becomes |P−Q|≤F_max. Solve both inequalities Q−F_max≤P≤Q+F_max; only then intersect with any physical restriction such as P≥0. The lower bound can matter because friction sometimes points east to oppose an excessive west pull. This inequality proof shows necessity (outside it no static solution) and sufficiency within the simplified dry-friction model.",
+        "worked": "For a west pull Q=4 N, static limit F_max=6 N and east push P≥0, the rest interval is 0≤P≤10 N; at P=4 N actual friction is zero.",
+        "check": "A push P=11 N requires 7 N west friction beyond the 6 N limit; a push P=0 needs 4 N east friction, which is available."
+      }
+    ],
+    "PH02-F07": [
+      {
+        "op": "REPRESENT",
+        "title": "Project gravity into ramp coordinates",
+        "teaching": "Draw weight mg vertically downward before introducing parallel and perpendicular axes. If the plane is at angle θ above horizontal, the component along the plane has magnitude mg sinθ down-slope and the into-plane component mg cosθ. With positive upslope and positive outward-normal directions, both gravity components are negative. For an ideal smooth plane with no normal acceleration and a rope parallel to the surface, the support is N=mg cosθ; it cannot pull the block into the surface.",
+        "worked": "For a 2 kg block on a smooth 45° ramp with g=10 m s⁻², both gravity component magnitudes are 20/√2≈14.14 N. Downslope is negative if upslope positive, and normal support is +14.14 N outward.",
+        "check": "At θ=0 the along-plane component vanishes and the normal component equals the full weight 20 N."
+      },
+      {
+        "op": "SYNTHESIZE",
+        "title": "Solve rope-plus-friction feasibility on a slope",
+        "teaching": "For a rope pulling parallel to an inclined plane, the two applied tendencies along the surface are T upslope and mg sinθ downslope. To remain at rest, static friction must fill the signed difference: f_s=mg sinθ−T. That value can point either direction, so never pre-label friction as always upslope. Compare |mg sinθ−T| with the static limit; if exceeded, separate the sliding regime and supply a kinetic friction law. In a frictionless case the same signed sum gives acceleration directly.",
+        "worked": "On a 30° plane with mg=20 N and static capacity 4 N, gravitational tendency downslope is 10 N. Rope tensions between 6 N and 14 N can be held in static equilibrium in the ideal model.",
+        "check": "At T=10 N friction is zero, at T=14 N it is 4 N downslope, and at T=6 N it is 4 N upslope."
+      }
+    ],
+    "PH02-F08": [
+      {
+        "op": "EXPLAIN",
+        "title": "Forces can jump while non-impulsive velocity stays continuous",
+        "teaching": "The force diagram for a taut-string system can change in an instant when a rope is cut or slackens. Before the event, the bodies may have a shared acceleration enforced by a tension constraint. Just after it, tension is absent and each external resultant changes. Under ordinary bounded forces over a vanishingly short cutting interval there is no impulse large enough to change velocity discontinuously, so each body retains its prior velocity at that instant while its acceleration may change immediately. If a rope snaps taut after slack motion, however, impulsive engagement needs a separate impact model; continuity cannot be assumed without examining it.",
+        "worked": "A cart moving east at 3 m s⁻¹ is suddenly released from a pulling string on a smooth floor. Its acceleration becomes zero once tension vanishes, but it continues east at 3 m s⁻¹.",
+        "check": "After 2 s coasting it travels another 6 m, rather than stopping at the cutting point."
+      },
+      {
+        "op": "MODEL",
+        "title": "Check tautness and nonnegative tension before combining masses",
+        "teaching": "A light rope transmits tension but cannot exert compression. Only when it is taut can two objects share the rope constraint, and an ideal massless inextensible connection then supplies a common acceleration along its own direction. Start with the separate free-body equations and the proposed common-acceleration constraint. Solve for tension and confirm T≥0, consistent rope geometry and initial velocities. A negative 'tension' means the taut-rope assumption is incompatible with the proposed motion and the model may need slack/separate dynamics. A sudden transition from slack to taut can require an impulse model.",
+        "worked": "Two carts of 1 kg and 2 kg, connected by a taut rope on a smooth track, are pulled right with 6 N on the front cart. Shared a=6/3=2 m s⁻²; rope tension on the trailing 1 kg cart is 2 N, a valid positive pull.",
+        "check": "On the front 2 kg cart, applied 6 N minus tension 2 N leaves 4 N, consistent with 2 kg×2 m s⁻²."
+      }
+    ]
+  }
+}
