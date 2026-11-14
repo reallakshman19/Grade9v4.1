@@ -156,7 +156,8 @@
       $('attempt-input').value=r.first_answer.answer;
       const pre=r.first_answer.help_before_first||
         r.help_exposure.filter(x=>x.at<=r.first_answer.saved_at).map(x=>x.kind);
-      $('saved-first').textContent='Original answer saved at '+r.first_answer.saved_at+
+      $('saved-first').textContent=(r.migration_provenance?'Historical R13 attempt: original page/figure fidelity NOT ESTABLISHED; original key retained. ':'')+
+        'Original answer saved at '+r.first_answer.saved_at+
         '; help before first: '+(pre.length?pre.join(', '):'none recorded')+
         '. Later edits are separate; learner mastery is not inferred.';
     }
@@ -195,6 +196,34 @@
     if(r.boundary_attempts.length)
       $('completion').textContent='Boundary answer saved separately from first answer; no automatic grading or learner mastery inferred.';
   }
+  function readWithHistoricalR13() {
+    const modern=localStorage.getItem(key());
+    if(modern!==null)return read();
+    if(!state.legacyDigest)throw Error('Missing R13 revision binding');
+    const legacyKey=PREVIEW+state.legacyDigest+':'+state.current.id;
+    const raw=localStorage.getItem(legacyKey);
+    if(raw===null)return blank();
+    const legacy=JSON.parse(raw);
+    if(!valid(legacy,state.legacyDigest))
+      throw Error('Historical R13 record is malformed or stage-invalid; keep old bytes for review');
+    // Preserve the original key intact. This links its historical first attempt
+    // to the new byte-pinned reader, but cannot establish old HTML/figure fidelity.
+    const migrated=structuredClone(legacy);
+    migrated.content_revision=state.digest;
+    migrated.migration_provenance={
+      from_digest:state.legacyDigest,
+      figure_identity_at_old_attempt:'NOT_ESTABLISHED_R13',
+      migrated_at:new Date().toISOString()
+    };
+    if(!valid(migrated))throw Error('Cannot qualify an R13 state for carry-forward');
+    const revised=JSON.stringify(migrated);
+    if(localStorage.getItem(key())!==null)
+      throw Error('Concurrent new-revision attempt detected');
+    localStorage.setItem(key(),revised);
+    if(localStorage.getItem(key())!==revised)
+      throw Error('Historical attempt migration write not durable');
+    return migrated;
+  }
   async function choose(id) {
     const token=++state.selection;
     const task=state.tasks.find(x=>x.id===id);
@@ -218,7 +247,7 @@
       state.digest=await hash(state.sourceDigest+'\n'+task.id+'\n'+
         task.core1a+':'+a+'\n'+task.core1b+':'+b,'SHA-256');
       if(token!==state.selection)return;
-      state.record=read();
+      state.record=readWithHistoricalR13();
       if(!state.record)throw Error('Stored attempt is malformed/stale; no silent reset');
       resetSection();
       $('task-meta').textContent=task.kind+' · '+task.subtopic_id+' · '+task.cell+' · '+task.source_kind;
@@ -239,7 +268,8 @@
       restore();
       $('revision').textContent='Task-specific SHA-256 '+state.digest.slice(0,24)+
         '…; exact package and both pinned author HTML/inline figure sources verified. 89 INSTANCE · 0 MAIN.';
-      status(state.record.first_answer?'Previous first answer restored; later stages remain separately recorded.':
+      status(state.record.migration_provenance?'Historical R13 first answer carried forward with source-figure fidelity unverified; original evidence retained.':
+        state.record.first_answer?'Previous first answer restored; later stages remain separately recorded.':
         'Exact-version author candidate loaded; record prediction and reasoning before reconstruction.','info');
     }catch(err){if(token===state.selection)lock('Page/attempt revision verification failed: '+String(err.message));}
   }
