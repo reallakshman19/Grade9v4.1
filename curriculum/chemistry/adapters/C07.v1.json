@@ -1,0 +1,765 @@
+{
+  "schema": "g9v41-chem-topic-adapter/v1",
+  "adapter_id": "CHEM-C07",
+  "version": "0.2.0",
+  "subject": "CHEMISTRY",
+  "unit_id": "C07",
+  "blueprint_ref": "CHEM-QRT-BLUEPRINT@0.1.0",
+  "syllabus_ref": "chemistry-syllabus.v1.json@0.1.0",
+  "status": "CANDIDATE",
+  "canonical_truth_status": "DRAFT",
+  "sources": [
+    {
+      "ref": "CBSE-IX-2026",
+      "classification": "CBSE_SCOPE",
+      "review_status": "CANDIDATE"
+    },
+    {
+      "ref": "CBSE-X-2026",
+      "classification": "CBSE_SCOPE",
+      "review_status": "CANDIDATE"
+    },
+    {
+      "ref": "NCERT-Class-10-Metals-Nonmetals",
+      "classification": "AUTHOR_RESEARCH",
+      "review_status": "CANDIDATE"
+    },
+    {
+      "ref": "NCERT-Class-10-Carbon-Compounds",
+      "classification": "AUTHOR_RESEARCH",
+      "review_status": "CANDIDATE"
+    }
+  ],
+  "subtopics": [
+    {
+      "subtopic_id": "CHEM-C07.01",
+      "title": "Why atoms combine: valence and stability",
+      "scope": "CORE_CANDIDATE",
+      "canonical_truth_status": "DRAFT",
+      "canonical_concept_refs": [
+        "CHEM-C07.01-CORE1A"
+      ],
+      "qrt_instances": [
+        {
+          "instance_id": "C07-01-EXPLAIN-D3",
+          "template_ref": "QRT-EXPLAIN-D3",
+          "primary_operation": "EXPLAIN",
+          "band": "D3",
+          "canonical_concept_refs": [
+            "CHEM-C07.01-CORE1A"
+          ],
+          "slots": {
+            "X": "Predict the simplest ionic formula for Ca²⁺ and N³⁻ and show why.",
+            "Y": "Chemistry warrant: The electron model links an atom's shell count to ion charge; charge balance then fixes a formula unit. These are two connected inferences, not a mnemonic. Prior basis: Begin with nuclear identity: a sodium ion is still sodium because 11 protons remain in its nucleus; changing electron number changes charge but not the element.",
+            "Z": "Al has three outer electrons in a simple shell picture and may form Al³⁺; O gains two electrons to form O²⁻. Total charge must vanish: 2 Al³⁺ balances 3 O²⁻, producing Al₂O₃.",
+            "W": "Without being given the answer or decisive strategy, derive the causal explanation for this new task: \"Predict the simplest ionic formula for Ca²⁺ and N³⁻ and show why.\" A valid independent result must satisfy: Check ion identities, charge conservation and integer reduction."
+          },
+          "student_task": "Predict the simplest ionic formula for Ca²⁺ and N³⁻ and show why.",
+          "wrong_idea": "All bonds form because every atom must obtain eight electrons.",
+          "replacement_rule": "Use electron counts to make a first model, then check charge, bonding structure and energetic feasibility.",
+          "visual_job": "Write the shell pattern beside the ion charge: Na (2,8,1) → Na⁺ (2,8) + e⁻; Cl (2,8,7) + e⁻ → Cl⁻ (2,8,8). In a diagram, use labelled electron counts, not arrows suggesting protons move. For magnesium, two electrons must leave; two chlorine atoms can each accept one.",
+          "independent_check": "Check ion identities, charge conservation and integer reduction.",
+          "source_bindings": [
+            {
+              "ref": "AUTHORED-C07-01-EXPLAIN-D3",
+              "role": "AUTHORED_PRACTICE",
+              "review_status": "CANDIDATE"
+            }
+          ],
+          "status": "CANDIDATE"
+        },
+        {
+          "instance_id": "C07-02-MODEL-D3",
+          "template_ref": "QRT-MODEL-D3",
+          "primary_operation": "MODEL",
+          "band": "D3",
+          "canonical_concept_refs": [
+            "CHEM-C07.01-CORE1A"
+          ],
+          "slots": {
+            "X": "A substance contains separate H₂ molecules. Decide whether electron transfer to ions or sharing a pair is the better school-level bonding model; justify.",
+            "Y": "Chemistry warrant: A shell-based ion model is useful for some main-group compounds but is not an argument about all bonds or all elements. The student must choose the model for the case. Prior basis: Begin with nuclear identity: a sodium ion is still sodium because 11 protons remain in its nucleus; changing electron number changes charge but not the element.",
+            "Z": "The octet picture can classify NaCl at elementary level; for H₂ the relevant shared-shell target is a duet for each H, and the salt-lattice model would be the wrong representation.",
+            "W": "Without being given the answer or decisive strategy, choose and test a scientific model for this new task: \"A substance contains separate H₂ molecules. Decide whether electron transfer to ions or sharing a pair is the better school-level bonding model; justify.\" A valid independent result must satisfy: Check the entity being modelled: molecule versus lattice."
+          },
+          "student_task": "A substance contains separate H₂ molecules. Decide whether electron transfer to ions or sharing a pair is the better school-level bonding model; justify.",
+          "wrong_idea": "All bonds form because every atom must obtain eight electrons.",
+          "replacement_rule": "Use electron counts to make a first model, then check charge, bonding structure and energetic feasibility.",
+          "visual_job": "Write the shell pattern beside the ion charge: Na (2,8,1) → Na⁺ (2,8) + e⁻; Cl (2,8,7) + e⁻ → Cl⁻ (2,8,8). In a diagram, use labelled electron counts, not arrows suggesting protons move. For magnesium, two electrons must leave; two chlorine atoms can each accept one.",
+          "independent_check": "Check the entity being modelled: molecule versus lattice.",
+          "source_bindings": [
+            {
+              "ref": "AUTHORED-C07-02-MODEL-D3",
+              "role": "AUTHORED_PRACTICE",
+              "review_status": "CANDIDATE"
+            }
+          ],
+          "status": "CANDIDATE"
+        },
+        {
+          "instance_id": "C07-03-JUSTIFY-D4",
+          "template_ref": "QRT-JUSTIFY-D4",
+          "primary_operation": "JUSTIFY",
+          "band": "D4",
+          "canonical_concept_refs": [
+            "CHEM-C07.01-CORE1A"
+          ],
+          "slots": {
+            "X": "Evaluate the claim: 'If a student can draw complete outer shells after electron transfer, the compound must form spontaneously.' Give a defensible rebuttal.",
+            "Y": "Chemistry warrant: Electronic configurations are one piece of evidence. A high-transfer justification examines counterexamples and the limitation of a school-level rule. Prior basis: Begin with nuclear identity: a sodium ion is still sodium because 11 protons remain in its nucleus; changing electron number changes charge but not the element.",
+            "Z": "Two proposed substances can display favourable electron counts in a drawing yet have different stability because their energy and bonding environments differ. The diagram does not supply a formation enthalpy.",
+            "W": "Without being given the answer or decisive strategy, select decisive evidence/counterexamples and delimit the claim for this new task: \"Evaluate the claim: 'If a student can draw complete outer shells after electron transfer, the compound must form spontaneously.' Give a defensible rebuttal.\" A valid independent result must satisfy: A valid justification states the missing chemical warrant and limiting scope."
+          },
+          "student_task": "Evaluate the claim: 'If a student can draw complete outer shells after electron transfer, the compound must form spontaneously.' Give a defensible rebuttal.",
+          "wrong_idea": "All bonds form because every atom must obtain eight electrons.",
+          "replacement_rule": "Use electron counts to make a first model, then check charge, bonding structure and energetic feasibility.",
+          "visual_job": "Write the shell pattern beside the ion charge: Na (2,8,1) → Na⁺ (2,8) + e⁻; Cl (2,8,7) + e⁻ → Cl⁻ (2,8,8). In a diagram, use labelled electron counts, not arrows suggesting protons move. For magnesium, two electrons must leave; two chlorine atoms can each accept one.",
+          "independent_check": "A valid justification states the missing chemical warrant and limiting scope.",
+          "source_bindings": [
+            {
+              "ref": "AUTHORED-C07-03-JUSTIFY-D4",
+              "role": "AUTHORED_PRACTICE",
+              "review_status": "CANDIDATE"
+            }
+          ],
+          "status": "CANDIDATE"
+        }
+      ],
+      "academic_notes": [
+        "Core1A/B passage and tasks are Grade9-authored candidate content; no original NSEJS question identity is asserted.",
+        "Band values D3/D4 are unqualified author proposals pending five-factor QRT adjudication and independent chemistry review."
+      ],
+      "status": "ACADEMIC_HOLD"
+    },
+    {
+      "subtopic_id": "CHEM-C07.02",
+      "title": "Ionic bonding: transfer, lattice and properties",
+      "scope": "CORE_CANDIDATE",
+      "canonical_truth_status": "DRAFT",
+      "canonical_concept_refs": [
+        "CHEM-C07.02-CORE1A"
+      ],
+      "qrt_instances": [
+        {
+          "instance_id": "C07-04-EXPLAIN-D3",
+          "template_ref": "QRT-EXPLAIN-D3",
+          "primary_operation": "EXPLAIN",
+          "band": "D3",
+          "canonical_concept_refs": [
+            "CHEM-C07.02-CORE1A"
+          ],
+          "slots": {
+            "X": "Explain with charge conservation why aluminium oxide has formula Al₂O₃.",
+            "Y": "Chemistry warrant: The ion picture and neutrality combine into the correct stoichiometric ratio. This must not be confused with a molecular bond count. Prior basis: At an ordinary temperature solid NaCl has sodium and chloride ions occupying positions within an extended crystal lattice; they vibrate but do not freely migrate through the bulk.",
+            "Z": "Calcium forms Ca²⁺ and chlorine Cl⁻. A 1:2 ratio yields overall charge zero, so CaCl₂ is the formula unit.",
+            "W": "Without being given the answer or decisive strategy, derive the causal explanation for this new task: \"Explain with charge conservation why aluminium oxide has formula Al₂O₃.\" A valid independent result must satisfy: Compute the ion charge sum independently."
+          },
+          "student_task": "Explain with charge conservation why aluminium oxide has formula Al₂O₃.",
+          "wrong_idea": "An ionic compound must conduct electricity because it contains ions.",
+          "replacement_rule": "Ask in which physical state the sample is measured and identify the mobile charge carriers.",
+          "visual_job": "Use figures/c07-ionic.svg only as prerequisite explanatory evidence, not as an answer annotation. Draw a repeating grid of alternating + and − ion labels for a crystal; arrows for mobile ions only in the molten or aqueous model. A conductivity diagram must specify 'solid', 'molten' or 'dissolved', plus electrodes and whether the ions can move.",
+          "independent_check": "Compute the ion charge sum independently.",
+          "source_bindings": [
+            {
+              "ref": "AUTHORED-C07-04-EXPLAIN-D3",
+              "role": "AUTHORED_PRACTICE",
+              "review_status": "CANDIDATE"
+            }
+          ],
+          "status": "CANDIDATE"
+        },
+        {
+          "instance_id": "C07-05-MODEL-D3",
+          "template_ref": "QRT-MODEL-D3",
+          "primary_operation": "MODEL",
+          "band": "D3",
+          "canonical_concept_refs": [
+            "CHEM-C07.02-CORE1A"
+          ],
+          "slots": {
+            "X": "A hard crystalline sample conducts when molten but not solid. Construct the simplest particle-mobility model consistent with the observations.",
+            "Y": "Chemistry warrant: Conductivity is modeled with mobile charged particles; physical state and possible reactions with solvent must be part of the model. Prior basis: At an ordinary temperature solid NaCl has sodium and chloride ions occupying positions within an extended crystal lattice; they vibrate but do not freely migrate through the bulk.",
+            "Z": "NaCl(s) has ions but lacks ion migration. NaCl(l) has mobile ions, and NaCl(aq) has mobile hydrated ions. A table of these conditions predicts conduction.",
+            "W": "Without being given the answer or decisive strategy, choose and test a scientific model for this new task: \"A hard crystalline sample conducts when molten but not solid. Construct the simplest particle-mobility model consistent with the observations.\" A valid independent result must satisfy: Verify mobile charge carriers, not just chemical labels."
+          },
+          "student_task": "A hard crystalline sample conducts when molten but not solid. Construct the simplest particle-mobility model consistent with the observations.",
+          "wrong_idea": "An ionic compound must conduct electricity because it contains ions.",
+          "replacement_rule": "Ask in which physical state the sample is measured and identify the mobile charge carriers.",
+          "visual_job": "Use figures/c07-ionic.svg only as prerequisite explanatory evidence, not as an answer annotation. Draw a repeating grid of alternating + and − ion labels for a crystal; arrows for mobile ions only in the molten or aqueous model. A conductivity diagram must specify 'solid', 'molten' or 'dissolved', plus electrodes and whether the ions can move.",
+          "independent_check": "Verify mobile charge carriers, not just chemical labels.",
+          "source_bindings": [
+            {
+              "ref": "AUTHORED-C07-05-MODEL-D3",
+              "role": "AUTHORED_PRACTICE",
+              "review_status": "CANDIDATE"
+            }
+          ],
+          "status": "CANDIDATE"
+        },
+        {
+          "instance_id": "C07-06-JUSTIFY-D4",
+          "template_ref": "QRT-JUSTIFY-D4",
+          "primary_operation": "JUSTIFY",
+          "band": "D4",
+          "canonical_concept_refs": [
+            "CHEM-C07.02-CORE1A"
+          ],
+          "slots": {
+            "X": "A substance does not conduct when pure but its aqueous solution does. Does this prove its original substance was ionic? Give an alternative and a further test.",
+            "Y": "Chemistry warrant: The same macroscopic observation may arise from different chemistry. Evidence must warrant an identification rather than merely be compatible with it. Prior basis: At an ordinary temperature solid NaCl has sodium and chloride ions occupying positions within an extended crystal lattice; they vibrate but do not freely migrate through the bulk.",
+            "Z": "A solution of molecular HCl in water conducts due to formation of hydronium and chloride; conduction does not imply that the initial HCl gas was an ionic lattice.",
+            "W": "Without being given the answer or decisive strategy, select decisive evidence/counterexamples and delimit the claim for this new task: \"A substance does not conduct when pure but its aqueous solution does. Does this prove its original substance was ionic? Give an alternative and a further test.\" A valid independent result must satisfy: An explanatory alternative plus discriminating experiment must be stated."
+          },
+          "student_task": "A substance does not conduct when pure but its aqueous solution does. Does this prove its original substance was ionic? Give an alternative and a further test.",
+          "wrong_idea": "An ionic compound must conduct electricity because it contains ions.",
+          "replacement_rule": "Ask in which physical state the sample is measured and identify the mobile charge carriers.",
+          "visual_job": "Use figures/c07-ionic.svg only as prerequisite explanatory evidence, not as an answer annotation. Draw a repeating grid of alternating + and − ion labels for a crystal; arrows for mobile ions only in the molten or aqueous model. A conductivity diagram must specify 'solid', 'molten' or 'dissolved', plus electrodes and whether the ions can move.",
+          "independent_check": "An explanatory alternative plus discriminating experiment must be stated.",
+          "source_bindings": [
+            {
+              "ref": "AUTHORED-C07-06-JUSTIFY-D4",
+              "role": "AUTHORED_PRACTICE",
+              "review_status": "CANDIDATE"
+            }
+          ],
+          "status": "CANDIDATE"
+        }
+      ],
+      "academic_notes": [
+        "Core1A/B passage and tasks are Grade9-authored candidate content; no original NSEJS question identity is asserted.",
+        "Band values D3/D4 are unqualified author proposals pending five-factor QRT adjudication and independent chemistry review."
+      ],
+      "status": "ACADEMIC_HOLD"
+    },
+    {
+      "subtopic_id": "CHEM-C07.03",
+      "title": "Covalent bonding and shared electron pairs",
+      "scope": "CORE_CANDIDATE",
+      "canonical_truth_status": "DRAFT",
+      "canonical_concept_refs": [
+        "CHEM-C07.03-CORE1A"
+      ],
+      "qrt_instances": [
+        {
+          "instance_id": "C07-07-REPRESENT-D3",
+          "template_ref": "QRT-REPRESENT-D3",
+          "primary_operation": "REPRESENT",
+          "band": "D3",
+          "canonical_concept_refs": [
+            "CHEM-C07.03-CORE1A"
+          ],
+          "slots": {
+            "X": "For NH₃, explain how many valence electrons appear in bonds and lone pairs in a conventional Lewis representation.",
+            "Y": "Chemistry warrant: A bond-line drawing suppresses individual bonding electrons. A valid Lewis representation conserves the total valence-electron inventory. Prior basis: Count valence electrons before guessing the shape of a bond drawing. For oxygen gas, two atoms contribute twelve electrons in the simplest Lewis bookkeeping model.",
+            "Z": "A water molecule has eight valence electrons in total: six from O and one from each H. Two O–H bonds use four; two O lone pairs account for the remaining four.",
+            "W": "Without being given the answer or decisive strategy, construct and validate the requested chemical representation for this new task: \"For NH₃, explain how many valence electrons appear in bonds and lone pairs in a conventional Lewis representation.\" A valid independent result must satisfy: Count electrons and confirm each H duet."
+          },
+          "student_task": "For NH₃, explain how many valence electrons appear in bonds and lone pairs in a conventional Lewis representation.",
+          "wrong_idea": "All covalent substances consist of low-boiling individual molecules.",
+          "replacement_rule": "Distinguish covalent bonds within a molecule from the arrangement and interactions between molecules or throughout a network.",
+          "visual_job": "Use H—H for one shared pair, O=O for two and N≡N for three. Lewis dots include nonbonding electron pairs. An equals sign in O=O is a bond representation, not an arithmetic equality.",
+          "independent_check": "Count electrons and confirm each H duet.",
+          "source_bindings": [
+            {
+              "ref": "AUTHORED-C07-07-REPRESENT-D3",
+              "role": "AUTHORED_PRACTICE",
+              "review_status": "CANDIDATE"
+            }
+          ],
+          "status": "CANDIDATE"
+        },
+        {
+          "instance_id": "C07-08-EXPLAIN-D3",
+          "template_ref": "QRT-EXPLAIN-D3",
+          "primary_operation": "EXPLAIN",
+          "band": "D3",
+          "canonical_concept_refs": [
+            "CHEM-C07.03-CORE1A"
+          ],
+          "slots": {
+            "X": "Explain why water can evaporate without producing hydrogen and oxygen gases.",
+            "Y": "Chemistry warrant: Breaking a covalent O–H bond is a different process from separating whole water molecules. Boiling is controlled substantially by forces between molecules. Prior basis: Count valence electrons before guessing the shape of a bond drawing. For oxygen gas, two atoms contribute twelve electrons in the simplest Lewis bookkeeping model.",
+            "Z": "When water boils, the molecules enter the vapour phase while each still contains the same O–H bonds. Chemical decomposition would require changing molecular connectivity.",
+            "W": "Without being given the answer or decisive strategy, derive the causal explanation for this new task: \"Explain why water can evaporate without producing hydrogen and oxygen gases.\" A valid independent result must satisfy: Water's chemical formula and bonds must remain unchanged."
+          },
+          "student_task": "Explain why water can evaporate without producing hydrogen and oxygen gases.",
+          "wrong_idea": "All covalent substances consist of low-boiling individual molecules.",
+          "replacement_rule": "Distinguish covalent bonds within a molecule from the arrangement and interactions between molecules or throughout a network.",
+          "visual_job": "Use H—H for one shared pair, O=O for two and N≡N for three. Lewis dots include nonbonding electron pairs. An equals sign in O=O is a bond representation, not an arithmetic equality.",
+          "independent_check": "Water's chemical formula and bonds must remain unchanged.",
+          "source_bindings": [
+            {
+              "ref": "AUTHORED-C07-08-EXPLAIN-D3",
+              "role": "AUTHORED_PRACTICE",
+              "review_status": "CANDIDATE"
+            }
+          ],
+          "status": "CANDIDATE"
+        },
+        {
+          "instance_id": "C07-09-SYNTHESIZE-D4",
+          "template_ref": "QRT-SYNTHESIZE-D4",
+          "primary_operation": "SYNTHESIZE",
+          "band": "D4",
+          "canonical_concept_refs": [
+            "CHEM-C07.03-CORE1A"
+          ],
+          "slots": {
+            "X": "A student claims that 'covalent' always means 'low melting'. Contrast diamond and a simple molecular substance to evaluate this rule.",
+            "Y": "Chemistry warrant: We can predict phase change only after deciding whether there are discrete molecules or a covalent network. This is an architecture problem, not a memorised bond-strength statement. Prior basis: Count valence electrons before guessing the shape of a bond drawing. For oxygen gas, two atoms contribute twelve electrons in the simplest Lewis bookkeeping model.",
+            "Z": "Molecular iodine has covalent I–I bonds but discrete molecules; diamond has an extended carbon network. Their thermal behaviours differ because the structures that must be disrupted differ.",
+            "W": "Without being given the answer or decisive strategy, combine independent chemical constraints in a justified order for this new task: \"A student claims that 'covalent' always means 'low melting'. Contrast diamond and a simple molecular substance to evaluate this rule.\" A valid independent result must satisfy: A valid counterexample specifies structural reason, not just a name."
+          },
+          "student_task": "A student claims that 'covalent' always means 'low melting'. Contrast diamond and a simple molecular substance to evaluate this rule.",
+          "wrong_idea": "All covalent substances consist of low-boiling individual molecules.",
+          "replacement_rule": "Distinguish covalent bonds within a molecule from the arrangement and interactions between molecules or throughout a network.",
+          "visual_job": "Use H—H for one shared pair, O=O for two and N≡N for three. Lewis dots include nonbonding electron pairs. An equals sign in O=O is a bond representation, not an arithmetic equality.",
+          "independent_check": "A valid counterexample specifies structural reason, not just a name.",
+          "source_bindings": [
+            {
+              "ref": "AUTHORED-C07-09-SYNTHESIZE-D4",
+              "role": "AUTHORED_PRACTICE",
+              "review_status": "CANDIDATE"
+            }
+          ],
+          "status": "CANDIDATE"
+        }
+      ],
+      "academic_notes": [
+        "Core1A/B passage and tasks are Grade9-authored candidate content; no original NSEJS question identity is asserted.",
+        "Band values D3/D4 are unqualified author proposals pending five-factor QRT adjudication and independent chemistry review."
+      ],
+      "status": "ACADEMIC_HOLD"
+    },
+    {
+      "subtopic_id": "CHEM-C07.04",
+      "title": "Lewis and electron-dot structures",
+      "scope": "CORE_CANDIDATE",
+      "canonical_truth_status": "DRAFT",
+      "canonical_concept_refs": [
+        "CHEM-C07.04-CORE1A"
+      ],
+      "qrt_instances": [
+        {
+          "instance_id": "C07-10-REPRESENT-D3",
+          "template_ref": "QRT-REPRESENT-D3",
+          "primary_operation": "REPRESENT",
+          "band": "D3",
+          "canonical_concept_refs": [
+            "CHEM-C07.04-CORE1A"
+          ],
+          "slots": {
+            "X": "Draw or describe the Lewis structure for CH₄, including electron count and bond count.",
+            "Y": "Chemistry warrant: To translate formula into electron sharing, the total electron inventory and permissible atomic connections must both be preserved. Prior basis: Determine the total valence-electron budget for the complete neutral molecule or ion, adjusting for total charge where necessary.",
+            "Z": "For NH₃, 5 + 3 = 8 valence electrons; three bonds use six, one lone pair uses two. The sketch satisfies N octet and H duets.",
+            "W": "Without being given the answer or decisive strategy, construct and validate the requested chemical representation for this new task: \"Draw or describe the Lewis structure for CH₄, including electron count and bond count.\" A valid independent result must satisfy: Recount all valence electrons, not just central atom."
+          },
+          "student_task": "Draw or describe the Lewis structure for CH₄, including electron count and bond count.",
+          "wrong_idea": "A correct molecular formula fixes a unique Lewis structure in all cases.",
+          "replacement_rule": "Treat formula as composition data and check bonding constraints, experimental properties and the selected electron model.",
+          "visual_job": "Use figures/c07-lewis.svg only as prerequisite explanatory evidence, not as an answer annotation. H₂O: O connects by single bonds to two H and retains two nonbonding pairs. NH₃: N connects to three H and retains one lone pair. CO₂: O=C=O with two lone pairs on each oxygen. Every diagram must be checked against the molecular valence-electron total.",
+          "independent_check": "Recount all valence electrons, not just central atom.",
+          "source_bindings": [
+            {
+              "ref": "AUTHORED-C07-10-REPRESENT-D3",
+              "role": "AUTHORED_PRACTICE",
+              "review_status": "CANDIDATE"
+            }
+          ],
+          "status": "CANDIDATE"
+        },
+        {
+          "instance_id": "C07-11-MODEL-D3",
+          "template_ref": "QRT-MODEL-D3",
+          "primary_operation": "MODEL",
+          "band": "D3",
+          "canonical_concept_refs": [
+            "CHEM-C07.04-CORE1A"
+          ],
+          "slots": {
+            "X": "Someone draws water as H=O=H. Evaluate this model using the simple hydrogen duet and electron-accounting rules.",
+            "Y": "Chemistry warrant: The model should be checked against both formula and electron rules; a pleasingly symmetrical diagram is not enough. Prior basis: Determine the total valence-electron budget for the complete neutral molecule or ion, adjusting for total charge where necessary.",
+            "Z": "The proposed sketch H–O–H with no lone pairs has only four depicted electrons, but water has eight valence electrons. Add two lone pairs on O.",
+            "W": "Without being given the answer or decisive strategy, choose and test a scientific model for this new task: \"Someone draws water as H=O=H. Evaluate this model using the simple hydrogen duet and electron-accounting rules.\" A valid independent result must satisfy: Both local hydrogen duet and global count must pass."
+          },
+          "student_task": "Someone draws water as H=O=H. Evaluate this model using the simple hydrogen duet and electron-accounting rules.",
+          "wrong_idea": "A correct molecular formula fixes a unique Lewis structure in all cases.",
+          "replacement_rule": "Treat formula as composition data and check bonding constraints, experimental properties and the selected electron model.",
+          "visual_job": "Use figures/c07-lewis.svg only as prerequisite explanatory evidence, not as an answer annotation. H₂O: O connects by single bonds to two H and retains two nonbonding pairs. NH₃: N connects to three H and retains one lone pair. CO₂: O=C=O with two lone pairs on each oxygen. Every diagram must be checked against the molecular valence-electron total.",
+          "independent_check": "Both local hydrogen duet and global count must pass.",
+          "source_bindings": [
+            {
+              "ref": "AUTHORED-C07-11-MODEL-D3",
+              "role": "AUTHORED_PRACTICE",
+              "review_status": "CANDIDATE"
+            }
+          ],
+          "status": "CANDIDATE"
+        },
+        {
+          "instance_id": "C07-12-JUSTIFY-D4",
+          "template_ref": "QRT-JUSTIFY-D4",
+          "primary_operation": "JUSTIFY",
+          "band": "D4",
+          "canonical_concept_refs": [
+            "CHEM-C07.04-CORE1A"
+          ],
+          "slots": {
+            "X": "Evaluate the statement: 'Two substances with the same molecular formula must have the same chemical properties because the Lewis electron count is identical.'",
+            "Y": "Chemistry warrant: A Lewis diagram is a candidate model of electron sharing. A scientific argument also needs to state which molecular properties the representation cannot uniquely determine. Prior basis: Determine the total valence-electron budget for the complete neutral molecule or ion, adjusting for total charge where necessary.",
+            "Z": "The same formula C₂H₆O supports ethanol (CH₃CH₂OH) and dimethyl ether (CH₃OCH₃); a molecular formula alone cannot choose the connectivity.",
+            "W": "Without being given the answer or decisive strategy, select decisive evidence/counterexamples and delimit the claim for this new task: \"Evaluate the statement: 'Two substances with the same molecular formula must have the same chemical properties because the Lewis electron count is identical.'\" A valid independent result must satisfy: A valid rebuttal explicitly contrasts connectivity."
+          },
+          "student_task": "Evaluate the statement: 'Two substances with the same molecular formula must have the same chemical properties because the Lewis electron count is identical.'",
+          "wrong_idea": "A correct molecular formula fixes a unique Lewis structure in all cases.",
+          "replacement_rule": "Treat formula as composition data and check bonding constraints, experimental properties and the selected electron model.",
+          "visual_job": "Use figures/c07-lewis.svg only as prerequisite explanatory evidence, not as an answer annotation. H₂O: O connects by single bonds to two H and retains two nonbonding pairs. NH₃: N connects to three H and retains one lone pair. CO₂: O=C=O with two lone pairs on each oxygen. Every diagram must be checked against the molecular valence-electron total.",
+          "independent_check": "A valid rebuttal explicitly contrasts connectivity.",
+          "source_bindings": [
+            {
+              "ref": "AUTHORED-C07-12-JUSTIFY-D4",
+              "role": "AUTHORED_PRACTICE",
+              "review_status": "CANDIDATE"
+            }
+          ],
+          "status": "CANDIDATE"
+        }
+      ],
+      "academic_notes": [
+        "Core1A/B passage and tasks are Grade9-authored candidate content; no original NSEJS question identity is asserted.",
+        "Band values D3/D4 are unqualified author proposals pending five-factor QRT adjudication and independent chemistry review."
+      ],
+      "status": "ACADEMIC_HOLD"
+    },
+    {
+      "subtopic_id": "CHEM-C07.05",
+      "title": "Molecular connectivity and structure–property relations",
+      "scope": "CORE_CANDIDATE",
+      "canonical_truth_status": "DRAFT",
+      "canonical_concept_refs": [
+        "CHEM-C07.05-CORE1A"
+      ],
+      "qrt_instances": [
+        {
+          "instance_id": "C07-13-REPRESENT-D3",
+          "template_ref": "QRT-REPRESENT-D3",
+          "primary_operation": "REPRESENT",
+          "band": "D3",
+          "canonical_concept_refs": [
+            "CHEM-C07.05-CORE1A"
+          ],
+          "slots": {
+            "X": "Give two distinct valid simple structural formulas for C₂H₆O and name their different functional arrangements.",
+            "Y": "Chemistry warrant: A composition count can correspond to more than one connectivity. The translation must preserve each atom count while changing bond edges legitimately. Prior basis: Make an element-by-element inventory of a molecular formula. For C₂H₆O, the count is two carbon atoms, six hydrogen atoms and one oxygen atom.",
+            "Z": "C₂H₆O can be represented as two isomers; the graph distinguishes C–C–O–H from C–O–C.",
+            "W": "Without being given the answer or decisive strategy, construct and validate the requested chemical representation for this new task: \"Give two distinct valid simple structural formulas for C₂H₆O and name their different functional arrangements.\" A valid independent result must satisfy: Confirm identical total formulas and different adjacency."
+          },
+          "student_task": "Give two distinct valid simple structural formulas for C₂H₆O and name their different functional arrangements.",
+          "wrong_idea": "Molecular formula determines every chemical property.",
+          "replacement_rule": "Before predicting properties, reconstruct the bond graph and identify the functional groups actually present.",
+          "visual_job": "Use figures/c07-isomers.svg only as prerequisite explanatory evidence, not as an answer annotation. Compare the two connectivities side by side: ethanol H₃C–CH₂–O–H and dimethyl ether H₃C–O–CH₃. Circle the O–H bond in only the first. Both contain two C, six H and one O; the atom count is invariant, the connection graph differs.",
+          "independent_check": "Confirm identical total formulas and different adjacency.",
+          "source_bindings": [
+            {
+              "ref": "AUTHORED-C07-13-REPRESENT-D3",
+              "role": "AUTHORED_PRACTICE",
+              "review_status": "CANDIDATE"
+            }
+          ],
+          "status": "CANDIDATE"
+        },
+        {
+          "instance_id": "C07-14-EXPLAIN-D3",
+          "template_ref": "QRT-EXPLAIN-D3",
+          "primary_operation": "EXPLAIN",
+          "band": "D3",
+          "canonical_concept_refs": [
+            "CHEM-C07.05-CORE1A"
+          ],
+          "slots": {
+            "X": "Why is the presence of an O–H group relevant to comparing ethanol and dimethyl ether in a reaction with sodium?",
+            "Y": "Chemistry warrant: A functional group's identity is chemical information not recoverable from the molecular formula alone. Prior basis: Make an element-by-element inventory of a molecular formula. For C₂H₆O, the count is two carbon atoms, six hydrogen atoms and one oxygen atom.",
+            "Z": "Ethanol has an O–H group that can react with sufficiently reactive metals; an ether lacks the same O–H hydrogen. This provides a structural basis for differing behaviour under appropriate conditions.",
+            "W": "Without being given the answer or decisive strategy, derive the causal explanation for this new task: \"Why is the presence of an O–H group relevant to comparing ethanol and dimethyl ether in a reaction with sodium?\" A valid independent result must satisfy: Link explanation to the actual functional group and conditions."
+          },
+          "student_task": "Why is the presence of an O–H group relevant to comparing ethanol and dimethyl ether in a reaction with sodium?",
+          "wrong_idea": "Molecular formula determines every chemical property.",
+          "replacement_rule": "Before predicting properties, reconstruct the bond graph and identify the functional groups actually present.",
+          "visual_job": "Use figures/c07-isomers.svg only as prerequisite explanatory evidence, not as an answer annotation. Compare the two connectivities side by side: ethanol H₃C–CH₂–O–H and dimethyl ether H₃C–O–CH₃. Circle the O–H bond in only the first. Both contain two C, six H and one O; the atom count is invariant, the connection graph differs.",
+          "independent_check": "Link explanation to the actual functional group and conditions.",
+          "source_bindings": [
+            {
+              "ref": "AUTHORED-C07-14-EXPLAIN-D3",
+              "role": "AUTHORED_PRACTICE",
+              "review_status": "CANDIDATE"
+            }
+          ],
+          "status": "CANDIDATE"
+        },
+        {
+          "instance_id": "C07-15-SYNTHESIZE-D4",
+          "template_ref": "QRT-SYNTHESIZE-D4",
+          "primary_operation": "SYNTHESIZE",
+          "band": "D4",
+          "canonical_concept_refs": [
+            "CHEM-C07.05-CORE1A"
+          ],
+          "slots": {
+            "X": "An unknown pure C₂H₆O liquid evolves H₂ on treatment with clean Na under controlled conditions. Choose a plausible structure and state why you should still check purity and confirmatory evidence.",
+            "Y": "Chemistry warrant: Evidence from composition and targeted reactions can constrain the bond graph. We must avoid claiming that one observation uniquely fixes an entire structure. Prior basis: Make an element-by-element inventory of a molecular formula. For C₂H₆O, the count is two carbon atoms, six hydrogen atoms and one oxygen atom.",
+            "Z": "An unknown C₂H₆O sample shows behaviour consistent with an O–H group; combining formula with a reliable functional-group test supports ethanol over dimethyl ether, subject to possible impurities.",
+            "W": "Without being given the answer or decisive strategy, combine independent chemical constraints in a justified order for this new task: \"An unknown pure C₂H₆O liquid evolves H₂ on treatment with clean Na under controlled conditions. Choose a plausible structure and state why you should still check purity and confirmatory evidence.\" A valid independent result must satisfy: Acknowledge a plausible confounder and propose a confirmatory method."
+          },
+          "student_task": "An unknown pure C₂H₆O liquid evolves H₂ on treatment with clean Na under controlled conditions. Choose a plausible structure and state why you should still check purity and confirmatory evidence.",
+          "wrong_idea": "Molecular formula determines every chemical property.",
+          "replacement_rule": "Before predicting properties, reconstruct the bond graph and identify the functional groups actually present.",
+          "visual_job": "Use figures/c07-isomers.svg only as prerequisite explanatory evidence, not as an answer annotation. Compare the two connectivities side by side: ethanol H₃C–CH₂–O–H and dimethyl ether H₃C–O–CH₃. Circle the O–H bond in only the first. Both contain two C, six H and one O; the atom count is invariant, the connection graph differs.",
+          "independent_check": "Acknowledge a plausible confounder and propose a confirmatory method.",
+          "source_bindings": [
+            {
+              "ref": "AUTHORED-C07-15-SYNTHESIZE-D4",
+              "role": "AUTHORED_PRACTICE",
+              "review_status": "CANDIDATE"
+            }
+          ],
+          "status": "CANDIDATE"
+        }
+      ],
+      "academic_notes": [
+        "Core1A/B passage and tasks are Grade9-authored candidate content; no original NSEJS question identity is asserted.",
+        "Band values D3/D4 are unqualified author proposals pending five-factor QRT adjudication and independent chemistry review."
+      ],
+      "status": "ACADEMIC_HOLD"
+    },
+    {
+      "subtopic_id": "CHEM-C07.06",
+      "title": "Conductivity, melting and solubility as structure evidence",
+      "scope": "CORE_CANDIDATE",
+      "canonical_truth_status": "DRAFT",
+      "canonical_concept_refs": [
+        "CHEM-C07.06-CORE1A"
+      ],
+      "qrt_instances": [
+        {
+          "instance_id": "C07-16-EXPLAIN-D3",
+          "template_ref": "QRT-EXPLAIN-D3",
+          "primary_operation": "EXPLAIN",
+          "band": "D3",
+          "canonical_concept_refs": [
+            "CHEM-C07.06-CORE1A"
+          ],
+          "slots": {
+            "X": "A metal wire conducts as a solid while dry NaCl does not. Compare plausible charge carriers.",
+            "Y": "Chemistry warrant: Solid, melt and solution contain potentially different moving species. An explanation tracks carriers under the measured condition. Prior basis: Write the observation with its conditions: for example 'dry solid at 25°C showed no detectable current under this apparatus' rather than simply 'insulator'.",
+            "Z": "Sodium chloride: ions fixed in solid, mobile when molten, hydrated and mobile in solution. Metallic copper: electron conduction in solid.",
+            "W": "Without being given the answer or decisive strategy, derive the causal explanation for this new task: \"A metal wire conducts as a solid while dry NaCl does not. Compare plausible charge carriers.\" A valid independent result must satisfy: Carrier explanation must match the physical state."
+          },
+          "student_task": "A metal wire conducts as a solid while dry NaCl does not. Compare plausible charge carriers.",
+          "wrong_idea": "One characteristic property uniquely reveals the bond type.",
+          "replacement_rule": "Use condition-controlled evidence tables, countermodels and independent measurements.",
+          "visual_job": "A useful experimental table has columns: sample state, conductivity, solubility, melting range, candidate model, and alternate explanation. An observation has a measured unit and condition; a model is an interpretation in a different column.",
+          "independent_check": "Carrier explanation must match the physical state.",
+          "source_bindings": [
+            {
+              "ref": "AUTHORED-C07-16-EXPLAIN-D3",
+              "role": "AUTHORED_PRACTICE",
+              "review_status": "CANDIDATE"
+            }
+          ],
+          "status": "CANDIDATE"
+        },
+        {
+          "instance_id": "C07-17-MODEL-D3",
+          "template_ref": "QRT-MODEL-D3",
+          "primary_operation": "MODEL",
+          "band": "D3",
+          "canonical_concept_refs": [
+            "CHEM-C07.06-CORE1A"
+          ],
+          "slots": {
+            "X": "Solid X is nonconducting, has a very high melting point and dissolves poorly in water. Can this uniquely establish an ionic solid?",
+            "Y": "Chemistry warrant: Chemical identification begins by writing predictions for more than one structure model. Prior basis: Write the observation with its conditions: for example 'dry solid at 25°C showed no detectable current under this apparatus' rather than simply 'insulator'.",
+            "Z": "Model A ionic lattice predicts nonconducting solid and often conducting melt; model B metal predicts conducting solid. Compare both before choosing.",
+            "W": "Without being given the answer or decisive strategy, choose and test a scientific model for this new task: \"Solid X is nonconducting, has a very high melting point and dissolves poorly in water. Can this uniquely establish an ionic solid?\" A valid independent result must satisfy: Evaluate at least two plausible models."
+          },
+          "student_task": "Solid X is nonconducting, has a very high melting point and dissolves poorly in water. Can this uniquely establish an ionic solid?",
+          "wrong_idea": "One characteristic property uniquely reveals the bond type.",
+          "replacement_rule": "Use condition-controlled evidence tables, countermodels and independent measurements.",
+          "visual_job": "A useful experimental table has columns: sample state, conductivity, solubility, melting range, candidate model, and alternate explanation. An observation has a measured unit and condition; a model is an interpretation in a different column.",
+          "independent_check": "Evaluate at least two plausible models.",
+          "source_bindings": [
+            {
+              "ref": "AUTHORED-C07-17-MODEL-D3",
+              "role": "AUTHORED_PRACTICE",
+              "review_status": "CANDIDATE"
+            }
+          ],
+          "status": "CANDIDATE"
+        },
+        {
+          "instance_id": "C07-18-JUSTIFY-D4",
+          "template_ref": "QRT-JUSTIFY-D4",
+          "primary_operation": "JUSTIFY",
+          "band": "D4",
+          "canonical_concept_refs": [
+            "CHEM-C07.06-CORE1A"
+          ],
+          "slots": {
+            "X": "A classmate says: 'Unknown solid Y dissolves in water and the solution conducts, so Y must have been an ionic crystal.' Refute the inference with one chemical alternative and a better testing strategy.",
+            "Y": "Chemistry warrant: An argument from data needs a valid warrant and must survive plausible counterexamples. Prior basis: Write the observation with its conditions: for example 'dry solid at 25°C showed no detectable current under this apparatus' rather than simply 'insulator'.",
+            "Z": "An aqueous conducting solution can arise from an ionic salt or a covalent acid that ionises in water; structure of the undissolved solute remains a separate question.",
+            "W": "Without being given the answer or decisive strategy, select decisive evidence/counterexamples and delimit the claim for this new task: \"A classmate says: 'Unknown solid Y dissolves in water and the solution conducts, so Y must have been an ionic crystal.' Refute the inference with one chemical alternative and a better testing strategy.\" A valid independent result must satisfy: Offer a chemically valid alternative and independent evidence."
+          },
+          "student_task": "A classmate says: 'Unknown solid Y dissolves in water and the solution conducts, so Y must have been an ionic crystal.' Refute the inference with one chemical alternative and a better testing strategy.",
+          "wrong_idea": "One characteristic property uniquely reveals the bond type.",
+          "replacement_rule": "Use condition-controlled evidence tables, countermodels and independent measurements.",
+          "visual_job": "A useful experimental table has columns: sample state, conductivity, solubility, melting range, candidate model, and alternate explanation. An observation has a measured unit and condition; a model is an interpretation in a different column.",
+          "independent_check": "Offer a chemically valid alternative and independent evidence.",
+          "source_bindings": [
+            {
+              "ref": "AUTHORED-C07-18-JUSTIFY-D4",
+              "role": "AUTHORED_PRACTICE",
+              "review_status": "CANDIDATE"
+            }
+          ],
+          "status": "CANDIDATE"
+        }
+      ],
+      "academic_notes": [
+        "Core1A/B passage and tasks are Grade9-authored candidate content; no original NSEJS question identity is asserted.",
+        "Band values D3/D4 are unqualified author proposals pending five-factor QRT adjudication and independent chemistry review."
+      ],
+      "status": "ACADEMIC_HOLD"
+    },
+    {
+      "subtopic_id": "CHEM-C07.07",
+      "title": "Molecular geometry and polarity models",
+      "scope": "ENRICHMENT",
+      "canonical_truth_status": "DRAFT",
+      "canonical_concept_refs": [
+        "CHEM-C07.07-CORE1A"
+      ],
+      "qrt_instances": [
+        {
+          "instance_id": "C07-19-REPRESENT-D3",
+          "template_ref": "QRT-REPRESENT-D3",
+          "primary_operation": "REPRESENT",
+          "band": "D3",
+          "canonical_concept_refs": [
+            "CHEM-C07.07-CORE1A"
+          ],
+          "slots": {
+            "X": "Compare the electron-region count and molecular geometry of NH₃ and CH₄.",
+            "Y": "Chemistry warrant: Two dimensional electron-pair diagrams must be translated into spatial regions, then atom-only geometry. Prior basis: Construct the Lewis electron-pair diagram; count bonding and lone-pair regions about the central atom using the stated simple geometry model.",
+            "Z": "CO₂ has two electron regions about C and is linear. H₂O has four regions about O (two lone pairs, two bonding) but a bent arrangement of atom positions.",
+            "W": "Without being given the answer or decisive strategy, construct and validate the requested chemical representation for this new task: \"Compare the electron-region count and molecular geometry of NH₃ and CH₄.\" A valid independent result must satisfy: Distinguish electron geometry and molecular geometry."
+          },
+          "student_task": "Compare the electron-region count and molecular geometry of NH₃ and CH₄.",
+          "wrong_idea": "Any molecule containing polar bonds must be polar.",
+          "replacement_rule": "Determine the three-dimensional shape first, then combine bond-polarity directions.",
+          "visual_job": "Use figures/c07-polarity.svg only as prerequisite explanatory evidence, not as an answer annotation. Build two models: CO₂ as a straight line with two equal opposite C=O dipole arrows; H₂O as a V-shaped molecule with two O–H dipole arrows that have a nonzero resultant. Label the geometry model as a prediction and the ∼104.5° angle as an empirical fact.",
+          "independent_check": "Distinguish electron geometry and molecular geometry.",
+          "source_bindings": [
+            {
+              "ref": "AUTHORED-C07-19-REPRESENT-D3",
+              "role": "AUTHORED_PRACTICE",
+              "review_status": "CANDIDATE"
+            }
+          ],
+          "status": "CANDIDATE"
+        },
+        {
+          "instance_id": "C07-20-MODEL-D3",
+          "template_ref": "QRT-MODEL-D3",
+          "primary_operation": "MODEL",
+          "band": "D3",
+          "canonical_concept_refs": [
+            "CHEM-C07.07-CORE1A"
+          ],
+          "slots": {
+            "X": "Explain why BF₃ (trigonal planar, three equivalent B–F bonds) can have polar bonds but no overall net molecular dipole in its ideal geometry.",
+            "Y": "Chemistry warrant: Molecular polarity is a vector-sum property, not the existence of polar bonds. Geometry can produce cancellation. Prior basis: Construct the Lewis electron-pair diagram; count bonding and lone-pair regions about the central atom using the stated simple geometry model.",
+            "Z": "Two equal opposite C=O dipole vectors in linear CO₂ cancel; two non-collinear O–H dipoles in H₂O cannot.",
+            "W": "Without being given the answer or decisive strategy, choose and test a scientific model for this new task: \"Explain why BF₃ (trigonal planar, three equivalent B–F bonds) can have polar bonds but no overall net molecular dipole in its ideal geometry.\" A valid independent result must satisfy: Verify cancellation using symmetry and equal-bond assumption."
+          },
+          "student_task": "Explain why BF₃ (trigonal planar, three equivalent B–F bonds) can have polar bonds but no overall net molecular dipole in its ideal geometry.",
+          "wrong_idea": "Any molecule containing polar bonds must be polar.",
+          "replacement_rule": "Determine the three-dimensional shape first, then combine bond-polarity directions.",
+          "visual_job": "Use figures/c07-polarity.svg only as prerequisite explanatory evidence, not as an answer annotation. Build two models: CO₂ as a straight line with two equal opposite C=O dipole arrows; H₂O as a V-shaped molecule with two O–H dipole arrows that have a nonzero resultant. Label the geometry model as a prediction and the ∼104.5° angle as an empirical fact.",
+          "independent_check": "Verify cancellation using symmetry and equal-bond assumption.",
+          "source_bindings": [
+            {
+              "ref": "AUTHORED-C07-20-MODEL-D3",
+              "role": "AUTHORED_PRACTICE",
+              "review_status": "CANDIDATE"
+            }
+          ],
+          "status": "CANDIDATE"
+        },
+        {
+          "instance_id": "C07-21-JUSTIFY-D4",
+          "template_ref": "QRT-JUSTIFY-D4",
+          "primary_operation": "JUSTIFY",
+          "band": "D4",
+          "canonical_concept_refs": [
+            "CHEM-C07.07-CORE1A"
+          ],
+          "slots": {
+            "X": "A peer argues: 'A compound with two identical polar bonds must be nonpolar because the two contributions cancel.' Evaluate using CO₂ and H₂O.",
+            "Y": "Chemistry warrant: An advanced argument must compare molecular shape, charge distribution and when vector cancellation does not occur. Prior basis: Construct the Lewis electron-pair diagram; count bonding and lone-pair regions about the central atom using the stated simple geometry model.",
+            "Z": "CO₂ and H₂O both contain polar bonds, but geometry produces opposite net-polarity outcomes. This is a counterexample to a one-feature rule.",
+            "W": "Without being given the answer or decisive strategy, select decisive evidence/counterexamples and delimit the claim for this new task: \"A peer argues: 'A compound with two identical polar bonds must be nonpolar because the two contributions cancel.' Evaluate using CO₂ and H₂O.\" A valid independent result must satisfy: A valid rebuttal states the necessary directional condition."
+          },
+          "student_task": "A peer argues: 'A compound with two identical polar bonds must be nonpolar because the two contributions cancel.' Evaluate using CO₂ and H₂O.",
+          "wrong_idea": "Any molecule containing polar bonds must be polar.",
+          "replacement_rule": "Determine the three-dimensional shape first, then combine bond-polarity directions.",
+          "visual_job": "Use figures/c07-polarity.svg only as prerequisite explanatory evidence, not as an answer annotation. Build two models: CO₂ as a straight line with two equal opposite C=O dipole arrows; H₂O as a V-shaped molecule with two O–H dipole arrows that have a nonzero resultant. Label the geometry model as a prediction and the ∼104.5° angle as an empirical fact.",
+          "independent_check": "A valid rebuttal states the necessary directional condition.",
+          "source_bindings": [
+            {
+              "ref": "AUTHORED-C07-21-JUSTIFY-D4",
+              "role": "AUTHORED_PRACTICE",
+              "review_status": "CANDIDATE"
+            }
+          ],
+          "status": "CANDIDATE"
+        }
+      ],
+      "academic_notes": [
+        "Core1A/B passage and tasks are Grade9-authored candidate content; no original NSEJS question identity is asserted.",
+        "Band values D3/D4 are unqualified author proposals pending five-factor QRT adjudication and independent chemistry review."
+      ],
+      "status": "ACADEMIC_HOLD"
+    }
+  ],
+  "change_log": [
+    {
+      "version": "0.1.0",
+      "kind": "INITIAL",
+      "reason": "Full Stage2 draft topic-adapter bindings to authored C01–C07 Core1A/B content; unchanged shared 28 QRT authority",
+      "affected_subtopic_ids": [
+        "CHEM-C07.01",
+        "CHEM-C07.02",
+        "CHEM-C07.03",
+        "CHEM-C07.04",
+        "CHEM-C07.05",
+        "CHEM-C07.06",
+        "CHEM-C07.07"
+      ]
+    },
+    {
+      "version": "0.2.0",
+      "kind": "AMEND",
+      "reason": "Task-specific X/Y/Z/W and full draft scientific rationale; existing QRT IDs and academic HOLD preserved",
+      "affected_subtopic_ids": [
+        "CHEM-C07.01",
+        "CHEM-C07.02",
+        "CHEM-C07.03",
+        "CHEM-C07.04",
+        "CHEM-C07.05",
+        "CHEM-C07.06",
+        "CHEM-C07.07"
+      ]
+    }
+  ]
+}
