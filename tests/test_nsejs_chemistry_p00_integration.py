@@ -138,7 +138,7 @@ def test_browser_qa_exercises_reviewed_failure_paths():
                        "check_keyboard_only_read_attempt_and_stages",
                        "check_visual_blob_tampering_fail_closed"):
         assert f"def {check_name}(" in script
-        assert script.count(check_name+"(browser,ids)") == 1
+        assert script.count("\n                "+check_name+"(browser,ids)") == 1
     assert 'page.keyboard.press("Tab")' in script
     assert 'page.keyboard.press("Enter")' in script
     assert 'page.keyboard.press("Space")' in script
