@@ -43,7 +43,7 @@ def state(page, uid):
 
 def test_one(page, uid):
     url = f"/nsejs/physics/core1/PH02/{uid}/index.html"
-    page.goto(url, wait_until="load")
+    page.goto(page.url.split("/nsejs/")[0] + url, wait_until="load")
     loaded(page)
     assert page.locator("#postAttempt").is_hidden()
     assert page.locator("#hintBtn").is_hidden()
