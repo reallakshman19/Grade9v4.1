@@ -99,9 +99,12 @@
     $('h1').disabled=kinds.indexOf('H1')!==-1;
     $('h2').disabled=kinds.indexOf('H1')===-1 || kinds.indexOf('H2')!==-1;
     $('h3').disabled=kinds.indexOf('H2')===-1 || kinds.indexOf('H3')!==-1;
-    if(kinds.includes('H3')) $('help-text').textContent='H1–H3 were opened and recorded.';
-    else if(kinds.includes('H2')) $('help-text').textContent='H1 and H2 were opened and recorded.';
-    else if(kinds.includes('H1')) $('help-text').textContent='H1 was opened and recorded.';
+    const hintTexts = [
+      ['H1','H1: List the measured quantities, units and unstated assumptions.'],
+      ['H2','H2: Check conservation, symmetry, direction or a comparison control before selecting equations.'],
+      ['H3','H3: Test the proposed model against a limiting or changed-condition case.']
+    ];
+    $('help-text').textContent=hintTexts.filter(x=>kinds.includes(x[0])).map(x=>x[1]).join('  ');
     const reconstruct=kinds.includes('RECONSTRUCT');
     bool('reconstruct-model',reconstruct);
     if(reconstruct)$('reconstruct-model').textContent=state.current.stages.reconstruct;
