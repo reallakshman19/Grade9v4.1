@@ -1,0 +1,290 @@
+[
+  {
+    "source": "PH01-LINK-2022-51-Q35",
+    "n": 35,
+    "year": 2022,
+    "m": "M05",
+    "cell": "D3.5",
+    "op": "REPRESENT",
+    "science": "PH01-SCI-FORWARD-GRAPH-R47",
+    "w": "Translate a given signed acceleration graph and nonzero initial state into velocity, position and accumulated path representations, carrying interval endpoints and splitting at velocity zeros.",
+    "task": "A trolley is initially at x=+5 m with v=−4 m/s. Its measured acceleration–time graph has horizontal segments: +3 m/s² for 0≤t<2 s, 0 for 2≤t<5 s, −2 m/s² for 5≤t≤8 s. Use the given a–t graph to construct the aligned v–t graph and x–t sketch, with coordinates at t=0,2,5,8 s and all turning points. Give signed displacement, total distance and the intervals of increasing/decreasing speed. A display claims the zero-acceleration segment means the trolley is stopped. Explain the error and check the final position by signed areas.",
+    "ans": "Acceleration areas give Δv=+6,0,−6; velocity vertices (0,−4),(2,+2),(5,+2),(8,−4). v=−4+3t on [0,2], 2 on [2,5], 2−2(t−5) on [5,8]. Zeros t=4/3,6 s. x=5−4t+1.5t², then x=3+2(t−2), then x=9+2(t−5)−(t−5)². Position vertices (0,5),(2,3),(5,9),(8,6); turning points (4/3,7/3) minimum and (6,10) maximum. Signed areas −2,+6,−3 = +1 m; x_final=6. First absolute area (16+4)/6=10/3 m; coast 6 m; final absolute area (4+16)/4=5 m; total43/3 m. Speed decreases 0–4/3 and 5–6, increases 4/3–2 and 6–8, constant 2–5. Zero acceleration preserves v=+2, not zero motion. x–t concavity up, straight, down on the three stages, with slope v; check x_final−x_initial=1.",
+    "bound": "Retain the same acceleration graph and x(0)=5 m, but set v(0)=+4 m/s. Reconstruct the velocity vertices and determine the new path and displacement. Does any reversal occur?",
+    "sol": "Vertices +4,+10,+10,+4 m/s. All positive, so no reversal. Signed areas 14,30,21 m total65 m, path also65 m, x_final=70 m. The acceleration graph alone fixes velocity changes, not absolute velocity or reversal.",
+    "h": [
+      "Carry the initial signed velocity through each acceleration-area interval.",
+      "Locate both zero crossings on the reconstructed velocity graph and use its slope for the shape of x–t.",
+      "Use signed trapezoids for displacement and split at each velocity zero for total distance."
+    ],
+    "diag": "Wrong models: treating a–t area as displacement; resetting velocity at a=0; taking absolute value after summing signed areas; drawing x–t as a copy of v–t. Locate the earliest such error in your saved reasoning.",
+    "repair": "Make an interval ledger of a, Δv, start/end v and signed areas, then split at the two zero events for path. Reconstruct x–t with correct slope/curvature and check its final coordinate.",
+    "scores": [
+      1,
+      2,
+      2,
+      1,
+      1
+    ],
+    "ev": [
+      "Graph laws given; distinguish the required area operation.",
+      "Translate step a–t to linear v–t and curved/linear x–t including extrema.",
+      "Initial state → interval velocity → sign split → coordinate/path check.",
+      "Simple linear zero times and trapezoid/triangle areas.",
+      "Zero acceleration and signed/absolute area distinction."
+    ],
+    "teach": "An a–t plot fixes velocity changes, not absolute velocity. Starting from v₀, carry Δv across each stage; a=0 preserves the carried velocity. The v–t slope is a, its signed area is Δx, and the x–t slope is v. Distance requires separate absolute areas across each zero of v. Worked anchor: x₀=0, v₀=−2, a=+2 for 2 s, then 0 for 1 s, then −1 for 2 s. Velocity vertices −2,2,2,0; signed displacement 0+2+2=4 m; distance 2+2+2=6 m. The initial reversal is at t=1 s, x=−1 m. Verify x_final=4 and the coast is moving.",
+    "example": {
+      "problem": "Given v₀=−2 m/s, x₀=0; a=+2 for 2 s, then 0 for 1 s, then −1 for 2 s.",
+      "reasoning": "v vertices −2,2,2,0; first zero t=1, x=−1; signed areas 0,2,2; distance 2+2+2=6 m.",
+      "independent_check": "x_final=4 m from stage equations and signed areas; coast velocity remains +2."
+    },
+    "graphs": [
+      {
+        "title": "Measured acceleration",
+        "x_label": "time (s)",
+        "y_label": "a (m/s²)",
+        "x_max": 8,
+        "y_min": -3,
+        "y_max": 4,
+        "x_ticks": [
+          0,
+          2,
+          5,
+          8
+        ],
+        "y_ticks": [
+          -2,
+          0,
+          3
+        ],
+        "segments": [
+          [
+            [
+              0,
+              3
+            ],
+            [
+              2,
+              3
+            ]
+          ],
+          [
+            [
+              2,
+              0
+            ],
+            [
+              5,
+              0
+            ]
+          ],
+          [
+            [
+              5,
+              -2
+            ],
+            [
+              8,
+              -2
+            ]
+          ]
+        ]
+      }
+    ],
+    "gap": "Forward graph input rather than inverse endpoint recovery; two zero crossings and nonzero initial state.",
+    "sourceBand": "Source forward a–t conversion; REPRESENT/APPLY, band HOLD.",
+    "id": "PH01-M05-QRT-REPRESENT-D3-R47-Q35",
+    "cid": "PH01-M05-QRT-REPRESENT-D3-R47-Q35-INSTANCE",
+    "core1a": "nsejs/physics/textbook/PH01/M05/index.html",
+    "core1b": "nsejs/physics/core1/ph01-m05-r47/index.html"
+  },
+  {
+    "source": "PH01-LINK-2024-51-Q33",
+    "n": 33,
+    "year": 2024,
+    "m": "M04",
+    "cell": "D3.4",
+    "op": "MODEL",
+    "science": "PH01-SCI-MIXED-ACCEL-R47",
+    "w": "Choose distinct valid acceleration relations for heterogeneous observations, normalize units and separate constant acceleration magnitude from interval mean.",
+    "task": "Four independent straight-track logs use one east-positive axis. A is explicitly uniform acceleration: v changes from +36 km/h to −18 km/h in 3000 ms. B starts from rest and has constant acceleration, travelling 27 m east in 3 s. C has constant acceleration, velocity +2 m/s at x=0 and +8 m/s at x=15 m. D reports only v(0)=+3 m/s and v(2 s)=−11 m/s, with continuous but otherwise unknown velocity. Choose the appropriate physical relation for each, compute the signed accelerations that can be established, and rank their average magnitudes. Which has the greatest guaranteed constant-acceleration magnitude among A–C? Can D be ranked by peak instantaneous acceleration from its data alone? A supervisor applies Δv/Δt directly to all four without any further equations. Explain the missing information and why the chosen relations are valid.",
+    "ans": "A: +10 to −5 m/s in 3 s gives a=−5 m/s², constant by premise. B: x=ut+at²/2 with u=0, +27=4.5a gives +6 m/s². C: v²−u²=2aΔx gives (64−4)/30=+2 m/s²; x and velocities are signed, constant a licenses relation. D: average a=(−11−3)/2=−7 m/s²; no constant rate or peak guaranteed. Average magnitudes D7>B6>A5>C2. Largest guaranteed constant magnitude B6. D's peak cannot be determined: constant −7 is one history; continuous differentiable v=3−7t+K sin(πt) gives same endpoints and a=−7+Kπ cos(πt), arbitrary larger peak for large |K|. For differentiable histories the maximum magnitude is at least 7 by mean-value reasoning, but actual peak is not fixed. Δv/Δt needs both endpoint velocities and time; B/C omit one of these, so use constant-acceleration position relations instead.",
+    "bound": "In B the initial velocity is instead +6 m/s, still constant acceleration and displacement +27 m in 3 s. Recalculate B and rank A–C by constant acceleration magnitude.",
+    "sol": "27=6×3+4.5a, a=+2 m/s². A magnitude5 is largest; B=C=2. The rest assumption changed B's inferred model.",
+    "h": [
+      "Normalize km/h and milliseconds before any comparison.",
+      "Inventory which variables each log supplies; choose a constant-a equation that eliminates the missing quantities.",
+      "For D distinguish endpoint mean from unknown instantaneous history; compare magnitudes only after retaining the sign."
+    ],
+    "diag": "Wrong models: compare signed numbers instead of magnitudes; assume zero initial speed for every log; use v² relation with unsigned displacement; assume mean a is a known peak. Identify your first invalid equation or condition.",
+    "repair": "Build a givens/unknowns ledger for each log, select its warrant and units, solve and verify in the original relation. Separate guaranteed constant rates from an interval mean and construct a counterhistory for D.",
+    "scores": [
+      2,
+      1,
+      2,
+      1,
+      1
+    ],
+    "ev": [
+      "Select among endpoint, displacement-time and velocity-position laws and nonuniform mean.",
+      "Translate mixed-unit and signed data.",
+      "Solve four independent logs, compare and reject peak inference.",
+      "Simple scalar arithmetic and substitutions.",
+      "Initial-condition/constant-a limitation."
+    ],
+    "teach": "An acceleration comparison is a model-selection problem when observations differ. First normalize units and record signs; then identify whether constant a is stated. Endpoint times license a_avg=Δv/Δt. With constant a and displacement/time, use Δx=ut+at²/2; with constant a and endpoint velocities/displacement use v²−u²=2aΔx. A mean does not fix peak acceleration. Worked anchor: +18 to +36 km/h over 2 s gives +2.5 m/s²; from rest through 12 m in 4 s gives +1.5 m/s²; +3 to +7 m/s over +10 m gives +2 m/s². Compare magnitudes after converting units; verify the premises before using a constant-a equation.",
+    "example": {
+      "problem": "Three uniform tests: +18→+36 km/h in 2 s; from rest +12 m in 4 s; +3→+7 m/s over +10 m.",
+      "reasoning": "Use Δv/Δt=2.5, 2Δx/t²=1.5, (v²−u²)/(2Δx)=2 m/s² respectively.",
+      "independent_check": "Substitution in each original observation gives 10−5=5 m/s, ½×1.5×16=12 m, and 49−9=40=2×2×10."
+    },
+    "graphs": [],
+    "gap": "Different equations selected inside one comparison; nonuniform endpoint mean and changed initial speed.",
+    "sourceBand": "Existing D2 APPLY retained; authored transfer MODEL nomination, band HOLD.",
+    "id": "PH01-M04-QRT-MODEL-D3-R47-Q33",
+    "cid": "PH01-M04-QRT-MODEL-D3-R47-Q33-INSTANCE",
+    "core1a": "nsejs/physics/textbook/PH01/M04/index.html",
+    "core1b": "nsejs/physics/core1/ph01-m04-r47/index.html"
+  },
+  {
+    "source": "PH01-LINK-2024-51-Q60",
+    "n": 60,
+    "year": 2024,
+    "m": "M05",
+    "cell": "D3.7",
+    "op": "JUSTIFY",
+    "science": "PH01-SCI-GRAPH-COMPARISON-R47",
+    "w": "Evaluate independent physical claims from multiple given velocity graphs by common-unit signed areas, slopes and durations; refute false implications under a changed sign condition.",
+    "task": "Three carts move along an east-positive rail. Graph A is a straight line from (0 min,0 km/h) to (2 min,36 km/h). Graph B is horizontal at +6 m/s from 0 to 100 s. Graph C is a straight line from (0 min,+18 km/h) to (1 min,+54 km/h). Treat each graph as its full observation interval, with no other motion counted. Decide independently whether each claim is true, giving a numerical or physical warrant: (i) all three cover equal distances; (ii) all have equal average speeds; (iii) C's constant acceleration is twice A's; (iv) equal distances imply equal acceleration histories. In (iv), distinguish a counterexample from a restatement. Then a technician shifts every ordinate of C downward by 36 km/h but keeps its time axis unchanged. Explain which of (i) and (iii) remains true, and why.",
+    "ans": "Convert A: 0→10 m/s in120 s; B +6 in100 s; C +5→+15 in60 s. All originally nonnegative, so signed area=distance. Areas A=600, B=600, C=600 m. (i) true. Average speeds A5,B6,C10 m/s, so (ii) false. Slopes a_A=10/120=1/12, a_B=0, a_C=10/60=1/6 m/s²; (iii) true. (iv) false: A and B have equal distance but nonzero and zero acceleration respectively. This is an explicit counterexample. Shifting C by −10 m/s yields −5→+5 in60 s. Its slope unchanged, so (iii) remains true. Signed area0 but distance two triangles = 2×(30×5/2)=150 m; (i) becomes false. Changing velocity baseline changes area and path but not slope.",
+    "bound": "Replace B with a constant westward velocity −6 m/s for the same 100 s; leave original A and C unchanged. Which of (i)–(iv) changes truth value? What new displacement distinction must be stated?",
+    "sol": "None changes: all paths600, average speeds5,6,10 differ, C twice A, equal paths do not imply equal acceleration. B signed displacement −600 m whereas A and C +600 m. Absolute area, not signed equality, establishes equal distances.",
+    "h": [
+      "Convert each graph's horizontal and vertical units before comparing slopes or areas.",
+      "Keep total duration separate from area; nonnegative velocity initially licenses area as path.",
+      "When C's velocity baseline changes, slope remains the same but split its absolute area at zero."
+    ],
+    "diag": "Wrong models: compare visual slopes without axis conversions; infer equal speeds from equal distances despite unequal times; infer equal acceleration from equal area; use zero signed area as zero path. Locate the first invalid inference.",
+    "repair": "Build a common-SI table of durations, endpoint velocities, signed area, absolute area and slopes. Evaluate each claim with its own warrant. Rebuild C after the vertical shift and identify which graph property is invariant.",
+    "scores": [
+      1,
+      2,
+      2,
+      1,
+      1
+    ],
+    "ev": [
+      "Distinguish slope, area, average speed and their implications.",
+      "Translate three differently scaled graphs into one SI ledger.",
+      "Independent truth warrants, counterexample, changed baseline.",
+      "Simple triangles/trapezoids and ratios.",
+      "Equal area/unequal time and negative-area boundary."
+    ],
+    "teach": "Graph shapes cannot be compared by apparent steepness if axes differ. Convert time and velocity to common units; slope gives signed acceleration, signed area gives displacement, absolute area gives path. Equal areas need not mean equal average speeds unless durations agree. A vertical shift of a velocity graph changes signed area but leaves slopes unchanged. Worked anchor: A rises 0→8 m/s in 40 s; B is +4 m/s for 40 s. Both travel 160 m with average speed4, but accelerations 0.2 and0. Shift A downward by4: signed area0, path80 m, acceleration unchanged. Test each claim separately, using an actual counterexample rather than merely saying a converse is false.",
+    "example": {
+      "problem": "A rises 0→8 m/s in40 s; B +4 m/s for40 s; then shift A downward by4.",
+      "reasoning": "Both paths160 m, accelerations0.2 and0. Shifted A −4→4 has signed area0, two positive triangle magnitudes40+40=80.",
+      "independent_check": "Slope Δv/Δt remains8/40=0.2 after shifting."
+    },
+    "graphs": [
+      {
+        "title": "Cart A",
+        "x_label": "time (min)",
+        "y_label": "v (km/h)",
+        "x_max": 2,
+        "y_min": 0,
+        "y_max": 40,
+        "x_ticks": [
+          0,
+          1,
+          2
+        ],
+        "y_ticks": [
+          0,
+          18,
+          36
+        ],
+        "segments": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              2,
+              36
+            ]
+          ]
+        ]
+      },
+      {
+        "title": "Cart B",
+        "x_label": "time (s)",
+        "y_label": "v (m/s)",
+        "x_max": 100,
+        "y_min": 0,
+        "y_max": 8,
+        "x_ticks": [
+          0,
+          50,
+          100
+        ],
+        "y_ticks": [
+          0,
+          6,
+          8
+        ],
+        "segments": [
+          [
+            [
+              0,
+              6
+            ],
+            [
+              100,
+              6
+            ]
+          ]
+        ]
+      },
+      {
+        "title": "Cart C",
+        "x_label": "time (min)",
+        "y_label": "v (km/h)",
+        "x_max": 1,
+        "y_min": 0,
+        "y_max": 60,
+        "x_ticks": [
+          0,
+          0.5,
+          1
+        ],
+        "y_ticks": [
+          0,
+          18,
+          36,
+          54
+        ],
+        "segments": [
+          [
+            [
+              0,
+              18
+            ],
+            [
+              1,
+              54
+            ]
+          ]
+        ]
+      }
+    ],
+    "gap": "Direct forward comparison of differently scaled graphs, multiple warrants and a changed velocity baseline.",
+    "sourceBand": "Source multi-graph claims; JUSTIFY vs APPLY/REPRESENT HOLD.",
+    "id": "PH01-M05-QRT-JUSTIFY-D3-R47-Q60",
+    "cid": "PH01-M05-QRT-JUSTIFY-D3-R47-Q60-INSTANCE",
+    "core1a": "nsejs/physics/textbook/PH01/M05/index.html",
+    "core1b": "nsejs/physics/core1/ph01-m05-r47/index.html"
+  }
+]
