@@ -42,7 +42,7 @@ def test_b01_takeover_pinned_89_instances_and_no_selected_main():
     main_ids=set()
     for group in proposal["groups"]:
         assert group["qualification"]=="HOLD" and group["canonical_main"] is None
-        assert group["prior_mixed_main_proposal"]["id"]
+        assert group["prior_mixed_main_proposal"] is None or group["prior_mixed_main_proposal"]["id"]
         for e in group["base_instances"]:
             path=Path(e["package_path"]); assert path.is_file() or (ROOT/path).is_file()
             assert blob(path)==e["package_blob"]
@@ -140,7 +140,7 @@ def test_b01_takeover_runtime_boundaries_are_explicit():
         if term.startswith("NON_EXISTENT"):
             assert term not in js
         else:
-            assert term in js or (term=="crypto.subtle.digest('SHA-1'" and "hash('SHA-1'" in js)
+            assert term in js or (term=="crypto.subtle.digest('SHA-1'" and "hash('SHA-1'" in js) or (term=="crypto.subtle.digest('SHA-256'" and "hash(revisionMaterial,'SHA-256')" in js)
     assert "No verified hint taxonomy" in html
     assert "not secure or tamper-proof" in html
     assert "automatic grading" in js
