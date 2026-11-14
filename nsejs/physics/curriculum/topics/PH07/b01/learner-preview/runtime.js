@@ -138,7 +138,6 @@
     for (const id of ['predict-input','attempt-input','diagnose-input','repair-input','boundary-input']) $(id).value='';
     for (const id of ['help-text','saved-first','completion','reconstruct-model','boundary-model']) $(id).textContent='';
     for (const id of ['reconstruct-model','diagnosis-stage','repair-stage','boundary-stage','boundary-model']) bool(id,false);
-    $('h1').focus?.();
   }
   function restore() {
     const r=state.record;
@@ -151,7 +150,11 @@
     if(first) {
       $('predict-input').value=r.first_answer.prediction;
       $('attempt-input').value=r.first_answer.answer;
-      $('saved-first').textContent='Original answer saved at '+r.first_answer.saved_at+' (later edits are separate).';
+      const pre=r.first_answer.help_before_first||
+        r.help_exposure.filter(x=>x.at<=r.first_answer.saved_at).map(x=>x.kind);
+      $('saved-first').textContent='Original answer saved at '+r.first_answer.saved_at+
+        '; help before first: '+(pre.length?pre.join(', '):'none recorded')+
+        '. Later edits are separate; learner mastery is not inferred.';
     }
     const kinds=r.help_exposure.map(x=>x.kind);
     $('h2').disabled=false;
@@ -188,41 +191,72 @@
     if(r.boundary_attempts.length)
       $('completion').textContent='Boundary answer saved separately from first answer; no automatic grading or learner mastery inferred.';
   }
-  function choose(id) {
+  async function choose(id) {
+    const token=++state.selection;
     const task=state.tasks.find(x=>x.id===id);
+    state.ready=false;
+    $('task-select').disabled=true;
+    bool('learner',false);
+    bool('after-first',false);
+    bool('task-info',false);
     if (!task) {lock('Unknown candidate identity');return;}
-    state.current=task;
-    state.record=read();
-    if (!state.record) {lock('Stored attempt is malformed/stale. No silent reset allowed');return;}
-    resetSection();
-    $('task-meta').textContent=task.kind+' · '+task.subtopic_id+' · '+task.cell+' · '+task.source_kind;
-    $('task-heading').textContent=task.id;
-    $('task-source-role').textContent=task.source_kind==='SUPPLEMENTAL'?
-      'Authored source-related transfer; its locator is not an authenticated exam item.':
-      'Original primary transfer from the version-pinned B01 subtopic package.';
-    $('predict-prompt').textContent=task.stages.predict;
-    $('attempt-prompt').textContent=task.stages.attempt;
-    $('diagnose-prompt').textContent=task.stages.diagnose;
-    $('repair-prompt').textContent=task.stages.repair;
-    $('boundary-prompt').textContent=task.stages.boundary_test;
-    $('core1a-link').href=new URL(task.core1a,ROOT).href;
-    $('original-core1b-link').href=new URL(task.core1b,ROOT).href;
-    bool('task-info',true);
-    restore();
-    status(state.record.first_answer?'Previous first answer restored; later stages remain separately recorded.':
-      'Exact-version author candidate loaded; record prediction and reasoning before reconstruction.','info');
+    try {
+      const a=state.pagePins.get(task.core1a),b=state.pagePins.get(task.core1b);
+      if(!a||!b)throw Error('Missing exact author HTML and inline-figure pins');
+      await Promise.all([
+        requestText(task.core1a,a,'.html'),
+        requestText(task.core1b,b,'.html')
+      ]);
+      if(token!==state.selection)return;
+      state.current=task;
+      // Task revision binds all source-package pins, all 78 author-page pins,
+      // and both selected learner-facing HTML pages and their inline SVGs.
+      state.digest=await hash(state.sourceDigest+'\n'+task.id+'\n'+
+        task.core1a+':'+a+'\n'+task.core1b+':'+b,'SHA-256');
+      if(token!==state.selection)return;
+      state.record=read();
+      if(!state.record)throw Error('Stored attempt is malformed/stale; no silent reset');
+      resetSection();
+      $('task-meta').textContent=task.kind+' · '+task.subtopic_id+' · '+task.cell+' · '+task.source_kind;
+      $('task-heading').textContent=task.id;
+      $('task-source-role').textContent=task.source_kind==='SUPPLEMENTAL'?
+        'Authored source-related transfer; its locator is not an authenticated exam item.':
+        'Original primary transfer from the version-pinned B01 subtopic package.';
+      $('predict-prompt').textContent=task.stages.predict;
+      $('attempt-prompt').textContent=task.stages.attempt;
+      $('diagnose-prompt').textContent=task.stages.diagnose;
+      $('repair-prompt').textContent=task.stages.repair;
+      $('boundary-prompt').textContent=task.stages.boundary_test;
+      $('core1a-link').href=new URL(task.core1a,ROOT).href;
+      $('original-core1b-link').href=new URL(task.core1b,ROOT).href;
+      bool('task-info',true);
+      state.ready=true;
+      $('task-select').disabled=false;
+      restore();
+      $('revision').textContent='Task-specific SHA-256 '+state.digest.slice(0,24)+
+        '…; exact package and both pinned author HTML/inline figure sources verified. 89 INSTANCE · 0 MAIN.';
+      status(state.record.first_answer?'Previous first answer restored; later stages remain separately recorded.':
+        'Exact-version author candidate loaded; record prediction and reasoning before reconstruction.','info');
+    }catch(err){if(token===state.selection)lock('Page/attempt revision verification failed: '+String(err.message));}
   }
   function attempt() {
     if(!state.ready || state.record.first_answer)return;
     const prediction=$('predict-input').value.trim(),answer=$('attempt-input').value.trim();
     if(!prediction || !answer){status('Prediction and reasoned attempt are both required.','blocked');return;}
     const next=structuredClone(state.record);
-    next.first_answer={prediction,answer,saved_at:new Date().toISOString()};
+    next.first_answer={prediction,answer,saved_at:new Date().toISOString(),
+      help_before_first:state.record.help_exposure.map(x=>x.kind)};
     if(!write(next)){lock('Cannot persist immutable first answer');return;}
     restore();status('First answer saved; reconstruction now unlockable.','success');
   }
   function onceSave(field,input,id,nextStep) {
     if(!state.ready || !state.record.first_answer || state.record[field].length)return;
+    const kinds=state.record.help_exposure.map(x=>x.kind);
+    if((field==='diagnosis_notes'&&!kinds.includes('RECONSTRUCT'))||
+       (field==='repairs'&&!state.record.diagnosis_notes.length)||
+       (field==='boundary_attempts'&&!state.record.repairs.length)) {
+      status('Complete the required previous stage before saving '+id+'.','blocked');return;
+    }
     const value=$(input).value.trim();
     if(!value){status('Write your own reasoning for this stage.','blocked');return;}
     const next=structuredClone(state.record);
