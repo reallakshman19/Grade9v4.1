@@ -363,16 +363,13 @@
     const exposed=new Set(exposure.value?.revision===view.revision?
       exposure.value.levels||[]:[]);
     const sequence=["S1","S2","S3"];
+    text(group,"Progression: inspect S1 first, then S2, then S3. The next stage unlocks only after its predecessor's exposure is saved.","small");
     function updateSequence(){
       for(const [stageId,control] of controls){
         const index=sequence.indexOf(stageId);
         const permitted=index===0||exposed.has(sequence[index-1]);
         control.disabled=!permitted;
         control.setAttribute("aria-disabled",String(!permitted));
-        control.setAttribute("aria-label",
-          "Inspect "+stageId+(permitted?
-            " (unreviewed, post-commit)":
-            " unavailable until "+sequence[index-1]+" has been viewed"));
       }
     }
     for(const asset of row.stages){
@@ -402,7 +399,8 @@
           add(figure,img,tag("figcaption",
             asset.id+" · "+asset.role+" · UNREVIEWED · post-commit exposure recorded",
             "small"));
-          output.replaceChildren(figure);b.textContent=asset.id+" inspected";
+          output.replaceChildren(figure);
+          b.disabled=false;
           updateSequence();
         }catch(error){
           message((error.message||"STAGE_ASSET_HOLD")+" · No unverified image displayed.");
@@ -507,6 +505,9 @@
           message("STORAGE_UNAVAILABLE · Answer not saved. Model solution remains concealed.");return;
         }
         render();
+        const next=[...lesson.querySelectorAll("h3")].find(
+          el=>el.textContent.startsWith("Stage 3 — Reconstruct"));
+        if(next){next.tabIndex=-1;next.focus();}
       },"primary");
       commit.id="commit-attempt";attemptSection.append(commit);
       return;
