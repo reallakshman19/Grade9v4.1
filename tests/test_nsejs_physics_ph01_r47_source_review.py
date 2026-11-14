@@ -51,5 +51,7 @@ def test_r47_historical_learning_package_is_unchanged_historical_hold():
     assert pkg["version"]=="0.11.0"
     assert len(pkg["core1b"])==63
     assert pkg["acceptance"]["release"]=="HOLD"
-    assert pkg["core2_sources"]==[]
+    assert len(pkg["core2_sources"])==4
+    assert all(x["source_role"]=="PREREQUISITE_BRIDGE" and x["academic_status"]=="HOLD"\
+               and x["key_status"]=="HOLD" for x in pkg["core2_sources"])
     assert all(c["runtime_verification"]=="NOT_RUN" for c in pkg["core1b"])
