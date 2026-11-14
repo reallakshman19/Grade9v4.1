@@ -434,7 +434,8 @@ def check_corrupted_saved_attempts_fail_closed(browser,ids):
         ("missing-answer",{k:v for k,v in record["body"].items() if k!="attempt"}),
         ("blank-answer",dict(record["body"],attempt=" ")),
         ("wrong-help",dict(record["body"],help_exposure=["H3"])),
-        ("invalid-json","{broken-json")
+        ("invalid-json","{broken-json"),
+        ("json-null","null")
     ]
     for label,modified in variants:
         raw=modified if isinstance(modified,str) else json.dumps(modified)
