@@ -3,7 +3,7 @@ const mount=document.querySelector("[data-ph02-practice]");
 const uid=mount?.dataset.unit;
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const p=s=>"<p>"+esc(s)+"</p>";
-let ptask=null, rec=null, key=null;
+let ptask=null, rec=null, key=null, contentFingerprint=null;
 const $=id=>document.getElementById(id);
 function fail(message){const b=$("runtimeStatus");if(b){b.className="error";b.textContent="HOLD: "+message;}else if(mount){mount.className="error";mount.textContent="PH02 protected task unavailable: "+message;}}
 function ensureStored(value){
@@ -23,7 +23,7 @@ function loadState(){
     const raw=localStorage.getItem(key);
     if(raw){
       const x=JSON.parse(raw);
-      if(!x||x.task_uid!==ptask.uid||x.revision!==ptask.revision||!x.first_answer||!x.first_prediction||!Array.isArray(x.exposure))throw Error("invalid or stale stored revision");
+      if(!x||x.task_uid!==ptask.uid||x.revision!==ptask.revision||x.content_fingerprint!==contentFingerprint||!x.first_answer||!x.first_prediction||!Array.isArray(x.exposure))throw Error("invalid or stale stored revision");
       rec=x;
     }
     const stale=Object.keys(localStorage).filter(k=>k.startsWith("G9V41:PH02:"+ptask.uid+":")&&k!==key&&k!==key+":prehelp");
@@ -66,7 +66,7 @@ function bind(){
    if(!prediction||!answer){fail("Both a prediction and an explained first attempt are required.");return;}
    let prehelp=false;
    try{prehelp=localStorage.getItem(key+":prehelp")==="1"}catch(e){fail("Storage unavailable: first attempt cannot be protected.");return;}
-   const next={task_uid:ptask.uid,revision:ptask.revision,first_prediction:prediction,first_answer:answer,first_at:new Date().toISOString(),assisted_before_first:prehelp,exposure:prehelp?[{kind:"linked_lesson_pre_commit",at:new Date().toISOString()}]:[],hints_seen:0,reconstruct_seen:false};
+   const next={task_uid:ptask.uid,revision:ptask.revision,first_prediction:prediction,first_answer:answer,content_fingerprint:contentFingerprint,first_at:new Date().toISOString(),assisted_before_first:prehelp,exposure:prehelp?[{kind:"linked_lesson_pre_commit",at:new Date().toISOString()}]:[],hints_seen:0,reconstruct_seen:false};
    if(ensureStored(next))refresh();
  });
  $("hintBtn").addEventListener("click",()=>{
@@ -129,12 +129,20 @@ async function init(){
   if(!ptask||!ptask.uid||!ptask.revision)throw Error("Unknown or stale task UID; HOLD");
   const u=isMain?data.units.find(x=>x.id===ptask.unit):own;
   if(!u)throw Error("Cross-topic task owner missing; HOLD");
-  key="G9V41:PH02:"+ptask.uid+":"+ptask.revision;
+  // Bind learner evidence to the *actual authored contents* as well as the UID/revision.
+  // A changed prompt, worked answer, hints or boundary model cannot silently reuse a previous attempt.
+  if(!globalThis.crypto?.subtle || typeof TextEncoder==="undefined")throw Error("Content-digest protection unavailable");
+  const fingerprintSource=JSON.stringify([ptask.uid,ptask.revision,ptask.prediction,ptask.prompt,ptask.w,
+    ptask.reconstruction,ptask.alternative,ptask.hints,ptask.boundaryPrompt,ptask.boundaryModel]);
+  const bytes=new TextEncoder().encode(fingerprintSource);
+  const hash=await crypto.subtle.digest("SHA-256",bytes);
+  contentFingerprint=Array.from(new Uint8Array(hash),b=>b.toString(16).padStart(2,"0")).join("");
+  key="G9V41:PH02:"+ptask.uid+":"+ptask.revision+":"+contentFingerprint;
   const lessonHref=isMain?"../../../textbook/PH02/"+ptask.unit.slice(-3)+"/index.html":"../../../textbook/PH02/"+uid.split("-").at(-1)+"/index.html";
   const taskNav='<div id="taskNav" class="card"><strong>'+ (isMain?"Integrated MAIN candidates":"This subtopic's three operation candidates")+'</strong><div>'+candidates.map(t=>'<a class="action" href="?task='+encodeURIComponent(t.uid)+'">'+esc(t.id||t.op||t.uid)+(t.uid===ptask.uid?" · current":"")+'</a>').join('')+'</div></div>';
   document.title=uid+" · "+ptask.uid+" · Core1B protected transfer (candidate)";
   mount.innerHTML='<h1>'+esc(uid)+" · "+esc(u.title)+'</h1>'+taskNav+'<p class="notice"><strong>AUTHOR CANDIDATE · ACADEMIC/QRT HOLD.</strong> This is authored practice, not a validated NSEJS paper or qualification of learner mastery. Browser storage protects learning sequence but is not a secure invigilation boundary.</p>'+
-   '<p class="fine">Exact authored UID: '+esc(ptask.uid)+' · revision: '+esc(ptask.revision)+'</p><p id="runtimeStatus" class="status" role="status">Loading…</p><p id="revisionNote" class="fine"></p>'+
+   '<p class="fine">Exact authored UID: '+esc(ptask.uid)+' · revision: '+esc(ptask.revision)+' · digest: '+esc(contentFingerprint.slice(0,12))+'</p><p id="runtimeStatus" class="status" role="status">Loading…</p><p id="revisionNote" class="fine"></p>'+
    '<section class="step"><h2>1 · Predict before solving</h2>'+p(ptask.prediction)+'<label for="prediction">Your prediction and reason</label><textarea id="prediction"></textarea></section>'+
    '<section class="step"><h2>2 · Attempt: protect your decisive work</h2>'+p(ptask.prompt)+'<label for="attempt">Your independent calculation, model and check</label><textarea id="attempt"></textarea><button id="firstCommit" type="button">Commit prediction + first reasoning</button><p id="firstIntegrity" class="fine"></p><p><a id="helpLink" href="'+lessonHref+'">Consult this subtopic’s Core1A textbook (help exposure tracked)</a></p></section>'+
    '<div id="postAttempt" hidden><section class="step"><h2>H1–H3 · Optional ordered support</h2><p>Only after the first answer has been saved. Supports may orient, but do not count as independent first attempts.</p><button id="hintBtn" type="button" class="secondary">Open H1 support</button>'+
