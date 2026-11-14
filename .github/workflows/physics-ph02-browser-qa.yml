@@ -38,7 +38,9 @@ jobs:
         run: python tools/physics_ph02_browser_qa.py
       - name: Generate exact-byte SHA256 and line-quoted author evidence preparation
         if: always()
-        run: python tools/physics_ph02_author_evidence_prep.py
+        run: |
+          python tools/physics_ph02_author_evidence_prep.py
+          python tools/physics_ph02_task_evidence_prep.py
       - name: Upload PH02 browser evidence even on failure
         if: always()
         uses: actions/upload-artifact@v4
