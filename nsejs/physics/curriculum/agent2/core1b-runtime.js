@@ -3,6 +3,22 @@
    No academic approval inferred from software validation. */
 (function () {
   'use strict';
+  // B01 R15 gateway: only the 25 dedicated PH07/PH08 primary author pages
+  // delegate to the stronger version-pinned six-stage B01 candidate reader.
+  // PH09–PH12 and topic-wide Agent2 previews retain their existing runtime.
+  // ?legacy=1 explicitly preserves the old author-review UI and stored attempts.
+  if (typeof location !== 'undefined') {
+    const m = location.pathname.match(
+      /^(.*)\/nsejs\/physics\/curriculum\/topics\/(PH07|PH08)\/b01\/(PH(?:07|08)-\d{2})\/core1b\.html$/
+    );
+    if (m && new URLSearchParams(location.search).get('legacy') !== '1') {
+      const dest = m[1] +
+        '/nsejs/physics/curriculum/topics/PH07/b01/learner-preview/index.html?subtopic=' +
+        encodeURIComponent(m[3]);
+      location.replace(dest);
+      return;
+    }
+  }
   const root = document.querySelector('[data-agent2-core1b]');
   if (!root) return;
   const $ = id => document.getElementById(id);
