@@ -124,8 +124,9 @@ def main():
                     for number in range(1,9):
                         uid=f"F{number:02d}"
                         page.goto(f"http://127.0.0.1:{port}/nsejs/physics/textbook/PH02/{uid}/index.html")
-                        page.wait_for_selector("h2")
-                        assert page.locator("h2").count() >= 9
+                        page.wait_for_selector("#additional-constructions", timeout=10000)
+                        assert page.locator("#additional-constructions .example").count()==2
+                        assert page.locator("h2").count() >= 10
                         assert page.locator("svg[role=img]").count() == 1
                         assert page.evaluate("document.documentElement.scrollWidth <= innerWidth")
                         result=test_one(page,uid)
