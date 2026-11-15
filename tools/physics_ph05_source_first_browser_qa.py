@@ -84,6 +84,22 @@ def check_orientation(browser,base,orientation,w,h,receipts):
         assert page.locator("#firstPrediction").is_disabled()
         assert page.locator("#afterFirst").is_visible()
         assert page.evaluate("document.documentElement.scrollWidth <= innerWidth")
+        transfer_link=page.get_by_role("link",name="Try protected author-created transfer")
+        href=transfer_link.get_attribute("href")
+        assert "source="+uid in href and "task=" in href
+        transfer_link.click()
+        page.locator("#runtimeStatus").wait_for(timeout=12000)
+        page.wait_for_function("() => document.querySelector('#runtimeStatus')?.textContent.includes('Candidate task loaded')",timeout=12000)
+        assert page.locator("#postAttempt").is_hidden()
+        back=page.get_by_role("link",name="Return to original NSEJS source checkpoint")
+        assert back.is_visible()
+        back.click()
+        page.wait_for_url("**/source-checkpoint.html?source="+uid,timeout=12000)
+        assert page.locator("#afterFirst").is_visible()
+        assert page.locator("#firstPrediction").is_disabled()
+        final=record(page,uid)
+        assert final["entry"]["first_reasoning"]==rec["entry"]["first_reasoning"]
+        assert any(x["kind"]=="core1b_transfer" for x in final["entry"]["exposure"])
         receipts.append({"source":uid,"orientation":orientation,"first_attempt_locked":True,
                          "revision_bound":True,"help_exposure_logged":True,"refresh":True})
         # Each source has its own state. Clear only at test end via new context.

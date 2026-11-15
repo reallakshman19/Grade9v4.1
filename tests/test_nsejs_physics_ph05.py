@@ -392,3 +392,14 @@ def test_ph05_core1a_bridge_explains_decisive_question_capabilities():
     assert "v=sqrt(GM/r)" in bridge["PH05-G05"]["teaching"]
     assert "u.source_bridge" in (PH05_DATA/"lesson.js").read_text(encoding="utf-8")
     assert all(x["status"]=="AUTHOR_EXPOSED_QRT_HOLD" for x in bridge.values())
+
+
+def test_ph05_source_specific_return_route_is_validated_against_task_uid():
+    """An authored task only returns to the matching original source attempt."""
+    cp=(PH05_DATA/"source-checkpoint.js").read_text(encoding="utf-8")
+    practice=(PH05_DATA/"practice.js").read_text(encoding="utf-8")
+    assert '"&source="+encodeURIComponent(e.source_uid)' in cp
+    assert 's.source_uid===sourceParam&&s.transfer===ptask.uid' in practice
+    assert 's.source_status==="EXTERNAL_CUSTODY_HOLD"' in practice
+    assert 'id="returnToPreviousNSEJSQuestion"' in practice
+    assert "Return to original NSEJS source checkpoint" in practice

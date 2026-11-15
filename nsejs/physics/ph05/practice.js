@@ -127,6 +127,18 @@ async function init(){
   if(!candidates.length)throw Error("Missing exact candidate unit/cycles");
   ptask=requested?candidates.find(t=>t.uid===requested):candidates[0];
   if(!ptask||!ptask.uid||!ptask.revision)throw Error("Unknown or stale task UID; HOLD");
+  const sourceParam=new URL(location.href).searchParams.get("source");
+  let sourceReturnMarkup="";
+  if(sourceParam){
+    const sresp=await fetch(new URL("./source-to-learning.v1.json",import.meta.url),{cache:"no-store"});
+    if(!sresp.ok)throw Error("Source checkpoint binding unavailable; HTTP "+sresp.status);
+    const registry=await sresp.json();
+    if(registry.schema!=="g9v41-ph05-source-to-learning/v1"||registry.academic_status!=="HOLD")
+      throw Error("Source checkpoint binding not independently admissible");
+    const linked=registry.source_candidates.find(s=>s.source_uid===sourceParam&&s.transfer===ptask.uid&&s.source_status==="EXTERNAL_CUSTODY_HOLD");
+    if(!linked)throw Error("Source checkpoint/task pair is invalid or stale");
+    sourceReturnMarkup='<p><a id="returnToPreviousNSEJSQuestion" href="../../../ph05/source-checkpoint.html?source='+encodeURIComponent(linked.source_uid)+'">Return to original NSEJS source checkpoint (first attempt preserved)</a></p>';
+  }
   const u=isMain?data.units.find(x=>x.id===ptask.unit):own;
   if(!u)throw Error("Cross-topic task owner missing; HOLD");
   if(!globalThis.crypto?.subtle || typeof TextEncoder==="undefined")throw Error("Content-digest protection unavailable");
@@ -149,7 +161,7 @@ async function init(){
    '<section id="diagnoseStage" class="step" hidden><h2>4 · Diagnose the first divergence</h2><div id="diagnosisGuidance"></div><label for="diagnosis">Which reasoning step diverged, or what evidence is missing?</label><textarea id="diagnosis"></textarea><button id="diagnoseBtn" type="button">Save diagnosis</button></section>'+
    '<section id="repairStage" class="step" hidden><h2>5 · Repair that step</h2><div id="repairGuidance"></div><label for="repair">Your separate repaired explanation</label><textarea id="repair"></textarea><button id="repairBtn" type="button">Save repair separately</button></section>'+
    '<section id="boundaryStage" class="step" hidden><h2>6 · Boundary: new changed condition</h2><div id="boundaryQuestion"></div><label for="boundary">Your new attempt before seeing the model</label><textarea id="boundary"></textarea><button id="boundaryBtn" type="button">Commit boundary attempt</button><button id="boundaryRevealBtn" type="button" class="secondary" hidden>Reveal boundary model</button><div id="boundaryModel" class="answer" hidden></div></section></div>'+
-   '<p><a href="../../../textbook/PH05/index.html">Return to source-first PH05 question journey</a></p><p class="fine">The self-study route is checked by automated QA and owner-directed AI review. It awards no exam credential; the source-only formal academic review process is separate.</p>';
+   sourceReturnMarkup+'<p><a href="../../../textbook/PH05/index.html">Return to source-first PH05 question journey</a></p><p class="fine">The self-study route is checked by automated QA and owner-directed AI review. It awards no exam credential; the source-only formal academic review process is separate.</p>';
   if(!loadState()){$("firstCommit").disabled=true;return;}
   bind();refresh();
  }catch(e){fail(String(e.message||e));}

@@ -63,7 +63,7 @@ function stage(){
  help.appendChild(learn);
  const target=e.transfer.includes("MAIN")?"main":e.core1a[0];
  const transferP=el("p");
- const transfer=addLink(transferP,"Try protected author-created transfer ("+e.transfer_demand+")","../core1/PH05/"+target+"/index.html?task="+encodeURIComponent(e.transfer));
+ const transfer=addLink(transferP,"Try protected author-created transfer ("+e.transfer_demand+")","../core1/PH05/"+target+"/index.html?task="+encodeURIComponent(e.transfer)+"&source="+encodeURIComponent(e.source_uid));
  transfer.addEventListener("click",event=>{try{recordExposure("core1b_transfer")}catch(err){event.preventDefault();error(String(err.message||err))}});
  help.appendChild(transferP);
  help.appendChild(el("h2","4 · Return to the original paper"));
