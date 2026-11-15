@@ -299,12 +299,12 @@
     retryBtn.style.cssText = "background: #f1f5f9; color: #334155; border: 1.5px solid #cbd5e1; display: none;";
     append(actions, retryBtn);
 
-    // The attempt key is bound to all question text, options, key and solution
-    // fields. It never silently reuses a previous candidate content revision.
+    // The attempt key is bound to question text, hints, solution and diagram
+    // bytes. It never silently reuses a prior candidate content revision.
     const contentRevision = await revision(q);
     const k = attemptKey(q, contentRevision);
     const hints = Array.isArray(q.hints) ? q.hints : [];
-    let unlockTier3 = () => {};
+    let refreshHints = () => {};
     if (hints.length > 0) {
       const hintBtn = text("button", "");
       hintBtn.type = "button";
@@ -316,7 +316,7 @@
       const paintHints = () => {
         // Tier 3 can include a decisive reduction and is only displayed
         // after a persistently saved first attempt.
-        const count = getAttempt(k) ? hints.length : Math.min(2, hints.length);
+        const count = hints.length; // All H1-H3 are nondecisive after PH11 blueprint self-review.
         hintBox.replaceChildren();
         hints.slice(0, count).forEach(h => {
           append(hintBox, text("strong", h.prompt || "Hint:"), text("p", h.text || ""));
@@ -324,7 +324,7 @@
         hintBtn.textContent = hintBox.hidden ? "Show Progressive Hints (" + count + ")" : "Hide Progressive Hints";
       };
       paintHints();
-      unlockTier3 = paintHints;
+      refreshHints = paintHints;
       hintBtn.onclick = () => {
         hintBox.hidden = !hintBox.hidden;
         paintHints();
@@ -455,7 +455,7 @@
       }
 
       if (revealAnswerAfterCommit()) {
-        unlockTier3();
+        refreshHints();
         renderMath(answerBox);
       }
     }
@@ -495,7 +495,7 @@
       if (!saveAttempt(k, attempt)) {
         feedbackBanner.hidden = false;
         feedbackBanner.className = "attempt-feedback-banner feedback-dropped";
-        feedbackBanner.textContent = "HOLD: browser storage unavailable. First attempt was not saved; answer and Tier 3 helper remain locked.";
+        feedbackBanner.textContent = "HOLD: browser storage unavailable. First attempt was not saved; candidate answer and solution remain locked.";
         return;
       }
       renderAttemptFeedback(selected);

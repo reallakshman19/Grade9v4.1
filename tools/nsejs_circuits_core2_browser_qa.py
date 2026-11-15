@@ -46,9 +46,10 @@ def commit_candidate(page, question_id, option="B"):
     assert card.count()==1
     assert card.locator("h3",has_text="Candidate derivation").count()==0
     helper=card.locator("button").filter(has_text="Progressive Hints").first
-    assert "Hints (2)" in helper.inner_text()
+    assert "Hints (3)" in helper.inner_text()
     helper.click()
-    assert "Tier 3" not in card.inner_text()
+    assert "OPEN_THE_WAY" in card.inner_text()
+    assert "Candidate derivation" not in card.inner_text()
     helper.click()
     card.locator(f'input[value="{option}"]').check()
     card.get_by_role("button",name=re.compile("Commit First Attempt")).click()
@@ -61,7 +62,7 @@ def commit_candidate(page, question_id, option="B"):
     assert attempt["selected"]==[option]
     assert re.fullmatch(r"[a-f0-9]{64}",attempt["content_revision_sha256"])
     helper.click()
-    assert "Tier 3" in card.inner_text()
+    assert "OPEN_THE_WAY" in card.inner_text()
     return keys[0],attempt
 
 
@@ -116,7 +117,7 @@ def main():
                     page.screenshot(path=str(OUT/f"circuits-{orient}.png"),full_page=False)
                     receipt["checks"].append({"orientation":orient,"visible_candidates":66,
                       "l1_ordered":36,"l2_ordered":20,
-                      "pre_attempt_tier3_locked":True,"first_attempt_persists":True,
+                      "pre_attempt_H1_H3_nondecisive":True,"first_attempt_persists":True,
                       "reader_console_errors":0})
                     context.close()
 
@@ -130,7 +131,7 @@ def main():
                 card.locator('input[value="B"]').check()
                 card.get_by_role("button",name=re.compile("Commit First Attempt")).click()
                 assert card.locator("h3",has_text="Candidate derivation").count()==0
-                assert "Hints (2)" in card.get_by_role("button",name=re.compile("Show Progressive Hints")).inner_text()
+                assert "Hints (3)" in card.get_by_role("button",name=re.compile("Show Progressive Hints")).inner_text()
                 assert "storage unavailable" in card.inner_text()
                 receipt["checks"].append({"negative":"STORAGE_DENIED","result":"FAIL_CLOSED"})
                 denied.close()
