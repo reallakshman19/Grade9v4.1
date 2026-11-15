@@ -11,6 +11,8 @@
 | Core1B | 17 exact-ID cloned/near-cloned prompts replaced by changed species, apparatus conditions or measurement/discriminator tasks | Full six-stage Predict→Attempt→Reconstruct→Diagnose→Repair→Boundary model and progressive hints synchronised on those tasks | 79 generic W descriptions eliminated; all 120 protected-W values are task-specific, revision-bound and aligned to adapter | **NO — B4/R02 HOLD** |
 | Technical / Blueprint | All seven C08–C14 Topic Adapters updated or reconciled at 120 exact X/Z/W joins | Reader now fails closed on exact adapter↔Core1B drift and hashes adapter into full-unit first-attempt revision | New direct source/adapter/freshness regression gates plus existing unchanged Python/Chromium acceptance gates | **Technical only; no academic PASS** |
 
+For the 17 rewritten exercises, **Y** in each Topic Adapter now matches an actual Core1A teaching paragraph in that exact subtopic. The R3 test checks this Y-to-lesson join plus X/Z/W-to-task equality. These are authored scientific warrants, not independently qualified textbook authority.
+
 C10 and C11 author-owned B02 exact tasks, 141 staged SVGs and QRT witness crosswalk were deliberately preserved. They are not re-authored, and independently accepting their B3/B4/blueprint content remains outstanding.
 
 ## Changed transfer examples

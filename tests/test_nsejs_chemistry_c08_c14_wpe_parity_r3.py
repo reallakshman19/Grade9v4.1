@@ -43,3 +43,31 @@ def test_reader_and_manuscript_scientific_bridges_were_added():
         assert manuscript.count("Model-selection bridge (authored teaching)")>=n
         count+=n
     assert count==14
+
+def test_revised_y_warrants_are_taught_and_x_z_w_are_exact():
+    delta=get(AUD/"CHEMISTRY_C08_C14_REMEDIATION_DELTA_R3.json")
+    for item in delta["changes"]:
+        unit=item["unit_id"]
+        pack=get(B/"core1b"/f"{unit}.core1b.v0.1.0.json")
+        book=get(B/"learner"/f"{unit}.reader.v0.1.0.json")
+        adapter=get(A/f"{unit}.v1.json")
+        task=next(x for x in pack["cycles"] if x["cycle_id"]==item["cycle_id"])
+        q=next(x for s in adapter["subtopics"] for x in s["qrt_instances"] if x["instance_id"]==task["qrt_instance_ref"])
+        section=next(x for x in book["sections"] if x["id"]==item["subtopic_id"])
+        assert q["slots"]["Y"] in section["teaching"]
+        assert q["slots"]["X"]==task["attempt"]["prompt"]
+        assert q["slots"]["Z"]==task["attempt"]["post_commit_closure"]["model_response"]
+        assert q["slots"]["W"]==task["attempt"]["protected_W"]
+        assert q["status"]=="ACADEMIC_HOLD"
+        assert task["source_exam_question_id"] is None
+
+def test_selected_scientific_numeric_checkpoints_are_independent():
+    # Checks task arithmetic, not scientific/QRT acceptance.
+    assert 2*0.010==0.020  # Zn -> Ag ideal electron stoichiometry
+    assert round(0.010-0.006,3)==0.004  # Ca2+ after carbonate precipitation
+    assert round(2.50*90/(159.6+5*18),3)==0.901  # copper sulfate hydrate water
+    oxygen_consumed=2*8  # 8 mL CH4, 24 mL O2, 4 mL inert N2
+    oxygen_left=24-oxygen_consumed
+    dry_total=8+oxygen_left+4
+    post_absorber=oxygen_left+4
+    assert (dry_total,post_absorber,oxygen_left)==(20,12,8)
