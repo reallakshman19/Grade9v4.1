@@ -19,34 +19,34 @@
       "source_exam_question_id": null,
       "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
       "predict": {
-        "prompt": "Decide which missing evidence or environmental boundary may matter: Explain why two streets with similar traffic can have different NO₂ readings and name two controls.",
-        "defensible_answer": "Air is a mixture dominated by nitrogen and oxygen with argon, carbon dioxide, variable water vapour and many trace species. Chemical identity matters more than the vague label 'gas': molecular oxygen is essential to life, carbon dioxide participates in carbon cycling and climate, sulfur dioxide and nitrogen oxides can transform into secondary pollutants. Whether a trace constituent is a pollutant depends on concentration, exposure, context and effects; small concentration alone is not a sufficient definition."
+        "prompt": "Before solving, predict two competing causal histories and the evidence required: A city reduces counted road traffic during an evening temperature inversion, yet monitored NO₂ concentration rises. Compare the distinct quantities 'emission rate' and 'ambient concentration', propose at least two competing causal models, and identify matched measurements that could discriminate them without assuming the traffic policy caused the increase.",
+        "defensible_answer": "Separate observation and mechanism, name a confounding variable and a possible controlled measurement; keep the actual scientific conclusion for the independent response."
       },
       "attempt": {
-        "prompt": "Explain why two streets with similar traffic can have different NO₂ readings and name two controls.",
-        "produces": "A causal model that separates chemical identity, observation, measurement, confounders and a defensible independent check.",
-        "protected_W": "The learner independently completes the causal bridge, not exposed before first attempt.",
+        "prompt": "A city reduces counted road traffic during an evening temperature inversion, yet monitored NO₂ concentration rises. Compare the distinct quantities 'emission rate' and 'ambient concentration', propose at least two competing causal models, and identify matched measurements that could discriminate them without assuming the traffic policy caused the increase.",
+        "produces": "Independently choose between transport/mixing and chemical-source hypotheses and design paired measurements that distinguish a measured concentration from an emissions claim.",
+        "protected_W": "Independently choose between transport/mixing and chemical-source hypotheses and design paired measurements that distinguish a measured concentration from an emissions claim.",
         "first_attempt_must_be_saved_before_feedback": true,
         "initial_answer_visibility": "HIDDEN",
         "hints": [
           {
             "id": "H1",
             "verb": "CLARIFY",
-            "text": "Separate observation, source, transformation and measured outcome for Air composition, pollutants and chemical evidence."
+            "text": "Separate source emission, atmospheric transformation and local concentration in any pollution inference, then specify a measurement that would reject a competing explanation."
           },
           {
             "id": "H2",
             "verb": "CORRELATE",
-            "text": "Relevant concept: Air pollutant concentration depends on chemical identity, emissions, transport and transformation; correlation alone does not prove cause."
+            "text": "Make an observation–chemical process–instrument table and ask what each available measurement cannot establish."
           },
           {
             "id": "H3",
             "verb": "OPEN_THE_WAY",
-            "text": "Propose two plausible causal accounts and a controlled discriminator; do not reveal which account is supported."
+            "text": "Describe two rival causal accounts, an independent discriminating measurement, and the relevant chemical species; do not select the final interpretation."
           }
         ],
         "post_commit_closure": {
-          "model_response": "Wind, dilution, street geometry, time, sunlight and other sources alter concentration. Compare calibrated sensors at same time with wind and background data; emission level does not uniquely fix ambient concentration.",
+          "model_response": "An inversion can reduce vertical atmospheric mixing, allowing pollution to accumulate even if some vehicle emissions decline. Other sources, regional transport or chemical conversion of NO to NO₂ can also alter the concentration. Traffic count is not total NOx emission and a single NO₂ station measures exposure at one site, not emissions. Compare upwind/downwind calibrated NO/NO₂, meteorology, mixing-height estimates, other-source activity and time-matched controls before attributing cause.",
           "rubric": [
             "Identify substances, system boundary and relevant chemical transformations.",
             "Build a warranted causal or competing-model explanation.",
@@ -59,34 +59,34 @@
           {
             "ask": "What was observed, and which chemical identities are actually established?",
             "why_this_ask": "Avoid treating a correlation as source identity.",
-            "model_response": "Two neighbourhood sensors report different nitrogen dioxide values even though traffic counts are nearly identical. Does that mean one sensor is defective—or that a pollutant's journey through the atmosphere matters?"
+            "model_response": "Identify what the new measurements actually report, including temporal and environmental controls."
           },
           {
             "ask": "What chemical process, transport or separation assumptions matter?",
             "why_this_ask": "Make hidden system boundaries explicit.",
-            "model_response": "Emissions become measured concentrations after transport, dilution, deposition and chemical reaction. Vehicle emissions can contain nitrogen oxides; sunlight and other reactive species participate in formation of ground-level ozone under suitable conditions. Ozone high in the stratosphere absorbs harmful ultraviolet radiation, while elevated ozone near the ground is a respiratory pollutant. A learner must not confuse identical molecular formula O₃ with identical environmental role independent of location."
+            "model_response": "Compare chemical transformations and alternative transport or instrument effects before inferring cause."
           },
           {
             "ask": "What conclusion is warranted and what remains untested?",
             "why_this_ask": "Separate evidence from overclaim.",
-            "model_response": "Wind, dilution, street geometry, time, sunlight and other sources alter concentration. Compare calibrated sensors at same time with wind and background data; emission level does not uniquely fix ambient concentration."
+            "model_response": "An inversion can reduce vertical atmospheric mixing, allowing pollution to accumulate even if some vehicle emissions decline. Other sources, regional transport or chemical conversion of NO to NO₂ can also alter the concentration. Traffic count is not total NOx emission and a single NO₂ station measures exposure at one site, not emissions. Compare upwind/downwind calibrated NO/NO₂, meteorology, mixing-height estimates, other-source activity and time-matched controls before attributing cause."
           }
         ],
-        "full_reconstruction": "Wind, dilution, street geometry, time, sunlight and other sources alter concentration. Compare calibrated sensors at same time with wind and background data; emission level does not uniquely fix ambient concentration."
+        "full_reconstruction": "An inversion can reduce vertical atmospheric mixing, allowing pollution to accumulate even if some vehicle emissions decline. Other sources, regional transport or chemical conversion of NO to NO₂ can also alter the concentration. Traffic count is not total NOx emission and a single NO₂ station measures exposure at one site, not emissions. Compare upwind/downwind calibrated NO/NO₂, meteorology, mixing-height estimates, other-source activity and time-matched controls before attributing cause."
       },
       "diagnose": {
-        "wrong_idea": "Wrong path: 'Equal traffic means equal pollutant concentration' or 'every ozone molecule is harmful regardless of altitude.' Repair by separating production, transport, conversion and exposure conditions.",
-        "diagnostic_prompt": "Which omitted control or model assumption makes this inference unreliable? Wrong path: 'Equal traffic means equal pollutant concentration' or 'every ozone molecule is harmful regardless of altitude.' Repair by separating production, transport, conversion and exposure conditions.",
-        "model_response": "A rise after a factory opens is temporal evidence, not a causal proof without comparison locations and weather controls."
+        "wrong_idea": "Fewer vehicles must immediately cause a lower measured NO₂ concentration at every site.",
+        "diagnostic_prompt": "Locate the unsupported environmental causal inference in: Fewer vehicles must immediately cause a lower measured NO₂ concentration at every site.",
+        "model_response": "The measured property is not unique evidence of source, hazard or complete treatment; distinguish the quantities and design a controlled test."
       },
       "repair": {
-        "action": "Redraw a source–transport–transformation–measurement map and add the missing controls or flow ledger.",
-        "explanation": "Wrong path: 'Equal traffic means equal pollutant concentration' or 'every ozone molecule is harmful regardless of altitude.' Repair by separating production, transport, conversion and exposure conditions.",
+        "action": "Rebuild the chemical and measurement causal graph and state independently testable predictions.",
+        "explanation": "Incorrect shortcut: Fewer vehicles must immediately cause a lower measured NO₂ concentration at every site. Use controlled evidence and a bounded chemical mechanism instead.",
         "core1a_ref": "curriculum/chemistry/agent-b/textbook/C14.core1a.md (section C14.01)"
       },
       "boundary_test": {
-        "prompt": "Can identical vehicle counts prove identical nitrogen oxide emissions?",
-        "answer": "No. Vehicle type, operation and fuel conditions also matter.",
+        "prompt": "If wind direction reverses during sampling, does a fixed-site concentration comparison alone establish changed source emissions?",
+        "answer": "No. Transport pathways change which air reaches the monitor; control wind and background concentrations before causal attribution.",
         "confirms": "Different environmental conditions, transport or boundaries alter the inference."
       },
       "reviews": {
@@ -106,7 +106,7 @@
       "demand_author_evidence": {
         "band": "D3",
         "adjudication": "NOT_RUN",
-        "note": "QRT instance candidate only, independent exact-task adjudication pending."
+        "note": "R3 changed-condition environment/chemical-causality author candidate; R01/R02 HOLD."
       }
     },
     {
@@ -328,34 +328,34 @@
       "source_exam_question_id": null,
       "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
       "predict": {
-        "prompt": "Decide which missing evidence or environmental boundary may matter: Explain why an ordinary filter can make muddy water clear without decreasing conductivity caused by dissolved salt.",
-        "defensible_answer": "Water can carry suspended particles, dissolved salts, dissolved gases and living microorganisms. Filtration through paper or sand can remove many suspended solids, but dissolved ions pass through ordinary filters. Boiling may inactivate many microbes but does not reliably remove dissolved salts; evaporation can even concentrate them. Distillation separates a volatile water fraction from many nonvolatile solutes, but it does not automatically guarantee removal of every volatile contaminant or microbial safety after collection."
+        "prompt": "Before solving, predict two competing causal histories and the evidence required: A river-water sample appears clear after boiling, but its electrical conductivity remains high and a chemical test indicates dissolved nitrate. Explain why clear appearance and boiling cannot establish that the water is safe to drink. Compare the different roles of particle removal, dissolved-ion treatment and microbial control, and specify evidence needed for a validated treatment decision.",
+        "defensible_answer": "Separate observation and mechanism, name a confounding variable and a possible controlled measurement; keep the actual scientific conclusion for the independent response."
       },
       "attempt": {
-        "prompt": "Explain why an ordinary filter can make muddy water clear without decreasing conductivity caused by dissolved salt.",
-        "produces": "A causal model that separates chemical identity, observation, measurement, confounders and a defensible independent check.",
-        "protected_W": "The learner independently completes the causal bridge, not exposed before first attempt.",
+        "prompt": "A river-water sample appears clear after boiling, but its electrical conductivity remains high and a chemical test indicates dissolved nitrate. Explain why clear appearance and boiling cannot establish that the water is safe to drink. Compare the different roles of particle removal, dissolved-ion treatment and microbial control, and specify evidence needed for a validated treatment decision.",
+        "produces": "Differentiate turbidity, dissolved ionic contaminant and biological risk; identify which independent tests are necessary before any potability claim.",
+        "protected_W": "Differentiate turbidity, dissolved ionic contaminant and biological risk; identify which independent tests are necessary before any potability claim.",
         "first_attempt_must_be_saved_before_feedback": true,
         "initial_answer_visibility": "HIDDEN",
         "hints": [
           {
             "id": "H1",
             "verb": "CLARIFY",
-            "text": "Separate observation, source, transformation and measured outcome for Water quality, separation and actual safety."
+            "text": "Physical clarity, dissolved chemical composition and biological safety are separate measurements; a single operation cannot prove all three."
           },
           {
             "id": "H2",
             "verb": "CORRELATE",
-            "text": "Relevant concept: Clear water can contain dissolved salts and microorganisms; treatment choice must depend on contaminant class."
+            "text": "Make an observation–chemical process–instrument table and ask what each available measurement cannot establish."
           },
           {
             "id": "H3",
             "verb": "OPEN_THE_WAY",
-            "text": "Propose two plausible causal accounts and a controlled discriminator; do not reveal which account is supported."
+            "text": "Describe two rival causal accounts, an independent discriminating measurement, and the relevant chemical species; do not select the final interpretation."
           }
         ],
         "post_commit_closure": {
-          "model_response": "A filter removes suspended particles by size/retention, but small Na⁺ and Cl⁻ ions remain dissolved. Clarity and conductivity describe different aspects of composition.",
+          "model_response": "Boiling can reduce many viable pathogens under suitable conditions but does not remove dissolved salts such as nitrate and can concentrate them through evaporation. Clear appearance does not rule out ions or microbes; high conductivity indicates mobile ions but is not nitrate-specific. A validated treatment must target known contaminants, with independently verified ion concentration and microbiological evidence; filtration, ion-selective treatment and disinfection solve distinct problems. This is a conceptual analysis, not advice to drink the sample.",
           "rubric": [
             "Identify substances, system boundary and relevant chemical transformations.",
             "Build a warranted causal or competing-model explanation.",
@@ -368,34 +368,34 @@
           {
             "ask": "What was observed, and which chemical identities are actually established?",
             "why_this_ask": "Avoid treating a correlation as source identity.",
-            "model_response": "A glass of water looks clear after filtration, but its measured electrical conductivity remains high. Has the filter failed, or is the test measuring a different class of material?"
+            "model_response": "Identify what the new measurements actually report, including temporal and environmental controls."
           },
           {
             "ask": "What chemical process, transport or separation assumptions matter?",
             "why_this_ask": "Make hidden system boundaries explicit.",
-            "model_response": "Turbidity, conductivity, acidity and microbiological tests measure different features. Clear water is an aesthetic observation, not a certificate of drinking-water safety. A scientifically sound treatment design identifies the contaminant class before choosing sedimentation, filtration, adsorption, suitable disinfection, ion removal or distillation. Each process has operating limits and may introduce new risks if handled poorly."
+            "model_response": "Compare chemical transformations and alternative transport or instrument effects before inferring cause."
           },
           {
             "ask": "What conclusion is warranted and what remains untested?",
             "why_this_ask": "Separate evidence from overclaim.",
-            "model_response": "A filter removes suspended particles by size/retention, but small Na⁺ and Cl⁻ ions remain dissolved. Clarity and conductivity describe different aspects of composition."
+            "model_response": "Boiling can reduce many viable pathogens under suitable conditions but does not remove dissolved salts such as nitrate and can concentrate them through evaporation. Clear appearance does not rule out ions or microbes; high conductivity indicates mobile ions but is not nitrate-specific. A validated treatment must target known contaminants, with independently verified ion concentration and microbiological evidence; filtration, ion-selective treatment and disinfection solve distinct problems. This is a conceptual analysis, not advice to drink the sample."
           }
         ],
-        "full_reconstruction": "A filter removes suspended particles by size/retention, but small Na⁺ and Cl⁻ ions remain dissolved. Clarity and conductivity describe different aspects of composition."
+        "full_reconstruction": "Boiling can reduce many viable pathogens under suitable conditions but does not remove dissolved salts such as nitrate and can concentrate them through evaporation. Clear appearance does not rule out ions or microbes; high conductivity indicates mobile ions but is not nitrate-specific. A validated treatment must target known contaminants, with independently verified ion concentration and microbiological evidence; filtration, ion-selective treatment and disinfection solve distinct problems. This is a conceptual analysis, not advice to drink the sample."
       },
       "diagnose": {
-        "wrong_idea": "Wrong path: 'Transparent water is chemically pure and safe to drink.' Repair with separate suspended, dissolved and microbial evidence and controls.",
-        "diagnostic_prompt": "Which omitted control or model assumption makes this inference unreliable? Wrong path: 'Transparent water is chemically pure and safe to drink.' Repair with separate suspended, dissolved and microbial evidence and controls.",
-        "model_response": "Some dissolved toxic chemicals do not strongly affect conductivity; a low reading does not guarantee absence of contaminants."
+        "wrong_idea": "A clear sample that has been boiled must be free of dissolved chemical hazards.",
+        "diagnostic_prompt": "Locate the unsupported environmental causal inference in: A clear sample that has been boiled must be free of dissolved chemical hazards.",
+        "model_response": "The measured property is not unique evidence of source, hazard or complete treatment; distinguish the quantities and design a controlled test."
       },
       "repair": {
-        "action": "Redraw a source–transport–transformation–measurement map and add the missing controls or flow ledger.",
-        "explanation": "Wrong path: 'Transparent water is chemically pure and safe to drink.' Repair with separate suspended, dissolved and microbial evidence and controls.",
+        "action": "Rebuild the chemical and measurement causal graph and state independently testable predictions.",
+        "explanation": "Incorrect shortcut: A clear sample that has been boiled must be free of dissolved chemical hazards. Use controlled evidence and a bounded chemical mechanism instead.",
         "core1a_ref": "curriculum/chemistry/agent-b/textbook/C14.core1a.md (section C14.02)"
       },
       "boundary_test": {
-        "prompt": "Can clear water still contain microbes?",
-        "answer": "Yes. Clarity does not certify microbial safety.",
+        "prompt": "If a carbon filter removes odour but nitrate remains above an applicable limit, can smell or clarity certify the water?",
+        "answer": "No. Chemical-specific measurement and validated treatment performance are required; sensory changes do not establish nitrate removal.",
         "confirms": "Different environmental conditions, transport or boundaries alter the inference."
       },
       "reviews": {
@@ -415,7 +415,7 @@
       "demand_author_evidence": {
         "band": "D3",
         "adjudication": "NOT_RUN",
-        "note": "QRT instance candidate only, independent exact-task adjudication pending."
+        "note": "R3 changed-condition environment/chemical-causality author candidate; R01/R02 HOLD."
       }
     },
     {
@@ -637,34 +637,34 @@
       "source_exam_question_id": null,
       "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
       "predict": {
-        "prompt": "Decide which missing evidence or environmental boundary may matter: Explain why a village without factories may have sulfate-associated acidic rain.",
-        "defensible_answer": "Ordinary rain is naturally somewhat acidic because atmospheric carbon dioxide dissolves and participates in weak carbonic-acid equilibria. In environmental chemistry, enhanced acidic deposition can occur when sulfur dioxide and nitrogen oxides emitted from combustion undergo atmospheric oxidation and hydration to form acidic species. The detailed reactions depend on conditions, sunlight, oxidants and droplets; a single direct equation is a simplified net model, not a full atmospheric mechanism."
+        "prompt": "Before solving, predict two competing causal histories and the evidence required: A region reports elevated sulfate and nitrate deposited in rainfall, but measured rainwater pH is close to 6 after a calcium-carbonate-rich dust event. Does the near-neutral reading prove negligible acidic deposition? Construct a chemical neutralisation explanation and identify measurements that would separate acid production, dust buffering and source transport.",
+        "defensible_answer": "Separate observation and mechanism, name a confounding variable and a possible controlled measurement; keep the actual scientific conclusion for the independent response."
       },
       "attempt": {
-        "prompt": "Explain why a village without factories may have sulfate-associated acidic rain.",
-        "produces": "A causal model that separates chemical identity, observation, measurement, confounders and a defensible independent check.",
-        "protected_W": "The learner independently completes the causal bridge, not exposed before first attempt.",
+        "prompt": "A region reports elevated sulfate and nitrate deposited in rainfall, but measured rainwater pH is close to 6 after a calcium-carbonate-rich dust event. Does the near-neutral reading prove negligible acidic deposition? Construct a chemical neutralisation explanation and identify measurements that would separate acid production, dust buffering and source transport.",
+        "produces": "Independently distinguish acid deposition from measured hydrogen-ion activity after buffering and propose a multi-species causal test.",
+        "protected_W": "Independently distinguish acid deposition from measured hydrogen-ion activity after buffering and propose a multi-species causal test.",
         "first_attempt_must_be_saved_before_feedback": true,
         "initial_answer_visibility": "HIDDEN",
         "hints": [
           {
             "id": "H1",
             "verb": "CLARIFY",
-            "text": "Separate observation, source, transformation and measured outcome for Combustion gases, acid deposition and causality."
+            "text": "Rainwater pH is an outcome after chemical buffering and transport, not a direct meter of every precursor emission or deposited ionic species."
           },
           {
             "id": "H2",
             "verb": "CORRELATE",
-            "text": "Relevant concept: Acid deposition can result from sulfur/nitrogen oxide transformations and long-range transport; controls are needed."
+            "text": "Make an observation–chemical process–instrument table and ask what each available measurement cannot establish."
           },
           {
             "id": "H3",
             "verb": "OPEN_THE_WAY",
-            "text": "Propose two plausible causal accounts and a controlled discriminator; do not reveal which account is supported."
+            "text": "Describe two rival causal accounts, an independent discriminating measurement, and the relevant chemical species; do not select the final interpretation."
           }
         ],
         "post_commit_closure": {
-          "model_response": "SO₂ or related sulfur species can be transported from distant sources, transform into acidic species and deposit in rain. Local absence of industry does not exclude long-range transport.",
+          "model_response": "Sulfur- and nitrogen-containing acids may be deposited while carbonate-containing dust consumes H⁺. In a simplified model CO₃²⁻ + 2H⁺ → CO₂ + H₂O; dissolved Ca²⁺ and sulfate/nitrate can remain after neutralisation. Consequently pH near 6 does not establish negligible acid-derived ion deposition. Measure sulfate/nitrate deposition, carbonate/alkalinity, dust inputs, winds and upwind concentrations; one pH reading cannot uniquely attribute source or reaction history.",
           "rubric": [
             "Identify substances, system boundary and relevant chemical transformations.",
             "Build a warranted causal or competing-model explanation.",
@@ -677,34 +677,34 @@
           {
             "ask": "What was observed, and which chemical identities are actually established?",
             "why_this_ask": "Avoid treating a correlation as source identity.",
-            "model_response": "Rainfall near a remote mountain is acidic although there is no nearby factory. Does this disprove the idea that combustion pollutants can affect rain chemistry?"
+            "model_response": "Identify what the new measurements actually report, including temporal and environmental controls."
           },
           {
             "ask": "What chemical process, transport or separation assumptions matter?",
             "why_this_ask": "Make hidden system boundaries explicit.",
-            "model_response": "Pollutants can travel considerable distances before chemical transformation and deposition. The absence of a local factory therefore does not disprove an upwind source. Conversely, acidic rain near a factory does not prove that factory is solely responsible without atmospheric data. Compare background rain acidity, wind trajectories, emission inventories, wet/dry deposition and controls at other sites."
+            "model_response": "Compare chemical transformations and alternative transport or instrument effects before inferring cause."
           },
           {
             "ask": "What conclusion is warranted and what remains untested?",
             "why_this_ask": "Separate evidence from overclaim.",
-            "model_response": "SO₂ or related sulfur species can be transported from distant sources, transform into acidic species and deposit in rain. Local absence of industry does not exclude long-range transport."
+            "model_response": "Sulfur- and nitrogen-containing acids may be deposited while carbonate-containing dust consumes H⁺. In a simplified model CO₃²⁻ + 2H⁺ → CO₂ + H₂O; dissolved Ca²⁺ and sulfate/nitrate can remain after neutralisation. Consequently pH near 6 does not establish negligible acid-derived ion deposition. Measure sulfate/nitrate deposition, carbonate/alkalinity, dust inputs, winds and upwind concentrations; one pH reading cannot uniquely attribute source or reaction history."
           }
         ],
-        "full_reconstruction": "SO₂ or related sulfur species can be transported from distant sources, transform into acidic species and deposit in rain. Local absence of industry does not exclude long-range transport."
+        "full_reconstruction": "Sulfur- and nitrogen-containing acids may be deposited while carbonate-containing dust consumes H⁺. In a simplified model CO₃²⁻ + 2H⁺ → CO₂ + H₂O; dissolved Ca²⁺ and sulfate/nitrate can remain after neutralisation. Consequently pH near 6 does not establish negligible acid-derived ion deposition. Measure sulfate/nitrate deposition, carbonate/alkalinity, dust inputs, winds and upwind concentrations; one pH reading cannot uniquely attribute source or reaction history."
       },
       "diagnose": {
-        "wrong_idea": "Wrong path: 'Any rain below pH 7 proves industrial acid rain from the nearest chimney.' Repair by accounting for natural dissolved CO₂, regional transport and multiple potential acidic species.",
-        "diagnostic_prompt": "Which omitted control or model assumption makes this inference unreliable? Wrong path: 'Any rain below pH 7 proves industrial acid rain from the nearest chimney.' Repair by accounting for natural dissolved CO₂, regional transport and multiple potential acidic species.",
-        "model_response": "Rain chemistry can vary over time and geography; a pH value without ionic composition and controls rarely proves one mechanism."
+        "wrong_idea": "A near-neutral pH proves sulfate and nitrate pollutants were not deposited.",
+        "diagnostic_prompt": "Locate the unsupported environmental causal inference in: A near-neutral pH proves sulfate and nitrate pollutants were not deposited.",
+        "model_response": "The measured property is not unique evidence of source, hazard or complete treatment; distinguish the quantities and design a controlled test."
       },
       "repair": {
-        "action": "Redraw a source–transport–transformation–measurement map and add the missing controls or flow ledger.",
-        "explanation": "Wrong path: 'Any rain below pH 7 proves industrial acid rain from the nearest chimney.' Repair by accounting for natural dissolved CO₂, regional transport and multiple potential acidic species.",
+        "action": "Rebuild the chemical and measurement causal graph and state independently testable predictions.",
+        "explanation": "Incorrect shortcut: A near-neutral pH proves sulfate and nitrate pollutants were not deposited. Use controlled evidence and a bounded chemical mechanism instead.",
         "core1a_ref": "curriculum/chemistry/agent-b/textbook/C14.core1a.md (section C14.03)"
       },
       "boundary_test": {
-        "prompt": "Would pH below 7 alone demonstrate industrial acid deposition?",
-        "answer": "No. Natural dissolved CO₂ can make ordinary rain mildly acidic.",
+        "prompt": "If the same sulfate concentration occurs without carbonate dust, must the rainwater have the same pH?",
+        "answer": "No. Buffering and acid-neutralising capacity differ; pH can change even for comparable deposition of sulfate-containing species.",
         "confirms": "Different environmental conditions, transport or boundaries alter the inference."
       },
       "reviews": {
@@ -724,7 +724,7 @@
       "demand_author_evidence": {
         "band": "D3",
         "adjudication": "NOT_RUN",
-        "note": "QRT instance candidate only, independent exact-task adjudication pending."
+        "note": "R3 changed-condition environment/chemical-causality author candidate; R01/R02 HOLD."
       }
     },
     {
