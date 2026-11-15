@@ -45,9 +45,9 @@ function figure(u){
           '<circle cx="149" cy="120" r="14" fill="#e59832" stroke="#9e5808" stroke-width="2"/>'+
           '<circle cx="130" cy="120" r="8" fill="#1b7280"/>'+
           '<circle cx="530" cy="120" r="8" fill="#1b7280"/>'+
-          line(130,120,130,70)+line(530,120,530,95)+
+          line(130,120,130,70)+line(530,120,530,145)+
           text(155,96,"Sun")+text(75,125,"Perihelion: rₚ")+text(75,65,"vₚ (fast)")+
-          text(465,145,"Aphelion: rₐ")+text(485,85,"vₐ (slow)");
+          text(465,145,"Aphelion: rₐ")+text(485,170,"vₐ (slow)");
    break;
  case "satellite_energy":
    shapes='<circle cx="240" cy="120" r="50" fill="#d8ecf8" stroke="#1c5d80" stroke-width="3"/>'+

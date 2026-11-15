@@ -62,6 +62,7 @@ function refresh(){
 function bind(){
  $("firstCommit").addEventListener("click",()=>{
    if(rec?.first_answer)return;
+   try{if(localStorage.getItem(key)){if(loadState())refresh();return;}}catch(e){fail("Storage unavailable; first attempt not saved.");return;}
    const prediction=$("prediction").value.trim(),answer=$("attempt").value.trim();
    if(!prediction||!answer){fail("Both a prediction and an explained first attempt are required.");return;}
    let prehelp=false;
@@ -143,7 +144,7 @@ async function init(){
   if(!u)throw Error("Cross-topic task owner missing; HOLD");
   if(!globalThis.crypto?.subtle || typeof TextEncoder==="undefined")throw Error("Content-digest protection unavailable");
   const fingerprintSource=JSON.stringify([ptask.uid,ptask.revision,ptask.prediction,ptask.prompt,ptask.w,
-    ptask.reconstruction,ptask.alternative,ptask.hints,ptask.boundaryPrompt,ptask.boundaryModel]);
+    ptask.reconstruction,ptask.alternative,ptask.hints,ptask.diagnosis,ptask.repair,ptask.boundaryPrompt,ptask.boundaryModel]);
   const bytes=new TextEncoder().encode(fingerprintSource);
   const hash=await crypto.subtle.digest("SHA-256",bytes);
   contentFingerprint=Array.from(new Uint8Array(hash),b=>b.toString(16).padStart(2,"0")).join("");
