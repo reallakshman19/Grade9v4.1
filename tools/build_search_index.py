@@ -357,11 +357,30 @@ def build_question_documents(repo_root: Path, synonyms: list[dict]) -> list[dict
                 stem = q.get("stem", "")
                 title = q.get("source_name", stem[:110])
                 topic = q.get("topic", "Mechanics").replace("_", " ").title()
-                badge = "{Reviewed} · PRACTICE"
-                breadcrumb = f"NSEJS · Physics · {topic} · Authored Practice"
-                search_vector = normalize_text(
-                    f"{qid} {title} {stem} Physics {topic} mechanics practice authored nsejs"
-                )
+                circuit = re.fullmatch(r"NSEJS-CIRC-L([12])-Q(\d{2})", qid)
+                if circuit:
+                    # Source-backed worksheet candidates are never "Reviewed" or
+                    # authenticated IAPT papers. Return to the live Core2 reader.
+                    level = int(circuit.group(1))
+                    number = int(circuit.group(2))
+                    title = f"Current Electricity worksheet · Level {level} · Q{number:02d}"
+                    topic = "Current Electricity"
+                    badge = "SOURCE WORKSHEET · ACADEMIC HOLD"
+                    breadcrumb = f"NSEJS · Physics · Current Electricity · Worksheet Level {level} · HOLD"
+                    search_vector = normalize_text(
+                        f"{qid} {title} {stem} Physics Current Electricity circuits "
+                        f"worksheet level {level} source hold nsejs"
+                    )
+                    item_url = f"nsejs/physics/index.html?topic=circuits#{qid}"
+                    item_score = q.get("score", 0)
+                else:
+                    badge = "{Reviewed} · PRACTICE"
+                    breadcrumb = f"NSEJS · Physics · {topic} · Authored Practice"
+                    search_vector = normalize_text(
+                        f"{qid} {title} {stem} Physics {topic} mechanics practice authored nsejs"
+                    )
+                    item_url = f"nsejs/physics/authored-practice.html?q={qid}#{qid}"
+                    item_score = 4
                 docs.append({
                     "id": f"Q-{qid}",
                     "original_id": qid,
@@ -376,12 +395,12 @@ def build_question_documents(repo_root: Path, synonyms: list[dict]) -> list[dict
                     "title": title,
                     "stem": stem,
                     "options": q.get("options", []),
-                    "hints": q.get("hints", []),
+                    "hints": [] if circuit else q.get("hints", []),
                     "band": q.get("band", "D2"),
                     "op": q.get("op", "TRANSFER"),
-                    "score": 4,
+                    "score": item_score,
                     "topic": topic,
-                    "url": f"nsejs/physics/authored-practice.html?q={qid}#{qid}",
+                    "url": item_url,
                     "search_text": search_vector
                 })
         except Exception as e:

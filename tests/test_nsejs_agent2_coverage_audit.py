@@ -52,8 +52,11 @@ def test_two_native_subtopics_per_topic_keep_d3_only_and_all_review_gates_held(t
     pkg = load(CURR / f"topics/{topic}/physics-topic-package.v1.json")
     assert pkg["topic_id"] == topic
     assert pkg["owner_agent"] == "AGENT_2"
-    assert pkg["version"] == "0.2.0"
-    assert pkg["topic_adapter"]["version"] == "0.2.0"
+    # PH11 adds only a worksheet reconciliation adapter; its original two
+    # teaching subtopics and all Rule 13 gates remain unchanged.
+    expected_version = "0.3.0" if topic == "PH11" else "0.2.0"
+    assert pkg["version"] == expected_version
+    assert pkg["topic_adapter"]["version"] == pkg["pins"]["topic_adapter_version"] == expected_version
     assert len(pkg["subtopics"]) == 2
     assert len(pkg["core1a"]) == 2
     assert len(pkg["core1b"]) == 12

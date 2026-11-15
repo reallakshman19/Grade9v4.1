@@ -17,6 +17,7 @@
     "circuits": {
       title: "DC Circuits & Resistor Networks",
       links: [
+        { label: "▶ Level-1 Current Electricity Worksheet (Q1–Q36)", url: "#NSEJS-CIRC-L1-Q01" },
         { label: "▶ Level-2 Advanced Resistor Networks (Q1–Q20)", url: "#NSEJS-CIRC-L2-Q01" },
         { label: "▶ 3D Resistor Cube Symmetry (D3)", url: "core1/recovery/nsejs-circuits-cube-d3-r1/index.html" },
         { label: "▶ Infinite Resistor Ladders (D3)", url: "core1/recovery/nsejs-circuits-ladder-d3-r1/index.html" },
@@ -107,11 +108,39 @@
     figures:q.source_figures || [],figure_note:q.figure_note || "",
     reasoning:q.steps || [],boundary:q.check || ""
   });
+  // Existing 50 source-candidate revisions must remain byte-compatible with their
+  // pinned integrity ledger. The separately authored Circuit worksheet intake
+  // receives stronger asset-byte and hint-content binding.
+  const circuitCandidate = q => /^NSEJS-CIRC-L[12]-Q\d{2}$/.test(String(q.source_id || ""));
+  const digestHex = bytes => Array.from(new Uint8Array(bytes),
+    b => b.toString(16).padStart(2,"0")).join("");
+  async function circuitFigureHashes(q) {
+    const figNames = q.source_figures || [];
+    if (!Array.isArray(figNames)) throw new Error("Circuit figure list invalid; fail closed");
+    const fingerprints = [];
+    for (const name of figNames) {
+      if (!/^fig_nsejs_circ_l[12]_q\d{2}\.svg$/.test(String(name)))
+        throw new Error("Unrecognized Circuit figure: " + name);
+      const response = await fetch("../assets/" + name, {cache: "no-store"});
+      if (!response.ok) throw new Error("Circuit prompt figure unavailable: " + name);
+      const data = await response.arrayBuffer();
+      if (data.byteLength < 100) throw new Error("Circuit prompt figure empty: " + name);
+      fingerprints.push({name, sha256: digestHex(await crypto.subtle.digest("SHA-256", data))});
+    }
+    return fingerprints;
+  }
   async function revision(q) {
-    if (!crypto || !crypto.subtle) throw new Error("SHA-256 revision service unavailable; attempt commitment disabled");
-    const bytes = new TextEncoder().encode(revisionPayload(q));
+    if (typeof crypto === "undefined" || !crypto.subtle)
+      throw new Error("SHA-256 revision service unavailable; attempt commitment disabled");
+    const payload = revisionPayload(q);
+    const complete = circuitCandidate(q)
+      ? JSON.stringify({payload, hints: q.hints || [],
+          source_pdf_sha256: q.source_pdf_sha256 || "",
+          figure_bytes_sha256: await circuitFigureHashes(q)})
+      : payload;
+    const bytes = new TextEncoder().encode(complete);
     const hash = await crypto.subtle.digest("SHA-256", bytes);
-    return Array.from(new Uint8Array(hash), b => b.toString(16).padStart(2,"0")).join("");
+    return digestHex(hash);
   }
   function textOption(opt, i) {
     const match = String(opt).match(/^[A-H]\s*[:.)]\s*/);
@@ -136,8 +165,8 @@
   }
   const producerProposedIds = parseOfficialKey;
 
-  function attemptKey(q) {
-    return ["g9","nsejs","core2","candidate-attempt","v1",encodeURIComponent(uidOf(q))].join(":");
+  function attemptKey(q, contentRevision) {
+    return ["g9","nsejs","core2","candidate-attempt","v2",encodeURIComponent(uidOf(q)),contentRevision].join(":");
   }
   function getAttempt(key) {
     try {
@@ -213,7 +242,12 @@
         img.className = "candidate-fig-img";
         img.style.cssText = "max-width: 100%; height: auto; max-height: 320px; display: inline-block; border-radius: 6px;";
         img.onerror = function() {
-          img.src = "assets/" + fig;
+          img.onerror = null;
+          if (circuitCandidate(q)) {
+            // A failed actual render must never leave an enabled worksheet attempt.
+            box.querySelectorAll("input,button").forEach(el => { el.disabled = true; });
+            append(box, text("p", "Required worksheet diagram could not render. Attempt disabled.", "figure-warning"));
+          } else img.src = "assets/" + fig;
         };
         figWrap.appendChild(img);
       });
@@ -225,7 +259,8 @@
       append(box, figWrap);
     }
 
-    const requiredFigure=Boolean(integrity && integrity.figure_dependency_missing);
+    const missingWorksheetFigure = circuitCandidate(q) && /\[FIG[^\]]*\]/.test(q.stem || "") && !(q.source_figures || []).length;
+    const requiredFigure=Boolean((integrity && integrity.figure_dependency_missing) || missingWorksheetFigure);
     if (requiredFigure) {
       const figNames=(q.source_figures || []).length ? q.source_figures.join(", ") : "official examination figure/graph";
       append(box,text("p","Required or claimed source figure not supplied in this candidate page: "+figNames+". Source-fidelity HOLD; commitment disabled.","figure-warning"));
@@ -234,7 +269,7 @@
     details.style.cssText = "margin: 8px 0 14px; font-size: 12px; color: #64748b;";
     const summary = text("summary", "Data integrity & QRT verification (technical audit; not admission)");
     summary.style.cssText = "cursor: pointer; font-weight: 600; color: #475569;";
-    const infoP = text("p", "Stem SHA-256: " + (q.stem_sha256 || "verified") + " · Observed matches declared · Demand: " + opStr + " / " + bandStr + " · Academic status: RULE_13_HOLD");
+    const infoP = text("p", "Stem SHA-256: " + (q.stem_sha256 || "NOT_RECORDED") + " · Internal digest is not source authentication · Demand: " + opStr + " / " + bandStr + " · Academic status: RULE_13_HOLD");
     infoP.style.cssText = "margin: 4px 0 0; font-family: monospace; font-size: 11px; word-break: break-all;";
     append(details, summary, infoP);
     append(box, details);
@@ -271,21 +306,64 @@
     retryBtn.style.cssText = "background: #f1f5f9; color: #334155; border: 1.5px solid #cbd5e1; display: none;";
     append(actions, retryBtn);
 
+    // The attempt key is bound to question text, hints, solution and diagram
+    // bytes. It never silently reuses a prior candidate content revision.
+    const contentRevision = await revision(q);
+    const k = attemptKey(q, contentRevision);
     const hints = Array.isArray(q.hints) ? q.hints : [];
+    // Worksheet hint exposure is revision-bound and separate from the first attempt.
+    const worksheet = circuitCandidate(q);
+    const hintKey = "g9:nsejs:core2:hint-exposure:v1:" + encodeURIComponent(uidOf(q)) + ":" + contentRevision;
+    let hintDepth = 0;
+    if (worksheet) {
+      try {
+        const savedDepth = Number(localStorage.getItem(hintKey) || 0);
+        if (Number.isInteger(savedDepth)) hintDepth = Math.max(0, Math.min(hints.length, savedDepth));
+      } catch (_) {}
+    }
+    let refreshHints = () => {};
     if (hints.length > 0) {
-      const hintBtn = text("button", "Show Progressive Hints (" + hints.length + ")");
+      const hintBtn = text("button", "");
       hintBtn.type = "button";
       hintBtn.style.background = "#f8fafc";
       hintBtn.style.color = "#334155";
       hintBtn.style.border = "1.5px solid #cbd5e1";
       const hintBox = text("div", "", "answer");
       hintBox.hidden = true;
-      hints.forEach(h => {
-        append(hintBox, text("strong", h.prompt || "Hint:"), text("p", h.text || ""));
-      });
+      hintBox.setAttribute("aria-live", "polite");
+      const paintHints = () => {
+        const count = worksheet ? hintDepth : (hintBox.hidden ? 0 : hints.length);
+        hintBox.replaceChildren();
+        hints.slice(0, count).forEach(h => {
+          append(hintBox, text("strong", h.prompt || "Hint:"), text("p", h.text || ""));
+        });
+        if (worksheet) {
+          hintBox.hidden = count === 0;
+          hintBtn.textContent = count === hints.length ? "All " + count + " hints revealed" : "Reveal hint " + (count + 1) + " of " + hints.length;
+          hintBtn.disabled = requiredFigure || count === hints.length;
+        } else {
+          hintBtn.textContent = hintBox.hidden ? "Show Progressive Hints (" + hints.length + ")" : "Hide Progressive Hints";
+          hintBtn.disabled = requiredFigure;
+        }
+        hintBtn.setAttribute("aria-expanded", String(!hintBox.hidden));
+      };
+      paintHints();
+      refreshHints = paintHints;
       hintBtn.onclick = () => {
-        hintBox.hidden = !hintBox.hidden;
-        hintBtn.textContent = hintBox.hidden ? "Show Progressive Hints (" + hints.length + ")" : "Hide Progressive Hints";
+        if (requiredFigure) return;
+        if (worksheet) {
+          if (hintDepth >= hints.length) return;
+          try { localStorage.setItem(hintKey, String(hintDepth + 1)); }
+          catch (_) {
+            feedbackBanner.hidden = false;
+            feedbackBanner.textContent = "HOLD: browser storage unavailable. Hint exposure was not saved; helper remains locked.";
+            return;
+          }
+          hintDepth++;
+        } else {
+          hintBox.hidden = !hintBox.hidden;
+        }
+        paintHints();
       };
       append(actions, hintBtn, hintBox);
     }
@@ -293,17 +371,19 @@
 
     const answerBox = text("div", "", "answer");
     answerBox.hidden = true;
-    append(answerBox, text("h3", "Step-by-Step Derivation & Official Key"));
-    append(answerBox, text("p", q.answer || "Official Key Pending", "official-key-line"));
-    if (Array.isArray(q.steps) && q.steps.length > 0) {
-      q.steps.forEach(s => append(answerBox, text("p", s)));
-    }
-    if (q.check) {
-      append(answerBox, text("p", "Consistency Verification: " + q.check, "ok"));
-    }
+    // No answer or derivation text node is created before a durable first attempt.
     append(box, answerBox);
-
-    const k = attemptKey(q);
+    function revealAnswerAfterCommit() {
+      if (!getAttempt(k)) return false;
+      answerBox.replaceChildren(
+        text("h3", "Candidate derivation & reported key · academic HOLD"),
+        text("p", q.answer || "Recorded key unavailable", "official-key-line")
+      );
+      if (Array.isArray(q.steps)) q.steps.forEach(s => append(answerBox, text("p", s)));
+      if (q.check) append(answerBox, text("p", "Consistency Verification: " + q.check, "ok"));
+      answerBox.hidden = false;
+      return true;
+    }
 
     function renderAttemptFeedback(selected) {
       const selectedSet = new Set(selected || []);
@@ -315,7 +395,7 @@
       });
       commit.disabled = true;
       commit.textContent = "Attempt Saved Locally";
-      retryBtn.style.display = "inline-flex";
+      retryBtn.style.display = "none";
 
       // Clear previous classes and badges
       controls.forEach(field => {
@@ -342,8 +422,7 @@
           const lbl = field.closest("label");
           if (lbl) lbl.classList.add("opt-neutral-disabled");
         });
-        answerBox.hidden = false;
-        renderMath(answerBox);
+        if (revealAnswerAfterCommit()) renderMath(answerBox);
         return;
       }
 
@@ -357,8 +436,7 @@
             text("p", "Your choice was saved locally. Detailed official key is being cross-checked.")
           )
         );
-        answerBox.hidden = false;
-        renderMath(answerBox);
+        if (revealAnswerAfterCommit()) renderMath(answerBox);
         return;
       }
 
@@ -374,15 +452,15 @@
 
         if (isOfficialKey && isUserChoice) {
           lbl.classList.add("opt-user-correct");
-          const badge = text("span", "✓ Correct (Your Choice)", "opt-badge badge-user-correct");
+          const badge = text("span", "✓ Matches recorded key", "opt-badge badge-user-correct");
           lbl.appendChild(badge);
         } else if (isOfficialKey && !isUserChoice) {
           lbl.classList.add("opt-correct-key");
-          const badge = text("span", "✓ Correct Option", "opt-badge badge-correct-key");
+          const badge = text("span", "✓ Recorded candidate key", "opt-badge badge-correct-key");
           lbl.appendChild(badge);
         } else if (!isOfficialKey && isUserChoice) {
           lbl.classList.add("opt-user-wrong");
-          const badge = text("span", "✗ Your Choice (Incorrect)", "opt-badge badge-user-wrong");
+          const badge = text("span", "✗ Differs from recorded key", "opt-badge badge-user-wrong");
           lbl.appendChild(badge);
         } else {
           lbl.classList.add("opt-neutral-disabled");
@@ -393,10 +471,10 @@
       if (isAllCorrect) {
         feedbackBanner.className = "attempt-feedback-banner feedback-correct";
         feedbackBanner.replaceChildren(
-          text("div", "✅ CORRECT", "feedback-badge-pill"),
+          text("div", "MATCHES CANDIDATE KEY", "feedback-badge-pill"),
           append(text("div", "", "feedback-msg"),
-            text("strong", "Correct! Excellent work!"),
-            text("p", "Your answer " + Array.from(selectedSet).map(s => "(" + s + ")").join(", ") + " perfectly matches the official verified key. Check the step-by-step physical derivation below.")
+            text("strong", "Your selection matches the recorded candidate key."),
+            text("p", "Your answer " + Array.from(selectedSet).map(s => "(" + s + ")").join(", ") + " matches the recorded candidate key (not independently reviewed). Check the step-by-step physical derivation below.")
           )
         );
       } else {
@@ -404,39 +482,28 @@
         const userChoices = Array.from(selectedSet).map(s => "(" + s + ")").join(", ") || "None";
         const keyChoices = Array.from(proposedSet).map(s => "(" + s + ")").join(", ");
         feedbackBanner.replaceChildren(
-          text("div", "❌ INCORRECT", "feedback-badge-pill"),
+          text("div", "DIFFERS FROM CANDIDATE KEY", "feedback-badge-pill"),
           append(text("div", "", "feedback-msg"),
-            text("strong", "Incorrect Attempt"),
-            text("p", "You selected " + userChoices + ". The correct answer is " + keyChoices + ". Carefully examine the complete worked derivation below to review the physical principles and formulation.")
+            text("strong", "Recorded candidate-key mismatch"),
+            text("p", "You selected " + userChoices + ". The recorded candidate key lists " + keyChoices + ". Carefully examine the complete worked derivation below to review the physical principles and formulation.")
           )
         );
       }
 
-      answerBox.hidden = false;
-      renderMath(answerBox);
+      if (revealAnswerAfterCommit()) {
+        refreshHints();
+        renderMath(answerBox);
+      }
     }
 
+    // Do not delete the first committed response from a candidate question.
     retryBtn.onclick = () => {
-      try { localStorage.removeItem(k); } catch (_) {}
-      controls.forEach(c => {
-        c.disabled = false;
-        c.checked = false;
-        const lbl = c.closest("label");
-        if (lbl) {
-          lbl.classList.remove("opt-user-correct", "opt-user-wrong", "opt-correct-key", "opt-neutral-disabled");
-          const b = lbl.querySelector(".opt-badge");
-          if (b) b.remove();
-        }
-      });
-      commit.disabled = false;
-      commit.textContent = "Commit First Attempt & Reveal Derivation";
-      retryBtn.style.display = "none";
-      feedbackBanner.hidden = true;
-      answerBox.hidden = true;
+      const saved = getAttempt(k);
+      if (saved) renderAttemptFeedback(saved.selected || saved.selected_option_ids || []);
     };
 
     const existing = getAttempt(k);
-    if (existing) {
+    if (existing && !requiredFigure) {
       const prevSelected = existing.selected || existing.selected_option_ids;
       if (prevSelected) {
         renderAttemptFeedback(prevSelected);
@@ -444,18 +511,31 @@
     }
 
     commit.onclick = () => {
+      if (requiredFigure) return;
       const selected = controls.filter(c => c.checked).map(c => c.value);
       if (selected.length === 0) {
         alert("Please select your answer option(s) before committing.");
         return;
       }
+      const already = getAttempt(k);
+      if (already) {
+        renderAttemptFeedback(already.selected || already.selected_option_ids || []);
+        return;
+      }
       const attempt = {
         question_uid: uidOf(q),
         source_id: q.source_id,
+        content_revision_sha256: contentRevision,
         selected: selected,
+        ...(worksheet ? {hints_revealed: hintDepth, assisted: hintDepth > 0} : {}),
         timestamp: new Date().toISOString()
       };
-      saveAttempt(k, attempt);
+      if (!saveAttempt(k, attempt)) {
+        feedbackBanner.hidden = false;
+        feedbackBanner.className = "attempt-feedback-banner feedback-dropped";
+        feedbackBanner.textContent = "HOLD: browser storage unavailable. First attempt was not saved; candidate answer and solution remain locked.";
+        return;
+      }
       renderAttemptFeedback(selected);
     };
 
@@ -473,6 +553,7 @@
   };
 
   let searchDebounceTimer = null;
+  let renderGeneration = 0;
 
   function updateFilterControls() {
     const qbSearch = document.getElementById("qbSearch");
@@ -501,6 +582,7 @@
   }
 
   function applyFilters(shouldScrollToTarget) {
+    const generation = ++renderGeneration;
     updateFilterControls();
 
     const grid = document.getElementById("topicsGrid");
@@ -576,7 +658,7 @@
       }
     } else {
       const topicName = topicObj ? topicObj[2] : filterState.topic;
-      const topicTotal = topicObj ? topicObj[4] : filtered.length;
+      const topicTotal = topicObj ? combinedQuestions.filter(q => q.topic === topicObj[1]).length : filtered.length;
       if (rawQ || filterState.difficulty || filterState.exam) {
         countMsg = `Showing ${filtered.length} of ${topicTotal} ${topicName} questions`;
       } else {
@@ -631,11 +713,30 @@
         emptyBox.append(p, rBtn);
         target.append(emptyBox);
       } else {
-        filtered.forEach((q, i) => {
-          createCard(q, i).then(card => {
-            target.append(card);
-            renderMath(card);
-          });
+        // Keep canonical source/worksheet order even when figure hashes complete
+        // asynchronously. A superseded filter result must never append stale cards.
+        Promise.all(filtered.map((q, i) => createCard(q, i))).then(cards => {
+          if (generation !== renderGeneration) return;
+          target.append(...cards);
+          cards.forEach(renderMath);
+          if (shouldScrollToTarget) {
+            const id = decodeURIComponent((window.location.hash || "").replace(/^#/, ""));
+            const needle = id || filterState.q;
+            const wanted = needle && cards.find(card =>
+              card.dataset.sourceId === needle || card.dataset.qid === needle ||
+              card.id === "question-" + encodeURIComponent(needle));
+            if (wanted) {
+              wanted.scrollIntoView({behavior: "smooth", block: "start"});
+              wanted.classList.add("card-highlight");
+            }
+          }
+        }).catch(error => {
+          if (generation !== renderGeneration) return;
+          target.replaceChildren(text("p", "Circuit candidate reader HOLD: " + error.message, "figure-warning"));
+          if (status) {
+            status.textContent = "Core2 candidates unavailable: " + error.message;
+            status.className = "error";
+          }
         });
       }
     }
@@ -654,28 +755,6 @@
       history.replaceState(null, "", "index.html" + qs + hash);
     }
 
-    // Anchor scrolling & highlight
-    if (shouldScrollToTarget) {
-      setTimeout(() => {
-        let el = null;
-        if (hash) {
-          const rawHash = decodeURIComponent(hash.replace(/^#/, ""));
-          el = document.getElementById(rawHash) ||
-               document.getElementById("question-" + rawHash) ||
-               document.querySelector(`[data-qid="${rawHash}"]`) ||
-               document.querySelector(`[data-source-id="${rawHash}"]`);
-        }
-        if (!el && rawQ) {
-          el = document.getElementById("question-" + encodeURIComponent(rawQ)) ||
-               document.querySelector(`[data-qid="${rawQ}"]`) ||
-               document.querySelector(`[data-source-id="${rawQ}"]`);
-        }
-        if (el) {
-          el.scrollIntoView({ behavior: "smooth", block: "start" });
-          el.classList.add("card-highlight");
-        }
-      }, 350);
-    }
   }
 
   function initFilterBar() {
@@ -857,7 +936,7 @@
         btn.type = "button";
         btn.className = "topic-pill-btn";
         btn.dataset.topic = t[0];
-        btn.innerHTML = `<span class="pill-icon">${t[3]}</span> <span class="pill-name">${t[2]}</span> <span class="pill-count">${t[4]} Qs</span>`;
+        btn.innerHTML = `<span class="pill-icon">${t[3]}</span> <span class="pill-name">${t[2]}</span> <span class="pill-count">${combinedQuestions.filter(q => q.topic === t[1]).length} Qs</span>`;
         btn.onclick = () => window.selectPhysicsTopic(t[0]);
         nav.append(btn);
       });
