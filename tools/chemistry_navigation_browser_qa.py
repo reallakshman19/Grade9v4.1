@@ -33,7 +33,7 @@ def loaded(page,unit):
     ensure(page.locator(".chem-journey-nav").count()>=1,"missing shared learner steps "+unit)
     ensure(page.locator(".chem-journey-step").first.count()==1,"missing Learn step "+unit)
     ensure(page.locator(".chem-next").count()+page.locator(".chem-journey-edge").count()>=1,"missing next/edge "+unit)
-    ensure(page.locator(".chem-journey-scope").first.inner_text().find("not necessarily readable original exam")>=0,
+    ensure(page.locator(".chem-journey-scope").first.inner_text().find("NOT a verified playable original exam")>=0,
            "question map status misleading "+unit)
     width=page.evaluate("({scroll:document.documentElement.scrollWidth,inside:innerWidth})")
     ensure(width["scroll"]<=width["inside"]+3,f"horizontal overflow {unit}: {width}")
@@ -48,6 +48,7 @@ def check_catalog(page,label):
     ensure(page.locator("#chem-chapters details li a").count()==84,"not 84 subtopic links")
     ensure(page.locator("text=Peer-Audited Curriculum").count()==0,"misleading peer-reviewed badge")
     ensure(page.locator("#topicNav").count()==1,"legacy filter removed rather than demoted")
+    ensure(not page.locator("#chem-bank-archive").evaluate("(e)=>e.open"),"legacy bank not collapsed by default")
     page.screenshot(path=str(OUT/(label+"-chapters.png")),full_page=True)
     return [x.get_attribute("href") for x in page.locator("#chem-chapters details li a").all()]
 
@@ -57,7 +58,7 @@ def check_chapter(page,unit,chapter_href,label):
     nav=page.locator(".chem-journey-nav").first
     ensure(nav.get_by_text("1 · Learn").count()==1,"Learn action missing "+unit)
     ensure(nav.get_by_text("2 · Try it").count()==1,"Try action missing "+unit)
-    ensure(nav.get_by_text("3 · Exam practice / source status").count()==1,
+    ensure(nav.get_by_text("3 · Question source index").count()==1,
            "Exam status action missing "+unit)
     ensure(nav.get_by_text("Need more help?").count()==1,"Help missing "+unit)
     ensure(nav.get_by_text("Chemistry chapters").count()==1,"chapter return missing "+unit)
@@ -72,6 +73,10 @@ def check_deep_links(page,links,label):
         if "curriculum/chemistry/preview" in href:
             ensure(page.locator("#chem-textbook .lesson").count()>=5,
                    "C01-C07 chapter sections absent: "+href)
+            ensure(page.locator("#chem-textbook .lesson:visible").count()==1,
+                   "C01-C07 multiple visible subtopics: "+href)
+            ensure(page.locator(".chem-journey-nav").count()==1,
+                   "C01-C07 duplicate learner navigation: "+href)
         else:
             ensure(page.locator("#lesson h2").count()>=1,
                    "C08-C14 subtopic missing: "+href)
@@ -122,7 +127,7 @@ def check_cross_chapter(page):
     last="CHEM-C07.07"
     route=urljoin(HOME,"../../curriculum/chemistry/preview/C07.html?subtopic="+last+"#chem-c07-07")
     page.goto(route,wait_until="domcontentloaded")
-    nav=page.locator("#chem-c07-07 > .chem-journey-nav")
+    nav=page.locator(".chem-active-nav > .chem-journey-nav")
     nav.wait_for(timeout=25000)
     next_url=nav.locator(".chem-next").get_attribute("href")
     ensure("unit=C08" in next_url and "subtopic=CHEM-C08.01" in next_url,"C07->C08 gap")
@@ -156,10 +161,62 @@ def check_unsafe_return(page):
     ensure(page.locator("#chemistry-lesson-return").count()==0,"unsafe external return accepted")
     return True
 
+
+def check_r2_focus_and_browser_history(page):
+    url=urljoin(HOME,"../../curriculum/chemistry/preview/C01.html")
+    page.goto(url,wait_until="domcontentloaded")
+    loaded(page,"C01 focused default")
+    ensure(page.locator(".chem-journey-nav").count()==1,"duplicate C01 step bar")
+    ensure(page.locator(".lesson:visible").count()==1,"C01 did not focus on one lesson")
+    ensure(page.locator("#chem-c01-01").is_visible(),"C01 first subtopic not active")
+    page.locator('.toc a[data-subtopic="CHEM-C01.02"]').click()
+    ensure("subtopic=CHEM-C01.02" in page.url,"TOC did not record selected subtopic")
+    ensure(page.locator("#chem-c01-02").is_visible(),"TOC did not show second subtopic")
+    ensure(not page.locator("#chem-c01-01").is_visible(),"TOC did not hide first subtopic")
+    page.go_back(wait_until="domcontentloaded")
+    ensure(page.locator("#chem-c01-01").is_visible(),"Browser Back lost original subtopic")
+    ensure(page.locator(".chem-journey-nav").count()==1,"Browser Back duplicated shared navigation")
+    return True
+
+
+def check_r2_legacy_bank_deep_link(page):
+    page.goto(HOME+"?topic=redox",wait_until="domcontentloaded")
+    ensure(page.locator("#chem-bank-archive").evaluate("(e)=>e.open"),
+           "legacy topic query landed in closed bank")
+    page.goto(HOME+"#topicsGrid",wait_until="domcontentloaded")
+    ensure(page.locator("#chem-bank-archive").evaluate("(e)=>e.open"),
+           "legacy bank anchor landed in closed bank")
+    return True
+
+
+def check_r2_contextual_recovery(page):
+    url=urljoin(HOME,"../../curriculum/chemistry/preview/C04.html?subtopic=CHEM-C04.03&mode=study#chem-c04-03")
+    page.goto(url,wait_until="domcontentloaded")
+    loaded(page,"C04 recovery context")
+    help_section=page.locator(".chem-active-nav .chem-journey-help")
+    help_section.locator("summary").click()
+    help_section.locator("a").first.click()
+    back=page.locator(".chem-recovery-return a")
+    back.wait_for(timeout=25000)
+    ensure(back.get_attribute("href")==url,"recovery did not preserve exact Chemistry lesson URL")
+    back.click()
+    loaded(page,"C04 recovered")
+    ensure("subtopic=CHEM-C04.03" in page.url,"recovery lost subtopic")
+    return True
+
+
+def check_r2_unsafe_recovery_return(page):
+    href=urljoin(HOME,"core1/recovery/chem-matter-mole-r1/index.html")
+    page.goto(href+"?return=https%3A%2F%2Fattacker.invalid%2Fnsejs%2Fchemistry%2Ftextbook%2Findex.html",wait_until="domcontentloaded")
+    ensure(page.locator(".chem-recovery-return").count()==0,
+           "external or forged lesson return was accepted")
+    return True
+
+
 def main():
     server=subprocess.Popen([sys.executable,"-m","http.server","8797","--bind","127.0.0.1"],
                             cwd=ROOT,stdout=subprocess.DEVNULL,stderr=subprocess.STDOUT)
-    report={"schema":"chemistry-navigation-browser-r1","status":"TECHNICAL_QA_ONLY","viewports":{}}
+    report={"schema":"chemistry-navigation-browser-r2","status":"TECHNICAL_QA_ONLY","viewports":{}}
     try:
         for _ in range(90):
             try:
@@ -184,10 +241,18 @@ def main():
                         ret=check_native_practice_return(page)
                         unsafe=check_unsafe_return(page)
                         denial=check_preview_storage_negative(browser,viewport)
+                        focus=check_r2_focus_and_browser_history(page)
+                        legacy=check_r2_legacy_bank_deep_link(page)
+                        recovery=check_r2_contextual_recovery(page)
+                        unsafe_recovery=check_r2_unsafe_recovery_return(page)
                         report["viewports"][label]={
                             "chapters":14,"subtopics":count,"preview_attempt_refresh":preview,
                             "C07_C08_transition":cross,"native_exam_return":ret,
-                            "unsafe_return_rejected":unsafe,"storage_fail_closed":denial}
+                            "unsafe_return_rejected":unsafe,"storage_fail_closed":denial,
+                            "single_subtopic_focus_and_history":focus,
+                            "legacy_bank_deep_link":legacy,
+                            "contextual_recovery_return":recovery,
+                            "unsafe_recovery_rejected":unsafe_recovery}
                         print("CHEM_NAV_VIEW_PASS",label,report["viewports"][label],flush=True)
                     finally:context.close()
             finally:browser.close()

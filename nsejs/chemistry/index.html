@@ -1038,7 +1038,7 @@
       if(!bank)return;
       const q=new URLSearchParams(location.search);
       const hasBankQuery=["topic","q","exam","difficulty","sort"].some(k=>q.has(k));
-      const hasBankHash=()=>/^#(?:topicWorkspace|topicsGrid|topic-view|questions|qbFilters|question-)/.test(location.hash);
+      const hasBankHash=()=>/^#(?:chem-bank-archive|topicWorkspace|topicsGrid|topic-view|questions|qbFilters|question-)/.test(location.hash);
       if(hasBankQuery||hasBankHash())bank.open=true;
       window.addEventListener("hashchange",()=>{
         if(hasBankHash())bank.open=true;
