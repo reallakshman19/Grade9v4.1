@@ -1,0 +1,37 @@
+{
+  "schema": "g9v41-ph11-07-r4-native-feedback/v1",
+  "status": "AUTHOR_EXPOSED_CANDIDATE__ACADEMIC_HOLD",
+  "revision": "ph11-07-native-r4-20261115",
+  "task_uid": "AUTHORED-PH11-07-R4-TRANSFER-01",
+  "reconstruct": [
+    "Use the measured 4 A through the series 3 ohm element: voltage drop=12 V, leaving 6 V across each parallel branch.",
+    "The known 6 ohm branch carries 6/6=1 A; junction conservation requires the unknown branch carry 4-1=3 A.",
+    "Unknown resistance R=6/3=2 ohm. Check: 6||2=1.5 ohm; total resistance 3+1.5=4.5 ohm and 18/4.5=4 A.",
+    "Energy and charge checks: 12 V+6 V=18 V and 1 A+3 A=4 A."
+  ],
+  "branches": {
+    "wrong_topology": "Your saved model treats the circuit as directly parallel or splits its branch currents by assumption. Trace the upstream 3 ohm drop and identify the two actual common nodes before comparing your results.",
+    "right_values_wrong_model": "Your numeric values match the expected checks, but the saved model is inconsistent. Explain why a correct number without a valid two-node model is not reliable on a changed problem.",
+    "correct_model_wrong_values": "Your saved model identifies the series + parallel topology, but at least one quantitative check failed. Recompute the voltage after the series resistor, then conserve current at the junction.",
+    "matched": "Your selected model and the four numerical fields match the author checks. This is not independent evidence that the reasoning in your free text is correct; compare your argument and show both conservation checks.",
+    "missing": "The saved attempt lacks a justified model or one or more parseable numerical results. A correct-looking explanation without the required checked fields is not a verified construction."
+  },
+  "repair": "Label the upstream path and downstream node pair A/B. Explicitly calculate V_AB after the 3 ohm series drop, use I_6=V_AB/6, then infer the remaining branch current by KCL and divide voltage by current to obtain the missing resistance.",
+  "boundary": {
+    "expected": {
+      "high": "no",
+      "low": "no",
+      "lower": 2,
+      "upper": 6
+    },
+    "model": "For finite positive R, the parallel equivalent satisfies 0 < R_p < 6 ohm. Thus 18/(3+6)=2 A < I_total < 18/3=6 A. Neither 1.5 A nor 7 A is possible. R->infinity is an open-branch limit approaching 2 A; R->0 is a short-branch limit approaching 6 A. These endpoints require leaving the finite positive R domain."
+  },
+  "source_return": {
+    "model": "The original source-style checkpoint has 6||6=3 ohm in series with 3 ohm, source current 9/(3+3)=1.5 A; 4.5 V across the branches, with 0.75 A in each branch."
+  },
+  "disclaimers": [
+    "Free-text reasoning is not semantically scored by the browser.",
+    "Boundary numeric/choice checks do not establish B1-B7, authenticated Core2, independent QRT or mastery.",
+    "Browser-local storage is editable; Web Locks only serialize cooperating tabs."
+  ]
+}
