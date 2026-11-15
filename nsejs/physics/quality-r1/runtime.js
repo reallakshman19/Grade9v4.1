@@ -65,7 +65,7 @@ async function displayChallenge(c){
   const nav=card("Navigation and review context");
   const back=link("Core1A teaching and worked examples","./study.html?unit="+encodeURIComponent(c.unit),"action secondary");
   back.addEventListener("click",ev=>{if(!record?.first){try{localStorage.setItem(preKey,"opened");if(localStorage.getItem(preKey)!=="opened")throw Error("cannot record help")}catch(e){ev.preventDefault();fail("Cannot record pre-attempt help exposure; navigation blocked.");}}else{if(!exposure("linked_study_after_first"))ev.preventDefault();}});
-  put(nav,back,link("Chapter overview","../learn/chapter.html?ph="+c.chapter,"action secondary"),el("p","Operation (author-proposed, not independently QRT-scored): "+c.adapter.operation+" · "+c.adapter.cell),el("p","Why this task differs from teaching: "+q.transfer_difference));mount.append(nav);
+  put(nav,back,link("Chapter overview","../learn/chapter.html?ph="+c.chapter,"action secondary"),el("p","Learning skill: "+c.adapter.reason),el("p","Why this task differs from teaching: "+q.transfer_difference));mount.append(nav);
   if(storageError){mount.append(el("p","HOLD: local storage/digest/record verification failed. No first-attempt or staged-help claim is possible. Record your reasoning outside this page if needed.","error"));return}
   const s1=section("Stage 1 · Predict before solving");put(s1,el("p",q.prediction));if(!record?.first){s1.append(field("Initial prediction and reason (at least 10 characters)","prediction"));}else s1.append(el("p",record.first.prediction));mount.append(s1);
   const s2=section("Stage 2 · Attempt independently");put(s2,el("p",q.prompt));
@@ -106,7 +106,8 @@ async function displaySources(){
  const summary=card("Evidence disposition · "+(chapter||"four selected chapters"));
  put(summary,el("p",records.length+" published candidate Core1A/Core1B route pairs; zero original-question admissions and zero independently qualified B1–B7 units."),el("p","PH07/PH08 inspected B01 bank: 17 unmatched subtopics, 6 supporting-only and 2 related producer candidates on HOLD."));mount.append(summary);
  const table=el("table"),thead=el("thead"),tr=el("tr");for(const h of ["Subtopic","Evidence relationship","Learning route","Revision-aware practice"])tr.append(el("th",h));thead.append(tr);table.append(thead);const tbody=el("tbody");
- for(const r of records){const row=el("tr");put(row,el("td",r.subtopic_id+" · "+r.title),el("td",r.source_relation+" · original exam HOLD"));const a=el("td");a.append(link("Read existing candidate lesson",new URL("../../../"+r.core1a_path,import.meta.url).href));const b=el("td");b.append(link("Existing Core1B",new URL("../../../"+r.core1b_path,import.meta.url).href));if(["PH01-M05","PH02-F04","PH07-02","PH08-08"].includes(r.subtopic_id))put(b,el("span"," · "),link("New operation-led construction","./study.html?unit="+r.subtopic_id));put(row,a,b);tbody.append(row);}table.append(tbody);mount.append(put(el("div",undefined,"card scroll"),table));if(chapter)mount.append(link("Return to chapter","../learn/chapter.html?ph="+chapter,"action"));
+ const humanRelation={SOURCE_LOCATOR_CANDIDATE_HOLD:"Exam paper locators are under review; no authenticated question yet",AUTHORED_TRANSFER_NO_AUTHENTICATED_EXAM:"Original authored practice; no authenticated exam item",NO_MATCH_IN_INSPECTABLE_BANK:"No matching question found in inspected candidate bank",PRIMARY_RELATED_CANDIDATE_HOLD:"A related candidate exists, but it has not been authenticated",SUPPORTING_PREREQUISITE_ONLY:"A related prerequisite only, not a direct examination question"};
+ for(const r of records){const row=el("tr");put(row,el("td",r.subtopic_id+" · "+r.title),el("td",(humanRelation[r.source_relation]||"Source mapping under review")+" · examination admission HOLD"));const a=el("td");a.append(link("Read existing candidate lesson",new URL("../../../"+r.core1a_path,import.meta.url).href));const b=el("td");b.append(link("Existing Core1B",new URL("../../../"+r.core1b_path,import.meta.url).href));if(["PH01-M05","PH02-F04","PH07-02","PH08-08"].includes(r.subtopic_id))put(b,el("span"," · "),link("New operation-led construction","./study.html?unit="+r.subtopic_id));put(row,a,b);tbody.append(row);}table.append(tbody);mount.append(put(el("div",undefined,"card scroll"),table));if(chapter)mount.append(link("Return to chapter","../learn/chapter.html?ph="+chapter,"action"));
 }
 async function init(){try{
  if(mode==="source")return await displaySources();
@@ -114,7 +115,7 @@ async function init(){try{
  const res=await fetch("./cases.v1.json",{cache:"no-store"});if(!res.ok)throw Error("Qualification case manifest unavailable");
  const j=await res.json();if(j.schema!=="g9v41-four-physics-deep-reconstruction/v1"||j.status!=="AUTHOR_EXPOSED_CANDIDATE__ACADEMIC_HOLD"||j.units.length!==4)throw Error("Invalid or mismatched teaching package");
  const matches=j.units.filter(x=>x.unit===unit);
- if(matches.length!==1||matches[0].source.original_exam_admission!=="HOLD"||matches[0].adapter.status!=="AUTHOR_PROPOSED_UNSCORED")throw Error("Source or adapter qualification boundary invalid");
+ if(matches.length!==1||matches[0].source.original_exam_admission!=="HOLD"||matches[0].source.role!=="AUTHORED_TRANSFER"||matches[0].adapter.status!=="AUTHOR_PROPOSED_UNSCORED")throw Error("Source or adapter qualification boundary invalid");
  if(mode==="study")displayStudy(matches[0]);else await displayChallenge(matches[0]);
 }catch(e){fail(String(e?.message||e));}}
 init();
