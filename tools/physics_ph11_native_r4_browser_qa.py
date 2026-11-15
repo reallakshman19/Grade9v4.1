@@ -151,7 +151,7 @@ def run():
                 p2.locator("#source-model").select_option("direct")
                 p2.locator("#source-reason").fill("LOSER second tab alternative source model and reasoning must not overwrite.")
                 p2.locator("#save-source").click()
-                assert p2.locator("#study-panel").is_visible()
+                p2.locator("#study-panel").wait_for(state="visible")
                 original=p2.evaluate("""() => {
                    const k=Object.keys(localStorage).find(k=>k.startsWith('g9:ph11-07:r4:'));
                    return JSON.parse(localStorage.getItem(k)).source.reason
@@ -169,6 +169,7 @@ def run():
                     p2.locator("#"+id_).fill(val)
                 p2.locator("#first-reason").fill("LOSER from the concurrent second tab; must never replace the committed first answer.")
                 p2.locator("#save-first").click()
+                p2.locator("#reconstruct-panel").wait_for(state="visible",timeout=25000)
                 same=p2.evaluate("""() => {
                    const k=Object.keys(localStorage).find(k=>k.startsWith('g9:ph11-07:r4:'));
                    return JSON.parse(localStorage.getItem(k)).first
