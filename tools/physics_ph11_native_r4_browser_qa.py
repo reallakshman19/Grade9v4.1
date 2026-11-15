@@ -70,6 +70,18 @@ def run():
              "independent_qrt":"NOT_RUN","b1_b7":"HOLD","owner_release":"HOLD",
              "cases":[]}
     try:
+        # Stage graph is an unsigned diagnostic candidate, not a production
+        # manifest. Refuse unexpected review assets and mismatched Git objects.
+        import hashlib
+        stage=json.loads((ROOT/"review/physics/ph11-07-r4/NATIVE_PUBLICATION_STAGING_MANIFEST_R4.json").read_text())
+        assert stage["release_manifest_authority"]=="NONE_NO_SIGNATURE"
+        assert len(stage["dependencies"])==6
+        for dep in stage["dependencies"]:
+            data=(ROOT/dep["path"]).read_bytes()
+            expected=hashlib.sha1(b"blob "+str(len(data)).encode()+b"\\0"+data).hexdigest()
+            assert expected==dep["git_blob_sha"]
+            assert not dep["path"].startswith("review/")
+        receipt["stage_deps"]=len(stage["dependencies"])
         with sync_playwright() as pw:
             browser=pw.chromium.launch(headless=True)
             try:
@@ -81,6 +93,11 @@ def run():
                     response=page.goto(url,wait_until="domcontentloaded")
                     assert response and response.status==200
                     ready(page)
+                    # All staged candidate paths resolve through HTTP; none
+                    # requires review/ or an author adapter for normal use.
+                    for dep in stage["dependencies"]:
+                        response=context.request.get(f"http://127.0.0.1:{server.server_port}/"+dep["path"])
+                        assert response.status==200,dep["path"]
                     assert not any("postattempt.v1.json" in x for x in requests)
                     assert any("prompt.v1.json" in x for x in requests)
                     assert "review/physics" not in page.content()
