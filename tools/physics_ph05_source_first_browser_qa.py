@@ -94,7 +94,7 @@ def check_orientation(browser,base,orientation,w,h,receipts):
 
 def check_denied_storage(browser,base,receipts):
     ctx=browser.new_context()
-    ctx.add_init_script("""() => {
+    ctx.add_init_script("""{
         const orig=Storage.prototype.setItem;
         Storage.prototype.setItem=function(){throw new Error('QA denied localStorage')};
     }""")
