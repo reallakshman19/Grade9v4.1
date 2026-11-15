@@ -1,6 +1,7 @@
 """Real Chromium regression for the non-released Chemistry textbook preview."""
 from __future__ import annotations
 import contextlib
+import json
 import os
 from pathlib import Path
 import socket
@@ -187,5 +188,51 @@ def test_all_additional_diagram_assets_decode_in_browser(browser,unit,section,fi
         )
         assert page.locator("article .figure").count()>=1
         assert page.evaluate("document.documentElement.scrollWidth <= innerWidth + 3")
+    finally:
+        ctx.close()
+
+
+# R4 author-exposed technical negative control; not B4 or independent QRT approval.
+@pytest.mark.parametrize("unit,task_id", [
+    ("C12","CORE1B-C12-01-1"),  # piston: pressure/volume constraints
+    ("C09","CORE1B-C09-01-1"),  # acid ionisation, never hydrate
+    ("C08","CORE1B-C08-04-1"),  # calcium-carbonate precipitation
+    ("C08","CORE1B-C08-04-2"),  # silver-bromide precipitation
+    ("C14","CORE1B-C14-02-1"), # boiling, nitrate and microbial checks
+])
+@pytest.mark.parametrize("viewport", [(1600,1000),(1000,1600)])
+def test_r4_task_specific_hints_are_logged_and_model_hidden_until_commit(
+        browser,unit,task_id,viewport):
+    pack=json.loads((ROOT/"curriculum"/"chemistry"/"agent-b"/"core1b"/
+                     f"{unit}.core1b.v0.1.0.json").read_text(encoding="utf-8"))
+    task=next(t for t in pack["cycles"] if t["cycle_id"]==task_id)
+    hints=[h["text"] for h in task["attempt"]["hints"]]
+    ctx=browser.new_context(viewport={"width":viewport[0],"height":viewport[1]},
+                            device_scale_factor=1,has_touch=True)
+    try:
+        page=ctx.new_page()
+        page.goto(f"{URL}?unit={unit}&task={task_id}&mode=practice")
+        page.get_by_role("heading",name="Stage 2 — Independent attempt").wait_for()
+        assert page.locator("#task-select").input_value()==task_id
+        assert page.get_by_text("Model response · POST-COMMIT").count()==0
+        assert page.get_by_role("heading",name="Stage 3 — Reconstruct").count()==0
+        assert not any(h in page.locator("#lesson").inner_text() for h in hints)
+        for i,label in enumerate(("H1","H2","H3")):
+            page.get_by_role("button",name=f"Reveal {label} (assisted, logged)").click()
+            assert hints[i] in page.locator("#lesson").inner_text()
+            assert all(h not in page.locator("#lesson").inner_text() for h in hints[i+1:])
+            assert page.get_by_text("Model response · POST-COMMIT").count()==0
+        page.locator("#prediction-answer").fill(
+            "I will check the stated chemical or apparatus constraints before inference.")
+        page.locator("#original-answer").fill(
+            "My own first reasoning compares the specified measurements, the governing "
+            "chemical or physical conservation law, and an independent test to falsify it.")
+        page.locator("#commit-attempt").click()
+        page.get_by_text("Model response · POST-COMMIT").wait_for()
+        record=read_pinned_v2_attempt(page,task_id)
+        assert record["help_exposure"]==["H1","H2","H3"]
+        assert record["learner_status"]=="ASSISTED"
+        assert record["source_role"]=="AUTHORED_PRACTICE"
+        assert page.get_by_role("heading",name="Stage 3 — Reconstruct").count()==1
     finally:
         ctx.close()
