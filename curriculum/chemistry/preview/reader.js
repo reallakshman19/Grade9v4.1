@@ -37,27 +37,87 @@ function renderDive(article,s){
 
 function safeId(x){return String(x).replace(/[^a-z0-9-]/gi,"-").toLowerCase()}
 function stored(key){try{return localStorage.getItem(key)}catch(e){return memory.get(key)||null}}
-function persist(key,value){try{localStorage.setItem(key,value);return true}catch(e){memory.set(key,value);return false}}
+function persist(key,value){try{localStorage.setItem(key,value);return localStorage.getItem(key)===value}catch(e){memory.set(key,value);return false}}
 function showDemand(parent,d,unit,subId,version){
  const wrap=add(parent,el("section","demand"));
  if(!parent.querySelector("#practice-"+safeId(subId)))wrap.id="practice-"+safeId(subId);
  add(wrap,el("span","tag",d.template_ref));add(wrap,el("h4","",d.title));
  p(wrap,d.core1a_explanation);
- const worked=add(wrap,el("div","worked"));add(worked,el("strong","", "Core1A — completed construction"));p(worked,d.worked_reasoning);
+ const worked=add(wrap,el("div","worked"));add(worked,el("strong","","Core1A — completed construction"));p(worked,d.worked_reasoning);
  p(wrap,"Independent check: "+d.independent_check,"mini");
  const form=add(wrap,el("div","attempt"));add(form,el("h4","","Core1B — reconstruct the idea"));
- p(form,"Predict: "+d.core1b.predict);
- p(form,d.core1b.attempt,"learner-task");
- const label=add(form,el("label","", "Write your first reasoning attempt before revealing the reconstruction."));const field=add(form,el("textarea"));field.setAttribute("aria-label",d.title+" first attempt");label.htmlFor="response-"+safeId(d.instance_id);field.id=label.htmlFor;
- const hints=[];
- for(let i=0;i<d.hints.length;i++){const dt=add(form,el("details"));dt.hidden=true;hints.push(dt);add(dt,el("summary","","Hint "+(i+1)));p(dt,d.hints[i])}
+ p(form,"Predict: "+d.core1b.predict);p(form,d.core1b.attempt,"learner-task");
+ const label=add(form,el("label","","Write your first reasoning attempt before receiving help or model feedback."));
+ const field=add(form,el("textarea"));field.setAttribute("aria-label",d.title+" first attempt");
+ label.htmlFor="response-"+safeId(d.instance_id);field.id=label.htmlFor;
  const key="g9chem-first-attempt:"+unit+":"+version+":"+subId+":"+d.instance_id;
- const submit=add(form,el("button","", "Save first attempt and reveal reconstruction"));
+ const stageOrder=[
+  {id:"reconstruct",title:"Reconstruct",prompt:d.core1b.reconstruct},
+  {id:"diagnose",title:"Diagnose",prompt:d.core1b.diagnose},
+  {id:"repair",title:"Repair",prompt:d.core1b.repair},
+  {id:"boundary",title:"Boundary test",prompt:d.core1b.boundary}
+ ];
+ const submit=add(form,el("button","","Save first attempt and begin reconstruction"));
  const post=add(form,el("div","post"));post.hidden=true;
  const st=add(form,el("p","mini"));
- const buildPost=()=>{hints.forEach(hint=>{hint.hidden=false});post.replaceChildren();add(post,el("h4","","Reconstruct"));p(post,d.core1b.reconstruct);add(post,el("h4","","Diagnose"));p(post,d.core1b.diagnose);add(post,el("h4","","Repair"));p(post,d.core1b.repair);add(post,el("h4","","Boundary test"));p(post,d.core1b.boundary);add(post,el("h4","","Model response"));p(post,d.core1b.model_response);post.hidden=false;field.disabled=true;submit.disabled=true;st.textContent=memory.has(key)?"Browser storage unavailable. Your first answer is protected only for this open page session; refreshing may lose it.":"First-attempt text was preserved for this exact content revision; changes to the question require a new revision."};
- const first=stored(key);if(first!==null){field.value=first;buildPost()}
- submit.addEventListener("click",()=>{if(!field.value.trim()){st.textContent="Explain your reasoning first; empty attempts do not unlock the solution.";field.focus();return}if(stored(key)===null){const ok=persist(key,field.value);if(!ok){st.textContent="Storage unavailable: the first attempt could not be preserved. Nothing is unlocked; your text remains editable.";return}}buildPost()})
+ function renderCommitted(){
+  const first=stored(key);if(first===null)return;
+  field.value=first;field.disabled=true;submit.disabled=true;
+  post.replaceChildren();post.hidden=false;
+  add(post,el("h4","","First attempt saved"));
+  p(post,"Your first answer is locked for this exact task/content revision. Complete each independent stage before viewing the model response.","mini");
+  const helper=add(post,el("section","hint-ladder"));
+  add(helper,el("h4","","Progressive help (optional)"));
+  const hintKey=key+":hint-depth";
+  const depth=Math.max(0,Math.min(d.hints.length,Number(stored(hintKey)||0)||0));
+  const hintNodes=[];
+  d.hints.forEach((hint,i)=>{
+   const details=add(helper,el("details"));details.hidden=i>depth;
+   add(details,el("summary","","Hint "+(i+1)));p(details,hint);
+   hintNodes.push(details);
+   details.addEventListener("toggle",()=>{
+    if(!details.open||i+1<=Number(stored(hintKey)||0))return;
+    if(!persist(hintKey,String(i+1))){st.textContent="Storage unavailable: hint exposure cannot be saved. Further help remains locked.";return}
+    if(hintNodes[i+1])hintNodes[i+1].hidden=false;
+   });
+  });
+  let complete=true;
+  for(const stage of stageOrder){
+   const stageKey=key+":stage:"+stage.id;
+   const stageBox=add(post,el("section","core1b-stage"));
+   add(stageBox,el("h4","",stage.title));p(stageBox,stage.prompt);
+   const saved=stored(stageKey);
+   if(saved!==null){p(stageBox,"Your saved response: "+saved,"stage-saved");continue}
+   complete=false;
+   const stageLabel=add(stageBox,el("label","","Write your own "+stage.title.toLowerCase()+" reasoning before continuing."));
+   const stageField=add(stageBox,el("textarea","stage-input"));
+   stageField.setAttribute("aria-label",stage.title+" independent response");
+   stageLabel.htmlFor="stage-"+safeId(d.instance_id)+"-"+stage.id;stageField.id=stageLabel.htmlFor;
+   const stageButton=add(stageBox,el("button","stage-submit","Save "+stage.title+" response"));
+   stageButton.addEventListener("click",()=>{
+    if(!stageField.value.trim()){st.textContent="A written "+stage.title.toLowerCase()+" response is required before continuing.";stageField.focus();return}
+    if(stored(stageKey)!==null){renderCommitted();return}
+    if(!persist(stageKey,stageField.value)){st.textContent="Storage unavailable: stage response could not be preserved. No later stage or model response is unlocked.";return}
+    renderCommitted();
+   });
+   break;
+  }
+  if(complete){
+   const closure=add(post,el("section","model-closure"));
+   add(closure,el("h4","","Model response"));p(closure,d.core1b.model_response);
+   st.textContent="All five learner responses were saved for this exact content revision. Model response now available for comparison.";
+  }else{
+   st.textContent="First attempt preserved. Remaining stages require separate saved responses; model response is still protected.";
+  }
+ }
+ const first=stored(key);if(first!==null)renderCommitted();
+ submit.addEventListener("click",()=>{
+  if(!field.value.trim()){st.textContent="Explain your reasoning first; empty attempts do not unlock the next stage.";field.focus();return}
+  if(stored(key)===null&&!persist(key,field.value)){
+   st.textContent="Storage unavailable: the first attempt could not be preserved. Nothing is unlocked; your text remains editable.";return;
+  }
+  renderCommitted();
+ });
 }
 function draw(book){
  root.replaceChildren();
