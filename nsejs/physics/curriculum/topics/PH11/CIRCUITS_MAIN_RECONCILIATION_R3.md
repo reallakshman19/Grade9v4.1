@@ -6,3 +6,5 @@ Base main 8fa14e37612eada96f63d6fee41b9d47b819dd36; circuit-only source repair #
 - Preserve #42 exact-byte revision and durable attempt gate. Sequential worksheet helpers persist exposure by revision, record assisted status on commit, block disclosure when storage is denied. No precommit solution text nodes. Search entries exclude worksheet helper text. Correct remaining stale hub counts, keep actual existing PH05 route, bump reader cache key.
 - Expand L1 Q19 and L2 Q11/Q15 nodal/symmetry reasoning; repair L2 Q10/Q19/Q20 explanatory checks. Keep original source key/wording, no cognitive promotion.
 - Retain #42 vector/solver/adapter/CI regressions; extend browser QA to assert sequential reveal, persisted exposure, denied storage and stale image revision. New combined exact-head CI pending. No independent B1–B7/rights/source/science/academic decision. No merge or deployment from this draft.
+
+R3 readback: exact source hyphen restored for L1 Q05; all L1 stems now have local SHA-256 digests and consistent H1/H2 Blueprint labels. Reader static Circuit count also reconciled to 66.

@@ -78,7 +78,7 @@
   const TOPICS = [
     ["optics","OPTICS","Optics","🔭",10],
     ["electrostatics","ELECTROSTATICS","Electrostatics","⚡",10],
-    ["circuits","CURRENT_ELECTRICITY","Circuits","🔌",30],
+    ["circuits","CURRENT_ELECTRICITY","Circuits","🔌",66],
     ["magnetism","MAGNETISM_AND_EMI","Magnetism & EMI","🧲",10],
     ["mechanics","MECHANICS","Mechanics","⚙️",11],
     ["fluids","FLUIDS_AND_SOUND","Fluids & Sound","🌊",2]
