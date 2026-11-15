@@ -74,7 +74,9 @@ def check_orientation(browser,base,orientation,w,h,receipts):
         assert page.get_by_role("link",name="Try protected author-created transfer").is_visible()
         # Visiting a teaching link is recorded without altering first attempt.
         page.get_by_role("link",name="Learn Core1A",exact=False).first.click()
-        page.wait_for_url("**/textbook/PH05/G*/index.html",timeout=10000)
+        page.wait_for_url("**/textbook/PH05/G*/index.html?legacy=1",timeout=10000)
+        page.locator("[data-ph05-lesson] section").first.wait_for(timeout=10000)
+        assert "legacy=1" in page.url
         page.goto(url,wait_until="load")
         page.locator("#firstPrediction").wait_for(timeout=10000)
         preserved=record(page,uid)
