@@ -123,7 +123,7 @@ def check_preview_storage_negative(browser,viewport):
     ensure(page.locator("#practice-chem-c02-01 .post").first.is_hidden(),"storage failure revealed answer")
     ensure(page.locator("#practice-chem-c02-01 .attempt details").count()==0,"storage failure inserted hint")
     ensure(field.is_enabled(),"storage failure erased access to learner prediction")
-    ensure("Storage unavailable" in page.locator("#practice-chem-c02-01 .mini").last.inner_text(),
+    ensure("Storage unavailable" in page.locator("#practice-chem-c02-01 .attempt > p.mini").first.inner_text(),
            "no storage failure message")
     context.close()
     return True
