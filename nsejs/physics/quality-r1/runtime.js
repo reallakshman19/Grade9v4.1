@@ -57,7 +57,7 @@ function displayStudy(c){
  mount.append(put(card("Apply this science to a different question"),el("p","The protected task requires a different reasoning choice. Its first answer is preserved locally before hints or reconstruction; it is not an authenticated paper question."),link("Open changed-condition Core1B", "./challenge.html?unit="+encodeURIComponent(c.unit),"action"),link("Return to this chapter","../learn/chapter.html?ph="+c.chapter,"action secondary")));
 }
 async function displayChallenge(c){
- const q=c.challenge,fingerprint=await SHA(JSON.stringify([c.revision,q.uid,q.prediction,q.prompt,q.boundaryPrompt,c.model_blob]));
+ const q=c.challenge,fingerprint=await SHA(JSON.stringify([c.revision,c.source_revision_blob,q.uid,q.prediction,q.prompt,q.boundaryPrompt,c.model_blob]));
  let model=null,modelError="";
  async function loadPostAttemptModel(){
    if(model)return true;
@@ -147,6 +147,8 @@ async function init(){try{
  if(matches.length!==1||matches[0].source.original_exam_admission!=="HOLD"||matches[0].source.role!=="AUTHORED_TRANSFER"||matches[0].adapter.status!=="AUTHOR_PROPOSED_UNSCORED")throw Error("Source or adapter qualification boundary invalid");
  if(mode==="study")displayStudy(matches[0]);
  else{
+   if(j.postattempt_model_path!=="postattempt-models.v1.json"||!/^[0-9a-f]{40}$/.test(j.postattempt_model_git_blob)||!/^[0-9a-f]{40}$/.test(j.source_package_git_blob))throw Error("Pinned source and post-attempt model revisions required");
+   matches[0].source_revision_blob=j.source_package_git_blob;
    matches[0].model_file=j.postattempt_model_path;
    matches[0].model_blob=j.postattempt_model_git_blob;
    await displayChallenge(matches[0]);
