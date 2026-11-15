@@ -158,7 +158,8 @@
   async function createCard(q,index) {
     const box=text("article","", "card");
     const worksheet = /^NSEJS-CIRC-L[12]-Q\d{2}$/.test(q.id || "");
-    const worksheetRevision = worksheet ? await revision(q) : null;
+    const worksheetRevision = worksheet ? await digestText(JSON.stringify({revision:await revision(q), hints:q.hints, answer_ids:q.answer_ids, source:q.source_provenance})) : null;
+    const k = worksheet ? attemptKey(q) + ":" + worksheetRevision : attemptKey(q);
     let hintDepth = 0;
     let figureLoadFailed = false;
     const figureLoads = [];
@@ -299,12 +300,20 @@
       hintBtn.style.border = "1.5px solid #cbd5e1";
       const hintBox = text("div", "", "answer");
       hintBox.hidden = true;
-      hintBtn.disabled = requiredFigure;
+      function addHint(h) { hintBox.hidden = false; append(hintBox, text("strong", h.prompt || "Hint:"), text("p", h.text || "")); }
+      if (worksheet) {
+        try { hintDepth = Math.max(0, Math.min(hints.length, Number(localStorage.getItem(k + ":hints")) || 0)); } catch (_) { hintDepth=0; }
+        hints.slice(0,hintDepth).forEach(addHint);
+        hintBtn.textContent = hintDepth === hints.length ? "All hints revealed" : "Reveal hint " + (hintDepth + 1) + " of " + hints.length;
+      }
+      hintBtn.disabled = requiredFigure || hintDepth === hints.length;
       hintBtn.onclick = () => {
         if (hintDepth >= hints.length) return;
-        const h = hints[hintDepth++];
-        hintBox.hidden = false;
-        append(hintBox, text("strong", h.prompt || "Hint:"), text("p", h.text || ""));
+        if (worksheet) {
+          try { localStorage.setItem(k + ":hints", String(hintDepth + 1)); }
+          catch (_) { feedbackBanner.hidden=false; feedbackBanner.textContent="Hint progress could not be saved. Enable local storage to continue."; return; }
+        }
+        addHint(hints[hintDepth++]);
         hintBtn.textContent = hintDepth === hints.length ? "All hints revealed" : "Reveal hint " + (hintDepth + 1) + " of " + hints.length;
         hintBtn.disabled = hintDepth === hints.length;
       };
@@ -323,8 +332,6 @@
       append(answerBox, text("p", "Consistency Verification: " + q.check, "ok"));
     }
     append(box, answerBox);
-
-    const k = worksheet ? attemptKey(q) + ":" + worksheetRevision : attemptKey(q);
 
     function renderAttemptFeedback(selected) {
       const selectedSet = new Set(selected || []);

@@ -357,10 +357,14 @@ def build_question_documents(repo_root: Path, synonyms: list[dict]) -> list[dict
                 stem = q.get("stem", "")
                 title = q.get("source_name", stem[:110])
                 topic = q.get("topic", "Mechanics").replace("_", " ").title()
-                badge = "{Reviewed} · PRACTICE"
-                breadcrumb = f"NSEJS · Physics · {topic} · Authored Practice"
+                worksheet = qid.startswith(("NSEJS-CIRC-L1-", "NSEJS-CIRC-L2-"))
+                level = q.get("source_provenance", {}).get("worksheet_level")
+                badge = "{Candidate} · WORKSHEET · HOLD" if worksheet else "{Reviewed} · PRACTICE"
+                breadcrumb = (f"NSEJS · Physics · {topic} · Worksheet Level {level}"
+                              if worksheet else f"NSEJS · Physics · {topic} · Authored Practice")
                 search_vector = normalize_text(
-                    f"{qid} {title} {stem} Physics {topic} mechanics practice authored nsejs"
+                    f"{qid} {title} {stem} Physics {topic} worksheet circuits resistor network practice candidate nsejs"
+                    if worksheet else f"{qid} {title} {stem} Physics {topic} mechanics practice authored nsejs"
                 )
                 docs.append({
                     "id": f"Q-{qid}",
@@ -376,12 +380,12 @@ def build_question_documents(repo_root: Path, synonyms: list[dict]) -> list[dict
                     "title": title,
                     "stem": stem,
                     "options": q.get("options", []),
-                    "hints": q.get("hints", []),
+                    "hints": [] if worksheet else q.get("hints", []),
                     "band": q.get("band", "D2"),
                     "op": q.get("op", "TRANSFER"),
-                    "score": 4,
+                    "score": q.get("score", 4) if worksheet else 4,
                     "topic": topic,
-                    "url": f"nsejs/physics/authored-practice.html?q={qid}#{qid}",
+                    "url": (f"nsejs/physics/index.html?topic=circuits&q={qid}#{qid}" if worksheet else f"nsejs/physics/authored-practice.html?q={qid}#{qid}"),
                     "search_text": search_vector
                 })
         except Exception as e:
