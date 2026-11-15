@@ -36,6 +36,13 @@ jobs:
         run: python tools/physics_navigation_browser_qa.py
       - name: Verify four original authored Core1A/B construction journeys, exact source ledger and denied storage over HTTP Chromium
         run: python tools/physics_quality_r1_browser_qa.py
+      - name: Upload six-viewport Core1A/B technical screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: physics-four-core1a-core1b-quality-r1
+          path: review-artifacts/physics-quality-r1/
+          if-no-files-found: warn
       - name: Academic boundary
         if: always()
         run: echo "Navigation QA is technical only. Author candidate source, QRT and science HOLD unchanged."
