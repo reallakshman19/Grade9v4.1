@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 420" width="100%" height="100%" style="background:#ffffff; border:1.5px solid #cbd5e1; border-radius:10px;">
+
+  <style>
+    .wire { stroke: #1e293b; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+    .dash-wire { stroke: #64748b; stroke-width: 2; stroke-dasharray: 5,4; fill: none; }
+    .res-box { fill: #f8fafc; stroke: #0f172a; stroke-width: 2; rx: 4; }
+    .res-lbl { font-family: system-ui, -apple-system, sans-serif; font-size: 14px; font-weight: 600; fill: #0f172a; text-anchor: middle; dominant-baseline: central; }
+    .node-pt { fill: #1e293b; }
+    .term-pt { fill: #ea580c; stroke: #9a3412; stroke-width: 2; }
+    .term-lbl { font-family: system-ui, -apple-system, sans-serif; font-size: 16px; font-weight: 800; fill: #c2410c; text-anchor: middle; dominant-baseline: central; }
+    .node-lbl { font-family: system-ui, -apple-system, sans-serif; font-size: 15px; font-weight: 700; fill: #1e293b; text-anchor: middle; dominant-baseline: central; }
+    .diag-title { font-family: system-ui, -apple-system, sans-serif; font-size: 15px; font-weight: 700; fill: #0f172a; text-anchor: middle; }
+    .diag-sub { font-family: system-ui, -apple-system, sans-serif; font-size: 14px; fill: #64748b; text-anchor: middle; }
+  </style>
+
+  <text x="230" y="30" class="diag-title">Fig. 8: Square with Diagonal Resistor</text>
+  <text x="230" y="50" class="diag-sub">Five resistors, each 6 &#937; &#183; terminals are specified by the question</text>
+
+  <!-- Square corners: A(100,320), B(340,320), C(340,100), D(100,100) -->
+  <!-- Bottom side AB (6 ohm) -->
+  <line x1="100" y1="320" x2="340" y2="320" class="wire"/>
+  <rect x="185" y="306" width="70" height="28" class="res-box"/>
+  <text x="220" y="320" class="res-lbl">6 &#937;</text>
+
+  <!-- Right side BC (6 ohm) -->
+  <line x1="340" y1="320" x2="340" y2="100" class="wire"/>
+  <rect x="326" y="175" width="28" height="70" class="res-box"/>
+  <text x="340" y="210" class="res-lbl">6 &#937;</text>
+
+  <!-- Top side DC (6 ohm) -->
+  <line x1="100" y1="100" x2="340" y2="100" class="wire"/>
+  <rect x="185" y="86" width="70" height="28" class="res-box"/>
+  <text x="220" y="100" class="res-lbl">6 &#937;</text>
+
+  <!-- Left side AD (6 ohm) -->
+  <line x1="100" y1="320" x2="100" y2="100" class="wire"/>
+  <rect x="86" y="175" width="28" height="70" class="res-box"/>
+  <text x="100" y="210" class="res-lbl">6 &#937;</text>
+
+  <!-- Diagonal AC (6 ohm) -->
+  <line x1="100" y1="320" x2="340" y2="100" class="wire"/>
+  <rect x="185" y="196" width="70" height="28" class="res-box" transform="rotate(-42.5, 220, 210)"/>
+  <text x="220" y="210" class="res-lbl">6 &#937;</text>
+
+  <!-- Corner nodes -->
+  <circle cx="100" cy="320" r="7" class="term-pt"/>
+  <text x="75" y="340" class="term-lbl">A</text>
+
+  <circle cx="340" cy="320" r="7" class="term-pt"/>
+  <text x="365" y="340" class="term-lbl">B</text>
+
+  <circle cx="340" cy="100" r="7" class="term-pt"/>
+  <text x="365" y="85" class="term-lbl">C</text>
+
+  <circle cx="100" cy="100" r="7" class="term-pt"/>
+  <text x="75" y="85" class="term-lbl">D</text>
+
+  
+</svg>

@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 440" width="100%" height="100%" style="background:#ffffff; border:1.5px solid #cbd5e1; border-radius:10px;">
+
+  <style>
+    .wire { stroke: #1e293b; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+    .dash-wire { stroke: #64748b; stroke-width: 2; stroke-dasharray: 5,4; fill: none; }
+    .res-box { fill: #f8fafc; stroke: #0f172a; stroke-width: 2; rx: 4; }
+    .res-lbl { font-family: system-ui, -apple-system, sans-serif; font-size: 14px; font-weight: 600; fill: #0f172a; text-anchor: middle; dominant-baseline: central; }
+    .node-pt { fill: #1e293b; }
+    .term-pt { fill: #ea580c; stroke: #9a3412; stroke-width: 2; }
+    .term-lbl { font-family: system-ui, -apple-system, sans-serif; font-size: 16px; font-weight: 800; fill: #c2410c; text-anchor: middle; dominant-baseline: central; }
+    .node-lbl { font-family: system-ui, -apple-system, sans-serif; font-size: 15px; font-weight: 700; fill: #1e293b; text-anchor: middle; dominant-baseline: central; }
+    .diag-title { font-family: system-ui, -apple-system, sans-serif; font-size: 15px; font-weight: 700; fill: #0f172a; text-anchor: middle; }
+    .diag-sub { font-family: system-ui, -apple-system, sans-serif; font-size: 14px; fill: #64748b; text-anchor: middle; }
+  </style>
+
+  <text x="230" y="30" class="diag-title">Fig. 9: Square with Spokes to Centre O</text>
+  <text x="230" y="50" class="diag-sub">Eight resistors, each 6 &#937; &#183; Terminals across opposite corners A and C</text>
+
+  <!-- Corners: A(90,330), B(350,330), C(350,90), D(90,90), O(220,210) -->
+  <!-- Perimeter resistors -->
+  <line x1="90" y1="330" x2="350" y2="330" class="wire"/>
+  <rect x="185" y="316" width="70" height="28" class="res-box"/>
+  <text x="220" y="330" class="res-lbl">6 &#937;</text>
+
+  <line x1="350" y1="330" x2="350" y2="90" class="wire"/>
+  <rect x="336" y="175" width="28" height="70" class="res-box"/>
+  <text x="350" y="210" class="res-lbl">6 &#937;</text>
+
+  <line x1="350" y1="90" x2="90" y2="90" class="wire"/>
+  <rect x="185" y="76" width="70" height="28" class="res-box"/>
+  <text x="220" y="90" class="res-lbl">6 &#937;</text>
+
+  <line x1="90" y1="90" x2="90" y2="330" class="wire"/>
+  <rect x="76" y="175" width="28" height="70" class="res-box"/>
+  <text x="90" y="210" class="res-lbl">6 &#937;</text>
+
+  <!-- Diagonal spokes to O -->
+  <!-- AO (6 ohm) -->
+  <line x1="90" y1="330" x2="220" y2="210" class="wire"/>
+  <rect x="123" y="256" width="65" height="26" class="res-box" transform="rotate(-42.7, 155, 270)"/>
+  <text x="155" y="270" class="res-lbl">6 &#937;</text>
+
+  <!-- OC (6 ohm) -->
+  <line x1="220" y1="210" x2="350" y2="90" class="wire"/>
+  <rect x="253" y="136" width="65" height="26" class="res-box" transform="rotate(-42.7, 285, 150)"/>
+  <text x="285" y="150" class="res-lbl">6 &#937;</text>
+
+  <!-- DO (6 ohm) -->
+  <line x1="90" y1="90" x2="220" y2="210" class="dash-wire"/>
+  <rect x="123" y="136" width="65" height="26" class="res-box" style="stroke:#64748b;" transform="rotate(42.7, 155, 150)"/>
+  <text x="155" y="150" class="res-lbl" style="fill:#64748b;">6 &#937;</text>
+
+  <!-- OB (6 ohm) -->
+  <line x1="220" y1="210" x2="350" y2="330" class="dash-wire"/>
+  <rect x="253" y="256" width="65" height="26" class="res-box" style="stroke:#64748b;" transform="rotate(42.7, 285, 270)"/>
+  <text x="285" y="270" class="res-lbl" style="fill:#64748b;">6 &#937;</text>
+
+  <!-- Center node O -->
+  <circle cx="220" cy="210" r="5" class="node-pt"/>
+  <text x="220" y="190" class="node-lbl">O</text>
+
+  <!-- Terminals A & C -->
+  <circle cx="90" cy="330" r="7" class="term-pt"/>
+  <text x="65" y="345" class="term-lbl">A</text>
+
+  <circle cx="350" cy="90" r="7" class="term-pt"/>
+  <text x="375" y="75" class="term-lbl">C</text>
+
+  <!-- Other corners -->
+  <circle cx="350" cy="330" r="5" class="node-pt"/>
+  <text x="375" y="345" class="node-lbl">B</text>
+
+  <circle cx="90" cy="90" r="5" class="node-pt"/>
+  <text x="65" y="75" class="node-lbl">D</text>
+
+  
+</svg>

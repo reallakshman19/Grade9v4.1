@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 380" width="100%" height="100%" style="background:#ffffff; border:1.5px solid #cbd5e1; border-radius:10px;">
+
+  <style>
+    .wire { stroke: #1e293b; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+    .dash-wire { stroke: #64748b; stroke-width: 2; stroke-dasharray: 5,4; fill: none; }
+    .res-box { fill: #f8fafc; stroke: #0f172a; stroke-width: 2; rx: 4; }
+    .res-lbl { font-family: system-ui, -apple-system, sans-serif; font-size: 14px; font-weight: 600; fill: #0f172a; text-anchor: middle; dominant-baseline: central; }
+    .node-pt { fill: #1e293b; }
+    .term-pt { fill: #ea580c; stroke: #9a3412; stroke-width: 2; }
+    .term-lbl { font-family: system-ui, -apple-system, sans-serif; font-size: 16px; font-weight: 800; fill: #c2410c; text-anchor: middle; dominant-baseline: central; }
+    .node-lbl { font-family: system-ui, -apple-system, sans-serif; font-size: 15px; font-weight: 700; fill: #1e293b; text-anchor: middle; dominant-baseline: central; }
+    .diag-title { font-family: system-ui, -apple-system, sans-serif; font-size: 15px; font-weight: 700; fill: #0f172a; text-anchor: middle; }
+    .diag-sub { font-family: system-ui, -apple-system, sans-serif; font-size: 14px; fill: #64748b; text-anchor: middle; }
+  </style>
+
+  <text x="230" y="30" class="diag-title">Fig. 15: Regular Tetrahedron Resistor Network</text>
+  <text x="230" y="50" class="diag-sub">Six identical edges, each R = 10 &#937; &#183; Terminals across corners A and B</text>
+
+  <!-- Vertices: Top D(230, 90), Left A(100, 300), Right B(360, 300), Interior C(230, 240) -->
+  <!-- Edges to D -->
+  <line x1="100" y1="300" x2="230" y2="90" class="wire" style="stroke-width:3;"/>
+  <line x1="360" y1="300" x2="230" y2="90" class="wire" style="stroke-width:3;"/>
+  <line x1="230" y1="240" x2="230" y2="90" class="dash-wire" style="stroke-width:2.5; stroke:#64748b;"/>
+
+  <!-- Edges to C -->
+  <line x1="100" y1="300" x2="230" y2="240" class="dash-wire" style="stroke-width:2.5; stroke:#64748b;"/>
+  <line x1="360" y1="300" x2="230" y2="240" class="dash-wire" style="stroke-width:2.5; stroke:#64748b;"/>
+
+  <!-- Base edge AB (Terminal edge) -->
+  <line x1="100" y1="300" x2="360" y2="300" class="wire" style="stroke:#ea580c; stroke-width:3.5;"/>
+
+  <!-- Node labels -->
+  <circle cx="230" cy="90" r="5" class="node-pt"/>
+  <text x="230" y="72" class="node-lbl">D</text>
+
+  <circle cx="230" cy="240" r="5" fill="#64748b"/>
+  <text x="250" y="238" class="node-lbl" style="fill:#64748b;">C</text>
+
+  <!-- Terminals A & B -->
+  <circle cx="100" cy="300" r="8" class="term-pt"/>
+  <text x="75" y="305" class="term-lbl">A</text>
+
+  <circle cx="360" cy="300" r="8" class="term-pt"/>
+  <text x="385" y="305" class="term-lbl">B</text>
+
+  
+</svg>

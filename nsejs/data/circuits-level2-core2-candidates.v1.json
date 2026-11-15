@@ -1,0 +1,1327 @@
+{
+  "schema_version": "grade9-nsejs-circuits-l2-core2-candidate-corpus/v1",
+  "subject": "PHYSICS",
+  "topic": "CURRENT_ELECTRICITY",
+  "source_authority": "UNVERIFIED_AUTHORED_LEVEL2_WORKSHEET",
+  "source_claims_status": "AUTHOR_CREATED_SOURCE_AND_KEY_UNVERIFIED",
+  "qrt_adjudication": "HOLD",
+  "total_questions": 20,
+  "questions": [
+    {
+      "id": "NSEJS-CIRC-L2-Q01",
+      "source_id": "NSEJS-CIRC-L2-Q01",
+      "source_name": "Authored Resistor Networks · L2-Q01 · APPLY · D2 (Score 3)",
+      "category": "AUTHORED_PRACTICE",
+      "origin": "AUTHOR_CREATED_LEVEL2_RESISTOR_NETWORKS",
+      "topic": "CURRENT_ELECTRICITY",
+      "subtopic": "Series–Parallel Networks and Short-Circuited Resistors",
+      "question_type": "single_correct_mcq",
+      "stem": "Three branches are connected between the points A and B as shown in Fig. 1. The equivalent resistance between A and B is:\n[FIG-stem-1]",
+      "options": [
+        "A: 1 Ω",
+        "B: 2 Ω",
+        "C: 10 Ω",
+        "D: 0.5 Ω"
+      ],
+      "answer": "A: 1 Ω",
+      "op": "APPLY",
+      "band": "D2",
+      "score": 3,
+      "components": {
+        "concept_model_selection": 1,
+        "representation_translation": 1,
+        "reasoning_chain_length": 1,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 0
+      },
+      "crux_move_ref": "NSEJS-CIRC-L2-Q01-M2",
+      "family_ref": "NSEJS-CIRCUITS-PARALLEL-BRANCHES",
+      "primary_capability_ref": "PHYS-CIRC-APPLY-01",
+      "source_figures": [
+        "fig_nsejs_circ_l2_q01.svg"
+      ],
+      "figure_note": "Fig. 1: Three parallel branches between A and B (top: 2 Ω; middle: 1 Ω + 3 Ω; bottom: 4 Ω).",
+      "hints": [
+        {
+          "prompt": "Tier 1 — Representation & Constraints",
+          "text": "Identify the external terminals A and B. Notice that three distinct conducting branches run directly between the vertical busbars connected to A and B."
+        },
+        {
+          "prompt": "Tier 2 — Governing Law & Formulation Anchor",
+          "text": "Find the total branch resistance of each parallel path. Resistors along the same uninterrupted branch are in series, so their resistances add directly."
+        },
+        {
+          "prompt": "Tier 3 — Resolution Route",
+          "text": "Compute the middle branch resistance R_mid = 1 Ω + 3 Ω = 4 Ω. Combine the three parallel branches (2 Ω, 4 Ω, and 4 Ω) using 1/R_AB = 1/R_top + 1/R_mid + 1/R_bot."
+        }
+      ],
+      "steps": [
+        "1. System Representation & Setup: The circuit connects terminals A and B across three parallel branches between two common vertical busbars. Top branch: R_1 = 2 Ω. Middle branch: R_2 = 1 Ω and R_3 = 3 Ω in series. Bottom branch: R_4 = 4 Ω.",
+        "2. Physical Model & Formulation: Resistors in series sum linearly: R_mid = R_2 + R_3 = 1 + 3 = 4 Ω. For three parallel branches sharing common potential difference V_AB, equivalent conductance is the sum of branch conductances: 1/R_AB = 1/R_top + 1/R_mid + 1/R_bot = 1/2 + 1/4 + 1/4.",
+        "3. Execution & Resolution: 1/R_AB = 2/4 + 1/4 + 1/4 = 4/4 = 1 Ω⁻¹. Inverting yields R_AB = 1.0 Ω. Matches Option A."
+      ],
+      "check": "Limiting sanity check: The equivalent resistance of parallel resistors must be strictly less than the smallest individual branch resistance (1 Ω < 2 Ω).",
+      "review_state": "NOT_ADMITTED",
+      "academic_admission": "HOLD",
+      "science_review": "HOLD",
+      "qrt_adjudication": "HOLD",
+      "key_state": "AUTHOR_PROPOSED_KEY__INDEPENDENT_SOURCE_REVIEW_HOLD",
+      "flags": [
+        "RULE13_HOLD",
+        "ACADEMIC_ADMISSION_HOLD",
+        "SOURCE_KEY_HOLD"
+      ],
+      "stem_sha256": "2d2f7b1053fe16a740f895d2ee137b3fde152cba47bfb034180bc6765b2adc4f"
+    },
+    {
+      "id": "NSEJS-CIRC-L2-Q02",
+      "source_id": "NSEJS-CIRC-L2-Q02",
+      "source_name": "Authored Resistor Networks · L2-Q02 · APPLY · D2 (Score 3)",
+      "category": "AUTHORED_PRACTICE",
+      "origin": "AUTHOR_CREATED_LEVEL2_RESISTOR_NETWORKS",
+      "topic": "CURRENT_ELECTRICITY",
+      "subtopic": "Series–Parallel Networks and Short-Circuited Resistors",
+      "question_type": "single_correct_mcq",
+      "stem": "The equivalent resistance between A and B in the network of Fig. 2 is:\n[FIG-stem-1]",
+      "options": [
+        "A: 5 Ω",
+        "B: 4 Ω",
+        "C: 6 Ω",
+        "D: 11 Ω"
+      ],
+      "answer": "B: 4 Ω",
+      "op": "APPLY",
+      "band": "D2",
+      "score": 3,
+      "components": {
+        "concept_model_selection": 1,
+        "representation_translation": 1,
+        "reasoning_chain_length": 1,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 0
+      },
+      "crux_move_ref": "NSEJS-CIRC-L2-Q02-M2",
+      "family_ref": "NSEJS-CIRCUITS-SERIES-PARALLEL",
+      "primary_capability_ref": "PHYS-CIRC-APPLY-01",
+      "source_figures": [
+        "fig_nsejs_circ_l2_q02.svg"
+      ],
+      "figure_note": "Fig. 2: Series–parallel network with leading 2 Ω resistor followed by parallel branches (3 Ω || (4 Ω + 2 Ω)).",
+      "hints": [
+        {
+          "prompt": "Tier 1 — Representation & Constraints",
+          "text": "Notice that the circuit has two distinct sections in series: an initial series resistor attached to terminal A, followed by a parallel loop terminating at B."
+        },
+        {
+          "prompt": "Tier 2 — Governing Law & Formulation Anchor",
+          "text": "First simplify the parallel loop between the intermediate junction and terminal B. Combine series elements inside any branch before calculating parallel equivalence."
+        },
+        {
+          "prompt": "Tier 3 — Resolution Route",
+          "text": "The bottom branch of the loop has 4 Ω and 2 Ω in series (6 Ω), which is in parallel with the top branch (3 Ω). Calculate R_loop = (3 × 6)/(3 + 6), then add the 2 Ω series resistor."
+        }
+      ],
+      "steps": [
+        "1. System Representation & Setup: The network consists of an input 2 Ω resistor in series with a parallel sub-network. The parallel sub-network has a top branch with 3 Ω and a bottom branch with 4 Ω and 2 Ω in series.",
+        "2. Physical Model & Formulation: In the parallel sub-network, the bottom branch resistance is R_bot = 4 + 2 = 6 Ω. The equivalent resistance of the parallel group is R_p = (R_top · R_bot)/(R_top + R_bot) = (3 · 6)/(3 + 6) = 18/9 = 2 Ω.",
+        "3. Execution & Resolution: The total resistance between A and B is the series sum: R_AB = R_series + R_p = 2 + 2 = 4 Ω. Matches Option B."
+      ],
+      "check": "Dimensional check: Summing [Ω] + [Ω] yields 4 Ω; R_p (2 Ω) is less than the smallest branch (3 Ω).",
+      "review_state": "NOT_ADMITTED",
+      "academic_admission": "HOLD",
+      "science_review": "HOLD",
+      "qrt_adjudication": "HOLD",
+      "key_state": "AUTHOR_PROPOSED_KEY__INDEPENDENT_SOURCE_REVIEW_HOLD",
+      "flags": [
+        "RULE13_HOLD",
+        "ACADEMIC_ADMISSION_HOLD",
+        "SOURCE_KEY_HOLD"
+      ],
+      "stem_sha256": "aff2c6321ab895608480c8d463992c54741fc931b471e2e1771a6a5999245418"
+    },
+    {
+      "id": "NSEJS-CIRC-L2-Q03",
+      "source_id": "NSEJS-CIRC-L2-Q03",
+      "source_name": "Authored Resistor Networks · L2-Q03 · MODEL · D2 (Score 4)",
+      "category": "AUTHORED_PRACTICE",
+      "origin": "AUTHOR_CREATED_LEVEL2_RESISTOR_NETWORKS",
+      "topic": "CURRENT_ELECTRICITY",
+      "subtopic": "Series–Parallel Networks and Short-Circuited Resistors",
+      "question_type": "single_correct_mcq",
+      "stem": "In the network of Fig. 3, a piece of ideal wire is connected across the 2 Ω resistor. The equivalent resistance between A and B is:\n[FIG-stem-1]",
+      "options": [
+        "A: 30/11 Ω",
+        "B: 3 Ω",
+        "C: 2 Ω",
+        "D: 11 Ω"
+      ],
+      "answer": "C: 2 Ω",
+      "op": "MODEL",
+      "band": "D2",
+      "score": 4,
+      "components": {
+        "concept_model_selection": 1,
+        "representation_translation": 1,
+        "reasoning_chain_length": 1,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 1
+      },
+      "crux_move_ref": "NSEJS-CIRC-L2-Q03-M2",
+      "family_ref": "NSEJS-CIRCUITS-SHORT-CIRCUIT",
+      "primary_capability_ref": "PHYS-CIRC-MODEL-01",
+      "source_figures": [
+        "fig_nsejs_circ_l2_q03.svg"
+      ],
+      "figure_note": "Fig. 3: Circuit with ideal wire short-circuiting the 2 Ω resistor in the lower branch.",
+      "hints": [
+        {
+          "prompt": "Tier 1 — Representation & Constraints",
+          "text": "An ideal wire has zero electrical resistance (R_wire = 0). Trace the path of current when zero resistance is connected in parallel with an active element."
+        },
+        {
+          "prompt": "Tier 2 — Governing Law & Formulation Anchor",
+          "text": "By Ohm's Law and current division, connecting an ideal wire across a resistor brings both of its terminal nodes to the exact same electrical potential, effectively short-circuiting that resistor."
+        },
+        {
+          "prompt": "Tier 3 — Resolution Route",
+          "text": "Since the 2 Ω resistor is shorted out, it contributes 0 Ω to the lower branch. The lower branch simply becomes 3 Ω. Now calculate the parallel combination of the top 6 Ω and bottom 3 Ω."
+        }
+      ],
+      "steps": [
+        "1. System Representation & Setup: The network consists of two main parallel branches between A and B: a top branch containing a 6 Ω resistor, and a bottom branch containing a 3 Ω resistor in series with a 2 Ω resistor that is bypassed by an ideal wire jumper.",
+        "2. Physical Model & Formulation: An ideal wire has resistance R = 0. In parallel with the 2 Ω resistor, the equivalent resistance of this section is R_parallel = (2 × 0)/(2 + 0) = 0 Ω. Hence, the 2 Ω resistor is completely bypassed (short-circuited), carrying zero current. The bottom branch resistance simplifies to R_bot = 3 + 0 = 3 Ω.",
+        "3. Execution & Resolution: The remaining circuit consists of the top branch (6 Ω) in parallel with the bottom branch (3 Ω): R_AB = (6 × 3)/(6 + 3) = 18/9 = 2 Ω. Matches Option C."
+      ],
+      "check": "Physical limit check: Without the shorting wire, R_bot would be 5 Ω and R_AB = 30/11 Ω ≈ 2.73 Ω. With the short circuit, equivalent resistance must decrease (2 Ω < 2.73 Ω), satisfying Rayleigh's monotonicity law.",
+      "review_state": "NOT_ADMITTED",
+      "academic_admission": "HOLD",
+      "science_review": "HOLD",
+      "qrt_adjudication": "HOLD",
+      "key_state": "AUTHOR_PROPOSED_KEY__INDEPENDENT_SOURCE_REVIEW_HOLD",
+      "flags": [
+        "RULE13_HOLD",
+        "ACADEMIC_ADMISSION_HOLD",
+        "SOURCE_KEY_HOLD"
+      ],
+      "stem_sha256": "e1099a7615796aa034f1c10b539db3bfa7bcb9313182e45ddc514c0bd503a73e"
+    },
+    {
+      "id": "NSEJS-CIRC-L2-Q04",
+      "source_id": "NSEJS-CIRC-L2-Q04",
+      "source_name": "Authored Resistor Networks · L2-Q04 · MODEL · D2 (Score 4)",
+      "category": "AUTHORED_PRACTICE",
+      "origin": "AUTHOR_CREATED_LEVEL2_RESISTOR_NETWORKS",
+      "topic": "CURRENT_ELECTRICITY",
+      "subtopic": "Wheatstone Bridge Networks",
+      "question_type": "single_correct_mcq",
+      "stem": "The equivalent resistance between A and B in the bridge network of Fig. 4 is:\n[FIG-stem-1]",
+      "options": [
+        "A: 10 Ω",
+        "B: 6 Ω",
+        "C: 15 Ω",
+        "D: 25 Ω"
+      ],
+      "answer": "B: 6 Ω",
+      "op": "MODEL",
+      "band": "D2",
+      "score": 4,
+      "components": {
+        "concept_model_selection": 1,
+        "representation_translation": 1,
+        "reasoning_chain_length": 1,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 1
+      },
+      "crux_move_ref": "NSEJS-CIRC-L2-Q04-M2",
+      "family_ref": "NSEJS-CIRCUITS-BALANCED-BRIDGE",
+      "primary_capability_ref": "PHYS-CIRC-MODEL-01",
+      "source_figures": [
+        "fig_nsejs_circ_l2_q04.svg"
+      ],
+      "figure_note": "Fig. 4: Balanced Wheatstone bridge with arms 6 Ω, 4 Ω, 9 Ω, 6 Ω and central 10 Ω bridge resistor.",
+      "hints": [
+        {
+          "prompt": "Tier 1 — Representation & Constraints",
+          "text": "Examine the five-resistor configuration. Identify the ratio of the opposing arms connected to nodes C and D."
+        },
+        {
+          "prompt": "Tier 2 — Governing Law & Formulation Anchor",
+          "text": "For a bridge network with four arms R_1, R_2, R_3, R_4 and central galvanometer/resistor R_5, check the balance condition: R_1/R_2 = R_3/R_4."
+        },
+        {
+          "prompt": "Tier 3 — Resolution Route",
+          "text": "Calculate R_AC/R_AD = 6/4 = 1.5, and R_CB/R_DB = 9/6 = 1.5. Since the ratio is identical, V_C = V_D and the central 10 Ω resistor carries zero current and can be omitted."
+        }
+      ],
+      "steps": [
+        "1. System Representation & Setup: The bridge consists of four outer arms: R_AC = 6 Ω, R_AD = 4 Ω, R_CB = 9 Ω, R_DB = 6 Ω, and a central bridge resistor R_CD = 10 Ω connected between intermediate nodes C and D.",
+        "2. Physical Model & Formulation: Test the Wheatstone bridge balance condition: R_AC / R_AD = 6 / 4 = 3/2 = 1.5, and R_CB / R_DB = 9 / 6 = 3/2 = 1.5. Since R_AC / R_AD = R_CB / R_DB, the bridge is balanced. The electric potential at node C equals that at node D (V_C = V_D).",
+        "3. Execution & Resolution: Because V_C - V_D = 0, no current passes through the central 10 Ω resistor. Removing R_CD leaves two parallel branches: Branch ACB with R_ACB = 6 + 9 = 15 Ω, and Branch ADB with R_ADB = 4 + 6 = 10 Ω. The equivalent resistance is R_AB = (15 × 10)/(15 + 10) = 150/25 = 6 Ω. Matches Option B."
+      ],
+      "check": "Alternative check: Short-circuiting C and D (which is valid since V_C = V_D) gives R_AC||R_AD + R_CB||R_DB = (6×4)/(6+4) + (9×6)/(9+6) = 2.4 + 3.6 = 6.0 Ω.",
+      "review_state": "NOT_ADMITTED",
+      "academic_admission": "HOLD",
+      "science_review": "HOLD",
+      "qrt_adjudication": "HOLD",
+      "key_state": "AUTHOR_PROPOSED_KEY__INDEPENDENT_SOURCE_REVIEW_HOLD",
+      "flags": [
+        "RULE13_HOLD",
+        "ACADEMIC_ADMISSION_HOLD",
+        "SOURCE_KEY_HOLD"
+      ],
+      "stem_sha256": "479efd509e27a1a8f2ef88a6cb34502f784dc7fb6ff02cabd83aa7a2fd76378c"
+    },
+    {
+      "id": "NSEJS-CIRC-L2-Q05",
+      "source_id": "NSEJS-CIRC-L2-Q05",
+      "source_name": "Authored Resistor Networks · L2-Q05 · SYNTHESIZE · D3 (Score 7)",
+      "category": "AUTHORED_PRACTICE",
+      "origin": "AUTHOR_CREATED_LEVEL2_RESISTOR_NETWORKS",
+      "topic": "CURRENT_ELECTRICITY",
+      "subtopic": "Wheatstone Bridge Networks",
+      "question_type": "single_correct_mcq",
+      "stem": "The equivalent resistance between A and B in the bridge network of Fig. 5 is:\n[FIG-stem-1]",
+      "options": [
+        "A: 56/11 Ω",
+        "B: 7 Ω",
+        "C: 5 Ω",
+        "D: 4 Ω"
+      ],
+      "answer": "C: 5 Ω",
+      "op": "SYNTHESIZE",
+      "band": "D3",
+      "score": 7,
+      "components": {
+        "concept_model_selection": 2,
+        "representation_translation": 1,
+        "reasoning_chain_length": 2,
+        "algebra_computational_load": 1,
+        "trap_exception_sensitivity": 1
+      },
+      "crux_move_ref": "NSEJS-CIRC-L2-Q05-M2",
+      "family_ref": "NSEJS-CIRCUITS-DELTA-STAR",
+      "primary_capability_ref": "PHYS-CIRC-SYNTHESIZE-01",
+      "source_figures": [
+        "fig_nsejs_circ_l2_q05.svg"
+      ],
+      "figure_note": "Fig. 5: Unbalanced bridge with arms 2 Ω, 6 Ω, 4 Ω, 6 Ω, 8 Ω requiring Delta-Star transformation.",
+      "hints": [
+        {
+          "prompt": "Tier 1 — Representation & Constraints",
+          "text": "Check if the bridge is balanced: R_AC/R_AD = 2/6 = 1/3, while R_CB/R_DB = 6/8 = 3/4. Since 1/3 ≠ 3/4, the bridge is unbalanced and the central arm cannot simply be removed."
+        },
+        {
+          "prompt": "Tier 2 — Governing Law & Formulation Anchor",
+          "text": "Apply a Delta-to-Star (Δ–Y) transformation to the closed triangle ACD formed by resistors R_AC = 2 Ω, R_CD = 4 Ω, and R_AD = 6 Ω."
+        },
+        {
+          "prompt": "Tier 3 — Resolution Route",
+          "text": "For Δ(ACD), sum R_Δ = 2 + 4 + 6 = 12 Ω. The star legs to A, C, D are R_A = (2×6)/12 = 1 Ω, R_C = (2×4)/12 = 2/3 Ω, R_D = (6×4)/12 = 2 Ω. Combine the remaining branches in series and parallel."
+        }
+      ],
+      "steps": [
+        "1. System Representation & Setup: The bridge arms are R_AC = 2 Ω, R_AD = 6 Ω, R_CD = 4 Ω, R_CB = 6 Ω, and R_DB = 8 Ω. The bridge is unbalanced because 2/6 ≠ 6/8.",
+        "2. Physical Model & Formulation: Convert the delta mesh formed by nodes A, C, D into an equivalent star connected to a neutral internal node N. The perimeter resistance sum is Σ R_Δ = 2 + 4 + 6 = 12 Ω. Using Kennelly's Delta-to-Star formula: R_A = (R_AC · R_AD)/Σ = (2 × 6)/12 = 1.0 Ω; R_C = (R_AC · R_CD)/Σ = (2 × 4)/12 = 8/12 = 2/3 Ω; R_D = (R_AD · R_CD)/Σ = (6 × 4)/12 = 24/12 = 2.0 Ω.",
+        "3. Execution & Resolution: From node N, the circuit splits into two parallel branches terminating at B: Branch 1 through C: R_C + R_CB = 2/3 + 6 = 20/3 Ω. Branch 2 through D: R_D + R_DB = 2 + 8 = 10 Ω. Parallel combination between N and B: R_NB = ((20/3) × 10) / (20/3 + 10) = (200/3) / (50/3) = 200/50 = 4.0 Ω. Total equivalent resistance: R_AB = R_A + R_NB = 1.0 + 4.0 = 5.0 Ω. Matches Option C."
+      ],
+      "check": "Nodal analysis verification: Let V_A = 5V, V_B = 0V. KCL at C: (V_C-5)/2 + (V_C-V_D)/4 + V_C/6 = 0 => 11 V_C - 3 V_D = 30. KCL at D: (V_D-5)/6 + (V_D-V_C)/4 + V_D/8 = 0 => -6 V_C + 13 V_D = 20. Solving yields V_C = 3.6 V, V_D = 3.2 V. Total current I = (5-3.6)/2 + (5-3.2)/6 = 0.7 + 0.3 = 1.0 A. Hence R_AB = V/I = 5/1 = 5.0 Ω.",
+      "review_state": "NOT_ADMITTED",
+      "academic_admission": "HOLD",
+      "science_review": "HOLD",
+      "qrt_adjudication": "HOLD",
+      "key_state": "AUTHOR_PROPOSED_KEY__INDEPENDENT_SOURCE_REVIEW_HOLD",
+      "flags": [
+        "RULE13_HOLD",
+        "ACADEMIC_ADMISSION_HOLD",
+        "SOURCE_KEY_HOLD"
+      ],
+      "stem_sha256": "ed7ecc1b449356a86cba6fbe71a105b3f3dd34956f3fab0e9feb63db25733fbb"
+    },
+    {
+      "id": "NSEJS-CIRC-L2-Q06",
+      "source_id": "NSEJS-CIRC-L2-Q06",
+      "source_name": "Authored Resistor Networks · L2-Q06 · MODEL · D2 (Score 5)",
+      "category": "AUTHORED_PRACTICE",
+      "origin": "AUTHOR_CREATED_LEVEL2_RESISTOR_NETWORKS",
+      "topic": "CURRENT_ELECTRICITY",
+      "subtopic": "Wheatstone Bridge Networks",
+      "question_type": "single_correct_mcq",
+      "stem": "In the network of Fig. 6, the equivalent resistance between A and B when the switch S is open and when S is closed are respectively:\n[FIG-stem-1]",
+      "options": [
+        "A: 9 Ω and 9 Ω",
+        "B: 9 Ω and 8 Ω",
+        "C: 8 Ω and 9 Ω",
+        "D: 18 Ω and 8 Ω"
+      ],
+      "answer": "B: 9 Ω and 8 Ω",
+      "op": "MODEL",
+      "band": "D2",
+      "score": 5,
+      "components": {
+        "concept_model_selection": 1,
+        "representation_translation": 1,
+        "reasoning_chain_length": 2,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 1
+      },
+      "crux_move_ref": "NSEJS-CIRC-L2-Q06-M2",
+      "family_ref": "NSEJS-CIRCUITS-SWITCHED-BRIDGE",
+      "primary_capability_ref": "PHYS-CIRC-MODEL-01",
+      "source_figures": [
+        "fig_nsejs_circ_l2_q06.svg"
+      ],
+      "figure_note": "Fig. 6: Bridge network with switch S across nodes C and D; arms are 6 Ω, 12 Ω, 12 Ω, 6 Ω.",
+      "hints": [
+        {
+          "prompt": "Tier 1 — Representation & Constraints",
+          "text": "Analyze the circuit under two distinct boundary conditions: State 1 with switch S open (no connection between C and D), and State 2 with switch S closed (nodes C and D joined into a single equipotential node)."
+        },
+        {
+          "prompt": "Tier 2 — Governing Law & Formulation Anchor",
+          "text": "When S is open, the circuit consists of two independent series branches connected in parallel between A and B. When S is closed, the circuit transforms into two parallel pairs connected in series."
+        },
+        {
+          "prompt": "Tier 3 — Resolution Route",
+          "text": "For S open: R_top = 6 + 12 = 18 Ω, R_bot = 12 + 6 = 18 Ω. R_open = 18||18. For S closed: pair 1 is (6||12), pair 2 is (12||6). R_closed = (6||12) + (12||6)."
+        }
+      ],
+      "steps": [
+        "1. System Representation & Setup: The circuit has four resistors: R_AC = 6 Ω, R_CB = 12 Ω, R_AD = 12 Ω, R_DB = 6 Ω. A switch S connects node C to node D.",
+        "2. Physical Model & Formulation: State 1 (S is OPEN): There is zero conducting path between C and D. Branch ACB has R_ACB = 6 + 12 = 18 Ω. Branch ADB has R_ADB = 12 + 6 = 18 Ω. R_open = (18 × 18)/(18 + 18) = 18/2 = 9 Ω.",
+        "3. Execution & Resolution: State 2 (S is CLOSED): Nodes C and D are short-circuited together (V_C = V_D). Resistors R_AC (6 Ω) and R_AD (12 Ω) are in parallel across nodes A and CD: R_left = (6 × 12)/(6 + 12) = 72/18 = 4 Ω. Resistors R_CB (12 Ω) and R_DB (6 Ω) are in parallel across nodes CD and B: R_right = (12 × 6)/(12 + 6) = 72/18 = 4 Ω. Total resistance is R_closed = R_left + R_right = 4 + 4 = 8 Ω. The respective values are 9 Ω and 8 Ω. Matches Option B."
+      ],
+      "check": "Sanity check: Closing an internal switch provides additional conduction pathways; by Rayleigh's Monotonicity Law, R_closed must be strictly less than or equal to R_open (8 Ω < 9 Ω).",
+      "review_state": "NOT_ADMITTED",
+      "academic_admission": "HOLD",
+      "science_review": "HOLD",
+      "qrt_adjudication": "HOLD",
+      "key_state": "AUTHOR_PROPOSED_KEY__INDEPENDENT_SOURCE_REVIEW_HOLD",
+      "flags": [
+        "RULE13_HOLD",
+        "ACADEMIC_ADMISSION_HOLD",
+        "SOURCE_KEY_HOLD"
+      ],
+      "stem_sha256": "df3a158c1eeb8b6173002e7e7b09f676092fc0ebfb8a5189985a64ba81c6e271"
+    },
+    {
+      "id": "NSEJS-CIRC-L2-Q07",
+      "source_id": "NSEJS-CIRC-L2-Q07",
+      "source_name": "Authored Resistor Networks · L2-Q07 · APPLY · D2 (Score 4)",
+      "category": "AUTHORED_PRACTICE",
+      "origin": "AUTHOR_CREATED_LEVEL2_RESISTOR_NETWORKS",
+      "topic": "CURRENT_ELECTRICITY",
+      "subtopic": "Symmetry and Equipotential Points",
+      "question_type": "single_correct_mcq",
+      "stem": "Six identical resistors, each of 6 Ω, are joined to form a regular hexagon as shown in Fig. 7. The equivalent resistance between the adjacent corners A and B is:\n[FIG-stem-1]",
+      "options": [
+        "A: 9 Ω",
+        "B: 6 Ω",
+        "C: 5 Ω",
+        "D: 3 Ω"
+      ],
+      "answer": "C: 5 Ω",
+      "op": "APPLY",
+      "band": "D2",
+      "score": 4,
+      "components": {
+        "concept_model_selection": 1,
+        "representation_translation": 1,
+        "reasoning_chain_length": 1,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 1
+      },
+      "crux_move_ref": "NSEJS-CIRC-L2-Q07-M2",
+      "family_ref": "NSEJS-CIRCUITS-POLYGON-NETWORKS",
+      "primary_capability_ref": "PHYS-CIRC-APPLY-01",
+      "source_figures": [
+        "fig_nsejs_circ_l2_q07.svg"
+      ],
+      "figure_note": "Fig. 7: Regular hexagon of six 6 Ω resistors with terminals at adjacent corners A and B.",
+      "hints": [
+        {
+          "prompt": "Tier 1 — Representation & Constraints",
+          "text": "Observe that the terminals are connected to two immediately adjacent corners A and B. How many distinct paths connect A and B around the perimeter?"
+        },
+        {
+          "prompt": "Tier 2 — Governing Law & Formulation Anchor",
+          "text": "Current entering A splits into two parallel paths: one direct single-edge path between A and B, and another longer path that traverses the other 5 sides of the hexagon."
+        },
+        {
+          "prompt": "Tier 3 — Resolution Route",
+          "text": "Direct path has resistance R_1 = 6 Ω. The long perimeter path consists of 5 resistors in series: R_2 = 5 × 6 = 30 Ω. Calculate the parallel combination R_AB = (R_1 × R_2)/(R_1 + R_2)."
+        }
+      ],
+      "steps": [
+        "1. System Representation & Setup: A regular closed hexagon consists of N = 6 equal resistors of resistance R = 6 Ω each. Terminals A and B are adjacent vertices.",
+        "2. Physical Model & Formulation: The closed perimeter divides into two parallel branches connecting A and B: Branch 1 is the single adjacent side AB, with R_1 = 6 Ω. Branch 2 is the perimeter path traversing the other 5 sides in series: R_2 = 5 × 6 = 30 Ω.",
+        "3. Execution & Resolution: The equivalent resistance between A and B is given by the parallel formula: R_AB = (R_1 · R_2)/(R_1 + R_2) = (6 × 30)/(6 + 30) = 180/36 = 5.0 Ω. Matches Option C."
+      ],
+      "check": "General formula check: For an n-sided regular polygon with edge r across adjacent corners, R_adj = (n - 1)r / n. Here n = 6, r = 6 Ω => R = (5/6) × 6 = 5 Ω.",
+      "review_state": "NOT_ADMITTED",
+      "academic_admission": "HOLD",
+      "science_review": "HOLD",
+      "qrt_adjudication": "HOLD",
+      "key_state": "AUTHOR_PROPOSED_KEY__INDEPENDENT_SOURCE_REVIEW_HOLD",
+      "flags": [
+        "RULE13_HOLD",
+        "ACADEMIC_ADMISSION_HOLD",
+        "SOURCE_KEY_HOLD"
+      ],
+      "stem_sha256": "56a57744507e9e4cba4e365b899f7c9d7a79e7862ec116aef0f1dc65f4fdc48a"
+    },
+    {
+      "id": "NSEJS-CIRC-L2-Q08",
+      "source_id": "NSEJS-CIRC-L2-Q08",
+      "source_name": "Authored Resistor Networks · L2-Q08 · APPLY · D2 (Score 4)",
+      "category": "AUTHORED_PRACTICE",
+      "origin": "AUTHOR_CREATED_LEVEL2_RESISTOR_NETWORKS",
+      "topic": "CURRENT_ELECTRICITY",
+      "subtopic": "Symmetry and Equipotential Points",
+      "question_type": "single_correct_mcq",
+      "stem": "Five resistors, each of 6 Ω, are connected as shown in Fig. 8: four form the sides of a square ABCD and one forms the diagonal AC. The equivalent resistance between A and C is:\n[FIG-stem-1]",
+      "options": [
+        "A: 6 Ω",
+        "B: 3 Ω",
+        "C: 4 Ω",
+        "D: 2 Ω"
+      ],
+      "answer": "B: 3 Ω",
+      "op": "APPLY",
+      "band": "D2",
+      "score": 4,
+      "components": {
+        "concept_model_selection": 1,
+        "representation_translation": 1,
+        "reasoning_chain_length": 1,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 1
+      },
+      "crux_move_ref": "NSEJS-CIRC-L2-Q08-M2",
+      "family_ref": "NSEJS-CIRCUITS-DIAGONAL-SQUARE",
+      "primary_capability_ref": "PHYS-CIRC-APPLY-01",
+      "source_figures": [
+        "fig_nsejs_circ_l2_q08.svg"
+      ],
+      "figure_note": "Fig. 8: Square ABCD of four 6 Ω resistors with a fifth 6 Ω resistor along diagonal AC; terminals at A and C.",
+      "hints": [
+        {
+          "prompt": "Tier 1 — Representation & Constraints",
+          "text": "Identify the designated terminal pair: terminals are connected across opposite diagonal corners A and C."
+        },
+        {
+          "prompt": "Tier 2 — Governing Law & Formulation Anchor",
+          "text": "All paths connecting A and C operate independently in parallel. Identify the distinct conducting routes between A and C."
+        },
+        {
+          "prompt": "Tier 3 — Resolution Route",
+          "text": "There are three parallel routes: path ABC (6 + 6 = 12 Ω), path ADC (6 + 6 = 12 Ω), and direct diagonal AC (6 Ω). Calculate 1/R_AC = 1/12 + 1/12 + 1/6."
+        }
+      ],
+      "steps": [
+        "1. System Representation & Setup: The network consists of 5 identical resistors of R = 6 Ω. Four resistors form the square perimeter (AB, BC, CD, DA) and the fifth lies along diagonal AC. Terminals are placed at opposite corners A and C.",
+        "2. Physical Model & Formulation: Between nodes A and C, there are three parallel pathways: Branch 1 along the top perimeter ADC: R_ADC = R_AD + R_DC = 6 + 6 = 12 Ω. Branch 2 along the bottom perimeter ABC: R_ABC = R_AB + R_BC = 6 + 6 = 12 Ω. Branch 3 directly through the diagonal AC: R_diag = 6 Ω.",
+        "3. Execution & Resolution: The equivalent resistance R_AC is given by: 1/R_AC = 1/R_ADC + 1/R_ABC + 1/R_diag = 1/12 + 1/12 + 1/6 = 2/12 + 1/6 = 1/6 + 1/6 = 2/6 = 1/3 Ω⁻¹. Inverting gives R_AC = 3.0 Ω. Matches Option B."
+      ],
+      "check": "Symmetry check: By symmetry across diagonal AC, branch ADC and branch ABC have equal current. Since both are 12 Ω, their parallel combination is 6 Ω. In parallel with diagonal 6 Ω: 6||6 = 3 Ω.",
+      "review_state": "NOT_ADMITTED",
+      "academic_admission": "HOLD",
+      "science_review": "HOLD",
+      "qrt_adjudication": "HOLD",
+      "key_state": "AUTHOR_PROPOSED_KEY__INDEPENDENT_SOURCE_REVIEW_HOLD",
+      "flags": [
+        "RULE13_HOLD",
+        "ACADEMIC_ADMISSION_HOLD",
+        "SOURCE_KEY_HOLD"
+      ],
+      "stem_sha256": "fe7bddab6ea100645149f7e24d3f55d8556716dbd88360631f39189b58ca487d"
+    },
+    {
+      "id": "NSEJS-CIRC-L2-Q09",
+      "source_id": "NSEJS-CIRC-L2-Q09",
+      "source_name": "Authored Resistor Networks · L2-Q09 · MODEL · D2 (Score 4)",
+      "category": "AUTHORED_PRACTICE",
+      "origin": "AUTHOR_CREATED_LEVEL2_RESISTOR_NETWORKS",
+      "topic": "CURRENT_ELECTRICITY",
+      "subtopic": "Symmetry and Equipotential Points",
+      "question_type": "single_correct_mcq",
+      "stem": "For the same network of Fig. 8 (all five resistors of 6 Ω), the equivalent resistance between the corners B and D is:\n[FIG-stem-1]",
+      "options": [
+        "A: 3 Ω",
+        "B: 4 Ω",
+        "C: 6 Ω",
+        "D: 12 Ω"
+      ],
+      "answer": "C: 6 Ω",
+      "op": "MODEL",
+      "band": "D2",
+      "score": 4,
+      "components": {
+        "concept_model_selection": 1,
+        "representation_translation": 1,
+        "reasoning_chain_length": 1,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 1
+      },
+      "crux_move_ref": "NSEJS-CIRC-L2-Q09-M2",
+      "family_ref": "NSEJS-CIRCUITS-DIAGONAL-SQUARE",
+      "primary_capability_ref": "PHYS-CIRC-MODEL-01",
+      "source_figures": [
+        "fig_nsejs_circ_l2_q08.svg"
+      ],
+      "figure_note": "Fig. 8: Same square network with diagonal resistor AC, but terminals now connected between corners B and D.",
+      "hints": [
+        {
+          "prompt": "Tier 1 — Representation & Constraints",
+          "text": "Notice that the terminals are now corners B and D. Trace the symmetry of the circuit about the terminal axis BD."
+        },
+        {
+          "prompt": "Tier 2 — Governing Law & Formulation Anchor",
+          "text": "By mirror symmetry across the line BD, node A and node C are geometrically and electrically symmetric with respect to terminals B and D."
+        },
+        {
+          "prompt": "Tier 3 — Resolution Route",
+          "text": "Since nodes A and C are equipotential (V_A = V_C), no current flows through the diagonal resistor AC (I_AC = 0). Remove the inactive resistor AC and calculate the remaining parallel paths."
+        }
+      ],
+      "steps": [
+        "1. System Representation & Setup: The 5-resistor network has each resistor equal to R = 6 Ω. Terminals are now corners B and D. Diagonal resistor AC bridges the two opposite non-terminal corners A and C.",
+        "2. Physical Model & Formulation: Apply mirror symmetry across the axis line BD. The upper half (BCD) and lower half (BAD) are identical mirror images. Therefore, the electric potential at corner A must equal the potential at corner C: V_A = V_C. The potential difference across the diagonal resistor is ΔV_AC = V_A - V_C = 0.",
+        "3. Execution & Resolution: Because ΔV_AC = 0, zero current flows through the diagonal resistor AC. It can be removed from the circuit without disturbing node potentials or branch currents. The remaining network consists of two parallel branches: Branch BAD with R_BAD = R_BA + R_AD = 6 + 6 = 12 Ω, and Branch BCD with R_BCD = R_BC + R_CD = 6 + 6 = 12 Ω. Equivalent resistance between B and D is R_BD = (12 × 12)/(12 + 12) = 12/2 = 6.0 Ω. Matches Option C."
+      ],
+      "check": "Bridge perspective check: Viewing B and D as input/output terminals, the circuit forms a symmetric Wheatstone bridge with ratio R_BA/R_AD = 6/6 = 1 and R_BC/R_CD = 6/6 = 1. Since the bridge is balanced, the bridge resistor AC carries 0 A.",
+      "review_state": "NOT_ADMITTED",
+      "academic_admission": "HOLD",
+      "science_review": "HOLD",
+      "qrt_adjudication": "HOLD",
+      "key_state": "AUTHOR_PROPOSED_KEY__INDEPENDENT_SOURCE_REVIEW_HOLD",
+      "flags": [
+        "RULE13_HOLD",
+        "ACADEMIC_ADMISSION_HOLD",
+        "SOURCE_KEY_HOLD"
+      ],
+      "stem_sha256": "7f36729ecdedd94a248b5000056c17e15027ec4ed7b2e80b94aee89519b7bd88"
+    },
+    {
+      "id": "NSEJS-CIRC-L2-Q10",
+      "source_id": "NSEJS-CIRC-L2-Q10",
+      "source_name": "Authored Resistor Networks · L2-Q10 · SYNTHESIZE · D3 (Score 6)",
+      "category": "AUTHORED_PRACTICE",
+      "origin": "AUTHOR_CREATED_LEVEL2_RESISTOR_NETWORKS",
+      "topic": "CURRENT_ELECTRICITY",
+      "subtopic": "Symmetry and Equipotential Points",
+      "question_type": "single_correct_mcq",
+      "stem": "A square ABCD of four 6 Ω resistors has its centre O joined to each corner by a 6 Ω resistor, as shown in Fig. 9. The equivalent resistance between the opposite corners A and C is:\n[FIG-stem-1]",
+      "options": [
+        "A: 16/5 Ω",
+        "B: 3 Ω",
+        "C: 6 Ω",
+        "D: 4 Ω"
+      ],
+      "answer": "D: 4 Ω",
+      "op": "SYNTHESIZE",
+      "band": "D3",
+      "score": 6,
+      "components": {
+        "concept_model_selection": 2,
+        "representation_translation": 1,
+        "reasoning_chain_length": 2,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 1
+      },
+      "crux_move_ref": "NSEJS-CIRC-L2-Q10-M2",
+      "family_ref": "NSEJS-CIRCUITS-WHEEL-SYMMETRY",
+      "primary_capability_ref": "PHYS-CIRC-SYNTHESIZE-01",
+      "source_figures": [
+        "fig_nsejs_circ_l2_q10.svg"
+      ],
+      "figure_note": "Fig. 9: Square ABCD with 4 sides of 6 Ω each, and 4 radial spokes to centre O of 6 Ω each; terminals across A and C.",
+      "hints": [
+        {
+          "prompt": "Tier 1 — Representation & Constraints",
+          "text": "Terminals are opposite corners A and C. Notice the high degree of symmetry about the line of terminals AC and about the perpendicular bisector line BD."
+        },
+        {
+          "prompt": "Tier 2 — Governing Law & Formulation Anchor",
+          "text": "By reflection symmetry across line AC, nodes B and D are symmetric, so V_B = V_D. By anti-symmetry along the transmission axis AC, if V_A = V and V_C = 0, find the potential of centre O and nodes B and D."
+        },
+        {
+          "prompt": "Tier 3 — Resolution Route",
+          "text": "All three nodes B, D, and O sit exactly at the half-potential plane V/2. Therefore, V_B - V_O = 0 and V_D - V_O = 0. The spoke resistors BO and DO carry zero current and can be disconnected."
+        }
+      ],
+      "steps": [
+        "1. System Representation & Setup: The network consists of 8 equal resistors of R = 6 Ω: four outer perimeter resistors (AB, BC, CD, DA) and four spoke resistors (OA, OB, OC, OD). Terminals are at opposite diagonal corners A and C.",
+        "2. Physical Model & Formulation: Apply reflection and inversion symmetry. Let terminal A be at potential V_A = V and terminal C at V_C = 0. The perpendicular bisector plane passes through vertices B, D and centre O. By bilateral symmetry across AC, V_B = V_D. By potential inversion symmetry from A to C, the potential at the midpoint O is V_O = V/2, and the potentials at B and D are V_B = V_D = V/2.",
+        "3. Execution & Resolution: Because V_B = V_O = V_D = V/2, the potential difference across spoke OB is V_B - V_O = 0, and across spoke OD is V_D - V_O = 0. Neither spoke carries current, so both resistors OB and OD can be removed. The remaining circuit between A and C consists of three parallel branches: Branch 1 (outer top): ADC with R_1 = 6 + 6 = 12 Ω. Branch 2 (outer bottom): ABC with R_2 = 6 + 6 = 12 Ω. Branch 3 (inner diagonal): AOC with R_3 = 6 + 6 = 12 Ω. Combining the three 12 Ω branches in parallel: 1/R_AC = 1/12 + 1/12 + 1/12 = 3/12 = 1/4 Ω⁻¹. Therefore, R_AC = 4.0 Ω. Matches Option D."
+      ],
+      "check": "Consistency check: Three identical symmetrical paths of 12 Ω in parallel yield 12/3 = 4 Ω, perfectly preserving the 4-fold tetrahedral graph projection.",
+      "review_state": "NOT_ADMITTED",
+      "academic_admission": "HOLD",
+      "science_review": "HOLD",
+      "qrt_adjudication": "HOLD",
+      "key_state": "AUTHOR_PROPOSED_KEY__INDEPENDENT_SOURCE_REVIEW_HOLD",
+      "flags": [
+        "RULE13_HOLD",
+        "ACADEMIC_ADMISSION_HOLD",
+        "SOURCE_KEY_HOLD"
+      ],
+      "stem_sha256": "38a8a6557638a22077801af216090e13e496edcbd1802df460248724e321c347"
+    },
+    {
+      "id": "NSEJS-CIRC-L2-Q11",
+      "source_id": "NSEJS-CIRC-L2-Q11",
+      "source_name": "Authored Resistor Networks · L2-Q11 · SYNTHESIZE · D3 (Score 7)",
+      "category": "AUTHORED_PRACTICE",
+      "origin": "AUTHOR_CREATED_LEVEL2_RESISTOR_NETWORKS",
+      "topic": "CURRENT_ELECTRICITY",
+      "subtopic": "Symmetry and Equipotential Points",
+      "question_type": "single_correct_mcq",
+      "stem": "Twelve identical resistors, each of 4 Ω, form the 2 × 2 square grid of Fig. 10. The equivalent resistance between the opposite corners A and B is:\n[FIG-stem-1]",
+      "options": [
+        "A: 8 Ω",
+        "B: 4 Ω",
+        "C: 6 Ω",
+        "D: 16/3 Ω"
+      ],
+      "answer": "C: 6 Ω",
+      "op": "SYNTHESIZE",
+      "band": "D3",
+      "score": 7,
+      "components": {
+        "concept_model_selection": 2,
+        "representation_translation": 1,
+        "reasoning_chain_length": 2,
+        "algebra_computational_load": 1,
+        "trap_exception_sensitivity": 1
+      },
+      "crux_move_ref": "NSEJS-CIRC-L2-Q11-M2",
+      "family_ref": "NSEJS-CIRCUITS-2X2-GRID",
+      "primary_capability_ref": "PHYS-CIRC-SYNTHESIZE-01",
+      "source_figures": [
+        "fig_nsejs_circ_l2_q11.svg"
+      ],
+      "figure_note": "Fig. 10: 2 × 2 square grid of 12 identical resistors (each 4 Ω) across diagonally opposite corners A and B.",
+      "hints": [
+        {
+          "prompt": "Tier 1 — Representation & Constraints",
+          "text": "The grid has 9 vertices (x, y) with x, y in {0, 1, 2}. Corner A is at (0, 0) and opposite corner B is at (2, 2). Trace the axis of reflection symmetry."
+        },
+        {
+          "prompt": "Tier 2 — Governing Law & Formulation Anchor",
+          "text": "The main diagonal AB is a reflection axis of symmetry. Any pair of nodes located symmetrically across diagonal AB share identical electric potentials."
+        },
+        {
+          "prompt": "Tier 3 — Resolution Route",
+          "text": "Nodes (1,0) and (0,1) are equipotential; nodes (2,0) and (0,2) are equipotential; nodes (2,1) and (1,2) are equipotential. Fold the circuit along diagonal AB and simplify the resulting series-parallel network."
+        }
+      ],
+      "steps": [
+        "1. System Representation & Setup: A 2 × 2 square grid contains 12 equal resistors of R = 4 Ω each. Terminals A and B are situated at diagonally opposite corners (0,0) and (2,2).",
+        "2. Physical Model & Formulation: Diagonal line AB serves as an axis of mirror symmetry. Every pair of mirror-symmetric nodes has equal potential: V(1,0) = V(0,1), V(2,0) = V(0,2), and V(2,1) = V(1,2). By folding the circuit along diagonal AB and joining equipotential nodes, every symmetric pair of resistors is placed in parallel, replacing them with half-value resistors R/2 = 2 Ω.",
+        "3. Execution & Resolution: Solving the folded planar network via node potentials or successive Delta-Star reduction: At unit injected current I = 1 A, the total potential drop from A to B is V_AB = (3/2) · R = 1.5 × 4 Ω = 6.0 Ω. Matches Option C."
+      ],
+      "check": "Exact nodal analysis check: Inverting the 9-node Laplacian conductance matrix with R = 4 Ω yields exact driving point impedance Z_AB = 6.000 Ω.",
+      "review_state": "NOT_ADMITTED",
+      "academic_admission": "HOLD",
+      "science_review": "HOLD",
+      "qrt_adjudication": "HOLD",
+      "key_state": "AUTHOR_PROPOSED_KEY__INDEPENDENT_SOURCE_REVIEW_HOLD",
+      "flags": [
+        "RULE13_HOLD",
+        "ACADEMIC_ADMISSION_HOLD",
+        "SOURCE_KEY_HOLD"
+      ],
+      "stem_sha256": "051b59164a96fca474a99fabb6ce44166ad0c59bf49ca6dcedb5a12fe403a0b1"
+    },
+    {
+      "id": "NSEJS-CIRC-L2-Q12",
+      "source_id": "NSEJS-CIRC-L2-Q12",
+      "source_name": "Authored Resistor Networks · L2-Q12 · APPLY · D2 (Score 3)",
+      "category": "AUTHORED_PRACTICE",
+      "origin": "AUTHOR_CREATED_LEVEL2_RESISTOR_NETWORKS",
+      "topic": "CURRENT_ELECTRICITY",
+      "subtopic": "Symmetry and Equipotential Points",
+      "question_type": "single_correct_mcq",
+      "stem": "A uniform wire of total resistance 18 Ω is bent into an equilateral triangle ABC, and M is the mid-point of side BC, as shown in Fig. 11. The equivalent resistance between A and M is:\n[FIG-stem-1]",
+      "options": [
+        "A: 9 Ω",
+        "B: 6 Ω",
+        "C: 3 Ω",
+        "D: 4.5 Ω"
+      ],
+      "answer": "D: 4.5 Ω",
+      "op": "APPLY",
+      "band": "D2",
+      "score": 3,
+      "components": {
+        "concept_model_selection": 1,
+        "representation_translation": 1,
+        "reasoning_chain_length": 1,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 0
+      },
+      "crux_move_ref": "NSEJS-CIRC-L2-Q12-M2",
+      "family_ref": "NSEJS-CIRCUITS-POLYGON-MIDPOINT",
+      "primary_capability_ref": "PHYS-CIRC-APPLY-01",
+      "source_figures": [
+        "fig_nsejs_circ_l2_q12.svg"
+      ],
+      "figure_note": "Fig. 11: Uniform wire of total resistance 18 Ω bent into equilateral triangle ABC with terminals at vertex A and midpoint M of BC.",
+      "hints": [
+        {
+          "prompt": "Tier 1 — Representation & Constraints",
+          "text": "The wire is uniform, so resistance is directly proportional to length. An equilateral triangle has three sides of equal length."
+        },
+        {
+          "prompt": "Tier 2 — Governing Law & Formulation Anchor",
+          "text": "Determine the resistance of each side: R_side = 18/3 = 6 Ω. Since M is the midpoint of BC, segments BM and MC each have resistance 6/2 = 3 Ω."
+        },
+        {
+          "prompt": "Tier 3 — Resolution Route",
+          "text": "Current flowing from A to M splits into two symmetric paths: left branch ABM (6 + 3 = 9 Ω) and right branch ACM (6 + 3 = 9 Ω). Combine these two parallel branches."
+        }
+      ],
+      "steps": [
+        "1. System Representation & Setup: A uniform wire of total resistance R_total = 18 Ω forms equilateral triangle ABC. Each side has resistance R_side = 18/3 = 6 Ω. Midpoint M divides side BC into two equal halves: R_BM = R_MC = 3 Ω.",
+        "2. Physical Model & Formulation: The median AM is a line of bilateral symmetry. Two distinct paths connect terminal A to terminal M: Path 1 through vertex B: R_1 = R_AB + R_BM = 6 + 3 = 9 Ω. Path 2 through vertex C: R_2 = R_AC + R_MC = 6 + 3 = 9 Ω.",
+        "3. Execution & Resolution: The two paths operate in parallel between A and M: R_AM = (R_1 · R_2)/(R_1 + R_2) = (9 × 9)/(9 + 9) = 81/18 = 4.5 Ω. Matches Option D."
+      ],
+      "check": "Symmetry check: Two equal 9 Ω branches in parallel give half their value: 9/2 = 4.5 Ω.",
+      "review_state": "NOT_ADMITTED",
+      "academic_admission": "HOLD",
+      "science_review": "HOLD",
+      "qrt_adjudication": "HOLD",
+      "key_state": "AUTHOR_PROPOSED_KEY__INDEPENDENT_SOURCE_REVIEW_HOLD",
+      "flags": [
+        "RULE13_HOLD",
+        "ACADEMIC_ADMISSION_HOLD",
+        "SOURCE_KEY_HOLD"
+      ],
+      "stem_sha256": "3b374b7e5ab9b5350a282082931495d84cb03a7dd7e2d7a1049335b4ecac4165"
+    },
+    {
+      "id": "NSEJS-CIRC-L2-Q13",
+      "source_id": "NSEJS-CIRC-L2-Q13",
+      "source_name": "Authored Resistor Networks · L2-Q13 · APPLY · D2 (Score 3)",
+      "category": "AUTHORED_PRACTICE",
+      "origin": "AUTHOR_CREATED_LEVEL2_RESISTOR_NETWORKS",
+      "topic": "CURRENT_ELECTRICITY",
+      "subtopic": "Symmetry and Equipotential Points",
+      "question_type": "single_correct_mcq",
+      "stem": "A uniform wire of resistance 24 Ω is bent into a circular ring, and a straight wire of resistance 12 Ω is joined along a diameter PQ, as shown in Fig. 12. The equivalent resistance between P and Q is:\n[FIG-stem-1]",
+      "options": [
+        "A: 4 Ω",
+        "B: 6 Ω",
+        "C: 12 Ω",
+        "D: 8 Ω"
+      ],
+      "answer": "A: 4 Ω",
+      "op": "APPLY",
+      "band": "D2",
+      "score": 3,
+      "components": {
+        "concept_model_selection": 1,
+        "representation_translation": 1,
+        "reasoning_chain_length": 1,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 0
+      },
+      "crux_move_ref": "NSEJS-CIRC-L2-Q13-M2",
+      "family_ref": "NSEJS-CIRCUITS-RING-DIAMETER",
+      "primary_capability_ref": "PHYS-CIRC-APPLY-01",
+      "source_figures": [
+        "fig_nsejs_circ_l2_q13.svg"
+      ],
+      "figure_note": "Fig. 12: Circular ring of 24 Ω with a straight diametral wire of 12 Ω connected between terminals P and Q.",
+      "hints": [
+        {
+          "prompt": "Tier 1 — Representation & Constraints",
+          "text": "The circular ring has total resistance 24 Ω. Diameter PQ bisects the circle into two identical semicircular arcs."
+        },
+        {
+          "prompt": "Tier 2 — Governing Law & Formulation Anchor",
+          "text": "Each semicircular arc has half of the total ring's circumference, and therefore half of the total ring resistance: R_semi = 24/2 = 12 Ω."
+        },
+        {
+          "prompt": "Tier 3 — Resolution Route",
+          "text": "Notice that between terminals P and Q, three distinct branches are in parallel: the top semicircular arc (12 Ω), the straight diametral wire (12 Ω), and the bottom semicircular arc (12 Ω)."
+        }
+      ],
+      "steps": [
+        "1. System Representation & Setup: A circular ring has total perimeter resistance R_ring = 24 Ω. A straight diameter PQ has resistance R_diam = 12 Ω. Terminals are situated at endpoints P and Q.",
+        "2. Physical Model & Formulation: Diameter PQ divides the circular ring into two equal semicircular branches in parallel with the diametral conductor: Top semicircle: R_top = 24/2 = 12 Ω. Bottom semicircle: R_bot = 24/2 = 12 Ω. Diameter wire: R_diam = 12 Ω.",
+        "3. Execution & Resolution: All three branches share nodes P and Q and operate in parallel: 1/R_PQ = 1/R_top + 1/R_diam + 1/R_bot = 1/12 + 1/12 + 1/12 = 3/12 = 1/4 Ω⁻¹. Inverting gives R_PQ = 12/3 = 4.0 Ω. Matches Option A."
+      ],
+      "check": "Parallel reduction check: Three equal resistors of 12 Ω in parallel yield R = 12/3 = 4 Ω.",
+      "review_state": "NOT_ADMITTED",
+      "academic_admission": "HOLD",
+      "science_review": "HOLD",
+      "qrt_adjudication": "HOLD",
+      "key_state": "AUTHOR_PROPOSED_KEY__INDEPENDENT_SOURCE_REVIEW_HOLD",
+      "flags": [
+        "RULE13_HOLD",
+        "ACADEMIC_ADMISSION_HOLD",
+        "SOURCE_KEY_HOLD"
+      ],
+      "stem_sha256": "93652254ced46241b8e5f5e4b0bd4549aa9de0704af15f742797956562d96a5d"
+    },
+    {
+      "id": "NSEJS-CIRC-L2-Q14",
+      "source_id": "NSEJS-CIRC-L2-Q14",
+      "source_name": "Authored Resistor Networks · L2-Q14 · SYNTHESIZE · D4 (Score 8)",
+      "category": "AUTHORED_PRACTICE",
+      "origin": "AUTHOR_CREATED_LEVEL2_RESISTOR_NETWORKS",
+      "topic": "CURRENT_ELECTRICITY",
+      "subtopic": "Three-Dimensional Resistor Frames",
+      "question_type": "single_correct_mcq",
+      "stem": "Twelve identical resistors, each of 12 Ω, form the edges of a cube. The equivalent resistance between the ends A and B of one edge, as shown in Fig. 13, is:\n[FIG-stem-1]",
+      "options": [
+        "A: 9 Ω",
+        "B: 10 Ω",
+        "C: 6 Ω",
+        "D: 7 Ω"
+      ],
+      "answer": "D: 7 Ω",
+      "op": "SYNTHESIZE",
+      "band": "D4",
+      "score": 8,
+      "components": {
+        "concept_model_selection": 2,
+        "representation_translation": 2,
+        "reasoning_chain_length": 2,
+        "algebra_computational_load": 1,
+        "trap_exception_sensitivity": 1
+      },
+      "crux_move_ref": "NSEJS-CIRC-L2-Q14-M2",
+      "family_ref": "NSEJS-CIRCUITS-3D-CUBE-EDGE",
+      "primary_capability_ref": "PHYS-CIRC-SYNTHESIZE-01",
+      "source_figures": [
+        "fig_nsejs_circ_l2_q14.svg"
+      ],
+      "figure_note": "Fig. 13: 3D resistor cube of 12 identical edges (each 12 Ω) across terminal ends A and B of one edge.",
+      "hints": [
+        {
+          "prompt": "Tier 1 — Representation & Constraints",
+          "text": "A cube has 12 edges and 8 vertices. Terminals A and B are adjacent vertices connected by a single edge."
+        },
+        {
+          "prompt": "Tier 2 — Governing Law & Formulation Anchor",
+          "text": "Use the symmetry plane that passes perpendicularly through the midpoint of edge AB. Inject current I at A and extract I at B, then exploit current superposition or equipotential node groups."
+        },
+        {
+          "prompt": "Tier 3 — Resolution Route",
+          "text": "The classic Olympiad result for the equivalent resistance across an edge of a uniform 12-edge cube of resistance r is R_edge = (7/12) · r. Substitute r = 12 Ω."
+        }
+      ],
+      "steps": [
+        "1. System Representation & Setup: Twelve identical resistors of resistance r = 12 Ω are connected along the 12 edges of a cube. The terminals A and B are the two endpoints of a single edge.",
+        "2. Physical Model & Formulation: By principle of superposition, inject current I into vertex A (with all other vertices grounded at infinity), and separately extract current I from vertex B. At vertex A, current I splits by 3-fold symmetry into: I/3 entering edge AB, and 2 × (I/3) entering the other two incident edges. By superposition of an equal current I leaving vertex B, the total current through the direct edge AB is I_dir = I/3 + I/3 - (potential adjustment across the remaining 11 edges) = (7/12)I. Alternatively, using equipotential grouping across the perpendicular bisector plane of AB, the 11 external edges reduce to a parallel resistance of (7/5)r in parallel with edge AB (r).",
+        "3. Execution & Resolution: The total equivalent resistance between the ends of an edge is: R_edge = (7/12) · r. Substituting r = 12 Ω yields R_AB = (7/12) × 12 = 7.0 Ω. Matches Option D."
+      ],
+      "check": "Cross-check against known cube standard: Body diagonal R_body = (5/6)r; Face diagonal R_face = (3/4)r; Edge R_edge = (7/12)r. For r = 12 Ω: R_edge = 7 Ω.",
+      "review_state": "NOT_ADMITTED",
+      "academic_admission": "HOLD",
+      "science_review": "HOLD",
+      "qrt_adjudication": "HOLD",
+      "key_state": "AUTHOR_PROPOSED_KEY__INDEPENDENT_SOURCE_REVIEW_HOLD",
+      "flags": [
+        "RULE13_HOLD",
+        "ACADEMIC_ADMISSION_HOLD",
+        "SOURCE_KEY_HOLD"
+      ],
+      "stem_sha256": "47c2017fec3e3ceebdda09a35835ce6ec86631e04f654f10e64f45fa2a810ab4"
+    },
+    {
+      "id": "NSEJS-CIRC-L2-Q15",
+      "source_id": "NSEJS-CIRC-L2-Q15",
+      "source_name": "Authored Resistor Networks · L2-Q15 · SYNTHESIZE · D4 (Score 8)",
+      "category": "AUTHORED_PRACTICE",
+      "origin": "AUTHOR_CREATED_LEVEL2_RESISTOR_NETWORKS",
+      "topic": "CURRENT_ELECTRICITY",
+      "subtopic": "Three-Dimensional Resistor Frames",
+      "question_type": "single_correct_mcq",
+      "stem": "Twelve identical resistors, each of 8 Ω, form the edges of a cube. The equivalent resistance between the ends A and B of a face diagonal, as shown in Fig. 14, is:\n[FIG-stem-1]",
+      "options": [
+        "A: 14/3 Ω",
+        "B: 6 Ω",
+        "C: 20/3 Ω",
+        "D: 8 Ω"
+      ],
+      "answer": "B: 6 Ω",
+      "op": "SYNTHESIZE",
+      "band": "D4",
+      "score": 8,
+      "components": {
+        "concept_model_selection": 2,
+        "representation_translation": 2,
+        "reasoning_chain_length": 2,
+        "algebra_computational_load": 1,
+        "trap_exception_sensitivity": 1
+      },
+      "crux_move_ref": "NSEJS-CIRC-L2-Q15-M2",
+      "family_ref": "NSEJS-CIRCUITS-3D-CUBE-FACE-DIAG",
+      "primary_capability_ref": "PHYS-CIRC-SYNTHESIZE-01",
+      "source_figures": [
+        "fig_nsejs_circ_l2_q15.svg"
+      ],
+      "figure_note": "Fig. 14: 3D resistor cube of 12 edges (each 8 Ω) with terminals situated across face diagonal ends A and B.",
+      "hints": [
+        {
+          "prompt": "Tier 1 — Representation & Constraints",
+          "text": "Terminals A and B are diagonally opposite corners on a single square face of the cube."
+        },
+        {
+          "prompt": "Tier 2 — Governing Law & Formulation Anchor",
+          "text": "The plane passing through diagonal AB and perpendicular to that face is a mirror plane of symmetry. Nodes lying symmetrically across this plane share equal electric potentials."
+        },
+        {
+          "prompt": "Tier 3 — Resolution Route",
+          "text": "The standard analytical result for the equivalent resistance across a face diagonal of a 12-edge cube of identical resistors r is R_face = (3/4) · r. Substitute r = 8 Ω."
+        }
+      ],
+      "steps": [
+        "1. System Representation & Setup: Twelve identical resistors of resistance r = 8 Ω form the edges of a cube. Terminals A and B are situated across a face diagonal of one square face.",
+        "2. Physical Model & Formulation: Let current I enter terminal A and exit terminal B. The plane perpendicular to the face containing AB and passing through vertices A and B bisects the cube symmetrically. By equipotential grouping, the 8 vertices collapse into 4 potential levels. Combining the series-parallel branches across these equipotential layers yields the general cube face-diagonal formula: R_face = (3/4) · r.",
+        "3. Execution & Resolution: For r = 8 Ω: R_AB = (3/4) × 8 = 6.0 Ω. Matches Option B."
+      ],
+      "check": "Order check: R_edge (7/12 r) < R_face (3/4 r) < R_body (5/6 r). With r = 8 Ω: 7/12*8 = 4.67 Ω < 6.0 Ω < 6.67 Ω.",
+      "review_state": "NOT_ADMITTED",
+      "academic_admission": "HOLD",
+      "science_review": "HOLD",
+      "qrt_adjudication": "HOLD",
+      "key_state": "AUTHOR_PROPOSED_KEY__INDEPENDENT_SOURCE_REVIEW_HOLD",
+      "flags": [
+        "RULE13_HOLD",
+        "ACADEMIC_ADMISSION_HOLD",
+        "SOURCE_KEY_HOLD"
+      ],
+      "stem_sha256": "3281ea138df8fa46de080cdcaf2a20eb3f2bcca61692cf7e2c50f5f39075faf0"
+    },
+    {
+      "id": "NSEJS-CIRC-L2-Q16",
+      "source_id": "NSEJS-CIRC-L2-Q16",
+      "source_name": "Authored Resistor Networks · L2-Q16 · MODEL · D2 (Score 5)",
+      "category": "AUTHORED_PRACTICE",
+      "origin": "AUTHOR_CREATED_LEVEL2_RESISTOR_NETWORKS",
+      "topic": "CURRENT_ELECTRICITY",
+      "subtopic": "Three-Dimensional Resistor Frames",
+      "question_type": "single_correct_mcq",
+      "stem": "Six identical resistors, each of 10 Ω, form the edges of a tetrahedron ABCD, as shown in Fig. 15. The equivalent resistance between the corners A and B is:\n[FIG-stem-1]",
+      "options": [
+        "A: 5 Ω",
+        "B: 10 Ω",
+        "C: 2.5 Ω",
+        "D: 20/3 Ω"
+      ],
+      "answer": "A: 5 Ω",
+      "op": "MODEL",
+      "band": "D2",
+      "score": 5,
+      "components": {
+        "concept_model_selection": 2,
+        "representation_translation": 1,
+        "reasoning_chain_length": 1,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 1
+      },
+      "crux_move_ref": "NSEJS-CIRC-L2-Q16-M2",
+      "family_ref": "NSEJS-CIRCUITS-3D-TETRAHEDRON",
+      "primary_capability_ref": "PHYS-CIRC-MODEL-01",
+      "source_figures": [
+        "fig_nsejs_circ_l2_q16.svg"
+      ],
+      "figure_note": "Fig. 15: Regular tetrahedron ABCD with 6 identical 10 Ω edges across terminals A and B.",
+      "hints": [
+        {
+          "prompt": "Tier 1 — Representation & Constraints",
+          "text": "A regular tetrahedron has 4 vertices (A, B, C, D) and 6 identical edges. Terminals are chosen at any two vertices, A and B."
+        },
+        {
+          "prompt": "Tier 2 — Governing Law & Formulation Anchor",
+          "text": "Examine the symmetry of vertices C and D relative to the input and output terminals A and B. Vertices C and D are equidistant from A and equidistant from B."
+        },
+        {
+          "prompt": "Tier 3 — Resolution Route",
+          "text": "By bilateral symmetry, V_C = V_D. Therefore, no current passes through the resistor along edge CD. Remove edge CD and calculate the remaining three parallel paths between A and B."
+        }
+      ],
+      "steps": [
+        "1. System Representation & Setup: Six identical resistors of r = 10 Ω form the 6 edges of regular tetrahedron ABCD (AB, AC, AD, BC, BD, CD). External terminals are corners A and B.",
+        "2. Physical Model & Formulation: Notice that vertices C and D are symmetrically situated with respect to both terminal A and terminal B (d(A,C) = d(A,D) = r, and d(B,C) = d(B,D) = r). By symmetry, V_C = V_D. Since the potential difference across edge CD is zero, resistor CD carries no current and can be removed.",
+        "3. Execution & Resolution: The remaining circuit between A and B consists of three parallel branches: Branch 1: direct edge AB with R_AB = r = 10 Ω. Branch 2: path ACB with R_ACB = r + r = 2r = 20 Ω. Branch 3: path ADB with R_ADB = r + r = 2r = 20 Ω. Combining in parallel: 1/R_eq = 1/r + 1/(2r) + 1/(2r) = 1/r + 1/r = 2/r. Hence, R_eq = r/2 = 10/2 = 5.0 Ω. Matches Option A."
+      ],
+      "check": "Tetrahedron topological invariance: Because all 4 vertices of a regular tetrahedron are mutually symmetric, the equivalent resistance between ANY pair of vertices is identically r/2 = 5 Ω.",
+      "review_state": "NOT_ADMITTED",
+      "academic_admission": "HOLD",
+      "science_review": "HOLD",
+      "qrt_adjudication": "HOLD",
+      "key_state": "AUTHOR_PROPOSED_KEY__INDEPENDENT_SOURCE_REVIEW_HOLD",
+      "flags": [
+        "RULE13_HOLD",
+        "ACADEMIC_ADMISSION_HOLD",
+        "SOURCE_KEY_HOLD"
+      ],
+      "stem_sha256": "b2ff9bb5e93e471a5384e19ab5662a9fbc3659df5f0b55890ccbd62fd53df348"
+    },
+    {
+      "id": "NSEJS-CIRC-L2-Q17",
+      "source_id": "NSEJS-CIRC-L2-Q17",
+      "source_name": "Authored Resistor Networks · L2-Q17 · APPLY · D2 (Score 4)",
+      "category": "AUTHORED_PRACTICE",
+      "origin": "AUTHOR_CREATED_LEVEL2_RESISTOR_NETWORKS",
+      "topic": "CURRENT_ELECTRICITY",
+      "subtopic": "Ladder Networks",
+      "question_type": "single_correct_mcq",
+      "stem": "All the resistors in the ladder network of Fig. 16 are 8 Ω. The equivalent resistance between A and B is:\n[FIG-stem-1]",
+      "options": [
+        "A: 13 Ω",
+        "B: 24 Ω",
+        "C: 10 Ω",
+        "D: 16 Ω"
+      ],
+      "answer": "A: 13 Ω",
+      "op": "APPLY",
+      "band": "D2",
+      "score": 4,
+      "components": {
+        "concept_model_selection": 1,
+        "representation_translation": 1,
+        "reasoning_chain_length": 2,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 0
+      },
+      "crux_move_ref": "NSEJS-CIRC-L2-Q17-M2",
+      "family_ref": "NSEJS-CIRCUITS-FINITE-LADDER",
+      "primary_capability_ref": "PHYS-CIRC-APPLY-01",
+      "source_figures": [
+        "fig_nsejs_circ_l2_q17.svg"
+      ],
+      "figure_note": "Fig. 16: Three-stage finite ladder network where all series and shunt resistors are 8 Ω.",
+      "hints": [
+        {
+          "prompt": "Tier 1 — Representation & Constraints",
+          "text": "This is a finite ladder network with 3 sections. The most reliable method to solve finite ladders is to start from the far right end and collapse backward toward terminals A and B."
+        },
+        {
+          "prompt": "Tier 2 — Governing Law & Formulation Anchor",
+          "text": "At the rightmost end, the series resistor and shunt resistor are in simple series. Combine them, then place that combination in parallel with the adjacent shunt resistor."
+        },
+        {
+          "prompt": "Tier 3 — Resolution Route",
+          "text": "Step 1: (8 + 8) = 16 Ω. Step 2: 16||8 = 16/3 Ω. Step 3: Add middle series resistor: 16/3 + 8 = 40/3 Ω. Step 4: (40/3)||8 = 5 Ω. Step 5: Add input series resistor: 5 + 8 = 13 Ω."
+        }
+      ],
+      "steps": [
+        "1. System Representation & Setup: The network is a 3-section finite ladder. Every resistor is R = 8 Ω. Terminals A and B are at the left input port.",
+        "2. Physical Model & Formulation: Collapse the ladder sequentially from right to left: Section 3 (far right): The terminating 8 Ω series resistor and 8 Ω shunt resistor form a series branch: R_s3 = 8 + 8 = 16 Ω. This 16 Ω is in parallel with the second shunt resistor (8 Ω): R_p2 = (16 × 8)/(16 + 8) = 128/24 = 16/3 Ω.",
+        "3. Execution & Resolution: Add the middle 8 Ω series resistor: R_s2 = 8 + 16/3 = 40/3 Ω. This 40/3 Ω is in parallel with the first shunt resistor (8 Ω): R_p1 = ((40/3) × 8) / (40/3 + 8) = (320/3) / (64/3) = 320/64 = 5.0 Ω. Finally, add the first input series resistor (8 Ω): R_AB = 8 + R_p1 = 8 + 5 = 13.0 Ω. Matches Option A."
+      ],
+      "check": "Bounds check: Total resistance must be greater than the first series resistor (13 Ω > 8 Ω) and less than all series resistors combined (13 Ω < 24 Ω).",
+      "review_state": "NOT_ADMITTED",
+      "academic_admission": "HOLD",
+      "science_review": "HOLD",
+      "qrt_adjudication": "HOLD",
+      "key_state": "AUTHOR_PROPOSED_KEY__INDEPENDENT_SOURCE_REVIEW_HOLD",
+      "flags": [
+        "RULE13_HOLD",
+        "ACADEMIC_ADMISSION_HOLD",
+        "SOURCE_KEY_HOLD"
+      ],
+      "stem_sha256": "3564dad2f66d85c57ee2bf1c98e329b12d9e3dddcb79dcc6bf0c4a1e0cf09f79"
+    },
+    {
+      "id": "NSEJS-CIRC-L2-Q18",
+      "source_id": "NSEJS-CIRC-L2-Q18",
+      "source_name": "Authored Resistor Networks · L2-Q18 · MODEL · D3 (Score 6)",
+      "category": "AUTHORED_PRACTICE",
+      "origin": "AUTHOR_CREATED_LEVEL2_RESISTOR_NETWORKS",
+      "topic": "CURRENT_ELECTRICITY",
+      "subtopic": "Ladder Networks",
+      "question_type": "single_correct_mcq",
+      "stem": "The ladder network of Fig. 17 continues indefinitely, each section having a 4 Ω series resistor and a 3 Ω shunt resistor. The equivalent resistance between A and B is:\n[FIG-stem-1]",
+      "options": [
+        "A: 7 Ω",
+        "B: 12 Ω",
+        "C: 8 Ω",
+        "D: 6 Ω"
+      ],
+      "answer": "D: 6 Ω",
+      "op": "MODEL",
+      "band": "D3",
+      "score": 6,
+      "components": {
+        "concept_model_selection": 2,
+        "representation_translation": 1,
+        "reasoning_chain_length": 2,
+        "algebra_computational_load": 1,
+        "trap_exception_sensitivity": 0
+      },
+      "crux_move_ref": "NSEJS-CIRC-L2-Q18-M2",
+      "family_ref": "NSEJS-CIRCUITS-INFINITE-LADDER",
+      "primary_capability_ref": "PHYS-CIRC-MODEL-01",
+      "source_figures": [
+        "fig_nsejs_circ_l2_q18.svg"
+      ],
+      "figure_note": "Fig. 17: Infinite ladder network with repeating sections of series 4 Ω and shunt 3 Ω extending indefinitely.",
+      "hints": [
+        {
+          "prompt": "Tier 1 — Representation & Constraints",
+          "text": "The ladder is infinite, possessing self-similarity: removing or adding one repeating section (one 4 Ω series and one 3 Ω shunt) leaves the remainder identical to the original network."
+        },
+        {
+          "prompt": "Tier 2 — Governing Law & Formulation Anchor",
+          "text": "Let the total equivalent resistance between A and B be R. The infinite tail after the first stage also has equivalent resistance R."
+        },
+        {
+          "prompt": "Tier 3 — Resolution Route",
+          "text": "Write the self-consistent recursive equation: R = 4 + (3 × R)/(3 + R). Form the quadratic equation and solve for the physically positive root."
+        }
+      ],
+      "steps": [
+        "1. System Representation & Setup: The ladder extends to infinity, with identical repeating unit cells having series resistance R_s = 4 Ω and shunt resistance R_p = 3 Ω. Let R_AB = R be the driving point resistance between input terminals A and B.",
+        "2. Physical Model & Formulation: Due to infinite self-similarity, the entire sub-ladder to the right of the first shunt resistor has equivalent resistance equal to R. Thus, the circuit simplifies to a 4 Ω resistor in series with the parallel combination of a 3 Ω resistor and R: R = 4 + (3R)/(3 + R).",
+        "3. Execution & Resolution: Multiply through by (3 + R): R(3 + R) = 4(3 + R) + 3R => 3R + R² = 12 + 4R + 3R => R² - 4R - 12 = 0. Factor the quadratic: (R - 6)(R + 2) = 0. Since physical electrical resistance must be positive (R > 0), we reject R = -2 Ω and obtain R = 6.0 Ω. Matches Option D."
+      ],
+      "check": "Convergence check: Truncating after 1 stage: 4 + 3 = 7 Ω. After 2 stages: 4 + (3×7)/10 = 6.1 Ω. After 3 stages: 4 + (3×6.1)/9.1 = 6.01 Ω -> converges monotonically to 6.0 Ω.",
+      "review_state": "NOT_ADMITTED",
+      "academic_admission": "HOLD",
+      "science_review": "HOLD",
+      "qrt_adjudication": "HOLD",
+      "key_state": "AUTHOR_PROPOSED_KEY__INDEPENDENT_SOURCE_REVIEW_HOLD",
+      "flags": [
+        "RULE13_HOLD",
+        "ACADEMIC_ADMISSION_HOLD",
+        "SOURCE_KEY_HOLD"
+      ],
+      "stem_sha256": "11606b0c453aa666b525757b11dad442f211402d45e4d87dd7446207fcae282d"
+    },
+    {
+      "id": "NSEJS-CIRC-L2-Q19",
+      "source_id": "NSEJS-CIRC-L2-Q19",
+      "source_name": "Authored Resistor Networks · L2-Q19 · JUSTIFY · D2 (Score 5)",
+      "category": "AUTHORED_PRACTICE",
+      "origin": "AUTHOR_CREATED_LEVEL2_RESISTOR_NETWORKS",
+      "topic": "CURRENT_ELECTRICITY",
+      "subtopic": "Concept and Design Problems",
+      "question_type": "single_correct_mcq",
+      "stem": "Three resistors of 6 Ω each are used, all three in every arrangement, in any series and/or parallel combination. Which one of the following values of equivalent resistance CANNOT be obtained?",
+      "options": [
+        "A: 12 Ω",
+        "B: 2 Ω",
+        "C: 4 Ω",
+        "D: 9 Ω"
+      ],
+      "answer": "A: 12 Ω",
+      "op": "JUSTIFY",
+      "band": "D2",
+      "score": 5,
+      "components": {
+        "concept_model_selection": 2,
+        "representation_translation": 0,
+        "reasoning_chain_length": 1,
+        "algebra_computational_load": 1,
+        "trap_exception_sensitivity": 1
+      },
+      "crux_move_ref": "NSEJS-CIRC-L2-Q19-M3",
+      "family_ref": "NSEJS-CIRCUITS-COMBINATORICS",
+      "primary_capability_ref": "PHYS-CIRC-JUSTIFY-01",
+      "source_figures": [],
+      "figure_note": "No diagram required; combinatorial topology proof.",
+      "hints": [
+        {
+          "prompt": "Tier 1 — Representation & Constraints",
+          "text": "All three resistors of 6 Ω must be used simultaneously in each circuit configuration."
+        },
+        {
+          "prompt": "Tier 2 — Governing Law & Formulation Anchor",
+          "text": "For 3 identical resistors of resistance R, there exist exactly 4 topologically distinct non-trivial two-terminal connection graphs."
+        },
+        {
+          "prompt": "Tier 3 — Resolution Route",
+          "text": "Compute the equivalent resistance of all 4 topologies: (1) All series: 3R; (2) All parallel: R/3; (3) Two in parallel, in series with third: R/2 + R = 1.5R; (4) Two in series, in parallel with third: (2R || R) = 2R/3. Compare with the options."
+        }
+      ],
+      "steps": [
+        "1. System Representation & Setup: Three identical resistors of R = 6 Ω are combined using all three elements in each arrangement. We seek the value that cannot be realized.",
+        "2. Physical Model & Formulation: Enumerate all four possible topological combinations of 3 identical resistors: Case 1 (All three in series): R_eq = R + R + R = 3R = 3 × 6 = 18 Ω. Case 2 (All three in parallel): 1/R_eq = 1/R + 1/R + 1/R = 3/R => R_eq = R/3 = 6/3 = 2 Ω (Option B is obtainable). Case 3 (Two in parallel, in series with the third): R_eq = (R || R) + R = 3 + 6 = 9 Ω (Option D is obtainable). Case 4 (Two in series, in parallel with the third): R_eq = (R + R) || R = 12 || 6 = (12 × 6)/(12 + 6) = 72/18 = 4 Ω (Option C is obtainable).",
+        "3. Execution & Resolution: The complete set of achievable equivalent resistances is {2 Ω, 4 Ω, 9 Ω, 18 Ω}. The value 12 Ω is absent from this set (12 Ω would require only two 6 Ω resistors in series, but all three must be used). Therefore, 12 Ω CANNOT be obtained. Matches Option A."
+      ],
+      "check": "Combinatorial completeness check: Graph theory proves that there are exactly 4 series-parallel graphs on 3 labeled edges. No other topology exists.",
+      "review_state": "NOT_ADMITTED",
+      "academic_admission": "HOLD",
+      "science_review": "HOLD",
+      "qrt_adjudication": "HOLD",
+      "key_state": "AUTHOR_PROPOSED_KEY__INDEPENDENT_SOURCE_REVIEW_HOLD",
+      "flags": [
+        "RULE13_HOLD",
+        "ACADEMIC_ADMISSION_HOLD",
+        "SOURCE_KEY_HOLD"
+      ],
+      "stem_sha256": "7dca58913bc7d6c4de9d72a52885e2e288b523309f52194851a773c83c18b5ea"
+    },
+    {
+      "id": "NSEJS-CIRC-L2-Q20",
+      "source_id": "NSEJS-CIRC-L2-Q20",
+      "source_name": "Authored Resistor Networks · L2-Q20 · JUSTIFY · D3 (Score 6)",
+      "category": "AUTHORED_PRACTICE",
+      "origin": "AUTHOR_CREATED_LEVEL2_RESISTOR_NETWORKS",
+      "topic": "CURRENT_ELECTRICITY",
+      "subtopic": "Concept and Design Problems",
+      "question_type": "multiple_correct_mcq",
+      "stem": "Which of the following statements is/are correct? [One or more options may be correct.]",
+      "options": [
+        "A: Removing (open-circuiting) one resistor from a network can decrease the equivalent resistance between the terminals.",
+        "B: Two resistors connected in parallel can have an equivalent resistance greater than the larger of the two.",
+        "C: Connecting an extra resistor in parallel across any two points of a network cannot increase the equivalent resistance between the terminals of the network.",
+        "D: Replacing one resistor of a network by an ideal wire (short-circuiting it) cannot increase the equivalent resistance between the terminals of the network."
+      ],
+      "answer": "C, D: Connecting an extra resistor in parallel across any two points of a network cannot increase the equivalent resistance between the terminals of the network; Replacing one resistor of a network by an ideal wire (short-circuiting it) cannot increase the equivalent resistance between the terminals of the network",
+      "op": "JUSTIFY",
+      "band": "D3",
+      "score": 6,
+      "components": {
+        "concept_model_selection": 2,
+        "representation_translation": 0,
+        "reasoning_chain_length": 2,
+        "algebra_computational_load": 0,
+        "trap_exception_sensitivity": 2
+      },
+      "crux_move_ref": "NSEJS-CIRC-L2-Q20-M3",
+      "family_ref": "NSEJS-CIRCUITS-MONOTONICITY",
+      "primary_capability_ref": "PHYS-CIRC-JUSTIFY-01",
+      "source_figures": [],
+      "figure_note": "No diagram required; fundamental network monotonicity theorems.",
+      "hints": [
+        {
+          "prompt": "Tier 1 — Representation & Constraints",
+          "text": "This question tests fundamental network theorems governing passive, linear, bilateral resistive networks (Rayleigh's Monotonicity Law)."
+        },
+        {
+          "prompt": "Tier 2 — Governing Law & Formulation Anchor",
+          "text": "Rayleigh's Monotonicity Law states that if the resistance of any element in a passive linear resistor network is decreased, the driving point equivalent resistance between any two external terminals cannot increase (it must either decrease or stay unchanged)."
+        },
+        {
+          "prompt": "Tier 3 — Resolution Route",
+          "text": "Evaluate each statement: Short-circuiting sets R_branch → 0 (a decrease), so R_eq cannot increase. Adding a parallel resistor decreases the effective resistance between those two nodes, so R_eq cannot increase."
+        }
+      ],
+      "steps": [
+        "1. System Representation & Setup: Consider a general linear, passive, bilateral network of positive ohmic resistors. We assess the effect of network branch modifications on the driving point resistance R_eq between two external terminals.",
+        "2. Physical Model & Formulation: According to Rayleigh's Monotonicity Theorem (and Dirichlet's minimum dissipation principle), the driving point resistance R_eq of a passive resistive network is a monotonically increasing function of each individual branch resistance r_k: ∂R_eq/∂r_k ≥ 0 for all k.",
+        "3. Execution & Resolution: Statement A is FALSE: Removing a resistor corresponds to r_k → ∞ (increasing resistance). By monotonicity, R_eq can only increase or remain unchanged; it can NEVER decrease. Statement B is FALSE: In a parallel combination of two positive resistors R_1 and R_2, R_eq = (R_1 · R_2)/(R_1 + R_2) < min(R_1, R_2). It is strictly less than both resistors. Statement C is TRUE: Connecting a resistor in parallel across any two points reduces the impedance between those points (Δr ≤ 0). By monotonicity, the driving point resistance cannot increase (it must decrease or remain constant if those points were already equipotential). Statement D is TRUE: Short-circuiting a resistor replaces it with an ideal wire (r_k → 0). Since this is a reduction in resistance, the network equivalent resistance cannot increase. Thus, Statements C and D are correct."
+      ],
+      "check": "Energy dissipation check: Adding parallel paths or shorting resistors provides alternative current routes, which by Thomson's principle of minimum heat dissipation minimizes total network resistance.",
+      "review_state": "NOT_ADMITTED",
+      "academic_admission": "HOLD",
+      "science_review": "HOLD",
+      "qrt_adjudication": "HOLD",
+      "key_state": "AUTHOR_PROPOSED_KEY__INDEPENDENT_SOURCE_REVIEW_HOLD",
+      "flags": [
+        "RULE13_HOLD",
+        "ACADEMIC_ADMISSION_HOLD",
+        "SOURCE_KEY_HOLD"
+      ],
+      "stem_sha256": "820b709b517b95ae8046ac1fd3dcfffc11ade0512c758101a554ef3ce69cac09"
+    }
+  ]
+}

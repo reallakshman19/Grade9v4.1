@@ -1,0 +1,78 @@
+{
+  "schema": "g9v41-ph05-core1a-operation-bridges/v1",
+  "status": "AUTHOR_EXPOSED_CANDIDATE__ACADEMIC_HOLD",
+  "source_type": "ORIGINAL_AUTHORED_TEACHING",
+  "purpose": "Teach additional operation prerequisites without disclosing their protected assessment solutions",
+  "bridges": {
+    "PH05-G01": [
+      {
+        "op": "APPLY",
+        "title": "Calculate mutual gravitational forces on disparate masses",
+        "teaching": "When two masses interact via gravity, the force magnitude F = G * m1 * m2 / r^2 is identical on both masses. Do not scale force by the mass of the attracted object alone. The difference in motion arises solely because a = F / m: the smaller mass experiences proportionally larger acceleration.",
+        "worked": "A 1000 kg probe and a 10^12 kg asteroid have centers 1000 m apart. F = G × (10^3)(10^12)/(10^3)^2 = 10^9G ≈ 0.0667 N on EACH body. The probe acceleration is 6.67 × 10^-5 m/s²; the asteroid acceleration is 6.67 × 10^-14 m/s². The forces have equal magnitude; the accelerations do not.",
+        "check": "Mutual gravitational interaction satisfies Newton's third law: F12 = -F21."
+      },
+      {
+        "op": "JUSTIFY",
+        "title": "Prove center-of-mass invariance in two-body gravitational collapse",
+        "teaching": "For any isolated two-body system subject only to mutual gravitational forces, external forces sum to zero (F_ext = 0). By Newton's second and third laws, dP_total/dt = F_ext = 0. Therefore, the system's center of mass cannot accelerate. If initially at rest, the center of mass remains permanently at rest.",
+        "worked": "Masses m and 3m separated by distance d fall toward each other. The center of mass is at (3m * d)/(m + 3m) = 0.75d from mass m. They must meet at this exact position 0.75d.",
+        "check": "Position of center of mass x_cm = (m1*x1 + m2*x2)/(m1 + m2) has time derivative v_cm = 0 when initial momentum is zero."
+      }
+    ],
+    "PH05-G02": [
+      {
+        "op": "MODEL",
+        "title": "Relate planet density, radius, and surface gravity",
+        "teaching": "Surface gravity can be expressed in two equivalent forms: g = G * M / R^2 (mass formulation) and g = (4/3) * pi * G * rho * R (density formulation). When comparing planets, determine which quantities are held constant: if density is constant, g scales linearly with R; if mass is constant, g scales as 1/R^2.",
+        "worked": "Planet A has twice the radius of Planet B with the same average density. By g = (4/3)*pi*G*rho*R, g_A / g_B = R_A / R_B = 2.0.",
+        "check": "Mass scaling check: Planet A has 8 times the mass of Planet B, so g_A = G*(8M)/(2R)^2 = 2 * (G*M/R^2), agreeing with density scaling."
+      }
+    ],
+    "PH05-G03": [
+      {
+        "op": "REPRESENT",
+        "title": "Construct continuous radial gravity and potential curves",
+        "teaching": "Piecewise physical fields require explicit identification of regional domains. Inside a uniform sphere (r <= R), enclosed mass grows with r^3, so field g(r) grows linearly with r. Outside (r >= R), all mass is enclosed, so field falls off as 1/r^2. The slope dg/dr changes discontinuously at r = R from +g0/R to -2g0/R.",
+        "worked": "At r = R/2 inside: g = 0.5 g0. At r = 2R outside: g = 0.25 g0. At surface r = R: g reaches its peak value g0.",
+        "check": "Potential V(r) is continuous across r = R: V(R) = -GM/R."
+      }
+    ],
+    "PH05-G04": [
+      {
+        "op": "EXPLAIN",
+        "title": "Explain apparent weightlessness in orbiting frames",
+        "teaching": "Apparent weight is the normal contact force N exerted by a supporting floor or scale. In an orbiting spacecraft, gravity continues to act with acceleration a_g = GM/r^2. However, the spacecraft and the astronaut fall toward the planet at the exact same acceleration. Because both have identical acceleration, no supporting force is required: N = m(g - a) = 0.",
+        "worked": "In the ISS at altitude 400 km, g ≈ 8.7 m/s^2. An 80 kg astronaut experiences gravitational pull F_g = 80 * 8.7 = 696 N. But because the floor accelerates at 8.7 m/s^2, scale reading is N = 0 N.",
+        "check": "If the spacecraft fires retro-rockets, floor acceleration differs from free fall and apparent weight reappears."
+      }
+    ],
+    "PH05-G05": [
+      {
+        "op": "SYNTHESIZE",
+        "title": "Coordinate Kepler's second and third laws in elliptical orbits",
+        "teaching": "Kepler's second law governs velocity variations along a single orbit (conserved angular momentum: r_p * v_p = r_a * v_a), while Kepler's third law governs orbital period across different orbits (T^2 proportional to a^3). To solve complex orbit problems, first determine semimajor axis a = (r_p + r_a)/2, then find period, and finally relate apsis speeds via the vis-viva equation v^2 = GM(2/r - 1/a).",
+        "worked": "An orbit has r_p = 1 AU and r_a = 3 AU. Semimajor axis a = 2 AU. Period T = 2^(3/2) ≈ 2.83 years. Perihelion speed to aphelion speed ratio is v_p / v_a = r_a / r_p = 3.0.",
+        "check": "Apsis energy balance: (1/2)*v_p^2 - GM/r_p = (1/2)*v_a^2 - GM/r_a = -GM/(2a)."
+      }
+    ],
+    "PH05-G06": [
+      {
+        "op": "EXPLAIN",
+        "title": "Virial energy balance in circular orbits",
+        "teaching": "In any bound inverse-square circular orbit, kinetic energy K, potential energy U, and total mechanical energy E satisfy the virial ratio: K = -E = -U / 2. This strict balance means that when external drag reduces total energy E (making it more negative), potential energy must decrease by twice that amount, transferring 50% into friction heat and 50% into increased orbital speed.",
+        "worked": "A satellite losing 100 MJ of total energy to air drag: Delta_E = -100 MJ ==> Delta_U = -200 MJ ==> Delta_K = +100 MJ. Its orbital speed increases.",
+        "check": "Since v = sqrt(GM/r), decreasing r always implies increasing v."
+      }
+    ],
+    "PH05-G07": [
+      {
+        "op": "JUSTIFY",
+        "title": "Prove escape speed independence of launch angle",
+        "teaching": "Work done by a conservative central force depends only on initial and final radial coordinates. Because mechanical energy E = (1/2)*m*v^2 - GMm/r is a scalar quantity, achieving E >= 0 depends exclusively on speed magnitude v, not velocity vector direction. Any projectile launched with speed v >= sqrt(2GM/R) will escape to infinity, provided its path does not intersect the physical surface of the planet.",
+        "worked": "A cannonball fired at 45° to the horizontal with speed 11.2 km/s on an airless Earth follows a parabolic trajectory that recedes to infinity with zero residual energy at infinite distance.",
+        "check": "For launch angles directed into the ground (theta < 0), physical collision terminates the trajectory before escape can occur."
+      }
+    ]
+  }
+}

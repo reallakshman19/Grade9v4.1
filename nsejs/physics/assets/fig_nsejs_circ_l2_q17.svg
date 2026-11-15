@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 280" width="100%" height="100%" style="background:#ffffff; border:1.5px solid #cbd5e1; border-radius:10px;">
+
+  <style>
+    .wire { stroke: #1e293b; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+    .dash-wire { stroke: #64748b; stroke-width: 2; stroke-dasharray: 5,4; fill: none; }
+    .res-box { fill: #f8fafc; stroke: #0f172a; stroke-width: 2; rx: 4; }
+    .res-lbl { font-family: system-ui, -apple-system, sans-serif; font-size: 14px; font-weight: 600; fill: #0f172a; text-anchor: middle; dominant-baseline: central; }
+    .node-pt { fill: #1e293b; }
+    .term-pt { fill: #ea580c; stroke: #9a3412; stroke-width: 2; }
+    .term-lbl { font-family: system-ui, -apple-system, sans-serif; font-size: 16px; font-weight: 800; fill: #c2410c; text-anchor: middle; dominant-baseline: central; }
+    .node-lbl { font-family: system-ui, -apple-system, sans-serif; font-size: 15px; font-weight: 700; fill: #1e293b; text-anchor: middle; dominant-baseline: central; }
+    .diag-title { font-family: system-ui, -apple-system, sans-serif; font-size: 15px; font-weight: 700; fill: #0f172a; text-anchor: middle; }
+    .diag-sub { font-family: system-ui, -apple-system, sans-serif; font-size: 14px; fill: #64748b; text-anchor: middle; }
+  </style>
+
+  <text x="270" y="30" class="diag-title">Fig. 16: Three-Section Finite Ladder Network</text>
+  <text x="270" y="50" class="diag-sub">All resistors R = 8 &#937; &#183; Find equivalent resistance R_AB</text>
+
+  <!-- Rails: Top y=120, Bottom y=220 -->
+  <!-- Terminals -->
+  <line x1="40" y1="120" x2="80" y2="120" class="wire"/>
+  <circle cx="40" cy="120" r="7" class="term-pt"/>
+  <text x="40" y="95" class="term-lbl">A</text>
+
+  <line x1="40" y1="220" x2="480" y2="220" class="wire"/>
+  <circle cx="40" cy="220" r="7" class="term-pt"/>
+  <text x="40" y="245" class="term-lbl">B</text>
+
+  <!-- Stage 1 -->
+  <!-- Series resistor 1 -->
+  <rect x="80" y="106" width="70" height="28" class="res-box"/>
+  <text x="115" y="120" class="res-lbl">8 &#937;</text>
+  <line x1="150" y1="120" x2="200" y2="120" class="wire"/>
+  <circle cx="200" cy="120" r="4" class="node-pt"/>
+
+  <!-- Shunt resistor 1 -->
+  <line x1="200" y1="120" x2="200" y2="220" class="wire"/>
+  <rect x="186" y="145" width="28" height="60" class="res-box"/>
+  <text x="200" y="175" class="res-lbl">8 &#937;</text>
+  <circle cx="200" cy="220" r="4" class="node-pt"/>
+
+  <!-- Stage 2 -->
+  <!-- Series resistor 2 -->
+  <line x1="200" y1="120" x2="240" y2="120" class="wire"/>
+  <rect x="240" y="106" width="70" height="28" class="res-box"/>
+  <text x="275" y="120" class="res-lbl">8 &#937;</text>
+  <line x1="310" y1="120" x2="360" y2="120" class="wire"/>
+  <circle cx="360" cy="120" r="4" class="node-pt"/>
+
+  <!-- Shunt resistor 2 -->
+  <line x1="360" y1="120" x2="360" y2="220" class="wire"/>
+  <rect x="346" y="145" width="28" height="60" class="res-box"/>
+  <text x="360" y="175" class="res-lbl">8 &#937;</text>
+  <circle cx="360" cy="220" r="4" class="node-pt"/>
+
+  <!-- Stage 3 (Terminating) -->
+  <!-- Series resistor 3 -->
+  <line x1="360" y1="120" x2="400" y2="120" class="wire"/>
+  <rect x="400" y="106" width="70" height="28" class="res-box"/>
+  <text x="435" y="120" class="res-lbl">8 &#937;</text>
+  <line x1="470" y1="120" x2="480" y2="120" class="wire"/>
+  <circle cx="480" cy="120" r="4" class="node-pt"/>
+
+  <!-- Shunt resistor 3 (terminal) -->
+  <line x1="480" y1="120" x2="480" y2="220" class="wire"/>
+  <rect x="466" y="145" width="28" height="60" class="res-box"/>
+  <text x="480" y="175" class="res-lbl">8 &#937;</text>
+  <circle cx="480" cy="220" r="4" class="node-pt"/>
+
+  
+</svg>

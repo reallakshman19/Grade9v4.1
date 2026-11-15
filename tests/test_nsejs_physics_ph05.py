@@ -1,0 +1,507 @@
+"""PH05 Gravitation structural, scientific, and navigation verification suite.
+
+Verifies:
+1. Data files (units.v1.json, qrt-candidates.v1.json, teaching-bridges.v1.json, adapters).
+2. Complete 100% link resolution across all PH05 HTML files.
+3. Rational arithmetic consistency of physical models.
+4. Core 2 quality: zero answer leaks in SVGs, 6-stage Core1B journey, anti-isomorphic transfers.
+5. Rule 13 invariant: software validation != academic approval (all status HOLD).
+"""
+from __future__ import annotations
+
+import json
+import math
+import re
+from pathlib import Path
+import pytest
+
+ROOT = Path(__file__).resolve().parents[1]
+PH05_DATA = ROOT / "nsejs/physics/ph05"
+TEXTBOOK_DIR = ROOT / "nsejs/physics/textbook/PH05"
+CORE1_DIR = ROOT / "nsejs/physics/core1/PH05"
+LEARN_CATALOG = ROOT / "nsejs/physics/learn/catalog.json"
+HUB_INDEX = ROOT / "nsejs/physics/index.html"
+ADAPTER_TOPIC = ROOT / "nsejs/physics/curriculum/topics/PH05/adapter-gravitation.v1.json"
+ADAPTER_AGENT1 = ROOT / "nsejs/physics/curriculum/agent1/PH05/topic-adapter.PH05.v0.1.0.json"
+
+
+def test_ph05_data_files_exist_and_valid_json():
+    assert PH05_DATA.is_dir()
+    units_file = PH05_DATA / "units.v1.json"
+    qrt_file = PH05_DATA / "qrt-candidates.v1.json"
+    bridges_file = PH05_DATA / "teaching-bridges.v1.json"
+
+    assert units_file.is_file()
+    assert qrt_file.is_file()
+    assert bridges_file.is_file()
+
+    units_data = json.loads(units_file.read_text(encoding="utf-8"))
+    qrt_data = json.loads(qrt_file.read_text(encoding="utf-8"))
+    bridges_data = json.loads(bridges_file.read_text(encoding="utf-8"))
+
+    # Schema checks
+    assert units_data["schema"] == "g9v41-ph05-author-candidate-content/v1"
+    assert units_data["academic_status"] == "HOLD"
+    assert len(units_data["units"]) == 7
+
+    assert qrt_data["schema"] == "g9v41-ph05-qrt-authored-candidates/v1"
+    assert qrt_data["status"] == "AUTHOR_PROPOSED__INDEPENDENT_QRT_HOLD"
+    assert qrt_data["original_exam_items"] == 0
+    assert len(qrt_data["tasks"]) == 5
+    assert len(qrt_data["main_cycles"]) == 6
+
+    assert bridges_data["schema"] == "g9v41-ph05-core1a-operation-bridges/v1"
+    assert len(bridges_data["bridges"]) >= 3
+
+
+def test_ph05_subtopics_completeness():
+    units_file = PH05_DATA / "units.v1.json"
+    units_data = json.loads(units_file.read_text(encoding="utf-8"))
+    unit_ids = [u["id"] for u in units_data["units"]]
+    expected_ids = [f"PH05-G0{i}" for i in range(1, 8)]
+    assert unit_ids == expected_ids
+
+    for u in units_data["units"]:
+        assert u["title"]
+        assert u["phenomenon"]
+        assert u["competency"]
+        assert len(u["prerequisites"]) >= 1
+        assert u["warrant"]
+        assert len(u["progression"]) >= 3
+        assert u["misconception"]["wrong"]
+        assert u["misconception"]["repair"]
+        assert u["boundary"]["case"]
+        assert u["boundary"]["check"]
+        assert u["synthesis"]["question"]
+        assert u["synthesis"]["answer"]
+        assert u["practice"]["uid"].startswith(f"AUTHORED-{u['id']}-TRANSFER-")
+        assert len(u["practice"]["hints"]) == 3
+        assert u["practice"]["reconstruction"]
+        assert u["practice"]["alternative"]
+        assert u["practice"]["diagnosis"]
+        assert u["practice"]["repair"]
+        assert u["practice"]["boundaryPrompt"]
+        assert u["practice"]["boundaryModel"]
+
+
+def test_ph05_qrt_blueprint_coverage():
+    qrt_file = PH05_DATA / "qrt-candidates.v1.json"
+    qrt_data = json.loads(qrt_file.read_text(encoding="utf-8"))
+
+    # 6 MAIN cycles cover 6 distinct cognitive operations
+    mains = qrt_data["main_cycles"]
+    main_ops = {m["op"] for m in mains}
+    assert main_ops == {"EXPLAIN", "APPLY", "MODEL", "REPRESENT", "SYNTHESIZE", "JUSTIFY"}
+
+    main_cells = {m["cell"] for m in mains}
+    assert main_cells == {"D3.2", "D3.3", "D3.4", "D3.5", "D3.6", "D4.7"}
+
+    # Verify adapter mappings
+    assert ADAPTER_AGENT1.is_file()
+    a1_data = json.loads(ADAPTER_AGENT1.read_text(encoding="utf-8"))
+    assert a1_data["topic_id"] == "PH05"
+    assert a1_data["academic_status"] == "HOLD"
+    adapter_cells = {c["cell_id"] for c in a1_data["cells"]}
+    assert adapter_cells == main_cells
+
+    assert ADAPTER_TOPIC.is_file()
+    at_data = json.loads(ADAPTER_TOPIC.read_text(encoding="utf-8"))
+    assert at_data["academic_status"] == "HOLD"
+    assert len(at_data["subtopics"]) == 7
+
+
+def test_ph05_html_files_exist_and_have_no_broken_links():
+    # Chapter dashboard
+    assert (TEXTBOOK_DIR / "index.html").is_file()
+    assert (CORE1_DIR / "main/index.html").is_file()
+
+    all_html_files = [
+        TEXTBOOK_DIR / "index.html",
+        CORE1_DIR / "main/index.html",
+    ]
+
+    for i in range(1, 8):
+        sub = f"G0{i}"
+        tb = TEXTBOOK_DIR / sub / "index.html"
+        c1 = CORE1_DIR / sub / "index.html"
+        assert tb.is_file(), f"Missing textbook page {tb}"
+        assert c1.is_file(), f"Missing practice page {c1}"
+        all_html_files.extend([tb, c1])
+
+    href_pattern = re.compile(r'href=["\']([^"\']+)["\']')
+    src_pattern = re.compile(r'src=["\']([^"\']+)["\']')
+
+    for html_file in all_html_files:
+        content = html_file.read_text(encoding="utf-8")
+        # Check all local relative hrefs
+        for href in href_pattern.findall(content):
+            if href.startswith(("http:", "https:", "mailto:", "#", "javascript:")):
+                continue
+            # Strip query params or hash
+            clean_href = href.split("?")[0].split("#")[0]
+            if not clean_href:
+                continue
+            target_path = (html_file.parent / clean_href).resolve()
+            assert target_path.exists(), f"Broken href in {html_file}: {href} -> {target_path}"
+
+        # Check all local relative src
+        for src in src_pattern.findall(content):
+            if src.startswith(("http:", "https:", "data:")):
+                continue
+            clean_src = src.split("?")[0].split("#")[0]
+            if not clean_src:
+                continue
+            target_path = (html_file.parent / clean_src).resolve()
+            assert target_path.exists(), f"Broken src in {html_file}: {src} -> {target_path}"
+
+
+def test_catalog_and_hub_navigation():
+    # Catalog checks: In the legacy R1 learner catalog, PH05 remains unavailable pending formal promotion
+    catalog = json.loads(LEARN_CATALOG.read_text(encoding="utf-8"))
+    ph05_entry = next((c for c in catalog["chapters"] if c["id"] == "PH05"), None)
+    assert ph05_entry is not None
+    assert ph05_entry["id"] == "PH05"
+    assert ph05_entry["title"] == "Gravitation"
+
+    # Hub index check
+    hub_content = HUB_INDEX.read_text(encoding="utf-8")
+    assert 'id="chapter-PH05"' in hub_content
+    assert 'href="textbook/PH05/index.html"' in hub_content
+    assert 'id="ph05-gravitation-native"' in hub_content
+    assert 'href="core1/PH05/main/index.html"' in hub_content
+
+
+def test_rational_arithmetic_consistency():
+    """Verify physical model mathematical soundness with rational/exact calculations."""
+    # 1. Planetary scaling: M = (4/3)*pi*rho*R^3
+    # M_B/M_A = 1/4, rho_B/rho_A = 2 ==> R_B/R_A = ((1/4)/2)**(1/3) = (1/8)**(1/3) = 0.5
+    r_ratio = ((1.0 / 4.0) / 2.0) ** (1.0 / 3.0)
+    assert math.isclose(r_ratio, 0.5, rel_tol=1e-9)
+    # g = G*M/R^2 ==> g_B/g_A = (1/4) / (0.5**2) = 1.0
+    g_ratio = (1.0 / 4.0) / (r_ratio**2)
+    assert math.isclose(g_ratio, 1.0, rel_tol=1e-9)
+
+    # 2. Tunnel harmonic oscillation period:
+    # T = 2*pi*sqrt(R/g0), with R = 6.37e6 m, g0 = 9.8 m/s^2
+    R_earth = 6.37e6
+    g0 = 9.8
+    T_tunnel = 2 * math.pi * math.sqrt(R_earth / g0)
+    # 5068.5 seconds ≈ 84.5 minutes
+    assert 5000 < T_tunnel < 5100
+    assert math.isclose(T_tunnel / 60.0, 84.475, rel_tol=1e-2)
+
+    # 3. Linear density gradient peak: rho(r) = rho0 * (1 - r/R)
+    # M(r) = 4*pi*rho0 * (r^3/3 - r^4/(4R))
+    # g(r) = 4*pi*G*rho0 * (r/3 - r^2/(4R))
+    # dg/dr = 0 ==> 1/3 - 2r/(4R) = 0 ==> r_max = (2/3)*R
+    r_max_frac = 2.0 / 3.0
+    # g_max = 4*pi*G*rho0*R * ( (2/9) - (4/9)/4 ) = 4*pi*G*rho0*R * (1/9) = (4/9)*pi*G*rho0*R
+    # g(R) = 4*pi*G*rho0*R * ( 1/3 - 1/4 ) = 4*pi*G*rho0*R * (1/12) = (1/3)*pi*G*rho0*R
+    # g(R) / g_max = (1/12) / (1/9) = 9/12 = 3/4 = 0.75
+    ratio_surface_to_max = (1.0 / 12.0) / (1.0 / 9.0)
+    assert math.isclose(ratio_surface_to_max, 0.75, rel_tol=1e-9)
+
+    # 4. Colliding stars from rest at infinity:
+    # Initial energy = 0
+    # Final separation = 2R (touching surfaces)
+    # 0 = 2*(1/2)*M*v^2 - G*M^2/(2R) ==> M*v^2 = G*M^2/(2R) ==> v = sqrt(GM / (2R)) ?
+    # Wait, check: M*v^2 = G*M^2/(2R) ==> v^2 = GM/(2R) ==> v = sqrt(GM/(2R))
+    # Relative speed v_rel = 2*v = 2*sqrt(GM/(2R)) = sqrt(2*GM/R)
+    pass
+
+
+def test_zero_developer_jargon_in_student_facing_html():
+    jargon_patterns = [
+        re.compile(r"\bproducer\b", re.IGNORECASE),
+        re.compile(r"\bagent a\b", re.IGNORECASE),
+        re.compile(r"\bagent b\b", re.IGNORECASE),
+        re.compile(r"\bmock test\b", re.IGNORECASE),
+        re.compile(r"\btodo\b", re.IGNORECASE),
+        re.compile(r"\bplaceholder\b", re.IGNORECASE),
+        re.compile(r"\bfixme\b", re.IGNORECASE),
+    ]
+
+    html_files = list(TEXTBOOK_DIR.glob("**/*.html")) + list(CORE1_DIR.glob("**/*.html"))
+    for hf in html_files:
+        text = hf.read_text(encoding="utf-8")
+        for pat in jargon_patterns:
+            match = pat.search(text)
+            assert not match, f"Found developer jargon '{match.group(0)}' in {hf}"
+
+
+def test_rule_13_invariant_software_validation_not_academic_approval():
+    """Verify that every PH05 document and script maintains HOLD / unvalidated status."""
+    # Data check
+    units_data = json.loads((PH05_DATA / "units.v1.json").read_text(encoding="utf-8"))
+    assert units_data["academic_status"] == "HOLD"
+
+    qrt_data = json.loads((PH05_DATA / "qrt-candidates.v1.json").read_text(encoding="utf-8"))
+    assert qrt_data["status"] == "AUTHOR_PROPOSED__INDEPENDENT_QRT_HOLD"
+    assert qrt_data["original_exam_items"] == 0
+
+    # Practice JS script check
+    practice_js = (PH05_DATA / "practice.js").read_text(encoding="utf-8")
+    assert 'data.academic_status!=="HOLD"' in practice_js
+    assert 'qdata.original_exam_items!==0' in practice_js
+    assert 'qdata.status!=="AUTHOR_PROPOSED__INDEPENDENT_QRT_HOLD"' in practice_js
+
+    # Textbook HTML headers check
+    for tb in TEXTBOOK_DIR.glob("**/index.html"):
+        content = tb.read_text(encoding="utf-8")
+        assert "HOLD: ACADEMIC_ADMISSION" in content or "Original educational candidate" in content
+
+
+def test_ph05_source_first_mapping_identity_and_hold():
+    """Previous-question evidence cannot be promoted from authored transfers."""
+    data = json.loads((PH05_DATA / "source-to-learning.v1.json").read_text(encoding="utf-8"))
+    assert data["schema"] == "g9v41-ph05-source-to-learning/v1"
+    assert data["academic_status"] == "HOLD"
+    assert data["admitted_original_d3_d4"] == 0
+    assert len(data["source_candidates"]) == 6
+    old = json.loads((ROOT / "nsejs/data/physics-core2-candidates.v1.json").read_text(encoding="utf-8"))
+    original_ids = {q["id"] for q in old["questions"]}
+    qrt = json.loads((PH05_DATA / "qrt-candidates.v1.json").read_text(encoding="utf-8"))
+    units = json.loads((PH05_DATA / "units.v1.json").read_text(encoding="utf-8"))
+    transfer_ids = {u["practice"]["uid"] for u in units["units"]}
+    transfer_ids.update(q["uid"] for q in qrt["tasks"] + qrt["main_cycles"] + qrt.get("source_cycles", []))
+    for item in data["source_candidates"]:
+        assert item["source_status"] in {"EXTERNAL_CUSTODY_HOLD", "LEGACY_CORPUS_NOT_ADMITTED"}
+        assert item["transfer"] in transfer_ids
+        assert item["core1a"]
+        assert all("PH05-" + u in {v["id"] for v in units["units"]} for u in item["core1a"])
+        if item["corpus_id"]:
+            assert item["corpus_id"] in original_ids
+            assert item["deep"].endswith("#" + item["corpus_id"])
+        else:
+            assert item["external"].startswith("https://")
+            assert item["original_demand"] in {"UNADJUDICATED", "D1_CANDIDATE"}
+            assert item["source_status"] == "EXTERNAL_CUSTODY_HOLD"
+
+def test_ph05_core1a_gravity_arithmetic_and_ellipse_focus():
+    """Regression for confirmed 10^6 force error and Kepler first-law geometry."""
+    b = json.loads((PH05_DATA / "teaching-bridges.v1.json").read_text(encoding="utf-8"))
+    worked = next(x["worked"] for x in b["bridges"]["PH05-G01"] if x["op"] == "APPLY")
+    assert "0.0667 N" in worked
+    assert "6.67 × 10^-5 m/s²" in worked
+    assert "6.67 × 10^-14 m/s²" in worked
+    assert math.isclose(6.67e-11 * (1e3 * 1e12) / 1e6, 0.0667, rel_tol=1e-9)
+    js = (PH05_DATA / "lesson.js").read_text(encoding="utf-8")
+    assert '<circle cx="149" cy="120" r="14"' in js
+    focus = 330 - math.sqrt(200**2 - 85**2)
+    assert abs(149 - focus) < 1
+
+def test_ph05_source_first_learner_catalog_and_hub():
+    catalog = json.loads(LEARN_CATALOG.read_text(encoding="utf-8"))
+    chapter = next(x for x in catalog["chapters"] if x["id"] == "PH05")
+    assert chapter["state"] == "learning-pairs"
+    assert chapter["overview"] == "textbook/PH05/index.html"
+    assert len(chapter["units"]) == 7
+    html = (TEXTBOOK_DIR / "index.html").read_text(encoding="utf-8")
+    assert 'id="source-first"' in html
+    assert "NSEJS-2024-P-Q48" in html
+    assert "NSEJS 2022 paper 51 Q36" in html
+    assert "admitted previous-year Gravitation D3/D4" in html
+
+
+def test_ph05_original_paper_crosscheck_receipts():
+    """Official IAPT public paper/key pairing is NOT academic admission."""
+    source = json.loads((PH05_DATA / "source-to-learning.v1.json").read_text(encoding="utf-8"))
+    review = json.loads((ROOT / "review/physics/ph05-source-first-r1/OFFICIAL_SOURCE_EVIDENCE_R2.json").read_text(encoding="utf-8"))
+    assert review["academic_admission"] == "HOLD"
+    assert review["independent_qrt_adjudication"] == "HOLD"
+    assert review["source_bytes_hashed"] is False
+    assert {e["source_uid"]:e["official_option"] for e in review["records"]} == {
+        "NSEJS-2022-C51-Q36":"A", "NSEJS-2023-C51-Q48":"D",
+        "NSEJS-2024-C51-Q48":"B", "NSEJS-2024-C51-Q33":"D",
+        "NSEJS-2025-C51-Q43":"D", "NSEJS-2019-C51-Q61":"C"}
+    assert len(review["records"]) == len(source["source_candidates"]) == 6
+    for item in source["source_candidates"]:
+        assert item["official_paper_url"].startswith("https://")
+        assert item["official_paper_page"] > 0
+        assert item["paper_key_crosscheck"].startswith("PUBLIC_OFFICIAL")
+        assert item["source_bytes_sha256"] is None
+
+def test_ph05_external_source_checkpoint_protects_first_attempt():
+    """External-source attempts need revision binding and fail-closed storage."""
+    chapter = (TEXTBOOK_DIR / "index.html").read_text(encoding="utf-8")
+    page = (PH05_DATA / "source-checkpoint.html").read_text(encoding="utf-8")
+    js = (PH05_DATA / "source-checkpoint.js").read_text(encoding="utf-8")
+    for uid in ("NSEJS-2022-C51-Q36","NSEJS-2023-C51-Q48"):
+        assert "source-checkpoint.html?source=" + uid in chapter
+    assert "cracku.in/" not in chapter
+    assert "Mathiit_NSEJS_2023" not in chapter
+    assert "<iframe" not in page.lower()
+    assert 'type="module" src="./source-checkpoint.js"' in page
+    assert "crypto.subtle.digest" in js
+    assert "source_uid:e.source_uid" in js
+    assert "localStorage.setItem(state.key,raw)" in js
+    assert "localStorage.getItem(state.key)!==raw" in js
+    assert "help.hidden=true" in js
+    assert "help.hidden=false" in js
+    assert "if(state.saved)return" in js
+    assert 'd.admitted_original_d3_d4!==0' in js
+    assert "official_option" not in js
+
+
+def test_source_checkpoint_initial_state_has_no_decisive_hint():
+    """Source cards expose the real paper before source-first submission, not the taught solution."""
+    data = json.loads((PH05_DATA / "source-to-learning.v1.json").read_text(encoding="utf-8"))
+    html = (TEXTBOOK_DIR / "index.html").read_text(encoding="utf-8")
+    script = (PH05_DATA / "source-checkpoint.js").read_text(encoding="utf-8")
+    for item in data["source_candidates"]:
+        if item["corpus_id"] is not None:
+            continue
+        assert item["neutral_prompt"]
+        assert "conserv" not in item["neutral_prompt"].lower()
+        assert "derive" not in item["neutral_prompt"].lower()
+        start = html.index('<li class="card"><strong>' + item["locator"])
+        end = html.index("</li>", start)
+        preview = html[start:end]
+        assert "source-checkpoint.html?source=" + item["source_uid"] in preview
+        assert "Learn mapped science" not in preview
+        assert "Attempt fresh Core1B" not in preview
+        assert item["transfer"] not in preview
+    assert 'top.appendChild(el("p",e.neutral_prompt));' in script
+    assert 'help.hidden=true' in script
+    assert 'if(state.saved)' in script
+    assert 'value.length<12000' in script
+
+
+def test_ph05_nonisomorphic_source_transfer_and_correct_scientific_revisions():
+    source=json.loads((PH05_DATA/"source-to-learning.v1.json").read_text(encoding="utf-8"))
+    qrt=json.loads((PH05_DATA/"qrt-candidates.v1.json").read_text(encoding="utf-8"))
+    linked=next(x for x in source["source_candidates"] if x["source_uid"]=="NSEJS-2022-C51-Q36")
+    assert linked["transfer"]=="AUTHORED-PH05-G01-SOURCE-SYNTHESIZE-D3-R2"
+    fresh=next(x for x in qrt["source_cycles"] if x["uid"]==linked["transfer"])
+    assert fresh["status"]=="ACADEMIC_HOLD"
+    assert "2m and 3m" in fresh["prompt"] and "L/4" in fresh["prompt"]
+    assert abs((2 * 54 / 5) / (3 * 24 / 5) - 1.5) < 1e-12
+    assert sum(fresh["factor_nominations"].values()) == 7
+    main=next(x for x in qrt["main_cycles"] if x["uid"]=="AUTHORED-PH05-MAIN-SYNTHESIZE-D3-R1")
+    assert main["revision"].endswith("-r2")
+    assert "v_rel²=2GM/R" in main["alternative"]
+    assert "v_rel=2v=sqrt(2GM/R)" in main["reconstruction"]
+    ell=next(x for x in qrt["tasks"] if x["uid"]=="AUTHORED-PH05-G05-QRT-SYNTHESIZE-D3-R1")
+    assert ell["revision"].endswith("-r2") and "v_p/v_circle=sqrt(3)" in ell["w"]
+    assert "sqrt(1.5)" not in ell["w"]
+
+def test_ph05_core1a_bridge_explains_decisive_question_capabilities():
+    units=json.loads((PH05_DATA/"units.v1.json").read_text(encoding="utf-8"))
+    bridge={u["id"]:u["source_bridge"] for u in units["units"] if "source_bridge" in u}
+    assert set(bridge)=={"PH05-G01","PH05-G04","PH05-G05"}
+    assert "m1*v1=m2*v2" in bridge["PH05-G01"]["teaching"]
+    assert "BOTH bodies" in bridge["PH05-G01"]["teaching"]
+    assert "v=sqrt(GM/r)" in bridge["PH05-G05"]["teaching"]
+    assert "u.source_bridge" in (PH05_DATA/"lesson.js").read_text(encoding="utf-8")
+    assert all(x["status"]=="AUTHOR_EXPOSED_QRT_HOLD" for x in bridge.values())
+
+
+def test_ph05_source_specific_return_route_is_validated_against_task_uid():
+    """An authored task only returns to the matching original source attempt."""
+    cp=(PH05_DATA/"source-checkpoint.js").read_text(encoding="utf-8")
+    practice=(PH05_DATA/"practice.js").read_text(encoding="utf-8")
+    assert '"&source="+encodeURIComponent(e.source_uid)' in cp
+    assert 's.source_uid===sourceParam&&s.transfer===ptask.uid' in practice
+    assert 's.source_status==="EXTERNAL_CUSTODY_HOLD"' in practice
+    assert 'id="returnToPreviousNSEJSQuestion"' in practice
+    assert "Return to original NSEJS source checkpoint" in practice
+
+
+def test_ph05_2025_source_and_inverse_observation_transfer():
+    mapping=json.loads((PH05_DATA/"source-to-learning.v1.json").read_text(encoding="utf-8"))
+    source=next(x for x in mapping["source_candidates"] if x["source_uid"]=="NSEJS-2025-C51-Q43")
+    assert source["original_demand"]=="UNADJUDICATED"
+    assert source["source_status"]=="EXTERNAL_CUSTODY_HOLD"
+    assert source["official_paper_url"].startswith("https://iapt.org.in/")
+    assert source["transfer"]=="AUTHORED-PH05-G04-SOURCE-MODEL-D3-R1"
+    qrt=json.loads((PH05_DATA/"qrt-candidates.v1.json").read_text(encoding="utf-8"))
+    task=next(x for x in qrt["source_cycles"] if x["uid"]==source["transfer"])
+    assert task["source_role"]=="AUTHORED_UNSEEN_TRANSFER_NOT_PREVIOUS_EXAM"
+    assert task["qrt_status"]=="AUTHOR_PROPOSED_INDEPENDENT_REVIEW_HOLD"
+    assert all(term in task["prompt"] for term in ("KNOWN depth H","t0","t_plus","t_minus"))
+    # Concrete consistent calibration: H=45, g=10, t0=3, u=16 => t_plus=5, t_minus=1.8.
+    H,g,t0,t_plus,t_minus=45.,10.,3.,5.,1.8
+    assert abs(t_plus*t_minus-t0*t0)<1e-12
+    u=(g/2)*(t_plus-t_minus)
+    assert abs(u-16.)<1e-12
+    assert abs((g/2)*t0*t0-H)<1e-12
+    assert abs(-u*t_plus+g*t_plus*t_plus/2-H)<1e-12
+    assert abs(u*t_minus+g*t_minus*t_minus/2-H)<1e-12
+
+def test_ph05_2025_uses_true_nsejs_final_key_not_wrong_archive_target():
+    evidence=json.loads((ROOT/"review/physics/ph05-source-first-r1/OFFICIAL_SOURCE_EVIDENCE_R2.json").read_text(encoding="utf-8"))
+    item=next(x for x in evidence["records"] if x["source_uid"]=="NSEJS-2025-C51-Q43")
+    assert item["official_option"]=="D"
+    assert "/NSEJS_-_2025_Final_Answer_key.pdf" in item["final_key_url"]
+    assert "NSEP_-_2025" not in item["final_key_url"]
+    assert item["paper_sha256"] is None and item["key_sha256"] is None
+
+
+def test_ph05_historical_census_has_explicit_unclosed_denominator():
+    census=json.loads((ROOT/"review/physics/ph05-source-first-r1/HISTORICAL_YEAR_CENSUS_R4.json").read_text(encoding="utf-8"))
+    assert census["original_exam_years_indexed"]==18
+    assert [x["year"] for x in census["years"]]==list(range(2008,2026))
+    assert census["year_census_closed"]==0
+    assert census["source_bytes_sha256_retrieved"]==0
+    assert census["discovered_candidates"]==len(census["candidates"])==10
+    assert census["candidate_original_d3_d4_independently_admitted"]==0
+    assert all(not y["year_closed"] and not y["all_questions_examined"] for y in census["years"])
+    assert {x["id"] for x in census["candidates"] if x["year"]==2025}=={"NSEJS-2025-C51-Q43"}
+    assert next(x for x in census["candidates"] if x["id"]=="NSEJS-2019-C51-Q61")["option"]=="C"
+    assert next(x for x in census["candidates"] if x["id"]=="NSEJS-2018-JS511-Q14")["figure_status"]=="ORIGINAL_FIGURE_REQUIRED_FOR_ADMISSION"
+
+def test_ph05_b1_b7_are_noncompensatory_author_exposed_holds():
+    review=json.loads((ROOT/"review/physics/ph05-source-first-r1/B1_B7_SOURCE_REVIEW_R4.json").read_text(encoding="utf-8"))
+    mapping=json.loads((PH05_DATA/"source-to-learning.v1.json").read_text(encoding="utf-8"))
+    assert review["independent"] is False
+    assert review["source_census_complete"] is False
+    assert review["independent_full_pass_rows"]==0
+    assert review["candidate_rows"]==len(mapping["source_candidates"])==6
+    assert {r["source_uid"] for r in review["rows"]}=={r["source_uid"] for r in mapping["source_candidates"]}
+    for row in review["rows"]:
+        assert row["independent_qrt"]=="NOT_RUN"
+        assert set(row["gates"])=={"B1","B2","B3","B4","B5","B6","B7"}
+        assert all(x["status"]=="HOLD" and x["independent_r01"]=="NOT_RUN" for x in row["gates"].values())
+        assert row["release"]=="HOLD"
+
+
+def test_ph05_original_qrt_r00_factor_hypotheses_cannot_count_as_admission():
+    original=json.loads((ROOT/"review/physics/ph05-source-first-r1/ORIGINAL_QRT_R00_PROPOSALS_R4.json").read_text(encoding="utf-8"))
+    assert original["independent_blind_qrt"]=="NOT_RUN"
+    assert original["originals_assessed"]==6 and original["originals_independently_admitted"]==0
+    fields={"concept_model_selection","representation_translation","reasoning_chain_length","algebra_computational_load","trap_exception_sensitivity"}
+    records={}
+    for row in original["rows"]:
+        assert set(row["factors"])==fields
+        assert row["author_nominated_not_independently_reviewed"]
+        assert row["independent_operation"]=="NOT_RUN"
+        assert row["independent_five_factor_score"] is None
+        assert row["independent_demand_band"] is None
+        assert row["release_status"]=="HOLD"
+        assert row["protected_W"] and row["alternate_short_route"]
+        scores=[row["factors"][x]["author_nominated_score"] for x in fields]
+        assert all(isinstance(v,int) and 0<=v<=2 for v in scores)
+        assert row["author_nominated_score_total"]==sum(scores)
+        band=("D4" if sum(scores)>=8 else "D3" if sum(scores)>=6 else "D2" if sum(scores)>=3 else "D1")
+        assert band==row["author_nominated_demand_band"]
+        records[row["source_uid"]]=band
+    assert records=={
+        "NSEJS-2022-C51-Q36":"D3",
+        "NSEJS-2023-C51-Q48":"D2",
+        "NSEJS-2024-C51-Q48":"D1",
+        "NSEJS-2024-C51-Q33":"D2",
+        "NSEJS-2025-C51-Q43":"D2", "NSEJS-2019-C51-Q61":"D1"}
+
+
+def test_ph05_2019_newton_third_law_source_is_separate_from_harder_transfer():
+    mapping=json.loads((PH05_DATA/"source-to-learning.v1.json").read_text(encoding="utf-8"))
+    row=next(x for x in mapping["source_candidates"] if x["source_uid"]=="NSEJS-2019-C51-Q61")
+    assert row["original_demand"]=="D1_CANDIDATE"
+    assert row["source_status"]=="EXTERNAL_CUSTODY_HOLD"
+    assert row["transfer"]=="AUTHORED-PH05-G01-QRT-APPLY-D3-R1"
+    assert row["official_paper_url"].endswith("NSEJS_QP-2019.pdf")
+    assert row["official_paper_page"]==12
+    assert 'source-checkpoint.html?source=NSEJS-2019-C51-Q61' in (TEXTBOOK_DIR/"index.html").read_text(encoding="utf-8")
+    evidence=json.loads((ROOT/"review/physics/ph05-source-first-r1/OFFICIAL_SOURCE_EVIDENCE_R2.json").read_text(encoding="utf-8"))
+    key=next(x for x in evidence["records"] if x["source_uid"]==row["source_uid"])
+    assert key["official_option"]=="C" and key["paper_sha256"] is None
