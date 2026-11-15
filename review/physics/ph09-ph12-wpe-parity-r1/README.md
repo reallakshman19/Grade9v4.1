@@ -38,6 +38,14 @@ The newly authored, **non-examination** cases in [FOUR_WPE_PARITY_REFERENCE_CAND
 
 Science conditions, complete worked steps, proposed first-prediction/attempt text, post-attempt reconstruction, evidence-dependent diagnosis, repair and a novel boundary test are in each JSON case. These are candidate designs requiring **independent** review of scientific sufficiency, novelty, age suitability and the shortest valid solution. This R1 does not assign a D3/D4 band.
 
+## Isolated learner-feel preview (new, author-only)
+
+[Open the four-case preview](preview.html) on a running HTTP server. It uses the new [preview runtime](preview.js) and responsive [preview stylesheet](preview.css) to display worked Core1A and a separate Core1B task, commit the first prediction and reasoning locally, then deliberately reveal reconstruction, diagnosis, repair and boundary. A separate revision is recorded without overwriting the original. A storage-denial or corrupt record locks commitment and reconstruction.
+
+**Limit:** the reconstruction text is in a public same-origin JSON file, and `localStorage` is user-editable. This is a browser-UX rehearsal, **not cryptographically secured assessment custody**. There is no link from the student-facing canonical navigation and no release authorization.
+
+The dedicated Playwright test `python tools/physics_ph09_ph12_wpe_parity_browser_qa.py` checks four viewport dimensions, 4×4 chapter/view combinations, first-attempt gating and persistence, separate revision, chapter changes, no iframe, overflow, disabled storage and corrupt storage. **Browser execution is NOT_RUN until an actual receipt is produced**.
+
 ## Source and authoring risk register
 
 - **PH09/PH10** — the source-related optics mappings are `RELATED_CANDIDATE_ONLY`, not verified original exam joins. The separate Physics candidate corpus has recorded false 2024 optics locators and missing figure requirements. Verify exact question, answer key, original figure, paper code and rights before B1/B7 or Core2 approval.
