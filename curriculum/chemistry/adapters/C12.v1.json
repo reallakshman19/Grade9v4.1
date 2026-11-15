@@ -45,7 +45,7 @@
           ],
           "slots": {
             "X": "An idealised sealed piston holds a fixed amount of gas at 300 K. It initially moves against constant external pressure but reaches a rigid mechanical stop at 315 K; heating then continues to 330 K. Describe which variables change during each interval and calculate the final pressure relative to its value at the stop.",
-            "Y": "Gas pressure, volume and temperature must be compared with declared constraints; simple gas laws may require extension treatment.",
+            "Y": "A piston may switch physical constraints during a continuous temperature change: first an approximately constant external-pressure expansion, then a fixed-volume phase against a stop. The valid law follows the interval and controlled variable, not a remembered formula alone. Draw two separate before/after state tables and check whether the amount of gas is genuinely conserved.",
             "Z": "From 300 to 315 K, the piston moves at approximately constant pressure, so V_stop/V_initial = 315/300 = 1.05. Above 315 K the rigid stop fixes V and n; under the ideal-gas approximation P_final/P_stop = 330/315 ≈ 1.0476. It is wrong to treat the entire 300–330 K range as simultaneously constant pressure and fixed volume.",
             "W": "Choose two consecutive thermodynamic constraint models rather than applying one gas rule throughout; distinguish the expansion and fixed-volume stages."
           },
@@ -258,7 +258,7 @@
           ],
           "slots": {
             "X": "Two reactions nominally produce equal moles of H₂ and CO₂, but each gas is collected separately over water. The recorded wet-gas volumes differ. Explain why the volume comparison alone cannot establish unequal chemical yields, and specify two controls or corrections that would test that interpretation.",
-            "Y": "Gas collection over water may contain vapour and dissolve some product; wet collected volume is not necessarily dry yield.",
+            "Y": "Wet-gas volume is not equivalent to reaction yield. Compare a sparingly soluble collected gas and a more water-soluble one under matched generation conditions; decide which instrument and sampling observations would distinguish dissolution, leakage and genuine differences in production.",
             "Z": "Measured gas over water contains vapour and may lose some target gas to dissolution, with CO₂ generally appreciably more soluble than H₂. Raw collection volumes cannot be equated to generated moles without matched T/P, water-vapour pressure corrections, dissolved-gas accounting and apparatus leak checks. Independent dry-gas collection or calibrated dissolved-CO₂ assessment can distinguish collection loss from a genuinely different reaction yield.",
             "W": "Separate amount generated from wet-gas volume measured; account for water vapour, dissolution, temperature/pressure and possible leakage."
           },
@@ -364,7 +364,7 @@
           ],
           "slots": {
             "X": "For an idealised complete combustion, mix 1 mol propane (C₃H₈) with 6 mol O₂. Construct the atom-balanced reaction and calculate hot gas amounts, dry gas amounts after full water condensation, and remaining gas after selective CO₂ absorption. Explain which result changes if condensation is incomplete.",
-            "Y": "Cooling combustion products can condense water; residual gas measurements require species and phase accounting.",
+            "Y": "Before applying gas volumes to an unfamiliar hydrocarbon, balance its combustion equation and write separate hot-vapour, cooled-dry and absorber-residue ledgers. A phase change redistributes atoms between gas and liquid, not outside the material conservation law.",
             "Z": "C₃H₈ + 5O₂ → 3CO₂ + 4H₂O. Six moles O₂ initially leave 1 mol excess oxygen. Before cooling, gaseous CO₂ 3 + water vapour 4 + O₂ 1 = 8 mol (under stated hot-gas assumption). After full condensation, dry gas is 3 mol CO₂ plus 1 mol O₂ = 4 mol; selective CO₂ removal leaves 1 mol O₂. If water remains as vapour, the supposed 'dry' gas total and contraction differ; the condensation assumption is critical.",
             "W": "Derive a new hydrocarbon's O₂ requirement and track separate gas-phase inventories through cooling and selective absorption."
           },
@@ -470,7 +470,7 @@
           ],
           "slots": {
             "X": "An ideal eudiometry mixture contains 8 mL CH₄, 4 mL inert N₂ and 24 mL O₂ at the same reference T/P. After complete combustion and cooling to condense water, the dry volume reads 20 mL. After selective CO₂ removal it reads 12 mL. Check these readings with a species ledger and decide whether the final 12 mL can be labelled oxygen alone; propose a discriminating measurement.",
-            "Y": "Eudiometric multi-step contraction/absorption is enrichment and needs separate species-volume ledgers and selective-absorption assumptions.",
+            "Y": "A selective absorber removes its target, not all other gases. An unreactive carrier or air contaminant may persist alongside unconsumed O₂; a final instrument reading therefore needs an independent gas-identity check before inferring a pure residual species.",
             "Z": "8 mL CH₄ consumes 16 mL O₂, produces 8 mL CO₂ and 16 mL water vapour at matched reference gas conditions. The remaining 8 mL O₂ and original 4 mL N₂ are nonabsorbed. After complete water condensation: 8 CO₂ + 8 O₂ + 4 N₂ = 20 mL dry. After selective CO₂ removal: 8 O₂ + 4 N₂ = 12 mL. An oxygen-specific assay or separate inert-gas analysis is needed; total post-absorber volume is not equivalent to oxygen amount.",
             "W": "Independently separate combustible gas, oxygen excess, carbon dioxide and an inert gas across stages, rejecting the assumption that all post-absorber gas is O₂."
           },
@@ -567,6 +567,7 @@
         "CHEM-C12.05"
       ]
     },
-    "R3: source-distinct gas-system tasks and exact X/Z/W learning bindings; R01/R02 HOLD."
+    "R3: source-distinct gas-system tasks and exact X/Z/W learning bindings; R01/R02 HOLD.",
+    "R3 exact revised-task Y is an actually taught Core1A model-selection bridge; science authority still unreviewed."
   ]
 }
