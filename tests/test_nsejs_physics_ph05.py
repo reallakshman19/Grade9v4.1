@@ -300,3 +300,42 @@ def test_ph05_source_first_learner_catalog_and_hub():
     assert "NSEJS-2024-P-Q48" in html
     assert "NSEJS 2022 paper 51 Q36" in html
     assert "admitted previous-year Gravitation D3/D4" in html
+
+
+def test_ph05_original_paper_crosscheck_receipts():
+    """Official IAPT public paper/key pairing is NOT academic admission."""
+    source = json.loads((PH05_DATA / "source-to-learning.v1.json").read_text(encoding="utf-8"))
+    review = json.loads((ROOT / "review/physics/ph05-source-first-r1/OFFICIAL_SOURCE_EVIDENCE_R2.json").read_text(encoding="utf-8"))
+    assert review["academic_admission"] == "HOLD"
+    assert review["independent_qrt_adjudication"] == "HOLD"
+    assert review["source_bytes_hashed"] is False
+    assert {e["source_uid"]:e["official_option"] for e in review["records"]} == {
+        "NSEJS-2022-C51-Q36":"A", "NSEJS-2023-C51-Q48":"D",
+        "NSEJS-2024-C51-Q48":"B", "NSEJS-2024-C51-Q33":"D"}
+    assert len(review["records"]) == len(source["source_candidates"]) == 4
+    for item in source["source_candidates"]:
+        assert item["official_paper_url"].startswith("https://")
+        assert item["official_paper_page"] > 0
+        assert item["paper_key_crosscheck"].startswith("PUBLIC_OFFICIAL")
+        assert item["source_bytes_sha256"] is None
+
+def test_ph05_external_source_checkpoint_protects_first_attempt():
+    """External-source attempts need revision binding and fail-closed storage."""
+    chapter = (TEXTBOOK_DIR / "index.html").read_text(encoding="utf-8")
+    page = (PH05_DATA / "source-checkpoint.html").read_text(encoding="utf-8")
+    js = (PH05_DATA / "source-checkpoint.js").read_text(encoding="utf-8")
+    for uid in ("NSEJS-2022-C51-Q36","NSEJS-2023-C51-Q48"):
+        assert "source-checkpoint.html?source=" + uid in chapter
+    assert "cracku.in/" not in chapter
+    assert "Mathiit_NSEJS_2023" not in chapter
+    assert "<iframe" not in page.lower()
+    assert 'type="module" src="./source-checkpoint.js"' in page
+    assert "crypto.subtle.digest" in js
+    assert "source_uid:e.source_uid" in js
+    assert "localStorage.setItem(state.key,raw)" in js
+    assert "localStorage.getItem(state.key)!==raw" in js
+    assert "help.hidden=true" in js
+    assert "help.hidden=false" in js
+    assert "if(state.saved)return" in js
+    assert 'd.admitted_original_d3_d4!==0' in js
+    assert "official_option" not in js

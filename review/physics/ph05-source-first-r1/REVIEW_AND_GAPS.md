@@ -25,3 +25,13 @@ Status: `DRAFT · SOURCE_HOLD · QRT_HOLD · ACADEMIC_HOLD · NO_MERGE_DEPLOY`. 
 - `nsejs/physics/textbook/PH05/index.html`
 - `tests/test_nsejs_physics_ph05.py`
 - `tests/test_nsejs_circuits_l2_core2.py`
+
+## R2 public IAPT paper/key cross-check
+A follow-up verified the publicly available official IAPT Question Paper Code 51 and official final key for source locators 2022 Q36 (A), 2023 Q48 (D), 2024 Q48 (B), 2024 Q33 (D). The 2023 file is named TENTATIVE but its page heading says FINAL; record both instead of assuming filename authority. This is **public locator/key agreement only**, not a SHA-256-pinned authenticated source-custody receipt or independent source-fidelity approval.
+
+Evidence JSON: `review/physics/ph05-source-first-r1/OFFICIAL_SOURCE_EVIDENCE_R2.json`.
+External 2022/2023 source cards now lead to `nsejs/physics/ph05/source-checkpoint.html`, which opens the official unsolved paper and saves an immutable revision-bound first attempt before exposing lesson/transfer links. No exam answer is loaded into that page. This does not constitute invigilated examination security.
+
+The previous third-party 2022 question page was solution-bearing; it has been replaced with the IAPT paper to prevent answer exposure before the initial attempt. The answer keys remain accessible as reviewer evidence, not on the student checkpoint.
+
+**Still HOLD:** full historic-paper census (including 2025 and older IOQJS-format sources), original bytes/digests, source-figure custody, independent QRT five-factor calibration and B1–B7 academic review.
