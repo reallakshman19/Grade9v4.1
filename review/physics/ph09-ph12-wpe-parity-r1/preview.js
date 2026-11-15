@@ -101,8 +101,12 @@
     clearReview();
     $("prereqs").replaceChildren();
     $("worked-solution").replaceChildren();
+    $("bridge-steps").replaceChildren();
+    $("connected-bridge").hidden = true;
+    $("reviewer-adapter-evidence").hidden = true;
     for (const id of ["teach-title", "topic-meta", "conditions", "teaching-model",
-      "worked-question", "worked-check", "misconception", "protected-work",
+      "worked-question", "worked-check", "bridge-question", "bridge-check",
+      "misconception", "protected-work",
       "fresh-task", "predict-prompt", "attempt-prompt"]) say(id, "");
     for (const id of ["source-attempt", "first-predict", "first-attempt"]) $(id).value = "";
     $("source-checkpoint").hidden = true;
@@ -145,6 +149,11 @@
     say("worked-question", current.core1a.worked_a);
     list("worked-solution", current.core1a.worked_solution);
     say("worked-check", current.core1a.check);
+    const bridge = current.core1a.connected_bridge;
+    $("connected-bridge").hidden = !bridge;
+    say("bridge-question", bridge ? bridge.question : "");
+    list("bridge-steps", bridge ? bridge.steps : []);
+    say("bridge-check", bridge ? bridge.check : "");
     say("misconception", current.core1a.misconception);
     // Never mount the protected author move or its formula-bearing attempt guidance.
     say("protected-work", "Select your own model, variables, checks and reasoning independently.");
@@ -341,6 +350,7 @@
     if (!writeRecord(next)) { lock("Source return could not be persisted."); return; }
     $("source-return-response").disabled = true;
     $("save-source-return").disabled = true;
+    $("reviewer-adapter-evidence").hidden = false;
     say("source-return-status", "Source return saved without overwriting the first source or Core1B attempts. This is NOT proof of learner mastery.");
   }
   async function start() {
