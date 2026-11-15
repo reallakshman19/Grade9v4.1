@@ -88,7 +88,7 @@ def test_heat_and_sound_never_substitute_legacy_buoyancy_routes():
             assert all(not u["title"].startswith("Continue: ") for u in c["units"])
     chapter = (PH / "learn/chapter.js").read_text(encoding="utf-8")
     nav = (PH / "learn/learner-nav.js").read_text(encoding="utf-8")
-    assert "the legacy fluids bank is not evidence of Heat or Sound coverage" in chapter
+    assert "legacy fluids bank is not evidence of Heat or Sound coverage" in chapter
     assert "Read the complete chapter" not in chapter
     assert "Source-matched exam questions pending review" in chapter
     assert "Chapter complete · Return" not in nav
