@@ -149,3 +149,62 @@ def test_runtime_enforces_order_and_identity_and_does_not_claim_exam_authenticit
         assert f'data-mode="{mode}"' in page
         assert 'type="module" src="./runtime.js"' in page
         assert '<iframe' not in page.lower()
+
+
+def test_core1a_and_precommit_core1b_do_not_download_or_embed_postcommit_models():
+    """The authored source can remain public, but normal first-attempt pages must
+    not preload or render solution/hint keys. This is UX gating, not secrecy.
+    """
+    author=load(CASES)
+    study=load(PH/"quality-r1/study-data.v1.json")
+    prompts=load(PH/"quality-r1/attempt-prompts.v1.json")
+    model=load(PH/"quality-r1/postattempt-models.v1.json")
+    assert study["schema"]=="g9v41-four-physics-core1a-study-only/v1"
+    assert prompts["schema"]=="g9v41-four-physics-core1b-attempt-prompts/v1"
+    assert model["schema"]=="g9v41-four-physics-postattempt-models/v1"
+    assert study["status"]==prompts["status"]==model["status"]=="AUTHOR_EXPOSED_CANDIDATE__ACADEMIC_HOLD"
+
+    def blob(p):
+        raw=p.read_bytes()
+        return hashlib.sha1(b"blob "+str(len(raw)).encode("ascii")+bytes([0])+raw).hexdigest()
+
+    assert study["source_package_git_blob"]==blob(CASES)
+    assert prompts["source_package_git_blob"]==blob(CASES)
+    assert prompts["postattempt_model_git_blob"]==blob(PH/"quality-r1/postattempt-models.v1.json")
+    assert prompts["postattempt_model_path"]=="postattempt-models.v1.json"
+    expected=set(FOCUS)
+    assert {x["unit"] for x in study["units"]}==expected
+    assert {x["unit"] for x in prompts["units"]}==expected
+    assert {x["unit"] for x in model["units"]}==expected
+    for case in author["units"]:
+        uid=case["unit"]
+        a=next(x for x in study["units"] if x["unit"]==uid)
+        p=next(x for x in prompts["units"] if x["unit"]==uid)
+        m=next(x for x in model["units"] if x["unit"]==uid)
+        assert a["study"]==case["study"]
+        assert "challenge" not in a
+        assert "study" not in p
+        assert set(p["challenge"])=={"uid","prediction","prompt","boundaryPrompt","transfer_difference"}
+        assert p["challenge"]["prompt"]==case["challenge"]["prompt"]
+        assert m["uid"]==p["challenge"]["uid"]
+        assert m["revision"]==case["revision"]
+        assert m["hints"]==case["challenge"]["hints"]
+        assert m["reconstruct"]==case["challenge"]["reconstruct"]
+        assert m["boundaryModel"]==case["challenge"]["boundaryModel"]
+        assert p["source"]["original_exam_admission"]=="HOLD"
+    # The original completed answer and hidden hints do not occur in the
+    # precommit payload; test the actual values, not only field names.
+    precommit=(PH/"quality-r1/attempt-prompts.v1.json").read_text(encoding="utf-8")
+    teaching=(PH/"quality-r1/study-data.v1.json").read_text(encoding="utf-8")
+    for c in author["units"]:
+        for k in ("reconstruct","diagnosis","repair","boundaryModel"):
+            assert c["challenge"][k] not in precommit
+            assert c["challenge"][k] not in teaching
+        for hint in c["challenge"]["hints"]:
+            assert hint not in precommit
+    js=(PH/"quality-r1/runtime.js").read_text(encoding="utf-8")
+    assert 'mode==="study"?"study-data.v1.json":"attempt-prompts.v1.json"' in js
+    assert 'if(record?.first)await loadPostAttemptModel();' in js
+    assert "gitBlobSha(raw)" in js
+    assert 'const header=new TextEncoder().encode("blob "+data.length+String.fromCharCode(0))' in js
+    assert 'fetch("./cases.v1.json"' not in js
