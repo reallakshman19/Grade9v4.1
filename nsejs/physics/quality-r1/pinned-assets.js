@@ -1,7 +1,7 @@
 /* Candidate-only exact-byte integrity; NOT an independently signed R3 manifest.
  * Prevents benign/stale static assets from silently changing learner state.
  */
-const PIN_MANIFEST_BLOB="b7286d185414d9a4494bdfc6fdcfbd5e307b933a";
+const PIN_MANIFEST_BLOB="4422464136fac69dd67a0573be5906b909b4a69f";
 const base=new URL("./",import.meta.url);
 let pinsPromise=null;
 const bhex=bytes=>[...new Uint8Array(bytes)].map(x=>x.toString(16).padStart(2,"0")).join("");
