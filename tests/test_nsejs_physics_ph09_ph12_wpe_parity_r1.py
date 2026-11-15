@@ -5,6 +5,7 @@ worked/transfer examples. They cannot replace independent science, QRT,
 source-custody, B1-B7 or real browser review.
 """
 import json
+from math import cos, isclose, pi
 from collections import Counter
 from pathlib import Path
 
@@ -119,7 +120,11 @@ def test_worked_and_transfer_math_invariants():
     assert (rp, total_i, parallel_v) == (2.0, 3.0, 6.0)
     assert parallel_v / 6 + parallel_v / 3 == total_i
     # PH12, rotating normal from parallel to perpendicular field
-    assert (1, 0) == (1, 0)  # cos(0°)=1, cos(90°)=0 in the stated geometry
+    initial_flux_per_BA = cos(0.0)
+    final_flux_per_BA = cos(pi / 2)
+    assert isclose(initial_flux_per_BA, 1.0, abs_tol=1e-12)
+    assert isclose(final_flux_per_BA, 0.0, abs_tol=1e-12)
+    assert not isclose(initial_flux_per_BA, final_flux_per_BA, abs_tol=1e-12)
 
 
 def test_no_admission_language_or_bands_given_to_teacher_cases():
