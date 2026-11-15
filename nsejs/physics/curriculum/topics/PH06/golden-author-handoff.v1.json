@@ -1,0 +1,118 @@
+{
+  "status": "PILOT_AWAITING_OWNER_GOLDEN",
+  "pins": {
+    "base": "d96ee920f4ee249d74790c616cd273fde8d77382",
+    "architecture": {
+      "architecture/guidebook.html": "d9d518f43a1646437c6b71d8ee669b18bc0c61be",
+      "architecture/core1ab-agent-guide.html": "f257a653efc68872c10e5d0ff9f9886e9874f501",
+      "docs/agent-entry/03-blueprint-adapters.md": "3ae34406c5458f08a27b536e91fe2d33f27ee2ac",
+      "docs/agent-entry/02-skills.md": "72e8fa74b78ce7bf8af63c07a92ae05ea619764e",
+      "docs/agent-entry/07-independent-review.md": "d096f44a8c3ad6425814004731e3dbf2ffeb1f79",
+      "docs/agent-entry/quality-gate-r2/AUTHORING_QUALITY_CONTRACT_R2.md": "f10f7d2e7edb445be97488b07041bfab0ef57d47",
+      "docs/agent-entry/quality-gate-r2/evidence-packet.schema.json": "d32cee9b9c55ba68e849ecb83891d48146aff6bd",
+      "templates/physics-blueprint/physics-blueprint.D3-D4.json": "700dafcbe86d76442637bcf214eeb544497cf4ea",
+      "architecture/review-guide.html": "e6d0f0bb1981c19659ff787ea0900e44d81c73f4"
+    },
+    "pin_kind": "Git blob SHA-1 (not SHA-256); file SHA-256 receipt to be computed in CI",
+    "missing_native_authority": [
+      "workspace/skills/smart-labelling-r2/skills/smart-labelling-1/SKILL.md",
+      "workspace/skills/smart-labelling-r2/skills/smart-labelling-2/SKILL.md",
+      "workspace/native/Grade9v3.5/Shared/roles/CORE-AUTHORITY-CONTRACT.md",
+      "workspace/subjects/physics/blueprints/physics-blueprint.D3-D4.json"
+    ],
+    "status": "AUTHOR_REFERENCE_PINS_ONLY__NATIVE_SKILLS_HOLD"
+  },
+  "canonical": {
+    "primary": {
+      "id": "PH06-U08",
+      "role": "ADVANCED_REASONING_CANDIDATE"
+    },
+    "support": {
+      "id": "PH06-U06",
+      "role": "CORE_CANDIDATE"
+    }
+  },
+  "science": [
+    {
+      "id": "PH06-S-HYDROSTATIC",
+      "ref": "OpenStax College Physics 2e §11.4 eqs 11.12–11.17",
+      "url": "https://openstax.org/books/college-physics-2e/pages/11-4-variation-of-pressure-with-depth-in-a-fluid",
+      "claim": "dp/dy=ρg for depth positive, static uniform liquid",
+      "warrant": "Force balance of thin fluid slice; Pa/m = kg/(m²s²)",
+      "status": "AUTHOR_UNVERIFIED"
+    },
+    {
+      "id": "PH06-S-BUOYANCY",
+      "ref": "OpenStax College Physics 2e §11.7 eq 11.30 and fig 11.18",
+      "url": "https://openstax.org/books/college-physics-2e/pages/11-7-archimedes-principle",
+      "claim": "Upthrust equals displaced fluid weight; additive for two layers by fluid replacement",
+      "warrant": "Surrounding pressure supports each replaced volume; flat interface, negligible capillarity; pressure walk cross-check",
+      "status": "AUTHOR_UNVERIFIED"
+    }
+  ],
+  "adapter": {
+    "id": "PHYS-TOPIC-PH06",
+    "version": "0.1.0-golden-candidate",
+    "blueprint": "PHYS-QRT-BLUEPRINT 0.2.0 DRAFT_OWNER_REVIEW",
+    "cell": "D3.4",
+    "task": "AUTHORED-PH06-U08-GOLDEN-MODEL-R1",
+    "science_refs": [
+      "PH06-S-HYDROSTATIC",
+      "PH06-S-BUOYANCY"
+    ],
+    "status": "AUTHOR_PROPOSED_HOLD"
+  },
+  "B1_B7": [
+    {
+      "gate": "B1",
+      "evidence": "PH06-U08 source Q38 and U06 support",
+      "status": "HOLD"
+    },
+    {
+      "gate": "B2",
+      "evidence": {
+        "X": "Unknown upper-layer thickness and loaded equilibrium top depth",
+        "Y": "Hydrostatic pressure, density, Archimedes and static vertical force balance",
+        "Z": "Piecewise displaced-volume geometry with fixed free surface/interface",
+        "W": "Decide the valid immersion regime before writing each volume equation; test the top-flush threshold and reject the partially emerged continuation."
+      },
+      "status": "HOLD"
+    },
+    {
+      "gate": "B3",
+      "evidence": "U06 and U08 continuous lesson with different anchors; no observed learner",
+      "status": "HOLD"
+    },
+    {
+      "gate": "B4",
+      "evidence": "Original Q38 has given equal volumes and asks mean density. Golden task has unknown layer geometry, two different load states and regime inversion. Teaching examples use a tether force and a fully immersed body with prescribed partition; neither solves this inverse top-crossing task.",
+      "status": "HOLD"
+    },
+    {
+      "gate": "B5",
+      "evidence": "reader.js actual revision binding, Web Locks and readback; browser pending",
+      "status": "HOLD"
+    },
+    {
+      "gate": "B6",
+      "evidence": "Separate diagnosis, repair, changed load boundary",
+      "status": "HOLD"
+    },
+    {
+      "gate": "B7",
+      "evidence": "Pressure-walk independent calculation; official source byte custody and science review incomplete",
+      "status": "HOLD"
+    }
+  ],
+  "counts": {
+    "registered_rows": 10,
+    "complete_pairs": 1,
+    "precursor_guides": 1,
+    "authored_instances": 1,
+    "mains": 0,
+    "authored_static_svgs": 3,
+    "inline_interactive_svg": 1,
+    "original_admitted": 0
+  },
+  "remaining": "No native SL1/SL2 checker run, no independent review, no R2 packet validation or browser receipt yet; catalog integration, remaining rows and full census pending. Freeze scaling until Golden reviewed."
+}

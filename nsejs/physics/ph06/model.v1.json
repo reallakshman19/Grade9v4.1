@@ -1,0 +1,53 @@
+{
+  "uid": "AUTHORED-PH06-U08-GOLDEN-MODEL-R1",
+  "revision": "r1-20261115",
+  "proposal": {
+    "operation": "MODEL",
+    "band": "D3",
+    "cell": "D3.4",
+    "factors": {
+      "concept_model_selection": {
+        "score": 2,
+        "witness": "Choose partially emerged vs fully immersed interface regime; reject one-fluid shortcut."
+      },
+      "representation_translation": {
+        "score": 1,
+        "witness": "Convert stated depths and cross-sectional area to layer volumes."
+      },
+      "reasoning_chain_length": {
+        "score": 2,
+        "witness": "Infer d, calculate top-flush threshold, then solve new regime and verify geometry."
+      },
+      "algebra_computational_load": {
+        "score": 1,
+        "witness": "Two linear inversions with SI conversions."
+      },
+      "trap_exception_sensitivity": {
+        "score": 1,
+        "witness": "A negative exposed height flags a regime change, not a valid continuation."
+      }
+    },
+    "total": 7,
+    "status": "AUTHOR_EXPOSED_NOT_QUALIFIED",
+    "alternative": "SYNTHESIZE credible; MODEL nominated because regime selection and translating physical geometry into equations are decisive."
+  },
+  "construction": {
+    "X": "Unknown upper-layer thickness and loaded equilibrium top depth",
+    "Y": "Hydrostatic pressure, density, Archimedes and static vertical force balance",
+    "Z": "Piecewise displaced-volume geometry with fixed free surface/interface",
+    "W": "Decide the valid immersion regime before writing each volume equation; test the top-flush threshold and reject the partially emerged continuation."
+  },
+  "hints": [
+    "CLARIFY: Identify what remains unchanged when ballast is put inside the float.",
+    "CORRELATE: In each state, sketch the two liquid boundaries and label which part of the float lies in each region.",
+    "OPEN THE WAY: Compare candidate configurations against the stated physical constraints; an algebraic solution must fit its geometry."
+  ],
+  "reconstruction": "Convert A=0.0100 m², H=0.30 m, L=0.25 m. In the initial state the upper liquid displaced height is d and lower height is L−d. With no vertical guide force, m/A=800d+1200(0.25−d). Thus 260=300−400d, d=0.10 m. Check 0<d<0.25 and top is 0.05 m above surface. At top flush, displaced mass is A[800d+1200(H−d)]=3.20 kg. Loaded mass is 3.40 kg, beyond this threshold but below all-lower capacity 3.60 kg. Float is fully submerged and straddles the interface. Let t be top depth below free surface. Upper immersed height d−t, lower H−(d−t). Now 340=800(0.10−t)+1200(0.20+t)=320+400t, hence t=0.05 m. Check 0<t<d; lower immersed height 0.25 m and upper 0.05 m. Total displaced mass 0.01(800×0.05+1200×0.25)=3.40 kg.",
+  "alternative": "Pressure walk: for vertical-sided block, side pressures have no vertical component. Initially p_bottom−p_air=g[800×0.10+1200×0.15]=2600 Pa, giving AΔp=26 N. Loaded: top pressure relative to atmosphere=800g×0.05=400 Pa; bottom gauge pressure=800g×0.10+1200g×0.25=3800 Pa; difference 3400 Pa gives 34 N. Both match weight. Dimensions: ρh in kg/m²; multiply A then g to obtain N.",
+  "diagnosis": "Locate the first divergence: did you equate the object's density to a simple average, use full height before checking emergence, continue a partially emerged model after the top crossed the surface, or count atmospheric pressure twice? Compare your actual saved reasoning, not just the numeric answer.",
+  "repair": "Write an annotated force balance and a separate table of upper/lower immersed lengths for each regime. Calculate the top-flush threshold first. Explain which earlier equation you would change and why.",
+  "boundaryPrompt": "Instead of adding 0.80 kg, remove 1.90 kg from the initial float (assume enough removable ballast). Find the new equilibrium and decide whether it reaches the interface. Give the bottom depth and justify the correct regime.",
+  "boundaryModel": "New mass 0.70 kg. At bottom exactly at interface, upper-liquid capacity Aρ₁d=0.80 kg. Since 0.70<0.80, the float is in the upper liquid only. L=0.70/(0.01×800)=0.0875 m=8.75 cm, which is less than d=10 cm; top remains above surface. Upper liquid only is feasible. Using a two-layer equation would yield a negative lower immersed length.",
+  "conditions": "Uniform gravity; static immiscible incompressible fluids; horizontal interface, no interfacial tension or vertical support; guide prevents tilt only; tank levels fixed; no air buoyancy; sealed rigid float and internal ballast. Vertical equilibrium not a proof of unrestricted rotational stability.",
+  "freshness": "Original Q38 has given equal volumes and asks mean density. Golden task has unknown layer geometry, two different load states and regime inversion. Teaching examples use a tether force and a fully immersed body with prescribed partition; neither solves this inverse top-crossing task."
+}
