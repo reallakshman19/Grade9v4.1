@@ -19,34 +19,34 @@
       "source_exam_question_id": null,
       "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
       "predict": {
-        "prompt": "Before working, predict what kind of evidence or conservation test decides this claim: Explain oxygen transfer and the paired nature of reduction/oxidation in CuO + H₂ → Cu + H₂O.",
-        "defensible_answer": "At the school level, oxidation often means oxygen gain or hydrogen loss, while reduction means oxygen loss or hydrogen gain. In CuO + H₂ → Cu + H₂O, oxygen originally belonging to CuO ends up in water. CuO loses oxygen and is reduced; H₂ gains oxygen and is oxidised. These linked changes form one redox reaction. Every element remains accounted for, so a material ledger is more informative than colour alone."
+        "prompt": "Before solving, predict which atoms exchange electrons and check whether an oxygen-only description is sufficient: In the idealised reaction 2Mg + CO₂ → 2MgO + C, identify both redox partners using oxygen transfer and formal oxidation states. Explain why carbon dioxide is reduced even though its formula contains oxygen, and propose evidence beyond a colour change for the products.",
+        "defensible_answer": "Decide the relevant redox model and necessary conservation constraints without revealing the reacting species' final oxidation-state assignments."
       },
       "attempt": {
-        "prompt": "Explain oxygen transfer and the paired nature of reduction/oxidation in CuO + H₂ → Cu + H₂O.",
-        "produces": "A warranted electron/oxygen/charge reasoning route with correct species and a separate experimental or arithmetic check.",
-        "protected_W": "The learner independently completes the causal bridge, not exposed before first attempt.",
+        "prompt": "In the idealised reaction 2Mg + CO₂ → 2MgO + C, identify both redox partners using oxygen transfer and formal oxidation states. Explain why carbon dioxide is reduced even though its formula contains oxygen, and propose evidence beyond a colour change for the products.",
+        "produces": "Independently reconcile oxygen movement with an electron ledger for an unusual carbon-dioxide reduction; justify product-identity evidence.",
+        "protected_W": "Independently reconcile oxygen movement with an electron ledger for an unusual carbon-dioxide reduction; justify product-identity evidence.",
         "first_attempt_must_be_saved_before_feedback": true,
         "initial_answer_visibility": "HIDDEN",
         "hints": [
           {
             "id": "H1",
             "verb": "CLARIFY",
-            "text": "Name the oxidised and reduced species or the instrument conditions in Oxidation and reduction in observed reactions."
+            "text": "Oxygen transfer and oxidation-state models can describe the same process from distinct perspectives. Check the oxidation-state change of each reactant rather than classifying by a word or colour."
           },
           {
             "id": "H2",
             "verb": "CORRELATE",
-            "text": "Recall the scientific warrant: In familiar school redox examples, oxygen/hydrogen transfer links oxidation with reduction; colour change alone is not definitive."
+            "text": "List formal oxidation states for selected atoms in each species and compare the two sides of the net equation."
           },
           {
             "id": "H3",
             "verb": "OPEN_THE_WAY",
-            "text": "Write balanced half/whole material and charge ledgers; leave the final scientific inference or value for the independent attempt."
+            "text": "Set up separate oxidation and reduction electron counts, then check atom totals; complete the species-specific classification yourself."
           }
         ],
         "post_commit_closure": {
-          "model_response": "CuO gives up O to become Cu, so it is reduced; hydrogen gains O to become water, so it is oxidised. CuO is the oxidising agent and hydrogen the reducing agent. Atoms remain conserved.",
+          "model_response": "Mg starts at oxidation state 0 and becomes +2 in MgO, so two Mg atoms lose four electrons in total. Carbon is +4 in CO₂ and becomes elemental C⁰, gaining four electrons. Mg is oxidised, CO₂ (its carbon centre) reduced. The oxygen originally in CO₂ appears in MgO. The balanced equation conserves Mg 2, C 1 and O 2. Elemental-carbon residue and MgO identity need composition tests; a dark powder or bright light is not sufficient.",
           "rubric": [
             "Declare oxidant/reductant species and medium when relevant.",
             "Balance atoms and charge or apparatus quantities correctly.",
@@ -59,34 +59,34 @@
           {
             "ask": "What is an observation versus a proposed species transformation?",
             "why_this_ask": "Do not confuse colour or instrument readings with reaction identity.",
-            "model_response": "Black copper(II) oxide loses oxygen when hydrogen is passed over heated copper oxide, while water forms. Which substance has been reduced, and which one has been oxidised? The answer is not simply the name of the black solid."
+            "model_response": "Identify the new reactants and given net equation; do not copy the earlier CuO or ZnO worked contrast."
           },
           {
             "ask": "What conservation rule or redox model applies?",
             "why_this_ask": "Identify correct oxygen/electron bookkeeping and medium.",
-            "model_response": "The terms oxidising agent and reducing agent describe the effects on the *other* species. CuO is the oxidising agent here because it supplies oxygen to hydrogen and is itself reduced. Hydrogen is the reducing agent because it removes oxygen from copper oxide and is itself oxidised. A learner who assumes the reducing agent must itself be reduced has reversed this relationship."
+            "model_response": "Assign oxidation numbers, account for oxygen if present, and balance the transferred electrons."
           },
           {
             "ask": "What follows, and how can you verify it independently?",
             "why_this_ask": "Complete the reasoning rather than a keyword match.",
-            "model_response": "CuO gives up O to become Cu, so it is reduced; hydrogen gains O to become water, so it is oxidised. CuO is the oxidising agent and hydrogen the reducing agent. Atoms remain conserved."
+            "model_response": "Mg starts at oxidation state 0 and becomes +2 in MgO, so two Mg atoms lose four electrons in total. Carbon is +4 in CO₂ and becomes elemental C⁰, gaining four electrons. Mg is oxidised, CO₂ (its carbon centre) reduced. The oxygen originally in CO₂ appears in MgO. The balanced equation conserves Mg 2, C 1 and O 2. Elemental-carbon residue and MgO identity need composition tests; a dark powder or bright light is not sufficient."
           }
         ],
-        "full_reconstruction": "CuO gives up O to become Cu, so it is reduced; hydrogen gains O to become water, so it is oxidised. CuO is the oxidising agent and hydrogen the reducing agent. Atoms remain conserved."
+        "full_reconstruction": "Mg starts at oxidation state 0 and becomes +2 in MgO, so two Mg atoms lose four electrons in total. Carbon is +4 in CO₂ and becomes elemental C⁰, gaining four electrons. Mg is oxidised, CO₂ (its carbon centre) reduced. The oxygen originally in CO₂ appears in MgO. The balanced equation conserves Mg 2, C 1 and O 2. Elemental-carbon residue and MgO identity need composition tests; a dark powder or bright light is not sufficient."
       },
       "diagnose": {
-        "wrong_idea": "Wrong path: 'The reducing agent gains electrons in the same reaction because it is called reducing.' Repair by defining an agent according to what it does to the other species and checking the agent's own net chemical change.",
-        "diagnostic_prompt": "Explain which invariant or condition this mistake violates: Wrong path: 'The reducing agent gains electrons in the same reaction because it is called reducing.' Repair by defining an agent according to what it does to the other species and checking the agent's own net chemical change.",
-        "model_response": "A colour-changing indicator may not involve redox at all. Oxidation-state or species evidence must support the conclusion rather than relying on colour alone."
+        "wrong_idea": "Because CO₂ contains oxygen, it must be the substance undergoing oxidation.",
+        "diagnostic_prompt": "Explain the redox model error in: Because CO₂ contains oxygen, it must be the substance undergoing oxidation.",
+        "model_response": "Redox is defined consistently by oxidation-state or electron transfer; oxygen presence alone is not the criterion."
       },
       "repair": {
-        "action": "Recreate a species and charge ledger from a verified equation or the instrument's correct readings.",
-        "explanation": "Wrong path: 'The reducing agent gains electrons in the same reaction because it is called reducing.' Repair by defining an agent according to what it does to the other species and checking the agent's own net chemical change.",
+        "action": "Rebuild oxidation-state or half-reaction ledgers and validate composition evidence separately.",
+        "explanation": "Incorrect classification: Because CO₂ contains oxygen, it must be the substance undergoing oxidation. Reconcile atom balance, formal charges and electron changes.",
         "core1a_ref": "curriculum/chemistry/agent-b/textbook/C13.core1a.md (section C13.01)"
       },
       "boundary_test": {
-        "prompt": "If CuO loses O but colour is not observed, is reduction impossible?",
-        "answer": "No. The oxygen-transfer chemical evidence, not merely visible colour, is decisive.",
+        "prompt": "If the solid product also includes unreacted Mg, can the net equation prove complete reaction from appearance alone?",
+        "answer": "No. The formal reaction can be balanced without establishing its actual extent; quantify unreacted Mg and verify phase identities.",
         "confirms": "A changed reaction medium or measurement condition can invalidate the prior shortcut."
       },
       "reviews": {
@@ -106,7 +106,7 @@
       "demand_author_evidence": {
         "band": "D3",
         "adjudication": "NOT_RUN",
-        "note": "Author operation/band only; no independent reviewer receipt."
+        "note": "R3 novel-chemistry redox candidate; independent scientific and QRT review NOT_RUN."
       }
     },
     {
@@ -122,34 +122,34 @@
       "source_exam_question_id": null,
       "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
       "predict": {
-        "prompt": "Before working, predict what kind of evidence or conservation test decides this claim: Apply the oxygen-transfer model to ZnO + C → Zn + CO, identifying both roles.",
-        "defensible_answer": "At the school level, oxidation often means oxygen gain or hydrogen loss, while reduction means oxygen loss or hydrogen gain. In CuO + H₂ → Cu + H₂O, oxygen originally belonging to CuO ends up in water. CuO loses oxygen and is reduced; H₂ gains oxygen and is oxidised. These linked changes form one redox reaction. Every element remains accounted for, so a material ledger is more informative than colour alone."
+        "prompt": "Before solving, predict which atoms exchange electrons and check whether an oxygen-only description is sufficient: An oxygen-free idealised reaction is 2FeCl₂ + Cl₂ → 2FeCl₃. Use oxidation states or half-reactions to identify which substance loses electrons and which gains them, check atom balance, and explain why an oxygen-only redox definition fails.",
+        "defensible_answer": "Decide the relevant redox model and necessary conservation constraints without revealing the reacting species' final oxidation-state assignments."
       },
       "attempt": {
-        "prompt": "Apply the oxygen-transfer model to ZnO + C → Zn + CO, identifying both roles.",
-        "produces": "A warranted electron/oxygen/charge reasoning route with correct species and a separate experimental or arithmetic check.",
-        "protected_W": "The learner independently completes the decisive computation, not exposed before first attempt.",
+        "prompt": "An oxygen-free idealised reaction is 2FeCl₂ + Cl₂ → 2FeCl₃. Use oxidation states or half-reactions to identify which substance loses electrons and which gains them, check atom balance, and explain why an oxygen-only redox definition fails.",
+        "produces": "Reconstruct Fe²⁺/Fe³⁺ oxidation and Cl₂ reduction from a neutral compound equation without relying on oxygen gain or loss.",
+        "protected_W": "Reconstruct Fe²⁺/Fe³⁺ oxidation and Cl₂ reduction from a neutral compound equation without relying on oxygen gain or loss.",
         "first_attempt_must_be_saved_before_feedback": true,
         "initial_answer_visibility": "HIDDEN",
         "hints": [
           {
             "id": "H1",
             "verb": "CLARIFY",
-            "text": "Name the oxidised and reduced species or the instrument conditions in Oxidation and reduction in observed reactions."
+            "text": "Use explicit electron gains and losses, not oxygen vocabulary alone, to analyse an unfamiliar oxidation state change."
           },
           {
             "id": "H2",
             "verb": "CORRELATE",
-            "text": "Recall the scientific warrant: In familiar school redox examples, oxygen/hydrogen transfer links oxidation with reduction; colour change alone is not definitive."
+            "text": "List formal oxidation states for selected atoms in each species and compare the two sides of the net equation."
           },
           {
             "id": "H3",
             "verb": "OPEN_THE_WAY",
-            "text": "Write balanced half/whole material and charge ledgers; leave the final scientific inference or value for the independent attempt."
+            "text": "Set up separate oxidation and reduction electron counts, then check atom totals; complete the species-specific classification yourself."
           }
         ],
         "post_commit_closure": {
-          "model_response": "ZnO loses oxygen and is reduced; carbon gains oxygen and is oxidised to CO. ZnO serves as oxidising agent, carbon as reducing agent under the stated equation.",
+          "model_response": "Iron changes from +2 in FeCl₂ to +3 in FeCl₃: two Fe²⁺ ions each lose one electron. Each Cl atom in Cl₂ changes from 0 to −1, so Cl₂ gains two electrons. Thus iron(II) is oxidised and molecular chlorine is reduced; the total electron transfer is balanced. Both Fe and Cl atom counts agree in 2FeCl₂ + Cl₂ → 2FeCl₃. No oxygen is needed for an electron-transfer redox process.",
           "rubric": [
             "Declare oxidant/reductant species and medium when relevant.",
             "Balance atoms and charge or apparatus quantities correctly.",
@@ -162,34 +162,34 @@
           {
             "ask": "What is an observation versus a proposed species transformation?",
             "why_this_ask": "Do not confuse colour or instrument readings with reaction identity.",
-            "model_response": "Black copper(II) oxide loses oxygen when hydrogen is passed over heated copper oxide, while water forms. Which substance has been reduced, and which one has been oxidised? The answer is not simply the name of the black solid."
+            "model_response": "Identify the new reactants and given net equation; do not copy the earlier CuO or ZnO worked contrast."
           },
           {
             "ask": "What conservation rule or redox model applies?",
             "why_this_ask": "Identify correct oxygen/electron bookkeeping and medium.",
-            "model_response": "The terms oxidising agent and reducing agent describe the effects on the *other* species. CuO is the oxidising agent here because it supplies oxygen to hydrogen and is itself reduced. Hydrogen is the reducing agent because it removes oxygen from copper oxide and is itself oxidised. A learner who assumes the reducing agent must itself be reduced has reversed this relationship."
+            "model_response": "Assign oxidation numbers, account for oxygen if present, and balance the transferred electrons."
           },
           {
             "ask": "What follows, and how can you verify it independently?",
             "why_this_ask": "Complete the reasoning rather than a keyword match.",
-            "model_response": "ZnO loses oxygen and is reduced; carbon gains oxygen and is oxidised to CO. ZnO serves as oxidising agent, carbon as reducing agent under the stated equation."
+            "model_response": "Iron changes from +2 in FeCl₂ to +3 in FeCl₃: two Fe²⁺ ions each lose one electron. Each Cl atom in Cl₂ changes from 0 to −1, so Cl₂ gains two electrons. Thus iron(II) is oxidised and molecular chlorine is reduced; the total electron transfer is balanced. Both Fe and Cl atom counts agree in 2FeCl₂ + Cl₂ → 2FeCl₃. No oxygen is needed for an electron-transfer redox process."
           }
         ],
-        "full_reconstruction": "ZnO loses oxygen and is reduced; carbon gains oxygen and is oxidised to CO. ZnO serves as oxidising agent, carbon as reducing agent under the stated equation."
+        "full_reconstruction": "Iron changes from +2 in FeCl₂ to +3 in FeCl₃: two Fe²⁺ ions each lose one electron. Each Cl atom in Cl₂ changes from 0 to −1, so Cl₂ gains two electrons. Thus iron(II) is oxidised and molecular chlorine is reduced; the total electron transfer is balanced. Both Fe and Cl atom counts agree in 2FeCl₂ + Cl₂ → 2FeCl₃. No oxygen is needed for an electron-transfer redox process."
       },
       "diagnose": {
-        "wrong_idea": "Wrong path: 'The reducing agent gains electrons in the same reaction because it is called reducing.' Repair by defining an agent according to what it does to the other species and checking the agent's own net chemical change.",
-        "diagnostic_prompt": "Explain which invariant or condition this mistake violates: Wrong path: 'The reducing agent gains electrons in the same reaction because it is called reducing.' Repair by defining an agent according to what it does to the other species and checking the agent's own net chemical change.",
-        "model_response": "A colour-changing indicator may not involve redox at all. Oxidation-state or species evidence must support the conclusion rather than relying on colour alone."
+        "wrong_idea": "No oxygen atom changes partners, so there is no oxidation or reduction.",
+        "diagnostic_prompt": "Explain the redox model error in: No oxygen atom changes partners, so there is no oxidation or reduction.",
+        "model_response": "Redox is defined consistently by oxidation-state or electron transfer; oxygen presence alone is not the criterion."
       },
       "repair": {
-        "action": "Recreate a species and charge ledger from a verified equation or the instrument's correct readings.",
-        "explanation": "Wrong path: 'The reducing agent gains electrons in the same reaction because it is called reducing.' Repair by defining an agent according to what it does to the other species and checking the agent's own net chemical change.",
+        "action": "Rebuild oxidation-state or half-reaction ledgers and validate composition evidence separately.",
+        "explanation": "Incorrect classification: No oxygen atom changes partners, so there is no oxidation or reduction. Reconcile atom balance, formal charges and electron changes.",
         "core1a_ref": "curriculum/chemistry/agent-b/textbook/C13.core1a.md (section C13.01)"
       },
       "boundary_test": {
-        "prompt": "Could the same reaction be explained by atom counts alone without any oxygen-transfer interpretation?",
-        "answer": "Atom balance is necessary but does not by itself identify the redox roles.",
+        "prompt": "If the reactants are not in a medium where the assumed Fe³⁺ products are stable, does the written equation establish the observed final species?",
+        "answer": "No. Chemical medium and competing reactions must be verified; formal balancing is necessary but does not guarantee product formation.",
         "confirms": "A changed reaction medium or measurement condition can invalidate the prior shortcut."
       },
       "reviews": {
@@ -209,7 +209,7 @@
       "demand_author_evidence": {
         "band": "D3",
         "adjudication": "NOT_RUN",
-        "note": "Author operation/band only; no independent reviewer receipt."
+        "note": "R3 novel-chemistry redox candidate; independent scientific and QRT review NOT_RUN."
       }
     },
     {
