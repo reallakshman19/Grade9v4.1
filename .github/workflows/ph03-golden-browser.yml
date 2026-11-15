@@ -7,6 +7,7 @@ on:
       - 'nsejs/physics/textbook/PH03/**'
       - 'nsejs/physics/core1/PH03/**'
       - 'tools/ph03_golden_browser.py'
+      - 'tools/ph03_golden_r2_browser.py'
       - '.github/workflows/ph03-golden-browser.yml'
 jobs:
   ph03-golden-browser:
@@ -19,8 +20,11 @@ jobs:
       - run: pip install playwright
       - run: python -m playwright install --with-deps chromium
       - run: python tools/ph03_golden_browser.py
+      - run: python tools/ph03_golden_r2_browser.py
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: ph03-golden-browser
-          path: artifacts/ph03-golden-r1/
+          path: |
+            artifacts/ph03-golden-r1/
+            artifacts/ph03-golden-r2/
