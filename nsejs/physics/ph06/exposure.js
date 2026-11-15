@@ -1,0 +1,2 @@
+// Browser-local exposure only; absence of a record is not evidence of a cold learner.
+const lesson=document.querySelector("script[data-lesson]")?.dataset.lesson;try{const key="G9V41:PH06:EXPOSURE:R2";const old=JSON.parse(localStorage.getItem(key)||"[]");if(!Array.isArray(old))throw Error("invalid exposure");localStorage.setItem(key,JSON.stringify([...old,{kind:"guide",lesson,at:Date.now()}].slice(-100)));}catch(_){document.documentElement.dataset.exposure="UNKNOWN"}
