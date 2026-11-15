@@ -25,34 +25,34 @@
       "source_exam_question_id": null,
       "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
       "predict": {
-        "prompt": "Before computing, predict whether the simplest familiar rule is sufficient for the following case: A dry blue litmus strip remains blue in dry HCl gas, while a wetted strip reddens. Explain the different observations using a particle-level aqueous model.",
-        "defensible_answer": "A prediction must identify the relevant condition, possible exception and what is not yet known. The specific model outcome is resolved only after the attempt."
+        "prompt": "Before calculating, identify which evidence can discriminate competing models: Two aqueous solutions have the same analytical concentration: HCl(aq) and ethanoic acid CH₃COOH(aq). Both turn blue litmus red. What does the indicator actually establish? Propose a controlled pH/conductivity comparison that can provide evidence about different ionisation extents, while explaining why colour alone cannot identify either acid.",
+        "defensible_answer": "Describe what the given observation warrants; reserve the specific chemistry and numerical conclusion for the independent attempt."
       },
       "attempt": {
-        "prompt": "A dry blue litmus strip remains blue in dry HCl gas, while a wetted strip reddens. Explain the different observations using a particle-level aqueous model.",
-        "produces": "A reasoned written scientific claim with species/conditions/diagram or calculation, the decisive inference, and an independent check.",
-        "protected_W": "The learner independently completes the causal bridge, not exposed before first attempt.",
+        "prompt": "Two aqueous solutions have the same analytical concentration: HCl(aq) and ethanoic acid CH₃COOH(aq). Both turn blue litmus red. What does the indicator actually establish? Propose a controlled pH/conductivity comparison that can provide evidence about different ionisation extents, while explaining why colour alone cannot identify either acid.",
+        "produces": "Distinguish a common qualitative acidic response from strength and substance identity; select a measurement with controlled concentration, temperature and medium.",
+        "protected_W": "Distinguish a common qualitative acidic response from strength and substance identity; select a measurement with controlled concentration, temperature and medium.",
         "first_attempt_must_be_saved_before_feedback": true,
         "initial_answer_visibility": "HIDDEN",
         "hints": [
           {
             "id": "H1",
             "verb": "CLARIFY",
-            "text": "Name the observed data, species and precise claim. What is given, and what remains unknown?"
+            "text": "Indicator colour establishes a chemical environment, not a unique chemical identity. Compare ion production at a controlled concentration before drawing conclusions."
           },
           {
             "id": "H2",
             "verb": "CORRELATE",
-            "text": "Recall the relevant science of Acid/base definitions and indicators. Which conditions or conserved quantities matter?"
+            "text": "Distinguish measured property from species identity and state all concentration, phase or formula assumptions."
           },
           {
             "id": "H3",
             "verb": "OPEN_THE_WAY",
-            "text": "Write two candidate explanations or representations, check their assumptions, and leave the final comparison or inference for your own answer."
+            "text": "Write a candidate ion or hydrate ledger and a distinct measurement; leave the task-specific inference unfinished."
           }
         ],
         "post_commit_closure": {
-          "model_response": "Water allows HCl to transfer a proton to water, forming H3O+ and Cl−; the wetted indicator responds to the acidic aqueous environment. A properly dry strip does not provide this medium.",
+          "model_response": "Both samples can produce an acidic aqueous response because H₃O⁺ is present. Litmus does not tell whether the acid is HCl or ethanoic acid, nor its ionisation extent. At matched analytical concentration, temperature and medium, HCl is strongly dissociated while CH₃COOH ionises partially; pH and conductivity provide additional evidence about effective ions, but conductivity can depend on ion mobility and is not an unambiguous chemical identity test. Independent compositional testing remains necessary.",
           "rubric": [
             "Name the correct chemical entities, model conditions and conservation basis.",
             "Show the nontrivial scientific link rather than simply state an answer.",
@@ -65,34 +65,34 @@
           {
             "ask": "What chemical species, states, data or structures are provided?",
             "why_this_ask": "Prevent a formula or indicator becoming an unsupported claim.",
-            "model_response": "Extract the precise givens and distinguish observed data from inferred species."
+            "model_response": "Compare the new task's given conditions against the preceding worked example before choosing the relevant species."
           },
           {
             "ask": "Which chemical principle or model is justified by the stated conditions?",
             "why_this_ask": "Require an explicit warrant before applying a learned rule.",
-            "model_response": "Select the model whose assumptions match the data; reject alternatives not supported by evidence."
+            "model_response": "Check the controlling chemistry, formula units and independent experimental observables."
           },
           {
             "ask": "How does the model yield the conclusion, and what independent check is possible?",
             "why_this_ask": "Close the original decisive inference and verify it independently.",
-            "model_response": "Water allows HCl to transfer a proton to water, forming H3O+ and Cl−; the wetted indicator responds to the acidic aqueous environment. A properly dry strip does not provide this medium."
+            "model_response": "Both samples can produce an acidic aqueous response because H₃O⁺ is present. Litmus does not tell whether the acid is HCl or ethanoic acid, nor its ionisation extent. At matched analytical concentration, temperature and medium, HCl is strongly dissociated while CH₃COOH ionises partially; pH and conductivity provide additional evidence about effective ions, but conductivity can depend on ion mobility and is not an unambiguous chemical identity test. Independent compositional testing remains necessary."
           }
         ],
-        "full_reconstruction": "Water allows HCl to transfer a proton to water, forming H3O+ and Cl−; the wetted indicator responds to the acidic aqueous environment. A properly dry strip does not provide this medium."
+        "full_reconstruction": "Both samples can produce an acidic aqueous response because H₃O⁺ is present. Litmus does not tell whether the acid is HCl or ethanoic acid, nor its ionisation extent. At matched analytical concentration, temperature and medium, HCl is strongly dissociated while CH₃COOH ionises partially; pH and conductivity provide additional evidence about effective ions, but conductivity can depend on ion mobility and is not an unambiguous chemical identity test. Independent compositional testing remains necessary."
       },
       "diagnose": {
-        "wrong_idea": "HCl must cease being an acid when it is dry.",
-        "diagnostic_prompt": "Suppose a learner argues 'HCl must cease being an acid when it is dry.' What stated condition or experiment can discriminate that error from the correct reasoning?",
-        "model_response": "This is an invalid generalisation. Water allows HCl to transfer a proton to water, forming H3O+ and Cl−; the wetted indicator responds to the acidic aqueous environment. A properly dry strip does not provide this medium."
+        "wrong_idea": "Two acids turning litmus red must have identical strength and concentration.",
+        "diagnostic_prompt": "Explain why this inference fails: Two acids turning litmus red must have identical strength and concentration.",
+        "model_response": "The observation does not uniquely establish chemical identity or the extent of conversion; the correct model must include controlled measurements."
       },
       "repair": {
-        "action": "Compare a wetted control strip and dry strip under equivalent gas exposure.",
-        "explanation": "Rebuild the species/observation ledger, state the valid domain, and revise the original claim.",
+        "action": "Restore the correct species and mass/ion balance; use independent measurements to distinguish candidate explanations.",
+        "explanation": "Incorrect shortcut: Two acids turning litmus red must have identical strength and concentration. Replace it with a controlled species or mass ledger.",
         "core1a_ref": "curriculum/chemistry/agent-b/textbook/C09.core1a.md (section CHEM-C09.01)"
       },
       "boundary_test": {
-        "prompt": "If the gas meets a slightly damp strip rather than a fully dry strip, predict whether the observation must remain identical.",
-        "answer": "The damp strip may redden if enough aqueous acidic medium forms. Moisture, not merely the HCl label, is decisive.",
+        "prompt": "If one sample is diluted 100-fold while the other is unchanged, can a conductivity ranking alone establish relative intrinsic acid strength?",
+        "answer": "No. Concentration and ionic mobility also affect conductivity. Compare like conditions and use suitable independent analysis.",
         "confirms": "A changed condition or counterexample, not verbatim recall of the original task."
       },
       "reviews": {
@@ -113,7 +113,7 @@
         "band": "D3",
         "adjudication": "NOT_RUN",
         "score_components": "NOT_SCORED_INDEPENDENTLY",
-        "note": "Band is hypothesis from Agent A plan and B adapter. Do not promote without exact-task five-factor review."
+        "note": "Revised author-candidate task with changed chemistry or constraints, R01/R02 HOLD."
       }
     },
     {
@@ -1055,34 +1055,34 @@
       "source_exam_question_id": null,
       "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
       "predict": {
-        "prompt": "Before computing, predict whether the simplest familiar rule is sufficient for the following case: The formulas for gypsum and Plaster of Paris are CaSO4·2H2O and CaSO4·1/2H2O. Model a balanced dehydration across two sulfate units.",
-        "defensible_answer": "A prediction must identify the relevant condition, possible exception and what is not yet known. The specific model outcome is resolved only after the attempt."
+        "prompt": "Before calculating, identify which evidence can discriminate competing models: An idealised 2.50 g sample of CuSO₄·5H₂O is heated by a trained demonstrator to completely anhydrous CuSO₄. Using CuSO₄ = 159.6 g mol⁻¹ and H₂O = 18.0 g mol⁻¹, calculate the theoretical water loss and explain why a measured 0.70 g loss alone would not verify that the process was complete.",
+        "defensible_answer": "Describe what the given observation warrants; reserve the specific chemistry and numerical conclusion for the independent attempt."
       },
       "attempt": {
-        "prompt": "The formulas for gypsum and Plaster of Paris are CaSO4·2H2O and CaSO4·1/2H2O. Model a balanced dehydration across two sulfate units.",
-        "produces": "A reasoned written scientific claim with species/conditions/diagram or calculation, the decisive inference, and an independent check.",
-        "protected_W": "The learner independently completes the warranted model choice, not exposed before first attempt.",
+        "prompt": "An idealised 2.50 g sample of CuSO₄·5H₂O is heated by a trained demonstrator to completely anhydrous CuSO₄. Using CuSO₄ = 159.6 g mol⁻¹ and H₂O = 18.0 g mol⁻¹, calculate the theoretical water loss and explain why a measured 0.70 g loss alone would not verify that the process was complete.",
+        "produces": "Convert hydrate formula units to an independent mass balance, then distinguish predicted water loss from observed mass and alternative product histories.",
+        "protected_W": "Convert hydrate formula units to an independent mass balance, then distinguish predicted water loss from observed mass and alternative product histories.",
         "first_attempt_must_be_saved_before_feedback": true,
         "initial_answer_visibility": "HIDDEN",
         "hints": [
           {
             "id": "H1",
             "verb": "CLARIFY",
-            "text": "Name the observed data, species and precise claim. What is given, and what remains unknown?"
+            "text": "Hydrate formulas are quantitative compositions, not arbitrary names; use atom and water ledgers before interpreting a sample's measured mass."
           },
           {
             "id": "H2",
             "verb": "CORRELATE",
-            "text": "Recall the relevant science of Common salts: soda, bleaching powder and plaster of Paris. Which conditions or conserved quantities matter?"
+            "text": "Distinguish measured property from species identity and state all concentration, phase or formula assumptions."
           },
           {
             "id": "H3",
             "verb": "OPEN_THE_WAY",
-            "text": "Write two candidate explanations or representations, check their assumptions, and leave the final comparison or inference for your own answer."
+            "text": "Write a candidate ion or hydrate ledger and a distinct measurement; leave the task-specific inference unfinished."
           }
         ],
         "post_commit_closure": {
-          "model_response": "2(CaSO4·2H2O) → 2(CaSO4·1/2H2O) + 3H2O. There are four hydrate-water units initially, one in the two hemihydrate products and three released.",
+          "model_response": "M(CuSO₄·5H₂O)=159.6+5(18.0)=249.6 g/mol. Water mass fraction=90.0/249.6≈0.3606. A 2.50 g ideal sample should lose about 0.901 g water and leave about 1.599 g anhydrous CuSO₄ if nothing else changes. A 0.70 g loss is smaller, possibly because dehydration is incomplete, the sample differs from assumed composition, or the mass measurement is affected. Confirm residual composition rather than inferring completion from loss alone.",
           "rubric": [
             "Name the correct chemical entities, model conditions and conservation basis.",
             "Show the nontrivial scientific link rather than simply state an answer.",
@@ -1095,34 +1095,34 @@
           {
             "ask": "What chemical species, states, data or structures are provided?",
             "why_this_ask": "Prevent a formula or indicator becoming an unsupported claim.",
-            "model_response": "Extract the precise givens and distinguish observed data from inferred species."
+            "model_response": "Compare the new task's given conditions against the preceding worked example before choosing the relevant species."
           },
           {
             "ask": "Which chemical principle or model is justified by the stated conditions?",
             "why_this_ask": "Require an explicit warrant before applying a learned rule.",
-            "model_response": "Select the model whose assumptions match the data; reject alternatives not supported by evidence."
+            "model_response": "Check the controlling chemistry, formula units and independent experimental observables."
           },
           {
             "ask": "How does the model yield the conclusion, and what independent check is possible?",
             "why_this_ask": "Close the original decisive inference and verify it independently.",
-            "model_response": "2(CaSO4·2H2O) → 2(CaSO4·1/2H2O) + 3H2O. There are four hydrate-water units initially, one in the two hemihydrate products and three released."
+            "model_response": "M(CuSO₄·5H₂O)=159.6+5(18.0)=249.6 g/mol. Water mass fraction=90.0/249.6≈0.3606. A 2.50 g ideal sample should lose about 0.901 g water and leave about 1.599 g anhydrous CuSO₄ if nothing else changes. A 0.70 g loss is smaller, possibly because dehydration is incomplete, the sample differs from assumed composition, or the mass measurement is affected. Confirm residual composition rather than inferring completion from loss alone."
           }
         ],
-        "full_reconstruction": "2(CaSO4·2H2O) → 2(CaSO4·1/2H2O) + 3H2O. There are four hydrate-water units initially, one in the two hemihydrate products and three released."
+        "full_reconstruction": "M(CuSO₄·5H₂O)=159.6+5(18.0)=249.6 g/mol. Water mass fraction=90.0/249.6≈0.3606. A 2.50 g ideal sample should lose about 0.901 g water and leave about 1.599 g anhydrous CuSO₄ if nothing else changes. A 0.70 g loss is smaller, possibly because dehydration is incomplete, the sample differs from assumed composition, or the mass measurement is affected. Confirm residual composition rather than inferring completion from loss alone."
       },
       "diagnose": {
-        "wrong_idea": "The 1/2 means an impossible free half-water molecule must leave.",
-        "diagnostic_prompt": "Suppose a learner argues 'The 1/2 means an impossible free half-water molecule must leave.' What stated condition or experiment can discriminate that error from the correct reasoning?",
-        "model_response": "This is an invalid generalisation. 2(CaSO4·2H2O) → 2(CaSO4·1/2H2O) + 3H2O. There are four hydrate-water units initially, one in the two hemihydrate products and three released."
+        "wrong_idea": "A decrease in mass always proves complete dehydration, whatever hydrate started.",
+        "diagnostic_prompt": "Explain why this inference fails: A decrease in mass always proves complete dehydration, whatever hydrate started.",
+        "model_response": "The observation does not uniquely establish chemical identity or the extent of conversion; the correct model must include controlled measurements."
       },
       "repair": {
-        "action": "Multiply the formula unit count until all hydration coefficients are whole in the reaction.",
-        "explanation": "Rebuild the species/observation ledger, state the valid domain, and revise the original claim.",
+        "action": "Restore the correct species and mass/ion balance; use independent measurements to distinguish candidate explanations.",
+        "explanation": "Incorrect shortcut: A decrease in mass always proves complete dehydration, whatever hydrate started. Replace it with a controlled species or mass ledger.",
         "core1a_ref": "curriculum/chemistry/agent-b/textbook/C09.core1a.md (section CHEM-C09.04)"
       },
       "boundary_test": {
-        "prompt": "In the reverse setting reaction, how many water units must be incorporated per two CaSO4 hemihydrate formula units?",
-        "answer": "Three water molecules per two hemihydrate formula units, in the idealised stoichiometric representation.",
+        "prompt": "If the residue retains one water per CuSO₄ formula unit, does the anhydrous theoretical water-loss prediction still apply?",
+        "answer": "No. Only four of the original five bound waters would have left per formula unit, so predicted loss and residue identity must be recalculated.",
         "confirms": "A changed condition or counterexample, not verbatim recall of the original task."
       },
       "reviews": {
@@ -1143,7 +1143,7 @@
         "band": "D3",
         "adjudication": "NOT_RUN",
         "score_components": "NOT_SCORED_INDEPENDENTLY",
-        "note": "Band is hypothesis from Agent A plan and B adapter. Do not promote without exact-task five-factor review."
+        "note": "Revised author-candidate task with changed chemistry or constraints, R01/R02 HOLD."
       }
     },
     {
