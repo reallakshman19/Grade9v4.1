@@ -10,7 +10,8 @@ const assert=(ok,msg)=>{if(!ok)throw Error(msg)};
 const obj=x=>x!==null&&typeof x==="object"&&!Array.isArray(x)&&Object.getPrototypeOf(x)===Object.prototype;
 const exact=(x,keys)=>obj(x)&&Object.keys(x).length===keys.length&&keys.every(k=>Object.hasOwn(x,k));
 const str=(x,min=1)=>typeof x==="string"&&x.trim().length>=min&&x.length<=MAX_TEXT;
-const id=x=>typeof x==="string"&&ID.test(x);
+const id=x=>typeof x==="string"&&ID.test(x)&&!Object.hasOwn(Object.prototype,x)&&x!=="prototype";
+const deepFreeze=x=>{if(x&&typeof x==="object"&&!Object.isFrozen(x)){Object.values(x).forEach(deepFreeze);Object.freeze(x)}return x};
 const finite=x=>typeof x==="number"&&Number.isFinite(x);
 const copy=x=>JSON.parse(JSON.stringify(x));
 const unique=x=>new Set(x).size===x.length;
@@ -71,8 +72,9 @@ export function validateManifest(m){
  assert(!m.assets.hint2||m.assets.hint1,"HINT_GAP");assert(!m.assets.hint3||m.assets.hint2,"HINT_GAP");
  const paths=[];
  for(const r of roles){const a=m.assets[r];
-  assert(exact(a,["path","sha256"])&&typeof a.path==="string"&&/^[a-zA-Z0-9_-]+(?:\.[a-zA-Z0-9_-]+)*\.json$/.test(a.path)&&HASH.test(a.sha256),"ASSET_PIN:"+r);
+  assert((exact(a,["path","sha256"])||exact(a,["path","sha256","media"]))&&typeof a.path==="string"&&/^[a-zA-Z0-9_-]+(?:\.[a-zA-Z0-9_-]+)*\.json$/.test(a.path)&&HASH.test(a.sha256),"ASSET_PIN:"+r);
   paths.push(a.path);
+  if(a.media){assert(Array.isArray(a.media)&&a.media.length<=8,"MEDIA_COUNT");for(const image of a.media){assert(exact(image,["path","sha256","alt"])&&/^[a-zA-Z0-9_-]+\\.(?:png|webp)$/.test(image.path)&&HASH.test(image.sha256)&&str(image.alt),"MEDIA_PIN");paths.push(image.path)}}
  }
  assert(unique(paths),"ASSET_ROLE_REUSE");return m;
 }
@@ -141,15 +143,15 @@ export function replay(record,m,manifestHash){
 }
 export class Assessment{
  constructor({manifest,manifestHash,baseURL,storage,locks,fetcher=globalThis.fetch,crypto=globalThis.crypto,clock=Date.now}){
-  this.m=validateManifest(copy(manifest));assert(HASH.test(manifestHash),"MANIFEST_HASH");this.hash=manifestHash;
+  this.m=deepFreeze(validateManifest(copy(manifest)));assert(HASH.test(manifestHash),"MANIFEST_HASH");this.hash=manifestHash;
   this.base=new URL(baseURL);assert(["http:","https:"].includes(this.base.protocol)&&this.base.pathname.endsWith("/")&&!this.base.search&&!this.base.hash,"BASE_URL");
   this.storage=storage;this.locks=locks;this.fetcher=fetcher;this.crypto=crypto;this.clock=clock;
-  this.key="g9:assessment:v1:"+this.m.uid+":"+manifestHash;this.cache=new Map();this.blocked=false;
+  this.key="g9:assessment:v1:"+this.m.uid+":"+manifestHash;this.cache=new Map();this.mediaCache=new Map();this.seen=[];this.blocked=false;
  }
  blank(){return {schema:"g9-assessment-record/v1",uid:this.m.uid,revision:this.m.revision,manifest:this.hash,engine:ENGINE_VERSION,events:[]}}
  read(){
-  const raw=this.storage.getItem(this.key);if(raw===null)return this.blank();
-  assert(typeof raw==="string"&&raw.length<=MAX_BYTES,"STORAGE_SIZE");const r=JSON.parse(raw);replay(r,this.m,this.hash);return r;
+  const raw=this.storage.getItem(this.key);if(raw===null){assert(this.seen.length===0,"RECORD_DISAPPEARED");return this.blank()}
+  assert(typeof raw==="string"&&raw.length<=MAX_BYTES,"STORAGE_SIZE");const r=JSON.parse(raw);replay(r,this.m,this.hash);assert(r.events.length>=this.seen.length&&this.seen.every((x,i)=>x===JSON.stringify(r.events[i])),"RECORD_ROLLBACK");this.seen=r.events.map(x=>JSON.stringify(x));return r;
  }
  async locked(fn){
   assert(!this.blocked,"SESSION_BLOCKED");
@@ -165,7 +167,7 @@ export class Assessment{
   replay(next,this.m,this.hash);
   const raw=JSON.stringify(next);assert(raw.length<=MAX_BYTES,"STORAGE_SIZE");
   this.storage.setItem(this.key,raw);assert(this.storage.getItem(this.key)===raw,"SAVE_READBACK");
-  return next;
+  this.seen=next.events.map(x=>JSON.stringify(x));return next;
  }
  async getAsset(r,role){
   const s=replay(r,this.m,this.hash);assert(mark(s,role),"ASSET_NOT_OPEN:"+role);
@@ -176,11 +178,25 @@ export class Assessment{
   assert(response.ok,"ASSET_HTTP:"+role);
   const bytes=new Uint8Array(await response.arrayBuffer());assert(bytes.length<=MAX_BYTES&&await digest(bytes,this.crypto)===pin.sha256,"ASSET_HASH:"+role);
   const value=validateAsset(this.m,role,JSON.parse(new TextDecoder("utf-8",{fatal:true}).decode(bytes)));
-  this.cache.set(role,value);return value;
+  this.cache.set(role,deepFreeze(value));return value;
+ }
+ async getMedia(r,role){
+  const s=replay(r,this.m,this.hash);assert(mark(s,role),"MEDIA_NOT_OPEN");
+  if(this.mediaCache.has(role))return this.mediaCache.get(role);
+  const result=[];
+  for(const p of this.m.assets[role].media??[]){
+   const u=new URL(p.path,this.base);
+   const resp=await this.fetcher(u.href,{cache:"no-store",credentials:"same-origin",redirect:"error"});assert(resp.ok,"MEDIA_HTTP");
+   const b=new Uint8Array(await resp.arrayBuffer());assert(b.length<=MAX_BYTES&&await digest(b,this.crypto)===p.sha256,"MEDIA_HASH");
+   const png=p.path.endsWith(".png"),magic=png?b.length>=8&&[137,80,78,71,13,10,26,10].every((x,i)=>b[i]===x):b.length>=12&&String.fromCharCode(...b.slice(0,4))==="RIFF"&&String.fromCharCode(...b.slice(8,12))==="WEBP";
+   assert(magic,"MEDIA_FORMAT");
+   result.push(Object.freeze({alt:p.alt,blob:new Blob([b],{type:png?"image/png":"image/webp"})}));
+  }
+  const frozen=Object.freeze(result);this.mediaCache.set(role,frozen);return frozen;
  }
  async verify(r){
-  const s=replay(r,this.m,this.hash),assets={};
-  for(const role of ROLES)if(mark(s,role))assets[role]=await this.getAsset(r,role);
+  const s=replay(r,this.m,this.hash),assets={},media={};
+  for(const role of ROLES)if(mark(s,role)){assets[role]=await this.getAsset(r,role);media[role]=await this.getMedia(r,role)}
   if(s.source)validateAnswer(assets.source_prompt.fields,s.source);
   if(s.first)validateAnswer(assets.challenge.fields,s.first.answer);
   let diagnostic=null,boundaryResult=null;
@@ -198,7 +214,7 @@ export class Assessment{
   }
   if(s.sourceReturn)validateAnswer(assets.source_prompt.fields,s.sourceReturn);
   const sourceResult=assets.source_feedback?compare(assets.source_prompt.fields,assets.source_feedback.checks,s.sourceReturn):null;
-  return {state:s,assets,diagnostic,boundaryResult,sourceResult,academicStatus:"HOLD"};
+  return {state:deepFreeze(s),assets:Object.freeze(assets),media:Object.freeze(media),diagnostic,boundaryResult,sourceResult,sourceFirstResult:assets.source_feedback?compare(assets.source_prompt.fields,assets.source_feedback.checks,s.source):null,academicStatus:"HOLD"};
  }
  async snapshot(){return this.locked(async()=>this.verify(this.read()))}
  async open(role){
@@ -228,7 +244,7 @@ export class Assessment{
      default:fail("UNKNOWN_SUBMISSION");
     }
     const test={seq:r.events.length+1,at:Math.max(this.clock(),r.events.at(-1)?.at??0),kind,data};
-    reduce(s,test,this.m); // reject invalid/duplicate transition without mutating persisted record
+    reduce(replay(r,this.m,this.hash),test,this.m); // reject invalid/duplicate transition without mutating persisted record
    }catch(e){return {accepted:false,reason:String(e.message),...await this.verify(r)}}
    r=this.append(r,kind,data);return {accepted:true,...await this.verify(r)};
   })
