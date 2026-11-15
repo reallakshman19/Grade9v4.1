@@ -26,8 +26,9 @@ function chapterLink(label,chapter,hash){const a=tag("a",label);a.href="chapter.
 function resources(c){
   const r=tag("section",undefined,"g9-chapter-resources");
   add(r,tag("h2","Explore this chapter"));
-  if(c.overview){const incomplete=(c.id==="PH03"&&c.units.length<7)||(c.id==="PH06"&&c.units.length<10);const a=link(incomplete?"Open the Golden Sample material":"Read the complete chapter",c.overview);a.href=lessonLink(c.overview);r.append(a);}
+  if(c.overview){const incomplete=(c.id==="PH03"&&c.units.length<7)||(c.id==="PH06"&&c.units.length<10);const a=link(incomplete?"Open the Golden Sample material":"Read this chapter’s learning material (academic review pending)",c.overview);a.href=lessonLink(c.overview);r.append(a);}
   if(c.questionTopic){const a=tag("a","Practise related questions (not exact lesson matches)");a.href="../index.html?topic="+encodeURIComponent(c.questionTopic)+"&from="+c.id+"#topicWorkspace";r.append(a);}
+  else if(c.id==="PH07"||c.id==="PH08")r.append(tag("p","No chapter-specific Core2 examination questions have been authenticated or qualified. The legacy fluids bank is not evidence of Heat or Sound coverage."));
   if(c.help){const a=link("Related learning help (topic match only)",c.help,"g9-secondary");a.href=lessonLink(c.help);if(!worksheetId)a.search="?from="+c.id;r.append(a);}
   if(c.preview){const a=link("Try independent practice preview",c.preview,"g9-secondary");a.href=lessonLink(c.preview);r.append(a);}
   if(c.id==="PH11"){
@@ -70,7 +71,7 @@ async function init(){
  }else{
   if(chapter.id==="PH03"&&chapter.units.length<7)mount.append(tag("p","Golden Sample only: "+chapter.units.length+" of 7 registered PH03 pairs. Remaining units not authored; all academic gates HOLD.","g9-hold-note"));
   if(chapter.id==="PH06"&&chapter.units.length<10)mount.append(tag("p","Golden Sample only: "+chapter.units.length+" of 10 registered PH06 pairs. Remaining units not authored; all academic gates HOLD.","g9-hold-note"));
-  mount.append(tag("p","1 · Learn an idea   →   2 · Try it independently   →   3 · Explore related question candidates","g9-chapter-flow"));
+  mount.append(tag("p",chapter.questionTopic?"1 · Learn an idea   →   2 · Try it independently   →   3 · Explore related question candidates":"1 · Learn an idea   →   2 · Try it independently   →   Source-matched exam questions pending review","g9-chapter-flow"));
   const grid=tag("section",undefined,"g9-chapter-lesson-grid");
   grid.setAttribute("aria-label",chapter.id+" subtopic learning choices");
   chapter.units.forEach((u,i)=>{
