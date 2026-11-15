@@ -78,3 +78,10 @@ def test_r2_legacy_kept_and_scope_hold():
         s=(ROOT/f"nsejs/physics/{role}/PH03/P03/index.html").read_text()
         assert "source-led-r2/index.html" in s and "source-led-r1/index.html" in s
     assert sum(x["delivery"]=="GOLDEN_DRAFT" for x in D["subtopics"])==1
+
+def test_r2_impulse_anchor_is_separating():
+    u_a,u_b=6,0
+    v_a,v_b=u_a-5,u_b+5/4
+    assert (v_a,v_b)==(1,1.25)
+    assert v_a<v_b and v_a+4*v_b==6
+    assert .5*v_a*v_a+2*v_b*v_b<.5*u_a*u_a
