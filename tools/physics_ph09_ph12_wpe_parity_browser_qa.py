@@ -131,8 +131,15 @@ def run():
                     "() => document.querySelector('#load-status').textContent.includes('Four original cases loaded')",
                     timeout=30000,
                 )
+                page.locator("#help-button").click()  # Persist the content-hash-keyed record.
                 page.evaluate(
-                    "() => localStorage.setItem('g9-physics-ph09-ph12-author-preview-r1-20261115:PH09-04','{bad')"
+                    """() => {
+                      const key=Object.keys(localStorage).find(
+                        k=>k.startsWith('g9-physics-ph09-ph12-author-preview-r1-20261115:PH09-04:')
+                      );
+                      if (!key) throw Error('No content-bound storage key after help');
+                      localStorage.setItem(key,'{bad');
+                    }"""
                 )
                 page.reload(wait_until="domcontentloaded")
                 page.wait_for_function(
