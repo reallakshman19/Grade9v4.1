@@ -119,7 +119,7 @@ try{
   assert.equal([c,d].filter(x=>!x.ok)[0].code,'CONCURRENT_UPDATE');
   const state=await left.evaluate('(async()=>{const m=await import("/engine.mjs");'+
     'const s=new m.IndexedDbAttemptStore({dbName:"g9-real-browser-idb-r0"});'+
-    'const r=await s.read("two-tabs");'+
+    'const r=await s.read("two-tabs","'+rev+'");'+
     'return {sequence:r.sequence,events:r.events.map(e=>e.type),phase:r.phase,'+
     'assistance:r.firstAttemptAssistance,academic:r.academicAssessment};})()');
   assert.equal(state.sequence,2);
@@ -131,7 +131,7 @@ try{
   assert.equal(failure,'INDEXEDDB_UNAVAILABLE');
   const tamper=await left.evaluate('(async()=>{const m=await import("/engine.mjs");'+
     'const s=new m.IndexedDbAttemptStore({dbName:"g9-real-browser-idb-r0"});'+
-    'const r=await s.read("two-tabs");r.events[0].evidence.hypothesis="forged";'+
+    'const r=await s.read("two-tabs","'+rev+'");r.events[0].evidence.hypothesis="forged";'+
     'try{m.verifyRecord(r);return "UNSAFE";}catch(e){return e.code;}})()');
   assert.equal(tamper,'RECORD_REPLAY_MISMATCH');
   left.close();right.close();
