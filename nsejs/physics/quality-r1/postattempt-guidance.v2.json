@@ -53,6 +53,18 @@
           "tol": 0,
           "repair": "The line approaching the join has +3 m/s; leaving it has −2 m/s. An ideal corner has no single slope."
         }
+      ],
+      "boundaryFields": [
+        {
+          "id": "new_final",
+          "label": "New final x position (m)",
+          "type": "number"
+        },
+        {
+          "id": "new_distance",
+          "label": "New total travelled distance (m)",
+          "type": "number"
+        }
       ]
     },
     {
@@ -92,6 +104,18 @@
           "tol": 0,
           "repair": "Rigid maintained contact imposes a_A=a_B. A spring bumper does not."
         }
+      ],
+      "boundaryFields": [
+        {
+          "id": "rigid_a",
+          "label": "Rigid common acceleration (m/s² east)",
+          "type": "number"
+        },
+        {
+          "id": "rigid_c",
+          "label": "Rigid connector force (N)",
+          "type": "number"
+        }
       ]
     },
     {
@@ -130,6 +154,18 @@
           "expected": 12,
           "tol": 0.1,
           "repair": "Use ΔT=ΔU/C for the unchanged-phase solid B, not sample A."
+        }
+      ],
+      "boundaryFields": [
+        {
+          "id": "energy",
+          "label": "New net internal-energy change (J)",
+          "type": "number"
+        },
+        {
+          "id": "melt",
+          "label": "Net newly melted mass (kg)",
+          "type": "number"
         }
       ]
     },
@@ -175,6 +211,18 @@
           "expected": "Not resolved: less than 7 ms",
           "tol": 0,
           "repair": "Compare the two arrival separation against the detector threshold, not the total reflected travel time."
+        }
+      ],
+      "boundaryFields": [
+        {
+          "id": "source",
+          "label": "New source wall distance (m)",
+          "type": "number"
+        },
+        {
+          "id": "receiver",
+          "label": "New microphone wall distance (m)",
+          "type": "number"
         }
       ]
     }
