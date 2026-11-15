@@ -65,7 +65,7 @@ function svgFigure(fig){
 async function displayStudy(c){
  const prior=await recordStudyView(c.unit,c.revision);
  const s=c.study;mount.replaceChildren(note("Core1A teaching extension · original authored material · source/QRT/science independent review pending."),put(card(c.unit+" · "+c.title),el("p",s.phenomenon),el("p","Learning target: "+s.goal)));
- mount.append(paragraph("Study exposure: "+prior+" · no local record is not proof of a first viewing.","small"));
+ mount.append(el("p","Study exposure: "+prior+" · no local record is not proof of a first viewing.","small"));
  const scientific=card("Build the warranted model");put(scientific,el("p",s.model),svgFigure(s.figure),el("p","Applicable conditions and limits: "+s.assumptions));mount.append(scientific);
  const work=card("Three different worked constructions");for(const ex of s.examples){const part=el("article",undefined,"stage");put(part,el("h3",ex.level),el("p","Question: "+ex.prompt),el("p","Reasoned solution: "+ex.solution),el("p","Independent check: "+ex.check));work.append(part);}mount.append(work);
  const misc=card("Detect and repair the tempting misconception");put(misc,el("p","Tempting claim: "+s.misconception.wrong),el("p","Repair: "+s.misconception.repair));mount.append(misc);
