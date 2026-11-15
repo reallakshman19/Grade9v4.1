@@ -78,7 +78,7 @@ def run():
         assert len(stage["dependencies"])==6
         for dep in stage["dependencies"]:
             data=(ROOT/dep["path"]).read_bytes()
-            expected=hashlib.sha1(b"blob "+str(len(data)).encode()+b"\\0"+data).hexdigest()
+            expected=hashlib.sha1(b"blob "+str(len(data)).encode()+b"\0"+data).hexdigest()
             assert expected==dep["git_blob_sha"]
             assert not dep["path"].startswith("review/")
         receipt["stage_deps"]=len(stage["dependencies"])
