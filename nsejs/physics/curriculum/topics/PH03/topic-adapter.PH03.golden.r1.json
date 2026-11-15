@@ -1,0 +1,126 @@
+{
+  "schema": "g9v41-ph03-golden-adapter-proposal/v1",
+  "topic": "PH03",
+  "status": "AUTHOR_PROPOSED_HOLD",
+  "base": "d96ee920f4ee249d74790c616cd273fde8d77382",
+  "pins": {
+    "contracts": {
+      "version": "1.1.0",
+      "blob": "1179000df989454637b931cf0883df8dccc7e625"
+    },
+    "blueprint": {
+      "version": "0.2.0",
+      "blob": "700dafcbe86d76442637bcf214eeb544497cf4ea"
+    },
+    "shared_qrt_28": {
+      "version": "1.0.0",
+      "blob": "e2409aef11ae7d98444593bfbe1a38eb00c97cef",
+      "status": "EXTERNAL_PIN_UNQUALIFIED"
+    }
+  },
+  "registered_subtopics": [
+    {
+      "id": "PH03-P01",
+      "title": "Momentum as mass times velocity",
+      "scope": "CORE_CANDIDATE",
+      "delivery": "NOT_AUTHORED"
+    },
+    {
+      "id": "PH03-P02",
+      "title": "Impulse and change in momentum",
+      "scope": "CORE_CANDIDATE",
+      "delivery": "NOT_AUTHORED"
+    },
+    {
+      "id": "PH03-P03",
+      "title": "Conservation in an isolated system",
+      "scope": "CORE_CANDIDATE",
+      "delivery": "GOLDEN_DRAFT"
+    },
+    {
+      "id": "PH03-P04",
+      "title": "Action-reaction versus system momentum",
+      "scope": "CORE_CANDIDATE",
+      "delivery": "NOT_AUTHORED"
+    },
+    {
+      "id": "PH03-P05",
+      "title": "Recoil and two-body interactions",
+      "scope": "ADVANCED_REASONING_CANDIDATE",
+      "delivery": "NOT_AUTHORED"
+    },
+    {
+      "id": "PH03-P06",
+      "title": "Collisions and kinetic energy conservation",
+      "scope": "EXTENSION_REVIEW",
+      "delivery": "NOT_AUTHORED"
+    },
+    {
+      "id": "PH03-P07",
+      "title": "Sequential impact, friction and impulse graphs",
+      "scope": "EXTENSION_REVIEW",
+      "delivery": "NOT_AUTHORED"
+    }
+  ],
+  "source_binding": {
+    "source_uid": "NSEJS-2023-C51-Q39",
+    "primary": "PH03-P03",
+    "support": [
+      "PH03-P06",
+      "PH03-P07"
+    ],
+    "fit": "SOURCE_THEME_ONLY__EXACT_JOIN_HOLD",
+    "original_qrt": "UNADJUDICATED",
+    "source_status": "HOLD"
+  },
+  "tasks": [
+    {
+      "uid": "AUTHORED-PH03-P03-GOLDEN-A",
+      "revision": "r1-20261115",
+      "primary": "PH03-P03",
+      "role": "AUTHORED_TRANSFER",
+      "cell": "D3.6",
+      "band": "D3_PROPOSED",
+      "operation": "SYNTHESIZE",
+      "factors": {
+        "concept_model_selection": {
+          "score": 2,
+          "evidence": "Select two different interval models, short-impact horizontal momentum and work-energy during braking."
+        },
+        "representation_translation": {
+          "score": 1,
+          "evidence": "Convert the observed LEFT displacement and opposing incoming velocities into signed velocities in a common frame."
+        },
+        "reasoning_chain_length": {
+          "score": 2,
+          "evidence": "Infer signed joined velocity from stopping work, then recover incoming velocity by momentum, then compare impact energies."
+        },
+        "algebra_computational_load": {
+          "score": 1,
+          "evidence": "Square root and simple linear equation, then difference of kinetic energies."
+        },
+        "trap_exception_sensitivity": {
+          "score": 1,
+          "evidence": "Unsigned speed gives another plausible root; treating braking energy as impact loss is incorrect."
+        }
+      },
+      "score": 7,
+      "w": "Recover the signed intermediate state from a later observation, then select the collision conservation constraint and allocate energy loss to the correct interval.",
+      "B1_B7": {
+        "B1": "HOLD",
+        "B2": "HOLD",
+        "B3": "HOLD",
+        "B4": "HOLD",
+        "B5": "HOLD",
+        "B6": "HOLD",
+        "B7": "HOLD"
+      }
+    }
+  ],
+  "science_refs": [
+    "PH03-SCI-SYSTEM-IMPULSE",
+    "PH03-SCI-STICKING-LOSS",
+    "PH03-SCI-WORK-ENERGY"
+  ],
+  "note": "Candidate manifest, not validated native topic package. Source rights, actual science locators, R2 packet and Golden acceptance pending. No D3/D4 quota."
+}

@@ -1,0 +1,215 @@
+{
+  "schema": "g9v41-ph03-golden-draft/v2",
+  "release": "HOLD",
+  "source": {
+    "id": "NSEJS-2023-C51-Q39",
+    "year": 2023,
+    "paper_code": 51,
+    "question": 39,
+    "exam_date": "2023-11-26",
+    "printed_page": 7,
+    "pdf_page": 7,
+    "paper": "https://www.iapt.org.in/images/nse_2023/NSEJS_2023_Set_51.pdf",
+    "source_role": "ORIGINAL_EXAM_LOCATOR_ONLY",
+    "paper_sha256": null,
+    "key_sha256": null,
+    "figure_custody": "HOLD_SCREENSHOT_CACHE_MISS",
+    "rights": "HOLD",
+    "source_status": "OFFICIAL_TEXT_AND_FINAL_KEY_MATCH__VISUAL_BYTES_RIGHTS_HOLD",
+    "academic": "HOLD",
+    "selection_mode": "single_correct",
+    "key_title": "FINAL ANSWER KEY NSEJS - 2023",
+    "neutral_topic": "Ballistic pendulum; short horizontal impact followed by rising motion",
+    "paper_access": "Official text and final key rechecked 2026-11-15; official page/key screenshots failed (cache miss). Secondary paper text agrees. No source bytes or diagram redistributed.",
+    "revision": "locator-r2-20261115",
+    "key_locator": "Final key: code 51, question 39; paper p7, constants p2",
+    "key_url": "https://www.iapt.org.in/images/nse_2023/NSEJS_2023_TENTATIVE_ANSWER_KEY.pdf",
+    "options": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ]
+  },
+  "subtopics": [
+    {
+      "id": "PH03-P01",
+      "title": "Momentum as mass times velocity",
+      "scope": "CORE_CANDIDATE",
+      "delivery": "NOT_AUTHORED"
+    },
+    {
+      "id": "PH03-P02",
+      "title": "Impulse and change in momentum",
+      "scope": "CORE_CANDIDATE",
+      "delivery": "NOT_AUTHORED"
+    },
+    {
+      "id": "PH03-P03",
+      "title": "Conservation in an isolated system",
+      "scope": "CORE_CANDIDATE",
+      "delivery": "GOLDEN_DRAFT"
+    },
+    {
+      "id": "PH03-P04",
+      "title": "Action-reaction versus system momentum",
+      "scope": "CORE_CANDIDATE",
+      "delivery": "NOT_AUTHORED"
+    },
+    {
+      "id": "PH03-P05",
+      "title": "Recoil and two-body interactions",
+      "scope": "ADVANCED_REASONING_CANDIDATE",
+      "delivery": "NOT_AUTHORED"
+    },
+    {
+      "id": "PH03-P06",
+      "title": "Collisions and kinetic energy conservation",
+      "scope": "EXTENSION_REVIEW",
+      "delivery": "NOT_AUTHORED"
+    },
+    {
+      "id": "PH03-P07",
+      "title": "Sequential impact, friction and impulse graphs",
+      "scope": "EXTENSION_REVIEW",
+      "delivery": "NOT_AUTHORED"
+    }
+  ],
+  "tasks": {
+    "A": {
+      "uid": "AUTHORED-PH03-P03-GOLDEN-A",
+      "revision": "r2-20261115",
+      "role": "AUTHORED_TRANSFER",
+      "nomination": "SYNTHESIZE_D3_PROPOSED_HOLD",
+      "prediction": "Which way is the total incoming momentum directed? Explain from the observation, without calculating yet.",
+      "prompt": "Two sliding blocks meet on a smooth level rail. A (2 kg) moves right at an unknown speed; B (3 kg) moves left at 5 m/s. They latch during a short collision with negligible external horizontal impulse. Immediately afterward, the joined blocks slide along a level rough strip, with kinetic friction coefficient 0.25, and stop 0.80 m to the left of the entrance. Use g = 10 m/s². Find A's initial speed and the kinetic energy converted in the collision alone. Explain your model for each interval.",
+      "figure": "figures/challenge-a.svg",
+      "fields": [
+        [
+          "v",
+          "Signed velocity immediately after collision (m/s)"
+        ],
+        [
+          "u",
+          "Initial velocity of A, right positive (m/s)"
+        ],
+        [
+          "loss",
+          "Collision energy conversion (J)"
+        ]
+      ],
+      "boundaryPrompt": "A short external horizontal impulse of −5 N·s now acts on the two-block system during contact. All other observations remain unchanged. Find A's initial speed. Can the kinetic energy drop alone identify the internal energy conversion during contact if the work done by the external interaction is unknown? Explain.",
+      "boundaryFields": [
+        [
+          "u",
+          "Revised initial velocity of A (m/s)"
+        ],
+        [
+          "law",
+          "Which statement applies?",
+          [
+            [
+              "conserve",
+              "Momentum is unchanged through contact"
+            ],
+            [
+              "impulse",
+              "Momentum changes by the external impulse"
+            ]
+          ]
+        ],
+        [
+          "energy",
+          "Can internal conversion be determined?",
+          [
+            [
+              "yes",
+              "Yes, kinetic-energy drop is the conversion"
+            ],
+            [
+              "no",
+              "No, external work is not specified"
+            ]
+          ]
+        ]
+      ]
+    },
+    "B": {
+      "uid": "AUTHORED-PH03-P03-GOLDEN-B",
+      "revision": "r2-20261115",
+      "role": "AUTHORED_TRANSFER",
+      "nomination": "JUSTIFY_PROPOSED_HOLD_BAND_UNADJUDICATED",
+      "prediction": "Can a measured final velocity alone prove that no external force acted during a collision?",
+      "prompt": "Two 2 kg sliding blocks approach each other at +5 and −1 m/s, with right positive. They latch. A sensor reports that the pair moves at +1 m/s immediately after contact. One student claims the blocks were horizontally isolated. Another says the difference between initial and final kinetic energy must be the energy converted internally in the impact. Evaluate both claims. Calculate the total external horizontal impulse during contact and the kinetic-energy decrease. State what additional evidence is needed to determine internal conversion.",
+      "figure": "figures/challenge-b.svg",
+      "fields": [
+        [
+          "j",
+          "External horizontal impulse (N·s)"
+        ],
+        [
+          "isolation",
+          "Does the isolated-system claim follow?",
+          [
+            [
+              "yes",
+              "Yes"
+            ],
+            [
+              "no",
+              "No"
+            ]
+          ]
+        ],
+        [
+          "drop",
+          "Kinetic-energy decrease (J)"
+        ],
+        [
+          "conversion",
+          "Can the full decrease be assigned to internal conversion?",
+          [
+            [
+              "yes",
+              "Yes"
+            ],
+            [
+              "no",
+              "No"
+            ]
+          ]
+        ]
+      ],
+      "boundaryPrompt": "A high-speed recording now shows that the −4 N·s impulse acts only AFTER the blocks have latched; the contact itself is horizontally isolated, and the later impulse acts on the joined blocks. The sensor's +1 m/s refers to after this later impulse. Find the velocity immediately after contact, energy converted in contact, and kinetic energy removed by the later interaction.",
+      "boundaryFields": [
+        [
+          "v",
+          "Velocity immediately after contact (m/s)"
+        ],
+        [
+          "loss",
+          "Contact energy conversion (J)"
+        ],
+        [
+          "later",
+          "Later kinetic-energy decrease (J)"
+        ]
+      ]
+    }
+  },
+  "core2": {
+    "uid": "AUTHORED-PH03-GOLDEN-CORE2-02",
+    "revision": "r2-20261115",
+    "role": "AUTHORED_PRACTICE_NOT_EXAM",
+    "prompt": "A 1 kg sliding block travelling right at 12 m/s latches onto a stationary 2 kg block on a smooth level track. External horizontal impulse during contact is negligible. The combined body then slides on a level rough strip with kinetic friction coefficient 0.20. Take g = 10 m/s². Which pair gives the stopping distance on the rough strip and kinetic energy converted in the collision alone?",
+    "figure": "figures/core2.svg",
+    "options": [
+      "A. 36 m; 48 J",
+      "B. 4 m; 24 J",
+      "C. 4 m; 48 J",
+      "D. 12 m; 48 J"
+    ]
+  },
+  "legacy": "../source-led-r1/index.html",
+  "sourceRole": "SOURCE_THEME_ONLY_EXACT_JOIN_HOLD"
+}

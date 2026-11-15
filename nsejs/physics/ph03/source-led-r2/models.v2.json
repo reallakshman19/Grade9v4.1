@@ -1,0 +1,155 @@
+{
+  "status": "AUTHOR_ONLY_HOLD",
+  "source": {
+    "uid": "NSEJS-2023-C51-Q39",
+    "revision": "locator-r2-20261115",
+    "key": "C",
+    "steps": [
+      "The impact and later swing are separate intervals. The initially vertical string exerts negligible horizontal impulse over the brief embedding event; the horizontal momentum of projectile plus block is then conserved.",
+      "After contact, ideal tension acts radially and does no work. Gravity transfers kinetic energy to gravitational potential energy. The measured vertical rise is 0.196 m; with the paper's g = 9.81 m/s², the joined speed is √(2gh) ≈ 1.961 m/s.",
+      "The joined mass is five times the projectile mass. The original speed is therefore 5 × 1.961 ≈ 9.81 m/s, matching choice C."
+    ],
+    "check": "The fraction of initial kinetic energy remaining immediately after contact is 0.25/1.25 = 0.2. Momentum is not conserved throughout the swing. Official text/key checked; original figure, byte custody and rights remain HOLD."
+  },
+  "A": {
+    "uid": "AUTHORED-PH03-P03-GOLDEN-A",
+    "revision": "r2-20261115",
+    "w": "Infer a signed intermediate velocity from later work; choose the separate collision constraint and assign energy loss to the correct phase.",
+    "factors": {
+      "concept_model_selection": 2,
+      "representation_translation": 1,
+      "reasoning_chain_length": 2,
+      "algebra_computational_load": 1,
+      "trap_exception_sensitivity": 1
+    },
+    "score": 7,
+    "expected": {
+      "v": -2,
+      "u": 2.5,
+      "loss": 33.75
+    },
+    "boundaryExpected": {
+      "u": 5,
+      "law": "impulse",
+      "energy": "no"
+    },
+    "hints": [
+      "CLARIFY — Mark the observed direction and label the three instants: before contact, after contact, and stop.",
+      "CORRELATE — Consider which measured quantities describe contact and which describe the later strip. Compare the definitions of work and impulse.",
+      "OPEN_THE_WAY — Represent the unknown state between the intervals on paper; decide what constraints link it to the two observed states."
+    ],
+    "steps": [
+      "Friction has magnitude 0.25 × 5 × 10 = 12.5 N and acts rightward as the joined blocks slide left. Its work is −12.5 × 0.80 = −10 J.",
+      "The post-contact kinetic energy is 10 J. Thus ½(5)V² = 10; |V| = 2 m/s. The observed direction selects V = −2 m/s.",
+      "Contact alone: 2u + 3(−5) = 5(−2). Hence u = +2.5 m/s. The pre-contact momentum contributions are +5 and −15 kg·m/s.",
+      "Initial kinetic energy = ½(2)(2.5²) + ½(3)(5²) = 43.75 J. Immediately after contact it is 10 J. The contact conversion is 33.75 J; braking converts the separate 10 J."
+    ],
+    "check": "Independent relative-motion check: reduced mass = 6/5 kg; ½(6/5)(7.5²) = 33.75 J. Direct acceleration check: +2.5 m/s² over 0.8 s supplies +10 N·s, bringing momentum −10 to zero.",
+    "solutionFigure": "figures/solution-a.svg",
+    "diagnostics": {
+      "sign": {
+        "label": "Signed intermediate state",
+        "repair": "Draw the rough-strip displacement and friction arrows in opposite directions. Determine the sign of V from the observed motion, not from the square root alone."
+      },
+      "momentum": {
+        "label": "Contact constraint",
+        "repair": "Use both blocks as the system, write the signed momentum before and immediately after contact, and explain why the external horizontal impulse is negligible for this interval."
+      },
+      "energy": {
+        "label": "Energy allocation",
+        "repair": "Make three columns for kinetic energy before contact, after contact, and at rest. Find the decrease across contact only; explain why the braking work belongs to a different column."
+      },
+      "correct": {
+        "label": "Numerical fields match; reasoning still needs review",
+        "repair": "Explain why positive V contradicts the observed leftward motion, and check each interval's units."
+      },
+      "insufficient": {
+        "label": "Insufficient structured evidence",
+        "repair": "Reconstruct the three states with signs, then explain the law used for each transition."
+      }
+    },
+    "boundarySteps": [
+      "The same braking observation fixes V = −2 m/s. With external impulse during contact, P_after = P_before + J_ext: −10 = 2u − 15 − 5. Hence u = +5 m/s.",
+      "The initial kinetic energy is 62.5 J; the post-contact kinetic energy is 10 J. The decrease is 52.5 J, but external work during contact is unknown. Therefore the internal energy conversion cannot be inferred from that decrease alone. Momentum and energy ledgers have different external terms."
+    ]
+  },
+  "B": {
+    "uid": "AUTHORED-PH03-P03-GOLDEN-B",
+    "revision": "r2-20261115",
+    "w": "Use an observed mismatch to infer external impulse, then distinguish net kinetic-energy change from unknown external work and test a different chronology.",
+    "factors": {
+      "concept_model_selection": 2,
+      "representation_translation": 1,
+      "reasoning_chain_length": 2,
+      "algebra_computational_load": 1,
+      "trap_exception_sensitivity": 2
+    },
+    "score": 8,
+    "band_note": "Score is author hypothesis; JUSTIFY vs SYNTHESIZE and band unadjudicated; no D4 nomination.",
+    "expected": {
+      "j": -4,
+      "isolation": "no",
+      "drop": 24,
+      "conversion": "no"
+    },
+    "boundaryExpected": {
+      "v": 2,
+      "loss": 18,
+      "later": 6
+    },
+    "hints": [
+      "CLARIFY — Identify what the sensor actually measures and when.",
+      "CORRELATE — Write a momentum ledger and a separate kinetic-energy ledger; check what each can establish.",
+      "OPEN_THE_WAY — Compare each student's claim to the observations and identify any unmeasured interaction."
+    ],
+    "steps": [
+      "Initial momentum is 2(5)+2(−1)=8 kg·m/s; observed post-contact momentum is 4(1)=4 kg·m/s. Hence J_ext = −4 N·s. The horizontal-isolation claim fails.",
+      "Initial kinetic energy is ½(2)(25)+½(2)(1)=26 J; final kinetic energy is ½(4)(1)=2 J. The decrease is 24 J.",
+      "The net external impulse does not specify external work (force integrated along displacement). Therefore one cannot assign all 24 J to internal conversion. Both claims are unjustified."
+    ],
+    "check": "An impulse is N·s; work is N·m. Different displacement histories can yield the same impulse but different work. The observed joined speed cannot by itself certify an isolated impact.",
+    "diagnostics": {
+      "sign": {
+        "label": "Impulse mismatch",
+        "repair": "List P_before and P_after separately, then take after minus before. A negative impulse points left; it is not the magnitude of initial momentum."
+      },
+      "momentum": {
+        "label": "Isolation claim",
+        "repair": "Use the measured nonzero change in total momentum to test the student's isolation claim. Which force must lie outside the chosen system?"
+      },
+      "energy": {
+        "label": "Energy attribution",
+        "repair": "Calculate the initial and final kinetic energies using squared speeds. Then distinguish the observed decrease from internal conversion: what work measurement is missing?"
+      },
+      "correct": {
+        "label": "Numerical fields match; reasoning still needs review",
+        "repair": "Explain how a different force–displacement history can give the same impulse but different work."
+      },
+      "insufficient": {
+        "label": "Insufficient structured evidence",
+        "repair": "Rebuild both ledgers with the sensor timestamp, then identify missing energy information."
+      }
+    },
+    "boundarySteps": [
+      "During isolated contact, P=8 kg·m/s remains constant, so V=8/4=2 m/s. Contact kinetic energy after latching is ½(4)(2²)=8 J; contact conversion is 26−8=18 J.",
+      "After contact the external impulse −4 N·s reduces P from 8 to 4, giving 1 m/s. K falls from 8 J to 2 J, a separate decrease of 6 J. Now the chronology makes the two changes distinguishable."
+    ],
+    "boundaryFigure": "figures/solution-b.svg"
+  },
+  "core2": {
+    "uid": "AUTHORED-PH03-GOLDEN-CORE2-02",
+    "revision": "r2-20261115",
+    "key": "C",
+    "hints": [
+      "CLARIFY — Separate the contact and rough-strip events.",
+      "CORRELATE — Compare signed momentum and kinetic energy; they do not obey the same conservation rule.",
+      "OPEN_THE_WAY — Represent the common velocity as an intermediate unknown and decide how to use it."
+    ],
+    "steps": [
+      "Contact: 1(12)+2(0)=3V, so V=4 m/s.",
+      "Initial K=72 J; after contact K=½(3)(4²)=24 J. The collision converts 48 J.",
+      "Friction force = 0.20×3×10=6 N. The remaining 24 J is removed over d=24/6=4 m. Choice C."
+    ],
+    "check": "Kinematic cross-check: a=−2 m/s², so 0=16−4d, d=4 m. Energy ledger 72=48+24 J."
+  }
+}

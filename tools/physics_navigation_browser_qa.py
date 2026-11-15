@@ -24,7 +24,17 @@ def run(origin, browser, size):
         home=origin+"/nsejs/physics/index.html"
         page.goto(home,wait_until="domcontentloaded")
         page.locator("#chapter-PH01 .g9-chapter-open").wait_for()
-        assert page.locator("#chapter-PH03 a").count()==0
+        assert page.locator("#chapter-PH03 a").count()==1
+        page.locator("#chapter-PH03 a").click()
+        page.locator("#P03 .g9-lesson-actions a").first.wait_for()
+        assert page.locator(".g9-lesson-card").count()==1
+        assert "Golden Sample only: 1 of 7" in page.locator("#g9-chapter-content").inner_text()
+        page.locator("#P03 .g9-lesson-actions a").first.click()
+        page.locator("#g9-learner-nav").wait_for()
+        assert "Momentum and Collisions" in page.locator("#g9-learner-nav").inner_text()
+        assert "Golden Sample" in page.locator("#g9-learner-nav").inner_text()
+        check_size(page,"PH03 Golden chapter")
+        page.goto(home,wait_until="domcontentloaded")
         assert "Current Electricity" in page.locator("#learn-physics").inner_text()
         assert "PH11" not in page.locator("#learn-physics").inner_text()
         assert "PH05" not in page.locator("#learn-physics").inner_text()

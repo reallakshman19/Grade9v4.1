@@ -1,0 +1,84 @@
+{
+  "status": "AUTHOR_ONLY_HOLD",
+  "task": {
+    "uid": "AUTHORED-PH03-P03-GOLDEN-A",
+    "revision": "r1-20261115",
+    "operation": "SYNTHESIZE",
+    "factors": {
+      "concept_model_selection": {
+        "score": 2,
+        "evidence": "Select two different interval models, short-impact horizontal momentum and work-energy during braking."
+      },
+      "representation_translation": {
+        "score": 1,
+        "evidence": "Convert the observed LEFT displacement and opposing incoming velocities into signed velocities in a common frame."
+      },
+      "reasoning_chain_length": {
+        "score": 2,
+        "evidence": "Infer signed joined velocity from stopping work, then recover incoming velocity by momentum, then compare impact energies."
+      },
+      "algebra_computational_load": {
+        "score": 1,
+        "evidence": "Square root and simple linear equation, then difference of kinetic energies."
+      },
+      "trap_exception_sensitivity": {
+        "score": 1,
+        "evidence": "Unsigned speed gives another plausible root; treating braking energy as impact loss is incorrect."
+      }
+    },
+    "score": 7,
+    "band": "D3_PROPOSED",
+    "w": "Recover the signed intermediate state from a later observation, then select the collision conservation constraint and allocate energy loss to the correct interval.",
+    "hints": [
+      "H1 · CLARIFY — Mark the direction of the observed displacement and distinguish the two time intervals.",
+      "H2 · CORRELATE — Which measured quantities belong to each interval? Recall the meanings of net impulse and work.",
+      "H3 · OPEN_THE_WAY — Represent the observed stop and the contact as separate snapshots, with an unknown velocity at the join. Decide how to connect the snapshots yourself."
+    ],
+    "reconstruction": "Take right as positive. The 5 kg pair loses its post-impact kinetic energy to friction: ½(5)V² = (0.25)(5)(10)(0.80) = 10 J. Thus |V|=2 m/s; observed left motion fixes V=−2 m/s. During the impact only, 2u + 3(−5) = 5(−2); u=+2.5 m/s. Before impact K=½(2)(2.5²)+½(3)(5²)=43.75 J. After impact K=10 J. Impact loss=33.75 J, not the 10 J braking loss.",
+    "alternative": "Relative-motion check: in a perfectly inelastic collision with no external horizontal impulse, impact loss = ½[m₁m₂/(m₁+m₂)](u₁−u₂)² = ½(6/5)(7.5²)=33.75 J. The energy ledger is 43.75 = 33.75 + 10 J. Friction impulse is +10 kg·m/s over 0.8 s at acceleration +2.5 m/s².",
+    "diagnosis_choices": [
+      [
+        "sign",
+        "I discarded the leftward sign or selected the positive root."
+      ],
+      [
+        "phase",
+        "I conserved momentum during braking or kinetic energy through sticking."
+      ],
+      [
+        "loss",
+        "I reported the braking loss instead of the impact loss."
+      ],
+      [
+        "correct",
+        "My first route used the correct signed intermediate state and both intervals."
+      ],
+      [
+        "other",
+        "Different divergence / insufficient evidence."
+      ]
+    ],
+    "repair": "Rebuild three labelled states: before impact, after impact, at rest. Write a separate conservation or work relation for each transition and check signed momentum and energy totals. If the original route was correct, explain why the positive root conflicts with the observation.",
+    "boundaryPrompt": "Change only the observation: the joined pair stops 0.80 m to the RIGHT instead of left. The second cart still approaches at 5 m/s left. Find the first cart's speed and impact energy loss. Is this a different physical outcome or simply a different coordinate convention?",
+    "boundaryModel": "Right-positive V=+2 m/s. 2u−15=10, so u=12.5 m/s. Impact loss = ½(6/5)(17.5²)=183.75 J. Initial K=193.75 J and braking loss remains 10 J. The observation changes the physical initial condition, not just the sign convention."
+  },
+  "core2": {
+    "uid": "AUTHORED-PH03-GOLDEN-CORE2-01",
+    "revision": "r1-20261115",
+    "key": "B",
+    "hints": [
+      "H1 · CLARIFY — Treat the two carts as one system.",
+      "H2 · CORRELATE — Use signed velocity for momentum and squared speed for kinetic energy.",
+      "H3 · OPEN_THE_WAY — Compare the system totals before and after contact."
+    ],
+    "reconstruction": "Total horizontal momentum = 4×3 + 2×(−6) = 0. Since they stick, 6V=0, so V=0. Initial kinetic energy = ½×4×9 + ½×2×36 = 18+36=54 J. The final kinetic energy is zero, so 54 J is converted to other forms. B.",
+    "check": "Reduced-mass check: ½(4×2/6)(3−(−6))²=54 J. Mechanical energy is not conserved in sticking, but total energy is."
+  },
+  "source": {
+    "uid": "NSEJS-2023-C51-Q39",
+    "revision": "locator-r1",
+    "key": "C",
+    "reconstruction": "For the official locator, the horizontal momentum immediately before and after the short embedding event is conserved under negligible horizontal external impulse. With projectile mass 0.25 kg and combined mass 1.25 kg, u=5V. During the later ideal swing, V²=2gh. With vertical rise 0.196 m and g≈9.8 m/s², V=1.96 m/s and u=9.8 m/s. This matches the official code 51 key C. Energy is not conserved mechanically across the embedding itself.",
+    "check": "Impact kinetic energy ratio K_after/K_before = m/(m+M)=0.2. The swing height reflects the remaining energy, not all the projectile's initial energy. This is an author calculation against the public key; visual and byte custody/rights remain HOLD."
+  }
+}
