@@ -45,7 +45,7 @@ def commit_candidate(page, question_id, option="B"):
     card=page.locator("#question-"+question_id)
     assert card.count()==1
     assert card.locator("h3",has_text="Candidate derivation").count()==0
-    helper=card.get_by_role("button",name=re.compile("Show Progressive Hints"))
+    helper=card.locator("button").filter(has_text="Progressive Hints").first
     assert "Hints (2)" in helper.inner_text()
     helper.click()
     assert "Tier 3" not in card.inner_text()
