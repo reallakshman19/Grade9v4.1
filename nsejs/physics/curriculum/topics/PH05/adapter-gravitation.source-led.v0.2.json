@@ -1,0 +1,354 @@
+{
+  "schema": "g9v41-ph05-source-led-topic-adapter/v1",
+  "adapter_id": "PHYS-TOPIC-PH05",
+  "topic_id": "PH05",
+  "version": "0.2.0-candidate",
+  "for_blueprint": "PHYS-QRT-BLUEPRINT 0.2.0",
+  "status": "AUTHOR_PROPOSED__INDEPENDENT_QRT_HOLD",
+  "academic_status": "HOLD",
+  "authority": "Current source-led route nomination; not native QRT admission",
+  "subtopics": [
+    {
+      "subtopic_id": "PH05-G01",
+      "title": "Universal gravitation and attractive force",
+      "scope_role": "CORE_CANDIDATE",
+      "packages": [
+        "P01",
+        "P05",
+        "P06"
+      ],
+      "science": "HOLD"
+    },
+    {
+      "subtopic_id": "PH05-G02",
+      "title": "Mass, weight and gravitational acceleration",
+      "scope_role": "CORE_CANDIDATE",
+      "packages": [
+        "P01",
+        "P02",
+        "P09"
+      ],
+      "science": "HOLD"
+    },
+    {
+      "subtopic_id": "PH05-G03",
+      "title": "Free fall and vertical kinematics",
+      "scope_role": "CORE_CANDIDATE",
+      "packages": [
+        "P03",
+        "P04"
+      ],
+      "science": "HOLD"
+    },
+    {
+      "subtopic_id": "PH05-G04",
+      "title": "Weight near Earth's surface",
+      "scope_role": "CORE_CANDIDATE",
+      "packages": [
+        "P03",
+        "P04",
+        "P09"
+      ],
+      "science": "HOLD"
+    },
+    {
+      "subtopic_id": "PH05-G05",
+      "title": "Changing mass/weight in alternative environments",
+      "scope_role": "ADVANCED_REASONING_CANDIDATE",
+      "packages": [
+        "P02",
+        "P07",
+        "P08"
+      ],
+      "science": "HOLD"
+    },
+    {
+      "subtopic_id": "PH05-G06",
+      "title": "Inverse-square reasoning and proportionality",
+      "scope_role": "ADVANCED_REASONING_CANDIDATE",
+      "packages": [
+        "P02",
+        "P05"
+      ],
+      "science": "HOLD"
+    },
+    {
+      "subtopic_id": "PH05-G07",
+      "title": "Orbital formulas and gravitation potential",
+      "scope_role": "EXTENSION_REVIEW",
+      "packages": [
+        "P05",
+        "P06"
+      ],
+      "science": "HOLD"
+    }
+  ],
+  "cells": [
+    {
+      "cell_id": "D3.4",
+      "operation": "MODEL",
+      "instance_ids": [
+        "AUTHORED-PH05-R2-P01-A",
+        "AUTHORED-PH05-R2-P02-A",
+        "AUTHORED-PH05-R2-P03-A",
+        "AUTHORED-PH05-R2-P04-A",
+        "AUTHORED-PH05-R2-P05-A",
+        "AUTHORED-PH05-R2-P07-A",
+        "AUTHORED-PH05-R2-P08-A",
+        "AUTHORED-PH05-R2-P09-A"
+      ],
+      "status": "PROPOSED_NOT_QUALIFIED"
+    },
+    {
+      "cell_id": "D3.6",
+      "operation": "SYNTHESIZE",
+      "instance_ids": [
+        "AUTHORED-PH05-R2-P05-B",
+        "AUTHORED-PH05-R2-P06-A"
+      ],
+      "status": "PROPOSED_NOT_QUALIFIED"
+    },
+    {
+      "cell_id": "D3.7",
+      "operation": "JUSTIFY",
+      "instance_ids": [
+        "AUTHORED-PH05-R2-P01-B",
+        "AUTHORED-PH05-R2-P03-B"
+      ],
+      "status": "PROPOSED_NOT_QUALIFIED"
+    },
+    {
+      "cell_id": "D4.7",
+      "operation": "JUSTIFY",
+      "instance_ids": [
+        "AUTHORED-PH05-R2-P02-B",
+        "AUTHORED-PH05-R2-P04-B",
+        "AUTHORED-PH05-R2-P06-B"
+      ],
+      "status": "PROPOSED_NOT_QUALIFIED"
+    }
+  ],
+  "tasks": [
+    {
+      "uid": "AUTHORED-PH05-R2-P01-A",
+      "revision": "r2-20261115",
+      "package": "P01",
+      "cell": "D3.4",
+      "operation": "MODEL",
+      "primary_subtopic": "PH05-G01",
+      "source_locators": [
+        "NSEJS-2019-C51-Q61"
+      ],
+      "source_role": "AUTHORED_TRANSFER",
+      "protected_w": "Infer mass ratio from equal force, then use fixed COM rather than assuming equal displacement.",
+      "qrt": "HOLD"
+    },
+    {
+      "uid": "AUTHORED-PH05-R2-P01-B",
+      "revision": "r2-20261115",
+      "package": "P01",
+      "cell": "D3.7",
+      "operation": "JUSTIFY",
+      "primary_subtopic": "PH05-G01",
+      "source_locators": [
+        "NSEJS-2019-C51-Q61"
+      ],
+      "source_role": "AUTHORED_TRANSFER",
+      "protected_w": "Separate the third-law pair from the additional external force before computing net acceleration.",
+      "qrt": "HOLD"
+    },
+    {
+      "uid": "AUTHORED-PH05-R2-P02-A",
+      "revision": "r2-20261115",
+      "package": "P02",
+      "cell": "D3.4",
+      "operation": "MODEL",
+      "primary_subtopic": "PH05-G06",
+      "source_locators": [
+        "IOQJS-2020-21-C51-Q01",
+        "NSEJS-2024-C51-Q48"
+      ],
+      "source_role": "AUTHORED_TRANSFER",
+      "protected_w": "Use g∝ρR to infer radius, then recover mass independently from ρR³.",
+      "qrt": "HOLD"
+    },
+    {
+      "uid": "AUTHORED-PH05-R2-P02-B",
+      "revision": "r2-20261115",
+      "package": "P02",
+      "cell": "D4.7",
+      "operation": "JUSTIFY",
+      "primary_subtopic": "PH05-G06",
+      "source_locators": [
+        "IOQJS-2020-21-C51-Q01",
+        "NSEJS-2024-C51-Q48"
+      ],
+      "source_role": "AUTHORED_TRANSFER",
+      "protected_w": "Use the ratio to recover a length scale, then invert surface gravity; expose identifiability if scale is missing.",
+      "qrt": "HOLD"
+    },
+    {
+      "uid": "AUTHORED-PH05-R2-P03-A",
+      "revision": "r2-20261115",
+      "package": "P03",
+      "cell": "D3.4",
+      "operation": "MODEL",
+      "primary_subtopic": "PH05-G04",
+      "source_locators": [
+        "NSEJS-2016-JS530-Q21",
+        "NSEJS-2024-C51-Q33",
+        "NSEJS-2015-JS521-Q17",
+        "NSEJS-2015-JS521-Q41"
+      ],
+      "source_role": "AUTHORED_TRANSFER",
+      "protected_w": "Infer acceleration from scale readings rather than velocity direction, then integrate the two stages.",
+      "qrt": "HOLD"
+    },
+    {
+      "uid": "AUTHORED-PH05-R2-P03-B",
+      "revision": "r2-20261115",
+      "package": "P03",
+      "cell": "D3.7",
+      "operation": "JUSTIFY",
+      "primary_subtopic": "PH05-G04",
+      "source_locators": [
+        "NSEJS-2016-JS530-Q21",
+        "NSEJS-2024-C51-Q33",
+        "NSEJS-2015-JS521-Q17",
+        "NSEJS-2015-JS521-Q41"
+      ],
+      "source_role": "AUTHORED_TRANSFER",
+      "protected_w": "Test the assumed taut constraint and reject negative tension; infer relative acceleration after release.",
+      "qrt": "HOLD"
+    },
+    {
+      "uid": "AUTHORED-PH05-R2-P04-A",
+      "revision": "r2-20261115",
+      "package": "P04",
+      "cell": "D3.4",
+      "operation": "MODEL",
+      "primary_subtopic": "PH05-G03",
+      "source_locators": [
+        "NSEJS-2025-C51-Q43"
+      ],
+      "source_role": "AUTHORED_TRANSFER",
+      "protected_w": "Infer g from the drop; infer signed initial velocity from the second equation; predict a third observation.",
+      "qrt": "HOLD"
+    },
+    {
+      "uid": "AUTHORED-PH05-R2-P04-B",
+      "revision": "r2-20261115",
+      "package": "P04",
+      "cell": "D4.7",
+      "operation": "JUSTIFY",
+      "primary_subtopic": "PH05-G03",
+      "source_locators": [
+        "NSEJS-2025-C51-Q43"
+      ],
+      "source_role": "AUTHORED_TRANSFER",
+      "protected_w": "Eliminate depth and speed to derive time-product consistency, then expose scale freedom.",
+      "qrt": "HOLD"
+    },
+    {
+      "uid": "AUTHORED-PH05-R2-P05-A",
+      "revision": "r2-20261115",
+      "package": "P05",
+      "cell": "D3.4",
+      "operation": "MODEL",
+      "primary_subtopic": "PH05-G07",
+      "source_locators": [
+        "NSEJS-2023-C51-Q48"
+      ],
+      "source_role": "AUTHORED_TRANSFER",
+      "protected_w": "Combine the local force law with the period definition to infer ratios from time rather than given radius.",
+      "qrt": "HOLD"
+    },
+    {
+      "uid": "AUTHORED-PH05-R2-P05-B",
+      "revision": "r2-20261115",
+      "package": "P05",
+      "cell": "D3.6",
+      "operation": "SYNTHESIZE",
+      "primary_subtopic": "PH05-G07",
+      "source_locators": [
+        "NSEJS-2023-C51-Q48"
+      ],
+      "source_role": "AUTHORED_TRANSFER",
+      "protected_w": "Recover central mass from v²r/G, then separate speed, acceleration and period.",
+      "qrt": "HOLD"
+    },
+    {
+      "uid": "AUTHORED-PH05-R2-P06-A",
+      "revision": "r2-20261115",
+      "package": "P06",
+      "cell": "D3.6",
+      "operation": "SYNTHESIZE",
+      "primary_subtopic": "PH05-G07",
+      "source_locators": [
+        "NSEJS-2022-C51-Q36"
+      ],
+      "source_role": "AUTHORED_TRANSFER",
+      "protected_w": "Use momentum to partition energy and invert the finite-separation potential difference.",
+      "qrt": "HOLD"
+    },
+    {
+      "uid": "AUTHORED-PH05-R2-P06-B",
+      "revision": "r2-20261115",
+      "package": "P06",
+      "cell": "D4.7",
+      "operation": "JUSTIFY",
+      "primary_subtopic": "PH05-G07",
+      "source_locators": [
+        "NSEJS-2022-C51-Q36"
+      ],
+      "source_role": "AUTHORED_TRANSFER",
+      "protected_w": "Separate COM translation from internal motion, use both kinetic energies and distinguish velocity from acceleration.",
+      "qrt": "HOLD"
+    },
+    {
+      "uid": "AUTHORED-PH05-R2-P07-A",
+      "revision": "r2-20261115",
+      "package": "P07",
+      "cell": "D3.4",
+      "operation": "MODEL",
+      "primary_subtopic": "PH05-G05",
+      "source_locators": [
+        "NSEJS-2018-JS511-Q14"
+      ],
+      "source_role": "AUTHORED_TRANSFER",
+      "protected_w": "Use equilibrium components and distinguish angle from tangent; compare resultant tension.",
+      "qrt": "HOLD"
+    },
+    {
+      "uid": "AUTHORED-PH05-R2-P08-A",
+      "revision": "r2-20261115",
+      "package": "P08",
+      "cell": "D3.4",
+      "operation": "MODEL",
+      "primary_subtopic": "PH05-G05",
+      "source_locators": [
+        "IOQJS-2021-22-C51-Q19",
+        "IOQJS-2020-21-C51-Q02"
+      ],
+      "source_role": "AUTHORED_TRANSFER",
+      "protected_w": "Separate surface and hydrostatic pressure before equating absolute values.",
+      "qrt": "HOLD"
+    },
+    {
+      "uid": "AUTHORED-PH05-R2-P09-A",
+      "revision": "r3-20261115",
+      "package": "P09",
+      "cell": "D3.4",
+      "operation": "MODEL",
+      "primary_subtopic": "PH05-G02",
+      "source_locators": [
+        "NSEJS-2015-JS521-Q25"
+      ],
+      "source_role": "AUTHORED_TRANSFER",
+      "protected_w": "Match the net gravitational torque to the resultant weight at a known location, infer missing field strength, then compare mass weighting.",
+      "qrt": "HOLD"
+    }
+  ],
+  "legacy_adapter": "adapter-gravitation.v1.json",
+  "legacy_policy": "Legacy v1 cells describe archived tasks only and cannot count towards corrected route."
+}

@@ -74,7 +74,9 @@ def check_orientation(browser,base,orientation,w,h,receipts):
         assert page.get_by_role("link",name="Try protected author-created transfer").is_visible()
         # Visiting a teaching link is recorded without altering first attempt.
         page.get_by_role("link",name="Learn Core1A",exact=False).first.click()
-        page.wait_for_url("**/textbook/PH05/G*/index.html",timeout=10000)
+        page.wait_for_url("**/textbook/PH05/G*/index.html?legacy=1",timeout=10000)
+        page.locator("[data-ph05-lesson] section").first.wait_for(timeout=10000)
+        assert "legacy=1" in page.url
         page.goto(url,wait_until="load")
         page.locator("#firstPrediction").wait_for(timeout=10000)
         preserved=record(page,uid)
@@ -98,6 +100,7 @@ def check_orientation(browser,base,orientation,w,h,receipts):
         # URL navigation may finish before the saved-attempt state is rehydrated.
         # Wait for the actual protected-state condition; never auto-unlock it.
         page.locator("#afterFirst").wait_for(state="visible",timeout=12000)
+        assert page.locator("#afterFirst").is_visible()
         assert page.locator("#firstPrediction").is_disabled()
         final=record(page,uid)
         assert final["entry"]["first_reasoning"]==rec["entry"]["first_reasoning"]

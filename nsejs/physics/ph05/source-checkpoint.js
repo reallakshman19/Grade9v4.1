@@ -59,7 +59,7 @@ function stage(){
  help.appendChild(el("h2","3 · Study the decisive reasoning and attempt a fresh transfer"));
  help.appendChild(el("p","These tasks are authored teaching candidates, not certified original D3/D4 questions."));
  const learn=el("p");
- e.core1a.forEach((unit,i)=>{if(i)learn.append(" · ");const a=addLink(learn,"Learn Core1A "+unit,"../textbook/PH05/"+unit+"/index.html");a.addEventListener("click",event=>{try{recordExposure("core1a_"+unit)}catch(err){event.preventDefault();error(String(err.message||err))}})});
+ e.core1a.forEach((unit,i)=>{if(i)learn.append(" · ");const a=addLink(learn,"Learn Core1A "+unit,"../textbook/PH05/"+unit+"/index.html?legacy=1");a.addEventListener("click",event=>{try{recordExposure("core1a_"+unit)}catch(err){event.preventDefault();error(String(err.message||err))}})});
  help.appendChild(learn);
  const target=e.transfer.includes("MAIN")?"main":e.core1a[0];
  const transferP=el("p");

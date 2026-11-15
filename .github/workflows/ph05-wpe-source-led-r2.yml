@@ -1,0 +1,30 @@
+name: PH05 WPE source-led R2 Chromium
+on:
+  pull_request:
+    paths:
+      - 'nsejs/physics/ph05/source-led-r2/**'
+      - 'tools/ph05_wpe_source_led_r2_browser.py'
+      - 'tests/test_ph05_wpe_source_led_r2.py'
+      - '.github/workflows/ph05-wpe-source-led-r2.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  candidate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install pytest==8.4.2 playwright==1.55.0
+      - run: python -m playwright install --with-deps chromium
+      - run: node --input-type=module --check < nsejs/physics/ph05/source-led-r2/reader.js
+      - run: python -m pytest -q tests/test_ph05_wpe_source_led_r2.py
+      - run: python tools/ph05_wpe_source_led_r2_browser.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ph05-r2-browser-figures
+          path: artifacts/ph05-r2/
