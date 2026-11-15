@@ -16,7 +16,7 @@ const fail=(t)=>{mount.replaceChildren(el("p","HOLD · "+t,"error"),link("Physic
 const SHA=async v=>{if(!crypto?.subtle||typeof TextEncoder==="undefined")throw Error("Browser digest unavailable");const bytes=new TextEncoder().encode(v);const h=await crypto.subtle.digest("SHA-256",bytes);return [...new Uint8Array(h)].map(x=>x.toString(16).padStart(2,"0")).join("")};
 const gitBlobSha=async raw=>{
  const data=new TextEncoder().encode(raw);
- const header=new TextEncoder().encode("blob "+data.length+"\\0".replace("\\\\0","\\0"));
+ const header=new TextEncoder().encode("blob "+data.length+String.fromCharCode(0));
  const body=new Uint8Array(header.length+data.length);body.set(header);body.set(data,header.length);
  const digest=await crypto.subtle.digest("SHA-1",body);
  return [...new Uint8Array(digest)].map(b=>b.toString(16).padStart(2,"0")).join("");
