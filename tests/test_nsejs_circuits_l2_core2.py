@@ -250,10 +250,10 @@ def test_rule13_academic_hold_invariant(candidates_data):
 def test_question_facing_circuit_svgs_do_not_disclose_final_answers():
     """First attempt is invalidated when source figures display a solved result."""
     forbidden = re.compile(
-        r"(?:⇒|R_AB\\s*=|R_edge\\s*=|R_face\\w*\\s*=|"
-        r"R_(?:AM|BD|AC|PQ)\\s*=|V_C\\s*=\\s*V_D|"
-        r"R_closed\\s*=|R_open\\s*=|No current in|"
-        r"Q8:|Q9:|Option [ABCD]\\b)",
+        r"(?:⇒|R_AB\s*=|R_edge\s*=|R_face\w*\s*=|"
+        r"R_(?:AM|BD|AC|PQ)\s*=|V_C\s*=\s*V_D|"
+        r"R_closed\s*=|R_open\s*=|No current in|"
+        r"Q8:|Q9:|Option [ABCD]\b)",
         re.IGNORECASE,
     )
     diagrams = list(ASSETS_DIR.glob("fig_nsejs_circ_l2_q*.svg"))
