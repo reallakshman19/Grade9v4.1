@@ -34,13 +34,22 @@ def test_four_original_constructions_are_distinct_and_scoped():
         assert len({x["prompt"] for x in u["study"]["examples"]})==3
         assert all(len(x["solution"])>90 and len(x["check"])>20 for x in u["study"]["examples"])
         assert all(u["study"].get(k) for k in ("phenomenon","goal","model","assumptions","misconception","exit","figure"))
-        assert u["source"]["role"]=="ORIGINAL_AUTHORED_TRANSFER"
+        assert u["source"]["role"]=="AUTHORED_TRANSFER"
         assert u["source"]["original_exam_admission"]=="HOLD"
         assert u["source"]["exact_original_paper"] is None
         assert u["source"]["independent_qrt"]=="NOT_RUN"
         assert u["adapter"]["cell"]==allowed[u["adapter"]["operation"]]
         assert u["adapter"]["status"]=="AUTHOR_PROPOSED_UNSCORED"
         assert u["adapter"]["five_factor_scores"] is None
+        proposed=u["adapter"]["author_qrt_hypothesis"]
+        assert proposed["status"]=="AUTHOR_EXPOSED__NOT_BLIND"
+        assert proposed["proposed_band"]=="D3"
+        assert proposed["independent_score"] is None and proposed["can_promote"] is False
+        factors=proposed["factors"]
+        assert set(factors)=={"concept_model_selection","representation_translation","reasoning_chain_length","algebra_computational_load","trap_exception_sensitivity"}
+        assert all(isinstance(f["author_score"],int) and 0<=f["author_score"]<=2 and len(f["evidence"])>30 for f in factors.values())
+        assert sum(f["author_score"] for f in factors.values())==proposed["proposed_total"]
+        assert 6<=proposed["proposed_total"]<=7
         assert u["adapter"]["independent_witness_status"]=="HOLD"
         assert u["adapter"]["selected_as_canonical"] is False
         assert len(u["challenge"]["hints"])==2
@@ -90,7 +99,7 @@ def test_four_chapter_catalog_links_integrated_without_replacing_existing():
                     assert not item.get("qualityR1"),full
                     continue
                 links=item["qualityR1"]
-                assert links["source_role"]=="ORIGINAL_AUTHORED_TRANSFER"
+                assert links["source_role"]=="AUTHORED_TRANSFER"
                 assert links["independent_academic"]=="HOLD"
                 assert links["study"]=="quality-r1/study.html?unit="+full
                 assert links["practice"]=="quality-r1/challenge.html?unit="+full
