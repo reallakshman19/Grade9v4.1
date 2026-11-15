@@ -7,7 +7,9 @@
 "use strict";
 const PIN = Object.freeze({
  prompt: "1c9c22cd065ea7da1be2d970199a861b084219fe",
- postattempt: "e16d4051459337fe6fbcdd93617a0331984bcc33"
+ postattempt: "e16d4051459337fe6fbcdd93617a0331984bcc33",
+ prompt_sha256: "333bf880ec79f8f703463a77d10d2b6ef787a998284ab7ef2d4a01b05c112611",
+ postattempt_sha256: "394324e67a6405bdf2cb4f7921bdf1c64e2f897fd72da42af70c7dda517f2b76"
 });
 const ROOT = document.getElementById("native-ph11-07");
 const $ = id => document.getElementById(id);
@@ -33,12 +35,13 @@ async function gitBlobDigest(raw) {
  const hash=await crypto.subtle.digest("SHA-1",joined);
  return Array.from(new Uint8Array(hash),b=>b.toString(16).padStart(2,"0")).join("");
 }
-async function fetchPinned(name,pin) {
+async function fetchPinned(name,pin,pinSha256) {
  const resp=await fetch("./"+name,{cache:"no-store",credentials:"same-origin"});
  if (!resp.ok) throw Error("Pinned "+name+" unavailable ("+resp.status+")");
  const raw=await resp.text();
- if(await gitBlobDigest(raw)!==pin) throw Error("PIN_MISMATCH: "+name+" content differs from trusted code pin");
- return {json:JSON.parse(raw),sha256:await sha256(raw)};
+ const strongDigest=await sha256(raw);
+ if(await gitBlobDigest(raw)!==pin || strongDigest!==pinSha256) throw Error("PIN_MISMATCH: "+name+" content differs from trusted code pins");
+ return {json:JSON.parse(raw),sha256:strongDigest};
 }
 function newRecord() {
  return {schema:"g9v41-ph11-07-native-record/v1",uid:prompt.task.uid,revision:prompt.revision,
@@ -136,7 +139,7 @@ async function loadFeedback() {
  if(feedback||blocked||!state?.first||loadingFeedback)return Boolean(feedback);
  loadingFeedback=true;
  try{
-   const asset=await fetchPinned("postattempt.v1.json",PIN.postattempt);
+   const asset=await fetchPinned("postattempt.v1.json",PIN.postattempt,PIN.postattempt_sha256);
    const x=asset.json;
    if(x.schema!=="g9v41-ph11-07-r4-native-feedback/v1"||x.status!=="AUTHOR_EXPOSED_CANDIDATE__ACADEMIC_HOLD"||
       x.revision!==prompt.revision||x.task_uid!==prompt.task.uid)throw Error("Answer/revision/source-role mismatch");
@@ -188,7 +191,7 @@ async function start(){
  if(!ROOT)return;
  try{
   if(!checkCrypto())throw Error("Secure context / content digest unavailable");
-  const asset=await fetchPinned("prompt.v1.json",PIN.prompt);
+  const asset=await fetchPinned("prompt.v1.json",PIN.prompt,PIN.prompt_sha256);
   prompt=asset.json;
   if(prompt.schema!=="g9v41-ph11-07-r4-native-prompt/v1"||
     prompt.status!=="AUTHOR_EXPOSED_CANDIDATE__ACADEMIC_HOLD"||
