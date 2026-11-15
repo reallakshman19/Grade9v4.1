@@ -10,6 +10,7 @@ const task=pack?.tasks.find(t=>t.uid===params.get("task"));
 const source=params.get("source");
 if(params.has("task")&&!task){root.textContent="HOLD: unknown or stale task identity";throw Error("Unknown task identity")};
 const sourceRecord=pack&&data.census.source_records.find(x=>x.id===source&&pack.source_locators.includes(x.id));
+if(source&&!sourceRecord){root.textContent="HOLD: invalid source/package identity";throw Error("Invalid source/package identity")};
 const checkpoint=!!sourceRecord&&!params.has("task")&&params.get("stage")!=="learn";
 const href=(p,t)=>"?package="+encodeURIComponent(p.id)+(t?"&task="+encodeURIComponent(t.uid):"&stage=learn")+(sourceRecord?"&source="+encodeURIComponent(sourceRecord.id):"");
 const checkpointHref=(p,id)=>"?package="+encodeURIComponent(p.id)+"&source="+encodeURIComponent(id);

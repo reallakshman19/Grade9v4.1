@@ -64,3 +64,12 @@ def test_canonical_route_migration_and_review_rows():
     ids={x["id"] for x in d["census"]["source_records"]}
     assert "IOQJS-2021-22-C51-Q02" not in ids and "IOQJS-2021-22-C51-Q19" in ids
     assert 2*(30+5)==40+6*5
+
+def test_current_source_led_adapter_exact_join():
+    d=load("packages.v1.json");m=load("models.v1.json")
+    a=json.loads((ROOT/"nsejs/physics/curriculum/topics/PH05/adapter-gravitation.source-led.v0.2.json").read_text())
+    assert a["academic_status"]=="HOLD"
+    assert {x["uid"] for x in a["tasks"]}=={x["uid"] for x in m["models"]}
+    assert {x["subtopic_id"]:x["title"] for x in a["subtopics"]}=={x["id"]:x["title"] for x in d["stable_subtopics"]}
+    assert sum(len(x["instance_ids"]) for x in a["cells"])==15
+    assert all(x["qrt"]=="HOLD" for x in a["tasks"])

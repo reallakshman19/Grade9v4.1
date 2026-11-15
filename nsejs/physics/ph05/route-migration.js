@@ -1,12 +1,12 @@
 /* Stable PH05 route resolver; archived task state is never migrated or relabelled. */
 export async function renderCanonicalPH05(mount,uid,role){
  const p=new URLSearchParams(location.search);
- if(p.has("task")||p.get("legacy")==="1"||uid==="PH05-MAIN")return false;
+ if(p.has("task")||p.get("legacy")==="1")return false;
  const base=new URL("./source-led-r2/",import.meta.url);
  const response=await fetch(new URL("packages.v1.json",base),{cache:"no-store"});
  if(!response.ok)throw Error("Source-led package registry unavailable");
  const d=await response.json();if(d.release!=="HOLD")throw Error("Unexpected candidate release");
- const u=d.stable_subtopics.find(x=>x.id===uid);if(!u)throw Error("Unknown canonical syllabus identity");
+ const u=uid==="PH05-MAIN"?{id:uid,title:"Source-led Gravitation challenges",scope:"CANDIDATE_ONLY",packages:d.packages.map(p=>p.id)}:d.stable_subtopics.find(x=>x.id===uid);if(!u)throw Error("Unknown canonical syllabus identity");
  const el=(tag,text)=>{const n=document.createElement(tag);if(text)n.textContent=text;return n};
  const link=(text,params)=>{const n=el("a",text);n.className="action";const url=new URL("index.html",base);for(const [k,v] of Object.entries(params))url.searchParams.set(k,v);n.href=url.href;return n};
  mount.replaceChildren(el("h1",u.id+" · "+u.title),el("p","Original educational candidate · SOURCE/QRT/ACADEMIC HOLD · "+u.scope));
