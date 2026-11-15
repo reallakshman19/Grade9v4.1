@@ -1,0 +1,26 @@
+name: PH03 Golden Sample browser
+on:
+  pull_request:
+    paths:
+      - 'nsejs/physics/ph03/**'
+      - 'nsejs/physics/curriculum/topics/PH03/**'
+      - 'nsejs/physics/textbook/PH03/**'
+      - 'nsejs/physics/core1/PH03/**'
+      - 'tools/ph03_golden_browser.py'
+      - '.github/workflows/ph03-golden-browser.yml'
+jobs:
+  ph03-golden-browser:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install playwright
+      - run: python -m playwright install --with-deps chromium
+      - run: python tools/ph03_golden_browser.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ph03-golden-browser
+          path: artifacts/ph03-golden-r1/
