@@ -15,7 +15,7 @@ TEST = ROOT / "tools" / "shared-assessment" / "engine.test.mjs"
 def test_shared_engine_exact_node_suite():
     node = shutil.which("node")
     assert node is not None, "Node is required for the shared-engine validation"
-    command = [node, "--test", str(TEST)]
+    command = [node, "--test", "--test-reporter=tap", str(TEST)]
     result = subprocess.run(
         command, cwd=ROOT, check=False, capture_output=True, text=True,
         timeout=60,
