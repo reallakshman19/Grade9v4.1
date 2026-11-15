@@ -54,7 +54,7 @@ The existing topic-adapter versions and native physics packages remain unchanged
 - `topics/PH07/topic-adapter.PH07.quality-r1.json`
 - `topics/PH08/topic-adapter.PH08.quality-r1.json`
 
-Each is `CANDIDATE_ONLY`, `NOT_SELECTED`, `independent_qrt: NOT_RUN`; five-factor scores are deliberately null. The PH07/08 candidate aggregates are built from B01's **16 author-proposed topic-cell groups** and include prior supplemental INSTANCE proposals; the original 16 mixed MAIN proposals remain unselected. No original source or official exam claim is added by this mapping.
+Each is `CANDIDATE_ONLY`, `NOT_SELECTED`, `independent_qrt: NOT_RUN`. New task dossiers now include a five-factor **author-only** D3 hypothesis (7/10 with one concrete reason per factor). Independently adjudicated scores remain explicitly **null**; no D3 admission follows from an author hypothesis. The PH07/08 candidate aggregates are built from B01's **16 author-proposed topic-cell groups** and include prior supplemental INSTANCE proposals; the original 16 mixed MAIN proposals remain unselected. No original source or official exam claim is added by this mapping.
 
 ## Evidence custody and outstanding gates
 
