@@ -76,7 +76,7 @@
   const TOPICS = [
     ["optics","OPTICS","Optics","🔭",10],
     ["electrostatics","ELECTROSTATICS","Electrostatics","⚡",10],
-    ["circuits","CURRENT_ELECTRICITY","Circuits","🔌",30],
+    ["circuits","CURRENT_ELECTRICITY","Circuits","🔌",66],
     ["magnetism","MAGNETISM_AND_EMI","Magnetism & EMI","🧲",10],
     ["mechanics","MECHANICS","Mechanics","⚙️",11],
     ["fluids","FLUIDS_AND_SOUND","Fluids & Sound","🌊",2]
@@ -157,6 +157,11 @@
   }
   async function createCard(q,index) {
     const box=text("article","", "card");
+    const worksheet = /^NSEJS-CIRC-L[12]-Q\d{2}$/.test(q.id || "");
+    const worksheetRevision = worksheet ? await revision(q) : null;
+    let hintDepth = 0;
+    let figureLoadFailed = false;
+    const figureLoads = [];
     box.id = "question-"+encodeURIComponent(q.source_id);
     box.dataset.sourceId = q.source_id;
     if (q.id) {
@@ -200,6 +205,7 @@
       append(box, examBadge);
     }
     const stem=text("p",String(q.stem||"").replace(/\[FIG[^\]]*\]/g,""),"stem");
+    if (worksheet) append(box, text("p", "Supplied worksheet · Level " + q.source_provenance?.worksheet_level + " · Q" + q.source_provenance?.source_question_number + " · page " + q.source_provenance?.source_page + " · not an authenticated past examination item", "meta"));
     append(box,stem);
 
     if (Array.isArray(q.source_figures) && q.source_figures.length > 0) {
@@ -208,12 +214,24 @@
       q.source_figures.forEach(fig => {
         const img = document.createElement("img");
         img.src = "../assets/" + fig;
-        img.alt = q.figure_note || fig;
+        img.alt = worksheet ? (q.figure_note || "Worksheet circuit figure") : (q.figure_note || fig);
         img.className = "candidate-fig-img";
         img.style.cssText = "max-width: 100%; height: auto; max-height: 320px; display: inline-block; border-radius: 6px;";
-        img.onerror = function() {
-          img.src = "assets/" + fig;
-        };
+        if (worksheet) {
+          figureLoads.push(new Promise(resolve => {
+            let fallback = false, settled = false;
+            const finish = ok => { if (!settled) { settled=true; clearTimeout(timer); resolve(ok); } };
+            const timer = setTimeout(() => finish(false), 10000);
+            img.onload = () => finish(img.naturalWidth > 0);
+            img.onerror = () => {
+              if (!fallback) { fallback = true; img.src = "assets/" + fig; }
+              else finish(false);
+            };
+            if (img.complete && img.naturalWidth > 0) finish(true);
+          }));
+        } else {
+          img.onerror = function() { img.onerror = null; img.src = "assets/" + fig; };
+        }
         figWrap.appendChild(img);
       });
       if (q.figure_note) {
@@ -224,7 +242,9 @@
       append(box, figWrap);
     }
 
-    const requiredFigure=Boolean(integrity && integrity.figure_dependency_missing);
+    if (worksheet && figureLoads.length) figureLoadFailed = (await Promise.all(figureLoads)).some(ok => !ok);
+    const worksheetFigureMissing = worksheet && (/\[FIG[^\]]*\]/.test(q.stem || "") || q.source_provenance?.source_figure_number) && !(q.source_figures || []).length;
+    const requiredFigure=Boolean((integrity && integrity.figure_dependency_missing) || worksheetFigureMissing || figureLoadFailed);
     if (requiredFigure) {
       const figNames=(q.source_figures || []).length ? q.source_figures.join(", ") : "official examination figure/graph";
       append(box,text("p","Required or claimed source figure not supplied in this candidate page: "+figNames+". Source-fidelity HOLD; commitment disabled.","figure-warning"));
@@ -272,19 +292,21 @@
 
     const hints = Array.isArray(q.hints) ? q.hints : [];
     if (hints.length > 0) {
-      const hintBtn = text("button", "Show Progressive Hints (" + hints.length + ")");
+      const hintBtn = text("button", "Reveal hint 1 of " + hints.length);
       hintBtn.type = "button";
       hintBtn.style.background = "#f8fafc";
       hintBtn.style.color = "#334155";
       hintBtn.style.border = "1.5px solid #cbd5e1";
       const hintBox = text("div", "", "answer");
       hintBox.hidden = true;
-      hints.forEach(h => {
-        append(hintBox, text("strong", h.prompt || "Hint:"), text("p", h.text || ""));
-      });
+      hintBtn.disabled = requiredFigure;
       hintBtn.onclick = () => {
-        hintBox.hidden = !hintBox.hidden;
-        hintBtn.textContent = hintBox.hidden ? "Show Progressive Hints (" + hints.length + ")" : "Hide Progressive Hints";
+        if (hintDepth >= hints.length) return;
+        const h = hints[hintDepth++];
+        hintBox.hidden = false;
+        append(hintBox, text("strong", h.prompt || "Hint:"), text("p", h.text || ""));
+        hintBtn.textContent = hintDepth === hints.length ? "All hints revealed" : "Reveal hint " + (hintDepth + 1) + " of " + hints.length;
+        hintBtn.disabled = hintDepth === hints.length;
       };
       append(actions, hintBtn, hintBox);
     }
@@ -292,7 +314,7 @@
 
     const answerBox = text("div", "", "answer");
     answerBox.hidden = true;
-    append(answerBox, text("h3", "Step-by-Step Derivation & Official Key"));
+    append(answerBox, text("h3", worksheet ? "Worked derivation & supplied worksheet key (candidate)" : "Step-by-Step Derivation & Official Key"));
     append(answerBox, text("p", q.answer || "Official Key Pending", "official-key-line"));
     if (Array.isArray(q.steps) && q.steps.length > 0) {
       q.steps.forEach(s => append(answerBox, text("p", s)));
@@ -302,11 +324,11 @@
     }
     append(box, answerBox);
 
-    const k = attemptKey(q);
+    const k = worksheet ? attemptKey(q) + ":" + worksheetRevision : attemptKey(q);
 
     function renderAttemptFeedback(selected) {
       const selectedSet = new Set(selected || []);
-      const proposed = parseOfficialKey(q.answer, controls, isMulti);
+      const proposed = worksheet && Array.isArray(q.answer_ids) ? q.answer_ids : parseOfficialKey(q.answer, controls, isMulti);
 
       controls.forEach(c => {
         c.disabled = true;
@@ -314,7 +336,7 @@
       });
       commit.disabled = true;
       commit.textContent = "Attempt Saved Locally";
-      retryBtn.style.display = "inline-flex";
+      retryBtn.style.display = worksheet ? "none" : "inline-flex";
 
       // Clear previous classes and badges
       controls.forEach(field => {
@@ -395,7 +417,7 @@
           text("div", "✅ CORRECT", "feedback-badge-pill"),
           append(text("div", "", "feedback-msg"),
             text("strong", "Correct! Excellent work!"),
-            text("p", "Your answer " + Array.from(selectedSet).map(s => "(" + s + ")").join(", ") + " perfectly matches the official verified key. Check the step-by-step physical derivation below.")
+            text("p", "Your answer " + Array.from(selectedSet).map(s => "(" + s + ")").join(", ") + (worksheet ? " matches the supplied worksheet key (academic review pending). Check the derivation below." : " perfectly matches the official verified key. Check the step-by-step physical derivation below."))
           )
         );
       } else {
@@ -416,6 +438,7 @@
     }
 
     retryBtn.onclick = () => {
+      if (worksheet || requiredFigure) return;
       try { localStorage.removeItem(k); } catch (_) {}
       controls.forEach(c => {
         c.disabled = false;
@@ -435,7 +458,7 @@
     };
 
     const existing = getAttempt(k);
-    if (existing) {
+    if (existing && !requiredFigure) {
       const prevSelected = existing.selected || existing.selected_option_ids;
       if (prevSelected) {
         renderAttemptFeedback(prevSelected);
@@ -443,6 +466,7 @@
     }
 
     commit.onclick = () => {
+      if (requiredFigure || (worksheet && getAttempt(k))) return;
       const selected = controls.filter(c => c.checked).map(c => c.value);
       if (selected.length === 0) {
         alert("Please select your answer option(s) before committing.");
@@ -452,9 +476,15 @@
         question_uid: uidOf(q),
         source_id: q.source_id,
         selected: selected,
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
+        ...(worksheet ? {content_revision: worksheetRevision, hints_revealed: hintDepth, assisted: hintDepth > 0} : {})
       };
-      saveAttempt(k, attempt);
+      const saved = saveAttempt(k, attempt);
+      if (worksheet && !saved) {
+        feedbackBanner.hidden = false;
+        feedbackBanner.textContent = "Attempt could not be saved. Worked derivation remains hidden; enable local storage and retry.";
+        return;
+      }
       renderAttemptFeedback(selected);
     };
 
