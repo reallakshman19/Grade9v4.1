@@ -216,7 +216,7 @@ def test_echo_teaching_diagram_obeys_equal_incidence_and_reflection_angles():
     # Verify the actual native SVG coordinates authored into runtime.js.
     import re
     js=(PH/"quality-r1/runtime.js").read_text(encoding="utf-8")
-    pattern=r'line\\((\\d+),(\\d+),(\\d+),(\\d+),"#b36f16",4\\);line\\((\\d+),(\\d+),(\\d+),(\\d+),"#b36f16",4\\)'
+    pattern=r'line\((\d+),(\d+),(\d+),(\d+),"#b36f16",4\);line\((\d+),(\d+),(\d+),(\d+),"#b36f16",4\)'
     m=re.search(pattern,js)
     assert m, "Echo diagram must contain both incident and reflected segments"
     sx,sy,wx,wy,wx2,wy2,mx,my=map(int,m.groups())
