@@ -97,4 +97,4 @@ def test_r2_single_p03_golden_is_findable_without_claiming_7_7():
     home=(ph/"index.html").read_text()
     assert "Golden candidate · 1/7" in home and 'href="learn/chapter.html?ph=PH03"' in home
     assert "Golden Sample only:" in (ph/"learn/chapter.js").read_text()
-    assert "Return to "+'"+"'+ "ch.title" in (ph/"learn/learner-nav.js").read_text()
+    assert '"Return to "+ch.title+" Golden Sample →"' in (ph/"learn/learner-nav.js").read_text()
