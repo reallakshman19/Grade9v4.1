@@ -27,16 +27,16 @@ def test_chapter_catalog_is_real_and_single_entry():
     chapters = CAT["chapters"]
     assert [x["id"] for x in chapters] == [f"PH{i:02d}" for i in range(1,13)]
     assert Counter(c["state"] for c in chapters) == {
-        "learning-pairs":8,"unavailable":2,"chapter-preview":2}
+        "learning-pairs":9,"unavailable":1,"chapter-preview":2}
     assert {c["id"]:len(c["units"]) for c in chapters} == {
-        "PH01":8,"PH02":8,"PH03":0,"PH04":0,"PH05":7,"PH06":1,
+        "PH01":8,"PH02":8,"PH03":1,"PH04":0,"PH05":7,"PH06":1,
         "PH07":12,"PH08":13,"PH09":12,"PH10":17,"PH11":0,"PH12":0}
-    assert sum(len(c["units"]) for c in chapters) == 78
+    assert sum(len(c["units"]) for c in chapters) == 79
     home = (PH/"index.html").read_text(encoding="utf-8")
     assert home.index('id="learn-physics"') < home.index('id="g9-explore-bank"')
     assert home.count('class="g9-chapter-card"') == 12
-    assert home.count('aria-disabled="true"') >= 2
-    assert home.count('href="learn/chapter.html?ph=') == 10
+    assert home.count('aria-disabled="true"') >= 1
+    assert home.count('href="learn/chapter.html?ph=') == 11
     assert 'id="g9-explore-bank"' in home and 'learner-home.js' in home
     assert 'id="topicWorkspace"' in home and 'id="questions"' in home
     assert 'core2-physics-reader.js' in home
@@ -64,7 +64,7 @@ def test_every_published_route_exists_and_has_canonical_bar():
             assert full.is_relative_to(PH.resolve()), p
             assert full.is_file(), p
             expected.add(full)
-    assert len(expected) == 175
+    assert len(expected) == 178
     # B01 R14 pins bind the exact learner HTML and embedded SVG.
     # Navigation wraps those 50 routes from the chapter instead of rewriting them.
     pinned = {

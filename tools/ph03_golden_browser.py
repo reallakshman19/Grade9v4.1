@@ -1,0 +1,85 @@
+"""PH03 Golden Sample HTTP Chromium author QA; not academic approval."""
+import contextlib, functools, http.server, threading, json
+from pathlib import Path
+from playwright.sync_api import sync_playwright, expect
+ROOT=Path(__file__).resolve().parents[1]
+REL="nsejs/physics/ph03/source-led-r1"
+ART=ROOT/"artifacts/ph03-golden-r1"
+ART.mkdir(parents=True,exist_ok=True)
+def fill(page,pred="Prediction",reason="Original reasoning"):
+    page.locator("#prediction").fill(pred);page.locator("#attempt").fill(reason)
+def run():
+    server=http.server.ThreadingHTTPServer(("127.0.0.1",0),functools.partial(http.server.SimpleHTTPRequestHandler,directory=str(ROOT)))
+    threading.Thread(target=server.serve_forever,daemon=True).start()
+    url=f"http://127.0.0.1:{server.server_port}/{REL}/index.html"
+    try:
+        with sync_playwright() as pw:
+            browser=pw.chromium.launch()
+            for w,h in [(1000,1600),(1600,1000)]:
+                ctx=browser.new_context(viewport={"width":w,"height":h})
+                page=ctx.new_page()
+                page.goto(url+"?stage=source")
+                expect(page.locator("#commit")).to_be_enabled()
+                fill(page);page.locator("#commit").click()
+                expect(page.get_by_text("Source attempt saved",exact=True)).to_be_visible()
+                assert "9.8 m/s" not in page.locator("#post").inner_text()
+                assert page.locator("#retrySave").count()==0
+                expect(page.locator("#post")).to_contain_text("Source reattempt remains locked")
+                page.get_by_role("link",name="Open Core1A guide").click()
+                expect(page.get_by_text("A1 · Observe",exact=True)).to_be_visible()
+                page.locator("#speed").fill("-6")
+                expect(page.locator("#simout")).to_contain_text("Partner -6")
+                page.screenshot(path=str(ART/f"guide-{w}.png"),full_page=True)
+                page.goto(url+"?stage=challenge")
+                expect(page.locator("#commit")).to_be_enabled()
+                assert page.locator("#promptfig").evaluate("(i)=>i.complete&&i.naturalWidth>0")
+                assert "33.75 J" not in page.locator("body").inner_text()
+                page.locator("#hint").click();expect(page.locator("#helpers")).to_contain_text("CLARIFY")
+                assert "CORRELATE" not in page.locator("#helpers").inner_text()
+                page.reload();expect(page.locator("#helpers")).to_contain_text("CLARIFY")
+                page.locator("#hint").click();expect(page.locator("#helpers")).to_contain_text("CORRELATE")
+                page.screenshot(path=str(ART/f"challenge-{w}.png"),full_page=True)
+                fill(page,"left","I ignored the sign")
+                page.locator("#commit").click();expect(page.locator("#status")).to_contain_text("assisted")
+                page.reload();expect(page.locator("#attempt")).to_have_value("I ignored the sign")
+                page.locator("#reveal").click();expect(page.locator("#post")).to_contain_text("33.75 J")
+                page.locator("#diagnosisChoice").select_option("sign")
+                page.locator("#diagnosisText").fill("I chose the positive root")
+                page.locator("#diagnose").click()
+                page.locator("#repair").fill("Use V=-2")
+                page.locator("#repairSave").click()
+                page.locator("#boundary").fill("V=+2 and u=12.5")
+                page.locator("#boundarySave").click()
+                assert "183.75 J" not in page.locator("#post").inner_text()
+                page.locator("#boundaryReveal").click();expect(page.locator("#post")).to_contain_text("183.75 J")
+                assert page.evaluate("document.documentElement.scrollWidth <= innerWidth+1")
+                page.get_by_role("link",name="Return to original source").click()
+                page.locator("#retry").fill("Two ledgers")
+                page.locator("#retrySave").click();expect(page.locator("#post")).to_contain_text("9.8 m/s")
+                assert page.evaluate("Object.values(localStorage).filter(s=>s.includes('return_evidence')).length") == 1
+                page.goto(url+"?stage=core2");expect(page.locator("#commit")).to_be_enabled()
+                fill(page);page.locator('input[value="B"]').check();page.locator("#commit").click()
+                page.locator("#reveal").click();expect(page.locator("#post")).to_contain_text("54 J")
+                ctx.close()
+            denied=browser.new_context();page=denied.new_page()
+            page.add_init_script("Storage.prototype.setItem=function(){throw Error('DENIED')}")
+            page.goto(url+"?stage=challenge");expect(page.locator("#status")).to_contain_text("HOLD")
+            expect(page.locator("#commit")).to_be_disabled()
+            assert "33.75 J" not in page.locator("body").inner_text()
+            denied.close()
+            missing=browser.new_context();page=missing.new_page()
+            page.route("**/p03-challenge.svg",lambda route:route.abort())
+            page.goto(url+"?stage=challenge");expect(page.locator("#status")).to_contain_text("HOLD")
+            expect(page.locator("#commit")).to_be_disabled();missing.close()
+            stale=browser.new_context();page=stale.new_page()
+            page.goto(url+"?stage=challenge");expect(page.locator("#commit")).to_be_enabled()
+            fill(page);page.locator("#commit").click();expect(page.locator("#reveal")).to_be_visible()
+            def mutate(route):
+                r=route.fetch();route.fulfill(response=r,body=r.body()+b"<!-- mutation -->")
+            page.route("**/p03-challenge.svg",mutate);page.reload()
+            expect(page.locator("#commit")).to_be_enabled()
+            assert not page.locator("#reveal").count()
+            stale.close();browser.close()
+        (ART/"receipt.json").write_text(json.dumps({"engineering":"PASS","academic":"HOLD","negative":["storage denied","missing figure","same-path SVG mutation"],"viewports":[[1000,1600],[1600,1000]]},indent=2))
+    finally: server.shutdown()
+if __name__=="__main__":run()
