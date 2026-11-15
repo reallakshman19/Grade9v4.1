@@ -47,7 +47,7 @@ def open_page(browser,unit="C08",width=1600,height=1000,disable_storage=False):
         ctx.add_init_script("Object.defineProperty(window,'localStorage',{get(){throw new Error('storage disabled')}});")
     page=ctx.new_page()
     page.goto(URL+"?unit="+unit)
-    page.get_by_role("heading",name="Chemistry — textbook first, independent reasoning next").wait_for()
+    page.get_by_role("heading",name="Chemistry — learn, then try it independently").wait_for()
     page.get_by_role("heading",name="Inside this chapter").wait_for()
     page.wait_for_function("document.querySelectorAll('#sections button').length>0")
     return ctx,page
