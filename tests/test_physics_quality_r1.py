@@ -206,5 +206,7 @@ def test_core1a_and_precommit_core1b_do_not_download_or_embed_postcommit_models(
     assert 'mode==="study"?"study-data.v1.json":"attempt-prompts.v1.json"' in js
     assert 'if(record?.first)await loadPostAttemptModel();' in js
     assert "gitBlobSha(raw)" in js
+    assert "c.source_revision_blob,q.uid" in js
+    assert "Pinned source and post-attempt model revisions required" in js
     assert 'const header=new TextEncoder().encode("blob "+data.length+String.fromCharCode(0))' in js
     assert 'fetch("./cases.v1.json"' not in js
