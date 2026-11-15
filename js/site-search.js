@@ -439,7 +439,7 @@
 
   function appendBankBridges(items, queryTerm) {
     for (const subject of ['Physics','Chemistry','Biology']) {
-      const bank = items.filter(x => x.subject === subject && /^nsejs\\/(physics|chemistry|biology)\\/index\\.html/.test(x.url));
+      const bank = items.filter(x => x.subject === subject && x.url.split('?')[0].split('#')[0] === 'nsejs/' + subject.toLowerCase() + '/index.html');
       if (bank.length) results.appendChild(createQbBridge(bank.length, queryTerm, subject));
     }
   }
