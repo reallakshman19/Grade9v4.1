@@ -84,7 +84,8 @@ def test_both_readers_expose_same_journey_without_copying_attempts():
     assert "Previous · " in shared and "Next · " in shared
     assert "Chapter list" in shared
     assert "return" in shared and "question-map.html" in shared
-    assert 'requested.get("mode")==="practice"' in preview
+    assert 'const mode=rawHash.startsWith("practice-")' in preview
+    assert 'params.get("mode")==="practice"' in preview
     assert 'wrap.id="practice-"+safeId(subId)' in preview
     assert "const key=\"g9chem-first-attempt:\"" in preview
     assert "field.disabled=true" in preview
@@ -163,4 +164,3 @@ def test_r2_seven_recovery_pages_have_allowlisted_exact_lesson_return():
         file=ROOT/"nsejs/chemistry"/rel
         page=read(file)
         assert "recovery-return.js" in page
-        assert "Core1" not in rel or True
