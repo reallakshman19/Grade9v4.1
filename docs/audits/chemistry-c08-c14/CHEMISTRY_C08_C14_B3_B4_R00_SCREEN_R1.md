@@ -1,5 +1,7 @@
 # Chemistry C08–C14 — Core1A/Core1B B3/B4 freshness screening R00/R1
 
+> **Historical baseline as of 15 Nov 2026 before substantive repair.** PR #55 now includes subsequent R3 authored content and adapter changes; the original 17 findings are preserved as the pre-fix evidence. See [R3 remediation delta](CHEMISTRY_C08_C14_REMEDIATION_DELTA_R3.md). Independent R01/R02 and academic/source qualification remain HOLD.
+
 **Task:** `G9V41-CHEM-C08-C14-B3B4-R00-R1`  
 **Date:** 2026-11-15  
 **Snapshot:** `main` at `7a5c425f02d8a365a738bb11df1982cbe38e9f82`  
