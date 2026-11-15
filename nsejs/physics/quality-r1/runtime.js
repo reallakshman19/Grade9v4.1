@@ -14,6 +14,13 @@ const btn=(label,action,cls="")=>{const b=el("button",label,cls);b.type="button"
 const note=(t)=>el("p",t,"notice");
 const fail=(t)=>{mount.replaceChildren(el("p","HOLD · "+t,"error"),link("Physics chapter list","../index.html#learn-physics"))};
 const SHA=async v=>{if(!crypto?.subtle||typeof TextEncoder==="undefined")throw Error("Browser digest unavailable");const bytes=new TextEncoder().encode(v);const h=await crypto.subtle.digest("SHA-256",bytes);return [...new Uint8Array(h)].map(x=>x.toString(16).padStart(2,"0")).join("")};
+const gitBlobSha=async raw=>{
+ const data=new TextEncoder().encode(raw);
+ const header=new TextEncoder().encode("blob "+data.length+"\\0".replace("\\\\0","\\0"));
+ const body=new Uint8Array(header.length+data.length);body.set(header);body.set(data,header.length);
+ const digest=await crypto.subtle.digest("SHA-1",body);
+ return [...new Uint8Array(digest)].map(b=>b.toString(16).padStart(2,"0")).join("");
+};
 function svgFigure(fig){
  const ns="http://www.w3.org/2000/svg",s=document.createElementNS(ns,"svg");
  const add=(tag,attrs,content)=>{const n=document.createElementNS(ns,tag);for(const [k,v] of Object.entries(attrs))n.setAttribute(k,String(v));if(content!==undefined)n.textContent=content;s.append(n);return n};
@@ -50,7 +57,24 @@ function displayStudy(c){
  mount.append(put(card("Apply this science to a different question"),el("p","The protected task requires a different reasoning choice. Its first answer is preserved locally before hints or reconstruction; it is not an authenticated paper question."),link("Open changed-condition Core1B", "./challenge.html?unit="+encodeURIComponent(c.unit),"action"),link("Return to this chapter","../learn/chapter.html?ph="+c.chapter,"action secondary")));
 }
 async function displayChallenge(c){
- const q=c.challenge,fingerprint=await SHA(JSON.stringify([c.revision,q.uid,q.prediction,q.prompt,q.hints,q.reconstruct,q.diagnosis,q.repair,q.boundaryPrompt,q.boundaryModel]));
+ const q=c.challenge,fingerprint=await SHA(JSON.stringify([c.revision,q.uid,q.prediction,q.prompt,q.boundaryPrompt,c.model_blob]));
+ let model=null,modelError="";
+ async function loadPostAttemptModel(){
+   if(model)return true;
+   try{
+     if(c.model_file!=="postattempt-models.v1.json"||!/^[0-9a-f]{40}$/.test(c.model_blob))throw Error("Model source reference invalid");
+     const response=await fetch("./"+c.model_file,{cache:"no-store"});
+     if(!response.ok)throw Error("Post-attempt model unavailable");
+     const raw=await response.text();
+     if(await gitBlobSha(raw)!==c.model_blob)throw Error("Post-attempt model revision mismatch");
+     const payload=JSON.parse(raw);
+     if(payload.schema!=="g9v41-four-physics-postattempt-models/v1"||payload.status!=="AUTHOR_EXPOSED_CANDIDATE__ACADEMIC_HOLD"||payload.units?.length!==4)throw Error("Post-attempt model schema mismatch");
+     const matching=payload.units.filter(x=>x.uid===q.uid&&x.revision===c.revision&&x.unit===c.unit);
+     if(matching.length!==1||matching[0].hints?.length!==2||!matching[0].reconstruct||!matching[0].diagnosis||!matching[0].repair||!matching[0].boundaryModel)throw Error("Model and saved attempt mismatch");
+     model=matching[0];
+     return true;
+   }catch(e){modelError=String(e?.message||e);return false}
+ }
  const key="G9V41:QUALITY-R1:"+q.uid+":"+c.revision+":"+fingerprint, preKey=key+":prehelp";
  let record=null,storageError=false;
  try{const test=key+":probe";localStorage.setItem(test,"yes");if(localStorage.getItem(test)!=="yes")throw Error("Storage readback failed");localStorage.removeItem(test);
@@ -69,31 +93,34 @@ async function displayChallenge(c){
   if(storageError){mount.append(el("p","HOLD: local storage/digest/record verification failed. No first-attempt or staged-help claim is possible. Record your reasoning outside this page if needed.","error"));return}
   const s1=section("Stage 1 · Predict before solving");put(s1,el("p",q.prediction));if(!record?.first){s1.append(field("Initial prediction and reason (at least 10 characters)","prediction"));}else s1.append(el("p",record.first.prediction));mount.append(s1);
   const s2=section("Stage 2 · Attempt independently");put(s2,el("p",q.prompt));
-  if(!record?.first){put(s2,field("Show a reasoned, checked construction (at least 40 characters)","answer"),btn("Save protected first prediction + attempt",()=>{
+  if(!record?.first){put(s2,field("Show a reasoned, checked construction (at least 40 characters)","answer"),btn("Save protected first prediction + attempt",async ()=>{
     const p=document.querySelector("#prediction").value.trim(),a=document.querySelector("#answer").value.trim();if(p.length<10||a.length<40){alert("A prediction and at least 40 characters of reasoning are required; a selected answer alone is insufficient.");return}
     const preHelp=localStorage.getItem(preKey)==="opened";const next={uid:q.uid,revision:c.revision,fingerprint,first:{prediction:p,answer:a,at:new Date().toISOString()},exposures:preHelp?[{kind:"linked_study_before_first",at:new Date().toISOString()}]:[],hintCount:0,reconstruction:false,diagnosis:null,repair:null,boundary:null,boundaryModel:false};
-    if(persist(next))draw();
+    if(persist(next)){draw();if(await loadPostAttemptModel())draw();else draw();}
   }));}else{put(s2,el("p","Original first response, saved separately and not overwritable by this page:","ok"),el("blockquote",record.first.answer),el("p","Saved "+record.first.at+"; help exposure events: "+(record.exposures.map(x=>x.kind).join(", ")||"none"),"small"));}
   mount.append(s2);
-  if(!record?.first){mount.append(el("p","Stages 3–6 are locked until the first prediction and independent reasoning have been saved.","small"));return;}
+  if(!record?.first){mount.append(el("p","Stages 3–6 are locked until the first prediction and independent reasoning have been saved. Assessment models are not requested before commitment.","small"));return;}
+  if(modelError){mount.append(el("p","HOLD: post-attempt model unavailable or mismatched: "+modelError,"error"));return;}
+  if(!model){mount.append(el("p","Loading checked post-attempt feedback…","small"));return;}
   const help=section("Optional orientation support · only after first attempt");
-  for(let i=0;i<record.hintCount;i++)help.append(el("p","H"+(i+1)+": "+q.hints[i]));
-  if(record.hintCount<q.hints.length)help.append(btn("Reveal H"+(record.hintCount+1),()=>{if(exposure("H"+(record.hintCount+1),{hintCount:record.hintCount+1}))draw()},"secondary"));
+  for(let i=0;i<record.hintCount;i++)help.append(el("p","H"+(i+1)+": "+model.hints[i]));
+  if(record.hintCount<model.hints.length)help.append(btn("Reveal H"+(record.hintCount+1),()=>{if(exposure("H"+(record.hintCount+1),{hintCount:record.hintCount+1}))draw()},"secondary"));
   mount.append(help);
   const s3=section("Stage 3 · Reconstruct the decisive route");
   if(!record.reconstruction)s3.append(btn("Reveal model after your saved first attempt",()=>{if(exposure("reconstruction",{reconstruction:true}))draw()},"secondary"));
-  else s3.append(el("p",q.reconstruct));mount.append(s3);if(!record.reconstruction)return;
+  else s3.append(el("p",model.reconstruct));mount.append(s3);if(!record.reconstruction)return;
   const s4=section("Stage 4 · Diagnose first divergence");
-  put(s4,el("p",q.diagnosis));
+  put(s4,el("p",model.diagnosis));
   if(!record.diagnosis){put(s4,field("My first invalid assumption, or the evidence still needed","diagnosis"),btn("Record diagnosis",()=>{const v=document.querySelector("#diagnosis").value.trim();if(v.length<20){alert("Explain the first reasoning divergence in at least 20 characters.");return}if(exposure("diagnosis",{diagnosis:v}))draw()}));}else s4.append(el("p","Recorded diagnosis: "+record.diagnosis));
   mount.append(s4);if(!record.diagnosis)return;
-  const s5=section("Stage 5 · Repair the construction");put(s5,el("p",q.repair));
+  const s5=section("Stage 5 · Repair the construction");put(s5,el("p",model.repair));
   if(!record.repair){put(s5,field("My repaired, checked route","repair"),btn("Save separate repaired reasoning",()=>{const v=document.querySelector("#repair").value.trim();if(v.length<30){alert("Explain the repaired route in at least 30 characters.");return}if(exposure("repair",{repair:v}))draw()}));}else s5.append(el("p","Saved repair: "+record.repair));mount.append(s5);if(!record.repair)return;
   const s6=section("Stage 6 · Boundary: unseen changed condition");put(s6,el("p",q.boundaryPrompt));
   if(!record.boundary){put(s6,field("My independent changed-condition attempt","boundary"),btn("Commit boundary attempt",()=>{const v=document.querySelector("#boundary").value.trim();if(v.length<30){alert("Explain the changed condition in at least 30 characters.");return}if(exposure("boundary_attempt",{boundary:v}))draw()}));}
-  else{put(s6,el("p","Saved boundary attempt: "+record.boundary));if(!record.boundaryModel)s6.append(btn("Reveal boundary model only after attempt",()=>{if(exposure("boundary_model",{boundaryModel:true}))draw()},"secondary"));else s6.append(el("p","Conditional worked boundary reasoning: "+q.boundaryModel));}
+  else{put(s6,el("p","Saved boundary attempt: "+record.boundary));if(!record.boundaryModel)s6.append(btn("Reveal boundary model only after attempt",()=>{if(exposure("boundary_model",{boundaryModel:true}))draw()},"secondary"));else s6.append(el("p","Conditional worked boundary reasoning: "+model.boundaryModel));}
   mount.append(s6);
  }
+ if(record?.first)await loadPostAttemptModel();
  draw();
 }
 async function displaySources(){
@@ -112,10 +139,17 @@ async function displaySources(){
 async function init(){try{
  if(mode==="source")return await displaySources();
  if(!["study","challenge"].includes(mode)||!/^PH(?:01-M05|02-F04|07-02|08-08)$/.test(unit))throw Error("Unrecognized chapter/unit; no unrelated substitute");
- const res=await fetch("./cases.v1.json",{cache:"no-store"});if(!res.ok)throw Error("Qualification case manifest unavailable");
- const j=await res.json();if(j.schema!=="g9v41-four-physics-deep-reconstruction/v1"||j.status!=="AUTHOR_EXPOSED_CANDIDATE__ACADEMIC_HOLD"||j.units.length!==4)throw Error("Invalid or mismatched teaching package");
+ const asset=mode==="study"?"study-data.v1.json":"attempt-prompts.v1.json";
+ const expected=mode==="study"?"g9v41-four-physics-core1a-study-only/v1":"g9v41-four-physics-core1b-attempt-prompts/v1";
+ const res=await fetch("./"+asset,{cache:"no-store"});if(!res.ok)throw Error("Qualification learning manifest unavailable");
+ const j=await res.json();if(j.schema!==expected||j.status!=="AUTHOR_EXPOSED_CANDIDATE__ACADEMIC_HOLD"||j.units?.length!==4)throw Error("Learning package invalid or version-mismatched");
  const matches=j.units.filter(x=>x.unit===unit);
  if(matches.length!==1||matches[0].source.original_exam_admission!=="HOLD"||matches[0].source.role!=="AUTHORED_TRANSFER"||matches[0].adapter.status!=="AUTHOR_PROPOSED_UNSCORED")throw Error("Source or adapter qualification boundary invalid");
- if(mode==="study")displayStudy(matches[0]);else await displayChallenge(matches[0]);
+ if(mode==="study")displayStudy(matches[0]);
+ else{
+   matches[0].model_file=j.postattempt_model_path;
+   matches[0].model_blob=j.postattempt_model_git_blob;
+   await displayChallenge(matches[0]);
+ }
 }catch(e){fail(String(e?.message||e));}}
 init();
