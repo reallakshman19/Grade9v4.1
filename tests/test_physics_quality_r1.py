@@ -131,23 +131,27 @@ def test_physics_arithmetic_independent_of_exercise_answer_text():
     assert (reflected-direct)/340*1000 < 10
 
 
-def test_runtime_enforces_order_and_identity_and_does_not_claim_exam_authenticity():
+def test_r1_legacy_artifact_kept_but_r2_current_runtime_uses_common_custody():
     js=(PH/"quality-r1/runtime.js").read_text(encoding="utf-8")
-    assert 'crypto.subtle.digest("SHA-256"' in js
-    assert 'record.first' in js and 'localStorage.setItem(key,raw)' in js
-    assert 'localStorage.getItem(key)!==raw' in js
-    assert 'linked_study_before_first' in js
-    assert 'record.boundary' in js and 'boundary_attempt' in js
-    assert 'if(!record?.first)' in js
-    assert 'if(!record.reconstruction)return' in js
-    assert 'if(!record.diagnosis)return' in js
-    assert 'if(!record.repair)return' in js
-    assert "No original examination stem" in js
-    assert 'eval(' not in js
+    core=(PH/"quality-r1/protected-attempt-store.js").read_text(encoding="utf-8")
+    assessor=(PH/"quality-r1/assessment-r2.js").read_text(encoding="utf-8")
+    assert 'from "./assessment-r2.js"' in js
+    assert 'from "./pinned-assets.js"' in js
+    assert 'recordStudyView(c.unit,c.revision)' in js
+    assert "review/physics/" not in js
+    assert "async function displayChallenge" not in js
+    assert "navigator.locks.request(key" in core
+    assert "const old=read()" in core
+    assert "First commitment mutation rejected" in core
+    assert "Prediction mutation rejected" in core
+    assert "Non-monotonic transition rejected" in core
+    assert "Separate prediction" not in core # code checks explicit kind
+    assert 'kind==="prediction"' in core and 'kind==="first"' in core
+    assert 'pinnedJson("postattempt-guidance.v2.json"' in assessor
+    assert 'pinnedJson("boundary-models.v2.json"' in assessor
     for mode in ("study","challenge","source"):
         page=(PH/f"quality-r1/{mode}.html").read_text(encoding="utf-8")
         assert f'data-mode="{mode}"' in page
-        assert 'type="module" src="./runtime.js"' in page
         assert '<iframe' not in page.lower()
 
 
@@ -203,24 +207,28 @@ def test_core1a_and_precommit_core1b_do_not_download_or_embed_postcommit_models(
         for hint in c["challenge"]["hints"]:
             assert hint not in precommit
     js=(PH/"quality-r1/runtime.js").read_text(encoding="utf-8")
-    assert 'mode==="study"?"study-data.v1.json":"attempt-prompts.v1.json"' in js
-    assert 'if(record?.first&&!storageError)await loadPostAttemptModel();' in js
-    assert "gitBlobSha(raw)" in js
-    assert "c.source_revision_blob,q.uid" in js
-    assert "Pinned source and post-attempt model revisions required" in js
-    assert 'const header=new TextEncoder().encode("blob "+data.length+String.fromCharCode(0))' in js
+    assert 'mode==="study"?"study-data.v1.json":"attempt-prompts.v1.json"' not in js
+    assert 'if(record?.first&&!storageError)await loadPostAttemptModel();' not in js
+    assert "gitBlobSha(raw)" not in js
+    assert "c.source_revision_blob,q.uid" not in js
+    assert "Pinned source and post-attempt model revisions required" not in js
+    assert "pinnedJson" in js
     assert 'fetch("./cases.v1.json"' not in js
 
 
-def test_echo_teaching_diagram_obeys_equal_incidence_and_reflection_angles():
-    # Verify the actual native SVG coordinates authored into runtime.js.
-    import re
+
+
+def test_unequal_distance_echo_virtual_image_intersection():
+    # Geometry used in active runtime: reflection construction from image
+    # of source across a plane wall, with distinct distances for S and M.
+    case=next(x for x in load(PH/"quality-r1/cases.v2.json")["units"] if x["unit"]=="PH08-08")
+    fig=case["study"]["figure"]
+    sx,sy=fig["source"];mx,my=fig["receiver"];wall=fig["wall"]
+    imageX=2*wall-sx
+    ry=sy+(my-sy)*(imageX-wall)/(imageX-mx)
+    assert sx<wall and mx<wall and sx!=mx
+    assert min(sy,my)<ry<max(sy,my)
+    assert abs((ry-sy)/(wall-sx)-(my-ry)/(wall-mx))<1e-12
     js=(PH/"quality-r1/runtime.js").read_text(encoding="utf-8")
-    pattern=r'line\((\d+),(\d+),(\d+),(\d+),"#b36f16",4\);line\((\d+),(\d+),(\d+),(\d+),"#b36f16",4\)'
-    m=re.search(pattern,js)
-    assert m, "Echo diagram must contain both incident and reflected segments"
-    sx,sy,wx,wy,wx2,wy2,mx,my=map(int,m.groups())
-    assert wx==wx2 and wy==wy2
-    assert sx==mx, "Example source and mic are at equal normal distance from wall"
-    assert sy<wy<my, "Reflection point must lie between their projected heights"
-    assert abs((wy-sy)/(wx-sx))==abs((my-wy)/(wx2-mx)), "Angles not equal"
+    assert "const imageX=2*wall-sx" in js
+    assert "const ry=sy+(my-sy)*(imageX-wall)/(imageX-mx)" in js
