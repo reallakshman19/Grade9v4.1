@@ -169,6 +169,8 @@ def run():
                     p2.locator("#"+id_).fill(val)
                 p2.locator("#first-reason").fill("LOSER from the concurrent second tab; must never replace the committed first answer.")
                 p2.locator("#save-first").click()
+                p2.wait_for_function("document.querySelector('#status').textContent.includes('Another tab committed')",timeout=15000)
+                p2.reload(wait_until="domcontentloaded")
                 p2.locator("#reconstruct-panel").wait_for(state="visible",timeout=25000)
                 same=p2.evaluate("""() => {
                    const k=Object.keys(localStorage).find(k=>k.startsWith('g9:ph11-07:r4:'));
