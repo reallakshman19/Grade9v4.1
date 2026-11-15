@@ -29,7 +29,9 @@ def inspect_case(origin, browser, size, ident, chapter, key, count):
     context=browser.new_context(viewport={"width":size[0],"height":size[1]})
     page=context.new_page()
     errors=[]
+    requested=[]
     page.on("pageerror", lambda e: errors.append(str(e)))
+    page.on("request", lambda request: requested.append(request.url))
     try:
         route=origin+"/nsejs/physics/learn/chapter.html?ph="+chapter
         page.goto(route,wait_until="domcontentloaded")
@@ -42,6 +44,9 @@ def inspect_case(origin, browser, size, ident, chapter, key, count):
         assert page.locator(".stage").count()==3
         assert page.locator("svg.figure").count()==1
         assert page.locator("h2").filter(has_text="Build the warranted model").count()==1
+        assert any("study-data.v1.json" in x for x in requested)
+        assert not any("postattempt-models.v1.json" in x for x in requested)
+        assert not any("/cases.v1.json" in x for x in requested)
         no_overflow(page,ident+" study "+str(size))
         if size in ((1000,1600),(1280,800)):
             page.screenshot(path=str(OUT / f"{ident}-{size[0]}x{size[1]}-core1a.png"),full_page=True)
@@ -50,6 +55,9 @@ def inspect_case(origin, browser, size, ident, chapter, key, count):
         page.get_by_role("button",name="Save protected first prediction + attempt").wait_for(timeout=15000)
         assert page.get_by_role("button",name="Reveal model after your saved first attempt").count()==0
         assert page.locator("blockquote").count()==0
+        assert any("attempt-prompts.v1.json" in x for x in requested)
+        assert not any("postattempt-models.v1.json" in x for x in requested)
+        assert not any("/cases.v1.json" in x for x in requested)
         page.locator("#prediction").fill("I predict we must choose the physical model and check its conditions.")
         page.locator("#answer").fill("My first independent construction names the object, checks which equations apply, and verifies the units, signs and conditions explicitly.")
         page.get_by_role("button",name="Save protected first prediction + attempt").click()
@@ -57,6 +65,7 @@ def inspect_case(origin, browser, size, ident, chapter, key, count):
         original=page.locator("blockquote").inner_text()
         assert original.startswith("My first independent construction")
         assert page.get_by_role("button",name="Reveal H1").count()==1
+        assert any("postattempt-models.v1.json" in x for x in requested)
         assert page.get_by_role("button",name="Reveal model after your saved first attempt").count()==1
         assert page.locator("#boundary").count()==0
         key_snapshot=page.evaluate("""() => Object.entries(localStorage)
