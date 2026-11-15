@@ -1,0 +1,136 @@
+{
+  "schema": "g9v41-physics-ph11-07-r4-qrt-challenge/v1",
+  "role": "AUTHOR_EXPOSED_R4_CHALLENGE__NOT_INDEPENDENT_QRT",
+  "topic_id": "PH11",
+  "subtopic_id": "PH11-07",
+  "version": "0.6.0",
+  "supersedes_unapproved_claims": [
+    {
+      "file": "topic-adapter.PH11.wpe-parity-r2.v1.json",
+      "producer_proposal": "D4.4 MODEL/8",
+      "disposition": "REJECT_AS_UNSUBSTANTIATED_AUTHOR_DEMAND"
+    },
+    {
+      "file": "topic-adapter.PH11.wpe-parity-r3.v1.json",
+      "producer_proposal": "D3.4 MODEL/7",
+      "disposition": "REOPENED_SHORTEST_ROUTE_AND_OPERATION_HOLD"
+    }
+  ],
+  "subject_blueprint": {
+    "id": "PHYS-QRT-BLUEPRINT",
+    "version": "0.2.0",
+    "source": "templates/physics-blueprint/physics-blueprint.D3-D4.resolved.v0.2.0.json",
+    "pin": "HOLD_RECONCILE_BLUEPRINT_TEMPLATE_AND_TOPIC_PACKAGE"
+  },
+  "exact_task_identity": "AUTHORED-PH11-07-R4-TRANSFER-01",
+  "source_role": "ORIGINAL_AUTHOR_TRANSFER_NOT_AUTHENTIC_EXAM",
+  "exam_question_uid": null,
+  "direct_shortest_valid_route": [
+    "Find the voltage remaining at the parallel two-node block from the measured 4 A and the upstream 3 ohm drop: 18-4*3=6 V.",
+    "Use the 6 ohm known branch at that node voltage: I_known=6/6=1 A.",
+    "Apply junction current conservation: I_unknown=4-1=3 A.",
+    "Use the same two-node voltage for the unknown branch: R_unknown=6/3=2 ohm."
+  ],
+  "independent_crosscheck_not_required_for_shortest_route": [
+    "R_total=18/4=4.5 ohm and R_parallel=4.5-3=1.5 ohm.",
+    "Parallel check 6||2=1.5 ohm, total3+1.5=4.5 ohm and 18/4.5=4 A.",
+    "Loop 12+6=18 V and node currents1+3=4 A."
+  ],
+  "task_demand_reassessment": {
+    "primary_operation": "UNRESOLVED_APPLY_OR_MODEL",
+    "competing_operations": [
+      "APPLY",
+      "MODEL",
+      "REPRESENT"
+    ],
+    "proposed_total": null,
+    "proposed_cell": null,
+    "proposed_band": null,
+    "evidence": [
+      "The network is explicitly described as a 3 ohm series element followed by two parallel branches; representation need not be inferred from an unfamiliar diagram.",
+      "The direct four-step solution mainly applies Ohm's law and junction conservation with the topology supplied; APPLY is credible.",
+      "Whether inferring a missing component qualifies as MODEL requires independent evidence of an actual model selection between alternatives, not lengthened author derivation.",
+      "The optional boundary feasibility problem is a separate changed-condition stage; it cannot be imported into the initial task's intrinsic demand."
+    ],
+    "five_factor_scores": "INDEPENDENT_REVIEW_REQUIRED_NO_AUTHOR_NUMERIC_PROMOTION",
+    "confirmed_qrt": "NOT_RUN"
+  },
+  "core1a": [
+    {
+      "level": "DIRECT_ANCHOR",
+      "source": "core1a.html#figure-direct-parallel",
+      "role": "direct voltage and KCL"
+    },
+    {
+      "level": "CONNECTED_ANCHOR",
+      "source": "core1a.html#figure-series-parallel",
+      "role": "series drop before common branch nodes"
+    },
+    {
+      "level": "INVERSE_ANCHOR",
+      "source": "core1a.html section 5",
+      "role": "measured source current -> inferred unknown branch with different numbers"
+    },
+    {
+      "level": "FEASIBILITY",
+      "source": "core1a.html section 6",
+      "role": "positive finite unknown branch yields strict double-sided current interval with excluded open/short limits"
+    }
+  ],
+  "core1b": {
+    "expected": "NATIVE_SELF_CONTAINED_CANDIDATE_ROUTE",
+    "entry": "nsejs/physics/curriculum/topics/PH11/subtopics/PH11-07/core1b.html",
+    "prompt_only": "nsejs/physics/curriculum/topics/PH11/subtopics/PH11-07/prompt.v1.json",
+    "feedback_only_after_first": "nsejs/physics/curriculum/topics/PH11/subtopics/PH11-07/postattempt.v1.json",
+    "runtime": "nsejs/physics/curriculum/topics/PH11/subtopics/PH11-07/native-attempt.js",
+    "exposed_review_only": "review/physics/ph09-ph12-wpe-parity-r1/preview.html",
+    "source_authenticity": "HOLD",
+    "free_text_scoring": "NOT_QUALIFIED",
+    "attempts": "BROWSER_LOCAL_WEB_LOCKS_NOT_TAMPER_PROOF"
+  },
+  "reviewer_challenge": {
+    "review_type": "REQUEST_CHANGES",
+    "pr": 65,
+    "review_anchor": "https://github.com/reallakshman19/Grade9v4.1/pull/65#pullrequestreview-5911503764",
+    "priority": "P0 B5/B6 and P1 QRT/B3"
+  },
+  "b1_b7": {
+    "B1": {
+      "disposition": "HOLD",
+      "reason": "Author-exposed technical candidate; independent B1-B7 not reviewed"
+    },
+    "B2": {
+      "disposition": "HOLD",
+      "reason": "Author-exposed technical candidate; independent B1-B7 not reviewed"
+    },
+    "B3": {
+      "disposition": "HOLD",
+      "reason": "Author-exposed technical candidate; independent B1-B7 not reviewed"
+    },
+    "B4": {
+      "disposition": "HOLD",
+      "reason": "Author-exposed technical candidate; independent B1-B7 not reviewed"
+    },
+    "B5": {
+      "disposition": "HOLD",
+      "reason": "Author-exposed technical candidate; independent B1-B7 not reviewed"
+    },
+    "B6": {
+      "disposition": "HOLD",
+      "reason": "Author-exposed technical candidate; independent B1-B7 not reviewed"
+    },
+    "B7": {
+      "disposition": "HOLD",
+      "reason": "Author-exposed technical candidate; independent B1-B7 not reviewed"
+    }
+  },
+  "governance": {
+    "parent_pr": 56,
+    "stacked_pr": 65,
+    "trusted_r3_production_decision": "NOT_EXECUTED_FOR_STACKED_HEAD",
+    "release": "HOLD",
+    "merge": "NOT_AUTHORIZED",
+    "independent_issue": 66
+  },
+  "no_retroactive_independent_signature": true
+}
