@@ -7,3 +7,6 @@ Pinned base d96ee920f4ee249d74790c616cd273fde8d77382. First author draft: U06 pr
 - ph06/figures/*.svg (three original vector figures)
 - historical-census.r1.json (17 leads; 3 partial visual checks, 0 exhaustive cohorts)
 - golden-author-handoff.v1.json (author-side evidence, not independent R2 packet)
+
+## R2 WPE parity correction
+R1 audited head 012de0803a0dcfc059e4964aba752a3050c8166a; RCA at review/physics/ph06-golden-r1/WPE_PARITY_RCA_R1.md. R2 retains the same task UID with a different content revision, and retains prior stored bytes under their original digest. Seven static SVGs, two interactive SVGs; worked load transitions, finite hydrostatic derivation, independent inverse challenge, structured feedback, explicit six stages and chronological exact-source return. Browser-local exposure is evidence of recorded access, never evidence of no outside help. The R2 evidence builder uses actual checkout file hashes, exact lines and real logs; the native validator is expected to report HOLD/BLOCKED while source/native and independent authority remain unresolved. No MAIN or other nine native pairs added.
