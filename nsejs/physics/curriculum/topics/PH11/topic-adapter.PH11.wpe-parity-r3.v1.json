@@ -1,0 +1,110 @@
+{
+  "schema": "g9v41-physics-wpe-parity-topic-adapter-r3/v1",
+  "adapter_id": "PHYS-TOPIC-PH11-WPE-PARITY-R3",
+  "topic_id": "PH11",
+  "version": "0.5.0",
+  "previous_native_candidate_adapter_version": "0.3.0",
+  "source_status": "ORIGINAL_AUTHOR_CASE__NOT_EXAM_AUTHENTICATED",
+  "academic_status": "AUTHOR_EXPOSED_ADVERSARIAL_REVIEW__INDEPENDENT_QRT_HOLD",
+  "adoption": "SIDE_CAR__DO_NOT_REPLACE_NATIVE_PACKAGE_OR_BLUEPRINT",
+  "blueprint": {
+    "id": "PHYS-QRT-BLUEPRINT",
+    "version": "0.2.0",
+    "canonical_template_path": "templates/physics-blueprint/physics-blueprint.D3-D4.resolved.v0.2.0.json",
+    "template_git_blob_sha": "b53b970d9ff99e696e84fe6b77805dbf25e0c544",
+    "inherited_topic_package_pin": "700dafcbe86d76442637bcf214eeb544497cf4ea",
+    "pin_reconciliation": "HOLD_DIFFERING_SOURCE_PIN_FAMILIES"
+  },
+  "source": {
+    "authoring_type": "ORIGINAL_AUTHOR_CHECKPOINT",
+    "question_id": "G9-AUTH-PH11-PARITY-R2-SOURCE-01",
+    "stem": "A 9 V ideal source powers a 3 Ω resistor in series with two 6 Ω resistors connected in parallel. Determine total current and current in each branch, and state why neither branch sees 9 V.",
+    "decisive_work": "Differentiate the voltage across a parallel block from the source voltage when a series drop exists.",
+    "not_an_official_exam": true,
+    "exam_source_uid": null,
+    "authentic_exam_admission": "HOLD",
+    "figure_source_custody": "NOT_APPLICABLE_AUTHORED_PROMPT",
+    "answer_key_authenticity": "NOT_APPLICABLE_ORIGINAL_AUTHOR_PROMPT",
+    "rights": "ORIGINAL_AUTHOR_CANDIDATE__REVIEW_REQUIRED",
+    "independent_answer_key": "NOT_AVAILABLE",
+    "blueprint_role": "AUTHOR_ONLY_SOURCE_STYLE_CHECKPOINT__NOT_EXAM_CORE2"
+  },
+  "task": {
+    "id": "G9-AUTH-PH11-PARITY-R3-MAIN-01",
+    "subtopic_id": "PH11-07",
+    "proposed_primary_operation": "MODEL",
+    "competing_operations": [
+      "SYNTHESIZE",
+      "APPLY",
+      "REPRESENT"
+    ],
+    "proposed_demand_band": "D3",
+    "proposed_cell": "D3.4",
+    "qrt_independent": "NOT_RUN",
+    "main_band_not_assigned_for_qualification": true,
+    "source_role": "AUTHORED_TRANSFER",
+    "shortest_valid_route": [
+      "Using the measured 18 V and 4 A, calculate the whole-circuit equivalent resistance (4.5 Ω).",
+      "Subtract the fixed 3 Ω series resistance to obtain the unknown parallel-block equivalent (1.5 Ω).",
+      "From the measured total current infer the series drop 12 V and the shared branch voltage 6 V.",
+      "Use the known branch I_6=6 V/6 Ω=1 A, then junction conservation I_R=4−1=3 A to infer R=2 Ω.",
+      "Verify independently that (6 Ω || 2 Ω)=1.5 Ω, source current is 4 A and all voltage drops sum to 18 V."
+    ],
+    "protected_decisive_work": "Infer the downstream equivalent resistance from a measured total current AFTER subtracting the upstream series resistance; then infer the missing branch current and invert I=V/R to recover the unknown R; check junction and energy constraints.",
+    "model_conditions": "Steady DC, ideal batteries with fixed terminal voltage, ideal wires and ohmic resistors with fixed positive resistance; parallel is defined by identical endpoints and the source current passes through the upstream series element.",
+    "factor_evidence": {
+      "concept_model_selection": {
+        "score": 2,
+        "evidence": "The network's missing positive branch resistance is inferred from a measured total current; the learner must select series reduction, node-pair voltage and current conservation rather than forward-plugging individual resistors."
+      },
+      "representation_translation": {
+        "score": 1,
+        "evidence": "The statement explicitly supplies the series/parallel topology in words; node labels A/B and one schematic help, but there is no unseen graph/figure to decode, so the prior R2 score 2 was inflated."
+      },
+      "reasoning_chain_length": {
+        "score": 2,
+        "evidence": "Inverting from I_total to R_total to R_parallel, finding V_AB and reconstructing the missing branch with KCL are several dependent decisions. The shortest path may use KCL immediately after the series drop."
+      },
+      "algebra_computational_load": {
+        "score": 1,
+        "evidence": "One reciprocal or division operation after short exact arithmetic; neither elaborate linear algebra nor a complex solver is needed."
+      },
+      "trap_exception_sensitivity": {
+        "score": 1,
+        "evidence": "The upstream series drop makes V_branch != V_source and the positive-resistor boundary limits I_total<18/3=6A; these matter to the new task."
+      }
+    },
+    "proposed_total": 7,
+    "binding": {
+      "reviewer_preview": "review/physics/ph09-ph12-wpe-parity-r1/preview.html?case=PH11-07",
+      "existing_core1a": "nsejs/physics/curriculum/topics/PH11/subtopics/PH11-07/core1a.html",
+      "existing_core1b": "nsejs/physics/curriculum/topics/PH11/subtopics/PH11-07/core1b.html",
+      "source_return": "REVIEW_ORIGINAL_AUTHOR_CHECKPOINT_SAVE_SEPARATE__EXAM_CUSTODY_HOLD",
+      "source_to_teaching_exact_exam_join": "HOLD",
+      "transfer_freshness": "REVISED_INVERSE_TASK__AUTHOR_EXPOSED_FRESHNESS_REVIEW_PENDING"
+    },
+    "proposed_band_reason": "PROPOSED D3 rather than D4: the prior R2 source-facing transfer was only a direct series-parallel reduction, with a generously scored representation burden. This R3 task adds inverse inference, but no independently verified D4 mental demand.",
+    "original_question_variant_sha_status": "CONTENT_SHA_BOUND_BY_REVIEW_RUNTIME"
+  },
+  "assertions": {
+    "source_authenticity": "HOLD",
+    "science": "HOLD",
+    "independent_qrt": "NOT_RUN",
+    "b1_b7": "HOLD",
+    "implementation": "R3_TESTS_PENDING",
+    "owner_release": "HOLD"
+  },
+  "replaces_author_overlay_only": "PHYS-TOPIC-PH11-WPE-PARITY-R2 v0.4.0",
+  "review_disposition": {
+    "reviewer_exposure": "AUTHOR_READ_PREVIOUS_STEM_SOLUTION_ADAPTER__NOT_BLIND",
+    "primary_operation": "PROPOSED_NOT_APPROVED",
+    "five_factors": "AUTHOR_RESCORING__INDEPENDENT_HOLD",
+    "B1": "HOLD",
+    "B2": "HOLD",
+    "B3": "HOLD",
+    "B4": "HOLD",
+    "B5": "HOLD",
+    "B6": "HOLD",
+    "B7": "HOLD"
+  }
+}
