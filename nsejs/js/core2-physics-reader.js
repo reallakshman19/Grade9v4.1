@@ -199,7 +199,11 @@
         box.prepend(anc);
       }
     }
-    append(box,text("h2","Candidate "+(index+1)+" · "+q.source_id));
+    const worksheet=/^NSEJS-CIRC-L([12])-Q(\d{2})$/.exec(q.source_id||"");
+    const questionTitle=worksheet
+      ? (worksheet[1]==="1"?"Foundation worksheet":"Advanced worksheet")+" · Question "+Number(worksheet[2])
+      : "Candidate question "+(index+1);
+    append(box,text("h2",questionTitle));
     const integrity = q.integrity_meta || null;
     // Verified Core2 cards expose exact identity and content revision so native
     // PH01 and B02 related-learning links cannot attach to unrelated/stale data.
@@ -278,7 +282,7 @@
     details.style.cssText = "margin: 8px 0 14px; font-size: 12px; color: #64748b;";
     const summary = text("summary", "Data integrity & QRT verification (technical audit; not admission)");
     summary.style.cssText = "cursor: pointer; font-weight: 600; color: #475569;";
-    const infoP = text("p", "Stem SHA-256: " + (q.stem_sha256 || "NOT_RECORDED") + " · Internal digest is not source authentication · Demand: " + opStr + " / " + bandStr + " · Academic status: RULE_13_HOLD");
+    const infoP = text("p", "Source question ID: " + q.source_id + " · Stem SHA-256: " + (q.stem_sha256 || "NOT_RECORDED") + " · Internal digest is not source authentication · Demand: " + opStr + " / " + bandStr + " · Academic status: RULE_13_HOLD");
     infoP.style.cssText = "margin: 4px 0 0; font-family: monospace; font-size: 11px; word-break: break-all;";
     append(details, summary, infoP);
     append(box, details);
