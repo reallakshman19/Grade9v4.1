@@ -110,7 +110,7 @@
   // Existing 50 source-candidate revisions must remain byte-compatible with their
   // pinned integrity ledger. The separately authored Circuit worksheet intake
   // receives stronger asset-byte and hint-content binding.
-  const circuitCandidate = q => /^NSEJS-CIRC-L[12]-Q\\d{2}$/.test(String(q.source_id || ""));
+  const circuitCandidate = q => /^NSEJS-CIRC-L[12]-Q\d{2}$/.test(String(q.source_id || ""));
   const digestHex = bytes => Array.from(new Uint8Array(bytes),
     b => b.toString(16).padStart(2,"0")).join("");
   async function circuitFigureHashes(q) {
@@ -118,7 +118,7 @@
     if (!Array.isArray(figNames)) throw new Error("Circuit figure list invalid; fail closed");
     const fingerprints = [];
     for (const name of figNames) {
-      if (!/^fig_nsejs_circ_l[12]_q\\d{2}\\.svg$/.test(String(name)))
+      if (!/^fig_nsejs_circ_l[12]_q\d{2}\.svg$/.test(String(name)))
         throw new Error("Unrecognized Circuit figure: " + name);
       const response = await fetch("../assets/" + name, {cache: "no-store"});
       if (!response.ok) throw new Error("Circuit prompt figure unavailable: " + name);
