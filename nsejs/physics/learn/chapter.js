@@ -10,11 +10,11 @@ function link(label,path,cls){const a=tag("a",label,cls);a.href=new URL(path,roo
 function chapterLink(label,chapter,hash){const a=tag("a",label);a.href="chapter.html?ph="+chapter+(hash?"#"+encodeURIComponent(hash):"");return a;}
 function resources(c){
   const r=tag("section",undefined,"g9-chapter-resources");
-  add(r,tag("h2","Other ways to learn"));
+  add(r,tag("h2","Explore this chapter"));
   if(c.overview)add(r,link("Read the complete chapter",c.overview));
-  if(c.questionTopic){const a=tag("a","Explore related candidate questions");a.href="../index.html?topic="+encodeURIComponent(c.questionTopic)+"&from="+c.id+"#topicWorkspace";r.append(a);}
-  if(c.help){const a=link("Need more help? · Focused skill repair",c.help,"g9-secondary");a.search="?from="+c.id; r.append(a);}
-  if(c.preview)add(r,link("Try available practice preview",c.preview,"g9-secondary"));
+  if(c.questionTopic){const a=tag("a","Practise related questions (not exact lesson matches)");a.href="../index.html?topic="+encodeURIComponent(c.questionTopic)+"&from="+c.id+"#topicWorkspace";r.append(a);}
+  if(c.help){const a=link("Related learning help (topic match only)",c.help,"g9-secondary");a.search="?from="+c.id; r.append(a);}
+  if(c.preview)add(r,link("Try independent practice preview",c.preview,"g9-secondary"));
   add(r,tag("p","Question-bank topics are broader than this chapter. A related question is not evidence of exact exam-question coverage."));
   return r;
 }
@@ -24,10 +24,10 @@ async function init(){
  const res=await fetch("catalog.json",{cache:"no-store"});if(!res.ok)throw Error("Catalog unavailable");
  const data=await res.json();if(data.schema!=="g9v41-physics-learner-catalog/v1"||data.candidate_only!==true||!Array.isArray(data.chapters))throw Error("Catalog invalid");
  const chapter=data.chapters.find(c=>c.id===ph);if(!chapter)throw Error("Unknown chapter");
- document.title=chapter.id+" · "+chapter.title+" — NSEJS Physics";
- crumb.textContent=chapter.id;
+ document.title=chapter.title+" — NSEJS Physics";
+ crumb.textContent=chapter.title;
  const head=tag("header",undefined,"g9-chapter-head");
- add(head,tag("p",chapter.id+" · Physics learning chapter"),tag("h1",chapter.title));
+ add(head,tag("p","NSEJS Physics · Learning chapter"),tag("h1",chapter.title));
  add(head,tag("p",chapter.state==="learning-pairs"?"Choose one subtopic. Read its explanation before attempting its independent questions.":chapter.state==="chapter-preview"?"This chapter has reading material and an earlier practice preview. Dedicated subtopic pairs are not yet available.":"The planned chapter exists in the coverage inventory, but a native lesson route has not been published."));
  mount.replaceChildren(head);
  if(chapter.state==="unavailable"){
@@ -42,7 +42,7 @@ async function init(){
   grid.setAttribute("aria-label",chapter.id+" subtopic learning choices");
   chapter.units.forEach((u,i)=>{
    const card=tag("article",undefined,"g9-lesson-card");card.id=u.id;
-   const title=tag("h2",(i+1)+". "+u.title);const code=tag("p",u.id+" · Original authored lesson · academic qualification pending");
+   const title=tag("h2",(i+1)+". "+u.title);const code=tag("p","Original authored lesson · academic qualification pending");
    const actions=tag("div",undefined,"g9-lesson-actions");
    add(actions,link("1 · Learn",u.learn),link("2 · Try it",u.practice,"g9-secondary"));
    add(card,title,code,actions);grid.append(card);
@@ -52,10 +52,10 @@ async function init(){
  const note=tag("p","All authored materials and question associations retain SOURCE / QRT / B1–B7 HOLD. Passing software tests does not authenticate an NSEJS exam question.","g9-hold-note");mount.append(note);
  const foot=tag("nav",undefined,"g9-chapter-crumbs");foot.setAttribute("aria-label","Chapter navigation");
  const i=data.chapters.findIndex(c=>c.id===ph);
- if(i>0)add(foot,chapterLink("← "+data.chapters[i-1].id,data.chapters[i-1].id));
+ if(i>0)add(foot,chapterLink("← "+data.chapters[i-1].title,data.chapters[i-1].id));
  add(foot,link("All Physics chapters","index.html"));
  foot.lastChild.href="../index.html#learn-physics";
- if(i<data.chapters.length-1)add(foot,chapterLink(data.chapters[i+1].id+" →",data.chapters[i+1].id));
+ if(i<data.chapters.length-1)add(foot,chapterLink(data.chapters[i+1].title+" →",data.chapters[i+1].id));
  mount.append(foot);
  if(location.hash){let id=decodeURIComponent(location.hash.slice(1));const el=document.getElementById(id);if(el)requestAnimationFrame(()=>el.scrollIntoView({block:"start"}));}
  }catch(e){mount.replaceChildren(tag("p","The chapter menu could not be verified. No alternative lesson or exam claim has been substituted."),link("Return to Physics chapters","index.html"));mount.lastChild.href="../index.html#learn-physics";}
