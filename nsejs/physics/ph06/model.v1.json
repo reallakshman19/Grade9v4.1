@@ -1,6 +1,6 @@
 {
   "uid": "AUTHORED-PH06-U08-GOLDEN-MODEL-R1",
-  "revision": "r1-20261115",
+  "revision": "r2-20261115",
   "proposal": {
     "operation": "MODEL",
     "band": "D3",
@@ -49,5 +49,77 @@
   "boundaryPrompt": "Instead of adding 0.80 kg, remove 1.90 kg from the initial float (assume enough removable ballast). Find the new equilibrium and decide whether it reaches the interface. Give the bottom depth and justify the correct regime.",
   "boundaryModel": "New mass 0.70 kg. At bottom exactly at interface, upper-liquid capacity Aρ₁d=0.80 kg. Since 0.70<0.80, the float is in the upper liquid only. L=0.70/(0.01×800)=0.0875 m=8.75 cm, which is less than d=10 cm; top remains above surface. Upper liquid only is feasible. Using a two-layer equation would yield a negative lower immersed length.",
   "conditions": "Uniform gravity; static immiscible incompressible fluids; horizontal interface, no interfacial tension or vertical support; guide prevents tilt only; tank levels fixed; no air buoyancy; sealed rigid float and internal ballast. Vertical equilibrium not a proof of unrestricted rotational stability.",
-  "freshness": "Original Q38 has given equal volumes and asks mean density. Golden task has unknown layer geometry, two different load states and regime inversion. Teaching examples use a tether force and a fully immersed body with prescribed partition; neither solves this inverse top-crossing task."
+  "freshness": "Guided case has a known interface and forward load/position calculations. Reserved challenge infers the unknown interface from a measured equilibrium and then independently selects a new regime; neither guide numbers nor the known-interface equation can supply the initial inverse constraint. Independent B4 review required.",
+  "rubric": [
+    {
+      "id": "depth",
+      "expected": 10,
+      "tol": 0.02,
+      "repair": "Check area conversion and use only the initially wetted lengths; the weight balance determines the unknown layer thickness."
+    },
+    {
+      "id": "initial",
+      "expected": "Partly emerged, crosses interface",
+      "repair": "The bottom is 25 cm below surface and the float is 30 cm tall; its top is above the surface."
+    },
+    {
+      "id": "loaded",
+      "expected": "Fully submerged, crosses interface",
+      "repair": "Compare loaded weight with displacement available at the free-surface and interface boundaries. Reject geometry that counts liquid above the body."
+    },
+    {
+      "id": "top",
+      "expected": 5,
+      "tol": 0.02,
+      "repair": "Use upper length d−t and lower length H−d+t after selecting the fully immersed regime; check both lengths."
+    }
+  ],
+  "reconstructionSteps": [
+    [
+      "Initial geometry",
+      "A=0.0100 m²; H=0.30 m; bottom depth L=0.25 m. Top is 5 cm above free surface. Upper displaced length d; lower L−d."
+    ],
+    [
+      "Solve the inverse condition",
+      "m/A=800d+1200(0.25−d). Thus 260=300−400d; d=0.10 m. Check 0<d<0.25."
+    ],
+    [
+      "Test the model boundary",
+      "At top flush the mass supported is A[800d+1200(H−d)]=3.20 kg. Loaded mass 3.40 kg exceeds this but is below 3.60 kg (all lower). A partially emerged solution cannot be valid."
+    ],
+    [
+      "Reconstruct loaded geometry",
+      "Let t be top depth. Upper length d−t; lower H−d+t. Then 340=320+400t, giving t=0.05 m. Check 0<t<d, and displaced mass =3.40 kg."
+    ]
+  ],
+  "reasoningRubric": [
+    "Convert units; draw or describe actual initial intersection lengths.",
+    "Explain upward buoyancy and downward weight; no vertical guide force.",
+    "Justify change of valid geometry, not just the numerical depth; show a limiting calculation or equivalent feasibility argument.",
+    "Check positive lengths, total immersed volume and force balance."
+  ],
+  "boundaryFields": [
+    {
+      "id": "regime",
+      "label": "Changed immersion regime",
+      "type": "select",
+      "options": [
+        "Upper liquid only",
+        "Partly emerged, crosses interface",
+        "Fully submerged, crosses interface",
+        "Entirely lower liquid",
+        "No equilibrium"
+      ],
+      "expected": "Upper liquid only",
+      "repair": "Compare the new mass with the mass displaced at the interface."
+    },
+    {
+      "id": "bottom",
+      "label": "Bottom depth (cm)",
+      "type": "number",
+      "expected": 8.75,
+      "tol": 0.02,
+      "repair": "For upper-only immersion, use the upper liquid density and actual immersed volume."
+    }
+  ]
 }
