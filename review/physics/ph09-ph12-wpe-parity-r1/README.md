@@ -5,6 +5,23 @@
 **Base:** `main@36198f29c1c002a958c5ce941e6f5de292069ebb` (2026-11-15 review baseline)  
 **Disposition:** **DRAFT WORKPACK · ACADEMIC HOLD · NO MERGE / NO DEPLOY / NO CLAIM OF NSEJS QUESTION AUTHENTICITY**.
 
+## R2 correction update — actual native and Blueprint/adapter work
+
+The original R1 audit baseline below is deliberately frozen. It **must not** be interpreted as the changed-file counts of this PR after R2.
+
+R2 adds four candidate topic-adapter sidecars (PH09 v0.3.0, PH10 v0.3.0, PH11 v0.4.0 and PH12 v0.3.0), two revised *existing* Core1A/1B pairs (PH09-04, PH10-09), two newly written PH11-07/PH12-09 dedicated candidate Core1A and Core1B **entry** pairs, and direct links from all four native chapter pages to the enhanced source-first review journey. The linked Core1B previews reuse one candidate-only shared runtime and do not certify independently admitted units.
+
+The new runtime **does not show the stored protected decisive model in pre-attempt prompts**. It separately preserves an original authored source-style answer, first fresh transfer attempt, reconstruction comparison, diagnostic evidence, repair, boundary response and later source return. The underlying reference JSON remains publicly inspectable, and browser localStorage is not authentic examination custody.
+
+At the R2 candidate head the structural count is **31/58 dedicated candidate page paths** versus **29/58 at the frozen R00 baseline**, with **27 missing dedicated candidates** and **0/58 independently B1–B7 qualified**. No official exam Core2 has been authenticated here.
+
+- [Nine evidence-based changes, current counts, WPE comparison and remaining gaps](WPE_PARITY_R2_CORE_AUDIT.md)
+- [Machine-readable R2 changed-vs-baseline proof](PH09_PH12_IMPLEMENTATION_DELTA_R2.json)
+- [Source-first four-case reviewer preview](preview.html) (requires HTTP/HTTPS, not local file protocol)
+- [Four versioned candidate adapters](../../../nsejs/physics/curriculum/topics/PH09/topic-adapter.PH09.wpe-parity-r2.v1.json) (one per chapter; **not** automatically applied to the pinned canonical package)
+
+The original R1 workpack, R00 crosswalk and evidence hashes below remain valid as historic snapshots. Academic and independent QRT acceptance are **HOLD**; the PR is still draft and unmerged.
+
 ## Why this batch exists
 
 The WPE pilot offered a coherent, bounded `teach → attempt a fresh decision → reconstruct → diagnose → repair → boundary-test` experience. Its educational usefulness did **not** grant academic admission. NSEJS has more content candidates but has not established the same source-exact, scientific, cognitive and learner-journey evidence across the intended syllabus. The response is to qualify existing work before expanding page counts.
@@ -44,7 +61,7 @@ Science conditions, complete worked steps, proposed first-prediction/attempt tex
 
 **Limit:** the reconstruction text is in a public same-origin JSON file, and `localStorage` is user-editable. This is a browser-UX rehearsal, **not cryptographically secured assessment custody**. There is no link from the student-facing canonical navigation and no release authorization.
 
-The dedicated Playwright test `python tools/physics_ph09_ph12_wpe_parity_browser_qa.py` checks four viewport dimensions, 4×4 chapter/view combinations, first-attempt gating and persistence, separate revision, chapter changes, no iframe, overflow, disabled storage and corrupt storage. **Browser execution is NOT_RUN until an actual receipt is produced**.
+The dedicated Playwright test `python tools/physics_ph09_ph12_wpe_parity_browser_qa.py` checks four viewport dimensions, 4×4 chapter/view combinations, first-attempt gating and persistence, separate revision, chapter changes, no iframe, overflow, disabled storage and corrupt storage. **This paragraph describes R1's original untested status; check the R2 exact-head Actions receipt before claiming a current technical PASS.**
 
 ## Source and authoring risk register
 
