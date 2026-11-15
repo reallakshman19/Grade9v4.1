@@ -73,6 +73,9 @@
     for (const id of ["first-predict", "first-attempt", "revision"]) $(id).value = "";
     $("orientation-help").hidden = true;
     $("post-attempt").hidden = true;
+    // Do not leave the prior task's revealed solution in a hidden DOM subtree.
+    $("reconstruct-list").replaceChildren();
+    for (const id of ["diagnose", "repair", "boundary"]) say(id, "");
     say("revision-status", "");
     say("attempt-status", "No first attempt recorded.");
   }
