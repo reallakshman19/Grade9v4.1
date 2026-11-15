@@ -515,6 +515,7 @@
   };
 
   let searchDebounceTimer = null;
+  let renderGeneration = 0;
 
   function updateFilterControls() {
     const qbSearch = document.getElementById("qbSearch");
@@ -543,6 +544,7 @@
   }
 
   function applyFilters(shouldScrollToTarget) {
+    const generation = ++renderGeneration;
     updateFilterControls();
 
     const grid = document.getElementById("topicsGrid");
@@ -673,11 +675,30 @@
         emptyBox.append(p, rBtn);
         target.append(emptyBox);
       } else {
-        filtered.forEach((q, i) => {
-          createCard(q, i).then(card => {
-            target.append(card);
-            renderMath(card);
-          });
+        // Keep canonical source/worksheet order even when figure hashes complete
+        // asynchronously. A superseded filter result must never append stale cards.
+        Promise.all(filtered.map((q, i) => createCard(q, i))).then(cards => {
+          if (generation !== renderGeneration) return;
+          target.append(...cards);
+          cards.forEach(renderMath);
+          if (shouldScrollToTarget) {
+            const id = decodeURIComponent((window.location.hash || "").replace(/^#/, ""));
+            const needle = id || filterState.q;
+            const wanted = needle && cards.find(card =>
+              card.dataset.sourceId === needle || card.dataset.qid === needle ||
+              card.id === "question-" + encodeURIComponent(needle));
+            if (wanted) {
+              wanted.scrollIntoView({behavior: "smooth", block: "start"});
+              wanted.classList.add("card-highlight");
+            }
+          }
+        }).catch(error => {
+          if (generation !== renderGeneration) return;
+          target.replaceChildren(text("p", "Circuit candidate reader HOLD: " + error.message, "figure-warning"));
+          if (status) {
+            status.textContent = "Core2 candidates unavailable: " + error.message;
+            status.className = "error";
+          }
         });
       }
     }
@@ -696,28 +717,6 @@
       history.replaceState(null, "", "index.html" + qs + hash);
     }
 
-    // Anchor scrolling & highlight
-    if (shouldScrollToTarget) {
-      setTimeout(() => {
-        let el = null;
-        if (hash) {
-          const rawHash = decodeURIComponent(hash.replace(/^#/, ""));
-          el = document.getElementById(rawHash) ||
-               document.getElementById("question-" + rawHash) ||
-               document.querySelector(`[data-qid="${rawHash}"]`) ||
-               document.querySelector(`[data-source-id="${rawHash}"]`);
-        }
-        if (!el && rawQ) {
-          el = document.getElementById("question-" + encodeURIComponent(rawQ)) ||
-               document.querySelector(`[data-qid="${rawQ}"]`) ||
-               document.querySelector(`[data-source-id="${rawQ}"]`);
-        }
-        if (el) {
-          el.scrollIntoView({ behavior: "smooth", block: "start" });
-          el.classList.add("card-highlight");
-        }
-      }, 350);
-    }
   }
 
   function initFilterBar() {
