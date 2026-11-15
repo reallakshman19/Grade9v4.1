@@ -131,7 +131,7 @@ try{
   assert.equal(failure,'INDEXEDDB_UNAVAILABLE');
   const tamper=await left.evaluate('(async()=>{const m=await import("/engine.mjs");'+
     'const s=new m.IndexedDbAttemptStore({dbName:"g9-real-browser-idb-r0"});'+
-    'const r=await s.read("two-tabs","'+rev+'");r.events[0].evidence.hypothesis="forged";'+
+    'const r=await s.read("two-tabs","'+rev+'");r.events[0].evidence.hypothesis="A long but forged replacement hypothesis to test replay mismatch.";'+
     'try{m.verifyRecord(r);return "UNSAFE";}catch(e){return e.code;}})()');
   assert.equal(tamper,'RECORD_REPLAY_MISMATCH');
   left.close();right.close();
