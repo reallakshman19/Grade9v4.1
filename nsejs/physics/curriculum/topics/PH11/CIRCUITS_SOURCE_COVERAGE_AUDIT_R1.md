@@ -22,7 +22,7 @@ Source-derived answer letters match worksheet page 13; the correctness of the wo
 - Q14's incorrect `I/3` incident-edge split is replaced by correct cube-node equations and current fractions.
 - Q15's incorrect claim of four potential levels is replaced by the actual five-level symmetry solution.
 - Candidate feedback no longer says a worksheet table is an **official verified** examination key.
-- PH05 authored-preview navigation is restored and linked to its seven learner pairs; these pages remain academically HOLD.
+- PH05 reviewer-only candidate links are added in an explicitly marked review section; the six-chapter canonical learner catalog stays unchanged while PH05 academic admission is HOLD.
 
 ## Remaining acceptance gaps
 
