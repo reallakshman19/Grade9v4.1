@@ -85,3 +85,16 @@ def test_r2_impulse_anchor_is_separating():
     assert (v_a,v_b)==(1,1.25)
     assert v_a<v_b and v_a+4*v_b==6
     assert .5*v_a*v_a+2*v_b*v_b<.5*u_a*u_a
+
+def test_r2_single_p03_golden_is_findable_without_claiming_7_7():
+    ph=ROOT/"nsejs/physics"
+    catalog=json.loads((ph/"learn/catalog.json").read_text())
+    ch=next(x for x in catalog["chapters"] if x["id"]=="PH03")
+    assert ch["state"]=="learning-pairs" and len(ch["units"])==1
+    assert ch["units"][0]["id"]=="P03" and ch["questionTopic"]=="mechanics"
+    assert all((ph/ch["units"][0][k]).is_file() for k in ("learn","practice"))
+    assert (ph/ch["overview"]).is_file()
+    home=(ph/"index.html").read_text()
+    assert "Golden candidate · 1/7" in home and 'href="learn/chapter.html?ph=PH03"' in home
+    assert "Golden Sample only:" in (ph/"learn/chapter.js").read_text()
+    assert "Return to "+'"+"'+ "ch.title" in (ph/"learn/learner-nav.js").read_text()
