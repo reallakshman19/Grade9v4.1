@@ -133,3 +133,22 @@ def test_no_admission_language_or_bands_given_to_teacher_cases():
     assert '"academic_admission": "PASS"' not in text
     assert '"band": "D3"' not in text and '"band": "D4"' not in text
     assert "NOT_STUDENT_ASSIGNED" in data["publication"]
+
+
+def test_isolated_preview_is_not_promoted_and_binds_attempt_to_content_bytes():
+    folder = WORK
+    html = (folder / "preview.html").read_text(encoding="utf-8")
+    script = (folder / "preview.js").read_text(encoding="utf-8")
+    css = (folder / "preview.css").read_text(encoding="utf-8")
+    assert "<iframe" not in html.lower()
+    assert 'AUTHOR PREVIEW · ACADEMIC HOLD' in html
+    assert 'NOT authenticated NSEJS' not in html  # Exact wording is intentionally lowercase.
+    assert 'id="first-predict"' in html and 'id="first-attempt"' in html
+    assert 'id="post-attempt" hidden' in html
+    assert 'id="reveal" type="button" disabled' in html
+    assert 'crypto.subtle.digest("SHA-256"' in script
+    assert 'datasetRevision' in script and 'readRecord()' in script
+    assert 'if (!exposed("RECONSTRUCTION")) return;' in script
+    assert 'if (!writeRecord(next)) { lock(' in script
+    assert 'revisions: [...record.revisions' in script
+    assert "@media (max-width: 820px)" in css
