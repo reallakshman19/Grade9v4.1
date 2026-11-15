@@ -26,8 +26,7 @@ li{margin-bottom:.65rem}
 <div class="action">
 <a href="../../index.html">PH11 chapter</a>
 <a href="core1b.html">Fresh Core1B practice entry</a>
-<a href="../../../../../../../review/physics/ph09-ph12-wpe-parity-r1/preview.html?case=PH11-07">Source-first six-stage reviewer journey</a>
-<a href="../../topic-adapter.PH11.wpe-parity-r3.v1.json">Proposed R3 demand adapter · QRT HOLD</a>
+<a href="core1b.html">Native fresh-transfer candidate</a>
 </div>
 <article class="article">
 <h2>1. Prerequisites and model boundaries</h2>
@@ -85,17 +84,29 @@ li{margin-bottom:.65rem}
 <li>Each 4 Ω branch takes 5/4=1.25 A. Their currents sum to 2.5 A, matching the measured series current.</li>
 </ol>
 <p class="check"><strong>Check the law at two places:</strong> 5 V+5 V=10 V by the loop voltage balance, and 1.25 A+1.25 A=2.5 A at the split junction. The diagram makes the two checks different.</p>
-<h2>5. Diagnose a plausible but invalid shortcut</h2>
+<h2>5. Worked inverse construction — recover a missing branch</h2>
+<p><strong>Different worked data from the fresh challenge:</strong> an ideal 20 V supply sends a measured 3 A through an upstream 4 Ω resistor into a downstream parallel pair. One branch has 8 Ω; the other is a finite positive resistor X. Find X and check the two conservation laws.</p>
+<ol>
+<li>Before the junction, the series element carries the measured 3 A, so its drop is (3 A)(4 Ω)=12 V.</li>
+<li>The two downstream branches therefore share V_AB=20−12=8 V. The known 8 Ω branch takes 8/8=1 A.</li>
+<li>Junction conservation gives 3−1=2 A through the unknown branch; X=8 V/2 A=4 Ω.</li>
+<li>Independent check: 8 Ω || 4 Ω = 8/3 Ω, and 4 + 8/3 = 20/3 Ω, hence source current=20/(20/3)=3 A.</li>
+</ol>
+<p><strong>Why this is inverse reasoning:</strong> current was observed before the junction; the unknown branch was inferred from the series voltage loss and the remaining junction current. Do not assume the known branch resistance must equal the unknown one.</p>
+<h2>6. Feasibility proof: which source-current measurements are physically possible?</h2>
+<p>For an ideal source V across a fixed positive series resistor R_s and a parallel block containing a fixed positive branch R_k and a <strong>finite, positive</strong> unknown X, its equivalent R_p=(R_k X)/(R_k+X) obeys <strong>0 &lt; R_p &lt; R_k</strong>. Thus the source current must obey <strong>V/(R_s+R_k) &lt; I_total &lt; V/R_s</strong>. The direction of each inequality follows from dividing fixed positive V by a positive resistance.</p>
+<p>In the 20 V, 4 Ω, 8 Ω worked setup, the physical interval is <strong>5/3 A &lt; I_total &lt; 5 A</strong>. A reported 1 A or 6 A cannot be explained by adjusting only the unknown positive downstream resistor. If the measured current is exactly at an endpoint, at least one stated model condition has changed.</p>
+<p><strong>Boundary models:</strong> as X tends to infinity (open branch, not finite), the circuit approaches I_min=V/(R_s+R_k). As X tends to zero (short branch, not positive finite), R_p tends to 0 and I approaches I_max=V/R_s. Neither endpoint is attained by finite positive X. A real cell, wire, short or measurement error may violate the ideal model; that is not a license to assign a negative resistance.</p>
+<h2>7. Diagnose a plausible but invalid shortcut</h2>
 <p><strong>Wrong model:</strong> “Any parallel branch receives all of the battery voltage.” This is true for the direct connection in figure A, but false for figure B. Ask which two endpoints define V_AB; then compute the voltage drop on every component <em>before</em> node A. If a learner argues that two equal-looking drawn paths are parallel, ask them to label and trace the wire nodes rather than trusting picture proximity.</p>
 <p><strong>Repair:</strong> Label node A and node B, reduce only the parallel pair, include the upstream resistor, then check both charge and energy conservation. This correction teaches the method without giving the later challenge's unknown-branch answer.</p>
-<h2>6. Independent exit check with answer</h2>
-<p>Two 8 Ω resistors are each connected directly across an ideal 8 V source. What total current is drawn?</p>
-<details><summary>Show worked exit check after answering</summary><p>Each branch gets 8 V, so each takes 1 A. The source delivers 2 A; R_p=4 Ω and 8/4=2 A is consistent.</p></details>
-<h2>7. Try a genuinely different decision</h2>
-<p>The accompanying Core1B does not ask for a new forward calculation with only swapped numbers. It reverses the direction of inference: the source current is measured, and the learner must infer a hidden branch. The challenge and worked solution must stay separate until the first attempt has been recorded in the protected reviewer journey.</p>
+<h2>8. Inverse-and-feasibility exit check</h2>
+<p>An ideal 15 V source drives a 3 Ω series element into a parallel pair containing a known 6 Ω branch and an unknown positive branch. The source current is 3 A. Find the unknown resistance; is a measured 6 A possible under the same assumptions?</p>
+<details><summary>Show worked reasoning after attempting the exit check</summary><p>Upstream drop=3×3=9 V, so V_AB=6 V. Known branch takes 1 A, unknown branch 2 A, and X=6/2=3 Ω. Limits: 15/(3+6)=5/3 A &lt; I &lt; 15/3=5 A for finite positive X; therefore 6 A is impossible. Check R_p=6||3=2 Ω and R_total=5 Ω, giving 15/5=3 A.</p></details>
+<h2>9. Unseen transfer</h2>
+<p>The accompanying Core1B does not ask for a new forward calculation with only swapped numbers. It reverses the direction of inference: the source current is measured, and the learner must infer a hidden branch. The candidate challenge answer file is fetched by the native assessment runtime only after a recorded first attempt. This browser mechanism is not secure examination custody.</p>
 <div class="action"><a href="core1b.html">Enter fresh Core1B task</a>
-<a href="../../../../../../../review/physics/ph09-ph12-wpe-parity-r1/preview.html?case=PH11-07">Launch source-first preview</a>
-<a href="../../topic-adapter.PH11.wpe-parity-r3.v1.json">Proposed demand analysis</a></div>
+<a href="core1b.html">Open native first-attempt and source-return candidate</a></div>
 <p><strong>Review limitations:</strong> Source/authentication, external science review, QRT band, Blueprint applicability, B1–B7 teaching/assessment sufficiency and release remain HOLD. These figures are original author drawings, not independently checked source reproductions.</p>
 </article>
 </main></body></html>
