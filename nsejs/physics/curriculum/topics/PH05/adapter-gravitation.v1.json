@@ -1,0 +1,195 @@
+{
+  "schema": "g9v41-physics-topic-adapter/v1",
+  "adapter_id": "PHYS-TOPIC-PH05-GRAVITATION",
+  "version": "1.0.0",
+  "subject": "PHYSICS",
+  "topic_id": "PH05",
+  "topic_title": "Gravitation",
+  "for_blueprint": "PHYS-QRT-BLUEPRINT 0.2.0",
+  "status": "CANDIDATE_ONLY",
+  "academic_status": "HOLD",
+  "disclaimer": "Author candidate only. No academic approval inferred from software validation. Independent subject and QRT qualification required.",
+  "subtopics": [
+    {
+      "subtopic_id": "PH05-G01",
+      "title": "Universal Gravitation & Inverse-Square Law",
+      "scope_role": "CORE_CANDIDATE",
+      "warrants": [
+        "Newton's 3rd law action-reaction symmetry |F12| = |F21| holds strictly regardless of mass ratio.",
+        "Inverse-square radial law F = G*m1*m2/r^2 applies to point masses and spherical shells via shell theorem.",
+        "Zero external force implies internal gravity cannot displace the system center of mass."
+      ]
+    },
+    {
+      "subtopic_id": "PH05-G02",
+      "title": "Surface Gravity & Planetary Scaling",
+      "scope_role": "CORE_CANDIDATE",
+      "warrants": [
+        "Surface gravity g = G*M/R^2 = (4/3)*pi*G*rho*R connects density and radius scaling.",
+        "When mass scales as rho*R^3, simultaneous density and mass changes must account for radius contraction."
+      ]
+    },
+    {
+      "subtopic_id": "PH05-G03",
+      "title": "Variation of g (Altitude vs. Depth)",
+      "scope_role": "CORE_CANDIDATE",
+      "warrants": [
+        "Interior gravity scales linearly g(r) = g0*(r/R) due to cancellation of external concentric shell mass.",
+        "Exterior gravity falls off as inverse square g(r) = g0*(R/r)^2.",
+        "Shell theorem guarantees exact zero field inside any hollow uniform concentric cavity."
+      ]
+    },
+    {
+      "subtopic_id": "PH05-G04",
+      "title": "Free Fall, Apparent Weight, & Weightlessness",
+      "scope_role": "CORE_CANDIDATE",
+      "warrants": [
+        "Apparent weight is normal contact reaction N = m*(g ± a). True weight mg never vanishes in orbit.",
+        "Orbiting occupants and spacecraft share identical free-fall acceleration, producing contact weightlessness (N = 0)."
+      ]
+    },
+    {
+      "subtopic_id": "PH05-G05",
+      "title": "Kepler's Laws & Planetary Kinematics",
+      "scope_role": "ADVANCED_REASONING_CANDIDATE",
+      "warrants": [
+        "Kepler 2nd law dA/dt = L/(2m) = constant is a direct consequence of central force torque tau = r x F = 0.",
+        "Kepler 3rd law T^2 / a^3 = 4*pi^2 / (G*M) holds for all closed Keplerian orbits with semimajor axis a."
+      ]
+    },
+    {
+      "subtopic_id": "PH05-G06",
+      "title": "Satellite Dynamics & Energy Accounting",
+      "scope_role": "ADVANCED_REASONING_CANDIDATE",
+      "warrants": [
+        "Circular orbital velocity v0 = sqrt(G*M/r) decreases with radius, but total energy E = -K = (1/2)*U increases (less negative).",
+        "Atmospheric drag removes total mechanical energy dE < 0, forcing orbital contraction dr < 0 and paradoxically increasing orbital speed (satellite paradox)."
+      ]
+    },
+    {
+      "subtopic_id": "PH05-G07",
+      "title": "Gravitational Potential & Escape Velocity",
+      "scope_role": "EXTENSION_REVIEW",
+      "warrants": [
+        "Zero potential reference is conventionally defined at infinity: U(r) = -G*M*m/r.",
+        "Escape speed v_e = sqrt(2*G*M/R) is completely independent of launch angle, provided trajectory clears the surface."
+      ]
+    }
+  ],
+  "cells": [
+    {
+      "cell_id": "D3.2",
+      "operation": "EXPLAIN",
+      "band": "D3",
+      "slots": {
+        "X": "Why does friction/drag paradoxically cause an orbiting satellite to speed up?",
+        "Y": "Virial theorem E = -K = (1/2)*U and mechanical energy dissipation dE = W_drag < 0",
+        "Z": "Deduce dr < 0 from dE < 0, then relate dK = -dE > 0 to prove tangential speed increases",
+        "W": "Student constructs the causal bridge from potential energy release to kinetic energy gain rather than treating drag as simple horizontal deceleration"
+      },
+      "instance_ids": [
+        "PH05-MAIN-EXPLAIN-D3-R1"
+      ]
+    },
+    {
+      "cell_id": "D3.3",
+      "operation": "APPLY",
+      "band": "D3",
+      "slots": {
+        "X": "How does a discrete retrograde impulse alter orbital geometry and surface impact condition?",
+        "Y": "Vis-viva equation v^2 = G*M*(2/r - 1/a) and semimajor axis 2a = r_a + r_p",
+        "Z": "Model post-burn trajectory as transfer ellipse with apogee at burn point and perigee grazing surface",
+        "W": "Apply multi-step orbital energy conservation to determine exact Delta_v without conflating circular and elliptical kinematics"
+      },
+      "instance_ids": [
+        "PH05-G01-QRT-APPLY-D3",
+        "PH05-MAIN-APPLY-D3-R1"
+      ]
+    },
+    {
+      "cell_id": "D3.4",
+      "operation": "MODEL",
+      "band": "D3",
+      "slots": {
+        "X": "How does gravitational acceleration project along an off-center straight chord tunnel through Earth?",
+        "Y": "Interior linear gravity g(r) = g0*(r/R) and geometric projection cos(theta) = x/r",
+        "Z": "Prove axial restoring force F_x = -F(r)*(x/r) = -(m*g0/R)*x is invariant of chord offset b",
+        "W": "Deduce universal period invariance T = 2*pi*sqrt(R/g0) for all straight chord tunnels through uniform spherical planets"
+      },
+      "instance_ids": [
+        "PH05-G02-QRT-MODEL-D3",
+        "PH05-MAIN-MODEL-D3-R1"
+      ]
+    },
+    {
+      "cell_id": "D3.5",
+      "operation": "REPRESENT",
+      "band": "D3",
+      "slots": {
+        "X": "Where does peak gravitational field occur for a non-uniform planet with linearly decreasing core density?",
+        "Y": "Differential spherical shell mass dm = 4*pi*r^2*rho(r)*dr and field g(r) = G*M(r)/r^2",
+        "Z": "Construct piecewise field function g(r) and locate extreme value via dg/dr = 0",
+        "W": "Break the misconception that peak gravity is always on the physical surface by deriving interior maximum at r = (2/3)*R"
+      },
+      "instance_ids": [
+        "PH05-G03-QRT-REPRESENT-D3",
+        "PH05-MAIN-REPRESENT-D3-R1"
+      ]
+    },
+    {
+      "cell_id": "D3.6",
+      "operation": "SYNTHESIZE",
+      "band": "D3",
+      "slots": {
+        "X": "What is the relative approach speed when two identical isolated celestial bodies fall into mutual contact from rest?",
+        "Y": "Center-of-mass frame symmetry (v1 = v2) and mechanical energy conservation E_initial = 0 = E_final",
+        "Z": "Synthesize contact geometry separation r = 2*R with total kinetic energy 2*(1/2)*M*v^2",
+        "W": "Coordinate multi-body kinematics with mutual potential energy without treating either body as stationary"
+      },
+      "instance_ids": [
+        "PH05-G05-QRT-SYNTHESIZE-D3",
+        "PH05-MAIN-SYNTHESIZE-D3-R1"
+      ]
+    },
+    {
+      "cell_id": "D4.7",
+      "operation": "JUSTIFY",
+      "band": "D4",
+      "slots": {
+        "X": "Why is oscillatory motion through a thick spherical shell periodic but fundamentally non-harmonic?",
+        "Y": "Newton shell theorem g = 0 in hollow cavity and non-linear enclosed mass M_enc(r) in shell wall",
+        "Z": "Prove restoring force is identically zero in cavity and contains 1/r^2 terms in wall, violating Hooke's law F = -kx",
+        "W": "Rigorously justify the necessary and sufficient conditions for simple harmonic motion vs. non-harmonic periodic oscillation"
+      },
+      "instance_ids": [
+        "PH05-G07-QRT-JUSTIFY-D4",
+        "PH05-MAIN-JUSTIFY-D4-R1"
+      ]
+    }
+  ],
+  "learning_journey_stages": {
+    "S1_PREDICT_AND_ATTEMPT": {
+      "rules": [
+        "Learner must submit both an orientation prediction and a substantive first reasoning attempt before any hints or reconstructions unlock.",
+        "First attempt is locked into browser localStorage with SHA-256 fingerprinting of the question text to prevent post-hoc tampering.",
+        "Storage failures fail closed (locks attempt, displays explicit error, prevents hint leakage)."
+      ]
+    },
+    "S2_ORDERED_ASSISTANCE": {
+      "rules": [
+        "H1 provides qualitative framing and physical invariant identification.",
+        "H2 provides mathematical formula structure and free-body/geometric relations.",
+        "H3 provides decisive move / coordinate setup.",
+        "Zero numeric solutions or direct answers are revealed in hints."
+      ]
+    },
+    "S3_RECONSTRUCTION_AND_REPAIR": {
+      "rules": [
+        "Step 3 displays shortest defensible route and independent alternative check.",
+        "Step 4 requires learner to identify and diagnose the exact divergence point in their first attempt.",
+        "Step 5 requires writing a separate repaired explanation before proceeding.",
+        "Step 6 presents an anti-isomorphic changed-condition boundary problem to verify deep conceptual transfer."
+      ]
+    }
+  }
+}

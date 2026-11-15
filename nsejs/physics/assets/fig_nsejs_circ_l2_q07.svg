@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 440" width="100%" height="100%" style="background:#ffffff; border:1.5px solid #cbd5e1; border-radius:10px;">
+
+  <style>
+    .wire { stroke: #1e293b; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+    .dash-wire { stroke: #64748b; stroke-width: 2; stroke-dasharray: 5,4; fill: none; }
+    .res-box { fill: #f8fafc; stroke: #0f172a; stroke-width: 2; rx: 4; }
+    .res-lbl { font-family: system-ui, -apple-system, sans-serif; font-size: 14px; font-weight: 600; fill: #0f172a; text-anchor: middle; dominant-baseline: central; }
+    .node-pt { fill: #1e293b; }
+    .term-pt { fill: #ea580c; stroke: #9a3412; stroke-width: 2; }
+    .term-lbl { font-family: system-ui, -apple-system, sans-serif; font-size: 16px; font-weight: 800; fill: #c2410c; text-anchor: middle; dominant-baseline: central; }
+    .node-lbl { font-family: system-ui, -apple-system, sans-serif; font-size: 15px; font-weight: 700; fill: #1e293b; text-anchor: middle; dominant-baseline: central; }
+    .diag-title { font-family: system-ui, -apple-system, sans-serif; font-size: 15px; font-weight: 700; fill: #0f172a; text-anchor: middle; }
+    .diag-sub { font-family: system-ui, -apple-system, sans-serif; font-size: 14px; fill: #64748b; text-anchor: middle; }
+  </style>
+
+  <text x="240" y="30" class="diag-title">Fig. 7: Regular Hexagon Network of Six Resistors</text>
+  <text x="240" y="50" class="diag-sub">All six resistors R = 6 &#937; &#183; Terminals at adjacent corners A and B</text>
+
+  <!-- Hexagon corners: center (240, 240), radius 150 -->
+  <!-- Top: (165, 110) [A], (315, 110) [B], Right: (390, 240), Bottom-Right: (315, 370), Bottom-Left: (165, 370), Left: (90, 240) -->
+
+  <!-- Outer hexagon wires & resistors -->
+  <!-- Top AB (6 ohm) -->
+  <line x1="165" y1="110" x2="315" y2="110" class="wire"/>
+  <rect x="205" y="96" width="70" height="28" class="res-box"/>
+  <text x="240" y="110" class="res-lbl">6 &#937;</text>
+
+  <!-- Top-Right BC (6 ohm) -->
+  <line x1="315" y1="110" x2="390" y2="240" class="wire"/>
+  <rect x="318" y="161" width="70" height="28" class="res-box" transform="rotate(60, 353, 175)"/>
+  <text x="353" y="175" class="res-lbl">6 &#937;</text>
+
+  <!-- Bottom-Right (6 ohm) -->
+  <line x1="390" y1="240" x2="315" y2="370" class="wire"/>
+  <rect x="318" y="291" width="70" height="28" class="res-box" transform="rotate(-60, 353, 305)"/>
+  <text x="353" y="305" class="res-lbl">6 &#937;</text>
+
+  <!-- Bottom (6 ohm) -->
+  <line x1="315" y1="370" x2="165" y2="370" class="wire"/>
+  <rect x="205" y="356" width="70" height="28" class="res-box"/>
+  <text x="240" y="370" class="res-lbl">6 &#937;</text>
+
+  <!-- Bottom-Left (6 ohm) -->
+  <line x1="165" y1="370" x2="90" y2="240" class="wire"/>
+  <rect x="92" y="291" width="70" height="28" class="res-box" transform="rotate(60, 127, 305)"/>
+  <text x="127" y="305" class="res-lbl">6 &#937;</text>
+
+  <!-- Top-Left (6 ohm) -->
+  <line x1="90" y1="240" x2="165" y2="110" class="wire"/>
+  <rect x="92" y="161" width="70" height="28" class="res-box" transform="rotate(-60, 127, 175)"/>
+  <text x="127" y="175" class="res-lbl">6 &#937;</text>
+
+  <!-- Nodes -->
+  <circle cx="390" cy="240" r="4" class="node-pt"/>
+  <circle cx="315" cy="370" r="4" class="node-pt"/>
+  <circle cx="165" cy="370" r="4" class="node-pt"/>
+  <circle cx="90" cy="240" r="4" class="node-pt"/>
+
+  <!-- Terminal A -->
+  <line x1="165" y1="110" x2="165" y2="70" class="wire"/>
+  <circle cx="165" cy="70" r="7" class="term-pt"/>
+  <text x="165" y="55" class="term-lbl">A</text>
+  <circle cx="165" cy="110" r="4" class="node-pt"/>
+
+  <!-- Terminal B -->
+  <line x1="315" y1="110" x2="315" y2="70" class="wire"/>
+  <circle cx="315" cy="70" r="7" class="term-pt"/>
+  <text x="315" y="55" class="term-lbl">B</text>
+  <circle cx="315" cy="110" r="4" class="node-pt"/>
+
+  <text x="240" y="420" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="#059669" text-anchor="middle">R_AB = (6 &#937;) || (5 &#215; 6 &#937;) = (6 &#215; 30) / (6 + 30) = 5 &#937;</text>
+</svg>

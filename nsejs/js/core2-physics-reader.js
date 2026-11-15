@@ -17,6 +17,7 @@
     "circuits": {
       title: "DC Circuits & Resistor Networks",
       links: [
+        { label: "▶ Level-2 Advanced Resistor Networks (Q1–Q20)", url: "#NSEJS-CIRC-L2-Q01" },
         { label: "▶ 3D Resistor Cube Symmetry (D3)", url: "core1/recovery/nsejs-circuits-cube-d3-r1/index.html" },
         { label: "▶ Infinite Resistor Ladders (D3)", url: "core1/recovery/nsejs-circuits-ladder-d3-r1/index.html" },
         { label: "▶ Resistor Tetrahedron Symmetry", url: "core1/recovery/nsejs-circuits-r1/index.html" }
@@ -75,7 +76,7 @@
   const TOPICS = [
     ["optics","OPTICS","Optics","🔭",10],
     ["electrostatics","ELECTROSTATICS","Electrostatics","⚡",10],
-    ["circuits","CURRENT_ELECTRICITY","Circuits","🔌",10],
+    ["circuits","CURRENT_ELECTRICITY","Circuits","🔌",30],
     ["magnetism","MAGNETISM_AND_EMI","Magnetism & EMI","🧲",10],
     ["mechanics","MECHANICS","Mechanics","⚙️",11],
     ["fluids","FLUIDS_AND_SOUND","Fluids & Sound","🌊",2]

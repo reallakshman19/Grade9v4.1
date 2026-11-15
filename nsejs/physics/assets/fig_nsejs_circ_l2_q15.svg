@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 440" width="100%" height="100%" style="background:#ffffff; border:1.5px solid #cbd5e1; border-radius:10px;">
+
+  <style>
+    .wire { stroke: #1e293b; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+    .dash-wire { stroke: #64748b; stroke-width: 2; stroke-dasharray: 5,4; fill: none; }
+    .res-box { fill: #f8fafc; stroke: #0f172a; stroke-width: 2; rx: 4; }
+    .res-lbl { font-family: system-ui, -apple-system, sans-serif; font-size: 14px; font-weight: 600; fill: #0f172a; text-anchor: middle; dominant-baseline: central; }
+    .node-pt { fill: #1e293b; }
+    .term-pt { fill: #ea580c; stroke: #9a3412; stroke-width: 2; }
+    .term-lbl { font-family: system-ui, -apple-system, sans-serif; font-size: 16px; font-weight: 800; fill: #c2410c; text-anchor: middle; dominant-baseline: central; }
+    .node-lbl { font-family: system-ui, -apple-system, sans-serif; font-size: 15px; font-weight: 700; fill: #1e293b; text-anchor: middle; dominant-baseline: central; }
+    .diag-title { font-family: system-ui, -apple-system, sans-serif; font-size: 15px; font-weight: 700; fill: #0f172a; text-anchor: middle; }
+    .diag-sub { font-family: system-ui, -apple-system, sans-serif; font-size: 14px; fill: #64748b; text-anchor: middle; }
+  </style>
+
+  <text x="240" y="30" class="diag-title">Fig. 14: 3D Resistor Cube &#8212; Face Diagonal Terminals</text>
+  <text x="240" y="50" class="diag-sub">Twelve identical edges, each R = 8 &#937; &#183; Terminals across face diagonal AB</text>
+
+  <!-- Back edges (dashed) -->
+  <line x1="220" y1="270" x2="380" y2="270" class="dash-wire"/>
+  <line x1="220" y1="270" x2="220" y2="110" class="dash-wire"/>
+  <line x1="140" y1="330" x2="220" y2="270" class="dash-wire"/>
+
+  <!-- Back nodes -->
+  <circle cx="220" cy="270" r="4" fill="#94a3b8"/>
+  <circle cx="380" cy="270" r="4" fill="#94a3b8"/>
+  <circle cx="220" cy="110" r="4" fill="#94a3b8"/>
+  <circle cx="380" cy="110" r="4" fill="#94a3b8"/>
+
+  <!-- Other edges -->
+  <line x1="300" y1="330" x2="380" y2="270" class="wire"/>
+  <line x1="300" y1="170" x2="380" y2="110" class="wire"/>
+  <line x1="140" y1="170" x2="220" y2="110" class="wire"/>
+  <line x1="220" y1="110" x2="380" y2="110" class="wire"/>
+  <line x1="380" y1="270" x2="380" y2="110" class="wire"/>
+
+  <!-- Front face edges -->
+  <line x1="140" y1="170" x2="300" y2="170" class="wire"/>
+  <line x1="140" y1="170" x2="140" y2="330" class="wire"/>
+  <line x1="300" y1="170" x2="300" y2="330" class="wire"/>
+  <line x1="140" y1="330" x2="300" y2="330" class="wire"/>
+
+  <!-- Face diagonal line (dashed guide) -->
+  <line x1="140" y1="330" x2="300" y2="170" class="dash-wire" style="stroke:#ea580c; stroke-width:2.5; stroke-dasharray:6,4;"/>
+
+  <!-- Front nodes -->
+  <circle cx="140" cy="170" r="4" class="node-pt"/>
+  <circle cx="300" cy="330" r="4" class="node-pt"/>
+
+  <!-- Terminals A (bottom-left) and B (top-right of front face) -->
+  <circle cx="140" cy="330" r="8" class="term-pt"/>
+  <text x="115" y="345" class="term-lbl">A</text>
+
+  <circle cx="300" cy="170" r="8" class="term-pt"/>
+  <text x="325" y="155" class="term-lbl">B</text>
+
+  <text x="240" y="405" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="#059669" text-anchor="middle">R_face_diagonal = (3/4) &#215; R = (3/4) &#215; 8 &#937; = 6 &#937;</text>
+</svg>

@@ -1,0 +1,366 @@
+{
+  "schema": "g9v41-ph05-qrt-authored-candidates/v1",
+  "status": "AUTHOR_PROPOSED__INDEPENDENT_QRT_HOLD",
+  "original_exam_items": 0,
+  "namespace": "PH05",
+  "semantic_review": "OWNER_DIRECTED_ASSISTANT_CHECK_IN_PROGRESS",
+  "tasks": [
+    {
+      "id": "PH05-G01-QRT-APPLY-D3",
+      "unit": "PH05-G01",
+      "op": "APPLY",
+      "cell": "D3.3",
+      "uid": "AUTHORED-PH05-G01-QRT-APPLY-D3-R1",
+      "revision": "ph05-g01-qrt-apply-d3-20261115-r1",
+      "source_role": "AUTHORED_TRANSFER",
+      "qrt_status": "PROPOSED_UNREVIEWED",
+      "prediction": "Before calculating, determine the direction of mutual gravitational attraction and whether internal mutual forces can accelerate the system's center of mass.",
+      "prompt": "Two uniform lead spheres of masses m1 = 16 kg and m2 = 4 kg are initially held at rest with their centers 3.0 m apart in deep space. When released, they attract each other purely under mutual gravity. Determine the ratio of their accelerations a1/a2, their common center of mass displacement after 10 seconds of motion, and the ratio of their kinetic energies K1/K2.",
+      "w": "Apply Newton's third law to deduce equal force magnitudes, evaluate acceleration ratio as inverse mass ratio a1/a2 = m2/m1 = 1/4, and use zero external force to prove center of mass displacement is zero.",
+      "reconstruction": "1. Equal Interaction Force: By Newton's third law, |F12| = |F21| = G * (16 * 4) / r^2. 2. Acceleration Ratio: a1 = F/16 and a2 = F/4 ==> a1/a2 = 4/16 = 1/4 = 0.25. 3. Center of Mass: Since no external forces act on the two-sphere system, F_ext = 0 ==> a_cm = 0. Starting from rest, the displacement of the center of mass is strictly 0.0 m. 4. Kinetic Energy Ratio: Momentum p1 = -p2 ==> K1/K2 = (p1^2 / 2m1) / (p2^2 / 2m2) = m2/m1 = 4/16 = 1/4 = 0.25.",
+      "alternative": "Check via kinematic work-energy: W1 = F * d1 and W2 = F * d2. Since d1/d2 = a1/a2 = m2/m1 = 1/4, the ratio of work done on each sphere is K1/K2 = W1/W2 = 1/4.",
+      "hints": [
+        "Recall that mutual gravitational attraction is an internal action-reaction pair.",
+        "Check whether any external force acts on the system before computing center of mass motion.",
+        "Relate kinetic energy directly to momentum magnitude using K = p^2 / (2m)."
+      ],
+      "diagnosis": "If you answered that the center of mass accelerates toward the heavier mass, you treated internal gravity as an external pull. Internal forces cannot alter center of mass momentum.",
+      "repair": "Write the center of mass acceleration equation: a_cm = (m1*a1 + m2*a2)/(m1+m2) = (F - F)/(m1+m2) = 0.",
+      "boundaryPrompt": "What would be the kinetic energy ratio if the two spheres had equal masses m1 = m2 = 10 kg?",
+      "boundaryModel": "If m1 = m2, accelerations are equal (a1/a2 = 1) and kinetic energies are equal: K1/K2 = m2/m1 = 1.0.",
+      "factor_nominations": {
+        "band": "D3",
+        "status": "AUTHOR_ONLY_NOT_QUALIFIED",
+        "scores": [
+          1,
+          1,
+          2,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "PH05-G02-QRT-MODEL-D3",
+      "unit": "PH05-G02",
+      "op": "MODEL",
+      "cell": "D3.4",
+      "uid": "AUTHORED-PH05-G02-QRT-MODEL-D3-R1",
+      "revision": "ph05-g02-qrt-model-d3-20261115-r1",
+      "source_role": "AUTHORED_TRANSFER",
+      "qrt_status": "PROPOSED_UNREVIEWED",
+      "prediction": "When density and radius change concurrently, identify which variable scales with R^3 and which scales with R.",
+      "prompt": "Planet Alpha has mean density rho and radius R, with surface gravity g_A. Planet Beta has mean density 2*rho and mass equal to 1/4 of Planet Alpha's mass. Model the relationship between radius, density, and surface gravity to determine: (1) the radius of Planet Beta in terms of R, (2) the ratio of surface gravities g_B / g_A.",
+      "w": "Formulate mass in terms of density M = (4/3)*pi*rho*R^3 to deduce R_B / R_A = (1/8)^(1/3) = 0.5, then apply g proportional to rho*R to find g_B / g_A = 2 * 0.5 = 1.0.",
+      "reconstruction": "1. Mass formulation: M = (4/3) * pi * rho * R^3 ==> R = [3M / (4*pi*rho)]^(1/3). 2. Radius of Planet Beta: R_B / R_A = [(M_B/M_A) / (rho_B/rho_A)]^(1/3) = [(1/4) / 2]^(1/3) = (1/8)^(1/3) = 1/2 ==> R_B = 0.5 R. 3. Surface gravity relation: Using g = (4/3)*pi*G*rho*R, ratio is g_B / g_A = (rho_B / rho_A) * (R_B / R_A) = 2.0 * 0.5 = 1.0. Both planets have identical surface gravity!",
+      "alternative": "Direct substitution: g_B = G * M_B / R_B^2 = G * (M_A / 4) / (R_A / 2)^2 = G * (M_A / 4) / (R_A^2 / 4) = G * M_A / R_A^2 = g_A.",
+      "hints": [
+        "Express planet mass in terms of uniform density and radius: M proportional to rho * R^3.",
+        "Solve for the radius ratio R_B / R_A using the known mass and density ratios.",
+        "Express surface gravity either as G*M/R^2 or proportional to rho*R."
+      ],
+      "diagnosis": "If you calculated g_B / g_A = 2.0, you accounted for the double density but forgot to evaluate the smaller radius.",
+      "repair": "Remember that smaller mass at higher density forces a smaller radius. The radius contraction exactly offsets the density increase.",
+      "boundaryPrompt": "What would g_B / g_A be if Planet Beta had 8 times the density of Planet Alpha with 1/8 the mass?",
+      "boundaryModel": "R_B / R_A = [(1/8)/8]^(1/3) = (1/64)^(1/3) = 1/4. Then g_B / g_A = 8 * (1/4) = 2.0.",
+      "factor_nominations": {
+        "band": "D3",
+        "status": "AUTHOR_ONLY_NOT_QUALIFIED",
+        "scores": [
+          2,
+          1,
+          2,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "PH05-G03-QRT-REPRESENT-D3",
+      "unit": "PH05-G03",
+      "op": "REPRESENT",
+      "cell": "D3.5",
+      "uid": "AUTHORED-PH05-G03-QRT-REPRESENT-D3-R1",
+      "revision": "ph05-g03-qrt-represent-d3-20261115-r1",
+      "source_role": "AUTHORED_TRANSFER",
+      "qrt_status": "PROPOSED_UNREVIEWED",
+      "prediction": "Identify the slope of g(r) inside the planet and exterior to the planet, and determine where the slope is discontinuous.",
+      "prompt": "Construct the exact mathematical piece-wise curve g(r) for a uniform spherical planet of mass M and radius R from r = 0 to r = 3R. Calculate the radial coordinates r where: (1) g(r) is exactly 50% of surface gravity g0, (2) the derivative dg/dr has a finite discontinuity, stating its left-hand and right-hand values.",
+      "w": "Translate spherical shell theorem into piecewise function g(r) = g0*(r/R) for r<=R and g0*(R/r)^2 for r>=R, then compute left derivative +g0/R and right derivative -2g0/R at r=R.",
+      "reconstruction": "1. Piecewise Field: g(r) = g0 * (r / R) for 0 <= r <= R, and g(r) = g0 * (R / r)^2 for r >= R. 2. 50% Gravity Coordinates: Interior: g0*(r/R) = 0.5 g0 ==> r_interior = 0.5 R (depth d = 0.5 R). Exterior: g0*(R/r)^2 = 0.5 g0 ==> (R/r) = 1/sqrt(2) ==> r_exterior = sqrt(2) * R ≈ 1.414 R (altitude h = (sqrt(2) - 1) R ≈ 0.414 R). 3. Derivative Discontinuity at r = R: Left derivative (inside): d/dr [g0 * r / R] = +g0 / R. Right derivative (outside): d/dr [g0 * R^2 * r^-2] = -2 * g0 * R^2 / r^3 at r=R = -2 * g0 / R. The jump discontinuity in slope is Delta(dg/dr) = -2g0/R - (+g0/R) = -3 g0 / R.",
+      "alternative": "Confirm using Gauss's Law for gravity: div(g) = -4*pi*G*rho. Inside, div(g) = -4*pi*G*rho. Outside, div(g) = 0. The step in mass density directly dictates the step in the derivative of the field.",
+      "hints": [
+        "Divide the space into two distinct physical regimes: r < R (interior) and r > R (exterior).",
+        "Set g(r) = 0.5 g0 separately in both the linear interior regime and the inverse-square exterior regime.",
+        "Differentiate g(r) with respect to r from the left (r -> R^-) and from the right (r -> R^+)."
+      ],
+      "diagnosis": "If you stated that dg/dr is continuous at the surface, you overlooked that density drops abruptly from rho to 0 at the boundary.",
+      "repair": "Remember that potential V(r) is continuous with continuous first derivative g(r), but the second derivative of V (which is dg/dr) has a finite jump proportional to surface density.",
+      "boundaryPrompt": "What is the gravitational field and its derivative at the exact center r = 0?",
+      "boundaryModel": "At r = 0: g(0) = 0, and dg/dr = +g0 / R. The field passes through zero linearly.",
+      "factor_nominations": {
+        "band": "D3",
+        "status": "AUTHOR_ONLY_NOT_QUALIFIED",
+        "scores": [
+          1,
+          2,
+          2,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "PH05-G05-QRT-SYNTHESIZE-D3",
+      "unit": "PH05-G05",
+      "op": "SYNTHESIZE",
+      "cell": "D3.6",
+      "uid": "AUTHORED-PH05-G05-QRT-SYNTHESIZE-D3-R1",
+      "revision": "ph05-g05-qrt-synthesize-d3-20261115-r1",
+      "source_role": "AUTHORED_TRANSFER",
+      "qrt_status": "PROPOSED_UNREVIEWED",
+      "prediction": "Combine Kepler's 3rd law and conservation of angular momentum to relate orbital periods to perihelion speeds.",
+      "prompt": "A planet moves in an elliptical orbit around the Sun with perihelion distance r_p and aphelion distance r_a = 3*r_p. A second planet revolves around the same star in a circular orbit whose radius equals the semimajor axis of the first planet's ellipse. (1) Determine the ratio of their orbital periods T_ellipse / T_circle. (2) Determine the ratio of the elliptical planet's perihelion speed to the circular planet's orbital speed: v_p / v_circle.",
+      "w": "Apply Kepler's 3rd Law to prove T_ellipse = T_circle (period depends only on semimajor axis a), then synthesize vis-viva equation v^2 = GM(2/r - 1/a) to deduce v_p / v_circle = sqrt(2 - r_p/a) = sqrt(2 - 0.5) = sqrt(1.5).",
+      "reconstruction": "1. Semimajor Axis: For the ellipse, 2a = r_p + r_a = r_p + 3*r_p = 4*r_p ==> a = 2*r_p. The circular planet has radius r_c = a = 2*r_p. 2. Period Ratio: By Kepler's 3rd Law, period depends exclusively on semimajor axis a: T^2 proportional to a^3. Since a_ellipse = a_circle = 2*r_p, the ratio of periods is T_ellipse / T_circle = 1 : 1. 3. Speed Synthesis: Vis-viva equation gives speed at any radius: v^2 = G*M * (2/r - 1/a). For the circular orbit at radius a: v_circle^2 = G*M / a. For the ellipse at perihelion r = r_p = a/2: v_p^2 = G*M * (2/(a/2) - 1/a) = G*M * (4/a - 1/a) = 3 * G*M / a. 4. Speed Ratio: (v_p / v_circle)^2 = (3 * GM/a) / (GM/a) = 3 ==> v_p / v_circle = sqrt(3) ≈ 1.732.",
+      "alternative": "Use conservation of angular momentum and energy at perihelion and aphelion: r_p*v_p = r_a*v_a ==> v_a = v_p/3. Energy conservation: 0.5*v_p^2 - GM/r_p = 0.5*(v_p/3)^2 - GM/(3*r_p) ==> 0.5*v_p^2*(8/9) = GM/r_p*(2/3) ==> v_p^2 = 1.5 * GM/r_p = 3 * GM/a ==> v_p/v_circle = sqrt(3).",
+      "hints": [
+        "Calculate the semimajor axis a of the ellipse from r_p and r_a.",
+        "Check whether Kepler's third law depends on orbital eccentricity or only semimajor axis.",
+        "Use energy conservation or the vis-viva equation to determine speeds at distance r."
+      ],
+      "diagnosis": "If you answered that the ellipse has a longer period because its perimeter is longer, remember Kepler's 3rd law states that period depends solely on semimajor axis a, not eccentricity.",
+      "repair": "Memorize that any ellipse with semimajor axis a has the exact same period as a circle of radius a.",
+      "boundaryPrompt": "What is the speed ratio v_a / v_circle at aphelion?",
+      "boundaryModel": "At aphelion r_a = 3*r_p = 1.5 a: v_a^2 = GM * (2/(1.5a) - 1/a) = GM/a * (4/3 - 1) = (1/3) * GM/a ==> v_a / v_circle = 1 / sqrt(3) ≈ 0.577.",
+      "factor_nominations": {
+        "band": "D3",
+        "status": "AUTHOR_ONLY_NOT_QUALIFIED",
+        "scores": [
+          2,
+          1,
+          2,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "PH05-G07-QRT-JUSTIFY-D4",
+      "unit": "PH05-G07",
+      "op": "JUSTIFY",
+      "cell": "D4.7",
+      "uid": "AUTHORED-PH05-G07-QRT-JUSTIFY-D4-R1",
+      "revision": "ph05-g07-qrt-justify-d4-20261115-r1",
+      "source_role": "AUTHORED_TRANSFER",
+      "qrt_status": "PROPOSED_UNREVIEWED",
+      "prediction": "Identify whether escape speed depends on launch angle, and justify using the scalar nature of kinetic and potential energy.",
+      "prompt": "A student claims: 'To escape from Earth, a rocket must be launched strictly vertically because gravitational pull is vertical; an inclined launch wastes energy overcoming gravity sideways.' Rigorously evaluate this claim. Formulate the scalar mechanical energy equation for an arbitrary launch angle theta above the horizontal (neglecting atmosphere and rotation), state whether escape occurs for any launch angle with v >= v_e, and identify the single geometric constraint on theta.",
+      "w": "Prove escape speed is a scalar energy barrier condition independent of launch angle, and identify that the only physical constraint on launch angle is that the ballistic trajectory must not intersect the planet's surface.",
+      "reconstruction": "1. Refutation of Claim: The student's claim is false. Gravity is a conservative central force. Work done by gravity depends exclusively on initial and final radial positions, independent of path. 2. Energy Formulation: Kinetic energy K = (1/2)*m*v^2 is a scalar quantity depending only on speed squared, regardless of velocity vector direction. Gravitational potential energy U(R) = -G*M*m / R depends only on surface radius R. Total mechanical energy is E = (1/2)*m*v^2 - G*M*m / R. 3. Escape Condition: Escape to infinity requires residual energy E >= 0: (1/2)*m*v^2 >= G*M*m/R ==> v >= sqrt(2*G*M / R) = v_e. This threshold is identical for all launch angles theta! 4. Geometric Constraint: The trajectory for v = v_e is a parabola with the Earth's center at its focus. If the launch angle is directed downward or too shallowly into the ground (theta < 0), the parabolic path intersects the physical sphere of the Earth before reaching space. For all angles theta > 0 that clear the ground, escape is successful.",
+      "alternative": "Angular momentum conservation check: In inclined launch, L = m*R*v*cos(theta) != 0. At infinity, L = m*b*v_inf, where b is the impact parameter. Since kinetic energy at infinity is K_inf = E >= 0, the body escapes along a hyperbolic or parabolic branch without energy penalty.",
+      "hints": [
+        "Recall that work done by a conservative force is independent of trajectory path.",
+        "Check whether kinetic energy depends on velocity components or magnitude squared.",
+        "Identify what happens geometrically if launch angle points toward the ground."
+      ],
+      "diagnosis": "If you agreed with the student, you confused vertical velocity component with total scalar speed. Gravity curves the path, converting horizontal speed into radial speed at large distances.",
+      "repair": "Remember that in a central field, mechanical energy is strictly conserved: E = 0.5*m*v^2 - GMm/r = const. No direction term appears in the scalar energy balance.",
+      "boundaryPrompt": "What is the trajectory shape when launch speed is exactly equal to escape speed (v = v_e)?",
+      "boundaryModel": "When v = v_e, total energy E = 0. The orbital eccentricity is exactly e = 1, which represents a parabolic escape trajectory.",
+      "factor_nominations": {
+        "band": "D4",
+        "status": "AUTHOR_ONLY_NOT_QUALIFIED",
+        "scores": [
+          2,
+          1,
+          2,
+          1,
+          2
+        ]
+      }
+    }
+  ],
+  "main_cycles": [
+    {
+      "op": "EXPLAIN",
+      "unit": "PH05-G06",
+      "members": [
+        "G01",
+        "G02",
+        "G06"
+      ],
+      "prediction": "When atmospheric drag exerts a continuous retarding force on a low Earth satellite, predict whether its orbital speed decreases, remains constant, or increases.",
+      "prompt": "A 500 kg satellite orbits Earth in an approximately circular low orbit. Due to rarefied atmospheric gas at orbital altitude, the satellite experiences a continuous frictional drag force F_drag opposing its instantaneous velocity. Explain using gravitational energy bookkeeping, the virial theorem, and centripetal force balance why the satellite's orbital speed increases as friction acts on it over time. Quantify the ratio between the energy lost to heat and the kinetic energy gained.",
+      "w": "Apply the virial theorem E = -K = U/2 to prove dK/dt = -dE/dt > 0, showing that 200% of the lost potential energy feeds 100% into drag heat and 100% into increased orbital kinetic speed.",
+      "reconstruction": "1. Circular Orbital Dynamics: For a circular orbit of radius r, centripetal force equals gravity: G*M*m / r^2 = m*v^2 / r ==> v^2 = G*M / r. 2. Energy Relationships: Kinetic energy is K = (1/2)*m*v^2 = G*M*m / (2r). Potential energy is U = -G*M*m / r = -2 * K. Total mechanical energy is E = K + U = -K = (1/2)*U = -G*M*m / (2r). 3. Rate of Change Under Drag: Atmospheric drag performs negative work, dissipating total energy: dE/dt = F_drag * v < 0 (total energy decreases). Differentiating E = -K yields: dK/dt = -dE/dt. Because dE/dt is negative, dK/dt is strictly POSITIVE! Kinetic energy increases, so orbital speed v = sqrt(2K/m) increases. 4. Physical Mechanism: As total energy is lost, the satellite drops to a lower radius r (dr/dt < 0). Differentiating U = -GMm/r yields dU/dt = (GMm/r^2)*(dr/dt) = 2 * dE/dt. The satellite loses twice as much potential energy as the total energy lost: Delta_U = 2 * Delta_E. Exactly half of this released potential energy compensates for the atmospheric friction loss, while the remaining half accelerates the satellite into a faster circular orbit.",
+      "boundaryPrompt": "What happens when the satellite enters dense troposphere air where drag force becomes comparable to gravitational force?",
+      "boundaryModel": "The quasi-circular equilibrium breaks down entirely. The satellite spirals steeply downward in a ballistic plunge, where intense drag deceleration overcomes gravity, leading to rapid terminal heating.",
+      "id": "PH05-MAIN-EXPLAIN-D3-R1",
+      "uid": "AUTHORED-PH05-MAIN-EXPLAIN-D3-R1",
+      "revision": "ph05-main-explain-20261115-r1",
+      "source_role": "AUTHORED_TRANSFER",
+      "cell": "D3.2",
+      "qrt_status": "PROPOSED_UNREVIEWED",
+      "hints": [
+        "State the exact algebraic relationships connecting E, K, and U for a circular orbit.",
+        "Recognize that friction removes total mechanical energy E, making E more negative.",
+        "Relate change in kinetic energy dK to change in total energy dE using E = -K."
+      ],
+      "alternative": "Direct radial differentiation: F_c = GMm/r^2 = m v^2 / r ==> v = sqrt(GM/r). Since drag causes altitude drop (dr/dt < 0), dv/dt = -0.5*sqrt(GM)*r^(-1.5)*(dr/dt) > 0.",
+      "diagnosis": "If you claimed friction must directly reduce speed, you treated the satellite like a car on a horizontal road where potential energy is constant. In orbital mechanics, gravity acts as an energy reservoir.",
+      "repair": "Remember the satellite paradox: losing 1 Joule of mechanical energy releases 2 Joules of potential energy, delivering a net gain of 1 Joule of kinetic energy.",
+      "status": "ACADEMIC_HOLD"
+    },
+    {
+      "op": "APPLY",
+      "unit": "PH05-G06",
+      "members": [
+        "G01",
+        "G05",
+        "G06"
+      ],
+      "prediction": "When a satellite in circular orbit fires retrograde rockets, does its new orbit remain circular or become elliptical?",
+      "prompt": "A reconnaissance satellite of mass m revolves around Earth in a circular parking orbit at altitude h = R (so initial orbital radius is r1 = 2R, where R is Earth radius and g0 is surface gravity). The satellite fires a brief retrograde engine burst that reduces its tangential speed from v0 to v1 = v0 - Delta_v. Calculate: (1) the initial orbital speed v0 in terms of g0 and R, (2) the maximum speed reduction Delta_v such that the satellite grazes the Earth's surface at perigee without colliding earlier.",
+      "w": "Apply vis-viva equation and angular momentum conservation to an elliptical transfer orbit with apogee r_a = 2R and perigee r_p = R, deducing v1 = sqrt(2/3)*v0 and Delta_v = v0 * (1 - sqrt(2/3)).",
+      "reconstruction": "1. Initial Circular Speed: At radius r1 = 2R, circular speed is v0 = sqrt(GM / 2R) = sqrt(g0 * R / 2). 2. Elliptical Trajectory After Burn: The retrograde burn occurs at apogee of the new elliptical orbit: r_a = 2R. To graze Earth's surface without crashing, perigee must be at Earth's surface: r_p = R. Semimajor axis of transfer ellipse: 2a = r_a + r_p = 2R + R = 3R ==> a = 1.5 R. 3. Speed at Apogee: Using vis-viva equation v^2 = GM * (2/r - 1/a): At apogee r = r_a = 2R: v1^2 = GM * (2/(2R) - 1/(1.5R)) = GM * (1/R - 2/(3R)) = GM / (3R) = (2/3) * (GM / 2R) = (2/3) * v0^2. Therefore, post-burn speed is v1 = sqrt(2/3) * v0 ≈ 0.8165 * v0. 4. Maximum Speed Reduction: Delta_v = v0 - v1 = v0 * (1 - sqrt(2/3)) ≈ 0.1835 * v0. If Delta_v exceeds this value, perigee falls inside the Earth, causing premature atmospheric impact.",
+      "boundaryPrompt": "What would happen if Delta_v was equal to the full orbital speed (Delta_v = v0)?",
+      "boundaryModel": "If speed drops to zero (v1 = 0), angular momentum becomes zero. The satellite ceases to orbit and falls radially straight down into the Earth under pure linear free-fall.",
+      "id": "PH05-MAIN-APPLY-D3-R1",
+      "uid": "AUTHORED-PH05-MAIN-APPLY-D3-R1",
+      "revision": "ph05-main-apply-20261115-r1",
+      "source_role": "AUTHORED_TRANSFER",
+      "cell": "D3.3",
+      "qrt_status": "PROPOSED_UNREVIEWED",
+      "hints": [
+        "Identify the apogee and perigee of the post-burn transfer orbit: r_a = 2R and r_p = R.",
+        "Calculate the semimajor axis a = (r_a + r_p) / 2.",
+        "Apply the vis-viva equation v^2 = GM * (2/r - 1/a) at apogee r = 2R."
+      ],
+      "alternative": "Use conservation of energy and angular momentum: r_a*v1 = r_p*v_p ==> v_p = 2*v1. Energy conservation: 0.5*v1^2 - GM/(2R) = 0.5*(2v1)^2 - GM/R ==> 1.5*v1^2 = GM/(2R) ==> v1^2 = GM/(3R) ==> v1/v0 = sqrt(2/3).",
+      "diagnosis": "If you used circular orbit formulas for the post-burn path, remember that an instantaneous burn at one point creates an elliptical orbit.",
+      "repair": "Apply Keplerian ellipse equations whenever speed deviates from the exact local circular speed v_c = sqrt(GM/r).",
+      "status": "ACADEMIC_HOLD"
+    },
+    {
+      "op": "MODEL",
+      "unit": "PH05-G03",
+      "members": [
+        "G01",
+        "G03",
+        "G04"
+      ],
+      "prediction": "When a tunnel does not pass through the center of the Earth, is the oscillation period shorter, longer, or identical to a central tunnel?",
+      "prompt": "A straight, frictionless tunnel is drilled through the Earth connecting two surface stations along an arbitrary chord (the tunnel does not pass through Earth's center; its closest approach to the center is distance b < R). A transport capsule of mass m is released from rest at one station. (1) Model the gravitational restoring force along the tunnel axis. (2) Prove that the capsule executes simple harmonic motion (SHM). (3) Prove that the oscillation period T = 2*pi*sqrt(R/g0) ≈ 84.3 minutes is strictly invariant, regardless of the chord's distance b or tunnel length.",
+      "w": "Resolve interior gravitational force F(r) = -(m*g0/R)*r along the tunnel axis x to show F_x = F(r)*(x/r) = -(m*g0/R)*x, proving SHM restoring force is independent of perpendicular offset b.",
+      "reconstruction": "1. Interior Gravitational Force: At distance r from Earth's center, the shell theorem gives radial inward force F(r) = m * g(r) = m * g0 * (r / R). 2. Projection Along Tunnel: Let the tunnel lie along the x-axis, with origin x = 0 at the midpoint of the tunnel (closest approach to center at perpendicular distance b). At any position x along the tunnel, radial distance to center is r = sqrt(x^2 + b^2). The component of gravitational force along the tunnel is F_x = -F(r) * cos(theta), where cos(theta) = x / r. Substituting F(r): F_x = -[m * g0 * (r / R)] * (x / r) = - (m * g0 / R) * x. 3. Equation of Motion: m * (d^2 x / dt^2) = - (m * g0 / R) * x ==> d^2 x / dt^2 + (g0 / R) * x = 0. Notice that the distance b cancels out completely! 4. Period Invariance: This is the standard simple harmonic oscillator equation d^2 x / dt^2 + omega^2 * x = 0 with angular frequency omega = sqrt(g0 / R). The period is T = 2 * pi / omega = 2 * pi * sqrt(R / g0). For Earth (R = 6.37 * 10^6 m, g0 = 9.8 m/s^2): T = 2 * pi * sqrt(6.37 * 10^6 / 9.8) ≈ 5068 s ≈ 84.5 minutes. The one-way transit time is T/2 ≈ 42.2 minutes, identical for ANY straight chord tunnel!",
+      "boundaryPrompt": "What happens if the tunnel passes directly through the center (b = 0)?",
+      "boundaryModel": "For b = 0, x = r directly. The equation of motion F = -(mg0/R)*x is unchanged, confirming that central transit is merely the special case b = 0 with identical period T ≈ 84.5 minutes.",
+      "id": "PH05-MAIN-MODEL-D3-R1",
+      "uid": "AUTHORED-PH05-MAIN-MODEL-D3-R1",
+      "revision": "ph05-main-model-20261115-r1",
+      "source_role": "AUTHORED_TRANSFER",
+      "cell": "D3.4",
+      "qrt_status": "PROPOSED_UNREVIEWED",
+      "hints": [
+        "Set up a Cartesian coordinate system with x along the tunnel and y perpendicular to it.",
+        "Express radial distance r in terms of x and perpendicular offset b: r = sqrt(x^2 + b^2).",
+        "Project radial gravity F(r) = -(mg0/R)*r onto the x-axis using cos(theta) = x/r."
+      ],
+      "alternative": "Potential energy approach: Inside Earth, potential is V(r) = 0.5*(g0/R)*r^2 - 1.5*g0*R. Along tunnel r^2 = x^2 + b^2 ==> V(x) = 0.5*(g0/R)*x^2 + [const]. Force is F_x = -dV/dx = -(g0/R)*x, immediately showing a harmonic potential with stiffness k = mg0/R.",
+      "diagnosis": "If you thought a longer chord has a longer period, you forgot that for longer chords the gravitational acceleration along the tunnel is proportionally stronger, keeping period constant.",
+      "repair": "Observe that the projection factor x/r exactly cancels the r in the linear force law F proportional to r, leaving restoring stiffness k = mg0/R invariant.",
+      "status": "ACADEMIC_HOLD"
+    },
+    {
+      "op": "REPRESENT",
+      "unit": "PH05-G02",
+      "members": [
+        "G01",
+        "G02",
+        "G03"
+      ],
+      "prediction": "For a planet where density decreases linearly from center to surface, will peak gravity occur at the surface, at the center, or at an intermediate radius?",
+      "prompt": "A non-uniform spherical planet of radius R has radial density profile rho(r) = rho0 * (1 - r/R) for 0 <= r <= R, where rho0 is the central density. Outside the planet (r > R), density is zero. (1) Derive the total mass M of the planet in terms of rho0 and R. (2) Derive the gravitational field g(r) for both interior (r <= R) and exterior (r >= R). (3) Find the exact radial coordinate r_max where gravitational field g(r) reaches its absolute maximum, and express g_max in terms of G, rho0, and R.",
+      "w": "Integrate spherical shells dm = 4*pi*r^2*rho(r)*dr to find enclosed mass M(r) = 4*pi*rho0*(r^3/3 - r^4/4R), construct g(r) = G*M(r)/r^2 = 4*pi*G*rho0*(r/3 - r^2/4R), and maximize by setting dg/dr = 0 to find r_max = (2/3)R.",
+      "reconstruction": "1. Enclosed Mass Integration: Consider thin spherical shells of radius r and thickness dr: dm = 4 * pi * r^2 * rho(r) * dr = 4 * pi * rho0 * (r^2 - r^3 / R) * dr. Integrating from 0 to r: M(r) = 4 * pi * rho0 * [r^3 / 3 - r^4 / (4R)]. For the total mass (r = R): M_total = 4 * pi * rho0 * [R^3 / 3 - R^4 / (4R)] = 4 * pi * rho0 * R^3 * (1/12) = (pi / 3) * rho0 * R^3. 2. Gravitational Field Function: Interior (r <= R): g(r) = G * M(r) / r^2 = 4 * pi * G * rho0 * [r / 3 - r^2 / (4R)]. Exterior (r >= R): g(r) = G * M_total / r^2 = (pi / 3) * G * rho0 * R^3 / r^2. 3. Maximum Gravity Location: To find maximum gravity inside the planet, differentiate g(r) with respect to r and set to zero: dg/dr = 4 * pi * G * rho0 * [1 / 3 - 2r / (4R)] = 0 ==> 1/3 = r / (2R) ==> r_max = (2/3) * R. 4. Maximum Gravity Value: g_max = g(2R/3) = 4 * pi * G * rho0 * [(2R/9) - (4R^2 / 9) / (4R)] = 4 * pi * G * rho0 * R * [2/9 - 1/9] = (4/9) * pi * G * rho0 * R. Gravity is greatest not at the surface, but inside the planet at depth d = R/3!",
+      "boundaryPrompt": "What is surface gravity g(R) compared to peak gravity g_max?",
+      "boundaryModel": "At surface r = R: g(R) = 4*pi*G*rho0*R * (1/3 - 1/4) = (1/3)*pi*G*rho0*R. The ratio is g(R) / g_max = (1/3) / (4/9) = 3/4 = 0.75. Surface gravity is only 75% of maximum interior gravity.",
+      "id": "PH05-MAIN-REPRESENT-D3-R1",
+      "uid": "AUTHORED-PH05-MAIN-REPRESENT-D3-R1",
+      "revision": "ph05-main-represent-20261115-r1",
+      "source_role": "AUTHORED_TRANSFER",
+      "cell": "D3.5",
+      "qrt_status": "PROPOSED_UNREVIEWED",
+      "hints": [
+        "Use thin spherical shell integration: dM = 4 * pi * r^2 * rho(r) * dr.",
+        "Calculate g(r) inside by dividing enclosed mass M(r) by r^2.",
+        "Differentiate g(r) with respect to r to locate the peak value."
+      ],
+      "alternative": "Check behavior: At r = 0, g = 0. As r increases, dense core drives rapid growth. Near surface, density falls to zero, so added shells contribute negligible mass while increasing distance squared, causing field to peak at r = 2R/3.",
+      "diagnosis": "If you assumed maximum gravity always occurs at the surface r = R, that is true ONLY for uniform or outward-increasing density. For core-concentrated planets, peak gravity is interior.",
+      "repair": "Apply differential condition dg/dr = 0 to locate turning points of the field function whenever density varies radially.",
+      "status": "ACADEMIC_HOLD"
+    },
+    {
+      "op": "SYNTHESIZE",
+      "unit": "PH05-G01",
+      "members": [
+        "G01",
+        "G02",
+        "G07"
+      ],
+      "prediction": "When two identical stars fall toward each other from rest, will their relative speed at collision depend on their individual masses or their sum?",
+      "prompt": "Two identical spherical stars, each of mass M and radius R, are initially at rest in deep space separated by a very large center-to-center distance d >> R. Under their mutual gravitational attraction, they accelerate toward each other along the line connecting their centers. (1) Determine the speed of each star in the center of mass frame when their surfaces touch. (2) Determine the relative speed of approach v_rel between the two stars at the instant of surface contact. Express answers in terms of G, M, and R.",
+      "w": "Synthesize center of mass symmetry (v1 = v2 = v) with mechanical energy conservation E_initial = 0 = E_final to deduce each star's speed v = sqrt(GM / (4R)) and relative speed v_rel = 2v = sqrt(GM / R).",
+      "reconstruction": "1. System Symmetry & Center of Mass: The two stars have identical mass M and start from rest with no external forces. By symmetry, they move with equal and opposite speeds v1 = v2 = v at all times, and collide at their stationary center of mass midpoint. 2. Contact Separation: The stars are spherical with radius R. When their surfaces touch, their center-to-center distance is r_final = R + R = 2R. 3. Mechanical Energy Conservation: Initial energy at d >> R: E_initial = K_initial + U_initial = 0 - G * M * M / d ≈ 0. Final energy at contact: E_final = K_final + U_final = [ (1/2)*M*v^2 + (1/2)*M*v^2 ] - G * M * M / (2R) = M * v^2 - G * M^2 / (2R). Equating initial and final mechanical energy: 0 = M * v^2 - G * M^2 / (2R) ==> M * v^2 = G * M^2 / (2R) ==> v^2 = G * M / (4R) ==> v = sqrt(G * M / (4R)) = 0.5 * sqrt(G * M / R). 4. Relative Approach Speed: Because the two stars move toward each other with speed v in opposite directions, their relative approach velocity is: v_rel = v - (-v) = 2 * v = 2 * [0.5 * sqrt(G * M / R)] = sqrt(G * M / R).",
+      "boundaryPrompt": "What would the relative speed be if one mass was infinitely massive (M1 -> infinity) like a star and a small asteroid of radius R?",
+      "boundaryModel": "For M1 >> M2, the large star remains motionless. Energy gives (1/2)*m*v^2 = GMm/R ==> v_rel = sqrt(2GM/R) = v_escape.",
+      "id": "PH05-MAIN-SYNTHESIZE-D3-R1",
+      "uid": "AUTHORED-PH05-MAIN-SYNTHESIZE-D3-R1",
+      "revision": "ph05-main-synthesize-20261115-r1",
+      "source_role": "AUTHORED_TRANSFER",
+      "cell": "D3.6",
+      "qrt_status": "PROPOSED_UNREVIEWED",
+      "hints": [
+        "State center-to-center distance at the moment the two surfaces make contact: r = 2R.",
+        "Apply conservation of mechanical energy between initial rest (E = 0) and contact.",
+        "Remember that both stars acquire kinetic energy: total K = (1/2)*M*v^2 + (1/2)*M*v^2 = M*v^2."
+      ],
+      "alternative": "Reduced mass approach: In relative coordinates, reduced mass is mu = M*M / (M+M) = M/2. Kinetic energy in center-of-mass frame is (1/2)*mu*v_rel^2 = (1/2)*(M/2)*v_rel^2 = (1/4)*M*v_rel^2. Equating to potential drop GM^2 / (2R) gives (1/4)*M*v_rel^2 = GM^2 / (2R) ==> v_rel^2 = GM / R ==> v_rel = sqrt(GM / R).",
+      "diagnosis": "If you set final center-to-center separation as R instead of 2R, you treated the two bodies as collapsing into a single point rather than touching at surface radius 2R.",
+      "repair": "Draw the two touching spheres: each has radius R, so the distance between their centers is R + R = 2R.",
+      "status": "ACADEMIC_HOLD"
+    },
+    {
+      "op": "JUSTIFY",
+      "unit": "PH05-G03",
+      "members": [
+        "G01",
+        "G03",
+        "G07"
+      ],
+      "prediction": "Inside a hollow uniform spherical shell, does a test particle experience any gravitational force off-center?",
+      "prompt": "A thick, uniform spherical shell of total mass M has inner radius R1 and outer radius R2. A narrow radial borehole is drilled through the shell from outer surface to inner cavity, and a particle of mass m is released from rest at the outer surface r = R2. (1) Rigorously prove using the shell theorem that inside the hollow cavity (0 <= r <= R1), the particle experiences zero gravitational force. (2) Prove that the particle executes periodic oscillatory motion back and forth through the cavity. (3) Justify why the overall motion is NOT simple harmonic motion.",
+      "w": "Apply shell theorem to prove g(r) = 0 for r <= R1, show particle drifts through cavity at constant speed v = sqrt(2GM/R2 * [1 - ...]), and prove motion cannot be SHM because restoring force is non-linear and vanishes entirely in the cavity.",
+      "reconstruction": "1. Cavity Force Proof: By Newton's Shell Theorem, consider any point P inside the spherical cavity at distance r <= R1. Subdivide the shell into thin concentric spherical shells. For each thin shell, construct narrow double cones with apex at P. The mass of the intercepted surface elements scales as d1^2 and d2^2, while gravitational force scales as 1/d1^2 and 1/d2^2. The distance factors cancel identically: dF1 = G*sigma*(d1^2 * dOmega) / d1^2 = G*sigma*dOmega = dF2. The opposing pulls cancel everywhere in the cavity: g(r) = 0 for all r <= R1. 2. Periodic Oscillation Proof: Starting from rest at r = R2, the particle accelerates inward through the thick shell (where g(r) > 0 directed toward center). Upon reaching the inner surface r = R1, it has acquired non-zero speed v1. Since g = 0 inside the cavity, the particle coasts across the hollow cavity at constant velocity v1 until it reaches the opposite inner wall at r = R1. Entering the opposite shell wall, it experiences an inward restoring force directed back toward the center, which decelerates it to rest at the opposite outer surface r = R2. It then reverses direction and retraces the path. The motion is strictly symmetric and periodic. 3. Non-Harmonic Justification: Simple harmonic motion requires the net restoring force to be strictly linear with displacement at ALL points: F(r) = -k * r. In this system: (a) Inside the cavity (r <= R1), F(r) = 0, so acceleration is zero rather than proportional to r. (b) Inside the shell wall (R1 <= r <= R2), enclosed mass is M_enc(r) = M * (r^3 - R1^3) / (R2^3 - R1^3), giving F(r) = -G*M*m * (r - R1^3 / r^2) / (R2^3 - R1^3), which contains an inverse-square term (-R1^3 / r^2) and is non-linear! Because the restoring force is zero inside the cavity and non-linear in the wall, the oscillation is periodic but NOT simple harmonic.",
+      "boundaryPrompt": "What does the cavity force and restoring equation become in the limit R1 -> 0 (solid uniform sphere)?",
+      "boundaryModel": "When R1 = 0, the cavity vanishes and F(r) = -(GMm/R2^3)*r everywhere. The non-linear term vanishes, restoring force is purely linear, and motion becomes exact simple harmonic motion.",
+      "id": "PH05-MAIN-JUSTIFY-D4-R1",
+      "uid": "AUTHORED-PH05-MAIN-JUSTIFY-D4-R1",
+      "revision": "ph05-main-justify-20261115-r1",
+      "source_role": "AUTHORED_TRANSFER",
+      "cell": "D4.7",
+      "qrt_status": "PROPOSED_UNREVIEWED",
+      "hints": [
+        "Use the shell theorem to evaluate gravity inside the empty inner cavity (r <= R1).",
+        "Analyze the speed of the particle as it traverses the cavity where force is zero.",
+        "Check whether F is proportional to -r across the entire journey to test for SHM."
+      ],
+      "alternative": "Potential energy profile: Inside cavity, potential is flat: V(r) = const. Force F = -dV/dr = 0. In the wall, V(r) is cubic in r^2 and 1/r, confirming non-parabolic potential well and non-SHM motion.",
+      "diagnosis": "If you assumed that any symmetrical back-and-forth oscillation is simple harmonic motion, recall that SHM requires a parabolic potential well (linear restoring force F = -kx). Flat-bottomed wells produce non-harmonic periodic motion.",
+      "repair": "Distinguish periodic motion (any repeating path with period T) from simple harmonic motion (a single sine/cosine wave produced by linear Hookean force).",
+      "status": "ACADEMIC_HOLD"
+    }
+  ]
+}
