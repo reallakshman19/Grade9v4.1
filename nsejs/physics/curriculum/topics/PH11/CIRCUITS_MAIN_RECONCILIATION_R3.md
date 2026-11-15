@@ -1,0 +1,10 @@
+# PH11 Circuits reconciliation R3 (author-exposed technical candidate)
+
+Base main 8fa14e37612eada96f63d6fee41b9d47b819dd36; circuit-only source repair #42 merged at bae49826dbc85d990e049e452101689a0ba18100; alternative #40 remains unmerged. This reconciles #42 onto current main without merging the obsolete #38 Gravitation implementation. Preserve PH05 source-first chapter/catalog/reader link and review records from #41. The 56 imported worksheet items are not authenticated past NSEJS exam questions. Original owner-supplied PDF SHA-256: 1d7f16219d4353bf74e6dd29ebd9c3e9b770ad3d2b402d46aed81165bb4e3c4e. All 56 source/rights/science/QRT/academic HOLD. Retain #42 vector redraws, do not silently claim source-pixel equivalence or independent visual qualification.
+
+- 36 L1 + 20 L2; 28 unique figures; 29 references; 168 H1–H3 prompts; 168 solution steps; 56 checks; 10 original source-claimed Circuit candidates retained (66 total).
+- Preserve #42 exact-byte revision and durable attempt gate. Sequential worksheet helpers persist exposure by revision, record assisted status on commit, block disclosure when storage is denied. No precommit solution text nodes. Search entries exclude worksheet helper text. Correct remaining stale hub counts, keep actual existing PH05 route, bump reader cache key.
+- Expand L1 Q19 and L2 Q11/Q15 nodal/symmetry reasoning; repair L2 Q10/Q19/Q20 explanatory checks. Keep original source key/wording, no cognitive promotion.
+- Retain #42 vector/solver/adapter/CI regressions; extend browser QA to assert sequential reveal, persisted exposure, denied storage and stale image revision. New combined exact-head CI pending. No independent B1–B7/rights/source/science/academic decision. No merge or deployment from this draft.
+
+R3 readback: exact source hyphen restored for L1 Q05; all L1 stems now have local SHA-256 digests and consistent H1/H2 Blueprint labels. Reader static Circuit count also reconciled to 66.
