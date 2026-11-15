@@ -1,0 +1,31 @@
+name: NSEJS all-page search QA
+on:
+  pull_request:
+    paths:
+      - 'tools/build_search_index.py'
+      - 'tools/search_learner_pages.py'
+      - 'js/site-search.js'
+      - 'js/site-header.js'
+      - 'nsejs/**'
+      - 'curriculum/chemistry/preview/**'
+      - 'data/learner-search-*.json'
+      - 'tests/test_nsejs_search_all_pages_r1.py'
+      - '.github/workflows/nsejs-search-r1.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  search:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install pytest
+      - run: python tools/build_search_index.py
+      - run: node --check js/site-search.js && node --check js/site-header.js
+      - run: pytest -q tests/test_search_engine.py tests/test_nsejs_circuits_search_r1.py tests/test_nsejs_search_all_pages_r1.py
+      - run: python tools/build_search_index.py --install-search
+      - run: pip install playwright==1.55.0 && python -m playwright install --with-deps chromium
+      - run: python tools/nsejs_search_all_pages_browser_qa.py

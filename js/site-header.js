@@ -469,6 +469,7 @@
 
   function openSearch(e) {
     if (e && e.preventDefault) e.preventDefault();
+    if (window.Grade9Search?.initialized) { window.Grade9Search.open({scope:'nsejs'}); return; }
     if (typeof dialog.showModal === 'function' && !dialog.open) {
       dialog.showModal();
     } else {
@@ -528,6 +529,7 @@
 
   document.addEventListener('keydown', e => {
     if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+      if (window.Grade9Search?.initialized) return;
       e.preventDefault();
       openSearch();
     }

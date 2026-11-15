@@ -25,6 +25,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Rebuild complete NSEJS search index and install search on public learner pages
+        run: python3 tools/build_search_index.py --install-search
+
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v5
 

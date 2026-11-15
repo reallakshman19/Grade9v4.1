@@ -25,31 +25,9 @@
 
   // Compute relative root to site root based on script src or location
   function computeSiteRoot() {
-    if (script && script.dataset && script.dataset.siteRoot) {
-      return script.dataset.siteRoot;
-    }
     if (script && script.src) {
-      try {
-        const u = new URL(script.src, window.location.href);
-        const idx = u.pathname.lastIndexOf('/js/');
-        if (idx !== -1) {
-          const rootPath = u.pathname.slice(0, idx + 1);
-          // Return relative path from current page to that root
-          const curPath = window.location.pathname;
-          const curParts = curPath.split('/').filter(Boolean);
-          const rootParts = rootPath.split('/').filter(Boolean);
-          let depth = 0;
-          if (curParts.length > rootParts.length) {
-            depth = curParts.length - rootParts.length;
-          }
-          if (depth > 0) {
-            return '../'.repeat(depth);
-          }
-          return './';
-        }
-      } catch (e) {}
+      return new URL("../", script.src).href;
     }
-
     // Heuristic based on current pathname
     const p = window.location.pathname.toLowerCase();
     if (p.includes('/core1/recovery/') || p.includes('/physics/core1/recovery/')) {
@@ -71,7 +49,7 @@
 
   // Determine page context default scope
   const isNSEJSPage = window.location.pathname.toLowerCase().includes('/nsejs/');
-  let currentScope = isNSEJSPage ? 'nsejs' : 'all';
+  let currentScope = 'nsejs';
   let activeCategory = 'all';
 
   // Data cache
@@ -102,7 +80,7 @@
       let loadedIndex = null;
       for (const u of indexCandidates) {
         try {
-          const res = await fetch(u);
+          const res = await fetch(u, {cache: 'no-cache'});
           if (res.ok) {
             const data = await res.json();
             if (Array.isArray(data) && data.length > 0) {
@@ -117,7 +95,7 @@
       const synCandidates = getCandidateDataUrls('keyword-synonyms.v1.json');
       for (const u of synCandidates) {
         try {
-          const res = await fetch(u);
+          const res = await fetch(u, {cache: 'no-cache'});
           if (res.ok) {
             const data = await res.json();
             if (data && Array.isArray(data.synonyms)) {
@@ -133,7 +111,13 @@
         return [];
       }
 
-      searchData = loadedIndex;
+      searchData = loadedIndex.map(item => {
+        // Defence in depth: legacy snapshots must not surface solution vectors.
+        if (item.category !== 'question') return item;
+        const safe = {...item, hints: [], options: []};
+        safe.search_text = [item.id,item.original_id,item.source_id,item.title,item.stem,item.topic,item.subject,item.url,item.band,item.op].filter(Boolean).join(' ');
+        return safe;
+      });
       return searchData;
     })();
 
@@ -170,7 +154,7 @@
 
   const title = document.createElement('strong');
   title.id = 'g9SearchTitle';
-  title.textContent = isNSEJSPage ? 'Search NSEJS Junior Science' : 'Search Grade9 v4.0';
+  title.textContent = 'Search NSEJS Junior Science';
 
   const scopeIndicator = document.createElement('span');
   scopeIndicator.className = 'g9-search-scope-indicator' + (currentScope === 'nsejs' ? ' scope-nsejs' : '');
@@ -293,7 +277,7 @@
     }
 
     if (title) {
-      title.textContent = currentScope === 'nsejs' ? 'Search NSEJS Junior Science' : 'Search Grade9 v4.0';
+      title.textContent = currentScope === 'all' ? 'Search all Grade9 portals' : 'Search NSEJS Junior Science';
     }
   }
 
@@ -329,7 +313,7 @@
     const textNorm = normalize(item.search_text);
 
     // Exact ID Match (e.g. NSEJS-2023-P-Q01)
-    if (idNorm === rawTerm || item.original_id === rawTerm || item.id === rawTerm || idNorm === 'q ' + rawTerm) {
+    if (idNorm === rawTerm || normalize(item.source_id) === rawTerm || item.original_id === rawTerm || item.id === rawTerm || idNorm === 'q ' + rawTerm) {
       score += 30000;
     } else if (idNorm.includes(rawTerm)) {
       score += 8000;
@@ -372,7 +356,7 @@
     if (scope === 'all') return true;
     if (scope === 'nsejs') return Boolean(item.is_nsejs);
     const subj = (item.subject || '').toLowerCase();
-    return subj === scope;
+    return subj === scope && (scope === 'mathematics' || Boolean(item.is_nsejs));
   }
 
   // Render Result Card Element
@@ -402,7 +386,7 @@
     if (item.stem && item.stem !== item.title) {
       sub.textContent = item.stem.slice(0, 140) + '…';
     } else if (item.search_text) {
-      sub.textContent = item.search_text.slice(0, 120) + '…';
+      sub.textContent = item.original_id || item.id;
     } else {
       sub.textContent = item.original_id || item.id;
     }
@@ -431,21 +415,18 @@
   }
 
   // Render Question Bank Bridge
-  function createQbBridge(count, queryTerm) {
+  function createQbBridge(count, queryTerm, subject) {
     const bridge = document.createElement('a');
     bridge.className = 'g9-search-qb-bridge';
 
-    let qbUrl = siteRoot + 'nsejs/physics/question-bank.html';
-    if (currentScope === 'chemistry') {
-      qbUrl = siteRoot + 'nsejs/chemistry/question-bank.html';
-    } else if (currentScope === 'biology') {
-      qbUrl = siteRoot + 'nsejs/biology/question-bank.html';
-    }
+    let qbUrl = siteRoot + 'nsejs/physics/index.html';
+    if (subject === 'Chemistry') qbUrl = siteRoot + 'nsejs/chemistry/index.html';
+    else if (subject === 'Biology') qbUrl = siteRoot + 'nsejs/biology/index.html';
 
     bridge.href = qbUrl + '?q=' + encodeURIComponent(queryTerm);
 
     const left = document.createElement('span');
-    left.textContent = `🎯 Open Question Bank with all ${count} matching questions`;
+    left.textContent = `Open ${subject} Question Bank · ${count} indexed question matches`;
 
     const arrow = document.createElement('span');
     arrow.textContent = '›';
@@ -456,8 +437,17 @@
     return bridge;
   }
 
+  function appendBankBridges(items, queryTerm) {
+    for (const subject of ['Physics','Chemistry','Biology']) {
+      const bank = items.filter(x => x.subject === subject && x.url.split('?')[0].split('#')[0] === 'nsejs/' + subject.toLowerCase() + '/index.html');
+      if (bank.length) results.appendChild(createQbBridge(bank.length, queryTerm, subject));
+    }
+  }
+
   // Main Render Logic
+  let renderGeneration = 0;
   async function renderSearch() {
+    const generation = ++renderGeneration;
     let rawInput = input.value.trim();
     results.replaceChildren();
 
@@ -488,7 +478,7 @@
 
       const text = document.createElement('div');
       text.textContent = currentScope === 'nsejs'
-        ? 'Search 288+ authentic NSEJS questions, 27 Core 1 lessons, and Junior Science topics.'
+        ? 'Search Physics, Chemistry and Biology: chapters, lessons, practice and historical question candidates.'
         : 'Type to search across Physics, Chemistry, Biology, Mathematics, and NSEJS Junior Science.';
 
       empty.append(icon, text);
@@ -497,11 +487,12 @@
     }
 
     const data = await loadData();
+    if (generation !== renderGeneration) return;
     if (!data || data.length === 0) {
       tabsContainer.hidden = true;
       const p = document.createElement('div');
       p.className = 'g9-search-empty';
-      p.textContent = 'Loading search index... Please wait a moment.';
+      p.textContent = 'Search index unavailable. Reload the page to retry.';
       results.appendChild(p);
       return;
     }
@@ -517,6 +508,7 @@
       }
       const hay = normalize([
         item.title,
+        item.source_id,
         item.original_id,
         item.id,
         item.search_text,
@@ -593,7 +585,7 @@
       { id: 'question', label: 'Questions', count: countQuestions },
       { id: 'tablet', label: 'Tablets & Lessons', count: countTablets },
       { id: 'curriculum', label: 'Topics', count: countCurriculum },
-      { id: 'page', label: 'Portals', count: countPages }
+      { id: 'page', label: 'Pages', count: countPages }
     ].filter(t => t.count > 0 || t.id === 'all');
 
     tabDefs.forEach(def => {
@@ -650,7 +642,7 @@
         sec.className = 'g9-search-section-header';
         sec.textContent = `🎯 Questions in Question Bank (${questions.length})`;
         results.appendChild(sec);
-        results.appendChild(createQbBridge(questions.length, input.value.trim()));
+        appendBankBridges(questions, rawInput);
         questions.slice(0, 8).forEach(item => results.appendChild(createResultCard(item, term)));
       }
 
@@ -666,7 +658,7 @@
       // Specific Category Tab Active
       const filtered = matched.filter(m => m.category === activeCategory);
       if (activeCategory === 'question' && filtered.length > 0) {
-        results.appendChild(createQbBridge(filtered.length, input.value.trim()));
+        appendBankBridges(filtered, rawInput);
       }
       filtered.slice(0, 30).forEach(item => results.appendChild(createResultCard(item, term)));
     }
@@ -724,10 +716,21 @@
   // Universal button binder
   function bindTriggers() {
     mountDialog();
-    document.querySelectorAll('[data-g9-action="search"], .g9-search-trigger, .g9-search-btn').forEach(btn => {
+    const selector = '[data-g9-action="search"], .g9-search-trigger, .g9-search-btn';
+    if (!document.querySelector(selector)) {
+      const btn = document.createElement('button');
+      btn.type = 'button'; btn.dataset.g9Action = 'search'; btn.dataset.searchScope = 'nsejs';
+      btn.className = 'g9-search-global-entry'; btn.textContent = 'Search NSEJS Junior Science';
+      btn.setAttribute('aria-label', 'Search NSEJS Junior Science (Ctrl or Command K)');
+      const host = document.querySelector('header nav, header') || document.body;
+      host.prepend(btn);
+    }
+    document.querySelectorAll(selector).forEach(btn => {
+      btn.setAttribute('aria-label', 'Search NSEJS Junior Science (Ctrl or Command K)');
+      btn.title = 'Search NSEJS Junior Science (Ctrl/⌘ K)';
       btn.onclick = e => {
         e.preventDefault();
-        const customScope = btn.dataset.searchScope || (isNSEJSPage ? 'nsejs' : 'all');
+        const customScope = ['physics','chemistry','biology'].includes(btn.dataset.searchScope) ? btn.dataset.searchScope : 'nsejs';
         const customQuery = btn.dataset.searchQuery || '';
         openSearch({ scope: customScope, query: customQuery });
       };

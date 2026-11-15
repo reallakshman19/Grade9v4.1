@@ -1,0 +1,62 @@
+from __future__ import annotations
+import importlib.util
+import json
+import sys
+from pathlib import Path
+from urllib.parse import urlsplit, parse_qs
+ROOT=Path(__file__).resolve().parents[1]
+sys.path.insert(0,str(ROOT/"tools"))
+from search_learner_pages import build_public_learner_documents,public_pages
+from build_search_index import normalize_text
+
+def test_complete_current_registries_and_public_pages():
+    docs,pages=build_public_learner_documents(ROOT,normalize_text)
+    urls={d["url"] for d in docs}
+    assert len(urls)==len(docs)
+    assert set(d["subject"] for d in docs)>={"Physics","Chemistry","Biology"}
+    assert all((ROOT/urlsplit(u).path).is_file() for u in urls)
+    physics=json.loads((ROOT/"nsejs/physics/learn/catalog.json").read_text())
+    assert sum(d["id"].startswith("ROUTE-PH0") and d["category"]=="curriculum" for d in docs)>=9
+    for chapter in physics["chapters"]:
+        for unit in chapter["units"]:
+            for role in ("learn","practice"):
+                assert "nsejs/physics/"+unit[role] in urls
+    chem=json.loads((ROOT/"nsejs/chemistry/learner-navigation.v1.json").read_text())
+    for unit in chem["units"]:
+        for sub in unit["subtopics"]:
+            for mode in ("study","practice"):
+                assert any(d["original_id"]==sub["id"]+"-"+mode for d in docs)
+    grav=json.loads((ROOT/"nsejs/physics/ph05/source-led-r2/packages.v1.json").read_text())
+    for p in grav["packages"]:
+        for task in p["tasks"]:
+            assert any(d["original_id"]==task["uid"] and d["category"]=="question" for d in docs)
+    covered={urlsplit(u).path for u in urls}
+    assert set(pages)<=covered|{"nsejs/physics/ph05/source-checkpoint.html"}
+    assert len(pages)==len(set(pages))
+    assert all(not any(x in p.split("/") for x in ("agent1","review","evidence","archive")) for p in pages)
+
+def test_committed_index_no_protected_payloads():
+    docs=json.loads((ROOT/"data/learner-search-index.v1.json").read_text())
+    assert len({d["id"] for d in docs})==len(docs)
+    assert len({d["url"] for d in docs})==len(docs)
+    assert all((ROOT/urlsplit(d["url"]).path).is_file() for d in docs)
+    assert all(d.get("hints",[])==[] for d in docs if d["category"]=="question")
+    banned={"answer","steps","reconstruction","alternative","boundaryModel","repair","diagnosis","official_option","key"}
+    assert all(not banned.intersection(d) for d in docs)
+    assert any(d["original_id"]=="AUTHORED-PH05-R2-P06-A" for d in docs)
+    assert any(d["original_id"]=="CHEM-C14.01-study" for d in docs)
+    assert any(d["subject"]=="Biology" and d["category"]=="tablet" for d in docs)
+    source=next(d for d in docs if d["original_id"]=="NSEJS-2019-C51-Q61")
+    assert "equal gravitational forces" not in source["search_text"]
+    bohr=next(d for d in docs if d["original_id"]=="CHEM-NSEJS-ATOM-01")
+    assert "option b is confirmed" not in bohr["search_text"]
+    assert "27/32" not in bohr["search_text"]
+    assert parse_qs(urlsplit(bohr["url"]).query)["q"]==["CHEM-NSEJS-ATOM-01"]
+
+def test_shared_search_default_and_publish_rebuild():
+    runtime=(ROOT/"js/site-search.js").read_text()
+    assert "let currentScope = 'nsejs'" in runtime
+    assert "Search NSEJS Junior Science" in runtime
+    assert "new URL(\"../\", script.src).href" in runtime
+    assert "appendBankBridges" in runtime
+    assert "build_search_index.py --install-search" in (ROOT/".github/workflows/deploy.yaml").read_text()
