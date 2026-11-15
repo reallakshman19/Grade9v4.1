@@ -96,3 +96,12 @@ def test_technical_reader_never_claims_approved_exam_key():
     assert "perfectly matches the official verified key" not in js
     assert "Candidate derivation & reported key" in js
     assert "MATCHES CANDIDATE KEY" in js
+
+def test_reader_attempt_revision_storage_and_hint_locks():
+    js=(ROOT/"nsejs/js/core2-physics-reader.js").read_text(encoding="utf-8")
+    assert 'candidate-attempt","v2"' in js
+    assert 'attemptKey(q, await revision(q))' in js
+    assert 'if (!saveAttempt(k, attempt))' in js
+    assert 'Tier 3 helper remain locked' in js
+    assert 'getAttempt(k) ? hints.length : Math.min(2, hints.length)' in js
+    assert 'localStorage.removeItem(k)' not in js

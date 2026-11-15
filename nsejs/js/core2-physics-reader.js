@@ -135,8 +135,8 @@
   }
   const producerProposedIds = parseOfficialKey;
 
-  function attemptKey(q) {
-    return ["g9","nsejs","core2","candidate-attempt","v1",encodeURIComponent(uidOf(q))].join(":");
+  function attemptKey(q, contentRevision) {
+    return ["g9","nsejs","core2","candidate-attempt","v2",encodeURIComponent(uidOf(q)),contentRevision].join(":");
   }
   function getAttempt(key) {
     try {
@@ -270,21 +270,34 @@
     retryBtn.style.cssText = "background: #f1f5f9; color: #334155; border: 1.5px solid #cbd5e1; display: none;";
     append(actions, retryBtn);
 
+    // The attempt key is bound to all question text, options, key and solution
+    // fields. It never silently reuses a previous candidate content revision.
+    const k = attemptKey(q, await revision(q));
     const hints = Array.isArray(q.hints) ? q.hints : [];
+    let unlockTier3 = () => {};
     if (hints.length > 0) {
-      const hintBtn = text("button", "Show Progressive Hints (" + hints.length + ")");
+      const hintBtn = text("button", "");
       hintBtn.type = "button";
       hintBtn.style.background = "#f8fafc";
       hintBtn.style.color = "#334155";
       hintBtn.style.border = "1.5px solid #cbd5e1";
       const hintBox = text("div", "", "answer");
       hintBox.hidden = true;
-      hints.forEach(h => {
-        append(hintBox, text("strong", h.prompt || "Hint:"), text("p", h.text || ""));
-      });
+      const paintHints = () => {
+        // Tier 3 can include a decisive reduction and is only displayed
+        // after a persistently saved first attempt.
+        const count = getAttempt(k) ? hints.length : Math.min(2, hints.length);
+        hintBox.replaceChildren();
+        hints.slice(0, count).forEach(h => {
+          append(hintBox, text("strong", h.prompt || "Hint:"), text("p", h.text || ""));
+        });
+        hintBtn.textContent = hintBox.hidden ? "Show Progressive Hints (" + count + ")" : "Hide Progressive Hints";
+      };
+      paintHints();
+      unlockTier3 = paintHints;
       hintBtn.onclick = () => {
         hintBox.hidden = !hintBox.hidden;
-        hintBtn.textContent = hintBox.hidden ? "Show Progressive Hints (" + hints.length + ")" : "Hide Progressive Hints";
+        paintHints();
       };
       append(actions, hintBtn, hintBox);
     }
@@ -302,8 +315,6 @@
     }
     append(box, answerBox);
 
-    const k = attemptKey(q);
-
     function renderAttemptFeedback(selected) {
       const selectedSet = new Set(selected || []);
       const proposed = parseOfficialKey(q.answer, controls, isMulti);
@@ -314,7 +325,7 @@
       });
       commit.disabled = true;
       commit.textContent = "Attempt Saved Locally";
-      retryBtn.style.display = "inline-flex";
+      retryBtn.style.display = "none";
 
       // Clear previous classes and badges
       controls.forEach(field => {
@@ -412,26 +423,14 @@
       }
 
       answerBox.hidden = false;
+      unlockTier3();
       renderMath(answerBox);
     }
 
+    // Do not delete the first committed response from a candidate question.
     retryBtn.onclick = () => {
-      try { localStorage.removeItem(k); } catch (_) {}
-      controls.forEach(c => {
-        c.disabled = false;
-        c.checked = false;
-        const lbl = c.closest("label");
-        if (lbl) {
-          lbl.classList.remove("opt-user-correct", "opt-user-wrong", "opt-correct-key", "opt-neutral-disabled");
-          const b = lbl.querySelector(".opt-badge");
-          if (b) b.remove();
-        }
-      });
-      commit.disabled = false;
-      commit.textContent = "Commit First Attempt & Reveal Derivation";
-      retryBtn.style.display = "none";
-      feedbackBanner.hidden = true;
-      answerBox.hidden = true;
+      const saved = getAttempt(k);
+      if (saved) renderAttemptFeedback(saved.selected || saved.selected_option_ids || []);
     };
 
     const existing = getAttempt(k);
@@ -448,13 +447,23 @@
         alert("Please select your answer option(s) before committing.");
         return;
       }
+      const already = getAttempt(k);
+      if (already) {
+        renderAttemptFeedback(already.selected || already.selected_option_ids || []);
+        return;
+      }
       const attempt = {
         question_uid: uidOf(q),
         source_id: q.source_id,
         selected: selected,
         timestamp: new Date().toISOString()
       };
-      saveAttempt(k, attempt);
+      if (!saveAttempt(k, attempt)) {
+        feedbackBanner.hidden = false;
+        feedbackBanner.className = "attempt-feedback-banner feedback-dropped";
+        feedbackBanner.textContent = "HOLD: browser storage unavailable. First attempt was not saved; answer and Tier 3 helper remain locked.";
+        return;
+      }
       renderAttemptFeedback(selected);
     };
 
