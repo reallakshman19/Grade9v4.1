@@ -40,6 +40,7 @@
     "mechanics": {
       title: "Mechanics & Conservation Laws",
       links: [
+        { label: "▶ PH05 source-first NSEJS Gravitation journey (candidate)", url: "textbook/PH05/index.html" },
         { label: "▶ Decoupled Kinematics & Average Speed", url: "core1/recovery/nsejs-mechanics-r1/index.html" },
         { label: "▶ Collision & Friction Interactive Pilot", url: "learn-mechanics.html" }
       ]

@@ -42,11 +42,11 @@ function figure(u){
    break;
  case "kepler_orbit":
    shapes='<ellipse cx="330" cy="120" rx="200" ry="85" fill="none" stroke="#206680" stroke-width="3"/>'+
-          '<circle cx="230" cy="120" r="14" fill="#e59832" stroke="#9e5808" stroke-width="2"/>'+
+          '<circle cx="149" cy="120" r="14" fill="#e59832" stroke="#9e5808" stroke-width="2"/>'+
           '<circle cx="130" cy="120" r="8" fill="#1b7280"/>'+
           '<circle cx="530" cy="120" r="8" fill="#1b7280"/>'+
           line(130,120,130,70)+line(530,120,530,95)+
-          text(215,95,"Sun")+text(75,125,"Perihelion: rₚ")+text(75,65,"vₚ (fast)")+
+          text(155,96,"Sun")+text(75,125,"Perihelion: rₚ")+text(75,65,"vₚ (fast)")+
           text(465,145,"Aphelion: rₐ")+text(485,85,"vₐ (slow)");
    break;
  case "satellite_energy":

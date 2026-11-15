@@ -249,3 +249,54 @@ def test_rule_13_invariant_software_validation_not_academic_approval():
     for tb in TEXTBOOK_DIR.glob("**/index.html"):
         content = tb.read_text(encoding="utf-8")
         assert "HOLD: ACADEMIC_ADMISSION" in content or "Original educational candidate" in content
+
+
+def test_ph05_source_first_mapping_identity_and_hold():
+    """Previous-question evidence cannot be promoted from authored transfers."""
+    data = json.loads((PH05_DATA / "source-to-learning.v1.json").read_text(encoding="utf-8"))
+    assert data["schema"] == "g9v41-ph05-source-to-learning/v1"
+    assert data["academic_status"] == "HOLD"
+    assert data["admitted_original_d3_d4"] == 0
+    assert len(data["source_candidates"]) == 4
+    old = json.loads((REPO_ROOT / "nsejs/data/physics-core2-candidates.v1.json").read_text(encoding="utf-8"))
+    original_ids = {q["id"] for q in old["questions"]}
+    qrt = json.loads((PH05_DATA / "qrt-candidates.v1.json").read_text(encoding="utf-8"))
+    units = json.loads((PH05_DATA / "units.v1.json").read_text(encoding="utf-8"))
+    transfer_ids = {u["practice"]["uid"] for u in units["units"]}
+    transfer_ids.update(q["uid"] for q in qrt["tasks"] + qrt["main_cycles"])
+    for item in data["source_candidates"]:
+        assert item["source_status"] in {"EXTERNAL_CUSTODY_HOLD", "LEGACY_CORPUS_NOT_ADMITTED"}
+        assert item["transfer"] in transfer_ids
+        assert item["core1a"]
+        assert all("PH05-" + u in {v["id"] for v in units["units"]} for u in item["core1a"])
+        if item["corpus_id"]:
+            assert item["corpus_id"] in original_ids
+            assert item["deep"].endswith("#" + item["corpus_id"])
+        else:
+            assert item["external"].startswith("https://")
+            assert item["original_demand"] == "UNADJUDICATED"
+
+def test_ph05_core1a_gravity_arithmetic_and_ellipse_focus():
+    """Regression for confirmed 10^6 force error and Kepler first-law geometry."""
+    b = json.loads((PH05_DATA / "teaching-bridges.v1.json").read_text(encoding="utf-8"))
+    worked = next(x["worked"] for x in b["bridges"]["PH05-G01"] if x["op"] == "APPLY")
+    assert "0.0667 N" in worked
+    assert "6.67 × 10^-5 m/s²" in worked
+    assert "6.67 × 10^-14 m/s²" in worked
+    assert math.isclose(6.67e-11 * (1e3 * 1e12) / 1e6, 0.0667, rel_tol=1e-9)
+    js = (PH05_DATA / "lesson.js").read_text(encoding="utf-8")
+    assert '<circle cx="149" cy="120" r="14"' in js
+    focus = 330 - math.sqrt(200**2 - 85**2)
+    assert abs(149 - focus) < 1
+
+def test_ph05_source_first_learner_catalog_and_hub():
+    catalog = json.loads(LEARN_CATALOG.read_text(encoding="utf-8"))
+    chapter = next(x for x in catalog["chapters"] if x["id"] == "PH05")
+    assert chapter["state"] == "learning-pairs"
+    assert chapter["overview"] == "textbook/PH05/index.html"
+    assert len(chapter["units"]) == 7
+    html = (TEXTBOOK_DIR / "index.html").read_text(encoding="utf-8")
+    assert 'id="source-first"' in html
+    assert "NSEJS-2024-P-Q48" in html
+    assert "NSEJS 2022 paper 51 Q36" in html
+    assert "admitted previous-year Gravitation D3/D4" in html
