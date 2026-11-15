@@ -151,11 +151,12 @@ export class IndexedDbAttemptStore {
   constructor({indexedDb=globalThis.indexedDB,dbName='g9-shared-assessment-r0'}={}) {
     this.indexedDb=indexedDb;this.dbName=dbName;
   }
-  async read(taskUid){
+  async read(taskUid,revision){
     const db=await idbOpen(this.indexedDb,this.dbName);
+    requireThat(typeof revision==='string'&&SHA.test(revision),'EXPECTED_DIGEST_REQUIRED');
     return new Promise((resolve,reject)=>{
       let tx,req,failed=false;
-      try {tx=db.transaction(STORE,'readonly');req=tx.objectStore(STORE).get(taskUid);}
+      try {tx=db.transaction(STORE,'readonly');req=tx.objectStore(STORE).get(taskUid+'@'+revision);}
       catch(e){db.close();reject(new AssessmentHold('STORAGE_READ_FAILED'));return;}
       function fail(){if(!failed){failed=true;db.close();reject(new AssessmentHold('STORAGE_READ_FAILED'));}}
       req.onerror=fail;tx.onabort=fail;tx.onerror=fail;
@@ -173,9 +174,9 @@ export class IndexedDbAttemptStore {
       try{
         tx=db.transaction(STORE,'readwrite');
         const table=tx.objectStore(STORE);
-        req=table.get(input.taskUid);
+        req=table.get(input.taskUid+'@'+input.revision);
         req.onsuccess=()=>{
-          try {next=applyEvent(req.result,input);table.put(next,input.taskUid);}
+          try {next=applyEvent(req.result,input);table.put(next,input.taskUid+'@'+input.revision);}
           catch(e){reason=e;try{tx.abort();}catch(_){} }
         };
         req.onerror=()=>{reason=new AssessmentHold('STORAGE_READ_FAILED');};
