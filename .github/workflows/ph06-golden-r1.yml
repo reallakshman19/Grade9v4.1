@@ -1,0 +1,39 @@
+name: PH06 Golden Sample R1 QA
+on:
+  pull_request:
+    paths:
+      - 'nsejs/physics/ph06/**'
+      - 'nsejs/physics/textbook/PH06/**'
+      - 'nsejs/physics/core1/PH06/**'
+      - 'nsejs/physics/curriculum/topics/PH06/**'
+      - 'tests/test_ph06_golden_r1.py'
+      - 'tools/ph06_golden_browser_qa.py'
+      - '.github/workflows/ph06-golden-r1.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  golden:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install pytest==8.4.2 playwright==1.55.0
+      - run: python -m playwright install --with-deps chromium
+      - run: node --input-type=module --check < nsejs/physics/ph06/reader.js
+      - run: python -m pytest -q tests/test_ph06_golden_r1.py
+      - run: python tools/ph06_golden_browser_qa.py
+      - name: Compute exact author evidence file hashes
+        if: always()
+        run: |
+          mkdir -p artifacts/ph06-golden
+          find nsejs/physics/ph06 nsejs/physics/textbook/PH06 nsejs/physics/core1/PH06 nsejs/physics/curriculum/topics/PH06 -type f -print0 | sort -z | xargs -0 sha256sum > artifacts/ph06-golden/sha256.txt
+          git rev-parse HEAD > artifacts/ph06-golden/tested-head.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ph06-golden-browser-receipts
+          path: artifacts/ph06-golden/

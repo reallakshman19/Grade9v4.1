@@ -28,7 +28,7 @@ try{
   let store;
   function draw(r){if(!r){$("commit").disabled=false;$("status").textContent="Ready";return}
    $("prediction").value=r.first.prediction;$("attempt").value=r.first.reasoning;document.querySelectorAll('input[name="option"]').forEach(n=>{n.checked=n.value===r.first.option;n.disabled=true});$("prediction").disabled=$("attempt").disabled=$("commit").disabled=true;
-   $("status").textContent="First source attempt saved. No source key unlocked."; $("post").innerHTML=link("../textbook/PH06/U06/index.html","Learn Archimedes") +link("../textbook/PH06/U08/index.html?source="+source.locator,"Learn multilayer construction");
+   $("status").textContent="First source attempt saved. No source key unlocked. Prior exposure is not independently verified."; $("post").innerHTML=link("../textbook/PH06/U06/index.html?source="+source.locator,"Learn Archimedes") +link("../textbook/PH06/U08/index.html?source="+source.locator,"Learn multilayer construction");
    if(r.transferComplete){$("post").insertAdjacentHTML("beforeend",'<label for="retry">Reconstruct source reasoning after the transfer</label><textarea id="retry"></textarea><button id="retrySave">Save separate reattempt</button>');if(r.retry){$("retry").value=r.retry;$("retry").disabled=$("retrySave").disabled=true}$("retrySave").onclick=()=>{const v=$("retry").value.trim();if(v)store.save(old=>old.retry?old:{...old,retry:v,events:[...old.events,{kind:"source_reattempt",at:timestamp()}]})}}
   }
   store=await protectedStore(key,hash,draw);
