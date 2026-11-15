@@ -233,7 +233,7 @@
     details.style.cssText = "margin: 8px 0 14px; font-size: 12px; color: #64748b;";
     const summary = text("summary", "Data integrity & QRT verification (technical audit; not admission)");
     summary.style.cssText = "cursor: pointer; font-weight: 600; color: #475569;";
-    const infoP = text("p", "Stem SHA-256: " + (q.stem_sha256 || "verified") + " · Observed matches declared · Demand: " + opStr + " / " + bandStr + " · Academic status: RULE_13_HOLD");
+    const infoP = text("p", "Stem SHA-256: " + (q.stem_sha256 || "NOT_RECORDED") + " · Internal digest is not source authentication · Demand: " + opStr + " / " + bandStr + " · Academic status: RULE_13_HOLD");
     infoP.style.cssText = "margin: 4px 0 0; font-family: monospace; font-size: 11px; word-break: break-all;";
     append(details, summary, infoP);
     append(box, details);
@@ -292,7 +292,7 @@
 
     const answerBox = text("div", "", "answer");
     answerBox.hidden = true;
-    append(answerBox, text("h3", "Step-by-Step Derivation & Official Key"));
+    append(answerBox, text("h3", "Candidate derivation & reported key · academic HOLD"));
     append(answerBox, text("p", q.answer || "Official Key Pending", "official-key-line"));
     if (Array.isArray(q.steps) && q.steps.length > 0) {
       q.steps.forEach(s => append(answerBox, text("p", s)));
