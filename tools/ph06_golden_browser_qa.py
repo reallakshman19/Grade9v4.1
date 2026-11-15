@@ -22,6 +22,9 @@ def run():
             browser=pw.chromium.launch()
             for w,h in [(1000,1600),(1600,1000)]:
                 ctx=browser.new_context(viewport={"width":w,"height":h});page=ctx.new_page()
+                page.goto(url+"learn/chapter.html?ph=PH06")
+                expect(page.get_by_text("Golden Sample only:",exact=False)).to_be_visible()
+                expect(page.locator("#U08")).to_be_visible()
                 page.goto(url+"ph06/source-checkpoint.html")
                 expect(page.locator("#commit")).to_be_enabled()
                 page.locator('input[value="B"]').check()

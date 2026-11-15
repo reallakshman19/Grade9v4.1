@@ -83,3 +83,11 @@ def test_actual_svgs_and_protected_projection():
     reader=(P/"reader.js").read_text()
     assert "navigator.locks.request" in reader and "localStorage.getItem(key)!==raw" in reader
     assert "JSON.stringify([raw,modelRaw,sourceRaw,figure])" in reader and ".decode()" in reader
+
+def test_golden_only_catalog_integration():
+    cat=load(PH/"learn/catalog.json")
+    ch=next(x for x in cat["chapters"] if x["id"]=="PH06")
+    assert ch["state"]=="learning-pairs" and len(ch["units"])==1
+    assert ch["units"][0]["id"]=="U08"
+    assert all((PH/ch["units"][0][k]).is_file() for k in ("learn","practice"))
+    assert "Golden candidate · 1/10" in (PH/"index.html").read_text()
