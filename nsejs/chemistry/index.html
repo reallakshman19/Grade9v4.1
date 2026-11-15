@@ -676,6 +676,9 @@
 </article></div>
 <p class="chem-chapter-filter-note">These are Grade9-authored learning activities, not authenticated original NSEJS questions. The question bank below is a separate searchable collection of candidate and indexed records.</p>
 </section>
+<details id="chem-bank-archive" class="chem-bank-archive">
+<summary>Optional · Explore question-bank candidates (six legacy filters)</summary>
+<div class="chem-bank-archive-content">
 <section aria-labelledby="chem-bank-heading" class="chem-chapter-filter-note"><h2 id="chem-bank-heading">Question bank · browse by topic</h2><p>The six older categories below are <strong>question-bank filters</strong>, not another textbook chapter order. The candidate registry has 119 entries; the legacy identity map uses a different 87-row inventory. Neither number equals authenticated readable examination questions.</p></section>
     <nav id="topicNav" class="master-topic-nav" aria-label="Chemistry question bank category filters"></nav>
 
@@ -980,6 +983,7 @@
 
             
     </section>
+</div></details>
 
     <!-- Bottom 3-Card Supplementary Resources Deck -->
     <section class="bottom-resource-grid" aria-label="Supplementary learning and official source links">
@@ -1026,6 +1030,26 @@
         }
       });
     }
+  </script>
+  <script>
+    /* Legacy deep links must open the archived bank instead of landing inside a closed drawer. */
+    (function(){
+      const bank=document.getElementById("chem-bank-archive");
+      if(!bank)return;
+      const q=new URLSearchParams(location.search);
+      const hasBankQuery=["topic","q","exam","difficulty","sort"].some(k=>q.has(k));
+      const hasBankHash=()=>/^#(?:topicWorkspace|topicsGrid|topic-view|questions|qbFilters|question-)/.test(location.hash);
+      if(hasBankQuery||hasBankHash())bank.open=true;
+      window.addEventListener("hashchange",()=>{
+        if(hasBankHash())bank.open=true;
+      });
+      document.addEventListener("DOMContentLoaded",()=>{
+        const original=window.selectChemistryTopic;
+        if(typeof original==="function")window.selectChemistryTopic=function(slug){
+          bank.open=true;return original(slug);
+        };
+      },{once:true});
+    })();
   </script>
   <script>
     window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']]},svg:{fontCache:'global'}};
