@@ -230,7 +230,8 @@ def test_native_chapter_learning_links_and_scoped_new_pairs():
         assert f"preview.html?case={sub}" in a and f"preview.html?case={sub}" in b
         if topic in ("PH11", "PH12"):
             assert 'role="img"' in a
-            assert "Original author diagram" in a
+            assert ("Original author diagram" in a or
+                    "Original author construction diagram" in a)
         else:
             assert 'id="wpe-parity-r2"' in a
         assert "<iframe" not in a.lower() and "<iframe" not in b.lower()
