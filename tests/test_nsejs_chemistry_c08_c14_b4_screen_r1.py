@@ -38,7 +38,9 @@ def test_c08_c14_b4_screen_is_bounded_and_source_anchored():
         task=cycles[u][f["cycle_id"]]
         assert task["subtopic_ref"]==f["subtopic_id"]
         assert f["worked_anchor"] in book["worked"]
-        assert f["prompt_anchor"] not in task["attempt"]["prompt"]\n        assert len(task["attempt"]["post_commit_closure"]["model_response"])>120\n        assert task["attempt"]["protected_W"] != "The learner independently completes the causal bridge, not exposed before first attempt."
+        assert f["prompt_anchor"] not in task["attempt"]["prompt"]
+        assert len(task["attempt"]["post_commit_closure"]["model_response"])>120
+        assert task["attempt"]["protected_W"] != "The learner independently completes the causal bridge, not exposed before first attempt."
         assert task["source_role"]=="AUTHORED_PRACTICE"
         assert task["academic_status"]!="APPROVED"
         assert f["status"]=="B4_REVIEW_REQUIRED"
