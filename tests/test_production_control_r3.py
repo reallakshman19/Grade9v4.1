@@ -177,3 +177,18 @@ def test_forged_receipt_cannot_be_merged_as_evidence_only(tmp_path):
 def test_duplicate_public_key_cannot_impersonate_independent_roles(tmp_path):
     priv,key=make_key(tmp_path);other=dict(key,id="different",principal="another",roles=["R00"])
     with pytest.raises(C.Block,match="REUSED_TRUST_PUBLIC_KEY"):C.trust_keys(trust(key,other))
+
+def test_generated_preview_requires_exact_signed_final_bytes(tmp_path):
+    root,base,p=fresh(tmp_path);priv,key=make_key(tmp_path)
+    # Synthetic pinned builder only: actual repository builder is replayed in dedicated CI.
+    write(root,"tools/build_search_index.py","from pathlib import Path\np=Path(__file__).resolve().parents[1]/'index.html'\np.write_text('<html>Generated HOLD</html>')\n")
+    write(root,"tools/search_learner_pages.py","# frozen helper\n")
+    legacy=save(root);p["legacy_preview_baseline"]=legacy;write(root,C.POLICY,p);base=save(root)
+    items=C.tree(root,base);fp=C.fingerprint(items)
+    mp=C.EVID+"publication-manifest.json"
+    m={"schema":"g9-r3-publication/v1","kind":"TECHNICAL_PREVIEW_ONLY","content_fingerprint":fp,"build_mode":"FROZEN_SEARCH_R1","files":[{"path":"index.html","sha256":C.sha(b"<html>Generated HOLD</html>")}]}
+    raw=C.canonical(m);write(root,mp,raw);write(root,C.EVID+"release-receipt.json",make_receipt(tmp_path,priv,key,"PREVIEW_RELEASE",C.sha(raw),fp,"AUTHORIZED"));head=save(root)
+    assert R.stage(root,head,mp,tmp_path/"public",trust(key),base)["status"]=="AUTHORIZED_TECHNICAL_PREVIEW_STAGED"
+    assert (tmp_path/"public/index.html").read_text()=="<html>Generated HOLD</html>"
+    m["files"][0]["sha256"]="0"*64;raw=C.canonical(m);write(root,mp,raw);write(root,C.EVID+"release-receipt.json",make_receipt(tmp_path,priv,key,"PREVIEW_RELEASE",C.sha(raw),fp,"AUTHORIZED"));head=save(root)
+    with pytest.raises(C.Block,match="RELEASE_BYTE_MISMATCH"):R.stage(root,head,mp,tmp_path/"bad",trust(key),base)

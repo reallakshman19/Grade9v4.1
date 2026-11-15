@@ -2,6 +2,7 @@
 """Stage only exact, signed public bytes. No deployment from an unapproved tree."""
 from __future__ import annotations
 import argparse, json, shutil, sys
+from contextlib import nullcontext
 from pathlib import Path
 from urllib.parse import urlsplit
 from control import (Block, EVID, PACKETS, SHA64, ancestor, blob, changed, classify, commit,
@@ -29,21 +30,25 @@ def stage(repo,rev,manifest_path,output,trust,control_rev):
     changes=changed(repo,policy["legacy_preview_baseline"],rev)
     require(not [p for p in changes if classify(p,policy)=="CONTENT"],"FROZEN_CONTENT_IN_RELEASE_TREE")
     raw=blob(repo,rev,manifest_path,items);m=parse(raw)
-    require(set(m)=={"schema","kind","content_fingerprint","files"} and m["schema"]=="g9-r3-publication/v1" and m["kind"]=="TECHNICAL_PREVIEW_ONLY","RELEASE_MANIFEST_SHAPE_OR_KIND")
+    require(set(m) in ({"schema","kind","content_fingerprint","files"},{"schema","kind","content_fingerprint","files","build_mode"}) and m["schema"]=="g9-r3-publication/v1" and m["kind"]=="TECHNICAL_PREVIEW_ONLY","RELEASE_MANIFEST_SHAPE_OR_KIND")
     require(m["content_fingerprint"]==fp,"STALE_RELEASE_MANIFEST")
     auth=parse(blob(repo,rev,EVID+"release-receipt.json",items))
     binding=sha(raw)
     signed(auth,trust,"PREVIEW_RELEASE",binding,fp,"AUTHORIZED","OWNER")
     require(isinstance(m["files"],list) and m["files"],"EMPTY_RELEASE_MANIFEST")
     require(not output.exists(),"OUTPUT_MUST_NOT_EXIST")
+    mode=m.get("build_mode","TRACKED_ONLY")
+    require(mode in ("TRACKED_ONLY","FROZEN_SEARCH_R1"),"UNKNOWN_RELEASE_BUILD_MODE")
+    from preview_build import frozen_build,built_bytes
     seen=set();payload=[]
-    for entry in m["files"]:
-        require(set(entry)=={"path","sha256"},"RELEASE_FILE_SHAPE")
-        p=entry["path"];require(public_path(p),"NONPUBLIC_RELEASE_PATH:"+p)
-        require(p not in seen,"DUPLICATE_RELEASE_PATH:"+p);seen.add(p)
-        data=blob(repo,rev,p,items)
-        require(SHA64.fullmatch(entry["sha256"]) and sha(data)==entry["sha256"],"RELEASE_BYTE_MISMATCH:"+p)
-        payload.append((p,data))
+    with (frozen_build(repo,rev,policy) if mode=="FROZEN_SEARCH_R1" else nullcontext(None)) as build:
+        for entry in m["files"]:
+            require(set(entry)=={"path","sha256"},"RELEASE_FILE_SHAPE")
+            p=entry["path"];require(public_path(p),"NONPUBLIC_RELEASE_PATH:"+p)
+            require(p not in seen,"DUPLICATE_RELEASE_PATH:"+p);seen.add(p)
+            data=built_bytes(build,items,p) if build is not None else blob(repo,rev,p,items)
+            require(SHA64.fullmatch(entry["sha256"]) and sha(data)==entry["sha256"],"RELEASE_BYTE_MISMATCH:"+p)
+            payload.append((p,data))
     require("index.html" in seen,"RELEASE_ENTRYPOINT_MISSING")
     # Search is a release dependency, not a second publication pipeline.
     for p in ("data/learner-search-index.v1.json","nsejs/data/learner-search-index.v1.json"):
@@ -60,7 +65,7 @@ def stage(repo,rev,manifest_path,output,trust,control_rev):
         output.mkdir(parents=True,exist_ok=False)
         for p,data in payload:
             target=output/p;target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes(data)
-        # No regeneration, mutation or untracked assets after byte verification.
+        # No mutation or unverified generated assets after final byte verification.
         actual={p.relative_to(output).as_posix() for p in output.rglob("*") if p.is_file()}
         require(actual==seen,"STAGING_FILE_SET_MISMATCH")
     except Exception:
