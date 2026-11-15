@@ -71,7 +71,7 @@ def test_actual_svgs_and_protected_projection():
     assert sum(x["score"] for x in model["proposal"]["factors"].values())==7
     assert not {"hints","reconstruction","alternative","boundaryModel","W"}.intersection(task)
     assert not {"observed_key","final_key"}.intersection(src)
-    svgs=list((P/"figures").glob("*.svg"));assert len(svgs)==3
+    svgs=list((P/"figures").glob("*.svg"));assert len(svgs)==7
     for s in svgs:
         tree=ET.parse(s);assert tree.getroot().tag.endswith("svg")
         assert "viewBox" in tree.getroot().attrib
@@ -82,7 +82,7 @@ def test_actual_svgs_and_protected_projection():
         assert (PH/path).is_file()
     reader=(P/"reader.js").read_text()
     assert "navigator.locks.request" in reader and "localStorage.getItem(key)!==raw" in reader
-    assert "JSON.stringify([raw,modelRaw,sourceRaw,figure])" in reader and ".decode()" in reader
+    assert "JSON.stringify([raw,modelRaw,sourceRaw,figure,solutionFigure,boundaryFigure])" in reader and ".decode()" in reader
 
 def test_golden_only_catalog_integration():
     cat=load(PH/"learn/catalog.json")
@@ -91,3 +91,33 @@ def test_golden_only_catalog_integration():
     assert ch["units"][0]["id"]=="U08"
     assert all((PH/ch["units"][0][k]).is_file() for k in ("learn","practice"))
     assert "Golden candidate · 1/10" in (PH/"index.html").read_text()
+
+def test_guided_four_regimes_and_invalid_continuation():
+    A=F(1,200);H=F(2,5);d=F(1,5)
+    for b,m,h1,h2 in [(F(2,15),F(2,5),F(2,15),0),(F(3,10),F(11,10),d,F(1,10)),(F(1,2),F(9,5),F(1,10),F(3,10)),(F(3,5),F(2),0,H)]:
+        assert displaced_mass(b-H,H,d,A,600,1000)==(m,h1,h2)
+    assert displaced_mass(0,H,d,A,600,1000)[0]==F(8,5)
+    assert F(21,10)>A*1000*H
+    wrong=(F(9,5)/A+400*d)/1000
+    assert wrong==F(11,25) and wrong>H
+    assert displaced_mass(wrong-H,H,d,A,600,1000)[0]!=F(9,5)
+
+def test_wrong_dimension_and_limit_negative_control():
+    correct=1000*10*F(1,10)
+    wrong=10*F(1,10)
+    assert correct==1000 and wrong!=correct
+    print("WRONG_DIMENSION REJECTED: missing density gives 1 instead of 1000 Pa; kg/m^3 factor required.")
+    H=F(2,5);d=F(1,5);A=F(1,200)
+    wrong=F(11,25)
+    assert displaced_mass(wrong-H,H,d,A,600,1000)[0]!=F(9,5)
+    print("WRONG_SIGN_OR_LIMIT REJECTED: 44 cm emerged continuation exceeds 40 cm height and fails true force balance.")
+
+def test_structured_fields_no_answer_values():
+    t=load(P/"task.v1.json");m=load(P/"model.v1.json")
+    assert {r["id"] for r in m["rubric"]}<={r["id"] for r in t["fields"]}
+    assert all("expected" not in r and "repair" not in r for r in t["fields"])
+    assert t["revision"]=="r2-20261115"
+    assert len(m["reasoningRubric"])==4 and len(m["reconstructionSteps"])==4
+    guide=(PH/"textbook/PH06/U08/index.html").read_text()
+    assert "1.60 kg" in guide and "0.44 m" in guide and "u08-regimes.svg" in guide
+    assert "3.20 kg" not in guide and "5 cm below" not in guide

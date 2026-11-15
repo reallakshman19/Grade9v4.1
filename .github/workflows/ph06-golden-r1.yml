@@ -1,4 +1,4 @@
-name: PH06 Golden Sample R1 QA
+name: PH06 Golden Sample R2 WPE parity QA
 on:
   pull_request:
     paths:
@@ -21,11 +21,16 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - run: pip install pytest==8.4.2 playwright==1.55.0
+      - run: pip install pytest==8.4.2 playwright==1.55.0 jsonschema
       - run: python -m playwright install --with-deps chromium
       - run: node --input-type=module --check < nsejs/physics/ph06/reader.js
-      - run: python -m pytest -q tests/test_ph06_golden_r1.py
-      - run: python tools/ph06_golden_browser_qa.py
+      - run: |
+          mkdir -p artifacts/ph06-golden
+          set -o pipefail
+          python -m pytest -q -s tests/test_ph06_golden_r1.py | tee artifacts/ph06-golden/science-tests.txt
+      - run: |
+          set -o pipefail
+          python tools/ph06_golden_browser_qa.py | tee artifacts/ph06-golden/browser-tests.txt
       - name: Compute exact author evidence file hashes
         if: always()
         run: |
