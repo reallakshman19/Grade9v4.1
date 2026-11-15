@@ -1,41 +1,67 @@
 name: Deploy to GitHub Pages
 
+# No automatic publication from main. Explicit signed manifest and protected
+# github-pages environment are separate from integration and academic review.
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
-  group: "pages"
+  group: pages
   cancel-in-progress: false
 
 jobs:
+  stage:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout exact release commit
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+          path: candidate
+      - name: Resolve externally pinned control revision
+        id: pin
+        env:
+          CONTROL_SHA: ${{ vars.G9_R3_CONTROL_SHA }}
+          REF: ${{ github.ref }}
+        run: |
+          test "$REF" = "refs/heads/main"
+          [[ "$CONTROL_SHA" =~ ^[0-9a-f]{40}$ ]]
+          echo "sha=$CONTROL_SHA" >> "$GITHUB_OUTPUT"
+      - name: Checkout externally pinned control code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.pin.outputs.sha }}
+          path: trusted
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install jsonschema
+      - name: Verify signed release manifest and stage exact file bytes
+        env:
+          G9_R3_TRUST_JSON: ${{ vars.G9_R3_TRUST_JSON }}
+          CONTROL_SHA: ${{ steps.pin.outputs.sha }}
+          RELEASE_SHA: ${{ github.sha }}
+        run: |
+          python trusted/docs/agent-entry/production-control-r3/release.py --repo candidate --head "$RELEASE_SHA" --control "$CONTROL_SHA" --output public
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: public
   deploy:
+    needs: stage
+    runs-on: ubuntu-24.04
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Rebuild complete NSEJS search index and install search on public learner pages
-        run: python3 tools/build_search_index.py --install-search
-
-      - name: Setup GitHub Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v4
-        with:
-          path: '.'
-
-      - name: Deploy to GitHub Pages
+      - name: Deploy authorized technical preview
         id: deployment
         uses: actions/deploy-pages@v4
