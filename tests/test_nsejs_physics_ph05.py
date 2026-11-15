@@ -257,7 +257,7 @@ def test_ph05_source_first_mapping_identity_and_hold():
     assert data["schema"] == "g9v41-ph05-source-to-learning/v1"
     assert data["academic_status"] == "HOLD"
     assert data["admitted_original_d3_d4"] == 0
-    assert len(data["source_candidates"]) == 4
+    assert len(data["source_candidates"]) == 5
     old = json.loads((ROOT / "nsejs/data/physics-core2-candidates.v1.json").read_text(encoding="utf-8"))
     original_ids = {q["id"] for q in old["questions"]}
     qrt = json.loads((PH05_DATA / "qrt-candidates.v1.json").read_text(encoding="utf-8"))
@@ -311,8 +311,9 @@ def test_ph05_original_paper_crosscheck_receipts():
     assert review["source_bytes_hashed"] is False
     assert {e["source_uid"]:e["official_option"] for e in review["records"]} == {
         "NSEJS-2022-C51-Q36":"A", "NSEJS-2023-C51-Q48":"D",
-        "NSEJS-2024-C51-Q48":"B", "NSEJS-2024-C51-Q33":"D"}
-    assert len(review["records"]) == len(source["source_candidates"]) == 4
+        "NSEJS-2024-C51-Q48":"B", "NSEJS-2024-C51-Q33":"D",
+        "NSEJS-2025-C51-Q43":"D"}
+    assert len(review["records"]) == len(source["source_candidates"]) == 5
     for item in source["source_candidates"]:
         assert item["official_paper_url"].startswith("https://")
         assert item["official_paper_page"] > 0
@@ -403,3 +404,33 @@ def test_ph05_source_specific_return_route_is_validated_against_task_uid():
     assert 's.source_status==="EXTERNAL_CUSTODY_HOLD"' in practice
     assert 'id="returnToPreviousNSEJSQuestion"' in practice
     assert "Return to original NSEJS source checkpoint" in practice
+
+
+def test_ph05_2025_source_and_inverse_observation_transfer():
+    mapping=json.loads((PH05_DATA/"source-to-learning.v1.json").read_text(encoding="utf-8"))
+    source=next(x for x in mapping["source_candidates"] if x["source_uid"]=="NSEJS-2025-C51-Q43")
+    assert source["original_demand"]=="UNADJUDICATED"
+    assert source["source_status"]=="EXTERNAL_CUSTODY_HOLD"
+    assert source["official_paper_url"].startswith("https://iapt.org.in/")
+    assert source["transfer"]=="AUTHORED-PH05-G04-SOURCE-MODEL-D3-R1"
+    qrt=json.loads((PH05_DATA/"qrt-candidates.v1.json").read_text(encoding="utf-8"))
+    task=next(x for x in qrt["source_cycles"] if x["uid"]==source["transfer"])
+    assert task["source_role"]=="AUTHORED_UNSEEN_TRANSFER_NOT_PREVIOUS_EXAM"
+    assert task["qrt_status"]=="AUTHOR_PROPOSED_INDEPENDENT_REVIEW_HOLD"
+    assert all(term in task["prompt"] for term in ("KNOWN depth H","t0","t_plus","t_minus"))
+    # Concrete consistent calibration: H=45, g=10, t0=3, u=16 => t_plus=5, t_minus=1.8.
+    H,g,t0,t_plus,t_minus=45.,10.,3.,5.,1.8
+    assert abs(t_plus*t_minus-t0*t0)<1e-12
+    u=(g/2)*(t_plus-t_minus)
+    assert abs(u-16.)<1e-12
+    assert abs((g/2)*t0*t0-H)<1e-12
+    assert abs(-u*t_plus+g*t_plus*t_plus/2-H)<1e-12
+    assert abs(u*t_minus+g*t_minus*t_minus/2-H)<1e-12
+
+def test_ph05_2025_uses_true_nsejs_final_key_not_wrong_archive_target():
+    evidence=json.loads((ROOT/"review/physics/ph05-source-first-r1/OFFICIAL_SOURCE_EVIDENCE_R2.json").read_text(encoding="utf-8"))
+    item=next(x for x in evidence["records"] if x["source_uid"]=="NSEJS-2025-C51-Q43")
+    assert item["official_option"]=="D"
+    assert "/NSEJS_-_2025_Final_Answer_key.pdf" in item["final_key_url"]
+    assert "NSEP_-_2025" not in item["final_key_url"]
+    assert item["paper_sha256"] is None and item["key_sha256"] is None

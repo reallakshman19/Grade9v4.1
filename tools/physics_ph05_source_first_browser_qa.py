@@ -16,7 +16,7 @@ from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/"review-artifacts/physics-ph05-source-first"
-IDS=("NSEJS-2022-C51-Q36","NSEJS-2023-C51-Q48")
+IDS=("NSEJS-2022-C51-Q36","NSEJS-2023-C51-Q48","NSEJS-2025-C51-Q43")
 PREFIX="G9V41:PH05:SOURCE_FIRST:"
 
 
@@ -174,7 +174,7 @@ def main():
                 check_stale_revision(browser,target,receipt["cases"])
             finally:
                 browser.close()
-        assert len(receipt["cases"])==6
+        assert len(receipt["cases"])==8
         receipt["disposition"]="TECHNICAL_PASS__ACADEMIC_HOLD"
         print("PH05_SOURCE_FIRST_BROWSER_PASS",len(receipt["cases"]),flush=True)
     except Exception as err:

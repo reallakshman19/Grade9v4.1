@@ -395,6 +395,38 @@
         "algebra_computational_load": 1,
         "trap_exception_sensitivity": 1
       }
+    },
+    {
+      "id": "PH05-G04-SOURCE-MODEL-D3-R1",
+      "uid": "AUTHORED-PH05-G04-SOURCE-MODEL-D3-R1",
+      "unit": "PH05-G04",
+      "op": "MODEL",
+      "cell": "D3.4",
+      "revision": "ph05-g04-source-model-20261115-r1",
+      "source_role": "AUTHORED_UNSEEN_TRANSFER_NOT_PREVIOUS_EXAM",
+      "qrt_status": "AUTHOR_PROPOSED_INDEPENDENT_REVIEW_HOLD",
+      "status": "ACADEMIC_HOLD",
+      "prediction": "Can three observations determine both the gravitational acceleration and an unknown initial launch speed without an external length reference? Predict what measurements are necessary.",
+      "prompt": "A vertical shaft has KNOWN depth H. One stone is dropped from rest and reaches the bottom after time t0. Two other identical stones are launched from the same point vertically up and vertically down with equal but unknown speed u and reach the same bottom at times t_plus and t_minus. Neglect air resistance and sound travel. (1) Infer g and u from the observations. (2) Derive one consistency identity among the three times that can expose an invalid constant-acceleration model. (3) Identify the quantity that would remain undetermined if H were unknown.",
+      "w": "Use three different initial conditions, not merely two. H=gt0²/2, H=−u*t_plus+gt_plus²/2 and H=u*t_minus+gt_minus²/2. Eliminating u and H gives t_plus*t_minus=t0², and the known depth is needed to identify g and u absolutely.",
+      "hints": [
+        "Write one signed displacement equation for each launch. Let down be positive, so the upward launch has negative initial velocity.",
+        "Subtract the up and down equations to eliminate H, then combine with the dropped-from-rest observation.",
+        "Use t_plus*t_minus=t0² as a model-consistency check; identify what time measurements cannot determine without a known length."
+      ],
+      "reconstruction": "1. For a drop: H=(g/2)*t0², hence g=2H/t0² if H is known. 2. For two equal-magnitude opposite launch speeds u, H=−u*t_plus+(g/2)*t_plus² and H=u*t_minus+(g/2)*t_minus². Equating: u=(g/2)*(t_plus−t_minus). 3. Substitute into the downward equation: H=(g/2)*t_plus*t_minus. Compare with rest-drop H=(g/2)*t0² to obtain t_plus*t_minus=t0². 4. With known H, the numeric g and u follow; without H, there is a scale ambiguity: times alone fix u/g and the dimensionless consistency check but do not give either speed or g absolutely.",
+      "alternative": "Solve via the quadratic roots: for a given magnitude u, upward and downward launch times are t_plus=[u+sqrt(u²+2gH)]/g and t_minus=[−u+sqrt(u²+2gH)]/g. Their product is 2H/g=t0², and their difference is 2u/g. Both agree with the direct signed-displacement derivation.",
+      "diagnosis": "Do not use a single sign for both launches. Treating t0 as unrelated misses the identifiability witness. Assuming time measurements alone determine g without a known depth violates dimensional analysis.",
+      "repair": "Draw a down-positive axis, write all three equations, eliminate u and H in separate steps and verify both the product and difference identities.",
+      "boundaryPrompt": "Suppose each observed time includes the same unknown sound-return delay tau after the splash. Which of the product and difference identities survives unchanged, and what extra measurement would isolate tau?",
+      "boundaryModel": "The difference of the two splash-listening times is unchanged by adding the same tau, but the product identity generally fails with observed times. Direct optical timing of one impact or a measured propagation speed and shaft depth could identify tau under explicit assumptions.",
+      "factor_nominations": {
+        "concept_model_selection": 2,
+        "representation_translation": 1,
+        "reasoning_chain_length": 2,
+        "algebra_computational_load": 1,
+        "trap_exception_sensitivity": 1
+      }
     }
   ]
 }
