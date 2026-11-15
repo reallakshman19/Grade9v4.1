@@ -1,0 +1,53 @@
+name: Physics PH11-07 R3 Exposed Adversarial Candidate QA
+on:
+  pull_request:
+    paths:
+      - 'nsejs/physics/curriculum/topics/PH11/**'
+      - 'review/physics/ph11-07-r3/**'
+      - 'review/physics/ph09-ph12-wpe-parity-r1/**'
+      - 'tests/test_nsejs_physics_ph11_r3_golden_candidate.py'
+      - 'tests/test_nsejs_physics_ph09_ph12_wpe_parity_r1.py'
+      - 'tools/physics_ph09_ph12_wpe_parity_browser_qa.py'
+      - '.github/workflows/physics-ph11-r3-academic-candidate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+jobs:
+  ph11-technical-and-science-evidence:
+    name: Exposed science invariants + HTTP browser · Academic HOLD
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install pytest==8.4.2 playwright==1.55.0
+      - run: python -m playwright install --with-deps chromium
+      - name: Validate authored case and adapter syntax
+        run: |
+          python -m json.tool nsejs/physics/curriculum/topics/PH11/topic-adapter.PH11.wpe-parity-r3.v1.json >/dev/null
+          python -m json.tool review/physics/ph11-07-r3/PH11_07_R3_ADVERSARIAL_EVIDENCE.json >/dev/null
+          node --check review/physics/ph09-ph12-wpe-parity-r1/preview.js
+      - name: Run R3 science/novelty/asset and prior parity tests
+        run: |
+          mkdir -p review-artifacts/physics-ph11-r3
+          python -m pytest -q tests/test_nsejs_physics_ph11_r3_golden_candidate.py tests/test_nsejs_physics_ph09_ph12_wpe_parity_r1.py | tee review-artifacts/physics-ph11-r3/pytest.txt
+      - name: Run all four R2 reviewer journeys and PH11 native HTTP checks
+        run: |
+          python tools/physics_ph09_ph12_wpe_parity_browser_qa.py
+      - name: Record exact tested files and academic gate
+        if: always()
+        run: |
+          mkdir -p review-artifacts/physics-ph11-r3
+          git rev-parse HEAD > review-artifacts/physics-ph11-r3/tested-head.txt
+          sha256sum nsejs/physics/curriculum/topics/PH11/topic-adapter.PH11.wpe-parity-r3.v1.json review/physics/ph09-ph12-wpe-parity-r1/FOUR_WPE_PARITY_REFERENCE_CANDIDATES_R1.json nsejs/physics/curriculum/topics/PH11/subtopics/PH11-07/core1a.html nsejs/physics/curriculum/topics/PH11/subtopics/PH11-07/core1b.html review/physics/ph09-ph12-wpe-parity-r1/preview.js review/physics/ph11-07-r3/PH11_07_R3_ADVERSARIAL_EVIDENCE.json > review-artifacts/physics-ph11-r3/content-sha256.txt
+          printf '%s\n' 'AUTHOR_EXPOSED_NOT_BLIND' 'SOURCE_AUTHENTICITY_HOLD' 'INDEPENDENT_QRT_NOT_RUN' 'B1_B7_HOLD' 'NO_OWNER_RELEASE_NO_MERGE_NO_DEPLOY' > review-artifacts/physics-ph11-r3/ACADEMIC_HOLD.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: physics-ph11-r3-exposed-review-receipts
+          path: |
+            review-artifacts/physics-ph11-r3/
+            review-artifacts/physics-ph09-ph12-parity-r1/receipt.json
