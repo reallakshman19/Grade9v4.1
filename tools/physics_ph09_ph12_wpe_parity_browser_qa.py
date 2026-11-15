@@ -45,6 +45,11 @@ def assert_no_leak(page, source_phase=False):
     if source_phase:
         assert page.locator("#journey").is_hidden()
         assert page.locator("#source-learn").is_disabled()
+        # Hiding an already-populated worked answer in DOM is not sufficient:
+        # the source-first gate must not mount teaching or transfer content.
+        assert page.locator("#worked-solution li").count() == 0
+        assert page.locator("#teaching-model").text_content() == ""
+        assert page.locator("#fresh-task").text_content() == ""
 
 
 def run():
