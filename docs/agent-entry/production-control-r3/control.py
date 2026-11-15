@@ -83,11 +83,13 @@ def trust_from_env():
     return parse(raw) if raw else {"schema":"g9-r3-trust/v1","keys":[]}
 def trust_keys(trust):
     require(trust.get("schema")=="g9-r3-trust/v1","TRUST_SCHEMA")
-    keys={}
+    keys={};public_keys=set()
     for k in trust.get("keys",[]):
         require(set(k)=={"id","principal","roles","public_key_pem"} and ID.fullmatch(k["id"]) and k["principal"] and k["id"] not in keys and k["roles"] and set(k["roles"])<=ROLES,"INVALID_TRUST_KEY")
         require("PRIVATE KEY" not in k["public_key_pem"] and "BEGIN PUBLIC KEY" in k["public_key_pem"],"INVALID_PUBLIC_KEY")
-        keys[k["id"]]=k
+        pem_id=sha("".join(k["public_key_pem"].split()).encode())
+        require(pem_id not in public_keys,"REUSED_TRUST_PUBLIC_KEY")
+        public_keys.add(pem_id);keys[k["id"]]=k
     return keys
 def signed(receipt,trust,purpose,binding,subject,decision,role,authors=()):
     require(set(receipt)=={"record","signature"},"RECEIPT_SHAPE")
@@ -105,6 +107,12 @@ def signed(receipt,trust,purpose,binding,subject,decision,role,authors=()):
         result=subprocess.run(["openssl","pkeyutl","-verify","-pubin","-inkey",str(d/"key.pem"),"-rawin","-in",str(d/"record"),"-sigfile",str(d/"sig")],capture_output=True)
         require(result.returncode==0,"INVALID_RECEIPT_SIGNATURE:"+purpose)
     return key["principal"],r["details"]
+def verify_receipt_file(repo,head,items,trust,p):
+    obj=read_json(repo,head,p,items);r=obj["record"];purpose=r["purpose"]
+    roles={"GOVERNANCE":"OWNER","OWNER_SCOPE":"OWNER","OWNER_GOLDEN":"OWNER","PREVIEW_RELEASE":"OWNER","DESIGN":"DESIGN","R00":"R00","R01_SOURCE":"R01_SOURCE","R01_SCIENCE":"R01_SCIENCE","R01_QRT":"R01_QRT","R01_LEARNING":"R01_LEARNING"}
+    require(purpose in roles,"UNKNOWN_RECEIPT_PURPOSE:"+purpose)
+    expected="AUTHORIZED" if purpose in ("GOVERNANCE","OWNER_SCOPE","PREVIEW_RELEASE") else "ACCEPTED"
+    return signed(obj,trust,purpose,r["binding"],r["subject"],expected,roles[purpose])
 def validate_schema(obj,name):
     schema=parse((HERE/name).read_bytes());errors=sorted(Draft202012Validator(schema).iter_errors(obj),key=lambda e:str(e.path))
     require(not errors,"SCHEMA:"+name+":"+("; ".join("/".join(map(str,e.path))+":"+e.message for e in errors[:5])))
@@ -204,7 +212,11 @@ def check_active(repo,base,head,items,policy,trust,pr_author,content,golden_lane
             if role=="R00":require(details.get("tested_commit")==tested and details.get("browser")=="PASS" and details.get("negative_controls")=="PASS","R00_TEST_RECEIPT_MISSING")
             if role=="R01_SOURCE":require(details.get("source_role")==i["source_role"] and details.get("rights")=="PASS" and details.get("custody")=="PASS","SOURCE_REVIEW_HOLD")
             if role=="R01_SCIENCE":require(details.get("independent_derivation")=="PASS" and details.get("units_signs_limits")=="PASS","SCIENCE_REVIEW_HOLD")
-            if role=="R01_QRT":require(details.get("exposure")=="UNEXPOSED" and SHA64.fullmatch(details.get("sealed_first_pass_sha256","")) and details.get("operation") in OPS and details.get("cell")==i["cell"],"QRT_REVIEW_HOLD")
+            if role=="R01_QRT":
+                factors=details.get("factors",{})
+                require(details.get("exposure")=="UNEXPOSED" and SHA64.fullmatch(details.get("sealed_first_pass_sha256","")) and details.get("operation") in OPS and details.get("cell")==i["cell"],"QRT_REVIEW_HOLD")
+                require(set(factors)=={"concept_model_selection","representation_translation","reasoning_chain_length","algebra_computational_load","trap_exception_sensitivity"} and all(type(v) is int and 0<=v<=2 for v in factors.values()),"QRT_FACTOR_RECEIPT_MISSING")
+                require(details.get("sealed_first_pass_path","").startswith(EVID) and sha(blob(repo,head,details["sealed_first_pass_path"],items))==details["sealed_first_pass_sha256"],"QRT_SEALED_REPORT_HASH_MISMATCH")
             if role=="R01_LEARNING":require(details.get("B1_B7")=={g:"PASS" for g in GATES} and details.get("cold_reconstruction")=="PASS","LEARNING_REVIEW_HOLD")
         require(len(set(reviewers))==len(reviewers) and owner not in reviewers and designer not in reviewers,"REVIEWER_ROLE_COLLISION")
     if golden_lane:
@@ -220,6 +232,9 @@ def gate(repo,base,head,trust,pr_author=""):
         files=changed(repo,base,head);groups={k:[p for p in files if classify(p,policy)==k] for k in ("CONTENT","GOVERNANCE","EVIDENCE")}
         fp=fingerprint(hi)
         for p in groups["EVIDENCE"]:
+            if p.startswith(EVID+"receipts/") or p in (EVID+"governance-receipt.json",EVID+"release-receipt.json"):
+                require(p in hi,"REVIEW_RECEIPT_DELETION_FORBIDDEN:"+p)
+                verify_receipt_file(repo,head,hi,trust,p)
             if p in hi:
                 require(Path(p).suffix.lower() in {".json",".txt",".md",".csv",".png",".jpg",".jpeg",".webp"},"NON_EVIDENCE_FILE_IN_RECEIPT_NAMESPACE:"+p)
                 require(hi[p][0]=="100644" and hi[p][1]=="blob","NON_REGULAR_EVIDENCE:"+p)

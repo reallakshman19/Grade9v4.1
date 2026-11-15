@@ -3,7 +3,7 @@
 from __future__ import annotations
 import argparse, json, shutil, sys
 from pathlib import Path
-from control import (Block, EVID, PACKETS, SHA64, blob, changed, classify, commit,
+from control import (Block, EVID, PACKETS, SHA64, ancestor, blob, changed, classify, commit,
                      fingerprint, load_policy, parse, path_ok, require, sha, signed,
                      tree, trust_from_env)
 ROOTS={"nsejs","physics","mathematics","chemistry","biology","curriculum","architecture","preview","css","js","data","assets","images","fonts"}
@@ -21,6 +21,7 @@ def public_path(p):
     return not any(x in name for x in ("final-answer-key","official-answer-key","review-receipt","quality-packet","source-custody","source_custody","review-report","private-key"))
 def stage(repo,rev,manifest_path,output,trust,control_rev):
     ci=tree(repo,control_rev);policy=load_policy(repo,control_rev,ci)
+    require(ancestor(repo,control_rev,rev),"CONTROL_REVISION_NOT_ANCESTOR")
     items=tree(repo,rev);fp=fingerprint(items)
     require(policy["phase"]=="FREEZE_PENDING_GOLDEN" and not policy["academic_release_enabled"],"ACADEMIC_RELEASE_REQUIRES_SEPARATE_ADOPTED_PROTOCOL")
     # Even a signed preview cannot silently include new learner content during freeze.

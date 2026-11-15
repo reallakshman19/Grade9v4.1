@@ -167,3 +167,13 @@ def test_release_rejects_search_to_unpublished_path(tmp_path):
 def test_public_path_denial(path):
     try: assert not R.public_path(path)
     except C.Block: assert ".." in path
+
+def test_forged_receipt_cannot_be_merged_as_evidence_only(tmp_path):
+    root,base,_=fresh(tmp_path);priv,key=make_key(tmp_path)
+    path=C.EVID+"receipts/fixture/R00-task.json"
+    write(root,path,make_receipt(tmp_path,priv,key,"R00","a"*64,"task","ACCEPTED"))
+    head=save(root)
+    reason(C.gate(root,base,head,trust(key)),"UNTRUSTED_SIGNER")
+def test_duplicate_public_key_cannot_impersonate_independent_roles(tmp_path):
+    priv,key=make_key(tmp_path);other=dict(key,id="different",principal="another",roles=["R00"])
+    with pytest.raises(C.Block,match="REUSED_TRUST_PUBLIC_KEY"):C.trust_keys(trust(key,other))

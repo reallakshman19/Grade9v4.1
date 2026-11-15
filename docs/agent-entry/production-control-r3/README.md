@@ -53,3 +53,5 @@ python docs/agent-entry/production-control-r3/control.py --repo . --base <exact-
 python docs/agent-entry/production-control-r3/release.py --repo . --head <exact-release-head> --control <admin-pinned-control-head> --output public
 ```
 Candidate regression CI tests the code, not production authorization. Trusted decision is a different workflow and posts g9/r3-production-decision on candidate head. The first installation PR must be manually reviewed because a base-owned workflow cannot run before it exists on main. This is not a bypass authorization for later changes.
+
+Historical classification replay: `python docs/agent-entry/production-control-r3/replay.py --repo .` runs against actual merged PH05, PH03 and PH06 Git diffs (full history required). It is not a historical academic adjudication. QRT receipt includes all five factor scores and actual sealed first-pass report bytes; evidence-only receipt changes also require a trusted signature. No real key roster or approvals are present.
