@@ -13,8 +13,9 @@
 
   function say(id, message) { $(id).textContent = message; }
   function adapterPath(topic) {
+    const revision = topic === "PH11" ? "wpe-parity-r3.v1.json" : "wpe-parity-r2.v1.json";
     return "../../../nsejs/physics/curriculum/topics/" + topic +
-      "/topic-adapter." + topic + ".wpe-parity-r2.v1.json";
+      "/topic-adapter." + topic + "." + revision;
   }
   function currentAdapter() { return current && adapters[current.chapter]; }
   function storageAvailable() {
@@ -362,9 +363,15 @@
         if (!result.ok) throw new Error(topic + " adapter HTTP " + result.status);
         const adapterRaw = await result.text();
         const adapter = JSON.parse(adapterRaw);
-        if (adapter.schema !== "g9v41-physics-wpe-parity-topic-adapter-r2/v1" ||
+        const expectedSchema = topic === "PH11"
+          ? "g9v41-physics-wpe-parity-topic-adapter-r3/v1"
+          : "g9v41-physics-wpe-parity-topic-adapter-r2/v1";
+        const expectedStatus = topic === "PH11"
+          ? "AUTHOR_EXPOSED_ADVERSARIAL_REVIEW__INDEPENDENT_QRT_HOLD"
+          : "AUTHOR_EXPOSED_QRT_PROPOSAL__INDEPENDENT_HOLD";
+        if (adapter.schema !== expectedSchema ||
             adapter.topic_id !== topic ||
-            adapter.academic_status !== "AUTHOR_EXPOSED_QRT_PROPOSAL__INDEPENDENT_HOLD" ||
+            adapter.academic_status !== expectedStatus ||
             adapter.source?.not_an_official_exam !== true ||
             adapter.source.exam_source_uid !== null ||
             adapter.assertions?.owner_release !== "HOLD" ||
