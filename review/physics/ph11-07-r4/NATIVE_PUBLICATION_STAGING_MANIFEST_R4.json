@@ -1,0 +1,62 @@
+{
+  "schema": "g9v41-ph11-07-native-candidate-staged-deps/v1",
+  "type": "UNSIGNED_TECHNICAL_STAGE_MANIFEST_NOT_RELEASE",
+  "status": "AUTHOR_EXPOSED_REVIEW_ONLY__ACADEMIC_HOLD",
+  "chapter": "PH11",
+  "subtopic": "PH11-07",
+  "native_entry": "nsejs/physics/curriculum/topics/PH11/subtopics/PH11-07/core1b.html",
+  "learner_dependency_root": "nsejs/physics/curriculum/topics/PH11/subtopics/PH11-07",
+  "dependencies": [
+    {
+      "path": "nsejs/physics/curriculum/topics/PH11/subtopics/PH11-07/core1a.html",
+      "git_blob_sha": "6b9b3be9f37bd9ff1138d5b4c12b110ec2c66c01",
+      "bytes": 11758
+    },
+    {
+      "path": "nsejs/physics/curriculum/topics/PH11/subtopics/PH11-07/core1b.html",
+      "git_blob_sha": "ce7c559a3003a0f06e6d77789c76a6e7d293a415",
+      "bytes": 8974
+    },
+    {
+      "path": "nsejs/physics/curriculum/topics/PH11/subtopics/PH11-07/native-attempt.js",
+      "git_blob_sha": "3f4eab9abdb2eebbcab18d3b413e4db592c1005d",
+      "bytes": 16193
+    },
+    {
+      "path": "nsejs/physics/curriculum/topics/PH11/subtopics/PH11-07/prompt.v1.json",
+      "git_blob_sha": "1c9c22cd065ea7da1be2d970199a861b084219fe",
+      "bytes": 3528
+    },
+    {
+      "path": "nsejs/physics/curriculum/topics/PH11/subtopics/PH11-07/postattempt.v1.json",
+      "git_blob_sha": "e16d4051459337fe6fbcdd93617a0331984bcc33",
+      "bytes": 2944
+    },
+    {
+      "path": "nsejs/physics/curriculum/agent2/textbook-reader.css",
+      "git_blob_sha": "897cb001284dc6eead616287beadfc62dbacec5b",
+      "bytes": 1371
+    }
+  ],
+  "network_phase_policy": {
+    "before_source_first": "prompt.v1.json may load; postattempt.v1.json must NOT load",
+    "after_source_first_before_challenge_first": "postattempt.v1.json must NOT load",
+    "after_challenge_first": "postattempt.v1.json MAY load only if pinned Git blob AND SHA-256 matches trusted runtime constants",
+    "publication_exclude": [
+      "review/**",
+      "tools/**",
+      "tests/**",
+      "nsejs/physics/curriculum/topics/PH11/topic-adapter.*"
+    ]
+  },
+  "validation_procedure": "Run exact-head HTTP Chromium QA and compare these dependency paths/content Git blobs with checked-in head; then independently confirm Owner signed staging, authority and R3 trusted decision. Mechanical existence alone does not approve release.",
+  "trusted_production_gate": "NOT_RUN_ON_STACKED_PR_AND_NOT_AUTHORIZED",
+  "independent_academic": "NOT_RUN",
+  "source_custody": "HOLD",
+  "B1_B7": "HOLD",
+  "owner_release": "HOLD",
+  "release_manifest_authority": "NONE_NO_SIGNATURE",
+  "historical_parent": "#56",
+  "observed_review": "#65 REQUEST_CHANGES",
+  "reason": "Expose the candidate-only native dependency graph for non-executable stage checks without weakening review/ denylist or merging into main."
+}
