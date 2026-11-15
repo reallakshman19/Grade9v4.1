@@ -105,3 +105,14 @@ def test_reader_attempt_revision_storage_and_hint_locks():
     assert 'Tier 3 helper remain locked' in js
     assert 'getAttempt(k) ? hints.length : Math.min(2, hints.length)' in js
     assert 'localStorage.removeItem(k)' not in js
+
+def test_circuit_figure_bytes_and_hints_are_revision_bound():
+    js=(ROOT/"nsejs/js/core2-physics-reader.js").read_text(encoding="utf-8")
+    assert 'figure_bytes_sha256: await circuitFigureHashes(q)' in js
+    assert 'hints: q.hints || []' in js
+    assert 'candidate-attempt","v2"' in js
+    assert 'content_revision_sha256: contentRevision' in js
+    assert 'if (!getAttempt(k)) return false;' in js
+    assert 'function revealAnswerAfterCommit()' in js
+    assert 'answerBox.replaceChildren(' in js
+    assert 'if (!response.ok) throw new Error("Circuit prompt figure unavailable:' in js

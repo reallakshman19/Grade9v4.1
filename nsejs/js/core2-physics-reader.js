@@ -107,11 +107,39 @@
     figures:q.source_figures || [],figure_note:q.figure_note || "",
     reasoning:q.steps || [],boundary:q.check || ""
   });
+  // Existing 50 source-candidate revisions must remain byte-compatible with their
+  // pinned integrity ledger. The separately authored Circuit worksheet intake
+  // receives stronger asset-byte and hint-content binding.
+  const circuitCandidate = q => /^NSEJS-CIRC-L[12]-Q\\d{2}$/.test(String(q.source_id || ""));
+  const digestHex = bytes => Array.from(new Uint8Array(bytes),
+    b => b.toString(16).padStart(2,"0")).join("");
+  async function circuitFigureHashes(q) {
+    const figNames = q.source_figures || [];
+    if (!Array.isArray(figNames)) throw new Error("Circuit figure list invalid; fail closed");
+    const fingerprints = [];
+    for (const name of figNames) {
+      if (!/^fig_nsejs_circ_l[12]_q\\d{2}\\.svg$/.test(String(name)))
+        throw new Error("Unrecognized Circuit figure: " + name);
+      const response = await fetch("../assets/" + name, {cache: "no-store"});
+      if (!response.ok) throw new Error("Circuit prompt figure unavailable: " + name);
+      const data = await response.arrayBuffer();
+      if (data.byteLength < 100) throw new Error("Circuit prompt figure empty: " + name);
+      fingerprints.push({name, sha256: digestHex(await crypto.subtle.digest("SHA-256", data))});
+    }
+    return fingerprints;
+  }
   async function revision(q) {
-    if (!crypto || !crypto.subtle) throw new Error("SHA-256 revision service unavailable; attempt commitment disabled");
-    const bytes = new TextEncoder().encode(revisionPayload(q));
+    if (typeof crypto === "undefined" || !crypto.subtle)
+      throw new Error("SHA-256 revision service unavailable; attempt commitment disabled");
+    const payload = revisionPayload(q);
+    const complete = circuitCandidate(q)
+      ? JSON.stringify({payload, hints: q.hints || [],
+          source_pdf_sha256: q.source_pdf_sha256 || "",
+          figure_bytes_sha256: await circuitFigureHashes(q)})
+      : payload;
+    const bytes = new TextEncoder().encode(complete);
     const hash = await crypto.subtle.digest("SHA-256", bytes);
-    return Array.from(new Uint8Array(hash), b => b.toString(16).padStart(2,"0")).join("");
+    return digestHex(hash);
   }
   function textOption(opt, i) {
     const match = String(opt).match(/^[A-H]\s*[:.)]\s*/);
@@ -273,7 +301,8 @@
 
     // The attempt key is bound to all question text, options, key and solution
     // fields. It never silently reuses a previous candidate content revision.
-    const k = attemptKey(q, await revision(q));
+    const contentRevision = await revision(q);
+    const k = attemptKey(q, contentRevision);
     const hints = Array.isArray(q.hints) ? q.hints : [];
     let unlockTier3 = () => {};
     if (hints.length > 0) {
@@ -306,15 +335,19 @@
 
     const answerBox = text("div", "", "answer");
     answerBox.hidden = true;
-    append(answerBox, text("h3", "Candidate derivation & reported key · academic HOLD"));
-    append(answerBox, text("p", q.answer || "Official Key Pending", "official-key-line"));
-    if (Array.isArray(q.steps) && q.steps.length > 0) {
-      q.steps.forEach(s => append(answerBox, text("p", s)));
-    }
-    if (q.check) {
-      append(answerBox, text("p", "Consistency Verification: " + q.check, "ok"));
-    }
+    // No answer or derivation text node is created before a durable first attempt.
     append(box, answerBox);
+    function revealAnswerAfterCommit() {
+      if (!getAttempt(k)) return false;
+      answerBox.replaceChildren(
+        text("h3", "Candidate derivation & reported key · academic HOLD"),
+        text("p", q.answer || "Recorded key unavailable", "official-key-line")
+      );
+      if (Array.isArray(q.steps)) q.steps.forEach(s => append(answerBox, text("p", s)));
+      if (q.check) append(answerBox, text("p", "Consistency Verification: " + q.check, "ok"));
+      answerBox.hidden = false;
+      return true;
+    }
 
     function renderAttemptFeedback(selected) {
       const selectedSet = new Set(selected || []);
@@ -353,8 +386,7 @@
           const lbl = field.closest("label");
           if (lbl) lbl.classList.add("opt-neutral-disabled");
         });
-        answerBox.hidden = false;
-        renderMath(answerBox);
+        if (revealAnswerAfterCommit()) renderMath(answerBox);
         return;
       }
 
@@ -368,8 +400,7 @@
             text("p", "Your choice was saved locally. Detailed official key is being cross-checked.")
           )
         );
-        answerBox.hidden = false;
-        renderMath(answerBox);
+        if (revealAnswerAfterCommit()) renderMath(answerBox);
         return;
       }
 
@@ -423,9 +454,10 @@
         );
       }
 
-      answerBox.hidden = false;
-      unlockTier3();
-      renderMath(answerBox);
+      if (revealAnswerAfterCommit()) {
+        unlockTier3();
+        renderMath(answerBox);
+      }
     }
 
     // Do not delete the first committed response from a candidate question.
@@ -456,6 +488,7 @@
       const attempt = {
         question_uid: uidOf(q),
         source_id: q.source_id,
+        content_revision_sha256: contentRevision,
         selected: selected,
         timestamp: new Date().toISOString()
       };
