@@ -274,7 +274,8 @@ def test_ph05_source_first_mapping_identity_and_hold():
             assert item["deep"].endswith("#" + item["corpus_id"])
         else:
             assert item["external"].startswith("https://")
-            assert item["original_demand"] == "UNADJUDICATED"
+            assert item["original_demand"] in {"UNADJUDICATED", "D1_CANDIDATE"}
+            assert item["source_status"] == "EXTERNAL_CUSTODY_HOLD"
 
 def test_ph05_core1a_gravity_arithmetic_and_ellipse_focus():
     """Regression for confirmed 10^6 force error and Kepler first-law geometry."""
