@@ -67,7 +67,7 @@ export async function openProtectedStore({uid,revision,hash,onChange,onError}){
     }else if(kind==="first"){
      required(1);
      const fields=payload.fields||{},reasoning=String(payload.reasoning||"").trim();
-     if(reasoning.length<20||!fields.model)throw Error("Select a model and explain your first reasoning");
+     if(reasoning.length<20||!fields.model||fields.model==="Choose a model")throw Error("Select a scientific model and explain your first reasoning");
      if(old.first)throw Error("First answer already committed");
      const exposure=readExposure(unitFromUid(uid),revision);
      next={...old,stage:2,first:{fields:{...fields},reasoning,at:now(),exposure},events:[...old.events,event("first_commit")]};
@@ -79,7 +79,7 @@ export async function openProtectedStore({uid,revision,hash,onChange,onError}){
      next={...old,stage:3,revealed:true,events:[...old.events,event("reconstruction_revealed")]};
     }else if(kind==="diagnosis"){
      required(3);const why=String(payload.text||"").trim();
-     if(why.length<20||!payload.field)throw Error("Name the first divergence and explain it");
+     if(why.length<20||!payload.field||payload.field==="Choose a step")throw Error("Name the first divergence and explain it");
      next={...old,stage:4,diagnosis:{field:payload.field,text:why,at:now()},events:[...old.events,event("diagnosis_commit")]};
     }else if(kind==="repair"){
      required(4);const why=String(payload.text||"").trim();
