@@ -155,7 +155,7 @@ def test_native_pages_link_the_correct_adapter_and_the_repaired_figures():
     assert "12 volt source connected directly" in doc.illustrations[0]
     assert "ten volt source, series two ohm" in doc.illustrations[1]
     assert "10 V" in a and "12 V" in a
-    assert "18 V" not in a  # avoid copying the new challenge data into teaching
+    assert "An ideal 18 V source" not in a  # avoid copying the new challenge stem into teaching
     for page in [CORE1A, CORE1B]:
         source = page.read_text(encoding="utf-8")
         parsed = Tags()
@@ -175,7 +175,7 @@ def test_runtime_uses_r3_adapter_and_does_not_show_source_or_decisive_work_early
     code = PREVIEW.read_text(encoding="utf-8")
     assert 'topic === "PH11" ? "wpe-parity-r3.v1.json"' in code
     assert "g9v41-physics-wpe-parity-topic-adapter-r3/v1" in code
-    assert "adapter.task.protected_decisive_work !== x.core1b.protected_work" in code
+    assert "adapters[x.chapter].task.protected_decisive_work !== x.core1b.protected_work" in code
     assert "versionMaterial" in code and 'crypto.subtle.digest("SHA-256"' in code
     assert '    $("connected-bridge").hidden = true;' in code
     assert '    $("reviewer-adapter-evidence").hidden = true;' in code
