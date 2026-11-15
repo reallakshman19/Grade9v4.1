@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 380" width="100%" height="100%" style="background:#ffffff; border:1.5px solid #cbd5e1; border-radius:10px;">
+
+  <style>
+    .wire { stroke: #1e293b; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+    .dash-wire { stroke: #64748b; stroke-width: 2; stroke-dasharray: 5,4; fill: none; }
+    .res-box { fill: #f8fafc; stroke: #0f172a; stroke-width: 2; rx: 4; }
+    .res-lbl { font-family: system-ui, -apple-system, sans-serif; font-size: 14px; font-weight: 600; fill: #0f172a; text-anchor: middle; dominant-baseline: central; }
+    .node-pt { fill: #1e293b; }
+    .term-pt { fill: #ea580c; stroke: #9a3412; stroke-width: 2; }
+    .term-lbl { font-family: system-ui, -apple-system, sans-serif; font-size: 16px; font-weight: 800; fill: #c2410c; text-anchor: middle; dominant-baseline: central; }
+    .node-lbl { font-family: system-ui, -apple-system, sans-serif; font-size: 15px; font-weight: 700; fill: #1e293b; text-anchor: middle; dominant-baseline: central; }
+    .diag-title { font-family: system-ui, -apple-system, sans-serif; font-size: 15px; font-weight: 700; fill: #0f172a; text-anchor: middle; }
+    .diag-sub { font-family: system-ui, -apple-system, sans-serif; font-size: 14px; fill: #64748b; text-anchor: middle; }
+  </style>
+
+  <text x="230" y="30" class="diag-title">Fig. 12: Circular Ring with Diametral Wire</text>
+  <text x="230" y="50" class="diag-sub">Ring wire = 24 &#937; &#183; Diametral wire = 12 &#937; &#183; Terminals P and Q</text>
+
+  <!-- Center (230, 200), Radius 110 -->
+  <!-- Circular ring (24 ohm total -> top semi 12 ohm, bottom semi 12 ohm) -->
+  <circle cx="230" cy="200" r="110" class="wire" style="stroke-width:4;"/>
+
+  <!-- Diametral wire PQ (12 ohm) -->
+  <line x1="120" y1="200" x2="340" y2="200" class="wire" style="stroke-width:3;"/>
+  <rect x="195" y="186" width="70" height="28" class="res-box"/>
+  <text x="230" y="200" class="res-lbl">12 &#937;</text>
+
+  <!-- Top arc label -->
+  
+  <!-- Bottom arc label -->
+  
+
+  <!-- Terminals P & Q -->
+  <circle cx="120" cy="200" r="7" class="term-pt"/>
+  <text x="95" y="200" class="term-lbl">P</text>
+
+  <circle cx="340" cy="200" r="7" class="term-pt"/>
+  <text x="365" y="200" class="term-lbl">Q</text>
+
+  
+</svg>

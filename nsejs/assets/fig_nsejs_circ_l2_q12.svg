@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 380" width="100%" height="100%" style="background:#ffffff; border:1.5px solid #cbd5e1; border-radius:10px;">
+
+  <style>
+    .wire { stroke: #1e293b; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+    .dash-wire { stroke: #64748b; stroke-width: 2; stroke-dasharray: 5,4; fill: none; }
+    .res-box { fill: #f8fafc; stroke: #0f172a; stroke-width: 2; rx: 4; }
+    .res-lbl { font-family: system-ui, -apple-system, sans-serif; font-size: 14px; font-weight: 600; fill: #0f172a; text-anchor: middle; dominant-baseline: central; }
+    .node-pt { fill: #1e293b; }
+    .term-pt { fill: #ea580c; stroke: #9a3412; stroke-width: 2; }
+    .term-lbl { font-family: system-ui, -apple-system, sans-serif; font-size: 16px; font-weight: 800; fill: #c2410c; text-anchor: middle; dominant-baseline: central; }
+    .node-lbl { font-family: system-ui, -apple-system, sans-serif; font-size: 15px; font-weight: 700; fill: #1e293b; text-anchor: middle; dominant-baseline: central; }
+    .diag-title { font-family: system-ui, -apple-system, sans-serif; font-size: 15px; font-weight: 700; fill: #0f172a; text-anchor: middle; }
+    .diag-sub { font-family: system-ui, -apple-system, sans-serif; font-size: 14px; fill: #64748b; text-anchor: middle; }
+  </style>
+
+  <text x="230" y="30" class="diag-title">Fig. 11: Uniform Wire Bent into Equilateral Triangle</text>
+  <text x="230" y="50" class="diag-sub">Uniform wire: total 18 &#937; &#183; midpoint M on BC</text>
+
+  <!-- Triangle corners: A(230, 80), B(90, 310), C(370, 310); M is midpoint (230, 310) -->
+  <!-- Wire AB (6 ohm) -->
+  <line x1="230" y1="80" x2="90" y2="310" class="wire" style="stroke-width:3.5;"/>
+  <!-- Wire AC (6 ohm) -->
+  <line x1="230" y1="80" x2="370" y2="310" class="wire" style="stroke-width:3.5;"/>
+  <!-- Wire BC (6 ohm) split into BM (3 ohm) and MC (3 ohm) -->
+  <line x1="90" y1="310" x2="370" y2="310" class="wire" style="stroke-width:3.5;"/>
+
+  <!-- Side labels -->
+  
+  
+  
+  
+
+  <!-- Corner nodes -->
+  <circle cx="90" cy="310" r="5" class="node-pt"/>
+  <text x="70" y="325" class="node-lbl">B</text>
+
+  <circle cx="370" cy="310" r="5" class="node-pt"/>
+  <text x="390" y="325" class="node-lbl">C</text>
+
+  <!-- Terminal A -->
+  <circle cx="230" cy="80" r="7" class="term-pt"/>
+  <text x="230" y="60" class="term-lbl">A</text>
+
+  <!-- Terminal M -->
+  <circle cx="230" cy="310" r="7" class="term-pt"/>
+  <text x="230" y="335" class="term-lbl">M</text>
+
+  
+</svg>

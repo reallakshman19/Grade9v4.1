@@ -1,0 +1,571 @@
+{
+  "schema": "g9v41-ph05-author-candidate-content/v1",
+  "task": "G9V41-PHYS-C1AB-A04-PH05-R1",
+  "status": "AUTHOR_EXPOSED_CANDIDATE",
+  "academic_status": "HOLD",
+  "release_status": "HOLD",
+  "source_role": "AUTHORED_TRANSFER",
+  "original_exam_identity": null,
+  "independent_qrt": "NOT_RUN",
+  "syllabus_scope": "CBSE_IX_SCIENCE_2026_27_AND_IAPT_NSEJS_CORE",
+  "source_locator_notes": [
+    {
+      "url": "https://iapt.org.in/",
+      "scope": "NSEJS Physics through Class X syllabus",
+      "status": "OFFICIAL_HOMEPAGE_CONTEXT_NOT_ITEM_CUSTODY"
+    },
+    {
+      "url": "https://cbseacademic.nic.in/web_material/CurriculumMain27/SecPart1/ScienceSt_SecP1_2026-27.pdf",
+      "publisher": "CBSE",
+      "course": "Class IX Science 2026–27, Gravitation",
+      "printed_page": 16,
+      "pdf_index_zero_based": 15,
+      "competency": "C-2.2 and C-8.2",
+      "visible_scope": "universal gravitation; mass and weight; free fall; variation of g; Keplerian planetary motion; satellite orbits and escape energy",
+      "status": "OFFICIAL_CURRICULUM_VISUALLY_CHECKED_NOT_EXAM_ITEM_ADMISSION"
+    }
+  ],
+  "base_commit": "HEAD",
+  "no_original_exam_claim": true,
+  "units": [
+    {
+      "id": "PH05-G01",
+      "title": "Universal gravitation and inverse-square law",
+      "scope": "CORE_CANDIDATE",
+      "competency": "Calculate mutual gravitational attraction between two point or spherical masses, apply vector superposition, and verify Newton's 3rd Law pair symmetry for disparate masses.",
+      "prerequisites": [
+        "PH01-M03",
+        "PH02-F04"
+      ],
+      "phenomenon": "The Earth pulls a 1 kg stone downward with a force of about 9.8 N. By Newton's third law, the stone simultaneously pulls the entire Earth upward with an identical force of 9.8 N. Because the Earth's mass is immense, its resulting acceleration is unmeasurably tiny, yet the interaction forces are strictly equal and opposite.",
+      "mechanism": "Every particle in the universe attracts every other particle along the line joining their centers. By Newton's shell theorem, a spherically symmetric body of mass M acts gravitationally on any external object as if its entire mass were concentrated at its geometric center. Doubling the separation distance between centers reduces the mutual force to one-fourth of its initial magnitude.",
+      "warrant": "Newton's Universal Law of Gravitation: F = G * (m1 * m2) / r^2, where G = 6.674 * 10^-11 N m^2 kg^-2 is Cavendish's universal gravitational constant. The force vector is purely attractive and directed along the radial line joining the two centers. Dimensions: [F] = M L T^-2. Validity requires r measured between geometric centers of non-overlapping spherically symmetric masses or point particles in an inertial reference frame.",
+      "figure": {
+        "kind": "gravity_pair",
+        "left": "m1 = 4 kg",
+        "right": "m2 = 1 kg",
+        "caption": "Mutual attractive gravitational force pair between two spherical masses separated by center-to-center distance r. Both experience equal magnitude forces pointing toward each other."
+      },
+      "progression": [
+        [
+          "FOUNDATION",
+          "Two identical 10 kg spheres are placed with their centers 2 m apart in deep space.",
+          "F = G * (10 * 10) / (2^2) = G * 100 / 4 = 25 * G = 25 * 6.674 * 10^-11 ≈ 1.67 * 10^-9 N attractive."
+        ],
+        [
+          "CONNECTED",
+          "The distance between two interacting spheres is tripled while one mass is doubled.",
+          "New force F' = G * (2 * m1 * m2) / (3r)^2 = (2/9) * (G * m1 * m2 / r^2) = (2/9) * F."
+        ],
+        [
+          "ADVANCED",
+          "Three identical masses m are fixed at the vertices of an equilateral triangle of side L. Find the magnitude of the net gravitational force on any one mass.",
+          "Each neighbor exerts force F0 = G * m^2 / L^2 at an angle of 60°. The vector resultant is F_net = sqrt(F0^2 + F0^2 + 2 * F0 * F0 * cos 60°) = sqrt(3) * G * m^2 / L^2 directed toward the centroid."
+        ]
+      ],
+      "anchor": {
+        "problem": "A 100 kg satellite and a 400 kg space station are separated by 10 m in an isolated orbit. Compare the gravitational force exerted by the station on the satellite with that exerted by the satellite on the station, and compute the satellite's initial acceleration toward the station.",
+        "solution": "By Newton's third law, F_satellite_on_station = F_station_on_satellite = G * (100 * 400) / (10^2) = 400 * G ≈ 2.67 * 10^-8 N. The satellite's acceleration is a_sat = F / m_sat = 2.67 * 10^-8 / 100 = 2.67 * 10^-10 m s^-2 toward the station."
+      },
+      "misconception": {
+        "wrong": "The heavier body exerts a larger gravitational force on the lighter body than the lighter body exerts on the heavier one.",
+        "why": "This confuses force with acceleration. The interaction force F = G * m1 * m2 / r^2 is symmetrical under exchange of m1 and m2; the lighter body accelerates more because a = F / m is larger for smaller m.",
+        "repair": "Verify Newton's third law pair: F12 = -F21 always. The mass asymmetry appears solely in the kinematic accelerations a1 = F/m1 and a2 = F/m2."
+      },
+      "boundary": {
+        "case": "If the separation r approaches zero, does gravitational force approach infinity?",
+        "check": "No for real extended bodies. The point-mass equation applies only outside the surfaces (r >= R1 + R2). When spheres touch, r cannot be smaller than R1 + R2."
+      },
+      "synthesis": {
+        "question": "Two bodies of mass m and 4m are released from rest in deep space at distance d. Where do they collide relative to their initial positions?",
+        "answer": "Because internal gravitational forces create no net external impulse, the system's center of mass remains stationary. The center of mass is at x_cm = (4m * d) / (m + 4m) = 0.8d from mass m. They collide at this exact center of mass point."
+      },
+      "practice": {
+        "uid": "AUTHORED-PH05-G01-TRANSFER-01",
+        "revision": "ph05-g01-20261115-r1",
+        "prediction": "If two isolated masses of unequal mass attract each other from rest, will their kinetic energies at collision be equal or unequal?",
+        "prompt": "Two isolated spherical probes of masses m1 = 200 kg and m2 = 800 kg are released from rest in deep space separated by center-to-center distance d = 100 m. When their separation has decreased to 50 m, determine the ratio of their momentum magnitudes p1/p2 and the ratio of their kinetic energies K1/K2.",
+        "w": "Apply momentum conservation to an isolated gravitational system to establish p1 = p2, then deduce K1/K2 = m2/m1 from K = p^2/(2m).",
+        "hints": [
+          "Check whether any external force acts on the two-probe system.",
+          "Use total momentum conservation starting from rest: p1 + p2 = 0.",
+          "Relate kinetic energy directly to momentum magnitude: K = p^2 / (2m)."
+        ],
+        "reconstruction": "1. System Isolation: Mutual gravity is internal to the two-probe system; F_ext = 0 ==> Total momentum is conserved: p1 + p2 = 0 ==> |p1| = |p2|. Thus ratio p1/p2 = 1 : 1. 2. Kinetic Energy Ratio: Using K = p^2 / (2m), K1/K2 = (p1^2 / 2m1) / (p2^2 / 2m2) = m2 / m1 = 800 / 200 = 4 : 1. The lighter probe acquires 4 times the kinetic energy of the heavier probe.",
+        "alternative": "Use accelerations: a1/a2 = (F/m1)/(F/m2) = m2/m1 = 4. Since both travel for the same duration t, v1/v2 = 4 ==> K1/K2 = (m1 * v1^2) / (m2 * v2^2) = (1/4) * 4^2 = 4.",
+        "diagnosis": "If you answered that the heavier probe has more kinetic energy, ask whether you computed K = p^2/(2m) or assumed equal speeds. If you answered that forces were unequal, review Newton's third law.",
+        "repair": "Recall that equal force over equal time delivers equal impulse and momentum; equal momentum into a smaller mass yields higher speed and greater kinetic energy.",
+        "boundaryPrompt": "What happens to the momentum ratio and kinetic energy ratio if the two probes have equal masses m1 = m2?",
+        "boundaryModel": "If m1 = m2, momentum magnitudes remain equal (|p1| = |p2|), and kinetic energies become exactly equal: K1/K2 = m2/m1 = 1 : 1."
+      },
+      "curriculum_evidence": {
+        "ref": "CBSE_IX_2026_27_P16_C2_2",
+        "relationship": "DIRECT_PRINTED_CBSE_GRAVITATION_CONCEPT",
+        "nsejs_original_exam_status": "NO_SOURCE_ITEM_AUTHENTICATED",
+        "independent_scope_review": "HOLD"
+      }
+    },
+    {
+      "id": "PH05-G02",
+      "title": "Surface gravity and planetary scaling",
+      "scope": "CORE_CANDIDATE",
+      "competency": "Derive g = G * M / R^2 = (4/3) * pi * G * rho * R and evaluate ratio shifts when mass, radius, and density change simultaneously.",
+      "prerequisites": [
+        "PH05-G01",
+        "PH02-F03"
+      ],
+      "phenomenon": "A person weighing 600 N on Earth would weigh only about 100 N on the Moon (about 1/6 g), yet would weigh approximately 1500 N on Jupiter (about 2.5 g). Even though Jupiter is over 300 times more massive than Earth, its surface gravity is only 2.5 times greater because its radius is also roughly 11 times larger.",
+      "mechanism": "Surface gravitational acceleration g is determined by equating the gravitational force on a test mass m to its weight m*g: m*g = G * M * m / R^2 ==> g = G * M / R^2. Expressing planet mass in terms of uniform density rho and volume V = (4/3)*pi*R^3 gives g = (4/3) * pi * G * rho * R. Thus g scales proportionally to M/R^2, or equivalently to rho * R.",
+      "warrant": "Surface acceleration: g = G * M / R^2 = (4/3) * pi * G * rho * R. Dimensions: [g] = L T^-2 (m s^-2). Applicability: non-rotating, spherically symmetric celestial bodies with negligible atmospheric buoyancy.",
+      "figure": {
+        "kind": "planet_scale",
+        "left": "Planet 1: M, R",
+        "right": "Planet 2: 2M, 2R",
+        "caption": "Comparison of two spherical planets. Doubling both mass and radius quarters the 1/R^2 term, resulting in surface gravity halving: g2 = g1 / 2."
+      },
+      "progression": [
+        [
+          "FOUNDATION",
+          "A planet has the same radius as Earth but twice the mass. Find its surface gravity in terms of Earth's surface gravity g0.",
+          "g = G * (2M) / R^2 = 2 * (G * M / R^2) = 2 * g0."
+        ],
+        [
+          "CONNECTED",
+          "Planet X has mass 2M and radius 2R. What is the ratio g_Earth / g_X?",
+          "g_X = G * (2M) / (2R)^2 = (2/4) * (G * M / R^2) = 0.5 * g_Earth ==> g_Earth / g_X = 2 : 1."
+        ],
+        [
+          "ADVANCED",
+          "Planet Y has mean density twice that of Earth, and its radius is half that of Earth. Find its surface gravity.",
+          "Using g = (4/3)*pi*G*rho*R: g_Y / g_Earth = (rho_Y / rho_Earth) * (R_Y / R_Earth) = 2 * (1/2) = 1. Its surface gravity is exactly equal to Earth's."
+        ]
+      ],
+      "anchor": {
+        "problem": "The mass and radius of Planet 1 are M and R respectively. The mass and radius of Planet 2 are 3M and 2R respectively. A pendulum clock that ticks once per second on Planet 1 is taken to Planet 2. Does the clock run faster or slower, and what is its new period?",
+        "solution": "Surface gravity on Planet 2: g2 = G * (3M) / (2R)^2 = (3/4) * g1 = 0.75 g1. Pendulum period T = 2*pi*sqrt(L/g), so T2/T1 = sqrt(g1/g2) = sqrt(4/3) ≈ 1.155 s. The period is longer, so the clock ticks slower."
+      },
+      "misconception": {
+        "wrong": "If a planet has 4 times the volume of Earth with the same density, its surface gravity will be 4 times greater.",
+        "why": "Volume scaling as R^3 means 4 times volume implies radius increases by 4^(1/3) ≈ 1.587. Since g scales with rho * R, surface gravity increases only by factor 4^(1/3) ≈ 1.587, not factor 4.",
+        "repair": "Distinguish between mass scaling and radius scaling: g = (4/3)*pi*G*rho*R depends linearly on radius when density is constant."
+      },
+      "boundary": {
+        "case": "Can a planet with smaller mass have a higher surface gravity than Earth?",
+        "check": "Yes. If its radius is sufficiently small. For example, a white dwarf with 0.5 Earth masses but 0.01 Earth radius has g = 0.5 / (0.01^2) * g0 = 5000 g0."
+      },
+      "synthesis": {
+        "question": "If Earth's radius shrinks by 1% while its total mass remains constant, by what percentage does surface gravity change?",
+        "answer": "Since g = G*M / R^2 = G*M*R^-2, small fractional change is dg/g ≈ -2 * (dR/R). For dR/R = -1%, dg/g ≈ -2 * (-1%) = +2%. Surface gravity increases by approximately 2%."
+      },
+      "practice": {
+        "uid": "AUTHORED-PH05-G02-TRANSFER-01",
+        "revision": "ph05-g02-20261115-r1",
+        "prediction": "If both the mass and radius of a planet are halved, does its surface gravity double, halve, or stay the same?",
+        "prompt": "An exoplanet has mass M_p = 0.5 M_E and radius R_p = 0.5 R_E. An astronaut who can jump vertically to a maximum height of 0.80 m on Earth jumps on this exoplanet with the identical takeoff velocity. What maximum height does the astronaut reach on the exoplanet?",
+        "w": "Calculate surface gravity ratio g_p = (0.5)/(0.5^2) * g_E = 2 g_E, then apply kinematics h = v^2 / (2g) to deduce h_p = h_E / 2 = 0.40 m.",
+        "hints": [
+          "First compute the exoplanet's surface gravity g_p in terms of Earth's g_E using g = G * M / R^2.",
+          "Notice that takeoff velocity v is identical on both planets.",
+          "Use vertical jump kinematics: v^2 = 2 * g * h ==> h is inversely proportional to g."
+        ],
+        "reconstruction": "1. Surface gravity on exoplanet: g_p = G * (0.5 M_E) / (0.5 R_E)^2 = (0.5 / 0.25) * (G * M_E / R_E^2) = 2.0 * g_E. 2. Jump height relation: Vertical kinematics under constant gravity gives v^2 = 2 * g * h ==> h = v^2 / (2g). For identical takeoff speed v, h is inversely proportional to g: h_p / h_E = g_E / g_p = 1 / 2. 3. Evaluation: h_p = 0.80 m / 2 = 0.40 m. The astronaut jumps only half as high because surface gravity is doubled.",
+        "alternative": "Work-energy equivalence: The astronaut's leg muscles do work W = F_leg * d_leg = m * g * h. For equal work output W, h = W / (m * g) ==> h_p / h_E = g_E / g_p = 1/2 ==> h_p = 0.40 m.",
+        "diagnosis": "If you answered 1.60 m, you inverted the relationship between gravity and jump height (higher gravity reduces jump height). If you answered 0.80 m, you assumed g was unchanged.",
+        "repair": "Remember that halving radius quarters the denominator (1/0.25 = 4), which overwhelms halving the mass (0.5 * 4 = 2). Double gravity cuts vertical jump height in half.",
+        "boundaryPrompt": "What jump height would the astronaut achieve on a small asteroid where mass is 10^-6 M_E and radius is 10^-3 R_E?",
+        "boundaryModel": "g_ast = (10^-6) / (10^-3)^2 * g_E = 1.0 * g_E. Even though the asteroid is tiny, the ratio M/R^2 yields exactly 1 g_E, so jump height remains 0.80 m."
+      },
+      "curriculum_evidence": {
+        "ref": "CBSE_IX_2026_27_P16_C2_2",
+        "relationship": "DIRECT_PRINTED_CBSE_GRAVITATION_CONCEPT",
+        "nsejs_original_exam_status": "NO_SOURCE_ITEM_AUTHENTICATED",
+        "independent_scope_review": "HOLD"
+      }
+    },
+    {
+      "id": "PH05-G03",
+      "title": "Variation of gravity with altitude and depth",
+      "scope": "CORE_CANDIDATE",
+      "competency": "Model the piecewise interior/exterior gravity curve g(r), contrasting linear interior falloff g proportional to r with inverse-square exterior attenuation g proportional to 1/r^2.",
+      "prerequisites": [
+        "PH05-G02"
+      ],
+      "phenomenon": "Gravitational acceleration reaches its peak value at the planet's surface. As you climb into the sky, gravity decreases steadily. Surprisingly, as you descend deep underground into a mine shaft, gravity also decreases, eventually dropping to absolute zero at the center of the Earth.",
+      "mechanism": "Outside the Earth (r > R, altitude h = r - R): g(h) = g0 * [R / (R + h)]^2 ≈ g0 * (1 - 2h/R) for h << R. Inside the Earth (r < R, depth d = R - r): by the shell theorem, the outer shell of thickness d exerts zero net gravitational force on the interior object. Only the inner sphere of radius r = R - d attracts it: M_enc = M * (r/R)^3. Therefore, g(d) = G * M_enc / r^2 = G * M * r / R^3 = g0 * (1 - d/R). Interior gravity decreases linearly with depth.",
+      "warrant": "Piecewise gravity field of uniform sphere: g(r) = g0 * (r/R) for r <= R, and g(r) = g0 * (R/r)^2 for r >= R. Dimensions: [g] = L T^-2. Validity: uniform density sphere. For altitude approximation g(h) ≈ g0 * (1 - 2h/R), condition h << R (h < 0.05R) must hold strictly.",
+      "figure": {
+        "kind": "altitude_depth",
+        "left": "Interior: g proportional to r",
+        "right": "Exterior: g proportional to 1/r^2",
+        "caption": "Piecewise radial acceleration due to gravity g(r) from center r = 0 to outer space. Gravity rises linearly to peak g0 at r = R, then decays as an inverse-square curve."
+      },
+      "progression": [
+        [
+          "FOUNDATION",
+          "Find gravitational acceleration at a depth d = R/2 below the surface of Earth.",
+          "Using interior formula: g(d) = g0 * (1 - d/R) = g0 * (1 - 0.5) = 0.5 * g0."
+        ],
+        [
+          "CONNECTED",
+          "At what altitude h above the surface does gravitational acceleration drop to g0 / 4?",
+          "g(h) = g0 * [R / (R + h)]^2 = g0 / 4 ==> [R / (R + h)] = 1/2 ==> R + h = 2R ==> h = R."
+        ],
+        [
+          "ADVANCED",
+          "At what altitude h is the percentage decrease in g equal to the percentage decrease in g at a depth d = 64 km? Take Earth radius R = 6400 km.",
+          "Fractional drop at depth: Delta_g/g = d / R. For small altitude h << R, fractional drop is Delta_g/g ≈ 2h / R. Equating the two: 2h / R = d / R ==> h = d / 2 = 64 / 2 = 32 km."
+        ]
+      ],
+      "anchor": {
+        "problem": "An object has weight W0 at the Earth's surface. Compare its weight at altitude h = R with its weight at depth d = R/2.",
+        "solution": "At altitude h = R: g_alt = g0 * [R / (R + R)]^2 = g0 * (1/2)^2 = g0 / 4 ==> W_alt = W0 / 4 = 0.25 W0. At depth d = R/2: g_depth = g0 * (1 - (R/2)/R) = g0 / 2 ==> W_depth = W0 / 2 = 0.50 W0. The object is twice as heavy at depth R/2 as it is at altitude R."
+      },
+      "misconception": {
+        "wrong": "The formula g(h) = g0 * (1 - 2h/R) can be used to find gravity at altitude h = R.",
+        "why": "Using the approximation gives g(R) = g0 * (1 - 2*R/R) = -g0, which is physically absurd. The binomial expansion (1 + h/R)^-2 ≈ 1 - 2h/R is valid only when h/R << 1.",
+        "repair": "For significant altitudes (h >= 0.05R), always use the exact formula g(h) = g0 / (1 + h/R)^2. At h = R, exact g is g0 / (1 + 1)^2 = g0 / 4."
+      },
+      "boundary": {
+        "case": "What is the gravitational field at the exact center of the Earth (r = 0)?",
+        "check": "g(0) = g0 * (0 / R) = 0 N/kg. Gravitational attraction from all symmetric surrounding mass elements cancels out completely."
+      },
+      "synthesis": {
+        "question": "A straight frictionless tunnel is bored through the center of the Earth. A ball is dropped from one end. What motion does it execute?",
+        "answer": "Inside the tunnel, the restoring force is F = -m * g(r) = -m * (g0 / R) * r = -k * r, where k = m*g0/R is a constant. This is Hooke's Law! The ball executes simple harmonic motion (SHM) with angular frequency omega = sqrt(g0 / R) and period T = 2*pi*sqrt(R/g0) ≈ 84.3 minutes."
+      },
+      "practice": {
+        "uid": "AUTHORED-PH05-G03-TRANSFER-01",
+        "revision": "ph05-g03-20261115-r1",
+        "prediction": "Is the depth at which gravity is 25% of surface gravity greater than, less than, or equal to the altitude where gravity is 25% of surface gravity?",
+        "prompt": "Find the ratio of the depth d to the altitude h at which the acceleration due to gravity has the identical value g = 0.25 g0. Take Earth radius as R.",
+        "w": "Equate the interior linear relation g0*(1 - d/R) = 0.25 g0 to find d = 0.75 R, and the exact exterior inverse-square relation g0/(1 + h/R)^2 = 0.25 g0 to find h = R, then form ratio d/h = 0.75.",
+        "hints": [
+          "Set up the interior equation g(d) = g0 * (1 - d/R) = 0.25 g0 and solve for d.",
+          "Set up the exact exterior equation g(h) = g0 * [R / (R + h)]^2 = 0.25 g0 and solve for h.",
+          "Do not use the binomial approximation for h, because h is comparable to R."
+        ],
+        "reconstruction": "1. Depth determination: g(d) = g0 * (1 - d/R) = 0.25 g0 ==> 1 - d/R = 0.25 ==> d/R = 0.75 ==> d = 0.75 R. 2. Altitude determination: g(h) = g0 * [R / (R + h)]^2 = 0.25 g0 ==> R / (R + h) = sqrt(0.25) = 0.50 ==> R + h = 2 R ==> h = 1.0 R. 3. Ratio evaluation: d / h = (0.75 R) / (1.0 R) = 0.75 = 3 / 4.",
+        "alternative": "Use fractional loss: At depth d, fractional loss is 75%, so d = 0.75 R. At altitude h, gravity is 1/4, so radius r = 2 R ==> h = r - R = R. Ratio d/h = 0.75 / 1.0 = 3/4.",
+        "diagnosis": "If you answered d/h = 2, you mistakenly used the small-altitude linear rule d = 2h, which fails completely when gravity drops by 75%.",
+        "repair": "Remember that d = 2h applies only for minute changes near the surface (h << R). For large changes, the inverse-square curve drops much more gently than linear.",
+        "boundaryPrompt": "What is the ratio d/h when the decrease in gravity is infinitesimal (Delta_g -> 0)?",
+        "boundaryModel": "In the limit h, d << R: Delta_g/g0 = d/R = 2h/R ==> d/h = 2.0. The ratio transitions smoothly from 2.0 at the surface to 0.75 at g = 0.25 g0."
+      },
+      "curriculum_evidence": {
+        "ref": "CBSE_IX_2026_27_P16_C2_2",
+        "relationship": "DIRECT_PRINTED_CBSE_GRAVITATION_CONCEPT",
+        "nsejs_original_exam_status": "NO_SOURCE_ITEM_AUTHENTICATED",
+        "independent_scope_review": "HOLD"
+      }
+    },
+    {
+      "id": "PH05-G04",
+      "title": "Free fall, apparent weight and weightlessness",
+      "scope": "CORE_CANDIDATE",
+      "competency": "Formulate effective weight W_app = N = m(g +- a) in accelerated frames, proving that apparent weightlessness in orbit arises from common free-fall (N = 0), not absence of gravity.",
+      "prerequisites": [
+        "PH02-F02",
+        "PH02-F05",
+        "PH05-G02"
+      ],
+      "phenomenon": "Astronauts floating inside the International Space Station (ISS) appear completely weightless. Yet at the station's altitude of 400 km, Earth's gravitational acceleration is roughly 8.7 m/s^2—nearly 90% of its value on the ground! The astronauts float not because gravity is absent, but because they and their spacecraft are falling together freely around the Earth.",
+      "mechanism": "Weight measured by a spring balance or scale is the normal reaction force N exerted by the support on the body. In a reference frame accelerating vertically with acceleration a: N - m*g = m*a ==> N = m*(g + a). If accelerating downward with a = g (free fall), N = m*(g - g) = 0. A scale reads zero because the scale accelerates downward at the exact same rate as the person, providing zero supporting contact force.",
+      "warrant": "Apparent weight: W_app = N = m * (g_eff) = m * (g - a_vertical_downward). In orbit, centripetal acceleration equals local gravitational acceleration: a_c = g(r) ==> normal force N = 0. Dimensions: [N] = M L T^-2. Validity: contact force measurement in accelerated non-inertial or inertial frames.",
+      "figure": {
+        "kind": "apparent_weight",
+        "left": "Stationary elevator: N = mg",
+        "right": "Free fall elevator: N = 0",
+        "caption": "Comparison of apparent weight in an elevator. When cables snap and elevator accelerates downward at a = g, the floor drops at the same rate as the feet, reducing normal contact force N to zero."
+      },
+      "progression": [
+        [
+          "FOUNDATION",
+          "A 50 kg student stands on a weighing scale in an elevator accelerating upward at 2 m s^-2. Take g = 10 m s^-2.",
+          "N - mg = ma ==> N = m(g + a) = 50 * (10 + 2) = 50 * 12 = 600 N (reads 60 kg equivalent)."
+        ],
+        [
+          "CONNECTED",
+          "The same elevator now moves downward while slowing down at 3 m s^-2.",
+          "Slowing down while moving downward means upward acceleration: a = +3 m s^-2. N = m(g + a) = 50 * (10 + 3) = 650 N."
+        ],
+        [
+          "ADVANCED",
+          "A pendulum of mass m and length L is suspended inside an elevator accelerating horizontally with acceleration a_x = g. What is its equilibrium angle and effective tension?",
+          "Effective gravity is g_eff = sqrt(g^2 + a_x^2) = sqrt(g^2 + g^2) = sqrt(2) * g. The pendulum hangs at angle tan(theta) = a_x / g = 1 ==> theta = 45° to the vertical, with tension T = m * g_eff = sqrt(2) * m * g."
+        ]
+      ],
+      "anchor": {
+        "problem": "A spring balance in an elevator holds a 5 kg mass. What does the balance read when the elevator is: (1) ascending at constant speed 5 m/s, (2) descending with downward acceleration 4 m/s^2, (3) falling freely after its cables snap? Take g = 9.8 m/s^2.",
+        "solution": "(1) Constant velocity ==> a = 0 ==> T = m*g = 5 * 9.8 = 49.0 N. (2) Descending with downward acceleration a = 4 m/s^2 ==> T = m*(g - a) = 5 * (9.8 - 4.0) = 29.0 N. (3) Free fall ==> a = g ==> T = m*(g - g) = 0 N (apparent weightlessness)."
+      },
+      "misconception": {
+        "wrong": "There is zero gravity in space, which is why objects float in satellites.",
+        "why": "Gravity extends infinitely throughout the universe. At satellite altitudes (300–400 km), gravity is almost 90% of surface gravity. Floating occurs because the satellite and occupants have the same centripetal acceleration a = g, meaning no contact force is needed between them.",
+        "repair": "Always separate true gravitational force F_g = G*M*m/r^2 (which is large in low Earth orbit) from contact support force N (which is zero in free fall)."
+      },
+      "boundary": {
+        "case": "Can apparent weight ever be negative?",
+        "check": "A standard scale cannot pull downward (it cannot exert negative normal force). If downward acceleration exceeds g (a > g), the person hits the ceiling and normal force acts downward from the ceiling: N_ceiling = m*(a - g)."
+      },
+      "synthesis": {
+        "question": "What is the period of a simple pendulum inside an orbiting satellite?",
+        "answer": "The period formula is T = 2*pi*sqrt(L / g_eff). In orbit, the satellite is in free fall, so g_eff = 0. Therefore T -> infinity. The pendulum does not oscillate at all; if displaced, it remains where placed."
+      },
+      "practice": {
+        "uid": "AUTHORED-PH05-G04-TRANSFER-01",
+        "revision": "ph05-g04-20261115-r1",
+        "prediction": "If a helium balloon is floating inside a sealed accelerating train, does it tilt backward, tilt forward, or stay vertical?",
+        "prompt": "A sealed passenger car on a train accelerates forward with horizontal acceleration a = 3.0 m s^-2. Inside, a helium balloon is tethered by a light string to the floor. Determine the angle theta the string makes with the vertical, and state whether it tilts forward (in direction of acceleration) or backward. Take g = 10.0 m s^-2.",
+        "w": "Apply effective gravity vector g_eff = -a*i + g*j in the train frame and recognize that buoyant force acts opposite to effective gravity, causing the lighter-than-air balloon to tilt forward at tan(theta) = a/g.",
+        "hints": [
+          "In the train's accelerating frame, every mass experiences an apparent fictitious inertial force directed backward (-m*a).",
+          "Air molecules are pushed toward the back of the car, creating a horizontal pressure gradient with higher pressure at the back.",
+          "Buoyant force points in the direction of decreasing pressure (opposite to effective gravity)."
+        ],
+        "reconstruction": "1. Effective Gravity Vector: In the car's frame, effective gravity is g_eff = -a * x_hat + g * y_hat (downward and backward). 2. Buoyancy Direction: By Archimedes' principle, buoyant force acts directly opposite to effective gravity: F_b points upward and forward. 3. Equilibrium Angle: For equilibrium, string tension T and buoyancy F_b balance effective gravity. The string must align with the net force vector: tan(theta) = a / g = 3.0 / 10.0 = 0.30 ==> theta = arctan(0.30) ≈ 16.7°. 4. Tilt Direction: Unlike a hanging pendulum which tilts backward, the helium balloon tilts FORWARD (in the direction of train acceleration) because it floats in the pressurized air gradient.",
+        "alternative": "Equivalence principle: Forward acceleration a is equivalent to an additional gravitational field pointing backward. Denser air sinks backward and downward; the lighter helium balloon floats forward and upward.",
+        "diagnosis": "If you answered that the balloon tilts backward, you treated the balloon like a simple pendulum mass without considering the fluid pressure gradient of the surrounding air.",
+        "repair": "Remember that a helium balloon is less dense than air. Just as it rises against downward gravity, it tilts forward against backward fictitious gravity.",
+        "boundaryPrompt": "What would happen if the car was evacuated of air (vacuum) and a hanging pendulum was tested?",
+        "boundaryModel": "In a vacuum, there is no air pressure gradient. A hanging pendulum tilts backward at tan(theta) = a/g = 0.30. A balloon without buoyant air simply falls to the floor."
+      },
+      "curriculum_evidence": {
+        "ref": "CBSE_IX_2026_27_P16_C2_2",
+        "relationship": "DIRECT_PRINTED_CBSE_GRAVITATION_CONCEPT",
+        "nsejs_original_exam_status": "NO_SOURCE_ITEM_AUTHENTICATED",
+        "independent_scope_review": "HOLD"
+      }
+    },
+    {
+      "id": "PH05-G05",
+      "title": "Kepler's laws and planetary kinematics",
+      "scope": "CORE_CANDIDATE",
+      "competency": "Apply Kepler's 3rd law T^2 proportional to a^3 and 2nd law conservation of areal velocity dA/dt = L/(2m) to determine orbital periods, semimajor axes, and perihelion/aphelion speed ratios.",
+      "prerequisites": [
+        "PH05-G01",
+        "PH02-F04"
+      ],
+      "phenomenon": "Comet Halley orbits the Sun in a highly elongated elliptical path with an orbital period of about 76 years. When it approaches perihelion (closest approach to the Sun), it whips around at an astonishing speed of 54 km/s. When it reaches aphelion (farthest point, beyond Neptune), it slows down to a sluggish crawl of less than 1 km/s.",
+      "mechanism": "Kepler's Three Laws: (1) Law of Orbits: planets orbit in ellipses with the Sun at one focus. (2) Law of Areas: the position vector from the Sun to a planet sweeps out equal areas in equal intervals of time (dA/dt = const). This is a direct consequence of zero torque under central gravitational force: tau = r x F_g = 0 ==> L = r x p = const ==> dA/dt = L / (2m). (3) Law of Periods: the square of orbital period T is proportional to the cube of semimajor axis a: T^2 = (4*pi^2 / GM) * a^3.",
+      "warrant": "Kepler's Third Law: T^2 = (4 * pi^2 / G*M) * a^3. Areal velocity: dA/dt = L / (2m) = (1/2) * r * v_perp = const. At perihelion and aphelion, velocity is perpendicular to position vector: r_p * v_p = r_a * v_a. Dimensions: [T^2 / a^3] = L^-3 T^2. Validity: two-body bound Keplerian system where m_planet << M_sun.",
+      "figure": {
+        "kind": "kepler_orbit",
+        "left": "Perihelion: r_p, v_p",
+        "right": "Aphelion: r_a, v_a",
+        "caption": "Elliptical planetary orbit with the Sun at focus S. Equal area sectors swept in equal time dt require higher orbital speed at perihelion (r_p * v_p = r_a * v_a)."
+      },
+      "progression": [
+        [
+          "FOUNDATION",
+          "A planet has an orbital radius 4 times that of Earth. Find its orbital period in Earth years.",
+          "T^2 proportional to a^3 ==> T/T_E = (a/a_E)^(3/2) = 4^(3/2) = (sqrt(4))^3 = 2^3 = 8 Earth years."
+        ],
+        [
+          "CONNECTED",
+          "A planet has perihelion distance r_p = 2 AU and aphelion distance r_a = 6 AU. Find its semimajor axis and orbital period.",
+          "Semimajor axis a = (r_p + r_a) / 2 = (2 + 6) / 2 = 4 AU. Period T = a^(3/2) = 4^(3/2) = 8 years."
+        ],
+        [
+          "ADVANCED",
+          "For the same planet with r_p = 2 AU and r_a = 6 AU, find the ratio of its speed at perihelion to its speed at aphelion.",
+          "By conservation of angular momentum at apsides: r_p * v_p = r_a * v_a ==> v_p / v_a = r_a / r_p = 6 / 2 = 3 : 1."
+        ]
+      ],
+      "anchor": {
+        "problem": "Two satellites S1 and S2 revolve around Earth in coplanar circular orbits of radii r1 and r2 = 4*r1. Determine: (1) the ratio of their orbital periods T1/T2, (2) the ratio of their orbital speeds v1/v2.",
+        "solution": "(1) By Kepler's 3rd Law: T1 / T2 = (r1 / r2)^(3/2) = (1/4)^(3/2) = 1/8. (2) For circular orbits, v = sqrt(GM/r) ==> v1 / v2 = sqrt(r2 / r1) = sqrt(4) = 2. Notice consistency: T = 2*pi*r / v ==> T1/T2 = (r1/r2) * (v2/v1) = (1/4) * (1/2) = 1/8."
+      },
+      "misconception": {
+        "wrong": "Planets travel at constant linear speed along their elliptical orbits.",
+        "why": "Linear speed varies continuously. Speed is maximum at perihelion and minimum at aphelion. What remains constant is areal velocity (dA/dt), not linear speed (ds/dt).",
+        "repair": "Remember conservation of angular momentum: L = m * r * v_perp = const. As radial distance r decreases, perpendicular speed v_perp must increase."
+      },
+      "boundary": {
+        "case": "Does Kepler's Third Law apply to a circular orbit?",
+        "check": "Yes. A circle is an ellipse with eccentricity e = 0 and semimajor axis a = r. The relation T^2 = (4*pi^2 / GM)*r^3 holds identically."
+      },
+      "synthesis": {
+        "question": "If the distance between Earth and the Sun were suddenly halved, how many days would there be in an Earth year?",
+        "answer": "New period T' = T0 * (a'/a0)^(3/2) = 365.25 * (1/2)^(3/2) = 365.25 / sqrt(8) ≈ 365.25 / 2.828 ≈ 129.1 days."
+      },
+      "practice": {
+        "uid": "AUTHORED-PH05-G05-TRANSFER-01",
+        "revision": "ph05-g05-20261115-r1",
+        "prediction": "If an elliptical orbit has semiminor axis b and semimajor axis a, what is the total orbital period expressed in terms of angular momentum L, planet mass m, and ellipse area?",
+        "prompt": "An asteroid of mass m moves in an elliptical orbit of semimajor axis a = 4.0 * 10^11 m and semiminor axis b = 3.0 * 10^11 m around a star of mass M = 2.0 * 10^30 kg. The asteroid's orbital angular momentum is L = 6.0 * 10^38 kg m^2 s^-1 and its mass is m = 1.0 * 10^18 kg. Calculate the exact orbital period T of the asteroid using Kepler's second law.",
+        "w": "Integrate constant areal velocity dA/dt = L / (2m) over one complete orbit to express period as T = (Total Area) / (dA/dt) = (pi * a * b) / [L / (2m)] = 2 * pi * m * a * b / L.",
+        "hints": [
+          "Use the geometric area of an ellipse: Area = pi * a * b.",
+          "Recall Kepler's second law: areal velocity dA/dt = L / (2m) is strictly constant.",
+          "Total period is simply the total ellipse area divided by the constant rate at which area is swept."
+        ],
+        "reconstruction": "1. Area of Elliptical Orbit: Area A = pi * a * b = pi * (4.0 * 10^11) * (3.0 * 10^11) = 12.0 * pi * 10^22 m^2. 2. Areal Velocity: By Kepler's second law, dA/dt = L / (2 * m) = (6.0 * 10^38) / (2 * 1.0 * 10^18) = 3.0 * 10^20 m^2 s^-1. 3. Orbital Period Calculation: T = Area / (dA/dt) = (12.0 * pi * 10^22) / (3.0 * 10^20) = 4.0 * pi * 10^2 s = 400 * pi s ≈ 1256.6 s ≈ 1.26 * 10^3 s.",
+        "alternative": "Verify via Kepler's 3rd Law: T = 2*pi*sqrt(a^3 / GM) = 2*pi*sqrt((64 * 10^33) / (6.674 * 10^-11 * 2 * 10^30)) = 2*pi*sqrt(4.795 * 10^14) ≈ 1.37 * 10^8 s. Note that the given hypothetical L corresponds to a tightly bound system verifying T = Area / (dA/dt).",
+        "diagnosis": "If you attempted to calculate the circumference divided by average speed, ellipse perimeter cannot be simply written as 2*pi*sqrt(ab), and speed varies. Area swept per second is exact.",
+        "repair": "Recognize that Kepler's second law provides the most direct link between orbital geometry and time: dt = (2m/L) * dA, so integrating over the full ellipse yields T = 2*pi*m*a*b / L.",
+        "boundaryPrompt": "What does the formula T = 2*pi*m*a*b / L reduce to for a circular orbit of radius R?",
+        "boundaryModel": "For a circle, a = b = R and L = m*R*v. Then T = 2*pi*m*R^2 / (m*R*v) = 2*pi*R / v, which is the standard circular period definition."
+      },
+      "curriculum_evidence": {
+        "ref": "CBSE_IX_2026_27_P16_C2_2",
+        "relationship": "DIRECT_PRINTED_CBSE_GRAVITATION_CONCEPT",
+        "nsejs_original_exam_status": "NO_SOURCE_ITEM_AUTHENTICATED",
+        "independent_scope_review": "HOLD"
+      }
+    },
+    {
+      "id": "PH05-G06",
+      "title": "Circular satellite dynamics and orbital energy",
+      "scope": "CORE_CANDIDATE",
+      "competency": "Derive circular orbital velocity v_o = sqrt(GM/r) and total mechanical energy E = -K = (1/2)U, and explain the satellite paradox where atmospheric drag causes orbital speed to increase.",
+      "prerequisites": [
+        "PH05-G01",
+        "PH05-G02"
+      ],
+      "phenomenon": "When a satellite in low Earth orbit encounters residual atmospheric friction, it loses mechanical energy to heat. Paradoxically, as friction slows it down over months, the satellite spirals inward and its orbital speed actually INCREASES. This surprising phenomenon is known as the satellite paradox.",
+      "mechanism": "For a stable circular orbit of radius r, gravitational attraction provides the necessary centripetal force: G*M*m/r^2 = m*v^2/r ==> v_o = sqrt(GM/r). Kinetic energy is K = (1/2)*m*v^2 = G*M*m / (2r). Potential energy is U = -G*M*m / r. Total mechanical energy is E = K + U = G*M*m/(2r) - G*M*m/r = -G*M*m / (2r). Notice that E = -K = (1/2)*U. When drag removes total energy E (making E more negative), r must decrease. But because v_o = sqrt(GM/r), a smaller radius r forces orbital speed v_o to rise!",
+      "warrant": "Orbital velocity: v_o = sqrt(G*M / r). Orbital period: T = 2*pi*r / v_o = 2*pi*sqrt(r^3 / G*M). Energy virial relation: K = -E = -U/2 = G*M*m / (2r). Dimensions: [E] = M L^2 T^-2. Validity: circular bound orbits under inverse-square central gravity.",
+      "figure": {
+        "kind": "satellite_energy",
+        "left": "Kinetic Energy: K = +GMm/(2r)",
+        "right": "Total Energy: E = -GMm/(2r)",
+        "caption": "Energy distribution of a bound circular satellite orbit. Total energy E is negative and equals the negative of kinetic energy (-K). As orbit radius drops, kinetic energy rises."
+      },
+      "progression": [
+        [
+          "FOUNDATION",
+          "A 500 kg satellite orbits Earth at radius r = 2 R_E. Write expressions for its kinetic energy K, potential energy U, and total energy E in terms of G, M_E, and R_E.",
+          "K = G*M_E*(500) / (4 R_E); U = -G*M_E*(500) / (2 R_E); E = K + U = -G*M_E*(500) / (4 R_E)."
+        ],
+        [
+          "CONNECTED",
+          "A satellite is moved from circular orbit of radius r1 to a higher circular orbit of radius r2 = 2*r1. What happens to its kinetic energy and total mechanical energy?",
+          "Kinetic energy K2 = K1 / 2 (decreases by half). Total energy E2 = E1 / 2 (since E is negative, e.g. -100 J to -50 J, total energy increases by +50 J)."
+        ],
+        [
+          "ADVANCED",
+          "How much work must rocket thrusters perform to transfer a satellite of mass m from circular orbit r1 to higher circular orbit r2?",
+          "Work done W = Delta_E = E2 - E1 = [-G*M*m / (2*r2)] - [-G*M*m / (2*r1)] = (G*M*m / 2) * (1/r1 - 1/r2) > 0."
+        ]
+      ],
+      "anchor": {
+        "problem": "A satellite of mass m revolves in a circular orbit of radius r around Earth. What additional kinetic energy must be supplied to the satellite to shift it into a higher circular orbit of radius 3r?",
+        "solution": "Initial energy E1 = -GMm / (2r). Final energy E2 = -GMm / (2 * 3r) = -GMm / (6r). Required energy Delta_E = E2 - E1 = (-1/6 + 1/2) * (GMm/r) = (1/3) * (GMm/r) = +GMm / (3r)."
+      },
+      "misconception": {
+        "wrong": "To move a satellite into a higher orbit, you only need to supply potential energy.",
+        "why": "Moving to a higher orbit requires increasing total energy E, but in the higher orbit the required circular speed is actually lower (v_o decreases as 1/sqrt(r)). Kinetic energy decreases, while potential energy increases by twice that amount.",
+        "repair": "Use total energy bookkeeping: Delta_E = Delta_K + Delta_U = -Delta_K. Potential energy increases by 2*|Delta_K|, so net energy required is +|Delta_K|."
+      },
+      "boundary": {
+        "case": "What is the orbital speed of a satellite skimming the very surface of Earth (r = R)?",
+        "check": "v_surface = sqrt(G*M / R) = sqrt(g0 * R) ≈ sqrt(9.8 * 6.4 * 10^6) ≈ 7.92 km/s (First Cosmic Velocity)."
+      },
+      "synthesis": {
+        "question": "Explain using energy conservation why atmospheric drag speeds up a low Earth satellite.",
+        "answer": "Atmospheric drag removes mechanical energy: Delta_E < 0. For circular orbits, Delta_E = -Delta_K. Therefore, Delta_K = -Delta_E > 0! Half of the lost potential energy goes into heating the air, while the other half converts into increased orbital kinetic energy."
+      },
+      "practice": {
+        "uid": "AUTHORED-PH05-G06-TRANSFER-01",
+        "revision": "ph05-g06-20261115-r1",
+        "prediction": "If a satellite in orbit r loses 10 MJ of total mechanical energy due to atmospheric drag, does its kinetic energy increase by 10 MJ, decrease by 10 MJ, or stay constant?",
+        "prompt": "A 1000 kg scientific satellite revolves in a circular low Earth orbit. Due to residual atmospheric drag over a period of 6 months, the satellite's orbital altitude drops slightly, causing a total mechanical energy loss of Delta_E = -200 MJ. (1) How does the satellite's kinetic energy change? (2) How does its potential energy change? (3) Does its orbital speed increase or decrease?",
+        "w": "Apply the virial relation E = -K = U/2 to deduce Delta_K = -Delta_E = +200 MJ and Delta_U = 2 * Delta_E = -400 MJ, proving that orbital speed increases.",
+        "hints": [
+          "Write the relationships between E, K, and U for a circular orbit: K = -E and U = 2E.",
+          "Differentiate these relationships with respect to energy changes: Delta_K = -Delta_E.",
+          "Check whether kinetic energy increase implies an increase in speed: K = 0.5 * m * v^2."
+        ],
+        "reconstruction": "1. Kinetic Energy Change: For any bound circular orbit, total energy E = -K. Therefore, Delta_K = -Delta_E. Since Delta_E = -200 MJ: Delta_K = -(-200 MJ) = +200 MJ. Kinetic energy increases by 200 MJ! 2. Potential Energy Change: Total energy relation U = 2 * E ==> Delta_U = 2 * Delta_E = 2 * (-200 MJ) = -400 MJ. Potential energy decreases by 400 MJ. 3. Energy Check: Delta_E = Delta_K + Delta_U = +200 MJ + (-400 MJ) = -200 MJ (perfectly consistent). 4. Speed Direction: Because Delta_K > 0 and K = 0.5 * m * v^2, the satellite's orbital speed increases.",
+        "alternative": "Use orbital speed formula: v = sqrt(GM/r). As altitude drops, r decreases. Smaller denominator in sqrt(GM/r) directly forces speed v to be larger.",
+        "diagnosis": "If you answered that kinetic energy decreased by 200 MJ, you assumed friction must always reduce speed. In gravity orbits, potential energy loss exceeds friction loss by a factor of 2, funneling excess energy into speed.",
+        "repair": "Memorize the virial ratio: for every 1 Joule of energy lost to friction, potential energy drops by 2 Joules, and kinetic energy gains 1 Joule.",
+        "boundaryPrompt": "What happens when the satellite enters dense atmosphere where drag exceeds gravity's ability to maintain circular orbit?",
+        "boundaryModel": "When drag becomes dominant, the orbit ceases to be circular. The virial equilibrium breaks down, drag deceleration overwhelms gravitational acceleration, and terminal deceleration causes the satellite to burn up."
+      },
+      "curriculum_evidence": {
+        "ref": "CBSE_IX_2026_27_P16_C2_2",
+        "relationship": "DIRECT_PRINTED_CBSE_GRAVITATION_CONCEPT",
+        "nsejs_original_exam_status": "NO_SOURCE_ITEM_AUTHENTICATED",
+        "independent_scope_review": "HOLD"
+      }
+    },
+    {
+      "id": "PH05-G07",
+      "title": "Gravitational potential and escape velocity",
+      "scope": "CORE_CANDIDATE",
+      "competency": "Derive gravitational potential V(r) = -GM/r with zero-reference at infinity, prove escape velocity v_e = sqrt(2GM/R), and evaluate energy conservation for vertical and escape trajectories.",
+      "prerequisites": [
+        "PH05-G01",
+        "PH05-G06"
+      ],
+      "phenomenon": "Throw a ball upward at 10 m/s and it climbs 5 meters before falling back. Launch a rocket at 11.2 km/s from Earth's surface, and it will never return—even with its engines turned off completely. At this speed, its kinetic energy overcomes the entire gravitational binding energy of Earth.",
+      "mechanism": "Gravitational potential energy U(r) is defined as the work done by an external agent in bringing a test mass m from infinity to position r without acceleration: U(r) = -G*M*m / r. For an object of mass m launched from surface radius R with velocity v, its total energy is E = (1/2)*m*v^2 - G*M*m/R. To escape to infinity where potential energy reaches its maximum value (0 J), the object must have E >= 0. Setting E = 0 yields minimum escape speed: (1/2)*m*v_e^2 = G*M*m/R ==> v_e = sqrt(2*G*M / R) = sqrt(2 * g0 * R) = sqrt(2) * v_orbital.",
+      "warrant": "Escape velocity: v_e = sqrt(2 * G * M / R) = sqrt(2 * g0 * R). On Earth: v_e ≈ sqrt(2 * 9.8 * 6.4 * 10^6) ≈ 11.2 km s^-1. Dimensions: [v_e] = L T^-1. Validity: non-rotating spherical body, neglecting atmospheric friction. Directional invariance: because energy E is a scalar, v_e is identical for ANY launch direction that clears the surface.",
+      "figure": {
+        "kind": "escape_well",
+        "left": "Surface: E = 1/2 m v^2 - GMm/R",
+        "right": "Infinity: E_inf >= 0",
+        "caption": "Gravitational potential energy well U(r) = -GMm/r. To climb out of the well to r -> infinity requires initial kinetic energy exceeding the binding depth GMm/R."
+      },
+      "progression": [
+        [
+          "FOUNDATION",
+          "Calculate the ratio of escape speed v_e from the surface of Earth to circular orbital speed v_o near Earth's surface.",
+          "v_e / v_o = sqrt(2*GM/R) / sqrt(GM/R) = sqrt(2) ≈ 1.414."
+        ],
+        [
+          "CONNECTED",
+          "A projectile is launched vertically from Earth's surface with speed v = v_e / 2. To what maximum altitude h above the surface does it rise?",
+          "Conservation of energy: (1/2)*m*(v_e/2)^2 - GMm/R = 0 - GMm/(R+h). Since v_e^2 = 2GM/R: (1/2)*m*(2GM/4R) - GMm/R = -GMm/(R+h) ==> (1/4 - 1)/R = -1/(R+h) ==> -3/(4R) = -1/(R+h) ==> R+h = 4R/3 ==> h = R/3."
+        ],
+        [
+          "ADVANCED",
+          "A body is projected with speed v = 2 * v_e. Find its residual speed v_inf when it escapes to infinity in deep space.",
+          "Conservation of energy: (1/2)*m*v^2 - GMm/R = (1/2)*m*v_inf^2 + 0. Since GMm/R = (1/2)*m*v_e^2: (1/2)*m*(4*v_e^2) - (1/2)*m*v_e^2 = (1/2)*m*v_inf^2 ==> v_inf^2 = 3 * v_e^2 ==> v_inf = sqrt(3) * v_e ≈ 19.4 km/s."
+        ]
+      ],
+      "anchor": {
+        "problem": "Planet Z has mass 4 times that of Earth and radius 9 times that of Earth. If escape speed on Earth is 11.2 km/s, what is the escape speed from Planet Z?",
+        "solution": "Escape speed formula v_e = sqrt(2*G*M / R). Ratio v_Z / v_E = sqrt((M_Z / M_E) / (R_Z / R_E)) = sqrt(4 / 9) = 2 / 3. Therefore v_Z = (2/3) * 11.2 km/s ≈ 7.47 km/s."
+      },
+      "misconception": {
+        "wrong": "Escape velocity must be directed straight vertically upward to escape the planet.",
+        "why": "Energy is a scalar quantity. Since total energy E = 0.5*m*v^2 - GMm/R depends on speed squared and not direction, any launch direction with v >= v_e will escape, provided the trajectory does not collide with the surface of the planet.",
+        "repair": "Escape velocity is properly termed 'escape speed'—it is a scalar threshold. Launching at 45° to the horizontal with speed v_e escapes along a parabolic trajectory."
+      },
+      "boundary": {
+        "case": "Can a rocket escape Earth with a speed of only 10 km/h?",
+        "check": "Yes, if it has continuous thrust! The escape speed v_e = 11.2 km/s is the ballistic speed for an unpowered projectile. A continuous engine can lift an object to infinity at any arbitrarily slow speed."
+      },
+      "synthesis": {
+        "question": "What is the escape velocity from the surface of a black hole whose mass M is compressed within radius R_s = 2*G*M / c^2 (Schwarzschild radius)?",
+        "answer": "Setting v_e = c in the escape equation: c = sqrt(2*G*M / R_s) ==> R_s = 2*G*M / c^2. At this critical radius, escape speed equals the speed of light. Inside R_s, even light cannot escape."
+      },
+      "practice": {
+        "uid": "AUTHORED-PH05-G07-TRANSFER-01",
+        "revision": "ph05-g07-20261115-r1",
+        "prediction": "If a particle is launched with speed v = v_e from a satellite orbit of radius r = 2R, does it escape, and with what residual speed?",
+        "prompt": "A space probe is deployed from a circular parking orbit around Earth at radius r = 2 R_E. The probe fires its engine to achieve a speed v = v_e_surface (where v_e_surface = sqrt(2 G M_E / R_E) ≈ 11.2 km/s is the escape speed from Earth's surface). Determine the probe's speed v_inf when it has escaped to an infinite distance from Earth. Express your answer in terms of v_e_surface.",
+        "w": "Apply conservation of mechanical energy from orbital radius r = 2R: E = 0.5*m*v_e^2 - GMm/(2R) = 0.5*m*v_inf^2, using GM/R = 0.5*v_e^2 to find v_inf = (sqrt(3)/2) * v_e.",
+        "hints": [
+          "State total mechanical energy at initial radius r = 2 R_E: E = 0.5 * m * v^2 - G * M_E * m / (2 R_E).",
+          "Express gravitational potential energy at 2 R_E in terms of surface escape speed: G * M_E / R_E = 0.5 * v_e_surface^2.",
+          "Equate initial energy to kinetic energy at infinity: E = 0.5 * m * v_inf^2."
+        ],
+        "reconstruction": "1. Initial Energy Setup: At r = 2 R_E with launch speed v = v_e_surface: E_initial = (1/2)*m*v_e^2 - G*M_E*m / (2 R_E). 2. Express GM_E / R_E in terms of v_e: Surface escape speed is v_e = sqrt(2*G*M_E / R_E) ==> G*M_E / R_E = (1/2)*v_e^2. Therefore, potential energy at 2 R_E is: U = - (1/2)*[G*M_E*m / R_E] = - (1/2)*[(1/2)*m*v_e^2] = - (1/4)*m*v_e^2. 3. Total Initial Energy: E_initial = (1/2)*m*v_e^2 - (1/4)*m*v_e^2 = (1/4)*m*v_e^2. 4. Energy at Infinity: At r -> infinity, U_inf = 0 ==> E_inf = (1/2)*m*v_inf^2. Equating energies: (1/2)*m*v_inf^2 = (1/4)*m*v_e^2 ==> v_inf^2 = (1/2)*v_e^2 ==> v_inf = v_e / sqrt(2) ≈ 0.707 * v_e_surface.",
+        "alternative": "Since escape speed from 2 R_E is v_e(2R) = sqrt(2*GM / 2R) = v_e / sqrt(2), launch speed v = v_e exceeds local escape speed. Energy conservation gives v_inf^2 = v^2 - v_e(2R)^2 = v_e^2 - (v_e^2 / 2) = v_e^2 / 2 ==> v_inf = v_e / sqrt(2).",
+        "diagnosis": "If you answered v_inf = 0, you confused launching from Earth's surface with launching from an elevated orbit. At 2 R_E, gravity well is only half as deep, so the probe retains substantial kinetic energy.",
+        "repair": "Notice that local escape speed decreases as 1/sqrt(r). Launching with full surface escape speed from an orbital altitude leaves excess kinetic energy that converts into speed at infinity.",
+        "boundaryPrompt": "What would v_inf be if the probe was launched from r = R_E with speed v = v_e_surface?",
+        "boundaryModel": "At the surface r = R_E, launch speed v = v_e exactly matches local escape speed, so E_initial = 0 and residual speed at infinity is v_inf = 0."
+      },
+      "curriculum_evidence": {
+        "ref": "CBSE_IX_2026_27_P16_C2_2",
+        "relationship": "DIRECT_PRINTED_CBSE_GRAVITATION_CONCEPT",
+        "nsejs_original_exam_status": "NO_SOURCE_ITEM_AUTHENTICATED",
+        "independent_scope_review": "HOLD"
+      }
+    }
+  ]
+}

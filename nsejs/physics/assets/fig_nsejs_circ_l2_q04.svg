@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 360" width="100%" height="100%" style="background:#ffffff; border:1.5px solid #cbd5e1; border-radius:10px;">
+
+  <style>
+    .wire { stroke: #1e293b; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+    .dash-wire { stroke: #64748b; stroke-width: 2; stroke-dasharray: 5,4; fill: none; }
+    .res-box { fill: #f8fafc; stroke: #0f172a; stroke-width: 2; rx: 4; }
+    .res-lbl { font-family: system-ui, -apple-system, sans-serif; font-size: 14px; font-weight: 600; fill: #0f172a; text-anchor: middle; dominant-baseline: central; }
+    .node-pt { fill: #1e293b; }
+    .term-pt { fill: #ea580c; stroke: #9a3412; stroke-width: 2; }
+    .term-lbl { font-family: system-ui, -apple-system, sans-serif; font-size: 16px; font-weight: 800; fill: #c2410c; text-anchor: middle; dominant-baseline: central; }
+    .node-lbl { font-family: system-ui, -apple-system, sans-serif; font-size: 15px; font-weight: 700; fill: #1e293b; text-anchor: middle; dominant-baseline: central; }
+    .diag-title { font-family: system-ui, -apple-system, sans-serif; font-size: 15px; font-weight: 700; fill: #0f172a; text-anchor: middle; }
+    .diag-sub { font-family: system-ui, -apple-system, sans-serif; font-size: 14px; fill: #64748b; text-anchor: middle; }
+  </style>
+
+  <text x="260" y="30" class="diag-title">Fig. 4: Bridge Network</text>
+  <text x="260" y="50" class="diag-sub">Find equivalent resistance between A and B</text>
+
+  <!-- Terminals A & B -->
+  <line x1="40" y1="180" x2="110" y2="180" class="wire"/>
+  <circle cx="40" cy="180" r="7" class="term-pt"/>
+  <text x="40" y="155" class="term-lbl">A</text>
+  <circle cx="110" cy="180" r="4" class="node-pt"/>
+
+  <line x1="410" y1="180" x2="480" y2="180" class="wire"/>
+  <circle cx="480" cy="180" r="7" class="term-pt"/>
+  <text x="480" y="155" class="term-lbl">B</text>
+  <circle cx="410" cy="180" r="4" class="node-pt"/>
+
+  <!-- Nodes C and D -->
+  <circle cx="260" cy="80" r="5" class="node-pt"/>
+  <text x="260" y="60" class="node-lbl">C</text>
+  <circle cx="260" cy="280" r="5" class="node-pt"/>
+  <text x="260" y="305" class="node-lbl">D</text>
+
+  <!-- Arm AC (6 ohm) -->
+  <line x1="110" y1="180" x2="260" y2="80" class="wire"/>
+  <rect x="150" y="112" width="65" height="26" rx="4" class="res-box" transform="rotate(-33.7, 182, 125)"/>
+  <text x="182" y="125" class="res-lbl">6 &#937;</text>
+
+  <!-- Arm AD (4 ohm) -->
+  <line x1="110" y1="180" x2="260" y2="280" class="wire"/>
+  <rect x="150" y="222" width="65" height="26" rx="4" class="res-box" transform="rotate(33.7, 182, 235)"/>
+  <text x="182" y="235" class="res-lbl">4 &#937;</text>
+
+  <!-- Central Arm CD (10 ohm) -->
+  <line x1="260" y1="80" x2="260" y2="280" class="wire" style="stroke:#64748b; stroke-dasharray: 4,3;"/>
+  <rect x="230" y="166" width="60" height="28" class="res-box" style="stroke:#64748b; fill:#f1f5f9;"/>
+  <text x="260" y="180" class="res-lbl" style="fill:#475569;">10 &#937;</text>
+
+  <!-- Arm CB (9 ohm) -->
+  <line x1="260" y1="80" x2="410" y2="180" class="wire"/>
+  <rect x="305" y="112" width="65" height="26" rx="4" class="res-box" transform="rotate(33.7, 337, 125)"/>
+  <text x="337" y="125" class="res-lbl">9 &#937;</text>
+
+  <!-- Arm DB (6 ohm) -->
+  <line x1="260" y1="280" x2="410" y2="180" class="wire"/>
+  <rect x="305" y="222" width="65" height="26" rx="4" class="res-box" transform="rotate(-33.7, 337, 235)"/>
+  <text x="337" y="235" class="res-lbl">6 &#937;</text>
+
+  <!-- Bridge annotation -->
+  
+</svg>
