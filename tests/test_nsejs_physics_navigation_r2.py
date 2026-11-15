@@ -54,3 +54,15 @@ def test_preserved_source_routes_and_worksheet_count_are_explicitly_unqualified(
     assert 'exact match not verified' in reader
     assert (PH/"curriculum/topics/PH11/index.html").is_file()
     assert (PH/"curriculum/topics/PH11/core1b-preview.html").is_file()
+
+def test_previews_and_gravitation_use_chapter_titles():
+    for name,code in (("Current Electricity","PH11"),
+                      ("Magnetic Effects and Induction","PH12")):
+        s=(PH/f"curriculum/topics/{code}/core1b-preview.html").read_text(encoding="utf-8")
+        assert f"<strong>NSEJS Physics · {name}</strong>" in s
+        assert f"<title>{name} — Independent Practice Preview</title>" in s
+        assert 'href="./index.html">Read the chapter' in s
+        assert f'data-topic="{code}"' in s  # Internal identity retained
+    g=(PH/"textbook/PH05/index.html").read_text(encoding="utf-8")
+    assert "<h1>Gravitation</h1>" in g
+    assert "<title>Gravitation — NSEJS Physics candidate lesson</title>" in g
