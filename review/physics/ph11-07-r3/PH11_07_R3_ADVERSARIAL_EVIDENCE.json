@@ -1,0 +1,183 @@
+{
+  "schema": "g9v41-physics-ph11-07-r3-exposed-review/v1",
+  "mode": "AUTHOR_EXPOSED_ADVERSARIAL_R3_NOT_BLIND",
+  "subject": "Physics",
+  "topic_id": "PH11",
+  "subtopic_id": "PH11-07",
+  "task": "G9V41-PH11-07-R3-A-ADVERSARIAL-SCIENCE-AND-LEARNER-CHAIN",
+  "evaluation_boundary": "Reviewed previous R2 author solutions, adapter and saved responses. Cannot issue sealed independent R01/R02 verdict; scientific checks below are reproducible adversarial author review, not independent expert approval.",
+  "source": {
+    "source_identity": "G9-AUTH-PH11-PARITY-R2-SOURCE-01",
+    "role": "ORIGINAL_AUTHOR_STYLE_CHECKPOINT_NOT_EXAM",
+    "question": "Ideal 9V source plus 3Ω series and 6Ω || 6Ω",
+    "admitted": false,
+    "source_pdf_sha256": null,
+    "authentic_exam_identity": null,
+    "original_answer_key": null,
+    "original_figure_custody": null,
+    "rights": "HOLD_IF_EXAM_REUSE",
+    "worksheet_note": "The separate 56-item circuit.pdf bank is worksheet only; all exact source/key/figures and rights are independently unverified, cannot be joined automatically to this authored case."
+  },
+  "real_exam_question_admitted": 0,
+  "independent_qrt": "NOT_RUN",
+  "owner_release": "HOLD",
+  "verified_author_calculations": {
+    "source_first": "9/(3+(6||6))=1.5A; parallel voltage4.5V; each6Ω branch0.75A",
+    "anchor_direct": "12V across6Ω||3Ω -> branch currents2A and4A; total6A; R_eq2Ω",
+    "bridge_mixed": "10V with2Ω plus(4Ω||4Ω) -> R_block2Ω, total2.5A, V_block5V, each branch1.25A",
+    "fresh_inverse": "Measured 18V/4A gives R_total4.5Ω; R_parallel1.5Ω; series drop12V; V_AB6V; I_6=1A; I_unknown=3A; R_unknown2Ω.",
+    "boundary": "Positive passive downstream block means R_total>3Ω; I_total<18/3=6A; a reported7A contradicts the model.",
+    "verified_with": "exact rational arithmetic (fractions) and physical voltage/current conservation in R3 Python regression"
+  },
+  "rca": [
+    {
+      "severity": "CRITICAL",
+      "finding": "Prior R2 Core1B forward mixed-network task only substituted resistor values after a basic parallel anchor; it did not establish fresh unseen reconstruction.",
+      "correction": "New inverse mixed circuit: infer an unknown 2Ω branch from 18V and 4A source reading; reconstruct the voltage and current partition, check the boundary."
+    },
+    {
+      "severity": "MAJOR",
+      "finding": "R2 author D4.4 / 8 factor score inflated representation and cognitive demand; it relied on explicit verbal topology and short conventional series-parallel arithmetic.",
+      "correction": "R3 v0.5.0 candidate proposal D3.4 / 7; five reasons per factor; independent QRT NOT_RUN. Both versions retained for comparison."
+    },
+    {
+      "severity": "MAJOR",
+      "finding": "R2 worked 12V direct-parallel anchor displayed an SVG with 12V upstream 2Ω series and 6Ω||3Ω: illustration contradicted its adjacent example.",
+      "correction": "Separated 12V directly-connected 6Ω||3Ω diagram from 10V with upstream2Ω and4Ω||4Ω connected bridge; node/voltage/current witnesses included."
+    },
+    {
+      "severity": "MAJOR",
+      "finding": "New PH11-07 Core1A and Core1B used ../../../agent2 stylesheet path from too-deep subtopic directory; stylesheet URL resolved outside curriculum/agent2.",
+      "correction": "Both native pages now use ../../../../agent2/textbook-reader.css with contract existence test and HTTP visual acceptance check."
+    },
+    {
+      "severity": "MAJOR",
+      "finding": "Reviewer preview originally displayed only direct-parallel Core1A steps; fresh inverse transfer required series-drop knowledge not taught in the protected journey.",
+      "correction": "Connected bridge step mounted only after saved source-style attempt; native lesson includes both progressive worked circuits."
+    },
+    {
+      "severity": "MAJOR",
+      "finding": "Reviewer preview exposed link to author adapter (including protected decisive-work text) before original source attempt was saved.",
+      "correction": "Adapter link withheld from visible learner sequence until source return is committed; raw public JSON remains discoverable, not secure exam custody."
+    }
+  ],
+  "candidate_blueprint": {
+    "template": "PHYS-QRT-BLUEPRINT v0.2.0",
+    "template_path": "templates/physics-blueprint/physics-blueprint.D3-D4.resolved.v0.2.0.json",
+    "old_advertised": "D4.4 MODEL score8 author-exposed",
+    "updated_proposal": "D3.4 MODEL score7 author-exposed",
+    "five_factor_proposed": {
+      "concept_model_selection": 2,
+      "representation_translation": 1,
+      "reasoning_chain_length": 2,
+      "algebra_computational_load": 1,
+      "trap_exception_sensitivity": 1
+    },
+    "shortest_valid_route": [
+      "Infer R_total from measured source V/I",
+      "Remove upstream 3Ω to obtain R_parallel",
+      "Compute branch voltage6V from the measured series current",
+      "Determine known branch current1A then missing branch3A via KCL",
+      "Infer missing R=2Ω and check equivalent/voltage closure"
+    ],
+    "competing_operations": [
+      "SYNTHESIZE",
+      "APPLY",
+      "REPRESENT"
+    ],
+    "independent_review_requirement": "Cold source-first reviewer to derive shortest route and D-band before seeing this packet; sample learner data cannot be fabricated.",
+    "blueprint_pin_resolution": "HOLD_DIFFERENT_BLOB_PROVENANCE"
+  },
+  "verified_blob_pins": [
+    {
+      "role": "authored_cases",
+      "path": "review/physics/ph09-ph12-wpe-parity-r1/FOUR_WPE_PARITY_REFERENCE_CANDIDATES_R1.json",
+      "git_blob_sha": "7a55cc61586dcaeb3131af88383fb5f27dc2f8fa"
+    },
+    {
+      "role": "candidate_r3_adapter",
+      "path": "nsejs/physics/curriculum/topics/PH11/topic-adapter.PH11.wpe-parity-r3.v1.json",
+      "git_blob_sha": "6c824f3d1e2380d535a5e7e30974b04feb478d3f"
+    },
+    {
+      "role": "core1a",
+      "path": "nsejs/physics/curriculum/topics/PH11/subtopics/PH11-07/core1a.html",
+      "git_blob_sha": "e1ff75a623dc520cc3a779d3ab5319cf084387c3"
+    },
+    {
+      "role": "core1b",
+      "path": "nsejs/physics/curriculum/topics/PH11/subtopics/PH11-07/core1b.html",
+      "git_blob_sha": "34506d7fba811eda739e712bdeb2b9e382b29c57"
+    },
+    {
+      "role": "runtime",
+      "path": "review/physics/ph09-ph12-wpe-parity-r1/preview.js",
+      "git_blob_sha": "e3325178c5bcc4e6ffa0a506b015d8e19802b50d"
+    },
+    {
+      "role": "physics_blueprint",
+      "path": "templates/physics-blueprint/physics-blueprint.D3-D4.resolved.v0.2.0.json",
+      "git_blob_sha": "b53b970d9ff99e696e84fe6b77805dbf25e0c544"
+    }
+  ],
+  "b1_b7": {
+    "B1": {
+      "obligation": "Exact task, source role, W, operation and intrinsic demand",
+      "technical_evidence": "Authored case ID, source-versus-transfer distinction and model W now explicit",
+      "academic_disposition": "HOLD",
+      "reason": "No authentic exam question, source-first independent SL1/SL2 or QRT receipt"
+    },
+    "B2": {
+      "obligation": "Model/conditions, reasoning dependencies and anchor-to-transfer construction",
+      "technical_evidence": "Two-node, ideal resistor assumptions, parallel/series inference and complete equations enumerated",
+      "academic_disposition": "HOLD",
+      "reason": "R3 authors reviewed their own work; cross-source and independent science confirmation outstanding"
+    },
+    "B3": {
+      "obligation": "Core1A teaching sufficient for all nonroutine fresh task decisions",
+      "technical_evidence": "Two progressive anchors, diagram node topology and KCL/voltage checks now present",
+      "academic_disposition": "HOLD",
+      "reason": "Unseen learner evidence and independent sufficiency review absent"
+    },
+    "B4": {
+      "obligation": "Fresh inference, changed unknown/conditions and shortest valid novel route",
+      "technical_evidence": "Forward direct and mixed circuit anchors versus reverse unknown branch inferred from ammeter",
+      "academic_disposition": "HOLD",
+      "reason": "Author novelty comparison only; genuine unseen independent reviewer assessment not done"
+    },
+    "B5": {
+      "obligation": "No answer W/figure/alt leak before saved original; fail-closed on storage failure",
+      "technical_evidence": "Source-first gate, then six-stage saved attempts, hidden author adapter link, R3 adversarial Chromium added",
+      "academic_disposition": "HOLD",
+      "reason": "Browser-local storage and public JSON are not tamper-resistant; run final exact-head QA"
+    },
+    "B6": {
+      "obligation": "Conditional misconception, repair linked to anchor, independently solved edge case",
+      "technical_evidence": "Diagnose actual 18V error or false equal-branch shortcut only if present; 7A boundary falsifier",
+      "academic_disposition": "HOLD",
+      "reason": "Feedback text is not semantically scored; no independent diagnostic performance study"
+    },
+    "B7": {
+      "obligation": "Science/source/key/figure/rights custody and pin chain",
+      "technical_evidence": "Original author diagrams and rational arithmetic proof; old contradictory figure eliminated",
+      "academic_disposition": "HOLD",
+      "reason": "No authoritative authentic NSEJS source/key, sealed independent science approval or diagram review; blueprint pin reconciliation still HOLD"
+    }
+  },
+  "stage_acceptance": {
+    "source_authenticity": "HOLD",
+    "content_correctness": "HOLD",
+    "cognitive_qualification": "HOLD",
+    "teaching_sufficiency": "HOLD",
+    "assessment_validity": "HOLD",
+    "implementation": "TEST_PENDING",
+    "release_authority": "HOLD"
+  },
+  "comparison_wpe": {
+    "pilot": "5 WPE guided-to-fresh student practice topics, not independently accepted academic source",
+    "matched": "two-level worked model, source-first and fresh transfer, conserved attempts and six-stage gates",
+    "remaining_delta": "WPE option-specific misconception feedback is more tailored; R3 only conditional text requiring learner justification. Both need independent academic/source decisions."
+  },
+  "authorization": "CANDIDATE_ONLY__NO_MERGE_NO_DEPLOY_NO_BLUEPRINT_PROMOTION",
+  "next_expert_hand_off": "Independent blind R01: authenticate original Core2 separately; evaluate source-independent PH11 task and transfer novelty; derive operation/factors and solve circuit; review the two drawings, B1–B7 and exact tested SHA; return signed PASS/FAIL/HOLD without reviewing this author's solution before first pass."
+}
