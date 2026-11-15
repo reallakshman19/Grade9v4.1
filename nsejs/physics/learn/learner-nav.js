@@ -71,9 +71,17 @@ async function load(){
   const refId=unit?.id||new URLSearchParams(location.search).get("unit")||"";
   const nav=el("nav");nav.id="g9-learner-nav";nav.className="g9-study-nav";nav.setAttribute("aria-label","Physics learning navigation");
   const crumb=el("div");crumb.className="g9-study-crumbs";
-  crumb.append(a("NSEJS",url("../index.html")),el("span","›"),a("Physics",url("index.html#learn-physics")),el("span","›"),a(ch.id+" · "+ch.title,chapterUrl(ch.id)),el("span","›"),el("span",unit?unit.id+" · "+(role==="learn"?"Learn":"Try it"):role==="help"?"Extra help":role==="preview"?"Practice preview":"Read chapter"));
+  crumb.append(a("NSEJS",url("../index.html")),el("span","›"),a("Physics",url("index.html#learn-physics")),el("span","›"),a(ch.title,chapterUrl(ch.id)),el("span","›"),el("span",unit?(unit.title||"This lesson")+" · "+(role==="learn"?"Learn":"Try it"):role==="help"?"Extra help":role==="preview"?"Practice preview":"Read chapter"));
   const actions=el("div");actions.className="g9-study-actions";
-  actions.append(a("← Chapter",chapterUrl(ch.id,refId)));
+  actions.append(a("← "+ch.title,chapterUrl(ch.id,refId)));
+  const requestedQuestion=new URLSearchParams(location.search).get("question")||"";
+  if(ch.id==="PH11"&&/^NSEJS-CIRC-L[12]-Q\d{2}$/.test(requestedQuestion)){
+    const back=new URL("index.html",root);
+    back.searchParams.set("topic","circuits");
+    back.searchParams.set("q",requestedQuestion);
+    back.hash="question-"+requestedQuestion;
+    actions.prepend(a("← Return to your question",back.href,"g9-next"));
+  }
   if(unit){
     const reading=a("1 · Learn",url(unit.learn));if(role==="learn")reading.setAttribute("aria-current","page");actions.append(reading);
     const practice=a("2 · Try it",url(unit.practice));if(role==="practice")practice.setAttribute("aria-current","page");actions.append(practice);
@@ -87,9 +95,9 @@ async function load(){
     actions.append(a("? · Extra help",h.href));
   }
   if(unit){
-    if(index>0)actions.append(a("← Previous subtopic",url(ch.units[index-1].learn)));
+    if(index>0)actions.append(a("← Previous lesson",url(ch.units[index-1].learn)));
     if(role==="learn")actions.append(a("Next · Try it →",url(unit.practice),"g9-next"));
-    else if(index+1<ch.units.length)actions.append(a("Next · "+ch.units[index+1].id+" →",url(ch.units[index+1].learn),"g9-next"));
+    else if(index+1<ch.units.length)actions.append(a("Next · "+ch.units[index+1].title+" →",url(ch.units[index+1].learn),"g9-next"));
     else actions.append(a("Chapter complete · Return →",chapterUrl(ch.id),"g9-next"));
   }
   nav.append(crumb,actions);

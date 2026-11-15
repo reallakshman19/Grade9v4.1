@@ -95,7 +95,9 @@ def check_orientation(browser,base,orientation,w,h,receipts):
         assert back.is_visible()
         back.click()
         page.wait_for_url("**/source-checkpoint.html?source="+uid,timeout=12000)
-        assert page.locator("#afterFirst").is_visible()
+        # URL navigation may finish before the saved-attempt state is rehydrated.
+        # Wait for the actual protected-state condition; never auto-unlock it.
+        page.locator("#afterFirst").wait_for(state="visible",timeout=12000)
         assert page.locator("#firstPrediction").is_disabled()
         final=record(page,uid)
         assert final["entry"]["first_reasoning"]==rec["entry"]["first_reasoning"]

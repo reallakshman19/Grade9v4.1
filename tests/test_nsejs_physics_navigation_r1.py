@@ -36,7 +36,7 @@ def test_chapter_catalog_is_real_and_single_entry():
     assert home.index('id="learn-physics"') < home.index('id="g9-explore-bank"')
     assert home.count('class="g9-chapter-card"') == 12
     assert home.count('aria-disabled="true"') >= 3
-    assert home.count('href="learn/chapter.html?ph=') == 8
+    assert home.count('href="learn/chapter.html?ph=') == 9
     assert 'id="g9-explore-bank"' in home and 'learner-home.js' in home
     assert 'id="topicWorkspace"' in home and 'id="questions"' in home
     assert 'core2-physics-reader.js' in home
@@ -90,7 +90,7 @@ def test_learner_nav_does_not_mutate_protected_attempts_or_source():
     home=(PH/"learn/learner-home.js").read_text(encoding="utf-8")
     assert "localStorage.setItem" not in nav+chapter+home
     assert "sessionStorage" not in nav+chapter+home
-    assert 'aria-current' in nav and "Previous subtopic" in nav and "Next · Try it" in nav
+    assert 'aria-current' in nav and "Previous lesson" in nav and "Next · Try it" in nav
     assert "candidate_only" in chapter or 'candidate_only' in (PH/"learn/catalog.json").read_text()
     assert "g9-explore-bank" in home and "topic" in home and "from" in home
     assert "Old" not in chapter or "exam" in chapter

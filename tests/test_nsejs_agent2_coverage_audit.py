@@ -89,5 +89,11 @@ def test_reader_is_internally_linked_and_draft_only():
         assert f"topics/{topic}/index.html" in index
         chapter = (CURR / f"topics/{topic}/index.html").read_text(encoding="utf-8")
         assert re.search(r'<h3 id="s\d+"', chapter)
-        assert 'href="../../agent2/index.html"' in chapter
+        if topic == "PH11":
+            # Student route now returns to the chapter by its proper name.
+            # Historical Agent 2 directory remains intact but is not the
+            # primary navigation choice for Current Electricity.
+            assert 'href="../../../learn/chapter.html?ph=PH11"' in chapter
+        else:
+            assert 'href="../../agent2/index.html"' in chapter
         assert 'href="core1b-preview.html"' in chapter

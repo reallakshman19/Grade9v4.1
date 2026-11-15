@@ -17,8 +17,8 @@
     "circuits": {
       title: "DC Circuits & Resistor Networks",
       links: [
-        { label: "▶ Level-1 Current Electricity Worksheet (Q1–Q36)", url: "#NSEJS-CIRC-L1-Q01" },
-        { label: "▶ Level-2 Advanced Resistor Networks (Q1–Q20)", url: "#NSEJS-CIRC-L2-Q01" },
+        { label: "▶ Foundation Current Electricity Worksheet (36)", url: "?topic=circuits&q=NSEJS-CIRC-L1-" },
+        { label: "▶ Advanced Resistor Networks Worksheet (20)", url: "?topic=circuits&q=NSEJS-CIRC-L2-" },
         { label: "▶ 3D Resistor Cube Symmetry (D3)", url: "core1/recovery/nsejs-circuits-cube-d3-r1/index.html" },
         { label: "▶ Infinite Resistor Ladders (D3)", url: "core1/recovery/nsejs-circuits-ladder-d3-r1/index.html" },
         { label: "▶ Resistor Tetrahedron Symmetry", url: "core1/recovery/nsejs-circuits-r1/index.html" }
@@ -62,8 +62,8 @@
     box.id = "topic-core1-ribbon";
     const head = text("div", "", "ribbon-head");
     append(head,
-      text("strong", "Core 1 Master Learning Journeys for " + info.title),
-      text("span", "{Core 1 Available}", "reviewed-ribbon-tag")
+      text("strong", "Related learning and practice for " + info.title),
+      text("span", "Topic-related · academic HOLD", "reviewed-ribbon-tag")
     );
     const linksDiv = text("div", "", "ribbon-links");
     info.links.forEach(l => {
@@ -199,7 +199,11 @@
         box.prepend(anc);
       }
     }
-    append(box,text("h2","Candidate "+(index+1)+" · "+q.source_id));
+    const worksheetMatch=/^NSEJS-CIRC-L([12])-Q(\d{2})$/.exec(q.source_id||"");
+    const questionTitle=worksheetMatch
+      ? (worksheetMatch[1]==="1"?"Foundation worksheet":"Advanced worksheet")+" · Question "+Number(worksheetMatch[2])
+      : "Candidate question "+(index+1);
+    append(box,text("h2",questionTitle));
     const integrity = q.integrity_meta || null;
     // Verified Core2 cards expose exact identity and content revision so native
     // PH01 and B02 related-learning links cannot attach to unrelated/stale data.
@@ -220,6 +224,15 @@
 
     const statusBadge = text("span", "Candidate · Source/QRT academic acceptance pending · HOLD", "status");
     append(box, statusBadge);
+    if(q.topic==="CURRENT_ELECTRICITY"){
+      const related=text("a","Read Current Electricity · related learning (exact match not verified)","g9-related-chapter");
+      const v=new URL("learn/chapter.html",location.href);
+      v.searchParams.set("ph","PH11");
+      if(/^NSEJS-CIRC-L[12]-Q\d{2}$/.test(q.source_id||""))v.searchParams.set("question",q.source_id);
+      related.href=v.href;
+      related.style.cssText="display:inline-block;margin:10px 0 14px;padding:9px 14px;border:1px solid #94a3b8;border-radius:10px;font-weight:650;";
+      append(box,related);
+    }
 
     if (integrity && integrity.official_paper_year) {
       const examBadge = text("span", "📅 Official Exam: " + integrity.official_paper_year + " · Set " + (integrity.official_paper_code || "51") + " · Q" + integrity.official_paper_question, "status");
@@ -269,7 +282,7 @@
     details.style.cssText = "margin: 8px 0 14px; font-size: 12px; color: #64748b;";
     const summary = text("summary", "Data integrity & QRT verification (technical audit; not admission)");
     summary.style.cssText = "cursor: pointer; font-weight: 600; color: #475569;";
-    const infoP = text("p", "Stem SHA-256: " + (q.stem_sha256 || "NOT_RECORDED") + " · Internal digest is not source authentication · Demand: " + opStr + " / " + bandStr + " · Academic status: RULE_13_HOLD");
+    const infoP = text("p", "Source question ID: " + q.source_id + " · Stem SHA-256: " + (q.stem_sha256 || "NOT_RECORDED") + " · Internal digest is not source authentication · Demand: " + opStr + " / " + bandStr + " · Academic status: RULE_13_HOLD");
     infoP.style.cssText = "margin: 4px 0 0; font-family: monospace; font-size: 11px; word-break: break-all;";
     append(details, summary, infoP);
     append(box, details);
@@ -721,7 +734,7 @@
           cards.forEach(renderMath);
           if (shouldScrollToTarget) {
             const id = decodeURIComponent((window.location.hash || "").replace(/^#/, ""));
-            const needle = id || filterState.q;
+            const needle = (id || filterState.q).replace(/^question-/,"");
             const wanted = needle && cards.find(card =>
               card.dataset.sourceId === needle || card.dataset.qid === needle ||
               card.id === "question-" + encodeURIComponent(needle));
@@ -947,12 +960,13 @@
 
     // Check if query or hash references a specific question to auto-focus
     const initialQ = filterState.q;
-    const initialHash = (window.location.hash || "").replace(/^#/, "");
+    const initialHash = decodeURIComponent((window.location.hash || "").replace(/^#/, ""));
+    const sourceAnchor=initialHash.replace(/^question-/,"");
     if (initialHash && filterState.topic === "all") {
       if (initialHash === "topic-view" || initialHash === "topicWorkspace") {
         filterState.topic = "optics";
       } else {
-        const matchQ = combinedQuestions.find(q => q.id === initialHash || q.source_id === initialHash);
+        const matchQ = combinedQuestions.find(q => q.id === sourceAnchor || q.source_id === sourceAnchor);
         if (matchQ) {
           const matchTopic = TOPICS.find(t => t[1] === matchQ.topic);
           if (matchTopic) filterState.topic = matchTopic[0];
@@ -962,6 +976,17 @@
 
     // Execute initial filter evaluation and handle anchor navigation
     applyFilters(Boolean(initialHash || initialQ));
+    // Preserve legacy hashes; handle Back/Forward or a new question anchor.
+    window.addEventListener("hashchange",()=>{
+      const fragment=decodeURIComponent((window.location.hash||"").replace(/^#/,""));
+      const uid=fragment.replace(/^question-/,"");
+      const q=combinedQuestions.find(item=>item.source_id===uid||item.id===uid);
+      if(!q)return;
+      const topic=TOPICS.find(t=>t[1]===q.topic);
+      if(topic)filterState.topic=topic[0];
+      filterState.q=uid;
+      applyFilters(true);
+    });
   }
   load().catch(function(e){status.textContent="Core2 bank unavailable: "+e.message;status.className="error";});
 })();
