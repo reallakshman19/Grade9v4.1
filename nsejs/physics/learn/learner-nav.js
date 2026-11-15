@@ -98,7 +98,7 @@ async function load(){
     if(index>0)actions.append(a("← Previous lesson",url(ch.units[index-1].learn)));
     if(role==="learn")actions.append(a("Next · Try it →",url(unit.practice),"g9-next"));
     else if(index+1<ch.units.length)actions.append(a("Next · "+ch.units[index+1].title+" →",url(ch.units[index+1].learn),"g9-next"));
-    else actions.append(a(((ch.id==="PH03"&&ch.units.length<7)||(ch.id==="PH06"&&ch.units.length<10))?"Return to "+ch.title+" Golden Sample →":"Chapter complete · Return →",chapterUrl(ch.id),"g9-next"));
+    else actions.append(a(((ch.id==="PH03"&&ch.units.length<7)||(ch.id==="PH06"&&ch.units.length<10))?"Return to "+ch.title+" Golden Sample →":"Return to chapter overview →",chapterUrl(ch.id),"g9-next"));
   }
   nav.append(crumb,actions);
   const css=el("link");css.rel="stylesheet";css.href=new URL("learner-navigation.css",script.src).href;document.head.append(css);
