@@ -106,7 +106,9 @@ def run(origin, browser, size):
         assert "Current Electricity" in page.locator("h1").inner_text()
         assert "exact question-to-lesson match is not independently verified" in page.locator(".g9-return-context").inner_text()
         # Follow reading route and use the native breadcrumb to return.
-        page.locator(".g9-chapter-resources a").filter(has_text="Read the complete chapter").click()
+        chapter_overview=page.locator(".g9-chapter-resources a").first
+        assert "curriculum/topics/PH11/index.html" in chapter_overview.get_attribute("href")
+        chapter_overview.click()
         page.locator("#g9-learner-nav a").filter(has_text="Return to your question").wait_for()
         page.locator("#g9-learner-nav a").filter(has_text="Return to your question").click()
         page.locator("#question-"+qid).wait_for(timeout=60000)

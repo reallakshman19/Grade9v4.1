@@ -1,0 +1,470 @@
+{
+  "schema": "g9v41-four-physics-deep-reconstruction/v1",
+  "status": "AUTHOR_EXPOSED_CANDIDATE__ACADEMIC_HOLD",
+  "purpose": "New, versioned teaching and truly changed-condition candidate exercise; neither an original NSEJS exam item nor independent QRT acceptance",
+  "existing_41_unit_scope": "FOUR_SELECTED_DEMONSTRATORS_ONLY__37_OTHERS_UNCHANGED",
+  "units": [
+    {
+      "source": {
+        "role": "AUTHORED_TRANSFER",
+        "original_exam_admission": "HOLD",
+        "exact_original_paper": null,
+        "figure_custody": "NO_EXAM_FIGURE",
+        "answer_key_custody": "NO_EXAM_KEY",
+        "independent_qrt": "NOT_RUN"
+      },
+      "unit": "PH01-M05",
+      "chapter": "PH01",
+      "title": "Reconstruct motion from signed graphs",
+      "revision": "20261115-graph-evidence-r1",
+      "adapter": {
+        "cell": "D3.5",
+        "operation": "REPRESENT",
+        "status": "AUTHOR_PROPOSED_UNSCORED",
+        "five_factor_scores": null,
+        "reason": "Translate two signed coordinate representations and reconcile areas at a kink, rather than simply differentiate a straight line",
+        "artifact_path": "nsejs/physics/curriculum/agent1/PH01/topic-adapter.PH01.v0.12.0.json",
+        "version": "0.12.0",
+        "selected_as_canonical": false,
+        "independent_witness_status": "HOLD",
+        "author_qrt_hypothesis": {
+          "status": "AUTHOR_EXPOSED__NOT_BLIND",
+          "proposed_band": "D3",
+          "proposed_total": 7,
+          "factors": {
+            "concept_model_selection": {
+              "author_score": 1,
+              "evidence": "Select a piecewise signed-slope model; rule selection is explicit rather than hidden"
+            },
+            "representation_translation": {
+              "author_score": 2,
+              "evidence": "Translate three x-time segments to two signed frame velocities and area ledgers"
+            },
+            "reasoning_chain_length": {
+              "author_score": 2,
+              "evidence": "Reconcile intervals, two frame directions, total distance and the corner counterexample"
+            },
+            "algebra_computational_load": {
+              "author_score": 1,
+              "evidence": "Only small integer slopes and simple linear coordinate reversal"
+            },
+            "trap_exception_sensitivity": {
+              "author_score": 1,
+              "evidence": "Zero-displacement and corner-derivative traps must both be rejected"
+            }
+          },
+          "independent_score": null,
+          "can_promote": false
+        }
+      },
+      "study": {
+        "phenomenon": "A vehicle returns near its starting point even though its odometer records substantial travel. A position graph may cross zero without the vehicle stopping.",
+        "goal": "Turn successive position-time segments into signed velocities, reconcile both displacement and path distance, and distinguish a graph corner from a smooth instantaneous velocity.",
+        "model": "In a stated stationary coordinate frame, velocity on a linear position-time interval is Δx/Δt. Its sign shows direction, not whether the position is positive. The signed area of a v–t representation is Δx, while the sum of absolute areas gives path distance for the stated piecewise motion. A position-axis shift does not affect velocity; reversing the axis reverses each signed velocity.",
+        "assumptions": "The data describe straight-line travel; every interval is assumed linear between the explicitly stated measurements. At a sharp corner between unequal slopes a unique two-sided instantaneous derivative does not exist. No extra reversals are assumed within a linear interval.",
+        "examples": [
+          {
+            "level": "Foundation · read a slope",
+            "prompt": "Position changes from +2 m at 0 s to +8 m at 3 s on a straight x–t segment. Is the body accelerating?",
+            "solution": "The slope is (8−2)/3=+2 m/s. On this stated straight segment, velocity is constant and acceleration is zero inside the interval. Endpoints alone, without the straight-segment condition, would not prove constant velocity.",
+            "check": "2+2×3=8 m and the unit m/s is a velocity."
+          },
+          {
+            "level": "Connected · signed area versus distance",
+            "prompt": "A vehicle travels at +3 m/s for 2 s and at −1 m/s for another 2 s, with an instantaneous idealized switch. Determine displacement and path length.",
+            "solution": "The signed velocity areas are +6 and −2 m, so displacement is +4 m; distance is |6|+|−2|=8 m. The negative segment is not a negative distance.",
+            "check": "Draw 6 m east then 2 m west; net is 4 m east."
+          },
+          {
+            "level": "Advanced · change of coordinate label",
+            "prompt": "An east-positive graph has x=4 m at 1 s and x=10 m at 4 s on a straight segment. Another observer uses y=20−x. Compare velocities.",
+            "solution": "East-positive v_x=(10−4)/3=+2 m/s. y changes from 16 to 10 m, so v_y=(10−16)/3=−2 m/s. They describe one physical motion with opposite-positive axes.",
+            "check": "The absolute velocity is 2 m/s in both frames; only the sign reverses."
+          }
+        ],
+        "misconception": {
+          "wrong": "Crossing x=0 means the object stopped; negative area means negative distance.",
+          "repair": "Stopping requires v=0, determined from slope on x–t or height on v–t. Position zero is only the chosen origin; use absolute signed areas for distance."
+        },
+        "exit": {
+          "prompt": "If a segment goes x=6 m to x=0 m over 2 s, what is its velocity, and does x=0 imply zero speed?",
+          "answer": "v=−3 m/s on the linear segment. The position at the origin is zero, not the velocity."
+        },
+        "figure": {
+          "kind": "position",
+          "points": [
+            [
+              0,
+              2
+            ],
+            [
+              3,
+              8
+            ],
+            [
+              5,
+              8
+            ],
+            [
+              7,
+              2
+            ]
+          ],
+          "xLabel": "Time (s)",
+          "yLabel": "Position (m)"
+        }
+      },
+      "challenge": {
+        "uid": "AUTHORED-PH01-M05-R1-REPRESENT-01",
+        "prediction": "A position–time line changes slope at a sharp corner. Can its instantaneous velocity at that exact instant be read as a single value? Predict before computing.",
+        "prompt": "An east-positive rail record is piecewise linear through (t seconds, x metres): (0,1), (2,9), (5,3), (7,3). Observer B uses the reversed coordinate y=15−x. Reconstruct velocities on all intervals in each frame, the signed displacement and path distance of the object, and the signed area check. Decide whether x=3 m at the end means that the cart was always stopped, and whether a unique two-sided instantaneous velocity exists exactly at t=2 s.",
+        "hints": [
+          "Compute each interval's slope before looking at the y-axis origin.",
+          "A reversed axis changes velocity signs, not physical path length. A corner can have different one-sided derivatives."
+        ],
+        "reconstruct": "In the x frame, interval slopes are (9−1)/2=+4 m/s, (3−9)/3=−2 m/s, (3−3)/2=0 m/s. In the y=15−x frame, the slopes are −4,+2,0 m/s. Signed areas 4×2−2×3+0×2=+2 m equal x_final−x_initial=3−1=+2 m. Distance is 8+6=14 m. The cart travels on earlier intervals and stops only on the last interval under the piecewise-linear model. At t=2 s the one-sided slopes +4 and −2 differ, so a unique two-sided instantaneous velocity is not defined by the idealized graph.",
+        "diagnosis": "Locate the first wrong operation: using position height as velocity, adding signed areas for distance, failing to reverse frame signs, or assigning an average of unequal one-sided slopes at the corner.",
+        "repair": "Redraw three intervals with one arrow each; derive Δx and |Δx| separately. Independently check that the y-frame displacement equals −2 m, then explain why a corner cannot have one ordinary two-sided derivative.",
+        "boundaryPrompt": "Suppose only the final position becomes x(7)=1 m, while all earlier points and piecewise-linearity remain. What is the last-interval velocity, whole-trip displacement and distance? Record your attempt before revealing the model.",
+        "boundaryModel": "Last-interval v=(1−3)/2=−1 m/s. Total displacement is 1−1=0 m, but distance is 8+6+2=16 m. A zero whole-trip displacement does not imply a stationary trip.",
+        "transfer_difference": "Multiple signed segments, a reversed coordinate system, a corner and a counterexample to zero-displacement inference; not a numeric clone of any one worked example."
+      }
+    },
+    {
+      "source": {
+        "role": "AUTHORED_TRANSFER",
+        "original_exam_admission": "HOLD",
+        "exact_original_paper": null,
+        "figure_custody": "NO_EXAM_FIGURE",
+        "answer_key_custody": "NO_EXAM_KEY",
+        "independent_qrt": "NOT_RUN"
+      },
+      "unit": "PH02-F04",
+      "chapter": "PH02",
+      "title": "Newton's third law from inverse force evidence",
+      "revision": "20261115-interaction-evidence-r1",
+      "adapter": {
+        "cell": "D3.7",
+        "operation": "JUSTIFY",
+        "status": "AUTHOR_PROPOSED_UNSCORED",
+        "five_factor_scores": null,
+        "reason": "Reconcile two separately measured accelerations and infer interaction-force consistency before testing system-level conservation",
+        "artifact_path": "nsejs/physics/curriculum/agent1/PH02/topic-adapter.PH02.v0.2.0.json",
+        "version": "0.2.0",
+        "selected_as_canonical": false,
+        "independent_witness_status": "HOLD",
+        "author_qrt_hypothesis": {
+          "status": "AUTHOR_EXPOSED__NOT_BLIND",
+          "proposed_band": "D3",
+          "proposed_total": 7,
+          "factors": {
+            "concept_model_selection": {
+              "author_score": 2,
+              "evidence": "Select two distinct recipient FBDs and third-law force pairing"
+            },
+            "representation_translation": {
+              "author_score": 1,
+              "evidence": "Translate two sensor accelerations into signed body equations"
+            },
+            "reasoning_chain_length": {
+              "author_score": 2,
+              "evidence": "Solve contact magnitude independently twice, then check the system centre of mass"
+            },
+            "algebra_computational_load": {
+              "author_score": 1,
+              "evidence": "Two straightforward one-variable linear equations"
+            },
+            "trap_exception_sensitivity": {
+              "author_score": 1,
+              "evidence": "Internal-force cancellation on wrong body is a common exception"
+            }
+          },
+          "independent_score": null,
+          "can_promote": false
+        }
+      },
+      "study": {
+        "phenomenon": "Two carts push on one another with equal-magnitude opposite forces yet accelerate differently. A third device changes each cart's resultant.",
+        "goal": "Name each 'force on body by agent', keep third-law partners on different free-body diagrams, and reconcile separate accelerations with system-level external forces.",
+        "model": "For a horizontal two-body contact on an ideal track, write F_(A on B)=+C and F_(B on A)=−C with east positive. Each body's acceleration depends on *all* external forces on that body, including contacts; the contact pair cancels only when summing across the A+B system. The system centre-of-mass equation is (mA+mB)a_CM=F_external,total.",
+        "assumptions": "Forces are snapshots on approximately constant-mass bodies in a common inertial frame. Contact and force magnitudes must be physically compatible with the indicated configuration; a separation or contact release can change the model later.",
+        "examples": [
+          {
+            "level": "Foundation · recipients differ",
+            "prompt": "Cart A pushes cart B east with 7 N. Which cart receives each third-law force?",
+            "solution": "B receives +7 N from A. A receives −7 N from B. These are two different free-body diagrams, so they cannot cancel the resultant on A alone or on B alone.",
+            "check": "Both magnitudes are 7 N, both refer to the same interaction, and recipients differ."
+          },
+          {
+            "level": "Connected · separate resultants",
+            "prompt": "A (2 kg) pushes B (3 kg) east with contact 12 N. A also has 2 N east from a motor; B has 6 N west from a brake. Find the instantaneous accelerations.",
+            "solution": "A: ΣF=+2−12=−10 N; a_A=−5 m/s². B: ΣF=+12−6=+6 N; a_B=+2 m/s². Equal contact magnitudes do not give equal accelerations.",
+            "check": "Each force is counted exactly once on its receiving body."
+          },
+          {
+            "level": "Advanced · centre-of-mass cross-check",
+            "prompt": "Check the preceding two-body result by summing only external forces and by mass-weighted accelerations.",
+            "solution": "The contact cancels over A+B; F_external=2−6=−4 N and a_CM=−4/5=−0.8 m/s². Independently, (2×−5+3×2)/5=−4/5=−0.8 m/s².",
+            "check": "Both routes agree in N/kg, which is m/s²."
+          }
+        ],
+        "misconception": {
+          "wrong": "Newton-third-law forces cancel on each cart, so both carts must accelerate equally or remain at rest.",
+          "repair": "Name the receiving object on every arrow. Partners only cancel in a *combined-system* force ledger; individual resultants and masses generally differ."
+        },
+        "exit": {
+          "prompt": "A isolated pair experiences +5 N contact on B and −5 N on A. What is its total *external* horizontal force from that contact?",
+          "answer": "Zero. The contact is internal to A+B; their individual accelerations need not be zero."
+        },
+        "figure": {
+          "kind": "force",
+          "left": "A 2 kg",
+          "right": "B 3 kg",
+          "above": "motor 2 N →",
+          "below": "← brake 6 N"
+        }
+      },
+      "challenge": {
+        "uid": "AUTHORED-PH02-F04-R1-JUSTIFY-01",
+        "prediction": "Can two different measured cart accelerations both agree with equal-and-opposite contact forces? Predict how to check them independently.",
+        "prompt": "Two carts A (3 kg) and B (2 kg) are momentarily in horizontal contact on a smooth track. A receives 18 N east from a motor, and B receives 4 N west from a brake. Sensors at one instant report a_A=+2 m/s² and a_B=+4 m/s². Treat east as positive. Independently infer the contact-force magnitude from EACH sensor's body equation, identify the two recipients, and check the centre-of-mass acceleration using both external forces and mass-weighted accelerations. Do these measured accelerations obey Newton's third law?",
+        "hints": [
+          "Introduce a positive magnitude C for the contact from A on B. Its partner B on A is −C.",
+          "Solve 18−C=m_A a_A and C−4=m_B a_B independently. Compare values; then check system acceleration."
+        ],
+        "reconstruct": "A gives 18−C=3×2=6, so C=12 N. B gives C−4=2×4=8, so C=12 N. Thus B receives 12 N east from A and A receives 12 N west from B. External resultant on A+B is 18−4=14 N; a_CM=14/5=+2.8 m/s². The mass-weighted sensor result is (3×2+2×4)/5=(6+8)/5=+2.8 m/s². The readings are consistent at this instant. Contact persistence requires a separate geometrical check.",
+        "diagnosis": "Did you wrongly cancel contact forces within one cart, assume equal accelerations, or confuse a measured external motor force with the contact magnitude? Locate the first equation that would have to be corrected.",
+        "repair": "Draw two recipient-labelled free-body diagrams, solve for contact C twice, and verify the combined-system force sum independently before accepting the sensor evidence.",
+        "boundaryPrompt": "If the B sensor instead reported a_B=+3 m/s² while A's report and motor were unchanged, what brake magnitude would restore consistency, assuming the same 12 N contact at that instant?",
+        "boundaryModel": "From A, C remains 12 N. B requires net force m_B a_B=2×3=6 N east, so C−F_brake=6 and F_brake=6 N west (not 4 N). With the original brake, the reports would disagree by 2 N on B.",
+        "transfer_difference": "Inverse inference from two independent accelerometers and a system-level consistency test, rather than forward acceleration calculation alone."
+      }
+    },
+    {
+      "source": {
+        "role": "AUTHORED_TRANSFER",
+        "original_exam_admission": "HOLD",
+        "exact_original_paper": null,
+        "figure_custody": "NO_EXAM_FIGURE",
+        "answer_key_custody": "NO_EXAM_KEY",
+        "independent_qrt": "NOT_RUN"
+      },
+      "unit": "PH07-02",
+      "chapter": "PH07",
+      "title": "Heat transfer versus steady temperature",
+      "revision": "20261115-thermal-evidence-r1",
+      "adapter": {
+        "cell": "D3.4",
+        "operation": "MODEL",
+        "status": "AUTHOR_PROPOSED_UNSCORED",
+        "five_factor_scores": null,
+        "reason": "Distinguish equilibrium, driven steady state and phase change under controlled energy-flow evidence and heat capacity",
+        "artifact_path": "nsejs/physics/curriculum/topics/PH07/topic-adapter.PH07.quality-r1.json",
+        "version": "0.4.0-b01-quality-r1",
+        "selected_as_canonical": false,
+        "independent_witness_status": "HOLD",
+        "author_qrt_hypothesis": {
+          "status": "AUTHOR_EXPOSED__NOT_BLIND",
+          "proposed_band": "D3",
+          "proposed_total": 7,
+          "factors": {
+            "concept_model_selection": {
+              "author_score": 2,
+              "evidence": "Select a driven steady-state rate model rather than equilibrium or phase-change model"
+            },
+            "representation_translation": {
+              "author_score": 1,
+              "evidence": "Translate energy-flow arrows and heat capacities to instantaneous temperature rates"
+            },
+            "reasoning_chain_length": {
+              "author_score": 2,
+              "evidence": "Connect before/after switching, two systems and a phase-change boundary"
+            },
+            "algebra_computational_load": {
+              "author_score": 1,
+              "evidence": "Two simple power divided by heat-capacity calculations"
+            },
+            "trap_exception_sensitivity": {
+              "author_score": 1,
+              "evidence": "Constant temperature does not prove equilibrium; phase change invalidates C shortcut"
+            }
+          },
+          "independent_score": null,
+          "can_promote": false
+        }
+      },
+      "study": {
+        "phenomenon": "Two plates may read the same steady temperature while one needs continuous electrical energy and another does not. A melting sample can absorb energy without a temperature rise.",
+        "goal": "Choose the physical system, distinguish thermal state from energy transfer and use a rate budget before inferring temperature change.",
+        "model": "With one selected system and no mechanical-work term, dU/dt=P_in−P_out. At steady thermal state *without phase or state change*, dU/dt=0 and nonzero energy flows can balance. Genuine equilibrium with surroundings means no net heat flow driven by a temperature difference. During a phase change, U may change while measured temperature remains fixed. If C=dU/dT is approximately constant and no phase transition occurs, dT/dt=(P_in−P_out)/C.",
+        "assumptions": "Use declared system boundaries; all power units are watts (J/s), and any fixed-temperature input/output inference assumes unchanged phase, material and negligible unmodelled work. A thermal loss rate can change as a plate cools.",
+        "examples": [
+          {
+            "level": "Foundation · energy accumulation",
+            "prompt": "A solid receives 48 W and loses 31 W for 10 s. Determine ΔU; can you automatically give ΔT?",
+            "solution": "Net input is 17 W for 10 s, so ΔU=170 J. Without heat capacity, phase information and the validity of the model, ΔT is not determined.",
+            "check": "Power × time = J, not °C."
+          },
+          {
+            "level": "Connected · driven steady state",
+            "prompt": "A hot incubator receives 18 W and loses 18 W for 30 s while remaining above room temperature. Is it in equilibrium with the room?",
+            "solution": "Input and loss each equal 540 J, net ΔU=0 under the steady assumptions, but continuous heat flows to the cooler room. This is a driven steady state, not thermal equilibrium with the room.",
+            "check": "If the heater were removed, a positive loss rate would initially cool the incubator."
+          },
+          {
+            "level": "Advanced · capacity and an initial cooling rate",
+            "prompt": "An unchanged-phase solid with C=100 J/K loses 10 W and receives no power just after switching off the heater. What is its instantaneous cooling rate?",
+            "solution": "dU/dt=−10 J/s and C=dU/dT≈100 J/K, so dT/dt=−0.10 K/s at that instant. It is not necessarily constant over a long interval because the loss rate depends on surroundings.",
+            "check": "(J/s)/(J/K)=K/s; the negative sign means initial cooling."
+          }
+        ],
+        "misconception": {
+          "wrong": "Constant temperature means zero energy exchange or zero internal-energy change.",
+          "repair": "Separate the three possibilities: equilibrium (no net transfer), driven steady state (nonzero balanced rates), and phase change (energy may accumulate at constant temperature). Draw arrows across a stated boundary."
+        },
+        "exit": {
+          "prompt": "A plate at fixed temperature receives 22 W and loses 22 W. Is there heat exchange, and does its internal energy change under unchanged-state assumptions?",
+          "answer": "Yes: it exchanges 22 J each second with the surroundings. Its internal energy does not change because the rates balance; a nonzero temperature difference excludes mutual thermal equilibrium."
+        },
+        "figure": {
+          "kind": "thermal",
+          "left": "P in",
+          "right": "P out",
+          "centre": "Plate U",
+          "caption": "Steady U requires balanced arrows; it does not require each arrow to vanish."
+        }
+      },
+      "challenge": {
+        "uid": "AUTHORED-PH07-02-R1-MODEL-01",
+        "prediction": "If two hot plates have the same measured temperature immediately before switching off their heaters, must they cool at the same initial rate? State why or why not.",
+        "prompt": "Two solid plates P and Q, with no phase changes, are held at the same steady temperature above the same room. Just before their heaters switch off, P receives and loses 30 W, while Q receives and loses 40 W. Their effective heat capacities are C_P=200 J/K and C_Q=400 J/K. Immediately after simultaneous switch-off, assume the loss rates are initially unchanged. Classify their original states as equilibrium or driven steady state, infer their initial dU/dt and dT/dt after switch-off, and decide which begins cooling faster. Explain why equal temperature alone did not determine the answer.",
+        "hints": [
+          "At steady state before switch-off, P_in equals P_out; that does not make either power zero.",
+          "Immediately after switch-off set P_in=0, use dU/dt=−P_loss, then divide by the correct C for each solid."
+        ],
+        "reconstruct": "Before switch-off both were driven steady states above room temperature, not equilibrium with the room. Immediately after switch-off P has dU/dt=−30 W and Q has dU/dt=−40 W. With unchanged phase and the stated capacities, dT_P/dt=−30/200=−0.15 K/s and dT_Q/dt=−40/400=−0.10 K/s. P initially cools faster despite having smaller instantaneous power loss. Equal temperature does not fix the loss-rate/capacity ratio.",
+        "diagnosis": "Identify whether you equated equal temperature with equal U, confused the 30/40 W *gross flows* with accumulated energy at steady state, or inferred faster cooling from greater heat loss without checking capacity.",
+        "repair": "Draw before/after power arrows for each plate and calculate initial energy loss first. Only then use C=dU/dT, checking unchanged phase and dimensional consistency.",
+        "boundaryPrompt": "If Q instead contains a phase-changing mixture at constant measured temperature while it loses 40 W after switch-off, can you still use the given effective C_Q to assert −0.10 K/s? What can be inferred from conservation?",
+        "boundaryModel": "No: during a phase change dU need not correspond to C_Q dT, and temperature may remain constant while phase fraction changes. Under the stated unchanged initial loss, Q initially loses internal energy at 40 J/s, but no temperature rate follows without a phase-specific model.",
+        "transfer_difference": "Combines rate balance, comparative cooling under unequal capacities and phase-boundary falsification, rather than merely identifying one steady plate."
+      }
+    },
+    {
+      "source": {
+        "role": "AUTHORED_TRANSFER",
+        "original_exam_admission": "HOLD",
+        "exact_original_paper": null,
+        "figure_custody": "NO_EXAM_FIGURE",
+        "answer_key_custody": "NO_EXAM_KEY",
+        "independent_qrt": "NOT_RUN"
+      },
+      "unit": "PH08-08",
+      "chapter": "PH08",
+      "title": "Echo path and timing reference",
+      "revision": "20261115-echo-evidence-r1",
+      "adapter": {
+        "cell": "D3.4",
+        "operation": "MODEL",
+        "status": "AUTHOR_PROPOSED_UNSCORED",
+        "five_factor_scores": null,
+        "reason": "Choose two distinct geometric path models, reconcile direct and reflected arrival times and test detector resolution",
+        "artifact_path": "nsejs/physics/curriculum/topics/PH08/topic-adapter.PH08.quality-r1.json",
+        "version": "0.4.0-b01-quality-r1",
+        "selected_as_canonical": false,
+        "independent_witness_status": "HOLD",
+        "author_qrt_hypothesis": {
+          "status": "AUTHOR_EXPOSED__NOT_BLIND",
+          "proposed_band": "D3",
+          "proposed_total": 7,
+          "factors": {
+            "concept_model_selection": {
+              "author_score": 2,
+              "evidence": "Reject universal round-trip shortcut and choose source–receiver virtual-image path model"
+            },
+            "representation_translation": {
+              "author_score": 2,
+              "evidence": "Translate unequal source/receiver wall distances into two timed paths and detector resolution"
+            },
+            "reasoning_chain_length": {
+              "author_score": 1,
+              "evidence": "Compute direct and reflected lengths, then subtract arrival times"
+            },
+            "algebra_computational_load": {
+              "author_score": 1,
+              "evidence": "Square-root lengths and unit conversion to milliseconds"
+            },
+            "trap_exception_sensitivity": {
+              "author_score": 1,
+              "evidence": "Differential arrival is not elapsed time since emission"
+            }
+          },
+          "independent_score": null,
+          "can_promote": false
+        }
+      },
+      "study": {
+        "phenomenon": "An echo arriving 10 ms after a direct pulse does not mean the reflector was 1.7 m away, unless the geometry and timing origin actually fit a symmetric round trip.",
+        "goal": "Construct direct and reflected paths explicitly, convert the correct time difference to path difference and reject the universal vΔt/2 shortcut.",
+        "model": "For stationary source and microphone and a planar ideal reflector, the direct path is L_dir=sqrt(b²+(d_s−d_m)²), while the reflected virtual-image path is L_ref=sqrt(b²+(d_s+d_m)²), where b is the separation parallel to the wall and d_s,d_m are perpendicular distances to the wall. The excess delay after the direct arrival is (L_ref−L_dir)/v. Only a colocated normal source/receiver with timing since emission yields d=vt/2.",
+        "assumptions": "Sound speed uniform and known, both endpoints on the same side of a sufficiently large specular wall, stationary geometry and negligible diffraction/multipath; detector timing threshold and pulse duration affect detectability. Path time must be measured relative to the stated clock.",
+        "examples": [
+          {
+            "level": "Foundation · emission-to-return",
+            "prompt": "A colocated source/microphone faces a wall 17 m away, and v=340 m/s. What elapsed echo time follows?",
+            "solution": "The pulse travels 17 m outward and 17 m back. Total 34 m at 340 m/s gives t=0.100 s after emission.",
+            "check": "For this specific geometry, vt/2 returns 17 m."
+          },
+          {
+            "level": "Connected · delayed arrival at a separated microphone",
+            "prompt": "Source and mic are both 4 m from a wall, 6 m apart along it. Find direct and reflected paths and excess delay at 340 m/s.",
+            "solution": "Direct length is 6 m; virtual-reflected length is sqrt(6²+8²)=10 m; excess path is 4 m and excess delay is 4/340≈11.76 ms.",
+            "check": "Reflection after emission takes 10/340≈29.41 ms, not 11.76 ms."
+          },
+          {
+            "level": "Advanced · measured delay versus detector threshold",
+            "prompt": "For the same geometry a detector needs arrivals at least 15 ms apart. Is an echo separately resolved, and is the reflected pulse absent?",
+            "solution": "The 11.76 ms excess is below 15 ms, so the detector cannot resolve separate arrivals under the stated criterion. Reflection may still be present but overlapping; a failure to resolve does not prove no reflected sound.",
+            "check": "Compare excess delay with criterion, not total reflected travel time."
+          }
+        ],
+        "misconception": {
+          "wrong": "Every echo delay gives distance vΔt/2 even when sender and receiver are at different positions.",
+          "repair": "Draw direct and reflected paths and mark the clock origin. The time *difference between arrivals* corresponds to L_ref−L_dir, not the complete echo path."
+        },
+        "exit": {
+          "prompt": "If the reflected pulse arrives 25 ms since emission but the direct pulse at 12 ms, which interval must be compared with a 15 ms detector threshold?",
+          "answer": "The separation is 25−12=13 ms, below 15 ms. The reflected travel time since emission is 25 ms; they are different observables."
+        },
+        "figure": {
+          "kind": "echo",
+          "source": [
+            12,
+            35
+          ],
+          "receiver": [
+            77,
+            35
+          ],
+          "wall": 92,
+          "caption": "Two distinct paths reach the microphone; reflection is a virtual-image path, not automatically a symmetric round trip."
+        }
+      },
+      "challenge": {
+        "uid": "AUTHORED-PH08-08-R1-MODEL-01",
+        "prediction": "When source and receiver are different distances from the same wall, does vt/2 applied to the excess delay determine either wall distance? Predict before calculating.",
+        "prompt": "On the same side of a large plane wall, a stationary source is 3 m from it and a microphone is 7 m from it; their separation parallel to the wall is 12 m. Assume v=340 m/s and a detector resolves two arrivals only if they differ by at least 10 ms. Calculate direct and reflected path lengths and their times since emission, calculate the excess delay, decide if the detector resolves two separate pulses, and explain precisely why using half of v times the excess delay would be wrong.",
+        "hints": [
+          "The two normal distances combine with opposite signs for direct and virtual-image reflected paths.",
+          "Use sqrt(12²+(7−3)²) for direct, and sqrt(12²+(7+3)²) for reflected. Subtract times only after calculating both."
+        ],
+        "reconstruct": "L_dir=sqrt(12²+4²)=sqrt160=4sqrt10≈12.649 m. L_ref=sqrt(12²+10²)=sqrt244=2sqrt61≈15.620 m. Their emission-referenced travel times are ≈37.20 ms and ≈45.94 ms. The excess delay is (15.620−12.649)/340≈8.74 ms, below the 10 ms detector criterion, so separately resolved arrivals are not predicted. vΔt/2 would incorrectly treat an excess path difference as a same-point normal round trip; neither endpoint has that geometry.",
+        "diagnosis": "Check whether you used a sum where a difference belongs, confused emission timing with direct-arrival timing, or compared 45.94 ms instead of 8.74 ms with the detector threshold.",
+        "repair": "Sketch source, microphone and virtual source; compute both lengths independently, state the clock reference for both arrival times and subtract before judging detectability.",
+        "boundaryPrompt": "If the microphone were moved to 3 m from the wall while keeping the parallel separation 12 m, what new excess delay would occur at 340 m/s? Does the detector resolve two arrivals?",
+        "boundaryModel": "Now both endpoints are 3 m from the wall; direct length is 12 m and reflected length sqrt(12²+6²)=sqrt180≈13.416 m. Excess delay is ≈1.416/340≈4.16 ms, still below 10 ms. Equal wall distances do not restore vt/2 when the endpoints remain separated along the wall.",
+        "transfer_difference": "Unequal wall distances, two emission-referenced times and detector resolution with a changed microphone position; distinct from a one-wall symmetric shortcut."
+      }
+    }
+  ]
+}
