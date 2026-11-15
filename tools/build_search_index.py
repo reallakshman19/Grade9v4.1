@@ -32,8 +32,11 @@ import json
 import re
 import argparse
 from urllib.parse import urlsplit, urlencode
-from search_learner_pages import build_public_learner_documents, install_public_search
 from pathlib import Path
+import sys
+# Support both direct CLI and importlib-based test callers.
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from search_learner_pages import build_public_learner_documents, install_public_search
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 

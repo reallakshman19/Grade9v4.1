@@ -313,7 +313,7 @@
     const textNorm = normalize(item.search_text);
 
     // Exact ID Match (e.g. NSEJS-2023-P-Q01)
-    if (idNorm === rawTerm || item.original_id === rawTerm || item.id === rawTerm || idNorm === 'q ' + rawTerm) {
+    if (idNorm === rawTerm || normalize(item.source_id) === rawTerm || item.original_id === rawTerm || item.id === rawTerm || idNorm === 'q ' + rawTerm) {
       score += 30000;
     } else if (idNorm.includes(rawTerm)) {
       score += 8000;
@@ -445,7 +445,9 @@
   }
 
   // Main Render Logic
+  let renderGeneration = 0;
   async function renderSearch() {
+    const generation = ++renderGeneration;
     let rawInput = input.value.trim();
     results.replaceChildren();
 
@@ -485,7 +487,7 @@
     }
 
     const data = await loadData();
-    if (input.value.trim() !== rawInput && !prefixMatch) return;
+    if (generation !== renderGeneration) return;
     if (!data || data.length === 0) {
       tabsContainer.hidden = true;
       const p = document.createElement('div');
@@ -506,6 +508,7 @@
       }
       const hay = normalize([
         item.title,
+        item.source_id,
         item.original_id,
         item.id,
         item.search_text,
@@ -719,13 +722,15 @@
       btn.type = 'button'; btn.dataset.g9Action = 'search'; btn.dataset.searchScope = 'nsejs';
       btn.className = 'g9-search-global-entry'; btn.textContent = 'Search NSEJS Junior Science';
       btn.setAttribute('aria-label', 'Search NSEJS Junior Science (Ctrl or Command K)');
-      const host = document.querySelector('header nav, header, main') || document.body;
+      const host = document.querySelector('header nav, header') || document.body;
       host.prepend(btn);
     }
     document.querySelectorAll(selector).forEach(btn => {
+      btn.setAttribute('aria-label', 'Search NSEJS Junior Science (Ctrl or Command K)');
+      btn.title = 'Search NSEJS Junior Science (Ctrl/⌘ K)';
       btn.onclick = e => {
         e.preventDefault();
-        const customScope = btn.dataset.searchScope === 'all' && !isNSEJSPage ? 'nsejs' : (btn.dataset.searchScope || 'nsejs');
+        const customScope = ['physics','chemistry','biology'].includes(btn.dataset.searchScope) ? btn.dataset.searchScope : 'nsejs';
         const customQuery = btn.dataset.searchQuery || '';
         openSearch({ scope: customScope, query: customQuery });
       };
