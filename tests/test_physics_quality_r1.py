@@ -204,7 +204,7 @@ def test_core1a_and_precommit_core1b_do_not_download_or_embed_postcommit_models(
             assert hint not in precommit
     js=(PH/"quality-r1/runtime.js").read_text(encoding="utf-8")
     assert 'mode==="study"?"study-data.v1.json":"attempt-prompts.v1.json"' in js
-    assert 'if(record?.first)await loadPostAttemptModel();' in js
+    assert 'if(record?.first&&!storageError)await loadPostAttemptModel();' in js
     assert "gitBlobSha(raw)" in js
     assert "c.source_revision_blob,q.uid" in js
     assert "Pinned source and post-attempt model revisions required" in js
