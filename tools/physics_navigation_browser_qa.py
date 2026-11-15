@@ -82,7 +82,16 @@ def run(origin, browser, size):
         page.goto(question,wait_until="domcontentloaded")
         page.locator("#question-"+qid+" a.g9-related-chapter").wait_for(timeout=60000)
         assert page.locator("#question-"+qid+" a.g9-related-chapter").count()==1
-        page.locator("#question-"+qid+" a.g9-related-chapter").click()
+        card=page.locator("#question-"+qid)
+        # Preserve a committed first attempt across chapter/help navigation.
+        card.locator('input[type="radio"]').first.check()
+        card.locator("button").filter(has_text="Commit First Attempt").first.click()
+        assert "Attempt Saved Locally" in card.inner_text()
+        committed=page.evaluate("""id => Object.keys(localStorage)
+          .filter(k => k.includes("candidate-attempt:v2:") && k.includes(encodeURIComponent(id)))
+          .map(k => [k,localStorage.getItem(k)])""",qid)
+        assert len(committed)==1,committed
+        card.locator("a.g9-related-chapter").click()
         page.locator(".g9-question-return").wait_for()
         assert "Current Electricity" in page.locator("h1").inner_text()
         assert "exact question-to-lesson match is not independently verified" in page.locator(".g9-return-context").inner_text()
@@ -92,6 +101,9 @@ def run(origin, browser, size):
         page.locator("#g9-learner-nav a").filter(has_text="Return to your question").click()
         page.locator("#question-"+qid).wait_for(timeout=60000)
         assert page.locator("#questions article.card").count()==1
+        assert "Attempt Saved Locally" in page.locator("#question-"+qid).inner_text()
+        for k,v in committed:
+            assert page.evaluate("key => localStorage.getItem(key)",k)==v
         assert qid in page.url
         check_size(page,"Current Electricity question return")
         assert not errors,errors
