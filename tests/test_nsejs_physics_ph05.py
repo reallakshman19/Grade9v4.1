@@ -462,3 +462,31 @@ def test_ph05_b1_b7_are_noncompensatory_author_exposed_holds():
         assert set(row["gates"])=={"B1","B2","B3","B4","B5","B6","B7"}
         assert all(x["status"]=="HOLD" and x["independent_r01"]=="NOT_RUN" for x in row["gates"].values())
         assert row["release"]=="HOLD"
+
+
+def test_ph05_original_qrt_r00_factor_hypotheses_cannot_count_as_admission():
+    original=json.loads((ROOT/"review/physics/ph05-source-first-r1/ORIGINAL_QRT_R00_PROPOSALS_R4.json").read_text(encoding="utf-8"))
+    assert original["independent_blind_qrt"]=="NOT_RUN"
+    assert original["originals_assessed"]==5 and original["originals_independently_admitted"]==0
+    fields={"concept_model_selection","representation_translation","reasoning_chain_length","algebra_computational_load","trap_exception_sensitivity"}
+    records={}
+    for row in original["rows"]:
+        assert set(row["factors"])==fields
+        assert row["author_nominated_not_independently_reviewed"]
+        assert row["independent_operation"]=="NOT_RUN"
+        assert row["independent_five_factor_score"] is None
+        assert row["independent_demand_band"] is None
+        assert row["release_status"]=="HOLD"
+        assert row["protected_W"] and row["alternate_short_route"]
+        scores=[row["factors"][x]["author_nominated_score"] for x in fields]
+        assert all(isinstance(v,int) and 0<=v<=2 for v in scores)
+        assert row["author_nominated_score_total"]==sum(scores)
+        band=("D4" if sum(scores)>=8 else "D3" if sum(scores)>=6 else "D2" if sum(scores)>=3 else "D1")
+        assert band==row["author_nominated_demand_band"]
+        records[row["source_uid"]]=band
+    assert records=={
+        "NSEJS-2022-C51-Q36":"D3",
+        "NSEJS-2023-C51-Q48":"D2",
+        "NSEJS-2024-C51-Q48":"D1",
+        "NSEJS-2024-C51-Q33":"D2",
+        "NSEJS-2025-C51-Q43":"D2"}

@@ -55,3 +55,7 @@ Evidence: `HISTORICAL_YEAR_CENSUS_R4.json`; task-by-task gates: `B1_B7_SOURCE_RE
 The IAPT 2025 archive contains a mislabeled final key navigation target that resolves to NSEP rather than NSEJS. The proper IAPT-hosted 2025 NSEJS final key must be used. Public source URLs are not download SHA-256 custody; none was obtained through this repository audit.
 
 **All five mapped PH05 source journeys remain B1–B7 HOLD**: an author-exposed R00 can verify structures and identify errors but cannot issue blind independent R01 QRT, teaching sufficiency or student transfer acceptance. There is no valid evidence to mark the PR merge-eligible as academic completion.
+
+## R4 author-exposed original-question QRT hypotheses
+
+Added `ORIGINAL_QRT_R00_PROPOSALS_R4.json` with **five source-bound original-question hypotheses**, not certificates. Each shows the shortest plausible reasoning route, decisive W, an alternate shorter route that could change difficulty, five 0–2 factor nominations and explicit `independent_operation: NOT_RUN`. Author-proposed bands are 2022 Q36 D3; 2023 Q48 D2; 2024 Q48 D1; 2024 Q33 D2; 2025 Q43 D2. None is an independent classification; each needs blind R01 operation, source evidence and factor-review consensus. **Do not promote the D1/D2 originals to D3 by associating more difficult new transfers.**
