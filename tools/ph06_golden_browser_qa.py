@@ -86,6 +86,7 @@ def run():
                 check(page);page.screenshot(path=str(ART/f"U08-learn-{w}.png"),full_page=True)
                 page.locator("#try").click();expect(page.locator("#predictSave")).to_be_visible();check(page)
                 assert "3.20 kg" not in page.locator("main").inner_text()
+                expect(page.get_by_role("link",name="Return to Fluids Golden Sample →")).to_be_visible()
                 page.screenshot(path=str(ART/f"U08-prompt-{w}.png"),full_page=True)
                 attempt(page,correct=w==1600);finish(page,correct=w==1600)
                 page.screenshot(path=str(ART/f"U08-boundary-{w}.png"),full_page=True)
