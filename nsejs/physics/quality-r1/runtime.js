@@ -40,11 +40,15 @@ function svgFigure(fig){
   line(65,139,238,139,"#b26713",6);line(410,139,590,139,"#b26713",6);
   text(76,110,fig.left+" →");text(453,110,"→ "+fig.right);text(95,242,"Energy conservation: ΔU = (P in − P out) Δt");
  } else if(fig.kind==="echo"){
-  line(505,30,505,231,"#8e5836",6);text(512,45,"wall");
-  add("circle",{cx:155,cy:194,r:7,fill:"#19627f"});add("circle",{cx:344,cy:194,r:7,fill:"#19627f"});
-  text(127,222,"source S");text(319,222,"mic M");
-  line(155,194,344,194,"#3e8e9b",3);line(155,194,505,95,"#b36f16",4);line(505,95,344,194,"#b36f16",4);
-  text(148,255,"Direct path: blue · reflected path: orange");
+  // Correct specular geometry: S and M at equal normal distance from
+  // a vertical wall, reflected path intersecting at their y-midpoint.
+  // Equal incidence/reflection angles follow from equal |dy/dx| on both legs.
+  line(505,30,505,242,"#8e5836",6);text(512,45,"wall");
+  add("circle",{cx:190,cy:80,r:7,fill:"#19627f"});add("circle",{cx:190,cy:210,r:7,fill:"#19627f"});
+  add("circle",{cx:505,cy:145,r:4,fill:"#b36f16"});
+  text(108,69,"source S");text(116,232,"mic M");
+  line(190,80,190,210,"#3e8e9b",3);line(190,80,505,145,"#b36f16",4);line(505,145,190,210,"#b36f16",4);
+  text(218,255,"Blue: direct · orange: specular reflection");
  }
  return s;
 }
