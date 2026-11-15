@@ -30,7 +30,12 @@ def byunit(j,unit):
 
 def load(page,url):
     page.goto(url,wait_until="domcontentloaded")
-    page.locator("#quality-root .card").first.wait_for(timeout=18000)
+    try:
+        page.locator("#quality-root .card").first.wait_for(timeout=18000)
+    except Exception:
+        print("CANDIDATE_ROUTE_FAILURE",url,"DOM:",
+              page.locator("#quality-root").inner_text()[:1400],flush=True)
+        raise
 
 
 def no_overflow(page,unit,size):
