@@ -199,9 +199,9 @@
         box.prepend(anc);
       }
     }
-    const worksheet=/^NSEJS-CIRC-L([12])-Q(\d{2})$/.exec(q.source_id||"");
-    const questionTitle=worksheet
-      ? (worksheet[1]==="1"?"Foundation worksheet":"Advanced worksheet")+" · Question "+Number(worksheet[2])
+    const worksheetMatch=/^NSEJS-CIRC-L([12])-Q(\d{2})$/.exec(q.source_id||"");
+    const questionTitle=worksheetMatch
+      ? (worksheetMatch[1]==="1"?"Foundation worksheet":"Advanced worksheet")+" · Question "+Number(worksheetMatch[2])
       : "Candidate question "+(index+1);
     append(box,text("h2",questionTitle));
     const integrity = q.integrity_meta || null;
