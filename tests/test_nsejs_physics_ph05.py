@@ -387,7 +387,7 @@ def test_ph05_nonisomorphic_source_transfer_and_correct_scientific_revisions():
 def test_ph05_core1a_bridge_explains_decisive_question_capabilities():
     units=json.loads((PH05_DATA/"units.v1.json").read_text(encoding="utf-8"))
     bridge={u["id"]:u["source_bridge"] for u in units["units"] if "source_bridge" in u}
-    assert set(bridge)=={"PH05-G01","PH05-G05"}
+    assert set(bridge)=={"PH05-G01","PH05-G04","PH05-G05"}
     assert "m1*v1=m2*v2" in bridge["PH05-G01"]["teaching"]
     assert "BOTH bodies" in bridge["PH05-G01"]["teaching"]
     assert "v=sqrt(GM/r)" in bridge["PH05-G05"]["teaching"]
