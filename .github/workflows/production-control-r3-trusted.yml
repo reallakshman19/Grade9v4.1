@@ -2,12 +2,16 @@ name: Production Control R3 - trusted decision
 on:
   pull_request_target:
     branches: [main]
-    types: [opened, synchronize, reopened, ready_for_review]
+    types: [opened, synchronize, reopened, ready_for_review, edited]
+  schedule:
+    - cron: '17,47 * * * *'
+  workflow_dispatch:
 permissions:
   contents: read
   statuses: write
 jobs:
   trusted-decision:
+    if: github.event_name == 'pull_request_target' && github.event.pull_request.base.ref == 'main'
     runs-on: ubuntu-24.04
     steps:
       - name: Set exact-head pending decision
@@ -53,3 +57,21 @@ jobs:
           state=failure
           if [ "$OUTCOME" = success ]; then state=success; fi
           gh api --method POST "repos/$GITHUB_REPOSITORY/statuses/$HEAD_SHA" -f state="$state" -f context=g9/r3-production-decision -f description="Trusted R3 decision: $state"
+  stacked-audit:
+    if: (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch') && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install jsonschema
+      - name: Main-owned cumulative diagnostics (no candidate checkout or execution)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python docs/agent-entry/production-control-r3/audit_stacks.py

@@ -58,8 +58,8 @@ def main():
         for p,model,val in [(a,"difference",5),(b,"sum",99)]:
             field(p,"model",model);field(p,"value",val);field(p,"reason","Concurrent fixture response.")
         # Click handlers in same event-loop phase via JS; Web Locks serialize both tabs.
-        a.evaluate("()=>document.querySelector('main button:last-of-type').click()")
-        b.evaluate("()=>document.querySelector('main button:last-of-type').click()")
+        a.evaluate("()=>{const button=[...document.querySelectorAll('main button')].find(x=>x.textContent==='Commit first attempt');setTimeout(()=>button.click(),250)}")
+        b.evaluate("()=>{const button=[...document.querySelectorAll('main button')].find(x=>x.textContent==='Commit first attempt');setTimeout(()=>button.click(),250)}")
         a.get_by_role("button",name="Open worked reconstruction").wait_for();b.get_by_role("button",name="Open worked reconstruction").wait_for()
         record=a.evaluate("()=>JSON.parse(localStorage.getItem(Object.keys(localStorage).find(k=>k.startsWith('g9:assessment:'))))")
         first=[x for x in record["events"] if x["kind"]=="first"];assert len(first)==1 and first[0]["data"]["value"] in (5,99)
