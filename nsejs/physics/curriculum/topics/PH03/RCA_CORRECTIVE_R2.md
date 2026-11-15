@@ -1,0 +1,19 @@
+# PH03 R2 corrective implementation — issue #49 / PR #51
+R1 preserved byte-for-byte at source-led-r1; R2 new routes and storage namespace. Exact old URLs remain accessible. Do not claim academic parity/acceptance.
+
+| RCA | Corrective artifact | Remaining limitation |
+|---|---|---|
+| 01 | Four worked constructions, signed table, energy ledger, friction/pendulum force drawings, full prerequisites and conditional reasoning in source-led-r2/index.html. | Independent B3 review and actual learner evidence missing. |
+| 02 | Slider -12…+4, total sign, cancellation, velocity matching, signed bars and energy allocation. | Model is ideal sliding/latching; no claim of collision when velocities match. |
+| 03 | A changed external impulse, B claim evaluation and changed chronology. | Independent QRT operation/band unresolved; B is deliberately unadjudicated. |
+| 04 | Structured intermediate fields and task-specific first-field mismatch, targeted repairs with separate stored structured response; explanation still human-reviewed. | No automatic semantic interpretation of prose or mastery claim. |
+| 05 | Source A–D option + reasoning, source return after both boundary comparisons, exposure marker, authored two-interval MCQ and chapter-local bank. | Official original bytes/figure/rights not secured; no original stem/figure copied, no native historical corpus integration or full census. |
+| 06 | New exact-head tests and Chromium negative witnesses. | Exact-head results and screenshot inspection must be attached, not presumed. |
+| 07 | Author science refs, construction witness and evidence-packet draft handoff. | R2 packet approval, cold R00/R01, source custody and owner Golden acceptance HOLD. |
+| 08 | Exposure written/read back before R2 Learn/Challenge/authored assessment; original first save records known exposure, no claim of cold reasoning. | Outside/legacy study unknown; no proctoring. |
+
+Primary science: sum the signed internal impulses, then Pafter=Pbefore+Jext. For a latch with zero external impulse, V=(m1u1+m2u2)/M. Derive Kbefore−Kafter=m1m2(u1−u2)^2/(2M) by expansion. This identity fails as an internal conversion witness when external work is unknown. A: signed V=-2, u=2.5, 33.75 J, independent reduced-mass check; changed J=-5 yields u=5, K drop 52.5 J not identifiable internal conversion. B: initial P=8 and K=26, final P=4 and K=2, J=-4, K drop=24; late impulse boundary V=2 after latch, 18 J contact conversion, 6 J later decrease. Core2: V=4, 48 J contact, 24 J braking, distance 4 m. Source original g=9.81, h=.196, mass ratio 5 => 9.805… m/s (C); initially vertical taut string and short impact; tension radial/no work during ideal swing. Official screenshot cache miss repeated. Paper/key SHA-256 absent; source-only checkpoint is not native original admission.
+
+Dimensional witness: impulse kg·m/s, work kg·m²/s²; μ dimensionless; 2μgs gives speed squared, 2μg/s gives s^-2 and is wrong. Counterexample: opposed 1 kg at +2 and 2 kg at -1 cancel P, not initial K. Limits: zero external impulse recovers conserved P; μ→0 nonzero sliding speed does not stop; velocity matching gives no relative impact and zero ideal conversion. Figure falsifiers: flip challenge A displacement arrow and V sign changes; use arc length instead of vertical rise and swing energy is wrong; move B impulse from contact to after and energy assignment changes. All figures original SVG, not exam redraws.
+
+R2 contract needs a real revision-bound evidence packet with actual negative-control logs and browser receipts. Do not fabricate accepted Golden SHA, source bytes, independent reviewer identity or observed mastery. Exact packet remains INCOMPLETE_HOLD. Six other rows, complete census, native chapter catalog and all independent gates outstanding.
