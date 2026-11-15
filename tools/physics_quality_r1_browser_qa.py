@@ -64,7 +64,8 @@ def inspect_case(origin, browser, size, ident, chapter, key, count):
         page.locator("blockquote").wait_for(timeout=15000)
         original=page.locator("blockquote").inner_text()
         assert original.startswith("My first independent construction")
-        assert page.get_by_role("button",name="Reveal H1").count()==1
+        # Post-attempt key retrieval is asynchronous; wait for hash verification.
+        page.get_by_role("button",name="Reveal H1").wait_for(timeout=15000)
         assert any("postattempt-models.v1.json" in x for x in requested)
         assert page.get_by_role("button",name="Reveal model after your saved first attempt").count()==1
         assert page.locator("#boundary").count()==0
