@@ -1,0 +1,59 @@
+{
+  "schema": "g9v41-four-physics-postattempt-models/v1",
+  "status": "AUTHOR_EXPOSED_CANDIDATE__ACADEMIC_HOLD",
+  "qualification": "MODEL_FOR_LOCAL_AFTER_FIRST_ATTEMPT_ONLY_NOT_OFFICIAL_EXAM_KEY",
+  "units": [
+    {
+      "unit": "PH01-M05",
+      "revision": "20261115-graph-evidence-r1",
+      "uid": "AUTHORED-PH01-M05-R1-REPRESENT-01",
+      "hints": [
+        "Compute each interval's slope before looking at the y-axis origin.",
+        "A reversed axis changes velocity signs, not physical path length. A corner can have different one-sided derivatives."
+      ],
+      "reconstruct": "In the x frame, interval slopes are (9−1)/2=+4 m/s, (3−9)/3=−2 m/s, (3−3)/2=0 m/s. In the y=15−x frame, the slopes are −4,+2,0 m/s. Signed areas 4×2−2×3+0×2=+2 m equal x_final−x_initial=3−1=+2 m. Distance is 8+6=14 m. The cart travels on earlier intervals and stops only on the last interval under the piecewise-linear model. At t=2 s the one-sided slopes +4 and −2 differ, so a unique two-sided instantaneous velocity is not defined by the idealized graph.",
+      "diagnosis": "Locate the first wrong operation: using position height as velocity, adding signed areas for distance, failing to reverse frame signs, or assigning an average of unequal one-sided slopes at the corner.",
+      "repair": "Redraw three intervals with one arrow each; derive Δx and |Δx| separately. Independently check that the y-frame displacement equals −2 m, then explain why a corner cannot have one ordinary two-sided derivative.",
+      "boundaryModel": "Last-interval v=(1−3)/2=−1 m/s. Total displacement is 1−1=0 m, but distance is 8+6+2=16 m. A zero whole-trip displacement does not imply a stationary trip."
+    },
+    {
+      "unit": "PH02-F04",
+      "revision": "20261115-interaction-evidence-r1",
+      "uid": "AUTHORED-PH02-F04-R1-JUSTIFY-01",
+      "hints": [
+        "Introduce a positive magnitude C for the contact from A on B. Its partner B on A is −C.",
+        "Solve 18−C=m_A a_A and C−4=m_B a_B independently. Compare values; then check system acceleration."
+      ],
+      "reconstruct": "A gives 18−C=3×2=6, so C=12 N. B gives C−4=2×4=8, so C=12 N. Thus B receives 12 N east from A and A receives 12 N west from B. External resultant on A+B is 18−4=14 N; a_CM=14/5=+2.8 m/s². The mass-weighted sensor result is (3×2+2×4)/5=(6+8)/5=+2.8 m/s². The readings are consistent at this instant. Contact persistence requires a separate geometrical check.",
+      "diagnosis": "Did you wrongly cancel contact forces within one cart, assume equal accelerations, or confuse a measured external motor force with the contact magnitude? Locate the first equation that would have to be corrected.",
+      "repair": "Draw two recipient-labelled free-body diagrams, solve for contact C twice, and verify the combined-system force sum independently before accepting the sensor evidence.",
+      "boundaryModel": "From A, C remains 12 N. B requires net force m_B a_B=2×3=6 N east, so C−F_brake=6 and F_brake=6 N west (not 4 N). With the original brake, the reports would disagree by 2 N on B."
+    },
+    {
+      "unit": "PH07-02",
+      "revision": "20261115-thermal-evidence-r1",
+      "uid": "AUTHORED-PH07-02-R1-MODEL-01",
+      "hints": [
+        "At steady state before switch-off, P_in equals P_out; that does not make either power zero.",
+        "Immediately after switch-off set P_in=0, use dU/dt=−P_loss, then divide by the correct C for each solid."
+      ],
+      "reconstruct": "Before switch-off both were driven steady states above room temperature, not equilibrium with the room. Immediately after switch-off P has dU/dt=−30 W and Q has dU/dt=−40 W. With unchanged phase and the stated capacities, dT_P/dt=−30/200=−0.15 K/s and dT_Q/dt=−40/400=−0.10 K/s. P initially cools faster despite having smaller instantaneous power loss. Equal temperature does not fix the loss-rate/capacity ratio.",
+      "diagnosis": "Identify whether you equated equal temperature with equal U, confused the 30/40 W *gross flows* with accumulated energy at steady state, or inferred faster cooling from greater heat loss without checking capacity.",
+      "repair": "Draw before/after power arrows for each plate and calculate initial energy loss first. Only then use C=dU/dT, checking unchanged phase and dimensional consistency.",
+      "boundaryModel": "No: during a phase change dU need not correspond to C_Q dT, and temperature may remain constant while phase fraction changes. Under the stated unchanged initial loss, Q initially loses internal energy at 40 J/s, but no temperature rate follows without a phase-specific model."
+    },
+    {
+      "unit": "PH08-08",
+      "revision": "20261115-echo-evidence-r1",
+      "uid": "AUTHORED-PH08-08-R1-MODEL-01",
+      "hints": [
+        "The two normal distances combine with opposite signs for direct and virtual-image reflected paths.",
+        "Use sqrt(12²+(7−3)²) for direct, and sqrt(12²+(7+3)²) for reflected. Subtract times only after calculating both."
+      ],
+      "reconstruct": "L_dir=sqrt(12²+4²)=sqrt160=4sqrt10≈12.649 m. L_ref=sqrt(12²+10²)=sqrt244=2sqrt61≈15.620 m. Their emission-referenced travel times are ≈37.20 ms and ≈45.94 ms. The excess delay is (15.620−12.649)/340≈8.74 ms, below the 10 ms detector criterion, so separately resolved arrivals are not predicted. vΔt/2 would incorrectly treat an excess path difference as a same-point normal round trip; neither endpoint has that geometry.",
+      "diagnosis": "Check whether you used a sum where a difference belongs, confused emission timing with direct-arrival timing, or compared 45.94 ms instead of 8.74 ms with the detector threshold.",
+      "repair": "Sketch source, microphone and virtual source; compute both lengths independently, state the clock reference for both arrival times and subtract before judging detectability.",
+      "boundaryModel": "Now both endpoints are 3 m from the wall; direct length is 12 m and reflected length sqrt(12²+6²)=sqrt180≈13.416 m. Excess delay is ≈1.416/340≈4.16 ms, still below 10 ms. Equal wall distances do not restore vt/2 when the endpoints remain separated along the wall."
+    }
+  ]
+}
