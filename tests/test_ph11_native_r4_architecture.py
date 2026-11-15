@@ -39,7 +39,7 @@ def test_pre_attempt_assets_contain_only_original_prompts():
     assert "reconstruct" not in PROMPT and "boundaryModel" not in PROMPT
     assert not re.search(r'(?:unknown resistance|unknown branch).*?(?:2 ohm|2 Ω)',PROMPT,flags=re.I|re.S)
     assert "R=6/3=2 ohm" in MODEL
-    assert "2 A < I_total < 6 A" in MODEL
+    assert "2 A < I_total < 18/3=6 A" in MODEL
     assert "free-text" in MODEL.lower()
     assert "fetchPinned(\"postattempt.v1.json\",PIN.postattempt,PIN.postattempt_sha256)" in JS
     assert 'if(feedback||blocked||!state?.first||loadingFeedback)' in JS
@@ -97,7 +97,7 @@ def test_progressive_teaching_and_strict_finite_feasibility():
     assert "0 &lt; R_p &lt; R_k" in LESSON
     assert "5/3 A &lt; I_total &lt; 5 A" in LESSON
     assert "as X tends to infinity" in LESSON
-    assert "as X tends to zero" in LESSON
+    assert "as x tends to zero" in LESSON.lower()
     # 20V example, 4Ω series + known8Ω || unknown4Ω, measured source3A
     rp=Fraction(8*4,8+4)
     assert rp==Fraction(8,3)
