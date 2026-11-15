@@ -64,7 +64,7 @@ def test_all_unit_navigation_and_tablet_viewports(browser,unit,count,viewport):
         assert page.locator("header").is_visible()
         assert page.locator(".banner").is_visible()
         assert page.locator("#unit-select").input_value()==unit
-        page.get_by_role("button",name="Core1B independent practice").click()
+        page.locator("#show-practice").click()
         page.get_by_role("heading",name="Stage 1 — Predict").wait_for()
         assert page.locator("#task-select option").count()==3
         assert page.get_by_role("heading",name="Stage 3 — Reconstruct").count()==0
@@ -88,7 +88,7 @@ def read_pinned_v2_attempt(page, task_id):
 def test_persisted_original_first_attempt_and_refresh(browser):
     ctx,page=open_page(browser)
     try:
-        page.get_by_role("button",name="Core1B independent practice").click()
+        page.locator("#show-practice").click()
         page.get_by_role("heading",name="Stage 2 — Independent attempt").wait_for()
         assert page.get_by_text("Model response · POST-COMMIT").count()==0
         page.locator("#prediction-answer").fill("I predict the closed-system mass remains conserved.")
@@ -100,7 +100,7 @@ def test_persisted_original_first_attempt_and_refresh(browser):
         assert record["source_role"]=="AUTHORED_PRACTICE"
         assert record["attempt"].startswith("Magnesium")
         page.reload()
-        page.get_by_role("button",name="Core1B independent practice").click()
+        page.locator("#show-practice").click()
         page.get_by_text("Model response · POST-COMMIT").wait_for()
         assert page.locator("#original-answer").input_value()==record["attempt"]
     finally:
@@ -109,7 +109,7 @@ def test_persisted_original_first_attempt_and_refresh(browser):
 def test_first_attempt_hint_exposure_persisted(browser):
     ctx,page=open_page(browser)
     try:
-        page.get_by_role("button",name="Core1B independent practice").click()
+        page.locator("#show-practice").click()
         page.get_by_role("button",name="Reveal H1 (assisted, logged)").click()
         page.locator("#prediction-answer").fill("I will check which substance supplies oxygen.")
         page.locator("#original-answer").fill("The product oxygen comes from outside the open crucible; conservation applies to closed systems.")
@@ -124,7 +124,7 @@ def test_first_attempt_hint_exposure_persisted(browser):
 def test_disabled_storage_prevents_answer_reveal(browser):
     ctx,page=open_page(browser,disable_storage=True)
     try:
-        page.get_by_role("button",name="Core1B independent practice").click()
+        page.locator("#show-practice").click()
         page.get_by_text("STORAGE_UNAVAILABLE").wait_for()
         assert page.get_by_text("Model response · POST-COMMIT").count()==0
         assert page.locator("#commit-attempt").count()==0
@@ -134,7 +134,7 @@ def test_disabled_storage_prevents_answer_reveal(browser):
 def test_stale_revision_fails_closed_and_preserves_record(browser):
     ctx,page=open_page(browser)
     try:
-        page.get_by_role("button",name="Core1B independent practice").click()
+        page.locator("#show-practice").click()
         page.get_by_role("heading",name="Stage 1 — Predict").wait_for()
         page.evaluate("""() => {
           const stale='0'.repeat(64);
@@ -143,7 +143,7 @@ def test_stale_revision_fails_closed_and_preserves_record(browser):
               attempt:'Old original kept', source_role:'AUTHORED_PRACTICE'}));
         }""")
         page.reload()
-        page.get_by_role("button",name="Core1B independent practice").click()
+        page.locator("#show-practice").click()
         page.get_by_text("STALE_REVISION_HOLD").wait_for()
         assert page.get_by_text("Model response · POST-COMMIT").count()==0
         assert page.evaluate("JSON.parse(localStorage.getItem('g9chem:attempt:v2:CORE1B-C08-01-1:'+'0'.repeat(64))).attempt")=="Old original kept"
@@ -159,7 +159,7 @@ def test_c09_figures_and_keyboard_focus(browser):
         page.locator("#sections button").nth(5).click()
         page.locator('img[src*="C09-phosphorus-connectivity.svg"]').wait_for()
         page.wait_for_function("Array.from(document.images).some(el => el.src.includes('C09-phosphorus-connectivity.svg') && el.complete && el.naturalWidth > 0)")
-        page.get_by_role("button",name="Core1B independent practice").click()
+        page.locator("#show-practice").click()
         page.get_by_role("heading",name="Stage 1 — Predict").wait_for()
         page.locator("#unit-select").focus()
         assert page.evaluate("document.activeElement.id")=="unit-select"
