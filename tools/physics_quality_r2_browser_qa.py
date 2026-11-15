@@ -108,11 +108,11 @@ def one_journey(browser,origin,unit,size,variant):
         if variant=="missing_number":
             assert "MISSING" in result
         # Verify first response is unchanged across refresh and task reconstruction.
-        original=page.locator("details").first.inner_text()
+        original=page.locator("details").first.text_content()
         assert first_reason in original
         page.reload(wait_until="domcontentloaded")
         page.get_by_role("button",name="Commit diagnosis").wait_for()
-        assert first_reason in page.locator("details").first.inner_text()
+        assert first_reason in page.locator("details").first.text_content()
         page.locator("#diagnosis-select").select_option("reasoning_or_assumptions")
         page.locator("#diagnosis-reason").fill("The first decisive check is the physical model and its conditions, not just a matching number.")
         page.get_by_role("button",name="Commit diagnosis").click()
@@ -130,7 +130,7 @@ def one_journey(browser,origin,unit,size,variant):
         assert any("boundary-models.v2.json" in x for x in requested)
         page.get_by_role("button",name="Reveal boundary model and structured checks").click()
         page.get_by_text("Candidate cycle complete",exact=False).wait_for()
-        assert first_reason in page.locator("details").first.inner_text()
+        assert first_reason in page.locator("details").first.text_content()
         assert not errors,errors
         no_overflow(page,unit,size)
         if size in ((1000,1600),(1280,800)):
@@ -177,8 +177,8 @@ def stale_two_tab(browser,origin):
         q.get_by_text("Attempt advanced in another tab",exact=False).wait_for()
         q.reload(wait_until="domcontentloaded")
         q.get_by_role("button",name="Reveal authored reconstruction").wait_for()
-        assert "Original first answer from tab A" in q.locator("details").first.inner_text()
-        assert "Competing stale tab answer" not in q.locator("details").first.inner_text()
+        assert "Original first answer from tab A" in q.locator("details").first.text_content()
+        assert "Competing stale tab answer" not in q.locator("details").first.text_content()
         return {"two_tab_prediction_and_first":"FAIL_CLOSED_PASS"}
     finally:ctx.close()
 
