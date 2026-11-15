@@ -8,7 +8,7 @@
   if (!ROOT) return;
   const $ = id => document.getElementById(id);
   const REVISION = "g9-physics-ph09-ph12-author-preview-r1-20261115";
-  let cases = [], current = null, record = null, storageOK = false, blocked = false;
+  let cases = [], current = null, record = null, storageOK = false, blocked = false, datasetRevision = null;
 
   function say(id, message) { $(id).textContent = message; }
   function storageAvailable() {
@@ -21,10 +21,10 @@
     } catch (_) { return false; }
   }
   function storageKey() {
-    return REVISION + ":" + current.subtopic_id;
+    return REVISION + ":" + current.subtopic_id + ":" + datasetRevision;
   }
   function freshRecord() {
-    return { revision: REVISION, subtopic_id: current.subtopic_id,
+    return { revision: datasetRevision, subtopic_id: current.subtopic_id,
       first: null, exposures: [], revisions: [] };
   }
   function readRecord() {
@@ -32,7 +32,7 @@
       const raw = localStorage.getItem(storageKey());
       if (!raw) return freshRecord();
       const next = JSON.parse(raw);
-      if (next.revision !== REVISION ||
+      if (next.revision !== datasetRevision ||
           next.subtopic_id !== current.subtopic_id ||
           !Object.prototype.hasOwnProperty.call(next, "first") ||
           !Array.isArray(next.revisions) ||
@@ -184,7 +184,11 @@
       const response = await fetch("./FOUR_WPE_PARITY_REFERENCE_CANDIDATES_R1.json",
         { cache: "no-store", credentials: "same-origin" });
       if (!response.ok) throw new Error("HTTP " + response.status);
-      const data = await response.json();
+      const raw = await response.text();
+      if (!crypto || !crypto.subtle) throw new Error("Secure-origin SHA-256 unavailable");
+      const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(raw));
+      datasetRevision = Array.from(new Uint8Array(digest), n => n.toString(16).padStart(2, "0")).join("");
+      const data = JSON.parse(raw);
       if (data.schema !== "g9v41-physics-ph09-ph12-reference-constructions/v1" ||
           data.mode !== "AUTHOR_EXPOSED_REFERENCE_CANDIDATES_ONLY" ||
           data.publication !== "REVIEW_DATA_NOT_STUDENT_ASSIGNED" ||
