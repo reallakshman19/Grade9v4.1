@@ -98,6 +98,11 @@
   }
   function reset() {
     clearReview();
+    $("prereqs").replaceChildren();
+    $("worked-solution").replaceChildren();
+    for (const id of ["teach-title", "topic-meta", "conditions", "teaching-model",
+      "worked-question", "worked-check", "misconception", "protected-work",
+      "fresh-task", "predict-prompt", "attempt-prompt"]) say(id, "");
     for (const id of ["source-attempt", "first-predict", "first-attempt"]) $(id).value = "";
     $("source-checkpoint").hidden = true;
     $("journey").hidden = true;
@@ -128,8 +133,27 @@
     $("source-learn").disabled = false;
     say("source-status", "Original source-style attempt saved independently. Open Core1A when ready.");
   }
+  function renderTeaching() {
+    if (!current || !sourceSaved()) return;
+    say("teach-title", current.chapter + " · " + current.name);
+    say("topic-meta", current.subtopic_id +
+      " · Original teaching candidate · Source and QRT independent review HOLD");
+    say("conditions", current.science_conditions);
+    list("prereqs", current.prerequisites);
+    say("teaching-model", current.core1a.model);
+    say("worked-question", current.core1a.worked_a);
+    list("worked-solution", current.core1a.worked_solution);
+    say("worked-check", current.core1a.check);
+    say("misconception", current.core1a.misconception);
+    // Never mount the protected author move or its formula-bearing attempt guidance.
+    say("protected-work", "Select your own model, variables, checks and reasoning independently.");
+    say("fresh-task", current.core1b.original_b);
+    say("predict-prompt", current.core1b.predict);
+    say("attempt-prompt", "Record the model you chose and defend each step without viewing feedback.");
+  }
   function openTeaching() {
     if (blocked || !sourceSaved()) return;
+    renderTeaching();
     $("journey").hidden = false;
     $("first-predict").disabled = Boolean(record.first);
     $("first-attempt").disabled = Boolean(record.first);
@@ -159,22 +183,8 @@
     $("source-checkpoint").hidden = false;
     say("source-question", adapter.source.stem);
     $("source-adapter-link").setAttribute("href", adapterPath(current.chapter));
-    say("teach-title", current.chapter + " · " + current.name);
-    say("topic-meta", current.subtopic_id +
-      " · Original teaching candidate · Source and QRT independent review HOLD");
-    say("conditions", current.science_conditions);
-    list("prereqs", current.prerequisites);
-    say("teaching-model", current.core1a.model);
-    say("worked-question", current.core1a.worked_a);
-    list("worked-solution", current.core1a.worked_solution);
-    say("worked-check", current.core1a.check);
-    say("misconception", current.core1a.misconception);
-    // Never show current.core1b.protected_work before the learner commits.
-    say("protected-work", "Select your own model, variables, checks and reasoning independently.");
-    say("fresh-task", current.core1b.original_b);
-    say("predict-prompt", current.core1b.predict);
-    // The author-only core1b.attempt text sometimes named the decisive formula.
-    say("attempt-prompt", "Record the model you chose and defend each step without viewing feedback.");
+    // Source-first gate: teaching and transfer are NOT mounted even in hidden DOM
+    // until a valid source-style first attempt is durably recorded.
     const sub = current.subtopic_id;
     const base = "../../../nsejs/physics/curriculum/topics/" + current.chapter + "/";
     const a = (current.chapter === "PH09" || current.chapter === "PH10") ?
