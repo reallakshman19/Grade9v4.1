@@ -158,3 +158,30 @@ def test_r2_code_uses_locks_and_early_first_divergence():
     assert "function evaluate" in runtime
     assert "Commit prediction" in runtime and "Commit immutable first attempt" in runtime
     assert "boundaryModels" not in (PATH/"attempt-prompts.v2.json").read_text(encoding="utf-8")
+
+
+def test_four_new_candidate_topic_adapters_map_exact_r2_task_without_academic_promotion():
+    paths={
+      "PH01-M05":"nsejs/physics/curriculum/agent1/PH01/topic-adapter.PH01.quality-r2.json",
+      "PH02-F04":"nsejs/physics/curriculum/agent1/PH02/topic-adapter.PH02.quality-r2.json",
+      "PH07-02":"nsejs/physics/curriculum/topics/PH07/topic-adapter.PH07.quality-r2.json",
+      "PH08-08":"nsejs/physics/curriculum/topics/PH08/topic-adapter.PH08.quality-r2.json",
+    }
+    expected_counts={"PH01-M05":54,"PH02-F04":25,"PH07-02":44,"PH08-08":47}
+    units={x["unit"]:x for x in load("cases.v2.json")["units"]}
+    for unit,path in paths.items():
+        a=json.loads((ROOT/path).read_text(encoding="utf-8"))
+        c=units[unit]
+        entries=[x for group in a["cells"] for x in group["instance_ids"]]
+        assert len(entries)==expected_counts[unit] and len(set(entries))==len(entries)
+        assert a["status"]=="CANDIDATE_ONLY"
+        assert a["canonical_selection"]=="NOT_SELECTED"
+        assert a["independent_qrt"]=="NOT_RUN"
+        assert a["quality_r2_extension"]["task_id"]==c["challenge"]["uid"]
+        assert a["quality_r2_extension"]["source_case_git_blob"]==gitsha("cases.v2.json")
+        assert a["quality_r2_extension"]["accepted_d3"] is False
+        assert a["quality_r2_extension"]["accepted_d4"] is False
+        assert a["quality_r2_extension"]["independent_qrt_scores"] is None
+        assert c["challenge"]["uid"] in entries
+        assert any(group["cell_id"]==c["adapter"]["cell"] and
+                   c["challenge"]["uid"] in group["instance_ids"] for group in a["cells"])
