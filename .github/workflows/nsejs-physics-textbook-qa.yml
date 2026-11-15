@@ -4,6 +4,10 @@ on:
   pull_request:
     paths:
       - "nsejs/physics/textbook/**"
+      - "nsejs/physics/ph05/**"
+      - "nsejs/physics/core1/PH05/**"
+      - "nsejs/physics/learn/catalog.json"
+      - "tools/physics_ph05_source_first_browser_qa.py"
       - "nsejs/physics/curriculum/**"
       - "tools/physics_textbook_browser_qa.py"
       - "tools/physics_ph01_core1b_browser_qa.py"
@@ -13,6 +17,10 @@ on:
     branches: ["feat/nsejs-physics-agent1-**"]
     paths:
       - "nsejs/physics/textbook/**"
+      - "nsejs/physics/ph05/**"
+      - "nsejs/physics/core1/PH05/**"
+      - "nsejs/physics/learn/catalog.json"
+      - "tools/physics_ph05_source_first_browser_qa.py"
       - "nsejs/physics/curriculum/**"
       - "nsejs/physics/core1/ph01-qrt-r2/**"
       - "tools/physics_textbook_browser_qa.py"
@@ -35,6 +43,8 @@ jobs:
         run: python tools/physics_textbook_browser_qa.py
       - name: Verify PH01 Core1B protected learning runtime
         run: python tools/physics_ph01_core1b_browser_qa.py
+      - name: Verify PH05 official previous-question checkpoint protection
+        run: python tools/physics_ph05_source_first_browser_qa.py
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -42,4 +52,5 @@ jobs:
           path: |
             review-artifacts/physics-textbook/
             review-artifacts/physics-core1b/
+            review-artifacts/physics-ph05-source-first/
           if-no-files-found: ignore
