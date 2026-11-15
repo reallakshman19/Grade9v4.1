@@ -35,3 +35,13 @@ External 2022/2023 source cards now lead to `nsejs/physics/ph05/source-checkpoin
 The previous third-party 2022 question page was solution-bearing; it has been replaced with the IAPT paper to prevent answer exposure before the initial attempt. The answer keys remain accessible as reviewer evidence, not on the student checkpoint.
 
 **Still HOLD:** full historic-paper census (including 2025 and older IOQJS-format sources), original bytes/digests, source-figure custody, independent QRT five-factor calibration and B1–B7 academic review.
+
+## R3 source-family science / non-isomorphic correction
+
+The existing equal-star MAIN incorrectly divided the two moving stars' kinetic energy, giving `v_rel=sqrt(GM/R)` at surface contact. At center separation `2R`, conservation actually gives `v_each²=GM/(2R)` and `v_rel²=2GM/R`. Its original UID is preserved, but authored content revision is advanced to R2.
+
+The PH05-G05 elliptical-orbit QRT crux asserted `sqrt(1.5)`, contradicting the correct worked `sqrt(3)`. Crux corrected and revision advanced to R2.
+
+The 2022 external paper Q36 now links to distinct `AUTHORED-PH05-G01-SOURCE-SYNTHESIZE-D3-R2` with **unequal masses 2m and 3m**, finite separation change `L→L/4`, a joint energy/momentum inference and a kinetic-energy split. This is different from the official equal-mass original and from the prior equal-star MAIN.
+
+Core1A G01/G05 received source-specific reasoning bridges using non-source worked constructions. Independent QRT and B1–B7 academic acceptance remain HOLD, and no original-source demand is upgraded by these authored transfers.

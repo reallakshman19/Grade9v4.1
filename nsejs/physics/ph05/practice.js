@@ -123,7 +123,7 @@ async function init(){
   const isMain=uid==="PH05-MAIN";
   const requested=new URL(location.href).searchParams.get("task");
   const own=data.units.find(x=>x.id===uid);
-  const candidates=isMain?qdata.main_cycles:(own?[own.practice,...qdata.tasks.filter(t=>t.unit===uid)]:[]);
+  const candidates=isMain?qdata.main_cycles:(own?[own.practice,...qdata.tasks.filter(t=>t.unit===uid),...(qdata.source_cycles||[]).filter(t=>t.unit===uid)]:[]);
   if(!candidates.length)throw Error("Missing exact candidate unit/cycles");
   ptask=requested?candidates.find(t=>t.uid===requested):candidates[0];
   if(!ptask||!ptask.uid||!ptask.revision)throw Error("Unknown or stale task UID; HOLD");

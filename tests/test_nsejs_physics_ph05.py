@@ -263,7 +263,7 @@ def test_ph05_source_first_mapping_identity_and_hold():
     qrt = json.loads((PH05_DATA / "qrt-candidates.v1.json").read_text(encoding="utf-8"))
     units = json.loads((PH05_DATA / "units.v1.json").read_text(encoding="utf-8"))
     transfer_ids = {u["practice"]["uid"] for u in units["units"]}
-    transfer_ids.update(q["uid"] for q in qrt["tasks"] + qrt["main_cycles"])
+    transfer_ids.update(q["uid"] for q in qrt["tasks"] + qrt["main_cycles"] + qrt.get("source_cycles", []))
     for item in data["source_candidates"]:
         assert item["source_status"] in {"EXTERNAL_CUSTODY_HOLD", "LEGACY_CORPUS_NOT_ADMITTED"}
         assert item["transfer"] in transfer_ids
@@ -363,3 +363,32 @@ def test_source_checkpoint_initial_state_has_no_decisive_hint():
     assert 'help.hidden=true' in script
     assert 'if(state.saved)' in script
     assert 'value.length<12000' in script
+
+
+def test_ph05_nonisomorphic_source_transfer_and_correct_scientific_revisions():
+    source=json.loads((PH05_DATA/"source-to-learning.v1.json").read_text(encoding="utf-8"))
+    qrt=json.loads((PH05_DATA/"qrt-candidates.v1.json").read_text(encoding="utf-8"))
+    linked=next(x for x in source["source_candidates"] if x["source_uid"]=="NSEJS-2022-C51-Q36")
+    assert linked["transfer"]=="AUTHORED-PH05-G01-SOURCE-SYNTHESIZE-D3-R2"
+    fresh=next(x for x in qrt["source_cycles"] if x["uid"]==linked["transfer"])
+    assert fresh["status"]=="ACADEMIC_HOLD"
+    assert "2m and 3m" in fresh["prompt"] and "L/4" in fresh["prompt"]
+    assert abs((2 * 54 / 5) / (3 * 24 / 5) - 1.5) < 1e-12
+    assert sum(fresh["factor_nominations"].values()) == 7
+    main=next(x for x in qrt["main_cycles"] if x["uid"]=="AUTHORED-PH05-MAIN-SYNTHESIZE-D3-R1")
+    assert main["revision"].endswith("-r2")
+    assert "v_rel²=2GM/R" in main["alternative"]
+    assert "v_rel=2v=sqrt(2GM/R)" in main["reconstruction"]
+    ell=next(x for x in qrt["tasks"] if x["uid"]=="AUTHORED-PH05-G05-QRT-SYNTHESIZE-D3-R1")
+    assert ell["revision"].endswith("-r2") and "v_p/v_circle=sqrt(3)" in ell["w"]
+    assert "sqrt(1.5)" not in ell["w"]
+
+def test_ph05_core1a_bridge_explains_decisive_question_capabilities():
+    units=json.loads((PH05_DATA/"units.v1.json").read_text(encoding="utf-8"))
+    bridge={u["id"]:u["source_bridge"] for u in units["units"] if "source_bridge" in u}
+    assert set(bridge)=={"PH05-G01","PH05-G05"}
+    assert "m1*v1=m2*v2" in bridge["PH05-G01"]["teaching"]
+    assert "BOTH bodies" in bridge["PH05-G01"]["teaching"]
+    assert "v=sqrt(GM/r)" in bridge["PH05-G05"]["teaching"]
+    assert "u.source_bridge" in (PH05_DATA/"lesson.js").read_text(encoding="utf-8")
+    assert all(x["status"]=="AUTHOR_EXPOSED_QRT_HOLD" for x in bridge.values())

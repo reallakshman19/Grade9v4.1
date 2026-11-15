@@ -116,12 +116,12 @@
       "op": "SYNTHESIZE",
       "cell": "D3.6",
       "uid": "AUTHORED-PH05-G05-QRT-SYNTHESIZE-D3-R1",
-      "revision": "ph05-g05-qrt-synthesize-d3-20261115-r1",
+      "revision": "ph05-g05-qrt-synthesize-d3-20261115-r2",
       "source_role": "AUTHORED_TRANSFER",
       "qrt_status": "PROPOSED_UNREVIEWED",
       "prediction": "Combine Kepler's 3rd law and conservation of angular momentum to relate orbital periods to perihelion speeds.",
       "prompt": "A planet moves in an elliptical orbit around the Sun with perihelion distance r_p and aphelion distance r_a = 3*r_p. A second planet revolves around the same star in a circular orbit whose radius equals the semimajor axis of the first planet's ellipse. (1) Determine the ratio of their orbital periods T_ellipse / T_circle. (2) Determine the ratio of the elliptical planet's perihelion speed to the circular planet's orbital speed: v_p / v_circle.",
-      "w": "Apply Kepler's 3rd Law to prove T_ellipse = T_circle (period depends only on semimajor axis a), then synthesize vis-viva equation v^2 = GM(2/r - 1/a) to deduce v_p / v_circle = sqrt(2 - r_p/a) = sqrt(2 - 0.5) = sqrt(1.5).",
+      "w": "Period equality follows from common semimajor axis a=2r_p. For speed, vis-viva gives v_p²=GM*(2/r_p−1/a)=3GM/a, while v_circle²=GM/a. Thus v_p/v_circle=sqrt(3), not sqrt(1.5); these are independent operations.",
       "reconstruction": "1. Semimajor Axis: For the ellipse, 2a = r_p + r_a = r_p + 3*r_p = 4*r_p ==> a = 2*r_p. The circular planet has radius r_c = a = 2*r_p. 2. Period Ratio: By Kepler's 3rd Law, period depends exclusively on semimajor axis a: T^2 proportional to a^3. Since a_ellipse = a_circle = 2*r_p, the ratio of periods is T_ellipse / T_circle = 1 : 1. 3. Speed Synthesis: Vis-viva equation gives speed at any radius: v^2 = G*M * (2/r - 1/a). For the circular orbit at radius a: v_circle^2 = G*M / a. For the ellipse at perihelion r = r_p = a/2: v_p^2 = G*M * (2/(a/2) - 1/a) = G*M * (4/a - 1/a) = 3 * G*M / a. 4. Speed Ratio: (v_p / v_circle)^2 = (3 * GM/a) / (GM/a) = 3 ==> v_p / v_circle = sqrt(3) ≈ 1.732.",
       "alternative": "Use conservation of angular momentum and energy at perihelion and aphelion: r_p*v_p = r_a*v_a ==> v_a = v_p/3. Energy conservation: 0.5*v_p^2 - GM/r_p = 0.5*(v_p/3)^2 - GM/(3*r_p) ==> 0.5*v_p^2*(8/9) = GM/r_p*(2/3) ==> v_p^2 = 1.5 * GM/r_p = 3 * GM/a ==> v_p/v_circle = sqrt(3).",
       "hints": [
@@ -312,13 +312,13 @@
       ],
       "prediction": "When two identical stars fall toward each other from rest, will their relative speed at collision depend on their individual masses or their sum?",
       "prompt": "Two identical spherical stars, each of mass M and radius R, are initially at rest in deep space separated by a very large center-to-center distance d >> R. Under their mutual gravitational attraction, they accelerate toward each other along the line connecting their centers. (1) Determine the speed of each star in the center of mass frame when their surfaces touch. (2) Determine the relative speed of approach v_rel between the two stars at the instant of surface contact. Express answers in terms of G, M, and R.",
-      "w": "Synthesize center of mass symmetry (v1 = v2 = v) with mechanical energy conservation E_initial = 0 = E_final to deduce each star's speed v = sqrt(GM / (4R)) and relative speed v_rel = 2v = sqrt(GM / R).",
-      "reconstruction": "1. System Symmetry & Center of Mass: The two stars have identical mass M and start from rest with no external forces. By symmetry, they move with equal and opposite speeds v1 = v2 = v at all times, and collide at their stationary center of mass midpoint. 2. Contact Separation: The stars are spherical with radius R. When their surfaces touch, their center-to-center distance is r_final = R + R = 2R. 3. Mechanical Energy Conservation: Initial energy at d >> R: E_initial = K_initial + U_initial = 0 - G * M * M / d ≈ 0. Final energy at contact: E_final = K_final + U_final = [ (1/2)*M*v^2 + (1/2)*M*v^2 ] - G * M * M / (2R) = M * v^2 - G * M^2 / (2R). Equating initial and final mechanical energy: 0 = M * v^2 - G * M^2 / (2R) ==> M * v^2 = G * M^2 / (2R) ==> v^2 = G * M / (4R) ==> v = sqrt(G * M / (4R)) = 0.5 * sqrt(G * M / R). 4. Relative Approach Speed: Because the two stars move toward each other with speed v in opposite directions, their relative approach velocity is: v_rel = v - (-v) = 2 * v = 2 * [0.5 * sqrt(G * M / R)] = sqrt(G * M / R).",
+      "w": "At contact the centers are 2R apart. Initial U≈0, final U=−GM²/(2R); BOTH equal masses move, hence K_total=Mv². Conservation yields v²=GM/(2R), each v=sqrt(GM/(2R)), and relative speed v_rel=2v=sqrt(2GM/R).",
+      "reconstruction": "1. With two identical stars initially stationary and no external force, center of mass stays at rest and both stars have equal opposite speeds v. 2. At surface contact, center-to-center separation is 2R. Initial gravitational energy is approximately zero for d≫R. 3. Final energy is K+U=Mv²−GM²/(2R). Set it to zero: Mv²=GM²/(2R), so v²=GM/(2R). 4. The relative speed is the sum of opposite speeds: v_rel=2v=sqrt(2GM/R). Check that the two kinetic-energy contributions together equal the potential-energy release.",
       "boundaryPrompt": "What would the relative speed be if one mass was infinitely massive (M1 -> infinity) like a star and a small asteroid of radius R?",
       "boundaryModel": "For M1 >> M2, the large star remains motionless. Energy gives (1/2)*m*v^2 = GMm/R ==> v_rel = sqrt(2GM/R) = v_escape.",
       "id": "PH05-MAIN-SYNTHESIZE-D3-R1",
       "uid": "AUTHORED-PH05-MAIN-SYNTHESIZE-D3-R1",
-      "revision": "ph05-main-synthesize-20261115-r1",
+      "revision": "ph05-main-synthesize-20261115-r2",
       "source_role": "AUTHORED_TRANSFER",
       "cell": "D3.6",
       "qrt_status": "PROPOSED_UNREVIEWED",
@@ -327,7 +327,7 @@
         "Apply conservation of mechanical energy between initial rest (E = 0) and contact.",
         "Remember that both stars acquire kinetic energy: total K = (1/2)*M*v^2 + (1/2)*M*v^2 = M*v^2."
       ],
-      "alternative": "Reduced mass approach: In relative coordinates, reduced mass is mu = M*M / (M+M) = M/2. Kinetic energy in center-of-mass frame is (1/2)*mu*v_rel^2 = (1/2)*(M/2)*v_rel^2 = (1/4)*M*v_rel^2. Equating to potential drop GM^2 / (2R) gives (1/4)*M*v_rel^2 = GM^2 / (2R) ==> v_rel^2 = GM / R ==> v_rel = sqrt(GM / R).",
+      "alternative": "Use reduced mass μ=M/2: 0.5*μ*v_rel²=(M/4)*v_rel²=GM²/(2R), yielding v_rel²=2GM/R. Each body's speed is half the relative speed, namely sqrt(GM/(2R)).",
       "diagnosis": "If you set final center-to-center separation as R instead of 2R, you treated the two bodies as collapsing into a single point rather than touching at surface radius 2R.",
       "repair": "Draw the two touching spheres: each has radius R, so the distance between their centers is R + R = 2R.",
       "status": "ACADEMIC_HOLD"
@@ -361,6 +361,40 @@
       "diagnosis": "If you assumed that any symmetrical back-and-forth oscillation is simple harmonic motion, recall that SHM requires a parabolic potential well (linear restoring force F = -kx). Flat-bottomed wells produce non-harmonic periodic motion.",
       "repair": "Distinguish periodic motion (any repeating path with period T) from simple harmonic motion (a single sine/cosine wave produced by linear Hookean force).",
       "status": "ACADEMIC_HOLD"
+    }
+  ],
+  "source_cycles": [
+    {
+      "id": "PH05-G01-SOURCE-SYNTHESIZE-D3-R2",
+      "uid": "AUTHORED-PH05-G01-SOURCE-SYNTHESIZE-D3-R2",
+      "unit": "PH05-G01",
+      "op": "SYNTHESIZE",
+      "cell": "D3.6",
+      "revision": "ph05-g01-source-synthesize-20261115-r2",
+      "source_role": "AUTHORED_UNSEEN_TRANSFER_NOT_PREVIOUS_EXAM",
+      "qrt_status": "AUTHOR_PROPOSED_INDEPENDENT_REVIEW_HOLD",
+      "status": "ACADEMIC_HOLD",
+      "prediction": "For two unequal freely gravitating masses, predict the speed ratio and the distribution of kinetic energy before calculating.",
+      "prompt": "Two freely moving point masses 2m and 3m start at rest separated by L in deep space. When their separation decreases to L/4, calculate both speeds in the original center-of-mass frame and the ratio of their kinetic energies. Use momentum and total mechanical energy, showing an independent consistency check.",
+      "w": "Zero external momentum requires 2m*v_light=3m*v_heavy. Both masses carry kinetic energy, and the finite-separation potential decrease is G*(2m)*(3m)*(4/L−1/L)=18Gm²/L. This additional unequal-mass allocation is the decisive independent operation.",
+      "hints": [
+        "First impose conservation of total momentum; the two bodies do not have equal speeds.",
+        "Determine the change in −Gm1m2/r from L to L/4 and write both kinetic-energy contributions.",
+        "Substitute v_light=(3/2)*v_heavy into total kinetic energy before solving; check the energy ratio separately."
+      ],
+      "reconstruction": "1. Ui=−6Gm²/L and Uf=−24Gm²/L, so K_total=18Gm²/L. 2. Zero momentum yields 2m*v_light=3m*v_heavy, or v_light=1.5*v_heavy. 3. K_total=0.5*(2m)*(1.5*v_heavy)²+0.5*(3m)*v_heavy²=(15/4)m*v_heavy². Therefore v_heavy²=(24/5)Gm/L and v_light²=(54/5)Gm/L. 4. The kinetic-energy ratio is K_light/K_heavy=[2m*v_light²]/[3m*v_heavy²]=3/2. Verify both the momentum and energy equations.",
+      "alternative": "With reduced mass μ=(2m)(3m)/(5m)=6m/5, the relative speed squared is v_rel²=2G(5m)(4/L−1/L)=30Gm/L. Center-of-mass speed shares are v_light=(3/5)v_rel and v_heavy=(2/5)v_rel; both match the direct calculations.",
+      "diagnosis": "Assuming equal speeds violates zero-momentum conservation for unequal masses. Allocating all the gravitational potential-energy release to one mass violates energy accounting for two moving bodies.",
+      "repair": "Represent the two velocities with opposite directions, reduce them to one unknown using momentum, then substitute both kinetic energies into the finite potential-energy difference.",
+      "boundaryPrompt": "Suppose an external support now holds the 3m mass fixed. Which conservation argument changes and why does the original free-system speed ratio no longer hold?",
+      "boundaryModel": "The external support provides impulse, so the two-body subsystem no longer conserves its own momentum. The held mass has zero speed and the free-system center-of-mass relation cannot be reused. Energy accounting must separately state whether the fixed support does work.",
+      "factor_nominations": {
+        "concept_model_selection": 2,
+        "representation_translation": 1,
+        "reasoning_chain_length": 2,
+        "algebra_computational_load": 1,
+        "trap_exception_sensitivity": 1
+      }
     }
   ]
 }
