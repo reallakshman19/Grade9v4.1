@@ -7,8 +7,10 @@ on:
       - "tests/test_nsejs_physics_navigation_r1.py"
       - "tools/physics_navigation_browser_qa.py"
       - "tools/physics_quality_r1_browser_qa.py"
+      - "tools/physics_quality_r2_browser_qa.py"
+      - "tests/test_physics_quality_r2.py"
       - "tests/test_physics_quality_r1.py"
-      - "tests/test_physics_41_structural_audit_r1.py"
+      - "tests/test_physics_41_structural_audit_r1.py tests/test_physics_quality_r2.py"
       - "tools/physics_41_structural_audit_r1.py"
       - ".github/workflows/nsejs-physics-learner-navigation-r1.yml"
   workflow_dispatch:
@@ -28,6 +30,9 @@ jobs:
           node --check nsejs/physics/learn/learner-home.js
           node --check nsejs/js/core2-physics-reader.js
           node --check nsejs/physics/quality-r1/runtime.js
+          node --check nsejs/physics/quality-r1/pinned-assets.js
+          node --check nsejs/physics/quality-r1/protected-attempt-store.js
+          node --check nsejs/physics/quality-r1/assessment-r2.js
       - name: Install exact browser test requirements
         run: |
           python -m pip install "pytest>=8,<10" "playwright==1.55.0"
@@ -38,14 +43,16 @@ jobs:
         run: python tools/physics_41_structural_audit_r1.py
       - name: Run portrait and landscape learner routes over HTTP Chromium
         run: python tools/physics_navigation_browser_qa.py
-      - name: Verify four original authored Core1A/B construction journeys, exact source ledger and denied storage over HTTP Chromium
-        run: python tools/physics_quality_r1_browser_qa.py
-      - name: Upload six-viewport Core1A/B technical screenshots
+      - name: Verify R2 protected first attempts, structured rubrics, six viewports, two-tab race and answer gating over HTTP Chromium
+        run: python tools/physics_quality_r2_browser_qa.py
+      - name: Upload six-viewport Core1A/B R2 technical screenshots
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: physics-four-core1a-core1b-quality-r1
-          path: review-artifacts/physics-quality-r1/
+          name: physics-four-core1a-core1b-quality-r2
+          path: |
+            review-artifacts/physics-quality-r1/
+            review-artifacts/physics-quality-r2/
           if-no-files-found: warn
       - name: Academic boundary
         if: always()
