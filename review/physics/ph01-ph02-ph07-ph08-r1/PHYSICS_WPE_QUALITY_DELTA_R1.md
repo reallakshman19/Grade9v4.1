@@ -21,12 +21,30 @@ The extensions are reached from their chapter subtopic cards. All four use origi
 | Core1A | Explicit model conditions, scientific representation, dimensional/independent check, misconception repair | Four study diagrams and corrective discussions | IMPLEMENTED FOR 4/41; independent Physics R01 NOT_RUN |
 | Core1A | Author-level teaching-to-QRT operation alignment without exposing reserved task solution in the study page | Four newly versioned adapter-linked constructions | IMPLEMENTED AS AUTHOR DESIGN; independent B3 NOT_RUN |
 | Core1B | Original tasks with a changed decisive operation/condition, not merely a numeric replacement | Four unique UIDs, task revisions, explicit transfer-difference witness | IMPLEMENTED FOR 4/41; independent B4 NOT_RUN |
-| Core1B | Protected first attempt, content SHA-256, staged help, refresh recovery and storage fail-closed | `quality-r1/runtime.js`; HTTP Chromium two orientations | TECHNICAL PASS on tested revision |
+| Core1B | Full author-package revision-bound first attempt; postcommit hash-pinned model load; refresh recovery and storage fail-closed | `quality-r1/runtime.js`; staged JSON; six viewport HTTP Chromium plus negative tests | TECHNICAL PASS on previous exact head; final head to be rechecked |
 | Core1B | Separate diagnosis, repair and boundary attempt before model reveal | Four six-stage tasks, automated ordering test | TECHNICAL PASS; learner B6 evidence NOT_RUN |
 | Adapter/QRT | Four versioned candidate topic-adapter maps with old instances preserved and new task IDs joined | PH01 53→54, PH02 24→25, PH07 43→44, PH08 46→47 | MAPPING IMPLEMENTED; QRT independent scores absent |
 | Blueprint authority | Five-factor independently scored D3/D4 and selected canonical MAINs | No blind adjudication in this change | **NOT FIXED · QRT HOLD** |
 
 These statuses are non-compensatory. A technical check or a well-written example cannot upgrade a SOURCE, QRT or B1–B7 academic HOLD.
+
+## All-41 native structure audit — what the 37 remaining cases actually contain
+
+`tools/physics_41_structural_audit_r1.py` reads every source-native package associated with the 41 learner-catalog routes and writes JSON and CSV to `review-artifacts/physics-quality-r1/`. The first CI receipt yielded **41/41** with at least three existing progressive teaching examples, a figure, a native Core1B task set, complete native six-stage field names, complete declared attempt-policy flags and all declared native QRT targets mapped to their native topic adapters. **Zero structural warning rows** were detected by these explicit mechanical checks. The four R1 supplemental cases are distinguished from the other 37.
+
+**These are field-existence and identifier checks, not a B3/B4 academic PASS.** Existing prose could still teach the wrong decisive operation; existing stage prompts could be superficial; existing diagrams could be physically misleading; a declared attempt policy does not by itself certify browser runtime or tamper-proof custody. The new workbench's echo illustration was corrected so incident and reflected ray slopes are equal for a specular plane-wall model, with a mechanical geometry regression.
+
+## Precommit model exposure correction — technical B5 improvement
+
+The first R1 author package combined teaching examples, fresh challenge prompts, two hints, reconstruction, diagnosis, repair and boundary answers in one JSON fetch. This reproduced the WPE pilot's avoidable challenge-answer exposure. It has been split into three normal learner assets:
+
+1. `study-data.v1.json` — Core1A scientific narrative and worked examples only; no Core1B key
+2. `attempt-prompts.v1.json` — fresh prompts and a revision/source/model pin; no hints, reconstruction or boundary answers
+3. `postattempt-models.v1.json` — answer and diagnosis material, requested only after a saved first response and checked against the pinned Git blob SHA
+
+Browser QA checks that neither the study nor precommit challenge page requests the postattempt key, that refresh retrieves a compatible model only for a verified saved first response, and that changed/missing source pins, corrupted model bytes and disabled local storage fail closed. The first-attempt digest binds the complete authored case revision and the postattempt model hash, not only the visible question. HTTP Chromium runs the four journeys in six viewports, with Core1A and Core1B screenshots.
+
+**Important limitation:** GitHub Pages publishes static files; a determined learner can fetch a model URL manually or alter localStorage. The change prevents routine preload/accidental reveal, not deliberate access to public author assets or proctored exam security. No B5 independent academic verdict has been issued.
 
 ## WPE pilot evidence comparison
 
