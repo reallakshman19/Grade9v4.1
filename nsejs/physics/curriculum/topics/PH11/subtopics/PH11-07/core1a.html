@@ -1,36 +1,112 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>PH11-07 — Core1A source-grounded candidate teaching</title>
-<link rel="stylesheet" href="../../../agent2/textbook-reader.css">
-<style>main{max-width:1050px;margin:0 auto;padding:1.25rem}figure{margin:1.2rem 0;border:1px solid #aebdca;border-radius:12px;padding:1rem;background:#fff}figure svg{display:block;width:100%;height:auto;max-height:255px}figure text{font:15px system-ui,sans-serif}a{overflow-wrap:anywhere}li{margin-bottom:.65rem}.note{border-left:4px solid #ad7a20;background:#fff7e6;padding:1rem}</style></head><body>
-<main class="book">
-<header><p>NSEJS Physics · PH11-07 · Core1A candidate</p><h1>Topology before arithmetic: parallel branches behind a series resistor</h1>
-<p><strong>AUTHOR-EXPOSED · ACADEMIC HOLD · SOURCE HOLD · QRT HOLD · B1–B7 HOLD</strong></p></header>
-<p class="note">This is a dedicated original-author teaching candidate. It is not a verified NSEJS source question, an approved school textbook or a fully qualified chapter. Its source-style checkpoint must be attempted in the linked review route before the worked example is revealed there.</p>
-<div class="action"><a href="../../index.html">Back to PH11 continuous chapter</a><a href="core1b.html">Core1B fresh attempt</a><a href="../../../../../../../review/physics/ph09-ph12-wpe-parity-r1/preview.html?case=PH11-07">Full source-first WPE-style preview</a></div>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PH11-07 · Two-node circuit reasoning · Core1A Candidate</title>
+<link rel="stylesheet" href="../../../../agent2/textbook-reader.css">
+<style>
+main{max-width:1030px;margin:auto;padding:1.25rem}
+figure{border:1px solid #b0c1ce;border-radius:12px;background:#f8fbff;padding:1rem;margin:1.2rem 0}
+figure svg{display:block;width:100%;height:auto;max-height:300px}
+figure text{font:15px system-ui,sans-serif;fill:#18384f}
+figcaption{line-height:1.55;margin-top:.5rem}
+a{overflow-wrap:anywhere}
+li{margin-bottom:.65rem}
+.notice{background:#fff6e5;border-left:5px solid #9e761d;padding:1rem}
+.check{background:#eaf4fa;padding:1rem;border-radius:8px}
+@media(max-width:780px){main{padding:1rem}figure{padding:.45rem}}
+</style>
+</head>
+<body><main class="book" id="ph11-07-r3">
+<header>
+<p>NSEJS Physics · PH11-07 · Core1A</p>
+<h1>Parallel-network reasoning: find the actual nodes before the voltage</h1>
+<p><strong>AUTHOR-EXPOSED CANDIDATE · ACADEMIC HOLD · SOURCE HOLD · INDEPENDENT QRT HOLD · B1–B7 HOLD</strong></p>
+</header>
+<p class="notice"><strong>Scope and review boundary.</strong> This is a newly authored teaching candidate, not an authenticated NSEJS question or an approved Core1A textbook. The direct link below opens a separately committed source-first learning rehearsal; this static teaching page itself is not a protected assessment.</p>
+<div class="action">
+<a href="../../index.html">PH11 chapter</a>
+<a href="core1b.html">Fresh Core1B practice entry</a>
+<a href="core1b.html">Native fresh-transfer candidate</a>
+</div>
 <article class="article">
-<h2>Physical question and assumptions</h2><p>Steady DC, ideal 12 V source, ideal wires, ideal ohmic resistors at unchanged temperature, no unintended crossing connections.</p>
-<h2>What you must already understand</h2><ul><li>Identifying common nodes</li><li>Ohm's law</li><li>Junction current conservation</li></ul>
-<h2>Build the model, don't memorize the answer</h2><p>Parallel elements share two nodes and thus potential difference. Current splits according to I=V/R; equivalent resistance follows 1/R_p=1/R_1+1/R_2.</p>
-<figure><svg viewBox="0 0 660 225" role="img" aria-label="Source 12 volts, a 2-ohm series resistor before common nodes A and B that contain 6-ohm and 3-ohm parallel branches">
-<rect x="15" y="78" width="104" height="56" rx="8" fill="#f3f8ff" stroke="#285d82" stroke-width="2"/>
-<text x="67" y="103" text-anchor="middle" fill="#142c42">12 V</text><text x="67" y="123" text-anchor="middle" fill="#142c42">source</text>
-<path d="M119 106H158" stroke="#254f70" stroke-width="3" fill="none"/><rect x="158" y="87" width="90" height="38" rx="5" fill="#fff4d8" stroke="#5d6a77" stroke-width="2"/><text x="203" y="111" text-anchor="middle">2 Ω series</text>
-<path d="M248 106H292V45H337 M292 106V177H337" stroke="#254f70" stroke-width="3" fill="none"/>
-<circle cx="292" cy="106" r="6" fill="#1875a2"/><text x="275" y="94" fill="#1c506d">A</text>
-<rect x="337" y="28" width="95" height="34" rx="5" fill="#dceef9" stroke="#285d82" stroke-width="2"/><text x="385" y="51" text-anchor="middle">6 Ω</text>
-<rect x="337" y="160" width="95" height="34" rx="5" fill="#dceef9" stroke="#285d82" stroke-width="2"/><text x="385" y="183" text-anchor="middle">3 Ω</text>
-<path d="M432 45H498V106 M432 177H498V106 H558" stroke="#254f70" stroke-width="3" fill="none"/>
-<circle cx="498" cy="106" r="6" fill="#1875a2"/><text x="507" y="94" fill="#1c506d">B</text>
-<path d="M558 106V211H15V134" stroke="#254f70" stroke-width="3" fill="none"/>
-</svg><figcaption>Original author construction diagram. Geometry and science/representation qualification remain subject to independent review.</figcaption></figure>
-<h2>Worked Core1A anchor (different from the later independent challenge)</h2><p>A 6 Ω and a 3 Ω resistor are connected directly in parallel across an ideal 12 V supply. Compute the branch and total currents.</p>
-<ol><li>The same 12 V is across each branch.</li><li>I_6=12/6=2 A and I_3=12/3=4 A.</li><li>Total current is 6 A; equivalent resistance is 12/6=2 Ω.</li></ol>
-<p><strong>Independent physical consistency check:</strong> The parallel equivalent must be smaller than the smallest positive branch resistance; 2 Ω &lt; 3 Ω.</p>
-<h2>Misconception and corrective question</h2><p>Nearby components or crossing wires are automatically parallel; topology is determined by connected nodes, not picture proximity.</p>
-<p><strong>Repair prompt:</strong> Which physical condition and representation must be checked before applying the result? Explain why a result that happens to match one example may fail when an assumption changes.</p>
-<h2>Try a different problem after the guided model</h2><p>The linked Core1B starts from a separate original author checkpoint, asks for independent reasoning, and records reconstruction, diagnosis, repair, a boundary test and source return as distinct steps.</p>
-<div class="action"><a href="core1b.html">Continue to PH11-07 Core1B</a></div>
-<p><strong>Qualification:</strong> Proposed adapter v0.4.0, not independently admitted. <a href="../../topic-adapter.PH11.wpe-parity-r2.v1.json">Inspect proposed five-factor QRT evidence</a>.</p>
+<h2>1. Prerequisites and model boundaries</h2>
+<p>Use a steady ideal DC source and approximately ohmic positive resistors with temperature held fixed. Wires and junctions are ideal: a connected node has one potential. A crossing without a connection dot is not a junction. The voltmeter is ideal (draws negligible current), the ammeter is ideal (has negligible voltage drop), and external losses are ignored.</p>
+<p>Before computing anything, identify which wire endpoints belong to the <strong>same two nodes</strong>. A parallel branch shares the <em>voltage between those nodes</em>, which is not necessarily the entire battery voltage.</p>
+<h2>2. Derive a parallel equivalent from current conservation</h2>
+<p>Let two positive ohmic branches R₁ and R₂ share node pair A/B. Because each branch sees the same node voltage V_AB, Ohm's law gives I₁=V_AB/R₁ and I₂=V_AB/R₂. At the node, conservation of charge gives I_total=I₁+I₂. Defining I_total=V_AB/R_p therefore yields 1/R_p=1/R₁+1/R₂. A third resistor upstream is <strong>in series</strong> with this equivalent block, so its voltage drop must be included separately.</p>
+<h2>3. Foundation worked anchor — source directly across two branches</h2>
+<p>An ideal 12 V supply is connected directly across 6 Ω and 3 Ω resistors in parallel. Find each branch current, total current and the equivalent resistance.</p>
+<figure id="figure-direct-parallel">
+<svg viewBox="0 0 660 220" role="img" aria-label="Anchor circuit: 12 volt source connected directly to node A, branches of six ohms and three ohms from A to B, and wire from B returning to the source">
+<rect x="20" y="70" width="104" height="70" rx="8" fill="#e8f5fd" stroke="#305c79" stroke-width="3"/>
+<text x="72" y="97" text-anchor="middle">12 V</text><text x="72" y="118" text-anchor="middle">source</text>
+<path d="M124 87 H196 V56 H274 M196 87 V169 H274" stroke="#275778" stroke-width="3" fill="none"/>
+<circle cx="196" cy="87" r="6" fill="#245c81"/><text x="178" y="73">A</text>
+<rect x="274" y="39" width="108" height="34" rx="5" fill="#fff2d3" stroke="#77612f" stroke-width="2"/>
+<text x="328" y="62" text-anchor="middle">6 Ω</text>
+<rect x="274" y="152" width="108" height="34" rx="5" fill="#fff2d3" stroke="#77612f" stroke-width="2"/>
+<text x="328" y="175" text-anchor="middle">3 Ω</text>
+<path d="M382 56 H493 V104 M382 169 H493 V104 H591 V207 H20 V123" stroke="#275778" stroke-width="3" fill="none"/>
+<circle cx="493" cy="104" r="6" fill="#245c81"/><text x="505" y="94">B</text>
+</svg>
+<figcaption>Original author diagram A. Both branches join the battery's two terminals via the same A/B nodes. The battery voltage therefore equals V_AB. The diagram is a candidate teaching representation, not an examined source figure.</figcaption>
+</figure>
+<ol>
+<li>Both branch endpoints coincide at A/B. The ideal source directly establishes V_AB=12 V.</li>
+<li>Ohm's law: I₆=12/6=2 A; I₃=12/3=4 A.</li>
+<li>At A, I_total=2+4=6 A. So R_p=12/6=2 Ω.</li>
+<li>Check: 1/2=1/6+1/3. The parallel equivalent is smaller than the smallest positive branch resistance, 3 Ω.</li>
+</ol>
+<h2>4. Connected worked anchor — a series element changes the branch voltage</h2>
+<p>An ideal 10 V source drives a 2 Ω resistor in series with <strong>two 4 Ω branches in parallel</strong>. Find the upstream current, the block voltage and both branch currents.</p>
+<figure id="figure-series-parallel">
+<svg viewBox="0 0 690 245" role="img" aria-label="Connected worked circuit: ten volt source, series two ohm resistor before node A, two four ohm branches to node B, return wire back to source">
+<rect x="18" y="78" width="98" height="64" rx="8" fill="#e8f5fd" stroke="#305c79" stroke-width="3"/>
+<text x="67" y="102" text-anchor="middle">10 V</text><text x="67" y="126" text-anchor="middle">source</text>
+<path d="M116 98 H146" stroke="#275778" stroke-width="3"/>
+<rect x="146" y="82" width="101" height="32" rx="5" fill="#f7e3b5" stroke="#77612f" stroke-width="2"/>
+<text x="197" y="103" text-anchor="middle">2 Ω series</text>
+<path d="M247 98 H300 V54 H361 M300 98 V179 H361" stroke="#275778" stroke-width="3" fill="none"/>
+<circle cx="300" cy="98" r="6" fill="#245c81"/><text x="282" y="85">A</text>
+<rect x="361" y="38" width="105" height="32" rx="5" fill="#e0f2fe" stroke="#77612f" stroke-width="2"/>
+<text x="413" y="60" text-anchor="middle">4 Ω</text>
+<rect x="361" y="163" width="105" height="32" rx="5" fill="#e0f2fe" stroke="#77612f" stroke-width="2"/>
+<text x="413" y="185" text-anchor="middle">4 Ω</text>
+<path d="M466 54 H541 V108 M466 179 H541 V108 H628 V231 H18 V125" stroke="#275778" stroke-width="3" fill="none"/>
+<circle cx="541" cy="108" r="6" fill="#245c81"/><text x="551" y="98">B</text>
+</svg>
+<figcaption>Original author diagram B. In contrast with diagram A, the 2 Ω resistor sits before node A; its voltage drop means both parallel branches share V_AB but not necessarily the full 10 V.</figcaption>
+</figure>
+<ol>
+<li>Only the two 4 Ω branches share A/B; reduce them to R_p=(4×4)/(4+4)=2 Ω.</li>
+<li>Series resistance is R_total=2 Ω+2 Ω=4 Ω; the source current is 10/4=2.5 A.</li>
+<li>The upstream 2 Ω resistor drops (2.5)(2)=5 V, leaving V_AB=10−5=5 V.</li>
+<li>Each 4 Ω branch takes 5/4=1.25 A. Their currents sum to 2.5 A, matching the measured series current.</li>
+</ol>
+<p class="check"><strong>Check the law at two places:</strong> 5 V+5 V=10 V by the loop voltage balance, and 1.25 A+1.25 A=2.5 A at the split junction. The diagram makes the two checks different.</p>
+<h2>5. Worked inverse construction — recover a missing branch</h2>
+<p><strong>Different worked data from the fresh challenge:</strong> an ideal 20 V supply sends a measured 3 A through an upstream 4 Ω resistor into a downstream parallel pair. One branch has 8 Ω; the other is a finite positive resistor X. Find X and check the two conservation laws.</p>
+<ol>
+<li>Before the junction, the series element carries the measured 3 A, so its drop is (3 A)(4 Ω)=12 V.</li>
+<li>The two downstream branches therefore share V_AB=20−12=8 V. The known 8 Ω branch takes 8/8=1 A.</li>
+<li>Junction conservation gives 3−1=2 A through the unknown branch; X=8 V/2 A=4 Ω.</li>
+<li>Independent check: 8 Ω || 4 Ω = 8/3 Ω, and 4 + 8/3 = 20/3 Ω, hence source current=20/(20/3)=3 A.</li>
+</ol>
+<p><strong>Why this is inverse reasoning:</strong> current was observed before the junction; the unknown branch was inferred from the series voltage loss and the remaining junction current. Do not assume the known branch resistance must equal the unknown one.</p>
+<h2>6. Feasibility proof: which source-current measurements are physically possible?</h2>
+<p>For an ideal source V across a fixed positive series resistor R_s and a parallel block containing a fixed positive branch R_k and a <strong>finite, positive</strong> unknown X, its equivalent R_p=(R_k X)/(R_k+X) obeys <strong>0 &lt; R_p &lt; R_k</strong>. Thus the source current must obey <strong>V/(R_s+R_k) &lt; I_total &lt; V/R_s</strong>. The direction of each inequality follows from dividing fixed positive V by a positive resistance.</p>
+<p>In the 20 V, 4 Ω, 8 Ω worked setup, the physical interval is <strong>5/3 A &lt; I_total &lt; 5 A</strong>. A reported 1 A or 6 A cannot be explained by adjusting only the unknown positive downstream resistor. If the measured current is exactly at an endpoint, at least one stated model condition has changed.</p>
+<p><strong>Boundary models:</strong> as X tends to infinity (open branch, not finite), the circuit approaches I_min=V/(R_s+R_k). As X tends to zero (short branch, not positive finite), R_p tends to 0 and I approaches I_max=V/R_s. Neither endpoint is attained by finite positive X. A real cell, wire, short or measurement error may violate the ideal model; that is not a license to assign a negative resistance.</p>
+<h2>7. Diagnose a plausible but invalid shortcut</h2>
+<p><strong>Wrong model:</strong> “Any parallel branch receives all of the battery voltage.” This is true for the direct connection in figure A, but false for figure B. Ask which two endpoints define V_AB; then compute the voltage drop on every component <em>before</em> node A. If a learner argues that two equal-looking drawn paths are parallel, ask them to label and trace the wire nodes rather than trusting picture proximity.</p>
+<p><strong>Repair:</strong> Label node A and node B, reduce only the parallel pair, include the upstream resistor, then check both charge and energy conservation. This correction teaches the method without giving the later challenge's unknown-branch answer.</p>
+<h2>8. Inverse-and-feasibility exit check</h2>
+<p>An ideal 15 V source drives a 3 Ω series element into a parallel pair containing a known 6 Ω branch and an unknown positive branch. The source current is 3 A. Find the unknown resistance; is a measured 6 A possible under the same assumptions?</p>
+<details><summary>Show worked reasoning after attempting the exit check</summary><p>Upstream drop=3×3=9 V, so V_AB=6 V. Known branch takes 1 A, unknown branch 2 A, and X=6/2=3 Ω. Limits: 15/(3+6)=5/3 A &lt; I &lt; 15/3=5 A for finite positive X; therefore 6 A is impossible. Check R_p=6||3=2 Ω and R_total=5 Ω, giving 15/5=3 A.</p></details>
+<h2>9. Unseen transfer</h2>
+<p>The accompanying Core1B does not ask for a new forward calculation with only swapped numbers. It reverses the direction of inference: the source current is measured, and the learner must infer a hidden branch. The candidate challenge answer file is fetched by the native assessment runtime only after a recorded first attempt. This browser mechanism is not secure examination custody.</p>
+<div class="action"><a href="core1b.html">Enter fresh Core1B task</a>
+<a href="core1b.html">Open native first-attempt and source-return candidate</a></div>
+<p><strong>Review limitations:</strong> Source/authentication, external science review, QRT band, Blueprint applicability, B1–B7 teaching/assessment sufficiency and release remain HOLD. These figures are original author drawings, not independently checked source reproductions.</p>
 </article>
 </main></body></html>

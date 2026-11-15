@@ -94,38 +94,49 @@
     {
       "chapter": "PH11",
       "subtopic_id": "PH11-07",
-      "name": "Topology before arithmetic: parallel branches behind a series resistor",
-      "science_conditions": "Steady DC, ideal 12 V source, ideal wires, ideal ohmic resistors at unchanged temperature, no unintended crossing connections.",
+      "name": "Reconstructing a hidden parallel branch from an upstream measurement",
+      "science_conditions": "Steady DC, ideal batteries with fixed terminal voltage, ideal wires and ohmic resistors with fixed positive resistance; parallel is defined by identical endpoints and the source current passes through the upstream series element.",
       "prerequisites": [
         "Identifying common nodes",
         "Ohm's law",
         "Junction current conservation"
       ],
       "core1a": {
-        "model": "Parallel elements share two nodes and thus potential difference. Current splits according to I=V/R; equivalent resistance follows 1/R_p=1/R_1+1/R_2.",
-        "worked_a": "A 6 Ω and a 3 Ω resistor are connected directly in parallel across an ideal 12 V supply. Compute the branch and total currents.",
+        "model": "Two components are parallel only if both endpoints are on the same node pair; their voltages match. For two positive ohmic resistors, 1/R_p=1/R_1+1/R_2. When this two-node block lies after a series resistor, the upstream resistor takes a voltage drop; the shared branch voltage is not automatically the full battery voltage. At every junction the entering current equals the sum leaving.",
+        "worked_a": "An ideal 12 V source is directly across two resistors, 6 Ω and 3 Ω. Calculate each branch current, total current, and equivalent resistance.",
         "worked_solution": [
-          "The same 12 V is across each branch.",
-          "I_6=12/6=2 A and I_3=12/3=4 A.",
-          "Total current is 6 A; equivalent resistance is 12/6=2 Ω."
+          "Both resistors touch the same source nodes, so each has 12 V across it.",
+          "By Ohm's law, I_6=12/6=2 A and I_3=12/3=4 A.",
+          "Junction conservation gives I_total=2+4=6 A; R_p=12/6=2 Ω."
         ],
-        "check": "The parallel equivalent must be smaller than the smallest positive branch resistance; 2 Ω < 3 Ω.",
-        "misconception": "Nearby components or crossing wires are automatically parallel; topology is determined by connected nodes, not picture proximity."
+        "check": "The equivalent of two positive parallel resistors is less than the smaller branch resistance (2 Ω < 3 Ω). The current sum equals the source current.",
+        "misconception": "The phrase 'parallel resistors get battery voltage' is valid only if their common nodes coincide with the battery terminals; a series resistor upstream changes their shared node-pair voltage.",
+        "connected_bridge": {
+          "question": "An ideal 10 V supply drives a 2 Ω resistor, then two 4 Ω resistors connected in parallel. Determine current and voltage across both blocks.",
+          "steps": [
+            "The two 4 Ω branches share nodes A and B, so R_p=(4×4)/(4+4)=2 Ω.",
+            "The series combination is 2 Ω + 2 Ω=4 Ω, so I_total=10/4=2.5 A.",
+            "The upstream drop is (2.5)(2)=5 V; each branch therefore has 5 V, not 10 V.",
+            "Each branch current is 5/4=1.25 A; the branch currents add to 2.5 A."
+          ],
+          "check": "Series drop plus branch drop equals 10 V; parallel branch currents add to series current."
+        }
       },
       "core1b": {
-        "original_b": "An ideal 12 V battery drives a 2 Ω resistor in series with two resistors, 6 Ω and 3 Ω, connected in parallel after it. Find the total current, voltage across the parallel network and each branch current. A student states each parallel branch receives 12 V because 'parallel resistors get the source voltage.' Check this claim.",
-        "protected_work": "Choose a mixed-series/parallel graph, distinguish branch voltage from source voltage, conserve junction current.",
-        "predict": "Will either parallel branch receive the full 12 V? Explain qualitatively before computing.",
-        "attempt": "Identify nodes, reduce the parallel block, calculate the source current and node-pair voltage, then calculate and check branch currents.",
+        "original_b": "A hidden branch is to be identified. An ideal 18 V source drives a 3 Ω resistor, followed by a parallel pair containing a known 6 Ω resistor and an unknown positive resistor R. An ammeter before the junction reads 4 A. Find R and the voltage across the parallel pair; determine each branch current. Another student assumes the two parallel branches must each receive the battery's full 18 V. Check this against the ammeter and the upstream resistor.",
+        "protected_work": "Infer the downstream equivalent resistance from a measured total current AFTER subtracting the upstream series resistance; then infer the missing branch current and invert I=V/R to recover the unknown R; check junction and energy constraints.",
+        "predict": "Does the 4 A measurement determine the unknown branch uniquely under the ideal-resistor assumptions? Before calculating, predict whether either branch can see the full 18 V.",
+        "attempt": "Choose your own network model, compute the unknown resistance and both branch currents, and provide two independent physical checks.",
         "reconstruction": [
-          "R_p=(6×3)/(6+3)=2 Ω.",
-          "R_total=2+2=4 Ω, so source current=12/4=3 A.",
-          "Parallel block voltage=3×2=6 V, not 12 V.",
-          "I_6=6/6=1 A and I_3=6/3=2 A; 1+2=3 A."
+          "Measured total resistance is R_total=18 V / 4 A=4.5 Ω.",
+          "The upstream element is 3 Ω in series, so the parallel pair must have R_p=4.5−3=1.5 Ω.",
+          "The node-pair voltage is V_AB=(4 A)(1.5 Ω)=6 V. The series resistor drops 12 V, and 12+6=18 V.",
+          "The known 6 Ω branch takes I_6=6/6=1 A. Junction conservation leaves I_R=4−1=3 A.",
+          "Therefore R=6 V/3 A=2 Ω; also 6 Ω || 2 Ω=1.5 Ω, recovering the measured input current."
         ],
-        "diagnose": "If the saved answer gave 12 V across each branch, investigate whether the learner overlooked the upstream series drop; do not assign that misconception to unrelated incorrect answers.",
-        "repair": "Redraw the common nodes and mark the 2 Ω series resistor's 6 V drop before applying the equal-voltage rule within the parallel block.",
-        "boundary": "If the upstream 2 Ω resistor is removed and replaced by ideal wire, predict the revised branch currents and explain why the original direct-parallel example applies."
+        "diagnose": "Only if the saved reasoning assumes 18 V across each branch, challenge its implied 3 Ω series drop and check whether predicted input current equals 4 A. If the saved answer instead assumes R=6 Ω by symmetry, test the predicted source current (3 A, not 4 A). Do not diagnose any model without quoting matching evidence from the learner's original explanation.",
+        "repair": "Draw upstream series 3 Ω and downstream nodes A/B; use the measured I_total to obtain V_series=12 V, hence V_AB=6 V, then use junction conservation to recover the unseen branch current and R.",
+        "boundary": "Under the same ideal 18 V source with a fixed positive 3 Ω series resistor, a classmate reports 7 A total current after changing only the downstream passive resistors. Can any positive-resistance parallel network produce that current? Give a resistance or voltage inequality to justify your decision."
       }
     },
     {

@@ -83,9 +83,13 @@ def run():
                             page.locator("#chapter-choice").select_option(subtopic)
                             assert_no_leak(page, source_phase=True)
                             assert page.locator("#source-question").inner_text()
+                            adapter_revision = "r3" if subtopic == "PH11-07" else "r2"
                             assert page.locator("#source-adapter-link").get_attribute("href").endswith(
-                                f"topic-adapter.{subtopic[:4]}.wpe-parity-r2.v1.json"
+                                f"topic-adapter.{subtopic[:4]}.wpe-parity-{adapter_revision}.v1.json"
                             )
+                            assert page.locator("#reviewer-adapter-evidence").is_hidden()
+                            assert page.locator("#connected-bridge").is_hidden()
+                            assert page.locator("#bridge-steps li").count() == 0
                             # The protected move stays out of the visible prompt.
                             assert "new learner-owned decision" not in page.locator(
                                 "#protected-work"
@@ -100,6 +104,13 @@ def run():
                             assert page.locator("#journey").is_visible()
                             assert page.locator("#fresh-task").inner_text()
                             assert page.locator("#worked-solution li").count() >= 3
+                            if subtopic == "PH11-07":
+                                assert page.locator("#connected-bridge").is_visible()
+                                assert page.locator("#bridge-steps li").count() == 4
+                                assert "10 V" in page.locator("#bridge-question").inner_text()
+                                assert "18 V" in page.locator("#fresh-task").inner_text()
+                            else:
+                                assert page.locator("#connected-bridge").is_hidden()
 
                             # Nondecisive help must not unlock reconstruction.
                             page.locator("#help-button").click()
@@ -163,6 +174,7 @@ def run():
                             assert "Source return saved" in page.locator(
                                 "#source-return-status"
                             ).inner_text()
+                            assert page.locator("#reviewer-adapter-evidence").is_visible()
                             assert page.locator("#source-attempt").input_value() == source_answer
                             assert page.locator("#first-attempt").input_value() == original
                             assert page.evaluate(
@@ -182,6 +194,30 @@ def run():
                                     "no iframe", "no horizontal overflow",
                                 ],
                             })
+                        # Native PH11 teaching and entry pages: verify the actual linked
+                        # stylesheet returns HTTP 200 and both original diagrams are present.
+                        origin = f"http://127.0.0.1:{server.server_port}"
+                        native_a = origin + "/nsejs/physics/curriculum/topics/PH11/subtopics/PH11-07/core1a.html"
+                        native_b = origin + "/nsejs/physics/curriculum/topics/PH11/subtopics/PH11-07/core1b.html"
+                        for native_url in (native_a, native_b):
+                            response = page.goto(native_url, wait_until="domcontentloaded")
+                            assert response and response.status == 200
+                            css_ref = page.locator('link[rel="stylesheet"]').get_attribute("href")
+                            assert css_ref == "../../../../agent2/textbook-reader.css", css_ref
+                            from urllib.parse import urljoin
+                            css_response = context.request.get(urljoin(native_url, css_ref))
+                            assert css_response.status == 200, (native_url, css_response.status)
+                            assert page.locator("iframe").count() == 0
+                            assert page.evaluate("document.documentElement.scrollWidth <= innerWidth + 1")
+                        page.goto(native_a, wait_until="domcontentloaded")
+                        assert page.locator("figure svg").count() == 2
+                        assert "12 volt source connected directly" in page.locator("figure svg").first.get_attribute("aria-label")
+                        assert "ten volt source, series two ohm" in page.locator("figure svg").last.get_attribute("aria-label")
+                        receipt.setdefault("native_ph11", []).append(
+                            {"viewport": [width, height], "css_http": 200,
+                             "original_diagrams": 2, "horizontal_overflow": False,
+                             "result": "PASS"}
+                        )
                         assert not errors, errors
                     finally:
                         context.close()

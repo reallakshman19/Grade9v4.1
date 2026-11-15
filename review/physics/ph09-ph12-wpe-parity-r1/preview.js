@@ -13,8 +13,9 @@
 
   function say(id, message) { $(id).textContent = message; }
   function adapterPath(topic) {
+    const revision = topic === "PH11" ? "wpe-parity-r3.v1.json" : "wpe-parity-r2.v1.json";
     return "../../../nsejs/physics/curriculum/topics/" + topic +
-      "/topic-adapter." + topic + ".wpe-parity-r2.v1.json";
+      "/topic-adapter." + topic + "." + revision;
   }
   function currentAdapter() { return current && adapters[current.chapter]; }
   function storageAvailable() {
@@ -100,8 +101,12 @@
     clearReview();
     $("prereqs").replaceChildren();
     $("worked-solution").replaceChildren();
+    $("bridge-steps").replaceChildren();
+    $("connected-bridge").hidden = true;
+    $("reviewer-adapter-evidence").hidden = true;
     for (const id of ["teach-title", "topic-meta", "conditions", "teaching-model",
-      "worked-question", "worked-check", "misconception", "protected-work",
+      "worked-question", "worked-check", "bridge-question", "bridge-check",
+      "misconception", "protected-work",
       "fresh-task", "predict-prompt", "attempt-prompt"]) say(id, "");
     for (const id of ["source-attempt", "first-predict", "first-attempt"]) $(id).value = "";
     $("source-checkpoint").hidden = true;
@@ -144,6 +149,11 @@
     say("worked-question", current.core1a.worked_a);
     list("worked-solution", current.core1a.worked_solution);
     say("worked-check", current.core1a.check);
+    const bridge = current.core1a.connected_bridge;
+    $("connected-bridge").hidden = !bridge;
+    say("bridge-question", bridge ? bridge.question : "");
+    list("bridge-steps", bridge ? bridge.steps : []);
+    say("bridge-check", bridge ? bridge.check : "");
     say("misconception", current.core1a.misconception);
     // Never mount the protected author move or its formula-bearing attempt guidance.
     say("protected-work", "Select your own model, variables, checks and reasoning independently.");
@@ -340,6 +350,7 @@
     if (!writeRecord(next)) { lock("Source return could not be persisted."); return; }
     $("source-return-response").disabled = true;
     $("save-source-return").disabled = true;
+    $("reviewer-adapter-evidence").hidden = false;
     say("source-return-status", "Source return saved without overwriting the first source or Core1B attempts. This is NOT proof of learner mastery.");
   }
   async function start() {
@@ -362,9 +373,15 @@
         if (!result.ok) throw new Error(topic + " adapter HTTP " + result.status);
         const adapterRaw = await result.text();
         const adapter = JSON.parse(adapterRaw);
-        if (adapter.schema !== "g9v41-physics-wpe-parity-topic-adapter-r2/v1" ||
+        const expectedSchema = topic === "PH11"
+          ? "g9v41-physics-wpe-parity-topic-adapter-r3/v1"
+          : "g9v41-physics-wpe-parity-topic-adapter-r2/v1";
+        const expectedStatus = topic === "PH11"
+          ? "AUTHOR_EXPOSED_ADVERSARIAL_REVIEW__INDEPENDENT_QRT_HOLD"
+          : "AUTHOR_EXPOSED_QRT_PROPOSAL__INDEPENDENT_HOLD";
+        if (adapter.schema !== expectedSchema ||
             adapter.topic_id !== topic ||
-            adapter.academic_status !== "AUTHOR_EXPOSED_QRT_PROPOSAL__INDEPENDENT_HOLD" ||
+            adapter.academic_status !== expectedStatus ||
             adapter.source?.not_an_official_exam !== true ||
             adapter.source.exam_source_uid !== null ||
             adapter.assertions?.owner_release !== "HOLD" ||

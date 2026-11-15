@@ -1,0 +1,103 @@
+{
+  "schema": "g9v41-ph11-07-r4-native-prompt/v1",
+  "status": "AUTHOR_EXPOSED_CANDIDATE__ACADEMIC_HOLD",
+  "revision": "ph11-07-native-r4-20261115",
+  "source": {
+    "uid": "AUTHORED-PH11-07-SOURCE-01",
+    "role": "ORIGINAL_AUTHOR_ONLY_NOT_NSEJS",
+    "question": "An ideal 9 V source drives a 3 ohm resistor in series with a pair of 6 ohm resistors in parallel. Determine the source current, the voltage across the parallel pair and both branch currents. Explain whether each branch sees the full 9 V.",
+    "initial_model_options": [
+      {
+        "id": "mixed",
+        "label": "A series resistor feeds a two-node parallel pair"
+      },
+      {
+        "id": "direct",
+        "label": "All three resistors are directly across the source"
+      },
+      {
+        "id": "none",
+        "label": "The connection cannot be determined"
+      }
+    ]
+  },
+  "task": {
+    "uid": "AUTHORED-PH11-07-R4-TRANSFER-01",
+    "prediction": "Will the measured source current constrain a hidden positive resistor to a unique value?",
+    "stem": "An ideal 18 V source drives a 3 ohm resistor in series with two parallel branches. One branch contains 6 ohm; the other contains a finite, positive unknown resistance R. An ideal ammeter before the junction reads 4 A. Find R, the two-node branch voltage and both branch currents. Verify charge and voltage balance. A student says each branch receives 18 V; evaluate that claim.",
+    "model_options": [
+      {
+        "id": "mixed",
+        "label": "3 ohm in series with a parallel two-node block"
+      },
+      {
+        "id": "all_parallel",
+        "label": "All three resistors directly across 18 V"
+      },
+      {
+        "id": "equal_split",
+        "label": "Both branch currents must be equal"
+      },
+      {
+        "id": "other",
+        "label": "Another model (justify in writing)"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "r",
+        "label": "Unknown resistance R (ohm)"
+      },
+      {
+        "id": "v",
+        "label": "Parallel branch voltage (V)"
+      },
+      {
+        "id": "known",
+        "label": "Known 6-ohm branch current (A)"
+      },
+      {
+        "id": "unknown",
+        "label": "Unknown branch current (A)"
+      }
+    ],
+    "boundary": {
+      "stem": "For the same ideal 18 V source with fixed 3 ohm series element and fixed 6 ohm parallel branch, classify measurements of 7 A and 1.5 A when only finite positive R changes. Provide both current limits, and explain how open-branch and short-branch limits differ from finite positive R.",
+      "checks": [
+        {
+          "id": "high",
+          "label": "Could 7 A be obtained?",
+          "options": [
+            {
+              "id": "yes",
+              "label": "Yes"
+            },
+            {
+              "id": "no",
+              "label": "No"
+            }
+          ]
+        },
+        {
+          "id": "low",
+          "label": "Could 1.5 A be obtained?",
+          "options": [
+            {
+              "id": "yes",
+              "label": "Yes"
+            },
+            {
+              "id": "no",
+              "label": "No"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "conditions": [
+    "Ideal 18 V supply; constant ohmic positive resistances; 3 ohm series before two-node parallel block; no wire short or hidden extra load.",
+    "All educational prompts are original authored candidate tasks, not validated past-paper Core2 material."
+  ],
+  "review_gate": "SCIENCE_AND_QRT_INDEPENDENT_HOLD__NO_STUDENT_MASTERY_CERTIFICATE"
+}

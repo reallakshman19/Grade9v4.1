@@ -219,17 +219,28 @@ def test_native_chapter_learning_links_and_scoped_new_pairs():
     for topic, (sub, *_rest) in TOPIC_OVERLAYS.items():
         chapter = ROOT / "nsejs/physics/curriculum/topics" / topic
         index = (chapter / "index.html").read_text(encoding="utf-8")
-        assert f"topic-adapter.{topic}.wpe-parity-r2.v1.json" in index
-        assert f"preview.html?case={sub}" in index
+        if topic == "PH11":
+            assert "subtopics/PH11-07/core1b.html" in index
+            assert "review/physics/" not in index
+            assert 'href="topic-adapter.PH11.wpe-parity-r3.v1.json"' not in index
+        else:
+            assert f"topic-adapter.{topic}.wpe-parity-r2.v1.json" in index
+            assert f"preview.html?case={sub}" in index
         assert f"subtopics/{sub}/core1a.html" in index
         a = (chapter / "subtopics" / sub / "core1a.html").read_text(encoding="utf-8")
         b = (chapter / "subtopics" / sub / "core1b.html").read_text(encoding="utf-8")
         assert "ACADEMIC_HOLD" in a or "ACADEMIC HOLD" in a
         assert "QRT" in a
-        assert f"preview.html?case={sub}" in a and f"preview.html?case={sub}" in b
+        if topic == "PH11":
+            assert "review/physics/" not in a + b
+            assert "topic-adapter.PH11.wpe-parity" not in a + b
+            assert 'src="./native-attempt.js"' in b
+        else:
+            assert f"preview.html?case={sub}" in a and f"preview.html?case={sub}" in b
         if topic in ("PH11", "PH12"):
             assert 'role="img"' in a
-            assert "Original author construction diagram" in a
+            assert ("Original author diagram" in a or
+                    "Original author construction diagram" in a)
         else:
             assert 'id="wpe-parity-r2"' in a
         assert "<iframe" not in a.lower() and "<iframe" not in b.lower()
