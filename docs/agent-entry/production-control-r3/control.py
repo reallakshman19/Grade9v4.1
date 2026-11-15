@@ -109,9 +109,9 @@ def signed(receipt,trust,purpose,binding,subject,decision,role,authors=()):
     return key["principal"],r["details"]
 def verify_receipt_file(repo,head,items,trust,p):
     obj=read_json(repo,head,p,items);r=obj["record"];purpose=r["purpose"]
-    roles={"GOVERNANCE":"OWNER","OWNER_SCOPE":"OWNER","OWNER_GOLDEN":"OWNER","PREVIEW_RELEASE":"OWNER","DESIGN":"DESIGN","R00":"R00","R01_SOURCE":"R01_SOURCE","R01_SCIENCE":"R01_SCIENCE","R01_QRT":"R01_QRT","R01_LEARNING":"R01_LEARNING"}
+    roles={"GOVERNANCE":"OWNER","OWNER_SCOPE":"OWNER","OWNER_GOLDEN":"OWNER","PREVIEW_RELEASE":"OWNER","DESIGN":"DESIGN","R00":"R00","R01_SOURCE":"R01_SOURCE","R01_SCIENCE":"R01_SCIENCE","R01_QRT":"R01_QRT","R01_LEARNING":"R01_LEARNING","COLD_SCIENCE_SEAL":"R01_SCIENCE","COLD_QRT_SEAL":"R01_QRT"}
     require(purpose in roles,"UNKNOWN_RECEIPT_PURPOSE:"+purpose)
-    expected="AUTHORIZED" if purpose in ("GOVERNANCE","OWNER_SCOPE","PREVIEW_RELEASE") else "ACCEPTED"
+    expected="AUTHORIZED" if purpose in ("GOVERNANCE","OWNER_SCOPE","PREVIEW_RELEASE") else "SEALED" if purpose.startswith("COLD_") else "ACCEPTED"
     return signed(obj,trust,purpose,r["binding"],r["subject"],expected,roles[purpose])
 def validate_schema(obj,name):
     schema=parse((HERE/name).read_bytes());errors=sorted(Draft202012Validator(schema).iter_errors(obj),key=lambda e:str(e.path))
@@ -122,8 +122,14 @@ def check_witness(repo,rev,w,items):
     if "start_line" in w:
         lines=data.decode().splitlines();a,b=w["start_line"],w["end_line"]
         require(1<=a<=b<=len(lines) and w["excerpt"] in "\n".join(lines[a-1:b]),"WITNESS_LINE_MISMATCH:"+w["path"])
+def platform_module():
+    spec=importlib.util.spec_from_file_location("trusted_platform_contract",HERE/"platform_contract.py");mod=importlib.util.module_from_spec(spec);spec.loader.exec_module(mod);return mod
 def workpack_design(repo,head,workpack,items):
-    validate_schema(workpack,"workpack.schema.json")
+    v2=workpack.get("schema")=="g9-r3-design/v2"
+    validate_schema(workpack,"workpack.v2.schema.json" if v2 else "workpack.schema.json")
+    if v2:
+        platform_module().validate_design(workpack,require)
+        platform_module().check_profile(repo,head,workpack,items,blob,sha,require)
     require(workpack["subject"]=="Physics","SUBJECT_AUTHORITY_NOT_ACTIVATED")
     require({p["role"] for p in workpack["pins"]}==PIN_ROLES and len(workpack["pins"])==len(PIN_ROLES),"MISSING_OR_DUPLICATE_AUTHORITY_PIN")
     require(len({p["path"] for p in workpack["pins"]})==len(PIN_ROLES),"AUTHORITY_PIN_REUSE")
@@ -162,6 +168,7 @@ def check_active(repo,base,head,items,policy,trust,pr_author,content,golden_lane
     require(ancestor(repo,base,d) or ancestor(repo,d,base),"DESIGN_NOT_ON_BASE_LINE")
     if ancestor(repo,base,d):require(not [p for p in changed(repo,base,d) if classify(p,policy)=="CONTENT"],"CONTENT_PRECEDES_DESIGN")
     raw=blob(repo,head,design_path,items);require(raw==blob(repo,d,design_path),"DESIGN_CHANGED_AFTER_APPROVAL")
+    require(parse(raw).get("schema")=="g9-r3-design/v2","DESIGN_V2_REQUIRED")
     w=workpack_design(repo,d,parse(raw),tree(repo,d));wid=w["id"];authors=w["authors"]
     require(w["delivery_kind"]==("GOLDEN_SAMPLE" if golden_lane else "BATCH_ITEM"),"WRONG_WORKPACK_PHASE")
     require(pr_author and pr_author in authors,"PR_AUTHOR_NOT_DECLARED")
@@ -195,7 +202,8 @@ def check_active(repo,base,head,items,policy,trust,pr_author,content,golden_lane
     require(git(repo,"rev-parse","HEAD").decode().strip()==head,"CANDIDATE_CHECKOUT_HEAD_MISMATCH")
     require(not git(repo,"status","--porcelain","--untracked-files=no").strip(),"DIRTY_CANDIDATE_CHECKOUT")
     for i in w["items"]:
-        uid=i["uid"];p=path_ok(sub["packet_paths"][uid]);require(p.startswith(PACKETS),"PACKET_PATH")
+        uid=i["uid"];intake=platform_module().check_candidate(repo,head,i,items,blob,parse,sha,require,validate_schema,path_ok)
+        p=path_ok(sub["packet_paths"][uid]);require(p.startswith(PACKETS),"PACKET_PATH")
         raw_packet=blob(repo,head,p,items);pack=parse(raw_packet)
         t=pack["task"];require(t["task_id"]==uid and t["subtopic_id"]==i["subtopic_id"] and t["base_sha"]==base and t["delivery_kind"]==w["delivery_kind"] and t["golden_sample_sha"]==(t["head_sha"] if golden_lane else golden["head"]) and pack["core2"]["identity"]==i["core2_identity"],"PACKET_IDENTITY_MISMATCH:"+uid)
         tested=commit(repo,t["head_sha"]);require(ancestor(repo,tested,head) and fingerprint(tree(repo,tested))==fp,"STALE_PACKET_CONTENT:"+uid)
@@ -209,8 +217,17 @@ def check_active(repo,base,head,items,policy,trust,pr_author,content,golden_lane
             reviewers.append(principal)
             require(details.get("evidence_path","").startswith(EVID) and SHA64.fullmatch(details.get("evidence_sha256","")),"REVIEW_EVIDENCE_MISSING:"+role)
             require(sha(blob(repo,head,details["evidence_path"],items))==details["evidence_sha256"],"REVIEW_EVIDENCE_HASH_MISMATCH:"+role)
-            if role=="R00":require(details.get("tested_commit")==tested and details.get("browser")=="PASS" and details.get("negative_controls")=="PASS","R00_TEST_RECEIPT_MISSING")
+            if role=="R00":require(details.get("tested_commit")==tested and details.get("browser")=="PASS" and details.get("negative_controls")=="PASS" and details.get("engine")=="g9-assessment/1.0.0" and details.get("manifest_sha256")==intake["manifest_sha256"],"R00_TEST_RECEIPT_MISSING")
             if role=="R01_SOURCE":require(details.get("source_role")==i["source_role"] and details.get("rights")=="PASS" and details.get("custody")=="PASS","SOURCE_REVIEW_HOLD")
+            if role in ("R01_SCIENCE","R01_QRT"):
+                purpose="COLD_SCIENCE_SEAL" if role=="R01_SCIENCE" else "COLD_QRT_SEAL"
+                seal_path=receipt_path(wid,purpose,uid);seal_raw=blob(repo,head,seal_path,items);seal=parse(seal_raw)
+                sealed_principal,sealed=signed(seal,trust,purpose,intake["sha256"],intake["opaque_id"],"SEALED",role,authors)
+                require(sealed_principal==principal and details.get("cold_seal_sha256")==sha(seal_raw) and sealed.get("exposure")=="UNEXPOSED","COLD_SEAL_IDENTITY_OR_EXPOSURE")
+                require(sealed.get("report_path","").startswith(EVID) and SHA64.fullmatch(sealed.get("report_sha256","")) and sha(blob(repo,head,sealed["report_path"],items))==sealed["report_sha256"],"COLD_SEAL_REPORT_MISMATCH")
+                final=read_json(repo,head,receipt_path(wid,role,uid),items)
+                st=datetime.fromisoformat(seal["record"]["issued_at"].replace("Z","+00:00"));ft=datetime.fromisoformat(final["record"]["issued_at"].replace("Z","+00:00"))
+                require(st<ft and details.get("reviewed_after_seal") is True,"COLD_SEAL_CHRONOLOGY")
             if role=="R01_SCIENCE":require(details.get("independent_derivation")=="PASS" and details.get("units_signs_limits")=="PASS","SCIENCE_REVIEW_HOLD")
             if role=="R01_QRT":
                 factors=details.get("factors",{})
@@ -258,7 +275,8 @@ def gate(repo,base,head,trust,pr_author=""):
         # New design records must be valid and externally approved before merging.
         for p in groups["EVIDENCE"]:
             if p.startswith(EVID+"workpacks/") and p.endswith(".json"):
-                raw=blob(repo,head,p,hi);w=workpack_design(repo,head,parse(raw),hi);wd=sha(raw)
+                raw=blob(repo,head,p,hi);require(parse(raw).get("schema")=="g9-r3-design/v2","DESIGN_V2_REQUIRED")
+                w=workpack_design(repo,head,parse(raw),hi);wd=sha(raw)
                 owner,_=get_receipt(repo,head,hi,trust,w["id"],"OWNER_SCOPE",wd,w["id"],"AUTHORIZED","OWNER")
                 designer,_=get_receipt(repo,head,hi,trust,w["id"],"DESIGN",wd,w["id"],"ACCEPTED","DESIGN",w["authors"])
                 require(owner!=designer,"DESIGN_REVIEWER_NOT_SEPARATE")
