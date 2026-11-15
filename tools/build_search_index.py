@@ -30,7 +30,9 @@ from __future__ import annotations
 import hashlib
 import json
 import re
-from datetime import datetime, timezone
+import argparse
+from urllib.parse import urlsplit, urlencode
+from search_learner_pages import build_public_learner_documents, install_public_search
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -251,7 +253,7 @@ def get_synonyms_for_tokens(tokens: list[str], synonyms: list[dict]) -> list[str
             aliases = syn.get("aliases", [])
             if tok in slug or tok in canon or any(tok in a for a in aliases):
                 matches.update(aliases[:8])
-    return list(matches)
+    return sorted(matches)
 
 
 def build_question_documents(repo_root: Path, synonyms: list[dict]) -> list[dict]:
@@ -280,14 +282,10 @@ def build_question_documents(repo_root: Path, synonyms: list[dict]) -> list[dict
 
                 stem = q.get("stem", "")
                 title = stem[:120].strip() or f"{subj_name} Question {qid}"
-                options = q.get("options", [])
-                opts_text = " ".join(str(o) for o in options)
-                hints = q.get("hints", [])
-                hints_text = " ".join((h.get("text", "") if isinstance(h, dict) else str(h)) for h in hints)
-                steps = q.get("steps", [])
-                steps_text = " ".join(str(s) for s in steps)
-                ans = q.get("answer", "")
-                ans_text = str(ans)
+                # Discovery is intentionally limited to the public stem and identity.
+                options = []
+                hints = []
+                source_id = q.get("source_id") or qid
 
                 topic = q.get("topic", "").replace("_", " ").title()
                 band = q.get("band", "D2")
@@ -306,21 +304,22 @@ def build_question_documents(repo_root: Path, synonyms: list[dict]) -> list[dict
                 tokens = [normalize_text(topic), normalize_text(subj_name)]
                 syns = get_synonyms_for_tokens(tokens, synonyms)
 
-                badge = f"NSEJS · {band}"
-                breadcrumb = f"NSEJS · {subj_name} · {topic} · {band} · {op}"
+                badge = f"NSEJS QUESTION CANDIDATE · HOLD"
+                breadcrumb = f"NSEJS · {subj_name} · {topic} · Candidate / HOLD"
 
                 search_vector = normalize_text(
-                    f"{qid} {title} {stem} {opts_text} {hints_text} {steps_text} "
+                    f"{qid} {source_id} {title} {stem} "
                     f"{subj_name} {topic} {band} {op} {batch} {origin} {year_str} {qnum_str} "
                     f"nsejs olympiad iapt junior science {' '.join(syns)}"
                 )
 
                 # Direct link with anchor and query param
-                item_url = f"{qb_page}?q={qid}#{qid}"
+                item_url = f"nsejs/{subj_key}/index.html?{urlencode({'q': source_id})}#{source_id}"
 
                 docs.append({
                     "id": f"Q-{qid}",
                     "original_id": qid,
+                    "source_id": source_id,
                     "type": "QUESTION",
                     "category": "question",
                     "badge": badge,
@@ -355,7 +354,7 @@ def build_question_documents(repo_root: Path, synonyms: list[dict]) -> list[dict
                     continue
                 seen_ids.add(qid)
                 stem = q.get("stem", "")
-                title = q.get("source_name", stem[:110])
+                title = stem[:110].strip() or qid
                 topic = q.get("topic", "Mechanics").replace("_", " ").title()
                 circuit = re.fullmatch(r"NSEJS-CIRC-L([12])-Q(\d{2})", qid)
                 if circuit:
@@ -374,12 +373,12 @@ def build_question_documents(repo_root: Path, synonyms: list[dict]) -> list[dict
                     item_url = f"nsejs/physics/index.html?topic=circuits#{qid}"
                     item_score = q.get("score", 0)
                 else:
-                    badge = "{Reviewed} · PRACTICE"
+                    badge = "AUTHORED PRACTICE · ACADEMIC HOLD"
                     breadcrumb = f"NSEJS · Physics · {topic} · Authored Practice"
                     search_vector = normalize_text(
                         f"{qid} {title} {stem} Physics {topic} mechanics practice authored nsejs"
                     )
-                    item_url = f"nsejs/physics/authored-practice.html?q={qid}#{qid}"
+                    item_url = f"nsejs/physics/index.html?{urlencode({'q': qid})}#{qid}"
                     item_score = 4
                 docs.append({
                     "id": f"Q-{qid}",
@@ -394,8 +393,8 @@ def build_question_documents(repo_root: Path, synonyms: list[dict]) -> list[dict
                     "scope": ["nsejs", "physics"],
                     "title": title,
                     "stem": stem,
-                    "options": q.get("options", []),
-                    "hints": [] if circuit else q.get("hints", []),
+                    "options": [],
+                    "hints": [],
                     "band": q.get("band", "D2"),
                     "op": q.get("op", "TRANSFER"),
                     "score": item_score,
@@ -1090,18 +1089,42 @@ def build_curriculum_and_page_documents(repo_root: Path, synonyms: list[dict]) -
 
 
 def main():
-    print("Building Grade9 v4.0 Search Index...")
+    parser = argparse.ArgumentParser(description="Build the unified NSEJS Junior Science discovery index")
+    parser.add_argument("--install-search", action="store_true", help="Install the shared search UI into public HTML in the Pages staging checkout")
+    args = parser.parse_args()
+    print("Building Search NSEJS Junior Science index...")
     synonyms = DEFAULT_SYNONYMS
 
     q_docs = build_question_documents(REPO_ROOT, synonyms)
     tab_docs = build_tablet_documents(REPO_ROOT, synonyms)
     cur_docs = build_curriculum_and_page_documents(REPO_ROOT, synonyms)
 
-    all_docs = q_docs + tab_docs + cur_docs
+    # Current registry routes take precedence over stale hand-maintained aliases.
+    dynamic_docs, public_pages = build_public_learner_documents(REPO_ROOT, normalize_text)
+    all_docs = []
+    seen = set()
+    for doc in q_docs + dynamic_docs + tab_docs + cur_docs:
+        target = urlsplit(doc["url"])
+        if target.scheme or target.netloc or not (REPO_ROOT / target.path).is_file():
+            continue
+        # Deduplicate exact destinations, not subtopics which share a dynamic reader.
+        key = doc["url"]
+        if key in seen:
+            continue
+        seen.add(key)
+        if doc["category"] != "question":
+            # Never copy a lesson body, hidden DOM, SVG, or reconstruction into discovery.
+            doc["search_text"] = normalize_text(" ".join(str(doc.get(k,"")) for k in ("id","title","subject","topic","badge","breadcrumb","url")) + (" nsejs junior science" if doc.get("is_nsejs") else ""))
+            if doc.get("is_nsejs") and "HOLD" not in doc["badge"]:
+                doc["badge"] = "LEARNING CANDIDATE · HOLD"
+        all_docs.append(doc)
+    if args.install_search:
+        install_public_search(REPO_ROOT, public_pages)
 
     # Stats
     stats = {
-        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "generator_revision": "nsejs-all-pages-r1",
+        "public_html_pages": len(public_pages),
         "total_documents": len(all_docs),
         "by_category": {},
         "by_subject": {},
