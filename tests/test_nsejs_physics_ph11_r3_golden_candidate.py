@@ -164,11 +164,14 @@ def test_native_pages_link_the_correct_adapter_and_the_repaired_figures():
         for href in parsed.links:
             resolved = (page.parent / href).resolve()
             assert resolved.is_file(), (str(page.relative_to(ROOT)), href, str(resolved))
-        assert "topic-adapter.PH11.wpe-parity-r3.v1.json" in source
+        assert "topic-adapter.PH11.wpe-parity-r3.v1.json" not in source
+        assert "review/physics/" not in source
         assert "ACADEMIC HOLD" in source
         assert "<iframe" not in source.lower()
     assert "source-first" in b.lower()
-    assert "D3.4" in b and "D4.4 proposal is explicitly disputed" in b
+    assert "native-attempt.js" in b and "AUTHOR-EXPOSED" in b
+    assert "Worked inverse construction" in a
+    assert "Feasibility proof" in a
 
 
 def test_runtime_uses_r3_adapter_and_does_not_show_source_or_decisive_work_early():
