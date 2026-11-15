@@ -73,7 +73,7 @@ async function displayChallenge(c){
     const p=document.querySelector("#prediction").value.trim(),a=document.querySelector("#answer").value.trim();if(p.length<10||a.length<40){alert("A prediction and at least 40 characters of reasoning are required; a selected answer alone is insufficient.");return}
     const preHelp=localStorage.getItem(preKey)==="opened";const next={uid:q.uid,revision:c.revision,fingerprint,first:{prediction:p,answer:a,at:new Date().toISOString()},exposures:preHelp?[{kind:"linked_study_before_first",at:new Date().toISOString()}]:[],hintCount:0,reconstruction:false,diagnosis:null,repair:null,boundary:null,boundaryModel:false};
     if(persist(next))draw();
-  }));}else{put(s2,el("p","Original first response, saved separately and not overwritable by this page:","ok"),el("blockquote",record.first.answer),el("p","Saved "+record.first.at+"; help exposure events: "+record.exposures.map(x=>x.kind).join(", ")||"none","small"));}
+  }));}else{put(s2,el("p","Original first response, saved separately and not overwritable by this page:","ok"),el("blockquote",record.first.answer),el("p","Saved "+record.first.at+"; help exposure events: "+(record.exposures.map(x=>x.kind).join(", ")||"none"),"small"));}
   mount.append(s2);
   if(!record?.first){mount.append(el("p","Stages 3–6 are locked until the first prediction and independent reasoning have been saved.","small"));return;}
   const help=section("Optional orientation support · only after first attempt");
@@ -102,7 +102,7 @@ async function displaySources(){
  const register=await res.json();if(register.counts?.subtopic_rows!==41||register.rows?.length!==41)throw Error("Scope register invalid: fail closed");
  const records=chapter?register.rows.filter(x=>x.chapter===chapter):register.rows;
  if(chapter&&!["PH01","PH02","PH07","PH08"].includes(chapter))throw Error("Unsupported chapter filter");
- mount.replaceChildren(note("This is an evidence ledger, not a Core2 exam question bank. No original examination stem, figure or key has been independently admitted for these four chapters in this audit. Do not infer coverage from a link."));
+ mount.replaceChildren(note("This is an evidence ledger, not a Core2 exam question bank. No original examination stem, figure or key has been independently authenticated and admitted within this four-chapter audit. Do not infer coverage from a link."));
  const summary=card("Evidence disposition · "+(chapter||"four selected chapters"));
  put(summary,el("p",records.length+" published candidate Core1A/Core1B route pairs; zero original-question admissions and zero independently qualified B1–B7 units."),el("p","PH07/PH08 inspected B01 bank: 17 unmatched subtopics, 6 supporting-only and 2 related producer candidates on HOLD."));mount.append(summary);
  const table=el("table"),thead=el("thead"),tr=el("tr");for(const h of ["Subtopic","Evidence relationship","Learning route","Revision-aware practice"])tr.append(el("th",h));thead.append(tr);table.append(thead);const tbody=el("tbody");
