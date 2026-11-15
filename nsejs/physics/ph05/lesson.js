@@ -1,3 +1,4 @@
+import {renderCanonicalPH05} from "./route-migration.js";
 /* PH05 Core1A candidate renderer: original content, source/QRT academic HOLD. */
 const el=document.querySelector("[data-ph05-lesson]");
 const uid=el?.dataset.unit;
@@ -94,7 +95,7 @@ try{
  if(!resp.ok)throw Error("PH05 data unavailable: HTTP "+resp.status);
  const data=await resp.json(); const u=data.units.find(x=>x.id===uid);
  if(data.schema!=="g9v41-ph05-author-candidate-content/v1"||!u||data.academic_status!=="HOLD")throw Error("Invalid/missing PH05 candidate and status");
- render(u);
+ if(!await renderCanonicalPH05(el,uid,"learn"))render(u);
 }catch(e){
  if(el){el.className="error";el.textContent="PH05 lesson load failed: "+e.message;}
 }

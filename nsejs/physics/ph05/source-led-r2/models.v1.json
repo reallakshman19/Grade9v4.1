@@ -323,6 +323,29 @@
       "boundaryModel": "No in this static positive-density model.",
       "figure": "figures/p08-a-prompt.svg",
       "package": "P08"
+    },
+    {
+      "uid": "AUTHORED-PH05-R2-P09-A",
+      "revision": "r3-20261115",
+      "cell": "D3.4",
+      "nomination": "AUTHOR_ONLY_NOT_QUALIFIED",
+      "prediction": "Can unequal local gravity shift the point of action without changing the mass distribution?",
+      "prompt": "A massless horizontal rod carries masses 1 kg at x=0, 2 kg at x=2 m and 1 kg at x=6 m. All local gravity vectors are vertically downward. The first two fields are 10 N/kg each; the third is unknown. The equivalent resultant weight acts at x=2 m. Find the unknown field, the centre of mass, and whether the two locations coincide.",
+      "figure": "figures/p09-a-prompt.svg",
+      "package": "P09",
+      "source_role": "AUTHORED_TRANSFER",
+      "w": "Match the net gravitational torque to the resultant weight at a known location, infer missing field strength, then compare mass weighting.",
+      "hints": [
+        "Write gravitational force for each mass separately.",
+        "Take moments about x=0 and equate them to the moment of the resultant.",
+        "Use mass rather than weight for centre of mass."
+      ],
+      "reconstruction": "Let the third field be g₃. Total weight=10+20+g₃=30+g₃ N. Moment about x=0=20×2+6g₃=40+6g₃ N·m. Thus 2(30+g₃)=40+6g₃, giving g₃=5 N/kg. Centre of mass=(0+4+6)/4=2.5 m; x_cg=2 m, not equal.",
+      "alternative": "Take moments about x=2: first force gives −20 N·m (signed position moment), middle zero, third +4g₃. Balance requires 4g₃=20.",
+      "diagnosis": "Did you weight positions by mass instead of gravitational force when locating the resultant?",
+      "repair": "Write both weighted-position equations separately, and use the torque equation for g₃.",
+      "boundaryPrompt": "If all three fields are 10 N/kg, where is the resultant weight?",
+      "boundaryModel": "At x=2.5 m, coincident with centre of mass."
     }
   ]
 }

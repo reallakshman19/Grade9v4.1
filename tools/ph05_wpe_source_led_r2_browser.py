@@ -34,6 +34,13 @@ def run():
             for w,h in [(1000,1600),(1600,1000)]:
                 ctx=browser.new_context(viewport={"width":w,"height":h})
                 page=ctx.new_page()
+                for unit in DATA["stable_subtopics"]:
+                    suffix=unit["id"][-3:]
+                    for role,folder in [("learn","textbook"),("practice","core1")]:
+                        page.goto(f"http://127.0.0.1:{server.server_port}/nsejs/physics/{folder}/PH05/{suffix}/index.html")
+                        expect(page.locator("main h1")).to_contain_text(unit["title"])
+                        assert page.locator("main a.action").count()>0
+                        assert page.locator("main a").filter(has_text="Archived earlier candidate").count()==1
                 for pack in DATA["packages"]:
                     p=pack["id"]
                     page.goto(f"{url}?package={p}&stage=learn")
@@ -110,5 +117,5 @@ def run():
             browser.close()
     finally:
         server.shutdown();server.server_close()
-    print("PH05 R2: 28 task journeys, 16 guides, exact source return, storage denial PASS")
+    print("PH05 R2: 30 task journeys, 18 guides, 28 canonical route loads, exact source return, storage denial PASS")
 if __name__=="__main__":run()

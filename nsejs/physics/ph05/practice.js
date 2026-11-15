@@ -1,3 +1,4 @@
+import {renderCanonicalPH05} from "./route-migration.js";
 /* PH05 Core1B author candidate. Protected browser learning workflow, not secure examination invigilation or academic approval. */
 const mount=document.querySelector("[data-ph05-practice]");
 const uid=mount?.dataset.unit;
@@ -112,6 +113,7 @@ function bind(){
 async function init(){
  try{
   if(!mount||!uid)throw Error("Missing exact practice identity");
+  if(await renderCanonicalPH05(mount,uid,"practice"))return;
   const response=await fetch(new URL("./units.v1.json",import.meta.url),{cache:"no-store"});
   if(!response.ok)throw Error("candidate data HTTP "+response.status);
   const data=await response.json();
