@@ -4,6 +4,7 @@ Static author QA only: no original-exam authentication or independent R01 Physic
 approval may be inferred from a passing test.
 """
 import json
+import hashlib
 from collections import Counter
 from pathlib import Path
 from math import sqrt
@@ -76,6 +77,12 @@ def test_four_versioned_topic_adapters_are_real_and_have_exact_task_join():
         assert a["quality_r1_extension"]["original_paper_admission"]=="HOLD"
         assert a["quality_r1_extension"]["five_factor_independent_scores"] is None
         assert a["quality_r1_extension"]["b1_b7"]=="HOLD"
+        author=a["quality_r1_extension"]["author_five_factor_hypothesis"]
+        assert author==u["adapter"]["author_qrt_hypothesis"]
+        raw=CASES.read_bytes()
+        git_blob=hashlib.sha1(b"blob "+str(len(raw)).encode("ascii")+bytes([0])+raw).hexdigest()
+        assert a["quality_r1_extension"]["r1_case_file_git_blob"]==git_blob
+        assert a["quality_r1_extension"]["five_factor_independent_scores"] is None
         candidates=[i for c in a["cells"] for i in c["instance_ids"]]
         assert len(candidates)==expected_base[u["chapter"]]+1
         assert len(set(candidates))==len(candidates)
