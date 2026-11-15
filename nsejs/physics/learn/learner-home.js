@@ -19,7 +19,8 @@ function init(){
     const a=document.createElement("a");
     a.className="g9-bank-return";
     a.href=target.href;
-    a.textContent="← Return to "+ph+" learning";
+    const title=document.querySelector("#chapter-"+ph+" h3")?.textContent?.trim()||"Physics";
+    a.textContent="← Return to "+title+" learning";
     const body=bank.querySelector(".g9-bank-archive-body");
     if(body)body.prepend(a);
   }

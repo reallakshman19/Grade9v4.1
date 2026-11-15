@@ -74,6 +74,14 @@ async function load(){
   crumb.append(a("NSEJS",url("../index.html")),el("span","›"),a("Physics",url("index.html#learn-physics")),el("span","›"),a(ch.title,chapterUrl(ch.id)),el("span","›"),el("span",unit?(unit.title||"This lesson")+" · "+(role==="learn"?"Learn":"Try it"):role==="help"?"Extra help":role==="preview"?"Practice preview":"Read chapter"));
   const actions=el("div");actions.className="g9-study-actions";
   actions.append(a("← "+ch.title,chapterUrl(ch.id,refId)));
+  const requestedQuestion=new URLSearchParams(location.search).get("question")||"";
+  if(ch.id==="PH11"&&/^NSEJS-CIRC-L[12]-Q\d{2}$/.test(requestedQuestion)){
+    const back=new URL("index.html",root);
+    back.searchParams.set("topic","circuits");
+    back.searchParams.set("q",requestedQuestion);
+    back.hash="question-"+requestedQuestion;
+    actions.prepend(a("← Return to your question",back.href,"g9-next"));
+  }
   if(unit){
     const reading=a("1 · Learn",url(unit.learn));if(role==="learn")reading.setAttribute("aria-current","page");actions.append(reading);
     const practice=a("2 · Try it",url(unit.practice));if(role==="practice")practice.setAttribute("aria-current","page");actions.append(practice);
