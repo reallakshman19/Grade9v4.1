@@ -210,3 +210,17 @@ def test_core1a_and_precommit_core1b_do_not_download_or_embed_postcommit_models(
     assert "Pinned source and post-attempt model revisions required" in js
     assert 'const header=new TextEncoder().encode("blob "+data.length+String.fromCharCode(0))' in js
     assert 'fetch("./cases.v1.json"' not in js
+
+
+def test_echo_teaching_diagram_obeys_equal_incidence_and_reflection_angles():
+    # Verify the actual native SVG coordinates authored into runtime.js.
+    import re
+    js=(PH/"quality-r1/runtime.js").read_text(encoding="utf-8")
+    pattern=r'line\\((\\d+),(\\d+),(\\d+),(\\d+),"#b36f16",4\\);line\\((\\d+),(\\d+),(\\d+),(\\d+),"#b36f16",4\\)'
+    m=re.search(pattern,js)
+    assert m, "Echo diagram must contain both incident and reflected segments"
+    sx,sy,wx,wy,wx2,wy2,mx,my=map(int,m.groups())
+    assert wx==wx2 and wy==wy2
+    assert sx==mx, "Example source and mic are at equal normal distance from wall"
+    assert sy<wy<my, "Reflection point must lie between their projected heights"
+    assert abs((wy-sy)/(wx-sx))==abs((my-wy)/(wx2-mx)), "Angles not equal"
