@@ -211,8 +211,8 @@ def tampered_pins_and_model(browser,origin):
         public=json.loads((DIR/"prediction-prompts.v2.json").read_text(encoding="utf-8"))
         public["source_v2_git_blob"]="a"*40
         ctx.route("**/prediction-prompts.v2.json",lambda route:route.fulfill(status=200,content_type="application/json",body=json.dumps(public)))
-        load(p,base)
-        p.get_by_text("Pinned bytes mismatch: prediction-prompts.v2.json",exact=False).wait_for()
+        p.goto(base,wait_until="domcontentloaded")
+        p.get_by_text("Pinned bytes mismatch: prediction-prompts.v2.json",exact=False).wait_for(timeout=15000)
         assert p.get_by_role("button",name="Commit prediction").count()==0
     finally:ctx.close()
     ctx=browser.new_context();p=ctx.new_page()
