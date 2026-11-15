@@ -1,3 +1,4 @@
+import {renderCanonicalPH05} from "./route-migration.js";
 /* PH05 Core1B author candidate. Protected browser learning workflow, not secure examination invigilation or academic approval. */
 const mount=document.querySelector("[data-ph05-practice]");
 const uid=mount?.dataset.unit;
@@ -62,6 +63,7 @@ function refresh(){
 function bind(){
  $("firstCommit").addEventListener("click",()=>{
    if(rec?.first_answer)return;
+   try{if(localStorage.getItem(key)){if(loadState())refresh();return;}}catch(e){fail("Storage unavailable; first attempt not saved.");return;}
    const prediction=$("prediction").value.trim(),answer=$("attempt").value.trim();
    if(!prediction||!answer){fail("Both a prediction and an explained first attempt are required.");return;}
    let prehelp=false;
@@ -111,6 +113,7 @@ function bind(){
 async function init(){
  try{
   if(!mount||!uid)throw Error("Missing exact practice identity");
+  if(await renderCanonicalPH05(mount,uid,"practice"))return;
   const response=await fetch(new URL("./units.v1.json",import.meta.url),{cache:"no-store"});
   if(!response.ok)throw Error("candidate data HTTP "+response.status);
   const data=await response.json();
@@ -143,7 +146,7 @@ async function init(){
   if(!u)throw Error("Cross-topic task owner missing; HOLD");
   if(!globalThis.crypto?.subtle || typeof TextEncoder==="undefined")throw Error("Content-digest protection unavailable");
   const fingerprintSource=JSON.stringify([ptask.uid,ptask.revision,ptask.prediction,ptask.prompt,ptask.w,
-    ptask.reconstruction,ptask.alternative,ptask.hints,ptask.boundaryPrompt,ptask.boundaryModel]);
+    ptask.reconstruction,ptask.alternative,ptask.hints,ptask.diagnosis,ptask.repair,ptask.boundaryPrompt,ptask.boundaryModel]);
   const bytes=new TextEncoder().encode(fingerprintSource);
   const hash=await crypto.subtle.digest("SHA-256",bytes);
   contentFingerprint=Array.from(new Uint8Array(hash),b=>b.toString(16).padStart(2,"0")).join("");

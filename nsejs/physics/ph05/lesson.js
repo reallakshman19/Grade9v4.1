@@ -1,3 +1,4 @@
+import {renderCanonicalPH05} from "./route-migration.js";
 /* PH05 Core1A candidate renderer: original content, source/QRT academic HOLD. */
 const el=document.querySelector("[data-ph05-lesson]");
 const uid=el?.dataset.unit;
@@ -45,9 +46,9 @@ function figure(u){
           '<circle cx="149" cy="120" r="14" fill="#e59832" stroke="#9e5808" stroke-width="2"/>'+
           '<circle cx="130" cy="120" r="8" fill="#1b7280"/>'+
           '<circle cx="530" cy="120" r="8" fill="#1b7280"/>'+
-          line(130,120,130,70)+line(530,120,530,95)+
+          line(130,120,130,70)+line(530,120,530,145)+
           text(155,96,"Sun")+text(75,125,"Perihelion: rₚ")+text(75,65,"vₚ (fast)")+
-          text(465,145,"Aphelion: rₐ")+text(485,85,"vₐ (slow)");
+          text(465,145,"Aphelion: rₐ")+text(485,170,"vₐ (slow)");
    break;
  case "satellite_energy":
    shapes='<circle cx="240" cy="120" r="50" fill="#d8ecf8" stroke="#1c5d80" stroke-width="3"/>'+
@@ -94,7 +95,7 @@ try{
  if(!resp.ok)throw Error("PH05 data unavailable: HTTP "+resp.status);
  const data=await resp.json(); const u=data.units.find(x=>x.id===uid);
  if(data.schema!=="g9v41-ph05-author-candidate-content/v1"||!u||data.academic_status!=="HOLD")throw Error("Invalid/missing PH05 candidate and status");
- render(u);
+ if(!await renderCanonicalPH05(el,uid,"learn"))render(u);
 }catch(e){
  if(el){el.className="error";el.textContent="PH05 lesson load failed: "+e.message;}
 }

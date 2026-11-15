@@ -166,7 +166,7 @@
       },
       "practice": {
         "uid": "AUTHORED-PH05-G02-TRANSFER-01",
-        "revision": "ph05-g02-20261115-r1",
+        "revision": "ph05-g02-20261115-r1-science-r2",
         "prediction": "If both the mass and radius of a planet are halved, does its surface gravity double, halve, or stay the same?",
         "prompt": "An exoplanet has mass M_p = 0.5 M_E and radius R_p = 0.5 R_E. An astronaut who can jump vertically to a maximum height of 0.80 m on Earth jumps on this exoplanet with the identical takeoff velocity. What maximum height does the astronaut reach on the exoplanet?",
         "w": "Calculate surface gravity ratio g_p = (0.5)/(0.5^2) * g_E = 2 g_E, then apply kinematics h = v^2 / (2g) to deduce h_p = h_E / 2 = 0.40 m.",
@@ -176,7 +176,7 @@
           "Use vertical jump kinematics: v^2 = 2 * g * h ==> h is inversely proportional to g."
         ],
         "reconstruction": "1. Surface gravity on exoplanet: g_p = G * (0.5 M_E) / (0.5 R_E)^2 = (0.5 / 0.25) * (G * M_E / R_E^2) = 2.0 * g_E. 2. Jump height relation: Vertical kinematics under constant gravity gives v^2 = 2 * g * h ==> h = v^2 / (2g). For identical takeoff speed v, h is inversely proportional to g: h_p / h_E = g_E / g_p = 1 / 2. 3. Evaluation: h_p = 0.80 m / 2 = 0.40 m. The astronaut jumps only half as high because surface gravity is doubled.",
-        "alternative": "Work-energy equivalence: The astronaut's leg muscles do work W = F_leg * d_leg = m * g * h. For equal work output W, h = W / (m * g) ==> h_p / h_E = g_E / g_p = 1/2 ==> h_p = 0.40 m.",
+        "alternative": "After takeoff, the same initial speed gives the same kinetic energy ½mv². At maximum height, neglecting drag and taking local g constant, ½mv²=mgh. Therefore h_p/h_E=g_E/g_p=1/2, so h_p=0.40 m.",
         "diagnosis": "If you answered 1.60 m, you inverted the relationship between gravity and jump height (higher gravity reduces jump height). If you answered 0.80 m, you assumed g was unchanged.",
         "repair": "Remember that halving radius quarters the denominator (1/0.25 = 4), which overwhelms halving the mass (0.5 * 4 = 2). Double gravity cuts vertical jump height in half.",
         "boundaryPrompt": "What jump height would the astronaut achieve on a small asteroid where mass is 10^-6 M_E and radius is 10^-3 R_E?",
@@ -224,7 +224,7 @@
         ]
       ],
       "anchor": {
-        "problem": "An object has weight W0 at the Earth's surface. Compare its weight at altitude h = R with its weight at depth d = R/2.",
+        "problem": "An object has weight W0 at the Earth's surface. Compare its weight at altitude h = R with its weight at depth d = R/2. Assume a nonrotating, uniform-density spherical Earth.",
         "solution": "At altitude h = R: g_alt = g0 * [R / (R + R)]^2 = g0 * (1/2)^2 = g0 / 4 ==> W_alt = W0 / 4 = 0.25 W0. At depth d = R/2: g_depth = g0 * (1 - (R/2)/R) = g0 / 2 ==> W_depth = W0 / 2 = 0.50 W0. The object is twice as heavy at depth R/2 as it is at altitude R."
       },
       "misconception": {
@@ -237,14 +237,14 @@
         "check": "g(0) = g0 * (0 / R) = 0 N/kg. Gravitational attraction from all symmetric surrounding mass elements cancels out completely."
       },
       "synthesis": {
-        "question": "A straight frictionless tunnel is bored through the center of the Earth. A ball is dropped from one end. What motion does it execute?",
+        "question": "In a nonrotating uniform-density spherical Earth, use an ideal negligible-width diametral passage that does not perturb the spherical gravitational field. A ball is released from rest at one end. What motion does it execute?",
         "answer": "Inside the tunnel, the restoring force is F = -m * g(r) = -m * (g0 / R) * r = -k * r, where k = m*g0/R is a constant. This is Hooke's Law! The ball executes simple harmonic motion (SHM) with angular frequency omega = sqrt(g0 / R) and period T = 2*pi*sqrt(R/g0) ≈ 84.3 minutes."
       },
       "practice": {
         "uid": "AUTHORED-PH05-G03-TRANSFER-01",
-        "revision": "ph05-g03-20261115-r1",
+        "revision": "ph05-g03-20261115-r1-science-r2",
         "prediction": "Is the depth at which gravity is 25% of surface gravity greater than, less than, or equal to the altitude where gravity is 25% of surface gravity?",
-        "prompt": "Find the ratio of the depth d to the altitude h at which the acceleration due to gravity has the identical value g = 0.25 g0. Take Earth radius as R.",
+        "prompt": "Find the ratio of the depth d to the altitude h at which the acceleration due to gravity has the identical value g = 0.25 g0. Take Earth radius as R. Assume a nonrotating uniform-density spherical Earth.",
         "w": "Equate the interior linear relation g0*(1 - d/R) = 0.25 g0 to find d = 0.75 R, and the exact exterior inverse-square relation g0/(1 + h/R)^2 = 0.25 g0 to find h = R, then form ratio d/h = 0.75.",
         "hints": [
           "Set up the interior equation g(d) = g0 * (1 - d/R) = 0.25 g0 and solve for d.",
@@ -404,17 +404,17 @@
       },
       "practice": {
         "uid": "AUTHORED-PH05-G05-TRANSFER-01",
-        "revision": "ph05-g05-20261115-r1",
+        "revision": "ph05-g05-20261115-r1-science-r2",
         "prediction": "If an elliptical orbit has semiminor axis b and semimajor axis a, what is the total orbital period expressed in terms of angular momentum L, planet mass m, and ellipse area?",
-        "prompt": "An asteroid of mass m moves in an elliptical orbit of semimajor axis a = 4.0 * 10^11 m and semiminor axis b = 3.0 * 10^11 m around a star of mass M = 2.0 * 10^30 kg. The asteroid's orbital angular momentum is L = 6.0 * 10^38 kg m^2 s^-1 and its mass is m = 1.0 * 10^18 kg. Calculate the exact orbital period T of the asteroid using Kepler's second law.",
+        "prompt": "An asteroid of mass m=1.0×10^18 kg moves in a Newtonian elliptical orbit about a star of mass M=2.0×10^30 kg, with semimajor axis a=4.0×10^11 m and semiminor axis b=3.0×10^11 m. Its angular momentum is L=m b √(GM/a) ≈ 5.48×10^33 kg m²/s. Neglect asteroid recoil. Find the period using areal velocity.",
         "w": "Integrate constant areal velocity dA/dt = L / (2m) over one complete orbit to express period as T = (Total Area) / (dA/dt) = (pi * a * b) / [L / (2m)] = 2 * pi * m * a * b / L.",
         "hints": [
           "Use the geometric area of an ellipse: Area = pi * a * b.",
           "Recall Kepler's second law: areal velocity dA/dt = L / (2m) is strictly constant.",
           "Total period is simply the total ellipse area divided by the constant rate at which area is swept."
         ],
-        "reconstruction": "1. Area of Elliptical Orbit: Area A = pi * a * b = pi * (4.0 * 10^11) * (3.0 * 10^11) = 12.0 * pi * 10^22 m^2. 2. Areal Velocity: By Kepler's second law, dA/dt = L / (2 * m) = (6.0 * 10^38) / (2 * 1.0 * 10^18) = 3.0 * 10^20 m^2 s^-1. 3. Orbital Period Calculation: T = Area / (dA/dt) = (12.0 * pi * 10^22) / (3.0 * 10^20) = 4.0 * pi * 10^2 s = 400 * pi s ≈ 1256.6 s ≈ 1.26 * 10^3 s.",
-        "alternative": "Verify via Kepler's 3rd Law: T = 2*pi*sqrt(a^3 / GM) = 2*pi*sqrt((64 * 10^33) / (6.674 * 10^-11 * 2 * 10^30)) = 2*pi*sqrt(4.795 * 10^14) ≈ 1.37 * 10^8 s. Note that the given hypothetical L corresponds to a tightly bound system verifying T = Area / (dA/dt).",
+        "reconstruction": "Ellipse area πab; areal velocity L/(2m). T=2πmab/L=2π√(a³/(GM)) ≈ 1.37×10^8 s. Using L≈5.48×10^33 gives the same result to rounding.",
+        "alternative": "Kepler third law: T=2π√(a³/(GM))≈1.376×10^8 s; consistent with the specified angular momentum.",
         "diagnosis": "If you attempted to calculate the circumference divided by average speed, ellipse perimeter cannot be simply written as 2*pi*sqrt(ab), and speed varies. Area swept per second is exact.",
         "repair": "Recognize that Kepler's second law provides the most direct link between orbital geometry and time: dt = (2m/L) * dA, so integrating over the full ellipse yields T = 2*pi*m*a*b / L.",
         "boundaryPrompt": "What does the formula T = 2*pi*m*a*b / L reduce to for a circular orbit of radius R?",
@@ -470,8 +470,8 @@
         ]
       ],
       "anchor": {
-        "problem": "A satellite of mass m revolves in a circular orbit of radius r around Earth. What additional kinetic energy must be supplied to the satellite to shift it into a higher circular orbit of radius 3r?",
-        "solution": "Initial energy E1 = -GMm / (2r). Final energy E2 = -GMm / (2 * 3r) = -GMm / (6r). Required energy Delta_E = E2 - E1 = (-1/6 + 1/2) * (GMm/r) = (1/3) * (GMm/r) = +GMm / (3r)."
+        "problem": "A satellite of mass m changes from a circular orbit of radius r to a circular orbit of radius 3r. What is the net change in mechanical energy between the circular states? Also compare kinetic energies.",
+        "solution": "Initial energy E1 = -GMm / (2r). Final energy E2 = -GMm / (2 * 3r) = -GMm / (6r). Required energy Delta_E = E2 - E1 = (-1/6 + 1/2) * (GMm/r) = (1/3) * (GMm/r) = +GMm / (3r). The circular kinetic energy changes by GMm/(6r)−GMm/(2r)=−GMm/(3r); the net supplied mechanical energy is not a kinetic-energy increase."
       },
       "misconception": {
         "wrong": "To move a satellite into a higher orbit, you only need to supply potential energy.",
@@ -483,14 +483,14 @@
         "check": "v_surface = sqrt(G*M / R) = sqrt(g0 * R) ≈ sqrt(9.8 * 6.4 * 10^6) ≈ 7.92 km/s (First Cosmic Velocity)."
       },
       "synthesis": {
-        "question": "Explain using energy conservation why atmospheric drag speeds up a low Earth satellite.",
-        "answer": "Atmospheric drag removes mechanical energy: Delta_E < 0. For circular orbits, Delta_E = -Delta_K. Therefore, Delta_K = -Delta_E > 0! Half of the lost potential energy goes into heating the air, while the other half converts into increased orbital kinetic energy."
+        "question": "Explain why slow quasi-circular orbital decay can increase orbital speed between circular states despite drag.",
+        "answer": "Atmospheric drag removes mechanical energy: Delta_E < 0. For circular orbits, Delta_E = -Delta_K. Therefore, Delta_K = -Delta_E > 0! Half of the lost potential energy goes into heating the air, while the other half converts into increased orbital kinetic energy. This is an endpoint/quasi-circular approximation; instantaneous tangential drag decelerates the satellite and the identity need not hold along an eccentric trajectory."
       },
       "practice": {
         "uid": "AUTHORED-PH05-G06-TRANSFER-01",
-        "revision": "ph05-g06-20261115-r1",
-        "prediction": "If a satellite in orbit r loses 10 MJ of total mechanical energy due to atmospheric drag, does its kinetic energy increase by 10 MJ, decrease by 10 MJ, or stay constant?",
-        "prompt": "A 1000 kg scientific satellite revolves in a circular low Earth orbit. Due to residual atmospheric drag over a period of 6 months, the satellite's orbital altitude drops slightly, causing a total mechanical energy loss of Delta_E = -200 MJ. (1) How does the satellite's kinetic energy change? (2) How does its potential energy change? (3) Does its orbital speed increase or decrease?",
+        "revision": "ph05-g06-20261115-r1-science-r2",
+        "prediction": "Between two nearby circular orbital states, if mechanical energy decreases by 10 MJ, how does kinetic energy change?",
+        "prompt": "A 1000 kg scientific satellite revolves in a circular low Earth orbit. Due to residual atmospheric drag over a period of 6 months, the satellite's orbital altitude drops slightly, causing a total mechanical energy loss of Delta_E = -200 MJ. (1) How does the satellite's kinetic energy change? (2) How does its potential energy change? (3) Does its orbital speed increase or decrease? Treat initial and final states as circular (slow quasi-circular decay); do not infer instantaneous acceleration from these endpoint changes.",
         "w": "Apply the virial relation E = -K = U/2 to deduce Delta_K = -Delta_E = +200 MJ and Delta_U = 2 * Delta_E = -400 MJ, proving that orbital speed increases.",
         "hints": [
           "Write the relationships between E, K, and U for a circular orbit: K = -E and U = 2E.",
@@ -560,15 +560,15 @@
         "check": "Yes, if it has continuous thrust! The escape speed v_e = 11.2 km/s is the ballistic speed for an unpowered projectile. A continuous engine can lift an object to infinity at any arbitrarily slow speed."
       },
       "synthesis": {
-        "question": "What is the escape velocity from the surface of a black hole whose mass M is compressed within radius R_s = 2*G*M / c^2 (Schwarzschild radius)?",
-        "answer": "Setting v_e = c in the escape equation: c = sqrt(2*G*M / R_s) ==> R_s = 2*G*M / c^2. At this critical radius, escape speed equals the speed of light. Inside R_s, even light cannot escape."
+        "question": "What is the limitation of applying Newtonian escape speed to a black hole?",
+        "answer": "The Newtonian formula formally gives v_e=c at R=2GM/c², but black holes and the propagation of light require general relativity. This analogy is not a proof of a black-hole event horizon."
       },
       "practice": {
         "uid": "AUTHORED-PH05-G07-TRANSFER-01",
-        "revision": "ph05-g07-20261115-r1",
+        "revision": "ph05-g07-20261115-r1-science-r2",
         "prediction": "If a particle is launched with speed v = v_e from a satellite orbit of radius r = 2R, does it escape, and with what residual speed?",
-        "prompt": "A space probe is deployed from a circular parking orbit around Earth at radius r = 2 R_E. The probe fires its engine to achieve a speed v = v_e_surface (where v_e_surface = sqrt(2 G M_E / R_E) ≈ 11.2 km/s is the escape speed from Earth's surface). Determine the probe's speed v_inf when it has escaped to an infinite distance from Earth. Express your answer in terms of v_e_surface.",
-        "w": "Apply conservation of mechanical energy from orbital radius r = 2R: E = 0.5*m*v_e^2 - GMm/(2R) = 0.5*m*v_inf^2, using GM/R = 0.5*v_e^2 to find v_inf = (sqrt(3)/2) * v_e.",
+        "prompt": "A space probe is deployed from a circular parking orbit around Earth at radius r = 2 R_E. The probe fires its engine to achieve a speed v = v_e_surface (where v_e_surface = sqrt(2 G M_E / R_E) ≈ 11.2 km/s is the escape speed from Earth's surface). Determine the probe's speed v_inf when it has escaped to an infinite distance from Earth. Express your answer in terms of v_e_surface. Assume the post-burn outward or tangential trajectory avoids the planet, with no further propulsion or drag.",
+        "w": "Apply conservation of mechanical energy from orbital radius r = 2R: E = 0.5*m*v_e^2 - GMm/(2R) = 0.5*m*v_inf^2, using GM/R = 0.5*v_e^2 to find v_inf = v_e / sqrt(2).",
         "hints": [
           "State total mechanical energy at initial radius r = 2 R_E: E = 0.5 * m * v^2 - G * M_E * m / (2 R_E).",
           "Express gravitational potential energy at 2 R_E in terms of surface escape speed: G * M_E / R_E = 0.5 * v_e_surface^2.",
