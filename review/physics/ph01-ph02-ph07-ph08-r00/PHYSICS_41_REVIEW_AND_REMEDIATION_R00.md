@@ -6,7 +6,7 @@
 
 ## Disposition
 
-**41/41 candidate learner catalog pairs are registered (route links audited through local file-existence regression); 0 independently authenticated original examination questions; 0 independent scientific/QRT/B1–B7 admissions.** A route's existence does not prove the lesson is scientifically sufficient, the fresh task is genuinely new, or its browser flow passes. Actual exact-head HTTP Chromium and independent academic review for this particular R00 have **NOT_RUN** status. The baseline is pinned in [PHYSICS_41_ROUTE_AND_QUALITY_GATE_R00.v1.json](PHYSICS_41_ROUTE_AND_QUALITY_GATE_R00.v1.json).
+**41/41 candidate learner catalog pairs are registered (links registered in the catalog; the new file-existence regression has not yet been executed in this R00); 0 independently authenticated original examination questions; 0 independent scientific/QRT/B1–B7 admissions.** A route's existence does not prove the lesson is scientifically sufficient, the fresh task is genuinely new, or its browser flow passes. Actual exact-head HTTP Chromium and independent academic review for this particular R00 have **NOT_RUN** status. The baseline is pinned in [PHYSICS_41_ROUTE_AND_QUALITY_GATE_R00.v1.json](PHYSICS_41_ROUTE_AND_QUALITY_GATE_R00.v1.json).
 
 | Chapter | Subtopics | Authoring evidence to qualify | Highest-priority gate |
 |---|---:|---|---|
