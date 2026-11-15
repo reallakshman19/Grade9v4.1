@@ -23,6 +23,8 @@ def run():
                 fill(page);page.locator("#commit").click()
                 expect(page.get_by_text("Source attempt saved",exact=True)).to_be_visible()
                 assert "9.8 m/s" not in page.locator("#post").inner_text()
+                assert page.locator("#retrySave").count()==0
+                expect(page.locator("#post")).to_contain_text("Source reattempt remains locked")
                 page.get_by_role("link",name="Open Core1A guide").click()
                 expect(page.get_by_text("A1 · Observe",exact=True)).to_be_visible()
                 page.locator("#speed").fill("-6")
@@ -54,6 +56,7 @@ def run():
                 page.get_by_role("link",name="Return to original source").click()
                 page.locator("#retry").fill("Two ledgers")
                 page.locator("#retrySave").click();expect(page.locator("#post")).to_contain_text("9.8 m/s")
+                assert page.evaluate("Object.values(localStorage).filter(s=>s.includes('return_evidence')).length") == 1
                 page.goto(url+"?stage=core2");expect(page.locator("#commit")).to_be_enabled()
                 fill(page);page.locator('input[value="B"]').check();page.locator("#commit").click()
                 page.locator("#reveal").click();expect(page.locator("#post")).to_contain_text("54 J")

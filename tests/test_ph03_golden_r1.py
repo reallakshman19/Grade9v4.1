@@ -44,3 +44,10 @@ def test_ph03_real_neutral_svg_and_revision_gate():
     assert "old.first?old" in js
     assert "if(rec.revealed)" in js
     assert sum(x["score"] for x in M["task"]["factors"].values())==7
+
+def test_ph03_source_return_requires_exact_boundary():
+    js=(P/"reader.js").read_text()
+    assert "completedTransfer()" in js
+    assert "return_evidence:evidence" in js
+    assert "Source reattempt remains locked" in js
+    assert "x.boundary&&x.boundaryReveal" in js
