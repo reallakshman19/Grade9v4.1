@@ -15,12 +15,24 @@
   <p>Four original teaching-and-transfer examples for independent author review. A worked model and a new, first-attempt challenge are kept separate.</p>
   <p class="notice"><strong>AUTHOR PREVIEW · ACADEMIC HOLD</strong> — These are <em>not authenticated NSEJS examination questions</em>, approved textbooks or protected examination attempts. Browser storage is local and not tamper-resistant. Independent scientific, QRT, source, B1–B7 and release reviews remain pending.</p>
 </header>
-<nav class="crumbs" aria-label="Location"><a href="../../../../index.html">Grade9</a><span aria-hidden="true">/</span><a href="../../../../nsejs/physics/index.html">NSEJS Physics</a><span aria-hidden="true">/</span><span>PH09–PH12 author preview</span></nav>
+<nav class="crumbs" aria-label="Location"><a href="../../../index.html">Grade9</a><span aria-hidden="true">/</span><a href="../../../nsejs/physics/index.html">NSEJS Physics</a><span aria-hidden="true">/</span><span>PH09–PH12 author preview</span></nav>
 <section class="panel">
   <h2>Choose a chapter</h2>
   <label for="chapter-choice">Four reviewed-scope examples (not whole-chapter coverage)</label>
   <select id="chapter-choice" disabled aria-label="Select Physics chapter"><option value="">Loading candidate records…</option></select>
   <p id="load-status" role="status" aria-live="polite">Loading candidate cases.</p>
+</section>
+<section class="panel" id="source-checkpoint" hidden aria-labelledby="source-title">
+  <p class="step">CORE2-STYLE SOURCE CHECKPOINT · ORIGINAL AUTHOR QUESTION ONLY</p>
+  <h2 id="source-title">Attempt the source-style question before learning</h2>
+  <p><strong>Not an authenticated NSEJS paper:</strong> this is a clearly identified original author checkpoint. Official exam source, key, figure and independent QRT remain HOLD.</p>
+  <p class="question" id="source-question"></p>
+  <label for="source-attempt">My initial model and reasoning before Core1A (saved separately)</label>
+  <textarea id="source-attempt" rows="5" placeholder="Explain the first model you choose and what needs checking." disabled></textarea>
+  <div class="actions"><button id="source-save" type="button" disabled>Commit source-style first attempt</button>
+  <button id="source-learn" type="button" disabled>Continue to Core1A teaching</button></div>
+  <p id="source-status" role="status" aria-live="polite">No source-style first attempt saved.</p>
+  <p><a id="source-adapter-link" href="./README.md">View author-exposed source and demand evidence</a></p>
 </section>
 <div id="journey" hidden>
 <section class="panel" aria-labelledby="teach-title">
@@ -38,7 +50,8 @@
 <section class="panel" aria-labelledby="challenge-title">
   <p class="step">CORE1B · FRESH PROBLEM</p>
   <h2 id="challenge-title">Think before revealing the reconstruction</h2>
-  <p class="meta" id="protected-work"></p>
+  <p class="meta" id="protected-work">You must select the relevant model and justify it before any guided reconstruction.</p>
+  <p><a id="core1a-existing" href="./README.md">Existing chapter textbook</a> · <a id="core1b-existing" href="./README.md">Existing candidate practice</a></p>
   <p id="fresh-task" class="question"></p>
   <div class="row-fields">
     <div>
@@ -56,19 +69,43 @@
   </div>
   <p id="orientation-help" class="helper" hidden>Orient yourself first: list the quantities, reference directions, conditions and what must be inferred. Decide whether the original worked example's assumptions still apply. No model choice or result is supplied here.</p>
   <p id="attempt-status" role="status" aria-live="polite">First attempt is not yet saved.</p>
-  <button id="reveal" type="button" disabled>3–6. Reveal reconstruction after saved attempt</button>
+  <button id="reveal" type="button" disabled>3. Open reconstruction after saved attempt</button>
 </section>
 <section class="panel" id="post-attempt" hidden aria-labelledby="post-title">
   <p class="step">AFTER COMMIT · RECONSTRUCT, DIAGNOSE, REPAIR, TEST BOUNDARY</p>
   <h2 id="post-title">Compare your first reasoning with the model</h2>
-  <h3>3. Reconstruct</h3><ol id="reconstruct-list"></ol>
-  <h3>4. Diagnose conditionally</h3><p id="diagnose"></p>
-  <h3>5. Repair the reasoning</h3><p id="repair"></p>
-  <h3>6. Test a boundary you have not yet solved</h3><p id="boundary"></p>
-  <label for="revision">My corrected or boundary-test reasoning (original first attempt is preserved)</label>
-  <textarea id="revision" rows="5" placeholder="Write your second explanation or boundary response."></textarea>
-  <div class="actions"><button id="save-revision" type="button">Save separate revision</button></div>
-  <p id="revision-status" role="status" aria-live="polite"></p>
+  <h3>3. Reconstruct independently against the model</h3><ol id="reconstruct-list"></ol>
+  <label for="reconstruct-response">State what in your saved first answer agrees or conflicts with the reconstruction.</label>
+  <textarea id="reconstruct-response" rows="4" placeholder="Compare evidence, not only the numerical answer." disabled></textarea>
+  <div class="actions"><button id="save-reconstruct" type="button" disabled>Save reconstruction comparison and continue</button></div>
+  <section id="diagnose-stage" hidden>
+    <h3>4. Diagnose from your recorded evidence</h3><p id="diagnose"></p>
+    <label for="diagnosis-response">What actual evidence in your first answer supports or refutes this misconception?</label>
+    <textarea id="diagnosis-response" rows="4" disabled></textarea>
+    <button id="save-diagnosis" type="button" disabled>Save diagnostic justification and continue</button>
+  </section>
+  <section id="repair-stage" hidden>
+    <h3>5. Repair the model</h3><p id="repair"></p>
+    <label for="revision">My corrected reasoning (original answer stays unchanged)</label>
+    <textarea id="revision" rows="4" disabled></textarea>
+    <button id="save-revision" type="button" disabled>Save repaired reasoning and continue</button>
+    <p id="revision-status" role="status" aria-live="polite"></p>
+  </section>
+  <section id="boundary-stage" hidden>
+    <h3>6. Unseen boundary test</h3><p id="boundary"></p>
+    <label for="boundary-response">Independent boundary-case answer</label>
+    <textarea id="boundary-response" rows="4" disabled></textarea>
+    <button id="save-boundary" type="button" disabled>Save boundary response and return to source</button>
+  </section>
+  <section id="source-return-stage" hidden>
+    <h3>Return to the original author checkpoint</h3>
+    <p id="source-return-question"></p>
+    <label for="source-return-response">My revised answer after learning (the first source answer is unchanged)</label>
+    <textarea id="source-return-response" rows="4" disabled></textarea>
+    <button id="save-source-return" type="button" disabled>Save separate source-return response</button>
+    <p id="source-return-status" role="status" aria-live="polite"></p>
+  </section>
+  <p id="stage-status" role="status" aria-live="polite"></p>
 </section>
 </div>
 <footer><p><strong>Evidence status:</strong> AUTHOR-EXPOSED · SOURCE HOLD · SCIENCE HOLD · QRT NOT RUN · B1–B7 HOLD · NO RELEASE.</p><p>Read the <a href="./README.md">58-subtopic recovery workpack</a>. No examination rights or student admission are inferred from functioning JavaScript.</p></footer>
