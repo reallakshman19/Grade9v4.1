@@ -10,7 +10,7 @@ function error(message) {
   mount.replaceChildren(el("p","HOLD · "+message,"error"));
   const back=el("p");addLink(back,"Return to PH05 question-led journey",ownerPath);mount.appendChild(back);
 }
-function safeString(value){return typeof value==="string"&&value.length>0&&value.length<512;}
+function safeString(value){return typeof value==="string"&&value.length>0&&value.length<12000;}
 async function sha(raw){if(!globalThis.crypto?.subtle)throw Error("Revision hash service unavailable");
  const bytes=new TextEncoder().encode(raw);
  return Array.from(new Uint8Array(await crypto.subtle.digest("SHA-256",bytes)),b=>b.toString(16).padStart(2,"0")).join("");
@@ -38,7 +38,7 @@ function stage(){
  mount.appendChild(badge);
  const top=el("section","", "card");
  top.appendChild(el("h2","1 · Open the original examination question"));
- top.appendChild(el("p",e.reasoning));
+ top.appendChild(el("p",e.neutral_prompt));
  const intro=el("p");addLink(intro,"Open the official IAPT question paper (no solution)",e.official_paper_url+"#page="+e.official_paper_page);top.appendChild(intro);
  top.appendChild(el("p","Find the exact question number shown above. Read the original options in the paper; do not open the answer key yet.","fine"));
  mount.appendChild(top);
@@ -84,7 +84,7 @@ function stage(){
  submit.addEventListener("click",()=>{
   if(state.saved)return;
   const p=pred.value.trim(),r=reason.value.trim();
-  if(p.length<3||r.length<20){status.textContent="Write a prediction and at least 20 characters of independent reasoning before committing.";return}
+  if(p.length<3||r.length<20||p.length>4000||r.length>10000){status.textContent="Write a prediction and at least 20 characters of independent reasoning before committing.";return}
   try{store({source_uid:e.source_uid,revision:state.revision,first_at:new Date().toISOString(),prediction:p,first_reasoning:r,exposure:[]});refresh()}
   catch(err){error("Unable to persist first attempt. No assistance unlocked. "+String(err.message||err))}
  });
@@ -98,10 +98,10 @@ try{
  if(!requested)throw Error("No original question selected");
  const e=d.source_candidates.find(x=>x.source_uid===requested);
  if(!e||e.corpus_id!==null||e.source_status!=="EXTERNAL_CUSTODY_HOLD"||
-    !e.official_paper_url?.startsWith("https://iapt.org.in/")||!e.transfer||!Array.isArray(e.core1a))
+    !e.official_paper_url?.startsWith("https://iapt.org.in/")||!e.transfer||!safeString(e.neutral_prompt)||!Array.isArray(e.core1a))
     throw Error("Unsupported external source candidate; no invented substitute");
  state.entry=e;
- state.revision=await sha(JSON.stringify([e.source_uid,e.locator,e.official_paper_url,e.official_paper_page,e.reasoning,e.core1a,e.transfer]));
+ state.revision=await sha(JSON.stringify([e.source_uid,e.locator,e.official_paper_url,e.official_paper_page,e.neutral_prompt,e.core1a,e.transfer]));
  state.key="G9V41:PH05:SOURCE_FIRST:"+e.source_uid+":"+state.revision;
  state.saved=loadSaved();
  // Verify storage service before showing any post-attempt controls.

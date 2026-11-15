@@ -339,3 +339,27 @@ def test_ph05_external_source_checkpoint_protects_first_attempt():
     assert "if(state.saved)return" in js
     assert 'd.admitted_original_d3_d4!==0' in js
     assert "official_option" not in js
+
+
+def test_source_checkpoint_initial_state_has_no_decisive_hint():
+    """Source cards expose the real paper before source-first submission, not the taught solution."""
+    data = json.loads((PH05_DATA / "source-to-learning.v1.json").read_text(encoding="utf-8"))
+    html = (TEXTBOOK_DIR / "index.html").read_text(encoding="utf-8")
+    script = (PH05_DATA / "source-checkpoint.js").read_text(encoding="utf-8")
+    for item in data["source_candidates"]:
+        if item["corpus_id"] is not None:
+            continue
+        assert item["neutral_prompt"]
+        assert "conserv" not in item["neutral_prompt"].lower()
+        assert "derive" not in item["neutral_prompt"].lower()
+        start = html.index('<li class="card"><strong>' + item["locator"])
+        end = html.index("</li>", start)
+        preview = html[start:end]
+        assert "source-checkpoint.html?source=" + item["source_uid"] in preview
+        assert "Learn mapped science" not in preview
+        assert "Attempt fresh Core1B" not in preview
+        assert item["transfer"] not in preview
+    assert 'top.appendChild(el("p",e.neutral_prompt));' in script
+    assert 'help.hidden=true' in script
+    assert 'if(state.saved)' in script
+    assert 'value.length<12000' in script
