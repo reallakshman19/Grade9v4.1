@@ -258,7 +258,7 @@ def test_ph05_source_first_mapping_identity_and_hold():
     assert data["academic_status"] == "HOLD"
     assert data["admitted_original_d3_d4"] == 0
     assert len(data["source_candidates"]) == 4
-    old = json.loads((REPO_ROOT / "nsejs/data/physics-core2-candidates.v1.json").read_text(encoding="utf-8"))
+    old = json.loads((ROOT / "nsejs/data/physics-core2-candidates.v1.json").read_text(encoding="utf-8"))
     original_ids = {q["id"] for q in old["questions"]}
     qrt = json.loads((PH05_DATA / "qrt-candidates.v1.json").read_text(encoding="utf-8"))
     units = json.loads((PH05_DATA / "units.v1.json").read_text(encoding="utf-8"))
