@@ -145,7 +145,7 @@ def test_gate1_five_factor_rubric_bounds_and_scoring(candidates_data):
 
 
 def test_gate1_options_and_official_answer_key(candidates_data):
-    """Every question must have 4 options and agree with the official worksheet answer key."""
+    """Agree with the supplied worksheet key; not independently verified exam material."""
     for q in candidates_data["questions"]:
         qid = q["id"]
         options = q["options"]
@@ -167,9 +167,9 @@ def test_gate1_progressive_three_tier_hints(candidates_data):
     for q in candidates_data["questions"]:
         hints = q["hints"]
         assert len(hints) == 3, f"{qid} must have exactly 3 progressive hints"
-        assert "Tier 1" in hints[0]["prompt"]
-        assert "Tier 2" in hints[1]["prompt"]
-        assert "Tier 3" in hints[2]["prompt"]
+        assert "H1" in hints[0]["prompt"] and "CLARIFY" in hints[0]["prompt"]
+        assert "H2" in hints[1]["prompt"] and "CORRELATE" in hints[1]["prompt"]
+        assert "H3" in hints[2]["prompt"] and "OPEN_THE_WAY" in hints[2]["prompt"]
         assert len(hints[0]["text"]) > 20
         assert len(hints[1]["text"]) > 20
         assert len(hints[2]["text"]) > 20
