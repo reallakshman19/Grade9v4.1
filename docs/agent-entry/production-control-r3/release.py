@@ -3,6 +3,7 @@
 from __future__ import annotations
 import argparse, json, shutil, sys
 from pathlib import Path
+from urllib.parse import urlsplit
 from control import (Block, EVID, PACKETS, SHA64, ancestor, blob, changed, classify, commit,
                      fingerprint, load_policy, parse, path_ok, require, sha, signed,
                      tree, trust_from_env)
