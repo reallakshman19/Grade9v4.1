@@ -74,7 +74,7 @@ export function validateManifest(m){
  for(const r of roles){const a=m.assets[r];
   assert((exact(a,["path","sha256"])||exact(a,["path","sha256","media"]))&&typeof a.path==="string"&&/^[a-zA-Z0-9_-]+(?:\.[a-zA-Z0-9_-]+)*\.json$/.test(a.path)&&HASH.test(a.sha256),"ASSET_PIN:"+r);
   paths.push(a.path);
-  if(a.media){assert(Array.isArray(a.media)&&a.media.length<=8,"MEDIA_COUNT");for(const image of a.media){assert(exact(image,["path","sha256","alt"])&&/^[a-zA-Z0-9_-]+\\.(?:png|webp)$/.test(image.path)&&HASH.test(image.sha256)&&str(image.alt),"MEDIA_PIN");paths.push(image.path)}}
+  if(a.media){assert(Array.isArray(a.media)&&a.media.length<=8,"MEDIA_COUNT");for(const image of a.media){assert(exact(image,["path","sha256","alt"])&&/^[a-zA-Z0-9_-]+\.(?:png|webp)$/.test(image.path)&&HASH.test(image.sha256)&&str(image.alt),"MEDIA_PIN");paths.push(image.path)}}
  }
  assert(unique(paths),"ASSET_ROLE_REUSE");return m;
 }
