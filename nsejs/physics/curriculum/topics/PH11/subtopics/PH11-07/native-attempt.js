@@ -46,14 +46,14 @@ async function fetchPinned(name,pin,pinSha256) {
 function newRecord() {
  return {schema:"g9v41-ph11-07-native-record/v1",uid:prompt.task.uid,revision:prompt.revision,
   prompt_pin:PIN.prompt,postattempt_pin:PIN.postattempt,seq:0,source:null,prediction:null,
-  first:null,reconstruction:null,diagnosis:null,repair:null,boundary:null,boundaryRepair:null,
+  first:null,reconstructionExposure:null,reconstruction:null,diagnosis:null,repair:null,boundary:null,boundaryRepair:null,
   sourceReturn:null,events:[]};
 }
 function valid(r) {
  if(!r ||r.schema!=="g9v41-ph11-07-native-record/v1" ||r.uid!==prompt.task.uid ||
    r.revision!==prompt.revision||r.prompt_pin!==PIN.prompt||r.postattempt_pin!==PIN.postattempt||
    !Array.isArray(r.events)||!Number.isInteger(r.seq)||r.seq<0) return false;
- const chain=["source","prediction","first","reconstruction","diagnosis","repair","boundary","sourceReturn"];
+ const chain=["source","prediction","first","reconstructionExposure","reconstruction","diagnosis","repair","boundary","sourceReturn"];
  let missing=false;
  for(const stage of chain){
   const value=r[stage];if(value!=null && missing)return false;
@@ -157,6 +157,13 @@ function render(){
  visible("predict-panel",Boolean(state.source)&&!state.prediction);
  visible("first-panel",Boolean(state.prediction)&&!state.first);
  visible("reconstruct-panel",Boolean(state.first)&&Boolean(feedback)&&!state.reconstruction);
+ if(state.reconstructionExposure && feedback){
+   $("reconstruct-list").replaceChildren(...feedback.reconstruct.map(s=>element("li",s)));
+   visible("reconstruct-model",true);
+ } else {
+   $("reconstruct-list").replaceChildren();
+   visible("reconstruct-model",false);
+ }
  visible("diagnose-panel",Boolean(state.reconstruction)&&Boolean(feedback)&&!state.diagnosis);
  visible("repair-panel",Boolean(state.diagnosis)&&Boolean(feedback)&&!state.repair);
  visible("boundary-panel",Boolean(state.repair)&&Boolean(feedback)&&!state.boundary?.checked&&!state.boundaryRepair?.checked);
@@ -229,12 +236,11 @@ $("save-first").addEventListener("click",async()=>{
  if(await commit("first",{model,reason,outputs,prediction_seq:state.prediction.at},"prediction"))
    await loadFeedback();
 });
-$("open-reconstruct").addEventListener("click",()=>{if(feedback&&state?.first) {
- $("reconstruct-list").replaceChildren(...feedback.reconstruct.map(s=>element("li",s)));
- visible("reconstruct-model",true);
+$("open-reconstruct").addEventListener("click",async()=>{if(feedback&&state?.first) {
+ await commit("reconstructionExposure",{viewed:true},"first");
 }});
 $("save-reconstruction").addEventListener("click",async()=>{
- if(!feedback||!textLength("reconstruct-response",20)){tell("Compare the worked reconstruction with your saved first attempt, citing a discrepancy or check.");return}
+ if(!feedback||!state?.reconstructionExposure||!textLength("reconstruct-response",20)){tell("First open the reconstruction and compare it with your saved attempt; cite a discrepancy or check.");return}
  await commit("reconstruction",{comparison:clean($("reconstruct-response").value)},"first");
 });
 $("save-diagnosis").addEventListener("click",async()=>{
