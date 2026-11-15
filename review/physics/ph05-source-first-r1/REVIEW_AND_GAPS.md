@@ -59,3 +59,7 @@ The IAPT 2025 archive contains a mislabeled final key navigation target that res
 ## R4 author-exposed original-question QRT hypotheses
 
 Added `ORIGINAL_QRT_R00_PROPOSALS_R4.json` with **five source-bound original-question hypotheses**, not certificates. Each shows the shortest plausible reasoning route, decisive W, an alternate shorter route that could change difficulty, five 0–2 factor nominations and explicit `independent_operation: NOT_RUN`. Author-proposed bands are 2022 Q36 D3; 2023 Q48 D2; 2024 Q48 D1; 2024 Q33 D2; 2025 Q43 D2. None is an independent classification; each needs blind R01 operation, source evidence and factor-review consensus. **Do not promote the D1/D2 originals to D3 by associating more difficult new transfers.**
+
+## R4.2 verified 2019 source checkpoint
+
+Official IAPT 2019 Code 51 Q61 (apple/Earth mutual gravitational force, final key C) now joins the protected source-first learner path. Original author-proposed low-demand EXPLAIN D1 is distinct from the existing harder author-created G01 APPLY D3 transfer. The official paper is at PDF zero-index page 11; no source byte SHA-256 was obtained. New original-QRT R00 and B1–B7 records remain HOLD for independent R01.

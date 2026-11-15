@@ -257,7 +257,7 @@ def test_ph05_source_first_mapping_identity_and_hold():
     assert data["schema"] == "g9v41-ph05-source-to-learning/v1"
     assert data["academic_status"] == "HOLD"
     assert data["admitted_original_d3_d4"] == 0
-    assert len(data["source_candidates"]) == 5
+    assert len(data["source_candidates"]) == 6
     old = json.loads((ROOT / "nsejs/data/physics-core2-candidates.v1.json").read_text(encoding="utf-8"))
     original_ids = {q["id"] for q in old["questions"]}
     qrt = json.loads((PH05_DATA / "qrt-candidates.v1.json").read_text(encoding="utf-8"))
@@ -312,8 +312,8 @@ def test_ph05_original_paper_crosscheck_receipts():
     assert {e["source_uid"]:e["official_option"] for e in review["records"]} == {
         "NSEJS-2022-C51-Q36":"A", "NSEJS-2023-C51-Q48":"D",
         "NSEJS-2024-C51-Q48":"B", "NSEJS-2024-C51-Q33":"D",
-        "NSEJS-2025-C51-Q43":"D"}
-    assert len(review["records"]) == len(source["source_candidates"]) == 5
+        "NSEJS-2025-C51-Q43":"D", "NSEJS-2019-C51-Q61":"C"}
+    assert len(review["records"]) == len(source["source_candidates"]) == 6
     for item in source["source_candidates"]:
         assert item["official_paper_url"].startswith("https://")
         assert item["official_paper_page"] > 0
@@ -455,7 +455,7 @@ def test_ph05_b1_b7_are_noncompensatory_author_exposed_holds():
     assert review["independent"] is False
     assert review["source_census_complete"] is False
     assert review["independent_full_pass_rows"]==0
-    assert review["candidate_rows"]==len(mapping["source_candidates"])==5
+    assert review["candidate_rows"]==len(mapping["source_candidates"])==6
     assert {r["source_uid"] for r in review["rows"]}=={r["source_uid"] for r in mapping["source_candidates"]}
     for row in review["rows"]:
         assert row["independent_qrt"]=="NOT_RUN"
@@ -467,7 +467,7 @@ def test_ph05_b1_b7_are_noncompensatory_author_exposed_holds():
 def test_ph05_original_qrt_r00_factor_hypotheses_cannot_count_as_admission():
     original=json.loads((ROOT/"review/physics/ph05-source-first-r1/ORIGINAL_QRT_R00_PROPOSALS_R4.json").read_text(encoding="utf-8"))
     assert original["independent_blind_qrt"]=="NOT_RUN"
-    assert original["originals_assessed"]==5 and original["originals_independently_admitted"]==0
+    assert original["originals_assessed"]==6 and original["originals_independently_admitted"]==0
     fields={"concept_model_selection","representation_translation","reasoning_chain_length","algebra_computational_load","trap_exception_sensitivity"}
     records={}
     for row in original["rows"]:
@@ -489,4 +489,18 @@ def test_ph05_original_qrt_r00_factor_hypotheses_cannot_count_as_admission():
         "NSEJS-2023-C51-Q48":"D2",
         "NSEJS-2024-C51-Q48":"D1",
         "NSEJS-2024-C51-Q33":"D2",
-        "NSEJS-2025-C51-Q43":"D2"}
+        "NSEJS-2025-C51-Q43":"D2", "NSEJS-2019-C51-Q61":"D1"}
+
+
+def test_ph05_2019_newton_third_law_source_is_separate_from_harder_transfer():
+    mapping=json.loads((PH05_DATA/"source-to-learning.v1.json").read_text(encoding="utf-8"))
+    row=next(x for x in mapping["source_candidates"] if x["source_uid"]=="NSEJS-2019-C51-Q61")
+    assert row["original_demand"]=="D1_CANDIDATE"
+    assert row["source_status"]=="EXTERNAL_CUSTODY_HOLD"
+    assert row["transfer"]=="AUTHORED-PH05-G01-QRT-APPLY-D3-R1"
+    assert row["official_paper_url"].endswith("NSEJS_QP-2019.pdf")
+    assert row["official_paper_page"]==12
+    assert 'source-checkpoint.html?source=NSEJS-2019-C51-Q61' in (TEXTBOOK_DIR/"index.html").read_text(encoding="utf-8")
+    evidence=json.loads((ROOT/"review/physics/ph05-source-first-r1/OFFICIAL_SOURCE_EVIDENCE_R2.json").read_text(encoding="utf-8"))
+    key=next(x for x in evidence["records"] if x["source_uid"]==row["source_uid"])
+    assert key["official_option"]=="C" and key["paper_sha256"] is None
