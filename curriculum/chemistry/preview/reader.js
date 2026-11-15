@@ -66,10 +66,13 @@ function draw(book){
  renderSpine(root,book);
  const layout=add(root,el("div","textbook-layout"));const toc=add(layout,el("nav","toc"));toc.setAttribute("aria-label","Chapter contents");add(toc,el("h3","","Contents"));
  const area=add(layout,el("main"));
+ const navHost=add(area,el("div","chem-active-nav"));
  book.subtopics.forEach((s,i)=>{
   const slug=safeId(s.id);const link=add(toc,el("a","",(i+1)+". "+s.title));link.href="#"+slug;
+  link.dataset.subtopic=s.id;
   const article=add(area,el("article","lesson"));article.id=slug;
-  if(window.ChemLearnerNav)window.ChemLearnerNav.mountPreview(article,book.unit_id,s.id,requested.get("subtopic")===s.id&&requested.get("mode")==="practice"?"practice":"study");
+  // R2 mounts one shared navigation bar for only the focused subtopic.
+  // All original lessons and attempt keys remain in the DOM unchanged.
   add(article,el("div","eyebrow",s.id+" · "+s.scope));add(article,el("h2","",s.title));
   p(article,s.entry_question,"bridge");
   renderDive(article,s);
@@ -87,11 +90,53 @@ function draw(book){
  });
  if(book.chapter_spine){const close=add(root,el("section","chapter-closure"));add(close,el("h2","","Chapter synthesis"));p(close,book.chapter_spine.chapter_closure);p(close,"Before beginning the next unit, explain this chapter's main claim without looking at the worked examples, then test it against one new observation.","mini")}
  add(root,el("footer","foot","Grade9v4.1 Chemistry authored self-study · Source status is shown separately from practice. Core1A explanations precede protected Core1B reconstruction."));
- const requestId=requested.get("subtopic");
- if(requestId&&book.subtopics.some(s=>s.id===requestId)){
-   const wanted=requested.get("mode")==="practice"?"practice-"+safeId(requestId):safeId(requestId);
-   requestAnimationFrame(()=>document.getElementById(wanted)?.scrollIntoView({block:"start"}));
+ // A single focused subtopic is visible while the unchanged complete book remains
+ // in the DOM for stable first-attempt IDs, print and legacy anchor compatibility.
+ const allLessons=[...area.querySelectorAll(":scope > article.lesson")];
+ const links=[...toc.querySelectorAll("a[data-subtopic]")];
+ const chapterNumber=el("p","chem-focus-position");
+ toc.insertBefore(chapterNumber,links[0]||null);
+ function focus(id,mode="study",push=false,scroll=true){
+   const selected=book.subtopics.find(s=>s.id===id)||book.subtopics[0];
+   const slug=safeId(selected.id),effectiveMode=mode==="practice"?"practice":"study";
+   for(const lesson of allLessons)lesson.hidden=lesson.id!==slug;
+   for(const a of links){
+     const current=a.dataset.subtopic===selected.id;
+     if(current)a.setAttribute("aria-current","true");else a.removeAttribute("aria-current");
+   }
+   chapterNumber.textContent="Subtopic "+(book.subtopics.indexOf(selected)+1)+" of "+book.subtopics.length;
+   if(window.ChemLearnerNav)window.ChemLearnerNav.mountPreview(navHost,book.unit_id,selected.id,effectiveMode);
+   if(push){
+     const url=new URL(location.href);
+     url.searchParams.set("subtopic",selected.id);
+     url.searchParams.set("mode",effectiveMode);
+     url.hash=(effectiveMode==="practice"?"practice-":"")+slug;
+     history.pushState({subtopic:selected.id},"",url.href);
+   }
+   if(scroll)requestAnimationFrame(()=>{
+     const target=document.getElementById((effectiveMode==="practice"?"practice-":"")+slug)
+       ||document.getElementById(slug);
+     target?.scrollIntoView({block:"start",behavior:"instant"});
+   });
  }
+ function address(){
+   const params=new URLSearchParams(location.search);
+   const rawHash=decodeURIComponent(location.hash.replace(/^#/,""));
+   const hashKey=rawHash.replace(/^practice-/,"");
+   const fromHash=book.subtopics.find(s=>safeId(s.id)===hashKey);
+   const fromQuery=book.subtopics.find(s=>s.id===params.get("subtopic"));
+   const selected=fromHash||fromQuery||book.subtopics[0];
+   const mode=rawHash.startsWith("practice-") ||
+     (!fromHash && selected===fromQuery && params.get("mode")==="practice")?"practice":"study";
+   return {id:selected.id,mode,scroll:!!(fromHash||fromQuery)};
+ }
+ links.forEach(a=>a.addEventListener("click",event=>{
+   event.preventDefault();focus(a.dataset.subtopic,"study",true);
+ }));
+ window.addEventListener("popstate",()=>{const route=address();focus(route.id,route.mode,false,route.scroll)});
+ window.addEventListener("hashchange",()=>{const route=address();focus(route.id,route.mode,false,route.scroll)});
+ const route=address();
+ focus(route.id,route.mode,false,route.scroll);
 }
 fetch(source,{cache:"no-store"}).then(async r=>{if(!r.ok)throw Error("HTTP "+r.status);if(!crypto || !crypto.subtle)throw Error("SHA-256 content revision binding unavailable");const raw=await r.text();const dig=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(raw));const revision=[...new Uint8Array(dig)].map(b=>b.toString(16).padStart(2,"0")).join("");const book=JSON.parse(raw);book.content_sha256=revision;return book}).then(draw).catch(e=>{root.replaceChildren();const err=add(root,el("div","hero"));add(err,el("h2","","Unable to load textbook candidate"));p(err,String(e)+". Serve the repository over HTTP; local file:// fetch is unsupported.")});
 })();

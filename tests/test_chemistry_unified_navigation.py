@@ -79,12 +79,13 @@ def test_both_readers_expose_same_journey_without_copying_attempts():
     assert "window.ChemLearnerNav.mountPreview" in preview
     assert "window.ChemLearnerNav.mountNative" in native
     assert "Chemistry lesson steps and next subtopic" in shared
-    assert "1 · Learn" in shared and "2 · Try it" in shared and "3 · Exam practice" in shared
+    assert "1 · Learn" in shared and "2 · Try it" in shared and "3 · Question source index" in shared
     assert "Need more help?" in shared
     assert "Previous · " in shared and "Next · " in shared
     assert "Chapter list" in shared
     assert "return" in shared and "question-map.html" in shared
-    assert 'requested.get("mode")==="practice"' in preview
+    assert 'const mode=rawHash.startsWith("practice-")' in preview
+    assert 'params.get("mode")==="practice"' in preview
     assert 'wrap.id="practice-"+safeId(subId)' in preview
     assert "const key=\"g9chem-first-attempt:\"" in preview
     assert "field.disabled=true" in preview
@@ -116,3 +117,50 @@ def test_school_chemistry_page_no_longer_claims_all_chapters_missing():
     assert "Chemistry chapters: coming soon" not in s
     assert '../nsejs/chemistry/index.html#chem-chapters' in s
     assert "School Chemistry — separate track" in s
+
+
+def test_r2_one_focused_preview_subtopic_and_one_navigation_bar():
+    preview=read(PREVIEW/"reader.js")
+    css=read(PREVIEW/"reader.css")
+    assert 'const navHost=add(area,el("div","chem-active-nav"))' in preview
+    assert "for(const lesson of allLessons)lesson.hidden=lesson.id!==slug" in preview
+    assert "window.ChemLearnerNav.mountPreview(navHost" in preview
+    assert "window.addEventListener(\"popstate\"" in preview
+    assert "history.pushState" in preview
+    assert ".lesson[hidden]{display:none!important}" in css
+    assert ".lesson[hidden]{display:block!important}" in css
+    # No first-attempt data or original model-answer text was rewritten.
+    assert 'const key="g9chem-first-attempt:"' in preview
+    assert "showDemand(article,d,book.unit_id,s.id,book.content_sha256)" in preview
+
+
+def test_r2_question_bank_is_optional_and_old_topic_deep_links_open_it():
+    home=read(HUB)
+    reg=registry()
+    assert reg["version"]=="1.1.0"
+    assert reg["rules"]["legacy_bank_collapsed_by_default"]
+    assert reg["rules"]["single_subtopic_focus"]
+    assert 'id="chem-bank-archive"' in home
+    assert 'Optional · Explore question-bank candidates' in home
+    assert 'if(hasBankQuery||hasBankHash())bank.open=true' in home
+    assert 'bank.open=true;return original(slug)' in home
+    assert 'id="chem-chapters"' in home
+    assert 'id="topicWorkspace"' in home
+
+
+def test_r2_seven_recovery_pages_have_allowlisted_exact_lesson_return():
+    reg=registry()
+    shared=read(ROOT/"nsejs/chemistry/learner-navigation.js")
+    assert 'helpUrl.searchParams.set("return"' in shared
+    assert 'helpUrl.searchParams.set("subtopic",subtopic)' in shared
+    recovery=read(ROOT/"nsejs/chemistry/recovery-return.js")
+    assert "target.origin!==location.origin" in recovery
+    assert "target.pathname===native.pathname" in recovery
+    assert "C0[1-7]" in recovery
+    assert 'back.textContent="← Return to my exact Chemistry lesson"' in recovery
+    paths={h["href"] for u in reg["units"] for h in u["help"]}
+    assert len(paths)==7
+    for rel in paths:
+        file=ROOT/"nsejs/chemistry"/rel
+        page=read(file)
+        assert "recovery-return.js" in page

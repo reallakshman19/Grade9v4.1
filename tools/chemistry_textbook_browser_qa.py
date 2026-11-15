@@ -56,7 +56,14 @@ def check_chapter(page, unit, n, scene):
     images = page.locator("figure.chem-figure img")
     expected_figures = 4 if unit == "C07" else 2
     check(images.count() == expected_figures, f"{unit}: expected {expected_figures} explanatory diagrams")
+    # R2 presents one subtopic at a time. Navigate to each figure's owner instead
+    # of trying to scroll into a hidden lesson; still verify ALL original figures.
     for i in range(expected_figures):
+        owner_id = images.nth(i).locator("xpath=ancestor::article[contains(@class,'lesson')]").get_attribute("id")
+        check(bool(owner_id), f"{unit} image {i} has no owning subtopic")
+        page.locator(f'.toc a[href="#{owner_id}"]').click()
+        check(page.locator(f"#{owner_id}").is_visible(), f"{unit} selected image subtopic invisible")
+        check(page.locator("article.lesson:visible").count() == 1, f"{unit} duplicate subtopic pages")
         images.nth(i).scroll_into_view_if_needed()
         page.wait_for_function("""i => { const e = document.querySelectorAll("figure.chem-figure img")[i]; return !!e && e.complete && e.naturalWidth > 0; }""", arg=i, timeout=12000)
     check(all(images.nth(i).evaluate("(e) => e.naturalWidth > 0") for i in range(expected_figures)),

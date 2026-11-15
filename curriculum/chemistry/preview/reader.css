@@ -32,3 +32,10 @@
 .chem-figure img{max-width:100%;height:auto;display:block;border:1px solid #d9e2eb}
 @media(max-width:800px){.chapter-spine,.chapter-closure{padding:1.1rem}.chapter-spine .spine-columns{grid-template-columns:1fr}.terms{grid-template-columns:1fr}.terms dd{margin-bottom:.75rem}.investigation,.reasoning-path{padding:.8rem 1rem}}
 @media print{body{font-size:11.5pt;color:#111;background:#fff}.mast,.toc,.attempt,.foot{display:none!important}.wrap{max-width:none;padding:0}.textbook-layout{display:block}.lesson,.hero,.chapter-spine,.chapter-closure{border:0;border-radius:0;box-shadow:none;break-inside:auto}.big-idea,.investigation,.reasoning-path,.worked,.misconception{break-inside:avoid}details{display:block}details > :not(summary){display:block!important}}
+
+/* Navigation R2: one active C01–C07 subtopic, with complete book retained for print. */
+.lesson[hidden]{display:none!important}
+.chem-focus-position{font-size:.9rem;font-weight:750;color:var(--ink);margin:.6rem 0 1rem}
+.toc a[aria-current="true"]{color:#075f67;background:#d9f3ee;font-weight:800;border-radius:7px;padding-left:.55rem}
+.chem-active-nav{margin-bottom:.8rem}
+@media print{.lesson[hidden]{display:block!important}.chem-active-nav{display:none!important}}
