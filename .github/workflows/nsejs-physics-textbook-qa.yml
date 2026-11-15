@@ -39,12 +39,12 @@ jobs:
         run: |
           python -m pip install playwright==1.55.0
           python -m playwright install --with-deps chromium
+      - name: Verify PH05 official previous-question checkpoint protection
+        run: python tools/physics_ph05_source_first_browser_qa.py
       - name: Verify PH01 HTTP textbook tablet behavior
         run: python tools/physics_textbook_browser_qa.py
       - name: Verify PH01 Core1B protected learning runtime
         run: python tools/physics_ph01_core1b_browser_qa.py
-      - name: Verify PH05 official previous-question checkpoint protection
-        run: python tools/physics_ph05_source_first_browser_qa.py
       - uses: actions/upload-artifact@v4
         if: always()
         with:
