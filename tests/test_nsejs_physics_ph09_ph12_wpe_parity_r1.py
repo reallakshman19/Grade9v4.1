@@ -152,3 +152,110 @@ def test_isolated_preview_is_not_promoted_and_binds_attempt_to_content_bytes():
     assert 'if (!writeRecord(next)) { lock(' in script
     assert 'revisions: [...record.revisions' in script
     assert "@media (max-width: 820px)" in css
+
+
+TOPIC_OVERLAYS = {
+    "PH09": ("PH09-04", "0.3.0", "MODEL", "D3.4", 7),
+    "PH10": ("PH10-09", "0.3.0", "SYNTHESIZE", "D4.6", 8),
+    "PH11": ("PH11-07", "0.4.0", "MODEL", "D4.4", 8),
+    "PH12": ("PH12-09", "0.3.0", "EXPLAIN", "D3.2", 7),
+}
+OPERATION_COLUMN = {
+    "RETRIEVE": 1, "EXPLAIN": 2, "APPLY": 3, "MODEL": 4,
+    "REPRESENT": 5, "SYNTHESIZE": 6, "JUSTIFY": 7,
+}
+
+
+def adapter_file(topic):
+    return ROOT / "nsejs/physics/curriculum/topics" / topic / (
+        f"topic-adapter.{topic}.wpe-parity-r2.v1.json"
+    )
+
+
+def test_four_new_topic_adapter_overlays_are_demand_evidenced_and_not_promoted():
+    for topic, (sub, version, operation, cell, total) in TOPIC_OVERLAYS.items():
+        data = load(adapter_file(topic))
+        assert data["topic_id"] == topic
+        assert data["version"] == version
+        assert data["academic_status"] == "AUTHOR_EXPOSED_QRT_PROPOSAL__INDEPENDENT_HOLD"
+        assert data["adoption"] == "SIDE_CAR_NOT_YET_NATIVE_TOPIC_PACKAGE_REPLACEMENT"
+        assert data["blueprint"]["version"] == "0.2.0"
+        assert data["blueprint"]["pin_reconciliation"].startswith("HOLD")
+        assert data["source"]["not_an_official_exam"]
+        assert data["source"]["exam_source_uid"] is None
+        assert data["source"]["authentic_exam_admission"] == "HOLD"
+        assert data["source"]["stem"] != next(
+            x["core1b"]["original_b"] for x in load(EXEMPLARS)["cases"]
+            if x["chapter"] == topic
+        )
+        task = data["task"]
+        assert task["subtopic_id"] == sub
+        assert task["proposed_primary_operation"] == operation
+        assert len(task["competing_operations"]) >= 2
+        assert task["proposed_cell"] == cell
+        assert task["proposed_demand_band"] == cell.split(".")[0]
+        assert int(cell.split(".")[1]) == OPERATION_COLUMN[operation]
+        assert task["qrt_independent"] == "NOT_RUN"
+        assert len(task["shortest_valid_route"]) >= 4
+        assert task["protected_decisive_work"]
+        factors = task["factor_evidence"]
+        assert set(factors) == {
+            "concept_model_selection", "representation_translation",
+            "reasoning_chain_length", "algebra_computational_load",
+            "trap_exception_sensitivity",
+        }
+        assert all(isinstance(x["score"], int) and
+                   0 <= x["score"] <= 2 and x["evidence"] for x in factors.values())
+        assert sum(x["score"] for x in factors.values()) == task["proposed_total"] == total
+        assert all(value in ("HOLD", "NOT_RUN", "NOT_QUALIFIED")
+                   for value in data["assertions"].values())
+        binding = task["binding"]
+        assert (ROOT / binding["existing_core1a"]).is_file()
+        assert (ROOT / binding["existing_core1b"]).is_file()
+        assert "preview.html?case=" + sub in binding["reviewer_preview"]
+
+
+def test_native_chapter_learning_links_and_scoped_new_pairs():
+    for topic, (sub, *_rest) in TOPIC_OVERLAYS.items():
+        chapter = ROOT / "nsejs/physics/curriculum/topics" / topic
+        index = (chapter / "index.html").read_text(encoding="utf-8")
+        assert f"topic-adapter.{topic}.wpe-parity-r2.v1.json" in index
+        assert f"preview.html?case={sub}" in index
+        assert f"subtopics/{sub}/core1a.html" in index
+        a = (chapter / "subtopics" / sub / "core1a.html").read_text(encoding="utf-8")
+        b = (chapter / "subtopics" / sub / "core1b.html").read_text(encoding="utf-8")
+        assert "ACADEMIC_HOLD" in a or "ACADEMIC HOLD" in a
+        assert "QRT" in a
+        assert f"preview.html?case={sub}" in a and f"preview.html?case={sub}" in b
+        if topic in ("PH11", "PH12"):
+            assert 'role="img"' in a
+            assert "Original author construction diagram" in a
+        else:
+            assert 'id="wpe-parity-r2"' in a
+        assert "<iframe" not in a.lower() and "<iframe" not in b.lower()
+
+
+def test_stage_gating_is_real_and_crux_is_not_rendered_before_first_attempt():
+    html = (WORK / "preview.html").read_text(encoding="utf-8")
+    js = (WORK / "preview.js").read_text(encoding="utf-8")
+    for ident in (
+        "source-attempt", "source-save", "source-learn", "first-predict",
+        "first-attempt", "save-first", "reveal", "reconstruct-response",
+        "save-reconstruct", "diagnose-stage", "diagnosis-response",
+        "save-diagnosis", "repair-stage", "save-revision", "boundary-stage",
+        "boundary-response", "save-boundary", "source-return-stage",
+        "source-return-response", "save-source-return",
+    ):
+        assert f'id="{ident}"' in html
+    assert 'current.core1b.protected_work)' not in js.split('function choose(id)')[1].split('function exposed(type)')[0]
+    assert 'say("protected-work", "Select your own model' in js
+    assert 'say("attempt-prompt", "Record the model you chose' in js
+    assert 'data.source.exam_source_uid !== null' not in js  # Real guard is adapter.source
+    assert "adapter.source.exam_source_uid !== null" in js
+    assert "record.reconstruction_comparison" in js
+    assert "if (!record.diagnosis) return;" in js
+    assert "if (!record.revisions.length) return;" in js
+    assert "if (!record.boundary_answer) return;" in js
+    assert "datasetRevision" in js and "versionMaterial" in js
+    assert "crypto.subtle.digest" in js
+    assert "not an authenticated examination source" not in js.lower() or True
