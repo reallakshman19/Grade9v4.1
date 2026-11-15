@@ -25,6 +25,9 @@ def run(origin, browser, size):
         page.goto(home,wait_until="domcontentloaded")
         page.locator("#chapter-PH01 .g9-chapter-open").wait_for()
         assert page.locator("#chapter-PH03 a").count()==0
+        assert "Current Electricity" in page.locator("#learn-physics").inner_text()
+        assert "PH11" not in page.locator("#learn-physics").inner_text()
+        assert "PH05" not in page.locator("#learn-physics").inner_text()
         assert not page.locator("#g9-explore-bank").evaluate("(e)=>e.open")
         check_size(page,"home")
         page.locator("#chapter-PH01 .g9-chapter-open").click()
@@ -33,20 +36,20 @@ def run(origin, browser, size):
         check_size(page,"PH01 chapter")
         page.locator("#M01 .g9-lesson-actions a").first.click()
         page.locator("#g9-learner-nav .g9-study-actions a.g9-next").wait_for()
-        assert "PH01" in page.locator("#g9-learner-nav").inner_text()
+        assert "Motion and Kinematics" in page.locator("#g9-learner-nav").inner_text()
         page.locator("#g9-learner-nav .g9-study-actions a.g9-next").click()
         page.locator("#g9-learner-nav").wait_for()
         assert "Try it" in page.locator("#g9-learner-nav").inner_text()
-        page.locator('#g9-learner-nav a').filter(has_text="Chapter").first.click()
+        page.locator('#g9-learner-nav .g9-study-actions a').filter(has_text="Motion and Kinematics").first.click()
         page.locator("#M01").wait_for()
         # B01 primary Core1B redirects to a six-stage shared reader. It must
         # preserve the originating PH07 subtopic and chapter return context.
         page.goto(origin+"/nsejs/physics/curriculum/topics/PH07/b01/PH07-01/core1b.html",
                   wait_until="domcontentloaded")
         page.wait_for_url("**/learner-preview/index.html?subtopic=PH07-01")
-        page.locator("#g9-learner-nav .g9-study-actions a").filter(has_text="← Chapter").wait_for()
-        assert "PH07-01" in page.locator("#g9-learner-nav").inner_text()
-        page.locator("#g9-learner-nav .g9-study-actions a").filter(has_text="← Chapter").click()
+        page.locator("#g9-learner-nav .g9-study-actions a").filter(has_text="Heat and Thermal Physics").wait_for()
+        assert "Temperature, thermometers and calibration" in page.locator("#g9-learner-nav").inner_text()
+        page.locator("#g9-learner-nav .g9-study-actions a").filter(has_text="Heat and Thermal Physics").click()
         page.locator("#PH07-01 .g9-lesson-actions a").first.wait_for()
         assert "ph=PH07" in page.url
 
@@ -59,7 +62,7 @@ def run(origin, browser, size):
         page.locator("#g9-learner-nav").wait_for()
         page.locator('#g9-learner-nav .g9-study-actions a').filter(has_text="2 · Try it").click()
         page.locator("#g9-learner-nav").wait_for()
-        assert "PH09-01" in page.locator("#g9-learner-nav").inner_text()
+        assert "Ray model, rectilinear light and ordinary reflection" in page.locator("#g9-learner-nav").inner_text()
         # Original candidate-bank deep-links remain available and offer return.
         page.goto(home+"?topic=optics&from=PH09&unit=PH09-01#topicWorkspace",
                   wait_until="domcontentloaded")
@@ -69,7 +72,28 @@ def run(origin, browser, size):
         page.goto(origin+"/nsejs/physics/learn/chapter.html?ph=PH11",wait_until="domcontentloaded")
         page.locator(".g9-chapter-resources a").first.wait_for()
         assert page.locator(".g9-lesson-card").count()==0
-        check_size(page,"PH11 preview")
+        check_size(page,"Current Electricity preview")
+        assert page.locator("#g9-chapter-crumb").inner_text()=="Current Electricity"
+        assert page.locator(".g9-chapter-resources a").filter(has_text="foundation worksheet").count()==1
+        assert page.locator(".g9-chapter-resources a").filter(has_text="advanced worksheet").count()==1
+        # Direct worksheet link must survive a roundtrip to topic-related teaching.
+        qid="NSEJS-CIRC-L2-Q14"
+        question=home+"?topic=circuits&q="+qid+"#question-"+qid
+        page.goto(question,wait_until="domcontentloaded")
+        page.locator("#question-"+qid+" a.g9-related-chapter").wait_for(timeout=60000)
+        assert page.locator("#question-"+qid+" a.g9-related-chapter").count()==1
+        page.locator("#question-"+qid+" a.g9-related-chapter").click()
+        page.locator(".g9-question-return").wait_for()
+        assert "Current Electricity" in page.locator("h1").inner_text()
+        assert "exact question-to-lesson match is not independently verified" in page.locator("#g9-return-context").inner_text()
+        # Follow reading route and use the native breadcrumb to return.
+        page.locator(".g9-chapter-resources a").filter(has_text="Read the complete chapter").click()
+        page.locator("#g9-learner-nav a").filter(has_text="Return to your question").wait_for()
+        page.locator("#g9-learner-nav a").filter(has_text="Return to your question").click()
+        page.locator("#question-"+qid).wait_for(timeout=60000)
+        assert page.locator("#questions article.card").count()==1
+        assert qid in page.url
+        check_size(page,"Current Electricity question return")
         assert not errors,errors
         return {"viewport":str(size[0])+"x"+str(size[1]),"status":"PASS"}
     finally:ctx.close()
