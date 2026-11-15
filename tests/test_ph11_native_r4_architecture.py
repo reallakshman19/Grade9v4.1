@@ -111,3 +111,23 @@ def test_publication_candidate_is_not_authorized_release_or_exam():
     assert "ACADEMIC_HOLD" in model["status"]
     assert "HOLD" in HTML and "HOLD" in LESSON
     assert "not secure examination custody" in LESSON
+
+
+def test_staged_candidate_dependency_manifest_is_exact_and_not_release_authority():
+    manifest=ROOT/"review/physics/ph11-07-r4/NATIVE_PUBLICATION_STAGING_MANIFEST_R4.json"
+    d=json.loads(manifest.read_text(encoding="utf-8"))
+    assert d["schema"]=="g9v41-ph11-07-native-candidate-staged-deps/v1"
+    assert d["status"]=="AUTHOR_EXPOSED_REVIEW_ONLY__ACADEMIC_HOLD"
+    assert d["trusted_production_gate"]=="NOT_RUN_ON_STACKED_PR_AND_NOT_AUTHORIZED"
+    assert d["release_manifest_authority"]=="NONE_NO_SIGNATURE"
+    expected={"core1a.html","core1b.html","native-attempt.js",
+              "prompt.v1.json","postattempt.v1.json","textbook-reader.css"}
+    assert {Path(x["path"]).name for x in d["dependencies"]}==expected
+    assert len(d["dependencies"])==len(expected)
+    for item in d["dependencies"]:
+        assert not item["path"].startswith(("review/","tests/","tools/"))
+        src=ROOT/item["path"]
+        assert src.is_file(),src
+        assert blob(src.read_text(encoding="utf-8"))==item["git_blob_sha"]
+    assert "review/**" in d["network_phase_policy"]["publication_exclude"]
+    assert "NOT" in d["network_phase_policy"]["before_source_first"]
