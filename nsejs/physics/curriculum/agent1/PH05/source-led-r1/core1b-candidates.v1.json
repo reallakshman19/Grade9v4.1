@@ -1,0 +1,65 @@
+{
+  "schema": "g9v41-ph05-source-led-transfer-candidates/v1",
+  "status": "AUTHOR_PROPOSED__INDEPENDENT_QRT_HOLD",
+  "source_locator": "NSEJS/2022/51/Q36",
+  "source_band": null,
+  "source_role": "AUTHORED_TRANSFER",
+  "academic_admission": "HOLD",
+  "tasks": [
+    {
+      "uid": "PH05-G07-Q36-TRANSFER-D3-R1",
+      "revision": "r1",
+      "cell": "D3.6",
+      "operation": "SYNTHESIZE",
+      "nomination_status": "AUTHOR_ONLY_NOT_QUALIFIED",
+      "prediction": "Which mass receives more kinetic energy, and why?",
+      "prompt": "Two isolated point masses m and 3m start at rest at finite separation s. At a later instant the lighter mass has kinetic energy Gm²/s. Determine their separation r in terms of s and the heavier mass's kinetic energy. State the frame and check that r<s.",
+      "w": "Use equal momentum to infer energy partition, then invert the finite-separation system energy balance; neither body may be treated as fixed.",
+      "hints": [
+        "Choose the whole isolated pair as system and identify its conserved quantities.",
+        "Relate the kinetic-energy ratio to the momentum magnitudes, rather than assuming equal speeds.",
+        "Equate total kinetic energy to the decrease of pair potential; solve for the unknown inverse separation."
+      ],
+      "reconstruction": "In the COM frame p_m=p_3m in magnitude, so K_m/K_3m=3. K_3m=Gm²/(3s); K_total=4Gm²/(3s). Thus 3Gm²(1/r−1/s)=4Gm²/(3s), giving 1/r=13/(9s) and r=9s/13. Check: r<s and K_total is positive.",
+      "alternative": "Reduced mass μ=3m/4. From K_m=Gm²/s, v_m²=2Gm/s. The heavy speed is v_m/3, so v_rel²=16v_m²/9. Then (1/2)μv_rel²=4Gm²/(3s), reproducing r=9s/13.",
+      "diagnosis": "Identify whether the first divergence was assuming equal kinetic energies, discarding initial potential, or counting only one moving mass.",
+      "repair": "Write the complete momentum and energy constraints, then recompute the unknown.",
+      "boundaryPrompt": "If K_m tends to zero while the starting separation remains s, what must r approach?",
+      "boundaryModel": "r approaches s; neither particle has acquired kinetic energy.",
+      "factors": null
+    },
+    {
+      "uid": "PH05-G07-Q36-TRANSFER-D4-R1",
+      "revision": "r1",
+      "cell": "D4.7",
+      "operation": "JUSTIFY",
+      "nomination_status": "AUTHOR_ONLY_NOT_QUALIFIED",
+      "prediction": "Can one body be instantaneously stationary in a laboratory frame while the pair is still attracting?",
+      "prompt": "Two isolated point masses m and 2m start at mutual rest at separation s, with their centre of mass moving at constant velocity V along their line of centres. Later, at separation r<s, the heavier body is instantaneously stationary in the laboratory. Taking the heavy body's COM-frame velocity opposite V, derive the necessary V² in terms of G,m,r,s. Explain why the relative speed and the potential-energy change do not depend on V, and refute the claim that zero laboratory speed means the heavy body receives no gravitational force.",
+      "w": "Distinguish COM-frame kinetic energy from laboratory kinetic energy, use conserved momentum and reduced mass to infer the frame speed, and separate instantaneous velocity from acceleration.",
+      "hints": [
+        "Separate the centre-of-mass translation from the internal motion.",
+        "Use opposite COM-frame momenta; a zero laboratory velocity requires a particular velocity cancellation.",
+        "Express released potential energy as internal kinetic energy, not as the total laboratory kinetic energy."
+      ],
+      "reconstruction": "Let heavy COM speed u and light speed 2u. K_internal=(1/2)m(2u)²+(1/2)(2m)u²=3mu². Released pair energy is 2Gm²(1/r−1/s). Thus u²=(2Gm/3)(1/r−1/s). Heavy lab velocity V−u=0 implies V²=u². Relative speed 3u is invariant under a Galilean boost; pair potential depends only on separation. Force magnitude G(2m²)/r² remains nonzero despite zero instantaneous laboratory velocity.",
+      "alternative": "Reduced mass μ=2m/3 and relative speed w=3u give K_internal=(1/2)μw²=3mu², the same relation. In the lab, K_total=K_internal+(1/2)(3m)V², and the constant COM term cancels between states.",
+      "diagnosis": "Locate conflation of frame velocity, acceleration, or total versus internal kinetic energy.",
+      "repair": "Explicitly transform both velocities and show cancellation of the constant COM term.",
+      "boundaryPrompt": "At r=s, what V permits the heavy body to be stationary in the laboratory?",
+      "boundaryModel": "V=0 because the initial internal velocities are zero.",
+      "factors": null
+    }
+  ],
+  "gates": {
+    "source_authenticity": "HOLD",
+    "content_correctness": "HOLD",
+    "cognitive_qualification": "HOLD",
+    "teaching_sufficiency": "HOLD",
+    "assessment_validity": "HOLD",
+    "implementation": "NOT_RUN",
+    "release_authority": "HOLD"
+  },
+  "B1_B7": "NOT_RUN",
+  "release": "HOLD"
+}
