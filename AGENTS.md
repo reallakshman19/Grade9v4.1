@@ -53,3 +53,5 @@ This file applies to all work in this repository.
 Do **not** guess scientific meaning, examination authenticity, reviewer authority, or cognitive equivalence. Implement the unambiguous mechanical requirements first; add a short `OPEN_QUESTION` note against Issue #1 for the owner to resolve. Prefer small, reversible changes and conservative HOLD reports.
 
 **Green CI means automatic tests passed; it never means student release is authorized.**
+
+<!-- R3 negative-control probe only; never merge. -->
