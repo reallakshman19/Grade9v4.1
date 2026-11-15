@@ -100,7 +100,8 @@ def test_technical_reader_never_claims_approved_exam_key():
 def test_reader_attempt_revision_storage_and_hint_locks():
     js=(ROOT/"nsejs/js/core2-physics-reader.js").read_text(encoding="utf-8")
     assert 'candidate-attempt","v2"' in js
-    assert 'attemptKey(q, await revision(q))' in js
+    assert 'const contentRevision = await revision(q);' in js
+    assert 'const k = attemptKey(q, contentRevision);' in js
     assert 'if (!saveAttempt(k, attempt))' in js
     assert 'Tier 3 helper remain locked' in js
     assert 'getAttempt(k) ? hints.length : Math.min(2, hints.length)' in js
