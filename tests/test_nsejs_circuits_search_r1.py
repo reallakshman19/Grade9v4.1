@@ -26,3 +26,29 @@ def test_circuit_worksheet_index_has_all_56_and_valid_reader_links():
         assert d["is_nsejs"] is True and d["subject"]=="Physics"
         assert d["category"]=="question"
     assert len(set(d["id"] for d in docs))==len(docs)
+
+
+def test_committed_search_manifest_covers_every_worksheet_candidate():
+    import hashlib
+    import json
+    from urllib.parse import urlparse,parse_qs
+    a=(ROOT/"data/learner-search-index.v1.json").read_bytes()
+    b=(ROOT/"nsejs/data/learner-search-index.v1.json").read_bytes()
+    assert a==b
+    manifest=json.loads((ROOT/"data/learner-search-manifest.v1.json").read_text())
+    assert (ROOT/"nsejs/data/learner-search-manifest.v1.json").read_bytes()==(
+      ROOT/"data/learner-search-manifest.v1.json").read_bytes()
+    assert hashlib.sha256(a).hexdigest()==manifest["sha256"]
+    docs=json.loads(a)
+    assert manifest["total_documents"]==len(docs)==402
+    assert manifest["by_category"]["question"]==347
+    circuit=[d for d in docs if d["original_id"].startswith("NSEJS-CIRC-L")]
+    assert len(circuit)==56
+    assert len(set(x["id"] for x in docs))==len(docs)
+    for q in circuit:
+        assert q["badge"]=="SOURCE WORKSHEET · ACADEMIC HOLD"
+        link=urlparse(q["url"])
+        assert (ROOT/link.path).is_file()
+        assert parse_qs(link.query).get("topic")==["circuits"]
+        assert link.fragment==q["original_id"]
+        assert not q["url"].startswith("nsejs/physics/authored-practice")
