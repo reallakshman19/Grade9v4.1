@@ -118,6 +118,7 @@ def workpack_design(repo,head,workpack,items):
     validate_schema(workpack,"workpack.schema.json")
     require(workpack["subject"]=="Physics","SUBJECT_AUTHORITY_NOT_ACTIVATED")
     require({p["role"] for p in workpack["pins"]}==PIN_ROLES and len(workpack["pins"])==len(PIN_ROLES),"MISSING_OR_DUPLICATE_AUTHORITY_PIN")
+    require(len({p["path"] for p in workpack["pins"]})==len(PIN_ROLES),"AUTHORITY_PIN_REUSE")
     for pin in workpack["pins"]:check_witness(repo,head,pin,items)
     comparator=next(p for p in workpack["pins"] if p["role"]=="WPE_COMPARATOR")
     require(comparator["path"].startswith(("physics/wpe/","WPE_Source_to_Core1A_Concept/")),"WPE_COMPARATOR_NOT_ACTUAL_PILOT")
@@ -125,11 +126,11 @@ def workpack_design(repo,head,workpack,items):
     for item in workpack["items"]:
         require(item["subtopic_id"].startswith(workpack["topic_id"]+"-"),"CROSS_TOPIC_ID")
         require(item["cell"]!="D3.1","D31_PAUSED")
-        require(item["source_role"]!="DIRECT_EXAM_EVIDENCE" or item["sources"],"DIRECT_EXAM_WITHOUT_SOURCE")
+        require(item["source_role"]!="DIRECT_EXAM_EVIDENCE" or any(x["role"]=="DIRECT_EXAM_EVIDENCE" for x in item["sources"]),"DIRECT_EXAM_WITHOUT_SOURCE")
         for source in item["sources"]:
             if source["role"]=="DIRECT_EXAM_EVIDENCE":
                 require(source["paper_sha256"] and source["key_sha256"] and source["rights"]=="VERIFIED_BY_CUSTODIAN","DIRECT_SOURCE_CUSTODY_HOLD:"+source["identity"])
-                require(source["figure_need"]=="NOT_REQUIRED" or source["figure_sha256"],"DIRECT_SOURCE_FIGURE_MISSING:"+source["identity"])
+                require(source["figure_need"]=="NOT_REQUIRED" or (source["figure_need"]=="REQUIRED" and source["figure_sha256"]),"DIRECT_SOURCE_FIGURE_MISSING:"+source["identity"])
         require(item["source_role"]=="DIRECT_EXAM_EVIDENCE" or item["direct_exam_credit"]==0,"AUTHORED_TRANSFER_FALSE_EXAM_CREDIT")
         require(len(set(item["construction"]["teaching_obligations"]))==len(item["construction"]["teaching_obligations"]),"DUPLICATE_TEACHING_OBLIGATION")
         require(item["construction"]["anchor_W"].strip()!=item["construction"]["fresh_W"].strip(),"IDENTICAL_DECISIVE_W")
@@ -138,20 +139,23 @@ def workpack_design(repo,head,workpack,items):
 def receipt_path(workpack,purpose,uid=None):return EVID+"receipts/"+workpack+"/"+purpose+("-"+uid if uid else "")+".json"
 def get_receipt(repo,head,items,trust,workpack,purpose,binding,subject,decision,role,authors=(),uid=None):
     return signed(read_json(repo,head,receipt_path(workpack,purpose,uid),items),trust,purpose,binding,subject,decision,role,authors)
-def check_active(repo,base,head,items,policy,trust,pr_author,content):
+def check_active(repo,base,head,items,policy,trust,pr_author,content,golden_lane=False):
     # Active is deliberately not obtainable by changing an author packet.
     golden=policy["accepted_golden"]
-    require(isinstance(golden,dict) and set(golden)=={"head","fingerprint","receipt_path"},"GOLDEN_NOT_ADOPTED")
-    gi=tree(repo,golden["head"]);require(fingerprint(gi)==golden["fingerprint"],"GOLDEN_CONTENT_MISMATCH")
-    signed(read_json(repo,base,golden["receipt_path"]),trust,"OWNER_GOLDEN",golden["fingerprint"],golden["head"],"ACCEPTED","OWNER")
+    if not golden_lane:
+        require(isinstance(golden,dict) and set(golden)=={"head","fingerprint","receipt_path"},"GOLDEN_NOT_ADOPTED")
+        gi=tree(repo,golden["head"]);require(fingerprint(gi)==golden["fingerprint"],"GOLDEN_CONTENT_MISMATCH")
+        signed(read_json(repo,base,golden["receipt_path"]),trust,"OWNER_GOLDEN",golden["fingerprint"],golden["head"],"ACCEPTED","OWNER")
     paths=[p for p in changed(repo,base,head) if p.startswith(EVID+"submissions/") and p.endswith(".json")]
     require(len(paths)==1,"EXACTLY_ONE_SUBMISSION_REQUIRED")
     sub=read_json(repo,head,paths[0],items);require(set(sub)=={"workpack_path","design_commit","packet_paths"},"SUBMISSION_SHAPE")
     design_path=path_ok(sub["workpack_path"]);require(design_path.startswith(EVID+"workpacks/"),"WORKPACK_PATH")
-    d=commit(repo,sub["design_commit"]);require(ancestor(repo,base,d) and ancestor(repo,d,head) and d!=head,"DESIGN_NOT_PRIOR_ANCESTOR")
-    require(not [p for p in changed(repo,base,d) if classify(p,policy)=="CONTENT"],"CONTENT_PRECEDES_DESIGN")
+    d=commit(repo,sub["design_commit"]);require(ancestor(repo,d,head) and d!=head,"DESIGN_NOT_PRIOR_ANCESTOR")
+    require(ancestor(repo,base,d) or ancestor(repo,d,base),"DESIGN_NOT_ON_BASE_LINE")
+    if ancestor(repo,base,d):require(not [p for p in changed(repo,base,d) if classify(p,policy)=="CONTENT"],"CONTENT_PRECEDES_DESIGN")
     raw=blob(repo,head,design_path,items);require(raw==blob(repo,d,design_path),"DESIGN_CHANGED_AFTER_APPROVAL")
     w=workpack_design(repo,d,parse(raw),tree(repo,d));wid=w["id"];authors=w["authors"]
+    require(w["delivery_kind"]==("GOLDEN_SAMPLE" if golden_lane else "BATCH_ITEM"),"WRONG_WORKPACK_PHASE")
     require(pr_author and pr_author in authors,"PR_AUTHOR_NOT_DECLARED")
     wd=sha(raw)
     owner,_=get_receipt(repo,head,items,trust,wid,"OWNER_SCOPE",wd,wid,"AUTHORIZED","OWNER")
@@ -160,6 +164,20 @@ def check_active(repo,base,head,items,policy,trust,pr_author,content):
     # The signed design must already be present in the design ancestor.
     get_receipt(repo,d,tree(repo,d),trust,wid,"OWNER_SCOPE",wd,wid,"AUTHORIZED","OWNER")
     covered={p for i in w["items"] for p in i["paths"]}
+    require(all(classify(p,policy)=="CONTENT" for p in covered),"DESIGN_SCOPE_MUST_BE_CONTENT_PATHS")
+    core2="nsejs/data/physics-core2-candidates.v1.json"
+    if core2 in content:
+        def keyed(rev):
+            try: data=read_json(repo,rev,core2)
+            except Block: return {}
+            rows=data["questions"]
+            ids=[q.get("source_id") or q.get("id") for q in rows]
+            require(all(ids) and len(set(ids))==len(ids),"CORE2_DUPLICATE_OR_MISSING_ID")
+            return dict(zip(ids,rows))
+        before,after=keyed(base),keyed(head)
+        changed_ids={k for k in set(before)|set(after) if before.get(k)!=after.get(k)}
+        covered_ids={i["core2_identity"] for i in w["items"] if core2 in i["paths"]}
+        require(changed_ids<=covered_ids,"CORE2_CHANGED_UID_NOT_COVERED:"+",".join(sorted(changed_ids-covered_ids)))
     require(set(content)<=covered,"UNCOVERED_CHANGED_CONTENT:"+",".join(sorted(set(content)-covered)))
     require(set(sub["packet_paths"])=={i["uid"] for i in w["items"]},"PACKET_DENOMINATOR_MISMATCH")
     fp=fingerprint(items)
@@ -171,7 +189,7 @@ def check_active(repo,base,head,items,policy,trust,pr_author,content):
     for i in w["items"]:
         uid=i["uid"];p=path_ok(sub["packet_paths"][uid]);require(p.startswith(PACKETS),"PACKET_PATH")
         raw_packet=blob(repo,head,p,items);pack=parse(raw_packet)
-        t=pack["task"];require(t["task_id"]==uid and t["subtopic_id"]==i["subtopic_id"] and t["base_sha"]==base and t["golden_sample_sha"]==golden["head"],"PACKET_IDENTITY_MISMATCH:"+uid)
+        t=pack["task"];require(t["task_id"]==uid and t["subtopic_id"]==i["subtopic_id"] and t["base_sha"]==base and t["delivery_kind"]==w["delivery_kind"] and t["golden_sample_sha"]==(t["head_sha"] if golden_lane else golden["head"]) and pack["core2"]["identity"]==i["core2_identity"],"PACKET_IDENTITY_MISMATCH:"+uid)
         tested=commit(repo,t["head_sha"]);require(ancestor(repo,tested,head) and fingerprint(tree(repo,tested))==fp,"STALE_PACKET_CONTENT:"+uid)
         result=mod.validate(pack,repo)
         require(result["mechanical_status"]=="EVIDENCE_STRUCTURALLY_GROUNDED","R2_PACKET_BLOCKED:"+uid)
@@ -181,13 +199,19 @@ def check_active(repo,base,head,items,policy,trust,pr_author,content):
         for role in ("R00","R01_SOURCE","R01_SCIENCE","R01_QRT","R01_LEARNING"):
             principal,details=get_receipt(repo,head,items,trust,wid,role,binding,uid,"ACCEPTED",role,authors,uid)
             reviewers.append(principal)
-            require(details.get("evidence_sha256") and SHA64.fullmatch(details["evidence_sha256"]),"REVIEW_EVIDENCE_MISSING:"+role)
+            require(details.get("evidence_path","").startswith(EVID) and SHA64.fullmatch(details.get("evidence_sha256","")),"REVIEW_EVIDENCE_MISSING:"+role)
+            require(sha(blob(repo,head,details["evidence_path"],items))==details["evidence_sha256"],"REVIEW_EVIDENCE_HASH_MISMATCH:"+role)
             if role=="R00":require(details.get("tested_commit")==tested and details.get("browser")=="PASS" and details.get("negative_controls")=="PASS","R00_TEST_RECEIPT_MISSING")
             if role=="R01_SOURCE":require(details.get("source_role")==i["source_role"] and details.get("rights")=="PASS" and details.get("custody")=="PASS","SOURCE_REVIEW_HOLD")
             if role=="R01_SCIENCE":require(details.get("independent_derivation")=="PASS" and details.get("units_signs_limits")=="PASS","SCIENCE_REVIEW_HOLD")
             if role=="R01_QRT":require(details.get("exposure")=="UNEXPOSED" and SHA64.fullmatch(details.get("sealed_first_pass_sha256","")) and details.get("operation") in OPS and details.get("cell")==i["cell"],"QRT_REVIEW_HOLD")
             if role=="R01_LEARNING":require(details.get("B1_B7")=={g:"PASS" for g in GATES} and details.get("cold_reconstruction")=="PASS","LEARNING_REVIEW_HOLD")
         require(len(set(reviewers))==len(reviewers) and owner not in reviewers and designer not in reviewers,"REVIEWER_ROLE_COLLISION")
+    if golden_lane:
+        require(any(i["source_role"]=="DIRECT_EXAM_EVIDENCE" for i in w["items"]),"GOLDEN_REQUIRES_DIRECT_EXAM_SOURCE")
+        accepted=sha(canonical({"content":fp,"design":wd,"packets":{uid:sha(blob(repo,head,path,items)) for uid,path in sub["packet_paths"].items()}}))
+        get_receipt(repo,head,items,trust,wid,"OWNER_GOLDEN",accepted,wid,"ACCEPTED","OWNER")
+        return {"status":"SCOPED_GOLDEN_RECEIPTS_VERIFIED","academic_status":"SCOPED_SIGNED_RECEIPTS_ONLY","content_fingerprint":fp,"workpack":wid,"items":len(w["items"]),"golden_binding":accepted}
     return {"status":"DELEGATED_ACCEPTANCE_RECEIPTS_VERIFIED","academic_status":"SCOPED_SIGNED_RECEIPTS_ONLY","content_fingerprint":fp,"workpack":wid,"items":len(w["items"])}
 def gate(repo,base,head,trust,pr_author=""):
     try:
@@ -195,20 +219,34 @@ def gate(repo,base,head,trust,pr_author=""):
         require(ancestor(repo,base,head),"STALE_BRANCH_REBASE_REQUIRED")
         files=changed(repo,base,head);groups={k:[p for p in files if classify(p,policy)==k] for k in ("CONTENT","GOVERNANCE","EVIDENCE")}
         fp=fingerprint(hi)
+        for p in groups["EVIDENCE"]:
+            if p in hi:
+                require(Path(p).suffix.lower() in {".json",".txt",".md",".csv",".png",".jpg",".jpeg",".webp"},"NON_EVIDENCE_FILE_IN_RECEIPT_NAMESPACE:"+p)
+                require(hi[p][0]=="100644" and hi[p][1]=="blob","NON_REGULAR_EVIDENCE:"+p)
         if groups["CONTENT"] and policy["phase"]=="FREEZE_PENDING_GOLDEN":
-            raise Block("NEW_LEARNER_CONTENT_FROZEN:"+",".join(groups["CONTENT"]))
+            # A normal draft remains frozen. The only exception is a fully signed,
+            # independently reviewed, representative Golden on an earlier design.
+            if not any(p.startswith(EVID+"submissions/") and p.endswith(".json") for p in groups["EVIDENCE"]):
+                raise Block("NEW_LEARNER_CONTENT_FROZEN:"+",".join(groups["CONTENT"]))
+            require(not groups["GOVERNANCE"],"GOVERNANCE_AND_CONTENT_MUST_BE_SEPARATE")
+            return check_active(repo,base,head,hi,policy,trust,pr_author,groups["CONTENT"],golden_lane=True)
         if groups["GOVERNANCE"]:
             # A candidate cannot change the policy that judges itself.
             require(not groups["CONTENT"],"GOVERNANCE_AND_CONTENT_MUST_BE_SEPARATE")
             signed(read_json(repo,head,EVID+"governance-receipt.json",hi),trust,"GOVERNANCE",fp,base,"AUTHORIZED","OWNER")
+            # Activation is deliberately a later, separately reviewed migration.
+            # Do not allow a signed policy edit alone to stand in for Golden adoption.
+            next_policy=load_policy(repo,head,hi)
+            require(next_policy["phase"]==policy["phase"] and next_policy["production_enabled"]==policy["production_enabled"] and next_policy["academic_release_enabled"]==policy["academic_release_enabled"] and next_policy["accepted_golden"]==policy["accepted_golden"],"ACTIVATION_REQUIRES_SEPARATE_ADOPTION_WORKPACK")
         if groups["CONTENT"]:
             return check_active(repo,base,head,hi,policy,trust,pr_author,groups["CONTENT"])
         # New design records must be valid and externally approved before merging.
         for p in groups["EVIDENCE"]:
             if p.startswith(EVID+"workpacks/") and p.endswith(".json"):
                 raw=blob(repo,head,p,hi);w=workpack_design(repo,head,parse(raw),hi);wd=sha(raw)
-                get_receipt(repo,head,hi,trust,w["id"],"OWNER_SCOPE",wd,w["id"],"AUTHORIZED","OWNER")
-                get_receipt(repo,head,hi,trust,w["id"],"DESIGN",wd,w["id"],"ACCEPTED","DESIGN",w["authors"])
+                owner,_=get_receipt(repo,head,hi,trust,w["id"],"OWNER_SCOPE",wd,w["id"],"AUTHORIZED","OWNER")
+                designer,_=get_receipt(repo,head,hi,trust,w["id"],"DESIGN",wd,w["id"],"ACCEPTED","DESIGN",w["authors"])
+                require(owner!=designer,"DESIGN_REVIEWER_NOT_SEPARATE")
         return {"status":"CONTROL_OR_EVIDENCE_ONLY","academic_status":"HOLD","changed":groups,"content_fingerprint":fp}
     except (Block,KeyError,TypeError,ValueError,OSError,subprocess.CalledProcessError) as e:
         return {"status":"BLOCKED","academic_status":"HOLD","reason":str(e)}

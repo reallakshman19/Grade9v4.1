@@ -270,6 +270,10 @@
               "diagnosis_rule",
               "wpe_comparison"
             ]
+          },
+          "core2_identity": {
+            "type": "string",
+            "minLength": 1
           }
         },
         "required": [
@@ -280,11 +284,18 @@
           "sources",
           "cell",
           "paths",
-          "construction"
+          "construction",
+          "core2_identity"
         ]
       },
       "minItems": 1,
       "uniqueItems": true
+    },
+    "delivery_kind": {
+      "enum": [
+        "GOLDEN_SAMPLE",
+        "BATCH_ITEM"
+      ]
     }
   },
   "required": [
@@ -295,6 +306,7 @@
     "authors",
     "route",
     "pins",
-    "items"
+    "items",
+    "delivery_kind"
   ]
 }
