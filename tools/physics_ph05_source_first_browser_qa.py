@@ -26,13 +26,13 @@ def free_port():
         return sock.getsockname()[1]
 
 
-def record(page):
+def record(page, uid):
     return page.evaluate("""prefix => {
         const keys=Object.keys(localStorage).filter(k=>k.startsWith(prefix) && !k.endsWith(':probe'));
         if(keys.length!==1)return null;
         const val=JSON.parse(localStorage.getItem(keys[0]));
         return {key:keys[0],entry:val};
-    }""",PREFIX)
+    }""",PREFIX+uid+":")
 
 
 def load(page,url):
@@ -64,7 +64,7 @@ def check_orientation(browser,base,orientation,w,h,receipts):
         page.locator("#firstReasoning").fill("I will first identify the system boundary, derive a relation, and check dimensions independently.")
         page.get_by_role("button",name="Protect first attempt").click()
         page.wait_for_function("() => document.querySelector('#afterFirst')?.hidden===false",timeout=10000)
-        rec=record(page)
+        rec=record(page,uid)
         assert rec and rec["entry"]["source_uid"]==uid
         assert rec["entry"]["prediction"].startswith("Prediction before learning")
         assert rec["entry"]["first_reasoning"].startswith("I will first identify")
@@ -77,7 +77,7 @@ def check_orientation(browser,base,orientation,w,h,receipts):
         page.wait_for_url("**/textbook/PH05/G*/index.html",timeout=10000)
         page.goto(url,wait_until="load")
         page.locator("#firstPrediction").wait_for(timeout=10000)
-        preserved=record(page)
+        preserved=record(page,uid)
         assert preserved["entry"]["prediction"]==rec["entry"]["prediction"]
         assert preserved["entry"]["first_reasoning"]==rec["entry"]["first_reasoning"]
         assert any(ev["kind"].startswith("core1a_") for ev in preserved["entry"]["exposure"])
@@ -116,7 +116,7 @@ def check_stale_revision(browser,base,receipts):
     page.locator("#firstPrediction").fill("Initial prediction before any provided help.")
     page.locator("#firstReasoning").fill("A complete independent model with selected system and dimensional check.")
     page.get_by_role("button",name="Protect first attempt").click()
-    assert record(page)
+    assert record(page,IDS[0])
     page.evaluate("""prefix => {
         const key=Object.keys(localStorage).find(k=>k.startsWith(prefix) && !k.endsWith(':probe'));
         const x=JSON.parse(localStorage.getItem(key));
