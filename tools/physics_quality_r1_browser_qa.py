@@ -124,6 +124,49 @@ def blocked_storage(origin, browser):
         context.close()
 
 
+def tampered_postattempt_model(origin,browser):
+    # A stale or altered public JSON answer asset cannot be treated as a
+    # compatible key for an already saved first attempt.
+    context=browser.new_context()
+    page=context.new_page()
+    context.route("**/postattempt-models.v1.json",
+                  lambda route:route.fulfill(status=200,content_type="application/json",
+                                             body='{"schema":"tampered"}'))
+    try:
+        page.goto(origin+"/nsejs/physics/quality-r1/challenge.html?unit=PH08-08",
+                  wait_until="domcontentloaded")
+        page.get_by_role("button",name="Save protected first prediction + attempt").wait_for()
+        page.locator("#prediction").fill("I first need to check the clock origin before choosing the geometry.")
+        page.locator("#answer").fill("My independent first attempt compares both propagation paths, calculates their difference, and checks the detector threshold.")
+        page.get_by_role("button",name="Save protected first prediction + attempt").click()
+        page.get_by_text("HOLD: post-attempt model unavailable or mismatched",exact=False).wait_for(timeout=15000)
+        assert page.get_by_role("button",name="Reveal model after your saved first attempt").count()==0
+        assert page.locator("blockquote").count()==1 # first response survives
+        assert page.get_by_role("button",name="Reveal H1").count()==0
+        return {"tampered_answer_model":"FAIL_CLOSED_PASS"}
+    finally:context.close()
+
+
+def missing_source_pin(origin,browser):
+    # A forged/unpinned public prompt manifest must not even expose
+    # a protected first-attempt start action.
+    import json
+    bad=json.loads((ROOT/"nsejs/physics/quality-r1/attempt-prompts.v1.json").read_text(encoding="utf-8"))
+    bad.pop("source_package_git_blob",None)
+    context=browser.new_context()
+    context.route("**/attempt-prompts.v1.json",
+                  lambda route:route.fulfill(status=200,content_type="application/json",
+                                             body=json.dumps(bad)))
+    page=context.new_page()
+    try:
+        page.goto(origin+"/nsejs/physics/quality-r1/challenge.html?unit=PH01-M05",
+                  wait_until="domcontentloaded")
+        page.get_by_text("Pinned source and post-attempt model revisions required",exact=False).wait_for(timeout=15000)
+        assert page.get_by_role("button",name="Save protected first prediction + attempt").count()==0
+        return {"missing_prompt_source_pin":"FAIL_CLOSED_PASS"}
+    finally:context.close()
+
+
 def main():
     OUT.mkdir(parents=True,exist_ok=True)
     server=ThreadingHTTPServer(("127.0.0.1",0),partial(SimpleHTTPRequestHandler,directory=str(ROOT)))
@@ -138,6 +181,8 @@ def main():
                     for ident,(ch,u,count) in UNITS.items():
                         print(inspect_case(origin,browser,dims,ident,ch,u,count),flush=True)
                 print(blocked_storage(origin,browser),flush=True)
+                print(tampered_postattempt_model(origin,browser),flush=True)
+                print(missing_source_pin(origin,browser),flush=True)
             finally:
                 browser.close()
     finally:
