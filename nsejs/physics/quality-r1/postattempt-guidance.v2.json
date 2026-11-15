@@ -1,0 +1,182 @@
+{
+  "schema": "g9v41-physics-after-first/v2",
+  "status": "AUTHOR_EXPOSED_CANDIDATE__ACADEMIC_HOLD",
+  "original_source_status": "NO_DIRECT_EXAM_ADMISSION",
+  "source_v2_git_blob": "2a1a660a4d7a3d3cd1a64dad89a98a448013f9ad",
+  "units": [
+    {
+      "unit": "PH01-M05",
+      "revision": "20261115-graph-inverse-r2",
+      "uid": "AUTHORED-PH01-M05-R2-INVERSE-01",
+      "hints": [
+        "Integrate velocity intervals to get changes in x, then use y(5)=14−x(5) to fix the otherwise unknown origin.",
+        "Do not let a negative signed area cancel path length; compare one-sided slopes at the corner."
+      ],
+      "reconstruct": "The y reading gives x(5)=14−10=4 m. From 0 to 5 s signed displacement is 3×3−2×2=+5 m, hence x(0)=4−5=−1 m. Then x(3)=−1+9=8 m, x(5)=4 m, x(7)=4+2=6 m. Total displacement=+9−4+2=+7 m, matching 6−(−1)=7 m; distance=9+4+2=15 m. In y=14−x the signed velocities are −3,+2,−1 m/s. At t=3 s, +3 and −2 m/s are the unequal one-sided velocities, so no unique instantaneous velocity follows from an ideal corner. The cart passes x=0 during the first interval at t=1/3 s while moving +3 m/s; position zero does not mean stopped.",
+      "diagnosis": "Distinguish an unfixed position origin, wrong sign on an area, wrong conversion between frames, and treating a corner as a smooth unique velocity. Evaluate each submitted model and number separately.",
+      "repair": "Reconstruct x backwards from the measured y anchor and use a second independent signed area ledger. Explain the origin and corner constraints.",
+      "boundaryPrompt": "Suppose the last velocity step from t=5 to 7 s changes to −2 m/s, with every earlier reading unchanged. Determine the new x(7), the whole-trip displacement and path length.",
+      "rubric": [
+        {
+          "id": "model",
+          "expected": "Signed-area inverse with a position anchor",
+          "tol": 0,
+          "repair": "First choose the velocity-area relation and an external position anchor; a graph of velocity has no absolute origin."
+        },
+        {
+          "id": "x0",
+          "expected": -1,
+          "tol": 0.001,
+          "repair": "The observed y(5)=10 gives x(5)=4, so subtract the first 5 s of signed areas to recover x(0)."
+        },
+        {
+          "id": "x7",
+          "expected": 6,
+          "tol": 0.001,
+          "repair": "Add the last signed area +2 m to the calibrated x(5)=4 m."
+        },
+        {
+          "id": "distance",
+          "expected": 15,
+          "tol": 0.001,
+          "repair": "Add magnitudes of interval displacements 9+4+2, not their signed sum."
+        },
+        {
+          "id": "yFirst",
+          "expected": -3,
+          "tol": 0.001,
+          "repair": "Since y=14−x, the y velocity has the opposite sign to the first x velocity."
+        },
+        {
+          "id": "corner",
+          "expected": "Unequal one-sided velocities; no unique value",
+          "tol": 0,
+          "repair": "The line approaching the join has +3 m/s; leaving it has −2 m/s. An ideal corner has no single slope."
+        }
+      ]
+    },
+    {
+      "unit": "PH02-F04",
+      "revision": "20261115-contact-compliance-r2",
+      "uid": "AUTHORED-PH02-F04-R2-COMPLIANT-01",
+      "hints": [
+        "Name the bumper's repulsive magnitude C, using +C on B and −C on A; treat each accelerometer independently.",
+        "Solve 18−C=3×a_A and C−4=2×a_B; then compare the centre-of-mass result with the external force ledger."
+      ],
+      "reconstruct": "For A, 18−C=3×2=6 N, hence C=12 N left on A; for B, C−4=2×4=8 N, hence C=12 N right on B. The equations agree, so the action–reaction pair is consistent. The total external force is +18−4=+14 N; the COM acceleration is +14/5=2.8 m/s², also (3×2+2×4)/5=+2.8 m/s². A compressed bumper can be unloading while the carts separate and have distinct accelerations. These readings are not compatible with maintained rigid contact: that constraint would require both to accelerate at +2.8 m/s² and a different contact force. Actual persistence requires relative-motion/compression evidence.",
+      "diagnosis": "Check contact-model selection before the 12 N arithmetic. Confusing rigid and compliant interaction is a model error even if two force equations happen to balance.",
+      "repair": "Label receiving bodies, validate both independent force equations, state the compliant instant and test relative acceleration. Contrast maintained rigid contact using the combined-body constraint.",
+      "boundaryPrompt": "Suppose the bumper is replaced by a rigid, locked connector while both motor and brake forces remain unchanged. Determine the common acceleration and connector force and explain why the original sensor pair cannot persist.",
+      "rubric": [
+        {
+          "id": "model",
+          "expected": "Compliant unloading bumper; unequal acceleration possible",
+          "tol": 0,
+          "repair": "First distinguish the compressed bumper's transient mechanics from a rigid kinematic constraint."
+        },
+        {
+          "id": "contact",
+          "expected": 12,
+          "tol": 0.01,
+          "repair": "Use the B free-body equation C−4=2×4, and verify independently against A:18−C=3×2."
+        },
+        {
+          "id": "com",
+          "expected": 2.8,
+          "tol": 0.01,
+          "repair": "The only horizontal external forces on A+B are +18 and −4 N, divided by the total mass 5 kg."
+        },
+        {
+          "id": "constraint",
+          "expected": "Both carts must have equal acceleration",
+          "tol": 0,
+          "repair": "Rigid maintained contact imposes a_A=a_B. A spring bumper does not."
+        }
+      ]
+    },
+    {
+      "unit": "PH07-02",
+      "revision": "20261115-thermal-regime-inference-r2",
+      "uid": "AUTHORED-PH07-02-R2-REGIME-01",
+      "hints": [
+        "Conserve energy separately: ΔU=(P_in−P_out)Δt for each system before deciding how the energy is stored.",
+        "Only after selecting the phase regime use Δm=ΔU/L or ΔT=ΔU/C. The two formulas do not mean the same thing."
+      ],
+      "reconstruct": "For either sample net energy is (90−30)×120=7200 J. A has two phases coexisting at the melting point, so its internal energy goes into melting Δm=7200/180000=0.040 kg, with ΔT=0 K under the stated maintained plateau. B has no transition so ΔT=7200/600=12 K. Both gained 7200 J internal energy; temperature alone did not determine that energy change.",
+      "diagnosis": "First decide whether the measurements support a melting plateau or fixed-phase sensible heating. Check the net power calculation, latent unit conversion and rate-versus-energy distinction before diagnosing arithmetic.",
+      "repair": "Draw system boundaries for A and B; calculate ΔU first, then map the energy to the correct storage state, and falsify the other formula under the stated phase conditions.",
+      "boundaryPrompt": "For the next 120 s, A's heat loss is increased to exactly 90 W while input stays 90 W and its two phases still coexist. What changes in internal energy, melted mass and temperature can be concluded from this constant-rate model?",
+      "rubric": [
+        {
+          "id": "model",
+          "expected": "A: phase plateau; B: sensible heating",
+          "tol": 0,
+          "repair": "Use the mixed solid/liquid observation before choosing the energy storage equation."
+        },
+        {
+          "id": "net",
+          "expected": 7200,
+          "tol": 1,
+          "repair": "Subtract loss power from input, then multiply by the 120 s interval."
+        },
+        {
+          "id": "melt",
+          "expected": 0.04,
+          "tol": 0.001,
+          "repair": "For the mixed-phase plateau divide net energy by latent heat expressed in J/kg."
+        },
+        {
+          "id": "deltaB",
+          "expected": 12,
+          "tol": 0.1,
+          "repair": "Use ΔT=ΔU/C for the unchanged-phase solid B, not sample A."
+        }
+      ]
+    },
+    {
+      "unit": "PH08-08",
+      "revision": "20261115-echo-inverse-geometry-r2",
+      "uid": "AUTHORED-PH08-08-R2-INVERSE-01",
+      "hints": [
+        "Convert each emission-referenced time to a whole path length before using any delay.",
+        "Squaring the two paths gives (d_s−d_m)² and (d_s+d_m)². The stated order chooses a sign."
+      ],
+      "reconstruct": "Direct length L_dir=325×0.040=13 m. Reflected L_ref≈325×0.046154=15.00005 m≈15 m (rounding). From 13²−12²=25, d_s−d_m=+5 m because the source is farther; from 15²−12²=81, d_s+d_m≈9 m. Hence d_s=7 m and d_m=2 m. Verify direct √(12²+5²)=13 m and reflected √(12²+9²)=15 m. Arrival separation≈46.154−40.000=6.154 ms, below 7 ms; the two pulses are unresolved by the specified detector. Without near/far ordering, swapping 7 and 2 gives the same two arrival times.",
+      "diagnosis": "Check whether you treated reflected arrival time as excess delay, chose a plus rather than minus leg for the direct path, or omitted the near/far sign ambiguity. Compare the recovered distances against both original lengths.",
+      "repair": "Reconstruct the two Pythagorean lengths from emission times, solve for sum and signed difference, check the virtual image and threshold.",
+      "boundaryPrompt": "If the same apparatus reveals the microphone is farther from the wall than the source, but both measured path lengths remain 13 m and 15 m, what distances are consistent? Explain the two-arrival ambiguity.",
+      "rubric": [
+        {
+          "id": "model",
+          "expected": "Virtual image; two emission-referenced paths",
+          "tol": 0,
+          "repair": "Both arrival times are since emission. Construct the direct and mirrored-reflection path separately."
+        },
+        {
+          "id": "source",
+          "expected": 7,
+          "tol": 0.05,
+          "repair": "Find the sum of wall distances from the reflected path and the signed difference from the direct path."
+        },
+        {
+          "id": "receiver",
+          "expected": 2,
+          "tol": 0.05,
+          "repair": "The source is stated farther from the wall, fixing the sign of d_s−d_m."
+        },
+        {
+          "id": "delay",
+          "expected": 6.154,
+          "tol": 0.01,
+          "repair": "Subtract two emission-referenced times; do not halve a difference of arrival times."
+        },
+        {
+          "id": "resolve",
+          "expected": "Not resolved: less than 7 ms",
+          "tol": 0,
+          "repair": "Compare the two arrival separation against the detector threshold, not the total reflected travel time."
+        }
+      ]
+    }
+  ]
+}
