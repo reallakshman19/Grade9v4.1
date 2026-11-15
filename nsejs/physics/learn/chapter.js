@@ -40,6 +40,7 @@ function resources(c){
     add(r,tag("h3","Current Electricity practice by level"),row,
       tag("p","The worksheet questions and related source-claimed candidates have source, rights, science and QRT HOLD. They are not authenticated past examination questions."));
   }
+  if(c.sourceLedgerR1){const a=link("Inspect source evidence for this chapter (0 qualified exam items)",c.sourceLedgerR1,"g9-secondary");r.append(a);}
   add(r,tag("p","Question-bank topics are broader than this chapter. A related question is not evidence of exact exam-question coverage."));
   return r;
 }
@@ -79,6 +80,10 @@ async function init(){
    const title=tag("h2",(i+1)+". "+u.title);const code=tag("p","Original authored lesson · academic qualification pending");
    const actions=tag("div",undefined,"g9-lesson-actions");
    add(actions,link("1 · Learn",u.learn),link("2 · Try it",u.practice,"g9-secondary"));
+   if(u.qualityR1&&u.qualityR1.independent_academic==="HOLD"){
+     actions.append(link("Extra teaching · WPE-style",u.qualityR1.study,"g9-secondary"));
+     actions.append(link("Fresh six-stage transfer · candidate",u.qualityR1.practice,"g9-secondary"));
+   }
    add(card,title,code,actions);grid.append(card);
   });
   mount.append(grid,resources(chapter));
