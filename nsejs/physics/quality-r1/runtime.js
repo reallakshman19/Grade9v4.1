@@ -120,7 +120,7 @@ async function displayChallenge(c){
   else{put(s6,el("p","Saved boundary attempt: "+record.boundary));if(!record.boundaryModel)s6.append(btn("Reveal boundary model only after attempt",()=>{if(exposure("boundary_model",{boundaryModel:true}))draw()},"secondary"));else s6.append(el("p","Conditional worked boundary reasoning: "+model.boundaryModel));}
   mount.append(s6);
  }
- if(record?.first)await loadPostAttemptModel();
+ if(record?.first&&!storageError)await loadPostAttemptModel();
  draw();
 }
 async function displaySources(){
