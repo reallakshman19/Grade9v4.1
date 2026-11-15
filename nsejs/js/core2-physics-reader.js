@@ -373,15 +373,15 @@
 
         if (isOfficialKey && isUserChoice) {
           lbl.classList.add("opt-user-correct");
-          const badge = text("span", "✓ Correct (Your Choice)", "opt-badge badge-user-correct");
+          const badge = text("span", "✓ Matches recorded key", "opt-badge badge-user-correct");
           lbl.appendChild(badge);
         } else if (isOfficialKey && !isUserChoice) {
           lbl.classList.add("opt-correct-key");
-          const badge = text("span", "✓ Correct Option", "opt-badge badge-correct-key");
+          const badge = text("span", "✓ Recorded candidate key", "opt-badge badge-correct-key");
           lbl.appendChild(badge);
         } else if (!isOfficialKey && isUserChoice) {
           lbl.classList.add("opt-user-wrong");
-          const badge = text("span", "✗ Your Choice (Incorrect)", "opt-badge badge-user-wrong");
+          const badge = text("span", "✗ Differs from recorded key", "opt-badge badge-user-wrong");
           lbl.appendChild(badge);
         } else {
           lbl.classList.add("opt-neutral-disabled");
@@ -392,10 +392,10 @@
       if (isAllCorrect) {
         feedbackBanner.className = "attempt-feedback-banner feedback-correct";
         feedbackBanner.replaceChildren(
-          text("div", "✅ CORRECT", "feedback-badge-pill"),
+          text("div", "MATCHES CANDIDATE KEY", "feedback-badge-pill"),
           append(text("div", "", "feedback-msg"),
-            text("strong", "Correct! Excellent work!"),
-            text("p", "Your answer " + Array.from(selectedSet).map(s => "(" + s + ")").join(", ") + " perfectly matches the official verified key. Check the step-by-step physical derivation below.")
+            text("strong", "Your selection matches the recorded candidate key."),
+            text("p", "Your answer " + Array.from(selectedSet).map(s => "(" + s + ")").join(", ") + " matches the recorded candidate key (not independently reviewed). Check the step-by-step physical derivation below.")
           )
         );
       } else {
@@ -403,10 +403,10 @@
         const userChoices = Array.from(selectedSet).map(s => "(" + s + ")").join(", ") || "None";
         const keyChoices = Array.from(proposedSet).map(s => "(" + s + ")").join(", ");
         feedbackBanner.replaceChildren(
-          text("div", "❌ INCORRECT", "feedback-badge-pill"),
+          text("div", "DIFFERS FROM CANDIDATE KEY", "feedback-badge-pill"),
           append(text("div", "", "feedback-msg"),
-            text("strong", "Incorrect Attempt"),
-            text("p", "You selected " + userChoices + ". The correct answer is " + keyChoices + ". Carefully examine the complete worked derivation below to review the physical principles and formulation.")
+            text("strong", "Recorded candidate-key mismatch"),
+            text("p", "You selected " + userChoices + ". The recorded candidate key lists " + keyChoices + ". Carefully examine the complete worked derivation below to review the physical principles and formulation.")
           )
         );
       }
