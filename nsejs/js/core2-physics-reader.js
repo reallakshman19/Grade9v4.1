@@ -17,6 +17,7 @@
     "circuits": {
       title: "DC Circuits & Resistor Networks",
       links: [
+        { label: "▶ Level-1 Current Electricity Worksheet (Q1–Q36)", url: "#NSEJS-CIRC-L1-Q01" },
         { label: "▶ Level-2 Advanced Resistor Networks (Q1–Q20)", url: "#NSEJS-CIRC-L2-Q01" },
         { label: "▶ 3D Resistor Cube Symmetry (D3)", url: "core1/recovery/nsejs-circuits-cube-d3-r1/index.html" },
         { label: "▶ Infinite Resistor Ladders (D3)", url: "core1/recovery/nsejs-circuits-ladder-d3-r1/index.html" },
@@ -584,7 +585,7 @@
       }
     } else {
       const topicName = topicObj ? topicObj[2] : filterState.topic;
-      const topicTotal = topicObj ? topicObj[4] : filtered.length;
+      const topicTotal = topicObj ? combinedQuestions.filter(q => q.topic === topicObj[1]).length : filtered.length;
       if (rawQ || filterState.difficulty || filterState.exam) {
         countMsg = `Showing ${filtered.length} of ${topicTotal} ${topicName} questions`;
       } else {
@@ -865,7 +866,7 @@
         btn.type = "button";
         btn.className = "topic-pill-btn";
         btn.dataset.topic = t[0];
-        btn.innerHTML = `<span class="pill-icon">${t[3]}</span> <span class="pill-name">${t[2]}</span> <span class="pill-count">${t[4]} Qs</span>`;
+        btn.innerHTML = `<span class="pill-icon">${t[3]}</span> <span class="pill-name">${t[2]}</span> <span class="pill-count">${combinedQuestions.filter(q => q.topic === t[1]).length} Qs</span>`;
         btn.onclick = () => window.selectPhysicsTopic(t[0]);
         nav.append(btn);
       });
