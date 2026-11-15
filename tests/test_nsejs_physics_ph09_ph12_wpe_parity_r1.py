@@ -219,7 +219,8 @@ def test_native_chapter_learning_links_and_scoped_new_pairs():
     for topic, (sub, *_rest) in TOPIC_OVERLAYS.items():
         chapter = ROOT / "nsejs/physics/curriculum/topics" / topic
         index = (chapter / "index.html").read_text(encoding="utf-8")
-        assert f"topic-adapter.{topic}.wpe-parity-r2.v1.json" in index
+        adapter_rev = "r3" if topic == "PH11" else "r2"
+        assert f"topic-adapter.{topic}.wpe-parity-{adapter_rev}.v1.json" in index
         assert f"preview.html?case={sub}" in index
         assert f"subtopics/{sub}/core1a.html" in index
         a = (chapter / "subtopics" / sub / "core1a.html").read_text(encoding="utf-8")
@@ -229,7 +230,7 @@ def test_native_chapter_learning_links_and_scoped_new_pairs():
         assert f"preview.html?case={sub}" in a and f"preview.html?case={sub}" in b
         if topic in ("PH11", "PH12"):
             assert 'role="img"' in a
-            assert "Original author construction diagram" in a
+            assert "Original author diagram" in a
         else:
             assert 'id="wpe-parity-r2"' in a
         assert "<iframe" not in a.lower() and "<iframe" not in b.lower()
