@@ -107,3 +107,5 @@ try{
   render(store.read());
  }
 }catch(err){fail(err)}
+
+// R3 negative-control probe only; never merge.
