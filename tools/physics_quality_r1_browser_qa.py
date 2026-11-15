@@ -12,6 +12,7 @@ from threading import Thread
 from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parents[1]
+OUT = ROOT / "review-artifacts/physics-quality-r1"
 UNITS = {"PH01-M05":("PH01","M05",8),"PH02-F04":("PH02","F04",8),
          "PH07-02":("PH07","PH07-02",12),"PH08-08":("PH08","PH08-08",13)}
 
@@ -42,6 +43,8 @@ def inspect_case(origin, browser, size, ident, chapter, key, count):
         assert page.locator("svg.figure").count()==1
         assert page.locator("h2").filter(has_text="Build the warranted model").count()==1
         no_overflow(page,ident+" study "+str(size))
+        if size in ((1000,1600),(1280,800)):
+            page.screenshot(path=str(OUT / f"{ident}-{size[0]}x{size[1]}-core1a.png"),full_page=True)
 
         page.get_by_role("link",name="Open changed-condition Core1B").click()
         page.get_by_role("button",name="Save protected first prediction + attempt").wait_for(timeout=15000)
@@ -83,6 +86,8 @@ def inspect_case(origin, browser, size, ident, chapter, key, count):
         assert len(after)==1 and after[0][0]==key_snapshot[0][0]
         assert page.locator("blockquote").inner_text()==original
         no_overflow(page,ident+" challenge "+str(size))
+        if size in ((1000,1600),(1280,800)):
+            page.screenshot(path=str(OUT / f"{ident}-{size[0]}x{size[1]}-core1b.png"),full_page=True)
         assert not errors,(ident,errors)
 
         page.goto(origin+"/nsejs/physics/quality-r1/source.html?ph="+chapter,wait_until="domcontentloaded")
@@ -111,6 +116,7 @@ def blocked_storage(origin, browser):
 
 
 def main():
+    OUT.mkdir(parents=True,exist_ok=True)
     server=ThreadingHTTPServer(("127.0.0.1",0),partial(SimpleHTTPRequestHandler,directory=str(ROOT)))
     thread=Thread(target=server.serve_forever,daemon=True)
     thread.start()
@@ -119,7 +125,7 @@ def main():
         with sync_playwright() as pw:
             browser=pw.chromium.launch(headless=True)
             try:
-                for dims in ((1000,1600),(1600,1000)):
+                for dims in ((1000,1600),(1600,1000),(1280,800),(1024,768),(900,1280),(800,1280)):
                     for ident,(ch,u,count) in UNITS.items():
                         print(inspect_case(origin,browser,dims,ident,ch,u,count),flush=True)
                 print(blocked_storage(origin,browser),flush=True)
