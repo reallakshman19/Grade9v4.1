@@ -1,0 +1,55 @@
+# R3 production-control workpack
+**Proposed implementation for Owner adoption. No academic admission.**
+Frozen legacy candidate baseline: `7a5c425f02d8a365a738bb11df1982cbe38e9f82` (PH03 and PH06 already integrated). R2 remains PILOT; R3 is an additional stop/authority gate, not a substitute for R2 or the native Shared contract. D3.1 PAUSED. Physics only for the authored design/academic lane; all subjects covered by the content freeze. No author may invent a Chemistry/Biology/Mathematics authority.
+
+## One source of execution truth
+- [policy.v1.json](policy.v1.json): explicit freeze, no accepted Golden, no academic release.
+- [workpack.schema.json](workpack.schema.json): proposed pre-authoring design contract, actual pinned authorities and WPE comparator, source role, W, prerequisite, teaching, anchor/fresh, falsifier, visual, diagnosis and boundary.
+- [control.py](control.py): trusted base code compares exact Git objects, rejects unknown paths, deletion/rename and unauthorized policy changes; authenticates independently signed receipts; checks design chronology, changed content and Core2 identity coverage, R2 packet and independent decisions.
+- [release.py](release.py): technical-preview publication only, authorized explicit exact-byte manifest; no publish-all checkout, no regeneration after signature.
+- [ADMIN_SETUP.md](ADMIN_SETUP.md): mandatory external trust setup. The code alone cannot configure GitHub branch protection or establish reviewer identity. Until verified, do not announce enforcement active.
+
+## Lifecycle / stop conditions
+| Stage | Exact output | Stop |
+|---|---|---|
+| Intake | Owner scope and byte-pinned subject rules, canonical syllabus, adapter, WPE comparator | Missing native files, wrong scope or D3.1 |
+| Source and exposition | Separate question identity/role/custody and law/condition ledger | Unresolved paper/key/figure/rights; absent warrant |
+| Design | Workpack with X/Y/Z/W, every required decision, worked teaching comparator, distinct fresh W, actual intended paths; OWNER_SCOPE and independent DESIGN signatures committed before learner content | Missing design, same W, unsupported exam credit |
+| Candidate | One bounded Golden or authorized batch; source/lesson/task/native runtime | Ordinary learner changes frozen; no generic expansion |
+| Evidence | R2 packet per exact UID with revision-bound actual paths, test logs and browser receipts; exact content tree | BLOCKED or stale packet; uncovered changed path or changed Core2 UID |
+| Review | R00 plus distinct R01 source, science, QRT, learning receipts; verified evidence report bytes; B1–B7 all PASS | Any missing/signature-invalid/stale/author or role collision |
+| Golden | Representative direct exam + complete Core1A/B and current R2 requirements, one Owner G0 signed binding | No substitute author-only Golden. Scoped exception only, not general activation |
+| Adoption | Separate governance workpack pins actual accepted Golden and verifies administrator protections | This initial R3 explicitly refuses policy activation by edit, even signed; activation migration is intentionally not implemented before real Golden |
+| Release | Signed manifest, external control commit, staged approved exact bytes, protected Pages environment | No automatic deployment or academic release |
+
+Design is *not* a mechanical proof of pedagogical merit. Independent reviewer must read the real WPE reference, attempt the reasoning, challenge every teaching obligation and assess whether a cold learner can reconstruct W. Semantic judgement is not inferred from lengths, keywords, JSON or test counts. Existing WPE B3/B4 HOLD cases are negative reference patterns, not approved exemplars.
+
+## WPE quality regression register
+| Failure family | Real reference / replay | Required reviewer falsifier |
+|---|---|---|
+| Missing transition | WPE spring-contact and vertical-circle packs; PH06 R1 vs R2 | Can the guide independently teach and demonstrate every model regime, feasibility limit and invalid continuation before fresh assessment? |
+| Directional or representation gap | WPE radial force/potential pack | Can learner reconstruct both required directional transformations? A→B does not imply B→A. |
+| Cosmetic clone | WPE B3/B4 review | Strip labels/numbers and independently compare shortest decisive W. |
+| Wrong physical model | PH05 orbital energy, incorrect equal-star kinetic split | Independent conservation and limiting checks; source-accurate initial conditions. |
+| First divergence | PH03/PH06 six-stage journey | Correct-value/wrong-model case and incorrect-value/correct-model case; compare saved responses and meaningful repair. |
+| Source role inflation | PH05 authored D3/D4 vs historical source census | A synthetic transfer cannot fill direct exam denominator. |
+| Technical vs academic | PH06 R2 33-item packet BLOCKED while CI succeeded | A green negative-control run cannot be consumed as release approval. |
+
+## Exact bindings and external receipts
+Git content fingerprint is SHA-256 of sorted path/mode/type/object IDs; this is not source PDF SHA-256. Individual source/evidence/publication bytes are separately SHA-256 checked. Only review/production-control-r3 and review/quality-packets are excluded from fingerprint to avoid circular receipts; executable files and symlinks cannot hide there. Reviewer signatures bind content fingerprint + exact packet digest + task UID + design digest. Independent report bytes are separately verified. Native private pins not present in Git are a HOLD in this initial implementation: do not copy restricted source files into public Git. A separate protected native custody adapter is required for those pins.
+
+The design JSON lives at review/production-control-r3/workpacks/<id>.json. Receipts are review/production-control-r3/receipts/<id>/<purpose>[-<uid>].json. Submission record contains workpack_path, design_commit, packet_paths (map UID→exact R2 packet). A prior design commit must contain both scope and design approvals. R2 exact tested commit must be an ancestor with identical content fingerprint. Evidence-only commits can follow tests without changing the content fingerprint. Base advances require fresh exact-base packet/review. Owner scope approval is per workpack, not per question; routine review is deliberately 100% initially, stricter than the proposed 20% sample. Risk-based sampling requires explicit subsequent adoption.
+
+### Reviewer details
+Each signed record has schema, key_id, purpose, binding, subject, decision, issued_at UTC and details. Signature is base64 Ed25519 over UTF-8 canonical JSON of record (sorted keys, compact separators, no NaN). Role keys come exclusively from administrator's trust roster, not PR. R00 details include tested_commit, browser=PASS, negative_controls=PASS; source details include source_role, custody=PASS, rights=PASS; science independent_derivation and units_signs_limits=PASS; QRT exposure=UNEXPOSED, sealed_first_pass_sha256, operation and cell; learning B1_B7 map and cold_reconstruction=PASS. Each has evidence_path and evidence_sha256. A signer must actually inspect the claimed evidence; signature verifies attribution and byte binding, not truth. No real signatures or private keys generated here; tests generate disposable synthetic keys.
+
+## Publication boundary
+The original automatic Pages workflow is replaced by manual workflow_dispatch with administrator-pinned control SHA, explicit file manifest, detached Owner receipt and separate protected environment. Initially only the frozen legacy preview (plus governance edits) is eligible, never academic release. A publication manifest at review/production-control-r3/publication-manifest.json lists kind TECHNICAL_PREVIEW_ONLY, content_fingerprint and exact path/SHA-256 rows. Signed PREVIEW_RELEASE receipt binds manifest bytes to fingerprint. Source PDFs, evidence and internal files are excluded; search destinations must be in the manifest, mirrors agree, question hints/answers/steps are forbidden. Stage copies only approved tracked regular blobs; no untracked files, symlinks, post-signing index rebuild or whole-repository upload. Existing last deployed site is not rolled back by this PR. The signed manifest is intentionally absent; a subsequent explicit release workpack must produce complete routes/assets, deterministic search preparation and release-level browser/link QA. Existing candidate previews are not academic admissions.
+
+## Test / audit commands
+```sh
+python -m pytest -q tests/test_production_control_r3.py tests/test_physics_quality_gate_r2.py
+python docs/agent-entry/production-control-r3/control.py --repo . --base <exact-trusted-base> --head <exact-candidate-head> --pr-author <login>
+python docs/agent-entry/production-control-r3/release.py --repo . --head <exact-release-head> --control <admin-pinned-control-head> --output public
+```
+Candidate regression CI tests the code, not production authorization. Trusted decision is a different workflow and posts g9/r3-production-decision on candidate head. The first installation PR must be manually reviewed because a base-owned workflow cannot run before it exists on main. This is not a bypass authorization for later changes.

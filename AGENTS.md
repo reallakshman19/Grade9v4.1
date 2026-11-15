@@ -2,6 +2,11 @@
 
 # AGENTS.md — Instructions for Coding Agents
 
+## R3 production-control stop (proposed installation; Owner adoption required)
+
+Read [the single R3 execution contract](docs/agent-entry/production-control-r3/README.md) and its policy before creating learner content. During FREEZE_PENDING_GOLDEN, no normal chapter expansion, search/runtime/content change, or publication is authorized. The only candidate exception is a scoped signed, independently reviewed Golden submission. Pre-authoring workpack and actual WPE parity design must precede implementation. Author packets remain HOLD; green regression is not the trusted decision. No policy activation, reviewer self-approval or automatic Pages release. Do not claim repository protections configured without actual administrator evidence.
+
+
 **Primary specification:** https://github.com/reallakshman19/Grade9v4.0/issues/1
 
 This file applies to all work in this repository.
