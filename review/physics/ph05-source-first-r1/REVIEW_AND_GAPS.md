@@ -45,3 +45,13 @@ The PH05-G05 elliptical-orbit QRT crux asserted `sqrt(1.5)`, contradicting the c
 The 2022 external paper Q36 now links to distinct `AUTHORED-PH05-G01-SOURCE-SYNTHESIZE-D3-R2` with **unequal masses 2m and 3m**, finite separation change `L→L/4`, a joint energy/momentum inference and a kinetic-energy split. This is different from the official equal-mass original and from the prior equal-star MAIN.
 
 Core1A G01/G05 received source-specific reasoning bridges using non-source worked constructions. Independent QRT and B1–B7 academic acceptance remain HOLD, and no original-source demand is upgraded by these authored transfers.
+
+## R4 historical census denominator and B1–B7 source-bound technical review
+
+The year-indexed tracking register covers **18 calendar cohorts, 2008–2025**, including the two IOQJS Part I alternate seasons. It **does not certify 18 screened papers**: **zero years are closed as exhaustively inspected**. Ten original-question candidates were located at varying evidence levels; several are cross-topic gravitation prerequisites, not direct PH05 examples. Full past-paper, figure and final-key custody with SHA-256 pins is still missing for every cohort.
+
+Evidence: `HISTORICAL_YEAR_CENSUS_R4.json`; task-by-task gates: `B1_B7_SOURCE_REVIEW_R4.json`. Source-discovered examples include 2016 free-fall tension, 2018 charged pith-ball equilibrium under different g (cross-topic, mandatory diagram), 2019 apple/Earth third-law Q61 (official key C), IOQJS 2020-21 neutron-star g Q1 (IAPT worked key B), 2021-22 Earth/Mars submarine (PH06-related), 2022 two-star mutual infall, 2023 orbital-speed comparison, 2024 gravity/free-fall items, and 2025 paired vertical launches.
+
+The IAPT 2025 archive contains a mislabeled final key navigation target that resolves to NSEP rather than NSEJS. The proper IAPT-hosted 2025 NSEJS final key must be used. Public source URLs are not download SHA-256 custody; none was obtained through this repository audit.
+
+**All five mapped PH05 source journeys remain B1–B7 HOLD**: an author-exposed R00 can verify structures and identify errors but cannot issue blind independent R01 QRT, teaching sufficiency or student transfer acceptance. There is no valid evidence to mark the PR merge-eligible as academic completion.

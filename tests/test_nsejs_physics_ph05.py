@@ -434,3 +434,31 @@ def test_ph05_2025_uses_true_nsejs_final_key_not_wrong_archive_target():
     assert "/NSEJS_-_2025_Final_Answer_key.pdf" in item["final_key_url"]
     assert "NSEP_-_2025" not in item["final_key_url"]
     assert item["paper_sha256"] is None and item["key_sha256"] is None
+
+
+def test_ph05_historical_census_has_explicit_unclosed_denominator():
+    census=json.loads((ROOT/"review/physics/ph05-source-first-r1/HISTORICAL_YEAR_CENSUS_R4.json").read_text(encoding="utf-8"))
+    assert census["original_exam_years_indexed"]==18
+    assert [x["year"] for x in census["years"]]==list(range(2008,2026))
+    assert census["year_census_closed"]==0
+    assert census["source_bytes_sha256_retrieved"]==0
+    assert census["discovered_candidates"]==len(census["candidates"])==10
+    assert census["candidate_original_d3_d4_independently_admitted"]==0
+    assert all(not y["year_closed"] and not y["all_questions_examined"] for y in census["years"])
+    assert {x["id"] for x in census["candidates"] if x["year"]==2025}=={"NSEJS-2025-C51-Q43"}
+    assert next(x for x in census["candidates"] if x["id"]=="NSEJS-2019-C51-Q61")["option"]=="C"
+    assert next(x for x in census["candidates"] if x["id"]=="NSEJS-2018-JS511-Q14")["figure_status"]=="ORIGINAL_FIGURE_REQUIRED_FOR_ADMISSION"
+
+def test_ph05_b1_b7_are_noncompensatory_author_exposed_holds():
+    review=json.loads((ROOT/"review/physics/ph05-source-first-r1/B1_B7_SOURCE_REVIEW_R4.json").read_text(encoding="utf-8"))
+    mapping=json.loads((PH05_DATA/"source-to-learning.v1.json").read_text(encoding="utf-8"))
+    assert review["independent"] is False
+    assert review["source_census_complete"] is False
+    assert review["independent_full_pass_rows"]==0
+    assert review["candidate_rows"]==len(mapping["source_candidates"])==5
+    assert {r["source_uid"] for r in review["rows"]}=={r["source_uid"] for r in mapping["source_candidates"]}
+    for row in review["rows"]:
+        assert row["independent_qrt"]=="NOT_RUN"
+        assert set(row["gates"])=={"B1","B2","B3","B4","B5","B6","B7"}
+        assert all(x["status"]=="HOLD" and x["independent_r01"]=="NOT_RUN" for x in row["gates"].values())
+        assert row["release"]=="HOLD"
