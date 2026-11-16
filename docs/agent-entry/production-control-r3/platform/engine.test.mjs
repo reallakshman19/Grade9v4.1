@@ -65,3 +65,22 @@ test("invalid numeric and early stages reject without changing first; all matche
  assert.equal((await e.snapshot()).diagnostic.firstDivergence,null);await accepted(e.submit("reconstruct","checked all fields"));assert.equal((await e.submit("diagnose",{field:"model",explanation:"invented error"})).accepted,false);
  await accepted(e.submit("diagnose",{field:null,explanation:"no structured mismatch; free text not graded"}));
 });
+
+test("native browser fetch retains global receiver through default factory",async()=>{
+ const {expectedHash,url,fetcher}=await setup();
+ const original=globalThis.fetch;
+ let calls=0;
+ globalThis.fetch=function(...args){
+  assert.equal(this,globalThis,"Window fetch receiver must not become Assessment");
+  calls++;
+  return fetcher(...args);
+ };
+ try{
+  const e=await loadAssessment({manifestURL:url+"manifest.json",expectedHash,
+    crypto,storage:mem(),locks:locks()});
+  await accepted(e.open("source_prompt"));
+  const view=await e.snapshot();
+  assert(view.assets.source_prompt.fields.some(f=>f.id==="model"));
+  assert(calls>=2,"Manifest and source assets must both use correctly bound fetch");
+ }finally{globalThis.fetch=original}
+});

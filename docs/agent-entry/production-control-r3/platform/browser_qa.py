@@ -6,15 +6,29 @@ HERE=Path(__file__).resolve().parent
 class Quiet(http.server.SimpleHTTPRequestHandler):
     def __init__(self,*a,**kw):super().__init__(*a,directory=str(HERE),**kw)
     def log_message(self,*a):pass
-def click(p,name):p.get_by_role("button",name=name,exact=True).click()
+def click(p,name):
+    p.get_by_role("button",name=name,exact=True).click()
+
 def field(p,n,v):
     loc=p.locator(f'[name="{n}"]')
+    try:
+        loc.wait_for(state="visible",timeout=6000)
+    except Exception as exc:
+        status=p.locator("#status").inner_text(timeout=2000)
+        contents=p.locator("main").inner_text(timeout=2000)[:1500]
+        raise AssertionError(
+            f"FIELD_NOT_RENDERED:{n}; status={status!r}; main={contents!r}; url={p.url}"
+        ) from exc
     if loc.evaluate("el=>el.tagName")== "SELECT":loc.select_option(v)
     else:loc.fill(str(v))
 def answer(p,model,value,kind):
     field(p,"model",model);field(p,"value",value);field(p,"reason","Fixture explanation, not independently graded.");click(p,kind)
 def begin(p,model,value):
     click(p,"Open source prompt");answer(p,model,value,"Commit source attempt");click(p,"Open teaching");click(p,"Open fresh challenge");field(p,"prediction","Fixture prediction");click(p,"Commit prediction")
+    # Await durable prediction before fault injection or racing browser tabs.
+    # Otherwise Storage.setItem can be patched during the prediction commit,
+    # creating a false negative for the first-attempt write-failure scenario.
+    p.get_by_role("button",name="Commit first attempt",exact=True).wait_for()
 def boundary(p,direction,magnitude,button):
     field(p,"direction",direction);field(p,"magnitude",magnitude);field(p,"reason","Fixture boundary explanation");click(p,button)
 def main():

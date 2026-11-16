@@ -234,3 +234,36 @@ def test_pages_r3_frozen_content_preflight_exact_git_gate(tmp_path, content_chan
         # deliberately unsigned fixture receipts.
         workflow=(ROOT/".github/workflows/deploy.yaml").read_text()
         assert "python trusted/docs/agent-entry/production-control-r3/release.py" in workflow
+
+
+def test_r3_frozen_search_diagnostic_not_a_routine_pr_gate():
+    """Frozen-search builder drift must be visible manually, never silently authorized."""
+    workflow=(ROOT/".github/workflows/production-control-r3-ci.yml").read_text()
+    step=workflow.split("      - name: Frozen unified-search diagnostic (manual only, never published)",1)
+    assert len(step)==2, "Keep an explicit manual frozen-search diagnostic"
+    assert step[1].split("      - ",1)[0].find("if: github.event_name == 'workflow_dispatch'")>=0
+    assert "preview_build.py" in step[1].split("      - uses:",1)[0]
+    trusted=(ROOT/".github/workflows/production-control-r3-trusted.yml").read_text()
+    assert "pull_request_target:" in trusted
+    assert "g9/r3-production-decision" in trusted
+    release=(ROOT/".github/workflows/deploy.yaml").read_text()
+    assert "python trusted/docs/agent-entry/production-control-r3/release.py" in release
+
+
+def test_owner_preview_publication_exception_explicit_and_restricted():
+    """No preview pass may masquerade as signed R3/academic acceptance."""
+    preview=(ROOT/".github/workflows/owner-technical-preview-pages.yml").read_text()
+    assert "workflow_dispatch:" in preview
+    assert "push:" in preview and "branches: [main]" in preview
+    assert "paths:\n      - .github/workflows/owner-technical-preview-pages.yml" in preview
+    assert "pull_request:" not in preview and "pull_request_target:" not in preview
+    assert '"review", "tests", "tools", "src"' in preview
+    assert '"workspace"' in preview
+    assert '"academic_status": "HOLD"' in preview
+    assert '"r3_signed_production_release": False' in preview
+    assert "actions/upload-pages-artifact@v4" in preview
+    assert "actions/deploy-pages@v4" in preview
+    signed=(ROOT/".github/workflows/deploy.yaml").read_text()
+    assert "python trusted/docs/agent-entry/production-control-r3/release.py" in signed
+    assert "G9_R3_TRUST_JSON" in signed
+    assert "github-pages" in signed
