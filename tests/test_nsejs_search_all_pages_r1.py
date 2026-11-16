@@ -161,7 +161,32 @@ def test_26_new_search_records_match_deterministic_generator_exactly():
     bank_ids={"CHEMISTRY-QUESTION-BANK","BIOLOGY-QUESTION-BANK"}
     found={d["original_id"] for d in actual if d["original_id"] in bank_ids}
     assert found in (set(),bank_ids), "Incomplete new bank search coverage"
-    expected=1012+len(found)
+    # The recovered Momentum candidate introduces exactly six native Learn/Try
+    # pairs (12 routes), plus its source-status ledger (one HTML route).
+    physics_catalog=json.loads((ROOT/"nsejs/physics/learn/catalog.json").read_text())
+    ph03=next(c for c in physics_catalog["chapters"] if c["id"]=="PH03")
+    added_pairs=len(ph03["units"])-1
+    assert added_pairs in (0,6), "Unexpected Momentum candidate route count"
+    recovered=[
+        d for d in actual
+        if d["url"].startswith((
+            "nsejs/physics/textbook/PH03/",
+            "nsejs/physics/core1/PH03/",
+            "nsejs/physics/ph03/complete-r3/source-ledger.v1.html",
+        ))
+    ]
+    if added_pairs:
+        new_ids={"P01","P02","P04","P05","P06","P07"}
+        for id in new_ids:
+            for kind in ("textbook","core1"):
+                url=f"nsejs/physics/{kind}/PH03/{id}/index.html"
+                hit=next((d for d in recovered if d["url"]==url),None)
+                assert hit and hit["subject"]=="Physics" and hit["category"]!="question"
+                assert "HOLD" in hit["badge"]
+                assert not any(k in hit for k in ("answer","options","hints","steps","reconstruction"))
+        assert any(d["url"]=="nsejs/physics/ph03/complete-r3/source-ledger.v1.html"
+                   for d in recovered)
+    expected=1012+len(found)+added_pairs*2+(1 if added_pairs else 0)
     assert len(actual)==expected and len({d["url"] for d in actual})==expected
     if found:
         for subject,slug in (("CHEMISTRY","atomic_structure"),("BIOLOGY","living_world")):
@@ -175,4 +200,4 @@ def test_26_new_search_records_match_deterministic_generator_exactly():
     payload=(ROOT/"data/learner-search-index.v1.json").read_bytes()
     assert manifest["sha256"]==hashlib.sha256(payload).hexdigest()
     assert manifest["total_documents"]==expected
-    assert manifest["public_html_pages"]==372
+    assert manifest["public_html_pages"]==372+added_pairs*2+(1 if added_pairs else 0)
