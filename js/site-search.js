@@ -726,11 +726,11 @@
       host.prepend(btn);
     }
     document.querySelectorAll(selector).forEach(btn => {
-      btn.setAttribute('aria-label', 'Search NSEJS Junior Science (Ctrl or Command K)');
-      btn.title = 'Search NSEJS Junior Science (Ctrl/⌘ K)';
+      btn.setAttribute('aria-label', 'Search Grade9 (Ctrl or Command K)');
+      btn.title = 'Search Grade9 (Ctrl/⌘ K)';
       btn.onclick = e => {
         e.preventDefault();
-        const customScope = ['physics','chemistry','biology'].includes(btn.dataset.searchScope) ? btn.dataset.searchScope : 'nsejs';
+        const customScope = ['all','nsejs','physics','chemistry','biology'].includes(btn.dataset.searchScope) ? btn.dataset.searchScope : 'nsejs';
         const customQuery = btn.dataset.searchQuery || '';
         openSearch({ scope: customScope, query: customQuery });
       };

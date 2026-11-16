@@ -37,9 +37,15 @@ def tests(browser):
                       local:document.querySelectorAll('nav.top-nav').length,
                       bodyWidth:allWidth, viewport:innerWidth,
                       header:!!document.querySelector('header'), main:!!main,
-                      cardTop:main?.querySelector('.card')?.getBoundingClientRect().top};
+                      cardTop:main?.querySelector('.card')?.getBoundingClientRect().top,
+                      mainTop:main?.getBoundingClientRect().top,
+                      globalHeight:host?.getBoundingClientRect().height,
+                      primaryHeight:root?.querySelector('.primary')?.getBoundingClientRect().height,
+                      contextHeight:root?.querySelector('.context')?.getBoundingClientRect().height,
+                      navHeight:root?.querySelector('.subjects')?.getBoundingClientRect().height,
+                      shortcutsHeight:root?.querySelector('.shortcuts')?.getBoundingClientRect().height};
             }""")
-            assert_that(result["site"] and result["subjects"] == 4, f"{path} {width}: nav absent {result}")
+            assert_that(result["site"] and result["subjects"] == 7, f"{path} {width}: seven-link common nav absent {result}")
             assert_that(result["local"]==0, f"{path} {width}: duplicate menu {result}")
             assert_that(result["bodyWidth"]<=result["viewport"]+2, f"{path} {width}: horizontal overflow {result}")
             assert_that(not errors, f"{path} {width}: JS exception {errors}")
@@ -48,7 +54,18 @@ def tests(browser):
                 assert_that(page.locator("math").count()>10, "MathML absent")
                 if width==1024:
                     assert_that(result["cardTop"] is not None and result["cardTop"] < 475,
-                                f"Practice question too low on tablet: {result['cardTop']}")
+                                f"Practice question too low on tablet: {result}")
+                    # Common subject header stays visible; WPE-specific shortcuts
+                    # can be deliberately expanded without covering the question.
+                    shortcuts=page.locator("#grade9-universal-nav .nav-shortcuts-btn")
+                    assert_that(shortcuts.count()==1,"WPE shortcut toggle missing")
+                    shortcuts.click()
+                    expanded=page.evaluate("""() => {
+                      const s=document.querySelector('#grade9-universal-nav')?.shadowRoot;
+                      return s?.querySelector('.context')?.classList.contains('expanded');
+                    }""")
+                    assert_that(expanded,"WPE shortcuts cannot be expanded")
+                    shortcuts.click()
                     page.screenshot(path=str(OUT/"practice-1024x768.png"))
                 if width==800:
                     page.screenshot(path=str(OUT/"practice-800x1280.png"))

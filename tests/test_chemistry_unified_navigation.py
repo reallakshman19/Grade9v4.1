@@ -142,18 +142,27 @@ def test_r2_one_focused_preview_subtopic_and_one_navigation_bar():
     assert "showDemand(article,d,book.unit_id,s.id,book.content_sha256)" in preview
 
 
-def test_r2_question_bank_is_optional_and_old_topic_deep_links_open_it():
+def test_question_bank_is_first_screen_discoverable_and_deep_links_still_open_it():
     home=read(HUB)
     reg=registry()
     assert reg["version"]=="1.1.0"
-    assert reg["rules"]["legacy_bank_collapsed_by_default"]
+    assert not reg["rules"]["legacy_bank_collapsed_by_default"]
     assert reg["rules"]["single_subtopic_focus"]
-    assert 'id="chem-bank-archive"' in home
-    assert 'Optional · Explore question-bank candidates' in home
+    assert 'id="chem-bank-archive" class="chem-bank-archive" open' in home
+    assert '119 candidate questions across 6 topics' in home
+    assert 'class="chem-primary-route chem-primary-route-bank"' in home
+    assert 'href="index.html?topic=atomic_structure#topicWorkspace"' in home
     assert 'if(hasBankQuery||hasBankHash())bank.open=true' in home
     assert 'bank.open=true;return original(slug)' in home
     assert 'id="chem-chapters"' in home
     assert 'id="topicWorkspace"' in home
+    assert 'src="../js/core2-chemistry-reader.js?v=4.1.5"' in home
+    reader=read(ROOT/"nsejs/js/core2-chemistry-reader.js")
+    assert 'fetch("../data/chemistry-core2-candidates.v1.json")' in reader
+    data=json.loads(read(ROOT/"nsejs/data/chemistry-core2-candidates.v1.json"))
+    assert len(data["questions"])==119
+    assert all(item.get("stem") for item in data["questions"])
+    assert len({item["topic"] for item in data["questions"]})==6
 
 
 def test_r2_seven_recovery_pages_have_allowlisted_exact_lesson_return():

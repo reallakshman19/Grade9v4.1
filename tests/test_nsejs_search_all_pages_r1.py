@@ -156,11 +156,23 @@ def test_26_new_search_records_match_deterministic_generator_exactly():
         got=actual_by_url.get(item["url"])
         assert got==item, (item["url"], {k:(got.get(k) if got else None,v)
                  for k,v in item.items() if not got or got.get(k)!=v})
-    assert len(actual)==1012 and len({d["url"] for d in actual})==1012
+    # The immutable committed search snapshot has 1012 entries. The exact
+    # preview rebuild adds the two newly discoverable question-bank routes.
+    bank_ids={"CHEMISTRY-QUESTION-BANK","BIOLOGY-QUESTION-BANK"}
+    found={d["original_id"] for d in actual if d["original_id"] in bank_ids}
+    assert found in (set(),bank_ids), "Incomplete new bank search coverage"
+    expected=1012+len(found)
+    assert len(actual)==expected and len({d["url"] for d in actual})==expected
+    if found:
+        for subject,slug in (("CHEMISTRY","atomic_structure"),("BIOLOGY","living_world")):
+            bank=next(x for x in actual if x["original_id"]==subject+"-QUESTION-BANK")
+            assert bank["url"].endswith("index.html?topic="+slug+"#topicWorkspace")
+            assert "HOLD" in bank["badge"] and bank["category"]=="page"
+            assert not any(k in bank for k in ("answer","options","hints","steps","reconstruction"))
     assert (ROOT/"data/learner-search-index.v1.json").read_bytes()==(
         ROOT/"nsejs/data/learner-search-index.v1.json").read_bytes()
     manifest=json.loads((ROOT/"data/learner-search-manifest.v1.json").read_text())
     payload=(ROOT/"data/learner-search-index.v1.json").read_bytes()
     assert manifest["sha256"]==hashlib.sha256(payload).hexdigest()
-    assert manifest["total_documents"]==1012
+    assert manifest["total_documents"]==expected
     assert manifest["public_html_pages"]==372
