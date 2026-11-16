@@ -1,0 +1,200 @@
+{
+  "schema": "g9v41-chem-provisional-design-intake/v0",
+  "not_compliant_with": "g9-r3-design/v1",
+  "why_not_compliant": [
+    "Current g9-r3-design/v1 subject enum only permits Physics",
+    "Topic/subtopic ID patterns restrict PH01–PH12",
+    "Chemistry subject authority not adopted",
+    "No authenticated direct exam source or key/rights custody",
+    "No verified Chemistry SHARED/SL1/SL2/ADAPTER/BLUEPRINT pins",
+    "No Owner/independent DESIGN signed approvals in prior ancestor"
+  ],
+  "provisional_scientific_candidate": {
+    "chapter": "C09",
+    "subtopic_id": "CHEM-C09.04",
+    "source_scope": [
+      {
+        "ref": "CBSE-X-2026",
+        "physical_pdf_pages": [
+          4,
+          5
+        ],
+        "header": "Acids, Bases and Salts"
+      }
+    ],
+    "official_source_status": "CANDIDATE_PAGE_SECTION_MAPPED_NOT_INDEPENDENTLY_REVIEWED",
+    "authenticated_exam_source_id": null,
+    "question_stem_hash": null,
+    "official_key_hash": null,
+    "figure_hash": null,
+    "direct_exam_credit": 0,
+    "proposed_delivery_kind": "SCOPED_GOLDEN_DESIGN_CANDIDATE_ONLY",
+    "selected_for": "review-model and runtime isolation planning; not yet eligible for R3 GOLDEN_SAMPLE",
+    "current_published_learner_paths": {
+      "Core1A": "textbook/index.html?unit=C09&subtopic=CHEM-C09.04&mode=study",
+      "Core1B": "textbook/index.html?unit=C09&subtopic=CHEM-C09.04&mode=practice"
+    },
+    "proposed_isolated_candidate_paths": [
+      "nsejs/chemistry/golden/c09-04/index.html",
+      "nsejs/chemistry/golden/c09-04/core1a.json",
+      "nsejs/chemistry/golden/c09-04/core1b.json",
+      "nsejs/chemistry/golden/c09-04/topic-adapter.json"
+    ],
+    "reasons_for_isolation": [
+      "The existing C09 unit JSON serves all six subtopics",
+      "The existing C09 Core1B file contains eighteen cycles",
+      "Copying the entire C09 unit would exceed a one-subtopic Golden item",
+      "The native reader also loads shared unit-scoped revision and navigation; it needs a targeted design to avoid a misleading subtopic scope"
+    ]
+  },
+  "task_inventory": [
+    {
+      "uid": "CORE1B-C09-04-1",
+      "qrt_instance_ref": "C09-04-EXPLAIN-D3",
+      "template": "QRT-EXPLAIN-D3",
+      "operation": "EXPLAIN",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "direct_exam_credit": 0,
+      "X": "Both NaHCO3 and Na2CO3 contain sodium and carbonate-related species. Explain why they are different substances with different thermal and acid reactions.",
+      "Y": "Common salts differ in chemical composition, hydrate state, preparations and uses; commercial bleaching powder is compositionally complex.",
+      "Z": "The anions HCO3− and CO3²− differ in composition/charge, giving different stoichiometry and conditions. Baking soda NaHCO3 can decompose on heating; washing soda is Na2CO3·10H2O.",
+      "W": "Independently explain this case: Both NaHCO3 and Na2CO3 contain sodium and carbonate-related species. Explain why they are different substances with different thermal and acid reactions. Boundary: Could a sample of washing soda lose mass when heated even without producing a new sodium salt?",
+      "anchor_teaching_model": "Compare the idealised formulas CaSO4·2H2O and CaSO4·1/2H2O. Each retains one calcium, one sulfur and four sulfate oxygen atoms. The difference is 1.5 water molecules *per CaSO4 formula unit* in the stoichiometric description. To avoid half molecules, write the dehydration stoichiometry on two formula units:\n\n2(CaSO4·2H2O) → 2(CaSO4·1/2H2O) + 3H2O.\n\nConfirm the number of water-related H and O atoms on both sides. This is a material balance model, not an industrial recipe.\n\nThree demands: EXPLAIN preparation/use differences; MODEL a plausible transformation or identification test; JUSTIFY why one observation cannot uniquely identify a common white powder.\n\nTypical wrong path: \"All white sodium powders are one salt\" or \"a commercial product formula proves purity.\" Repair: check anions, hydrate states and controls. Independent check: balance equations and identify at least one discriminating chemical observation.\n\n---",
+      "precommit_help": [
+        {
+          "id": "H1",
+          "verb": "CLARIFY",
+          "text": "Name the observed data, species and precise claim. What is given, and what remains unknown?"
+        },
+        {
+          "id": "H2",
+          "verb": "CORRELATE",
+          "text": "Recall the relevant science of Common salts: soda, bleaching powder and plaster of Paris. Which conditions or conserved quantities matter?"
+        },
+        {
+          "id": "H3",
+          "verb": "OPEN_THE_WAY",
+          "text": "Write two candidate explanations or representations, check their assumptions, and leave the final comparison or inference for your own answer."
+        }
+      ],
+      "wrong_model": "Any sodium carbonate-containing powder is identical.",
+      "boundary": {
+        "prompt": "Could a sample of washing soda lose mass when heated even without producing a new sodium salt?",
+        "answer": "Yes: it can lose hydration water, changing hydrate state rather than creating a different basic anion.",
+        "confirms": "A changed condition or counterexample, not verbatim recall of the original task."
+      },
+      "independent_review": "NOT_RUN",
+      "source_content_paths": [
+        "curriculum/chemistry/adapters/C09.v1.json",
+        "curriculum/chemistry/agent-b/core1b/C09.core1b.v0.1.0.json",
+        "curriculum/chemistry/agent-b/learner/C09.reader.v0.1.0.json",
+        "curriculum/chemistry/agent-b/textbook/C09.core1a.md"
+      ]
+    },
+    {
+      "uid": "CORE1B-C09-04-2",
+      "qrt_instance_ref": "C09-04-MODEL-D3",
+      "template": "QRT-MODEL-D3",
+      "operation": "MODEL",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "direct_exam_credit": 0,
+      "X": "An idealised 2.50 g sample of CuSO₄·5H₂O is heated by a trained demonstrator to completely anhydrous CuSO₄. Using CuSO₄ = 159.6 g mol⁻¹ and H₂O = 18.0 g mol⁻¹, calculate the theoretical water loss and explain why a measured 0.70 g loss alone would not verify that the process was complete.",
+      "Y": "A hydrate contains a definite compositional water ratio, not simply surface wetness. Model theoretical mass loss from its chemical formula and separately test whether the weighed residue has reached the assumed final hydration state.",
+      "Z": "M(CuSO₄·5H₂O)=159.6+5(18.0)=249.6 g/mol. Water mass fraction=90.0/249.6≈0.3606. A 2.50 g ideal sample should lose about 0.901 g water and leave about 1.599 g anhydrous CuSO₄ if nothing else changes. A 0.70 g loss is smaller, possibly because dehydration is incomplete, the sample differs from assumed composition, or the mass measurement is affected. Confirm residual composition rather than inferring completion from loss alone.",
+      "W": "Convert hydrate formula units to an independent mass balance, then distinguish predicted water loss from observed mass and alternative product histories.",
+      "anchor_teaching_model": "Compare the idealised formulas CaSO4·2H2O and CaSO4·1/2H2O. Each retains one calcium, one sulfur and four sulfate oxygen atoms. The difference is 1.5 water molecules *per CaSO4 formula unit* in the stoichiometric description. To avoid half molecules, write the dehydration stoichiometry on two formula units:\n\n2(CaSO4·2H2O) → 2(CaSO4·1/2H2O) + 3H2O.\n\nConfirm the number of water-related H and O atoms on both sides. This is a material balance model, not an industrial recipe.\n\nThree demands: EXPLAIN preparation/use differences; MODEL a plausible transformation or identification test; JUSTIFY why one observation cannot uniquely identify a common white powder.\n\nTypical wrong path: \"All white sodium powders are one salt\" or \"a commercial product formula proves purity.\" Repair: check anions, hydrate states and controls. Independent check: balance equations and identify at least one discriminating chemical observation.\n\n---",
+      "precommit_help": [
+        {
+          "id": "H1",
+          "verb": "CLARIFY",
+          "text": "Hydrate formulas are quantitative compositions, not arbitrary names; use atom and water ledgers before interpreting a sample's measured mass."
+        },
+        {
+          "id": "H2",
+          "verb": "CORRELATE",
+          "text": "Read the five waters of crystallisation in each CuSO₄·5H₂O formula unit; distinguish the theoretical formula-mass water fraction from an experimentally observed loss."
+        },
+        {
+          "id": "H3",
+          "verb": "OPEN_THE_WAY",
+          "text": "Write an unevaluated theoretical-water-loss fraction and predicted dry-residue expression. Compare the proposed result with the measured loss and name a residue-composition check; reserve the numerical conclusion."
+        }
+      ],
+      "wrong_model": "A decrease in mass always proves complete dehydration, whatever hydrate started.",
+      "boundary": {
+        "prompt": "If the residue retains one water per CuSO₄ formula unit, does the anhydrous theoretical water-loss prediction still apply?",
+        "answer": "No. Only four of the original five bound waters would have left per formula unit, so predicted loss and residue identity must be recalculated.",
+        "confirms": "A changed condition or counterexample, not verbatim recall of the original task."
+      },
+      "independent_review": "NOT_RUN",
+      "source_content_paths": [
+        "curriculum/chemistry/adapters/C09.v1.json",
+        "curriculum/chemistry/agent-b/core1b/C09.core1b.v0.1.0.json",
+        "curriculum/chemistry/agent-b/learner/C09.reader.v0.1.0.json",
+        "curriculum/chemistry/agent-b/textbook/C09.core1a.md"
+      ]
+    },
+    {
+      "uid": "CORE1B-C09-04-3",
+      "qrt_instance_ref": "C09-04-JUSTIFY-D4",
+      "template": "QRT-JUSTIFY-D4",
+      "operation": "JUSTIFY",
+      "source_role": "AUTHORED_PRACTICE",
+      "source_exam_question_id": null,
+      "direct_exam_credit": 0,
+      "X": "A white solid fizzes with dilute acid. A student says this proves the solid is sodium hydrogen carbonate. Is the evidence unique?",
+      "Y": "Common salts differ in chemical composition, hydrate state, preparations and uses; commercial bleaching powder is compositionally complex.",
+      "Z": "No. Carbonates and hydrogen carbonates both generate CO2 with suitable acids. More identification evidence is needed, including tests for cations and the relevant anion distinction.",
+      "W": "Independently justify this case: A white solid fizzes with dilute acid. A student says this proves the solid is sodium hydrogen carbonate. Is the evidence unique? Boundary: Would an acid reaction alone distinguish CaCO3 from NaHCO3 if both liberate CO2?",
+      "anchor_teaching_model": "Compare the idealised formulas CaSO4·2H2O and CaSO4·1/2H2O. Each retains one calcium, one sulfur and four sulfate oxygen atoms. The difference is 1.5 water molecules *per CaSO4 formula unit* in the stoichiometric description. To avoid half molecules, write the dehydration stoichiometry on two formula units:\n\n2(CaSO4·2H2O) → 2(CaSO4·1/2H2O) + 3H2O.\n\nConfirm the number of water-related H and O atoms on both sides. This is a material balance model, not an industrial recipe.\n\nThree demands: EXPLAIN preparation/use differences; MODEL a plausible transformation or identification test; JUSTIFY why one observation cannot uniquely identify a common white powder.\n\nTypical wrong path: \"All white sodium powders are one salt\" or \"a commercial product formula proves purity.\" Repair: check anions, hydrate states and controls. Independent check: balance equations and identify at least one discriminating chemical observation.\n\n---",
+      "precommit_help": [
+        {
+          "id": "H1",
+          "verb": "CLARIFY",
+          "text": "Name the observed data, species and precise claim. What is given, and what remains unknown?"
+        },
+        {
+          "id": "H2",
+          "verb": "CORRELATE",
+          "text": "Recall the relevant science of Common salts: soda, bleaching powder and plaster of Paris. Which conditions or conserved quantities matter?"
+        },
+        {
+          "id": "H3",
+          "verb": "OPEN_THE_WAY",
+          "text": "Write two candidate explanations or representations, check their assumptions, and leave the final comparison or inference for your own answer."
+        }
+      ],
+      "wrong_model": "One observed gas uniquely identifies a solid reagent.",
+      "boundary": {
+        "prompt": "Would an acid reaction alone distinguish CaCO3 from NaHCO3 if both liberate CO2?",
+        "answer": "No. Both can give CO2; distinguish the cation and other properties.",
+        "confirms": "A changed condition or counterexample, not verbatim recall of the original task."
+      },
+      "independent_review": "NOT_RUN",
+      "source_content_paths": [
+        "curriculum/chemistry/adapters/C09.v1.json",
+        "curriculum/chemistry/agent-b/core1b/C09.core1b.v0.1.0.json",
+        "curriculum/chemistry/agent-b/learner/C09.reader.v0.1.0.json",
+        "curriculum/chemistry/agent-b/textbook/C09.core1a.md"
+      ]
+    }
+  ],
+  "truth_claims": {
+    "source_authenticated": false,
+    "author_task_count": 3,
+    "science_R01": false,
+    "qrt_R02": false,
+    "B1_B7": "NOT_RUN",
+    "merits_wpe_parity": "REQUIRES_BLIND_COMPARISON",
+    "original_question_admission": 0
+  },
+  "intended_evidence": {
+    "r00_author_qa": "REFER_TO_PR55_NOT_INDEPENDENT",
+    "r2_packets": "NOT_PRESENT",
+    "source_science_qrt_learning_receipts": "NOT_PRESENT",
+    "owner_approval": "NOT_PRESENT",
+    "golden_release": "NOT_AUTHORIZED"
+  }
+}
