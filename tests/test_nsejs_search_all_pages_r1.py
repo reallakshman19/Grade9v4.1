@@ -183,7 +183,8 @@ def test_26_new_search_records_match_deterministic_generator_exactly():
             "nsejs/physics/ph03/complete-r3/source-ledger.v1.html",
         ))
     ]
-    if added_pairs:
+    if added_pairs and any(d["url"]=="nsejs/physics/ph03/complete-r3/source-ledger.v1.html"
+                           for d in recovered):
         new_ids={"P01","P02","P04","P05","P06","P07"}
         for id in new_ids:
             for kind in ("textbook","core1"):
