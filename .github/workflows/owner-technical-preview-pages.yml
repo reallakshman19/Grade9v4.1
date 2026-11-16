@@ -32,6 +32,11 @@ jobs:
         with:
           fetch-depth: 1
           persist-credentials: false
+      - name: Verify all shared navigation and bank reader JavaScript syntax
+        run: |
+          node --check site-nav.js
+          node --check nsejs/js/core2-chemistry-reader.js
+          node --check nsejs/js/core2-biology-reader.js
       - name: Rebuild safe learner search index from exact revision
         run: |
           python3 tools/build_search_index.py
@@ -121,6 +126,16 @@ jobs:
               page = (out / p).read_text(encoding="utf-8")
               if 'data-grade9-nav="common-r1"' not in page:
                   raise SystemExit("PREVIEW_COMMON_NAV_NOT_INSTALLED:" + p)
+          html_pages = 0
+          for page_file in out.rglob("*.html"):
+              page = page_file.read_text(encoding="utf-8")
+              if re.search(r"</body\\s*>", page, flags=re.I):
+                  html_pages += 1
+                  if "data-grade9-nav" not in page:
+                      raise SystemExit("PREVIEW_COMMON_NAV_MISSING:" + str(page_file))
+          if html_pages == 0:
+              raise SystemExit("PREVIEW_NO_HTML_PAGES")
+          print("All published HTML pages with a body have the common header loader:", html_pages)
           (out / ".nojekyll").touch()
           (out / "preview-release-status.json").write_text(
               json.dumps({
