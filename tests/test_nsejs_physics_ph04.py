@@ -274,3 +274,15 @@ def test_ph04_batch_evidence_packets_r2_verification():
         assert report["academic_status"] == "HOLD"
         assert report["review_required"] is True
         assert report["evidence_items"] >= 24
+
+def test_pre_hydration_ph04_attempt_does_not_publish_answer():
+    """Static HTML must fail closed even if the module never hydrates."""
+    for i in range(1, 6):
+        page = CORE1_DIR / f"W0{i}/index.html"
+        content = page.read_text(encoding="utf-8")
+        assert '<section class="step" id="stage3-reconstruction" hidden>' in content
+        assert '<section class="step" id="stage6-boundary" hidden>' in content
+        assert 'id="firstCommit" type="button" disabled' in content
+        assert "Canonical key:" not in content
+        assert "Boundary model solution:" not in content
+        assert "OWNER-AUTHORIZED" not in content

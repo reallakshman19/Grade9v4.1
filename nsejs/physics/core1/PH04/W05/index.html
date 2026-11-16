@@ -24,7 +24,7 @@
         <a class="action" href="?task=AUTHORED-PH04-W05-C1B-TASK-R1">AUTHORED-PH04-W05-C1B-TASK-R1 · current</a>
       </div>
     </div>
-    <p class="notice"><strong>OWNER-AUTHORIZED AUTHOR-CREATED PRACTICE · AI-CHECKED.</strong> Self-study exercises, not authenticated original NSEJS questions or independent certification. Browser storage protects learning order but is not a secure examination boundary.</p>
+    <p class="notice"><strong>AUTHOR-EXPOSED PRACTICE · ACADEMIC/QRT HOLD.</strong> Self-study exercises, not authenticated original NSEJS questions or independent certification. Browser storage protects learning order but is not a secure examination boundary.</p>
     <p class="fine">Exact authored UID: AUTHORED-PH04-W05-C1B-TASK-R1 · revision: 1</p>
     <p id="runtimeStatus" class="status" role="status">Candidate task loaded. Submit a real first prediction and reasoning before hints/reconstruction.</p>
     <p id="revisionNote" class="fine"></p>
@@ -39,33 +39,13 @@
       <p>A physics student analyzes three experimental cards with straight graph segments: Card R (force-position) has y-axis F_x (N) and x-axis x (m), rising linearly from (0 m, 0 N) to (4 m, 8 N). Card S (potential-position) has y-axis U (J) and x-axis x (m), rising linearly from (0 m, 2 J) to (2 m, 8 J). Card T (displacement-time) has y-axis s (m) and x-axis t (s), passing through (0 s, 0 m), (2 s, 4 m), and (5 s, 16 m). Calculate: (1) work done on Card R over 0 to 4 m, (2) conservative force component on Card S, and (3) velocity on Card T between t = 2 s and t = 5 s.</p>
       <label for="initialResponse">Your first derivation and final answer</label>
       <textarea id="initialResponse"></textarea>
-      <button id="firstCommit" type="button">Commit prediction + first reasoning</button>
+      <button id="firstCommit" type="button" disabled>Commit prediction + first reasoning</button>
     </section>
-    <section class="step" id="stage-hints">
-      <h2>Assistance hints (unlocked after first commit)</h2>
-      <div id="hint1" class="help" hidden><p>Card R requires an area calculation (triangle: 0.5 * base * height).</p></div>
-      <div id="hint2" class="help" hidden><p>Card S requires a slope calculation, with a negative sign because F_x = -dU/dx.</p></div>
-      <div id="hint3" class="help" hidden><p>Card T requires the slope Delta s / Delta t over the interval from 2 s to 5 s.</p></div>
-    </section>
-    <section class="step" id="stage3-reconstruction">
-      <h2>3 · Model reconstruction and derivation key</h2>
-      <div class="card math"><p>1. Card R: Units of area = N * m = J ==> Area is Work. Triangular area = 0.5 * 4 * 8 = 16 J. 2. Card S: Units of slope = J / m = N ==> Slope relates to Force. By definition F_x = -dU/dx. Slope = (8 - 2)/(2 - 0) = +3 N ==> F_x = -3 N. 3. Card T: Units of slope = m / s ==> Slope is Velocity. v = (16 - 4)/(5 - 2) = 12 / 3 = 4 m/s. 4. Dimensional verification: [W] = 16 J, [F_x] = -3 N, [v] = 4 m/s.</p></div>
-      <p>Canonical key: <strong>1. Card R (F_x vs x): Work is represented by the area under the triangular curve: W = 0.5 * base * height = 0.5 * (4 m) * (8 N) = +16 J. 2. Card S (U vs x): Slope of potential energy: dU/dx = (8 J - 2 J) / (2 m - 0 m) = 6 / 2 = +3 J m^-1. Conservative force is the negative gradient: F_x = -dU/dx = -3 N. 3. Card T (s vs t): Velocity between t = 2 s and t = 5 s is the slope: v = Delta s / Delta t = (16 m - 4 m) / (5 s - 2 s) = 12 / 3 = 4 m s^-1.</strong></p>
-    </section>
-    <section class="step" id="stage4-diagnosis">
-      <h2>4 · Self-diagnosis and misconception check</h2>
-      <p>Did your initial reasoning encounter this common conceptual trap?</p>
-      <div class="card"><p><strong>Misconception:</strong> Area under any physics graph always represents work, and slope always represents acceleration.</p><p><strong>Why it fails:</strong> Area under an s-t graph has units metre-seconds, which has no direct physical meaning. Area under U-x has units Joule-metres, not work.</p></div>
-    </section>
-    <section class="step" id="stage5-repair">
-      <h2>5 · Targeted repair and conceptual correction</h2>
-      <div class="card"><p><strong>Repair procedure:</strong> Multiply axis units to check area: [N]*[m] = J (work). Divide axis units to check slope: [J]/[m] = N (force).</p></div>
-    </section>
-    <section class="step" id="stage6-boundary">
-      <h2>6 · Boundary condition transfer test</h2>
-      <p><strong>Changed boundary prompt:</strong> On Card S, what would the conservative force be if the potential energy curve flattened out horizontally between x = 2 m and x = 4 m at U = 8 J?</p>
-      <div class="card math"><p><strong>Boundary model solution:</strong> For a horizontal line, dU/dx = 0, so conservative force F_x = -dU/dx = 0 N.</p></div>
-    </section>
+    <section class="step" id="stage-hints" hidden><h2>H1–H3 · Support locked until saved attempt</h2></section>
+    <section class="step" id="stage3-reconstruction" hidden><h2>3 · Reconstruction requires a verified first commitment</h2></section>
+    <section class="step" id="stage4-diagnosis" hidden><h2>4 · Diagnose after reconstruction</h2></section>
+    <section class="step" id="stage5-repair" hidden><h2>5 · Repair after diagnosis</h2></section>
+    <section class="step" id="stage6-boundary" hidden><h2>6 · Boundary answer withheld until boundary response</h2></section>
   </main>
   <script type="module" src="../../../ph04/practice.js"></script>
   <script defer src="../../../learn/learner-nav.js" data-g9-learner-nav></script>
