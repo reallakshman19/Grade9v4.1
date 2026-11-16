@@ -1,7 +1,7 @@
 {
   "schema": "g9v41-chem-topic-adapter/v1",
   "adapter_id": "CHEM-C07",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "subject": "CHEMISTRY",
   "unit_id": "C07",
   "blueprint_ref": "CHEM-QRT-BLUEPRINT@0.1.0",
@@ -205,16 +205,16 @@
             "CHEM-C07.02-CORE1A"
           ],
           "slots": {
-            "X": "A substance does not conduct when pure but its aqueous solution does. Does this prove its original substance was ionic? Give an alternative and a further test.",
-            "Y": "Chemistry warrant: The same macroscopic observation may arise from different chemistry. Evidence must warrant an identification rather than merely be compatible with it. Prior basis: At an ordinary temperature solid NaCl has sodium and chloride ions occupying positions within an extended crystal lattice; they vibrate but do not freely migrate through the bulk.",
-            "Z": "A solution of molecular HCl in water conducts due to formation of hydronium and chloride; conduction does not imply that the initial HCl gas was an ionic lattice.",
-            "W": "Without being given the answer or decisive strategy, select decisive evidence/counterexamples and delimit the claim for this new task: \"A substance does not conduct when pure but its aqueous solution does. Does this prove its original substance was ionic? Give an alternative and a further test.\" A valid independent result must satisfy: An explanatory alternative plus discriminating experiment must be stated."
+            "X": "An unknown brittle crystalline solid conducts very poorly as a solid, conducts when molten and barely dissolves in water. A student argues that it cannot be ionic because 'all salts dissolve in water'. Evaluate the inference and give a chemically plausible model that fits all three observations.",
+            "Y": "Chemistry warrant / validity domain: Conductivity is a test for mobile charge carriers, not a universal label for how the original solid was bonded. An ionic lattice may have poor aqueous solubility, while its ions can carry current if molten. Prerequisite: At an ordinary temperature solid NaCl has sodium and chloride ions occupying positions within an extended crystal lattice; they vibrate but do not freely migrate through the bulk.",
+            "Z": "Independent worked anchor (not learner task): A pure NaCl crystal contains relatively immobile ions and ordinarily does not conduct, whereas NaCl(aq) contains mobile ions. The test distinguishes carrier mobility in two stated physical states; it does not prove a universal solubility rule. Independent check: Explain all three observations—solid nonconduction, molten conduction and low water solubility—using a defensible model and justify why insolubility alone does not disprove ionic structure.",
+            "W": "Without the worked solution or a decisive hint, the learner must independently perform the specified JUSTIFY construction on this NEW context: \"An unknown brittle crystalline solid conducts very poorly as a solid, conducts when molten and barely dissolves in water. A student argues that it cannot be ionic because 'all salts dissolve in water'. Evaluate the inference and give a chemically plausible model that fits all three observations.\" The reviewer must separately establish that this W is nonisomorphic to the textbook anchor; do not infer B4 PASS from this declaration."
           },
-          "student_task": "A substance does not conduct when pure but its aqueous solution does. Does this prove its original substance was ionic? Give an alternative and a further test.",
-          "wrong_idea": "An ionic compound must conduct electricity because it contains ions.",
-          "replacement_rule": "Ask in which physical state the sample is measured and identify the mobile charge carriers.",
-          "visual_job": "Use figures/c07-ionic.svg only as prerequisite explanatory evidence, not as an answer annotation. Draw a repeating grid of alternating + and − ion labels for a crystal; arrows for mobile ions only in the molten or aqueous model. A conductivity diagram must specify 'solid', 'molten' or 'dissolved', plus electrodes and whether the ions can move.",
-          "independent_check": "An explanatory alternative plus discriminating experiment must be stated.",
+          "student_task": "An unknown brittle crystalline solid conducts very poorly as a solid, conducts when molten and barely dissolves in water. A student argues that it cannot be ionic because 'all salts dissolve in water'. Evaluate the inference and give a chemically plausible model that fits all three observations.",
+          "wrong_idea": "Identify which hidden assumption makes the student's conclusion invalid and why the three observations need not contradict one another.",
+          "replacement_rule": "Provide a consistent particle-level mechanism for the three observed states while keeping the classification provisional where evidence is incomplete.",
+          "visual_job": "Candidate uncompleted carrier-mobility ledger for three phases, without revealing the target inference; visual adequacy remains R01 HOLD.",
+          "independent_check": "Explain all three observations—solid nonconduction, molten conduction and low water solubility—using a defensible model and justify why insolubility alone does not disprove ionic structure.",
           "source_bindings": [
             {
               "ref": "AUTHORED-C07-06-JUSTIFY-D4",
@@ -227,7 +227,8 @@
       ],
       "academic_notes": [
         "Core1A/B passage and tasks are Grade9-authored candidate content; no original NSEJS question identity is asserted.",
-        "Band values D3/D4 are unqualified author proposals pending five-factor QRT adjudication and independent chemistry review."
+        "Band values D3/D4 are unqualified author proposals pending five-factor QRT adjudication and independent chemistry review.",
+        "R2 one-task transfer repair C07-06-JUSTIFY-D4; author candidate, independent B3/B4/QRT/source custody HOLD."
       ],
       "status": "ACADEMIC_HOLD"
     },
@@ -759,6 +760,14 @@
         "CHEM-C07.05",
         "CHEM-C07.06",
         "CHEM-C07.07"
+      ]
+    },
+    {
+      "version": "0.2.1",
+      "kind": "AMEND",
+      "reason": "WPE-parity R2 bounded exemplar X/Y/Z/W, science warrant, student task and misconception repair; no source/QRT promotion.",
+      "affected_subtopic_ids": [
+        "CHEM-C07.02"
       ]
     }
   ]

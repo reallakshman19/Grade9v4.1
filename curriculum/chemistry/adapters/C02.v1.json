@@ -1,7 +1,7 @@
 {
   "schema": "g9v41-chem-topic-adapter/v1",
   "adapter_id": "CHEM-C02",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "subject": "CHEMISTRY",
   "unit_id": "C02",
   "blueprint_ref": "CHEM-QRT-BLUEPRINT@0.1.0",
@@ -339,16 +339,16 @@
             "CHEM-C02.04-CORE1A"
           ],
           "slots": {
-            "X": "A 300 g solution contains 30 g dissolved salt. After adding 200 g water, what is its mass percent, assuming no loss?",
-            "Y": "Chemistry warrant: Adding solvent changes total solution amount but not the mass of retained nonreacting solute. Prior basis: Write concentration as a named ratio before inserting any measured values; include the numerator and denominator units.",
-            "Z": "20 g solute in 200 g solution is 10% m/m; adding 200 g water makes 400 g total at 5% m/m.",
-            "W": "Without the answer or decisive strategy supplied in advance, choose and execute the relevant chemical relation for this new task: \"A 300 g solution contains 30 g dissolved salt. After adding 200 g water, what is its mass percent, assuming no loss?\" A valid independent result must satisfy: Check the numerator conserved before removing any solution."
+            "X": "A 200 g solution contains 10% salt by mass. Assuming salt is nonvolatile and no solution is spilled, 50 g water evaporates and then 100 g water is added. Find the final mass percentage and show a component-mass ledger.",
+            "Y": "Chemistry warrant / validity domain: Concentration calculations distinguish solute mass, solvent mass and total solution mass. Changing the solvent alone changes the denominator if the solute is nonvolatile and retained. Prerequisite: Write concentration as a named ratio before inserting any measured values; include the numerator and denominator units.",
+            "Z": "Independent worked anchor (not the learner task): In a simpler dilution anchor, 20 g of nonreacting solute in 200 g solution gives 10% m/m; adding 200 g pure solvent leaves 20 g solute in 400 g solution at 5% m/m. Independent check: Check both solvent and solute ledgers separately and divide by the final total solution mass, not by the initial solvent mass.",
+            "W": "Without the worked solution or a decisive hint, the learner must independently perform the specified APPLY construction on this NEW context: \"A 200 g solution contains 10% salt by mass. Assuming salt is nonvolatile and no solution is spilled, 50 g water evaporates and then 100 g water is added. Find the final mass percentage and show a component-mass ledger.\" The reviewer must separately establish that this W is nonisomorphic to the textbook anchor; do not infer B4 PASS from this declaration."
           },
-          "student_task": "A 300 g solution contains 30 g dissolved salt. After adding 200 g water, what is its mass percent, assuming no loss?",
-          "wrong_idea": "Use only solvent mass in the denominator for mass percentage.",
-          "replacement_rule": "Write the concentration definition and units before substituting.",
-          "visual_job": "Use a ratio bar with numerator solute mass and denominator total solution mass or volume. Explicitly label % m/m or % m/V and do not substitute solvent mass.",
-          "independent_check": "Check the numerator conserved before removing any solution.",
+          "student_task": "A 200 g solution contains 10% salt by mass. Assuming salt is nonvolatile and no solution is spilled, 50 g water evaporates and then 100 g water is added. Find the final mass percentage and show a component-mass ledger.",
+          "wrong_idea": "A proposed answer uses 150 g as the final denominator despite the later addition of water. Identify the first bookkeeping error.",
+          "replacement_rule": "Recalculate total mass after each operation, then recompute mass percentage using the conserved solute amount.",
+          "visual_job": "Candidate representation: show relevant species, states, values or evidence in an uncompleted ledger/diagram; do not disclose the decisive APPLY operation or final result. Task-specific visual adequacy remains for R01 review.",
+          "independent_check": "Check both solvent and solute ledgers separately and divide by the final total solution mass, not by the initial solvent mass.",
           "source_bindings": [
             {
               "ref": "AUTHORED-C02-10-APPLY-D3",
@@ -417,7 +417,8 @@
       ],
       "academic_notes": [
         "Core1A/B passage and tasks are Grade9-authored candidate content; no original NSEJS question identity is asserted.",
-        "Band values D3/D4 are unqualified author proposals pending five-factor QRT adjudication and independent chemistry review."
+        "Band values D3/D4 are unqualified author proposals pending five-factor QRT adjudication and independent chemistry review.",
+        "R2 one-task transfer repair C02-10-APPLY-D3; revised full-content digest is revision-bound in reader. Author candidate only: independent B3/B4 science, five-factor QRT and source custody HOLD."
       ],
       "status": "ACADEMIC_HOLD"
     },
@@ -749,6 +750,14 @@
         "CHEM-C02.05",
         "CHEM-C02.06",
         "CHEM-C02.07"
+      ]
+    },
+    {
+      "version": "0.2.1",
+      "kind": "AMEND",
+      "reason": "WPE-parity R2 author-candidate transfer correction: refreshed X/Y/Z/W, scientific warrant, misconception and revised learner task for one bounded exemplar; no source/authentication/QRT promotion.",
+      "affected_subtopic_ids": [
+        "CHEM-C02.04"
       ]
     }
   ]

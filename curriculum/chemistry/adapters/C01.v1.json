@@ -1,7 +1,7 @@
 {
   "schema": "g9v41-chem-topic-adapter/v1",
   "adapter_id": "CHEM-C01",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "subject": "CHEMISTRY",
   "unit_id": "C01",
   "blueprint_ref": "CHEM-QRT-BLUEPRINT@0.1.0",
@@ -39,16 +39,16 @@
             "CHEM-C01.01-CORE1A"
           ],
           "slots": {
-            "X": "Explain why a tiny coloured drop can eventually tint the entire closed beaker without adding more dye.",
-            "Y": "Chemistry warrant: Link invisible random molecular motion to visible changes in concentration; distinguish observation from inference. Prior basis: Specify the system: a closed beaker preserves its total matter even while solutes redistribute.",
-            "Z": "A clear region becomes slightly coloured as dye particles cross into it and redistribute while total particle number stays fixed.",
-            "W": "Without the answer or decisive strategy supplied in advance, derive the causal explanation for this new task: \"Explain why a tiny coloured drop can eventually tint the entire closed beaker without adding more dye.\" A valid independent result must satisfy: Check conservation for a declared system boundary."
+            "X": "A few millilitres of a volatile liquid are left in an open dish. The dish becomes lighter while its odour spreads in a sealed room. Explain both observations at particle scale. Has matter been destroyed?",
+            "Y": "Chemistry warrant / validity domain: Particle motion explains redistribution, but a mass reading requires an explicit system boundary. A closed vessel can conserve its measured contents, while an open vessel exchanges particles with its surroundings. Prerequisite: Specify the system: a closed beaker preserves its total matter even while solutes redistribute.",
+            "Z": "Independent worked anchor (not the learner task): In a sealed dye-and-water beaker, a fixed population of dye particles spreads through the water while neither molecular identity nor total mass is created. This is a closed-boundary anchor, not the later open-system task. Independent check: Declare the system boundary, locate matter crossing it and account for species without claiming spontaneous particle creation.",
+            "W": "Without the worked solution or a decisive hint, the learner must independently perform the specified EXPLAIN construction on this NEW context: \"A few millilitres of a volatile liquid are left in an open dish. The dish becomes lighter while its odour spreads in a sealed room. Explain both observations at particle scale. Has matter been destroyed?\" The reviewer must separately establish that this W is nonisomorphic to the textbook anchor; do not infer B4 PASS from this declaration."
           },
-          "student_task": "Explain why a tiny coloured drop can eventually tint the entire closed beaker without adding more dye.",
-          "wrong_idea": "The coloured substance multiplies as it spreads.",
-          "replacement_rule": "Track a fixed set of dye particles through successive snapshots.",
-          "visual_job": "Draw a beaker before and after mixing using distinguishable particle dots. Keep the same particle count in the closed-beaker diagram; vary positions rather than transforming water molecules into new species.",
-          "independent_check": "Check conservation for a declared system boundary.",
+          "student_task": "A few millilitres of a volatile liquid are left in an open dish. The dish becomes lighter while its odour spreads in a sealed room. Explain both observations at particle scale. Has matter been destroyed?",
+          "wrong_idea": "A student concludes that the lost liquid mass has ceased to exist. Identify the first invalid inference and what was not measured.",
+          "replacement_rule": "Build a before-and-after particle ledger covering the dish and the rest of the closed room. Explain the phase and transport processes.",
+          "visual_job": "Candidate representation: show relevant species, states, values or evidence in an uncompleted ledger/diagram; do not disclose the decisive EXPLAIN operation or final result. Task-specific visual adequacy remains for R01 review.",
+          "independent_check": "Declare the system boundary, locate matter crossing it and account for species without claiming spontaneous particle creation.",
           "source_bindings": [
             {
               "ref": "AUTHORED-C01-01-EXPLAIN-D3",
@@ -117,7 +117,8 @@
       ],
       "academic_notes": [
         "Core1A/B passage and tasks are Grade9-authored candidate content; no original NSEJS question identity is asserted.",
-        "Band values D3/D4 are unqualified author proposals pending five-factor QRT adjudication and independent chemistry review."
+        "Band values D3/D4 are unqualified author proposals pending five-factor QRT adjudication and independent chemistry review.",
+        "R2 one-task transfer repair C01-01-EXPLAIN-D3; revised full-content digest is revision-bound in reader. Author candidate only: independent B3/B4 science, five-factor QRT and source custody HOLD."
       ],
       "status": "ACADEMIC_HOLD"
     },
@@ -647,6 +648,14 @@
         "CHEM-C01.04",
         "CHEM-C01.05",
         "CHEM-C01.06"
+      ]
+    },
+    {
+      "version": "0.2.1",
+      "kind": "AMEND",
+      "reason": "WPE-parity R2 author-candidate transfer correction: refreshed X/Y/Z/W, scientific warrant, misconception and revised learner task for one bounded exemplar; no source/authentication/QRT promotion.",
+      "affected_subtopic_ids": [
+        "CHEM-C01.01"
       ]
     }
   ]

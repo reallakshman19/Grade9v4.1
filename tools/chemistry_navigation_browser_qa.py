@@ -93,16 +93,20 @@ def check_preview_practice(page):
     first=page.locator("#practice-chem-c01-01")
     ensure(first.locator(".attempt details").count()==0,"preview hints inserted before first commit")
     ensure(first.locator(".post").first.is_hidden(),"preview answer leaked precommit")
-    first.locator("textarea").first.fill("An original independent attempt selecting a particle model and explaining the observation.")
+    ensure(first.locator(".first-attempt").is_hidden(),"first attempt displayed before prediction")
+    first.locator(".prediction-input").fill("I predict mixing will change the observed distribution under stated conditions.")
+    first.get_by_role("button",name="Save prediction and begin first attempt").click()
+    ensure(first.locator(".first-attempt").is_visible(),"prediction commit did not open attempt")
+    first.locator(".first-attempt textarea").fill("An original independent attempt selecting a particle model and explaining the observation.")
     first.get_by_role("button",name="Save first attempt and begin reconstruction").click()
     ensure(first.locator(".post").first.is_visible(),"preview reconstruction missing after commit")
     ensure("Model response" not in first.locator(".post").first.inner_text(),"preview model leaked before independent stages")
-    answer=first.locator("textarea").first.input_value()
+    answer=first.locator(".first-attempt textarea").first.input_value()
     page.reload(wait_until="domcontentloaded")
     page.locator("#practice-chem-c01-01 .post").first.wait_for(timeout=25000,state="visible")
-    ensure(page.locator("#practice-chem-c01-01 textarea").first.input_value()==answer,
+    ensure(page.locator("#practice-chem-c01-01 .first-attempt textarea").first.input_value()==answer,
            "C01 first answer not persisted on refresh")
-    ensure(page.locator("#practice-chem-c01-01 textarea").first.is_disabled(),
+    ensure(page.locator("#practice-chem-c01-01 .first-attempt textarea").first.is_disabled(),
            "C01 immutable first answer not locked")
     return True
 
@@ -112,14 +116,14 @@ def check_preview_storage_negative(browser,viewport):
     page=context.new_page()
     url=urljoin(HOME,"../../curriculum/chemistry/preview/C02.html?subtopic=CHEM-C02.01&mode=practice")
     page.goto(url,wait_until="domcontentloaded")
-    field=page.locator("#practice-chem-c02-01 textarea").first
+    field=page.locator("#practice-chem-c02-01 .prediction-input").first
     field.wait_for(timeout=25000)
     field.fill("First attempted reasoning cannot be recorded because browser storage is denied.")
-    page.locator("#practice-chem-c02-01 button").first.click()
+    page.locator("#practice-chem-c02-01 button.predict-submit").first.click()
     ensure(page.locator("#practice-chem-c02-01 .post").first.is_hidden(),"storage failure revealed answer")
     ensure(page.locator("#practice-chem-c02-01 .attempt details").count()==0,"storage failure inserted hint")
-    ensure(field.is_enabled(),"storage failure erased access to learner answer")
-    ensure("Storage unavailable" in page.locator("#practice-chem-c02-01 .mini").last.inner_text(),
+    ensure(field.is_enabled(),"storage failure erased access to learner prediction")
+    ensure("Storage unavailable" in page.locator("#practice-chem-c02-01 .attempt > p.mini").first.inner_text(),
            "no storage failure message")
     context.close()
     return True

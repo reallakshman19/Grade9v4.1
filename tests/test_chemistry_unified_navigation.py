@@ -95,7 +95,10 @@ def test_both_readers_expose_same_journey_without_copying_attempts():
     assert 'if(stored(key)===null&&!persist(key,field.value))' in preview
     assert "Nothing is unlocked" in preview
     assert 'const stageOrder=[' in preview and 'id:"boundary"' in preview
-    assert 'const details=add(helper,el("details"));details.hidden=i>depth' in preview
+    assert 'const predictKey=key+":prediction"' in preview
+    assert 'if(stored(predictKey)===null&&!persist(predictKey,predictionField.value))' in preview
+    assert 'if(!persist(hintKey,String(depth+1)))' in preview
+    assert 'if(complete){' in preview
     assert 'if(complete){' in preview and 'add(closure,el("h4","","Model response"))' in preview
     assert 'revisionKey("attempt",task)' in native
     assert "updateUrl(push);updateSourceReturn();" in native

@@ -381,7 +381,8 @@
       "core1a_paragraphs": [
         "Concentration expresses an amount of solute relative to a specified quantity of mixture or solution. The denominator is essential: mass fraction uses total solution mass, whereas mass/volume concentration uses solution volume.",
         "Ten grams sugar in 100 g solution is 10% by mass. Ten grams in 100 mL solution is 10 g per 100 mL, often written 10% m/V. These measures are not interchangeable without density information.",
-        "Dilution adds solvent while preserving the amount of nonreacting solute in the ideal model. Concentration decreases because the denominator rises; pouring away part of a well-mixed solution changes solute amount and total volume proportionally but leaves concentration unchanged."
+        "Dilution adds solvent while preserving the amount of nonreacting solute in the ideal model. Concentration decreases because the denominator rises; pouring away part of a well-mixed solution changes solute amount and total volume proportionally but leaves concentration unchanged.",
+        "Evaporation is not automatically the reverse of diluting every mixture: it preferentially removes whichever components can escape as vapour. Before treating the solute mass as unchanged, state the nonvolatile-solute and no-spillage assumptions. Percent by mass always refers to the final solution mass, never the initial container mass."
       ],
       "representation": "Use a ratio bar with numerator solute mass and denominator total solution mass or volume. Explicitly label % m/m or % m/V and do not substitute solvent mass.",
       "worked_example": {
@@ -406,22 +407,22 @@
           "primary_operation": "APPLY",
           "band": "D3",
           "title": "Track concentration under dilution",
-          "core1a_explanation": "Adding solvent changes total solution amount but not the mass of retained nonreacting solute.",
-          "worked_reasoning": "20 g solute in 200 g solution is 10% m/m; adding 200 g water makes 400 g total at 5% m/m.",
-          "independent_check": "Check the numerator conserved before removing any solution.",
+          "core1a_explanation": "Concentration calculations distinguish solute mass, solvent mass and total solution mass. Changing the solvent alone changes the denominator if the solute is nonvolatile and retained.",
+          "worked_reasoning": "In a simpler dilution anchor, 20 g of nonreacting solute in 200 g solution gives 10% m/m; adding 200 g pure solvent leaves 20 g solute in 400 g solution at 5% m/m.",
+          "independent_check": "Check both solvent and solute ledgers separately and divide by the final total solution mass, not by the initial solvent mass.",
           "hints": [
-            "Name the relevant chemical species and the observed state.",
-            "Check which property distinguishes the candidate explanations.",
-            "Conserve each component while changing a condition; do not assume the conclusion."
+            "Separate the original total solution into solute and solvent masses; state whether the solute can leave with vapour.",
+            "Record each operation in sequence as a change in total mass, keeping conserved solute mass separate.",
+            "Only after completing the mass ledger select the denominator appropriate for mass/mass concentration."
           ],
           "core1b": {
-            "predict": "Make an initial classification or qualitative prediction and state one condition it depends upon.",
-            "attempt": "A 300 g solution contains 30 g dissolved salt. After adding 200 g water, what is its mass percent, assuming no loss?",
-            "reconstruct": "Rebuild the solution by comparing each candidate model against the observations and conservation rules.",
-            "diagnose": "Which observation would expose the incorrect route: Dilution creates or destroys solute?",
-            "repair": "Write a solute-mass conservation ledger.",
-            "boundary": "If 100 g of well-mixed diluted solution is removed, what is concentration of remainder?",
-            "model_response": "Salt remains 30 g; total mass becomes 500 g; mass fraction = 30/500 ×100 = 6%."
+            "predict": "Predict qualitatively whether evaporating solvent then adding more fresh solvent must increase, decrease or possibly restore mass percentage; state the retention assumptions.",
+            "attempt": "A 200 g solution contains 10% salt by mass. Assuming salt is nonvolatile and no solution is spilled, 50 g water evaporates and then 100 g water is added. Find the final mass percentage and show a component-mass ledger.",
+            "reconstruct": "Rebuild the solute-versus-water ledger after each operation. Show precisely why the correct percentage denominator is the final solution mass.",
+            "diagnose": "A proposed answer uses 150 g as the final denominator despite the later addition of water. Identify the first bookkeeping error.",
+            "repair": "Recalculate total mass after each operation, then recompute mass percentage using the conserved solute amount.",
+            "boundary": "If instead 10 g of the well-mixed final solution is poured away, what happens to the mass percentage remaining? Justify.",
+            "model_response": "The initial salt mass is 0.10×200=20 g, with 180 g water. Evaporation removes 50 g water, leaving 150 g solution. Adding 100 g water leaves 250 g solution with 20 g salt, so the final concentration is 20/250×100=8% m/m. Removing a representative portion of a homogeneous solution leaves the same concentration."
           }
         },
         {
@@ -473,7 +474,7 @@
           }
         }
       ],
-      "source_notes": "Class IX concentration with extended multi-mixture reasoning.",
+      "source_notes": "Class IX concentration with extended multi-mixture reasoning. R2 editorial transfer repair: authored candidate only; no original NSEJS exam/source claim, no independent B3/B4 or QRT admission.",
       "scope": "CORE_CANDIDATE",
       "deep_dive": {
         "big_idea": "A concentration value is incomplete unless we say what amount of solute is divided by what amount of mixture or solvent. Ten grams per 100 grams of solution is not the same definition as ten grams per 100 millilitres of solution; percentages cannot be compared blindly when density matters.",

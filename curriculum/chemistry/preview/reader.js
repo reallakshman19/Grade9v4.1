@@ -36,8 +36,8 @@ function renderDive(article,s){
 }
 
 function safeId(x){return String(x).replace(/[^a-z0-9-]/gi,"-").toLowerCase()}
-function stored(key){try{return localStorage.getItem(key)}catch(e){return memory.get(key)||null}}
-function persist(key,value){try{localStorage.setItem(key,value);return localStorage.getItem(key)===value}catch(e){memory.set(key,value);return false}}
+function stored(key){try{return localStorage.getItem(key)}catch(e){return null}}
+function persist(key,value){try{localStorage.setItem(key,value);return localStorage.getItem(key)===value}catch(e){return false}}
 function showDemand(parent,d,unit,subId,version){
  const wrap=add(parent,el("section","demand"));
  if(!parent.querySelector("#practice-"+safeId(subId)))wrap.id="practice-"+safeId(subId);
@@ -45,42 +45,54 @@ function showDemand(parent,d,unit,subId,version){
  p(wrap,d.core1a_explanation);
  const worked=add(wrap,el("div","worked"));add(worked,el("strong","","Core1A — completed construction"));p(worked,d.worked_reasoning);
  p(wrap,"Independent check: "+d.independent_check,"mini");
- const form=add(wrap,el("div","attempt"));add(form,el("h4","","Core1B — reconstruct the idea"));
- p(form,"Predict: "+d.core1b.predict);p(form,d.core1b.attempt,"learner-task");
- const label=add(form,el("label","","Write your first reasoning attempt before receiving help or model feedback."));
- const field=add(form,el("textarea"));field.setAttribute("aria-label",d.title+" first attempt");
- label.htmlFor="response-"+safeId(d.instance_id);field.id=label.htmlFor;
+ const form=add(wrap,el("div","attempt"));
+ add(form,el("h4","","Core1B — predict, attempt, reconstruct, diagnose, repair, boundary"));
+ p(form,d.core1b.attempt,"learner-task");
  const key="g9chem-first-attempt:"+unit+":"+version+":"+subId+":"+d.instance_id;
+ const predictKey=key+":prediction",hintKey=key+":hint-depth";
+ const st=add(form,el("p","mini"));
+ const prediction=add(form,el("section","prediction-stage"));
+ add(prediction,el("h4","","1 · Predict"));
+ p(prediction,d.core1b.predict);
+ const predictionLabel=add(prediction,el("label","","Make a qualitative prediction, specify the model/conditions, and justify your expectation."));
+ const predictionField=add(prediction,el("textarea","prediction-input"));
+ predictionField.setAttribute("aria-label",d.title+" independent prediction");
+ predictionLabel.htmlFor="prediction-"+safeId(d.instance_id);predictionField.id=predictionLabel.htmlFor;
+ const predictButton=add(prediction,el("button","predict-submit","Save prediction and begin first attempt"));
+ const firstStep=add(form,el("section","first-attempt"));
+ add(firstStep,el("h4","","2 · First attempt"));
+ const label=add(firstStep,el("label","","Write your first reasoning attempt before receiving model feedback."));
+ const field=add(firstStep,el("textarea"));
+ field.setAttribute("aria-label",d.title+" first attempt");
+ label.htmlFor="response-"+safeId(d.instance_id);field.id=label.htmlFor;
+ const submit=add(firstStep,el("button","","Save first attempt and begin reconstruction"));
+ const helper=add(form,el("section","hint-ladder"));helper.hidden=true;
+ add(helper,el("h4","","Optional progressive help — records assisted exposure"));
+ p(helper,"Hints are authored candidates. They are saved before reveal and do not grade your answer.","mini");
+ const hintContents=add(helper,el("div","hint-contents"));
+ const hintButton=add(helper,el("button","hint-submit","Reveal next hint"));
+ const post=add(form,el("div","post"));post.hidden=true;
  const stageOrder=[
   {id:"reconstruct",title:"Reconstruct",prompt:d.core1b.reconstruct},
   {id:"diagnose",title:"Diagnose",prompt:d.core1b.diagnose},
   {id:"repair",title:"Repair",prompt:d.core1b.repair},
   {id:"boundary",title:"Boundary test",prompt:d.core1b.boundary}
  ];
- const submit=add(form,el("button","","Save first attempt and begin reconstruction"));
- const post=add(form,el("div","post"));post.hidden=true;
- const st=add(form,el("p","mini"));
+ const hintDepth=()=>Math.min(d.hints.length,Math.max(0,Number(stored(hintKey)||0)||0));
+ function renderHints(){
+  const depth=hintDepth();hintContents.replaceChildren();
+  for(let i=0;i<depth;i++)p(hintContents,"H"+(i+1)+": "+d.hints[i],"hint-revealed");
+  hintButton.disabled=depth>=d.hints.length;
+  hintButton.textContent=depth>=d.hints.length?"All available hints viewed":"Reveal hint "+(depth+1)+" of "+d.hints.length;
+ }
  function renderCommitted(){
-  const first=stored(key);if(first===null)return;
-  field.value=first;field.disabled=true;submit.disabled=true;
+  if(stored(key)===null)return;
+  field.value=stored(key);field.disabled=true;submit.disabled=true;firstStep.hidden=false;
+  prediction.hidden=true;helper.hidden=false;renderHints();
   post.replaceChildren();post.hidden=false;
   add(post,el("h4","","First attempt saved"));
-  p(post,"Your first answer is locked for this exact task/content revision. Complete each independent stage before viewing the model response.","mini");
-  const helper=add(post,el("section","hint-ladder"));
-  add(helper,el("h4","","Progressive help (optional)"));
-  const hintKey=key+":hint-depth";
-  const depth=Math.max(0,Math.min(d.hints.length,Number(stored(hintKey)||0)||0));
-  const hintNodes=[];
-  d.hints.forEach((hint,i)=>{
-   const details=add(helper,el("details"));details.hidden=i>depth;
-   add(details,el("summary","","Hint "+(i+1)));p(details,hint);
-   hintNodes.push(details);
-   details.addEventListener("toggle",()=>{
-    if(!details.open||i+1<=Number(stored(hintKey)||0))return;
-    if(!persist(hintKey,String(i+1))){st.textContent="Storage unavailable: hint exposure cannot be saved. Further help remains locked.";return}
-    if(hintNodes[i+1])hintNodes[i+1].hidden=false;
-   });
-  });
+  if(stored(predictKey)===null)p(post,"Legacy first attempt: no separately recorded prediction exists. The earlier response is preserved without inventing a prediction.","mini");
+  else p(post,"Your prediction and first attempt were stored separately for this exact content revision.","mini");
   let complete=true;
   for(const stage of stageOrder){
    const stageKey=key+":stage:"+stage.id;
@@ -89,35 +101,55 @@ function showDemand(parent,d,unit,subId,version){
    const saved=stored(stageKey);
    if(saved!==null){p(stageBox,"Your saved response: "+saved,"stage-saved");continue}
    complete=false;
-   const stageLabel=add(stageBox,el("label","","Write your own "+stage.title.toLowerCase()+" reasoning before continuing."));
+   const stageLabel=add(stageBox,el("label","","Write independent "+stage.title.toLowerCase()+" reasoning before continuing."));
    const stageField=add(stageBox,el("textarea","stage-input"));
    stageField.setAttribute("aria-label",stage.title+" independent response");
    stageLabel.htmlFor="stage-"+safeId(d.instance_id)+"-"+stage.id;stageField.id=stageLabel.htmlFor;
    const stageButton=add(stageBox,el("button","stage-submit","Save "+stage.title+" response"));
    stageButton.addEventListener("click",()=>{
-    if(!stageField.value.trim()){st.textContent="A written "+stage.title.toLowerCase()+" response is required before continuing.";stageField.focus();return}
+    if(!stageField.value.trim()){st.textContent="A written "+stage.title.toLowerCase()+" response is required.";stageField.focus();return}
     if(stored(stageKey)!==null){renderCommitted();return}
-    if(!persist(stageKey,stageField.value)){st.textContent="Storage unavailable: stage response could not be preserved. No later stage or model response is unlocked.";return}
+    if(!persist(stageKey,stageField.value)){st.textContent="Storage unavailable: stage response not durably saved. Model remains locked.";return}
     renderCommitted();
-   });
-   break;
+   });break;
   }
   if(complete){
    const closure=add(post,el("section","model-closure"));
    add(closure,el("h4","","Model response"));p(closure,d.core1b.model_response);
-   st.textContent="All five learner responses were saved for this exact content revision. Model response now available for comparison.";
-  }else{
-   st.textContent="First attempt preserved. Remaining stages require separate saved responses; model response is still protected.";
-  }
+   st.textContent="All independent stages saved. Compare your model and the author's candidate response; academic correctness is not certified.";
+  }else st.textContent="Your first answer remains locked. Complete each separate stage to view the model response.";
  }
- const first=stored(key);if(first!==null)renderCommitted();
+ function renderStart(){
+  const first=stored(key),pred=stored(predictKey);
+  if(first!==null){renderCommitted();return}
+  post.hidden=true;prediction.hidden=pred!==null;
+  firstStep.hidden=pred===null;helper.hidden=pred===null;
+  predictionField.value=pred||"";predictionField.disabled=pred!==null;
+  if(pred!==null)renderHints();
+  st.textContent=pred===null?"Predict independently before attempting; no answer or hints have been disclosed.":"Prediction saved. Attempt the independent task, with optional recorded hints.";
+ }
+ predictButton.addEventListener("click",()=>{
+  if(!predictionField.value.trim()){st.textContent="Write your prediction and reason before starting.";predictionField.focus();return}
+  if(stored(predictKey)===null&&!persist(predictKey,predictionField.value)){
+   st.textContent="Storage unavailable: prediction could not be preserved; the first attempt stays locked.";return;
+  }
+  renderStart();
+ });
+ hintButton.addEventListener("click",()=>{
+  if(stored(predictKey)===null&&stored(key)===null){st.textContent="Save a prediction first.";return}
+  const depth=hintDepth();if(depth>=d.hints.length)return;
+  if(!persist(hintKey,String(depth+1))){st.textContent="Storage unavailable: hint exposure could not be saved, so no hint was revealed.";return}
+  renderHints();
+ });
  submit.addEventListener("click",()=>{
+  if(stored(predictKey)===null){st.textContent="Commit an independent prediction before your first attempt.";return}
   if(!field.value.trim()){st.textContent="Explain your reasoning first; empty attempts do not unlock the next stage.";field.focus();return}
   if(stored(key)===null&&!persist(key,field.value)){
    st.textContent="Storage unavailable: the first attempt could not be preserved. Nothing is unlocked; your text remains editable.";return;
   }
   renderCommitted();
  });
+ renderStart();
 }
 function draw(book){
  root.replaceChildren();
