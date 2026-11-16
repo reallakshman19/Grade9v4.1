@@ -16,6 +16,9 @@ const finite=x=>typeof x==="number"&&Number.isFinite(x);
 const copy=x=>JSON.parse(JSON.stringify(x));
 const unique=x=>new Set(x).size===x.length;
 const fail=(s)=>{throw Error(s)};
+// Native window.fetch requires the Window receiver in Chromium. Calling it as
+// assessment.fetcher(url) otherwise binds this to Assessment (Illegal invocation).
+const browserFetch=(...args)=>globalThis.fetch(...args);
 export async function digest(bytes,crypto=globalThis.crypto){
  assert(crypto?.subtle,"CRYPTO_UNAVAILABLE");
  return Array.from(new Uint8Array(await crypto.subtle.digest("SHA-256",bytes)),x=>x.toString(16).padStart(2,"0")).join("");
@@ -142,7 +145,7 @@ export function replay(record,m,manifestHash){
  s.events=record.events;return s;
 }
 export class Assessment{
- constructor({manifest,manifestHash,baseURL,storage,locks,fetcher=globalThis.fetch,crypto=globalThis.crypto,clock=Date.now}){
+ constructor({manifest,manifestHash,baseURL,storage,locks,fetcher=browserFetch,crypto=globalThis.crypto,clock=Date.now}){
   this.m=deepFreeze(validateManifest(copy(manifest)));assert(HASH.test(manifestHash),"MANIFEST_HASH");this.hash=manifestHash;
   this.base=new URL(baseURL);assert(["http:","https:"].includes(this.base.protocol)&&this.base.pathname.endsWith("/")&&!this.base.search&&!this.base.hash,"BASE_URL");
   this.storage=storage;this.locks=locks;this.fetcher=fetcher;this.crypto=crypto;this.clock=clock;
@@ -250,7 +253,7 @@ export class Assessment{
   })
  }
 }
-export async function loadAssessment({manifestURL,expectedHash,baseURL=undefined,fetcher=globalThis.fetch,crypto=globalThis.crypto,storage=globalThis.localStorage,locks=globalThis.navigator?.locks,clock}){
+export async function loadAssessment({manifestURL,expectedHash,baseURL=undefined,fetcher=browserFetch,crypto=globalThis.crypto,storage=globalThis.localStorage,locks=globalThis.navigator?.locks,clock}){
  assert(HASH.test(expectedHash),"EXPECTED_MANIFEST_HASH_REQUIRED");
  const u=new URL(manifestURL);assert(["http:","https:"].includes(u.protocol)&&!u.search&&!u.hash,"MANIFEST_URL");
  const resp=await fetcher(u.href,{cache:"no-store",credentials:"same-origin",redirect:"error"});assert(resp.ok,"MANIFEST_HTTP");
