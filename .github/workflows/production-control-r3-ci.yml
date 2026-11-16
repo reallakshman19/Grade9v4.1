@@ -23,5 +23,28 @@ jobs:
         run: |
           HEAD_SHA=$(git rev-parse HEAD)
           python docs/agent-entry/production-control-r3/preview_build.py --repo . --head "$HEAD_SHA" --control "$HEAD_SHA"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Build synthetic platform assets and exercise shared engine
+        run: |
+          set -euo pipefail
+          python docs/agent-entry/production-control-r3/platform/fixture_builder.py
+          node --test docs/agent-entry/production-control-r3/platform/engine.test.mjs
+          python -m pytest -q docs/agent-entry/production-control-r3/platform/test_platform_contract.py
+      - name: Install actual Chromium
+        run: |
+          python -m pip install playwright==1.55.0
+          python -m playwright install --with-deps chromium
+      - name: Shared platform browser and fault injection (synthetic fixtures only)
+        run: |
+          set -euo pipefail
+          mkdir -p review-artifacts/r3-platform
+          python docs/agent-entry/production-control-r3/platform/browser_qa.py | tee review-artifacts/r3-platform/browser.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: r3-platform-technical-fixtures
+          path: review-artifacts/r3-platform/
       - name: Distinguish negative-control tests from publication
         run: echo 'REGRESSION ONLY; neither Golden adoption nor release authorization.'
