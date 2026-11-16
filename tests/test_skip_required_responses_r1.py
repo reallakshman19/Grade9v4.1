@@ -27,8 +27,10 @@ def test_all_subject_learner_response_pages_offer_skip_navigation():
 def test_skip_does_not_fake_answer_submit_reveal_or_grade():
     code = SKIP.read_text(encoding="utf-8")
     assert "SKIPPED_UNASSESSED" in code
-    assert "type = 'button'" in code
+    assert "button.type='button'" in code
     assert "field.value =" not in code
+    assert "document.body.append(dock)" in code
+    assert "field.insertAdjacentElement" not in code
     assert ".click()" not in code
     assert "localStorage.setItem" not in code
     assert "sessionStorage.setItem" not in code
