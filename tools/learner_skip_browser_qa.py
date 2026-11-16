@@ -49,12 +49,13 @@ def inspect(page, base: str, route: str, subject: str):
     page.wait_for_function("window.Grade9Skip?.version === 'r1'", timeout=12000)
     info = page.evaluate("""() => {
       const fields = [...document.querySelectorAll('main textarea,main input[type="text"],main input[type="number"]')];
-      return {fields:fields.length, skipControls:document.querySelectorAll('.g9-skip-control').length,
+      return {fields:fields.length, editable:fields.filter(x=>!x.disabled&&!x.readOnly).length,
+        skipControls:document.querySelectorAll('.g9-skip-control').length,
         visible: [...document.querySelectorAll('.g9-skip-button')].filter(x=>x.getClientRects().length).length};
     }""")
     # All actual eligible response fields are instrumented, excluding deliberate
     # header/search/read-only fields. A hidden future stage is still represented.
-    if info["fields"] and not info["skipControls"]:
+    if info["editable"] and not info["skipControls"]:
         raise AssertionError(f"Mandatory fields without Skip: {route} / {info}")
     visible = page.locator(".g9-skip-button:visible")
     if visible.count():
@@ -67,9 +68,9 @@ def inspect(page, base: str, route: str, subject: str):
         assert field.input_value() == before, f"Skip forged an answer: {route}"
         link = box.locator("a.g9-skip-continue")
         assert link.count() == 1 and link.get_attribute("href"), route
-        assert "No answer submitted or scored" in box.locator(".g9-skip-status").inner_text() or (
-            "not submitted or scored" in box.locator(".g9-skip-status").inner_text()
-        ), route
+        status_text = box.locator(".g9-skip-status").inner_text().lower()
+        assert ("no answer submitted or scored" in status_text or
+                "not submitted or scored" in status_text), route
         assert "SKIPPED" not in field.input_value(), route
         assert skip.evaluate("(b)=>getComputedStyle(b).minHeight") != "0px", route
         field.fill("Student is now trying the problem independently.")
