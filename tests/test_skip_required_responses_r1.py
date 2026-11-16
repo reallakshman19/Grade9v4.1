@@ -34,7 +34,7 @@ def test_skip_does_not_fake_answer_submit_reveal_or_grade():
     assert "sessionStorage.setItem" not in code
     assert "dispatchEvent(new CustomEvent('g9:skip-response'" in code
     assert "protected feedback stays locked" in code
-    assert "min-height:48px" in code
+    assert "min-height:56px" in code
 
 
 def test_three_subject_hubs_load_skip_control():
