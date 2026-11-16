@@ -458,6 +458,13 @@
       color: #64748b;
       font-size: 13px;
     }
+    /* Give the chapter and candidate-question routes equal first-screen visibility. */
+    .chem-primary-routes { display:flex; gap:12px; flex-wrap:wrap; margin:16px 0 8px; }
+    .chem-primary-route { display:inline-flex; align-items:center; justify-content:center; min-height:48px;
+      padding:10px 17px; border-radius:10px; border:2px solid #a7f3d0; color:#fff; font-weight:800;
+      background:rgba(15,118,110,.65); text-decoration:none; }
+    .chem-primary-route-bank { color:#104a47; background:#ccfbf1; border-color:#99f6e4; }
+    .chem-primary-route:hover, .chem-primary-route:focus-visible { text-decoration:underline; outline-offset:3px; }
   </style>
 </head>
 <body>
@@ -486,7 +493,11 @@
         </span>
       </div>
       <h1>NSEJS Chemistry — Choose a textbook chapter</h1>
-      <p>Follow 14 connected chapters with consistent explanations, practice and extra help. Browse the separate question-bank topic filters below after you begin learning.</p>
+      <p>Choose a Chemistry textbook chapter to learn, or open the separate searchable question bank of 119 authored candidate questions. The bank is not an authenticated NSEJS past-paper collection.</p>
+      <nav class="chem-primary-routes" aria-label="Chemistry learning and question bank">
+        <a class="chem-primary-route" href="#chem-chapters">📘 Study 14 Chemistry chapters</a>
+        <a class="chem-primary-route chem-primary-route-bank" href="index.html?topic=atomic_structure#topicWorkspace">🧪 Open Chemistry Question Bank · 119 candidates</a>
+      </nav>
       <div class="hero-breadcrumbs">
         <a href="../../index.html">Home</a> / <a href="../index.html">NSEJS</a> / <span>Chemistry Topics</span>
       </div>
@@ -501,7 +512,7 @@
       </div>
       <div class="metric-card">
         <span class="metric-num">119</span>
-        <span class="metric-label">Candidate registry entries</span>
+        <a class="metric-label" href="index.html?topic=atomic_structure#topicWorkspace" style="color:#0f766e;text-decoration:underline;font-weight:750;">Open searchable Question Bank</a>
         <span class="metric-sub">Not authenticated exam items</span>
       </div>
       <div class="metric-card">
@@ -678,10 +689,10 @@
 </article></div>
 <p class="chem-chapter-filter-note">These are Grade9-authored learning activities, not authenticated original NSEJS questions. The question bank below is a separate searchable collection of candidate and indexed records.</p>
 </section>
-<details id="chem-bank-archive" class="chem-bank-archive">
-<summary>Optional · Explore question-bank candidates (six legacy filters)</summary>
+<details id="chem-bank-archive" class="chem-bank-archive" open>
+<summary><strong>Chemistry Question Bank</strong> · 119 candidate questions across 6 topics · search and practice</summary>
 <div class="chem-bank-archive-content">
-<section aria-labelledby="chem-bank-heading" class="chem-chapter-filter-note"><h2 id="chem-bank-heading">Question bank · browse by topic</h2><p>The six older categories below are <strong>question-bank filters</strong>, not another textbook chapter order. The candidate registry has 119 entries; the legacy identity map uses a different 87-row inventory. Neither number equals authenticated readable examination questions.</p></section>
+<section aria-labelledby="chem-bank-heading" class="chem-chapter-filter-note"><h2 id="chem-bank-heading">Question bank · browse by topic</h2><p>Choose any of six question-bank topics or search by question ID, stem, concept or demand band. <strong>119 candidate question stems are available</strong>, but none is independently admitted as an authenticated NSEJS examination question. The 87-row legacy identity map is a different inventory.</p></section>
     <nav id="topicNav" class="master-topic-nav" aria-label="Chemistry question bank category filters"></nav>
 
     <!-- In-Page Question Bank Search & Filter Bar (Search 2) -->
