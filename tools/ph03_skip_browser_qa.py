@@ -74,8 +74,13 @@ def challenge(page, base, name):
     page.locator("#boundarySave").click()
     expect(page.locator("#boundaryReveal")).to_be_visible()
     page.locator("#boundaryReveal").click()
+    # A repair-stage feedback message already says "ungraded"; wait for the
+    # boundary's own committed, post-save screen before refresh.
+    expect(page.get_by_role("heading", name="Compare boundary", exact=True)).to_be_visible()
+    expect(page.locator("#boundaryReveal")).to_have_count(0)
     expect(page.locator("#post")).to_contain_text("ungraded and earns no mastery credit")
     page.reload(wait_until="domcontentloaded")
+    expect(page.get_by_role("heading", name="Compare boundary", exact=True)).to_be_visible()
     expect(page.locator("#post")).to_contain_text("ungraded and earns no mastery credit")
     assert page.evaluate("document.documentElement.scrollWidth <= innerWidth + 1")
     records = storage_records(page)
