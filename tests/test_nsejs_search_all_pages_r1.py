@@ -112,3 +112,55 @@ def test_physics_r2_candidate_study_transfer_and_source_status_are_indexed_witho
         "nsejs/physics/quality-r1/source.html"} for d in committed)
     assert (ROOT/"data/learner-search-index.v1.json").read_bytes()==(
         ROOT/"nsejs/data/learner-search-index.v1.json").read_bytes()
+
+
+def test_26_new_search_records_match_deterministic_generator_exactly():
+    # Earlier static search snapshots lagged new PH03/PH06/PH11/PH12 and
+    # Chemistry custody pages. Avoid merely counting 26 entries that differ
+    # in content from what the release's deterministic generator produces.
+    import hashlib
+    actual=json.loads((ROOT/"data/learner-search-index.v1.json").read_text())
+    actual_by_url={x["url"]:x for x in actual}
+    dynamic,_=build_public_learner_documents(ROOT,normalize_text)
+    special=[]
+    for x in dynamic:
+        if x["url"].startswith("nsejs/physics/quality-r1/"):
+            special.append(x)
+        elif x["url"] in {
+            "nsejs/chemistry/core2-custody.html",
+            "nsejs/physics/core1/PH03/P03/index.html",
+            "nsejs/physics/core1/PH06/U08/index.html",
+            "nsejs/physics/curriculum/topics/PH11/subtopics/PH11-07/core1a.html",
+            "nsejs/physics/curriculum/topics/PH11/subtopics/PH11-07/core1b.html",
+            "nsejs/physics/curriculum/topics/PH12/subtopics/PH12-09/core1a.html",
+            "nsejs/physics/curriculum/topics/PH12/subtopics/PH12-09/core1b.html",
+            "nsejs/physics/ph03/source-led-r1/index.html",
+            "nsejs/physics/ph03/source-led-r2/index.html",
+            "nsejs/physics/ph06/source-checkpoint.html",
+            "nsejs/physics/textbook/PH03/P03/index.html",
+            "nsejs/physics/textbook/PH06/U06/index.html",
+            "nsejs/physics/textbook/PH06/U08/index.html",
+            "nsejs/physics/textbook/PH06/index.html",
+        }:
+            special.append(x)
+    assert len(special)==26
+    for generated in special:
+        item=generated.copy()
+        if item["category"]!="question":
+            item["search_text"]=normalize_text(
+                " ".join(str(item.get(k,"")) for k in
+                         ("id","title","subject","topic","badge","breadcrumb","url"))
+                +(" nsejs junior science" if item.get("is_nsejs") else ""))
+            if item.get("is_nsejs") and "HOLD" not in item["badge"]:
+                item["badge"]="LEARNING CANDIDATE · HOLD"
+        got=actual_by_url.get(item["url"])
+        assert got==item, (item["url"], {k:(got.get(k) if got else None,v)
+                 for k,v in item.items() if not got or got.get(k)!=v})
+    assert len(actual)==1012 and len({d["url"] for d in actual})==1012
+    assert (ROOT/"data/learner-search-index.v1.json").read_bytes()==(
+        ROOT/"nsejs/data/learner-search-index.v1.json").read_bytes()
+    manifest=json.loads((ROOT/"data/learner-search-manifest.v1.json").read_text())
+    payload=(ROOT/"data/learner-search-index.v1.json").read_bytes()
+    assert manifest["sha256"]==hashlib.sha256(payload).hexdigest()
+    assert manifest["total_documents"]==1012
+    assert manifest["public_html_pages"]==372
