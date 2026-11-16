@@ -90,7 +90,8 @@ def test_golden_only_catalog_integration():
     assert ch["state"]=="learning-pairs" and len(ch["units"])==1
     assert ch["units"][0]["id"]=="U08"
     assert all((PH/ch["units"][0][k]).is_file() for k in ("learn","practice"))
-    assert "Golden candidate · 1/10" in (PH/"index.html").read_text()
+    assert "1/10 native candidate · Academic HOLD" in (PH/"index.html").read_text()
+    assert "1 of 10 complete native Learn/Try pairs" in (PH/"textbook/PH06/index.html").read_text()
 
 def test_guided_four_regimes_and_invalid_continuation():
     A=F(1,200);H=F(2,5);d=F(1,5)
