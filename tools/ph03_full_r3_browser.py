@@ -214,7 +214,15 @@ def run():
                 # The storage event may already have hidden B's first form.
                 # If still present, its attempt must lose the same keyed lock.
                 if b.locator("#save-first").count():
-                    b.locator("#save-first").click()
+                    # A's storage event may replace B's first-response form
+                    # between locator.count() and the click. That is the
+                    # expected immutable-first-attempt behavior, not a fault.
+                    from playwright.sync_api import TimeoutError as PlaywrightTimeoutError
+                    try:
+                        b.locator("#save-first").click(timeout=1200)
+                    except PlaywrightTimeoutError:
+                        if saved(b,"P01") is None:
+                            raise AssertionError("B first attempt vanished without a durable winner")
                 expect(a.locator("#ph03-status")).to_contain_text("First response saved",timeout=15000)
                 expect(b.locator("#ph03-status")).to_contain_text("First response saved",timeout=15000)
                 sa,sb=saved(a,"P01"),saved(b,"P01")
