@@ -79,7 +79,7 @@ body>header{background:transparent;border:0}
   </section>
   <section class="fluids-panel" id="fluids-lab">
     <h2>Explore: what changes when depth or area changes?</h2>
-    <p>The diagram shows a flat <strong>horizontal</strong> test plate at uniform depth in a still water tank. This model calculates <em>gauge</em> pressure and additional force on one face relative to atmospheric pressure on the opposite face. It does not describe net forces on a complete submerged body.</p>
+    <p>The diagram shows a flat <strong>horizontal</strong> test plate at uniform depth in a still water tank, with water acting <strong>downward on its upper face</strong> and atmospheric pressure on the underside. The force arrow therefore points downward. This model calculates <em>gauge</em> pressure and additional force on one face relative to atmospheric pressure on the opposite face. It does not describe net forces on a complete submerged body.</p>
     <div class="fluids-model">
       <svg viewBox="0 0 480 340" role="img" aria-label="Water tank with horizontal plate at selectable depth, a surface line, vertical depth arrow, and a horizontal pressure plate.">
         <rect x="60" y="45" width="350" height="255" fill="#c3eef0" rx="9" stroke="#397d90" stroke-width="3"/>
@@ -89,8 +89,8 @@ body>header{background:transparent;border:0}
         <path d="M112 60 L120 48 L128 60" fill="none" stroke="#126f71" stroke-width="3"/>
         <path d="M112 170 L120 182 L128 170" fill="none" stroke="#126f71" stroke-width="3" id="fluids-depth-arrow"/>
         <rect x="198" y="180" width="108" height="12" rx="3" fill="#14557a" id="fluids-test-plate"/>
-        <path d="M252 220 L252 195" stroke="#b45309" stroke-width="5" id="fluids-force-arrow"/>
-        <path d="M243 208 L252 194 L261 208" fill="none" stroke="#b45309" stroke-width="4" id="fluids-force-head"/>
+        <path d="M252 195 L252 225" stroke="#b45309" stroke-width="5" id="fluids-force-arrow"/>
+        <path d="M243 212 L252 226 L261 212" fill="none" stroke="#b45309" stroke-width="4" id="fluids-force-head"/>
         <text x="214" y="243" fill="#7c3d08" font-size="17" font-weight="bold">Gauge force</text>
         <text x="136" y="125" fill="#125f67" font-size="18" id="fluids-svg-depth">h = 2.0 m</text>
         <text x="214" y="166" fill="#184857" font-size="16">Test plate</text>
@@ -170,8 +170,11 @@ function draw(){
  document.getElementById("fluids-depth-line").setAttribute("y2",String(y));
  document.getElementById("fluids-depth-arrow").setAttribute("d","M112 "+(y-12)+" L120 "+y+" L128 "+(y-12));
  document.getElementById("fluids-test-plate").setAttribute("y",String(y));
- document.getElementById("fluids-force-arrow").setAttribute("d","M252 "+(y+40)+" L252 "+(y+15));
- document.getElementById("fluids-force-head").setAttribute("d","M243 "+(y+28)+" L252 "+(y+14)+" L261 "+(y+28));
+ const width=78+180*(a-0.01)/0.09;
+ document.getElementById("fluids-test-plate").setAttribute("x",(252-width/2).toFixed(1));
+ document.getElementById("fluids-test-plate").setAttribute("width",width.toFixed(1));
+ document.getElementById("fluids-force-arrow").setAttribute("d","M252 "+(y+14)+" L252 "+(y+45));
+ document.getElementById("fluids-force-head").setAttribute("d","M243 "+(y+31)+" L252 "+(y+45)+" L261 "+(y+31));
  document.getElementById("fluids-svg-depth").textContent="h = "+h.toFixed(1)+" m";
 }depth.addEventListener("input",draw);area.addEventListener("input",draw);draw();
 const answer=document.getElementById("fluids-answer"),check=document.getElementById("fluids-check-answer"),
