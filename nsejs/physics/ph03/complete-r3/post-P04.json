@@ -1,0 +1,41 @@
+{
+  "schema": "g9-ph03-postattempt/v1",
+  "revision": "ph03-complete-r3-20261116",
+  "id": "P04",
+  "academic": "HOLD",
+  "expected": {
+    "vA": -3,
+    "vB": 2,
+    "totalP": 0
+  },
+  "steps": [
+    "A's change in momentum = −6 N·s; with m_A = 2 kg it moves at −3 m/s.",
+    "B's change in momentum = +6 N·s; with m_B = 3 kg it moves at +2 m/s.",
+    "Combined momentum is 2(−3)+3(+2) = 0 kg·m/s.",
+    "Those equal/opposite forces act on DIFFERENT skaters, even though the total internal impulse cancels."
+  ],
+  "hints": [
+    "Clarify: A receives −6 while B receives +6 in the same laboratory frame.",
+    "Correlate: each speed change is its impulse divided by its OWN mass.",
+    "Open the way: compare −6/2 with +6/3 before adding the pair's momenta."
+  ],
+  "firstErrorOrder": [
+    "vA",
+    "vB",
+    "totalP"
+  ],
+  "diagnostics": {
+    "vA": "The negative impulse belongs to A. Do not put the reaction on A too.",
+    "vB": "Dividing equal impulse magnitude by a different mass gives a different speed magnitude.",
+    "totalP": "Sum signed momenta of BOTH skaters; the external impulse is negligible only in the original case."
+  },
+  "boundaryExpected": {
+    "totalP": 3,
+    "individual": "undetermined"
+  },
+  "boundarySteps": [
+    "Internal paired impulses still cancel in the combined ledger.",
+    "The external +3 N·s means total final P = +3 kg·m/s.",
+    "The individual velocity partition depends on where the outside impulse acts and cannot be uniquely inferred."
+  ]
+}

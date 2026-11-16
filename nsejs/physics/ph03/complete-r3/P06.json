@@ -1,0 +1,141 @@
+{
+  "id": "P06",
+  "title": "Elastic, inelastic and sticking collision energy",
+  "scope": "EXTENSION_REVIEW",
+  "sourceLeads": [
+    "NSEJS-2025-C51-Q45",
+    "NSEJS-2022-C51-Q60"
+  ],
+  "prereq": "P01 momentum, P03 isolated collision, PH01 signed velocity, kinetic energy.",
+  "goals": [
+    "Write momentum and kinetic-energy ledgers separately.",
+    "Calculate the sticking collision's common speed and energy conversion.",
+    "Recognise that ideal elasticity supplies an additional constraint beyond momentum."
+  ],
+  "sections": [
+    {
+      "heading": "Momentum does not guarantee kinetic-energy conservation",
+      "body": "In a brief collision with negligible net external impulse, system momentum is conserved. But collision deformation and heat can reduce translational kinetic energy. A sticking collision is perfectly inelastic: the bodies share one velocity, even though some initial kinetic energy becomes other forms."
+    },
+    {
+      "heading": "Find the speed from momentum, not energy",
+      "body": "For two constant masses that latch, common velocity V = (m_A u_A + m_B u_B)/(m_A+m_B). The numerator is the signed momentum sum. Then compute K_before = ½m_A u_A² + ½m_B u_B² and K_after = ½(m_A+m_B)V². Only when external work during contact is negligible is their difference an internal energy-conversion witness."
+    },
+    {
+      "heading": "An ideal elastic collision is a different model",
+      "body": "An ideal elastic collision conserves total translational K as well as total momentum. In one dimension, separation speed equals approach speed for a central elastic collision. Two bodies generally leave with different velocities and may rebound; using a common velocity would impose sticking, not elasticity."
+    },
+    {
+      "heading": "Restitution supplies missing information",
+      "body": "If only total momentum is known, there are normally two unknown outgoing speeds but one equation. A specified one-dimensional restitution coefficient e supplies a second relation: v_B − v_A = e(u_A − u_B) for A approaching B. Typical passive collisions use 0 ≤ e ≤ 1; confirm line-of-impact and relative approach assumptions."
+    }
+  ],
+  "worked": [
+    {
+      "name": "Foundation · sticking energy loss",
+      "setup": "A 2 kg cart moving +3 m/s sticks to a stationary 1 kg cart.",
+      "steps": [
+        "P_initial=2×3=+6 kg·m/s, joined mass 3 kg, V=+2 m/s.",
+        "K_initial=½×2×3²=9 J.",
+        "K_final=½×3×2²=6 J; energy converted=3 J."
+      ],
+      "check": "Total momentum is unchanged; kinetic energy falls by 3 J."
+    },
+    {
+      "name": "Connected · identical elastic pucks",
+      "setup": "A 1 kg puck at +4 m/s strikes resting 1 kg puck centrally and elastically.",
+      "steps": [
+        "For equal masses, ideal one-dimensional elastic impact swaps velocities.",
+        "After: v_A=0 and v_B=+4 m/s.",
+        "Both P=+4 kg·m/s and K=8 J before/after."
+      ],
+      "check": "This swap is NOT a universal rule for inelastic or unequal-mass impacts."
+    },
+    {
+      "name": "Transfer · partial restitution",
+      "setup": "A 2 kg body at +3 m/s strikes stationary 1 kg body with e=0.5.",
+      "steps": [
+        "Momentum: 2v_A+v_B=6 kg·m/s.",
+        "Restitution: v_B−v_A=0.5×3=1.5 m/s.",
+        "Solve v_A=+1.5, v_B=+3 m/s.",
+        "K_initial=9 J, K_final=2.25+4.5=6.75 J; loss=2.25 J."
+      ],
+      "check": "Momentum conservation alone did not give both individual final speeds."
+    }
+  ],
+  "trap": {
+    "wrong": "Assume total kinetic energy remains unchanged because momentum is conserved.",
+    "repair": "Name the contact type; compute outgoing velocities using momentum plus the contact law, then check energy separately."
+  },
+  "assumptions": [
+    "Only short contact intervals have negligible external impulse.",
+    "The elastic condition is an additional premise, not a derived consequence of momentum.",
+    "Restitution is defined along a given line of impact; these models are extension-review."
+  ],
+  "model": {
+    "kind": "sticking",
+    "label": "Teaching model: incoming speed for 2 kg cart sticking to 3 kg at rest",
+    "min": 0,
+    "max": 8,
+    "step": 0.5,
+    "value": 5,
+    "unit": "m/s"
+  },
+  "prompt": {
+    "stem": "A 1 kg cart moving RIGHT at +4 m/s strikes a resting 3 kg cart on a smooth rail. They STICK in a brief contact with negligible external horizontal impulse. Find the common velocity, the energy converted during contact, and conserved total momentum.",
+    "prediction": "Predict whether the joined pair is slower and whether its kinetic energy equals the initial kinetic energy.",
+    "fields": [
+      {
+        "id": "joinedV",
+        "label": "Common velocity after sticking",
+        "type": "number",
+        "unit": "m/s"
+      },
+      {
+        "id": "loss",
+        "label": "Kinetic energy converted during contact",
+        "type": "number",
+        "unit": "J"
+      },
+      {
+        "id": "totalP",
+        "label": "Final total momentum",
+        "type": "number",
+        "unit": "kg·m/s"
+      }
+    ],
+    "boundaryPrompt": "Changed law: with the SAME 1 kg at +4 and 3 kg at rest, the collision is ideal 1D ELASTIC, not sticking. Find both final velocities and the kinetic energy lost.",
+    "boundaryFields": [
+      {
+        "id": "vA",
+        "label": "Final velocity of 1 kg cart",
+        "type": "number",
+        "unit": "m/s"
+      },
+      {
+        "id": "vB",
+        "label": "Final velocity of 3 kg cart",
+        "type": "number",
+        "unit": "m/s"
+      },
+      {
+        "id": "loss",
+        "label": "Kinetic energy lost",
+        "type": "number",
+        "unit": "J"
+      }
+    ]
+  },
+  "schema": "g9-ph03-authored-lesson/v1",
+  "revision": "ph03-complete-r3-20261116",
+  "sourceRole": "AUTHOR_EXPOSITION_AND_TRANSFER_NOT_EXAM",
+  "academic": "HOLD",
+  "independent_free_text_assessment": false,
+  "postBlobSha1": "6ae027b72acc9824150e6383d6ef138b951adb0a",
+  "figures": {
+    "guide": "figures/P06-guide.svg",
+    "prompt": "figures/P06-prompt.svg",
+    "solution": "figures/P06-solution.svg"
+  },
+  "solutionBlobSha1": "3984a9f892ca06abd39194ba4fa9e54d778d1f99"
+}

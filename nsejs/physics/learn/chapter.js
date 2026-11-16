@@ -71,6 +71,7 @@ async function init(){
   mount.append(resources(chapter));
  }else{
   if(chapter.id==="PH03"&&chapter.units.length<7)mount.append(tag("p","Golden Sample only: "+chapter.units.length+" of 7 registered PH03 pairs. Remaining units not authored; all academic gates HOLD.","g9-hold-note"));
+  if(chapter.id==="PH03"&&chapter.units.length===7)mount.append(tag("p","7/7 native author-candidate pairs now available; 0/7 independently academically accepted. P06/P07 are extension-review, and P03 is the existing Golden R2. Source/rights/QRT/B1–B7 remain HOLD.","g9-hold-note"));
   if(chapter.id==="PH06"&&chapter.units.length<10)mount.append(tag("p","Golden Sample only: "+chapter.units.length+" of 10 registered PH06 pairs. Remaining units not authored; all academic gates HOLD.","g9-hold-note"));
   mount.append(tag("p",chapter.questionTopic?"1 · Learn an idea   →   2 · Try it independently   →   3 · Explore related question candidates":"1 · Learn an idea   →   2 · Try it independently   →   Source-matched exam questions pending review","g9-chapter-flow"));
   const grid=tag("section",undefined,"g9-chapter-lesson-grid");
