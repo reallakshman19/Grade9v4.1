@@ -1,0 +1,103 @@
+name: Publish unreviewed owner-directed technical preview
+
+# This is a deliberately separate owner-directed preview, not R3-approved
+# production or academic release. The signed R3 deployment remains unchanged.
+# One automatic run when this workflow is first merged; later runs are manual.
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/owner-technical-preview-pages.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  preview:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout exact owner-selected revision
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+      - name: Stage public static website only (no review evidence or workspace files)
+        env:
+          RELEASE_SHA: ${{ github.sha }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import shutil
+          from pathlib import Path
+
+          out = Path("public")
+          out.mkdir(exist_ok=True)
+          web_roots = (
+              "architecture", "chemistry", "css", "curriculum", "data",
+              "docs", "examples", "js", "mathematics", "nsejs", "physics",
+              "preview", "reference", "templates",
+          )
+          web_suffixes = {
+              ".html", ".htm", ".css", ".js", ".mjs", ".json", ".svg",
+              ".png", ".jpg", ".jpeg", ".gif", ".webp", ".ico",
+              ".woff", ".woff2", ".ttf", ".txt", ".webmanifest",
+          }
+          blocked = {
+              ".git", ".github", "review", "tests", "tools", "src",
+              "workspace", "schemas", "__pycache__", "node_modules",
+              ".venv", "private", "secrets",
+          }
+
+          def stage(path):
+              if path.is_symlink() or not path.is_file():
+                  return
+              if any(part in blocked or part.startswith(".") for part in path.parts):
+                  return
+              if path.suffix.lower() not in web_suffixes:
+                  return
+              target = out / path
+              target.parent.mkdir(parents=True, exist_ok=True)
+              shutil.copy2(path, target)
+
+          for name in ("index.html", "site.css", "site-nav.js"):
+              source = Path(name)
+              if source.is_file():
+                  stage(source)
+          for name in web_roots:
+              folder = Path(name)
+              if folder.is_dir():
+                  for item in folder.rglob("*"):
+                      stage(item)
+          if not (out / "index.html").is_file():
+              raise SystemExit("PREVIEW_MISSING_ROOT_INDEX")
+          (out / ".nojekyll").touch()
+          (out / "preview-release-status.json").write_text(
+              json.dumps({
+                  "kind": "OWNER_DIRECTED_UNREVIEWED_TECHNICAL_PREVIEW",
+                  "academic_status": "HOLD",
+                  "r3_signed_production_release": False,
+                  "source_sha": os.environ["RELEASE_SHA"],
+                  "warning": "Source pages are technical candidates, not independently accepted academic material.",
+              }, indent=2) + "\n", encoding="utf-8",
+          )
+          print("Staged static preview; review, tests, workspace and source code excluded.")
+          PY
+      - name: Upload public preview artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: public
+      - name: Deploy unreviewed technical preview
+        id: deployment
+        uses: actions/deploy-pages@v4
