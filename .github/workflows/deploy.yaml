@@ -22,14 +22,47 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
           path: candidate
-      - name: Resolve externally pinned control revision
+      # Report missing external authority explicitly; never substitute github.sha.
+      # The trust roster contains PUBLIC keys only; do not print its contents.
+      - name: Check externally authorized release prerequisites (fail closed)
         id: pin
         env:
           CONTROL_SHA: ${{ vars.G9_R3_CONTROL_SHA }}
+          TRUST_JSON: ${{ vars.G9_R3_TRUST_JSON }}
           REF: ${{ github.ref }}
         run: |
-          test "$REF" = "refs/heads/main"
-          [[ "$CONTROL_SHA" =~ ^[0-9a-f]{40}$ ]]
+          set -euo pipefail
+          errors=0
+          if [[ "$REF" != "refs/heads/main" ]]; then
+            echo "::error title=R3 release blocked::This workflow may deploy only refs/heads/main."
+            errors=1
+          fi
+          if [[ -z "${CONTROL_SHA:-}" ]]; then
+            echo "::error title=R3 control SHA missing::Set repository Actions variable G9_R3_CONTROL_SHA to the independently reviewed 40-character control commit. Never use the release candidate SHA as a fallback."
+            errors=1
+          elif [[ ! "$CONTROL_SHA" =~ ^[0-9a-f]{40}$ ]]; then
+            echo "::error title=R3 control SHA invalid::G9_R3_CONTROL_SHA must be exactly 40 lowercase hexadecimal characters for the approved control commit."
+            errors=1
+          elif ! git -C candidate cat-file -e "${CONTROL_SHA}^{commit}" 2>/dev/null || ! git -C candidate merge-base --is-ancestor "$CONTROL_SHA" "$GITHUB_SHA"; then
+            echo "::error title=R3 control SHA not applicable::G9_R3_CONTROL_SHA must name an existing, reviewed ancestor of this exact release commit."
+            errors=1
+          fi
+          if [[ -z "${TRUST_JSON:-}" ]]; then
+            echo "::error title=R3 trust roster missing::Set repository Actions variable G9_R3_TRUST_JSON to the administrator-governed public-key trust roster; keep all private keys outside GitHub."
+            errors=1
+          fi
+          if [[ ! -f candidate/review/production-control-r3/publication-manifest.json ]]; then
+            echo "::error title=Signed publication manifest missing::An independently reviewed explicit byte-pinned publication-manifest.json must be committed before deploying; do not generate it inside this workflow."
+            errors=1
+          fi
+          if [[ ! -f candidate/review/production-control-r3/release-receipt.json ]]; then
+            echo "::error title=Owner preview-release receipt missing::The genuinely signed PREVIEW_RELEASE receipt is required; no auto-generated or self-signed substitute is allowed."
+            errors=1
+          fi
+          if (( errors != 0 )); then
+            echo "::error title=R3 Pages deployment blocked::Missing release authority. See docs/agent-entry/production-control-r3/ADMIN_SETUP.md; no files were staged or deployed."
+            exit 1
+          fi
           echo "sha=$CONTROL_SHA" >> "$GITHUB_OUTPUT"
       - name: Checkout externally pinned control code
         uses: actions/checkout@v4
