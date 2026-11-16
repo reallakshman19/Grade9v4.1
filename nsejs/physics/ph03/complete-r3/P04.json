@@ -1,0 +1,133 @@
+{
+  "id": "P04",
+  "title": "Action–reaction pairs and system momentum",
+  "scope": "CORE_CANDIDATE",
+  "sourceLeads": [],
+  "prereq": "PH02 Newton's third law; P01 signed momentum; P03 choosing the system.",
+  "goals": [
+    "Locate third-law force pairs on distinct bodies.",
+    "Sum internal impulses only at the complete-system level.",
+    "Explain why externally driven pairs need not conserve their own momentum."
+  ],
+  "sections": [
+    {
+      "heading": "Third-law partners are different bodies",
+      "body": "Newton's third law pairs the force A exerts on B with the force B exerts on A over the same interval. These forces are equal and opposite, but they act on different bodies. They cannot cancel in the net force equation for A alone or B alone. Draw separate free-body diagrams."
+    },
+    {
+      "heading": "Internal impulse sums to zero for the pair",
+      "body": "If both A and B belong to your chosen two-body system, their paired internal impulses cancel when you add their momentum changes. For an isolated pair, Δp_A + Δp_B = 0. That does not mean either individual's momentum is fixed."
+    },
+    {
+      "heading": "Equal impulse is not equal speed",
+      "body": "Each body's change is Δv = J/m when its mass is constant. A smaller mass has a larger magnitude velocity change under an equal impulse. The total momentum can still sum to zero while the bodies travel in opposite directions."
+    },
+    {
+      "heading": "Changing system boundaries changes the ledger",
+      "body": "An outside wall, device, ground or rope can deliver external impulse to the chosen pair. Then ΔP_system = J_external rather than zero. Even knowing total external impulse usually does not tell you how it was split between the two bodies."
+    }
+  ],
+  "worked": [
+    {
+      "name": "Foundation · unequal skaters",
+      "setup": "Resting A is 3 kg and B is 1 kg; A gains +6 N·s of impulse from B.",
+      "steps": [
+        "Third law gives B a −6 N·s impulse.",
+        "A ends with v_A = +6/3 = +2 m/s; B with v_B = −6/1 = −6 m/s.",
+        "Total p = 3(+2)+1(−6) = 0."
+      ],
+      "check": "The pair is isolated but each skater's momentum changed."
+    },
+    {
+      "name": "Connected · outside impulse",
+      "setup": "A 4 kg and B 2 kg pair exchange −4/+4 N·s internally while an outside actuator gives the pair +3 N·s.",
+      "steps": [
+        "Internal −4 and +4 cancel on the whole-pair ledger.",
+        "Combined momentum changes by +3 N·s.",
+        "Without knowing where the external impulse was applied, individual velocities cannot be uniquely reconstructed."
+      ],
+      "check": "A single total equation cannot determine two individual unknowns."
+    },
+    {
+      "name": "Transfer · push a wall",
+      "setup": "A skater pushes a wall and recoils backward.",
+      "steps": [
+        "The wall's force on the skater is external to the skater-only system.",
+        "Its paired force is on the wall/Earth, not on the skater.",
+        "The skater-only momentum is therefore not required to stay constant."
+      ],
+      "check": "Third-law action–reaction always holds; isolation is a separate condition."
+    }
+  ],
+  "trap": {
+    "wrong": "Draw both third-law forces on one body so they cancel each other.",
+    "repair": "Draw each body's separate forces, then combine only after specifying the entire pair's boundary."
+  },
+  "assumptions": [
+    "Third-law impulses refer to the same contact interval and different bodies.",
+    "Negligible horizontal external impulse is required for pair momentum conservation.",
+    "When only total external impulse is known, separate final velocities may be underdetermined."
+  ],
+  "model": {
+    "kind": "third-law",
+    "label": "Teaching model: impulse on B (2 kg A / 4 kg B)",
+    "min": 0,
+    "max": 10,
+    "step": 0.5,
+    "value": 6,
+    "unit": "N·s"
+  },
+  "prompt": {
+    "stem": "Two skaters A (2 kg) and B (3 kg) start at rest on smooth ice. During a push A receives −6 N·s from B, and B receives +6 N·s from A. No appreciable external horizontal impulse acts. Determine each final signed velocity and the final combined momentum.",
+    "prediction": "Will their speeds be equal? Will their total momentum still be zero?",
+    "fields": [
+      {
+        "id": "vA",
+        "label": "A's signed final velocity",
+        "type": "number",
+        "unit": "m/s"
+      },
+      {
+        "id": "vB",
+        "label": "B's signed final velocity",
+        "type": "number",
+        "unit": "m/s"
+      },
+      {
+        "id": "totalP",
+        "label": "Total final momentum",
+        "type": "number",
+        "unit": "kg·m/s"
+      }
+    ],
+    "boundaryPrompt": "An outside mechanism adds NET +3 N·s to the TWO-SKATER SYSTEM during the same interval, but its distribution between A and B is not known. Find total final momentum. Can each final velocity be determined uniquely?",
+    "boundaryFields": [
+      {
+        "id": "totalP",
+        "label": "New final system momentum",
+        "type": "number",
+        "unit": "kg·m/s"
+      },
+      {
+        "id": "individual",
+        "label": "Are individual final velocities uniquely determined?",
+        "type": "choice",
+        "options": [
+          {
+            "value": "undetermined",
+            "text": "No; external allocation missing"
+          },
+          {
+            "value": "determined",
+            "text": "Yes; both are determined"
+          }
+        ]
+      }
+    ]
+  },
+  "schema": "g9-ph03-authored-lesson/v1",
+  "revision": "ph03-complete-r3-20261116",
+  "sourceRole": "AUTHOR_EXPOSITION_AND_TRANSFER_NOT_EXAM",
+  "academic": "HOLD",
+  "independent_free_text_assessment": false
+}

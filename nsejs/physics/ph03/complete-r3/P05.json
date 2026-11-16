@@ -1,0 +1,126 @@
+{
+  "id": "P05",
+  "title": "Recoil, relative velocity and centre-of-mass frames",
+  "scope": "ADVANCED_REASONING_CANDIDATE",
+  "sourceLeads": [
+    "NSEJS-2025-C51-Q57"
+  ],
+  "prereq": "P01 signed momentum; P03 conservation; PH01 frame-relative velocity.",
+  "goals": [
+    "Reconstruct recoil with a complete two-body momentum ledger.",
+    "Translate ejection speeds between laboratory and platform frames.",
+    "Recognise the limits of a simple fixed-mass recoil formula."
+  ],
+  "sections": [
+    {
+      "heading": "Recoil is an exchange of internal momentum",
+      "body": "Two parts of an isolated, initially resting system can fly apart in opposite directions. The rightward momentum of one part is matched by leftward momentum of the other. For fixed masses M and m, M V_platform + m v_load = P_initial, using one inertial laboratory frame."
+    },
+    {
+      "heading": "A moving system does not start from zero",
+      "body": "If both parts initially move with velocity U, the initial total momentum is (M+m)U. The final platform may slow without reversing. You cannot assume P_initial = 0 solely because the event is called recoil."
+    },
+    {
+      "heading": "Relative velocity must be translated",
+      "body": "When a load leaves at relative speed w measured from the recoiling platform, v_load,lab = V_platform,lab + w. Substituting w itself as the lab velocity generally gives the wrong recoil. Always label the two frames."
+    },
+    {
+      "heading": "Centre-of-mass momentum and model scope",
+      "body": "For a closed fixed-mass pair, centre-of-mass velocity is P_total/(M+m) and stays constant if net external impulse is negligible. A continuously variable-mass rocket needs a momentum-flux treatment, not a direct application of one instantaneous two-body split formula."
+    }
+  ],
+  "worked": [
+    {
+      "name": "Foundation · isolated platform",
+      "setup": "A 4 kg resting trolley ejects a 1 kg load right at +8 m/s LAB speed.",
+      "steps": [
+        "Initial total momentum is zero.",
+        "4V + 1×8 = 0 gives V = −2 m/s.",
+        "Platform and load momenta are −8 and +8 kg·m/s."
+      ],
+      "check": "The heavier platform recoils more slowly."
+    },
+    {
+      "name": "Connected · already moving",
+      "setup": "A 6 kg skater plus 3 kg load initially move +2 m/s together; the load finishes at +5 m/s in the lab.",
+      "steps": [
+        "Initial P = 9×2 = +18 kg·m/s.",
+        "6V + 3×5 = 18.",
+        "V = +0.5 m/s: the skater slowed but did not reverse."
+      ],
+      "check": "Recoil need not mean motion opposite to the original ground-frame velocity."
+    },
+    {
+      "name": "Transfer · relative ejection",
+      "setup": "A 5 kg platform ejects 1 kg object right at +6 m/s RELATIVE to platform; initially both rest.",
+      "steps": [
+        "Let platform's lab velocity be V; object lab velocity is V+6.",
+        "Conserve P: 5V + (V+6) = 0.",
+        "6V = −6, so platform V = −1 and object's lab velocity is +5 m/s."
+      ],
+      "check": "Treating +6 as a lab velocity would incorrectly yield −1.2 m/s."
+    }
+  ],
+  "trap": {
+    "wrong": "Use a platform-relative ejection speed as if it were a ground-measured speed.",
+    "repair": "Write v_object,lab = V_platform,lab + v_relative before substituting into conservation."
+  },
+  "assumptions": [
+    "Only two fixed-mass components are considered over a brief isolated ejection.",
+    "All velocities must use the same lab frame in the momentum sum.",
+    "Continuously expelled fuel requires an extended model not claimed here."
+  ],
+  "model": {
+    "kind": "recoil",
+    "label": "Teaching model: lab ejection speed of 2 kg load from resting 8 kg platform",
+    "min": 0,
+    "max": 10,
+    "step": 0.5,
+    "value": 6,
+    "unit": "m/s"
+  },
+  "prompt": {
+    "stem": "A 10 kg platform and 2 kg load initially REST on a frictionless horizontal track. The load is internally ejected rightward at +6 m/s measured in the LABORATORY. Find the platform's signed recoil speed, final total momentum and centre-of-mass velocity.",
+    "prediction": "Will the platform recoil left or right? Why is the reference frame stated?",
+    "fields": [
+      {
+        "id": "platformV",
+        "label": "Platform final signed velocity",
+        "type": "number",
+        "unit": "m/s"
+      },
+      {
+        "id": "totalP",
+        "label": "Final combined momentum",
+        "type": "number",
+        "unit": "kg·m/s"
+      },
+      {
+        "id": "cmV",
+        "label": "Centre-of-mass velocity",
+        "type": "number",
+        "unit": "m/s"
+      }
+    ],
+    "boundaryPrompt": "Now the whole 12 kg system initially moves right at +1 m/s in the lab. The load's FINAL lab speed remains +6 m/s. Find the new platform final velocity and the combined final momentum.",
+    "boundaryFields": [
+      {
+        "id": "platformV",
+        "label": "New platform final velocity",
+        "type": "number",
+        "unit": "m/s"
+      },
+      {
+        "id": "totalP",
+        "label": "New total final momentum",
+        "type": "number",
+        "unit": "kg·m/s"
+      }
+    ]
+  },
+  "schema": "g9-ph03-authored-lesson/v1",
+  "revision": "ph03-complete-r3-20261116",
+  "sourceRole": "AUTHOR_EXPOSITION_AND_TRANSFER_NOT_EXAM",
+  "academic": "HOLD",
+  "independent_free_text_assessment": false
+}
