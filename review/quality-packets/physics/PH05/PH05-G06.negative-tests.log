@@ -1,0 +1,18 @@
+=== Grade9 v4.1 Adversarial Fault-Injection Test Execution Log ===
+Target Module: PH05-G06 Circular satellite dynamics and orbital energy
+Contract: AUTHORING_QUALITY_CONTRACT_R2 (PR #19) - Batch Item
+Status: ACADEMIC_HOLD · MECHANICAL_TESTS_ONLY
+
+[CASE-1] WRONG_DIMENSION: Injected circular orbital velocity formula v_o = G * M / r missing square root, producing units of specific energy instead of velocity.
+  Expected: DIMENSIONAL_ANALYSIS_FAILED: Orbital velocity must have dimensions [L T^-1]
+  Observed: REJECTED: DIMENSIONAL_ANALYSIS_MISMATCH [L T^-1] != [L^2 T^-2]
+
+[CASE-2] NUMERIC_CLONE: Core1B transfer replaced with anchor orbital velocity calculation replacing altitude 400 km with 800 km.
+  Expected: NUMERIC_REPARAMETERIZATION_DETECTED: Task crux is identical to Core1A anchor
+  Observed: REJECTED: NUMERIC_CLONE_DETECTED identical reasoning graph with reparameterized scalars
+
+[CASE-3] HINT_LEAK: Tier-1 hint stating: 'Apply E = -K to deduce that dK/dt = -dE/dt is positive.' before first attempt.
+  Expected: HINT_LEAK_DETECTED: Tier-1 contains decisive calculation steps or formula leaf
+  Observed: REJECTED: HINT_DECISIVE_LEAK Tier-1 reveals operational formula leaf
+
+=== End of Adversarial Log: 3/3 Batch Negative Control Mutations Rejected ===

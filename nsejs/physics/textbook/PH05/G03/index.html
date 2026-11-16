@@ -1,11 +1,106 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>PH05-G03 · Variation of gravity with altitude and depth · Core1A textbook</title>
-<meta name="description" content="Grade9 v4.1 PH05 Core1A textbook author candidate; academic and source HOLD.">
-<link rel="stylesheet" href="../../../ph05/units.css"></head>
-<body><header><nav><a href="../../../index.html">Physics topics</a><a href="../G02/index.html">Prev unit G02</a><a href="../../../core1/PH05/G03/index.html">Protected transfer</a><a href="../G04/index.html">Next unit G04</a></nav>
-<p>Grade9 v4.1 · NSEJS Physics · PH05 Gravitation · Core1A textbook</p><h1>PH05-G03 · Variation of gravity with altitude and depth</h1><p>Original educational candidate · not an authenticated exam question or approved scientific/QRT assessment.</p></header>
-<main data-ph05-lesson data-unit="PH05-G03"><p>Loading exact-version authored content. If the source is unavailable the learner must remain on HOLD.</p></main>
-<script type="module" src="../../../ph05/lesson.js"></script>
-<script defer src="../../../learn/learner-nav.js" data-g9-learner-nav></script>
-</body></html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>PH05-G03 · Variation of gravity with altitude and depth · Core1A textbook</title>
+  <meta name="description" content="Grade9 v4.1 PH05 Core1A textbook author candidate; academic and source HOLD.">
+  <link rel="stylesheet" href="../../../ph05/units.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="../../../index.html">Physics topics</a><a href="../G02/index.html">Prev unit G02</a><a href="../../../core1/PH05/G03/index.html">Protected transfer</a><a href="../G04/index.html">Next unit G04</a>
+    </nav>
+    <p>Grade9 v4.1 · NSEJS Physics · PH05 Gravitation · Core1A textbook</p>
+    <h1>PH05-G03 · Variation of gravity with altitude and depth</h1>
+    <p>Original educational candidate · not an authenticated exam question or approved scientific/QRT assessment.</p>
+  </header>
+  <main data-ph05-lesson data-unit="PH05-G03">
+    <h1>Variation of gravity with altitude and depth</h1>
+    <p class="notice"><strong>OWNER-AUTHORIZED AUTHORED LESSON · AI-CHECKED.</strong> Original educational material for self-study; not an authenticated past NSEJS paper or an independently certified curriculum.</p>
+    <p class="fine">Stable subtopic: PH05-G03 · Scope: CORE_CANDIDATE · Source identity: original authored material; no past-paper admission</p>
+    <section id="a1-phenomenon">
+      <h2>A1 · Observe and ask</h2>
+      <p>Gravitational acceleration reaches its peak value at the planet's surface. As you climb into the sky, gravity decreases steadily. Surprisingly, as you descend deep underground into a mine shaft, gravity also decreases, eventually dropping to absolute zero at the center of the Earth.</p>
+      <h3>Learning target</h3>
+      <p>Model the piecewise interior/exterior gravity curve g(r), contrasting linear interior falloff g proportional to r with inverse-square exterior attenuation g proportional to 1/r^2.</p>
+    </section>
+    <section id="a2-prerequisites">
+      <h2>A2 · What you already need</h2>
+      <p>Read any unfamiliar prerequisite first; this text does not certify those prerequisite lessons.</p>
+      <ul>
+        <li>PH05-G02</li>
+      </ul>
+    </section>
+    <section id="a3-mechanism">
+      <h2>A3 · Construct the model</h2>
+      <p>Outside the Earth (r > R, altitude h = r - R): g(h) = g0 * [R / (R + h)]^2 ≈ g0 * (1 - 2h/R) for h << R. Inside the Earth (r < R, depth d = R - r): by the shell theorem, the outer shell of thickness d exerts zero net gravitational force on the interior object. Only the inner sphere of radius r = R - d attracts it: M_enc = M * (r/R)^3. Therefore, g(d) = G * M_enc / r^2 = G * M * r / R^3 = g0 * (1 - d/R). Interior gravity decreases linearly with depth.</p>
+    </section>
+    <section id="a4-warrant">
+      <h2>A4 · Derive and check the rule</h2>
+      <div class="card math">
+        <p>Piecewise gravity field of uniform sphere: g(r) = g0 * (r/R) for r <= R, and g(r) = g0 * (R/r)^2 for r >= R. Dimensions: [g] = L T^-2. Validity: uniform density sphere. For altitude approximation g(h) ≈ g0 * (1 - 2h/R), condition h << R (h < 0.05R) must hold strictly.</p>
+      </div>
+      <p>Check the frame, sign convention, unit and applicability before accepting a numerical result. For a new model the original scientific warrant still requires independent review.</p>
+    </section>
+    <section id="a5-figure">
+      <h2>A5 · Read the physical representation</h2>
+      <figure class="figure"><svg viewBox="0 0 660 240" role="img" aria-label="Piecewise radial acceleration due to gravity g(r) from center r = 0 to outer space. Gravity rises linearly to peak g0 at r = R, then decays as an inverse-square curve." xmlns="http://www.w3.org/2000/svg"><defs><marker id="arrow" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto"><path d="M0 0 L9 4 L0 8 Z" fill="#186d86"/></marker></defs><circle cx="160" cy="120" r="65" fill="#eef6fa" stroke="#1d5c7c" stroke-width="2"/><line x1="280" y1="200" x2="620" y2="200" stroke="#335566" stroke-width="2"/><line x1="280" y1="200" x2="280" y2="30" stroke="#335566" stroke-width="2"/><path d="M280 200 L400 60 Q 480 140 600 175" fill="none" stroke="#0e6878" stroke-width="4"/><text x="250" y="45" font-size="16" fill="#123f56" font-family="system-ui">g(r)</text><text x="600" y="220" font-size="16" fill="#123f56" font-family="system-ui">r</text><text x="390" y="220" font-size="16" fill="#123f56" font-family="system-ui">r = R</text><text x="375" y="50" font-size="16" fill="#123f56" font-family="system-ui">Peak: g₀</text></svg><figcaption>Piecewise radial acceleration due to gravity g(r) from center r = 0 to outer space. Gravity rises linearly to peak g0 at r = R, then decays as an inverse-square curve.</figcaption></figure>
+    </section>
+    <section id="a6-progression">
+      <h2>A6 · Three progressive worked examples</h2>
+      <div class="example">
+        <h3>FOUNDATION</h3>
+        <p><strong>Question:</strong> Find gravitational acceleration at a depth d = R/2 below the surface of Earth.</p>
+        <p><strong>Reasoned solution:</strong> Using interior formula: g(d) = g0 * (1 - d/R) = g0 * (1 - 0.5) = 0.5 * g0.</p>
+      </div>
+      <div class="example">
+        <h3>CONNECTED</h3>
+        <p><strong>Question:</strong> At what altitude h above the surface does gravitational acceleration drop to g0 / 4?</p>
+        <p><strong>Reasoned solution:</strong> g(h) = g0 * [R / (R + h)]^2 = g0 / 4 ==> [R / (R + h)] = 1/2 ==> R + h = 2R ==> h = R.</p>
+      </div>
+      <div class="example">
+        <h3>ADVANCED</h3>
+        <p><strong>Question:</strong> At what altitude h is the percentage decrease in g equal to the percentage decrease in g at a depth d = 64 km? Take Earth radius R = 6400 km.</p>
+        <p><strong>Reasoned solution:</strong> Fractional drop at depth: Delta_g/g = d / R. For small altitude h << R, fractional drop is Delta_g/g ≈ 2h / R. Equating the two: 2h / R = d / R ==> h = d / 2 = 64 / 2 = 32 km.</p>
+      </div>
+    </section>
+    <section id="a7-anchor">
+      <h2>A7 · Worked anchor and independent check</h2>
+      <div class="example">
+        <p><strong>Problem:</strong> An object has weight W0 at the Earth's surface. Compare its weight at altitude h = R with its weight at depth d = R/2.</p>
+        <p><strong>Solution and check:</strong> At altitude h = R: g_alt = g0 * [R / (R + R)]^2 = g0 * (1/2)^2 = g0 / 4 ==> W_alt = W0 / 4 = 0.25 W0. At depth d = R/2: g_depth = g0 * (1 - (R/2)/R) = g0 / 2 ==> W_depth = W0 / 2 = 0.50 W0. The object is twice as heavy at depth R/2 as it is at altitude R.</p>
+      </div>
+    </section>
+    <section id="a8-misconception">
+      <h2>A8 · Diagnose a tempting wrong idea</h2>
+      <p><strong>Tempting claim:</strong> The formula g(h) = g0 * (1 - 2h/R) can be used to find gravity at altitude h = R.</p>
+      <p><strong>Why it fails:</strong> Using the approximation gives g(R) = g0 * (1 - 2*R/R) = -g0, which is physically absurd. The binomial expansion (1 + h/R)^-2 ≈ 1 - 2h/R is valid only when h/R << 1.</p>
+      <p><strong>Repair:</strong> For significant altitudes (h >= 0.05R), always use the exact formula g(h) = g0 / (1 + h/R)^2. At h = R, exact g is g0 / (1 + 1)^2 = g0 / 4.</p>
+    </section>
+    <section id="a9-synthesis">
+      <h2>A9 · Counterexample, limit and synthesis</h2>
+      <div class="card">
+        <h3>Changed condition</h3>
+        <p>What is the gravitational field at the exact center of the Earth (r = 0)?</p>
+        <p>g(0) = g0 * (0 / R) = 0 N/kg. Gravitational attraction from all symmetric surrounding mass elements cancels out completely.</p>
+      </div>
+      <h3>Independent exit check</h3>
+      <p>A straight frictionless tunnel is bored through the center of the Earth. A ball is dropped from one end. What motion does it execute?</p>
+      <details>
+        <summary>Reveal the reasoned exit answer</summary>
+        <p>Inside the tunnel, the restoring force is F = -m * g(r) = -m * (g0 / R) * r = -k * r, where k = m*g0/R is a constant. This is Hooke's Law! The ball executes simple harmonic motion (SHM) with angular frequency omega = sqrt(g0 / R) and period T = 2*pi*sqrt(R/g0) ≈ 84.3 minutes.</p>
+      </details>
+    </section>
+    <section>
+      <h2>Apply what you learned in a different construction</h2>
+      <p>The protected transfer changes the decisive move. Your first answer must be saved before hints or model reasoning become visible.</p>
+      <a class="action" href="../../../core1/PH05/G03/index.html">Open PH05-G03 Core1B transfer</a>
+    </section>
+    <p class="fine">Sources for scope screening only: <a href="https://iapt.org.in/">IAPT NSEJS 2026</a> and <a href="https://cbseacademic.nic.in/curriculum_2027.html">CBSE 2026–27 curriculum index</a>. No original question, diagram or key is reproduced.</p>
+  </main>
+  <script type="module" src="../../../ph05/lesson.js"></script>
+  <script defer src="../../../learn/learner-nav.js" data-g9-learner-nav></script>
+</body>
+</html>
