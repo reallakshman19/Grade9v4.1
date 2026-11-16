@@ -248,3 +248,22 @@ def test_r3_frozen_search_diagnostic_not_a_routine_pr_gate():
     assert "g9/r3-production-decision" in trusted
     release=(ROOT/".github/workflows/deploy.yaml").read_text()
     assert "python trusted/docs/agent-entry/production-control-r3/release.py" in release
+
+
+def test_owner_preview_publication_exception_explicit_and_restricted():
+    """No preview pass may masquerade as signed R3/academic acceptance."""
+    preview=(ROOT/".github/workflows/owner-technical-preview-pages.yml").read_text()
+    assert "workflow_dispatch:" in preview
+    assert "push:" in preview and "branches: [main]" in preview
+    assert "paths:\n      - .github/workflows/owner-technical-preview-pages.yml" in preview
+    assert "pull_request:" not in preview and "pull_request_target:" not in preview
+    assert '"review", "tests", "tools", "src"' in preview
+    assert '"workspace"' in preview
+    assert '"academic_status": "HOLD"' in preview
+    assert '"r3_signed_production_release": False' in preview
+    assert "actions/upload-pages-artifact@v4" in preview
+    assert "actions/deploy-pages@v4" in preview
+    signed=(ROOT/".github/workflows/deploy.yaml").read_text()
+    assert "python trusted/docs/agent-entry/production-control-r3/release.py" in signed
+    assert "G9_R3_TRUST_JSON" in signed
+    assert "github-pages" in signed
