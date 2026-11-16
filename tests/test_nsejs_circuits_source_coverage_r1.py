@@ -104,7 +104,12 @@ def test_reader_attempt_revision_storage_and_hint_locks():
     assert 'const k = attemptKey(q, contentRevision);' in js
     assert 'if (!saveAttempt(k, attempt))' in js
     assert 'candidate answer and solution remain locked' in js
-    assert 'const count = hints.length; // All H1-H3 are nondecisive' in js
+    # Actual revision-bound help disclosure, not a blanket reveal of H1-H3.
+    assert 'const hintKey = k + ":hint-exposure:v1";' in js
+    assert 'localStorage.getItem(hintKey)!==next' in js
+    assert 'hints_revealed: hintDepth' in js
+    assert 'assisted_before_first: hintDepth > 0' in js
+    assert 'return localStorage.getItem(key)===serialized;' in js
     assert 'localStorage.removeItem(k)' not in js
 
 def test_circuit_figure_bytes_and_hints_are_revision_bound():

@@ -241,8 +241,10 @@ def test_ph04_golden_evidence_packet_r2_verification():
     payload = json.loads(packet_path.read_text(encoding="utf-8"))
     report = mod.validate(payload, ROOT)
 
-    assert report["findings"] == [], f"Unexpected findings for PH04-W01: {report['findings']}"
-    assert report["mechanical_status"] == "EVIDENCE_STRUCTURALLY_GROUNDED"
+    # This author packet references pre-repair QRT bytes: exact-source custody
+    # must fail closed until new, actual test/browser receipts are supplied.
+    assert {"BYTE_HASH_MISMATCH:EV-C2-KEY", "BYTE_HASH_MISMATCH:EV-C2-STEM"} <= set(report["findings"])
+    assert report["mechanical_status"] == "BLOCKED"
     assert report["academic_status"] == "HOLD"
     assert report["review_required"] is True
     assert report["evidence_items"] >= 32
@@ -266,8 +268,9 @@ def test_ph04_batch_evidence_packets_r2_verification():
         payload = json.loads(packet_path.read_text(encoding="utf-8"))
         report = mod.validate(payload, ROOT)
 
-        assert report["findings"] == [], f"Unexpected findings for {uid}: {report['findings']}"
-        assert report["mechanical_status"] == "EVIDENCE_STRUCTURALLY_GROUNDED"
+        # Keep stale candidate evidence on HOLD instead of silently rehashing logs.
+        assert {"BYTE_HASH_MISMATCH:EV-C2-KEY", "BYTE_HASH_MISMATCH:EV-C2-STEM"} <= set(report["findings"])
+        assert report["mechanical_status"] == "BLOCKED"
         assert report["academic_status"] == "HOLD"
         assert report["review_required"] is True
         assert report["evidence_items"] >= 24
