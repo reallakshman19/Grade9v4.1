@@ -19,6 +19,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+      - name: Parse PH03 source-led R2 as an ES module
+        run: node --input-type=module --check < nsejs/physics/ph03/source-led-r2/reader.js
       - run: pip install playwright
       - run: python -m playwright install --with-deps chromium
       - run: python tools/ph03_golden_browser.py
