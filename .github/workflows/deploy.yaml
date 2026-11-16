@@ -56,7 +56,7 @@ jobs:
             errors=1
           fi
           if [[ ! -f candidate/review/production-control-r3/release-receipt.json ]]; then
-            echo "::error title=Owner preview-release receipt missing::The genuinely signed PREVIEW_RELEASE receipt is required; no auto-generated or self-signed substitute is allowed."
+            echo "::error title=Owner preview-release receipt missing::Missing review/production-control-r3/release-receipt.json. A genuinely signed PREVIEW_RELEASE receipt is required; no auto-generated or self-signed substitute is allowed."
             errors=1
           fi
           if (( errors != 0 )); then
