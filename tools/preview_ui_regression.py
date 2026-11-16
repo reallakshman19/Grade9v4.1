@@ -55,6 +55,17 @@ def tests(browser):
                 if width==1024:
                     assert_that(result["cardTop"] is not None and result["cardTop"] < 475,
                                 f"Practice question too low on tablet: {result}")
+                    # Common subject header stays visible; WPE-specific shortcuts
+                    # can be deliberately expanded without covering the question.
+                    shortcuts=page.locator("#grade9-universal-nav .nav-shortcuts-btn")
+                    assert_that(shortcuts.count()==1,"WPE shortcut toggle missing")
+                    shortcuts.click()
+                    expanded=page.evaluate("""() => {
+                      const s=document.querySelector('#grade9-universal-nav')?.shadowRoot;
+                      return s?.querySelector('.context')?.classList.contains('expanded');
+                    }""")
+                    assert_that(expanded,"WPE shortcuts cannot be expanded")
+                    shortcuts.click()
                     page.screenshot(path=str(OUT/"practice-1024x768.png"))
                 if width==800:
                     page.screenshot(path=str(OUT/"practice-800x1280.png"))
