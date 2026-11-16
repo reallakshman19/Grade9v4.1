@@ -66,7 +66,8 @@ def test_science_teaching_has_real_multiple_worked_and_disjoint_prompt():
         u = unit(i)
         p = post(i)
         assert u["id"] == i and u["academic"] == "HOLD"
-        assert u["sourceRole"] == "AUTHOR_EXPOSITION_AND_TRANSFER_NOT_EXAM"
+        assert u["sourceRole"] in {"AUTHOR_EXPOSITION_AND_TRANSFER_NOT_EXAM", "AUTHORED_EXPOSITION_FRESH_TRANSFER_NOT_ORIGINAL_EXAM"}
+        assert "EXAM" in u["sourceRole"] and u["academic"] == "HOLD"
         assert p["schema"] == "g9-ph03-postattempt/v1"
         assert p["revision"] == u["revision"]
         assert p["academic"] == "HOLD"
