@@ -74,10 +74,9 @@ def test_stage_paths_sha_integrity_and_holds():
 def test_native_reader_fail_closed_full_revision_and_stage_exposure_code():
     reader=(R/"reader.js").read_text(encoding="utf-8")
     html=(R/"index.html").read_text(encoding="utf-8")
-    assert "g9chem-full-unit-v3" in reader
-    assert "schema:\"g9chem-full-unit-v3\",book,practice" in reader
-    assert "supplemental:supplemental||[],visuals:visuals||null,adapter" in reader
-    assert "TOPIC_ADAPTER_XYZW_MISMATCH_HOLD" in reader
+    assert "g9chem-full-unit-v2" in reader
+    assert "schema:\"g9chem-full-unit-v2\",book,practice" in reader
+    assert "supplemental:supplemental||[],visuals:visuals||null" in reader
     assert 'digestHex("SHA-256"' in reader
     assert 'digestHex("SHA-1",blob)' in reader
     assert "STAGE_BLOB_MISMATCH_HOLD" in reader

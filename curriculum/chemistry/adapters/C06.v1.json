@@ -1,7 +1,7 @@
 {
   "schema": "g9v41-chem-topic-adapter/v1",
   "adapter_id": "CHEM-C06",
-  "version": "0.2.1",
+  "version": "0.2.0",
   "subject": "CHEMISTRY",
   "unit_id": "C06",
   "blueprint_ref": "CHEM-QRT-BLUEPRINT@0.1.0",
@@ -195,16 +195,16 @@
             "CHEM-C06.02-CORE1A"
           ],
           "slots": {
-            "X": "A student notices F₂ and Cl₂ are gases near 25°C, then claims that **every** group-17 element must be a gas because the elements have similar outer electron patterns. Critique the argument with a counterexample and distinguish a reliable periodic inference from an unsupported physical-state prediction.",
-            "Y": "Chemistry warrant / validity domain: A chemical group can share valence patterns without sharing every macroscopic physical state. Atomic number structures classification, but boiling points and room-temperature states depend on intermolecular interactions and the particular substance. Prerequisite: Read the proton count Z for each element and preserve increasing Z in the modern sequence.",
-            "Z": "Independent worked anchor (not the learner task): Modern classification uses increasing proton number, for example Ar (Z18) before K (Z19) even when average atomic masses do not follow the same order; the table's grouping encodes chemical patterns rather than identical properties. Independent check: Give a real group-17 counterexample and explain why group placement can support valence similarity but cannot fix room-temperature physical state.",
-            "W": "Without the worked solution or a decisive hint, the learner must independently perform the specified JUSTIFY construction on this NEW context: \"A student notices F₂ and Cl₂ are gases near 25°C, then claims that **every** group-17 element must be a gas because the elements have similar outer electron patterns. Critique the argument with a counterexample and distinguish a reliable periodic inference from an unsupported physical-state prediction.\" The reviewer must separately establish that this W is nonisomorphic to the textbook anchor; do not infer B4 PASS from this declaration."
+            "X": "A report claims all group 17 elements must be gases at room temperature since chlorine is. Evaluate.",
+            "Y": "Chemistry warrant: Position-based predictions are supported by electron patterns but do not uniquely determine every quantitative chemical property. Prior basis: Read the proton count Z for each element and preserve increasing Z in the modern sequence.",
+            "Z": "Two elements in the same group may share common valency but differ in reaction rate and physical state.",
+            "W": "Without the answer or decisive strategy supplied in advance, identify decisive evidence or a counterexample and delimit the claim for this new task: \"A report claims all group 17 elements must be gases at room temperature since chlorine is. Evaluate.\" A valid independent result must satisfy: Give a concrete counterexample."
           },
-          "student_task": "A student notices F₂ and Cl₂ are gases near 25°C, then claims that **every** group-17 element must be a gas because the elements have similar outer electron patterns. Critique the argument with a counterexample and distinguish a reliable periodic inference from an unsupported physical-state prediction.",
-          "wrong_idea": "Locate where the argument treats similarity of outer electrons as an identity of all physical properties.",
-          "replacement_rule": "Use a factual counterexample and reformulate the claim to preserve only the periodic inference justified by group membership.",
-          "visual_job": "Candidate representation: show relevant species, states, values or evidence in an uncompleted ledger/diagram; do not disclose the decisive JUSTIFY operation or final result. Task-specific visual adequacy remains for R01 review.",
-          "independent_check": "Give a real group-17 counterexample and explain why group placement can support valence similarity but cannot fix room-temperature physical state.",
+          "student_task": "A report claims all group 17 elements must be gases at room temperature since chlorine is. Evaluate.",
+          "wrong_idea": "Periodic sequence must strictly increase in average atomic mass.",
+          "replacement_rule": "Use atomic number Z to determine periodic order before consulting the isotope-weighted average atomic masses.",
+          "visual_job": "Compare Ar: Z18, relative atomic mass about39.95 and K: Z19, about39.10. Place Ar before K by Z, not mass.",
+          "independent_check": "Give a concrete counterexample.",
           "source_bindings": [
             {
               "ref": "AUTHORED-C06-06-JUSTIFY-D4",
@@ -217,8 +217,7 @@
       ],
       "academic_notes": [
         "Core1A/B passage and tasks are Grade9-authored candidate content; no original NSEJS question identity is asserted.",
-        "Band values D3/D4 are unqualified author proposals pending five-factor QRT adjudication and independent chemistry review.",
-        "R2 one-task transfer repair C06-06-JUSTIFY-D4; revised full-content digest is revision-bound in reader. Author candidate only: independent B3/B4 science, five-factor QRT and source custody HOLD."
+        "Band values D3/D4 are unqualified author proposals pending five-factor QRT adjudication and independent chemistry review."
       ],
       "status": "ACADEMIC_HOLD"
     },
@@ -648,14 +647,6 @@
         "CHEM-C06.04",
         "CHEM-C06.05",
         "CHEM-C06.06"
-      ]
-    },
-    {
-      "version": "0.2.1",
-      "kind": "AMEND",
-      "reason": "WPE-parity R2 author-candidate transfer correction: refreshed X/Y/Z/W, scientific warrant, misconception and revised learner task for one bounded exemplar; no source/authentication/QRT promotion.",
-      "affected_subtopic_ids": [
-        "CHEM-C06.02"
       ]
     }
   ]

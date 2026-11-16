@@ -6,7 +6,6 @@
 (() => {
   "use strict";
   const ROOT = "../../../curriculum/chemistry/agent-b/";
-  const ADAPTER_ROOT = "../../../curriculum/chemistry/adapters/";
   const REPO_ROOT = "../../../";
   const UNITS = ["C08","C09","C10","C11","C12","C13","C14"];
   const B02 = new Set(["C10","C11"]);
@@ -93,12 +92,12 @@
     const bytesOut=await crypto.subtle.digest(algorithm,bytes);
     return Array.from(new Uint8Array(bytesOut),x=>x.toString(16).padStart(2,"0")).join("");
   }
-  async function revisionFor(book,practice,supplemental,visuals,adapter){
+  async function revisionFor(book,practice,supplemental,visuals){
     // Include every field of Core1A, Core1B, supplemental and visual path/blob
     // manifest. Conservative unit-level revision: any change invalidates
     // previous attempts, rather than silently accepting an old task answer.
-    const canonical=JSON.stringify({schema:"g9chem-full-unit-v3",book,practice,
-      supplemental:supplemental||[],visuals:visuals||null,adapter});
+    const canonical=JSON.stringify({schema:"g9chem-full-unit-v2",book,practice,
+      supplemental:supplemental||[],visuals:visuals||null});
     return digestHex("SHA-256",new TextEncoder().encode(canonical));
   }
   function storageRead(key){
@@ -168,43 +167,6 @@
     }
     return [...sectionIds].every(id=>perSection.get(id)===3);
   }
-  function validTopicAdapter(adapter,unit,sectionIds,practice){
-    // Runtime gate: a passing JSON schema alone cannot establish exact protected W.
-    // No source exam question is admitted here. All source and QRT status remains HOLD.
-    if(!adapter||adapter.unit_id!==unit||adapter.status!=="ACADEMIC_HOLD"||
-       adapter.canonical_truth_status!=="DRAFT"||
-       !Array.isArray(adapter.subtopics)||adapter.subtopics.length!==sectionIds.size)
-      return false;
-    const tasks=new Map(practice.cycles.map(t=>[t.qrt_instance_ref,t]));
-    if(tasks.size!==practice.cycles.length)return false;
-    const used=new Set(),seen=new Set();
-    for(const sub of adapter.subtopics){
-      if(!sectionIds.has(sub.subtopic_id)||seen.has(sub.subtopic_id)||
-         sub.status!=="ACADEMIC_HOLD"||!Array.isArray(sub.qrt_instances)||
-         sub.qrt_instances.length!==3)return false;
-      seen.add(sub.subtopic_id);
-      const operations=new Set();
-      for(const q of sub.qrt_instances){
-        const t=tasks.get(q.instance_id);
-        if(!t||used.has(q.instance_id)||t.subtopic_ref!==sub.subtopic_id||
-           q.status!=="ACADEMIC_HOLD"||
-           q.template_ref!==t.qrt_template_ref||
-           q.primary_operation!==t.operation||
-           q.band!==(t.band_proposal||t.demand_author_evidence?.band)||
-           q.slots?.X!==t.attempt?.prompt||
-           q.slots?.Z!==t.attempt?.post_commit_closure?.model_response||
-           q.slots?.W!==t.attempt?.protected_W||
-           !q.slots?.Y||q.slots.Y.length<30||
-           q.student_task!==t.attempt.prompt||
-           /^The learner independently completes/.test(q.slots.W)||
-           t.source_role!=="AUTHORED_PRACTICE"||
-           t.source_exam_question_id!==null)return false;
-        operations.add(q.primary_operation);used.add(q.instance_id);
-      }
-      if(operations.size!==3)return false;
-    }
-    return used.size===practice.cycles.length&&seen.size===sectionIds.size;
-  }
   function validSupplemental(data,unit,sectionIds,existingIds){
     if(!data||!Array.isArray(data.records)||data.records.length!==8
       ||data.counts?.tasks!==8||data.counts?.native_cycles_added!==0)return false;
@@ -267,22 +229,19 @@
       ];
       if(extra)urls.push(ROOT+"qrt/B02-core2-targeted-transfers.v0.5.0.json",
                          ROOT+"qrt/B02-C10-C11-staged-visuals.v0.7.0.json");
-      urls.push(ADAPTER_ROOT+unit+".v1.json");
       const values=await Promise.all(urls.map(fetchJson));
       if(gen!==loadGeneration)return;
-      const adapter=values.pop();
       const [book,practice,sup,visuals]=values;
       const ids=new Set(book?.sections?.map(x=>x.id)||[]);
       if(!validBook(book,unit)||ids.size!==book.sections.length
          ||!validPractice(practice,unit,ids))throw new Error("UNTRUSTED_CHEMISTRY_PACK");
-      if(!validTopicAdapter(adapter,unit,ids,practice))throw new Error("TOPIC_ADAPTER_XYZW_MISMATCH_HOLD");
       const nativeIds=new Set(practice.cycles.map(x=>x.cycle_id));
       const supplemental=extra?(sup?.records||[]).filter(x=>ids.has(x.subtopic_id)):[];
       if(extra&&(!validSupplemental(sup,unit,ids,nativeIds)
                 ||!validVisualManifest(visuals,unit,new Set([...nativeIds,
                    ...supplemental.map(x=>x.task_id)]))))
         throw new Error("B02_STAGE_OR_TASK_JOIN_HOLD");
-      const revision=await revisionFor(book,practice,supplemental,extra?visuals:null,adapter);
+      const revision=await revisionFor(book,practice,supplemental,extra?visuals:null);
       if(gen!==loadGeneration)return;
       const sectionIdx=opts.subtopic?book.sections.findIndex(x=>x.id===opts.subtopic):0;
       if(sectionIdx<0)throw new Error("UNKNOWN_SUBTOPIC_HOLD");

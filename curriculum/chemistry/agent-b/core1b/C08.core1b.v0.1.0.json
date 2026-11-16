@@ -19,34 +19,34 @@
       "source_exam_question_id": null,
       "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
       "predict": {
-        "prompt": "Before solving this unseen case, state your provisional model and what evidence would distinguish alternatives: A carbon sample burns in an open dish and the remaining ash weighs less than the original carbon. Construct two possible carbon–oxygen product ledgers and identify which gas and residue measurements would distinguish complete oxidation from incomplete combustion. Explain why the open-dish mass is not a conservation test.",
-        "defensible_answer": "Provisional prediction only: identify competing chemical species/models and controlled conditions before calculating. Preserve the decisive explain inference for your own independent attempt."
+        "prompt": "Before solving, decide which observation or chemical model would be decisive: Explain why a burning magnesium ribbon can gain measured mass while total mass is conserved. Include the surroundings in your model.",
+        "defensible_answer": "The deciding evidence must respect: A chemical reaction changes the identities and arrangements of substances while preserving each chemical element in an ordinary chemical process. A colour, temperature, gas or precipitate change is evidence that merits investigation, but none alone guarantees a particular product. We first identify reactants and plausible products from observations and independent tests. Only after declaring the chemical species can we write a skeletal equation. Balancing comes last: numerical coefficients count reacting entities and never alter a molecule's subscripts."
       },
       "attempt": {
-        "prompt": "A carbon sample burns in an open dish and the remaining ash weighs less than the original carbon. Construct two possible carbon–oxygen product ledgers and identify which gas and residue measurements would distinguish complete oxidation from incomplete combustion. Explain why the open-dish mass is not a conservation test.",
-        "produces": "Select the material-system boundary, distinguish CO₂ formation from possible CO or unreacted carbon, and design measurements needed to decide between the ledgers.",
-        "protected_W": "Select the material-system boundary, distinguish CO₂ formation from possible CO or unreacted carbon, and design measurements needed to decide between the ledgers.",
+        "prompt": "Explain why a burning magnesium ribbon can gain measured mass while total mass is conserved. Include the surroundings in your model.",
+        "produces": "An explanatory argument with species, valid conditions, a meaningful representation and an independent check.",
+        "protected_W": "The learner independently completes the causal bridge, not exposed before first attempt.",
         "first_attempt_must_be_saved_before_feedback": true,
         "initial_answer_visibility": "HIDDEN",
         "hints": [
           {
             "id": "H1",
             "verb": "CLARIFY",
-            "text": "In a carbon-burning experiment, distinguish the weight of the sample dish from the total carbon-containing products. Which unmeasured streams make a single reading insufficient?"
+            "text": "Separate given observation from inferred identity in Reading reaction evidence and balancing equations."
           },
           {
             "id": "H2",
             "verb": "CORRELATE",
-            "text": "Separate carbon remaining in the dish from carbon leaving in gaseous products, and include oxygen entering from the surrounding air. Which parts of that material boundary were actually weighed?"
+            "text": "Recall the key scientific constraint: Atoms are conserved in chemical reactions; balanced equations count participating chemical entities, while observations alone do not establish product identity."
           },
           {
             "id": "H3",
             "verb": "OPEN_THE_WAY",
-            "text": "Sketch two possible carbon/oxygen product pathways with unfilled species and mass entries. Add distinct gas-identity and residual-solid checks; decide which history fits only after accounting for the missing streams."
+            "text": "Draw an atom/species ledger or compare competing models; do not use hints to fill in the decisive conclusion."
           }
         ],
         "post_commit_closure": {
-          "model_response": "If carbon converts completely to carbon dioxide, C + O₂ → CO₂, gas leaves the open dish and the residual ash mass is not the total product mass. Limited oxygen may also permit 2C + O₂ → 2CO or retained carbon. Measure evolved gas composition and residual carbon in a closed material balance before identifying the pathway. Both candidate equations conserve carbon and oxygen atoms.",
+          "model_response": "Magnesium atoms combine with oxygen originally in the air. The open sample gains the mass of oxygen incorporated, while the closed system (magnesium + oxygen + product) keeps the same total atoms and mass. The net equation is 2Mg + O₂ → 2MgO.",
           "rubric": [
             "Identify actual chemical entities and states.",
             "Make the decisive scientific bridge with warranted conditions.",
@@ -59,34 +59,34 @@
           {
             "ask": "Which observations and species are actually given?",
             "why_this_ask": "Separate evidence from interpretation.",
-            "model_response": "Read the newly presented observations and distinguish reported quantities from inferred species. Do not import the worked example's original reactants."
+            "model_response": "A magnesium ribbon glows brightly, a white solid remains, and its mass seems to increase. Did matter appear from nowhere? The puzzling observation is precisely why a chemical equation must connect an experimental system to a particle account before it is used as a calculation."
           },
           {
             "ask": "Which scientific rule or model fits these conditions?",
             "why_this_ask": "Find and justify the governing mechanism.",
-            "model_response": "Use the appropriate balanced species, charge/electron and material-boundary rules; decide if the data determine a unique model."
+            "model_response": "A chemical reaction changes the identities and arrangements of substances while preserving each chemical element in an ordinary chemical process. A colour, temperature, gas or precipitate change is evidence that merits investigation, but none alone guarantees a particular product. We first identify reactants and plausible products from observations and independent tests. Only after declaring the chemical species can we write a skeletal equation. Balancing comes last: numerical coefficients count reacting entities and never alter a molecule's subscripts."
           },
           {
             "ask": "What conclusion survives the conservation and competing-hypothesis check?",
             "why_this_ask": "Complete the learned inferential bridge.",
-            "model_response": "If carbon converts completely to carbon dioxide, C + O₂ → CO₂, gas leaves the open dish and the residual ash mass is not the total product mass. Limited oxygen may also permit 2C + O₂ → 2CO or retained carbon. Measure evolved gas composition and residual carbon in a closed material balance before identifying the pathway. Both candidate equations conserve carbon and oxygen atoms."
+            "model_response": "Magnesium atoms combine with oxygen originally in the air. The open sample gains the mass of oxygen incorporated, while the closed system (magnesium + oxygen + product) keeps the same total atoms and mass. The net equation is 2Mg + O₂ → 2MgO."
           }
         ],
-        "full_reconstruction": "If carbon converts completely to carbon dioxide, C + O₂ → CO₂, gas leaves the open dish and the residual ash mass is not the total product mass. Limited oxygen may also permit 2C + O₂ → 2CO or retained carbon. Measure evolved gas composition and residual carbon in a closed material balance before identifying the pathway. Both candidate equations conserve carbon and oxygen atoms."
+        "full_reconstruction": "Magnesium atoms combine with oxygen originally in the air. The open sample gains the mass of oxygen incorporated, while the closed system (magnesium + oxygen + product) keeps the same total atoms and mass. The net equation is 2Mg + O₂ → 2MgO."
       },
       "diagnose": {
-        "wrong_idea": "A lighter ash proves carbon atoms were destroyed.",
-        "diagnostic_prompt": "Explain the specific error in this proposed solution: A lighter ash proves carbon atoms were destroyed.",
-        "model_response": "Identify the unsupported assumption and recheck species identity, conservation and missing measurements; the corrected post-commit reconstruction supplies the warranted inference."
+        "wrong_idea": "Changing MgO to MgO₂ just to balance the symbols changes the chemical species. Repair by leaving species formulas fixed and changing coefficients only.",
+        "diagnostic_prompt": "Evaluate why the following reasoning fails: Changing MgO to MgO₂ just to balance the symbols changes the chemical species. Repair by leaving species formulas fixed and changing coefficients only.",
+        "model_response": "If some fine MgO smoke escapes, an open crucible can lose apparent mass even while oxygen is taken up. That cannot be diagnosed from the final mass alone; the experiment must control escaping product."
       },
       "repair": {
-        "action": "Rebuild the chemical model under the correct material/charge boundary and justify the independent discriminator.",
-        "explanation": "Avoid: A lighter ash proves carbon atoms were destroyed. Instead demonstrate the claim with balanced species and observations.",
+        "action": "Rebuild the model using the correctly named reactant and product species; repeat the independent check.",
+        "explanation": "Changing MgO to MgO₂ just to balance the symbols changes the chemical species. Repair by leaving species formulas fixed and changing coefficients only.",
         "core1a_ref": "curriculum/chemistry/agent-b/textbook/C08.core1a.md#c0801-reading-reaction-evidence-and-balancing-equations"
       },
       "boundary_test": {
-        "prompt": "If gas collection is incomplete, determine which mass conclusions can still be made without assuming all carbon became CO₂.",
-        "answer": "Mass conservation still applies to the full system; no unique carbon product or extent can be inferred from a partial collected stream.",
+        "prompt": "What if smoke escapes the crucible: must a lower final reading disprove conservation?",
+        "answer": "No. Missing solid product is an uncontrolled material flow; the measured sample is not closed.",
         "confirms": "Learner must apply the model under a changed condition, not echo the original answer."
       },
       "reviews": {
@@ -106,7 +106,7 @@
       "demand_author_evidence": {
         "band": "D3",
         "adjudication": "NOT_RUN",
-        "note": "Exact changed-condition author revision: B4 freshness candidate, scientific and independent QRT review remain NOT_RUN."
+        "note": "QRT candidate classification, not independently reviewed."
       }
     },
     {
@@ -127,8 +127,8 @@
       },
       "attempt": {
         "prompt": "A particle sketch contains four Mg atoms and two O₂ molecules. Construct a balanced product sketch and symbolic reaction without changing molecular subscripts.",
-        "produces": "Independently represent the decisive model for this exact case: A particle sketch contains four Mg atoms and two O₂ molecules. Construct a balanced product sketch and symbolic reaction without changing molecular subscripts. Check the changed condition: If only two Mg atoms react, what remains from the original sketch?",
-        "protected_W": "Independently represent the decisive model for this exact case: A particle sketch contains four Mg atoms and two O₂ molecules. Construct a balanced product sketch and symbolic reaction without changing molecular subscripts. Check the changed condition: If only two Mg atoms react, what remains from the original sketch?",
+        "produces": "An explanatory argument with species, valid conditions, a meaningful representation and an independent check.",
+        "protected_W": "The learner independently completes the invariant correspondence, not exposed before first attempt.",
         "first_attempt_must_be_saved_before_feedback": true,
         "initial_answer_visibility": "HIDDEN",
         "hints": [
@@ -230,8 +230,8 @@
       },
       "attempt": {
         "prompt": "Two trials show a white solid after heating a metal; only one trial consumed oxygen. Can an identical solid colour establish identical reactions? Construct a two-stage evidence ledger.",
-        "produces": "Independently synthesize the decisive model for this exact case: Two trials show a white solid after heating a metal; only one trial consumed oxygen. Can an identical solid colour establish identical reactions? Construct a two-stage evidence ledger. Check the changed condition: If an equation balances, can it prove the proposed product was actually made?",
-        "protected_W": "Independently synthesize the decisive model for this exact case: Two trials show a white solid after heating a metal; only one trial consumed oxygen. Can an identical solid colour establish identical reactions? Construct a two-stage evidence ledger. Check the changed condition: If an equation balances, can it prove the proposed product was actually made?",
+        "produces": "An explanatory argument with species, valid conditions, a meaningful representation and an independent check.",
+        "protected_W": "The learner independently completes the cross-stage bridge, not exposed before first attempt.",
         "first_attempt_must_be_saved_before_feedback": true,
         "initial_answer_visibility": "HIDDEN",
         "hints": [
@@ -333,8 +333,8 @@
       },
       "attempt": {
         "prompt": "Explain why melting ice and thermal decomposition of CaCO₃ must be classified differently even though both need energy.",
-        "produces": "Independently explain the decisive model for this exact case: Explain why melting ice and thermal decomposition of CaCO₃ must be classified differently even though both need energy. Check the changed condition: Can one classify a process simply from a temperature rise?",
-        "protected_W": "Independently explain the decisive model for this exact case: Explain why melting ice and thermal decomposition of CaCO₃ must be classified differently even though both need energy. Check the changed condition: Can one classify a process simply from a temperature rise?",
+        "produces": "An explanatory argument with species, valid conditions, a meaningful representation and an independent check.",
+        "protected_W": "The learner independently completes the causal bridge, not exposed before first attempt.",
         "first_attempt_must_be_saved_before_feedback": true,
         "initial_answer_visibility": "HIDDEN",
         "hints": [
@@ -436,8 +436,8 @@
       },
       "attempt": {
         "prompt": "Draw a particle conservation ledger for 2H₂ + O₂ → 2H₂O and contrast it with CaCO₃ → CaO + CO₂.",
-        "produces": "Independently represent the decisive model for this exact case: Draw a particle conservation ledger for 2H₂ + O₂ → 2H₂O and contrast it with CaCO₃ → CaO + CO₂. Check the changed condition: If a product is a gas, must the reaction be decomposition?",
-        "protected_W": "Independently represent the decisive model for this exact case: Draw a particle conservation ledger for 2H₂ + O₂ → 2H₂O and contrast it with CaCO₃ → CaO + CO₂. Check the changed condition: If a product is a gas, must the reaction be decomposition?",
+        "produces": "An explanatory argument with species, valid conditions, a meaningful representation and an independent check.",
+        "protected_W": "The learner independently completes the invariant correspondence, not exposed before first attempt.",
         "first_attempt_must_be_saved_before_feedback": true,
         "initial_answer_visibility": "HIDDEN",
         "hints": [
@@ -539,8 +539,8 @@
       },
       "attempt": {
         "prompt": "A heated blue solid loses water and turns pale, while a different sample produces a gas that clouds limewater. Synthesize observations that distinguish dehydration and carbonate decomposition.",
-        "produces": "Independently synthesize the decisive model for this exact case: A heated blue solid loses water and turns pale, while a different sample produces a gas that clouds limewater. Synthesize observations that distinguish dehydration and carbonate decomposition. Check the changed condition: Would reversing a hydration process by adding water necessarily reverse thermal decomposition of a carbonate?",
-        "protected_W": "Independently synthesize the decisive model for this exact case: A heated blue solid loses water and turns pale, while a different sample produces a gas that clouds limewater. Synthesize observations that distinguish dehydration and carbonate decomposition. Check the changed condition: Would reversing a hydration process by adding water necessarily reverse thermal decomposition of a carbonate?",
+        "produces": "An explanatory argument with species, valid conditions, a meaningful representation and an independent check.",
+        "protected_W": "The learner independently completes the cross-stage bridge, not exposed before first attempt.",
         "first_attempt_must_be_saved_before_feedback": true,
         "initial_answer_visibility": "HIDDEN",
         "hints": [
@@ -642,8 +642,8 @@
       },
       "attempt": {
         "prompt": "Explain why Zn deposits copper from CuSO₄ but Cu ordinarily does not displace zinc from ZnSO₄.",
-        "produces": "Independently explain the decisive model for this exact case: Explain why Zn deposits copper from CuSO₄ but Cu ordinarily does not displace zinc from ZnSO₄. Check the changed condition: Could a missing deposit be due to a dirty or coated zinc surface?",
-        "protected_W": "Independently explain the decisive model for this exact case: Explain why Zn deposits copper from CuSO₄ but Cu ordinarily does not displace zinc from ZnSO₄. Check the changed condition: Could a missing deposit be due to a dirty or coated zinc surface?",
+        "produces": "An explanatory argument with species, valid conditions, a meaningful representation and an independent check.",
+        "protected_W": "The learner independently completes the causal bridge, not exposed before first attempt.",
         "first_attempt_must_be_saved_before_feedback": true,
         "initial_answer_visibility": "HIDDEN",
         "hints": [
@@ -740,34 +740,34 @@
       "source_exam_question_id": null,
       "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
       "predict": {
-        "prompt": "Before solving this unseen case, state your provisional model and what evidence would distinguish alternatives: A clean Zn strip loses 0.010 mol Zn into AgNO₃(aq), while only 0.018 mol metallic Ag is collected. Write the net ionic reaction and electron ledger; calculate the ideal silver deposition and identify two measurements needed to account for the discrepancy.",
-        "defensible_answer": "Provisional prediction only: identify competing chemical species/models and controlled conditions before calculating. Preserve the decisive represent inference for your own independent attempt."
+        "prompt": "Before solving, decide which observation or chemical model would be decisive: Translate Fe(s) + CuSO₄(aq) → FeSO₄(aq) + Cu(s) into a net ionic equation and identify spectators.",
+        "defensible_answer": "The deciding evidence must respect: In simple metal displacement, a more reactive metal may replace a less reactive metal from its dissolved salt under suitable conditions. Zinc atoms are oxidised to Zn²⁺ while Cu²⁺ ions gain electrons and deposit as copper. The ionic description Zn(s) + Cu²⁺(aq) → Zn²⁺(aq) + Cu(s) makes the exchange visible. Sulfate is a spectator ion. The observation is chemical evidence for this particular pairing, not a licence to claim every metal behaves identically."
       },
       "attempt": {
-        "prompt": "A clean Zn strip loses 0.010 mol Zn into AgNO₃(aq), while only 0.018 mol metallic Ag is collected. Write the net ionic reaction and electron ledger; calculate the ideal silver deposition and identify two measurements needed to account for the discrepancy.",
-        "produces": "Use Zn/Ag electron stoichiometry to calculate the independently expected Ag amount, then evaluate alternative explanations for an incomplete recovered deposit.",
-        "protected_W": "Use Zn/Ag electron stoichiometry to calculate the independently expected Ag amount, then evaluate alternative explanations for an incomplete recovered deposit.",
+        "prompt": "Translate Fe(s) + CuSO₄(aq) → FeSO₄(aq) + Cu(s) into a net ionic equation and identify spectators.",
+        "produces": "An explanatory argument with species, valid conditions, a meaningful representation and an independent check.",
+        "protected_W": "The learner independently completes the invariant correspondence, not exposed before first attempt.",
         "first_attempt_must_be_saved_before_feedback": true,
         "initial_answer_visibility": "HIDDEN",
         "hints": [
           {
             "id": "H1",
             "verb": "CLARIFY",
-            "text": "Before balancing an unfamiliar displacement, distinguish the ion reduced from spectator ions and use half-reaction electron counts to constrain the product amount."
+            "text": "Separate given observation from inferred identity in Displacement and ion exchange."
           },
           {
             "id": "H2",
             "verb": "CORRELATE",
-            "text": "Compare moles of zinc lost with moles of collected silver; use oxidation and reduction half-reactions to determine the electron budget. Keep nitrate ions outside the net ionic equation."
+            "text": "Recall the key scientific constraint: Displacement requires chemical feasibility; symbol exchange is not proof of reaction."
           },
           {
             "id": "H3",
             "verb": "OPEN_THE_WAY",
-            "text": "Prepare an electron-accounting and ideal-versus-recovered-silver table without evaluating its numerical cells. State what uncollected solids or remaining dissolved ions would help distinguish the discrepancy."
+            "text": "Draw an atom/species ledger or compare competing models; do not use hints to fill in the decisive conclusion."
           }
         ],
         "post_commit_closure": {
-          "model_response": "Zn → Zn²⁺ + 2e⁻, while 2Ag⁺ + 2e⁻ → 2Ag. Therefore Zn(s) + 2Ag⁺(aq) → Zn²⁺(aq) + 2Ag(s); nitrate is spectator. A 0.010 mol Zn loss could support 0.020 mol Ag if that is the sole process and Ag⁺ is sufficient. The 0.018 mol collected leaves 0.002 mol difference, but cannot alone identify whether Ag detached, other reductions occurred, or collection was incomplete. Test remaining Ag⁺ and recover filtered solids.",
+          "model_response": "The net ionic equation is Fe(s) + Cu²⁺(aq) → Fe²⁺(aq) + Cu(s). Sulfate ions remain unchanged as spectators, and net charge +2 is preserved.",
           "rubric": [
             "Identify actual chemical entities and states.",
             "Make the decisive scientific bridge with warranted conditions.",
@@ -780,34 +780,34 @@
           {
             "ask": "Which observations and species are actually given?",
             "why_this_ask": "Separate evidence from interpretation.",
-            "model_response": "Read the newly presented observations and distinguish reported quantities from inferred species. Do not import the worked example's original reactants."
+            "model_response": "A zinc strip placed in blue copper sulfate solution develops a reddish deposit, but a copper strip in zinc sulfate does not show the same result. What does this asymmetry reveal?"
           },
           {
             "ask": "Which scientific rule or model fits these conditions?",
             "why_this_ask": "Find and justify the governing mechanism.",
-            "model_response": "Use the appropriate balanced species, charge/electron and material-boundary rules; decide if the data determine a unique model."
+            "model_response": "In simple metal displacement, a more reactive metal may replace a less reactive metal from its dissolved salt under suitable conditions. Zinc atoms are oxidised to Zn²⁺ while Cu²⁺ ions gain electrons and deposit as copper. The ionic description Zn(s) + Cu²⁺(aq) → Zn²⁺(aq) + Cu(s) makes the exchange visible. Sulfate is a spectator ion. The observation is chemical evidence for this particular pairing, not a licence to claim every metal behaves identically."
           },
           {
             "ask": "What conclusion survives the conservation and competing-hypothesis check?",
             "why_this_ask": "Complete the learned inferential bridge.",
-            "model_response": "Zn → Zn²⁺ + 2e⁻, while 2Ag⁺ + 2e⁻ → 2Ag. Therefore Zn(s) + 2Ag⁺(aq) → Zn²⁺(aq) + 2Ag(s); nitrate is spectator. A 0.010 mol Zn loss could support 0.020 mol Ag if that is the sole process and Ag⁺ is sufficient. The 0.018 mol collected leaves 0.002 mol difference, but cannot alone identify whether Ag detached, other reductions occurred, or collection was incomplete. Test remaining Ag⁺ and recover filtered solids."
+            "model_response": "The net ionic equation is Fe(s) + Cu²⁺(aq) → Fe²⁺(aq) + Cu(s). Sulfate ions remain unchanged as spectators, and net charge +2 is preserved."
           }
         ],
-        "full_reconstruction": "Zn → Zn²⁺ + 2e⁻, while 2Ag⁺ + 2e⁻ → 2Ag. Therefore Zn(s) + 2Ag⁺(aq) → Zn²⁺(aq) + 2Ag(s); nitrate is spectator. A 0.010 mol Zn loss could support 0.020 mol Ag if that is the sole process and Ag⁺ is sufficient. The 0.018 mol collected leaves 0.002 mol difference, but cannot alone identify whether Ag detached, other reductions occurred, or collection was incomplete. Test remaining Ag⁺ and recover filtered solids."
+        "full_reconstruction": "The net ionic equation is Fe(s) + Cu²⁺(aq) → Fe²⁺(aq) + Cu(s). Sulfate ions remain unchanged as spectators, and net charge +2 is preserved."
       },
       "diagnose": {
-        "wrong_idea": "Because the deposited silver is lower than 0.020 mol, electrons have disappeared.",
-        "diagnostic_prompt": "Explain the specific error in this proposed solution: Because the deposited silver is lower than 0.020 mol, electrons have disappeared.",
-        "model_response": "Identify the unsupported assumption and recheck species identity, conservation and missing measurements; the corrected post-commit reconstruction supplies the warranted inference."
+        "wrong_idea": "'Swap ions or metals in an equation and a reaction must occur' confuses a formal writing operation with chemical feasibility. Repair by checking observed species, energy/reactivity conditions, soluble products and controls.",
+        "diagnostic_prompt": "Evaluate why the following reasoning fails: 'Swap ions or metals in an equation and a reaction must occur' confuses a formal writing operation with chemical feasibility. Repair by checking observed species, energy/reactivity conditions, soluble products and controls.",
+        "model_response": "A metal might be blocked by a protective surface oxide, so a single negative displacement observation may not justify a complete reactivity ordering. Repeat with a cleaned strip and controlled solution."
       },
       "repair": {
-        "action": "Rebuild the chemical model under the correct material/charge boundary and justify the independent discriminator.",
-        "explanation": "Avoid: Because the deposited silver is lower than 0.020 mol, electrons have disappeared. Instead demonstrate the claim with balanced species and observations.",
+        "action": "Rebuild the model using the correctly named reactant and product species; repeat the independent check.",
+        "explanation": "'Swap ions or metals in an equation and a reaction must occur' confuses a formal writing operation with chemical feasibility. Repair by checking observed species, energy/reactivity conditions, soluble products and controls.",
         "core1a_ref": "curriculum/chemistry/agent-b/textbook/C08.core1a.md#c0803-displacement-and-ion-exchange"
       },
       "boundary_test": {
-        "prompt": "If only 0.012 mol Ag⁺ was initially available, what upper bound follows without assigning the unspent electrons to silver?",
-        "answer": "At most 0.012 mol silver can deposit from 0.012 mol available Ag⁺; another pathway or assumption is needed for 0.010 mol Zn loss.",
+        "prompt": "If the dissolved anion is nitrate instead of sulfate, does the essential metal-exchange accounting change?",
+        "answer": "Under comparable conditions where nitrate is spectator, the net ionic change is still Fe + Cu²⁺ → Fe²⁺ + Cu.",
         "confirms": "Learner must apply the model under a changed condition, not echo the original answer."
       },
       "reviews": {
@@ -827,7 +827,7 @@
       "demand_author_evidence": {
         "band": "D3",
         "adjudication": "NOT_RUN",
-        "note": "Exact changed-condition author revision: B4 freshness candidate, scientific and independent QRT review remain NOT_RUN."
+        "note": "QRT candidate classification, not independently reviewed."
       }
     },
     {
@@ -848,8 +848,8 @@
       },
       "attempt": {
         "prompt": "A salt solution becomes cloudy after two clear solutions mix. Distinguish a true precipitation-driven double displacement from ions merely mixing; propose two confirming observations.",
-        "produces": "Independently synthesize the decisive model for this exact case: A salt solution becomes cloudy after two clear solutions mix. Distinguish a true precipitation-driven double displacement from ions merely mixing; propose two confirming observations. Check the changed condition: If all proposed products are soluble and no other reaction occurs, should an exchange equation be counted as net reaction?",
-        "protected_W": "Independently synthesize the decisive model for this exact case: A salt solution becomes cloudy after two clear solutions mix. Distinguish a true precipitation-driven double displacement from ions merely mixing; propose two confirming observations. Check the changed condition: If all proposed products are soluble and no other reaction occurs, should an exchange equation be counted as net reaction?",
+        "produces": "An explanatory argument with species, valid conditions, a meaningful representation and an independent check.",
+        "protected_W": "The learner independently completes the cross-stage bridge, not exposed before first attempt.",
         "first_attempt_must_be_saved_before_feedback": true,
         "initial_answer_visibility": "HIDDEN",
         "hints": [
@@ -946,34 +946,34 @@
       "source_exam_question_id": null,
       "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
       "predict": {
-        "prompt": "Before solving this unseen case, state your provisional model and what evidence would distinguish alternatives: Mix 0.010 mol Ca(NO₃)₂(aq) with 0.006 mol Na₂CO₃(aq). Construct the net ionic precipitation equation, find the maximum solid amount and the leftover calcium-ion amount, and explain why a white precipitate alone cannot prove its formula.",
-        "defensible_answer": "Provisional prediction only: identify competing chemical species/models and controlled conditions before calculating. Preserve the decisive explain inference for your own independent attempt."
+        "prompt": "Before solving, decide which observation or chemical model would be decisive: Explain how mixing BaCl₂(aq) and Na₂SO₄(aq) yields a solid while sodium and chloride remain dissolved.",
+        "defensible_answer": "The deciding evidence must respect: A precipitation reaction forms an insoluble or sparingly soluble solid from dissolved species. For example, mixing aqueous barium chloride and sodium sulfate can form barium sulfate: BaCl₂(aq) + Na₂SO₄(aq) → BaSO₄(s) + 2NaCl(aq). The net ionic process is Ba²⁺(aq) + SO₄²⁻(aq) → BaSO₄(s). Sodium and chloride ions stay dissolved and are not constituents of the precipitate. The equation conveys a particle account, not merely a memorised visual result."
       },
       "attempt": {
-        "prompt": "Mix 0.010 mol Ca(NO₃)₂(aq) with 0.006 mol Na₂CO₃(aq). Construct the net ionic precipitation equation, find the maximum solid amount and the leftover calcium-ion amount, and explain why a white precipitate alone cannot prove its formula.",
-        "produces": "Find the limiting precipitating ion, keep sodium/nitrate as spectators, and separate a stoichiometric prediction from chemical identity evidence.",
-        "protected_W": "Find the limiting precipitating ion, keep sodium/nitrate as spectators, and separate a stoichiometric prediction from chemical identity evidence.",
+        "prompt": "Explain how mixing BaCl₂(aq) and Na₂SO₄(aq) yields a solid while sodium and chloride remain dissolved.",
+        "produces": "An explanatory argument with species, valid conditions, a meaningful representation and an independent check.",
+        "protected_W": "The learner independently completes the causal bridge, not exposed before first attempt.",
         "first_attempt_must_be_saved_before_feedback": true,
         "initial_answer_visibility": "HIDDEN",
         "hints": [
           {
             "id": "H1",
             "verb": "CLARIFY",
-            "text": "Precipitation is a charge-and-mole problem: first decide which ions can form a low-solubility solid, then check limiting amounts rather than relying on colour."
+            "text": "Separate given observation from inferred identity in Precipitation: what a cloudy mixture does and does not prove."
           },
           {
             "id": "H2",
             "verb": "CORRELATE",
-            "text": "List the Ca²⁺, CO₃²⁻, Na⁺ and NO₃⁻ inventories before mixing; distinguish candidate precipitating partners from spectator ions. Compare initial mole counts for the proposed ionic ratio."
+            "text": "Recall the key scientific constraint: Precipitation is formation of an insoluble solid, but cloudiness alone does not uniquely identify it."
           },
           {
             "id": "H3",
             "verb": "OPEN_THE_WAY",
-            "text": "Build initial/consumed/remaining mole columns for the reacting ions, leaving the limiting-reagent decision and remaining amount for your attempt. Specify an independent solid-identity check rather than concluding from colour."
+            "text": "Draw an atom/species ledger or compare competing models; do not use hints to fill in the decisive conclusion."
           }
         ],
         "post_commit_closure": {
-          "model_response": "Ca²⁺(aq) + CO₃²⁻(aq) → CaCO₃(s). Each mole of carbonate consumes one mole Ca²⁺, so carbonate limits and at most 0.006 mol CaCO₃ forms; 0.004 mol calcium ion remains, assuming complete precipitation and no other processes. Sodium and nitrate remain in solution. White appearance alone cannot uniquely identify CaCO₃; independent composition tests are needed.",
+          "model_response": "Ba²⁺ and SO₄²⁻ combine to make sparingly soluble BaSO₄(s). Na⁺ and Cl⁻ are spectator ions in the aqueous phase. Dissolved ions are not the same as discrete NaCl molecules in the solution.",
           "rubric": [
             "Identify actual chemical entities and states.",
             "Make the decisive scientific bridge with warranted conditions.",
@@ -986,34 +986,34 @@
           {
             "ask": "Which observations and species are actually given?",
             "why_this_ask": "Separate evidence from interpretation.",
-            "model_response": "Read the newly presented observations and distinguish reported quantities from inferred species. Do not import the worked example's original reactants."
+            "model_response": "Two completely clear solutions can yield a white solid in seconds. The striking colour change is real, but how can the experiment establish which ions have combined?"
           },
           {
             "ask": "Which scientific rule or model fits these conditions?",
             "why_this_ask": "Find and justify the governing mechanism.",
-            "model_response": "Use the appropriate balanced species, charge/electron and material-boundary rules; decide if the data determine a unique model."
+            "model_response": "A precipitation reaction forms an insoluble or sparingly soluble solid from dissolved species. For example, mixing aqueous barium chloride and sodium sulfate can form barium sulfate: BaCl₂(aq) + Na₂SO₄(aq) → BaSO₄(s) + 2NaCl(aq). The net ionic process is Ba²⁺(aq) + SO₄²⁻(aq) → BaSO₄(s). Sodium and chloride ions stay dissolved and are not constituents of the precipitate. The equation conveys a particle account, not merely a memorised visual result."
           },
           {
             "ask": "What conclusion survives the conservation and competing-hypothesis check?",
             "why_this_ask": "Complete the learned inferential bridge.",
-            "model_response": "Ca²⁺(aq) + CO₃²⁻(aq) → CaCO₃(s). Each mole of carbonate consumes one mole Ca²⁺, so carbonate limits and at most 0.006 mol CaCO₃ forms; 0.004 mol calcium ion remains, assuming complete precipitation and no other processes. Sodium and nitrate remain in solution. White appearance alone cannot uniquely identify CaCO₃; independent composition tests are needed."
+            "model_response": "Ba²⁺ and SO₄²⁻ combine to make sparingly soluble BaSO₄(s). Na⁺ and Cl⁻ are spectator ions in the aqueous phase. Dissolved ions are not the same as discrete NaCl molecules in the solution."
           }
         ],
-        "full_reconstruction": "Ca²⁺(aq) + CO₃²⁻(aq) → CaCO₃(s). Each mole of carbonate consumes one mole Ca²⁺, so carbonate limits and at most 0.006 mol CaCO₃ forms; 0.004 mol calcium ion remains, assuming complete precipitation and no other processes. Sodium and nitrate remain in solution. White appearance alone cannot uniquely identify CaCO₃; independent composition tests are needed."
+        "full_reconstruction": "Ba²⁺ and SO₄²⁻ combine to make sparingly soluble BaSO₄(s). Na⁺ and Cl⁻ are spectator ions in the aqueous phase. Dissolved ions are not the same as discrete NaCl molecules in the solution."
       },
       "diagnose": {
-        "wrong_idea": "All dissolved calcium disappears once any cloudy solid appears.",
-        "diagnostic_prompt": "Explain the specific error in this proposed solution: All dissolved calcium disappears once any cloudy solid appears.",
-        "model_response": "Identify the unsupported assumption and recheck species identity, conservation and missing measurements; the corrected post-commit reconstruction supplies the warranted inference."
+        "wrong_idea": "'The precipitate is NaCl because sodium and chlorine are present' ignores solubility and ionic species. Repair by writing dissociated ions and marking the actual insoluble product.",
+        "diagnostic_prompt": "Evaluate why the following reasoning fails: 'The precipitate is NaCl because sodium and chlorine are present' ignores solubility and ionic species. Repair by writing dissociated ions and marking the actual insoluble product.",
+        "model_response": "A solution already saturated with other dissolved salts can alter precipitation behavior; do not extend a simplified solubility prediction to all concentrations and temperatures without stating assumptions."
       },
       "repair": {
-        "action": "Rebuild the chemical model under the correct material/charge boundary and justify the independent discriminator.",
-        "explanation": "Avoid: All dissolved calcium disappears once any cloudy solid appears. Instead demonstrate the claim with balanced species and observations.",
+        "action": "Rebuild the model using the correctly named reactant and product species; repeat the independent check.",
+        "explanation": "'The precipitate is NaCl because sodium and chlorine are present' ignores solubility and ionic species. Repair by writing dissociated ions and marking the actual insoluble product.",
         "core1a_ref": "curriculum/chemistry/agent-b/textbook/C08.core1a.md#c0804-precipitation-what-a-cloudy-mixture-does-and-does-not-prove"
       },
       "boundary_test": {
-        "prompt": "Suppose only 0.003 mol carbonate was actually added. What can be calculated and what remains experimentally uncertain?",
-        "answer": "The ideal upper bound becomes 0.003 mol CaCO₃ and 0.007 mol Ca²⁺ remains if complete; actual yield depends on solubility and conditions.",
+        "prompt": "If sodium nitrate replaces sodium sulfate, does the same precipitate necessarily form?",
+        "answer": "No. Without sulfate, the proposed BaSO₄ formation lacks a reactant; check the new ion combination.",
         "confirms": "Learner must apply the model under a changed condition, not echo the original answer."
       },
       "reviews": {
@@ -1033,7 +1033,7 @@
       "demand_author_evidence": {
         "band": "D3",
         "adjudication": "NOT_RUN",
-        "note": "Exact changed-condition author revision: B4 freshness candidate, scientific and independent QRT review remain NOT_RUN."
+        "note": "QRT candidate classification, not independently reviewed."
       }
     },
     {
@@ -1049,34 +1049,34 @@
       "source_exam_question_id": null,
       "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
       "predict": {
-        "prompt": "Before solving this unseen case, state your provisional model and what evidence would distinguish alternatives: Two clear solutions identified as AgNO₃(aq) and KBr(aq) produce a pale solid. Draw before/after ionic inventories, identify the spectator ions, and propose a chemical measurement that could distinguish the proposed AgBr solid from a visually similar contaminant.",
-        "defensible_answer": "Provisional prediction only: identify competing chemical species/models and controlled conditions before calculating. Preserve the decisive represent inference for your own independent attempt."
+        "prompt": "Before solving, decide which observation or chemical model would be decisive: Represent the BaCl₂/Na₂SO₄ reaction using before-and-after ion inventories and identify net ionic versus spectator species.",
+        "defensible_answer": "The deciding evidence must respect: A precipitation reaction forms an insoluble or sparingly soluble solid from dissolved species. For example, mixing aqueous barium chloride and sodium sulfate can form barium sulfate: BaCl₂(aq) + Na₂SO₄(aq) → BaSO₄(s) + 2NaCl(aq). The net ionic process is Ba²⁺(aq) + SO₄²⁻(aq) → BaSO₄(s). Sodium and chloride ions stay dissolved and are not constituents of the precipitate. The equation conveys a particle account, not merely a memorised visual result."
       },
       "attempt": {
-        "prompt": "Two clear solutions identified as AgNO₃(aq) and KBr(aq) produce a pale solid. Draw before/after ionic inventories, identify the spectator ions, and propose a chemical measurement that could distinguish the proposed AgBr solid from a visually similar contaminant.",
-        "produces": "Independently translate the Ag⁺/Br⁻ reaction into a complete ion ledger and distinguish evidence of precipitation from proof of the solid's identity.",
-        "protected_W": "Independently translate the Ag⁺/Br⁻ reaction into a complete ion ledger and distinguish evidence of precipitation from proof of the solid's identity.",
+        "prompt": "Represent the BaCl₂/Na₂SO₄ reaction using before-and-after ion inventories and identify net ionic versus spectator species.",
+        "produces": "An explanatory argument with species, valid conditions, a meaningful representation and an independent check.",
+        "protected_W": "The learner independently completes the invariant correspondence, not exposed before first attempt.",
         "first_attempt_must_be_saved_before_feedback": true,
         "initial_answer_visibility": "HIDDEN",
         "hints": [
           {
             "id": "H1",
             "verb": "CLARIFY",
-            "text": "A proper precipitation drawing conserves spectator ions as well as atoms and charges; the precipitate is a proposed species, not a conclusion from colour."
+            "text": "Separate given observation from inferred identity in Precipitation: what a cloudy mixture does and does not prove."
           },
           {
             "id": "H2",
             "verb": "CORRELATE",
-            "text": "Trace Ag⁺, Br⁻, K⁺ and NO₃⁻ through mixing. Which ions could enter a solid and which must remain dissolved to conserve elements and overall charge?"
+            "text": "Recall the key scientific constraint: Precipitation is formation of an insoluble solid, but cloudiness alone does not uniquely identify it."
           },
           {
             "id": "H3",
             "verb": "OPEN_THE_WAY",
-            "text": "Draw the before/after ion ledger and a proposed net ionic equation, but leave its verification to the learner. Name a test of the isolated solid that goes beyond its pale appearance."
+            "text": "Draw an atom/species ledger or compare competing models; do not use hints to fill in the decisive conclusion."
           }
         ],
         "post_commit_closure": {
-          "model_response": "Ag⁺ + Br⁻ → AgBr(s) is the expected net ionic equation for the stated solutions. Potassium and nitrate remain dissolved; the solution inventory must conserve each element and overall charge. Appearance does not establish that the isolated solid is pure AgBr. Confirm its constituents with suitable independent analysis and controlled blanks rather than assigning composition by colour alone.",
+          "model_response": "Initially Ba²⁺, 2Cl⁻, 2Na⁺ and SO₄²⁻ are dissolved. Afterward BaSO₄(s) forms while 2Na⁺ and 2Cl⁻ remain in solution. The net ionic equation is Ba²⁺ + SO₄²⁻ → BaSO₄(s).",
           "rubric": [
             "Identify actual chemical entities and states.",
             "Make the decisive scientific bridge with warranted conditions.",
@@ -1089,34 +1089,34 @@
           {
             "ask": "Which observations and species are actually given?",
             "why_this_ask": "Separate evidence from interpretation.",
-            "model_response": "Read the newly presented observations and distinguish reported quantities from inferred species. Do not import the worked example's original reactants."
+            "model_response": "Two completely clear solutions can yield a white solid in seconds. The striking colour change is real, but how can the experiment establish which ions have combined?"
           },
           {
             "ask": "Which scientific rule or model fits these conditions?",
             "why_this_ask": "Find and justify the governing mechanism.",
-            "model_response": "Use the appropriate balanced species, charge/electron and material-boundary rules; decide if the data determine a unique model."
+            "model_response": "A precipitation reaction forms an insoluble or sparingly soluble solid from dissolved species. For example, mixing aqueous barium chloride and sodium sulfate can form barium sulfate: BaCl₂(aq) + Na₂SO₄(aq) → BaSO₄(s) + 2NaCl(aq). The net ionic process is Ba²⁺(aq) + SO₄²⁻(aq) → BaSO₄(s). Sodium and chloride ions stay dissolved and are not constituents of the precipitate. The equation conveys a particle account, not merely a memorised visual result."
           },
           {
             "ask": "What conclusion survives the conservation and competing-hypothesis check?",
             "why_this_ask": "Complete the learned inferential bridge.",
-            "model_response": "Ag⁺ + Br⁻ → AgBr(s) is the expected net ionic equation for the stated solutions. Potassium and nitrate remain dissolved; the solution inventory must conserve each element and overall charge. Appearance does not establish that the isolated solid is pure AgBr. Confirm its constituents with suitable independent analysis and controlled blanks rather than assigning composition by colour alone."
+            "model_response": "Initially Ba²⁺, 2Cl⁻, 2Na⁺ and SO₄²⁻ are dissolved. Afterward BaSO₄(s) forms while 2Na⁺ and 2Cl⁻ remain in solution. The net ionic equation is Ba²⁺ + SO₄²⁻ → BaSO₄(s)."
           }
         ],
-        "full_reconstruction": "Ag⁺ + Br⁻ → AgBr(s) is the expected net ionic equation for the stated solutions. Potassium and nitrate remain dissolved; the solution inventory must conserve each element and overall charge. Appearance does not establish that the isolated solid is pure AgBr. Confirm its constituents with suitable independent analysis and controlled blanks rather than assigning composition by colour alone."
+        "full_reconstruction": "Initially Ba²⁺, 2Cl⁻, 2Na⁺ and SO₄²⁻ are dissolved. Afterward BaSO₄(s) forms while 2Na⁺ and 2Cl⁻ remain in solution. The net ionic equation is Ba²⁺ + SO₄²⁻ → BaSO₄(s)."
       },
       "diagnose": {
-        "wrong_idea": "A pale precipitate uniquely determines its chemical composition.",
-        "diagnostic_prompt": "Explain the specific error in this proposed solution: A pale precipitate uniquely determines its chemical composition.",
-        "model_response": "Identify the unsupported assumption and recheck species identity, conservation and missing measurements; the corrected post-commit reconstruction supplies the warranted inference."
+        "wrong_idea": "'The precipitate is NaCl because sodium and chlorine are present' ignores solubility and ionic species. Repair by writing dissociated ions and marking the actual insoluble product.",
+        "diagnostic_prompt": "Evaluate why the following reasoning fails: 'The precipitate is NaCl because sodium and chlorine are present' ignores solubility and ionic species. Repair by writing dissociated ions and marking the actual insoluble product.",
+        "model_response": "A solution already saturated with other dissolved salts can alter precipitation behavior; do not extend a simplified solubility prediction to all concentrations and temperatures without stating assumptions."
       },
       "repair": {
-        "action": "Rebuild the chemical model under the correct material/charge boundary and justify the independent discriminator.",
-        "explanation": "Avoid: A pale precipitate uniquely determines its chemical composition. Instead demonstrate the claim with balanced species and observations.",
+        "action": "Rebuild the model using the correctly named reactant and product species; repeat the independent check.",
+        "explanation": "'The precipitate is NaCl because sodium and chlorine are present' ignores solubility and ionic species. Repair by writing dissociated ions and marking the actual insoluble product.",
         "core1a_ref": "curriculum/chemistry/agent-b/textbook/C08.core1a.md#c0804-precipitation-what-a-cloudy-mixture-does-and-does-not-prove"
       },
       "boundary_test": {
-        "prompt": "If a second dissolved halide is present, can solid colour establish a single pure precipitate?",
-        "answer": "No; more than one sparingly soluble silver halide may form. Product identity and purity require further chemical evidence.",
+        "prompt": "Would spectator chloride appear in the net ionic equation?",
+        "answer": "No. It cancels because it is unchanged on both sides.",
         "confirms": "Learner must apply the model under a changed condition, not echo the original answer."
       },
       "reviews": {
@@ -1136,7 +1136,7 @@
       "demand_author_evidence": {
         "band": "D3",
         "adjudication": "NOT_RUN",
-        "note": "Exact changed-condition author revision: B4 freshness candidate, scientific and independent QRT review remain NOT_RUN."
+        "note": "QRT candidate classification, not independently reviewed."
       }
     },
     {
@@ -1157,8 +1157,8 @@
       },
       "attempt": {
         "prompt": "Two mixed solutions become milky but the expected sulfate test is negative. Synthesize two rival explanations and design a discriminating experiment.",
-        "produces": "Independently synthesize the decisive model for this exact case: Two mixed solutions become milky but the expected sulfate test is negative. Synthesize two rival explanations and design a discriminating experiment. Check the changed condition: Can a charge-balanced net ionic equation prove a precipitate occurred?",
-        "protected_W": "Independently synthesize the decisive model for this exact case: Two mixed solutions become milky but the expected sulfate test is negative. Synthesize two rival explanations and design a discriminating experiment. Check the changed condition: Can a charge-balanced net ionic equation prove a precipitate occurred?",
+        "produces": "An explanatory argument with species, valid conditions, a meaningful representation and an independent check.",
+        "protected_W": "The learner independently completes the cross-stage bridge, not exposed before first attempt.",
         "first_attempt_must_be_saved_before_feedback": true,
         "initial_answer_visibility": "HIDDEN",
         "hints": [
@@ -1260,8 +1260,8 @@
       },
       "attempt": {
         "prompt": "Explain why an exothermic reaction can need initial heating before it starts and why the vessel may warm afterward.",
-        "produces": "Independently explain the decisive model for this exact case: Explain why an exothermic reaction can need initial heating before it starts and why the vessel may warm afterward. Check the changed condition: Can an endothermic process also require an activation barrier?",
-        "protected_W": "Independently explain the decisive model for this exact case: Explain why an exothermic reaction can need initial heating before it starts and why the vessel may warm afterward. Check the changed condition: Can an endothermic process also require an activation barrier?",
+        "produces": "An explanatory argument with species, valid conditions, a meaningful representation and an independent check.",
+        "protected_W": "The learner independently completes the causal bridge, not exposed before first attempt.",
         "first_attempt_must_be_saved_before_feedback": true,
         "initial_answer_visibility": "HIDDEN",
         "hints": [
@@ -1363,8 +1363,8 @@
       },
       "attempt": {
         "prompt": "Construct paired energy profiles for CaO hydration and CaCO₃ decomposition, labelling reactants, products and activation barriers.",
-        "produces": "Independently represent the decisive model for this exact case: Construct paired energy profiles for CaO hydration and CaCO₃ decomposition, labelling reactants, products and activation barriers. Check the changed condition: Does a larger activation peak automatically mean more heat released?",
-        "protected_W": "Independently represent the decisive model for this exact case: Construct paired energy profiles for CaO hydration and CaCO₃ decomposition, labelling reactants, products and activation barriers. Check the changed condition: Does a larger activation peak automatically mean more heat released?",
+        "produces": "An explanatory argument with species, valid conditions, a meaningful representation and an independent check.",
+        "protected_W": "The learner independently completes the invariant correspondence, not exposed before first attempt.",
         "first_attempt_must_be_saved_before_feedback": true,
         "initial_answer_visibility": "HIDDEN",
         "hints": [
@@ -1466,8 +1466,8 @@
       },
       "attempt": {
         "prompt": "A recorded beaker temperature falls during a process believed exothermic. Build competing energy-flow models and identify the additional measurements needed.",
-        "produces": "Independently synthesize the decisive model for this exact case: A recorded beaker temperature falls during a process believed exothermic. Build competing energy-flow models and identify the additional measurements needed. Check the changed condition: If the vessel is poorly insulated, can temperature measurements alone determine total released energy?",
-        "protected_W": "Independently synthesize the decisive model for this exact case: A recorded beaker temperature falls during a process believed exothermic. Build competing energy-flow models and identify the additional measurements needed. Check the changed condition: If the vessel is poorly insulated, can temperature measurements alone determine total released energy?",
+        "produces": "An explanatory argument with species, valid conditions, a meaningful representation and an independent check.",
+        "protected_W": "The learner independently completes the cross-stage bridge, not exposed before first attempt.",
         "first_attempt_must_be_saved_before_feedback": true,
         "initial_answer_visibility": "HIDDEN",
         "hints": [
@@ -1564,34 +1564,34 @@
       "source_exam_question_id": null,
       "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
       "predict": {
-        "prompt": "Before solving this unseen case, state your provisional model and what evidence would distinguish alternatives: Consider the idealised net reaction Fe₂O₃ + 3CO → 2Fe + 3CO₂. Use both oxygen-transfer and oxidation-number models to decide what is oxidised and reduced, and explain which evidence would be needed to show the iron oxide was actually converted.",
-        "defensible_answer": "Provisional prediction only: identify competing chemical species/models and controlled conditions before calculating. Preserve the decisive explain inference for your own independent attempt."
+        "prompt": "Before solving, decide which observation or chemical model would be decisive: Explain which species are oxidised and reduced when CuO reacts with hydrogen, using oxygen transfer rather than keyword matching.",
+        "defensible_answer": "The deciding evidence must respect: In school-level oxygen-transfer language, oxidation may mean oxygen gain while reduction means oxygen loss. They are not separate unrelated labels but two aspects of an overall redox process. For CuO + H₂ → Cu + H₂O, copper oxide loses oxygen and is reduced to copper. Hydrogen gains oxygen to become water and is oxidised. The atoms do not disappear: oxygen transfers to a different chemical species. This is a stronger explanation than 'the black substance turned red'."
       },
       "attempt": {
-        "prompt": "Consider the idealised net reaction Fe₂O₃ + 3CO → 2Fe + 3CO₂. Use both oxygen-transfer and oxidation-number models to decide what is oxidised and reduced, and explain which evidence would be needed to show the iron oxide was actually converted.",
-        "produces": "Use paired oxygen and electron ledgers for iron oxide/carbon monoxide and distinguish balanced possibility from verified conversion.",
-        "protected_W": "Use paired oxygen and electron ledgers for iron oxide/carbon monoxide and distinguish balanced possibility from verified conversion.",
+        "prompt": "Explain which species are oxidised and reduced when CuO reacts with hydrogen, using oxygen transfer rather than keyword matching.",
+        "produces": "An explanatory argument with species, valid conditions, a meaningful representation and an independent check.",
+        "protected_W": "The learner independently completes the causal bridge, not exposed before first attempt.",
         "first_attempt_must_be_saved_before_feedback": true,
         "initial_answer_visibility": "HIDDEN",
         "hints": [
           {
             "id": "H1",
             "verb": "CLARIFY",
-            "text": "Connect oxygen transfer with electron accounting; a redox claim must explain both partners and respect charge and atom conservation."
+            "text": "Separate given observation from inferred identity in Oxidation and reduction as a paired transformation."
           },
           {
             "id": "H2",
             "verb": "CORRELATE",
-            "text": "Compare iron's formal oxidation number in its oxide and metal form, and carbon's in carbon monoxide and carbon dioxide. Keep the oxygen-transfer and electron-count descriptions consistent."
+            "text": "Recall the key scientific constraint: Oxidation and reduction occur together, with oxygen transfer one useful school-level model."
           },
           {
             "id": "H3",
             "verb": "OPEN_THE_WAY",
-            "text": "Create two parallel change tables, one for oxygen movement and one for electron gains/losses, without filling the final agent labels. State what product evidence could establish actual conversion."
+            "text": "Draw an atom/species ledger or compare competing models; do not use hints to fill in the decisive conclusion."
           }
         ],
         "post_commit_closure": {
-          "model_response": "Fe₂O₃ loses oxygen and is reduced to Fe, whereas CO gains oxygen and is oxidised to CO₂. Fe is formally +3 in Fe₂O₃ and 0 in Fe; carbon rises from +2 in CO to +4 in CO₂. Three carbon atoms each lose 2 e⁻ while two iron ions each gain 3 e⁻, so 6 electrons balance. Product iron and gas identity require measurements; a dark-to-grey appearance alone cannot prove complete conversion.",
+          "model_response": "CuO loses its oxygen to become Cu and is reduced; hydrogen accepts oxygen, becoming water, and is oxidised. The two changes are coupled and conserve one O atom.",
           "rubric": [
             "Identify actual chemical entities and states.",
             "Make the decisive scientific bridge with warranted conditions.",
@@ -1604,34 +1604,34 @@
           {
             "ask": "Which observations and species are actually given?",
             "why_this_ask": "Separate evidence from interpretation.",
-            "model_response": "Read the newly presented observations and distinguish reported quantities from inferred species. Do not import the worked example's original reactants."
+            "model_response": "Black copper oxide becomes reddish copper when hydrogen passes over a heated sample. Where did the oxygen go, and did only one chemical species change?"
           },
           {
             "ask": "Which scientific rule or model fits these conditions?",
             "why_this_ask": "Find and justify the governing mechanism.",
-            "model_response": "Use the appropriate balanced species, charge/electron and material-boundary rules; decide if the data determine a unique model."
+            "model_response": "In school-level oxygen-transfer language, oxidation may mean oxygen gain while reduction means oxygen loss. They are not separate unrelated labels but two aspects of an overall redox process. For CuO + H₂ → Cu + H₂O, copper oxide loses oxygen and is reduced to copper. Hydrogen gains oxygen to become water and is oxidised. The atoms do not disappear: oxygen transfers to a different chemical species. This is a stronger explanation than 'the black substance turned red'."
           },
           {
             "ask": "What conclusion survives the conservation and competing-hypothesis check?",
             "why_this_ask": "Complete the learned inferential bridge.",
-            "model_response": "Fe₂O₃ loses oxygen and is reduced to Fe, whereas CO gains oxygen and is oxidised to CO₂. Fe is formally +3 in Fe₂O₃ and 0 in Fe; carbon rises from +2 in CO to +4 in CO₂. Three carbon atoms each lose 2 e⁻ while two iron ions each gain 3 e⁻, so 6 electrons balance. Product iron and gas identity require measurements; a dark-to-grey appearance alone cannot prove complete conversion."
+            "model_response": "CuO loses its oxygen to become Cu and is reduced; hydrogen accepts oxygen, becoming water, and is oxidised. The two changes are coupled and conserve one O atom."
           }
         ],
-        "full_reconstruction": "Fe₂O₃ loses oxygen and is reduced to Fe, whereas CO gains oxygen and is oxidised to CO₂. Fe is formally +3 in Fe₂O₃ and 0 in Fe; carbon rises from +2 in CO to +4 in CO₂. Three carbon atoms each lose 2 e⁻ while two iron ions each gain 3 e⁻, so 6 electrons balance. Product iron and gas identity require measurements; a dark-to-grey appearance alone cannot prove complete conversion."
+        "full_reconstruction": "CuO loses its oxygen to become Cu and is reduced; hydrogen accepts oxygen, becoming water, and is oxidised. The two changes are coupled and conserve one O atom."
       },
       "diagnose": {
-        "wrong_idea": "Oxidation means a substance must react with O₂ gas, so CO cannot be oxidised here.",
-        "diagnostic_prompt": "Explain the specific error in this proposed solution: Oxidation means a substance must react with O₂ gas, so CO cannot be oxidised here.",
-        "model_response": "Identify the unsupported assumption and recheck species identity, conservation and missing measurements; the corrected post-commit reconstruction supplies the warranted inference."
+        "wrong_idea": "'Hydrogen is the reducing agent, therefore hydrogen is reduced' confuses an agent's effect on another species with its own change. Repair: name the species that gains/loses oxygen, then describe its own oxidation/reduction.",
+        "diagnostic_prompt": "Evaluate why the following reasoning fails: 'Hydrogen is the reducing agent, therefore hydrogen is reduced' confuses an agent's effect on another species with its own change. Repair: name the species that gains/loses oxygen, then describe its own oxidation/reduction.",
+        "model_response": "A metal oxide might turn reddish due to a different chemical mixture or lighting; neither colour nor one balanced hypothetical equation uniquely identifies the products. Confirm species and conditions."
       },
       "repair": {
-        "action": "Rebuild the chemical model under the correct material/charge boundary and justify the independent discriminator.",
-        "explanation": "Avoid: Oxidation means a substance must react with O₂ gas, so CO cannot be oxidised here. Instead demonstrate the claim with balanced species and observations.",
+        "action": "Rebuild the model using the correctly named reactant and product species; repeat the independent check.",
+        "explanation": "'Hydrogen is the reducing agent, therefore hydrogen is reduced' confuses an agent's effect on another species with its own change. Repair: name the species that gains/loses oxygen, then describe its own oxidation/reduction.",
         "core1a_ref": "curriculum/chemistry/agent-b/textbook/C08.core1a.md#c0806-oxidation-and-reduction-as-a-paired-transformation"
       },
       "boundary_test": {
-        "prompt": "What if the solid contains both Fe and unreacted Fe₂O₃? Does the net equation alone establish conversion fraction?",
-        "answer": "No; the balanced equation describes a candidate net reaction, not its measured extent. Independent phase/composition evidence is required.",
+        "prompt": "If CuO is reduced using carbon instead, must hydrogen still be the species oxidised?",
+        "answer": "No. The reducing species would be carbon in that different reaction, and the products depend on conditions.",
         "confirms": "Learner must apply the model under a changed condition, not echo the original answer."
       },
       "reviews": {
@@ -1651,7 +1651,7 @@
       "demand_author_evidence": {
         "band": "D3",
         "adjudication": "NOT_RUN",
-        "note": "Exact changed-condition author revision: B4 freshness candidate, scientific and independent QRT review remain NOT_RUN."
+        "note": "QRT candidate classification, not independently reviewed."
       }
     },
     {
@@ -1667,34 +1667,34 @@
       "source_exam_question_id": null,
       "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
       "predict": {
-        "prompt": "Before solving this unseen case, state your provisional model and what evidence would distinguish alternatives: A zinc strip contacts a solution containing Pb²⁺ and solid lead appears under controlled conditions. Write both half-reactions and the net ionic equation. Explain why the process is redox even though no oxygen moves.",
-        "defensible_answer": "Provisional prediction only: identify competing chemical species/models and controlled conditions before calculating. Preserve the decisive represent inference for your own independent attempt."
+        "prompt": "Before solving, decide which observation or chemical model would be decisive: Represent CuO + H₂ → Cu + H₂O as an atom ledger and an oxygen-transfer diagram, identifying oxidant and reductant.",
+        "defensible_answer": "The deciding evidence must respect: In school-level oxygen-transfer language, oxidation may mean oxygen gain while reduction means oxygen loss. They are not separate unrelated labels but two aspects of an overall redox process. For CuO + H₂ → Cu + H₂O, copper oxide loses oxygen and is reduced to copper. Hydrogen gains oxygen to become water and is oxidised. The atoms do not disappear: oxygen transfers to a different chemical species. This is a stronger explanation than 'the black substance turned red'."
       },
       "attempt": {
-        "prompt": "A zinc strip contacts a solution containing Pb²⁺ and solid lead appears under controlled conditions. Write both half-reactions and the net ionic equation. Explain why the process is redox even though no oxygen moves.",
-        "produces": "Infer oxidation and reduction from electron transfer in an oxygen-free metal-ion displacement; preserve net ionic charge and atom balance.",
-        "protected_W": "Infer oxidation and reduction from electron transfer in an oxygen-free metal-ion displacement; preserve net ionic charge and atom balance.",
+        "prompt": "Represent CuO + H₂ → Cu + H₂O as an atom ledger and an oxygen-transfer diagram, identifying oxidant and reductant.",
+        "produces": "An explanatory argument with species, valid conditions, a meaningful representation and an independent check.",
+        "protected_W": "The learner independently completes the invariant correspondence, not exposed before first attempt.",
         "first_attempt_must_be_saved_before_feedback": true,
         "initial_answer_visibility": "HIDDEN",
         "hints": [
           {
             "id": "H1",
             "verb": "CLARIFY",
-            "text": "Extend beyond oxygen-transfer vocabulary: use a balanced electron ledger to identify redox when oxygen is absent."
+            "text": "Separate given observation from inferred identity in Oxidation and reduction as a paired transformation."
           },
           {
             "id": "H2",
             "verb": "CORRELATE",
-            "text": "Track zinc as metal versus dissolved ion, and lead as dissolved ion versus deposited metal. Check both charge conservation and electron transfer even though no oxygen species appears."
+            "text": "Recall the key scientific constraint: Oxidation and reduction occur together, with oxygen transfer one useful school-level model."
           },
           {
             "id": "H3",
             "verb": "OPEN_THE_WAY",
-            "text": "Write oxidation and reduction half-reaction templates with electron coefficients still unknown; combine only after matching electron counts and atom/charge totals. Leave the redox-agent assignment for the saved attempt."
+            "text": "Draw an atom/species ledger or compare competing models; do not use hints to fill in the decisive conclusion."
           }
         ],
         "post_commit_closure": {
-          "model_response": "Zn → Zn²⁺ + 2e⁻ and Pb²⁺ + 2e⁻ → Pb. The sum Zn(s) + Pb²⁺(aq) → Zn²⁺(aq) + Pb(s) conserves atoms and net charge +2. Zinc is oxidised and lead ions reduced even though no oxygen species appears. This demonstrates the limits of the oxygen-transfer-only introductory definition.",
+          "model_response": "One Cu, one O and two H atoms occur on each side. Oxygen moves from CuO to H₂. CuO is the oxidising agent (it is reduced), while H₂ is the reducing agent (it is oxidised).",
           "rubric": [
             "Identify actual chemical entities and states.",
             "Make the decisive scientific bridge with warranted conditions.",
@@ -1707,34 +1707,34 @@
           {
             "ask": "Which observations and species are actually given?",
             "why_this_ask": "Separate evidence from interpretation.",
-            "model_response": "Read the newly presented observations and distinguish reported quantities from inferred species. Do not import the worked example's original reactants."
+            "model_response": "Black copper oxide becomes reddish copper when hydrogen passes over a heated sample. Where did the oxygen go, and did only one chemical species change?"
           },
           {
             "ask": "Which scientific rule or model fits these conditions?",
             "why_this_ask": "Find and justify the governing mechanism.",
-            "model_response": "Use the appropriate balanced species, charge/electron and material-boundary rules; decide if the data determine a unique model."
+            "model_response": "In school-level oxygen-transfer language, oxidation may mean oxygen gain while reduction means oxygen loss. They are not separate unrelated labels but two aspects of an overall redox process. For CuO + H₂ → Cu + H₂O, copper oxide loses oxygen and is reduced to copper. Hydrogen gains oxygen to become water and is oxidised. The atoms do not disappear: oxygen transfers to a different chemical species. This is a stronger explanation than 'the black substance turned red'."
           },
           {
             "ask": "What conclusion survives the conservation and competing-hypothesis check?",
             "why_this_ask": "Complete the learned inferential bridge.",
-            "model_response": "Zn → Zn²⁺ + 2e⁻ and Pb²⁺ + 2e⁻ → Pb. The sum Zn(s) + Pb²⁺(aq) → Zn²⁺(aq) + Pb(s) conserves atoms and net charge +2. Zinc is oxidised and lead ions reduced even though no oxygen species appears. This demonstrates the limits of the oxygen-transfer-only introductory definition."
+            "model_response": "One Cu, one O and two H atoms occur on each side. Oxygen moves from CuO to H₂. CuO is the oxidising agent (it is reduced), while H₂ is the reducing agent (it is oxidised)."
           }
         ],
-        "full_reconstruction": "Zn → Zn²⁺ + 2e⁻ and Pb²⁺ + 2e⁻ → Pb. The sum Zn(s) + Pb²⁺(aq) → Zn²⁺(aq) + Pb(s) conserves atoms and net charge +2. Zinc is oxidised and lead ions reduced even though no oxygen species appears. This demonstrates the limits of the oxygen-transfer-only introductory definition."
+        "full_reconstruction": "One Cu, one O and two H atoms occur on each side. Oxygen moves from CuO to H₂. CuO is the oxidising agent (it is reduced), while H₂ is the reducing agent (it is oxidised)."
       },
       "diagnose": {
-        "wrong_idea": "No oxygen occurs in the equation, so oxidation is impossible.",
-        "diagnostic_prompt": "Explain the specific error in this proposed solution: No oxygen occurs in the equation, so oxidation is impossible.",
-        "model_response": "Identify the unsupported assumption and recheck species identity, conservation and missing measurements; the corrected post-commit reconstruction supplies the warranted inference."
+        "wrong_idea": "'Hydrogen is the reducing agent, therefore hydrogen is reduced' confuses an agent's effect on another species with its own change. Repair: name the species that gains/loses oxygen, then describe its own oxidation/reduction.",
+        "diagnostic_prompt": "Evaluate why the following reasoning fails: 'Hydrogen is the reducing agent, therefore hydrogen is reduced' confuses an agent's effect on another species with its own change. Repair: name the species that gains/loses oxygen, then describe its own oxidation/reduction.",
+        "model_response": "A metal oxide might turn reddish due to a different chemical mixture or lighting; neither colour nor one balanced hypothetical equation uniquely identifies the products. Confirm species and conditions."
       },
       "repair": {
-        "action": "Rebuild the chemical model under the correct material/charge boundary and justify the independent discriminator.",
-        "explanation": "Avoid: No oxygen occurs in the equation, so oxidation is impossible. Instead demonstrate the claim with balanced species and observations.",
+        "action": "Rebuild the model using the correctly named reactant and product species; repeat the independent check.",
+        "explanation": "'Hydrogen is the reducing agent, therefore hydrogen is reduced' confuses an agent's effect on another species with its own change. Repair: name the species that gains/loses oxygen, then describe its own oxidation/reduction.",
         "core1a_ref": "curriculum/chemistry/agent-b/textbook/C08.core1a.md#c0806-oxidation-and-reduction-as-a-paired-transformation"
       },
       "boundary_test": {
-        "prompt": "If a passive coating stops visible lead deposition, does this alone reverse the chemical electron-transfer tendency?",
-        "answer": "No. A blocked or kinetically inhibited experiment does not by itself establish the opposite intrinsic reactivity; check surface condition and matched controls.",
+        "prompt": "If water formation is not observed, is the equation alone proof of oxygen transfer?",
+        "answer": "No. It is a chemically valid candidate model, requiring product evidence.",
         "confirms": "Learner must apply the model under a changed condition, not echo the original answer."
       },
       "reviews": {
@@ -1754,7 +1754,7 @@
       "demand_author_evidence": {
         "band": "D3",
         "adjudication": "NOT_RUN",
-        "note": "Exact changed-condition author revision: B4 freshness candidate, scientific and independent QRT review remain NOT_RUN."
+        "note": "QRT candidate classification, not independently reviewed."
       }
     },
     {
@@ -1775,8 +1775,8 @@
       },
       "attempt": {
         "prompt": "A black solid becomes red after heating in a gas flow. Synthesize evidence needed to decide whether CuO reduction occurred or a different change caused the colour.",
-        "produces": "Independently synthesize the decisive model for this exact case: A black solid becomes red after heating in a gas flow. Synthesize evidence needed to decide whether CuO reduction occurred or a different change caused the colour. Check the changed condition: Does a colour change without a change in formal oxidation state automatically count as redox?",
-        "protected_W": "Independently synthesize the decisive model for this exact case: A black solid becomes red after heating in a gas flow. Synthesize evidence needed to decide whether CuO reduction occurred or a different change caused the colour. Check the changed condition: Does a colour change without a change in formal oxidation state automatically count as redox?",
+        "produces": "An explanatory argument with species, valid conditions, a meaningful representation and an independent check.",
+        "protected_W": "The learner independently completes the cross-stage bridge, not exposed before first attempt.",
         "first_attempt_must_be_saved_before_feedback": true,
         "initial_answer_visibility": "HIDDEN",
         "hints": [

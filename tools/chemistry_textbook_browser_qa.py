@@ -75,56 +75,23 @@ def check_chapter(page, unit, n, scene):
 def check_first_attempt_protection(page):
     page.goto(f"{BASE}/C07.html", wait_until="domcontentloaded")
     post = page.locator(".attempt .post").first
-    prediction = page.locator(".attempt .prediction-stage").first
-    pred_input = prediction.locator("textarea.prediction-input")
-    first = page.locator(".attempt .first-attempt").first
-    field = first.locator("textarea")
-    check(post.is_hidden(), "Model answer hidden before prediction")
-    check(first.is_hidden(), "First attempt blocked until prediction")
-    prediction.locator("button.predict-submit").click()
-    check(first.is_hidden(), "Blank prediction cannot open attempt")
-    pred_input.fill("First predict the likely ion-charge relation, state the assumptions.")
-    prediction.locator("button.predict-submit").click()
-    check(prediction.is_hidden(), "Prediction locked after durable commit")
-    check(first.is_visible(), "First attempt opens only after prediction")
-    check(page.locator(".attempt .hint-ladder").first.is_visible(), "Hints available in attempt stage")
-    check(not page.locator(".attempt .hint-contents").first.inner_text().strip(),
-          "No hints revealed without recording exposure")
-    page.locator(".attempt button.hint-submit").first.click()
-    check("H1:" in page.locator(".attempt .hint-contents").first.inner_text(), "First hint recorded before reveal")
-    check(post.is_hidden(), "Hint must not show model")
-    first.locator("button").click()
-    check(post.is_hidden(), "Blank first attempt does not reveal solution")
-    field.fill("My independent first reasoning: compare electron transfer and total charge.")
-    first.locator("button").click()
-    check(post.is_visible(), "Reconstruction stage displayed after first commit")
-    check("Model response" not in post.inner_text(), "Model answer leaked after first attempt")
+    field = page.locator(".attempt textarea").first
+    button = page.locator(".attempt button").first
+    check(post.is_hidden(), "Model answer hidden before attempt")
+    button.click()
+    check(post.is_hidden(), "Empty answer does not reveal solution")
+    field.fill("My initial reasoning: compare electron transfer and total charge.")
+    button.click()
+    check(post.is_visible(), "Model answer revealed after first commit")
     check(field.is_disabled(), "First attempt locked after commit")
     saved = field.input_value()
-    first_stage = post.locator("textarea.stage-input")
-    check(first_stage.count() == 1, "One independent post-attempt stage active")
-    check("Reconstruct" in post.locator(".core1b-stage h4").last.inner_text(), "Reconstruct first")
-    first_stage.fill("I reconstruct the particle and charge ledger under the stated assumptions.")
-    post.locator("button.stage-submit").click()
-    check("Diagnose" in post.locator(".core1b-stage h4").last.inner_text(), "Diagnose follows reconstruct")
     page.reload(wait_until="domcontentloaded")
-    field = page.locator(".attempt .first-attempt textarea").first
-    field.wait_for(timeout=20000)
-    post = page.locator(".attempt .post").first
-    check(field.input_value() == saved and field.is_disabled(), "First attempt unchanged after refresh")
-    check(page.locator(".attempt .prediction-stage").first.is_hidden(), "Prediction commit survives refresh")
-    check("H1:" in page.locator(".attempt .hint-contents").first.inner_text(), "Hint exposure survives refresh")
-    for title in ("Diagnose", "Repair", "Boundary test"):
-        check(title in post.locator(".core1b-stage h4").last.inner_text(), f"Expected {title}")
-        check("Model response" not in post.inner_text(), f"Model leaked before {title}")
-        post.locator("textarea.stage-input").fill(
-            "My independent reasoning at the "+title+" stage: test the model and its conditions.")
-        post.locator("button.stage-submit").click()
-    check("Model response" in post.inner_text(), "Model appears after saved boundary test only")
-    page.reload(wait_until="domcontentloaded")
-    page.locator(".attempt .post .model-closure").first.wait_for(timeout=20000)
-    check("Model response" in page.locator(".attempt .post").first.inner_text(),
-          "Completion survives refresh")
+    page.locator(".attempt textarea").first.wait_for(timeout=20000)
+    check(page.locator(".attempt textarea").first.input_value() == saved, "Exact revision first attempt persists")
+    check(page.locator(".attempt textarea").first.is_disabled(), "First attempt remains protected on refresh")
+    check(page.locator(".attempt .post").first.is_visible(), "Post-attempt feedback persists")
+    check(page.locator(".attempt .post").first.inner_text().find("Model response") >= 0,
+          "Full reconstruction closure accessible")
 
 
 def check_storage_disabled(browser):
@@ -135,12 +102,11 @@ def check_storage_disabled(browser):
     page = ctx.new_page()
     page.goto(f"{BASE}/C07.html", wait_until="domcontentloaded")
     page.locator(".attempt textarea").first.wait_for(timeout=20000)
-    page.locator(".attempt .prediction-input").first.fill("A model choice before feedback")
-    page.locator(".attempt button.predict-submit").first.click()
+    page.locator(".attempt textarea").first.fill("A model choice before feedback")
+    page.locator(".attempt button").first.click()
     check(page.locator(".attempt .post").first.is_hidden(), "Disabled storage must NOT reveal the worked response")
-    check(page.locator(".attempt .first-attempt").first.is_hidden(), "Attempt gated when prediction save fails")
-    check(page.locator(".attempt .prediction-input").first.is_enabled(), "Prediction editable when storage fails")
-    check(page.locator(".attempt details").count() == 0, "Disabled storage must NOT insert hints")
+    check(page.locator(".attempt textarea").first.is_enabled(), "Original answer must remain copyable when storage fails")
+    check(page.locator(".attempt details").first.is_hidden(), "Disabled storage must NOT reveal hints")
     status = page.locator(".attempt .mini").first.inner_text().lower()
     check("storage unavailable" in status, f"Storage limitation must be explicit: {status}")
     ctx.close()

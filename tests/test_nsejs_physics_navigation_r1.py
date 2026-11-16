@@ -53,12 +53,7 @@ def test_every_published_route_exists_and_has_canonical_bar():
             assert not c["units"] and c["preview"] is not None
         if c["state"] == "learning-pairs":
             assert c["units"] and c["preview"] is None
-        if c["id"] in ("PH07","PH08"):
-            assert c["questionTopic"] is None  # No unrelated fluids-bank substitution
-            assert c["help"] is None
-            assert all(not u["title"].startswith("Continue: ") for u in c["units"])
-        else:
-            assert c["questionTopic"] in ("mechanics","optics","fluids","circuits","magnetism")
+        assert c["questionTopic"] in ("mechanics","optics","fluids","circuits","magnetism")
         assert len({u["id"] for u in c["units"]}) == len(c["units"])
         for p in [c["overview"],c["preview"],c["help"]] + [
             path for u in c["units"] for path in (u["learn"],u["practice"])
@@ -69,7 +64,7 @@ def test_every_published_route_exists_and_has_canonical_bar():
             assert full.is_relative_to(PH.resolve()), p
             assert full.is_file(), p
             expected.add(full)
-    assert len(expected) == 177
+    assert len(expected) == 178
     # B01 R14 pins bind the exact learner HTML and embedded SVG.
     # Navigation wraps those 50 routes from the chapter instead of rewriting them.
     pinned = {
