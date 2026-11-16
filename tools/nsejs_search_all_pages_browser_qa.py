@@ -26,6 +26,11 @@ def main():
                     ("nsejs/physics/textbook/PH05/G03/index.html","CHEM-C14.01-study","", "subtopic=CHEM-C14.01"),
                     ("curriculum/chemistry/preview/C01.html","BIO-NSEJS-GEN-01","nsejs/biology/index.html","q=BIO-NSEJS-GEN-01"),
                     ("nsejs/biology/index.html","NSEJS-CIRC-L2-Q14","nsejs/physics/index.html","NSEJS-CIRC-L2-Q14"),
+                    # New exact Physics V2 routes must resolve through the
+                    # shared header search; don't promote them to exam PASS.
+                    ("nsejs/index.html","AUTHORED-PH01-M05-R2-INVERSE-01","nsejs/physics/quality-r1/challenge.html","unit=PH01-M05"),
+                    ("nsejs/physics/quality-r1/study.html?unit=PH07-02","QUALITY-PH08-08-CORE1A","nsejs/physics/quality-r1/study.html","unit=PH08-08"),
+                    ("nsejs/physics/index.html","QUALITY-PH02-SOURCE-STATUS","nsejs/physics/quality-r1/source.html","ph=PH02"),
                 ]
                 for path,term,expected,query in cases:
                     page.goto(origin+path,wait_until="domcontentloaded")
