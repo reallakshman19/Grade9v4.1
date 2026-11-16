@@ -1,3 +1,5 @@
+/* Sitewide Skip R1, no fake attempt credit. */
+(function(){const s=document.currentScript;if(!s?.src||document.querySelector('script[data-g9-skip-loader]'))return;const x=document.createElement('script');x.src=new URL('../../../js/skip-mandatory-response.js',s.src).href;x.dataset.g9SkipLoader='r1';document.head.append(x);})();
 "use strict";
 (function () {
   const $ = (id) => document.getElementById(id);
