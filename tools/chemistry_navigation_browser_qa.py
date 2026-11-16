@@ -48,7 +48,10 @@ def check_catalog(page,label):
     ensure(page.locator("#chem-chapters details li a").count()==84,"not 84 subtopic links")
     ensure(page.locator("text=Peer-Audited Curriculum").count()==0,"misleading peer-reviewed badge")
     ensure(page.locator("#topicNav").count()==1,"legacy filter removed rather than demoted")
-    ensure(not page.locator("#chem-bank-archive").evaluate("(e)=>e.open"),"legacy bank not collapsed by default")
+    ensure(page.locator("#chem-bank-archive").evaluate("(e)=>e.open"),"Chemistry bank missing from default navigation")
+    ensure(page.locator(".chem-primary-route-bank").count()==1,"missing first-screen Chemistry bank entry")
+    ensure("topic=atomic_structure" in page.locator(".chem-primary-route-bank").get_attribute("href"),
+           "primary bank button does not select a readable question topic")
     page.screenshot(path=str(OUT/(label+"-chapters.png")),full_page=True)
     return [x.get_attribute("href") for x in page.locator("#chem-chapters details li a").all()]
 
@@ -185,6 +188,11 @@ def check_r2_focus_and_browser_history(page):
 
 
 def check_r2_legacy_bank_deep_link(page):
+    # User-facing first-screen button opens a real bank topic, not an empty shell.
+    page.goto(HOME+"?topic=atomic_structure#topicWorkspace",wait_until="domcontentloaded")
+    page.locator("#questions .card").first.wait_for(timeout=25000)
+    ensure(page.locator("#questions .card").count()==27,"Chemistry atomic topic lost candidate records")
+    ensure("question" in page.locator("#qbResultCount").inner_text().lower(),"Chemistry question count absent")
     page.goto(HOME+"?topic=redox",wait_until="domcontentloaded")
     ensure(page.locator("#chem-bank-archive").evaluate("(e)=>e.open"),
            "legacy topic query landed in closed bank")
