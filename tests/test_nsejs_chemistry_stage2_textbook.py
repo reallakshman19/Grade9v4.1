@@ -270,7 +270,7 @@ def test_exact_source_pins_and_task_specific_protected_W(materials):
         for unit in UNITS
     }
     for unit, adapter in materials["adapters"].items():
-        assert adapter["version"] == "0.2.1"
+        assert adapter["version"] == "0.2.0"
         assert adapter["change_log"][-1]["kind"] == "AMEND"
         for s in adapter["subtopics"]:
             for q in s["qrt_instances"]:
@@ -287,12 +287,12 @@ def test_exact_source_pins_and_task_specific_protected_W(materials):
 
 def test_ownership_registry_reflects_completed_authoring_only(materials):
     index = load("registry/topic-adapter-index.v0.1.0.json")
-    assert index["version"] == "0.2.1"
+    assert index["version"] == "0.2.0"
     assert len(index["units"]) == 14
     for u in index["units"]:
         if u["owner_agent"] == "A":
             assert u["adapter_status"] == "AUTHOR_COMPLETE_ACADEMIC_HOLD"
-            assert u["adapter_version"] == "0.2.1"
+            assert u["adapter_version"] == "0.2.0"
             assert (ROOT / u["preview_path"]).is_file()
         else:
             assert u["adapter_status"] == "NOT_AUTHORED"
