@@ -1,3 +1,5 @@
+/* Learner Skip R1: optional navigation only; no answer/grade state is modified. */
+(function(){const s=document.currentScript;if(!s?.src||document.querySelector('script[data-g9-skip-loader]'))return;const x=document.createElement('script');x.src=new URL('../../js/skip-mandatory-response.js',s.src).href;x.dataset.g9SkipLoader='r1';document.head.append(x);})();
 /* Unified Physics learner bar for existing native lesson pages.
  * Navigation-only: does not modify question state, academic admission,
  * protected first attempt, lesson assets, stored revisions, or Core2 data. */
