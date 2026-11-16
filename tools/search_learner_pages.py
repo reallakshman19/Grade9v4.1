@@ -83,6 +83,16 @@ def build_public_learner_documents(root,normalize):
         doc["search_text"]=normalize(" ".join([identity,title,subject,topic,stem or "",source_id or "",url,"nsejs junior science"]))
         docs.append(doc)
     physics=read_json(root,"nsejs/physics/learn/catalog.json")
+    # The V2 authored Physics workpack has four distinct query-addressed
+    # Core1A/B routes. Index task identity and catalogue titles ONLY;
+    # do not load answer-bearing cases, post-attempt hints or boundary keys.
+    quality_tasks=read_json(root,"nsejs/physics/quality-r1/attempt-prompts.v2.json")
+    if quality_tasks.get("status")!="AUTHOR_EXPOSED_CANDIDATE__ACADEMIC_HOLD":
+        raise ValueError("Unexpected Physics candidate admission state")
+    quality_by_unit={x["unit"]:x for x in quality_tasks["units"]}
+    if len(quality_by_unit)!=len(quality_tasks["units"]):
+        raise ValueError("Duplicate candidate Physics unit")
+    indexed_quality=set()
     for c in physics["chapters"]:
         ch,title=c["id"],c["title"]
         add(ch,title+" · "+("In preparation" if c["state"]=="unavailable" else "Chapter"),"Physics","nsejs/physics/learn/chapter.html?ph="+ch,"curriculum",title,"CHAPTER IN PREPARATION · HOLD" if c["state"]=="unavailable" else "CHAPTER · HOLD")
@@ -92,6 +102,32 @@ def build_public_learner_documents(root,normalize):
             for role,label in (("learn","Learn"),("practice","Try it")):
                 url=absolute_relative("nsejs/physics/index.html",unit[role])
                 add(ch+"-"+uid+"-"+role,title2+" · "+label,"Physics",url,"tablet",title)
+            # The ordinary Core1A/B records above remain the canonical
+            # textbook routes. These additional links are clearly labeled
+            # author-authored candidate constructions, not original Core2.
+            quality=unit.get("qualityR1")
+            if quality:
+                key=uid if uid.startswith(ch+"-") else ch+"-"+uid
+                task=quality_by_unit.get(key)
+                if (not task or task.get("chapter")!=ch
+                    or quality.get("source_role")!="AUTHORED_TRANSFER"
+                    or quality.get("independent_academic")!="HOLD"
+                    or not task.get("uid","").startswith("AUTHORED-"+key+"-R2-")):
+                    raise ValueError("Missing or incorrectly qualified Physics R2 task "+key)
+                indexed_quality.add(key)
+                study_url=absolute_relative("nsejs/physics/index.html",quality["study"])
+                practice_url=absolute_relative("nsejs/physics/index.html",quality["practice"])
+                add("QUALITY-"+key+"-CORE1A",title2+" · New worked Core1A construction","Physics",
+                    study_url,"tablet",title,"AUTHORED LEARNING · ACADEMIC HOLD")
+                add(task["uid"],title2+" · New protected Core1B transfer","Physics",
+                    practice_url,"tablet",title,"AUTHORED TRANSFER · ACADEMIC HOLD")
+        if c.get("sourceLedgerR1"):
+            ledger=absolute_relative("nsejs/physics/index.html",c["sourceLedgerR1"])
+            add("QUALITY-"+ch+"-SOURCE-STATUS",
+                title+" · Source evidence and academic status","Physics",
+                ledger,"curriculum",title,"SOURCE EVIDENCE ONLY · NO ORIGINAL EXAM ADMISSION · HOLD")
+    if indexed_quality!=set(quality_by_unit):
+        raise ValueError("Unmapped new Physics candidate search routes: "+str(set(quality_by_unit)-indexed_quality))
     chemistry=read_json(root,"nsejs/chemistry/learner-navigation.v1.json")
     for unit in chemistry["units"]:
         uid=unit["id"]
@@ -133,7 +169,8 @@ def build_public_learner_documents(root,normalize):
     pages=public_pages(root)
     # Public static titles only. Dynamic reader shells without a selected entity
     # have their exact query-specific routes above.
-    dynamic_shells={"nsejs/physics/learn/chapter.html","nsejs/physics/ph05/source-led-r2/index.html","nsejs/physics/ph05/source-checkpoint.html","nsejs/chemistry/textbook/index.html"}
+    dynamic_shells={"nsejs/physics/learn/chapter.html","nsejs/physics/ph05/source-led-r2/index.html","nsejs/physics/ph05/source-checkpoint.html","nsejs/chemistry/textbook/index.html",
+                    "nsejs/physics/quality-r1/study.html","nsejs/physics/quality-r1/challenge.html","nsejs/physics/quality-r1/source.html"}
     for path in pages:
         if path in dynamic_shells:
             continue
