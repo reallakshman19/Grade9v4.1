@@ -1,3 +1,5 @@
+/* Sitewide Skip R1: navigation only, never awards answer credit. */
+(function(){const s=document.currentScript;if(!s?.src||document.querySelector('script[data-g9-skip-loader]'))return;const x=document.createElement('script');x.src=new URL('../../../../../../js/skip-mandatory-response.js',s.src).href;x.dataset.g9SkipLoader='r1';document.head.append(x);})();
 /* B01 takeover R1 — candidate protected-sequence preview.
    Revision-bound localStorage is pedagogic sequencing only, NOT tamper-proof custody.
    Public JSON includes author solutions. No canonical MAIN, exam admission or mastery.

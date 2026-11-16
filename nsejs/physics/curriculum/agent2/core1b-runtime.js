@@ -1,3 +1,5 @@
+/* Learner Skip R1: optional navigation only; no answer/grade state is modified. */
+(function(){const s=document.currentScript;if(!s?.src||document.querySelector('script[data-g9-skip-loader]'))return;const x=document.createElement('script');x.src=new URL('../../../js/skip-mandatory-response.js',s.src).href;x.dataset.g9SkipLoader='r1';document.head.append(x);})();
 /* Agent 2 Core1B: source-neutral candidate practice, not an examination reader.
    Browser-only attempt custody. Local storage is not tamper resistant or server-backed.
    No academic approval inferred from software validation. */

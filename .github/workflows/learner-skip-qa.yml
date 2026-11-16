@@ -1,0 +1,29 @@
+name: Learner Skip Controls — real Chromium QA (candidate)
+on:
+  pull_request:
+    paths:
+      - "nsejs/**"
+      - "physics/wpe/**"
+      - "curriculum/chemistry/preview/**"
+      - "tools/learner_skip_browser_qa.py"
+      - "tools/audit_skip_coverage.py"
+      - "tests/test_skip_required_responses_r1.py"
+      - ".github/workflows/learner-skip-qa.yml"
+permissions:
+  contents: read
+jobs:
+  skip-tablet-chromium:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install pinned Playwright Chromium
+        run: |
+          python -m pip install playwright==1.55.0
+          python -m playwright install --with-deps chromium
+      - name: Validate 151+ learner-response page skip-loader coverage
+        run: python tools/audit_skip_coverage.py
+      - name: Real HTTP Chrome tablet two-orientation skip checks
+        run: python tools/learner_skip_browser_qa.py

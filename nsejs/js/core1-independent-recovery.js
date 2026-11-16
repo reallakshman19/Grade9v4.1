@@ -1,3 +1,5 @@
+/* Sitewide Skip R1: navigation only, never awards answer credit. */
+(function(){const s=document.currentScript;if(!s?.src||document.querySelector('script[data-g9-skip-loader]'))return;const x=document.createElement('script');x.src=new URL('skip-mandatory-response.js',s.src).href;x.dataset.g9SkipLoader='r1';document.head.append(x);})();
 /* Independent Grade9 Core1A/B skill repair. The 18 original exam-source
  * modules remain HOLD. All teaching examples here are newly authored;
  * no source exam claims, certified answers or B1–B7 admission.

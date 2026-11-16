@@ -1,3 +1,5 @@
+/* Learner Skip R1: optional navigation only; no answer/grade state is modified. */
+(function(){const s=document.currentScript;if(!s?.src||document.querySelector('script[data-g9-skip-loader]'))return;const x=document.createElement('script');x.src=new URL('../../js/skip-mandatory-response.js',s.src).href;x.dataset.g9SkipLoader='r1';document.head.append(x);})();
 import {pinnedJson} from "./pinned-assets.js";
 import {recordStudyView} from "./protected-attempt-store.js";
 import {startAssessment} from "./assessment-r2.js";
