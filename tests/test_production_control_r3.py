@@ -192,3 +192,45 @@ def test_generated_preview_requires_exact_signed_final_bytes(tmp_path):
     assert (tmp_path/"public/index.html").read_text()=="<html>Generated HOLD</html>"
     m["files"][0]["sha256"]="0"*64;raw=C.canonical(m);write(root,mp,raw);write(root,C.EVID+"release-receipt.json",make_receipt(tmp_path,priv,key,"PREVIEW_RELEASE",C.sha(raw),fp,"AUTHORIZED"));head=save(root)
     with pytest.raises(C.Block,match="RELEASE_BYTE_MISMATCH"):R.stage(root,head,mp,tmp_path/"bad",trust(key),base)
+
+
+def _r3_pages_preflight_script():
+    """Extract the deployed preflight, not a parallel test-only implementation."""
+    import textwrap
+    data=(ROOT/".github/workflows/deploy.yaml").read_text(encoding="utf-8")
+    start=data.index("      - name: Check externally authorized release prerequisites (fail closed)")
+    start=data.index("        run: |\n",start)+len("        run: |\n")
+    end=data.index("      - name: Checkout externally pinned control code",start)
+    return textwrap.dedent(data[start:end])
+
+
+@pytest.mark.parametrize("content_changed", [False, True])
+def test_pages_r3_frozen_content_preflight_exact_git_gate(tmp_path, content_changed):
+    """Governance and receipt-only reach the trusted verifier; frozen content never does."""
+    import os
+    repo,control_rev,policy=fresh(tmp_path)
+    write(repo,C.EVID+"publication-manifest.json","{}\n")
+    write(repo,C.EVID+"release-receipt.json","{}\n")
+    if content_changed:
+        write(repo,"nsejs/physics/ph06/reader.js","// unauthorized new content\n")
+    head=save(repo,"pages release candidate")
+    (tmp_path/"repo").rename(tmp_path/"candidate")
+    output=tmp_path/"output"
+    env=dict(os.environ,CONTROL_SHA=control_rev,
+             TRUST_JSON='{"schema":"g9-r3-trust/v1","keys":[]}',
+             REF="refs/heads/main",GITHUB_SHA=head,GITHUB_OUTPUT=str(output))
+    result=subprocess.run(["bash","-e","-c",_r3_pages_preflight_script()],
+                          cwd=tmp_path,env=env,capture_output=True,text=True)
+    if content_changed:
+        assert result.returncode!=0,(result.stdout,result.stderr)
+        assert "FROZEN_CONTENT_IN_RELEASE_TREE" in result.stdout
+        assert "nsejs/physics/ph06/reader.js" in result.stdout
+        assert not output.exists()
+    else:
+        assert result.returncode==0,(result.stdout,result.stderr)
+        assert output.read_text().strip()=="sha="+control_rev
+        # This preflight does NOT check signatures; the real stage still invokes
+        # the externally pinned trusted implementation, which rejects these
+        # deliberately unsigned fixture receipts.
+        workflow=(ROOT/".github/workflows/deploy.yaml").read_text()
+        assert "python trusted/docs/agent-entry/production-control-r3/release.py" in workflow
