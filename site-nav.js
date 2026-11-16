@@ -70,8 +70,9 @@ function mount(){
  ".shortcuts a{display:inline-flex;align-items:center;text-decoration:none;font-size:12px;font-weight:750;color:#256274;border-radius:7px;padding:5px 10px;min-height:31px}",
  ".shortcuts a:hover,.shortcuts a[aria-current=page]{background:#caeae5;color:#164f4e}",
  "a:focus-visible,button:focus-visible{outline:3px solid #c9912f;outline-offset:2px}",
- "@media(min-width:901px){.primary-in{flex-wrap:nowrap;min-height:46px;padding:3px 0;gap:7px}.brand{margin-right:0;font-size:13px}.mark{width:30px;height:30px}.subjects{flex:1;min-width:0;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin}.subjects a{white-space:nowrap;font-size:11px;padding:6px 8px;min-height:34px}.nav-search-btn{white-space:nowrap;flex-shrink:0;margin-left:0;padding:6px 8px;min-height:34px}.context-in{min-height:30px;padding:2px 0;flex-wrap:nowrap;gap:7px}.crumb{margin:0;flex-shrink:0;font-size:11px}.shortcuts{flex:1;min-width:0;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin;gap:2px}.shortcuts a{white-space:nowrap;min-height:26px;padding:3px 6px;font-size:10px}}",
+ "@media(min-width:901px){.primary-in{flex-wrap:nowrap;min-height:46px;padding:3px 0;gap:7px}.brand{margin-right:0;font-size:13px}.mark{width:30px;height:30px}.subjects{flex:1;min-width:0;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin}.subjects a{white-space:nowrap;font-size:11px;padding:6px 8px;min-height:34px}.nav-search-btn{white-space:nowrap;flex-shrink:0;margin-left:0;padding:6px 8px;min-height:34px}.context-in{min-height:30px;padding:2px 0;flex-wrap:nowrap;gap:7px}.crumb{margin:0;flex-shrink:0;font-size:11px}.shortcuts{flex:1;min-width:0;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin;gap:2px}.shortcuts a{white-space:nowrap;min-height:26px;padding:3px 6px;font-size:10px}:host(.grade9-practice) .context{display:none}:host(.grade9-practice) .context.expanded{display:block}:host(.grade9-practice) .primary-in{min-height:34px;padding:0}}",
  "@media(max-width:900px){.primary-in,.context-in{width:calc(100% - 24px)}.subjects a{font-size:12px;padding:8px 10px}.context-in{gap:4px 12px}.crumb{width:100%;margin:0}.brand{font-size:14px}}",
+ "@media(max-width:900px){:host(.grade9-practice) .nav-shortcuts-btn{display:none}}",
  "@media(max-width:590px){.brand{width:100%;margin-right:0}.subjects{width:100%;justify-content:space-between}.subjects a{padding:7px 6px;font-size:11px}.nav-search-btn kbd{display:none}.context-in{padding-block:7px}.shortcuts a{font-size:11px;padding:5px 7px}}"
  ].join("");
  const primary=document.createElement("div");primary.className="primary";const top=document.createElement("div");top.className="primary-in";
@@ -83,6 +84,18 @@ function mount(){
  const sBtn=document.createElement("button");sBtn.type="button";sBtn.className="nav-search-btn";sBtn.setAttribute("data-g9-action","search");sBtn.title="Search Grade9 (Ctrl/⌘ K)";sBtn.innerHTML='🔍 <span>Search</span> <kbd>Ctrl K</kbd>';
  sBtn.onclick=()=>{if(window.Grade9Search&&window.Grade9Search.open){window.Grade9Search.open({scope});}};
  nav.append(sBtn);
+ if(relative==="preview/practice.html"){
+  host.classList.add("grade9-practice");
+  const quick=document.createElement("button");quick.type="button";
+  quick.className="nav-search-btn nav-shortcuts-btn";quick.textContent="WPE shortcuts";
+  quick.setAttribute("aria-expanded","false");
+  quick.onclick=()=>{
+   const panel=shadow.querySelector(".context");
+   const open=panel.classList.toggle("expanded");
+   quick.setAttribute("aria-expanded",String(open));
+  };
+  nav.append(quick);
+ }
  top.append(nav);primary.append(top);shadow.append(css,primary);
  const context=document.createElement("div");context.className="context";const inside=document.createElement("div");inside.className="context-in";
  const crumb=document.createElement("span");crumb.className="crumb";crumb.textContent=architecture?"Architecture / Learning design":nsejs?(here.includes("/core1/")?"NSEJS / Core 1 Master Lessons":here.includes("/physics/")?"NSEJS / Physics Track":here.includes("/chemistry/")?"NSEJS / Chemistry Track":here.includes("/biology/")?"NSEJS / Biology Track":"NSEJS / Junior Science"):examples?"Physics / WPE / Examples":"Physics / Work, Power & Energy";inside.append(crumb);
