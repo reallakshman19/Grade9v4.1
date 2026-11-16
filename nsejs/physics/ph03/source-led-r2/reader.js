@@ -75,7 +75,7 @@ if(stage==="learn"){
    let h="";
    if(source){
     h='<h3>Original selection and reasoning saved</h3><p>Complete both transfer journeys before returning to the original paper. No assessment of your answer is shown yet.</p><p class="actions">'+link("?stage=learn","Open Core1A guide")+link("?stage=challenge&task=A","Challenge A")+link("?stage=challenge&task=B","Challenge B")+'</p>';
-    if(rec.retry||completedTransfer())h+='<h3>Independent return to original</h3>'+selection(opts,"retryopt",rec.retry?.option,!!rec.retry,rec.retry?.skipped?.includes("retryopt"))+'<label for="retryreason">New reasoning</label>'+textArea("retryreason",rec.retry?.reason,!!rec.retry,rec.retry?.skipped?.includes("retryreason"))<button id="retrySave" '+(rec.retry?"disabled":"")+'>Save separate source return</button>';
+    if(rec.retry||completedTransfer())h+='<h3>Independent return to original</h3>'+selection(opts,"retryopt",rec.retry?.option,!!rec.retry,rec.retry?.skipped?.includes("retryopt"))+'<label for="retryreason">New reasoning</label>'+textArea("retryreason",rec.retry?.reason,!!rec.retry,rec.retry?.skipped?.includes("retryreason"))+'<button id="retrySave" '+(rec.retry?"disabled":"")+'>Save separate source return</button>';
     else h+=p("Source return is locked until both exact transfer boundaries have been compared.");
     if(rec.retry)h+='<h3>Source comparison · HOLD</h3>'+p("First selected "+(f.option||"(skipped)")+"; return selected "+(rec.retry.option||"(skipped)")+". The published final key is "+model.key+".")+steps(model.steps)+p(model.check)+'<p class="actions"><a href="'+e(t.key_url)+'" target="_blank" rel="noopener">Open published final key</a></p>';
    }else{
