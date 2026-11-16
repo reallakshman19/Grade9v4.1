@@ -56,13 +56,13 @@ def challenge(page, base, name):
     page.locator("#diagnose").click()
     expect(page.locator("#post")).to_contain_text("Diagnosis skipped · no credit")
     expect(page.locator("#repairreason")).to_be_visible()
-    repair_fields = page.locator('[id^="repair-"] input, [id^="repair-"] select').evaluate_all(
+    repair_fields = page.locator('input[id^="repair-"], select[id^="repair-"]').evaluate_all(
         "(nodes) => nodes.map(n => n.id)")
     skip(page, *repair_fields, "repairreason")
     page.locator("#repairSave").click()
     expect(page.locator("#post")).to_contain_text("Repair explanation skipped · no credit")
     expect(page.locator("#boundaryreason")).to_be_visible()
-    boundary_fields = page.locator('[id^="bound-"] input, [id^="bound-"] select').evaluate_all(
+    boundary_fields = page.locator('input[id^="bound-"], select[id^="bound-"]').evaluate_all(
         "(nodes) => nodes.map(n => n.id)")
     skip(page, *boundary_fields, "boundaryreason")
     page.locator("#boundarySave").click()
