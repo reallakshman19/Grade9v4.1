@@ -57,8 +57,8 @@ def test_six_new_and_existing_p03_are_all_real_native_pairs():
                 page = (PH / c[kind]).read_text()
                 assert "data-ph03-r3" in page and f'data-unit="{c["id"]}"' in page
                 assert "reader.js" in page and "<iframe" not in page
-    assert "7/7 native candidate pairs · HOLD" in (PH / "index.html").read_text()
-    assert "0/7 independently academically accepted" in (PH / "learn/chapter.js").read_text()
+    assert "7/7 authored candidates · Academic HOLD" in (PH / "index.html").read_text()
+    assert "0/7 accepted" in (PH / "learn/chapter.js").read_text()
 
 
 def test_science_teaching_has_real_multiple_worked_and_disjoint_prompt():
