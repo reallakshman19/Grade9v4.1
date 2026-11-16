@@ -16,7 +16,7 @@
   style.textContent = [
     '.g9-skip-control{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:8px 0 16px}',
     '.g9-skip-button{box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;',
-    'min-height:48px;min-width:100px;padding:9px 16px;border:2px solid #51657b;border-radius:10px;',
+    'min-height:56px;min-width:112px;padding:9px 16px;border:2px solid #51657b;border-radius:10px;',
     'background:transparent;color:inherit;font:600 16px/1.4 system-ui,sans-serif;cursor:pointer}',
     '.g9-skip-button:disabled{opacity:.6;cursor:not-allowed}',
     '.g9-skip-button:focus-visible,.g9-skip-continue:focus-visible{outline:3px solid #ad6417;outline-offset:3px}',
