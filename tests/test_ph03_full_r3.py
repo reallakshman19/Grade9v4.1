@@ -132,14 +132,13 @@ def test_native_svg_diagrams_are_three_distinct_role_artifacts():
             fonts = [int(el.attrib["font-size"]) for el in root.iter()
                      if el.tag.endswith("text") and "font-size" in el.attrib]
             assert fonts and min(fonts) >= 14
-            assert "author" not in raw.lower() or True
             diagrams.append(raw)
         assert len(set(diagrams)) == 3
         prompt = diagrams[1]
         assert "P(total) =" not in prompt
         assert "K(total) =" not in prompt
         assert "Joined 5 kg velocity" not in prompt
-        assert "P03" not in (SRC / f"{i}.json").read_text()
+        assert "source-led-r2/index.html" not in (SRC / f"{i}.json").read_text()
 
 
 def test_independent_physical_invariants_and_negative_controls():
