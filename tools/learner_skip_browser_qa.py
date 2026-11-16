@@ -32,6 +32,8 @@ ROUTES = {
     "physics": [
         "/nsejs/physics/index.html",
         "/nsejs/physics/core1/ph01-m01-r47/index.html",
+        "/nsejs/physics/core1/ph01-m01-r31/index.html",
+        "/nsejs/physics/core1/ph01-qrt-r2/index.html",
         "/nsejs/physics/core1/nsejs-optics-displacement-d3-r1/index.html",
         "/nsejs/physics/curriculum/topics/PH07/b01/PH07-01/core1b.html",
         "/physics/wpe/learn-challenge.html",
@@ -111,8 +113,8 @@ def main():
             browser.close()
     finally:
         server.shutdown()
-    assert len(results) == 28, results
-    print("SKIP_REAL_CHROMIUM_PASS: 28 subject-route/orientation visits")
+    assert len(results) == 32, results
+    print("SKIP_REAL_CHROMIUM_PASS: 32 subject-route/orientation visits")
     print(json.dumps({"checked":len(results),"routes":results}, indent=2))
 
 
