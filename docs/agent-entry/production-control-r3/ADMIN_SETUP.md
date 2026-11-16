@@ -9,3 +9,16 @@
 8. Before next Pages release, prepare full explicit manifest of approved technical preview assets and routes with prepare.py (FROZEN_SEARCH_R1 reproducible build or TRACKED_ONLY), review search completeness and client code exposure, sign exact file set, test on staging. No publication of restricted originals or review records. The previous preview can remain live; do not confuse availability with qualified educational content.
 
 **Known connector limit:** GitHub repository administration/ruleset/environment settings cannot be inspected or mutated by the author tools in this workpack. This checklist is the real remaining external authority step, not evidence that protection has been enabled.
+
+## Deployment #86 RCA and administrator setup (2026-11-16)
+
+- Failed run: https://github.com/reallakshman19/Grade9v4.1/actions/runs/43789426180
+- Exact release SHA: `308a8cef0d0b7d4ce5f1b79b21f01f76acc81acc`.
+- The `stage` job stopped at **Resolve externally pinned control revision** before running `release.py`.
+- The job log confirmed `CONTROL_SHA:` was **empty**, while `REF: refs/heads/main` was valid. The Node.js 20 notice was an unrelated warning.
+- Owner action (requires repository settings access): open **Settings → Secrets and variables → Actions → Variables** and configure `G9_R3_CONTROL_SHA` as the **40-character SHA of the independently reviewed control commit**, not the candidate release SHA. This value must be pinned externally to Git.
+- Configure `G9_R3_TRUST_JSON` in the same Actions Variables section with the administrator-approved **public-key-only** trust roster; keep private signing keys outside the repository and Actions.
+- The exact release tree also lacks `review/production-control-r3/publication-manifest.json` and `review/production-control-r3/release-receipt.json`. A dedicated release workpack must create a byte-pinned manifest and obtain a genuinely signed `PREVIEW_RELEASE` Owner receipt from the trusted roster. Do not fabricate receipts, automatically sign them in Actions, or accept author self-review.
+- **Separate blocker:** `policy.v1.json` still says `FREEZE_PENDING_GOLDEN`, `accepted_golden: null`, `production_enabled: false`; `release.py` rejects all CONTENT changes after its frozen baseline with `FROZEN_CONTENT_IN_RELEASE_TREE`. The Skip UI merged in PR #75 is therefore not currently an authorized release candidate. Fixing the variable or adding unsigned files is **not** permission to deploy it.
+- Repository branch protections/rulesets are not demonstrated as enforced. Verify ruleset/admin receipts and independent release approval before any staging attempt. Do not disable or spoof the gate to make this run green.
+- The improved `deploy.yaml` preflight reports *all* missing prerequisites as named GitHub errors, never prints trust keys or inserts a fallback control SHA. Its success would still mean only that configuration exists; `release.py` and the protected Pages environment remain mandatory.
