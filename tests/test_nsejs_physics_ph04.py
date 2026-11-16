@@ -74,11 +74,17 @@ def test_ph04_qrt_blueprint_coverage():
     task_units = {t["unit"] for t in tasks}
     assert task_units == {"PH04-W01", "PH04-W02", "PH04-W03", "PH04-W04", "PH04-W05"}
 
+    columns = {"RETRIEVE":1,"EXPLAIN":2,"APPLY":3,"MODEL":4,
+               "REPRESENT":5,"SYNTHESIZE":6,"JUSTIFY":7}
+    for task in tasks + qrt_data["main_cycles"]:
+        assert task["op"] in columns, task["id"]
+        band, column = task["cell"].split(".")
+        assert band in {"D3","D4"}
+        assert int(column) == columns[task["op"]], task["id"]
+        assert task["cell"] != "D3.1"  # Paused tile
     ops = {t["op"] for t in tasks}
-    assert "MODEL" in ops
-    assert "REPRESENT" in ops
-    assert "JUSTIFY" in ops
-    assert "CALCULATE" in ops
+    assert {"MODEL","REPRESENT","JUSTIFY"} <= ops
+    assert "CALCULATE" not in ops
 
 
 def test_ph04_html_files_exist_and_have_no_broken_links():
