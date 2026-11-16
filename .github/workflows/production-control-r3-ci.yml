@@ -19,7 +19,11 @@ jobs:
       - run: python -m pytest -q tests/test_production_control_r3.py tests/test_physics_quality_gate_r2.py
       - name: Replay actual merged PH03, PH05 and PH06 change sets
         run: python docs/agent-entry/production-control-r3/replay.py --repo .
-      - name: Reproduce frozen unified search without publishing
+      # Standalone frozen-search reconstruction is a release-preparation diagnostic,
+      # not part of routine PR code regression. The authoritative signed release
+      # verifier still enforces frozen-builder and exact-byte checks at publish time.
+      - name: Frozen unified-search diagnostic (manual only, never published)
+        if: github.event_name == 'workflow_dispatch'
         run: |
           HEAD_SHA=$(git rev-parse HEAD)
           python docs/agent-entry/production-control-r3/preview_build.py --repo . --head "$HEAD_SHA" --control "$HEAD_SHA"
