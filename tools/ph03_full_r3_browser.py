@@ -80,7 +80,7 @@ def scenario(page,base,id,size,output):
     expect(page.locator("section.worked")).to_have_count(3)
     old=page.locator("#model-output").inner_text()
     slider=page.locator("#model-slider")
-    slider.fill(str(u["model"]["max"]))
+    slider.evaluate("(el) => {el.value=el.max;el.dispatchEvent(new Event('input',{bubbles:true}))}")
     expect(page.locator("#model-output")).not_to_have_text(old)
     assert page.locator("img").count()>=1
     assert page.locator("img").first.evaluate("(i)=>i.complete&&i.naturalWidth>0")
@@ -211,7 +211,10 @@ def run():
                     pg.locator("#first-reason").fill("My reasoning has a defined sign.")
                     skip_fields(pg,data("P01")["prompt"]["fields"],"first-")
                 a.locator("#save-first").click()
-                b.locator("#save-first").click()
+                # The storage event may already have hidden B's first form.
+                # If still present, its attempt must lose the same keyed lock.
+                if b.locator("#save-first").count():
+                    b.locator("#save-first").click()
                 expect(a.locator("#ph03-status")).to_contain_text("First response saved",timeout=15000)
                 expect(b.locator("#ph03-status")).to_contain_text("First response saved",timeout=15000)
                 sa,sb=saved(a,"P01"),saved(b,"P01")
