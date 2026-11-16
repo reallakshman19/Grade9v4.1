@@ -202,6 +202,39 @@ def check_r2_legacy_bank_deep_link(page):
     return True
 
 
+def check_biology_bank_and_common_header(page):
+    """Use real HTTP Chromium for the other candidate bank and shared nav."""
+    biology=urljoin(BASE,"nsejs/biology/index.html")
+    page.goto(biology+"?topic=living_world#topicWorkspace",wait_until="domcontentloaded")
+    page.locator("#questions .card").first.wait_for(timeout=25000)
+    ensure(page.locator("#questions .card").count()==36,
+           "Biology Living World topic lost its 36 authored candidate questions")
+    ensure(page.locator(".biology-primary-bank").count()==1,
+           "Biology first-screen question bank action missing")
+    ensure("Peer-Audited Curriculum" not in page.locator(".tablet-hero-unified").inner_text(),
+           "Biology is falsely advertised as independently peer approved")
+    # The published Pages stage installs the same shared header loader on
+    # every HTML file. Exercise its runtime against a real existing masthead.
+    page.evaluate("""() => {
+        const script=document.createElement('script');
+        script.src='/site-nav.js';
+        script.dataset.grade9Nav='common-r1';
+        document.head.appendChild(script);
+    }""")
+    page.wait_for_function("""() => document.querySelector('header.mast nav.tabs')
+        ?.getAttribute('aria-label') ===
+        'Grade9 common navigation: subjects, NSEJS and search'""",timeout=12000)
+    header=page.locator("header.mast nav.tabs")
+    ensure(header.locator("a").count()==7,"common header is not seven consistent links")
+    ensure(header.locator('a[aria-current="page"]').count()==1,
+           "Biology is not marked current in the global header")
+    ensure("Biology" in header.locator('a[aria-current="page"]').inner_text(),
+           "Biology global header highlight incorrect")
+    ensure(header.get_by_role("button",name="Search Grade9").count()==1,
+           "common header search action missing")
+    return True
+
+
 def check_r2_contextual_recovery(page):
     url=urljoin(HOME,"../../curriculum/chemistry/preview/C04.html?subtopic=CHEM-C04.03&mode=study#chem-c04-03")
     page.goto(url,wait_until="domcontentloaded")
@@ -256,6 +289,7 @@ def main():
                         denial=check_preview_storage_negative(browser,viewport)
                         focus=check_r2_focus_and_browser_history(page)
                         legacy=check_r2_legacy_bank_deep_link(page)
+                        biology_bank=check_biology_bank_and_common_header(page)
                         recovery=check_r2_contextual_recovery(page)
                         unsafe_recovery=check_r2_unsafe_recovery_return(page)
                         report["viewports"][label]={
@@ -264,6 +298,7 @@ def main():
                             "unsafe_return_rejected":unsafe,"storage_fail_closed":denial,
                             "single_subtopic_focus_and_history":focus,
                             "legacy_bank_deep_link":legacy,
+                            "biology_36_questions_and_common_header":biology_bank,
                             "contextual_recovery_return":recovery,
                             "unsafe_recovery_rejected":unsafe_recovery}
                         print("CHEM_NAV_VIEW_PASS",label,report["viewports"][label],flush=True)
