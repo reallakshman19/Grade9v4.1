@@ -166,7 +166,6 @@ async function renderPractice(){
  }
  }
  }
- }
  h+="</section>";$("ph03-after").innerHTML=h;
  if($("next-hint"))$("next-hint").onclick=()=>save("hint",old=>old.first&&!old.revealed&&old.hints<3?{...old,hints:old.hints+1}:old);
  if($("reveal"))$("reveal").onclick=()=>save("reveal",old=>old.first&&!old.revealed?{...old,revealed:true}:old);
