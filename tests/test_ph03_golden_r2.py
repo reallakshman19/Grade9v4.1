@@ -86,15 +86,22 @@ def test_r2_impulse_anchor_is_separating():
     assert v_a<v_b and v_a+4*v_b==6
     assert .5*v_a*v_a+2*v_b*v_b<.5*u_a*u_a
 
-def test_r2_single_p03_golden_is_findable_without_claiming_7_7():
+def test_r2_p03_remains_one_golden_inside_seven_author_candidates():
     ph=ROOT/"nsejs/physics"
     catalog=json.loads((ph/"learn/catalog.json").read_text())
     ch=next(x for x in catalog["chapters"] if x["id"]=="PH03")
-    assert ch["state"]=="learning-pairs" and len(ch["units"])==1
-    assert ch["units"][0]["id"]=="P03" and ch["questionTopic"]=="mechanics"
-    assert all((ph/ch["units"][0][k]).is_file() for k in ("learn","practice"))
+    assert ch["state"]=="learning-pairs" and len(ch["units"])==7
+    assert [u["id"] for u in ch["units"]]==["P01","P02","P03","P04","P05","P06","P07"]
+    p03=next(u for u in ch["units"] if u["id"]=="P03")
+    assert "Golden Sample" in p03["title"] and ch["questionTopic"]=="mechanics"
+    assert all((ph/u[k]).is_file() for u in ch["units"] for k in ("learn","practice"))
     assert (ph/ch["overview"]).is_file()
+    assert ch["authorCoverage"]["nativePairs"]==7
+    assert ch["authorCoverage"]["academicallyAccepted"]==0
+    assert ch["authorCoverage"]["sourceAuthenticated"]==0
+    assert ch["authorCoverage"]["extensionReview"]==["P06","P07"]
     home=(ph/"index.html").read_text()
-    assert "Golden candidate · 1/7" in home and 'href="learn/chapter.html?ph=PH03"' in home
+    assert "7/7 native candidate pairs · HOLD" in home and 'href="learn/chapter.html?ph=PH03"' in home
+    assert "0/7 independently academically accepted" in (ph/"learn/chapter.js").read_text()
+    assert '"Return to chapter overview →"' in (ph/"learn/learner-nav.js").read_text()
     assert "Golden Sample only:" in (ph/"learn/chapter.js").read_text()
-    assert '"Return to "+ch.title+" Golden Sample →"' in (ph/"learn/learner-nav.js").read_text()
