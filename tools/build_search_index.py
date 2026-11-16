@@ -1121,6 +1121,34 @@ def main():
             if doc.get("is_nsejs") and "HOLD" not in doc["badge"]:
                 doc["badge"] = "LEARNING CANDIDATE · HOLD"
         all_docs.append(doc)
+    # Direct bank destinations: question stems are already indexed above, but
+    # learners also need an explicit discoverable entry for each bank's reader.
+    # This is a technical candidate route, never source-exam admission.
+    for key, subject, topic, count in (
+        ("CHEMISTRY", "Chemistry", "atomic_structure", 119),
+        ("BIOLOGY", "Biology", "living_world", 119),
+    ):
+        url = f"nsejs/{subject.lower()}/index.html?topic={topic}#topicWorkspace"
+        if not (REPO_ROOT / urlsplit(url).path).is_file():
+            raise ValueError("Question-bank reader missing: " + url)
+        if url not in seen:
+            title = f"{subject} Question Bank · {count} candidate questions"
+            all_docs.append({
+                "id": f"PAGE-{key}-QUESTION-BANK",
+                "original_id": f"{key}-QUESTION-BANK",
+                "type": "PAGE", "category": "page",
+                "badge": "CANDIDATE QUESTION BANK · ACADEMIC HOLD",
+                "breadcrumb": f"NSEJS · {subject} · Question Bank · HOLD",
+                "subject": subject, "exam_family": "NSEJS", "is_nsejs": True,
+                "scope": ["nsejs", subject.lower()], "title": title,
+                "url": url, "topic": "Question Bank",
+                "search_text": normalize_text(
+                    f"{subject} question bank {count} candidate questions topics search "
+                    f"practice core2 junior science NSEJS academic HOLD"
+                ),
+            })
+            seen.add(url)
+
     if args.install_search:
         install_public_search(REPO_ROOT, public_pages)
 
