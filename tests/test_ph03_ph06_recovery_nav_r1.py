@@ -86,8 +86,9 @@ def test_fluids_numeric_models_and_changed_assumption_witnesses():
     doc=read("nsejs/physics/textbook/PH06/index.html")
     assert "not describe net forces on a complete submerged body" in doc
     assert "water acting <strong>downward on its upper face</strong>" in doc
-    assert 'M252 195 L252 225' in doc and 'M243 212 L252 226 L261 212' in doc
-    assert 'setAttribute("d","M252 "+(y+14)+" L252 "+(y+45))' in doc
+    assert 'M252 150 L252 178' in doc and 'M243 164 L252 178 L261 164' in doc
+    assert 'setAttribute("d","M252 "+(y-30)+" L252 "+(y-2))' in doc
+    assert 'id="fluids-air-pocket"' in doc and "Air at pₐₜₘ" in doc
     assert "horizontal" in doc and "gauge" in doc
     assert "pressure is not uniform" in doc
     assert "not a graded Core1B attempt" in doc
