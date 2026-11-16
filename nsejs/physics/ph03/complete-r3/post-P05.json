@@ -1,0 +1,42 @@
+{
+  "schema": "g9-ph03-postattempt/v1",
+  "revision": "ph03-complete-r3-20261116",
+  "id": "P05",
+  "academic": "HOLD",
+  "expected": {
+    "platformV": -1.2,
+    "totalP": 0,
+    "cmV": 0
+  },
+  "steps": [
+    "Initially both objects rest, so total momentum P_initial = 0.",
+    "After ejection: 10V + 2(+6) = 0.",
+    "V = −12/10 = −1.2 m/s, left.",
+    "Final combined momentum = 10(−1.2)+2(+6) = 0 kg·m/s.",
+    "Centre of mass velocity = P_total/(10+2) = 0 m/s."
+  ],
+  "hints": [
+    "Clarify: +6 m/s is already stated in the LAB frame.",
+    "Correlate: use the platform AND the departing load as the system.",
+    "Open the way: load rightward p = +12 kg·m/s, so the platform must gain −12 kg·m/s."
+  ],
+  "firstErrorOrder": [
+    "platformV",
+    "totalP",
+    "cmV"
+  ],
+  "diagnostics": {
+    "platformV": "Check that the platform must recoil left and that +6 is a laboratory speed.",
+    "totalP": "Internal ejection changes individual momenta, not the isolated pair's total.",
+    "cmV": "Use total system momentum divided by total mass, not the platform velocity."
+  },
+  "boundaryExpected": {
+    "platformV": 0,
+    "totalP": 12
+  },
+  "boundarySteps": [
+    "Initial momentum = (10+2)×(+1) = +12 kg·m/s.",
+    "After ejection, 10V + 2(+6) = 12, so V = 0 m/s.",
+    "The total momentum stays +12; the centre of mass still travels at +1 m/s."
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "schema": "g9-ph03-postattempt/v1",
+  "revision": "ph03-complete-r3-20261116",
+  "id": "P06",
+  "academic": "HOLD",
+  "expected": {
+    "joinedV": 1,
+    "loss": 6,
+    "totalP": 4
+  },
+  "steps": [
+    "Initial signed momentum P=1(+4)+3(0)=+4 kg·m/s.",
+    "For sticking total mass is 4 kg, so common final V=+4/4=+1 m/s.",
+    "K_before=½×1×4²=8 J.",
+    "K_after=½×4×1²=2 J, so 6 J was converted during contact.",
+    "P_after=4×1=+4 kg·m/s; 6 J is not a momentum loss."
+  ],
+  "hints": [
+    "Clarify: STICK imposes one common final speed; it does not imply kinetic-energy conservation.",
+    "Correlate: solve signed momentum first, then compute two kinetic energies separately.",
+    "Open the way: the 4 kg joined object moves at +1 m/s, so compare initial 8 J with final 2 J."
+  ],
+  "firstErrorOrder": [
+    "joinedV",
+    "totalP",
+    "loss"
+  ],
+  "diagnostics": {
+    "joinedV": "The contact law is sticking, not elastic scattering; use common final velocity.",
+    "totalP": "Check signed total momentum: no external impulse acts in the short contact.",
+    "loss": "Recompute K_after for the full 4 kg joined mass; don't equate momentum and energy."
+  },
+  "boundaryExpected": {
+    "vA": -2,
+    "vB": 2,
+    "loss": 0
+  },
+  "boundarySteps": [
+    "Ideal elasticity adds conservation of total kinetic energy to P=+4 kg·m/s.",
+    "The unequal-mass 1D elastic solution is v_A=−2 m/s, v_B=+2 m/s.",
+    "P_check=1(−2)+3(2)=+4 kg·m/s.",
+    "K_check=½×1×(−2)²+½×3×2²=2+6=8 J, so 0 J lost."
+  ]
+}
