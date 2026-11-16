@@ -129,7 +129,7 @@ jobs:
           html_pages = 0
           for page_file in out.rglob("*.html"):
               page = page_file.read_text(encoding="utf-8")
-              if re.search(r"</body\\s*>", page, flags=re.I):
+              if re.search(r"</body\s*>", page, flags=re.I):
                   html_pages += 1
                   if "data-grade9-nav" not in page:
                       raise SystemExit("PREVIEW_COMMON_NAV_MISSING:" + str(page_file))

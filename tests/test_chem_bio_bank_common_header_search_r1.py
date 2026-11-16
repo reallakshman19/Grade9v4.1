@@ -70,6 +70,10 @@ def test_same_header_contract_is_installed_on_all_published_html():
     assert 'target.suffix.lower() in {".html", ".htm"}' in workflow
     assert 're.search(r"</body\\s*>"' in workflow
     assert 'PREVIEW_COMMON_NAV_NOT_INSTALLED' in workflow
+    # The staged-pages scan must interpret regex whitespace, not a literal
+    # backslash followed by "s" (which previously counted zero HTML pages).
+    assert 're.search(r"</body\\\\s*>", page' not in workflow
+    assert 're.search(r"</body\\s*>", page' in workflow
 
 
 def test_published_search_rebuild_is_safe_and_contains_bank_routes():
