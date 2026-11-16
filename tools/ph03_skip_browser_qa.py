@@ -25,7 +25,13 @@ def skip(page, *ids):
         expect(button).to_be_visible()
         button.click()
         expect(button).to_have_attribute("aria-pressed", "true")
-        expect(page.locator("#" + name)).to_be_disabled()
+        if name.startswith("fieldset-"):
+            # Fieldset's disabled state disables descendant radios; Playwright
+            # does not always classify the fieldset itself as a disabled input.
+            assert page.locator("#" + name).evaluate(
+                "(el) => el.disabled && [...el.querySelectorAll('input')].every(x => x.matches(':disabled'))")
+        else:
+            expect(page.locator("#" + name)).to_be_disabled()
 
 
 def storage_records(page):
