@@ -6,9 +6,19 @@ HERE=Path(__file__).resolve().parent
 class Quiet(http.server.SimpleHTTPRequestHandler):
     def __init__(self,*a,**kw):super().__init__(*a,directory=str(HERE),**kw)
     def log_message(self,*a):pass
-def click(p,name):p.get_by_role("button",name=name,exact=True).click()
+def click(p,name):
+    p.get_by_role("button",name=name,exact=True).click()
+
 def field(p,n,v):
     loc=p.locator(f'[name="{n}"]')
+    try:
+        loc.wait_for(state="visible",timeout=6000)
+    except Exception as exc:
+        status=p.locator("#status").inner_text(timeout=2000)
+        contents=p.locator("main").inner_text(timeout=2000)[:1500]
+        raise AssertionError(
+            f"FIELD_NOT_RENDERED:{n}; status={status!r}; main={contents!r}; url={p.url}"
+        ) from exc
     if loc.evaluate("el=>el.tagName")== "SELECT":loc.select_option(v)
     else:loc.fill(str(v))
 def answer(p,model,value,kind):
