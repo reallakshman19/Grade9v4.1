@@ -1,3 +1,5 @@
+/* Sitewide Skip R1: navigation only, never awards answer credit. */
+(function(){const s=document.currentScript;if(!s?.src||document.querySelector('script[data-g9-skip-loader]'))return;const x=document.createElement('script');x.src=new URL('../../nsejs/js/skip-mandatory-response.js',s.src).href;x.dataset.g9SkipLoader='r1';document.head.append(x);})();
 /* R2 original source-specific physics practice reuses the merged six-stage
  * Core1A→Core1B presentation, student feedback and attempt capture from F01–F03.
  * F01–F03 and the existing C/E lessons remain untouched.
