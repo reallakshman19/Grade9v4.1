@@ -162,12 +162,12 @@
     const meta = text("div", "Cognitive Demand: " + opStr + " · Band: " + bandStr + scoreStr + (q.crux_move_ref ? " · Crux: " + q.crux_move_ref : ""), "meta");
     append(box, meta);
 
-    const statusBadge = text("span", "{Reviewed} · B1–B7 peer review verified · Rule 13 HOLD", "status");
+    const statusBadge = text("span", "Candidate practice · Source and academic admission HOLD", "status");
     append(box, statusBadge);
 
     if (q.exam_year) {
       const yearStr = q.exam_year.replace("YEAR_", "");
-      const examBadge = text("span", "📅 Official Exam: " + yearStr, "status");
+      const examBadge = text("span", "📅 Claimed exam year: " + yearStr, "status");
       examBadge.style.background = "#e0f2fe";
       examBadge.style.color = "#0369a1";
       examBadge.style.borderColor = "#bae6fd";
@@ -261,7 +261,7 @@
 
     const answerBox = text("div", "", "answer");
     answerBox.hidden = true;
-    append(answerBox, text("h3", "Step-by-Step Derivation & Official Key"));
+    append(answerBox, text("h3", "Step-by-Step Candidate Derivation & Proposed Key"));
     append(answerBox, text("p", q.answer || "Official Key Pending"));
     if (Array.isArray(q.steps) && q.steps.length > 0) {
       q.steps.forEach(s => append(answerBox, text("p", s)));
@@ -364,7 +364,7 @@
           text("div", "✅ CORRECT", "feedback-badge-pill"),
           append(text("div", "", "feedback-msg"),
             text("strong", "Correct! Excellent work!"),
-            text("p", "Your answer " + Array.from(selectedSet).map(s => "(" + s + ")").join(", ") + " perfectly matches the official verified key. Check the step-by-step chemical derivation below.")
+            text("p", "Your answer " + Array.from(selectedSet).map(s => "(" + s + ")").join(", ") + " perfectly matches the candidate key (not independently authenticated). Check the step-by-step chemical derivation below.")
           )
         );
       } else {
