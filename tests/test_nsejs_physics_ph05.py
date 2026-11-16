@@ -249,3 +249,28 @@ def test_rule_13_invariant_software_validation_not_academic_approval():
     for tb in TEXTBOOK_DIR.glob("**/index.html"):
         content = tb.read_text(encoding="utf-8")
         assert "HOLD: ACADEMIC_ADMISSION" in content or "Original educational candidate" in content
+
+
+def test_ph05_golden_evidence_packet_r2_verification():
+    """Verify that PH05-G01 author packet structurally grounds all evidence under PR #19 contract."""
+    import importlib.util
+    packet_path = ROOT / "review/quality-packets/physics/PH05/PH05-G01.packet.json"
+    assert packet_path.is_file(), "PH05-G01 packet must exist"
+
+    validator_script = ROOT / "docs/agent-entry/quality-gate-r2/verify_evidence_packet.py"
+    assert validator_script.is_file()
+
+    spec = importlib.util.spec_from_file_location("verify_evidence_packet", validator_script)
+    assert spec and spec.loader
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+
+    payload = json.loads(packet_path.read_text(encoding="utf-8"))
+    report = mod.validate(payload, ROOT)
+
+    assert report["findings"] == [], f"Unexpected findings: {report['findings']}"
+    assert report["mechanical_status"] == "EVIDENCE_STRUCTURALLY_GROUNDED"
+    assert report["academic_status"] == "HOLD"
+    assert report["review_required"] is True
+    assert report["evidence_items"] >= 24
+

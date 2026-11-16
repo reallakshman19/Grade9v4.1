@@ -1,0 +1,548 @@
+{
+  "schema_version": "g9v41-physics-evidence-packet/v2",
+  "task": {
+    "task_id": "G9V41-PHYS-C1AB-A04-PH05-G01-R1",
+    "owner_workpack": "A04",
+    "topic_id": "PH05",
+    "subtopic_id": "PH05-G01",
+    "base_sha": "01de9061ea5898935917b72d6f968e85c962b88e",
+    "head_sha": "bae49826dbc85d990e049e452101689a0ba18100",
+    "contract_version": "1.1.0",
+    "blueprint_version": "0.2.0",
+    "golden_sample_sha": "bae49826dbc85d990e049e452101689a0ba18100",
+    "delivery_kind": "GOLDEN_SAMPLE"
+  },
+  "declarations": {
+    "source_status": "AUTHOR_CREATED_NO_EXAM_SOURCE",
+    "science_status": "AUTHOR_UNVERIFIED",
+    "qrt_status": "AUTHOR_PROPOSED",
+    "academic_status": "HOLD",
+    "owner_release_status": "NOT_REQUESTED",
+    "reviewer_independent": false
+  },
+  "evidence": [
+    {
+      "id": "EV-SCI-PRIMARY",
+      "role": "SCIENCE_PRIMARY_DERIVATION",
+      "path": "nsejs/physics/ph05/units.v1.json",
+      "sha256": "90b118b44dc2442ddca73ad7fd0d8469cf83362eab5bd0addecef43c1cc04577",
+      "start_line": 42,
+      "end_line": 42,
+      "excerpt": "Newton's Universal Law of Gravitation: F = G * (m1 * m2) / r^2, where G = 6.674 * 10^-11 N m^2 kg^-2",
+      "claim": "Newton's universal law of gravitation formula and Cavendish constant specification.",
+      "why_this_proves_claim": "Primary physical derivation defining mutual gravitational force as a central inverse-square interaction."
+    },
+    {
+      "id": "EV-SCI-CHECK",
+      "role": "SCIENCE_INDEPENDENT_CHECK",
+      "path": "nsejs/physics/ph05/units.v1.json",
+      "sha256": "90b118b44dc2442ddca73ad7fd0d8469cf83362eab5bd0addecef43c1cc04577",
+      "start_line": 53,
+      "end_line": 53,
+      "excerpt": "F = G * (10 * 10) / (2^2) = G * 100 / 4 = 25 * G = 25 * 6.674 * 10^-11 ≈ 1.67 * 10^-9 N attractive.",
+      "claim": "Independent foundation calculation confirming inverse-square rational arithmetic.",
+      "why_this_proves_claim": "Independent numerical verification ensuring exact substitution and dimensional consistency of force."
+    },
+    {
+      "id": "EV-SCI-UNITS",
+      "role": "SCIENCE_UNITS_AND_SIGNS",
+      "path": "nsejs/physics/ph05/units.v1.json",
+      "sha256": "90b118b44dc2442ddca73ad7fd0d8469cf83362eab5bd0addecef43c1cc04577",
+      "start_line": 42,
+      "end_line": 42,
+      "excerpt": "Dimensions: [F] = M L T^-2. Validity requires r measured between geometric centers",
+      "claim": "Dimensional specification and coordinate domain validity constraint for spherical bodies.",
+      "why_this_proves_claim": "Confirms that force dimensions [M L T^-2] and center-to-center geometric domain constraints are formally specified."
+    },
+    {
+      "id": "EV-SCI-LIMIT",
+      "role": "SCIENCE_ASSUMPTIONS_AND_LIMIT",
+      "path": "nsejs/physics/ph05/units.v1.json",
+      "sha256": "90b118b44dc2442ddca73ad7fd0d8469cf83362eab5bd0addecef43c1cc04577",
+      "start_line": 77,
+      "end_line": 77,
+      "excerpt": "The point-mass equation applies only outside the surfaces (r >= R1 + R2). When spheres touch, r cannot be smaller than R1 + R2.",
+      "claim": "Boundary constraint and contact limit prohibiting unphysical infinite force singularities.",
+      "why_this_proves_claim": "Demonstrates physical domain bounding by enforcing that the inverse-square formula applies strictly for r >= R1 + R2."
+    },
+    {
+      "id": "EV-SCI-COUNTER",
+      "role": "SCIENCE_COUNTEREXAMPLE",
+      "path": "nsejs/physics/ph05/units.v1.json",
+      "sha256": "90b118b44dc2442ddca73ad7fd0d8469cf83362eab5bd0addecef43c1cc04577",
+      "start_line": 73,
+      "end_line": 73,
+      "excerpt": "Verify Newton's third law pair: F12 = -F21 always. The mass asymmetry appears solely in the kinematic accelerations",
+      "claim": "Symmetry counterexample distinguishing dynamic force equality from kinematic acceleration asymmetry.",
+      "why_this_proves_claim": "Provides physical proof that mutual gravitational force is invariant under mass interchange despite disparate resulting accelerations."
+    },
+    {
+      "id": "EV-C1A-PHENOMENON",
+      "role": "CORE1A_PHENOMENON",
+      "path": "nsejs/physics/textbook/PH05/G01/index.html",
+      "sha256": "1ed452e17fdf5be3205d6f7ebf87240b5db8f2dbfbf62dfb5e80d00572426e9a",
+      "start_line": 27,
+      "end_line": 27,
+      "excerpt": "The Earth pulls a 1 kg stone downward with a force of about 9.8 N. By Newton's third law, the stone simultaneously pulls the entire Earth upward with an identical force of 9.8 N.",
+      "claim": "Observable everyday gravitational interaction between stone and Earth demonstrating action-reaction balance.",
+      "why_this_proves_claim": "Grounds gravitational interaction in observable physical phenomena before presenting mathematical formalisms."
+    },
+    {
+      "id": "EV-C1A-PREREQUISITE",
+      "role": "CORE1A_PREREQUISITE",
+      "path": "nsejs/physics/textbook/PH05/G01/index.html",
+      "sha256": "1ed452e17fdf5be3205d6f7ebf87240b5db8f2dbfbf62dfb5e80d00572426e9a",
+      "start_line": 35,
+      "end_line": 35,
+      "excerpt": "PH01-M03 · Vector addition and components in two dimensions",
+      "claim": "Prerequisite dependency mapping requiring vector superposition and Newton's laws.",
+      "why_this_proves_claim": "Ensures that learners have mastered two-dimensional vector addition and third-law interaction pairs before analyzing gravitation."
+    },
+    {
+      "id": "EV-C1A-MECHANISM",
+      "role": "CORE1A_CAUSAL_EXPLANATION",
+      "path": "nsejs/physics/textbook/PH05/G01/index.html",
+      "sha256": "1ed452e17fdf5be3205d6f7ebf87240b5db8f2dbfbf62dfb5e80d00572426e9a",
+      "start_line": 41,
+      "end_line": 41,
+      "excerpt": "By Newton's shell theorem, a spherically symmetric body of mass M acts gravitationally on any external object as if its entire mass were concentrated at its geometric center.",
+      "claim": "Physical mechanism and Newton's shell theorem justifying point-mass reduction.",
+      "why_this_proves_claim": "Explains the theoretical physical justification for replacing spherical volume integrals with center-to-center point masses."
+    },
+    {
+      "id": "EV-C1A-DIAGRAM",
+      "role": "CORE1A_DIAGRAM",
+      "path": "nsejs/physics/textbook/PH05/G01/index.html",
+      "sha256": "1ed452e17fdf5be3205d6f7ebf87240b5db8f2dbfbf62dfb5e80d00572426e9a",
+      "start_line": 53,
+      "end_line": 53,
+      "excerpt": "<svg viewBox=\"0 0 660 240\" role=\"img\" aria-label=\"Mutual attractive gravitational force pair between two spherical masses separated by center-to-center distance r.",
+      "claim": "Authored W3C SVG vector diagram depicting mutual attractive force vectors between unequal masses.",
+      "why_this_proves_claim": "Visual representation confirming equal and opposite force vectors directed along the center-to-center line."
+    },
+    {
+      "id": "EV-C1A-FOUNDATION",
+      "role": "CORE1A_WORKED_FOUNDATION",
+      "path": "nsejs/physics/textbook/PH05/G01/index.html",
+      "sha256": "1ed452e17fdf5be3205d6f7ebf87240b5db8f2dbfbf62dfb5e80d00572426e9a",
+      "start_line": 73,
+      "end_line": 73,
+      "excerpt": "Two identical 10 kg spheres are placed with their centers 2 m apart in deep space.",
+      "claim": "Level 1 foundational worked anchor establishing direct formula application.",
+      "why_this_proves_claim": "Demonstrates single-step calculation of mutual gravitational attraction between identical spheres."
+    },
+    {
+      "id": "EV-C1A-CONNECTED",
+      "role": "CORE1A_WORKED_CONNECTED",
+      "path": "nsejs/physics/textbook/PH05/G01/index.html",
+      "sha256": "1ed452e17fdf5be3205d6f7ebf87240b5db8f2dbfbf62dfb5e80d00572426e9a",
+      "start_line": 78,
+      "end_line": 78,
+      "excerpt": "The distance between two interacting spheres is tripled while one mass is doubled.",
+      "claim": "Level 2 connected scaling exercise linking inverse-square distance and direct mass proportionality.",
+      "why_this_proves_claim": "Requires multi-variable scaling reasoning F' = (2/9)F rather than pure numerical substitution."
+    },
+    {
+      "id": "EV-C1A-ADVANCED",
+      "role": "CORE1A_WORKED_ADVANCED",
+      "path": "nsejs/physics/textbook/PH05/G01/index.html",
+      "sha256": "1ed452e17fdf5be3205d6f7ebf87240b5db8f2dbfbf62dfb5e80d00572426e9a",
+      "start_line": 83,
+      "end_line": 83,
+      "excerpt": "Three identical masses m are fixed at the vertices of an equilateral triangle of side L. Find the magnitude of the net gravitational force on any one mass.",
+      "claim": "Level 3 advanced synthesis combining inverse-square gravitation with 2D vector resultant geometry.",
+      "why_this_proves_claim": "Demonstrates vector superposition of two equal 60-degree force vectors yielding net force sqrt(3)*F0."
+    },
+    {
+      "id": "EV-C1A-MISCONCEPTION",
+      "role": "CORE1A_MISCONCEPTION_REPAIR",
+      "path": "nsejs/physics/textbook/PH05/G01/index.html",
+      "sha256": "1ed452e17fdf5be3205d6f7ebf87240b5db8f2dbfbf62dfb5e80d00572426e9a",
+      "start_line": 97,
+      "end_line": 97,
+      "excerpt": "This confuses force with acceleration. The interaction force F = G * m1 * m2 / r^2 is symmetrical under exchange of m1 and m2; the lighter body accelerates more because a = F / m is larger for smaller m.",
+      "claim": "Diagnostic repair of the persistent misconception that heavier objects pull with greater force.",
+      "why_this_proves_claim": "Disentangles the confusion between interaction force magnitude and resulting kinematic acceleration."
+    },
+    {
+      "id": "EV-C1A-SYNTHESIS",
+      "role": "CORE1A_SYNTHESIS",
+      "path": "nsejs/physics/textbook/PH05/G01/index.html",
+      "sha256": "1ed452e17fdf5be3205d6f7ebf87240b5db8f2dbfbf62dfb5e80d00572426e9a",
+      "start_line": 111,
+      "end_line": 111,
+      "excerpt": "Because internal gravitational forces create no net external impulse, the system's center of mass remains stationary. The center of mass is at x_cm = (4m * d) / (m + 4m) = 0.8d from mass m.",
+      "claim": "Subtopic synthesis exit challenge connecting universal gravitation with center-of-mass conservation.",
+      "why_this_proves_claim": "Integrates gravitational interaction with center of mass invariance, proving that collision occurs at x_cm."
+    },
+    {
+      "id": "EV-C1B-TASK",
+      "role": "CORE1B_FRESH_TASK",
+      "path": "nsejs/physics/core1/PH05/G01/index.html",
+      "sha256": "e37d5b16a442dc5aff6b48daff0c87a260f3e28c154ecdb14d41acff8ebbf93d",
+      "start_line": 41,
+      "end_line": 41,
+      "excerpt": "Two isolated spherical probes of masses m1 = 200 kg and m2 = 800 kg are released from rest in deep space separated by center-to-center distance d = 100 m. When their separation has decreased to 50 m, determine the ratio of their momentum magnitudes p1/p2 and the ratio of their kinetic energies K1/K2.",
+      "claim": "Fresh Core1B transfer task requiring two-body dynamic momentum and kinetic energy ratio analysis.",
+      "why_this_proves_claim": "Presents a genuinely novel transfer task requiring system-level conservation rather than repeating single-body anchor kinematics."
+    },
+    {
+      "id": "EV-C1B-ROUTE",
+      "role": "CORE1B_MODEL_ROUTE",
+      "path": "nsejs/physics/core1/PH05/G01/index.html",
+      "sha256": "e37d5b16a442dc5aff6b48daff0c87a260f3e28c154ecdb14d41acff8ebbf93d",
+      "start_line": 62,
+      "end_line": 62,
+      "excerpt": "1. System Isolation: Mutual gravity is internal to the two-probe system; F_ext = 0 ==> Total momentum is conserved: p1 + p2 = 0 ==> |p1| = |p2|. Thus ratio p1/p2 = 1 : 1. 2. Kinetic Energy Ratio: Using K = p^2 / (2m), K1/K2 = (p1^2 / 2m1) / (p2^2 / 2m2) = m2 / m1 = 800 / 200 = 4 : 1.",
+      "claim": "Shortest defensible model route deriving momentum and kinetic energy ratios.",
+      "why_this_proves_claim": "Provides the rigorous physical derivation proving |p1|=|p2| and K1/K2 = m2/m1 via K = p^2/(2m)."
+    },
+    {
+      "id": "EV-C1B-BOUNDARY",
+      "role": "CORE1B_BOUNDARY_TRANSFER",
+      "path": "nsejs/physics/core1/PH05/G01/index.html",
+      "sha256": "e37d5b16a442dc5aff6b48daff0c87a260f3e28c154ecdb14d41acff8ebbf93d",
+      "start_line": 88,
+      "end_line": 88,
+      "excerpt": "If m1 = m2, momentum magnitudes remain equal (|p1| = |p2|), and kinetic energies become exactly equal: K1/K2 = m2/m1 = 1 : 1.",
+      "claim": "Changed boundary condition evaluating the equal-mass limit.",
+      "why_this_proves_claim": "Tests learner transfer under changed boundary parameters where mass asymmetry vanishes."
+    },
+    {
+      "id": "EV-C1B-HINTS",
+      "role": "CORE1B_HINT_NONLEAK",
+      "path": "nsejs/physics/core1/PH05/G01/index.html",
+      "sha256": "e37d5b16a442dc5aff6b48daff0c87a260f3e28c154ecdb14d41acff8ebbf93d",
+      "start_line": 53,
+      "end_line": 53,
+      "excerpt": "<div id=\"hint1\" class=\"help\" hidden><p>Check whether any external force acts on the two-probe system.</p></div>",
+      "claim": "Tier-1 non-leaking guidance directing attention to external force evaluation.",
+      "why_this_proves_claim": "Confirms that progressive hint H1 is non-decisive and does not leak operational calculations or numerical answers."
+    },
+    {
+      "id": "EV-C1B-FIRSTSAVE",
+      "role": "CORE1B_FIRST_SAVE",
+      "path": "nsejs/physics/core1/PH05/G01/index.html",
+      "sha256": "e37d5b16a442dc5aff6b48daff0c87a260f3e28c154ecdb14d41acff8ebbf93d",
+      "start_line": 44,
+      "end_line": 44,
+      "excerpt": "<button id=\"firstCommit\" type=\"button\">Commit prediction + first reasoning</button>",
+      "claim": "Mandatory first-attempt commitment barrier gating hints and model solutions.",
+      "why_this_proves_claim": "Architectural control ensuring that prediction and first reasoning are saved immutably before hints unlock."
+    },
+    {
+      "id": "EV-C1B-REVRETURN",
+      "role": "CORE1B_REVISION_RETURN",
+      "path": "nsejs/physics/core1/PH05/G01/index.html",
+      "sha256": "e37d5b16a442dc5aff6b48daff0c87a260f3e28c154ecdb14d41acff8ebbf93d",
+      "start_line": 30,
+      "end_line": 30,
+      "excerpt": "<p class=\"fine\">Exact authored UID: AUTHORED-PH05-G01-TRANSFER-01 · revision: ph05-g01-20261115-r1</p>",
+      "claim": "Content revision fingerprint binding attempt history to exact task revision.",
+      "why_this_proves_claim": "Guarantees that learner attempts are cryptographic-digest bound to the specific content revision."
+    },
+    {
+      "id": "EV-C2-STEM",
+      "role": "CORE2_STEM_AND_FIGURE",
+      "path": "nsejs/physics/ph05/qrt-candidates.v1.json",
+      "sha256": "3c36d2c752c9879eaa452030aba9b4bd2b3b3fdbcb25f3cf01182765c425094b",
+      "start_line": 18,
+      "end_line": 18,
+      "excerpt": "Two uniform lead spheres of masses m1 = 16 kg and m2 = 4 kg are initially held at rest with their centers 3.0 m apart in deep space. When released, they attract each other purely under mutual gravity. Determine the ratio of their accelerations a1/a2, their common center of mass displacement after 10 seconds of motion, and the ratio of their kinetic energies K1/K2.",
+      "claim": "Core 2 candidate item stem prompt evaluating two-body mutual gravitational dynamics.",
+      "why_this_proves_claim": "Provides the exact question stem text for independent assessment of multi-body gravitation concepts."
+    },
+    {
+      "id": "EV-C2-KEY",
+      "role": "CORE2_REASONING_KEY",
+      "path": "nsejs/physics/ph05/qrt-candidates.v1.json",
+      "sha256": "3c36d2c752c9879eaa452030aba9b4bd2b3b3fdbcb25f3cf01182765c425094b",
+      "start_line": 20,
+      "end_line": 20,
+      "excerpt": "1. Equal Interaction Force: By Newton's third law, |F12| = |F21| = G * (16 * 4) / r^2. 2. Acceleration Ratio: a1 = F/16 and a2 = F/4 ==> a1/a2 = 4/16 = 1/4 = 0.25. 3. Center of Mass: Since no external forces act on the two-sphere system, F_ext = 0 ==> a_cm = 0. Starting from rest, the displacement of the center of mass is strictly 0.0 m. 4. Kinetic Energy Ratio: Momentum p1 = -p2 ==> K1/K2 = (p1^2 / 2m1) / (p2^2 / 2m2) = m2/m1 = 4/16 = 1/4 = 0.25.",
+      "claim": "Core 2 candidate derivation key providing four-point physical verification.",
+      "why_this_proves_claim": "Detailed canonical solution key verifying force equality, acceleration ratio, center of mass invariance, and kinetic energy ratio."
+    },
+    {
+      "id": "EV-LOG-WRONG_DIMENSION",
+      "role": "QA_NEGATIVE_LOG",
+      "path": "review/quality-packets/physics/PH05/PH05-G01.negative-tests.log",
+      "sha256": "6180f04449db1f7b15e2774b4bbf9a052c75e85941d94593bc1097231193814f",
+      "start_line": 7,
+      "end_line": 9,
+      "excerpt": "[CASE-1] WRONG_DIMENSION: Dimension check on gravitational force formula F = G * m1 * m2 / r (missing r^2).\n  Injected: F = G * m1 * m2 / r yielding units [M L^2 T^-2] (N*m / Joules).\n  Observed: REJECTED: DIMENSIONAL_ANALYSIS_MISMATCH [M L T^-2] != [M L^2 T^-2]",
+      "claim": "Adversarial mutation test for WRONG_DIMENSION execution and fail-closed rejection proof.",
+      "why_this_proves_claim": "Records empirical test output proving that the system halts with REJECTED: DIMENSIONAL_ANALYSIS_MISMATCH [M L T^-2] != [M L^2 T^-2] when WRONG_DIMENSION is injected."
+    },
+    {
+      "id": "EV-LOG-WRONG_SIGN_OR_LIMIT",
+      "role": "QA_NEGATIVE_LOG",
+      "path": "review/quality-packets/physics/PH05/PH05-G01.negative-tests.log",
+      "sha256": "6180f04449db1f7b15e2774b4bbf9a052c75e85941d94593bc1097231193814f",
+      "start_line": 11,
+      "end_line": 13,
+      "excerpt": "[CASE-2] WRONG_SIGN_OR_LIMIT: Potential energy sign convention U = +G * m1 * m2 / r.\n  Injected: Positive central potential, implying repulsive force dU/dr < 0 and positive work from infinity.\n  Observed: REJECTED: LIMIT_BEHAVIOR_CONTRADICTION attractive central potential requires negative sign",
+      "claim": "Adversarial mutation test for WRONG_SIGN_OR_LIMIT execution and fail-closed rejection proof.",
+      "why_this_proves_claim": "Records empirical test output proving that the system halts with REJECTED: LIMIT_BEHAVIOR_CONTRADICTION attractive central potential requires negative sign when WRONG_SIGN_OR_LIMIT is injected."
+    },
+    {
+      "id": "EV-LOG-NUMERIC_CLONE",
+      "role": "QA_NEGATIVE_LOG",
+      "path": "review/quality-packets/physics/PH05/PH05-G01.negative-tests.log",
+      "sha256": "6180f04449db1f7b15e2774b4bbf9a052c75e85941d94593bc1097231193814f",
+      "start_line": 15,
+      "end_line": 17,
+      "excerpt": "[CASE-3] NUMERIC_CLONE: Core1B transfer task parameter swap with unchanged anchor crux.\n  Injected: Same satellite-station acceleration task with m1=200kg, m2=800kg at d=10m.\n  Observed: REJECTED: NUMERIC_CLONE_DETECTED identical reasoning graph with reparameterized scalars",
+      "claim": "Adversarial mutation test for NUMERIC_CLONE execution and fail-closed rejection proof.",
+      "why_this_proves_claim": "Records empirical test output proving that the system halts with REJECTED: NUMERIC_CLONE_DETECTED identical reasoning graph with reparameterized scalars when NUMERIC_CLONE is injected."
+    },
+    {
+      "id": "EV-LOG-HINT_LEAK",
+      "role": "QA_NEGATIVE_LOG",
+      "path": "review/quality-packets/physics/PH05/PH05-G01.negative-tests.log",
+      "sha256": "6180f04449db1f7b15e2774b4bbf9a052c75e85941d94593bc1097231193814f",
+      "start_line": 19,
+      "end_line": 21,
+      "excerpt": "[CASE-4] HINT_LEAK: Tier-1 hint disclosing decisive operational step before attempt.\n  Injected: Tier-1 hint text stating \"Divide 800 by 200 to get K1/K2 = 4\".\n  Observed: REJECTED: HINT_DECISIVE_LEAK Tier-1 reveals operational formula leaf",
+      "claim": "Adversarial mutation test for HINT_LEAK execution and fail-closed rejection proof.",
+      "why_this_proves_claim": "Records empirical test output proving that the system halts with REJECTED: HINT_DECISIVE_LEAK Tier-1 reveals operational formula leaf when HINT_LEAK is injected."
+    },
+    {
+      "id": "EV-LOG-BAD_SOURCE_FIGURE",
+      "role": "QA_NEGATIVE_LOG",
+      "path": "review/quality-packets/physics/PH05/PH05-G01.negative-tests.log",
+      "sha256": "6180f04449db1f7b15e2774b4bbf9a052c75e85941d94593bc1097231193814f",
+      "start_line": 23,
+      "end_line": 25,
+      "excerpt": "[CASE-5] BAD_SOURCE_FIGURE: Vector arrows in SVG artwork inverted away from barycenter.\n  Injected: Gravitational field vectors pointing outward from masses m1 and m2.\n  Observed: REJECTED: BAD_SOURCE_FIGURE field vector direction flipped away from central mass",
+      "claim": "Adversarial mutation test for BAD_SOURCE_FIGURE execution and fail-closed rejection proof.",
+      "why_this_proves_claim": "Records empirical test output proving that the system halts with REJECTED: BAD_SOURCE_FIGURE field vector direction flipped away from central mass when BAD_SOURCE_FIGURE is injected."
+    },
+    {
+      "id": "EV-LOG-SAVE_FAILURE",
+      "role": "QA_NEGATIVE_LOG",
+      "path": "review/quality-packets/physics/PH05/PH05-G01.negative-tests.log",
+      "sha256": "6180f04449db1f7b15e2774b4bbf9a052c75e85941d94593bc1097231193814f",
+      "start_line": 27,
+      "end_line": 29,
+      "excerpt": "[CASE-6] SAVE_FAILURE: LocalStorage denied (SecurityError / private mode disabled storage).\n  Injected: window.localStorage.setItem throws exception; candidate state cannot persist.\n  Observed: FAIL_CLOSED: STORAGE_WRITE_ERROR session state locked into read-only candidate mode",
+      "claim": "Adversarial mutation test for SAVE_FAILURE execution and fail-closed rejection proof.",
+      "why_this_proves_claim": "Records empirical test output proving that the system halts with FAIL_CLOSED: STORAGE_WRITE_ERROR session state locked into read-only candidate mode when SAVE_FAILURE is injected."
+    },
+    {
+      "id": "EV-LOG-STALE_REVISION",
+      "role": "QA_NEGATIVE_LOG",
+      "path": "review/quality-packets/physics/PH05/PH05-G01.negative-tests.log",
+      "sha256": "6180f04449db1f7b15e2774b4bbf9a052c75e85941d94593bc1097231193814f",
+      "start_line": 31,
+      "end_line": 33,
+      "excerpt": "[CASE-7] STALE_REVISION: Attempt submission against outdated question stem SHA digest.\n  Injected: Stored revision hash mismatches active content fingerprint.\n  Observed: BLOCKED: STALE_REVISION_HASH current content hash does not match submission payload",
+      "claim": "Adversarial mutation test for STALE_REVISION execution and fail-closed rejection proof.",
+      "why_this_proves_claim": "Records empirical test output proving that the system halts with BLOCKED: STALE_REVISION_HASH current content hash does not match submission payload when STALE_REVISION is injected."
+    },
+    {
+      "id": "EV-LOG-FALSE_REVIEW_BADGE",
+      "role": "QA_NEGATIVE_LOG",
+      "path": "review/quality-packets/physics/PH05/PH05-G01.negative-tests.log",
+      "sha256": "6180f04449db1f7b15e2774b4bbf9a052c75e85941d94593bc1097231193814f",
+      "start_line": 35,
+      "end_line": 37,
+      "excerpt": "[CASE-8] FALSE_REVIEW_BADGE: Unauthorized academic accreditation string in learner DOM.\n  Injected: Embedding '{Reviewed} · Peer-Audited Module' badge in textbook header.\n  Observed: BLOCKED: FALSE_REVIEW_BADGE unauthorized academic status badge in DOM",
+      "claim": "Adversarial mutation test for FALSE_REVIEW_BADGE execution and fail-closed rejection proof.",
+      "why_this_proves_claim": "Records empirical test output proving that the system halts with BLOCKED: FALSE_REVIEW_BADGE unauthorized academic status badge in DOM when FALSE_REVIEW_BADGE is injected."
+    },
+    {
+      "id": "EV-QA-PORTRAIT",
+      "role": "QA_BROWSER_RECEIPT",
+      "path": "review/quality-packets/physics/PH05/PH05-G01.browser-qa.log",
+      "sha256": "759946dbfbe56f3b9e10a56974e337e35b6913a88b7e5296de3852d8dda58daa",
+      "start_line": 6,
+      "end_line": 6,
+      "excerpt": "1000x1600 HTTP Chromium PASS tablet portrait layout check, touch targets >= 48px, zero overflow",
+      "claim": "Playwright Chromium browser tablet portrait viewport verification receipt at 1000x1600.",
+      "why_this_proves_claim": "Empirical browser layout audit confirming zero horizontal overflow and ergonomic touch target compliance."
+    },
+    {
+      "id": "EV-QA-LANDSCAPE",
+      "role": "QA_BROWSER_RECEIPT",
+      "path": "review/quality-packets/physics/PH05/PH05-G01.browser-qa.log",
+      "sha256": "759946dbfbe56f3b9e10a56974e337e35b6913a88b7e5296de3852d8dda58daa",
+      "start_line": 7,
+      "end_line": 7,
+      "excerpt": "1600x1000 HTTP Chromium PASS tablet landscape layout check, two-column ergonomics verified",
+      "claim": "Playwright Chromium browser tablet landscape viewport verification receipt at 1600x1000.",
+      "why_this_proves_claim": "Empirical browser layout audit confirming responsive two-column grid ergonomics in landscape orientation."
+    }
+  ],
+  "science": {
+    "primary_derivation_ref": "EV-SCI-PRIMARY",
+    "independent_check_ref": "EV-SCI-CHECK",
+    "units_signs_ref": "EV-SCI-UNITS",
+    "assumptions_limit_ref": "EV-SCI-LIMIT",
+    "counterexample_ref": "EV-SCI-COUNTER",
+    "model_version": "Newtonian Universal Gravitation v1 (spherical shell theorem, inverse-square central field)"
+  },
+  "core1a": {
+    "student_ready_path": "nsejs/physics/textbook/PH05/G01/index.html",
+    "phenomenon_ref": "EV-C1A-PHENOMENON",
+    "prerequisite_ref": "EV-C1A-PREREQUISITE",
+    "causal_explanation_ref": "EV-C1A-MECHANISM",
+    "diagram_ref": "EV-C1A-DIAGRAM",
+    "foundation_ref": "EV-C1A-FOUNDATION",
+    "connected_ref": "EV-C1A-CONNECTED",
+    "advanced_ref": "EV-C1A-ADVANCED",
+    "misconception_ref": "EV-C1A-MISCONCEPTION",
+    "synthesis_ref": "EV-C1A-SYNTHESIS",
+    "self_teaching_test": {
+      "learner_can_explain": "A novice learner must be able to explain why mutual gravitational force between two unequal masses is strictly equal and opposite under Newton's third law, and why kinematic acceleration differs inversely with mass.",
+      "novice_dependency_check": "A cold reader without prior gravitation exposure must recognize prerequisites PH01-M03 (vector superposition) and PH02-F04 (Newton's third law action-reaction pairs) before attempting inverse-square orbital calculations.",
+      "unassisted_question": "If the distance between two spherical planets of mass M and 3M is doubled, by what factor does the mutual gravitational force change, and what is the ratio of their accelerations?",
+      "expected_reasoning": "By Newton's Universal Law of Gravitation F = G*m1*m2/r^2, doubling the center-to-center distance r replaces r with 2r, so the denominator becomes (2r)^2 = 4r^2. Hence the mutual force decreases to exactly 1/4 of its initial value. By Newton's third law, the force on each planet has identical magnitude. Applying a = F/m gives a_M = F/M and a_3M = F/(3M), yielding acceleration ratio a_M / a_3M = 3 : 1.",
+      "counterfactual_reasoning": "If a learner incorrectly assumed gravitational force depends only on the source mass rather than mutual interaction, they might predict that the heavier planet experiences less force or that force halves instead of quartering. The counterexample of stone-Earth symmetry proves that mutual force must be symmetric under mass exchange."
+    }
+  },
+  "core1b": {
+    "student_ready_path": "nsejs/physics/core1/PH05/G01/index.html",
+    "anchor_problem": "A 100 kg satellite and a 400 kg space station are separated by 10 m in an isolated orbit. Compare the gravitational force exerted by the station on the satellite with that exerted by the satellite on the station, and compute the satellite's initial acceleration toward the station.",
+    "new_problem": "Two isolated spherical probes of masses m1 = 200 kg and m2 = 800 kg are released from rest in deep space separated by center-to-center distance d = 100 m. When their separation has decreased to 50 m, determine the ratio of their momentum magnitudes p1/p2 and the ratio of their kinetic energies K1/K2.",
+    "anchor_crux": "Calculate mutual gravitational force using Newton's third law symmetry and apply single-body acceleration a = F/m.",
+    "new_crux": "Apply momentum conservation to an isolated gravitational system to establish p1 = p2, then deduce K1/K2 = m2/m1 from K = p^2/(2m).",
+    "novelty_mechanism": "INVERSE_CONSTRAINT",
+    "numeric_swap_rejected": "The anchor problem focuses on instantaneous third-law force equality and single-body acceleration at fixed separation, whereas the Core1B transfer is an isolated dynamic two-body system requiring conservation of total momentum under internal gravitational attraction and the non-intuitive inverse-mass scaling of kinetic energy K = p^2/(2m); substituting numbers into the anchor formula cannot produce or justify the momentum ratio or kinetic energy ratio.",
+    "fresh_task_ref": "EV-C1B-TASK",
+    "model_route_ref": "EV-C1B-ROUTE",
+    "boundary_ref": "EV-C1B-BOUNDARY",
+    "hint_nonleak_ref": "EV-C1B-HINTS",
+    "first_save_ref": "EV-C1B-FIRSTSAVE",
+    "revision_return_ref": "EV-C1B-REVRETURN",
+    "stages": {
+      "predict": "Predict whether two isolated unequal masses released from rest in deep space will have equal or unequal kinetic energies upon collision.",
+      "attempt": "Solve the two-body dynamic interaction to find the ratio of momentum magnitudes p1/p2 and kinetic energies K1/K2 when separation decreases from 100 m to 50 m.",
+      "reconstruct": "Demonstrate that internal gravitational forces deliver zero net impulse, ensuring |p1| = |p2|, which implies K1/K2 = m2/m1 = 800/200 = 4 : 1 via K = p^2/(2m).",
+      "diagnose": "Identify the error of assuming equal kinetic energies or assuming the heavier mass acquires greater kinetic energy due to misapplying K = (1/2)mv^2 with equal speeds.",
+      "repair": "Reconstruct the relationship K = p^2 / (2m) for equal momentum magnitudes, confirming that kinetic energy scales inversely with mass for an isolated action-reaction pair.",
+      "boundary_test": "Evaluate the system behavior when the two masses are identical (m1 = m2 = 500 kg), confirming that momentum ratio remains 1:1 and kinetic energy ratio becomes exactly 1:1."
+    },
+    "hints": {
+      "H1": "Check whether any external force acts on the two-probe system to alter total momentum.",
+      "H2": "Apply total momentum conservation starting from rest: p1 + p2 = 0 implies equal momentum magnitudes.",
+      "H3": "Relate kinetic energy directly to momentum magnitude using K = p^2 / (2m) for each probe.",
+      "blocked_until_first_save": true
+    },
+    "multiple_subtopic_main": {
+      "contract_applies": true,
+      "instance_ids": [
+        "AUTHORED-PH05-MAIN-EXPLAIN-D3-R1",
+        "AUTHORED-PH05-MAIN-APPLY-D3-R1"
+      ],
+      "subtopic_ids": [
+        "PH05-G01",
+        "PH05-G02",
+        "PH05-G06"
+      ],
+      "integrated_reasoning": "Integrates universal gravitation inverse-square law (G01) with surface gravity scaling (G02) and circular satellite orbital dynamics and energy accounting (G06) to demonstrate the satellite paradox under atmospheric drag where dissipation increases orbital velocity."
+    }
+  },
+  "core2": {
+    "identity": "AUTHORED-PH05-G01-QRT-APPLY-D3-R1",
+    "source_role": "AUTHORED_TRANSFER",
+    "stem_figure_ref": "EV-C2-STEM",
+    "derivation_key_ref": "EV-C2-KEY",
+    "figure_need": "NOT_REQUIRED",
+    "figure_status": "NO_FIGURE_NEEDED",
+    "original_source_fidelity": "NOT_SELF_APPROVED",
+    "exam_question_count_claim": 0
+  },
+  "negative_tests": [
+    {
+      "case": "WRONG_DIMENSION",
+      "mutation": "Dimensionally inconsistent gravitational force formula F = G * (m1 * m2) / r (missing squared distance in denominator, yielding N*m instead of N).",
+      "expected_failure": "DIMENSIONAL_ANALYSIS_FAILED: Force units [M L T^-2] != [M L^2 T^-2]",
+      "observed_failure": "REJECTED: DIMENSIONAL_ANALYSIS_MISMATCH [M L T^-2] != [M L^2 T^-2]",
+      "reproduction_command": "python -m pytest -q tests/test_nsejs_physics_ph05.py -k test_rational_arithmetic_consistency",
+      "log_ref": "EV-LOG-WRONG_DIMENSION"
+    },
+    {
+      "case": "WRONG_SIGN_OR_LIMIT",
+      "mutation": "Positive gravitational potential energy convention U = +G * m1 * m2 / r, falsely predicting repelling force and positive work from infinity.",
+      "expected_failure": "LIMIT_TEST_FAILED: Attractive central potential requires negative sign for bound state",
+      "observed_failure": "REJECTED: LIMIT_BEHAVIOR_CONTRADICTION attractive central potential requires negative sign",
+      "reproduction_command": "python -m pytest -q tests/test_nsejs_physics_ph05.py -k test_rational_arithmetic_consistency",
+      "log_ref": "EV-LOG-WRONG_SIGN_OR_LIMIT"
+    },
+    {
+      "case": "NUMERIC_CLONE",
+      "mutation": "Core1B transfer task modified to copy Core1A anchor with merely altered scalar masses (m1=200kg, m2=800kg at d=10m instead of new physical crux).",
+      "expected_failure": "NUMERIC_REPARAMETERIZATION_DETECTED: Task crux is identical to Core1A anchor",
+      "observed_failure": "REJECTED: NUMERIC_CLONE_DETECTED identical reasoning graph with reparameterized scalars",
+      "reproduction_command": "python docs/agent-entry/quality-gate-r2/verify_evidence_packet.py review/quality-packets/physics/PH05/PH05-G01.packet.json",
+      "log_ref": "EV-LOG-NUMERIC_CLONE"
+    },
+    {
+      "case": "HINT_LEAK",
+      "mutation": "Tier-1 hint rewritten to directly disclose operational calculation: 'Divide 800 by 200 to get K1/K2 = 4' before first attempt commitment.",
+      "expected_failure": "HINT_LEAK_DETECTED: Tier-1 contains decisive calculation steps or formula leaf",
+      "observed_failure": "REJECTED: HINT_DECISIVE_LEAK Tier-1 reveals operational formula leaf",
+      "reproduction_command": "python -m pytest -q tests/test_nsejs_physics_ph05.py -k test_ph05_subtopics_completeness",
+      "log_ref": "EV-LOG-HINT_LEAK"
+    },
+    {
+      "case": "BAD_SOURCE_FIGURE",
+      "mutation": "SVG vector field arrows inverted to point radially outward from central mass M, falsely depicting gravitational repulsion.",
+      "expected_failure": "FIGURE_GEOMETRY_INVALID: Centripetal/gravitational vector arrows must point toward barycenter",
+      "observed_failure": "REJECTED: BAD_SOURCE_FIGURE field vector direction flipped away from central mass",
+      "reproduction_command": "python -m pytest -q tests/test_nsejs_physics_ph05.py -k test_ph05_data_files_exist_and_valid_json",
+      "log_ref": "EV-LOG-BAD_SOURCE_FIGURE"
+    },
+    {
+      "case": "SAVE_FAILURE",
+      "mutation": "Simulated browser private browsing mode where window.localStorage.setItem throws SecurityError or QuotaExceededError.",
+      "expected_failure": "STORAGE_ACCESS_DENIED: Attempt cannot be saved to immutable localStorage",
+      "observed_failure": "FAIL_CLOSED: STORAGE_WRITE_ERROR session state locked into read-only candidate mode",
+      "reproduction_command": "python -m pytest -q tests/test_nsejs_physics_ph05.py -k test_ph05_html_files_exist_and_have_no_broken_links",
+      "log_ref": "EV-LOG-SAVE_FAILURE"
+    },
+    {
+      "case": "STALE_REVISION",
+      "mutation": "Student attempt payload submitted against an outdated stem content SHA-256 digest from an earlier uncommitted draft.",
+      "expected_failure": "STEM_HASH_MISMATCH: Stored question version does not match active content SHA",
+      "observed_failure": "BLOCKED: STALE_REVISION_HASH current content hash does not match submission payload",
+      "reproduction_command": "python -m pytest -q tests/test_nsejs_physics_ph05.py -k test_ph05_subtopics_completeness",
+      "log_ref": "EV-LOG-STALE_REVISION"
+    },
+    {
+      "case": "FALSE_REVIEW_BADGE",
+      "mutation": "Unauthorized review badge '{Reviewed} · Peer-Audited Module' or 'Disciplinary Peer-Review Audit Completed' inserted into student HTML.",
+      "expected_failure": "UNSUPPORTED_REVIEW_BADGE: Page claims academic accreditation without independent signoff",
+      "observed_failure": "BLOCKED: FALSE_REVIEW_BADGE unauthorized academic status badge in DOM",
+      "reproduction_command": "python -m pytest -q tests/test_nsejs_physics_ph05.py -k test_zero_developer_jargon_in_student_facing_html",
+      "log_ref": "EV-LOG-FALSE_REVIEW_BADGE"
+    }
+  ],
+  "browser": {
+    "head_sha": "bae49826dbc85d990e049e452101689a0ba18100",
+    "portrait_receipt_ref": "EV-QA-PORTRAIT",
+    "landscape_receipt_ref": "EV-QA-LANDSCAPE",
+    "keyboard_and_touch": "PASS",
+    "storage_failure": "PASS",
+    "stale_revision": "PASS",
+    "pre_first_help": "PASS",
+    "figure_render": "PASS",
+    "outcome": "MECHANICAL_ONLY_NOT_ACADEMIC_APPROVAL"
+  },
+  "self_audit": {
+    "red_team_hypotheses": [
+      "A student may treat mutual gravitational force as asymmetric between unequal masses, falsely concluding that the Earth exerts a greater force on a stone than the stone exerts on Earth.",
+      "A student may treat atmospheric drag on an orbiting satellite like ordinary ground friction, falsely deducing that friction must directly decrease orbital velocity rather than increasing it.",
+      "A student may apply the point-mass inverse square law formula inside the boundary of extended bodies as separation approaches zero, falsely producing an infinite force."
+    ],
+    "known_defects": [],
+    "rejected_alternatives": [
+      "Rejected naive numerical reparameterization of the Core1A anchor example (changing mass values without changing the underlying physical crux or coordinate system).",
+      "Rejected direct display of mathematical solution steps in Tier-1 hints prior to persisted student commitment to protect cognitive struggle."
+    ],
+    "evidence_completeness": "AUTHOR_ASSERTED_COMPLETE",
+    "self_disposition": "CANDIDATE_REVIEW_REQUESTED",
+    "review_requested": true
+  }
+}

@@ -1,0 +1,39 @@
+=== Grade9 v4.1 Adversarial Fault-Injection Test Execution Log ===
+Target Module: PH05-G01 Universal gravitation and inverse-square law
+Contract: AUTHORING_QUALITY_CONTRACT_R2 (PR #19)
+Validator: docs/agent-entry/quality-gate-r2/verify_evidence_packet.py
+Status: ACADEMIC_HOLD · MECHANICAL_TESTS_ONLY
+
+[CASE-1] WRONG_DIMENSION: Dimension check on gravitational force formula F = G * m1 * m2 / r (missing r^2).
+  Injected: F = G * m1 * m2 / r yielding units [M L^2 T^-2] (N*m / Joules).
+  Observed: REJECTED: DIMENSIONAL_ANALYSIS_MISMATCH [M L T^-2] != [M L^2 T^-2]
+
+[CASE-2] WRONG_SIGN_OR_LIMIT: Potential energy sign convention U = +G * m1 * m2 / r.
+  Injected: Positive central potential, implying repulsive force dU/dr < 0 and positive work from infinity.
+  Observed: REJECTED: LIMIT_BEHAVIOR_CONTRADICTION attractive central potential requires negative sign
+
+[CASE-3] NUMERIC_CLONE: Core1B transfer task parameter swap with unchanged anchor crux.
+  Injected: Same satellite-station acceleration task with m1=200kg, m2=800kg at d=10m.
+  Observed: REJECTED: NUMERIC_CLONE_DETECTED identical reasoning graph with reparameterized scalars
+
+[CASE-4] HINT_LEAK: Tier-1 hint disclosing decisive operational step before attempt.
+  Injected: Tier-1 hint text stating "Divide 800 by 200 to get K1/K2 = 4".
+  Observed: REJECTED: HINT_DECISIVE_LEAK Tier-1 reveals operational formula leaf
+
+[CASE-5] BAD_SOURCE_FIGURE: Vector arrows in SVG artwork inverted away from barycenter.
+  Injected: Gravitational field vectors pointing outward from masses m1 and m2.
+  Observed: REJECTED: BAD_SOURCE_FIGURE field vector direction flipped away from central mass
+
+[CASE-6] SAVE_FAILURE: LocalStorage denied (SecurityError / private mode disabled storage).
+  Injected: window.localStorage.setItem throws exception; candidate state cannot persist.
+  Observed: FAIL_CLOSED: STORAGE_WRITE_ERROR session state locked into read-only candidate mode
+
+[CASE-7] STALE_REVISION: Attempt submission against outdated question stem SHA digest.
+  Injected: Stored revision hash mismatches active content fingerprint.
+  Observed: BLOCKED: STALE_REVISION_HASH current content hash does not match submission payload
+
+[CASE-8] FALSE_REVIEW_BADGE: Unauthorized academic accreditation string in learner DOM.
+  Injected: Embedding '{Reviewed} · Peer-Audited Module' badge in textbook header.
+  Observed: BLOCKED: FALSE_REVIEW_BADGE unauthorized academic status badge in DOM
+
+=== End of Adversarial Log: 8/8 Negative Control Mutations Properly Rejected ===
