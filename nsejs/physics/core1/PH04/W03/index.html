@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>PH04-W03 · Constant power and non-linear velocity evolution · Core1B protected practice</title>
+  <meta name="description" content="Grade9 v4.1 PH04 Core1B protected practice author candidate; academic and source HOLD.">
+  <link rel="stylesheet" href="../../../ph04/units.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="../../../index.html">Physics topics</a><a href="../W02/index.html">Prev unit W02</a><a href="../../../textbook/PH04/W03/index.html">Textbook lesson</a><a href="../W04/index.html">Next unit W04</a>
+    </nav>
+    <p>Grade9 v4.1 · NSEJS Physics · PH04 Work, Energy and Power · Core1B protected practice</p>
+    <h1>PH04-W03 · Constant power and non-linear velocity evolution</h1>
+    <p>Original educational candidate · not an authenticated exam question or approved scientific/QRT assessment.</p>
+  </header>
+  <main data-ph04-practice data-unit="PH04-W03">
+    <h1>PH04-W03 · Constant power and non-linear velocity evolution</h1>
+    <div id="taskNav" class="card">
+      <strong>This subtopic's operation candidates</strong>
+      <div>
+        <a class="action" href="?task=AUTHORED-PH04-W03-C1B-TASK-R1">AUTHORED-PH04-W03-C1B-TASK-R1 · current</a>
+      </div>
+    </div>
+    <p class="notice"><strong>OWNER-AUTHORIZED AUTHOR-CREATED PRACTICE · AI-CHECKED.</strong> Self-study exercises, not authenticated original NSEJS questions or independent certification. Browser storage protects learning order but is not a secure examination boundary.</p>
+    <p class="fine">Exact authored UID: AUTHORED-PH04-W03-C1B-TASK-R1 · revision: 1</p>
+    <p id="runtimeStatus" class="status" role="status">Candidate task loaded. Submit a real first prediction and reasoning before hints/reconstruction.</p>
+    <p id="revisionNote" class="fine"></p>
+    <section class="step" id="stage1-prediction">
+      <h2>1 · Predict before solving</h2>
+      <p>First calculate the initial kinetic energy K_0 before the motor starts.</p>
+      <label for="prediction">Your prediction and reason</label>
+      <textarea id="prediction"></textarea>
+    </section>
+    <section class="step" id="stage2-attempt">
+      <h2>2 · Attempt: protect your decisive work</h2>
+      <p>A 3 kg trolley already rolls right at 2 m s^-1 on a smooth level track when a motor starts delivering a steady 18 W of mechanical power. Neglect friction and resistive losses. Calculate the trolley's speed after 2 seconds and after 6 seconds, and explain whether the acceleration remains constant.</p>
+      <label for="initialResponse">Your first derivation and final answer</label>
+      <textarea id="initialResponse"></textarea>
+      <button id="firstCommit" type="button">Commit prediction + first reasoning</button>
+    </section>
+    <section class="step" id="stage-hints">
+      <h2>Assistance hints (unlocked after first commit)</h2>
+      <div id="hint1" class="help" hidden><p>First calculate the initial kinetic energy K_0 before the motor starts.</p></div>
+      <div id="hint2" class="help" hidden><p>Use K(t) = K_0 + P * t to find the total kinetic energy at t = 2 s and t = 6 s.</p></div>
+      <div id="hint3" class="help" hidden><p>Remember that acceleration is a = P / (m * v); compare its value at 2 s and 6 s.</p></div>
+    </section>
+    <section class="step" id="stage3-reconstruction">
+      <h2>3 · Model reconstruction and derivation key</h2>
+      <div class="card math"><p>1. Compute initial kinetic energy: K_0 = 0.5 * m * v_0^2 = 0.5 * 3 * 4 = 6 J. 2. Apply constant power integral: Delta K(t) = P * t. 3. For t = 2 s: K(2) = 6 + 18*2 = 42 J ==> v(2) = sqrt(2 * 42 / 3) = sqrt(28) ≈ 5.29 m/s. 4. For t = 6 s: K(6) = 6 + 18*6 = 114 J ==> v(6) = sqrt(2 * 114 / 3) = sqrt(76) ≈ 8.72 m/s. 5. Evaluate acceleration: a(t) = P / (m * v(t)). Since v(t) increases, a(t) decreases continuously from 1.13 m/s^2 down to 0.69 m/s^2.</p></div>
+      <p>Canonical key: <strong>Initial kinetic energy: K_0 = 0.5 * 3 * (2)^2 = 6 J. 1. At t = 2 s: Added energy Delta K = P * t = 18 * 2 = 36 J. Total kinetic energy: K(2) = 6 + 36 = 42 J. Speed: v(2) = sqrt(2 * 42 / 3) = sqrt(28) ≈ 5.29 m s^-1. 2. At t = 6 s: Added energy Delta K = 18 * 6 = 108 J. Total kinetic energy: K(6) = 6 + 108 = 114 J. Speed: v(6) = sqrt(2 * 114 / 3) = sqrt(76) ≈ 8.72 m s^-1. 3. Acceleration: Instantaneous driving force F = P / v and acceleration a = P / (m * v). At t = 2 s, a = 18 / (3 * 5.29) ≈ 1.13 m s^-2. At t = 6 s, a = 18 / (3 * 8.72) ≈ 0.69 m s^-2. The acceleration decreases over time; it does not remain constant.</strong></p>
+    </section>
+    <section class="step" id="stage4-diagnosis">
+      <h2>4 · Self-diagnosis and misconception check</h2>
+      <p>Did your initial reasoning encounter this common conceptual trap?</p>
+      <div class="card"><p><strong>Misconception:</strong> Constant power means constant force and constant acceleration.</p><p><strong>Why it fails:</strong> Power is P = F * v. If power is constant and speed v increases, the driving force F = P/v must decrease proportionally.</p></div>
+    </section>
+    <section class="step" id="stage5-repair">
+      <h2>5 · Targeted repair and conceptual correction</h2>
+      <div class="card"><p><strong>Repair procedure:</strong> Always use P = dK/dt to solve for energy first: K(t) = K_0 + P*t, then deduce v = sqrt(2K/m).</p></div>
+    </section>
+    <section class="step" id="stage6-boundary">
+      <h2>6 · Boundary condition transfer test</h2>
+      <p><strong>Changed boundary prompt:</strong> If the motor is suddenly switched off at t = 6 s and a braking force of 2 N is applied, how far does the trolley roll before stopping?</p>
+      <div class="card math"><p><strong>Boundary model solution:</strong> Stopping distance d = K(6) / F_brake = 114 / 2 = 57.0 m.</p></div>
+    </section>
+  </main>
+  <script type="module" src="../../../ph04/practice.js"></script>
+  <script defer src="../../../learn/learner-nav.js" data-g9-learner-nav></script>
+</body>
+</html>

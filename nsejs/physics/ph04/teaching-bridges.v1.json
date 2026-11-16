@@ -1,0 +1,53 @@
+{
+  "schema": "g9v41-teaching-bridges/v1",
+  "status": "AUTHOR_PROPOSED__HOLD",
+  "source_type": "AUTHOR_EXPOSED_PEDAGOGICAL_PROGRESSION",
+  "purpose": "Maps prerequisite concepts and multi-step cognitive scaffolds across PH04 subtopics.",
+  "bridges": {
+    "PH04-W01": [
+      {
+        "op": "MODEL",
+        "title": "Multi-force work-energy ledger with opposing friction and motor pull",
+        "teaching": "The work-energy theorem states that net work equals the algebraic sum of work done by every force acting on the body: W_net = sum(W_i) = Delta K. A force along displacement does positive work (+F*d), opposing friction does negative work (-f*d), and normal forces perpendicular to motion do zero work.",
+        "worked": "A 2 kg crate slides 3 m right under 10 N pull right and 4 N friction left. W_pull = +30 J, W_fric = -12 J, W_net = +18 J. With K_i = 1 J, K_f = 19 J ==> v_f = sqrt(19) ≈ 4.36 m/s.",
+        "check": "Dimensional consistency: [W] = N*m = J = kg*m^2/s^2."
+      }
+    ],
+    "PH04-W02": [
+      {
+        "op": "REPRESENT",
+        "title": "Piecewise spring contact and decoupled friction slide",
+        "teaching": "An unattached spring pushes a cart only while compressed (x > 0). At natural length (x = 0), contact ends and the spring exerts zero further force. Subsequent motion across a rough surface is governed solely by friction work W = -f*d.",
+        "worked": "A 2 kg cart released by an unattached spring (k = 200 N/m, x = 0.10 m) enters a 0.5 m rough strip with 1 N friction. U_s = 1.0 J. Friction work W_fric = -0.50 J. K_f = 0.50 J ==> v_f = sqrt(0.50) ≈ 0.707 m/s.",
+        "check": "Boundary continuity: velocity at spring release equals velocity entering the rough strip."
+      }
+    ],
+    "PH04-W03": [
+      {
+        "op": "JUSTIFY",
+        "title": "Constant power non-linear velocity evolution and decaying acceleration",
+        "teaching": "Constant mechanical power P adds equal kinetic energy increments each second: K(t) = K_0 + P*t. Because K = 0.5*m*v^2, velocity grows as v(t) = sqrt(2*(K_0 + P*t)/m) (sub-linear), while driving force F = P/v and acceleration a = P/(m*v) decay over time. Acceleration is never constant under constant power.",
+        "worked": "A 3 kg trolley rolling at 2 m/s receives 18 W for 2 s: K(2) = 6 + 36 = 42 J ==> v(2) = sqrt(28) ≈ 5.29 m/s, a(2) = 18 / (3*5.29) ≈ 1.13 m/s^2. At 6 s: K(6) = 114 J ==> v(6) ≈ 8.72 m/s, a(6) ≈ 0.69 m/s^2.",
+        "check": "Dimensional test: [P] = W = J/s = kg*m^2/s^3."
+      }
+    ],
+    "PH04-W04": [
+      {
+        "op": "CALCULATE",
+        "title": "Distributed mass chain lifting work and center-of-mass depth",
+        "teaching": "For a uniform hanging chain of length x and linear mass density lambda = M/L, its mass is lambda*x and its center of mass is located at depth x/2. Its gravitational potential energy is U(x) = -0.5*lambda*g*x^2. Work required against gravity to pull hanging length from x_1 to x_2 is W = U(x_2) - U(x_1) = 0.5*lambda*g*(x_1^2 - x_2^2).",
+        "worked": "An 8 m rope of 4 kg (lambda = 0.5 kg/m) with 4 m hanging (U_1 = -40 J) is pulled until 2 m hangs (U_2 = -10 J). W = -10 - (-40) = +30 J.",
+        "check": "Quadratic dependence: lifting the upper half of hanging chain requires 3 times more work than the lower half."
+      }
+    ],
+    "PH04-W05": [
+      {
+        "op": "REPRESENT",
+        "title": "Graphical calculus selection: area versus slope from axis dimensions",
+        "teaching": "Graph calculus operations are determined strictly by coordinate axis units: Area on [F_x vs x] has units N*m = J, representing work W. Slope on [U vs x] has units J/m = N; by definition conservative force is F_x = -dU/dx. Slope on [s vs t] has units m/s, representing velocity v = ds/dt.",
+        "worked": "Card R (F_x vs x): triangle from (0,0) to (4 m, 8 N) has area W = 0.5*4*8 = 16 J. Card S (U vs x): slope = (8-2)/2 = +3 N ==> F_x = -3 N. Card T (s vs t): slope between (2 s, 4 m) and (5 s, 16 m) is v = (16-4)/(5-2) = 4 m/s.",
+        "check": "Dimensional homogeneity: Area units = y-unit * x-unit; Slope units = y-unit / x-unit."
+      }
+    ]
+  }
+}

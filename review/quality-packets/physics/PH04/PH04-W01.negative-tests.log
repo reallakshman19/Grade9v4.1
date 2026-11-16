@@ -1,0 +1,38 @@
+=== Grade9 v4.1 Adversarial Fault-Injection Test Execution Log ===
+Target Module: PH04-W01 Multi-force work–energy ledger and signed work accounting
+Contract: AUTHORING_QUALITY_CONTRACT_R2 (PR #19) - GOLDEN_SAMPLE
+Status: ACADEMIC_HOLD · MECHANICAL_TESTS_ONLY
+
+[CASE-1] WRONG_DIMENSION: Injected work formula W = F / d with dimensions [M L^-1 T^-2] instead of [M L^2 T^-2].
+  Expected: DIMENSIONAL_ANALYSIS_FAILED: Work units must be [M L^2 T^-2]
+  Observed: REJECTED: DIMENSIONAL_ANALYSIS_MISMATCH [M L^2 T^-2] != [M L^-1 T^-2]
+
+[CASE-2] WRONG_SIGN_OR_LIMIT: Injected positive work for friction +f*d asserting friction accelerates the body.
+  Expected: SIGN_CONVENTION_VIOLATION: Dissipative forces must perform negative work along displacement
+  Observed: REJECTED: DISSIPATIVE_FORCE_SIGN_ERROR friction work must oppose displacement
+
+[CASE-3] NUMERIC_CLONE: Core1B transfer replaced with horizontal anchor box problem merely changing 10 N pull to 20 N.
+  Expected: NUMERIC_REPARAMETERIZATION_DETECTED: Task crux is identical to Core1A anchor
+  Observed: REJECTED: NUMERIC_CLONE_DETECTED identical reasoning graph with reparameterized scalars
+
+[CASE-4] HINT_LEAK: Tier-1 hint explicitly revealing operational formula: 'Compute net work 30 - 6 - 15 = 9 J.' before attempt.
+  Expected: HINT_LEAK_DETECTED: Tier-1 contains decisive calculation steps or formula leaf
+  Observed: REJECTED: HINT_DECISIVE_LEAK Tier-1 reveals operational formula leaf
+
+[CASE-5] BAD_SOURCE_FIGURE: Authored diagram lacking neutral force annotations or invalid SVG viewport bounds.
+  Expected: FIGURE_GEOMETRY_INVALID: Diagram missing neutral coordinate labels
+  Observed: REJECTED: SVG_VALIDATION_FAILED non-neutral annotations or malformed SVG structure
+
+[CASE-6] SAVE_FAILURE: Attempt submitted when local storage persistence is denied or corrupted.
+  Expected: PERSISTENCE_LAYER_FAILURE: Attempt cannot be verified without immutable first save
+  Observed: REJECTED: STORAGE_COMMIT_FAILED attempt submission aborted
+
+[CASE-7] STALE_REVISION: Attempt submitted against obsolete revision fingerprint 'ph04-w01-draft-old'.
+  Expected: REVISION_MISMATCH: Candidate content fingerprint out of date
+  Observed: REJECTED: STALE_REVISION_FINGERPRINT attempt rejected
+
+[CASE-8] FALSE_REVIEW_BADGE: Header claims 'APPROVED_CURRICULUM' or 'NSEJS_EXAM_CERTIFIED' without reviewer receipt.
+  Expected: POLICY_VIOLATION: Unreviewed candidate claiming academic release
+  Observed: REJECTED: RULE_13_VIOLATION academic status must remain HOLD
+
+=== End of Adversarial Log: 8/8 Negative Control Mutations Rejected ===

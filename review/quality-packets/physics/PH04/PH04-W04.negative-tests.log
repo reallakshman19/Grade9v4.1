@@ -1,0 +1,18 @@
+=== Grade9 v4.1 Adversarial Fault-Injection Test Execution Log ===
+Target Module: PH04-W04 Distributed mass and continuous center-of-mass work
+Contract: AUTHORING_QUALITY_CONTRACT_R2 (PR #19) - BATCH_ITEM
+Status: ACADEMIC_HOLD · MECHANICAL_TESTS_ONLY
+
+[CASE-1] WRONG_DIMENSION: Injected potential energy formula U(x) = lambda * g * x with missing length factor producing units of force instead of energy.
+  Expected: DIMENSIONAL_ANALYSIS_FAILED: Potential energy must have dimensions [M L^2 T^-2]
+  Observed: REJECTED: DIMENSIONAL_ANALYSIS_MISMATCH [M L^2 T^-2] != [M L T^-2]
+
+[CASE-2] NUMERIC_CLONE: Core1B transfer replaced with anchor full-lift problem merely changing chain mass from 2 kg to 4 kg.
+  Expected: NUMERIC_REPARAMETERIZATION_DETECTED: Task crux is identical to Core1A anchor
+  Observed: REJECTED: NUMERIC_CLONE_DETECTED identical reasoning graph with reparameterized scalars
+
+[CASE-3] HINT_LEAK: Tier-1 hint stating: 'Subtract -40 J from -10 J to get 30 J.' before first learner submission.
+  Expected: HINT_LEAK_DETECTED: Tier-1 contains decisive calculation steps or formula leaf
+  Observed: REJECTED: HINT_DECISIVE_LEAK Tier-1 reveals operational formula leaf
+
+=== End of Adversarial Log: 3/3 Negative Control Mutations Rejected ===

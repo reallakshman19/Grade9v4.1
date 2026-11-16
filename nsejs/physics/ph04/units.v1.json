@@ -1,0 +1,346 @@
+{
+  "schema": "g9v41-ph04-author-candidate-content/v1",
+  "task": "PH04-WPE-CORE1A-AUTHORING-R1",
+  "status": "AUTHOR_PROPOSED",
+  "academic_status": "HOLD",
+  "release_status": "HOLD_NOT_RELEASED",
+  "source_role": "AUTHOR_CREATED_NO_EXAM_SOURCE",
+  "original_exam_identity": "NONE",
+  "independent_qrt": false,
+  "syllabus_scope": "NSEJS_STAGE_1_STAGE_2",
+  "source_locator_notes": "Original educational material for Work, Energy and Power; not authenticated past NSEJS questions.",
+  "base_commit": "7c02d1e5aaee1d204a96eecc8c5f74ad843d0227",
+  "no_original_exam_claim": true,
+  "units": [
+    {
+      "id": "PH04-W01",
+      "title": "Multi-force work–energy ledger and signed work accounting",
+      "scope": "CORE_CANDIDATE",
+      "competency": "Account for work contributions of multiple collinear and perpendicular forces to determine net work and velocity changes",
+      "prerequisites": [
+        "PH01-M01",
+        "PH02-F01"
+      ],
+      "phenomenon": "A moving shipping crate pulled by a motor across a concrete floor speeds up if the motor pull exceeds friction, but slows down if the motor is cut while friction continues to act. Although both the motor and friction act simultaneously, their work contributes with opposite signs.",
+      "mechanism": "Work done by a force on a moving body depends on the projection of force along displacement: W = F * d * cos(theta). The work-energy theorem states that the change in kinetic energy equals the algebraic sum of work done by all individual forces acting on the body: W_net = sum(W_i) = Delta K. Forces perpendicular to motion do zero work.",
+      "warrant": "Work-energy theorem: W_net = sum(W_i) = K_f - K_i = 0.5 * m * (v_f^2 - v_i^2). Signed work formula: W_i = F_i * d * cos(theta_i). Normal forces and perpendicular components: W_perp = 0. Dimensions: [W] = M L^2 T^-2 (J). Validity: point particles or rigid bodies under translational motion in an inertial reference frame.",
+      "figure": "<svg viewBox=\"0 0 660 240\" role=\"img\" aria-label=\"Free-body diagram and work contributions for a block sliding under pull and friction.\" xmlns=\"http://www.w3.org/2000/svg\"><defs><marker id=\"arrow\" markerWidth=\"9\" markerHeight=\"8\" refX=\"8\" refY=\"4\" orient=\"auto\"><path d=\"M0 0 L9 4 L0 8 Z\" fill=\"#186d86\"/></marker></defs><rect x=\"250\" y=\"80\" width=\"160\" height=\"90\" fill=\"#d8ecf8\" stroke=\"#25648a\" stroke-width=\"3\"/><line x1=\"410\" y1=\"125\" x2=\"520\" y2=\"125\" stroke=\"#1b6e58\" stroke-width=\"3\" marker-end=\"url(#arrow)\"/><line x1=\"250\" y1=\"125\" x2=\"160\" y2=\"125\" stroke=\"#c0392b\" stroke-width=\"3\" marker-end=\"url(#arrow)\"/><line x1=\"330\" y1=\"80\" x2=\"330\" y2=\"20\" stroke=\"#7f8c8d\" stroke-width=\"2\" marker-end=\"url(#arrow)\"/><line x1=\"330\" y1=\"170\" x2=\"330\" y2=\"230\" stroke=\"#7f8c8d\" stroke-width=\"2\" marker-end=\"url(#arrow)\"/><text x=\"440\" y=\"115\" font-size=\"16\" fill=\"#1b6e58\" font-family=\"system-ui\">F_pull (+W)</text><text x=\"170\" y=\"115\" font-size=\"16\" fill=\"#c0392b\" font-family=\"system-ui\">f_fric (-W)</text><text x=\"340\" y=\"45\" font-size=\"16\" fill=\"#7f8c8d\" font-family=\"system-ui\">N (W=0)</text><text x=\"340\" y=\"215\" font-size=\"16\" fill=\"#7f8c8d\" font-family=\"system-ui\">W_g (W=0)</text><text x=\"290\" y=\"130\" font-size=\"18\" fill=\"#123f56\" font-family=\"system-ui\">Mass m</text></svg>",
+      "progression": [
+        [
+          "FOUNDATION",
+          "A horizontal 10 N pull moves a 2 kg box 3 m across a smooth floor from rest. Find its final kinetic energy.",
+          "W = 10 * 3 = 30 J. K_f = K_i + W = 0 + 30 = 30 J ==> v_f = sqrt(2 * 30 / 2) ≈ 5.48 m s^-1."
+        ],
+        [
+          "CONNECTED",
+          "A 2 kg box already moving right at 1 m s^-1 is pulled right by 10 N while 4 N friction opposes it over 3 m.",
+          "W_pull = +10 * 3 = +30 J. W_fric = -4 * 3 = -12 J. W_net = +18 J. K_i = 0.5 * 2 * 1^2 = 1 J. K_f = 1 + 18 = 19 J ==> v_f = sqrt(19) ≈ 4.36 m s^-1."
+        ],
+        [
+          "ADVANCED",
+          "A 2 kg block slides down a 30° incline of length 4 m with kinetic friction coefficient mu = 0.2. Find its final speed from rest.",
+          "W_grav = m * g * (L * sin 30°) = 2 * 10 * 2 = 40 J. Normal N = m * g * cos 30° = 10 * sqrt(3) N. W_fric = -mu * N * L = -0.2 * 17.32 * 4 = -13.86 J. W_net = 40 - 13.86 = 26.14 J ==> v_f = sqrt(26.14) ≈ 5.11 m s^-1."
+        ]
+      ],
+      "anchor": {
+        "problem": "A 2 kg box is already moving right at 1 m/s. A child pulls it horizontally to the right with a constant 10 N force, while friction is 4 N to the left. It travels 3 m. What is the net work done on the box, and what is its final speed?",
+        "solution": "W_pull = +10 * 3 = +30 J. W_fric = -4 * 3 = -12 J. Normal force and gravity act perpendicular to displacement: W_N = 0, W_grav = 0. Net work: W_net = 30 - 12 = +18 J. Initial kinetic energy: K_i = 0.5 * 2 * 1^2 = 1 J. Final kinetic energy: K_f = 1 + 18 = 19 J. Final speed: v_f = sqrt(2 * 19 / 2) = sqrt(19) ≈ 4.36 m/s."
+      },
+      "misconception": {
+        "claim": "Friction always does the only work that determines the change in kinetic energy.",
+        "why": "Equating the work of a single force like friction to the total change in kinetic energy ignores active applied forces like motors or pulls.",
+        "repair": "Always compute the algebraic sum of all force work before applying Delta K: W_net = sum(W_i)."
+      },
+      "boundary": {
+        "check": "If motor pull equals friction (10 N = 10 N), W_net = 0, Delta K = 0, speed remains strictly constant."
+      },
+      "synthesis": {
+        "question": "A motorized cart moves horizontally 5 m under 20 N forward pull, 5 N friction, and climbs a 1 m vertical step. What is its net work?",
+        "answer": "W_net = 20*5 - 5*5 - m*g*1 = 100 - 25 - 10*m joules."
+      },
+      "practice": {
+        "uid": "AUTHORED-PH04-W01-C1B-TASK-R1",
+        "revision": 1,
+        "prompt": "A 3 kg model scooter starts from rest at the bottom of a 2 m slope rising 0.5 m. A motor provides a constant 15 N uphill force, while friction is a constant 3 N downhill. The ramp normal force is perpendicular to movement. Take g = 10 m s^-2. Determine whether the scooter reaches the top and calculate its speed at the top.",
+        "w": "Motor work: W_mot = +15 * 2 = +30 J. Friction work: W_fric = -3 * 2 = -6 J. Gravity work: W_grav = -m * g * Delta h = -3 * 10 * 0.5 = -15 J. Normal work: W_N = 0 J. Net work: W_net = 30 - 6 - 15 = +9 J. Since W_net > 0, the scooter reaches the top. Final kinetic energy: K_f = K_i + W_net = 0 + 9 = 9 J. Speed at the top: v_f = sqrt(2 * K_f / m) = sqrt(2 * 9 / 3) = sqrt(6) ≈ 2.45 m s^-1.",
+        "reconstruction": "1. Identify all 4 forces and their angles relative to displacement: Motor theta = 0°, Friction theta = 180°, Gravity vertical descent angle = 90° + theta_incline, Normal theta = 90°. 2. Compute individual work components: W_mot = +15 * 2 = +30 J, W_fric = -3 * 2 = -6 J, W_grav = -3 * 10 * 0.5 = -15 J, W_N = 0 J. 3. Form algebraic net work ledger: W_net = 30 - 6 - 15 = +9 J. 4. Convert net work into kinetic energy: K_f = K_i + W_net = 0 + 9 = 9 J ==> v = sqrt(2 * 9 / 3) = sqrt(6) ≈ 2.45 m s^-1.",
+        "boundaryPrompt": "What is the minimum motor force required for the scooter to just reach the top with zero speed?",
+        "boundarySolution": "For v_f = 0, W_net = 0 ==> W_mot - 6 - 15 = 0 ==> W_mot = 21 J ==> F_mot = 21 / 2 = 10.5 N.",
+        "hints": [
+          "First calculate the separate work done by motor, friction, and gravity along the 2 m path.",
+          "Recall that gravity work depends only on vertical elevation change: W_grav = -m * g * Delta h.",
+          "Sum all three work contributions to find W_net = Delta K, then solve for v_f."
+        ]
+      },
+      "curriculum_evidence": {
+        "source_status": "AUTHOR_CREATED_NO_EXAM_SOURCE",
+        "academic_status": "HOLD",
+        "cross_subject_boundary": "PHYSICS_ONLY"
+      }
+    },
+    {
+      "id": "PH04-W02",
+      "title": "Spring contact, stored energy and motion phases",
+      "scope": "CORE_CANDIDATE",
+      "competency": "Model piecewise motion phases across spring contact and subsequent uncoupled resistive zones",
+      "prerequisites": [
+        "PH04-W01",
+        "PH02-F02"
+      ],
+      "phenomenon": "A pinball launcher propelled by a compressed spring shoots forward rapidly while touching the spring, but once the spring expands to its natural length, the ball detaches and coasts freely across the smooth table. If it then hits a felt carpet strip, friction begins acting only on that strip.",
+      "mechanism": "An unattached spring exerts force only when compressed (x > 0). While in contact, stored elastic potential energy U_s = 0.5*k*x^2 converts into kinetic energy. Once the spring reaches natural length (x = 0), contact ends and the spring can no longer do work on the detached body. Subsequent motion must be modeled using a fresh work-energy ledger governed only by forces present in that subsequent region.",
+      "warrant": "Elastic potential energy: U_s = 0.5 * k * x^2. Detachment boundary condition: at x = 0, normal contact force F_contact = 0. Free coasting or resistive phase: Delta K = W_resistive = -f * d. Total piecewise energy conservation: 0.5 * k * x_0^2 + W_external = 0.5 * m * v_final^2. Dimensions: [U_s] = M L^2 T^-2. Validity: ideal linear Hookean springs obeying F = -k*x without mass or internal damping.",
+      "figure": "<svg viewBox=\"0 0 660 240\" role=\"img\" aria-label=\"Spring release phases: compressed contact phase followed by unattached coasting on rough strip.\" xmlns=\"http://www.w3.org/2000/svg\"><line x1=\"40\" y1=\"180\" x2=\"620\" y2=\"180\" stroke=\"#7f8c8d\" stroke-width=\"3\"/><rect x=\"420\" y=\"175\" width=\"200\" height=\"10\" fill=\"#e74c3c\" opacity=\"0.4\"/><line x1=\"40\" y1=\"60\" x2=\"40\" y2=\"180\" stroke=\"#2c3e50\" stroke-width=\"6\"/><path d=\"M40 135 L65 115 L90 155 L115 115 L140 155 L165 115 L190 135\" fill=\"none\" stroke=\"#2980b9\" stroke-width=\"4\"/><rect x=\"190\" y=\"90\" width=\"80\" height=\"90\" fill=\"#d8ecf8\" stroke=\"#25648a\" stroke-width=\"3\"/><text x=\"210\" y=\"145\" font-size=\"16\" fill=\"#123f56\" font-family=\"system-ui\">Mass m</text><line x1=\"270\" y1=\"180\" x2=\"270\" y2=\"210\" stroke=\"#7f8c8d\" stroke-dasharray=\"4\"/><text x=\"250\" y=\"230\" font-size=\"14\" fill=\"#7f8c8d\" font-family=\"system-ui\">x = 0 (natural)</text><text x=\"470\" y=\"210\" font-size=\"14\" fill=\"#c0392b\" font-family=\"system-ui\">Rough strip (friction)</text></svg>",
+      "progression": [
+        [
+          "FOUNDATION",
+          "A 1 kg cart at rest is released by an unattached spring (k = 100 N/m, x = 0.20 m) on a smooth track. Find its release speed.",
+          "U_s = 0.5 * 100 * (0.2)^2 = 2 J. K = 2 J ==> v = sqrt(2 * 2 / 1) = 2.0 m s^-1."
+        ],
+        [
+          "CONNECTED",
+          "The same cart with 2 J spring energy reaches a rough strip of length 1 m with friction force 1.5 N. Find its final speed.",
+          "W_fric = -1.5 * 1 = -1.5 J. Final K_f = 2 - 1.5 = 0.5 J ==> v_f = sqrt(2 * 0.5 / 1) = 1.0 m s^-1."
+        ],
+        [
+          "ADVANCED",
+          "A vertical spring launcher (k = 400 N/m, x = 0.10 m) launches a 0.2 kg ball straight up. Find the maximum height reached above release point.",
+          "Stored energy U_s = 0.5 * 400 * (0.01) = 2 J. Gravity work W_grav = -m * g * h = -0.2 * 10 * h = -2 * h. At max height K = 0 ==> 2 - 2*h = 0 ==> h = 1.0 m."
+        ]
+      ],
+      "anchor": {
+        "problem": "A 1 kg cart starts at rest, touching a horizontal spring compressed by 0.20 m with stiffness 100 N/m. The cart is not attached to the spring and the track is smooth throughout. What is its speed at natural length, and what happens after release?",
+        "solution": "Stored spring energy: U_s = 0.5 * 100 * (0.20)^2 = 2 J. At natural length, U_s = 0, so kinetic energy K = 2 J. Release speed: v = sqrt(2 * 2 / 1) = 2 m/s. After release, the unattached spring exerts no force, so the cart continues at constant speed 2 m/s."
+      },
+      "misconception": {
+        "claim": "An unattached spring continues to pull or accelerate the cart after passing its natural length.",
+        "why": "A contact spring without physical attachment can only push under compression; it cannot exert tension to pull a detached mass.",
+        "repair": "Always divide the path into two distinct phases: contact phase (x > 0) and uncoupled phase (x <= 0)."
+      },
+      "boundary": {
+        "check": "If the spring is rigidly fastened to the cart, it executes simple harmonic oscillation rather than detaching at natural length."
+      },
+      "synthesis": {
+        "question": "A 0.5 kg cart released by an unattached spring with 4 J stored energy hits a rough strip with 2 N friction. How far does it slide before stopping?",
+        "answer": "Distance d = U_s / f = 4 / 2 = 2.0 metres."
+      },
+      "practice": {
+        "uid": "AUTHORED-PH04-W02-C1B-TASK-R1",
+        "revision": 1,
+        "prompt": "A 2 kg toy cart starts from rest touching, but not attached to, a spring of stiffness 200 N m^-1 compressed by 0.10 m. The ground is smooth while the spring pushes and up to its natural length. Immediately after the spring reaches natural length, the cart enters a 0.50 m rough strip, where a constant 1 N friction force acts against travel. No motor or other horizontal force acts. Does the cart cross the strip, and what is its speed at the strip's far end?",
+        "w": "Stored spring energy: U_s = 0.5 * 200 * (0.10)^2 = 1.0 J. Speed at spring release: v_rel = sqrt(2 * 1.0 / 2) = 1.0 m s^-1. Friction work along rough strip: W_fric = -f * d = -1.0 * 0.50 = -0.50 J. Work to cross entire strip is 0.50 J, which is less than available 1.0 J kinetic energy, so the cart crosses the strip. Final kinetic energy: K_f = 1.0 - 0.50 = 0.50 J. Final speed: v_f = sqrt(2 * 0.50 / 2) = sqrt(0.50) ≈ 0.707 m s^-1.",
+        "reconstruction": "1. Phase 1 (Spring contact): U_s = 0.5 * k * x^2 = 0.5 * 200 * 0.01 = 1.0 J ==> K_release = 1.0 J, v_release = 1.0 m/s. 2. Phase 2 (Rough strip entrance): Cart detaches at x = 0; spring does zero further work. 3. Work on rough strip: W_fric = -f * d = -1 * 0.50 = -0.50 J. 4. Work-energy theorem on strip: K_final = K_release + W_fric = 1.0 - 0.50 = 0.50 J. 5. Final velocity: v_final = sqrt(2 * 0.50 / 2) = sqrt(0.50) ≈ 0.707 m/s.",
+        "boundaryPrompt": "What is the minimum length of the rough strip required to bring the cart to a complete stop?",
+        "boundarySolution": "For v_final = 0, W_fric = -K_release ==> -1 * d_stop = -1.0 J ==> d_stop = 1.0 m.",
+        "hints": [
+          "Compute the stored elastic energy U_s = 0.5 * k * x^2 to find the kinetic energy at the moment of detachment.",
+          "Recognize that the unattached spring exerts zero force once natural length is reached.",
+          "Apply W_net = Delta K solely across the rough strip using friction work W = -f * d."
+        ]
+      },
+      "curriculum_evidence": {
+        "source_status": "AUTHOR_CREATED_NO_EXAM_SOURCE",
+        "academic_status": "HOLD",
+        "cross_subject_boundary": "PHYSICS_ONLY"
+      }
+    },
+    {
+      "id": "PH04-W03",
+      "title": "Constant power and non-linear velocity evolution",
+      "scope": "CORE_CANDIDATE",
+      "competency": "Deduce velocity and displacement scaling under constant mechanical power and distinguish from constant acceleration",
+      "prerequisites": [
+        "PH04-W01",
+        "PH01-M02"
+      ],
+      "phenomenon": "An electric sports car delivering constant maximum engine power accelerates forcefully from a standstill, pushing passengers back into their seats. But as speed increases, the forward acceleration drops noticeably even though the engine continues outputting the same constant wattage.",
+      "mechanism": "Mechanical power represents the rate of doing work: P = dW/dt = dK/dt = F*v. When power P is constant, the body receives equal kinetic energy increments in equal time intervals: K(t) = K_0 + P*t. However, because kinetic energy depends quadratically on speed (K = 0.5*m*v^2), speed increases non-linearly: v(t) = sqrt(2*(K_0 + P*t)/m). Consequently, the driving force F = P/v and acceleration a = P/(m*v) decrease as speed rises. Acceleration is never constant under constant power.",
+      "warrant": "Constant power energy ledger: K(t) = K_0 + P * t = 0.5 * m * v(t)^2. Velocity evolution: v(t) = sqrt(2 * (K_0 + P * t) / m). For rest start (K_0 = 0): v(t) = sqrt(2 * P / m) * t^(1/2), and displacement s(t) = (2/3) * sqrt(2 * P / m) * t^(3/2). Force decay: F(t) = P / v(t) = m * a(t). Dimensions: [P] = M L^2 T^-3 (W). Validity: non-zero instantaneous velocity in an inertial frame, negligible resistive air drag.",
+      "figure": "<svg viewBox=\"0 0 660 240\" role=\"img\" aria-label=\"Comparison of constant power curves: linear kinetic energy versus non-linear velocity and decaying acceleration.\" xmlns=\"http://www.w3.org/2000/svg\"><line x1=\"60\" y1=\"200\" x2=\"300\" y2=\"200\" stroke=\"#7f8c8d\" stroke-width=\"2\"/><line x1=\"60\" y1=\"200\" x2=\"60\" y2=\"40\" stroke=\"#7f8c8d\" stroke-width=\"2\"/><line x1=\"60\" y1=\"170\" x2=\"280\" y2=\"60\" stroke=\"#1b6e58\" stroke-width=\"3\"/><text x=\"130\" y=\"90\" font-size=\"14\" fill=\"#1b6e58\" font-family=\"system-ui\">K(t) = K₀ + P·t (Linear)</text><text x=\"270\" y=\"225\" font-size=\"14\" fill=\"#7f8c8d\" font-family=\"system-ui\">Time t</text><text x=\"25\" y=\"45\" font-size=\"14\" fill=\"#7f8c8d\" font-family=\"system-ui\">Energy K</text><line x1=\"380\" y1=\"200\" x2=\"620\" y2=\"200\" stroke=\"#7f8c8d\" stroke-width=\"2\"/><line x1=\"380\" y1=\"200\" x2=\"380\" y2=\"40\" stroke=\"#7f8c8d\" stroke-width=\"2\"/><path d=\"M380 180 Q 440 120, 600 80\" fill=\"none\" stroke=\"#2980b9\" stroke-width=\"3\"/><text x=\"440\" y=\"85\" font-size=\"14\" fill=\"#2980b9\" font-family=\"system-ui\">v(t) ∝ t^(1/2) (Sub-linear)</text><text x=\"590\" y=\"225\" font-size=\"14\" fill=\"#7f8c8d\" font-family=\"system-ui\">Time t</text><text x=\"345\" y=\"45\" font-size=\"14\" fill=\"#7f8c8d\" font-family=\"system-ui\">Speed v</text></svg>",
+      "progression": [
+        [
+          "FOUNDATION",
+          "A 2 kg sled at rest is powered by an 8 W motor for 4 s. Find its final kinetic energy and speed.",
+          "K = 8 * 4 = 32 J. v = sqrt(2 * 32 / 2) = sqrt(32) ≈ 5.66 m s^-1."
+        ],
+        [
+          "CONNECTED",
+          "A 2 kg sled moving at 2 m s^-1 (K_0 = 4 J) receives 12 W for 4 s. Find its final kinetic energy and speed.",
+          "K(4) = 4 + 12*4 = 52 J ==> v = sqrt(2 * 52 / 2) = sqrt(52) ≈ 7.21 m s^-1."
+        ],
+        [
+          "ADVANCED",
+          "Express displacement as a function of time for a 2 kg cart starting from rest under constant power P = 16 W.",
+          "v(t) = sqrt(2 * 16 / 2) * t^(1/2) = 4 * t^(1/2). Displacement s(t) = Integral_0^t 4 * t^(1/2) dt = (8/3) * t^(3/2). At t = 4 s: s = (8/3)*8 = 21.33 m."
+        ]
+      ],
+      "anchor": {
+        "problem": "A 2 kg toy sled moves at 2 m/s on a level frictionless track. A motor delivers a steady mechanical power of 12 W for 4 seconds. How does its kinetic energy and speed change between t = 1 s and t = 4 s?",
+        "solution": "Initial kinetic energy: K_0 = 0.5 * 2 * (2)^2 = 4 J. At t = 1 s: K(1) = 4 + 12(1) = 16 J ==> v(1) = sqrt(2 * 16 / 2) = 4 m/s. At t = 4 s: K(4) = 4 + 12(4) = 52 J ==> v(4) = sqrt(2 * 52 / 2) = sqrt(52) ≈ 7.21 m/s. The kinetic energy increases linearly by 12 J/s, but the speed increases non-linearly."
+      },
+      "misconception": {
+        "claim": "Constant power means constant force and constant acceleration.",
+        "why": "Power is P = F * v. If power is constant and speed v increases, the driving force F = P/v must decrease proportionally.",
+        "repair": "Always use P = dK/dt to solve for energy first: K(t) = K_0 + P*t, then deduce v = sqrt(2K/m)."
+      },
+      "boundary": {
+        "check": "As t -> infinity, acceleration a(t) -> 0 and velocity grows without bound in the absence of air resistance."
+      },
+      "synthesis": {
+        "question": "If a car of mass m starts from rest with constant power P, what is the ratio of its speed at t = 4 s to its speed at t = 1 s?",
+        "answer": "v(4) / v(1) = sqrt(4) / sqrt(1) = 2.0."
+      },
+      "practice": {
+        "uid": "AUTHORED-PH04-W03-C1B-TASK-R1",
+        "revision": 1,
+        "prompt": "A 3 kg trolley already rolls right at 2 m s^-1 on a smooth level track when a motor starts delivering a steady 18 W of mechanical power. Neglect friction and resistive losses. Calculate the trolley's speed after 2 seconds and after 6 seconds, and explain whether the acceleration remains constant.",
+        "w": "Initial kinetic energy: K_0 = 0.5 * 3 * (2)^2 = 6 J. 1. At t = 2 s: Added energy Delta K = P * t = 18 * 2 = 36 J. Total kinetic energy: K(2) = 6 + 36 = 42 J. Speed: v(2) = sqrt(2 * 42 / 3) = sqrt(28) ≈ 5.29 m s^-1. 2. At t = 6 s: Added energy Delta K = 18 * 6 = 108 J. Total kinetic energy: K(6) = 6 + 108 = 114 J. Speed: v(6) = sqrt(2 * 114 / 3) = sqrt(76) ≈ 8.72 m s^-1. 3. Acceleration: Instantaneous driving force F = P / v and acceleration a = P / (m * v). At t = 2 s, a = 18 / (3 * 5.29) ≈ 1.13 m s^-2. At t = 6 s, a = 18 / (3 * 8.72) ≈ 0.69 m s^-2. The acceleration decreases over time; it does not remain constant.",
+        "reconstruction": "1. Compute initial kinetic energy: K_0 = 0.5 * m * v_0^2 = 0.5 * 3 * 4 = 6 J. 2. Apply constant power integral: Delta K(t) = P * t. 3. For t = 2 s: K(2) = 6 + 18*2 = 42 J ==> v(2) = sqrt(2 * 42 / 3) = sqrt(28) ≈ 5.29 m/s. 4. For t = 6 s: K(6) = 6 + 18*6 = 114 J ==> v(6) = sqrt(2 * 114 / 3) = sqrt(76) ≈ 8.72 m/s. 5. Evaluate acceleration: a(t) = P / (m * v(t)). Since v(t) increases, a(t) decreases continuously from 1.13 m/s^2 down to 0.69 m/s^2.",
+        "boundaryPrompt": "If the motor is suddenly switched off at t = 6 s and a braking force of 2 N is applied, how far does the trolley roll before stopping?",
+        "boundarySolution": "Stopping distance d = K(6) / F_brake = 114 / 2 = 57.0 m.",
+        "hints": [
+          "First calculate the initial kinetic energy K_0 before the motor starts.",
+          "Use K(t) = K_0 + P * t to find the total kinetic energy at t = 2 s and t = 6 s.",
+          "Remember that acceleration is a = P / (m * v); compare its value at 2 s and 6 s."
+        ]
+      },
+      "curriculum_evidence": {
+        "source_status": "AUTHOR_CREATED_NO_EXAM_SOURCE",
+        "academic_status": "HOLD",
+        "cross_subject_boundary": "PHYSICS_ONLY"
+      }
+    },
+    {
+      "id": "PH04-W04",
+      "title": "Distributed mass and continuous center-of-mass work",
+      "scope": "CORE_CANDIDATE",
+      "competency": "Calculate work done against gravity for variable hanging continuous mass chains and ropes",
+      "prerequisites": [
+        "PH04-W01",
+        "PH01-M01"
+      ],
+      "phenomenon": "Pulling a heavy hanging chain onto a table feels much harder at the very beginning when most of the chain is dangling below the edge, but becomes progressively easier as more links rest on the tabletop.",
+      "mechanism": "For a continuous uniform body of linear mass density lambda = M/L, the portion hanging vertically of length x has mass m(x) = lambda*x. Because the hanging mass is uniformly distributed, its center of mass is located at depth x/2 below the table. Taking the tabletop as potential energy zero, the potential energy of the hanging portion is U(x) = -m(x)*g*(x/2) = -0.5*lambda*g*x^2. When the hanging length changes from x_1 to x_2, the work required against gravity is W = U(x_2) - U(x_1) = 0.5*lambda*g*(x_1^2 - x_2^2). Work depends quadratically on hanging length.",
+      "warrant": "Continuous potential energy: U(x) = -0.5 * lambda * g * x^2, where lambda = M / L. Work against gravity: W_lift = U(x_final) - U(x_initial) = 0.5 * lambda * g * (x_initial^2 - x_final^2). Center of mass depth: y_cm = x / 2. Dimensions: [U] = M L^2 T^-2. Validity: uniform flexible chain/rope, quasi-static lifting without kinetic energy gain or friction.",
+      "figure": "<svg viewBox=\"0 0 660 240\" role=\"img\" aria-label=\"Distributed chain on table with hanging portion and center of mass dot.\" xmlns=\"http://www.w3.org/2000/svg\"><line x1=\"50\" y1=\"80\" x2=\"300\" y2=\"80\" stroke=\"#2c3e50\" stroke-width=\"4\"/><line x1=\"300\" y1=\"80\" x2=\"300\" y2=\"230\" stroke=\"#2c3e50\" stroke-width=\"4\"/><path d=\"M100 75 L300 75\" fill=\"none\" stroke=\"#e67e22\" stroke-width=\"8\"/><path d=\"M300 75 L300 195\" fill=\"none\" stroke=\"#e67e22\" stroke-width=\"8\"/><circle cx=\"300\" cy=\"135\" r=\"6\" fill=\"#c0392b\"/><text x=\"320\" y=\"140\" font-size=\"15\" fill=\"#c0392b\" font-family=\"system-ui\">Center of Mass (x/2)</text><text x=\"320\" y=\"100\" font-size=\"14\" fill=\"#7f8c8d\" font-family=\"system-ui\">Hanging length x</text><text x=\"140\" y=\"60\" font-size=\"15\" fill=\"#2c3e50\" font-family=\"system-ui\">Tabletop (U = 0)</text><text x=\"320\" y=\"200\" font-size=\"14\" fill=\"#7f8c8d\" font-family=\"system-ui\">Bottom of chain</text></svg>",
+      "progression": [
+        [
+          "FOUNDATION",
+          "A uniform 2 m chain of 1 kg (lambda = 0.5 kg/m) has 1 m hanging. Find the work to lift it completely onto the table.",
+          "Initial potential energy U_i = -0.5 * 0.5 * 10 * (1^2) = -2.5 J. Work against gravity W = 0 - (-2.5) = +2.5 J."
+        ],
+        [
+          "CONNECTED",
+          "A uniform 4 m chain of mass 2 kg (lambda = 0.5 kg/m) has 2 m hanging (U_i = -10 J). Find the work to lift it fully onto the table.",
+          "Hanging mass = 1 kg at depth 1 m ==> U_i = -1 * 10 * 1 = -10 J. Final U_f = 0 J. Work W = 0 - (-10) = +10 J."
+        ],
+        [
+          "ADVANCED",
+          "A uniform 6 m rope of mass 3 kg (lambda = 0.5 kg/m) released from rest with 1 m hanging slips freely off a smooth table. Find its speed when it completely leaves the table.",
+          "U_i = -0.5 * 0.5 * 10 * 1^2 = -2.5 J. U_f = -0.5 * 0.5 * 10 * 6^2 = -90 J. Delta K = -Delta U = 90 - 2.5 = 87.5 J ==> v = sqrt(2 * 87.5 / 3) = sqrt(58.33) ≈ 7.64 m s^-1."
+        ]
+      ],
+      "anchor": {
+        "problem": "A uniform 4 m chain has mass 2 kg. Half of its length, 2 m, hangs vertically over a smooth table edge while the other half rests on the table. A helper pulls it very slowly until the whole chain lies on the tabletop. The table is smooth and g = 10 m/s^2. How much work must the helper do against gravity?",
+        "solution": "Linear mass density: lambda = 2 kg / 4 m = 0.5 kg/m. The hanging 2 m piece has mass m_h = 0.5 * 2 = 1 kg. Its center of mass is halfway down, at depth h_cm = 2 / 2 = 1 m below the table. Initial potential energy relative to table zero: U_i = -m_h * g * h_cm = -(1)(10)(1) = -10 J. At the end, the entire chain is on the table, so U_f = 0 J. Work done by helper: W_lift = U_f - U_i = 0 - (-10) = +10 J."
+      },
+      "misconception": {
+        "claim": "To lift the hanging chain, multiply the total mass 2 kg by the hanging length 2 m to get work 40 J.",
+        "why": "Only the hanging 1 kg portion changes height, and its center of mass rises by only 1 m, not the full 2 m.",
+        "repair": "Always use the hanging mass lambda*x and its center of mass depth x/2: U = -0.5*lambda*g*x^2."
+      },
+      "boundary": {
+        "check": "If all 4 m of the chain hang vertically, initial center of mass depth is 2 m, so lifting it completely requires 2 * 10 * 2 = 40 J."
+      },
+      "synthesis": {
+        "question": "What fraction of the total work to lift a completely hanging chain is done in pulling up the first half?",
+        "answer": "W_first_half / W_total = (L^2 - (L/2)^2) / L^2 = (1 - 1/4) = 3/4 = 75%."
+      },
+      "practice": {
+        "uid": "AUTHORED-PH04-W04-C1B-TASK-R1",
+        "revision": 1,
+        "prompt": "An 8 m uniform rope has mass 4 kg. Initially 4 m of the rope hang vertically below a smooth platform edge. A student slowly pulls the rope upward until 2 m remain hanging. Neglect friction, rope stretch, and any change in kinetic energy. Use g = 10 m s^-2. How much work must the student do against gravity?",
+        "w": "Linear mass density: lambda = 4 kg / 8 m = 0.5 kg m^-1. 1. Initial State (x_1 = 4 m hanging): Hanging mass m_1 = lambda * x_1 = 0.5 * 4 = 2 kg. Center of mass depth: h_1 = x_1 / 2 = 4 / 2 = 2 m. Initial potential energy: U_1 = -m_1 * g * h_1 = -(2)(10)(2) = -40 J. 2. Final State (x_2 = 2 m hanging): Hanging mass m_2 = lambda * x_2 = 0.5 * 2 = 1 kg. Center of mass depth: h_2 = x_2 / 2 = 2 / 2 = 1 m. Final potential energy: U_2 = -m_2 * g * h_2 = -(1)(10)(1) = -10 J. 3. Work Done Against Gravity: W_student = U_2 - U_1 = -10 - (-40) = +30 J.",
+        "reconstruction": "1. Determine linear density: lambda = M / L = 4 / 8 = 0.5 kg/m. 2. State 1: 4 m hanging ==> m_1 = 2 kg, c.o.m depth = 2 m ==> U_1 = -(2)(10)(2) = -40 J. 3. State 2: 2 m hanging ==> m_2 = 1 kg, c.o.m depth = 1 m ==> U_2 = -(1)(10)(1) = -10 J. 4. Work against gravity: W = U_2 - U_1 = -10 - (-40) = +30 J. 5. Physical check: lifting the 2 m segment that moved onto the platform takes 30 J because it started at an average depth of 3 m below the platform (2 kg * 10 * 1.5 m effective rise = 30 J).",
+        "boundaryPrompt": "From this intermediate 2 m hanging state, how much additional work is required to pull the remaining 2 m completely onto the platform?",
+        "boundarySolution": "Additional work W_rem = U_final - U_2 = 0 - (-10) = +10 J.",
+        "hints": [
+          "Compute the linear mass density lambda = M / L in kg/m.",
+          "Calculate the potential energy for both states using U = -0.5 * lambda * g * x^2.",
+          "Subtract the initial potential energy from the final potential energy: W = U_2 - U_1."
+        ]
+      },
+      "curriculum_evidence": {
+        "source_status": "AUTHOR_CREATED_NO_EXAM_SOURCE",
+        "academic_status": "HOLD",
+        "cross_subject_boundary": "PHYSICS_ONLY"
+      }
+    },
+    {
+      "id": "PH04-W05",
+      "title": "Work and energy graphical operations: area versus slope",
+      "scope": "CORE_CANDIDATE",
+      "competency": "Select and execute correct calculus operations (area vs slope) based on graph coordinate axes units",
+      "prerequisites": [
+        "PH04-W01",
+        "PH01-M02"
+      ],
+      "phenomenon": "In a laboratory notebook, two graphs look visually identical: both show a straight line rising from the origin to a peak. But on one graph the area represents work in joules, while on the other graph the slope represents velocity in m/s. Performing the wrong operation produces dimensionally meaningless numbers.",
+      "mechanism": "The physical meaning of graph features is dictated strictly by dimensional analysis of the coordinate axes: 1. Area = Integral of y dx has dimensions [y]*[x]. For a force-position graph [F_x vs x], the area has units N*m = J, representing work done: W = Integral F_x dx. 2. Slope = dy/dx has dimensions [y]/[x]. For a potential energy-position graph [U vs x], the slope has units J/m = N. Because conservative force opposes the potential gradient, F_x = -dU/dx. 3. For a displacement-time graph [s vs t], the slope has units m/s, representing velocity: v = ds/dt.",
+      "warrant": "Force-position area: W = Integral_{x_1}^{x_2} F_x(x) dx. Conservative force-potential slope: F_x = -dU/dx. Displacement-time slope: v = ds/dt. Dimensional consistency criteria: [Area] = [y] * [x], [Slope] = [y] / [x]. Dimensions: [W] = M L^2 T^-2, [F] = M L T^-2, [v] = L T^-1. Validity: piecewise continuous functions along a single spatial coordinate axis in an inertial reference frame.",
+      "figure": "<svg viewBox=\"0 0 660 240\" role=\"img\" aria-label=\"Three physical graph panels: force-position area, potential-position negative slope, and displacement-time velocity slope.\" xmlns=\"http://www.w3.org/2000/svg\"><g transform=\"translate(20,20)\"><line x1=\"30\" y1=\"160\" x2=\"160\" y2=\"160\" stroke=\"#7f8c8d\" stroke-width=\"2\"/><line x1=\"30\" y1=\"160\" x2=\"30\" y2=\"30\" stroke=\"#7f8c8d\" stroke-width=\"2\"/><polygon points=\"30,160 140,40 140,160\" fill=\"#d8ecf8\" stroke=\"#25648a\" stroke-width=\"2\"/><text x=\"50\" y=\"130\" font-size=\"14\" fill=\"#1b6e58\" font-family=\"system-ui\">Area = Work</text><text x=\"130\" y=\"180\" font-size=\"13\" fill=\"#7f8c8d\" font-family=\"system-ui\">x (m)</text><text x=\"10\" y=\"30\" font-size=\"13\" fill=\"#7f8c8d\" font-family=\"system-ui\">F (N)</text></g><g transform=\"translate(230,20)\"><line x1=\"30\" y1=\"160\" x2=\"160\" y2=\"160\" stroke=\"#7f8c8d\" stroke-width=\"2\"/><line x1=\"30\" y1=\"160\" x2=\"30\" y2=\"30\" stroke=\"#7f8c8d\" stroke-width=\"2\"/><line x1=\"30\" y1=\"140\" x2=\"140\" y2=\"50\" stroke=\"#c0392b\" stroke-width=\"3\"/><text x=\"40\" y=\"100\" font-size=\"14\" fill=\"#c0392b\" font-family=\"system-ui\">Slope = -F_x</text><text x=\"130\" y=\"180\" font-size=\"13\" fill=\"#7f8c8d\" font-family=\"system-ui\">x (m)</text><text x=\"10\" y=\"30\" font-size=\"13\" fill=\"#7f8c8d\" font-family=\"system-ui\">U (J)</text></g><g transform=\"translate(440,20)\"><line x1=\"30\" y1=\"160\" x2=\"160\" y2=\"160\" stroke=\"#7f8c8d\" stroke-width=\"2\"/><line x1=\"30\" y1=\"160\" x2=\"30\" y2=\"30\" stroke=\"#7f8c8d\" stroke-width=\"2\"/><line x1=\"30\" y1=\"160\" x2=\"140\" y2=\"40\" stroke=\"#2980b9\" stroke-width=\"3\"/><text x=\"50\" y=\"100\" font-size=\"14\" fill=\"#2980b9\" font-family=\"system-ui\">Slope = v</text><text x=\"130\" y=\"180\" font-size=\"13\" fill=\"#7f8c8d\" font-family=\"system-ui\">t (s)</text><text x=\"10\" y=\"30\" font-size=\"13\" fill=\"#7f8c8d\" font-family=\"system-ui\">s (m)</text></g></svg>",
+      "progression": [
+        [
+          "FOUNDATION",
+          "Force rises from 0 to 6 N over 3 m on an F_x vs x graph. Find the work done.",
+          "Area of triangle W = 0.5 * 3 * 6 = 9.0 J."
+        ],
+        [
+          "CONNECTED",
+          "Potential energy drops from 12 J to 4 J between x = 1 m and x = 3 m. Find the conservative force component.",
+          "Slope dU/dx = (4 - 12) / (3 - 1) = -4 J m^-1 ==> F_x = -dU/dx = -(-4) = +4.0 N."
+        ],
+        [
+          "ADVANCED",
+          "A particle has potential energy U(x) = 4*x^2 - 16*x J. Find equilibrium position and force at x = 1 m.",
+          "F_x = -dU/dx = -(8*x - 16) = 16 - 8*x. Equilibrium at F_x = 0 ==> x = 2 m. At x = 1 m: F_x = 16 - 8 = +8.0 N."
+        ]
+      ],
+      "anchor": {
+        "problem": "A student inspects three notebook graphs: Graph A is F_x vs x (horizontal line at +3 N from 0 to 2 m); Graph B is U vs x (line from (0, 9 J) to (2 m, 3 J)); Graph C is s vs t (line from (0, 0) to (3 s, 6 m)). Determine work from Graph A, force from Graph B, and velocity from Graph C.",
+        "solution": "Graph A (F_x vs x): Area represents work: W = (3 N) * (2 m) = +6 J. Graph B (U vs x): Slope is dU/dx = (3 - 9)/(2 - 0) = -3 J/m. Conservative force is F_x = -dU/dx = -(-3) = +3 N. Graph C (s vs t): Slope is ds/dt = (6 - 0)/(3 - 0) = 2 m/s, which is velocity."
+      },
+      "misconception": {
+        "claim": "Area under any physics graph always represents work, and slope always represents acceleration.",
+        "why": "Area under an s-t graph has units metre-seconds, which has no direct physical meaning. Area under U-x has units Joule-metres, not work.",
+        "repair": "Multiply axis units to check area: [N]*[m] = J (work). Divide axis units to check slope: [J]/[m] = N (force)."
+      },
+      "boundary": {
+        "check": "At a point where U(x) reaches a minimum or maximum, the slope dU/dx = 0, so the net conservative force is exactly zero (equilibrium point)."
+      },
+      "synthesis": {
+        "question": "If the force-position curve is F_x = -k*x, what is the work done from x = 0 to x = x_0?",
+        "answer": "Area W = Integral_0^{x_0} (-k*x) dx = -0.5 * k * x_0^2."
+      },
+      "practice": {
+        "uid": "AUTHORED-PH04-W05-C1B-TASK-R1",
+        "revision": 1,
+        "prompt": "A physics student analyzes three experimental cards with straight graph segments: Card R (force-position) has y-axis F_x (N) and x-axis x (m), rising linearly from (0 m, 0 N) to (4 m, 8 N). Card S (potential-position) has y-axis U (J) and x-axis x (m), rising linearly from (0 m, 2 J) to (2 m, 8 J). Card T (displacement-time) has y-axis s (m) and x-axis t (s), passing through (0 s, 0 m), (2 s, 4 m), and (5 s, 16 m). Calculate: (1) work done on Card R over 0 to 4 m, (2) conservative force component on Card S, and (3) velocity on Card T between t = 2 s and t = 5 s.",
+        "w": "1. Card R (F_x vs x): Work is represented by the area under the triangular curve: W = 0.5 * base * height = 0.5 * (4 m) * (8 N) = +16 J. 2. Card S (U vs x): Slope of potential energy: dU/dx = (8 J - 2 J) / (2 m - 0 m) = 6 / 2 = +3 J m^-1. Conservative force is the negative gradient: F_x = -dU/dx = -3 N. 3. Card T (s vs t): Velocity between t = 2 s and t = 5 s is the slope: v = Delta s / Delta t = (16 m - 4 m) / (5 s - 2 s) = 12 / 3 = 4 m s^-1.",
+        "reconstruction": "1. Card R: Units of area = N * m = J ==> Area is Work. Triangular area = 0.5 * 4 * 8 = 16 J. 2. Card S: Units of slope = J / m = N ==> Slope relates to Force. By definition F_x = -dU/dx. Slope = (8 - 2)/(2 - 0) = +3 N ==> F_x = -3 N. 3. Card T: Units of slope = m / s ==> Slope is Velocity. v = (16 - 4)/(5 - 2) = 12 / 3 = 4 m/s. 4. Dimensional verification: [W] = 16 J, [F_x] = -3 N, [v] = 4 m/s.",
+        "boundaryPrompt": "On Card S, what would the conservative force be if the potential energy curve flattened out horizontally between x = 2 m and x = 4 m at U = 8 J?",
+        "boundarySolution": "For a horizontal line, dU/dx = 0, so conservative force F_x = -dU/dx = 0 N.",
+        "hints": [
+          "Card R requires an area calculation (triangle: 0.5 * base * height).",
+          "Card S requires a slope calculation, with a negative sign because F_x = -dU/dx.",
+          "Card T requires the slope Delta s / Delta t over the interval from 2 s to 5 s."
+        ]
+      },
+      "curriculum_evidence": {
+        "source_status": "AUTHOR_CREATED_NO_EXAM_SOURCE",
+        "academic_status": "HOLD",
+        "cross_subject_boundary": "PHYSICS_ONLY"
+      }
+    }
+  ]
+}
