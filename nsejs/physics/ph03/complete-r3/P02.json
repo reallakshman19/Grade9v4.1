@@ -1,0 +1,144 @@
+{
+  "id": "P02",
+  "title": "Impulse and change in momentum",
+  "scope": "CORE_CANDIDATE",
+  "sourceLeads": [],
+  "prereq": "PH02 net force and time interval; PH01 signed velocity.",
+  "goals": [
+    "Compute impulse as signed area under a net F–t graph.",
+    "Distinguish triangular peak force from average force.",
+    "Update final momentum and velocity through reversal or stopping."
+  ],
+  "sections": [
+    {
+      "heading": "Net impulse changes momentum",
+      "body": "The impulse–momentum law is Δp = J_net. With constant force, J = F_net Δt. With a changing net force, take the signed area of the force-versus-time graph. A positive region points right; a negative region contributes a leftward impulse."
+    },
+    {
+      "heading": "A triangle is not a rectangle",
+      "body": "A triangular pulse of base Δt and peak F has signed area J = ½F_peak Δt. The peak is not the average force. For a triangle rising linearly from zero and returning to zero, the average is half the peak."
+    },
+    {
+      "heading": "Add every segment",
+      "body": "If a positive pulse is followed by a negative interval, add both impulses with their signs. For a constant-mass body the velocity changes by J_net/m; use its INITIAL signed velocity and do not infer final direction from the initial arrow."
+    },
+    {
+      "heading": "Which force was measured?",
+      "body": "The impulse–momentum theorem needs NET external force on the chosen body, not just one convenient contact force if friction, tension or another horizontal force acts during the interval."
+    }
+  ],
+  "worked": [
+    {
+      "name": "Foundation · brake without reversal",
+      "setup": "A 0.5 kg glider at +6 m/s experiences −10 N net force for 0.20 s.",
+      "steps": [
+        "J = −10×0.20 = −2 N·s.",
+        "Initial p = 0.5×6 = +3; final p = +1 kg·m/s.",
+        "Final v = +1/0.5 = +2 m/s."
+      ],
+      "check": "Negative impulse slowed motion; it did not reverse it."
+    },
+    {
+      "name": "Connected · positive triangle",
+      "setup": "A triangular net force peaks at +20 N over 0.4 s on a 2 kg glider initially moving at −1 m/s.",
+      "steps": [
+        "Signed area is ½×0.4×20 = +4 N·s.",
+        "Initial p = −2; final p = −2+4 = +2 kg·m/s.",
+        "Final velocity = +1 m/s."
+      ],
+      "check": "The triangular impulse is 4, not 8 N·s."
+    },
+    {
+      "name": "Transfer · two pulses",
+      "setup": "A particle experiences successive impulses +12 N·s then −5 N·s.",
+      "steps": [
+        "Net impulse is +7 N·s.",
+        "Total momentum increases by +7 kg·m/s.",
+        "Without initial p and mass the final velocity is not uniquely determined."
+      ],
+      "check": "A correct impulse ledger does not invent missing initial conditions."
+    }
+  ],
+  "trap": {
+    "wrong": "Use F_peak Δt for a triangular pulse or ignore the area below the time axis.",
+    "repair": "Calculate each segment's area by shape and sign, then apply p_final = p_initial + ΣJ."
+  },
+  "assumptions": [
+    "Read the vertical axis as NET horizontal force.",
+    "Use consistent N, s, kg and m/s.",
+    "Only convert Δp to Δv using a constant mass."
+  ],
+  "model": {
+    "kind": "impulse-pulse",
+    "label": "Teaching model: triangular net-force peak over 0.4 s",
+    "min": -20,
+    "max": 20,
+    "step": 2,
+    "value": 12,
+    "unit": "N"
+  },
+  "prompt": {
+    "stem": "A 2 kg cart initially moves LEFT at −1 m/s. A NET force-time graph contains a +6 N triangular pulse from t=0 to 4 s, followed by a −4 N rectangular segment from t=4 to 5 s. Determine total signed impulse and final signed velocity.",
+    "prediction": "Will the cart finish moving right, left or at rest after both signed areas?",
+    "fields": [
+      {
+        "id": "impulse",
+        "label": "Net impulse",
+        "type": "number",
+        "unit": "N·s"
+      },
+      {
+        "id": "velocity",
+        "label": "Final signed velocity",
+        "type": "number",
+        "unit": "m/s"
+      },
+      {
+        "id": "trend",
+        "label": "Final direction",
+        "type": "choice",
+        "options": [
+          {
+            "value": "right",
+            "text": "Right"
+          },
+          {
+            "value": "left",
+            "text": "Left"
+          },
+          {
+            "value": "rest",
+            "text": "At rest"
+          }
+        ]
+      }
+    ],
+    "boundaryPrompt": "Halve the positive triangle's duration to 2 s but retain its +6 N peak; leave the −4 N for 1 s rectangle unchanged. Compute the new impulse and final velocity.",
+    "boundaryFields": [
+      {
+        "id": "impulse",
+        "label": "New net impulse",
+        "type": "number",
+        "unit": "N·s"
+      },
+      {
+        "id": "velocity",
+        "label": "New signed velocity",
+        "type": "number",
+        "unit": "m/s"
+      }
+    ]
+  },
+  "schema": "g9-ph03-authored-lesson/v1",
+  "revision": "ph03-complete-r3-20261116",
+  "sourceRole": "AUTHOR_EXPOSITION_AND_TRANSFER_NOT_EXAM",
+  "academic": "HOLD",
+  "assessedFreeText": false,
+  "postBlobSha1": "75e7d3ee90144ced9080b807ae3fb445253e43bd",
+  "figures": {
+    "guide": "figures/P02-guide.svg",
+    "prompt": "figures/P02-prompt.svg",
+    "solution": "figures/P02-solution.svg"
+  },
+  "solutionBlobSha1": "41bd6c89081ba12de72a7efe8da8a7239096c11a"
+}

@@ -43,7 +43,7 @@ def test_named_chapter_labels_and_safe_question_backlink():
 
 
 def test_preserved_source_routes_and_worksheet_count_are_explicitly_unqualified():
-    assert sum(len(c["units"]) for c in CAT["chapters"])==79
+    assert sum(len(c["units"]) for c in CAT["chapters"])==85
     ph05=next(c for c in CAT["chapters"] if c["title"]=="Gravitation")
     assert ph05["state"]=="learning-pairs" and len(ph05["units"])==7
     assert all((PH/u["learn"]).is_file() and (PH/u["practice"]).is_file() for u in ph05["units"])

@@ -1,0 +1,146 @@
+{
+  "id": "P07",
+  "title": "Sequential impact, friction and impulse timelines",
+  "scope": "EXTENSION_REVIEW",
+  "sourceLeads": [],
+  "prereq": "P02 signed net impulse; P03 short-contact isolation; P06 contact energy; PH02 kinetic friction.",
+  "goals": [
+    "Separate short impacts from a long sliding interval.",
+    "Apply friction impulse and work over their correct interval.",
+    "Check stopping distance before assuming a second collision can occur."
+  ],
+  "sections": [
+    {
+      "heading": "A timeline needs more than one ledger",
+      "body": "A sequence of contact, slide and a second contact has different physical assumptions in each stage. A brief contact may have negligible external impulse and permit conservation of the selected pair's momentum. During a long rough slide friction acts externally and changes the selected moving assembly's momentum."
+    },
+    {
+      "heading": "Solve the first contact as a short event",
+      "body": "If the first moving cart latches onto a resting cart, use the two carts as the contact system and compute their immediately shared velocity from total signed momentum. Do not yet apply long-slide friction to the contact ledger."
+    },
+    {
+      "heading": "Friction changes speed and can stop the second impact",
+      "body": "For a sliding assembly on a level track, F_f = −μMg while moving right and acceleration a = −μg. If the next obstacle is at distance d, compare its position with s_stop = v_start²/(2μg). If s_stop < d, the assembly stops before contact, and there is no second collision to analyse."
+    },
+    {
+      "heading": "Only then solve the second contact",
+      "body": "If the sliding assembly reaches the next stationary body, find its velocity just BEFORE the second impact. Reapply short-contact momentum conservation for that new system. Separate contact energy conversion at each collision from the energy dissipated by friction during travel; do not double count."
+    }
+  ],
+  "worked": [
+    {
+      "name": "Foundation · friction-only stopping",
+      "setup": "A 2 kg cart at +4 m/s slides on level track with μ=0.2 and g=10 m/s².",
+      "steps": [
+        "F_f=−0.2×2×10=−4 N, acceleration −2 m/s².",
+        "Stopping distance=4²/(2×2)=4 m.",
+        "Initial K=16 J; friction work −4×4=−16 J."
+      ],
+      "check": "The long slide is NOT a momentum-conserving isolated interval."
+    },
+    {
+      "name": "Connected · two contacts with friction between",
+      "setup": "A 1 kg cart at +8 m/s sticks to resting 3 kg cart, slides for 1 s at μ=0.1, then latches to resting 1 kg cart.",
+      "steps": [
+        "First contact common velocity=8/4=+2 m/s.",
+        "Slide deceleration −1 m/s², just-before-second velocity +1 m/s.",
+        "Second contact common velocity=(4×1)/5=+0.8 m/s."
+      ],
+      "check": "Do not carry +2 m/s directly into the second impact."
+    },
+    {
+      "name": "Transfer · second impact never occurs",
+      "setup": "An assembly starts a 1 m rough section at +2 m/s with μ=0.4 and g=10 m/s².",
+      "steps": [
+        "Deceleration magnitude = 4 m/s².",
+        "Stopping distance = 2²/(2×4) = 0.5 m.",
+        "Obstacle is 1 m away, so no second contact occurs."
+      ],
+      "check": "Writing a second collision equation here would describe a physically impossible event."
+    }
+  ],
+  "trap": {
+    "wrong": "Conserve momentum across the entire rough slide or assume an obstacle is reached merely because it is present.",
+    "repair": "Split contact → friction → contact, calculate the pre-contact speed, and test stop distance before the second event."
+  },
+  "assumptions": [
+    "External friction is negligible DURING each very short impact but not during the slide.",
+    "μ is kinetic friction while moving; the model ceases to apply after stopping.",
+    "The second contact occurs only if the trajectory physically reaches the obstacle."
+  ],
+  "model": {
+    "kind": "reachability",
+    "label": "Teaching model: μ for a +3 m/s assembly with obstacle 1.5 m away",
+    "min": 0,
+    "max": 0.6,
+    "step": 0.05,
+    "value": 0.2,
+    "unit": "μ"
+  },
+  "prompt": {
+    "stem": "Three events on a right-positive rail: (1) a 1 kg cart at +6 m/s STICKS to a resting 2 kg cart; (2) their joined 3 kg assembly slides 0.50 s with μ=0.20, g=10 m/s²; (3) it then reaches and STICKS to a stationary 1 kg cart. Impacts are short; neglect external horizontal impulse during each impact. Determine velocities after event 1, just before event 3, after event 3, and friction's signed impulse during the slide.",
+    "prediction": "Predict whether the joined 3 kg assembly continues right at the time of event 3, and why friction matters between events.",
+    "fields": [
+      {
+        "id": "firstV",
+        "label": "Velocity immediately after first impact",
+        "type": "number",
+        "unit": "m/s"
+      },
+      {
+        "id": "beforeThirdV",
+        "label": "Velocity just before second impact",
+        "type": "number",
+        "unit": "m/s"
+      },
+      {
+        "id": "finalV",
+        "label": "Velocity after second impact",
+        "type": "number",
+        "unit": "m/s"
+      },
+      {
+        "id": "frictionJ",
+        "label": "Sliding-friction impulse",
+        "type": "number",
+        "unit": "N·s"
+      }
+    ],
+    "boundaryPrompt": "Changed surface: after event 1, μ=0.40. The stationary third cart is 0.75 m from the first contact, and the assembly's starting slide speed is +2 m/s. Does a second contact happen? Compute the assembly's stopping distance.",
+    "boundaryFields": [
+      {
+        "id": "reach",
+        "label": "Will the assembly reach the third cart?",
+        "type": "choice",
+        "options": [
+          {
+            "value": "no",
+            "text": "No, stops short"
+          },
+          {
+            "value": "yes",
+            "text": "Yes, collides"
+          }
+        ]
+      },
+      {
+        "id": "stopDistance",
+        "label": "Distance travelled before stopping",
+        "type": "number",
+        "unit": "m"
+      }
+    ]
+  },
+  "schema": "g9-ph03-authored-lesson/v1",
+  "revision": "ph03-complete-r3-20261116",
+  "sourceRole": "AUTHOR_EXPOSITION_AND_TRANSFER_NOT_EXAM",
+  "academic": "HOLD",
+  "independent_free_text_assessment": false,
+  "postBlobSha1": "499eb72722c5d87a89d75e14cf5c0dc149bbda2e",
+  "figures": {
+    "guide": "figures/P07-guide.svg",
+    "prompt": "figures/P07-prompt.svg",
+    "solution": "figures/P07-solution.svg"
+  },
+  "solutionBlobSha1": "ea7208a616634473b615deab8bffe53f11ad42b9"
+}

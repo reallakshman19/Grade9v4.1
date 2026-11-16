@@ -1,1 +1,200 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Fluids — Golden Sample candidate</title><link rel="stylesheet" href="../../ph06/units.css"></head><body><header><nav><a href="../../index.html">Physics chapters</a></nav><h1>Fluids</h1><p>PH06 · Golden sample draft · 1 of 10 complete candidate pairs, U06 prerequisite; remaining scope not authored.</p></header><main><section><h2>Source → Learn → Try → Return</h2><a class="action" href="../../ph06/source-checkpoint.html">2022 Code 51 Q38 · source checkpoint</a><a class="action" href="U06/index.html">Archimedes’ principle</a><a class="action" href="U08/index.html">Multilayer buoyancy</a><a class="action" href="../../core1/PH06/U08/index.html">Fresh challenge</a><p class="notice">Academic HOLD. This is the first Golden Sample, not an approved chapter or full syllabus coverage.</p></section></main><script defer src="../../learn/learner-nav.js" data-g9-learner-nav></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fluids · Learn, explore, then try independently | Grade9 v4.1</title>
+<meta name="description" content="Fluids learning route: density, pressure, Pascal, Archimedes, buoyancy and special fluid models. Original candidate instruction, academic HOLD.">
+<link rel="stylesheet" href="../../ph06/units.css">
+<style>
+:root{--fluid-accent:#0b766b;--fluid-ink:#143949;--fluid-line:#c8dfde;--fluid-bg:#f3f8f9}
+body{margin:0;background:var(--fluid-bg);color:var(--fluid-ink);font:16px/1.65 system-ui,-apple-system,Segoe UI,Arial,sans-serif}
+body>header,body>main{box-sizing:border-box;max-width:1250px;margin:auto;padding:18px 22px}
+body>header{background:transparent;border:0}
+.fluids-kicker{font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;font-weight:800;color:#38677a}
+.fluids-hero{background:linear-gradient(115deg,#11364d,#116f73);color:white;border-radius:16px;padding:clamp(18px,3vw,34px);margin:12px 0 24px}
+.fluids-hero h1{margin:.2rem 0;font-size:clamp(1.6rem,3vw,2.6rem);color:white}.fluids-hero p{max-width:76ch;color:#f0fbff}
+.fluids-status{background:#fef3c7;color:#6b451a;padding:6px 12px;border-radius:999px;display:inline-block;font-weight:800;font-size:.82rem}
+.fluids-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.fluids-actions a,.fluids-action,button.fluids-action{min-height:48px;display:inline-flex;align-items:center;justify-content:center;padding:10px 16px;background:#e4fff6;color:#124b47;border:1px solid #8dd8c6;border-radius:9px;font-weight:750;text-decoration:none;cursor:pointer}
+.fluids-actions a:hover,.fluids-action:hover{background:#ccf8ea;text-decoration:underline}
+.fluids-panel{padding:clamp(17px,2.5vw,25px);background:#fff;border:1px solid var(--fluid-line);border-radius:14px;margin:18px 0;box-shadow:0 3px 14px rgba(13,54,67,.04)}
+.fluids-panel h2{font-size:clamp(1.25rem,2.3vw,1.6rem);line-height:1.25;margin:0 0 12px}
+.fluids-panel h3{margin:1.3rem 0 .3rem;font-size:1.08rem}
+.fluids-panel p{max-width:90ch}
+.fluids-readiness{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.fluids-readiness>article{border:1px solid #c6dfdc;border-radius:10px;padding:14px;background:#f5faf9}
+.fluids-readiness h3{margin:0 0 8px;font-size:1.05rem}
+.fluids-readiness strong{color:#116e68}
+.fluids-formula{font-weight:750;font-size:1.05rem;color:#0a5d65;background:#eff8fa;padding:11px 14px;border-left:4px solid #137c83;border-radius:7px}
+.fluids-tasks{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px}
+.fluids-tasks>li{padding:15px;background:#f6fafb;border:1px solid #c8dedf;border-radius:11px;min-width:0}
+.fluids-tasks strong{display:block;font-size:1.01rem}.fluids-tasks p{margin:6px 0}.fluids-tasks small{font-weight:750;color:#69552a}
+.fluids-tasks a{display:inline-flex;min-height:44px;align-items:center;color:#0b6374;text-underline-offset:3px}
+.fluids-model{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;align-items:center}
+.fluids-model svg{max-width:100%;height:auto}
+.fluids-controls label{display:block;margin:12px 0 4px;font-weight:720}
+.fluids-controls input[type=range]{display:block;width:100%;min-height:40px;accent-color:#087c6a}
+.fluids-readout{border:1px solid #b9ded8;background:#effaf6;padding:10px;border-radius:10px;margin-top:14px;font-variant-numeric:tabular-nums}
+.fluids-quiz label{display:block;font-weight:700;margin:12px 0 5px}
+.fluids-quiz input[type=number]{font:inherit;border:2px solid #abc8cc;border-radius:8px;min-height:50px;padding:8px 10px;max-width:240px;width:100%}
+.fluids-quiz button{min-height:48px;padding:8px 16px;margin:8px 6px 0 0;background:#126c6d;color:white;border:0;border-radius:9px;font:inherit;font-weight:700;cursor:pointer}
+.fluids-quiz button:focus-visible,.fluids-quiz input:focus-visible{outline:3px solid #df9c26;outline-offset:2px}
+.fluids-feedback{margin-top:14px;border-left:4px solid #16756c;padding:10px 13px;background:#eff8f4;min-height:30px}
+.fluids-quiet{color:#4d6470;font-size:.91rem}
+@media(max-width:720px){body>header,body>main{padding:12px}.fluids-model{grid-template-columns:1fr}.fluids-tasks{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header aria-label="Fluids chapter context">
+  <p class="fluids-kicker"><a href="../../index.html#learn-physics">NSEJS Physics</a> / Chapter 6</p>
+</header>
+<main>
+  <section class="fluids-hero" id="fluids-start">
+    <span class="fluids-status">AUTHOR CANDIDATE · ACADEMIC HOLD</span>
+    <h1>Fluids</h1>
+    <p>Understand why pressure increases with depth, how liquids transmit force, and what supports a floating body. Start with the physical assumptions, then move to the protected multilayer-buoyancy challenge.</p>
+    <p><strong>Coverage:</strong> 1 of 10 complete native Learn/Try pairs (U08). U06 is a prerequisite guide. The other nine rows are a syllabus roadmap, <strong>not</strong> completed native lessons or authenticated exam questions.</p>
+    <nav class="fluids-actions" aria-label="Fluids learning actions">
+      <a href="#fluids-foundations">1 · Build foundations</a>
+      <a href="U06/index.html">2 · Archimedes guide</a>
+      <a href="U08/index.html">3 · Multilayer buoyancy lesson</a>
+      <a href="../../core1/PH06/U08/index.html">4 · Fresh protected challenge</a>
+      <a href="../../ph06/source-checkpoint.html">Source-status checkpoint</a>
+    </nav>
+  </section>
+  <section class="fluids-panel" id="fluids-foundations">
+    <h2>Build the physical picture before choosing an equation</h2>
+    <div class="fluids-readiness">
+      <article><h3>1. Density describes material</h3><p>Density is mass divided by volume, in kg/m³. A hollow object’s average density can differ from the density of its material. State which volume you used.</p><p class="fluids-formula">ρ = m / V</p></article>
+      <article><h3>2. Pressure is not force</h3><p>Pressure is normal force per area. At fixed pressure, doubling the area doubles the total pressure force on a flat surface. Shape matters if depth varies across the surface.</p><p class="fluids-formula">p = F<sub>normal</sub> / A</p></article>
+      <article><h3>3. Hydrostatics needs a reference</h3><p>In a uniform stationary liquid under gravity, gauge pressure increases by ρgh below the surface. Absolute pressure includes the pressure at that surface; moving fluid requires extra assumptions.</p><p class="fluids-formula">p<sub>abs</sub> = p<sub>surface</sub> + ρgh</p></article>
+      <article><h3>4. Buoyancy needs displaced volume</h3><p>The vertical pressure resultant on an immersed body equals the weight of the displaced fluid under the stated uniform-gravity model. Floating requires force balance, not automatic stable orientation.</p><p class="fluids-formula">F<sub>b</sub> = ρ<sub>fluid</sub>gV<sub>displaced</sub></p></article>
+    </div>
+    <h3>Three worked checkpoints</h3>
+    <ol>
+      <li><strong>Density:</strong> 600 g occupies 1000 cm³. Convert to 0.6 kg and 0.001 m³; density is 600 kg/m³. Do not substitute the container’s empty volume for the material volume.</li>
+      <li><strong>Pressure:</strong> At 2 m depth in water (ρ = 1000 kg/m³, g = 10 m/s²), gauge pressure is 20,000 Pa. A flat horizontal 0.02 m² plate at that uniform depth experiences 400 N of <em>gauge-pressure force</em> on one face relative to atmospheric pressure on its other face.</li>
+      <li><strong>Floating:</strong> A body of uniform average density 600 kg/m³ in water of density 1000 kg/m³ floats with 60% of its volume submerged, provided an equilibrium orientation exists and the body is not otherwise supported.</li>
+    </ol>
+  </section>
+  <section class="fluids-panel" id="fluids-lab">
+    <h2>Explore: what changes when depth or area changes?</h2>
+    <p>The diagram shows a flat <strong>horizontal</strong> test plate at uniform depth in a still water tank, with water acting <strong>downward on its upper face</strong> and atmospheric pressure on the underside. The force arrow therefore points downward. This model calculates <em>gauge</em> pressure and additional force on one face relative to atmospheric pressure on the opposite face. It does not describe net forces on a complete submerged body.</p>
+    <div class="fluids-model">
+      <svg viewBox="0 0 480 340" role="img" aria-label="Water tank with horizontal plate at selectable depth, a surface line, vertical depth arrow, and a horizontal pressure plate.">
+        <rect x="60" y="45" width="350" height="255" fill="#c3eef0" rx="9" stroke="#397d90" stroke-width="3"/>
+        <rect x="60" y="45" width="350" height="7" fill="#82c5cc"/>
+        <text x="70" y="31" fill="#184857" font-size="18" font-weight="bold">Water surface: atmospheric pressure</text>
+        <line x1="120" y1="50" x2="120" y2="180" stroke="#126f71" stroke-width="4" stroke-dasharray="9 7" id="fluids-depth-line"/>
+        <path d="M112 60 L120 48 L128 60" fill="none" stroke="#126f71" stroke-width="3"/>
+        <path d="M112 170 L120 182 L128 170" fill="none" stroke="#126f71" stroke-width="3" id="fluids-depth-arrow"/>
+        <rect x="198" y="192" width="108" height="108" fill="#fffaf0" stroke="#72aeb9" stroke-width="2" id="fluids-air-pocket"/>
+        <rect x="198" y="180" width="108" height="12" rx="3" fill="#14557a" id="fluids-test-plate"/>
+        <path d="M252 150 L252 178" stroke="#b45309" stroke-width="5" id="fluids-force-arrow"/>
+        <path d="M243 164 L252 178 L261 164" fill="none" stroke="#b45309" stroke-width="4" id="fluids-force-head"/>
+        <text x="205" y="243" fill="#7c3d08" font-size="15" font-weight="bold">Air at pₐₜₘ</text>
+        <text x="136" y="125" fill="#125f67" font-size="18" id="fluids-svg-depth">h = 2.0 m</text>
+        <text x="214" y="166" fill="#184857" font-size="16">Test plate</text>
+      </svg>
+      <div class="fluids-controls">
+        <label for="fluids-depth">Plate depth: <output id="fluids-depth-value">2.0 m</output></label>
+        <input id="fluids-depth" type="range" min="0" max="5" value="2" step="0.5">
+        <label for="fluids-area">Plate area: <output id="fluids-area-value">0.020 m²</output></label>
+        <input id="fluids-area" type="range" min="0.01" max="0.10" value="0.02" step="0.005">
+        <div class="fluids-readout" role="status" aria-live="polite">
+          <div>ρ = 1000 kg/m³; g = 10 m/s²</div>
+          <div><strong>Gauge pressure:</strong> <output id="fluids-p">20,000</output> Pa</div>
+          <div><strong>Gauge-pressure force:</strong> <output id="fluids-f">400</output> N</div>
+        </div>
+        <p class="fluids-quiet">Notice: area changes the force, not the pressure at the same depth. Depth changes both. The relationship assumes still incompressible water and a horizontal surface at constant depth.</p>
+      </div>
+    </div>
+  </section>
+  <section class="fluids-panel fluids-quiz" id="fluids-check">
+    <h2>Independent quick check · not a graded Core1B attempt</h2>
+    <p>At depth <strong>3 m</strong>, a horizontal flat plate has area <strong>0.015 m²</strong>. It is in stationary water, ρ = 1000 kg/m³ and g = 10 m/s². The pressure on the other face is atmospheric. Calculate the net pressure force on the plate, in N.</p>
+    <label for="fluids-answer">Your first answer (N)</label>
+    <input id="fluids-answer" type="number" inputmode="decimal" step="any" placeholder="Enter a value" autocomplete="off">
+    <div>
+      <button type="button" id="fluids-check-answer">Check my reasoning</button>
+      <button type="button" id="fluids-skip-answer">Skip · no credit</button>
+      <button type="button" id="fluids-undo-skip" hidden>Undo skip</button>
+    </div>
+    <div class="fluids-feedback" id="fluids-feedback" aria-live="polite">Your answer stays private to this page; this is practice, not a mastery or source-exam score.</div>
+    <div id="fluids-worked" hidden>
+      <h3>Reconstruct the reasoning</h3>
+      <ol><li>Choose gauge pressure, because atmospheric pressure acts on the other face.</li><li>Δp = 1000 × 10 × 3 = 30,000 Pa.</li><li>ΔF = Δp × A = 30,000 × 0.015 = <strong>450 N</strong>.</li><li>Check units: Pa × m² = N. Using 3000 Pa or 0.15 m² would cause a factor-of-ten error.</li></ol>
+      <p><strong>Change one assumption:</strong> If the plate is vertical and spans several depths, pressure is not uniform across its surface; integrate over area or use mean depth only under the appropriate linear profile.</p>
+    </div>
+    <p class="fluids-quiet">Quick-check data is not saved as a verified or immutable learner attempt; to use a protected six-stage independent challenge, open U08 below.</p>
+  </section>
+  <section class="fluids-panel" id="fluids-roadmap">
+    <h2>All ten registered Fluids subtopics · actual availability</h2>
+    <p>A topic description is a roadmap, <strong>not</strong> a completed Learn/Try pair. Only U08 has a full native candidate pair. U06 has a partial prerequisite guide. The remaining content needs source-grounded instruction and independent practice, not a generic question-bank substitution.</p>
+    <ol class="fluids-tasks">
+      <li data-unit="U01"><strong>U01 · Density and relative density</strong><p>Measure mass and volume consistently; separate the substance density from an object's bulk average.</p><small>Roadmap · native pair missing</small></li>
+      <li data-unit="U02"><strong>U02 · Thrust, pressure and depth</strong><p>Differentiate pressure and force; use ρgh only when the fluid and height reference warrant it.</p><small>Foundation primer above · native pair missing</small></li>
+      <li data-unit="U03"><strong>U03 · Connected liquid columns</strong><p>Walk pressures from a shared interface, not merely from matching numbers called “depth”.</p><small>Roadmap · native pair missing</small></li>
+      <li data-unit="U04"><strong>U04 · Atmospheric pressure</strong><p>Keep absolute and gauge references separate; interpret barometers and manometers with correct assumptions.</p><small>Roadmap · native pair missing</small></li>
+      <li data-unit="U05"><strong>U05 · Pascal's principle and hydraulics</strong><p>Pressure increments transmit in ideal static liquid; an increased output force is paid for by reduced displacement.</p><small>Roadmap · native pair missing</small></li>
+      <li data-unit="U06"><strong>U06 · Archimedes' principle</strong><p>Learn buoyancy as the net pressure force, and calculate the actual displaced volume.</p><a href="U06/index.html">Open existing prerequisite guide</a><small>Prerequisite guide · protected Try pair missing</small></li>
+      <li data-unit="U07"><strong>U07 · Floating, sinking and immersion</strong><p>Require force balance and physically possible immersion; full submersion does not mean automatic neutrality.</p><small>Roadmap · native pair missing</small></li>
+      <li data-unit="U08" data-available-native="true"><strong>U08 · Multilayer buoyancy</strong><p>Split displaced volume by layer, test geometry boundaries and solve the fresh inverse challenge.</p><a href="U08/index.html">Learn U08</a> · <a href="../../core1/PH06/U08/index.html">Try U08 independently</a><small>1 complete native candidate pair · academic HOLD</small></li>
+      <li data-unit="U09"><strong>U09 · Accelerating fluids</strong><p>Use effective gravity only in a specified nonrotating accelerating frame; free-fall boundaries need care.</p><small>Extension review · native pair missing</small></li>
+      <li data-unit="U10"><strong>U10 · Flow, surface energy and viscosity</strong><p>Keep continuity/Bernoulli assumptions, droplet surface energy, and low-Reynolds-number drag as distinct models.</p><small>Extension review · native pair missing</small></li>
+    </ol>
+  </section>
+  <section class="fluids-panel" id="fluids-evidence">
+    <h2>Source and science status</h2>
+    <p><strong>Academic HOLD:</strong> no original examination item, key or diagram is admitted as independently authenticated. The U08 historical source checkpoint is a locator, not a copied or approved exam question. Official source/year, rights, science, QRT and B1–B7 reviews remain separate decisions.</p>
+    <nav class="fluids-actions" aria-label="Fluids evidence and continuation">
+      <a href="../../ph06/source-checkpoint.html">Inspect source status</a>
+      <a href="U06/index.html">Study Archimedes</a>
+      <a href="U08/index.html">Learn U08</a>
+      <a href="../../core1/PH06/U08/index.html">Practice U08</a>
+      <a href="../../learn/chapter.html?ph=PH06">Return to chapter overview</a>
+    </nav>
+  </section>
+</main>
+<script>
+(function(){
+"use strict";
+const depth=document.getElementById("fluids-depth"),area=document.getElementById("fluids-area"),
+ num=new Intl.NumberFormat("en",{maximumFractionDigits:2});
+function draw(){
+ const h=Number(depth.value),a=Number(area.value),p=1000*10*h;
+ document.getElementById("fluids-depth-value").textContent=h.toFixed(1)+" m";
+ document.getElementById("fluids-area-value").textContent=a.toFixed(3)+" m²";
+ document.getElementById("fluids-p").textContent=num.format(p);
+ document.getElementById("fluids-f").textContent=num.format(p*a);
+ const y=50+Math.round(h*40);
+ document.getElementById("fluids-depth-line").setAttribute("y2",String(y));
+ document.getElementById("fluids-depth-arrow").setAttribute("d","M112 "+(y-12)+" L120 "+y+" L128 "+(y-12));
+ document.getElementById("fluids-test-plate").setAttribute("y",String(y));
+ const width=78+180*(a-0.01)/0.09;
+ document.getElementById("fluids-test-plate").setAttribute("x",(252-width/2).toFixed(1));
+ document.getElementById("fluids-test-plate").setAttribute("width",width.toFixed(1));
+ const pocket=document.getElementById("fluids-air-pocket");
+ pocket.setAttribute("x",(252-width/2).toFixed(1));pocket.setAttribute("width",width.toFixed(1));
+ pocket.setAttribute("y",String(y+12));pocket.setAttribute("height",String(Math.max(0,300-y-12)));
+ document.getElementById("fluids-force-arrow").setAttribute("d","M252 "+(y-30)+" L252 "+(y-2));
+ document.getElementById("fluids-force-head").setAttribute("d","M243 "+(y-16)+" L252 "+(y-2)+" L261 "+(y-16));
+ document.getElementById("fluids-svg-depth").textContent="h = "+h.toFixed(1)+" m";
+}depth.addEventListener("input",draw);area.addEventListener("input",draw);draw();
+const answer=document.getElementById("fluids-answer"),check=document.getElementById("fluids-check-answer"),
+ skip=document.getElementById("fluids-skip-answer"),undo=document.getElementById("fluids-undo-skip"),
+ feedback=document.getElementById("fluids-feedback"),worked=document.getElementById("fluids-worked");
+check.addEventListener("click",()=>{
+ const val=answer.value.trim();
+ if(!val||!Number.isFinite(Number(val))){feedback.textContent="Enter a finite numerical answer or use Skip; no mastery is claimed.";return;}
+ const good=Math.abs(Number(val)-450)<1e-7;
+ feedback.textContent=(good?"Your numerical result agrees with the gauge-pressure model.":"Your result differs from this model. Check whether you used pressure first and then multiplied by area.")+" This quick check is ungraded.";
+ worked.hidden=false;answer.disabled=true;check.disabled=true;skip.disabled=true;
+});
+skip.addEventListener("click",()=>{feedback.textContent="Skipped — no correct-answer or mastery credit. Review the worked reasoning if helpful.";answer.disabled=true;check.disabled=true;skip.hidden=true;undo.hidden=false;worked.hidden=false;});
+undo.addEventListener("click",()=>{feedback.textContent="Skip undone; you may attempt the quick check.";answer.disabled=false;check.disabled=false;skip.hidden=false;undo.hidden=true;worked.hidden=true;answer.focus();});
+})();
+</script>
+<script defer src="../../learn/learner-nav.js" data-g9-learner-nav></script>
+</body>
+</html>

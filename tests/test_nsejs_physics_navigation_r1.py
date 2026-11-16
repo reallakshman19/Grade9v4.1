@@ -29,9 +29,9 @@ def test_chapter_catalog_is_real_and_single_entry():
     assert Counter(c["state"] for c in chapters) == {
         "learning-pairs":9,"unavailable":1,"chapter-preview":2}
     assert {c["id"]:len(c["units"]) for c in chapters} == {
-        "PH01":8,"PH02":8,"PH03":1,"PH04":0,"PH05":7,"PH06":1,
+        "PH01":8,"PH02":8,"PH03":7,"PH04":0,"PH05":7,"PH06":1,
         "PH07":12,"PH08":13,"PH09":12,"PH10":17,"PH11":0,"PH12":0}
-    assert sum(len(c["units"]) for c in chapters) == 79
+    assert sum(len(c["units"]) for c in chapters) == 85
     home = (PH/"index.html").read_text(encoding="utf-8")
     assert home.index('id="learn-physics"') < home.index('id="g9-explore-bank"')
     assert home.count('class="g9-chapter-card"') == 12
@@ -69,7 +69,7 @@ def test_every_published_route_exists_and_has_canonical_bar():
             assert full.is_relative_to(PH.resolve()), p
             assert full.is_file(), p
             expected.add(full)
-    assert len(expected) == 177
+    assert len(expected) == 189
     # B01 R14 pins bind the exact learner HTML and embedded SVG.
     # Navigation wraps those 50 routes from the chapter instead of rewriting them.
     pinned = {
