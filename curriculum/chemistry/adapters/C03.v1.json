@@ -1,7 +1,7 @@
 {
   "schema": "g9v41-chem-topic-adapter/v1",
   "adapter_id": "CHEM-C03",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "subject": "CHEMISTRY",
   "unit_id": "C03",
   "blueprint_ref": "CHEM-QRT-BLUEPRINT@0.1.0",
@@ -67,16 +67,16 @@
             "CHEM-C03.01-CORE1A"
           ],
           "slots": {
-            "X": "Balance Fe + O₂ → Fe₂O₃ without changing the product formula.",
-            "Y": "Chemistry warrant: Equation coefficients multiply entire chemical formulas; subscripts define molecule composition and must not be altered for balancing. Prior basis: Start with a system boundary; distinguish a closed flask from an open tube in which gas can escape.",
-            "Z": "For H₂ + O₂ → H₂O, use 2H₂ + O₂ → 2H₂O; the H and O atom counts match.",
-            "W": "Without the answer or decisive strategy supplied in advance, construct and validate the requested chemical representation for this new task: \"Balance Fe + O₂ → Fe₂O₃ without changing the product formula.\" A valid independent result must satisfy: Count elements after applying coefficients."
+            "X": "Balance Al + HCl → AlCl₃ + H₂ with the smallest positive whole-number coefficients. Explain why changing AlCl₃ into AlCl₂ would not be a valid balancing method.",
+            "Y": "Chemistry warrant / validity domain: Balancing a chemical equation changes coefficients multiplying whole species, never the subscripts defining which species exist. Conservation demands an integer count of every atomic element on both sides. Prerequisite: Start with a system boundary; distinguish a closed flask from an open tube in which gas can escape.",
+            "Z": "Independent worked anchor (not the learner task): For H₂ + O₂ → H₂O, use 2H₂ + O₂ → 2H₂O. Then hydrogen count is 4 on each side and oxygen count is 2 on each side; the species H₂, O₂ and H₂O have not been rewritten. Independent check: Count Al, H and Cl separately after multiplication by the coefficients; keep all original formula subscripts fixed.",
+            "W": "Without the worked solution or a decisive hint, the learner must independently perform the specified REPRESENT construction on this NEW context: \"Balance Al + HCl → AlCl₃ + H₂ with the smallest positive whole-number coefficients. Explain why changing AlCl₃ into AlCl₂ would not be a valid balancing method.\" The reviewer must separately establish that this W is nonisomorphic to the textbook anchor; do not infer B4 PASS from this declaration."
           },
-          "student_task": "Balance Fe + O₂ → Fe₂O₃ without changing the product formula.",
-          "wrong_idea": "The mass after a reaction equals the mass of the solid products only.",
-          "replacement_rule": "Include every phase in the same weighed system.",
-          "visual_job": "Use figures/c03-atom-conservation.svg only as prerequisite explanatory evidence, not an annotated answer to C03-02-REPRESENT-D3. Put reaction vessel and surrounding gas inside a dashed system boundary. Draw arrows for gas crossing only when the container is open. Use colour-coded elemental atom counts on both sides.",
-          "independent_check": "Count elements after applying coefficients.",
+          "student_task": "Balance Al + HCl → AlCl₃ + H₂ with the smallest positive whole-number coefficients. Explain why changing AlCl₃ into AlCl₂ would not be a valid balancing method.",
+          "wrong_idea": "A student changes AlCl₃ to AlCl₂ to make chlorine counting easier. Identify why this changes chemical identity rather than balancing.",
+          "replacement_rule": "Restore the unchanged species formulas and solve for the smallest integers that conserve each element.",
+          "visual_job": "Candidate representation: show relevant species, states, values or evidence in an uncompleted ledger/diagram; do not disclose the decisive REPRESENT operation or final result. Task-specific visual adequacy remains for R01 review.",
+          "independent_check": "Count Al, H and Cl separately after multiplication by the coefficients; keep all original formula subscripts fixed.",
           "source_bindings": [
             {
               "ref": "AUTHORED-C03-02-REPRESENT-D3",
@@ -117,7 +117,8 @@
       ],
       "academic_notes": [
         "Core1A/B passage and tasks are Grade9-authored candidate content; no original NSEJS question identity is asserted.",
-        "Band values D3/D4 are unqualified author proposals pending five-factor QRT adjudication and independent chemistry review."
+        "Band values D3/D4 are unqualified author proposals pending five-factor QRT adjudication and independent chemistry review.",
+        "R2 one-task transfer repair C03-02-REPRESENT-D3; revised full-content digest is revision-bound in reader. Author candidate only: independent B3/B4 science, five-factor QRT and source custody HOLD."
       ],
       "status": "ACADEMIC_HOLD"
     },
@@ -647,6 +648,14 @@
         "CHEM-C03.04",
         "CHEM-C03.05",
         "CHEM-C03.06"
+      ]
+    },
+    {
+      "version": "0.2.1",
+      "kind": "AMEND",
+      "reason": "WPE-parity R2 author-candidate transfer correction: refreshed X/Y/Z/W, scientific warrant, misconception and revised learner task for one bounded exemplar; no source/authentication/QRT promotion.",
+      "affected_subtopic_ids": [
+        "CHEM-C03.01"
       ]
     }
   ]
