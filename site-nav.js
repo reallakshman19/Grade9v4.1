@@ -1,19 +1,53 @@
 (()=>{"use strict";
 function ensureSearchAssets(base,link){
- if(!document.querySelector('link[data-g9-search-css]')){
+ if(!document.querySelector('link[data-g9-search-css], link[href*="css/site-search.css"]')){
   const l=document.createElement('link');l.rel='stylesheet';l.setAttribute('data-g9-search-css','');l.href=link('css/site-search.css');document.head.appendChild(l);
  }
- if(!window.Grade9Search&&!document.querySelector('script[data-g9-search-js]')){
+ if(!window.Grade9Search&&!document.querySelector('script[data-g9-search-js], script[src*="js/site-search.js"]')){
   const s=document.createElement('script');s.setAttribute('data-g9-search-js','');s.src=link('js/site-search.js');document.head.appendChild(s);
  }
+}
+// One learner-facing header contract for all public pages. Reuse the existing
+// masthead where possible; do not create a second navigation bar.
+function normalizeMast(header,link,routes,current,scope){
+ let top=header.querySelector(".container.top")||header.querySelector(".top");
+ if(!top){top=document.createElement("div");top.className="container top";header.prepend(top)}
+ let brand=top.querySelector(".logo");
+ if(!brand){brand=document.createElement("a");brand.className="logo";brand.textContent="Grade9 v4.1";top.prepend(brand)}
+ brand.href=link("index.html");
+ let nav=top.querySelector("nav.tabs");
+ if(!nav){nav=document.createElement("nav");nav.className="tabs";top.append(nav)}
+ nav.replaceChildren();
+ nav.setAttribute("aria-label","Grade9 common navigation: subjects, NSEJS and search");
+ for(const [key,label,destination] of routes){
+  const anchor=document.createElement("a");anchor.href=link(destination);anchor.textContent=label;
+  if(current===key)anchor.setAttribute("aria-current","page");
+  nav.append(anchor);
+ }
+ const search=document.createElement("button");search.type="button";search.className="g9-header-search-btn";
+ search.dataset.g9Action="search";search.dataset.searchScope=scope;
+ search.textContent="🔍 Search";search.setAttribute("aria-label","Search Grade9 (Ctrl or Command K)");
+ search.onclick=()=>{if(window.Grade9Search?.open)window.Grade9Search.open({scope});};
+ nav.append(search);
+ if(!document.querySelector("style[data-g9-common-header]")){
+  const css=document.createElement("style");css.dataset.g9CommonHeader="r1";
+  css.textContent=".mast .container.top{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;min-height:62px;padding-top:8px;padding-bottom:8px}.mast .top .tabs{display:flex;flex-wrap:wrap;align-items:center;gap:4px}.mast .top .tabs a{min-height:44px;display:inline-flex;align-items:center;padding:9px 11px}.mast .top .tabs button{min-height:44px;padding:9px 12px;cursor:pointer}@media(max-width:720px){.mast .top .tabs{width:100%}.mast .top .tabs a{font-size:12px;padding:8px}}";
+  document.head.append(css);
+ }
+ return true;
 }
 function mount(){
  const entry=document.querySelector("script[data-grade9-nav]");if(!entry?.src)return;
  const base=new URL("./",entry.src),link=path=>new URL(path,base).href;
  ensureSearchAssets(base,link);
- if(document.getElementById("grade9-universal-nav")||document.querySelector("header.mast"))return;
- const here=location.pathname,architecture=/\/(?:architecture|docs)\//.test(here),examples=/\/batches\//.test(here),nsejs=/\/nsejs\//.test(here);
- const current=architecture?"architecture":nsejs?"nsejs":here.includes("/mathematics/")?"mathematics":here.includes("/chemistry/")?"chemistry":"physics";
+ if(document.getElementById("grade9-universal-nav"))return;
+ const here=location.pathname,relative=here.startsWith(base.pathname)?here.slice(base.pathname.length):here.replace(/^\/+/, "");
+ const architecture=/^(?:architecture|docs)\//.test(relative),examples=/\/batches\//.test(relative),nsejs=/^nsejs\//.test(relative);
+ const current=/^(?:nsejs\/physics|physics|curriculum\/physics)\//.test(relative)?"physics":/^(?:nsejs\/chemistry|chemistry|curriculum\/chemistry)\//.test(relative)?"chemistry":/^(?:nsejs\/biology|biology|curriculum\/biology)\//.test(relative)?"biology":/^mathematics\//.test(relative)?"mathematics":architecture?"architecture":nsejs?"nsejs":"home";
+ const scope=["physics","chemistry","biology"].includes(current)?current:nsejs?"nsejs":"all";
+ const routes=[["home","⌂ Home","index.html"],["nsejs","🏆 NSEJS Hub","nsejs/index.html"],["physics","⚛ Physics","nsejs/physics/index.html"],["chemistry","🧪 Chemistry","nsejs/chemistry/index.html"],["biology","🧬 Biology","nsejs/biology/index.html"],["mathematics","∑ Maths","mathematics/index.html"],["architecture","◇ Architecture","architecture/index.html"]];
+ const mast=document.querySelector("header.mast");
+ if(mast){normalizeMast(mast,link,routes,current,scope);return;}
  const host=document.createElement("div");host.id="grade9-universal-nav";const shadow=host.attachShadow({mode:"open"});
  const css=document.createElement("style");css.textContent=[
  ":host{all:initial;display:block;position:relative;z-index:5;font-family:system-ui,-apple-system,Segoe UI,sans-serif}",
@@ -42,17 +76,17 @@ function mount(){
  const primary=document.createElement("div");primary.className="primary";const top=document.createElement("div");top.className="primary-in";
  const brand=document.createElement("a");brand.className="brand";brand.href=link("index.html");const symbol=document.createElement("span");symbol.className="mark";symbol.textContent="G9";brand.append(symbol,document.createTextNode("Grade9"));top.append(brand);
  const nav=document.createElement("nav");nav.className="subjects";nav.setAttribute("aria-label","Subjects and architecture");
- for(const [key,label,destination] of [["physics","⚛ Physics","physics/index.html"],["mathematics","∑ Maths","mathematics/index.html"],["chemistry","⚗ Chemistry","chemistry/index.html"],["nsejs","🏆 NSEJS","nsejs/index.html"],["architecture","◇ Architecture","architecture/index.html"]]){
+ for(const [key,label,destination] of routes){
   const a=document.createElement("a");a.href=link(destination);a.textContent=label;if(current===key)a.setAttribute("aria-current","page");nav.append(a)
  }
  const sBtn=document.createElement("button");sBtn.type="button";sBtn.className="nav-search-btn";sBtn.setAttribute("data-g9-action","search");sBtn.title="Search Grade9 (Ctrl/⌘ K)";sBtn.innerHTML='🔍 <span>Search</span> <kbd>Ctrl K</kbd>';
- sBtn.onclick=()=>{if(window.Grade9Search&&window.Grade9Search.open){window.Grade9Search.open({scope:nsejs?"nsejs":"all"});}};
+ sBtn.onclick=()=>{if(window.Grade9Search&&window.Grade9Search.open){window.Grade9Search.open({scope});}};
  nav.append(sBtn);
  top.append(nav);primary.append(top);shadow.append(css,primary);
  const context=document.createElement("div");context.className="context";const inside=document.createElement("div");inside.className="context-in";
  const crumb=document.createElement("span");crumb.className="crumb";crumb.textContent=architecture?"Architecture / Learning design":nsejs?(here.includes("/core1/")?"NSEJS / Core 1 Master Lessons":here.includes("/physics/")?"NSEJS / Physics Track":here.includes("/chemistry/")?"NSEJS / Chemistry Track":here.includes("/biology/")?"NSEJS / Biology Track":"NSEJS / Junior Science"):examples?"Physics / WPE / Examples":"Physics / Work, Power & Energy";inside.append(crumb);
  const shortcut=document.createElement("nav");shortcut.className="shortcuts";shortcut.setAttribute("aria-label",architecture?"Architecture resources":nsejs?"NSEJS track shortcuts":"WPE chapter shortcuts");
- const items=architecture?[["Guidebook","architecture/guidebook.html"],["Production checklist","architecture/production-checklist.html"],["Pipeline Flowchart","architecture/pipeline-flowchart.html"],["WPE chapter","physics/wpe/index.html"]]:nsejs?[["Hub","nsejs/index.html"],["Physics","nsejs/physics/index.html"],["Physics Q-Bank","nsejs/physics/question-bank.html"],["Core 1 Lessons","nsejs/physics/core1/index.html"],["Chemistry","nsejs/chemistry/index.html"],["Chemistry Q-Bank","nsejs/chemistry/question-bank.html"],["Biology","nsejs/biology/index.html"],["Biology Q-Bank","nsejs/biology/question-bank.html"],["Core 2 Map","nsejs/core2/index.html"]]:[["Chapter","physics/wpe/index.html"],["Learn","preview/physics-wpe.html"],["Learn → Challenge","physics/wpe/learn-challenge.html"],["Practice","preview/practice.html"],["Question Bank","physics/wpe/question-bank.html"],["Examples","preview/batches/index.html"],["My progress","preview/progress.html"]];
+ const items=architecture?[["Guidebook","architecture/guidebook.html"],["Production checklist","architecture/production-checklist.html"],["Pipeline Flowchart","architecture/pipeline-flowchart.html"],["WPE chapter","physics/wpe/index.html"]]:nsejs?[["Hub","nsejs/index.html"],["Physics","nsejs/physics/index.html"],["Physics Q-Bank","nsejs/physics/index.html?topic=optics#topicWorkspace"],["Core 1 Lessons","nsejs/physics/core1/index.html"],["Chemistry","nsejs/chemistry/index.html"],["Chemistry Q-Bank","nsejs/chemistry/index.html?topic=atomic_structure#topicWorkspace"],["Biology","nsejs/biology/index.html"],["Biology Q-Bank","nsejs/biology/index.html?topic=living_world#topicWorkspace"],["Core 2 Map","nsejs/core2/index.html"]]:[["Chapter","physics/wpe/index.html"],["Learn","preview/physics-wpe.html"],["Learn → Challenge","physics/wpe/learn-challenge.html"],["Practice","preview/practice.html"],["Question Bank","physics/wpe/question-bank.html"],["Examples","preview/batches/index.html"],["My progress","preview/progress.html"]];
  for(const [label,destination] of items){const a=document.createElement("a");a.href=link(destination);a.textContent=label;if(here===new URL(destination,base).pathname)a.setAttribute("aria-current","page");shortcut.append(a)}
  inside.append(shortcut);context.append(inside);shadow.append(context);document.body.insertBefore(host,document.body.firstChild)
 }
