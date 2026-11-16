@@ -27,8 +27,8 @@ def run(origin, browser, size):
         assert page.locator("#chapter-PH03 a").count()==1
         page.locator("#chapter-PH03 a").click()
         page.locator("#P03 .g9-lesson-actions a").first.wait_for()
-        assert page.locator(".g9-lesson-card").count()==1
-        assert "Golden Sample only: 1 of 7" in page.locator("#g9-chapter-content").inner_text()
+        assert page.locator(".g9-lesson-card").count()==7
+        assert "0/7 accepted" in page.locator("#g9-chapter-content").inner_text()
         page.locator("#P03 .g9-lesson-actions a").first.click()
         page.locator("#g9-learner-nav").wait_for()
         assert "Momentum and Collisions" in page.locator("#g9-learner-nav").inner_text()
