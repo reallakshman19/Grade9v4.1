@@ -9,6 +9,17 @@ function fail(message){const b=$("runtimeStatus");if(b){b.className="error";b.te
 function ensureStored(value){
   try{
     const serialized=JSON.stringify(value);
+    // Do not intentionally replace a prior first response or hide a stale-tab conflict.
+    const prior=localStorage.getItem(key);
+    if(prior!==null){
+      const old=JSON.parse(prior);
+      if(!old || old.task_uid!==value.task_uid || old.revision!==value.revision ||
+         old.content_fingerprint!==value.content_fingerprint ||
+         old.first_answer!==value.first_answer || old.first_prediction!==value.first_prediction ||
+         old.first_at!==value.first_at || !Array.isArray(old.exposure) ||
+         old.exposure.length>(value.exposure||[]).length)
+        throw Error("stale or conflicting first-attempt write; reload");
+    }
     localStorage.setItem(key,serialized);
     if(localStorage.getItem(key)!==serialized)throw Error("storage round-trip mismatch");
   }catch(e){fail("Storage write/read unavailable. No answers or hints will unlock. Your input remains copyable. "+String(e.message||e));return false}
@@ -35,7 +46,7 @@ function refresh(){
   const saved=!!rec?.first_answer;
   $("prediction").disabled=saved;$("attempt").disabled=saved;
   $("firstCommit").hidden=saved;$("postAttempt").hidden=!saved;
-  if(saved){$("prediction").value=rec.first_prediction;$("attempt").value=rec.first_answer;$("firstIntegrity").textContent="First prediction and attempt saved immutably for revision "+rec.revision+" at "+rec.first_at+". Later repairs cannot overwrite them.";}
+  if(saved){$("prediction").value=rec.first_prediction;$("attempt").value=rec.first_answer;$("firstIntegrity").textContent="First browser-local prediction and attempt saved for revision "+rec.revision+" at "+rec.first_at+". Later repairs cannot overwrite them.";}
   for(let i=0;i<3;i++){const visible=saved&&(rec.hints_seen||0)>i;const node=$("hint"+(i+1));node.hidden=!visible;if(visible)node.innerHTML="<strong>H"+(i+1)+"</strong>"+p(ptask.hints[i]);}
   $("hintBtn").hidden=!saved||(rec?.hints_seen||0)>=3;
   if(saved&&(!rec.hints_seen||rec.hints_seen<3))$("hintBtn").textContent="Open H"+((rec.hints_seen||0)+1)+" support";
@@ -101,7 +112,14 @@ function bind(){
    if(!rec?.boundary_attempt)return fail("Boundary attempt must be persisted before answer.");
    if(expose("boundary_reconstruction",{boundary_revealed:true}))refresh();
  });
- $("helpLink").addEventListener("click",event=>{
+ window.addEventListener("storage",event=>{
+    if(event.key!==key)return;
+    if(event.newValue!==JSON.stringify(rec)){
+      fail("A second tab changed this record. Reload before continuing; disclosure remains locked.");
+      mount.querySelectorAll("textarea,button").forEach(c=>{c.disabled=true;});
+    }
+  });
+  $("helpLink").addEventListener("click",event=>{
    if(!rec?.first_answer){
      try{localStorage.setItem(key+":prehelp","1");if(localStorage.getItem(key+":prehelp")!=="1")throw Error("readback failed");}
      catch(e){event.preventDefault();fail("Cannot record pre-commit help, so lesson navigation is blocked from this attempt route.");}
@@ -130,8 +148,9 @@ async function init(){
   const u=isMain?data.units.find(x=>x.id===ptask.unit):own;
   if(!u)throw Error("Cross-topic task owner missing; HOLD");
   if(!globalThis.crypto?.subtle || typeof TextEncoder==="undefined")throw Error("Content-digest protection unavailable");
-  const fingerprintSource=JSON.stringify([ptask.uid,ptask.revision,ptask.prediction,ptask.prompt,ptask.w,
-    ptask.reconstruction,ptask.alternative,ptask.hints,ptask.boundaryPrompt,ptask.boundaryModel]);
+  const fingerprintSource=JSON.stringify([ptask.uid,ptask.revision,ptask.op,ptask.cell,ptask.source_role,ptask.qrt_status,
+     ptask.prediction,ptask.prompt,ptask.w,ptask.reconstruction,ptask.alternative,
+     ptask.hints,ptask.diagnosis,ptask.repair,ptask.boundaryPrompt,ptask.boundaryModel]);
   const bytes=new TextEncoder().encode(fingerprintSource);
   const hash=await crypto.subtle.digest("SHA-256",bytes);
   contentFingerprint=Array.from(new Uint8Array(hash),b=>b.toString(16).padStart(2,"0")).join("");
@@ -139,7 +158,7 @@ async function init(){
   const lessonHref=isMain?"../../../textbook/PH05/"+ptask.unit.slice(-3)+"/index.html":"../../../textbook/PH05/"+uid.split("-").at(-1)+"/index.html";
   const taskNav='<div id="taskNav" class="card"><strong>'+ (isMain?"Integrated MAIN candidates":"This subtopic's operation candidates")+'</strong><div>'+candidates.map(t=>'<a class="action" href="?task='+encodeURIComponent(t.uid)+'">'+esc(t.id||t.op||t.uid)+(t.uid===ptask.uid?" · current":"")+'</a>').join('')+'</div></div>';
   document.title=uid+" · "+ptask.uid+" · Core1B protected transfer (candidate)";
-  mount.innerHTML='<h1>'+esc(uid)+" · "+esc(u.title)+'</h1>'+taskNav+'<p class="notice"><strong>OWNER-AUTHORIZED AUTHOR-CREATED PRACTICE · AI-CHECKED.</strong> Self-study exercises, not authenticated original NSEJS questions or independent certification. Browser storage protects learning order but is not a secure examination boundary.</p>'+
+  mount.innerHTML='<h1>'+esc(uid)+" · "+esc(u.title)+'</h1>'+taskNav+'<p class="notice"><strong>AUTHOR-EXPOSED PRACTICE · ACADEMIC/QRT HOLD.</strong> Self-study exercises, not authenticated original NSEJS questions or independent certification. Browser storage protects learning order but is not a secure examination boundary.</p>'+
    '<p class="fine">Exact authored UID: '+esc(ptask.uid)+' · revision: '+esc(ptask.revision)+' · digest: '+esc(contentFingerprint.slice(0,12))+'</p><p id="runtimeStatus" class="status" role="status">Loading…</p><p id="revisionNote" class="fine"></p>'+
    '<section class="step"><h2>1 · Predict before solving</h2>'+p(ptask.prediction)+'<label for="prediction">Your prediction and reason</label><textarea id="prediction"></textarea></section>'+
    '<section class="step"><h2>2 · Attempt: protect your decisive work</h2>'+p(ptask.prompt)+'<label for="attempt">Your independent calculation, model and check</label><textarea id="attempt"></textarea><button id="firstCommit" type="button">Commit prediction + first reasoning</button><p id="firstIntegrity" class="fine"></p><p><a id="helpLink" href="'+lessonHref+'">Consult this subtopic’s Core1A textbook (help exposure tracked)</a></p></section>'+
@@ -149,7 +168,7 @@ async function init(){
    '<section id="diagnoseStage" class="step" hidden><h2>4 · Diagnose the first divergence</h2><div id="diagnosisGuidance"></div><label for="diagnosis">Which reasoning step diverged, or what evidence is missing?</label><textarea id="diagnosis"></textarea><button id="diagnoseBtn" type="button">Save diagnosis</button></section>'+
    '<section id="repairStage" class="step" hidden><h2>5 · Repair that step</h2><div id="repairGuidance"></div><label for="repair">Your separate repaired explanation</label><textarea id="repair"></textarea><button id="repairBtn" type="button">Save repair separately</button></section>'+
    '<section id="boundaryStage" class="step" hidden><h2>6 · Boundary: new changed condition</h2><div id="boundaryQuestion"></div><label for="boundary">Your new attempt before seeing the model</label><textarea id="boundary"></textarea><button id="boundaryBtn" type="button">Commit boundary attempt</button><button id="boundaryRevealBtn" type="button" class="secondary" hidden>Reveal boundary model</button><div id="boundaryModel" class="answer" hidden></div></section></div>'+
-   '<p class="fine">The self-study route is checked by automated QA and owner-directed AI review. It awards no exam credential; the source-only formal academic review process is separate.</p>';
+   '<p class="fine">Unqualified authored practice. Browser-local evidence is not tamper-proof or an examination credential; independent academic/QRT review remains pending.</p>';
   if(!loadState()){$("firstCommit").disabled=true;return;}
   bind();refresh();
  }catch(e){fail(String(e.message||e));}
