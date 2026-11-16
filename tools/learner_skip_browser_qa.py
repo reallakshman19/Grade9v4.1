@@ -46,35 +46,38 @@ class Quiet(SimpleHTTPRequestHandler):
 
 def inspect(page, base: str, route: str, subject: str):
     page.goto(base + route, wait_until="domcontentloaded", timeout=25000)
-    page.wait_for_function("window.Grade9Skip?.version === 'r1'", timeout=12000)
+    page.wait_for_function("window.Grade9Skip?.version === 'r2'", timeout=12000)
     info = page.evaluate("""() => {
       const fields = [...document.querySelectorAll('main textarea,main input[type="text"],main input[type="number"]')];
-      return {fields:fields.length, editable:fields.filter(x=>!x.disabled&&!x.readOnly).length,
-        skipControls:document.querySelectorAll('.g9-skip-control').length,
-        visible: [...document.querySelectorAll('.g9-skip-button')].filter(x=>x.getClientRects().length).length};
+      return {fields:fields.length, eligible:fields.filter(x=>x.hasAttribute('data-g9-skip-eligible')).length,
+        dock:document.querySelectorAll('#g9-skip-dock').length,
+        visible:fields.filter(x=>x.hasAttribute('data-g9-skip-eligible')&&x.getClientRects().length).length};
     }""")
-    # All actual eligible response fields are instrumented, excluding deliberate
-    # header/search/read-only fields. A hidden future stage is still represented.
-    if info["editable"] and not info["skipControls"]:
-        raise AssertionError(f"Mandatory fields without Skip: {route} / {info}")
-    visible = page.locator(".g9-skip-button:visible")
-    if visible.count():
-        skip = visible.first
-        box = skip.locator("xpath=..")
-        field = box.locator("xpath=preceding-sibling::*[1]")
+    assert info["dock"] == 1, f"No Skip dock at {route}"
+    assert info["eligible"] >= 0, route
+    fields = page.locator(
+        'main textarea[data-g9-skip-eligible]:visible:not([disabled]),'
+        'main input[data-g9-skip-eligible]:visible:not([disabled])'
+    )
+    if fields.count():
+        field = fields.first
         before = field.input_value()
+        field.focus()
+        dock = page.locator("#g9-skip-dock")
+        assert dock.is_visible(), route
+        skip = dock.locator(".g9-skip-button")
         skip.click()
-        assert box.get_attribute("data-skipped") == "true", route
+        assert dock.get_attribute("data-skipped") == "true", route
+        assert field.get_attribute("data-g9-skip-status") == "SKIPPED_UNASSESSED", route
         assert field.input_value() == before, f"Skip forged an answer: {route}"
-        link = box.locator("a.g9-skip-continue")
+        link = dock.locator("a.g9-skip-continue")
         assert link.count() == 1 and link.get_attribute("href"), route
-        status_text = box.locator(".g9-skip-status").inner_text().lower()
-        assert ("no answer submitted or scored" in status_text or
-                "not submitted or scored" in status_text), route
+        message = dock.locator(".g9-skip-status").inner_text().lower()
+        assert "no answer submitted or scored" in message or "not submitted or scored" in message, route
         assert "SKIPPED" not in field.input_value(), route
-        assert skip.evaluate("(b)=>getComputedStyle(b).minHeight") != "0px", route
+        assert skip.evaluate("(b)=>parseFloat(getComputedStyle(b).minHeight)") >= 56, route
         field.fill("Student is now trying the problem independently.")
-        assert box.get_attribute("data-skipped") == "false", route
+        assert field.get_attribute("data-g9-skip-status") is None, route
         if subject in ("biology", "chemistry") and "/core1/" in route:
             model = page.locator('[data-role="model-host"]')
             if model.count():
