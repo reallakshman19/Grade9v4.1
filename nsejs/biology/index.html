@@ -457,6 +457,13 @@
       color: #64748b;
       font-size: 13px;
     }
+    /* Surface the independent Biology candidate-bank route on every viewport. */
+    .biology-primary-routes { display:flex;gap:12px;flex-wrap:wrap;margin:16px 0 8px; }
+    .biology-primary-route { display:inline-flex;align-items:center;justify-content:center;min-height:48px;
+      padding:10px 17px;border-radius:10px;border:2px solid #bbf7d0;background:rgba(22,101,52,.7);
+      color:#fff;font-weight:800;text-decoration:none; }
+    .biology-primary-bank { background:#dcfce7;border-color:#86efac;color:#14532d; }
+    .biology-primary-route:hover,.biology-primary-route:focus-visible {text-decoration:underline;outline-offset:3px;}
   </style>
 </head>
 <body>
@@ -481,11 +488,15 @@
       <div class="hero-top-row">
         <span class="hero-kicker">NSEJS · Junior Science Olympiad</span>
         <span class="hero-gov-badge">
-          <span>🛡️</span> {Core 2: Reviewed} · Peer-Audited Curriculum
+          <span>🛡️</span> Candidate practice · Exam/source academic review HOLD
         </span>
       </div>
       <h1>NSEJS Biology — Topics &amp; Core Learning Modules</h1>
-      <p>Explore candidate question banks across 5 competitive biology domains. Built for 12.7" tablets with Mendelian genetics, viral replication mechanisms, endocrine feedback loops, and marine trophic dynamics under strict Rule 13 fail-closed governance.</p>
+      <p>Browse the searchable Biology Question Bank: 119 authored candidate questions in five topics. Study links and examination provenance remain separate; no candidate is independently admitted as an original NSEJS question.</p>
+      <nav class="biology-primary-routes" aria-label="Biology study and question bank">
+        <a class="biology-primary-route" href="#topicsGrid">🌿 Explore five Biology topics</a>
+        <a class="biology-primary-route biology-primary-bank" href="index.html?topic=living_world#topicWorkspace">🧬 Open Biology Question Bank · 119 candidates</a>
+      </nav>
       <div class="hero-breadcrumbs">
         <a href="../../index.html">Home</a> / <a href="../index.html">NSEJS</a> / <span>Biology Topics</span>
       </div>
@@ -500,13 +511,13 @@
       </div>
       <div class="metric-card">
         <span class="metric-num">119</span>
-        <span class="metric-label">Candidate Questions</span>
+        <a class="metric-label" href="index.html?topic=living_world#topicWorkspace" style="color:#166534;text-decoration:underline;font-weight:750;">Open searchable Question Bank</a>
         <span class="metric-sub">All Topics Indexed</span>
       </div>
       <div class="metric-card">
         <span class="metric-num">3</span>
         <span class="metric-label">Core 1A/1B Journeys</span>
-        <span class="metric-sub">Authored &amp; Verified</span>
+        <span class="metric-sub">Authored learning · Academic HOLD</span>
       </div>
       <div class="metric-card">
         <span class="metric-num">Rule 13</span>
@@ -582,7 +593,7 @@
         <p class="topic-desc">Endomembrane systems, mitochondria, nucleic acid architecture, central dogma of molecular genetics, viral capsids, envelope glycoproteins, and Baltimore replication schemes.</p>
         
         <div class="progression-deck">
-          <a class="prog-item prog-item-link" href="javascript:void(0)" onclick="window.selectBiologyTopic('living_world')">
+          <a class="prog-item prog-item-link" href="index.html?topic=living_world#topicWorkspace" onclick="window.selectBiologyTopic('living_world')">
             <span class="prog-left"><span class="prog-dot dot-ready"></span> Core 2 Question Bank</span>
             <span class="prog-badge badge-ready">2 Modules Indexed →</span>
           </a>
@@ -624,7 +635,7 @@
         <p class="topic-desc">C3/C4 photosynthesis pathways, cellular respiration (glycolysis, Krebs), xylem/phloem vascular transport, human cardiac cycles, and nephron excretion.</p>
         
         <div class="progression-deck">
-          <a class="prog-item prog-item-link" href="javascript:void(0)" onclick="window.selectBiologyTopic('life_processes')">
+          <a class="prog-item prog-item-link" href="index.html?topic=life_processes#topicWorkspace" onclick="window.selectBiologyTopic('life_processes')">
             <span class="prog-left"><span class="prog-dot dot-ready"></span> Core 2 Question Bank</span>
             <span class="prog-badge badge-ready">2 Modules Indexed →</span>
           </a>
@@ -666,7 +677,7 @@
         <p class="topic-desc">Action potentials, synaptic transmission, reflex arcs, plant phytohormones (auxin, gibberellin, ABA), and pituitary-hypothalamic endocrine feedback axes.</p>
         
         <div class="progression-deck">
-          <a class="prog-item prog-item-link" href="javascript:void(0)" onclick="window.selectBiologyTopic('coordination')">
+          <a class="prog-item prog-item-link" href="index.html?topic=coordination#topicWorkspace" onclick="window.selectBiologyTopic('coordination')">
             <span class="prog-left"><span class="prog-dot dot-ready"></span> Core 2 Question Bank</span>
             <span class="prog-badge badge-ready">Candidate Record →</span>
           </a>
@@ -707,7 +718,7 @@
         <p class="topic-desc">Mitosis, meiosis, Mendel's monohybrid/dihybrid ratios, law of segregation, sex determination, sex-linked recessive traits, and pedigree charting.</p>
         
         <div class="progression-deck">
-          <a class="prog-item prog-item-link" href="javascript:void(0)" onclick="window.selectBiologyTopic('genetics')">
+          <a class="prog-item prog-item-link" href="index.html?topic=genetics#topicWorkspace" onclick="window.selectBiologyTopic('genetics')">
             <span class="prog-left"><span class="prog-dot dot-ready"></span> Core 2 Question Bank</span>
             <span class="prog-badge badge-ready">Candidate Record →</span>
           </a>
@@ -748,7 +759,7 @@
         <p class="topic-desc">Food chains, 10% ecological efficiency, inverted marine biomass pyramids, biomagnification, biogeochemical carbon/nitrogen cycles, and biodiversity conservation.</p>
         
         <div class="progression-deck">
-          <a class="prog-item prog-item-link" href="javascript:void(0)" onclick="window.selectBiologyTopic('environment')">
+          <a class="prog-item prog-item-link" href="index.html?topic=environment#topicWorkspace" onclick="window.selectBiologyTopic('environment')">
             <span class="prog-left"><span class="prog-dot dot-ready"></span> Core 2 Question Bank</span>
             <span class="prog-badge badge-ready">Candidate Record →</span>
           </a>
