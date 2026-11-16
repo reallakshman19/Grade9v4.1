@@ -83,7 +83,7 @@ function mount(){
  }
  const sBtn=document.createElement("button");sBtn.type="button";sBtn.className="nav-search-btn";sBtn.setAttribute("data-g9-action","search");sBtn.title="Search Grade9 (Ctrl/⌘ K)";sBtn.innerHTML='🔍 <span>Search</span> <kbd>Ctrl K</kbd>';
  sBtn.onclick=()=>{if(window.Grade9Search&&window.Grade9Search.open){window.Grade9Search.open({scope});}};
- nav.append(sBtn);
+ // Keep Search outside the horizontally scrollable subject list: always reachable.
  if(relative==="preview/practice.html"){
   host.classList.add("grade9-practice");
   const quick=document.createElement("button");quick.type="button";
@@ -94,9 +94,11 @@ function mount(){
    const open=panel.classList.toggle("expanded");
    quick.setAttribute("aria-expanded",String(open));
   };
-  nav.append(quick);
+  top.append(nav,sBtn,quick);
+ }else{
+  top.append(nav,sBtn);
  }
- top.append(nav);primary.append(top);shadow.append(css,primary);
+ primary.append(top);shadow.append(css,primary);
  const context=document.createElement("div");context.className="context";const inside=document.createElement("div");inside.className="context-in";
  const crumb=document.createElement("span");crumb.className="crumb";crumb.textContent=architecture?"Architecture / Learning design":nsejs?(here.includes("/core1/")?"NSEJS / Core 1 Master Lessons":here.includes("/physics/")?"NSEJS / Physics Track":here.includes("/chemistry/")?"NSEJS / Chemistry Track":here.includes("/biology/")?"NSEJS / Biology Track":"NSEJS / Junior Science"):examples?"Physics / WPE / Examples":"Physics / Work, Power & Energy";inside.append(crumb);
  const shortcut=document.createElement("nav");shortcut.className="shortcuts";shortcut.setAttribute("aria-label",architecture?"Architecture resources":nsejs?"NSEJS track shortcuts":"WPE chapter shortcuts");
