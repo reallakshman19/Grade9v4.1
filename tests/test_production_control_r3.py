@@ -234,3 +234,17 @@ def test_pages_r3_frozen_content_preflight_exact_git_gate(tmp_path, content_chan
         # deliberately unsigned fixture receipts.
         workflow=(ROOT/".github/workflows/deploy.yaml").read_text()
         assert "python trusted/docs/agent-entry/production-control-r3/release.py" in workflow
+
+
+def test_r3_frozen_search_diagnostic_not_a_routine_pr_gate():
+    """Frozen-search builder drift must be visible manually, never silently authorized."""
+    workflow=(ROOT/".github/workflows/production-control-r3-ci.yml").read_text()
+    step=workflow.split("      - name: Frozen unified-search diagnostic (manual only, never published)",1)
+    assert len(step)==2, "Keep an explicit manual frozen-search diagnostic"
+    assert step[1].split("      - ",1)[0].find("if: github.event_name == 'workflow_dispatch'")>=0
+    assert "preview_build.py" in step[1].split("      - uses:",1)[0]
+    trusted=(ROOT/".github/workflows/production-control-r3-trusted.yml").read_text()
+    assert "pull_request_target:" in trusted
+    assert "g9/r3-production-decision" in trusted
+    release=(ROOT/".github/workflows/deploy.yaml").read_text()
+    assert "python trusted/docs/agent-entry/production-control-r3/release.py" in release
