@@ -99,6 +99,8 @@ def test_common_header_has_one_compact_subject_nav_and_real_chapter_shortcuts():
     assert "function normalizeMast(" in nav
     assert "const routes=" in nav
     assert "Momentum lessons" in nav and "Fluids lessons" in nav
+    assert "top.append(nav,sBtn)" in nav and "top.append(nav,sBtn,quick)" in nav
+    assert "nav.append(sBtn)" not in nav  # Search must stay visible when subject links overflow
     assert "white-space:nowrap" in nav and "overflow-x:auto" in nav
     assert "const items=architecture?" in nav
     assert "current===\"physics\"" in nav
