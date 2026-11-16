@@ -24,16 +24,35 @@ await once(server,'listening');
 const base='http://127.0.0.1:'+server.address().port;
 const binary=process.env.CHROME_BINARY||'google-chrome';
 const chrome=spawn(binary,['--headless=new','--no-sandbox','--disable-dev-shm-usage',
-  '--disable-background-networking','--no-proxy-server','--remote-allow-origins=*',
-  '--remote-debugging-port=0','--user-data-dir='+profile,base],{stdio:'ignore'});
+  '--disable-background-networking','--no-first-run','--disable-gpu',
+  '--no-default-browser-check','--disable-extensions','--no-proxy-server','--remote-allow-origins=*',
+  '--remote-debugging-port=0','--user-data-dir='+profile,base],{stdio:['ignore','ignore','pipe']});
+let chromeStartupError=null, chromeStartupLog='';
+chrome.on('error',e=>{chromeStartupError=e});
+chrome.stderr.on('data',chunk=>{
+  // Bound output to keep fatal startup diagnostics actionable without flooding CI.
+  chromeStartupLog=(chromeStartupLog+String(chunk)).slice(-3000);
+});
 function sleep(ms){return new Promise(resolve=>setTimeout(resolve,ms));}
 async function remotePort(){
-  for(let i=0;i<160;i++){
-    try{const file=await readFile(join(profile,'DevToolsActivePort'),'utf8');
-      return Number(file.split('\n')[0]);}
-    catch(e){await sleep(50);}
+  // Hosted CI Chrome can start slowly under concurrent Python-matrix workers.
+  // Wait for a real DevTools port, but never treat an absent browser as PASS.
+  for(let i=0;i<400;i++){
+    if(chromeStartupError||chrome.exitCode!==null){
+      throw Error('CHROME_START_FAILED: exited='+chrome.exitCode+
+        '; error='+String(chromeStartupError||'none')+
+        '; stderr='+chromeStartupLog);
+    }
+    try{
+      const file=await readFile(join(profile,'DevToolsActivePort'),'utf8');
+      const port=Number(file.split('\n')[0]);
+      if(Number.isInteger(port)&&port>0&&port<=65535)return port;
+    }catch(e){}
+    await sleep(50);
   }
-  throw Error('CHROME_START_FAILED');
+  throw Error('CHROME_START_FAILED: timeout waiting for DevToolsActivePort'+
+    '; exited='+chrome.exitCode+'; error='+String(chromeStartupError||'none')+
+    '; stderr='+chromeStartupLog);
 }
 class Cdp {
   constructor(ws){this.ws=ws;this.pending=new Map();this.sequence=0;
