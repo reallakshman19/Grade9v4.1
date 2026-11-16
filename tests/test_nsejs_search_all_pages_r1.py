@@ -65,3 +65,50 @@ def test_shared_search_default_and_publish_rebuild():
     assert "production-control-r3/release.py" in deploy
     assert "build_search_index.py --install-search" not in deploy
     assert "workflow_dispatch:" in deploy and "path: public" in deploy
+
+
+def test_physics_r2_candidate_study_transfer_and_source_status_are_indexed_without_keys():
+    from urllib.parse import urlencode
+    docs,pages=build_public_learner_documents(ROOT,normalize_text)
+    direct={d["original_id"]:d for d in docs}
+    committed=json.loads((ROOT/"data/learner-search-index.v1.json").read_text())
+    by_id={d["original_id"]:d for d in committed}
+    catalog=json.loads((ROOT/"nsejs/physics/learn/catalog.json").read_text())
+    tasks=json.loads((ROOT/"nsejs/physics/quality-r1/attempt-prompts.v2.json").read_text())
+    assert tasks["status"]=="AUTHOR_EXPOSED_CANDIDATE__ACADEMIC_HOLD"
+    assert len(tasks["units"])==4
+    for task in tasks["units"]:
+        uid=task["unit"]
+        ch=task["chapter"]
+        expected={
+            "QUALITY-"+uid+"-CORE1A":"nsejs/physics/quality-r1/study.html?unit="+uid,
+            task["uid"]:"nsejs/physics/quality-r1/challenge.html?unit="+uid,
+        }
+        for identity,url in expected.items():
+            assert identity in direct and identity in by_id,identity
+            for item in (direct[identity],by_id[identity]):
+                assert item["url"]==url
+                assert item["subject"]=="Physics" and item["is_nsejs"] is True
+                assert item["category"]=="tablet"
+                assert "HOLD" in item["badge"]
+                assert "source" not in item or item["source"] is None
+                assert not any(k in item for k in ("answer","solution","reconstruction","boundaryModel","repair","diagnosis","hints"))
+                assert (ROOT/urlsplit(item["url"]).path).is_file()
+        source_id="QUALITY-"+ch+"-SOURCE-STATUS"
+        assert source_id in direct and source_id in by_id
+        assert by_id[source_id]["url"]=="nsejs/physics/quality-r1/source.html?ph="+ch
+        assert "NO ORIGINAL EXAM ADMISSION" in by_id[source_id]["badge"]
+    assert sum(x["original_id"].startswith("QUALITY-") and
+               "quality-r1/" in x["url"] for x in committed)==8
+    # All four transfer UIDs are discoverable, without exposing first-attempt
+    # solutions or presenting these as accepted original examinations.
+    for task in tasks["units"]:
+        hit=by_id[task["uid"]]
+        assert task["uid"].lower() in hit["search_text"]
+        assert hit["type"]=="LESSON"
+    assert not any(d["url"] in {
+        "nsejs/physics/quality-r1/study.html",
+        "nsejs/physics/quality-r1/challenge.html",
+        "nsejs/physics/quality-r1/source.html"} for d in committed)
+    assert (ROOT/"data/learner-search-index.v1.json").read_bytes()==(
+        ROOT/"nsejs/data/learner-search-index.v1.json").read_bytes()
