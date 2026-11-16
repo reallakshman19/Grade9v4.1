@@ -142,7 +142,7 @@
 
     if (q.exam_year) {
       const yearStr = q.exam_year.replace("YEAR_", "");
-      const examBadge = text("span", "📅 Official Exam: " + yearStr, "status");
+      const examBadge = text("span", "📅 Claimed exam year: " + yearStr, "status");
       examBadge.style.background = "#e0f2fe";
       examBadge.style.color = "#0369a1";
       examBadge.style.borderColor = "#bae6fd";
@@ -227,7 +227,7 @@
 
     const answerBox = text("div", "", "answer");
     answerBox.hidden = true;
-    append(answerBox, text("h3", "Biological Explanation & Official Key"));
+    append(answerBox, text("h3", "Biological Explanation & Candidate Key"));
     append(answerBox, text("p", q.answer || "Official Key Pending"));
     if (Array.isArray(q.steps) && q.steps.length > 0) {
       q.steps.forEach(s => append(answerBox, text("p", s)));
@@ -330,7 +330,7 @@
           text("div", "✅ CORRECT", "feedback-badge-pill"),
           append(text("div", "", "feedback-msg"),
             text("strong", "Correct! Excellent work!"),
-            text("p", "Your answer " + Array.from(selectedSet).map(s => "(" + s + ")").join(", ") + " perfectly matches the official verified key. Check the detailed biological rationale below.")
+            text("p", "Your answer " + Array.from(selectedSet).map(s => "(" + s + ")").join(", ") + " perfectly matches the candidate key (not independently authenticated). Check the detailed biological rationale below.")
           )
         );
       } else {
