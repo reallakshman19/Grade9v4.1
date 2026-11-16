@@ -65,7 +65,7 @@ def run():
                 ctx=browser.new_context(viewport={"width":w,"height":h},has_touch=True)
                 page=ctx.new_page()
                 page.goto(url+"learn/chapter.html?ph=PH06")
-                expect(page.get_by_text("Golden Sample only:",exact=False)).to_be_visible()
+                expect(page.locator(".g9-hold-note")).to_contain_text("1 of 10 complete native Learn/Try pairs")
                 page.goto(url+"ph06/source-checkpoint.html")
                 expect(page.locator("#commit")).to_be_enabled()
                 page.locator('input[value="B"]').check();page.locator("#prediction").fill("Source prediction");page.locator("#attempt").fill("Original source reasoning");page.locator("#commit").click()
