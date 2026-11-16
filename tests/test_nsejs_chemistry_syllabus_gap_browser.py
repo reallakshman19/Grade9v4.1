@@ -24,7 +24,7 @@ def test_source_gap_teaching_and_protected_changed_condition(
         lesson=page.locator("article").inner_text()
         for term in teaching_terms:
             assert term.lower() in lesson.lower(),f"{unit}: missing source teaching {term}"
-        page.get_by_role("button",name="Core1B independent practice").click()
+        page.locator("#show-practice").click()
         page.get_by_role("heading",name="Stage 1 — Predict").wait_for()
         page.locator("#task-select").select_option(task_id)
         page.get_by_role("heading",name="Stage 2 — Independent attempt").wait_for()

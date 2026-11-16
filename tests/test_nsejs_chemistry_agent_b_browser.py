@@ -1,6 +1,7 @@
 """Real Chromium regression for the non-released Chemistry textbook preview."""
 from __future__ import annotations
 import contextlib
+import json
 import os
 from pathlib import Path
 import socket
@@ -47,7 +48,7 @@ def open_page(browser,unit="C08",width=1600,height=1000,disable_storage=False):
         ctx.add_init_script("Object.defineProperty(window,'localStorage',{get(){throw new Error('storage disabled')}});")
     page=ctx.new_page()
     page.goto(URL+"?unit="+unit)
-    page.get_by_role("heading",name="Chemistry — textbook first, independent reasoning next").wait_for()
+    page.get_by_role("heading",name="Chemistry — learn, then try it independently").wait_for()
     page.get_by_role("heading",name="Inside this chapter").wait_for()
     page.wait_for_function("document.querySelectorAll('#sections button').length>0")
     return ctx,page
@@ -64,7 +65,7 @@ def test_all_unit_navigation_and_tablet_viewports(browser,unit,count,viewport):
         assert page.locator("header").is_visible()
         assert page.locator(".banner").is_visible()
         assert page.locator("#unit-select").input_value()==unit
-        page.get_by_role("button",name="Core1B independent practice").click()
+        page.locator("#show-practice").click()
         page.get_by_role("heading",name="Stage 1 — Predict").wait_for()
         assert page.locator("#task-select option").count()==3
         assert page.get_by_role("heading",name="Stage 3 — Reconstruct").count()==0
@@ -88,7 +89,7 @@ def read_pinned_v2_attempt(page, task_id):
 def test_persisted_original_first_attempt_and_refresh(browser):
     ctx,page=open_page(browser)
     try:
-        page.get_by_role("button",name="Core1B independent practice").click()
+        page.locator("#show-practice").click()
         page.get_by_role("heading",name="Stage 2 — Independent attempt").wait_for()
         assert page.get_by_text("Model response · POST-COMMIT").count()==0
         page.locator("#prediction-answer").fill("I predict the closed-system mass remains conserved.")
@@ -100,7 +101,7 @@ def test_persisted_original_first_attempt_and_refresh(browser):
         assert record["source_role"]=="AUTHORED_PRACTICE"
         assert record["attempt"].startswith("Magnesium")
         page.reload()
-        page.get_by_role("button",name="Core1B independent practice").click()
+        page.locator("#show-practice").click()
         page.get_by_text("Model response · POST-COMMIT").wait_for()
         assert page.locator("#original-answer").input_value()==record["attempt"]
     finally:
@@ -109,7 +110,7 @@ def test_persisted_original_first_attempt_and_refresh(browser):
 def test_first_attempt_hint_exposure_persisted(browser):
     ctx,page=open_page(browser)
     try:
-        page.get_by_role("button",name="Core1B independent practice").click()
+        page.locator("#show-practice").click()
         page.get_by_role("button",name="Reveal H1 (assisted, logged)").click()
         page.locator("#prediction-answer").fill("I will check which substance supplies oxygen.")
         page.locator("#original-answer").fill("The product oxygen comes from outside the open crucible; conservation applies to closed systems.")
@@ -124,7 +125,7 @@ def test_first_attempt_hint_exposure_persisted(browser):
 def test_disabled_storage_prevents_answer_reveal(browser):
     ctx,page=open_page(browser,disable_storage=True)
     try:
-        page.get_by_role("button",name="Core1B independent practice").click()
+        page.locator("#show-practice").click()
         page.get_by_text("STORAGE_UNAVAILABLE").wait_for()
         assert page.get_by_text("Model response · POST-COMMIT").count()==0
         assert page.locator("#commit-attempt").count()==0
@@ -134,7 +135,7 @@ def test_disabled_storage_prevents_answer_reveal(browser):
 def test_stale_revision_fails_closed_and_preserves_record(browser):
     ctx,page=open_page(browser)
     try:
-        page.get_by_role("button",name="Core1B independent practice").click()
+        page.locator("#show-practice").click()
         page.get_by_role("heading",name="Stage 1 — Predict").wait_for()
         page.evaluate("""() => {
           const stale='0'.repeat(64);
@@ -143,7 +144,7 @@ def test_stale_revision_fails_closed_and_preserves_record(browser):
               attempt:'Old original kept', source_role:'AUTHORED_PRACTICE'}));
         }""")
         page.reload()
-        page.get_by_role("button",name="Core1B independent practice").click()
+        page.locator("#show-practice").click()
         page.get_by_text("STALE_REVISION_HOLD").wait_for()
         assert page.get_by_text("Model response · POST-COMMIT").count()==0
         assert page.evaluate("JSON.parse(localStorage.getItem('g9chem:attempt:v2:CORE1B-C08-01-1:'+'0'.repeat(64))).attempt")=="Old original kept"
@@ -159,7 +160,7 @@ def test_c09_figures_and_keyboard_focus(browser):
         page.locator("#sections button").nth(5).click()
         page.locator('img[src*="C09-phosphorus-connectivity.svg"]').wait_for()
         page.wait_for_function("Array.from(document.images).some(el => el.src.includes('C09-phosphorus-connectivity.svg') && el.complete && el.naturalWidth > 0)")
-        page.get_by_role("button",name="Core1B independent practice").click()
+        page.locator("#show-practice").click()
         page.get_by_role("heading",name="Stage 1 — Predict").wait_for()
         page.locator("#unit-select").focus()
         assert page.evaluate("document.activeElement.id")=="unit-select"
@@ -187,5 +188,51 @@ def test_all_additional_diagram_assets_decode_in_browser(browser,unit,section,fi
         )
         assert page.locator("article .figure").count()>=1
         assert page.evaluate("document.documentElement.scrollWidth <= innerWidth + 3")
+    finally:
+        ctx.close()
+
+
+# R4 author-exposed technical negative control; not B4 or independent QRT approval.
+@pytest.mark.parametrize("unit,task_id", [
+    ("C12","CORE1B-C12-01-1"),  # piston: pressure/volume constraints
+    ("C09","CORE1B-C09-01-1"),  # acid ionisation, never hydrate
+    ("C08","CORE1B-C08-04-1"),  # calcium-carbonate precipitation
+    ("C08","CORE1B-C08-04-2"),  # silver-bromide precipitation
+    ("C14","CORE1B-C14-02-1"), # boiling, nitrate and microbial checks
+])
+@pytest.mark.parametrize("viewport", [(1600,1000),(1000,1600)])
+def test_r4_task_specific_hints_are_logged_and_model_hidden_until_commit(
+        browser,unit,task_id,viewport):
+    pack=json.loads((ROOT/"curriculum"/"chemistry"/"agent-b"/"core1b"/
+                     f"{unit}.core1b.v0.1.0.json").read_text(encoding="utf-8"))
+    task=next(t for t in pack["cycles"] if t["cycle_id"]==task_id)
+    hints=[h["text"] for h in task["attempt"]["hints"]]
+    ctx=browser.new_context(viewport={"width":viewport[0],"height":viewport[1]},
+                            device_scale_factor=1,has_touch=True)
+    try:
+        page=ctx.new_page()
+        page.goto(f"{URL}?unit={unit}&task={task_id}&mode=practice")
+        page.get_by_role("heading",name="Stage 2 — Independent attempt").wait_for()
+        assert page.locator("#task-select").input_value()==task_id
+        assert page.get_by_text("Model response · POST-COMMIT").count()==0
+        assert page.get_by_role("heading",name="Stage 3 — Reconstruct").count()==0
+        assert not any(h in page.locator("#lesson").inner_text() for h in hints)
+        for i,label in enumerate(("H1","H2","H3")):
+            page.get_by_role("button",name=f"Reveal {label} (assisted, logged)").click()
+            assert hints[i] in page.locator("#lesson").inner_text()
+            assert all(h not in page.locator("#lesson").inner_text() for h in hints[i+1:])
+            assert page.get_by_text("Model response · POST-COMMIT").count()==0
+        page.locator("#prediction-answer").fill(
+            "I will check the stated chemical or apparatus constraints before inference.")
+        page.locator("#original-answer").fill(
+            "My own first reasoning compares the specified measurements, the governing "
+            "chemical or physical conservation law, and an independent test to falsify it.")
+        page.locator("#commit-attempt").click()
+        page.get_by_text("Model response · POST-COMMIT").wait_for()
+        record=read_pinned_v2_attempt(page,task_id)
+        assert record["help_exposure"]==["H1","H2","H3"]
+        assert record["learner_status"]=="ASSISTED"
+        assert record["source_role"]=="AUTHORED_PRACTICE"
+        assert page.get_by_role("heading",name="Stage 3 — Reconstruct").count()==1
     finally:
         ctx.close()

@@ -19,34 +19,34 @@
       "source_exam_question_id": null,
       "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
       "predict": {
-        "prompt": "Before working, predict what kind of evidence or conservation test decides this claim: Explain oxygen transfer and the paired nature of reduction/oxidation in CuO + H₂ → Cu + H₂O.",
-        "defensible_answer": "At the school level, oxidation often means oxygen gain or hydrogen loss, while reduction means oxygen loss or hydrogen gain. In CuO + H₂ → Cu + H₂O, oxygen originally belonging to CuO ends up in water. CuO loses oxygen and is reduced; H₂ gains oxygen and is oxidised. These linked changes form one redox reaction. Every element remains accounted for, so a material ledger is more informative than colour alone."
+        "prompt": "Before solving, predict which atoms exchange electrons and check whether an oxygen-only description is sufficient: In the idealised reaction 2Mg + CO₂ → 2MgO + C, identify both redox partners using oxygen transfer and formal oxidation states. Explain why carbon dioxide is reduced even though its formula contains oxygen, and propose evidence beyond a colour change for the products.",
+        "defensible_answer": "Decide the relevant redox model and necessary conservation constraints without revealing the reacting species' final oxidation-state assignments."
       },
       "attempt": {
-        "prompt": "Explain oxygen transfer and the paired nature of reduction/oxidation in CuO + H₂ → Cu + H₂O.",
-        "produces": "A warranted electron/oxygen/charge reasoning route with correct species and a separate experimental or arithmetic check.",
-        "protected_W": "The learner independently completes the causal bridge, not exposed before first attempt.",
+        "prompt": "In the idealised reaction 2Mg + CO₂ → 2MgO + C, identify both redox partners using oxygen transfer and formal oxidation states. Explain why carbon dioxide is reduced even though its formula contains oxygen, and propose evidence beyond a colour change for the products.",
+        "produces": "Independently reconcile oxygen movement with an electron ledger for an unusual carbon-dioxide reduction; justify product-identity evidence.",
+        "protected_W": "Independently reconcile oxygen movement with an electron ledger for an unusual carbon-dioxide reduction; justify product-identity evidence.",
         "first_attempt_must_be_saved_before_feedback": true,
         "initial_answer_visibility": "HIDDEN",
         "hints": [
           {
             "id": "H1",
             "verb": "CLARIFY",
-            "text": "Name the oxidised and reduced species or the instrument conditions in Oxidation and reduction in observed reactions."
+            "text": "Oxygen transfer and oxidation-state models can describe the same process from distinct perspectives. Check the oxidation-state change of each reactant rather than classifying by a word or colour."
           },
           {
             "id": "H2",
             "verb": "CORRELATE",
-            "text": "Recall the scientific warrant: In familiar school redox examples, oxygen/hydrogen transfer links oxidation with reduction; colour change alone is not definitive."
+            "text": "Compare formal oxidation numbers of magnesium and carbon in reactants and candidate products. Use oxygen movement as a second, consistent explanation rather than as the sole redox definition."
           },
           {
             "id": "H3",
             "verb": "OPEN_THE_WAY",
-            "text": "Write balanced half/whole material and charge ledgers; leave the final scientific inference or value for the independent attempt."
+            "text": "Draw oxidation-number arrows with unknown changes and paired electron ledgers; balance the gained/lost electrons and check conservation without revealing which reagent is the oxidant. Propose a product-identity measurement."
           }
         ],
         "post_commit_closure": {
-          "model_response": "CuO gives up O to become Cu, so it is reduced; hydrogen gains O to become water, so it is oxidised. CuO is the oxidising agent and hydrogen the reducing agent. Atoms remain conserved.",
+          "model_response": "Mg starts at oxidation state 0 and becomes +2 in MgO, so two Mg atoms lose four electrons in total. Carbon is +4 in CO₂ and becomes elemental C⁰, gaining four electrons. Mg is oxidised, CO₂ (its carbon centre) reduced. The oxygen originally in CO₂ appears in MgO. The balanced equation conserves Mg 2, C 1 and O 2. Elemental-carbon residue and MgO identity need composition tests; a dark powder or bright light is not sufficient.",
           "rubric": [
             "Declare oxidant/reductant species and medium when relevant.",
             "Balance atoms and charge or apparatus quantities correctly.",
@@ -59,34 +59,34 @@
           {
             "ask": "What is an observation versus a proposed species transformation?",
             "why_this_ask": "Do not confuse colour or instrument readings with reaction identity.",
-            "model_response": "Black copper(II) oxide loses oxygen when hydrogen is passed over heated copper oxide, while water forms. Which substance has been reduced, and which one has been oxidised? The answer is not simply the name of the black solid."
+            "model_response": "Identify the new reactants and given net equation; do not copy the earlier CuO or ZnO worked contrast."
           },
           {
             "ask": "What conservation rule or redox model applies?",
             "why_this_ask": "Identify correct oxygen/electron bookkeeping and medium.",
-            "model_response": "The terms oxidising agent and reducing agent describe the effects on the *other* species. CuO is the oxidising agent here because it supplies oxygen to hydrogen and is itself reduced. Hydrogen is the reducing agent because it removes oxygen from copper oxide and is itself oxidised. A learner who assumes the reducing agent must itself be reduced has reversed this relationship."
+            "model_response": "Assign oxidation numbers, account for oxygen if present, and balance the transferred electrons."
           },
           {
             "ask": "What follows, and how can you verify it independently?",
             "why_this_ask": "Complete the reasoning rather than a keyword match.",
-            "model_response": "CuO gives up O to become Cu, so it is reduced; hydrogen gains O to become water, so it is oxidised. CuO is the oxidising agent and hydrogen the reducing agent. Atoms remain conserved."
+            "model_response": "Mg starts at oxidation state 0 and becomes +2 in MgO, so two Mg atoms lose four electrons in total. Carbon is +4 in CO₂ and becomes elemental C⁰, gaining four electrons. Mg is oxidised, CO₂ (its carbon centre) reduced. The oxygen originally in CO₂ appears in MgO. The balanced equation conserves Mg 2, C 1 and O 2. Elemental-carbon residue and MgO identity need composition tests; a dark powder or bright light is not sufficient."
           }
         ],
-        "full_reconstruction": "CuO gives up O to become Cu, so it is reduced; hydrogen gains O to become water, so it is oxidised. CuO is the oxidising agent and hydrogen the reducing agent. Atoms remain conserved."
+        "full_reconstruction": "Mg starts at oxidation state 0 and becomes +2 in MgO, so two Mg atoms lose four electrons in total. Carbon is +4 in CO₂ and becomes elemental C⁰, gaining four electrons. Mg is oxidised, CO₂ (its carbon centre) reduced. The oxygen originally in CO₂ appears in MgO. The balanced equation conserves Mg 2, C 1 and O 2. Elemental-carbon residue and MgO identity need composition tests; a dark powder or bright light is not sufficient."
       },
       "diagnose": {
-        "wrong_idea": "Wrong path: 'The reducing agent gains electrons in the same reaction because it is called reducing.' Repair by defining an agent according to what it does to the other species and checking the agent's own net chemical change.",
-        "diagnostic_prompt": "Explain which invariant or condition this mistake violates: Wrong path: 'The reducing agent gains electrons in the same reaction because it is called reducing.' Repair by defining an agent according to what it does to the other species and checking the agent's own net chemical change.",
-        "model_response": "A colour-changing indicator may not involve redox at all. Oxidation-state or species evidence must support the conclusion rather than relying on colour alone."
+        "wrong_idea": "Because CO₂ contains oxygen, it must be the substance undergoing oxidation.",
+        "diagnostic_prompt": "Explain the redox model error in: Because CO₂ contains oxygen, it must be the substance undergoing oxidation.",
+        "model_response": "Redox is defined consistently by oxidation-state or electron transfer; oxygen presence alone is not the criterion."
       },
       "repair": {
-        "action": "Recreate a species and charge ledger from a verified equation or the instrument's correct readings.",
-        "explanation": "Wrong path: 'The reducing agent gains electrons in the same reaction because it is called reducing.' Repair by defining an agent according to what it does to the other species and checking the agent's own net chemical change.",
+        "action": "Rebuild oxidation-state or half-reaction ledgers and validate composition evidence separately.",
+        "explanation": "Incorrect classification: Because CO₂ contains oxygen, it must be the substance undergoing oxidation. Reconcile atom balance, formal charges and electron changes.",
         "core1a_ref": "curriculum/chemistry/agent-b/textbook/C13.core1a.md (section C13.01)"
       },
       "boundary_test": {
-        "prompt": "If CuO loses O but colour is not observed, is reduction impossible?",
-        "answer": "No. The oxygen-transfer chemical evidence, not merely visible colour, is decisive.",
+        "prompt": "If the solid product also includes unreacted Mg, can the net equation prove complete reaction from appearance alone?",
+        "answer": "No. The formal reaction can be balanced without establishing its actual extent; quantify unreacted Mg and verify phase identities.",
         "confirms": "A changed reaction medium or measurement condition can invalidate the prior shortcut."
       },
       "reviews": {
@@ -106,7 +106,7 @@
       "demand_author_evidence": {
         "band": "D3",
         "adjudication": "NOT_RUN",
-        "note": "Author operation/band only; no independent reviewer receipt."
+        "note": "R3 novel-chemistry redox candidate; independent scientific and QRT review NOT_RUN."
       }
     },
     {
@@ -122,34 +122,34 @@
       "source_exam_question_id": null,
       "academic_status": "AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
       "predict": {
-        "prompt": "Before working, predict what kind of evidence or conservation test decides this claim: Apply the oxygen-transfer model to ZnO + C → Zn + CO, identifying both roles.",
-        "defensible_answer": "At the school level, oxidation often means oxygen gain or hydrogen loss, while reduction means oxygen loss or hydrogen gain. In CuO + H₂ → Cu + H₂O, oxygen originally belonging to CuO ends up in water. CuO loses oxygen and is reduced; H₂ gains oxygen and is oxidised. These linked changes form one redox reaction. Every element remains accounted for, so a material ledger is more informative than colour alone."
+        "prompt": "Before solving, predict which atoms exchange electrons and check whether an oxygen-only description is sufficient: An oxygen-free idealised reaction is 2FeCl₂ + Cl₂ → 2FeCl₃. Use oxidation states or half-reactions to identify which substance loses electrons and which gains them, check atom balance, and explain why an oxygen-only redox definition fails.",
+        "defensible_answer": "Decide the relevant redox model and necessary conservation constraints without revealing the reacting species' final oxidation-state assignments."
       },
       "attempt": {
-        "prompt": "Apply the oxygen-transfer model to ZnO + C → Zn + CO, identifying both roles.",
-        "produces": "A warranted electron/oxygen/charge reasoning route with correct species and a separate experimental or arithmetic check.",
-        "protected_W": "The learner independently completes the decisive computation, not exposed before first attempt.",
+        "prompt": "An oxygen-free idealised reaction is 2FeCl₂ + Cl₂ → 2FeCl₃. Use oxidation states or half-reactions to identify which substance loses electrons and which gains them, check atom balance, and explain why an oxygen-only redox definition fails.",
+        "produces": "Reconstruct Fe²⁺/Fe³⁺ oxidation and Cl₂ reduction from a neutral compound equation without relying on oxygen gain or loss.",
+        "protected_W": "Reconstruct Fe²⁺/Fe³⁺ oxidation and Cl₂ reduction from a neutral compound equation without relying on oxygen gain or loss.",
         "first_attempt_must_be_saved_before_feedback": true,
         "initial_answer_visibility": "HIDDEN",
         "hints": [
           {
             "id": "H1",
             "verb": "CLARIFY",
-            "text": "Name the oxidised and reduced species or the instrument conditions in Oxidation and reduction in observed reactions."
+            "text": "Use explicit electron gains and losses, not oxygen vocabulary alone, to analyse an unfamiliar oxidation state change."
           },
           {
             "id": "H2",
             "verb": "CORRELATE",
-            "text": "Recall the scientific warrant: In familiar school redox examples, oxygen/hydrogen transfer links oxidation with reduction; colour change alone is not definitive."
+            "text": "Assign iron's oxidation number in FeCl₂ and FeCl₃ and examine elemental Cl₂ versus chloride. No oxygen transfer is needed to test whether electron transfer occurs."
           },
           {
             "id": "H3",
             "verb": "OPEN_THE_WAY",
-            "text": "Write balanced half/whole material and charge ledgers; leave the final scientific inference or value for the independent attempt."
+            "text": "Make two half-reaction lines with the electron coefficients intentionally blank, then reconcile net charge and chlorine atoms in the stated equation. Leave the final oxidised/reduced labels to the first attempt."
           }
         ],
         "post_commit_closure": {
-          "model_response": "ZnO loses oxygen and is reduced; carbon gains oxygen and is oxidised to CO. ZnO serves as oxidising agent, carbon as reducing agent under the stated equation.",
+          "model_response": "Iron changes from +2 in FeCl₂ to +3 in FeCl₃: two Fe²⁺ ions each lose one electron. Each Cl atom in Cl₂ changes from 0 to −1, so Cl₂ gains two electrons. Thus iron(II) is oxidised and molecular chlorine is reduced; the total electron transfer is balanced. Both Fe and Cl atom counts agree in 2FeCl₂ + Cl₂ → 2FeCl₃. No oxygen is needed for an electron-transfer redox process.",
           "rubric": [
             "Declare oxidant/reductant species and medium when relevant.",
             "Balance atoms and charge or apparatus quantities correctly.",
@@ -162,34 +162,34 @@
           {
             "ask": "What is an observation versus a proposed species transformation?",
             "why_this_ask": "Do not confuse colour or instrument readings with reaction identity.",
-            "model_response": "Black copper(II) oxide loses oxygen when hydrogen is passed over heated copper oxide, while water forms. Which substance has been reduced, and which one has been oxidised? The answer is not simply the name of the black solid."
+            "model_response": "Identify the new reactants and given net equation; do not copy the earlier CuO or ZnO worked contrast."
           },
           {
             "ask": "What conservation rule or redox model applies?",
             "why_this_ask": "Identify correct oxygen/electron bookkeeping and medium.",
-            "model_response": "The terms oxidising agent and reducing agent describe the effects on the *other* species. CuO is the oxidising agent here because it supplies oxygen to hydrogen and is itself reduced. Hydrogen is the reducing agent because it removes oxygen from copper oxide and is itself oxidised. A learner who assumes the reducing agent must itself be reduced has reversed this relationship."
+            "model_response": "Assign oxidation numbers, account for oxygen if present, and balance the transferred electrons."
           },
           {
             "ask": "What follows, and how can you verify it independently?",
             "why_this_ask": "Complete the reasoning rather than a keyword match.",
-            "model_response": "ZnO loses oxygen and is reduced; carbon gains oxygen and is oxidised to CO. ZnO serves as oxidising agent, carbon as reducing agent under the stated equation."
+            "model_response": "Iron changes from +2 in FeCl₂ to +3 in FeCl₃: two Fe²⁺ ions each lose one electron. Each Cl atom in Cl₂ changes from 0 to −1, so Cl₂ gains two electrons. Thus iron(II) is oxidised and molecular chlorine is reduced; the total electron transfer is balanced. Both Fe and Cl atom counts agree in 2FeCl₂ + Cl₂ → 2FeCl₃. No oxygen is needed for an electron-transfer redox process."
           }
         ],
-        "full_reconstruction": "ZnO loses oxygen and is reduced; carbon gains oxygen and is oxidised to CO. ZnO serves as oxidising agent, carbon as reducing agent under the stated equation."
+        "full_reconstruction": "Iron changes from +2 in FeCl₂ to +3 in FeCl₃: two Fe²⁺ ions each lose one electron. Each Cl atom in Cl₂ changes from 0 to −1, so Cl₂ gains two electrons. Thus iron(II) is oxidised and molecular chlorine is reduced; the total electron transfer is balanced. Both Fe and Cl atom counts agree in 2FeCl₂ + Cl₂ → 2FeCl₃. No oxygen is needed for an electron-transfer redox process."
       },
       "diagnose": {
-        "wrong_idea": "Wrong path: 'The reducing agent gains electrons in the same reaction because it is called reducing.' Repair by defining an agent according to what it does to the other species and checking the agent's own net chemical change.",
-        "diagnostic_prompt": "Explain which invariant or condition this mistake violates: Wrong path: 'The reducing agent gains electrons in the same reaction because it is called reducing.' Repair by defining an agent according to what it does to the other species and checking the agent's own net chemical change.",
-        "model_response": "A colour-changing indicator may not involve redox at all. Oxidation-state or species evidence must support the conclusion rather than relying on colour alone."
+        "wrong_idea": "No oxygen atom changes partners, so there is no oxidation or reduction.",
+        "diagnostic_prompt": "Explain the redox model error in: No oxygen atom changes partners, so there is no oxidation or reduction.",
+        "model_response": "Redox is defined consistently by oxidation-state or electron transfer; oxygen presence alone is not the criterion."
       },
       "repair": {
-        "action": "Recreate a species and charge ledger from a verified equation or the instrument's correct readings.",
-        "explanation": "Wrong path: 'The reducing agent gains electrons in the same reaction because it is called reducing.' Repair by defining an agent according to what it does to the other species and checking the agent's own net chemical change.",
+        "action": "Rebuild oxidation-state or half-reaction ledgers and validate composition evidence separately.",
+        "explanation": "Incorrect classification: No oxygen atom changes partners, so there is no oxidation or reduction. Reconcile atom balance, formal charges and electron changes.",
         "core1a_ref": "curriculum/chemistry/agent-b/textbook/C13.core1a.md (section C13.01)"
       },
       "boundary_test": {
-        "prompt": "Could the same reaction be explained by atom counts alone without any oxygen-transfer interpretation?",
-        "answer": "Atom balance is necessary but does not by itself identify the redox roles.",
+        "prompt": "If the reactants are not in a medium where the assumed Fe³⁺ products are stable, does the written equation establish the observed final species?",
+        "answer": "No. Chemical medium and competing reactions must be verified; formal balancing is necessary but does not guarantee product formation.",
         "confirms": "A changed reaction medium or measurement condition can invalidate the prior shortcut."
       },
       "reviews": {
@@ -209,7 +209,7 @@
       "demand_author_evidence": {
         "band": "D3",
         "adjudication": "NOT_RUN",
-        "note": "Author operation/band only; no independent reviewer receipt."
+        "note": "R3 novel-chemistry redox candidate; independent scientific and QRT review NOT_RUN."
       }
     },
     {
@@ -230,8 +230,8 @@
       },
       "attempt": {
         "prompt": "A dark solid turns reddish during heating. A student identifies both oxide reduction and the gas product from colour alone. Refute the reasoning and propose independent tests.",
-        "produces": "A warranted electron/oxygen/charge reasoning route with correct species and a separate experimental or arithmetic check.",
-        "protected_W": "The learner independently completes the decisive warrant or failing boundary, not exposed before first attempt.",
+        "produces": "Independently justify this exact chemical case: A dark solid turns reddish during heating. A student identifies both oxide reduction and the gas product from colour alone. Refute the reasoning and propose independent tests. Boundary: Would a second unrelated colour change prove oxygen transfer?",
+        "protected_W": "Independently justify this exact chemical case: A dark solid turns reddish during heating. A student identifies both oxide reduction and the gas product from colour alone. Refute the reasoning and propose independent tests. Boundary: Would a second unrelated colour change prove oxygen transfer?",
         "first_attempt_must_be_saved_before_feedback": true,
         "initial_answer_visibility": "HIDDEN",
         "hints": [
@@ -333,8 +333,8 @@
       },
       "attempt": {
         "prompt": "Explain why Fe²⁺ → Fe³⁺ + e⁻ is oxidation without mentioning oxygen atoms.",
-        "produces": "A warranted electron/oxygen/charge reasoning route with correct species and a separate experimental or arithmetic check.",
-        "protected_W": "The learner independently completes the causal bridge, not exposed before first attempt.",
+        "produces": "Independently explain this exact chemical case: Explain why Fe²⁺ → Fe³⁺ + e⁻ is oxidation without mentioning oxygen atoms. Boundary: Does every oxidised species necessarily gain oxygen?",
+        "protected_W": "Independently explain this exact chemical case: Explain why Fe²⁺ → Fe³⁺ + e⁻ is oxidation without mentioning oxygen atoms. Boundary: Does every oxidised species necessarily gain oxygen?",
         "first_attempt_must_be_saved_before_feedback": true,
         "initial_answer_visibility": "HIDDEN",
         "hints": [
@@ -436,8 +436,8 @@
       },
       "attempt": {
         "prompt": "Apply oxidation-number rules to H₂O and H₂O₂, specifying why oxygen differs.",
-        "produces": "A warranted electron/oxygen/charge reasoning route with correct species and a separate experimental or arithmetic check.",
-        "protected_W": "The learner independently completes the decisive computation, not exposed before first attempt.",
+        "produces": "Independently apply this exact chemical case: Apply oxidation-number rules to H₂O and H₂O₂, specifying why oxygen differs. Boundary: If an oxygen-containing formula cannot balance with O = −2, should the charge rule simply be abandoned?",
+        "protected_W": "Independently apply this exact chemical case: Apply oxidation-number rules to H₂O and H₂O₂, specifying why oxygen differs. Boundary: If an oxygen-containing formula cannot balance with O = −2, should the charge rule simply be abandoned?",
         "first_attempt_must_be_saved_before_feedback": true,
         "initial_answer_visibility": "HIDDEN",
         "hints": [
@@ -539,8 +539,8 @@
       },
       "attempt": {
         "prompt": "A student says carbon's +4 oxidation number in CO₂ proves it exists as isolated C⁴⁺ ions in the gas. Refute the claim.",
-        "produces": "A warranted electron/oxygen/charge reasoning route with correct species and a separate experimental or arithmetic check.",
-        "protected_W": "The learner independently completes the decisive warrant or failing boundary, not exposed before first attempt.",
+        "produces": "Independently justify this exact chemical case: A student says carbon's +4 oxidation number in CO₂ proves it exists as isolated C⁴⁺ ions in the gas. Refute the claim. Boundary: Can oxidation numbers always establish the sequence of elementary reaction steps?",
+        "protected_W": "Independently justify this exact chemical case: A student says carbon's +4 oxidation number in CO₂ proves it exists as isolated C⁴⁺ ions in the gas. Refute the claim. Boundary: Can oxidation numbers always establish the sequence of elementary reaction steps?",
         "first_attempt_must_be_saved_before_feedback": true,
         "initial_answer_visibility": "HIDDEN",
         "hints": [
@@ -642,8 +642,8 @@
       },
       "attempt": {
         "prompt": "Explain why atoms and charge must both balance in the acidic permanganate/iron(II) reaction.",
-        "produces": "A warranted electron/oxygen/charge reasoning route with correct species and a separate experimental or arithmetic check.",
-        "protected_W": "The learner independently completes the causal bridge, not exposed before first attempt.",
+        "produces": "Independently explain this exact chemical case: Explain why atoms and charge must both balance in the acidic permanganate/iron(II) reaction. Boundary: If the reaction medium is changed, must the same permanganate product necessarily result?",
+        "protected_W": "Independently explain this exact chemical case: Explain why atoms and charge must both balance in the acidic permanganate/iron(II) reaction. Boundary: If the reaction medium is changed, must the same permanganate product necessarily result?",
         "first_attempt_must_be_saved_before_feedback": true,
         "initial_answer_visibility": "HIDDEN",
         "hints": [
@@ -745,8 +745,8 @@
       },
       "attempt": {
         "prompt": "Apply the half-reaction method to Fe²⁺/Fe³⁺ and MnO₄⁻/Mn²⁺ in acidic medium.",
-        "produces": "A warranted electron/oxygen/charge reasoning route with correct species and a separate experimental or arithmetic check.",
-        "protected_W": "The learner independently completes the decisive computation, not exposed before first attempt.",
+        "produces": "Independently apply this exact chemical case: Apply the half-reaction method to Fe²⁺/Fe³⁺ and MnO₄⁻/Mn²⁺ in acidic medium. Boundary: What independent check detects an arithmetic mistake in electron cancellation?",
+        "protected_W": "Independently apply this exact chemical case: Apply the half-reaction method to Fe²⁺/Fe³⁺ and MnO₄⁻/Mn²⁺ in acidic medium. Boundary: What independent check detects an arithmetic mistake in electron cancellation?",
         "first_attempt_must_be_saved_before_feedback": true,
         "initial_answer_visibility": "HIDDEN",
         "hints": [
@@ -848,8 +848,8 @@
       },
       "attempt": {
         "prompt": "An equation balances Mn, Fe and O but charge differs. Refute a proposed balancing by changing the ionic species labels.",
-        "produces": "A warranted electron/oxygen/charge reasoning route with correct species and a separate experimental or arithmetic check.",
-        "protected_W": "The learner independently completes the decisive warrant or failing boundary, not exposed before first attempt.",
+        "produces": "Independently justify this exact chemical case: An equation balances Mn, Fe and O but charge differs. Refute a proposed balancing by changing the ionic species labels. Boundary: Could one transfer an acidic half-reaction unchanged to basic solution without checking species?",
+        "protected_W": "Independently justify this exact chemical case: An equation balances Mn, Fe and O but charge differs. Refute a proposed balancing by changing the ionic species labels. Boundary: Could one transfer an acidic half-reaction unchanged to basic solution without checking species?",
         "first_attempt_must_be_saved_before_feedback": true,
         "initial_answer_visibility": "HIDDEN",
         "hints": [
@@ -951,8 +951,8 @@
       },
       "attempt": {
         "prompt": "Explain why permanganate's reaction-specific electron factor can depend on its reduction product.",
-        "produces": "A warranted electron/oxygen/charge reasoning route with correct species and a separate experimental or arithmetic check.",
-        "protected_W": "The learner independently completes the causal bridge, not exposed before first attempt.",
+        "produces": "Independently explain this exact chemical case: Explain why permanganate's reaction-specific electron factor can depend on its reduction product. Boundary: Would electron factor remain five for all permanganate reactions?",
+        "protected_W": "Independently explain this exact chemical case: Explain why permanganate's reaction-specific electron factor can depend on its reduction product. Boundary: Would electron factor remain five for all permanganate reactions?",
         "first_attempt_must_be_saved_before_feedback": true,
         "initial_answer_visibility": "HIDDEN",
         "hints": [
@@ -1054,8 +1054,8 @@
       },
       "attempt": {
         "prompt": "Apply the acidic reaction ratio to 0.050 mol Fe²⁺ and determine permanganate amount.",
-        "produces": "A warranted electron/oxygen/charge reasoning route with correct species and a separate experimental or arithmetic check.",
-        "protected_W": "The learner independently completes the decisive computation, not exposed before first attempt.",
+        "produces": "Independently apply this exact chemical case: Apply the acidic reaction ratio to 0.050 mol Fe²⁺ and determine permanganate amount. Boundary: If another reductant is present, can the same measured oxidant amount quantify Fe²⁺ alone?",
+        "protected_W": "Independently apply this exact chemical case: Apply the acidic reaction ratio to 0.050 mol Fe²⁺ and determine permanganate amount. Boundary: If another reductant is present, can the same measured oxidant amount quantify Fe²⁺ alone?",
         "first_attempt_must_be_saved_before_feedback": true,
         "initial_answer_visibility": "HIDDEN",
         "hints": [
@@ -1157,8 +1157,8 @@
       },
       "attempt": {
         "prompt": "A titration record gives oxidant volume but omits pH and reaction products. Justify why a unique equivalent factor cannot be assumed.",
-        "produces": "A warranted electron/oxygen/charge reasoning route with correct species and a separate experimental or arithmetic check.",
-        "protected_W": "The learner independently completes the decisive warrant or failing boundary, not exposed before first attempt.",
+        "produces": "Independently justify this exact chemical case: A titration record gives oxidant volume but omits pH and reaction products. Justify why a unique equivalent factor cannot be assumed. Boundary: Does an accurately measured burette volume validate the reaction model?",
+        "protected_W": "Independently justify this exact chemical case: A titration record gives oxidant volume but omits pH and reaction products. Justify why a unique equivalent factor cannot be assumed. Boundary: Does an accurately measured burette volume validate the reaction model?",
         "first_attempt_must_be_saved_before_feedback": true,
         "initial_answer_visibility": "HIDDEN",
         "hints": [
@@ -1260,8 +1260,8 @@
       },
       "attempt": {
         "prompt": "Explain the distinction between an indicator endpoint and a chemical equivalence point.",
-        "produces": "A warranted electron/oxygen/charge reasoning route with correct species and a separate experimental or arithmetic check.",
-        "protected_W": "The learner independently completes the causal bridge, not exposed before first attempt.",
+        "produces": "Independently explain this exact chemical case: Explain the distinction between an indicator endpoint and a chemical equivalence point. Boundary: If colour changes sharply, must it coincide exactly with equivalence?",
+        "protected_W": "Independently explain this exact chemical case: Explain the distinction between an indicator endpoint and a chemical equivalence point. Boundary: If colour changes sharply, must it coincide exactly with equivalence?",
         "first_attempt_must_be_saved_before_feedback": true,
         "initial_answer_visibility": "HIDDEN",
         "hints": [
@@ -1363,8 +1363,8 @@
       },
       "attempt": {
         "prompt": "Apply the 1:1 HCl/NaOH relation to 25.0 mL 0.100 mol/L NaOH requiring 20.0 mL HCl.",
-        "produces": "A warranted electron/oxygen/charge reasoning route with correct species and a separate experimental or arithmetic check.",
-        "protected_W": "The learner independently completes the decisive computation, not exposed before first attempt.",
+        "produces": "Independently apply this exact chemical case: Apply the 1:1 HCl/NaOH relation to 25.0 mL 0.100 mol/L NaOH requiring 20.0 mL HCl. Boundary: If two acids were present in the HCl-labelled sample, would this calculation identify HCl alone?",
+        "protected_W": "Independently apply this exact chemical case: Apply the 1:1 HCl/NaOH relation to 25.0 mL 0.100 mol/L NaOH requiring 20.0 mL HCl. Boundary: If two acids were present in the HCl-labelled sample, would this calculation identify HCl alone?",
         "first_attempt_must_be_saved_before_feedback": true,
         "initial_answer_visibility": "HIDDEN",
         "hints": [
@@ -1466,8 +1466,8 @@
       },
       "attempt": {
         "prompt": "Two volumetric trials differ by almost 20%. Justify an investigation before accepting the mean as the final concentration.",
-        "produces": "A warranted electron/oxygen/charge reasoning route with correct species and a separate experimental or arithmetic check.",
-        "protected_W": "The learner independently completes the decisive warrant or failing boundary, not exposed before first attempt.",
+        "produces": "Independently justify this exact chemical case: Two volumetric trials differ by almost 20%. Justify an investigation before accepting the mean as the final concentration. Boundary: Would an accurate digital burette remove all chemical-model error?",
+        "protected_W": "Independently justify this exact chemical case: Two volumetric trials differ by almost 20%. Justify an investigation before accepting the mean as the final concentration. Boundary: Would an accurate digital burette remove all chemical-model error?",
         "first_attempt_must_be_saved_before_feedback": true,
         "initial_answer_visibility": "HIDDEN",
         "hints": [
