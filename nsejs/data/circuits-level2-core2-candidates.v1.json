@@ -681,7 +681,7 @@
         "2. Physical Model & Formulation: Apply reflection and inversion symmetry. Let terminal A be at potential V_A = V and terminal C at V_C = 0. The perpendicular bisector plane passes through vertices B, D and centre O. By bilateral symmetry across AC, V_B = V_D. By potential inversion symmetry from A to C, the potential at the midpoint O is V_O = V/2, and the potentials at B and D are V_B = V_D = V/2.",
         "3. Execution & Resolution: Because V_B = V_O = V_D = V/2, the potential difference across spoke OB is V_B - V_O = 0, and across spoke OD is V_D - V_O = 0. Neither spoke carries current, so both resistors OB and OD can be removed. The remaining circuit between A and C consists of three parallel branches: Branch 1 (outer top): ADC with R_1 = 6 + 6 = 12 Ω. Branch 2 (outer bottom): ABC with R_2 = 6 + 6 = 12 Ω. Branch 3 (inner diagonal): AOC with R_3 = 6 + 6 = 12 Ω. Combining the three 12 Ω branches in parallel: 1/R_AC = 1/12 + 1/12 + 1/12 = 3/12 = 1/4 Ω⁻¹. Therefore, R_AC = 4.0 Ω. Matches Option D."
       ],
-      "check": "Consistency check: Three identical symmetrical paths of 12 Ω in parallel yield 12/3 = 4 Ω, perfectly preserving the 4-fold tetrahedral graph projection.",
+      "check": "Consistency check: Three identical symmetrical paths of 12 Ω in parallel yield 12/3 = 4 Ω, consistent with the terminal symmetry of this eight-resistor square-and-spokes network.",
       "review_state": "NOT_ADMITTED",
       "academic_admission": "HOLD",
       "science_review": "HOLD",
@@ -1300,7 +1300,7 @@
         "2. Physical Model & Formulation: Enumerate all four possible topological combinations of 3 identical resistors: Case 1 (All three in series): R_eq = R + R + R = 3R = 3 × 6 = 18 Ω. Case 2 (All three in parallel): 1/R_eq = 1/R + 1/R + 1/R = 3/R => R_eq = R/3 = 6/3 = 2 Ω (Option B is obtainable). Case 3 (Two in parallel, in series with the third): R_eq = (R || R) + R = 3 + 6 = 9 Ω (Option D is obtainable). Case 4 (Two in series, in parallel with the third): R_eq = (R + R) || R = 12 || 6 = (12 × 6)/(12 + 6) = 72/18 = 4 Ω (Option C is obtainable).",
         "3. Execution & Resolution: The complete set of achievable equivalent resistances is {2 Ω, 4 Ω, 9 Ω, 18 Ω}. The value 12 Ω is absent from this set (12 Ω would require only two 6 Ω resistors in series, but all three must be used). Therefore, 12 Ω CANNOT be obtained. Matches Option A."
       ],
-      "check": "Combinatorial completeness check: Graph theory proves that there are exactly 4 series-parallel graphs on 3 labeled edges. No other topology exists.",
+      "check": "Combinatorial completeness check: Using three identical resistors exactly once, series-parallel reductions yield these four distinct equivalent-resistance expressions, up to permutation of identical components.",
       "review_state": "NOT_ADMITTED",
       "academic_admission": "HOLD",
       "science_review": "HOLD",

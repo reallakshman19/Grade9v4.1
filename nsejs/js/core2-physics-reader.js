@@ -170,13 +170,18 @@
   function getAttempt(key) {
     try {
       const data=JSON.parse(localStorage.getItem(key) || "null");
-      return data && data.question_uid ? data : null;
+      // Fail closed on corrupted or stale revision-bound records.
+      return data && typeof data.question_uid==="string" &&
+             (Array.isArray(data.selected)||Array.isArray(data.selected_option_ids)) &&
+             data.content_revision_sha256===key.split(":").at(-1) ? data : null;
     } catch (_) { return null; }
   }
   function saveAttempt(key,data) {
     try {
-      localStorage.setItem(key,JSON.stringify(data));
-      return true;
+      if(localStorage.getItem(key)!==null)return false; // never overwrite an old first attempt
+      const serialized=JSON.stringify(data);
+      localStorage.setItem(key,serialized);
+      return localStorage.getItem(key)===serialized;
     } catch (_) { return false; }
   }
   function renderMath(el) {
@@ -304,32 +309,50 @@
     const contentRevision = await revision(q);
     const k = attemptKey(q, contentRevision);
     const hints = Array.isArray(q.hints) ? q.hints : [];
-    let refreshHints = () => {};
-    if (hints.length > 0) {
-      const hintBtn = text("button", "");
-      hintBtn.type = "button";
-      hintBtn.style.background = "#f8fafc";
-      hintBtn.style.color = "#334155";
-      hintBtn.style.border = "1.5px solid #cbd5e1";
-      const hintBox = text("div", "", "answer");
-      hintBox.hidden = true;
-      const paintHints = () => {
-        // Tier 3 can include a decisive reduction and is only displayed
-        // after a persistently saved first attempt.
-        const count = hints.length; // All H1-H3 are nondecisive after PH11 blueprint self-review.
+    // Track pre-attempt help by the same immutable question revision as the answer.
+    const hintKey = k + ":hint-exposure:v1";
+    let hintDepth = 0;
+    try {
+      const saved=Number(localStorage.getItem(hintKey)||0);
+      if(Number.isInteger(saved) && saved>=0 && saved<=hints.length) hintDepth=saved;
+    } catch (_) { /* blocked storage is handled before disclosure */ }
+    let refreshHints=()=>{};
+    if(hints.length>0){
+      const hintBtn=text("button","");
+      hintBtn.type="button";
+      hintBtn.style.cssText="background:#f8fafc;color:#334155;border:1.5px solid #cbd5e1;";
+      const hintBox=text("div","","answer");
+      hintBox.hidden=true;
+      hintBox.setAttribute("aria-live","polite");
+      const paintHints=()=>{
         hintBox.replaceChildren();
-        hints.slice(0, count).forEach(h => {
-          append(hintBox, text("strong", h.prompt || "Hint:"), text("p", h.text || ""));
+        hints.slice(0,hintDepth).forEach(h=>{
+          append(hintBox,text("strong",h.prompt||"Hint:"),text("p",h.text||""));
         });
-        hintBtn.textContent = hintBox.hidden ? "Show Progressive Hints (" + count + ")" : "Hide Progressive Hints";
+        hintBox.hidden=hintDepth===0;
+        hintBtn.disabled=requiredFigure||hintDepth>=hints.length;
+        hintBtn.textContent=hintDepth>=hints.length ?
+          "All hints revealed" : "Reveal hint "+(hintDepth+1)+" of "+hints.length;
+        hintBtn.setAttribute("aria-expanded",String(!hintBox.hidden));
       };
       paintHints();
-      refreshHints = paintHints;
-      hintBtn.onclick = () => {
-        hintBox.hidden = !hintBox.hidden;
+      refreshHints=paintHints;
+      hintBtn.onclick=()=>{
+        if(requiredFigure||hintDepth>=hints.length)return;
+        const next=String(hintDepth+1);
+        try{
+          localStorage.setItem(hintKey,next);
+          if(localStorage.getItem(hintKey)!==next)throw Error("hint exposure readback failed");
+        }catch(_){
+          feedbackBanner.hidden=false;
+          feedbackBanner.className="attempt-feedback-banner feedback-dropped";
+          feedbackBanner.textContent="HOLD: browser storage unavailable; help exposure not saved, hint remains locked.";
+          return;
+        }
+        hintDepth++;
         paintHints();
       };
-      append(actions, hintBtn, hintBox);
+      append(actions,hintBtn,hintBox);
     }
     append(box, actions);
 
@@ -490,6 +513,8 @@
         source_id: q.source_id,
         content_revision_sha256: contentRevision,
         selected: selected,
+        hints_revealed: hintDepth,
+        assisted_before_first: hintDepth > 0,
         timestamp: new Date().toISOString()
       };
       if (!saveAttempt(k, attempt)) {
