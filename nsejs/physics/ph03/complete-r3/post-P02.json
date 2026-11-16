@@ -1,0 +1,42 @@
+{
+  "schema": "g9-ph03-postattempt/v1",
+  "revision": "ph03-complete-r3-20261116",
+  "id": "P02",
+  "academic": "HOLD",
+  "expected": {
+    "impulse": 8,
+    "velocity": 3,
+    "trend": "right"
+  },
+  "steps": [
+    "Triangular positive area = ½×4×6 = +12 N·s.",
+    "Negative rectangular area = (−4)×1 = −4 N·s.",
+    "J_net = 12−4 = +8 N·s.",
+    "Initial p = 2×(−1) = −2; final p = −2+8 = +6 kg·m/s.",
+    "Final v = +6/2 = +3 m/s, rightward."
+  ],
+  "hints": [
+    "Clarify: the vertical axis represents signed NET force, not velocity.",
+    "Correlate: a triangle carries half the area of a peak-height rectangle.",
+    "Open the way: calculate +12 N·s and −4 N·s before updating the −2 initial momentum."
+  ],
+  "firstErrorOrder": [
+    "impulse",
+    "velocity",
+    "trend"
+  ],
+  "diagnostics": {
+    "impulse": "The first mismatch is signed graph area. Check triangle ½ and negative rectangle.",
+    "velocity": "Start momentum is −2 kg·m/s; do not start from +2.",
+    "trend": "Use sign of final computed velocity to choose the final direction."
+  },
+  "boundaryExpected": {
+    "impulse": 2,
+    "velocity": 0
+  },
+  "boundarySteps": [
+    "Shorter triangle contributes +6 N·s; negative rectangle still −4 N·s.",
+    "Net J is +2 N·s; this exactly cancels the −2 kg·m/s initial momentum.",
+    "Final v = 0. The nonzero impulse changed momentum even though the cart ended at rest."
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "schema": "g9-ph03-postattempt/v1",
+  "revision": "ph03-complete-r3-20261116",
+  "id": "P01",
+  "academic": "HOLD",
+  "expected": {
+    "totalP": 3,
+    "totalK": 10.5,
+    "direction": "right"
+  },
+  "steps": [
+    "Take right positive: p_A = 2×(+3) = +6; p_B = 3×(−1) = −3 kg·m/s.",
+    "P_total = +6−3 = +3 kg·m/s, so it points right.",
+    "K_total = ½×2×3² + ½×3×1² = 9+1.5 = 10.5 J.",
+    "Check: the energies add despite the opposing momentum arrows."
+  ],
+  "hints": [
+    "Clarify: translate both arrows to signed velocities.",
+    "Correlate: total momentum adds algebraically but energy uses the squared speed.",
+    "Open the way: compare A's +6 with B's −3 kg·m/s."
+  ],
+  "firstErrorOrder": [
+    "direction",
+    "totalP",
+    "totalK"
+  ],
+  "diagnostics": {
+    "direction": "Momentum direction is decided by the sign of the sum, not the faster cart alone.",
+    "totalP": "An incorrect sign or missing mass factor changed your momentum sum.",
+    "totalK": "The kinetic-energy ledger is the sum of nonnegative ½mv² terms."
+  },
+  "boundaryExpected": {
+    "totalP": 6,
+    "totalK": 42
+  },
+  "boundarySteps": [
+    "Doubling velocity doubles each momentum term, so P becomes +6 kg·m/s.",
+    "Each energy term scales with v², so K becomes 4×10.5 = 42 J.",
+    "Momentum remains rightward. This is not a proof of conservation through a collision."
+  ]
+}
