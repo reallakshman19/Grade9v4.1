@@ -88,7 +88,11 @@ def challenge(page, base, name):
     assert item["diagnosis"] == {"reason": None, "skipped": True}
     assert item["repair"]["reason"] is None and all(v is None for v in item["repair"]["fields"].values())
     assert item["boundary"]["reason"] is None and all(v is None for v in item["boundary"]["fields"].values())
-    assert item["events"][-1]["kind"] == "boundaryReveal"
+    event_kinds = [event["kind"] for event in item["events"]]
+    # Persisted chronology can include later legitimate exposures; require
+    # every named stage to exist rather than assuming the final event's label.
+    for required in ("first", "revealed", "diagnosis", "repair", "boundary", "boundaryReveal"):
+        assert required in event_kinds, event_kinds
 
 
 def run():
