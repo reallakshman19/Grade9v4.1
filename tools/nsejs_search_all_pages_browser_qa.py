@@ -77,7 +77,14 @@ def main():
                     script.onload=resolve;script.onerror=reject;
                     document.head.appendChild(script);
                 })""")
-                expect(page.locator(".g9-search-global-entry")).to_have_count(1)
+                # Exact staged Pages already loads shared navigation.
+                # The standalone-source fixture instead creates a temporary
+                # fallback before the common header arrives.
+                if ROOT != SOURCE_ROOT:
+                    expect(page.locator("#grade9-universal-nav")).to_have_count(1)
+                    expect(page.locator(".g9-search-global-entry")).to_have_count(0)
+                else:
+                    expect(page.locator(".g9-search-global-entry")).to_have_count(1)
                 page.evaluate("""() => new Promise((resolve,reject) => {
                     const script=document.createElement('script');
                     script.src='/site-nav.js';script.dataset.grade9Nav='common-r1';
