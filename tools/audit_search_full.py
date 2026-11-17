@@ -161,12 +161,12 @@ def audit(repo: Path, staged: Path) -> dict:
     no_closing_body = []
     for path in published_html:
         raw = (staged / path).read_text(encoding="utf-8", errors="replace")
-        if re.search(r"</body\s*>", raw, flags=re.I):
-            staged_navigation += 1
-            if 'data-grade9-nav' not in raw and "js/site-search.js" not in raw:
-                missing_navigation.append(path)
-        else:
+        if not re.search(r"</body\s*>", raw, flags=re.I):
             no_closing_body.append(path)
+        if 'data-grade9-nav' not in raw and "js/site-search.js" not in raw:
+            missing_navigation.append(path)
+        else:
+            staged_navigation += 1
     if no_closing_body:
         warnings.append("PUBLISHED_HTML_WITHOUT_CLOSING_BODY:" + str(len(no_closing_body)))
     if missing_navigation:
