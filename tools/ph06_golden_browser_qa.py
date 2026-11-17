@@ -99,6 +99,8 @@ def run():
             ctx=browser.new_context();page=ctx.new_page();page.goto(path)
             expect(page.locator("#predictSave")).to_be_visible();page.locator("#prediction").fill("P");page.locator("#predictSave").click()
             expect(page.locator("#commit")).to_be_visible()
+            for field in ("a-depth","a-initial","a-check","a-loaded","a-top"):
+                page.locator(f'button[data-native-skip="{field}"]').click()
             page.evaluate("() => { Storage.prototype.setItem=function(){throw Error('injected write denial')}; }")
             page.locator("#attempt").fill("R");page.locator("#commit").click();expect(page.locator("#stage")).to_contain_text("HOLD")
             assert page.locator("#hint,#reveal").count()==0
