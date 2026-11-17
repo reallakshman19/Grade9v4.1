@@ -112,7 +112,7 @@ function mount(){
  const items=architecture?
  [["Guidebook","architecture/guidebook.html"],["Production checklist","architecture/production-checklist.html"],["WPE chapter","physics/wpe/index.html"]]:
  nsejs?current==="physics"?
- [["Physics chapters","nsejs/physics/index.html#learn-physics"],["Momentum lessons","nsejs/physics/learn/chapter.html?ph=PH03"],["Fluids lessons","nsejs/physics/learn/chapter.html?ph=PH06"],["Physics Question Bank","nsejs/physics/index.html#topicWorkspace"]]:
+ [["Physics chapters","nsejs/physics/index.html#learn-physics"],["Momentum lessons","nsejs/physics/learn/chapter.html?ph=PH03"],["Fluids lessons","nsejs/physics/learn/chapter.html?ph=PH06"],["Physics Question Bank","nsejs/physics/index.html?topic=optics#topicWorkspace"]]:
  current==="chemistry"?
  [["Chemistry chapters","nsejs/chemistry/index.html#chem-chapters"],["Chemistry Question Bank","nsejs/chemistry/index.html?topic=atomic_structure#topicWorkspace"]]:
  current==="biology"?
