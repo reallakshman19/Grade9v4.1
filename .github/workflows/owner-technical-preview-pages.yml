@@ -177,6 +177,23 @@ jobs:
           )
           print("Staged static preview; review, tests, workspace and source code excluded.")
           PY
+      - name: Audit full staged website and rebuilt search index
+        run: |
+          python3 tools/audit_search_full.py \
+            --repo . --staged public \
+            --json-output artifacts/search-audit/full-site.json \
+            --summary-output artifacts/search-audit/full-site.md
+          cat artifacts/search-audit/full-site.md >> "$GITHUB_STEP_SUMMARY"
+      - name: Publish search audit and exact generated index evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: grade9-full-search-publication-audit
+          path: |
+            artifacts/search-audit/
+            data/learner-search-index.v1.json
+            data/learner-search-manifest.v1.json
+          if-no-files-found: error
       - name: Upload public preview artifact
         uses: actions/upload-pages-artifact@v4
         with:
