@@ -86,6 +86,24 @@
     ["fluids","FLUIDS_AND_SOUND","Fluids & Sound","🌊",2]
   ];
   const status = document.getElementById("status");
+  // The workspace may be hidden while the student browses the topic grid.
+  // Always surface integrity/network failures above it, never auto-approve data.
+  const bankNotice = document.getElementById("qbLoadNotice");
+  function setBankNotice(message, failed=false) {
+    if (!bankNotice) return;
+    bankNotice.hidden = !message;
+    bankNotice.setAttribute("role", failed ? "alert" : "status");
+    bankNotice.textContent = message;
+    if (failed) {
+      const retry = document.createElement("button");
+      retry.type = "button";
+      retry.className = "qb-retry";
+      retry.textContent = "Retry verified bank load";
+      retry.style.cssText = "min-height:44px;margin-left:12px;padding:8px 12px;font:inherit;font-weight:750;border:1px solid #9b3030;border-radius:8px;background:#fff;color:#872a2a;cursor:pointer";
+      retry.addEventListener("click", () => location.reload());
+      bankNotice.append(retry);
+    }
+  }
   const target = document.getElementById("questions");
   const nav = document.getElementById("topicNav");
   const query = new URLSearchParams(location.search);
@@ -645,10 +663,9 @@
         const idLower = (q.id || "").toLowerCase();
         const srcLower = (q.source_id || "").toLowerCase();
         const stemLower = (q.stem || "").toLowerCase();
-        const ansLower = (q.answer || "").toLowerCase();
+        // Do not index protected keys, worked steps, or diagnostic crux before commitment.
         const optsLower = (q.options || []).map(o => String(o).toLowerCase()).join(" ");
-        const stepsLower = (q.steps || []).map(s => String(s).toLowerCase()).join(" ");
-        const full = `${idLower} ${srcLower} ${stemLower} ${ansLower} ${optsLower} ${stepsLower}`;
+        const full = `${idLower} ${srcLower} ${stemLower} ${optsLower}`;
         return full.includes(qLower) || tokens.every(tok => full.includes(tok));
       });
     }
@@ -752,6 +769,7 @@
             status.textContent = "Core2 candidates unavailable: " + error.message;
             status.className = "error";
           }
+          setBankNotice("Physics candidate cards could not be verified ("+error.message+"). No answers were released.",true);
         });
       }
     }
@@ -877,6 +895,16 @@
     applyFilters(false);
   };
 
+  window.returnToAllTopics = function() {
+    window.resetFilters(); // clears text/year/band as well as topic
+    const grid = document.getElementById("topicsGrid");
+    if (grid) {
+      grid.setAttribute("tabindex", "-1");
+      grid.scrollIntoView({behavior:"smooth",block:"start"});
+      grid.focus({preventScroll:true});
+    }
+  };
+
   window.selectPhysicsTopic = function(slug) {
     filterState.topic = slug;
     applyFilters(false);
@@ -889,6 +917,7 @@
   };
 
   async function load() {
+    setBankNotice("Verifying Physics candidate records and source integrity…");
     const [manifestResponse, response, evidenceResponse] = await Promise.all([
       fetch("../data/physics-core2-integrity.v1.json", { cache: "no-store" }),
       fetch("../data/physics-core2-candidates.v1.json", { cache: "no-store" }),
@@ -978,6 +1007,7 @@
 
     // Execute initial filter evaluation and handle anchor navigation
     applyFilters(Boolean(initialHash || initialQ));
+    setBankNotice("");
     // Preserve legacy hashes; handle Back/Forward or a new question anchor.
     window.addEventListener("hashchange",()=>{
       const fragment=decodeURIComponent((window.location.hash||"").replace(/^#/,""));
@@ -990,5 +1020,8 @@
       applyFilters(true);
     });
   }
-  load().catch(function(e){status.textContent="Core2 bank unavailable: "+e.message;status.className="error";});
+  load().catch(function(e){
+    if (status) {status.textContent="Core2 bank unavailable: "+e.message;status.className="error";}
+    setBankNotice("Physics Question Bank unavailable: verified data did not load ("+e.message+"). No unverified questions or answers have been released.",true);
+  });
 })();

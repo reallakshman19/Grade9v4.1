@@ -483,6 +483,10 @@
   </header>
 
   <main class="tablet-container">
+  <div id="qbLoadNotice" role="status" aria-live="polite"
+    style="margin:12px 0;padding:12px 15px;background:#f0f9ff;border:1px solid #93c5fd;border-radius:8px;color:#15364c">
+    Loading and verifying candidate question-bank records…
+  </div>
 
     <!-- Unified Hero Banner with Embedded Governance Badge -->
     <div class="tablet-hero-unified">
@@ -722,7 +726,7 @@
         </select>
         <button type="button" class="qb-clear" id="qbClear" title="Clear search and filters">✕ Clear</button>
       </div>
-      <div class="qb-result-count" id="qbResultCount" aria-live="polite">Showing 119 candidate questions</div>
+      <div class="qb-result-count" id="qbResultCount" aria-live="polite">Checking verified candidate records…</div>
     </section>
 
     <!-- Secondary candidate-bank topic cards (not the canonical Chemistry textbook) -->
@@ -734,8 +738,8 @@
           <span style="font-size:12px;font-weight:800;text-transform:uppercase;color:#0d9488;letter-spacing:0.07em;">Topic Deep-Dive &amp; Practice</span>
           <h2 id="workspace-title" style="font-size:24px;font-weight:800;margin:4px 0;color:#0f172a;"></h2>
         </div>
-        <button type="button" onclick="window.selectChemistryTopic('all')" style="min-height:44px;padding:8px 16px;border-radius:8px;background:#f1f5f9;color:#334155;border:1.5px solid #cbd5e1;font-weight:750;font-size:13.5px;cursor:pointer;">
-          ← Back to All Topics Overview
+        <button type="button" onclick="window.returnToAllTopics()" style="min-height:44px;padding:8px 16px;border-radius:8px;background:#f1f5f9;color:#334155;border:1.5px solid #cbd5e1;font-weight:750;font-size:13.5px;cursor:pointer;">
+          ← Return to all topics · clear filters
         </button>
       </div>
       <p id="status" role="status" style="font-size:14px;color:#64748b;margin:10px 0;">Loading candidate questions…</p>

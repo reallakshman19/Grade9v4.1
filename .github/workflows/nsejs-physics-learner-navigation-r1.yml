@@ -2,7 +2,12 @@ name: NSEJS Physics Learner Navigation R1
 on:
   pull_request:
     paths:
+      - "site-nav.js"
       - "nsejs/physics/**"
+      - "nsejs/chemistry/index.html"
+      - "nsejs/biology/index.html"
+      - "nsejs/js/core2-chemistry-reader.js"
+      - "nsejs/js/core2-biology-reader.js"
       - "nsejs/js/core2-physics-reader.js"
       - "tests/test_nsejs_physics_navigation_r1.py"
       - "tools/physics_navigation_browser_qa.py"
@@ -25,6 +30,7 @@ jobs:
           python-version: "3.11"
       - name: Verify navigation and learner assets syntax
         run: |
+          node --check site-nav.js
           node --check nsejs/physics/learn/chapter.js
           node --check nsejs/physics/learn/learner-nav.js
           node --check nsejs/physics/learn/learner-home.js

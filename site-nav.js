@@ -43,12 +43,54 @@ function normalizeMast(header,link,routes,current,scope){
  }
  return true;
 }
+// Remember only a validated lesson URL. This is navigation convenience, NOT
+// saved work or a protected assessment attempt; no answers or grades are stored.
+function resumeLesson(relative,base){
+ const m=relative.match(/^nsejs\/(physics|chemistry|biology)\/(.+)$/);
+ if(!m)return;
+ const subject=m[1],tail=m[2],key="g9v41:last-lesson:"+subject;
+ const prefix=base.pathname+"nsejs/"+subject+"/";
+ function allowed(raw){
+  try {
+   const url=new URL(raw,location.origin);
+   if(url.protocol!==location.protocol||url.origin!==location.origin||!url.pathname.startsWith(prefix))return false;
+   const path=url.pathname.slice(prefix.length);
+   return /^(?:core1\/.+\/index\.html|textbook\/.+\/index\.html|textbook\/index\.html|learn\/chapter\.html|curriculum\/topics\/.+\/core1[ab]\.html)$/.test(path);
+  }catch(_){return false;}
+ }
+ if(tail!=="index.html"&&allowed(location.pathname)){
+  const safe=new URL(location.pathname,location.origin);
+  const query=new URLSearchParams(location.search);
+  for(const key of ["ph","unit","subtopic","mode"]){
+   const value=query.get(key);
+   if(value&&/^[A-Za-z0-9_.-]{1,60}$/.test(value)&&
+      (key!=="mode"||["study","practice","learn"].includes(value)))safe.searchParams.set(key,value);
+  }
+  try{localStorage.setItem(key,safe.pathname+safe.search);}catch(_){}
+ }else if(tail==="index.html"){
+  let stored=null;
+  try{stored=localStorage.getItem(key);}catch(_){}
+  if(!stored||!allowed(stored))return;
+  const nav=document.querySelector(
+   "main nav.g9-primary-study-routes,main nav.chem-primary-routes,main nav.biology-primary-routes");
+  if(!nav||nav.querySelector("[data-g9-resume]"))return;
+  const a=document.createElement("a");
+  a.dataset.g9Resume=subject;
+  a.className=subject==="physics"?"g9-primary-study-link":
+   subject==="chemistry"?"chem-primary-route":"biology-primary-route";
+  a.href=new URL(stored,location.origin).href;
+  a.textContent="▶ Continue last "+subject+" lesson";
+  a.title="Open the last visited lesson on this device. This does not restore or grade an attempt.";
+  nav.append(a);
+ }
+}
 function mount(){
  const entry=document.querySelector("script[data-grade9-nav]");if(!entry?.src)return;
  const base=new URL("./",entry.src),link=path=>new URL(path,base).href;
  ensureSearchAssets(base,link);
  if(document.getElementById("grade9-universal-nav")){removeLegacySearchFallback();return;}
  const here=location.pathname,relative=here.startsWith(base.pathname)?here.slice(base.pathname.length):here.replace(/^\/+/, "");
+ resumeLesson(relative,base);
  const architecture=/^(?:architecture|docs)\//.test(relative),examples=/\/batches\//.test(relative),nsejs=/^nsejs\//.test(relative);
  const current=/^(?:nsejs\/physics|physics|curriculum\/physics)\//.test(relative)?"physics":/^(?:nsejs\/chemistry|chemistry|curriculum\/chemistry)\//.test(relative)?"chemistry":/^(?:nsejs\/biology|biology|curriculum\/biology)\//.test(relative)?"biology":/^mathematics\//.test(relative)?"mathematics":architecture?"architecture":nsejs?"nsejs":"home";
  const scope=["physics","chemistry","biology"].includes(current)?current:nsejs?"nsejs":"all";
