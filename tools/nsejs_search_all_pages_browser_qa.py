@@ -6,7 +6,9 @@ import json
 from pathlib import Path
 from playwright.sync_api import sync_playwright, expect
 
-ROOT=Path(__file__).resolve().parents[1]
+SOURCE_ROOT=Path(__file__).resolve().parents[1]
+# After the shared staging step, browser acceptance must test exact published bytes.
+ROOT=SOURCE_ROOT/"public" if (SOURCE_ROOT/"public/index.html").is_file() else SOURCE_ROOT
 class Handler(http.server.SimpleHTTPRequestHandler):
     def __init__(self,*args,**kw): super().__init__(*args,directory=str(ROOT),**kw)
     def log_message(self,*args): pass
@@ -27,6 +29,7 @@ def main():
                     ("index.html","Mathematics","mathematics/index.html","mathematics/index.html"),
                     ("architecture/index.html","Guidebook","architecture/guidebook.html","architecture/guidebook.html"),
                     ("physics/wpe/index.html","Work Power Energy","physics/wpe/question-bank.html","physics/wpe/question-bank.html"),
+                    ("preview/batches/n01.html","Mathematics","mathematics/index.html","mathematics/index.html"),
                     ("nsejs/index.html","AUTHORED-PH05-R2-P06-A","nsejs/physics/ph05/source-led-r2/index.html","task=AUTHORED-PH05-R2-P06-A"),
                     ("nsejs/physics/textbook/PH05/G03/index.html","CHEM-C14.01-study","", "subtopic=CHEM-C14.01"),
                     ("curriculum/chemistry/preview/C01.html","BIO-NSEJS-GEN-01","nsejs/biology/index.html","q=BIO-NSEJS-GEN-01"),
