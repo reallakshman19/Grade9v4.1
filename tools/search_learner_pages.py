@@ -12,7 +12,23 @@ import re
 from pathlib import Path
 from urllib.parse import urlencode, urljoin, urlsplit, urlunsplit
 
-SUBJECTS = ("Physics", "Chemistry", "Biology")
+SUBJECTS = ("Physics", "Chemistry", "Biology", "Mathematics")
+# Keep this set aligned with the learner-facing roots actually published by
+# owner-technical-preview-pages.yml. Review, workspace and agent evidence are
+# intentionally NOT searchable even when a historical URL exists.
+PUBLIC_SITE_ROOTS = (
+    "nsejs", "curriculum/chemistry/preview", "curriculum/biology/preview",
+    "architecture", "chemistry", "mathematics", "physics", "preview",
+)
+PUBLIC_ENTRYPOINTS = {
+    "index.html", "docs/agent-entry/index.html",
+    "docs/agent-entry/concept-report-v4.html",
+}
+NON_DISCOVERY_PAGES = {
+    "preview/404.html", "preview/alpha-board.html",
+    "preview/question-status-archive.html",
+    "preview/batches/b07-preflight.html",
+}
 EXCLUDED = {"review", "reviews", "review-artifacts", "evidence", "agent1", "contracts", "fixtures", "assets", "images", "archive", "archives", "legacy", "tests", "qa", "receipts", "source-led-review", "sources"}
 INTERNAL_NAME = re.compile(r"(?:^|[-_])(?:answer[-_]?key|solutions?|review|audit|evidence|receipt|validation|manifest|report)(?:[-_.]|$)", re.I)
 
@@ -21,21 +37,31 @@ def read_json(root, path):
 
 def is_public_html(path):
     p=Path(path)
-    if p.suffix.lower() != ".html" or any(x.lower() in EXCLUDED for x in p.parts) or INTERNAL_NAME.search(p.name):
+    name=p.as_posix()
+    if (p.suffix.lower() != ".html" or name in NON_DISCOVERY_PAGES
+            or any(x.lower() in EXCLUDED for x in p.parts)
+            or INTERNAL_NAME.search(p.name)):
         return False
+    if name in PUBLIC_ENTRYPOINTS:
+        return True
     if p.parts[:1] == ("nsejs",):
         if len(p.parts)>2 and p.parts[1] in ("physics","chemistry","biology"):
             if "curriculum" in p.parts and p.parts[2:4] != ("curriculum","topics"):
                 return False
         return True
-    return p.parts[:3] in (("curriculum","chemistry","preview"),("curriculum","biology","preview"))
+    if p.parts[:3] in (("curriculum","chemistry","preview"),("curriculum","biology","preview")):
+        return True
+    return p.parts[:1] in (("architecture",),("chemistry",),("mathematics",),("physics",),("preview",))
+
 
 def public_pages(root):
     paths=set()
-    for directory in ("nsejs","curriculum/chemistry/preview","curriculum/biology/preview"):
+    for directory in PUBLIC_SITE_ROOTS:
         folder=root/directory
-        if folder.exists():
-            paths.update(p.relative_to(root).as_posix() for p in folder.rglob("*.html") if is_public_html(p.relative_to(root)))
+        if folder.is_dir():
+            paths.update(p.relative_to(root).as_posix() for p in folder.rglob("*.html")
+                         if is_public_html(p.relative_to(root)))
+    paths.update(path for path in PUBLIC_ENTRYPOINTS if (root/path).is_file())
     return sorted(paths)
 
 def absolute_relative(base, href):
@@ -61,7 +87,7 @@ def page_title(root,path):
 def subject_for(path):
     for subject in SUBJECTS:
         s=subject.lower()
-        if path.startswith(("nsejs/"+s+"/","curriculum/"+s+"/")):
+        if path.startswith(("nsejs/"+s+"/","curriculum/"+s+"/",s+"/")):
             return subject
     return "Common"
 
@@ -75,12 +101,13 @@ def build_public_learner_documents(root,normalize):
         if url in destinations:
             return
         destinations.add(url)
-        doc={"id":"ROUTE-"+identity,"original_id":identity,"type":{"tablet":"LESSON","curriculum":"TOPIC","question":"QUESTION","page":"PAGE"}[category],"category":category,"badge":badge,"breadcrumb":"NSEJS · "+subject+(" · "+topic if topic else "")+" · HOLD","subject":subject,"exam_family":"NSEJS","is_nsejs":True,"scope":["nsejs",subject.lower()],"title":title,"url":url,"topic":topic}
+        is_nsejs=target.path.startswith(("nsejs/","curriculum/chemistry/preview/","curriculum/biology/preview/"))
+        doc={"id":"ROUTE-"+identity,"original_id":identity,"type":{"tablet":"LESSON","curriculum":"TOPIC","question":"QUESTION","page":"PAGE"}[category],"category":category,"badge":badge,"breadcrumb":("NSEJS · " if is_nsejs else "")+subject+(" · "+topic if topic else "")+" · "+("HOLD" if is_nsejs else "TECHNICAL PREVIEW"),"subject":subject,"exam_family":"NSEJS" if is_nsejs else "GENERAL","is_nsejs":is_nsejs,"scope":(["nsejs",subject.lower()] if is_nsejs else ["all",subject.lower()]),"title":title,"url":url,"topic":topic}
         if stem is not None:
             doc.update({"stem":stem,"options":[],"hints":[]})
         if source_id:
             doc["source_id"]=source_id
-        doc["search_text"]=normalize(" ".join([identity,title,subject,topic,stem or "",source_id or "",url,"nsejs junior science"]))
+        doc["search_text"]=normalize(" ".join([identity,title,subject,topic,stem or "",source_id or "",url,"nsejs junior science" if is_nsejs else "grade9 learning technical preview"]))
         docs.append(doc)
     physics=read_json(root,"nsejs/physics/learn/catalog.json")
     # The V2 authored Physics workpack has four distinct query-addressed
@@ -183,7 +210,9 @@ def build_public_learner_documents(root,normalize):
             category="tablet"
         else:
             category="page"
-        add("PAGE-"+path,title,sub,path,category)
+        is_nsejs=path.startswith(("nsejs/","curriculum/chemistry/preview/","curriculum/biology/preview/"))
+        badge="LEARNING CANDIDATE · HOLD" if is_nsejs else "TECHNICAL PREVIEW · REVIEW PENDING"
+        add("PAGE-"+path,title,sub,path,category,badge=badge)
     return docs,pages
 
 def install_public_search(root,pages):
