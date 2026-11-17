@@ -197,7 +197,7 @@ def test_generated_preview_requires_exact_signed_final_bytes(tmp_path):
 def _r3_pages_preflight_script():
     """Extract the deployed preflight, not a parallel test-only implementation."""
     import textwrap
-    data=(ROOT/".github/workflows/deploy.yaml").read_text(encoding="utf-8")
+    data=(ROOT/".github/workflows/deploy-r3-signed.yaml").read_text(encoding="utf-8")
     start=data.index("      - name: Check externally authorized release prerequisites (fail closed)")
     start=data.index("        run: |\n",start)+len("        run: |\n")
     end=data.index("      - name: Checkout externally pinned control code",start)
@@ -232,7 +232,7 @@ def test_pages_r3_frozen_content_preflight_exact_git_gate(tmp_path, content_chan
         # This preflight does NOT check signatures; the real stage still invokes
         # the externally pinned trusted implementation, which rejects these
         # deliberately unsigned fixture receipts.
-        workflow=(ROOT/".github/workflows/deploy.yaml").read_text()
+        workflow=(ROOT/".github/workflows/deploy-r3-signed.yaml").read_text()
         assert "python trusted/docs/agent-entry/production-control-r3/release.py" in workflow
 
 
@@ -246,7 +246,7 @@ def test_r3_frozen_search_diagnostic_not_a_routine_pr_gate():
     trusted=(ROOT/".github/workflows/production-control-r3-trusted.yml").read_text()
     assert "pull_request_target:" in trusted
     assert "g9/r3-production-decision" in trusted
-    release=(ROOT/".github/workflows/deploy.yaml").read_text()
+    release=(ROOT/".github/workflows/deploy-r3-signed.yaml").read_text()
     assert "python trusted/docs/agent-entry/production-control-r3/release.py" in release
 
 
@@ -254,8 +254,13 @@ def test_owner_preview_publication_exception_explicit_and_restricted():
     """No preview pass may masquerade as signed R3/academic acceptance."""
     preview=(ROOT/".github/workflows/owner-technical-preview-pages.yml").read_text()
     assert "workflow_dispatch:" in preview
-    assert "push:" in preview and "branches: [main]" in preview
-    assert "paths:\n      - .github/workflows/owner-technical-preview-pages.yml" in preview
+    assert "workflow_call:" in preview
+    assert "  push:\n" not in preview
+    entry=(ROOT/".github/workflows/deploy.yaml").read_text()
+    assert "  push:\n" in entry and "branches: [main]" in entry
+    assert "workflow_dispatch:" in entry
+    assert "uses: ./.github/workflows/owner-technical-preview-pages.yml" in entry
+    assert "G9_R3_CONTROL_SHA" not in entry and "G9_R3_TRUST_JSON" not in entry
     assert "pull_request:" not in preview and "pull_request_target:" not in preview
     assert '"review", "tests", "tools", "src"' in preview
     assert '"workspace"' in preview
@@ -263,7 +268,19 @@ def test_owner_preview_publication_exception_explicit_and_restricted():
     assert '"r3_signed_production_release": False' in preview
     assert "actions/upload-pages-artifact@v4" in preview
     assert "actions/deploy-pages@v4" in preview
-    signed=(ROOT/".github/workflows/deploy.yaml").read_text()
+    signed=(ROOT/".github/workflows/deploy-r3-signed.yaml").read_text()
     assert "python trusted/docs/agent-entry/production-control-r3/release.py" in signed
     assert "G9_R3_TRUST_JSON" in signed
     assert "github-pages" in signed
+
+
+def test_preview_release_disclosure_on_every_home_tile():
+    home=(ROOT/"index.html").read_text(encoding="utf-8")
+    cards=home.count('<article class="card">')
+    labels=home.count('class="card-review-label"')
+    assert cards==6 and labels==cards
+    assert home.count("Technical preview · Review pending")==cards
+    assert "card-review-label" in (ROOT/"site.css").read_text(encoding="utf-8")
+    signed=(ROOT/".github/workflows/deploy-r3-signed.yaml").read_text()
+    assert "FROZEN_CONTENT_IN_RELEASE_TREE" in signed
+    assert "python trusted/docs/agent-entry/production-control-r3/release.py" in signed
