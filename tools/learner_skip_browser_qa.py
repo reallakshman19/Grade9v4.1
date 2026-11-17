@@ -149,7 +149,8 @@ def inspect_question_types(page, base: str):
     assert page.locator("#choice").evaluate("(e)=>document.activeElement===e")
     page.locator("#choice + .g9-skip-inline .g9-skip-inline-button").click()
     page.locator("#choice + .g9-skip-inline .g9-skip-inline-advance").click()
-    assert page.locator("#radio-group").evaluate("(e)=>document.activeElement===e")
+    assert page.locator('#radio-group input[type="radio"]').first.evaluate(
+        "(e)=>document.activeElement===e")
     page.evaluate("""() => {
         window.__questionChanges=[];
         document.querySelector('#task-select').addEventListener('change',
