@@ -256,9 +256,9 @@ def run():
                 # Pin mismatch: modified answer bytes must not display hints/model.
                 ctx=browser.new_context()
                 p=ctx.new_page()
-                p.route("**/post-P04.json",lambda route:route.fulfill(
+                p.route("**/post-P04.r4.json",lambda route:route.fulfill(
                     status=200,content_type="application/json",
-                    body=(DATA/"post-P04.json").read_bytes()+b"\n "))
+                    body=(DATA/"post-P04.r4.json").read_bytes()+b"\n "))
                 open_page(p,base,"P04","practice")
                 press_skip(p,"first-prediction")
                 press_skip(p,"first-reason")
