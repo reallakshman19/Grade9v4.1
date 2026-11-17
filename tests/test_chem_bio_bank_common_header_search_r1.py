@@ -56,6 +56,7 @@ def test_biology_topic_deep_links_are_real_links_and_not_javascript_void():
 def test_same_header_contract_is_installed_on_all_published_html():
     nav = read("site-nav.js")
     workflow = read(".github/workflows/owner-technical-preview-pages.yml")
+    stage = read("tools/stage_public_preview.py")
     assert 'function normalizeMast(' in nav
     assert 'normalizeMast(mast,link,routes,current,scope)' in nav
     assert 'Grade9 common navigation: subjects, NSEJS and search' in nav
@@ -65,19 +66,20 @@ def test_same_header_contract_is_installed_on_all_published_html():
         assert destination in nav
     assert 'nsejs/chemistry/question-bank.html' not in nav
     assert 'nsejs/biology/question-bank.html' not in nav
-    assert 'data-grade9-nav="common-r1"' in workflow
-    assert 'for item in folder.rglob("*"):' in workflow
-    assert 'target.suffix.lower() in {".html", ".htm"}' in workflow
-    assert 're.search(r"</body\\s*>"' in workflow
-    assert 'PREVIEW_COMMON_NAV_NOT_INSTALLED' in workflow
+    assert 'data-grade9-nav="common-r1"' in stage
+    assert 'for item in folder.rglob("*"):' in stage
+    assert 'target.suffix.lower() in {".html", ".htm"}' in stage
+    assert 're.search(r"</body\\s*>"' in stage
+    assert 'PREVIEW_COMMON_NAV_NOT_INSTALLED' in stage
     # The staged-pages scan must interpret regex whitespace, not a literal
     # backslash followed by "s" (which previously counted zero HTML pages).
-    assert 're.search(r"</body\\\\s*>", page' not in workflow
-    assert 're.search(r"</body\\s*>", page' in workflow
+    assert 're.search(r"</body\\\\s*>", page' not in stage
+    assert 're.search(r"</body\\s*>", page' in stage
 
 
 def test_published_search_rebuild_is_safe_and_contains_bank_routes():
     workflow = read(".github/workflows/owner-technical-preview-pages.yml")
+    stage = read("tools/stage_public_preview.py")
     builder = read("tools/build_search_index.py")
     assert 'python3 tools/build_search_index.py' in workflow
     assert 'QUESTION_BANK_NOT_INDEXED' in workflow
