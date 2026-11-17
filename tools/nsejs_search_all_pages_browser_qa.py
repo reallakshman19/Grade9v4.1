@@ -22,6 +22,11 @@ def main():
                 context=browser.new_context(viewport={"width":w,"height":h})
                 page=context.new_page()
                 cases=[
+                    # Site-wide search must include Maths, Architecture and
+                    # general Physics, not just NSEJS question banks.
+                    ("index.html","Mathematics Foundation","mathematics/index.html","mathematics/index.html"),
+                    ("architecture/index.html","Guidebook","architecture/guidebook.html","architecture/guidebook.html"),
+                    ("physics/wpe/index.html","PAGE-PHY-WPE-QB","physics/wpe/question-bank.html","physics/wpe/question-bank.html"),
                     ("nsejs/index.html","AUTHORED-PH05-R2-P06-A","nsejs/physics/ph05/source-led-r2/index.html","task=AUTHORED-PH05-R2-P06-A"),
                     ("nsejs/physics/textbook/PH05/G03/index.html","CHEM-C14.01-study","", "subtopic=CHEM-C14.01"),
                     ("curriculum/chemistry/preview/C01.html","BIO-NSEJS-GEN-01","nsejs/biology/index.html","q=BIO-NSEJS-GEN-01"),
@@ -36,7 +41,9 @@ def main():
                     page.goto(origin+path,wait_until="domcontentloaded")
                     page.wait_for_function("window.Grade9Search?.initialized === true")
                     page.keyboard.press("Control+k")
-                    expect(page.locator("#g9SearchTitle")).to_have_text("Search NSEJS Junior Science")
+                    expected_title = ("Search NSEJS Junior Science" if path.startswith("nsejs/")
+                                      else "Search Grade9 Learning")
+                    expect(page.locator("#g9SearchTitle")).to_have_text(expected_title)
                     expect(page.locator(".g9-search-dialog")).to_be_visible()
                     page.locator('.g9-search-dialog input[type="search"]').fill(term)
                     page.wait_for_function("(q)=>[...document.querySelectorAll('.g9-search-result')].some(a=>a.href.includes(q))",arg=query)
