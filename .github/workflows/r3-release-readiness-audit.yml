@@ -44,6 +44,7 @@ jobs:
             --json-output artifacts/r3-readiness/frozen-content-and-gates.json \
             --summary-output artifacts/r3-readiness/summary.md
           cat artifacts/r3-readiness/summary.md >> "$GITHUB_STEP_SUMMARY"
+          cat artifacts/r3-readiness/summary.md
           echo "AUDIT_FINISHED_NOT_AUTHORIZED: no release staging or deployment attempted."
       - name: Upload read-only blocked-state evidence
         if: always()
