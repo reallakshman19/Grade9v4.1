@@ -98,7 +98,9 @@ def scenario(page,base,id,size,output):
         expect(page.locator("main")).to_contain_text("Revised R4 · new reasoning")
         expect(page.get_by_role("link",name="Review earlier R3 attempts/version")).to_be_visible()
     expect(page.locator("#save-first")).to_be_visible()
-    assert not any("/post-"+id+".json" in x or id+"-solution.svg" in x for x in requests),requests
+    post_path="/post-"+id+(".json" if id=="P02" else ".r4.json")
+    solution_path=id+("-solution.svg" if id=="P02" else "-solution-r4.svg")
+    assert not any(post_path in req or solution_path in req for req in requests),requests
     assert page.locator("#next-hint").count()==0
     assert page.locator("#reveal").count()==0
     page.locator("#save-first").click()
@@ -109,8 +111,8 @@ def scenario(page,base,id,size,output):
     skip_fields(page,u["prompt"]["fields"],"first-")
     page.locator("#save-first").click()
     expect(page.locator("#ph03-status")).to_contain_text("First response saved",timeout=15000)
-    assert any("/post-"+id+".json" in x for x in requests)
-    assert not any(id+"-solution.svg" in x for x in requests)
+    assert any(post_path in req for req in requests)
+    assert not any(solution_path in req for req in requests)
     first=saved(page,id)
     assert first and first["data"]["first"]["prediction"] is None
     assert first["data"]["first"]["reason"] is None
@@ -124,7 +126,7 @@ def scenario(page,base,id,size,output):
         expect(page.locator(".hint")).to_have_count(n)
     page.locator("#reveal").click()
     expect(page.locator("#save-diagnosis")).to_be_visible(timeout=15000)
-    assert any(id+"-solution.svg" in x for x in requests)
+    assert any(solution_path in req for req in requests)
     expect(page.locator(".feedback").first).to_contain_text("First attempt contained explicit unanswered fields")
     press_skip(page,"diag-text")
     page.locator("#save-diagnosis").click()
