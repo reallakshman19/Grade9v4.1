@@ -11,6 +11,8 @@ name: Publish unreviewed owner-directed technical preview
 # Owner-directed repair: restore visible Physics Question Bank (six topics,
 # 109 candidate records) after it was hidden by the collapsed legacy archive;
 # keep the chapter navigation and all source/academic review statuses HOLD.
+# Owner-directed Core1A/Core1B question Skip R3: inline no-credit navigation,
+# no fabricated first attempts, answer access or academic mastery.
 # One automatic run when this workflow is first merged; later runs are manual.
 on:
   push:
@@ -46,6 +48,9 @@ jobs:
           node --check site-nav.js
           node --check nsejs/js/core2-chemistry-reader.js
           node --check nsejs/js/core2-biology-reader.js
+          node --check nsejs/js/skip-mandatory-response.js
+      - name: Verify Core1A/Core1B Skip reaches every learner-response entrypoint
+        run: python3 tools/audit_skip_coverage.py
       - name: Rebuild safe learner search index from exact revision
         run: |
           python3 tools/build_search_index.py
