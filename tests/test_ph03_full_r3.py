@@ -212,3 +212,61 @@ def test_source_and_academic_gates_remain_fail_closed():
     assert (SRC/"source-ledger.v1.html").is_file()
     assert "No exam stem" in (SRC/"source-ledger.v1.html").read_text()
     assert "EXTENSION_REVIEW" in (SRC/"README.md").read_text()
+
+
+
+def test_core1ab_guide_alignment_records_task_specific_w_without_academic_promotion():
+    """Author-side shortest-route/freshness review, not an independent B1–B7 verdict."""
+    science = json.loads((SRC / "science-evidence.v1.json").read_text(encoding="utf-8"))
+    rows = {r["id"].split("-")[-1]: r for r in science["topics"]}
+    assert set(rows) == set(IDS)
+    works = [r["W_learner_work"] for r in rows.values()]
+    assert len(set(works)) == len(IDS), "One generic W cannot certify six distinct tasks"
+    for uid, row in rows.items():
+        assert row["freshness_risk_author_audit"] in {"HIGH", "MEDIUM"}
+        assert row["freshness_disposition"] == "HOLD_PENDING_INDEPENDENT_B4_COMPARISON"
+        assert row["shortest_route_author_candidate"]
+        assert row["credible_shortcut_author_candidate"]
+        assert row["anchor_to_transfer_overlap"]
+        assert row["freshness_falsifier"]
+        assert row["primary_operation_candidate"]
+        assert row["B1_B7"] == {f"B{i}": "HOLD" for i in range(1, 8)}
+    assert sum(r["freshness_risk_author_audit"] == "HIGH" for r in rows.values()) == 5
+    assert rows["P02"]["freshness_risk_author_audit"] == "MEDIUM"
+    assert "LAB" in rows["P05"]["anchor_to_transfer_overlap"]
+    assert "relative" in rows["P05"]["freshness_falsifier"].lower()
+
+
+def test_core1a_exit_checks_are_original_ungraded_and_do_not_change_attempt_revision():
+    exits = json.loads((SRC / "exit-checks.v1.json").read_text(encoding="utf-8"))
+    assert exits["schema"] == "g9-ph03-core1a-exit/v1"
+    assert exits["academic"] == "HOLD"
+    assert exits["source_role"] == "AUTHORED_TEACHING_NOT_EXAM"
+    assert exits["scope"] == "CORE1A_ONLY_UNGRADED_NOT_PROTECTED_TRANSFER"
+    assert set(exits["units"]) == set(IDS)
+    for uid, row in exits["units"].items():
+        assert all(len(row[k].strip()) >= 60 for k in ("question", "answer", "check"))
+        assert row["question"] != unit(uid)["prompt"]["stem"]
+        assert "P0" not in row["answer"] or "P0" not in row["question"]
+    code = (SRC / "reader.js").read_text(encoding="utf-8")
+    assert 'if(mode==="learn"){const exitPacket=parse(await readUrl("exit-checks.v1.json"))' in code
+    assert 'class="core1a-exit"' in code
+    assert "<details><summary>Compare the reasoning</summary>" in code
+    assert "not a graded Core1B attempt" in code
+    assert 'revision=await digest("SHA-256",encoder.encode(JSON.stringify([' in code
+    assert 'if(!rec?.first)throw Error("Protected answer requested before first attempt")' in code
+    # Exit teaching is loaded ONLY in the learn branch; practice revision inputs stay unchanged.
+    assert code.index('if(mode==="learn"){const exitPacket=') > code.index('revision=await digest("SHA-256"')
+
+
+def test_p03_legacy_wrappers_show_current_coverage_and_preserve_old_attempt_links():
+    for path in (
+        PH / "textbook/PH03/P03/index.html",
+        PH / "core1/PH03/P03/index.html",
+    ):
+        doc = path.read_text(encoding="utf-8")
+        assert "Six additional PH03 Learn/Try pairs are available" in doc
+        assert "remain unauthored" not in doc
+        assert "<details>" in doc and "historical attempt route" in doc
+        assert "source-led-r1" in doc and "source-led-r2" in doc
+        assert "Academic HOLD" not in doc or "academic HOLD" in doc
