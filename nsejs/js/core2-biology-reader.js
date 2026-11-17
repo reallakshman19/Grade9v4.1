@@ -752,7 +752,20 @@
       const resp = await fetch("../data/biology-core2-candidates.v1.json");
       if (!resp.ok) throw new Error("HTTP " + resp.status + " while loading Biology question bank data.");
       const data = await resp.json();
-      allBiologyQuestions = data.questions || [];
+      // This validates candidate structure and HOLD labels only; it does NOT
+      // authenticate examination sources or replace independent review.
+      const rows = data?.questions;
+      if (data?.schema_version !== "2.0.0" || data.subject !== "BIOLOGY" ||
+          data.source_claims_status !== "DOWNLOADED_AND_AUTHORED_CANDIDATES" ||
+          !String(data.qrt_adjudication).includes("HOLD") ||
+          !Array.isArray(rows) || rows.length === 0 ||
+          data.total_questions !== rows.length ||
+          new Set(rows.map(q => q?.id)).size !== rows.length ||
+          !rows.every(q => q && typeof q.id === "string" &&
+            typeof q.stem === "string" && !!q.stem.trim() &&
+            typeof q.topic === "string" && Array.isArray(q.options)))
+        throw new Error("Candidate registry incomplete or status unqualified; fail closed");
+      allBiologyQuestions = rows;
 
       // Calculate topic counts
       TOPICS.forEach(t => {
