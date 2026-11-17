@@ -38,3 +38,69 @@
 - The same reconstruction command is retained on manual `workflow_dispatch` and still reports `SEARCH_BUILDER_CHANGED` until its source integrity problem is independently reconciled. This changes only the **diagnostic frequency**, not the authorized publication set.
 - **Do not remove** `g9/r3-production-decision` from `pull_request_target`: it is the only implemented fail-closed independent decision on changed PR heads. Existing `main` is not protected by a ruleset, so hiding this check would further weaken unapproved-merge detection. External trust and signed governance receipt are required; absent evidence must remain BLOCKED.
 - Signed `release.py`, frozen baseline checks, manual Pages dispatch, pinned control, release manifest, and PREVIEW_RELEASE Owner receipt remain mandatory and unchanged. The Pages failures cannot be resolved by removing CI jobs.
+
+
+## Read-only release-readiness audit R1 — 2026-11-17 (no deployment authority)
+
+The failed `.github/workflows/deploy.yaml` manual dispatch that reports
+`G9_R3_CONTROL_SHA`, `G9_R3_TRUST_JSON`, the publication manifest, an Owner
+`PREVIEW_RELEASE` receipt and
+`FROZEN_CONTENT_IN_RELEASE_TREE: 305 CONTENT path(s)` is **correctly blocked**.
+The count is specific to the exact failed-run main commit, not a blanket
+classification of every future revision. Recompute it when HEAD changes.
+
+A separate read-only diagnosis now exists:
+
+- **Actions → R3 release-readiness inventory (diagnostic only; NEVER deploys) → Run workflow.**
+- Or run `python tools/r3_release_readiness.py --repo . --head "$(git rev-parse HEAD)" --json-output /tmp/r3-readiness.json --summary-output /tmp/r3-readiness.md` after a full-history checkout.
+- The resulting artifact lists ALL exact changed paths, split into CONTENT,
+  GOVERNANCE and EVIDENCE, plus whether required external variables and files
+  are present. It never prints public-key roster contents and never requests
+  private signing keys. A successful audit run is **not** successful release
+  authorization and cannot be used as a required production-decision status.
+- The audit uses the *candidate-tree policy diagnostically* and explicitly
+  says so. `trusted/docs/agent-entry/production-control-r3/release.py`, from
+  the administrator-pinned independent control commit, remains the sole
+  authoritative release-stage validator.
+- This audit has no `pages: write` or `id-token: write` permissions and
+  cannot stage or deploy anything. `deploy.yaml` is intentionally unchanged.
+
+### Required Owner / independent reviewer decisions
+
+1. **Decide the release scope before signing.** Under
+   `FREEZE_PENDING_GOLDEN` and no accepted Golden, a main revision with any
+   changed CONTENT paths remains ineligible for ordinary Pages release. New
+   learner content requires the separately approved R3/Owner Golden adoption
+   or migration workpack. Do not classify unknown content as governance or
+   move the frozen baseline just to reduce the count.
+2. **Pin reviewed control infrastructure.** Independently review the control
+   commit; the administrator sets `G9_R3_CONTROL_SHA` in
+   **Settings → Secrets and variables → Actions → Variables** to that exact
+   reviewed 40-character commit. Never substitute the candidate, HEAD or a
+   test-generated SHA.
+3. **Establish real trust.** The administrator sets `G9_R3_TRUST_JSON` to the
+   independent, public-keys-only schema `g9-r3-trust/v1`. Store all private
+   keys outside GitHub and the repository. Treat key presence as unverified
+   until trusted signature verification passes.
+4. **Create the independently inspected publication set.** Only after a
+   legitimately eligible release tree is approved, create an explicit list
+   of releasable paths; run the pre-existing `prepare.py` against a trusted
+   control revision to produce an **unsigned** byte-pinned candidate manifest.
+   Independent reviewer checks every path, source blob and digest.
+5. **Obtain independently authorized receipts.** A real Owner, using a
+   governed signer identity distinct from the author, signs a
+   `PREVIEW_RELEASE` record bound to the exact manifest SHA-256 and content
+   fingerprint. Commit the manifest and receipt without changing the
+   approved content fingerprint. Do not generate signatures in CI.
+6. **Verify the environment and run the real gate.** Demonstrate `main`
+   branch protection, CODEOWNERS and protected `github-pages` environment.
+   Run the **manual** `Deploy to GitHub Pages` workflow only when the actual
+   frozen-content and authority constraints are satisfied. Do not interpret
+   a green author test, read-only audit or owner-directed unreviewed preview
+   as signed R3 production authorization.
+
+**External blockers cannot be fixed by a GitHub code agent:** it cannot
+assert independent review, supply approved public keys, sign in a human
+Owner's name, install administrator variables through a PR, or override
+the freeze. The red production job is the expected result until those
+specific conditions are met.
