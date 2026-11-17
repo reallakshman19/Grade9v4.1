@@ -158,12 +158,17 @@ def audit(repo: Path, staged: Path) -> dict:
                             for p in staged.rglob("*.html") if p.is_file())
     staged_navigation = 0
     missing_navigation = []
+    no_closing_body = []
     for path in published_html:
         raw = (staged / path).read_text(encoding="utf-8", errors="replace")
         if re.search(r"</body\s*>", raw, flags=re.I):
             staged_navigation += 1
             if 'data-grade9-nav' not in raw and "js/site-search.js" not in raw:
                 missing_navigation.append(path)
+        else:
+            no_closing_body.append(path)
+    if no_closing_body:
+        warnings.append("PUBLISHED_HTML_WITHOUT_CLOSING_BODY:" + str(len(no_closing_body)))
     if missing_navigation:
         errors.extend("PUBLISHED_HTML_WITHOUT_SEARCH:" + x for x in missing_navigation[:40])
     if meta.get("public_html_pages") != len(indexable):
@@ -189,6 +194,7 @@ def audit(repo: Path, staged: Path) -> dict:
         "by_category": dict(categories),
         "by_subject": dict(subjects),
         "nonindexed_published_html": skipped,
+        "published_html_without_closing_body": no_closing_body,
         "eligible_html_without_results": unindexed,
         "index_sha256": sha,
     })
@@ -223,6 +229,8 @@ def main() -> int:
     lines.extend(["", "## By subject", ""])
     lines.extend("- " + subject + ": " + str(count)
                  for subject, count in sorted(stats.get("by_subject", {}).items()))
+    lines.extend(["", "## Published HTML without closing body tag", ""])
+    lines.extend("- " + path for path in stats.get("published_html_without_closing_body", []))
     lines.extend(["", "## Errors", ""])
     lines.extend("- " + x for x in report["errors"] or ["None"])
     lines.extend(["", "## Non-indexed published pages (by policy)", ""])
