@@ -1,0 +1,168 @@
+{
+  "id": "P07",
+  "title": "Sequential impact, friction and impulse timelines",
+  "scope": "EXTENSION_REVIEW",
+  "sourceLeads": [],
+  "prereq": "P02 signed net impulse; P03 short-contact isolation; P06 contact energy; PH02 kinetic friction.",
+  "goals": [
+    "Separate short impacts from a long sliding interval.",
+    "Apply friction impulse and work over their correct interval.",
+    "Check stopping distance before assuming a second collision can occur."
+  ],
+  "sections": [
+    {
+      "heading": "A timeline needs more than one ledger",
+      "body": "A sequence of contact, slide and a second contact has different physical assumptions in each stage. A brief contact may have negligible external impulse and permit conservation of the selected pair's momentum. During a long rough slide friction acts externally and changes the selected moving assembly's momentum."
+    },
+    {
+      "heading": "Solve the first contact as a short event",
+      "body": "If the first moving cart latches onto a resting cart, use the two carts as the contact system and compute their immediately shared velocity from total signed momentum. Do not yet apply long-slide friction to the contact ledger."
+    },
+    {
+      "heading": "Friction changes speed and can stop the second impact",
+      "body": "For a sliding assembly on a level track, F_f = −μMg while moving right and acceleration a = −μg. If the next obstacle is at distance d, compare its position with s_stop = v_start²/(2μg). If s_stop < d, the assembly stops before contact, and there is no second collision to analyse."
+    },
+    {
+      "heading": "Only then solve the second contact",
+      "body": "If the sliding assembly reaches the next stationary body, find its velocity just BEFORE the second impact. Reapply short-contact momentum conservation for that new system. Separate contact energy conversion at each collision from the energy dissipated by friction during travel; do not double count."
+    },
+    {
+      "heading": "Derive a reachability threshold before hypothesizing impact",
+      "body": "Conserve momentum separately during the short first collision; then treat the rough slide under frictional deceleration a=−μg. A proposed second collision exists only if the assembly reaches its obstacle while moving. For initial joined speed v₀ and obstacle distance L, stopping distance is s_stop=v₀²/(2μg). Equating s_stop=L gives the threshold μ_crit=v₀²/(2gL). For actual μ below this value, arrival speed is the positive root of v²=v₀²−2μgL. Only after the reach test supports an impact may the second sticking-momentum equation be applied; otherwise there is no second-contact speed."
+    }
+  ],
+  "worked": [
+    {
+      "name": "Foundation · friction-only stopping",
+      "setup": "A 2 kg cart at +4 m/s slides on level track with μ=0.2 and g=10 m/s².",
+      "steps": [
+        "F_f=−0.2×2×10=−4 N, acceleration −2 m/s².",
+        "Stopping distance=4²/(2×2)=4 m.",
+        "Initial K=16 J; friction work −4×4=−16 J."
+      ],
+      "check": "The long slide is NOT a momentum-conserving isolated interval."
+    },
+    {
+      "name": "Connected · two contacts with friction between",
+      "setup": "A 1 kg cart at +8 m/s sticks to resting 3 kg cart, slides for 1 s at μ=0.1, then latches to resting 1 kg cart.",
+      "steps": [
+        "First contact common velocity=8/4=+2 m/s.",
+        "Slide deceleration −1 m/s², just-before-second velocity +1 m/s.",
+        "Second contact common velocity=(4×1)/5=+0.8 m/s."
+      ],
+      "check": "Do not carry +2 m/s directly into the second impact."
+    },
+    {
+      "name": "Transfer · second impact never occurs",
+      "setup": "An assembly starts a 1 m rough section at +2 m/s with μ=0.4 and g=10 m/s².",
+      "steps": [
+        "Deceleration magnitude = 4 m/s².",
+        "Stopping distance = 2²/(2×4) = 0.5 m.",
+        "Obstacle is 1 m away, so no second contact occurs."
+      ],
+      "check": "Writing a second collision equation here would describe a physically impossible event."
+    }
+  ],
+  "trap": {
+    "wrong": "Conserve momentum across the entire rough slide or assume an obstacle is reached merely because it is present.",
+    "repair": "Split contact → friction → contact, calculate the pre-contact speed, and test stop distance before the second event."
+  },
+  "assumptions": [
+    "External friction is negligible DURING each very short impact but not during the slide.",
+    "μ is kinetic friction while moving; the model ceases to apply after stopping.",
+    "The second contact occurs only if the trajectory physically reaches the obstacle."
+  ],
+  "model": {
+    "kind": "reachability",
+    "label": "Teaching model: μ for a +3 m/s assembly with obstacle 1.5 m away",
+    "min": 0,
+    "max": 0.6,
+    "step": 0.05,
+    "value": 0.2,
+    "unit": "μ"
+  },
+  "prompt": {
+    "stem": "On a right-positive track, a 1 kg cart at +6 m/s STICKS to a resting 2 kg cart in a brief first impact. The joined assembly travels on a rough horizontal strip toward a stationary 1 kg cart C, located 0.75 m ahead. Kinetic friction μ=0.20, g=10 m/s². Friction during brief impact is negligible and C will stick IF REACHED. The second collision is NOT guaranteed. Find first joined speed, threshold μ_crit for reaching C, whether C is hit, speed immediately before C and the final speed if it sticks.",
+    "prediction": "Which reachability test must precede a second-impact momentum calculation?",
+    "fields": [
+      {
+        "id": "firstV",
+        "label": "Speed after first impact",
+        "type": "number",
+        "unit": "m/s"
+      },
+      {
+        "id": "thresholdMu",
+        "label": "Limiting μ for just reaching C",
+        "type": "number",
+        "unit": "dimensionless"
+      },
+      {
+        "id": "reach",
+        "label": "Does the second impact occur?",
+        "type": "choice",
+        "options": [
+          {
+            "value": "yes",
+            "text": "Yes"
+          },
+          {
+            "value": "no",
+            "text": "No"
+          }
+        ]
+      },
+      {
+        "id": "preImpact",
+        "label": "Speed just before C if reached",
+        "type": "number",
+        "unit": "m/s"
+      },
+      {
+        "id": "finalV",
+        "label": "Joined speed after C if reached",
+        "type": "number",
+        "unit": "m/s"
+      }
+    ],
+    "boundaryPrompt": "Change ONLY friction to μ=0.30 while preserving first-joined speed and the 0.75 m distance to C. Does a second collision occur? Give the assembly's stopping distance.",
+    "boundaryFields": [
+      {
+        "id": "reach",
+        "label": "Does C get hit?",
+        "type": "choice",
+        "options": [
+          {
+            "value": "no",
+            "text": "No"
+          },
+          {
+            "value": "yes",
+            "text": "Yes"
+          }
+        ]
+      },
+      {
+        "id": "stopDistance",
+        "label": "Stopping distance",
+        "type": "number",
+        "unit": "m"
+      }
+    ]
+  },
+  "schema": "g9-ph03-authored-lesson/v1",
+  "revision": "ph03-core1ab-r4-20261117",
+  "sourceRole": "AUTHOR_EXPOSITION_AND_TRANSFER_NOT_EXAM",
+  "academic": "HOLD",
+  "independent_free_text_assessment": false,
+  "postBlobSha1": "29f0a9f01a9548ea789240e8d71360c913324916",
+  "figures": {
+    "guide": "figures/P07-guide.svg",
+    "prompt": "figures/P07-prompt-r4.svg",
+    "solution": "figures/P07-solution-r4.svg"
+  },
+  "solutionBlobSha1": "5259c260cc22ae20b84850dc652896928e044d37",
+  "researchNote": "Unlike the Connected anchor with guaranteed impact, the protected question makes the coefficient threshold and existence of event three the decisive work.",
+  "taskVariant": "CORE1AB_R4_NOVEL_W_CANDIDATE",
+  "historicalTaskFile": "P07.json"
+}

@@ -99,6 +99,8 @@ def run():
             ctx=browser.new_context();page=ctx.new_page();page.goto(path)
             expect(page.locator("#predictSave")).to_be_visible();page.locator("#prediction").fill("P");page.locator("#predictSave").click()
             expect(page.locator("#commit")).to_be_visible()
+            for field in ("a-depth","a-initial","a-check","a-loaded","a-top"):
+                page.locator(f'button[data-native-skip="{field}"]').click()
             page.evaluate("() => { Storage.prototype.setItem=function(){throw Error('injected write denial')}; }")
             page.locator("#attempt").fill("R");page.locator("#commit").click();expect(page.locator("#stage")).to_contain_text("HOLD")
             assert page.locator("#hint,#reveal").count()==0
@@ -127,6 +129,68 @@ def run():
             expect(page.locator("#status")).to_contain_text("LOCAL_PRIOR_EXPOSURE_RECORDED")
             page.goto(path);expect(page.locator("#sourceReturn")).to_be_visible();page.locator("#sourceReturn").click();expect(page.locator("#attempt")).to_have_value("Later source");assert page.locator("#retry").count()==0
             print("SOURCE_CHRONOLOGY REJECTED: earlier transfer cannot unlock later source first attempt.")
+            ctx.close()
+            # R3: source and prompt are reachable; postcommit answer JSON/SVG are not fetched before first.
+            ctx=browser.new_context();page=ctx.new_page();requests=[]
+            page.on("request",lambda req:requests.append(req.url))
+            page.goto(path);expect(page.locator("#predictSave")).to_be_visible()
+            assert not any(("model.v1.json" in u or "u08-reconstruct.svg" in u or "u08-boundary.svg" in u) for u in requests)
+            page.locator('button[data-native-skip="prediction"]').click()
+            expect(page.locator('button[data-native-skip="prediction"]')).to_have_text("Undo skip")
+            page.locator("#predictSave").click();expect(page.locator("#commit")).to_be_visible()
+            assert not any("model.v1.json" in u for u in requests)
+            for field in ("a-depth","a-initial","a-check","a-loaded","a-top","attempt"):
+                page.locator(f'button[data-native-skip="{field}"]').click()
+                expect(page.locator(f'button[data-native-skip="{field}"]')).to_have_attribute("aria-pressed","true")
+            page.locator("#commit").click()
+            expect(page.locator("#reveal")).to_be_visible()
+            assert any("model.v1.json" in u for u in requests)
+            assert any("u08-reconstruct.svg" in u for u in requests)
+            saved=page.evaluate("""() => Object.entries(localStorage).map(([k,v])=>[k,v]).filter(x=>x[0].startsWith("G9V41:PH06:R3:")).map(x=>JSON.parse(x[1]))""")
+            assert len(saved)==1 and saved[0]["prediction"] is None and saved[0]["predictionSkipped"] is True
+            assert saved[0]["first"]["reasoning"] is None and len(saved[0]["first"]["skipped"])==6
+            page.reload();expect(page.locator("#reveal")).to_be_visible()
+            page.locator("#reveal").click();expect(page.locator("#compare")).to_be_visible()
+            page.locator("#compare").click()
+            expect(page.locator("#firstIssue")).to_contain_text("Insufficient evidence")
+            page.locator('button[data-native-skip="diagnosis"]').click()
+            page.locator("#diagnose").click();expect(page.locator("#repairSave")).to_be_visible()
+            page.locator('button[data-native-skip="repair"]').click()
+            page.locator("#repairSave").click();expect(page.locator("#boundarySave")).to_be_visible()
+            for field in ("b-regime","b-bottom","boundary"):
+                page.locator(f'button[data-native-skip="{field}"]').click()
+            page.locator("#boundarySave").click();expect(page.locator("#boundaryReveal")).to_be_visible()
+            page.locator("#boundaryReveal").click()
+            expect(page.locator("#root")).to_contain_text("no credit")
+            saved=page.evaluate("""() => Object.entries(localStorage).filter(([k])=>k.startsWith("G9V41:PH06:R3:")).map(([,v])=>JSON.parse(v))""")
+            assert saved[0]["repairSkipped"] and saved[0]["diagnosis"]["skipped"]
+            assert len(saved[0]["boundary"]["skipped"])==3
+            page.locator("#sourceReturn").click();expect(page.locator("#commit")).to_be_enabled()
+            assert page.evaluate("""() => Object.entries(localStorage).filter(([k])=>k.startsWith("G9V41:PH06:SOURCE:")).every(([,v])=>!JSON.parse(v).transferComplete)""")
+            print("PH06_R3_SKIP_ALL_PASS: explicit null, no false diagnosis, source-return no credit, persistent refresh.")
+            ctx.close()
+
+            # Fail closed if postattempt model fetch is corrupt, but keep the first response durably saved.
+            ctx=browser.new_context();ctx.route("**/model.v1.json",lambda r:r.fulfill(status=200,body='{"uid":"tampered"}'))
+            page=ctx.new_page();page.goto(path);expect(page.locator("#predictSave")).to_be_visible()
+            page.locator("#prediction").fill("My prediction");page.locator("#predictSave").click()
+            expect(page.locator("#commit")).to_be_visible()
+            for field in ("a-depth","a-initial","a-check","a-loaded","a-top"):
+                page.locator(f'button[data-native-skip="{field}"]').click()
+            page.locator("#attempt").fill("First response preserved despite corrupt model")
+            page.locator("#commit").click()
+            expect(page.locator("#stage")).to_contain_text("HOLD")
+            assert page.locator("#reveal,#hint,#boundaryReveal").count()==0
+            records=page.evaluate("""() => Object.entries(localStorage).filter(([k])=>k.startsWith("G9V41:PH06:R3:")).map(([,v])=>JSON.parse(v))""")
+            assert len(records)==1 and records[0]["first"]["reasoning"]=="First response preserved despite corrupt model"
+            print("PH06_R3_TAMPER_FAIL_CLOSED: postcommit byte mismatch, preserved first, no answer access.")
+            ctx.close()
+
+            # Historical R2 route remains readable and retains its old storage namespace.
+            ctx=browser.new_context();page=ctx.new_page();page.goto(url+"ph06/legacy-u08.html")
+            expect(page.locator("#predictSave")).to_be_visible()
+            assert "Historical PH06 U08" in page.locator("h1").inner_text()
+            print("PH06_R2_HISTORICAL_READER_PASS: legacy entrypoint remains accessible.")
             ctx.close();browser.close()
     finally:srv.shutdown();srv.server_close()
 if __name__=="__main__":run()

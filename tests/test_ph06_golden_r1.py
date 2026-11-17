@@ -82,7 +82,10 @@ def test_actual_svgs_and_protected_projection():
         assert (PH/path).is_file()
     reader=(P/"reader.js").read_text()
     assert "navigator.locks.request" in reader and "localStorage.getItem(key)!==raw" in reader
-    assert "JSON.stringify([raw,modelRaw,sourceRaw,figure,solutionFigure,boundaryFigure])" in reader and ".decode()" in reader
+    assert "JSON.stringify([raw,sourceRaw,figure,manifestRaw])" in reader and ".decode()" in reader
+    assert "await ensurePost()" in reader and "await sha1Blob(modelRaw)" in reader
+    legacy=(P/"reader-r2-legacy.js").read_text()
+    assert "JSON.stringify([raw,modelRaw,sourceRaw,figure,solutionFigure,boundaryFigure])" in legacy
 
 def test_golden_only_catalog_integration():
     cat=load(PH/"learn/catalog.json")

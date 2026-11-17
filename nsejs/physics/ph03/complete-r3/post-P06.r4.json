@@ -1,0 +1,45 @@
+{
+  "schema": "g9-ph03-postattempt/v1",
+  "revision": "ph03-core1ab-r4-20261117",
+  "id": "P06",
+  "academic": "HOLD",
+  "expected": {
+    "vB": 3,
+    "restitution": 0.25,
+    "loss": 9,
+    "admissible": "yes"
+  },
+  "steps": [
+    "Initial system momentum: 3(+4)+2(0)=+12 kg·m/s.",
+    "Measured final A speed +2 m/s gives 3(+2)+2v_B=12; therefore v_B=+3 m/s.",
+    "Along the 1D impact line, the relative separation speed is 3−2=1 m/s and relative approach speed is 4−0=4 m/s; restitution e=1/4=0.25.",
+    "Initial K=½×3×16=24 J; final K=½×3×4+½×2×9=6+9=15 J, so 9 J is converted.",
+    "0≤e≤1 and loss≥0 are consistent with a passive impact, with negligible outside impulse."
+  ],
+  "hints": [
+    "CLARIFY: The outcome includes a measured outgoing speed; the collision law need not be guessed in advance.",
+    "CORRELATE: Recover the other body's outgoing velocity from momentum before classifying the contact through relative speeds.",
+    "OPEN THE WAY: Compare relative speed of separation with relative speed of approach, then use the energy ledger as an independent physical check."
+  ],
+  "firstErrorOrder": [
+    "vB",
+    "restitution",
+    "loss",
+    "admissible"
+  ],
+  "diagnostics": {
+    "vB": "Conserve signed system momentum to reconstruct unmeasured final velocity.",
+    "restitution": "Use final relative separation divided by initial relative approach along the same axis.",
+    "loss": "Calculate energy loss from actual pre- and post-contact velocities, not an assumed elastic model.",
+    "admissible": "A passive idealized collision with no energy input has restitution between zero and one."
+  },
+  "boundaryExpected": {
+    "restitution": 2.125,
+    "admissible": "no"
+  },
+  "boundarySteps": [
+    "With outgoing A velocity −1 m/s, momentum demands 3(−1)+2v_B=12, giving v_B=+7.5 m/s.",
+    "Relative separation is 7.5−(−1)=8.5 m/s; initial approach remains 4 m/s, so e=8.5/4=2.125.",
+    "That exceeds the passive-impact bound e≤1, so the changed measurement cannot describe a passive collision without additional energy input or a changed model."
+  ]
+}

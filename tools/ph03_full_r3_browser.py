@@ -22,11 +22,11 @@ ART.mkdir(parents=True,exist_ok=True)
 
 
 def data(id):
-    return json.loads((DATA/(id+".json")).read_text())
+    return json.loads((DATA/(id+(".json" if id=="P02" else ".r4.json"))).read_text())
 
 
 def post(id):
-    return json.loads((DATA/("post-"+id+".json")).read_text())
+    return json.loads((DATA/("post-"+id+(".json" if id=="P02" else ".r4.json"))).read_text())
 
 
 def url(base,id,mode="practice"):
@@ -78,6 +78,15 @@ def scenario(page,base,id,size,output):
     open_page(page,base,id,"learn")
     expect(page.locator("#model-slider")).to_be_visible()
     expect(page.locator("section.worked")).to_have_count(3)
+    exit_check=page.locator(".core1a-exit")
+    expect(exit_check).to_be_visible()
+    expect(exit_check.locator("summary")).to_have_text("Compare the reasoning")
+    assert not exit_check.locator("details").evaluate("(el)=>el.open"),"Core1A reasoning must start collapsed"
+    exit_check.locator("summary").click()
+    assert exit_check.locator("details").evaluate("(el)=>el.open")
+    expect(exit_check.locator("details p").first).to_be_visible()
+    exit_check.locator("summary").click()
+    assert not exit_check.locator("details").evaluate("(el)=>el.open")
     old=page.locator("#model-output").inner_text()
     slider=page.locator("#model-slider")
     slider.evaluate("(el) => {el.value=el.max;el.dispatchEvent(new Event('input',{bubbles:true}))}")
@@ -85,8 +94,13 @@ def scenario(page,base,id,size,output):
     assert page.locator("img").count()>=1
     assert page.locator("img").first.evaluate("(i)=>i.complete&&i.naturalWidth>0")
     open_page(page,base,id,"practice")
+    if id!="P02":
+        expect(page.locator("main")).to_contain_text("Revised R4 · new reasoning")
+        expect(page.get_by_role("link",name="Review earlier R3 attempts/version")).to_be_visible()
     expect(page.locator("#save-first")).to_be_visible()
-    assert not any("/post-"+id+".json" in x or id+"-solution.svg" in x for x in requests),requests
+    post_path="/post-"+id+(".json" if id=="P02" else ".r4.json")
+    solution_path=id+("-solution.svg" if id=="P02" else "-solution-r4.svg")
+    assert not any(post_path in req or solution_path in req for req in requests),requests
     assert page.locator("#next-hint").count()==0
     assert page.locator("#reveal").count()==0
     page.locator("#save-first").click()
@@ -97,8 +111,8 @@ def scenario(page,base,id,size,output):
     skip_fields(page,u["prompt"]["fields"],"first-")
     page.locator("#save-first").click()
     expect(page.locator("#ph03-status")).to_contain_text("First response saved",timeout=15000)
-    assert any("/post-"+id+".json" in x for x in requests)
-    assert not any(id+"-solution.svg" in x for x in requests)
+    assert any(post_path in req for req in requests)
+    assert not any(solution_path in req for req in requests)
     first=saved(page,id)
     assert first and first["data"]["first"]["prediction"] is None
     assert first["data"]["first"]["reason"] is None
@@ -112,7 +126,7 @@ def scenario(page,base,id,size,output):
         expect(page.locator(".hint")).to_have_count(n)
     page.locator("#reveal").click()
     expect(page.locator("#save-diagnosis")).to_be_visible(timeout=15000)
-    assert any(id+"-solution.svg" in x for x in requests)
+    assert any(solution_path in req for req in requests)
     expect(page.locator(".feedback").first).to_contain_text("First attempt contained explicit unanswered fields")
     press_skip(page,"diag-text")
     page.locator("#save-diagnosis").click()
@@ -242,9 +256,9 @@ def run():
                 # Pin mismatch: modified answer bytes must not display hints/model.
                 ctx=browser.new_context()
                 p=ctx.new_page()
-                p.route("**/post-P04.json",lambda route:route.fulfill(
+                p.route("**/post-P04.r4.json",lambda route:route.fulfill(
                     status=200,content_type="application/json",
-                    body=(DATA/"post-P04.json").read_bytes()+b"\n "))
+                    body=(DATA/"post-P04.r4.json").read_bytes()+b"\n "))
                 open_page(p,base,"P04","practice")
                 press_skip(p,"first-prediction")
                 press_skip(p,"first-reason")

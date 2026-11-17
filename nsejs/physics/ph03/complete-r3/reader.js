@@ -5,6 +5,10 @@
 const mount=document.querySelector("[data-ph03-r3]");
 if(!mount)throw Error("Missing native PH03 mount");
 const unit=mount.dataset.unit,mode=mount.dataset.mode;
+const legacyRequested=new URLSearchParams(location.search).get("revision")==="r3";
+const usesR4=!legacyRequested&&["P01","P04","P05","P06","P07"].includes(unit);
+const taskFile=usesR4?unit+".r4.json":unit+".json";
+const postFile=usesR4?"post-"+unit+".r4.json":"post-"+unit+".json";
 if(!/^(P01|P02|P04|P05|P06|P07)$/.test(unit)||!["learn","practice"].includes(mode))throw Error("Unregistered PH03 page");
 const base=new URL("./",import.meta.url),physics=new URL("../../",base);
 const $=id=>document.getElementById(id);
@@ -20,7 +24,7 @@ const digest=async(algorithm,bytes)=>hex(await crypto.subtle.digest(algorithm,by
 const encoder=new TextEncoder(),decoder=new TextDecoder("utf-8",{fatal:true});
 const parse=bytes=>JSON.parse(decoder.decode(bytes));
 const blobSha=async bytes=>{const header=encoder.encode("blob "+bytes.byteLength+"\0"),merged=new Uint8Array(header.length+bytes.byteLength);merged.set(header);merged.set(new Uint8Array(bytes),header.length);return digest("SHA-1",merged)};
-let content,firstImage,promptImage,postCache=null,solutionImage=null,revision,storeKey,exposureKey,rec,revisionSafe=false;
+let content,firstImage,promptImage,postCache=null,solutionImage=null,revision,storeKey,exposureKey,rec,revisionSafe=false,exitCheck=null;
 const fail=err=>{mount.innerHTML='<article class="hold"><h1>Learning path on HOLD</h1><p>'+escapeHtml(err.message||err)+'</p><p>No answers or mastery were released. You can return to the '+link(chapter,"chapter overview")+'.</p></article>'};
 const link=(href,label,cls="")=>'<a'+(cls?' class="'+escapeHtml(cls)+'"':"")+' href="'+escapeHtml(href)+'">'+escapeHtml(label)+'</a>';
 const figure=(image,caption)=>'<figure><img src="'+escapeHtml(image.url)+'" width="940" height="345" alt="'+escapeHtml(image.alt)+'"><figcaption>'+escapeHtml(caption)+'</figcaption></figure>';
@@ -81,7 +85,7 @@ const safeModel=(kind,v)=>{
  return {label,value,explain};
 };
 function writeHeader(current){
- return '<p class="eyebrow">NSEJS Physics · PH03 Momentum and Collisions</p><h1>'+escapeHtml(content.title)+'</h1>'+
+ return '<p class="eyebrow">NSEJS Physics · PH03 Momentum and Collisions</p><h1>'+escapeHtml(content.title)+'</h1>'+(usesR4?'<p class="mini"><strong>Revised R4 · new reasoning</strong> · '+link(canonical(mode)+"?revision=r3","Review earlier R3 attempts/version")+'</p>':legacyRequested?'<p class="mini"><strong>Earlier R3 version</strong> · saved attempts remain separate · '+link(canonical(mode),"Open latest challenge")+'</p>':"")+
  '<p class="hold"><strong>AUTHOR CANDIDATE · ACADEMIC HOLD.</strong> '+escapeHtml(content.scope)+' · Source/rights, independent science, QRT and B1–B7 not accepted. '+(content.scope==="EXTENSION_REVIEW"?"Extension review only; not promoted to mandatory syllabus.":"Not an authenticated original examination question.")+'</p>'+
  '<nav aria-label="PH03 journey">'+link(chapter,"Chapter overview")+link(canonical("learn"),"Learn")+link(canonical("practice"),"Try it")+link(sourceUrl,"Source status (HOLD)")+'</nav>';
 }
@@ -96,6 +100,7 @@ function renderLearn(){
  figure(firstImage,"Author-created worked-model diagram. This is NOT a reconstruction of any NSEJS source figure.")+examples+
  '<section><h2>Common wrong route</h2><p><strong>Temptation:</strong> '+escapeHtml(content.trap.wrong)+'</p><p><strong>Repair:</strong> '+escapeHtml(content.trap.repair)+'</p></section>'+
  modelHTML()+'<section><h2>Conditions and validity boundaries</h2>'+htmlList(content.assumptions)+'</section>'+
+ '<section class="core1a-exit"><h2>Independent synthesis check</h2><p>'+escapeHtml(exitCheck.question)+'</p><p class="mini">Think through the mechanism before revealing the explanation. This is optional Core1A study, not a graded Core1B attempt or an exam question.</p><details><summary>Compare the reasoning</summary><p>'+escapeHtml(exitCheck.answer)+'</p><p><strong>Independent check:</strong> '+escapeHtml(exitCheck.check)+'</p></details></section>'+
  '<p class="actions">'+link(canonical("practice"),"Try a fresh changed problem","primary")+link(sourceUrl,"See related source status")+'</p></article>';
  $("model-slider").oninput=()=>{const v=Number($("model-slider").value),m=safeModel(content.model.kind,v);$("model-output").textContent=m.label+" · "+m.value;$("model-context").textContent=m.explain};$("model-slider").dispatchEvent(new Event("input"));
 }
@@ -103,7 +108,7 @@ let modelLoading=null;
 async function loadPost(){
  if(!rec?.first)throw Error("Protected answer requested before first attempt");
  if(postCache)return postCache;
- if(!modelLoading)modelLoading=(async()=>{const bytes=await readUrl("post-"+unit+".json"),sha=await blobSha(bytes);if(sha!==content.postBlobSha1)throw Error("Postattempt byte pin mismatch");
+ if(!modelLoading)modelLoading=(async()=>{const bytes=await readUrl(postFile),sha=await blobSha(bytes);if(sha!==content.postBlobSha1)throw Error("Postattempt byte pin mismatch");
  const p=parse(bytes);if(p.id!==unit||p.revision!==content.revision||p.academic!=="HOLD"||p.schema!=="g9-ph03-postattempt/v1")throw Error("Postattempt identity mismatch");
  return p;})();
  postCache=await modelLoading;return postCache;
@@ -178,14 +183,14 @@ async function renderPractice(){
 async function initialize(){
  try{
  if(!crypto?.subtle||!navigator.locks)throw Error("WebCrypto and cross-tab Web Locks are required for revision-bound attempt safety");
- probe();const bytes=await readUrl(unit+".json");content=parse(bytes);
- if(content.schema!=="g9-ph03-authored-lesson/v1"||content.academic!=="HOLD"||content.id!==unit||!content.postBlobSha1||!content.figures||content.sourceRole!=="AUTHOR_EXPOSITION_AND_TRANSFER_NOT_EXAM")throw Error("Unexpected PH03 content or release state");
+ probe();const bytes=await readUrl(taskFile);content=parse(bytes);
+ if(content.schema!=="g9-ph03-authored-lesson/v1"||content.academic!=="HOLD"||content.id!==unit||!content.postBlobSha1||!content.figures||content.sourceRole!=="AUTHOR_EXPOSITION_AND_TRANSFER_NOT_EXAM"||(usesR4&&content.taskVariant!=="CORE1AB_R4_NOVEL_W_CANDIDATE"))throw Error("Unexpected PH03 content or release state");
  firstImage=await loadFigure("guide");
  if(mode==="practice")promptImage=await loadFigure("prompt");
  revision=await digest("SHA-256",encoder.encode(JSON.stringify([decoder.decode(bytes),firstImage.sha,promptImage?.sha||"",content.postBlobSha1,content.solutionBlobSha1||""])));
  storeKey="G9V41:PH03:R3:"+unit+":"+revision;exposureKey="G9V41:PH03:R3:EXPOSE:"+unit+":"+content.revision;
  revisionSafe=true;
- if(mode==="learn"){await expose();renderLearn()}else await renderPractice();
+ if(mode==="learn"){const exitPacket=parse(await readUrl("exit-checks.v1.json"));if(exitPacket.schema!=="g9-ph03-core1a-exit/v1"||exitPacket.academic!=="HOLD"||exitPacket.source_role!=="AUTHORED_TEACHING_NOT_EXAM")throw Error("Invalid Core1A exit packet");exitCheck=exitPacket.units?.[unit];if(!exitCheck||![exitCheck.question,exitCheck.answer,exitCheck.check].every(x=>typeof x==="string"&&x.trim()))throw Error("Missing Core1A independent synthesis");await expose();renderLearn()}else await renderPractice();
  window.addEventListener("storage",ev=>{if(mode!=="practice"||!revisionSafe)return;if(ev.key===storeKey||ev.key===null){try{const fresh=readRecord();if(JSON.stringify(fresh)!==JSON.stringify(rec))renderPractice().catch(fail)}catch(err){fail(err)}}});
  }catch(err){fail(err)}
 }

@@ -1,0 +1,156 @@
+{
+  "id": "P01",
+  "title": "Momentum as mass times signed velocity",
+  "scope": "CORE_CANDIDATE",
+  "sourceLeads": [
+    "NSEJS-2023-C51-Q33",
+    "NSEJS-2024-C51-Q43"
+  ],
+  "prereq": "PH01 signed velocity, speed and SI units; PH02 inertial reference frames.",
+  "goals": [
+    "Calculate signed momentum for a body and a multi-body system.",
+    "Compare momentum and kinetic energy without conflating signs.",
+    "Recognise the frame and external impulse required for a conservation claim."
+  ],
+  "sections": [
+    {
+      "heading": "Choose a direction and a reference frame",
+      "body": "Momentum measures directed motion: p = mv. In a 1D laboratory frame with right positive, a 4 kg body travelling left at 2 m/s has p = −8 kg·m/s. State both the mass and signed velocity in the same frame. Units are kg·m/s, equivalent to N·s."
+    },
+    {
+      "heading": "Momentum adds with signs",
+      "body": "System momentum is the algebraic sum of every body's signed mv. Opposite signed momenta can cancel even when both bodies are moving. A system total of zero does not mean each body is at rest."
+    },
+    {
+      "heading": "Energy answers a different question",
+      "body": "Translational kinetic energy K = ½mv² is never negative; the speed is squared. Reverse an arrow and the momentum reverses, but the kinetic energy stays the same. Equal momentum does not imply equal kinetic energy, and equal kinetic energy need not imply equal momentum."
+    },
+    {
+      "heading": "What is actually conserved?",
+      "body": "In a fixed chosen system, momentum changes by NET external impulse. Momentum can be calculated at any instant without asserting conservation. Before carrying it across an interaction, inspect all external forces and the time interval."
+    },
+    {
+      "heading": "Inferring an unobserved object's mass and direction",
+      "body": "Two independent system measurements may reveal hidden properties without observing the object directly. Choose one signed frame. Subtract the known body's momentum from the signed system momentum to find p of the unknown body; separately subtract the known kinetic energy to find its nonnegative K. For a single body p=mv and K=½mv² imply p²=2mK, giving m=p²/(2K) when K>0, and v=p/m. If p is nonzero while K is zero, no finite positive mass can satisfy both readings. This validity check is just as important as the numerical inverse."
+    }
+  ],
+  "worked": [
+    {
+      "name": "Foundation · leftward cart",
+      "setup": "A 4 kg cart travels at −2 m/s.",
+      "steps": [
+        "Right-positive sign gives v = −2 m/s.",
+        "p = 4(−2) = −8 kg·m/s.",
+        "K = ½×4×(−2)² = +8 J."
+      ],
+      "check": "Its momentum points left; its kinetic energy is positive."
+    },
+    {
+      "name": "Connected · equal momentum, unequal energy",
+      "setup": "Two carts have 2 kg at +3 m/s and 6 kg at +1 m/s.",
+      "steps": [
+        "Each momentum is +6 kg·m/s.",
+        "Energies: ½×2×9 = 9 J; ½×6×1 = 3 J.",
+        "Thus equal p does not imply equal K."
+      ],
+      "check": "Heavier carts can have the same p at a lower speed."
+    },
+    {
+      "name": "Transfer · equal energy, different momentum",
+      "setup": "Compare 1 kg at +6 m/s and 4 kg at +3 m/s.",
+      "steps": [
+        "Both have 18 J of kinetic energy.",
+        "Momenta are +6 and +12 kg·m/s respectively.",
+        "Squaring in K loses direction information, so keep signed momentum separately."
+      ],
+      "check": "A larger mass at the same K has a larger momentum magnitude."
+    }
+  ],
+  "trap": {
+    "wrong": "Add magnitudes of opposite-direction velocities, or assign negative kinetic energy.",
+    "repair": "Draw right/left signs before summing mv; calculate each positive ½mv² separately."
+  },
+  "assumptions": [
+    "Masses are constant and positive.",
+    "Velocities use one common inertial frame.",
+    "Conservation requires an isolated system or explicitly accounted external impulse."
+  ],
+  "model": {
+    "kind": "signed-momentum",
+    "label": "Teaching model: velocity of a 2 kg cart",
+    "min": -5,
+    "max": 5,
+    "step": 0.5,
+    "value": -2,
+    "unit": "m/s"
+  },
+  "prompt": {
+    "stem": "Right is positive in a common laboratory frame. Cart A: mass 2 kg, velocity +3 m/s. Cart B: UNKNOWN positive mass and UNKNOWN signed velocity. Independent system measurements give TOTAL momentum 0 kg·m/s and TOTAL kinetic energy 15 J. Infer cart B's mass, velocity, signed momentum and kinetic energy; verify both measurements. Do not assume cart B's mass or speed.",
+    "prediction": "Must B move left or right? Can kinetic energy reveal the sign?",
+    "fields": [
+      {
+        "id": "hiddenMass",
+        "label": "Mass of hidden cart B",
+        "type": "number",
+        "unit": "kg"
+      },
+      {
+        "id": "hiddenV",
+        "label": "Signed velocity of B",
+        "type": "number",
+        "unit": "m/s"
+      },
+      {
+        "id": "hiddenP",
+        "label": "Signed momentum of B",
+        "type": "number",
+        "unit": "kg·m/s"
+      },
+      {
+        "id": "hiddenK",
+        "label": "Kinetic energy of B",
+        "type": "number",
+        "unit": "J"
+      }
+    ],
+    "boundaryPrompt": "Now the instruments read TOTAL kinetic energy 9 J, while TOTAL momentum is still zero and cart A is unchanged. Is there any finite positive mass for B consistent with BOTH measurements? Record B's required momentum.",
+    "boundaryFields": [
+      {
+        "id": "feasible",
+        "label": "Both measurements physically feasible?",
+        "type": "choice",
+        "options": [
+          {
+            "value": "no",
+            "text": "No"
+          },
+          {
+            "value": "yes",
+            "text": "Yes"
+          }
+        ]
+      },
+      {
+        "id": "hiddenP",
+        "label": "Required momentum of B",
+        "type": "number",
+        "unit": "kg·m/s"
+      }
+    ]
+  },
+  "schema": "g9-ph03-authored-lesson/v1",
+  "revision": "ph03-core1ab-r4-20261117",
+  "sourceRole": "AUTHOR_EXPOSITION_AND_TRANSFER_NOT_EXAM",
+  "academic": "HOLD",
+  "assessedFreeText": false,
+  "postBlobSha1": "7d9dc012d9df6766f61e3419c6f62959fd8c30ba",
+  "figures": {
+    "guide": "figures/P01-guide.svg",
+    "prompt": "figures/P01-prompt-r4.svg",
+    "solution": "figures/P01-solution-r4.svg"
+  },
+  "solutionBlobSha1": "de4b812b95c1fb7c3abf4c0b6b0f363724a84fae",
+  "researchNote": "Unlike the worked cart comparison, BOTH mass and velocity of B are absent. Reconstruction joins independent total-energy and signed-momentum constraints.",
+  "taskVariant": "CORE1AB_R4_NOVEL_W_CANDIDATE",
+  "historicalTaskFile": "P01.json"
+}

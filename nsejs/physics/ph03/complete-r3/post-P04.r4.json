@@ -1,0 +1,45 @@
+{
+  "schema": "g9-ph03-postattempt/v1",
+  "revision": "ph03-core1ab-r4-20261117",
+  "id": "P04",
+  "academic": "HOLD",
+  "expected": {
+    "vB": 2.6666666666666665,
+    "externalA": 2,
+    "externalB": 2,
+    "totalP": 4
+  },
+  "steps": [
+    "For the two-skater system, internal +6/−6 N·s impulses cancel; the net external impulse +4 N·s fixes total final p=+4 kg·m/s.",
+    "A's measured final v_A=−2 m/s gives p_A=2(−2)=−4 kg·m/s.",
+    "Thus p_B=+4−(−4)=+8 kg·m/s, and v_B=8/3 m/s.",
+    "A's total impulse −4 N·s comprises internal −6 and external +2 N·s; therefore B receives remaining external +2 N·s.",
+    "Cross-check B: internal +6 plus external +2 equals +8 kg·m/s."
+  ],
+  "hints": [
+    "CLARIFY: Equal contact impulses belong to different skaters; a separate outside mechanism acts on the two-body system.",
+    "CORRELATE: Start with total system impulse and the measured momentum of skater A before attempting to distribute external impulse.",
+    "OPEN THE WAY: Combine the pair ledger with each person's individual impulse ledger; infer the missing external allocation rather than guessing it."
+  ],
+  "firstErrorOrder": [
+    "vB",
+    "externalA",
+    "externalB",
+    "totalP"
+  ],
+  "diagnostics": {
+    "vB": "Subtract measured A momentum from total system momentum before dividing by B mass.",
+    "externalA": "For skater A alone, distinguish internal impulse from total measured momentum change.",
+    "externalB": "Outside impulse on B is what remains after assigning the outside impulse to A.",
+    "totalP": "Only the external net impulse changes total pair momentum."
+  },
+  "boundaryExpected": {
+    "unique": "no",
+    "totalP": 4
+  },
+  "boundarySteps": [
+    "Without the A velocity measurement, the system still has net momentum +4 kg·m/s.",
+    "Many external allocations between A and B are compatible with that total.",
+    "Therefore individual speeds are not uniquely fixed; only the combined momentum is determined."
+  ]
+}

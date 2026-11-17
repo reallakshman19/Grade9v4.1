@@ -1,0 +1,260 @@
+{
+  "schema": "g9v41-r01-cold-first-pass/v1",
+  "notice": "AUTHOR_CREATED_SANITIZED_FIRST_PASS_INPUT_NO_REVIEWER_HAS_YET_SEALED_OR_ACCEPTED",
+  "subject": "Physics",
+  "scope": "PH03 5 R4 author transfer + PH06 U08 author transfer",
+  "source_authenticity": "HOLD",
+  "instructions": "Dispatcher must give this packet ONLY to a genuinely unexposed reviewer; reviewer independently solves each exact question without seeing task's worked guide, postattempt JSON, answers, author W, QRT or B1-B7 proposed verdict; seal signed result and digest before reconciliation.",
+  "task_count": 6,
+  "tasks": [
+    {
+      "id": "PH03-P01",
+      "task_revision": "ph03-core1ab-r4-20261117",
+      "task_blob_sha1": "44fd3bd4520700c252659d4004bc7831445be8a6",
+      "source_role": "AUTHORED_TRANSFER_NOT_ORIGINAL_EXAM",
+      "question": "Right is positive in a common laboratory frame. Cart A: mass 2 kg, velocity +3 m/s. Cart B: UNKNOWN positive mass and UNKNOWN signed velocity. Independent system measurements give TOTAL momentum 0 kg·m/s and TOTAL kinetic energy 15 J. Infer cart B's mass, velocity, signed momentum and kinetic energy; verify both measurements. Do not assume cart B's mass or speed.",
+      "prediction": "Must B move left or right? Can kinetic energy reveal the sign?",
+      "fields": [
+        {
+          "id": "hiddenMass",
+          "label": "Mass of hidden cart B",
+          "type": "number",
+          "unit": "kg"
+        },
+        {
+          "id": "hiddenV",
+          "label": "Signed velocity of B",
+          "type": "number",
+          "unit": "m/s"
+        },
+        {
+          "id": "hiddenP",
+          "label": "Signed momentum of B",
+          "type": "number",
+          "unit": "kg·m/s"
+        },
+        {
+          "id": "hiddenK",
+          "label": "Kinetic energy of B",
+          "type": "number",
+          "unit": "J"
+        }
+      ],
+      "figure_path": "nsejs/physics/ph03/complete-r3/figures/P01-prompt-r4.svg"
+    },
+    {
+      "id": "PH03-P04",
+      "task_revision": "ph03-core1ab-r4-20261117",
+      "task_blob_sha1": "42d6b809449d80c18d346ca1c899ed97c45d89b2",
+      "source_role": "AUTHORED_TRANSFER_NOT_ORIGINAL_EXAM",
+      "question": "Skaters A (2 kg) and B (3 kg) start at rest. In a brief contact A receives −6 N·s from B and B receives +6 N·s from A. An outside actuator delivers NET +4 N·s to the PAIR during the same interval; its distribution is UNKNOWN. A sensor measures final velocity of A as −2 m/s. Infer final signed velocity of B, external impulse on EACH skater, and final pair momentum; reconcile the two individual impulse ledgers.",
+      "prediction": "Does the measured velocity of one skater resolve the unknown external allocation?",
+      "fields": [
+        {
+          "id": "vB",
+          "label": "Final velocity of B",
+          "type": "number",
+          "unit": "m/s"
+        },
+        {
+          "id": "externalA",
+          "label": "Outside impulse on A",
+          "type": "number",
+          "unit": "N·s"
+        },
+        {
+          "id": "externalB",
+          "label": "Outside impulse on B",
+          "type": "number",
+          "unit": "N·s"
+        },
+        {
+          "id": "totalP",
+          "label": "Final pair momentum",
+          "type": "number",
+          "unit": "kg·m/s"
+        }
+      ],
+      "figure_path": "nsejs/physics/ph03/complete-r3/figures/P04-prompt-r4.svg"
+    },
+    {
+      "id": "PH03-P05",
+      "task_revision": "ph03-core1ab-r4-20261117",
+      "task_blob_sha1": "a0c6ef7a1694e162f22d2e5d757688069e3bf841",
+      "source_role": "AUTHORED_TRANSFER_NOT_ORIGINAL_EXAM",
+      "question": "A platform of 8 kg carries a 2 kg load. Initially BOTH move right at +1 m/s LAB. The load is ejected internally rightward at +5 m/s RELATIVE TO THE FINAL PLATFORM, with negligible outside horizontal impulse. Determine the platform's final laboratory velocity, load's final laboratory velocity, system momentum and centre-of-mass velocity; show why relative and lab speed cannot be interchanged.",
+      "prediction": "Must the initially moving platform recoil left, stop, or keep moving right? Explain how frame choice matters.",
+      "fields": [
+        {
+          "id": "platformV",
+          "label": "Final platform velocity LAB",
+          "type": "number",
+          "unit": "m/s"
+        },
+        {
+          "id": "loadLab",
+          "label": "Final load velocity LAB",
+          "type": "number",
+          "unit": "m/s"
+        },
+        {
+          "id": "totalP",
+          "label": "Final system momentum LAB",
+          "type": "number",
+          "unit": "kg·m/s"
+        },
+        {
+          "id": "cmV",
+          "label": "Centre-of-mass velocity LAB",
+          "type": "number",
+          "unit": "m/s"
+        }
+      ],
+      "figure_path": "nsejs/physics/ph03/complete-r3/figures/P05-prompt-r4.svg"
+    },
+    {
+      "id": "PH03-P06",
+      "task_revision": "ph03-core1ab-r4-20261117",
+      "task_blob_sha1": "23db292af9128c7709f8c397916e64bd5d363e72",
+      "source_role": "AUTHORED_TRANSFER_NOT_ORIGINAL_EXAM",
+      "question": "A 3 kg cart A moving right at +4 m/s strikes a resting 2 kg cart B in a brief CENTRAL 1D contact. External horizontal impulse is negligible. AFTER contact, a sensor measures cart A at +2 m/s. The collision is passive, with no extra source of kinetic energy. Infer B's velocity, the coefficient of restitution, translational kinetic energy converted, and whether the observed outcome is physically admissible under 0≤e≤1. Do not assume sticking or elastic contact.",
+      "prediction": "Which outgoing measurement lets you decide the contact regime without assuming it in advance?",
+      "fields": [
+        {
+          "id": "vB",
+          "label": "Final velocity of cart B",
+          "type": "number",
+          "unit": "m/s"
+        },
+        {
+          "id": "restitution",
+          "label": "Inferred restitution coefficient e",
+          "type": "number",
+          "unit": "dimensionless"
+        },
+        {
+          "id": "loss",
+          "label": "Kinetic energy converted during contact",
+          "type": "number",
+          "unit": "J"
+        },
+        {
+          "id": "admissible",
+          "label": "Passive outcome physically admissible?",
+          "type": "choice",
+          "options": [
+            {
+              "value": "yes",
+              "text": "Yes"
+            },
+            {
+              "value": "no",
+              "text": "No"
+            }
+          ]
+        }
+      ],
+      "figure_path": "nsejs/physics/ph03/complete-r3/figures/P06-prompt-r4.svg"
+    },
+    {
+      "id": "PH03-P07",
+      "task_revision": "ph03-core1ab-r4-20261117",
+      "task_blob_sha1": "bac5ea163ab078f89c3af13ac8c55fbb7376e56e",
+      "source_role": "AUTHORED_TRANSFER_NOT_ORIGINAL_EXAM",
+      "question": "On a right-positive track, a 1 kg cart at +6 m/s STICKS to a resting 2 kg cart in a brief first impact. The joined assembly travels on a rough horizontal strip toward a stationary 1 kg cart C, located 0.75 m ahead. Kinetic friction μ=0.20, g=10 m/s². Friction during brief impact is negligible and C will stick IF REACHED. The second collision is NOT guaranteed. Find first joined speed, threshold μ_crit for reaching C, whether C is hit, speed immediately before C and the final speed if it sticks.",
+      "prediction": "Which reachability test must precede a second-impact momentum calculation?",
+      "fields": [
+        {
+          "id": "firstV",
+          "label": "Speed after first impact",
+          "type": "number",
+          "unit": "m/s"
+        },
+        {
+          "id": "thresholdMu",
+          "label": "Limiting μ for just reaching C",
+          "type": "number",
+          "unit": "dimensionless"
+        },
+        {
+          "id": "reach",
+          "label": "Does the second impact occur?",
+          "type": "choice",
+          "options": [
+            {
+              "value": "yes",
+              "text": "Yes"
+            },
+            {
+              "value": "no",
+              "text": "No"
+            }
+          ]
+        },
+        {
+          "id": "preImpact",
+          "label": "Speed just before C if reached",
+          "type": "number",
+          "unit": "m/s"
+        },
+        {
+          "id": "finalV",
+          "label": "Joined speed after C if reached",
+          "type": "number",
+          "unit": "m/s"
+        }
+      ],
+      "figure_path": "nsejs/physics/ph03/complete-r3/figures/P07-prompt-r4.svg"
+    },
+    {
+      "id": "PH06-U08",
+      "task_revision": "r2-20261115",
+      "task_blob_sha1": "685e790ac87d3c8703e5d071e4401238483f7c99",
+      "source_role": "AUTHORED_TRANSFER_FROM_LOCATOR_ONLY_NOT_AUTHENTICATED_EXAM",
+      "question": "A sealed rigid rectangular float of cross-sectional area 100 cm² and height 30 cm has mass 2.60 kg, including removable internal ballast. It is guided upright by an ideal guide which exerts no vertical force. It floats in a large tank with an upper liquid of density 800 kg/m³ and a lower immiscible liquid of density 1200 kg/m³. The upper layer has unknown thickness d. The float crosses the liquid interface, and its bottom is 25 cm below the upper free surface. Find d and test whether the stated geometry is physically consistent. Then 0.80 kg of ballast is added inside the float without changing its external volume. Determine the new depth of its top below the free surface, identifying the immersion regime. Assume fixed layer levels, uniform g = 10 N/kg, negligible air buoyancy, capillary effects, drag and vertical guide friction; wait for static equilibrium. No tank contact.",
+      "prediction": "Predict the loaded float's position relative to the free surface and explain your intuition.",
+      "fields": [
+        {
+          "id": "depth",
+          "label": "Initial upper-layer thickness d (cm)",
+          "type": "number"
+        },
+        {
+          "id": "initial",
+          "label": "Initial immersion regime",
+          "type": "select",
+          "options": [
+            "Upper liquid only",
+            "Partly emerged, crosses interface",
+            "Fully submerged, crosses interface",
+            "Entirely lower liquid",
+            "No equilibrium"
+          ]
+        },
+        {
+          "id": "check",
+          "label": "Your limiting or feasibility check (write a quantity, equation or condition)",
+          "type": "text"
+        },
+        {
+          "id": "loaded",
+          "label": "Loaded immersion regime",
+          "type": "select",
+          "options": [
+            "Upper liquid only",
+            "Partly emerged, crosses interface",
+            "Fully submerged, crosses interface",
+            "Entirely lower liquid",
+            "No equilibrium"
+          ]
+        },
+        {
+          "id": "top",
+          "label": "Loaded top depth (cm; positive below surface)",
+          "type": "number"
+        }
+      ],
+      "figure_path": "nsejs/physics/ph06/figures/u08-prompt.svg"
+    }
+  ]
+}
