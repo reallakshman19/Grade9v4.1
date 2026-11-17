@@ -512,6 +512,17 @@
       color: #64748b;
       font-size: 13px;
     }
+    /* One first-screen route to the existing bank, while preserving the chapter spine. */
+    .g9-primary-study-routes,.g9-bank-quicklinks{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 18px}
+    .g9-primary-study-link{display:inline-flex;align-items:center;justify-content:center;min-height:48px;
+      padding:10px 15px;background:#eff9ff;border:2px solid #93c5fd;border-radius:10px;
+      font-size:14px;font-weight:800;color:#144665;text-decoration:none}
+    .g9-bank-entry-link{background:#ccfbf1;border-color:#5eead4;color:#134e4a}
+    .g9-primary-study-link:hover,.g9-primary-study-link:focus-visible{text-decoration:underline;outline-offset:3px}
+    .g9-bank-quicklinks a{min-height:44px;display:inline-flex;align-items:center;padding:8px 12px;border:1px solid #8ad2d4;
+      border-radius:9px;background:#ebfafa;color:#0d5264;font-size:13px;font-weight:750;text-decoration:none}
+    .g9-bank-quicklinks a:hover,.g9-bank-quicklinks a:focus-visible{text-decoration:underline;outline-offset:2px}
+    .g9-bank-disclaimer{padding:12px 15px;background:#fff8e7;border-left:4px solid #b87919;border-radius:7px;font-size:13px;color:#694a1d}
   </style>
 <link rel="stylesheet" href="learn/learner-navigation.css">
 </head>
@@ -541,7 +552,12 @@
         </span>
       </div>
       <h1>NSEJS Physics — Learn, Practise and Explore</h1>
-      <p>Choose a chapter below. Read the explanation, attempt independent reasoning, and explore related question candidates when ready. All lessons retain their original content and saved work.</p>
+      <p>Choose a Physics chapter to study, or open the searchable Physics Question Bank. The bank contains 109 authored and source-claimed candidate questions across six topics; examination authenticity and academic approval remain HOLD.</p>
+      <nav class="g9-primary-study-routes" aria-label="Physics chapters and question bank">
+        <a class="g9-primary-study-link" href="#learn-physics">📘 Study the 12 Physics chapters</a>
+        <a class="g9-primary-study-link g9-bank-entry-link" href="index.html?topic=optics#topicWorkspace">🔭 Open Physics Question Bank · 109 candidates</a>
+        <a class="g9-primary-study-link" href="#qbFilters">Browse all 6 question-bank topics</a>
+      </nav>
       <div class="hero-breadcrumbs">
         <a href="../../index.html">Home</a> / <a href="../index.html">NSEJS</a> / <span>Physics Topics</span>
       </div>
@@ -571,8 +587,16 @@
 </section>
 <!-- NATIVE LEARNER NAVIGATION R1 END -->
 
-<details id="g9-explore-bank" class="g9-bank-archive"><summary><strong>Explore question candidates and extra practice</strong><span>Six topic filters · Existing links still work</span></summary>
+<details id="g9-explore-bank" class="g9-bank-archive" open><summary><strong>Physics Question Bank · 109 candidate questions</strong><span>Six searchable topics · Academic and source review HOLD</span></summary>
 <div class="g9-bank-archive-body">
+<nav class="g9-bank-quicklinks" aria-label="Physics question-bank entry">
+  <a href="#qbFilters">Browse all six topics and filters</a>
+  <a href="index.html?topic=optics#topicWorkspace">Start with Optics (10)</a>
+  <a href="index.html?topic=mechanics#topicWorkspace">Mechanics (11)</a>
+  <a href="index.html?topic=circuits#topicWorkspace">Circuits (66)</a>
+  <a href="index.html?topic=fluids#topicWorkspace">Fluids and Sound (2)</a>
+</nav>
+<p class="g9-bank-disclaimer">This is an authored/source-claimed <strong>candidate</strong> bank, not authenticated NSEJS examination material. Source, academic and QRT admission remain <strong>HOLD</strong>.</p>
 <details id="ph05-gravitation-native" class="source-drawer"><summary>Gravitation · additional candidate constructions (review access)</summary><p><a href="textbook/PH05/index.html">Gravitation textbook candidate</a> · <a href="core1/PH05/main/index.html">Related D3/D4 authored constructions (academic HOLD)</a></p></details>
 <!-- Dedicated native PH02 study routes, distinct from older six-domain Core2 cards. -->
     <section id="ph02-forces-native" aria-labelledby="ph02-forces-heading"
@@ -982,7 +1006,8 @@
 
   <script>
     function openTopicQBank(topicKey) {
-      window.location.href = "question-bank.html?topic=" + encodeURIComponent(topicKey);
+      if(window.selectPhysicsTopic){document.getElementById("g9-explore-bank").open=true;window.selectPhysicsTopic(topicKey);return;}
+      window.location.href = "index.html?topic=" + encodeURIComponent(topicKey) + "#topicWorkspace";
     }
 
     function filterTopics(topicKey) {
