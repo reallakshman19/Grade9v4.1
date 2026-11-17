@@ -1,0 +1,48 @@
+{
+  "schema": "g9-ph03-postattempt/v1",
+  "revision": "ph03-core1ab-r4-20261117",
+  "id": "P07",
+  "academic": "HOLD",
+  "expected": {
+    "firstV": 2,
+    "thresholdMu": 0.26666666666666666,
+    "preImpact": 1,
+    "finalV": 0.75,
+    "reach": "yes"
+  },
+  "steps": [
+    "The first brief sticking contact conserves momentum: (1×6+2×0)/(1+2)=+2 m/s for the 3 kg assembly.",
+    "Before the second target, friction may stop the assembly. The threshold friction coefficient for reaching distance L=0.75 m is μ_crit=v₀²/(2gL)=4/15≈0.266667.",
+    "With actual μ=0.20 below threshold, v_before²=2²−2(0.2)(10)(0.75)=1, so v_before=+1 m/s and the second collision occurs.",
+    "The 3 kg assembly then sticks to a stationary 1 kg cart: final velocity=(3×1)/(3+1)=+0.75 m/s.",
+    "Do not apply a second-impact conservation equation until the distance and stopping test permits contact."
+  ],
+  "hints": [
+    "CLARIFY: The problem does not guarantee a second collision; the distance to it matters.",
+    "CORRELATE: Determine the first common speed, then treat frictional travel as a separate interval with a stopping condition.",
+    "OPEN THE WAY: Identify the limiting coefficient where the assembly comes to rest exactly at the obstacle, then decide whether the second contact exists."
+  ],
+  "firstErrorOrder": [
+    "firstV",
+    "thresholdMu",
+    "preImpact",
+    "finalV",
+    "reach"
+  ],
+  "diagnostics": {
+    "firstV": "Use the first short-contact total momentum and joined mass.",
+    "thresholdMu": "Set the stopping distance equal to the obstacle distance, using the first-contact speed.",
+    "preImpact": "Do not conserve momentum through the frictional slide; use a speed-distance or work-energy check.",
+    "finalV": "Only if the obstacle is reached is a second sticking collision defined.",
+    "reach": "Compare friction coefficient with the physical reachability threshold."
+  },
+  "boundaryExpected": {
+    "reach": "no",
+    "stopDistance": 0.6666666666666666
+  },
+  "boundarySteps": [
+    "After the same first impact the assembly starts at +2 m/s.",
+    "With μ=0.30, its stopping distance is v₀²/(2μg)=4/6=2/3 m≈0.6667 m.",
+    "The target is 0.75 m away; the assembly stops short and a second collision never occurs."
+  ]
+}
