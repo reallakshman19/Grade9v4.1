@@ -1,0 +1,45 @@
+{
+  "schema": "g9-ph03-postattempt/v1",
+  "revision": "ph03-core1ab-r4-20261117",
+  "id": "P01",
+  "academic": "HOLD",
+  "expected": {
+    "hiddenMass": 3,
+    "hiddenV": -2,
+    "hiddenP": -6,
+    "hiddenK": 6
+  },
+  "steps": [
+    "Known cart A: p_A=2×(+3)=+6 kg·m/s and K_A=½×2×3²=9 J.",
+    "Observed totals: p_B=0−6=−6 kg·m/s; K_B=15−9=6 J.",
+    "For the unknown cart, p_B²=2m_B K_B; hence m_B=36/(2×6)=3 kg.",
+    "v_B=p_B/m_B=−6/3=−2 m/s; check p_A+p_B=0 and K_A+K_B=15 J."
+  ],
+  "hints": [
+    "CLARIFY: The two measurements describe different physical sums: signed momentum and nonnegative energy.",
+    "CORRELATE: Reconstruct the unknown cart's contribution to each total by subtracting the known cart, using consistent lab signs.",
+    "OPEN THE WAY: Keep the unknown cart's signed momentum and kinetic energy as separate constraints; eliminate one unknown with the momentum relation, but perform the algebra yourself."
+  ],
+  "firstErrorOrder": [
+    "hiddenMass",
+    "hiddenV",
+    "hiddenP",
+    "hiddenK"
+  ],
+  "diagnostics": {
+    "hiddenMass": "Do not treat the signed momentum as a mass. Use both independent measurements.",
+    "hiddenV": "Momentum's negative sign determines direction; kinetic energy does not.",
+    "hiddenP": "Subtract the known cart's +6 kg·m/s contribution from the observed system momentum.",
+    "hiddenK": "Subtract the known cart's 9 J from the measured total energy."
+  },
+  "boundaryExpected": {
+    "feasible": "no",
+    "hiddenP": -6
+  },
+  "boundarySteps": [
+    "With the unchanged cart A, p_A=+6 kg·m/s and K_A=9 J.",
+    "A total momentum of zero forces p_B=−6 kg·m/s, but total K=9 J forces K_B=0.",
+    "For a finite positive mass, nonzero momentum implies positive K=p²/(2m); these measurements are incompatible.",
+    "Record infeasible; the inferred p_B remains −6 kg·m/s as the conflicting requirement."
+  ]
+}
