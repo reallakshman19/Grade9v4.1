@@ -136,7 +136,14 @@
   }
   function advanceWithoutAnswer(field){
     const following=nextResponse(field);
-    if(following){following.scrollIntoView({block:'center'});following.focus();return;}
+    if(following){
+      following.scrollIntoView({block:'center'});
+      // A radio question fieldset is not natively focusable. Focus its first
+      // available choice, not an inert container, for keyboard and touch use.
+      const target=following.tagName==='FIELDSET'
+        ?following.querySelector('input:not([disabled])')||following:following;
+      target.focus();return;
+    }
     const task=nextTaskSelector();
     if(task){
       task.selector.selectedIndex=task.index;
