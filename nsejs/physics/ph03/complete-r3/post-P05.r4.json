@@ -1,0 +1,46 @@
+{
+  "schema": "g9-ph03-postattempt/v1",
+  "revision": "ph03-core1ab-r4-20261117",
+  "id": "P05",
+  "academic": "HOLD",
+  "expected": {
+    "platformV": 0,
+    "loadLab": 5,
+    "totalP": 10,
+    "cmV": 1
+  },
+  "steps": [
+    "The initially co-moving pair has mass 8+2=10 kg and lab momentum P_initial=10×(+1)=+10 kg·m/s.",
+    "Let the platform's final laboratory velocity be V. A load ejected +5 m/s relative to it has laboratory velocity V+5.",
+    "Momentum conservation gives 8V+2(V+5)=10; solve 10V+10=10 and V=0 m/s.",
+    "Load laboratory speed is V+5=+5 m/s. Check final momentum 8(0)+2(5)=+10 kg·m/s.",
+    "Centre-of-mass speed is 10/10=+1 m/s, unchanged despite the internal ejection."
+  ],
+  "hints": [
+    "CLARIFY: The ejection speed is relative to the platform, not directly measured in the laboratory.",
+    "CORRELATE: One Galilean velocity translation is needed before the two-body laboratory momentum balance.",
+    "OPEN THE WAY: Name the platform's unknown final lab velocity and express the load's lab velocity in terms of it; conserve the total momentum measured before ejection."
+  ],
+  "firstErrorOrder": [
+    "platformV",
+    "loadLab",
+    "totalP",
+    "cmV"
+  ],
+  "diagnostics": {
+    "platformV": "Write the initial pair momentum before ejection; the relative ejection value is not the load's lab velocity.",
+    "loadLab": "Relative and laboratory speeds must share the same final platform velocity.",
+    "totalP": "No external horizontal impulse acts: system momentum equals its initial +10 kg·m/s.",
+    "cmV": "Centre-of-mass velocity is total momentum over total mass."
+  },
+  "boundaryExpected": {
+    "platformV": 0.25,
+    "relativeSpeed": 3.75
+  },
+  "boundarySteps": [
+    "Changed measurement: load's final laboratory velocity is +4 m/s, not +5 m/s relative to the platform.",
+    "Conserve P=+10 kg·m/s: 8V+2(4)=10, hence V=+0.25 m/s.",
+    "Relative ejection velocity is load lab velocity minus platform lab velocity, 4−0.25=+3.75 m/s.",
+    "The laboratory/relative distinction changes the equation, not the conservation principle."
+  ]
+}
