@@ -13,6 +13,9 @@ name: Publish unreviewed owner-directed technical preview
 # keep the chapter navigation and all source/academic review statuses HOLD.
 # Owner-directed Core1A/Core1B question Skip R3: inline no-credit navigation,
 # no fabricated first attempts, answer access or academic mastery.
+# Owner-directed UX Reliability R1: bank visibility/failure states, answer-safe
+# search, fresh counts, return-to-topics, sitewide navigation smoke and
+# last-lesson links only. Source, QRT, academic and signed R3 status stay HOLD.
 # One automatic run when this workflow is first merged; later runs are manual.
 on:
   push:
@@ -46,9 +49,12 @@ jobs:
       - name: Verify all shared navigation and bank reader JavaScript syntax
         run: |
           node --check site-nav.js
+          node --check nsejs/js/core2-physics-reader.js
           node --check nsejs/js/core2-chemistry-reader.js
           node --check nsejs/js/core2-biology-reader.js
           node --check nsejs/js/skip-mandatory-response.js
+      - name: Verify three bank UX and answer-search reliability contracts
+        run: python3 -m pytest -q tests/test_nsejs_ux_reliability_r1.py
       - name: Verify Core1A/Core1B Skip reaches every learner-response entrypoint
         run: python3 tools/audit_skip_coverage.py
       - name: Rebuild safe learner search index from exact revision
