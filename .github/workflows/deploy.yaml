@@ -1,158 +1,22 @@
-name: Deploy to GitHub Pages
+name: Deploy to GitHub Pages (labeled technical preview)
 
-# No automatic publication from main. Explicit signed manifest and protected
-# github-pages environment are separate from integration and academic review.
+# Owner-authorized learning preview: ordinary updates publish without the
+# independent academic R3 production prerequisites. Candidate tiles disclose
+# review status. The signed, fail-closed R3 lane is deploy-r3-signed.yaml.
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
   contents: read
-
-concurrency:
-  group: pages
-  cancel-in-progress: false
+  pages: write
+  id-token: write
 
 jobs:
-  stage:
-    runs-on: ubuntu-24.04
-    steps:
-      - name: Checkout exact release commit
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          persist-credentials: false
-          path: candidate
-      # Report missing external authority explicitly; never substitute github.sha.
-      # The trust roster contains PUBLIC keys only; do not print its contents.
-      - name: Check externally authorized release prerequisites (fail closed)
-        id: pin
-        env:
-          CONTROL_SHA: ${{ vars.G9_R3_CONTROL_SHA }}
-          TRUST_JSON: ${{ vars.G9_R3_TRUST_JSON }}
-          REF: ${{ github.ref }}
-        run: |
-          set -euo pipefail
-          errors=0
-          if [[ "$REF" != "refs/heads/main" ]]; then
-            echo "::error title=R3 release blocked::This workflow may deploy only refs/heads/main."
-            errors=1
-          fi
-          if [[ -z "${CONTROL_SHA:-}" ]]; then
-            echo "::error title=R3 control SHA missing::Set repository Actions variable G9_R3_CONTROL_SHA to the independently reviewed 40-character control commit. Never use the release candidate SHA as a fallback."
-            errors=1
-          elif [[ ! "$CONTROL_SHA" =~ ^[0-9a-f]{40}$ ]]; then
-            echo "::error title=R3 control SHA invalid::G9_R3_CONTROL_SHA must be exactly 40 lowercase hexadecimal characters for the approved control commit."
-            errors=1
-          elif ! git -C candidate cat-file -e "${CONTROL_SHA}^{commit}" 2>/dev/null || ! git -C candidate merge-base --is-ancestor "$CONTROL_SHA" "$GITHUB_SHA"; then
-            echo "::error title=R3 control SHA not applicable::G9_R3_CONTROL_SHA must name an existing, reviewed ancestor of this exact release commit."
-            errors=1
-          fi
-          if [[ -z "${TRUST_JSON:-}" ]]; then
-            echo "::error title=R3 trust roster missing::Set repository Actions variable G9_R3_TRUST_JSON to the administrator-governed public-key trust roster; keep all private keys outside GitHub."
-            errors=1
-          fi
-          if [[ ! -f candidate/review/production-control-r3/publication-manifest.json ]]; then
-            echo "::error title=Signed publication manifest missing::An independently reviewed explicit byte-pinned publication-manifest.json must be committed before deploying; do not generate it inside this workflow."
-            errors=1
-          fi
-          if [[ ! -f candidate/review/production-control-r3/release-receipt.json ]]; then
-            echo "::error title=Owner preview-release receipt missing::Missing review/production-control-r3/release-receipt.json. A genuinely signed PREVIEW_RELEASE receipt is required; no auto-generated or self-signed substitute is allowed."
-            errors=1
-          fi
-          # Diagnostic only: inspect candidate policy and exact Git diff to expose
-          # the downstream freeze blocker before requesting signatures or staging.
-          # The separately pinned trusted release.py remains authoritative.
-          if ! python3 - "$GITHUB_SHA" <<'PY'
-          import json
-          import re
-          import subprocess
-          import sys
-
-          repo = "candidate"
-          head = sys.argv[1]
-          try:
-              policy_raw = subprocess.check_output(
-                  ["git", "-C", repo, "show", head + ":docs/agent-entry/production-control-r3/policy.v1.json"],
-                  stderr=subprocess.PIPE,
-              )
-              policy = json.loads(policy_raw)
-              base = policy["legacy_preview_baseline"]
-              if not isinstance(base, str) or not re.fullmatch(r"[0-9a-f]{40}", base):
-                  raise ValueError("Invalid frozen preview baseline")
-              if policy["phase"] == "FREEZE_PENDING_GOLDEN":
-                  names = subprocess.check_output(
-                      ["git", "-C", repo, "diff", "--name-only", "--no-renames", "-z", base, head],
-                      stderr=subprocess.PIPE,
-                  ).decode("utf-8").split("\0")
-                  governance = set(policy["governance_paths"])
-                  governance_prefixes = tuple(policy["governance_prefixes"])
-                  evidence_prefixes = tuple(policy["evidence_prefixes"])
-                  content = sorted(
-                      p for p in names if p
-                      and not p.startswith(evidence_prefixes)
-                      and p not in governance
-                      and not p.startswith(governance_prefixes)
-                  )
-                  if content:
-                      print(
-                          "::error title=R3 frozen-content release blocked::"
-                          f"FROZEN_CONTENT_IN_RELEASE_TREE: {len(content)} CONTENT path(s) differ "
-                          "from the frozen baseline. An ordinary Pages release of this main "
-                          "commit remains ineligible even after configuring trust and signing "
-                          "the manifest. Obtain independent R3/Owner release authority; "
-                          "do not bypass the freeze."
-                      )
-                      for p in content[:5]:
-                          safe = p.replace("%", "%25").replace("\r", "").replace("\n", "")
-                          print("::notice title=Frozen content example::" + safe)
-                      sys.exit(1)
-          except (KeyError, ValueError, OSError, subprocess.CalledProcessError) as error:
-              print(
-                  "::error title=R3 preview eligibility could not be checked::"
-                  "Unable to verify the candidate's frozen-content status; "
-                  "release remains blocked. " + type(error).__name__
-              )
-              sys.exit(1)
-          PY
-          then
-            errors=1
-          fi
-          if (( errors != 0 )); then
-            echo "::error title=R3 Pages deployment blocked::Missing release authority. See docs/agent-entry/production-control-r3/ADMIN_SETUP.md; no files were staged or deployed."
-            exit 1
-          fi
-          echo "sha=$CONTROL_SHA" >> "$GITHUB_OUTPUT"
-      - name: Checkout externally pinned control code
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ steps.pin.outputs.sha }}
-          path: trusted
-          fetch-depth: 0
-          persist-credentials: false
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-      - run: python -m pip install jsonschema
-      - name: Verify signed release manifest and stage exact file bytes
-        env:
-          G9_R3_TRUST_JSON: ${{ vars.G9_R3_TRUST_JSON }}
-          CONTROL_SHA: ${{ steps.pin.outputs.sha }}
-          RELEASE_SHA: ${{ github.sha }}
-        run: |
-          python trusted/docs/agent-entry/production-control-r3/release.py --repo candidate --head "$RELEASE_SHA" --control "$CONTROL_SHA" --output public
-      - uses: actions/upload-pages-artifact@v4
-        with:
-          path: public
-  deploy:
-    needs: stage
-    runs-on: ubuntu-24.04
+  publish:
     permissions:
+      contents: read
       pages: write
       id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy authorized technical preview
-        id: deployment
-        uses: actions/deploy-pages@v4
+    uses: ./.github/workflows/owner-technical-preview-pages.yml
