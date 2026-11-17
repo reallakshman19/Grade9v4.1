@@ -86,7 +86,7 @@ def test_published_search_rebuild_is_safe_and_contains_bank_routes():
     assert 'topic={topic}#topicWorkspace' in builder
     assert 'CANDIDATE QUESTION BANK · ACADEMIC HOLD' in builder
     assert 'options = []' in builder and 'hints = []' in builder
-    assert 'python trusted/docs/agent-entry/production-control-r3/release.py' in read(".github/workflows/deploy.yaml")
+    assert 'python trusted/docs/agent-entry/production-control-r3/release.py' in read(".github/workflows/deploy-r3-signed.yaml")
 
 
 def test_universal_search_fallback_respects_shadow_header_and_cleans_races():
