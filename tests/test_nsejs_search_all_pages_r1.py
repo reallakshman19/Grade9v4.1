@@ -61,7 +61,7 @@ def test_shared_search_default_and_publish_rebuild():
     assert "appendBankBridges" in runtime
     # R3 separates deterministic search preparation from signed publication.
     assert "build_search_index.py --install-search" in (ROOT/".github/workflows/nsejs-search-r1.yml").read_text()
-    deploy=(ROOT/".github/workflows/deploy.yaml").read_text()
+    deploy=(ROOT/".github/workflows/deploy-r3-signed.yaml").read_text()
     assert "production-control-r3/release.py" in deploy
     assert "build_search_index.py --install-search" not in deploy
     assert "workflow_dispatch:" in deploy and "path: public" in deploy

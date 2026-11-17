@@ -5,7 +5,7 @@ import subprocess
 import textwrap
 
 ROOT = Path(__file__).resolve().parents[1]
-WORKFLOW = ROOT / ".github/workflows/deploy.yaml"
+WORKFLOW = ROOT / ".github/workflows/deploy-r3-signed.yaml"
 
 
 def preflight_script():
