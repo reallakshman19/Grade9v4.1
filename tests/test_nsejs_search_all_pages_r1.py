@@ -230,4 +230,4 @@ def test_26_new_search_records_match_deterministic_generator_exactly():
     payload=(ROOT/"data/learner-search-index.v1.json").read_bytes()
     assert manifest["sha256"]==hashlib.sha256(payload).hexdigest()
     assert manifest["total_documents"]==expected
-    assert manifest["public_html_pages"]==372+len(present)
+    assert manifest["public_html_pages"]==372+len(present)+historical_count
