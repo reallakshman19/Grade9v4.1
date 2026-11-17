@@ -1,0 +1,54 @@
+name: R3 release-readiness inventory (diagnostic only; NEVER deploys)
+
+# This job reports WHY the independent production gate refuses a revision.
+# It cannot approve, stage, sign, pin, or deploy a release.
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'tools/r3_release_readiness.py'
+      - 'tests/test_r3_release_readiness_r1.py'
+      - '.github/workflows/r3-release-readiness-audit.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  inventory:
+    name: Read-only R3 frozen-content and authority inventory
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - name: Checkout candidate for diagnostic only
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Test diagnostic fail-closed invariants
+        run: |
+          python -m pip install pytest
+          python -m pytest -q tests/test_r3_release_readiness_r1.py
+      - name: Inventory exact Git delta and external prerequisite presence
+        env:
+          G9_R3_CONTROL_SHA: ${{ vars.G9_R3_CONTROL_SHA }}
+          G9_R3_TRUST_CONFIGURED: ${{ vars.G9_R3_TRUST_JSON != '' }}
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/r3-readiness
+          python tools/r3_release_readiness.py \
+            --repo . \
+            --head "$(git rev-parse HEAD)" \
+            --json-output artifacts/r3-readiness/frozen-content-and-gates.json \
+            --summary-output artifacts/r3-readiness/summary.md
+          cat artifacts/r3-readiness/summary.md >> "$GITHUB_STEP_SUMMARY"
+          echo "AUDIT_FINISHED_NOT_AUTHORIZED: no release staging or deployment attempted."
+      - name: Upload read-only blocked-state evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r3-release-readiness-read-only
+          path: artifacts/r3-readiness/
+          if-no-files-found: ignore
