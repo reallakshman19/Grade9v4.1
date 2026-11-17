@@ -62,6 +62,24 @@
   };
 
   const status = document.getElementById("status");
+  // The workspace may be hidden while the student browses the topic grid.
+  // Always surface integrity/network failures above it, never auto-approve data.
+  const bankNotice = document.getElementById("qbLoadNotice");
+  function setBankNotice(message, failed=false) {
+    if (!bankNotice) return;
+    bankNotice.hidden = !message;
+    bankNotice.setAttribute("role", failed ? "alert" : "status");
+    bankNotice.textContent = message;
+    if (failed) {
+      const retry = document.createElement("button");
+      retry.type = "button";
+      retry.className = "qb-retry";
+      retry.textContent = "Retry verified bank load";
+      retry.style.cssText = "min-height:44px;margin-left:12px;padding:8px 12px;font:inherit;font-weight:750;border:1px solid #9b3030;border-radius:8px;background:#fff;color:#872a2a;cursor:pointer";
+      retry.addEventListener("click", () => location.reload());
+      bankNotice.append(retry);
+    }
+  }
   const target = document.getElementById("questions");
   const nav = document.getElementById("topicNav");
   const query = new URLSearchParams(location.search);
@@ -507,11 +525,9 @@
         const idLower = (q.id || "").toLowerCase();
         const srcLower = (q.source_id || "").toLowerCase();
         const stemLower = (q.stem || "").toLowerCase();
-        const ansLower = (q.answer || "").toLowerCase();
+        // Do not index protected keys, worked steps, or diagnostic crux before commitment.
         const optsLower = (q.options || []).map(o => String(o).toLowerCase()).join(" ");
-        const stepsLower = (q.steps || []).map(s => String(s).toLowerCase()).join(" ");
-        const cruxLower = (q.crux_move_ref || "").toLowerCase();
-        const full = `${idLower} ${srcLower} ${stemLower} ${ansLower} ${optsLower} ${stepsLower} ${cruxLower}`;
+        const full = `${idLower} ${srcLower} ${stemLower} ${optsLower}`;
         return full.includes(qLower) || tokens.every(tok => full.includes(tok));
       });
     }
@@ -742,6 +758,16 @@
     applyFilters(false);
   };
 
+  window.returnToAllTopics = function() {
+    window.resetFilters(); // clears text/year/band as well as topic
+    const grid = document.getElementById("topicsGrid");
+    if (grid) {
+      grid.setAttribute("tabindex", "-1");
+      grid.scrollIntoView({behavior:"smooth",block:"start"});
+      grid.focus({preventScroll:true});
+    }
+  };
+
   window.selectChemistryTopic = function(slug) {
     filterState.topic = slug;
     applyFilters(false);
@@ -755,6 +781,7 @@
 
   async function loadData() {
     try {
+      setBankNotice("Verifying Chemistry candidate records…");
       if (status) status.textContent = "Loading candidate questions from chemistry-core2-candidates.v1.json…";
       const resp = await fetch("../data/chemistry-core2-candidates.v1.json");
       if (!resp.ok) throw new Error("HTTP " + resp.status + " while loading Chemistry question bank data.");
@@ -813,11 +840,14 @@
 
       // Execute initial filter evaluation and handle anchor navigation
       applyFilters(Boolean(initialHash || initialQ));
+      setBankNotice("");
     } catch (err) {
       if (status) {
         status.textContent = "Error loading Chemistry question bank: " + err.message;
         status.className = "error";
       }
+      if (target) target.replaceChildren();
+      setBankNotice("Chemistry Question Bank unavailable: verified data did not load ("+err.message+"). No answer or mastery data have been released.",true);
     }
   }
 
