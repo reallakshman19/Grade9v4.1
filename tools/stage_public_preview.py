@@ -37,15 +37,17 @@ def stage(path):
     shutil.copy2(path, target)
     if target.suffix.lower() in {".html", ".htm"}:
         raw = target.read_text(encoding="utf-8")
-        if re.search(r"</body\s*>", raw, flags=re.I):
-            # A single common header, including existing mastheads and
-            # legacy pages, without modifying the source HTML checkout.
-            if "data-grade9-nav" not in raw:
-                rel = posixpath.relpath("public/site-nav.js", target.parent.as_posix())
-                tag = '<script defer src="' + rel + '" data-grade9-nav="common-r1"></script>'
+        # Some historic published HTML uses implicit body elements, without
+        # </body>. Attach search to those pages too; do not alter source files.
+        if "data-grade9-nav" not in raw:
+            rel = posixpath.relpath("public/site-nav.js", target.parent.as_posix())
+            tag = '<script defer src="' + rel + '" data-grade9-nav="common-r1"></script>'
+            if re.search(r"</body\s*>", raw, flags=re.I):
                 raw = re.sub(r"</body\s*>", lambda m: tag + "\n" + m.group(0),
                              raw, count=1, flags=re.I)
-            target.write_text(raw, encoding="utf-8")
+            else:
+                raw = raw + "\n" + tag + "\n"
+        target.write_text(raw, encoding="utf-8")
 
 for name in ("index.html", "site.css", "site-nav.js"):
     source = Path(name)
@@ -70,13 +72,12 @@ for p in ("nsejs/chemistry/index.html", "nsejs/biology/index.html"):
 html_pages = 0
 for page_file in out.rglob("*.html"):
     page = page_file.read_text(encoding="utf-8")
-    if re.search(r"</body\s*>", page, flags=re.I):
-        html_pages += 1
-        if "data-grade9-nav" not in page:
-            raise SystemExit("PREVIEW_COMMON_NAV_MISSING:" + str(page_file))
+    html_pages += 1
+    if "data-grade9-nav" not in page:
+        raise SystemExit("PREVIEW_COMMON_NAV_MISSING:" + str(page_file))
 if html_pages == 0:
     raise SystemExit("PREVIEW_NO_HTML_PAGES")
-print("All published HTML pages with a body have the common header loader:", html_pages)
+print("All published HTML pages have the common header loader:", html_pages)
 (out / ".nojekyll").touch()
 (out / "preview-release-status.json").write_text(
     json.dumps({
