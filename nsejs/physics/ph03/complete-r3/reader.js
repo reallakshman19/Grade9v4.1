@@ -5,6 +5,10 @@
 const mount=document.querySelector("[data-ph03-r3]");
 if(!mount)throw Error("Missing native PH03 mount");
 const unit=mount.dataset.unit,mode=mount.dataset.mode;
+const legacyRequested=new URLSearchParams(location.search).get("revision")==="r3";
+const usesR4=!legacyRequested&&["P01","P04","P05","P06","P07"].includes(unit);
+const taskFile=usesR4?unit+".r4.json":unit+".json";
+const postFile=usesR4?"post-"+unit+".r4.json":"post-"+unit+".json";
 if(!/^(P01|P02|P04|P05|P06|P07)$/.test(unit)||!["learn","practice"].includes(mode))throw Error("Unregistered PH03 page");
 const base=new URL("./",import.meta.url),physics=new URL("../../",base);
 const $=id=>document.getElementById(id);
@@ -81,7 +85,7 @@ const safeModel=(kind,v)=>{
  return {label,value,explain};
 };
 function writeHeader(current){
- return '<p class="eyebrow">NSEJS Physics · PH03 Momentum and Collisions</p><h1>'+escapeHtml(content.title)+'</h1>'+
+ return '<p class="eyebrow">NSEJS Physics · PH03 Momentum and Collisions</p><h1>'+escapeHtml(content.title)+'</h1>'+(usesR4?'<p class="mini"><strong>Revised R4 · new reasoning</strong> · '+link(canonical(mode)+"?revision=r3","Review earlier R3 attempts/version")+'</p>':legacyRequested?'<p class="mini"><strong>Earlier R3 version</strong> · saved attempts remain separate · '+link(canonical(mode),"Open latest challenge")+'</p>':"")+
  '<p class="hold"><strong>AUTHOR CANDIDATE · ACADEMIC HOLD.</strong> '+escapeHtml(content.scope)+' · Source/rights, independent science, QRT and B1–B7 not accepted. '+(content.scope==="EXTENSION_REVIEW"?"Extension review only; not promoted to mandatory syllabus.":"Not an authenticated original examination question.")+'</p>'+
  '<nav aria-label="PH03 journey">'+link(chapter,"Chapter overview")+link(canonical("learn"),"Learn")+link(canonical("practice"),"Try it")+link(sourceUrl,"Source status (HOLD)")+'</nav>';
 }
@@ -104,7 +108,7 @@ let modelLoading=null;
 async function loadPost(){
  if(!rec?.first)throw Error("Protected answer requested before first attempt");
  if(postCache)return postCache;
- if(!modelLoading)modelLoading=(async()=>{const bytes=await readUrl("post-"+unit+".json"),sha=await blobSha(bytes);if(sha!==content.postBlobSha1)throw Error("Postattempt byte pin mismatch");
+ if(!modelLoading)modelLoading=(async()=>{const bytes=await readUrl(postFile),sha=await blobSha(bytes);if(sha!==content.postBlobSha1)throw Error("Postattempt byte pin mismatch");
  const p=parse(bytes);if(p.id!==unit||p.revision!==content.revision||p.academic!=="HOLD"||p.schema!=="g9-ph03-postattempt/v1")throw Error("Postattempt identity mismatch");
  return p;})();
  postCache=await modelLoading;return postCache;
@@ -179,8 +183,8 @@ async function renderPractice(){
 async function initialize(){
  try{
  if(!crypto?.subtle||!navigator.locks)throw Error("WebCrypto and cross-tab Web Locks are required for revision-bound attempt safety");
- probe();const bytes=await readUrl(unit+".json");content=parse(bytes);
- if(content.schema!=="g9-ph03-authored-lesson/v1"||content.academic!=="HOLD"||content.id!==unit||!content.postBlobSha1||!content.figures||content.sourceRole!=="AUTHOR_EXPOSITION_AND_TRANSFER_NOT_EXAM")throw Error("Unexpected PH03 content or release state");
+ probe();const bytes=await readUrl(taskFile);content=parse(bytes);
+ if(content.schema!=="g9-ph03-authored-lesson/v1"||content.academic!=="HOLD"||content.id!==unit||!content.postBlobSha1||!content.figures||content.sourceRole!=="AUTHOR_EXPOSITION_AND_TRANSFER_NOT_EXAM"||(usesR4&&content.taskVariant!=="CORE1AB_R4_NOVEL_W_CANDIDATE"))throw Error("Unexpected PH03 content or release state");
  firstImage=await loadFigure("guide");
  if(mode==="practice")promptImage=await loadFigure("prompt");
  revision=await digest("SHA-256",encoder.encode(JSON.stringify([decoder.decode(bytes),firstImage.sha,promptImage?.sha||"",content.postBlobSha1,content.solutionBlobSha1||""])));
