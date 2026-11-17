@@ -262,10 +262,12 @@ def test_owner_preview_publication_exception_explicit_and_restricted():
     assert "uses: ./.github/workflows/owner-technical-preview-pages.yml" in entry
     assert "G9_R3_CONTROL_SHA" not in entry and "G9_R3_TRUST_JSON" not in entry
     assert "pull_request:" not in preview and "pull_request_target:" not in preview
-    assert '"review", "tests", "tools", "src"' in preview
-    assert '"workspace"' in preview
-    assert '"academic_status": "HOLD"' in preview
-    assert '"r3_signed_production_release": False' in preview
+    stage=(ROOT/"tools/stage_public_preview.py").read_text()
+    assert "python3 tools/stage_public_preview.py" in preview
+    assert '"review", "tests", "tools", "src"' in stage
+    assert '"workspace"' in stage
+    assert '"academic_status": "HOLD"' in stage
+    assert '"r3_signed_production_release": False' in stage
     assert "actions/upload-pages-artifact@v4" in preview
     assert "actions/deploy-pages@v4" in preview
     signed=(ROOT/".github/workflows/deploy-r3-signed.yaml").read_text()

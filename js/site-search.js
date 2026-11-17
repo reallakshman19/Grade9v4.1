@@ -49,7 +49,8 @@
 
   // Determine page context default scope
   const isNSEJSPage = window.location.pathname.toLowerCase().includes('/nsejs/');
-  let currentScope = 'nsejs';
+  // General portals and Mathematics must be discoverable from non-NSEJS pages.
+  let currentScope = isNSEJSPage ? 'nsejs' : 'all';
   let activeCategory = 'all';
 
   // Data cache
@@ -154,7 +155,7 @@
 
   const title = document.createElement('strong');
   title.id = 'g9SearchTitle';
-  title.textContent = 'Search NSEJS Junior Science';
+  title.textContent = isNSEJSPage ? 'Search NSEJS Junior Science' : 'Search Grade9 Learning';
 
   const scopeIndicator = document.createElement('span');
   scopeIndicator.className = 'g9-search-scope-indicator' + (currentScope === 'nsejs' ? ' scope-nsejs' : '');

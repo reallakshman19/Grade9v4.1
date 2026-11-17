@@ -4,12 +4,16 @@ on:
     paths:
       - 'tools/build_search_index.py'
       - 'tools/search_learner_pages.py'
+      - 'tools/audit_search_full.py'
+      - 'tools/stage_public_preview.py'
+      - 'tools/nsejs_search_all_pages_browser_qa.py'
       - 'js/site-search.js'
       - 'js/site-header.js'
       - 'nsejs/**'
       - 'curriculum/chemistry/preview/**'
       - 'data/learner-search-*.json'
       - 'tests/test_nsejs_search_all_pages_r1.py'
+      - 'tests/test_search_full_audit.py'
       - '.github/workflows/nsejs-search-r1.yml'
   workflow_dispatch:
 permissions:
@@ -25,7 +29,33 @@ jobs:
       - run: pip install pytest
       - run: python tools/build_search_index.py
       - run: node --check js/site-search.js && node --check js/site-header.js
-      - run: pytest -q tests/test_search_engine.py tests/test_nsejs_circuits_search_r1.py tests/test_nsejs_search_all_pages_r1.py
+      - run: pytest -q tests/test_search_engine.py tests/test_nsejs_circuits_search_r1.py tests/test_nsejs_search_all_pages_r1.py tests/test_search_full_audit.py
+      - name: Upload generated full-site index snapshot for review
+        uses: actions/upload-artifact@v4
+        with:
+          name: full-site-search-index-candidate
+          path: |
+            data/learner-search-index.v1.json
+            data/learner-search-manifest.v1.json
+            nsejs/data/learner-search-index.v1.json
       - run: python tools/build_search_index.py --install-search
+      - name: Assemble exact public Pages artifact on PR
+        env:
+          RELEASE_SHA: ${{ github.sha }}
+        run: python3 tools/stage_public_preview.py
+      - name: Audit all staged learner search routes, mirrors and payloads
+        run: |
+          python3 tools/audit_search_full.py \
+            --repo . --staged public \
+            --json-output artifacts/search-audit/full-site.json \
+            --summary-output artifacts/search-audit/full-site.md
+          cat artifacts/search-audit/full-site.md >> "$GITHUB_STEP_SUMMARY"
+      - name: Upload exact full-site audit evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: candidate-full-search-audit
+          path: artifacts/search-audit/
+          if-no-files-found: ignore
       - run: pip install playwright==1.55.0 && python -m playwright install --with-deps chromium
       - run: python tools/nsejs_search_all_pages_browser_qa.py

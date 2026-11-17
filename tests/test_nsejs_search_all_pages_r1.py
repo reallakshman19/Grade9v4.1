@@ -55,7 +55,8 @@ def test_committed_index_no_protected_payloads():
 
 def test_shared_search_default_and_publish_rebuild():
     runtime=(ROOT/"js/site-search.js").read_text()
-    assert "let currentScope = 'nsejs'" in runtime
+    assert "let currentScope = isNSEJSPage ? 'nsejs' : 'all'" in runtime
+    assert "isNSEJSPage ? 'Search NSEJS Junior Science' : 'Search Grade9 Learning'" in runtime
     assert "Search NSEJS Junior Science" in runtime
     assert "new URL(\"../\", script.src).href" in runtime
     assert "appendBankBridges" in runtime
@@ -216,8 +217,24 @@ def test_26_new_search_records_match_deterministic_generator_exactly():
         doc=actual_by_url[historical]
         assert doc["category"]!="question" and doc["subject"]=="Physics"
         assert not any(key in doc for key in ("answer","hints","steps","boundaryModel","reconstruction"))
-    expected=1012+len(found)+len(present)+historical_count
-    assert len(actual)==expected and len({d["url"] for d in actual})==expected
+    # A fixed 1012-record historical count hid valid subject pages and caused
+    # full-site refreshes to fail; compare exact current paths and uniqueness.
+    expected=len(actual)
+    assert expected>=1012+len(found)+len(present)+historical_count
+    assert len({d["url"] for d in actual})==expected
+    eligible=set(public_pages(ROOT))
+    indexed_paths={urlsplit(d["url"]).path for d in actual}
+    allowed_shells={"nsejs/physics/learn/chapter.html",
+                    "nsejs/physics/ph05/source-led-r2/index.html",
+                    "nsejs/physics/ph05/source-checkpoint.html",
+                    "nsejs/chemistry/textbook/index.html",
+                    "nsejs/physics/quality-r1/study.html",
+                    "nsejs/physics/quality-r1/challenge.html",
+                    "nsejs/physics/quality-r1/source.html"}
+    # Frozen committed snapshots may predate the complete rebuild, while
+    # the release-time full-site audit enforces this against staged content.
+    if len(actual)>1012:
+        assert not eligible-indexed_paths-allowed_shells
     if found:
         for subject,slug in (("CHEMISTRY","atomic_structure"),("BIOLOGY","living_world")):
             bank=next(x for x in actual if x["original_id"]==subject+"-QUESTION-BANK")
@@ -230,4 +247,6 @@ def test_26_new_search_records_match_deterministic_generator_exactly():
     payload=(ROOT/"data/learner-search-index.v1.json").read_bytes()
     assert manifest["sha256"]==hashlib.sha256(payload).hexdigest()
     assert manifest["total_documents"]==expected
-    assert manifest["public_html_pages"]==372+len(present)+historical_count
+    assert manifest["public_html_pages"]>=372
+    if expected>1012:
+        assert manifest["public_html_pages"]==len(public_pages(ROOT))
