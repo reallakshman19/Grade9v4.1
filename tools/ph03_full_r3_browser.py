@@ -22,11 +22,11 @@ ART.mkdir(parents=True,exist_ok=True)
 
 
 def data(id):
-    return json.loads((DATA/(id+".json")).read_text())
+    return json.loads((DATA/(id+(".json" if id=="P02" else ".r4.json"))).read_text())
 
 
 def post(id):
-    return json.loads((DATA/("post-"+id+".json")).read_text())
+    return json.loads((DATA/("post-"+id+(".json" if id=="P02" else ".r4.json"))).read_text())
 
 
 def url(base,id,mode="practice"):
@@ -94,6 +94,9 @@ def scenario(page,base,id,size,output):
     assert page.locator("img").count()>=1
     assert page.locator("img").first.evaluate("(i)=>i.complete&&i.naturalWidth>0")
     open_page(page,base,id,"practice")
+    if id!="P02":
+        expect(page.locator("main")).to_contain_text("Revised R4 · new reasoning")
+        expect(page.get_by_role("link",name="Review earlier R3 attempts/version")).to_be_visible()
     expect(page.locator("#save-first")).to_be_visible()
     assert not any("/post-"+id+".json" in x or id+"-solution.svg" in x for x in requests),requests
     assert page.locator("#next-hint").count()==0
