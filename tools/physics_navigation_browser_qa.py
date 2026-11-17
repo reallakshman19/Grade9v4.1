@@ -38,8 +38,23 @@ def run(origin, browser, size):
         assert "Current Electricity" in page.locator("#learn-physics").inner_text()
         assert "PH11" not in page.locator("#learn-physics").inner_text()
         assert "PH05" not in page.locator("#learn-physics").inner_text()
-        assert not page.locator("#g9-explore-bank").evaluate("(e)=>e.open")
+        assert page.locator("#g9-explore-bank").evaluate("(e)=>e.open"), "Physics Question Bank is hidden"
+        page.locator("#qbFilters").wait_for(state="visible")
+        page.wait_for_function("""() => document.querySelector('#qbResultCount')
+            ?.textContent.includes('109 candidate questions across 6 topics')""",timeout=30000)
+        assert page.locator("#topicsGrid .topic-card-tab:visible").count()==6
+        assert page.locator(".g9-bank-entry-link").count()==1
         check_size(page,"home")
+        # First-screen Physics Question Bank entry must lead to real candidate cards.
+        page.locator(".g9-bank-entry-link").click()
+        page.locator("#questions article.card").first.wait_for(timeout=30000)
+        assert page.locator("#questions article.card").count()==10
+        assert "topic=optics" in page.url
+        assert page.locator("#g9-explore-bank").evaluate("(e)=>e.open")
+        page.goto(home+"?topic=fluids#topicWorkspace",wait_until="domcontentloaded")
+        page.locator("#questions article.card").first.wait_for(timeout=30000)
+        assert page.locator("#questions article.card").count()==2
+        page.goto(home,wait_until="domcontentloaded")
         page.locator("#chapter-PH01 .g9-chapter-open").click()
         page.locator("#M01 .g9-lesson-actions a").first.wait_for()
         assert page.locator(".g9-lesson-card").count()==8
