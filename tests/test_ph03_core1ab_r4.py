@@ -21,7 +21,7 @@ EXPECTED_OLD={
 
 def blob_sha1(path):
     raw=path.read_bytes()
-    return hashlib.sha1(b"blob "+str(len(raw)).encode()+b"\\0"+raw).hexdigest()
+    return hashlib.sha1(b"blob "+str(len(raw)).encode()+bytes([0])+raw).hexdigest()
 
 def read(path):
     return json.loads(path.read_text(encoding="utf-8"))
