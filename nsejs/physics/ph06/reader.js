@@ -86,7 +86,7 @@ try{
   async function render(r){
     const stage=r?.stage??0;
     if(stage>=2){if(!r?.first)throw Error("Postattempt access without durable first response");await ensurePost();}
-    if(!Number.isInteger(stage)||stage<0||stage>5||stage>1&&(!r.first?.fields||!r.first?.reasoning))throw Error("Invalid saved stage");
+    if(!Number.isInteger(stage)||stage<0||stage>5||stage>1&&(!r.first?.fields||!Object.prototype.hasOwnProperty.call(r.first,"reasoning")))throw Error("Invalid saved stage");
     $("trail").innerHTML=trail.map((label,i)=>'<li '+(i===stage?'aria-current="step"':i<stage?'class="done"':'')+'>'+(i+1)+'. '+e(label)+'</li>').join("");
     let h='<h2 id="stageTitle" tabindex="-1">'+(stage+1)+' · '+trail[stage]+'</h2><p id="status" role="status">Ready · '+(r?.first?"first attempt preserved":"no first attempt committed")+'</p>';
     if(stage<2){
@@ -101,11 +101,11 @@ try{
       const issue=firstIssue(r);
       h+=snapshot(r)+feedback(model.rubric,r.first.fields,fields)+'<p class="thinking" id="firstIssue">'+e(r.first.skipped?.length?"Insufficient evidence: one or more first-response fields were explicitly skipped; no misconception or credit inferred.":issue?"Possible first divergence: "+fields.find(x=>x.id===issue.id).label+". "+issue.repair:"All checked values/models match; examine your explanation and assumptions. This does not establish correct reasoning.")+'</p><label for="diagnosisField">Which step will you examine?</label><select id="diagnosisField"><option value="">Choose a step</option>'+fields.map(x=>'<option value="'+e(x.id)+'">'+e(x.label)+'</option>').join("")+'<option value="reason">My explanation or assumptions</option></select><label for="diagnosis">What caused the divergence, or what justifies your correct model?</label><textarea id="diagnosis"></textarea>'+nativeSkipButton("diagnosis")+'<button id="diagnose">Save diagnosis → Repair</button>';
     }else if(stage===4){
-      h+=snapshot(r)+para("Your diagnosis: "+r.diagnosis.why)+para(model.rubric.find(x=>x.id===r.diagnosis.field)?.repair||"Check your force balance, geometry and conditions.")+'<label for="repair">Reconstruct the corrected reasoning and explain what changed</label><textarea id="repair"></textarea>'+nativeSkipButton("repair")+'<button id="repairSave">Save repair → Boundary test</button>';
+      h+=snapshot(r)+para("Your diagnosis: "+(r.diagnosis.why??"Explicitly skipped (no credit)"))+para(model.rubric.find(x=>x.id===r.diagnosis.field)?.repair||"Check your force balance, geometry and conditions.")+'<label for="repair">Reconstruct the corrected reasoning and explain what changed</label><textarea id="repair"></textarea>'+nativeSkipButton("repair")+'<button id="repairSave">Save repair → Boundary test</button>';
     }else{
-      h+=snapshot(r)+para("Your repair: "+r.repair)+para(model.boundaryPrompt);
+      h+=snapshot(r)+para("Your repair: "+(r.repair??"Explicitly skipped (no credit)"))+para(model.boundaryPrompt);
       if(!r.boundary)h+=bf.map(x=>fieldHTML(x,"b-")).join("")+'<label for="boundary">Explain the model choice and calculation</label><textarea id="boundary"></textarea>'+nativeSkipButton("boundary")+'<button id="boundarySave">Commit boundary reasoning</button>';
-      else {h+=para("Your changed-condition reasoning: "+r.boundary.why);if(!r.boundaryRevealed)h+='<button id="boundaryReveal">Compare boundary</button>';else h+=feedback(bf,r.boundary.fields,bf)+para(model.boundaryModel)+stageFig(boundaryURL,"Changed-condition upper-only equilibrium.")+'<p>Completion records a practice journey, not mastery. Skipped responses earn no credit and cannot unlock an independent source-reattempt claim.</p><button id="sourceReturn">Return to exact source checkpoint</button>'}
+      else {h+=para("Your changed-condition reasoning: "+(r.boundary.why??"Explicitly skipped (no credit)"));if(!r.boundaryRevealed)h+='<button id="boundaryReveal">Compare boundary</button>';else h+=feedback(bf,r.boundary.fields,bf)+para(model.boundaryModel)+stageFig(boundaryURL,"Changed-condition upper-only equilibrium.")+'<p>Completion records a practice journey, not mastery. Skipped responses earn no credit and cannot unlock an independent source-reattempt claim.</p><button id="sourceReturn">Return to exact source checkpoint</button>'}
     }
     $("stage").innerHTML=h;
     const btn=(id,fn)=>{if($(id))$(id).onclick=fn};
