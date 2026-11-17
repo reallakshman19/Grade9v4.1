@@ -1,0 +1,62 @@
+name: One-time refresh of full-site search snapshots on audit PR
+
+# Restricted to this exact workpack branch. Remove this workflow after the
+# deterministic generated JSON files are committed and inspected.
+on:
+  push:
+    branches:
+      - fix/full-site-search-index-audit-20261117
+    paths:
+      - .github/workflows/search-snapshot-refresh-once.yml
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-24.04
+    if: github.repository == 'reallakshman19/Grade9v4.1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Rebuild all learner search records, mirrored files and manifest
+        run: python3 tools/build_search_index.py
+      - name: Verify exact byte identity, coverage and manifest digest
+        run: |
+          python3 - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          from tools.search_learner_pages import public_pages
+          a=Path('data/learner-search-index.v1.json').read_bytes()
+          b=Path('nsejs/data/learner-search-index.v1.json').read_bytes()
+          m=json.loads(Path('data/learner-search-manifest.v1.json').read_bytes())
+          n=Path('nsejs/data/learner-search-manifest.v1.json').read_bytes()
+          assert a==b and n==Path('data/learner-search-manifest.v1.json').read_bytes()
+          assert m['sha256']==hashlib.sha256(a).hexdigest()
+          assert m['public_html_pages']==len(public_pages(Path('.')))
+          assert m['total_documents']>=1068 and m['public_html_pages']>=431
+          print('EXACT_SEARCH_SNAPSHOT_VERIFIED',m['total_documents'],m['public_html_pages'],m['sha256'])
+          PY
+      - name: Commit ONLY deterministic regenerated search data to this branch
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- \
+            data/learner-search-index.v1.json \
+            nsejs/data/learner-search-index.v1.json \
+            data/learner-search-manifest.v1.json \
+            nsejs/data/learner-search-manifest.v1.json \
+            data/keyword-synonyms.v1.json \
+            nsejs/data/keyword-synonyms.v1.json
+          if git diff --cached --quiet; then
+            echo "Search snapshots already match generator."
+          else
+            git commit -m "data(search): synchronize complete 1068-record sitewide discovery snapshots"
+            git push origin "HEAD:refs/heads/fix/full-site-search-index-audit-20261117"
+          fi
