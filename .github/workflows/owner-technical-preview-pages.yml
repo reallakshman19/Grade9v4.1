@@ -1,10 +1,10 @@
 name: Publish unreviewed owner-directed technical preview
 
 # This is a deliberately separate owner-directed preview, not R3-approved
-# production or academic release. The signed R3 deployment remains unchanged.
+# production or academic release. The signed R3 lane stays in deploy-r3-signed.yaml.
 # Owner-directed unreviewed PREVIEW update: PH03 candidate coverage, PH06
 # foundations and common header from PR #84, retaining academic HOLD.
-# This workflow changes only for the explicit preview refresh; signed R3 stays separate.
+# This workflow also serves as the reusable tested publisher for deploy.yaml.
 # Next scoped owner-directed preview refresh: remove duplicated legacy search
 # launchers under the shared header on nested NSEJS Physics lesson pages.
 # This affects UI navigation only; academic/source acceptance remains HOLD.
@@ -16,12 +16,9 @@ name: Publish unreviewed owner-directed technical preview
 # Owner-directed UX Reliability R1: bank visibility/failure states, answer-safe
 # search, fresh counts, return-to-topics, sitewide navigation smoke and
 # last-lesson links only. Source, QRT, academic and signed R3 status stay HOLD.
-# One automatic run when this workflow is first merged; later runs are manual.
+# The main Pages entrypoint handles push publication; manual preview is also available.
 on:
-  push:
-    branches: [main]
-    paths:
-      - .github/workflows/owner-technical-preview-pages.yml
+  workflow_call:
   workflow_dispatch:
 
 permissions:
