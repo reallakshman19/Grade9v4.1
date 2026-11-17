@@ -3,7 +3,8 @@
 ## Authority and reproducibility
 - Baseline Pages commit: `e09865f314b60d14dd1b8881920bf4322862897d` (owner-directed technical preview)
 - Correction: PR #92, `fix/full-site-search-index-audit-20261117`
-- First full staged-asset evidence: [NSEJS all-page search QA run #44131558108](https://github.com/reallakshman19/Grade9v4.1/actions/runs/44131558108), artifact `candidate-full-search-audit`. The source-level and full staging search inventory passed in that run; its *later* Chromium step initially failed because the old browser assertion expected an NSEJS title on a non-NSEJS page. The browser test was corrected separately.
+- Initial staged-asset evidence: [Search QA run #44131558108](https://github.com/reallakshman19/Grade9v4.1/actions/runs/44131558108); the inventory passed but the old browser assertion required an NSEJS title on a general page.
+- Final 440-page staging evidence: [Search QA run #44132945806](https://github.com/reallakshman19/Grade9v4.1/actions/runs/44132945806), artifact `candidate-full-search-audit`, status PASS with zero audit errors. The refreshed browser test additionally covers Mathematics, Architecture, general Physics and a legacy implicit-body page.
 - Updated committed index SHA-256: `e7892e076d5a5aa112d22f899715ec31b658dbf3efeef23c81c9d811cb461515`
 - Signed R3 academic admission is **not** claimed. This audit certifies technical discovery and preview publication only.
 
@@ -18,7 +19,8 @@
 | Total generated search records | **1,068** |
 | Question / curriculum / interactive / page records | 376 / 89 / 538 / 65 |
 | Physics / Chemistry / Biology / Mathematics / Common records | 549 / 333 / 141 / 1 / 44 |
-| Published HTML with closing `</body>` and verified navigation/search loader | 417 |
+| Published HTML with verified navigation/search loader | **440 / 440** |
+| Legacy HTML with implicit body and no closing `</body>` (loader appended by stage) | 23 |
 | Published but excluded from learner search by policy | 9 |
 | Invalid/dead URLs, duplicate identities, inconsistent mirrors or hashes, forbidden answer-bearing fields | **0** in first staged audit |
 
@@ -35,7 +37,7 @@
 8. `preview/batches/b07-preflight.html`
 9. `preview/question-status-archive.html`
 
-The audit also inventories published pages without a conventional closing-body marker separately. These are not silently counted as verified search-loader pages.
+The audit found 23 older HTML files without a conventional closing-body marker. The shared staging script appends the search-loader script after their existing markup, and the independent scan now verifies all 440 published HTML files contain the loader. Nine pages remain intentionally unindexed because they are diagnostic/agent/historical surfaces; nevertheless they receive common navigation.
 
 ## End-to-end dependency and downstream impact
 1. **Source custody (upstream):** Physics catalog/quality workpacks, Chemistry learner navigation, Core2 question sources, authored question IDs and public HTML titles feed the generator. Search never extracts solution bodies or protected review payloads.
