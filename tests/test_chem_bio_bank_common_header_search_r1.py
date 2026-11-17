@@ -74,7 +74,7 @@ def test_same_header_contract_is_installed_on_all_published_html():
     # The staged-pages scan must interpret regex whitespace, not a literal
     # backslash followed by "s" (which previously counted zero HTML pages).
     assert 're.search(r"</body\\\\s*>", page' not in stage
-    assert 're.search(r"</body\\s*>", page' in stage
+    assert 'if "data-grade9-nav" not in page:' in stage
 
 
 def test_published_search_rebuild_is_safe_and_contains_bank_routes():
