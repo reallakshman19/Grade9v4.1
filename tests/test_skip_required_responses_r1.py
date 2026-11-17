@@ -51,7 +51,8 @@ def test_skip_is_visible_at_each_eligible_question_without_focus_and_never_commi
     assert "function nextTaskSelector()" in code
     assert "function advanceWithoutAnswer(field)" in code
     assert "option.disabled" in code
-    assert "if(following){following.scrollIntoView" in code
+    assert "following.scrollIntoView({block:'center'})" in code
+    assert "following.tagName==='FIELDSET'" in code
     assert "field.dataset.g9SkipStatus='SKIPPED_UNASSESSED'" in code
     assert "field.removeAttribute('data-g9-skip-status')" in code
     assert "radioGroup=tag==='fieldset'" in code
