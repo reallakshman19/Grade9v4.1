@@ -55,7 +55,8 @@ def test_committed_index_no_protected_payloads():
 
 def test_shared_search_default_and_publish_rebuild():
     runtime=(ROOT/"js/site-search.js").read_text()
-    assert "let currentScope = 'nsejs'" in runtime
+    assert "let currentScope = isNSEJSPage ? 'nsejs' : 'all'" in runtime
+    assert "isNSEJSPage ? 'Search NSEJS Junior Science' : 'Search Grade9 Learning'" in runtime
     assert "Search NSEJS Junior Science" in runtime
     assert "new URL(\"../\", script.src).href" in runtime
     assert "appendBankBridges" in runtime
