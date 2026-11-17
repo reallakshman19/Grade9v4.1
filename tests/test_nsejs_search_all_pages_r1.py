@@ -210,7 +210,13 @@ def test_26_new_search_records_match_deterministic_generator_exactly():
         assert all(not any(key in actual_by_url[url] for key in
             ("answer","hints","steps","diagnosis","reconstruction","boundaryModel"))
             for url in present)
-    expected=1012+len(found)+len(present)
+    historical="nsejs/physics/ph06/legacy-u08.html"
+    historical_count=int(historical in actual_by_url)
+    if historical_count:
+        doc=actual_by_url[historical]
+        assert doc["category"]!="question" and doc["subject"]=="Physics"
+        assert not any(key in doc for key in ("answer","hints","steps","boundaryModel","reconstruction"))
+    expected=1012+len(found)+len(present)+historical_count
     assert len(actual)==expected and len({d["url"] for d in actual})==expected
     if found:
         for subject,slug in (("CHEMISTRY","atomic_structure"),("BIOLOGY","living_world")):
