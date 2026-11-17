@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Real HTTP Chromium smoke/regression for optional learner response Skip.
+"""Real HTTP Chromium smoke/regression for visible per-question Core1A/1B Skip.
 
 Technical UI behavior only: does not certify Physics/Chemistry/Biology science.
 """
@@ -46,43 +46,130 @@ class Quiet(SimpleHTTPRequestHandler):
 
 def inspect(page, base: str, route: str, subject: str):
     page.goto(base + route, wait_until="domcontentloaded", timeout=25000)
-    page.wait_for_function("window.Grade9Skip?.version === 'r2'", timeout=12000)
+    page.wait_for_function("window.Grade9Skip?.version === 'r3'", timeout=12000)
     info = page.evaluate("""() => {
-      const fields = [...document.querySelectorAll('main textarea,main input[type="text"],main input[type="number"]')];
-      return {fields:fields.length, eligible:fields.filter(x=>x.hasAttribute('data-g9-skip-eligible')).length,
+      const fields = [...document.querySelectorAll(
+        'main textarea,main input[type="text"],main input[type="number"],main select,main fieldset'
+      )];
+      const eligible = fields.filter(x=>x.hasAttribute('data-g9-skip-eligible'));
+      return {
+        fields:fields.length,
+        eligible:eligible.length,
         dock:document.querySelectorAll('#g9-skip-dock').length,
-        visible:fields.filter(x=>x.hasAttribute('data-g9-skip-eligible')&&x.getClientRects().length).length};
+        inline:document.querySelectorAll('.g9-skip-inline').length,
+        visible:eligible.filter(x=>x.getClientRects().length).length
+      };
     }""")
-    assert info["dock"] == 1, f"No Skip dock at {route}"
-    assert info["eligible"] >= 0, route
+    assert info["dock"] == 1, f"No fallback Skip dock at {route}"
+    assert info["inline"] >= info["eligible"], f"Not every question has inline Skip: {route} {info}"
     fields = page.locator(
         'main textarea[data-g9-skip-eligible]:visible:not([disabled]),'
-        'main input[data-g9-skip-eligible]:visible:not([disabled])'
+        'main input[data-g9-skip-eligible]:visible:not([disabled]),'
+        'main fieldset[data-g9-skip-eligible]:visible:not([disabled]),'
+        'main select[data-g9-skip-eligible]:visible:not([disabled])'
     )
     if fields.count():
         field = fields.first
-        before = field.input_value()
-        field.focus()
-        dock = page.locator("#g9-skip-dock")
-        assert dock.is_visible(), route
-        skip = dock.locator(".g9-skip-button")
-        skip.click()
-        assert dock.get_attribute("data-skipped") == "true", route
+        before = field.input_value() if field.evaluate(
+            "(el)=>el.tagName!=='FIELDSET'") else None
+        inline = field.locator(
+            "xpath=following-sibling::*[contains(@class,'g9-skip-inline')][1]")
+        assert inline.is_visible(), f"Inline Skip hidden until focus at {route}"
+        button = inline.locator("button.g9-skip-inline-button")
+        assert button.is_visible(), route
+        assert "no credit" in button.inner_text().lower(), route
+        assert button.evaluate("(b)=>parseFloat(getComputedStyle(b).minHeight)") >= 48
+        first_status = inline.locator("p.g9-skip-inline-status")
+        assert first_status.is_hidden()
+        button.click()
+        assert inline.get_attribute("data-skipped") == "true", route
         assert field.get_attribute("data-g9-skip-status") == "SKIPPED_UNASSESSED", route
-        assert field.input_value() == before, f"Skip forged an answer: {route}"
-        link = dock.locator("a.g9-skip-continue")
-        assert link.count() == 1 and link.get_attribute("href"), route
-        message = dock.locator(".g9-skip-status").inner_text().lower()
-        assert "no answer submitted or scored" in message or "not submitted or scored" in message, route
-        assert "SKIPPED" not in field.input_value(), route
-        assert skip.evaluate("(b)=>parseFloat(getComputedStyle(b).minHeight)") >= 56, route
-        field.fill("Student is now trying the problem independently.")
-        assert field.get_attribute("data-g9-skip-status") is None, route
+        assert first_status.is_visible()
+        assert "not submitted, scored, or counted as mastery" in first_status.inner_text()
+        assert inline.locator("a.g9-skip-inline-next").get_attribute("href"), route
+        assert inline.locator("a.g9-skip-inline-next").is_visible(), route
+        if before is not None:
+            assert field.input_value() == before, f"Skip forged an answer: {route}"
+            assert "SKIPPED" not in field.input_value(), route
+        assert page.locator("#g9-skip-dock").is_hidden(), "Duplicate focused Skip dock"
         if subject in ("biology", "chemistry") and "/core1/" in route:
             model = page.locator('[data-role="model-host"]')
             if model.count():
                 assert model.first.is_hidden(), "Skip leaked a model before answer commit"
+        button.click()
+        assert field.get_attribute("data-g9-skip-status") is None, route
+        assert first_status.is_hidden(), "Undo Skip failed"
+        button.click()
+        if before is not None:
+            tag = field.evaluate("(el)=>el.tagName")
+            if tag == "TEXTAREA" or field.get_attribute("type") != "number":
+                field.fill("Student is now trying the problem independently.")
+            else:
+                field.fill("42")
+            assert field.get_attribute("data-g9-skip-status") is None, route
     return dict(subject=subject, route=route, **info)
+
+
+def inspect_question_types(page, base: str):
+    """Check four response types and safe progression without an attempt."""
+    page.goto(base + "/nsejs/index.html", wait_until="domcontentloaded")
+    page.set_content("""<!doctype html><html lang="en"><head><meta charset="utf-8">
+    </head><body><main>
+      <label for="reason">Reason</label><textarea id="reason" required></textarea>
+      <label for="numeric">Numerical answer</label><input id="numeric" type="number" required>
+      <label for="choice">Required model selection</label><select id="choice" required
+        data-question-select><option value="">Choose</option><option value="A">A</option></select>
+      <fieldset id="radio-group"><legend>Which reasoning is valid?</legend>
+        <label><input type="radio" name="reason-choice" value="A">A</label>
+        <label><input type="radio" name="reason-choice" value="B">B</label>
+      </fieldset>
+      <label for="task-select">Another task</label>
+      <select id="task-select"><option value="t1">First</option>
+        <option value="t2">Next</option></select>
+      <button type="button" id="commit" disabled>Protected first attempt</button>
+      <section data-role="model-host" hidden>Protected model</section>
+    </main><script src="/nsejs/js/skip-mandatory-response.js"></script></body></html>""",
+        wait_until="load")
+    page.wait_for_function("window.Grade9Skip?.version === 'r3'")
+    for field_id in ("reason", "numeric", "choice", "radio-group"):
+        field=page.locator("#"+field_id)
+        field.wait_for(state="visible")
+        page.wait_for_function(
+            "(id)=>document.querySelector('#'+id)?.dataset.g9SkipInline === 'r3'",arg=field_id)
+        controls=field.locator("xpath=following-sibling::*[contains(@class,'g9-skip-inline')][1]")
+        assert controls.is_visible(), "Inline Skip missing for "+field_id
+    assert page.locator(".g9-skip-inline").count()==4, "Expected four question Skip controls"
+    before=page.evaluate("JSON.stringify({...localStorage})")
+    page.locator("#reason + .g9-skip-inline .g9-skip-inline-button").click()
+    assert page.locator("#reason").get_attribute("data-g9-skip-status")=="SKIPPED_UNASSESSED"
+    page.locator("#reason + .g9-skip-inline .g9-skip-inline-advance").click()
+    assert page.locator("#numeric").evaluate("(e)=>document.activeElement===e")
+    page.locator("#numeric + .g9-skip-inline .g9-skip-inline-button").click()
+    page.locator("#numeric + .g9-skip-inline .g9-skip-inline-advance").click()
+    assert page.locator("#choice").evaluate("(e)=>document.activeElement===e")
+    page.locator("#choice + .g9-skip-inline .g9-skip-inline-button").click()
+    page.locator("#choice + .g9-skip-inline .g9-skip-inline-advance").click()
+    assert page.locator('#radio-group input[type="radio"]').first.evaluate(
+        "(e)=>document.activeElement===e")
+    page.evaluate("""() => {
+        window.__questionChanges=[];
+        document.querySelector('#task-select').addEventListener('change',
+          (e)=>window.__questionChanges.push(e.target.value));
+    }""")
+    page.locator("#radio-group + .g9-skip-inline .g9-skip-inline-button").click()
+    assert page.locator('input[name="reason-choice"]:checked').count()==0
+    page.locator("#radio-group + .g9-skip-inline .g9-skip-inline-advance").click()
+    assert page.locator("#task-select").input_value()=="t2"
+    assert page.evaluate("window.__questionChanges")==["t2"]
+    assert page.locator('[data-role="model-host"]').is_hidden()
+    assert page.locator("#commit").is_disabled()
+    assert page.evaluate("JSON.stringify({...localStorage})")==before, "Skip altered protected storage"
+    page.evaluate("""() => document.querySelector('main')
+      .insertAdjacentHTML('beforeend','<label for="late">Later question</label><textarea id="late"></textarea>')""")
+    page.wait_for_function("""() => document.querySelector('#late')
+      ?.dataset.g9SkipInline === 'r3'""")
+    assert page.locator("#late + .g9-skip-inline").is_visible(), "Dynamic question not enhanced"
+    return True
 
 
 def main():
@@ -107,12 +194,17 @@ def main():
                                                 **inspect(page, base, route, subject)))
                         finally:
                             page.close()
+                page=ctx.new_page()
+                try:
+                    assert inspect_question_types(page,base)
+                finally:
+                    page.close()
                 ctx.close()
             browser.close()
     finally:
         server.shutdown()
     assert len(results) == 28, results
-    print("SKIP_REAL_CHROMIUM_PASS: 28 subject-route/orientation visits")
+    print("SKIP_REAL_CHROMIUM_PASS_R3: 28 subject-route/orientation visits + two four-question synthetic progressions; all no-credit")
     print(json.dumps({"checked":len(results),"routes":results}, indent=2))
 
 
