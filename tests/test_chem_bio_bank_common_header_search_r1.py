@@ -87,3 +87,20 @@ def test_published_search_rebuild_is_safe_and_contains_bank_routes():
     assert 'CANDIDATE QUESTION BANK · ACADEMIC HOLD' in builder
     assert 'options = []' in builder and 'hints = []' in builder
     assert 'python trusted/docs/agent-entry/production-control-r3/release.py' in read(".github/workflows/deploy.yaml")
+
+
+def test_universal_search_fallback_respects_shadow_header_and_cleans_races():
+    """Shared navigation is the sole search launcher; legacy pages still work."""
+    nav=read("site-nav.js")
+    search=read("js/site-search.js")
+    assert "function removeLegacySearchFallback()" in nav
+    assert 'document.querySelectorAll(".g9-search-global-entry")' in nav
+    assert nav.count("removeLegacySearchFallback();") >= 3
+    assert "commonNav?.shadowRoot?.querySelector" in search
+    assert "if (!document.querySelector(selector) && !commonSearch)" in search
+    assert "btn.className = 'g9-search-global-entry'" in search
+    browser=read("tools/nsejs_search_all_pages_browser_qa.py")
+    assert "PH06/U08/index.html" in browser
+    assert "Reverse loading order" in browser
+    assert 'expect(page.locator(".g9-search-global-entry")).to_have_count(0)' in browser
+    assert "page.keyboard.press(\"Control+k\")" in browser

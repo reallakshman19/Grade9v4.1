@@ -50,6 +50,52 @@ def main():
                 page.evaluate("window.Grade9Search.open({scope:'biology',query:'genetics'})")
                 expect(page.locator(".g9-search-result").first).to_be_visible()
                 assert all("Biology" in x.inner_text() for x in page.locator(".g9-search-result").all())
+                # Regression for legacy standalone search + shared header on
+                # deep Fluids lessons: load order must not create two controls.
+                lesson=origin+"nsejs/physics/textbook/PH06/U08/index.html"
+                page.goto(lesson,wait_until="domcontentloaded")
+                page.evaluate("""() => new Promise((resolve,reject) => {
+                    const script=document.createElement('script');
+                    script.src='/js/site-search.js';
+                    script.onload=resolve;script.onerror=reject;
+                    document.head.appendChild(script);
+                })""")
+                expect(page.locator(".g9-search-global-entry")).to_have_count(1)
+                page.evaluate("""() => new Promise((resolve,reject) => {
+                    const script=document.createElement('script');
+                    script.src='/site-nav.js';script.dataset.grade9Nav='common-r1';
+                    script.onload=resolve;script.onerror=reject;
+                    document.head.appendChild(script);
+                })""")
+                expect(page.locator("#grade9-universal-nav")).to_have_count(1)
+                expect(page.locator(".g9-search-global-entry")).to_have_count(0)
+                assert page.evaluate("""() => {
+                    const host=document.querySelector('#grade9-universal-nav');
+                    return host?.shadowRoot?.querySelectorAll('[data-g9-action="search"]').length===1
+                        && document.querySelector('header nav a[href]') !== null;
+                }"""),"shared Search or original lesson navigation was lost"
+                page.evaluate("""() => document.querySelector('#grade9-universal-nav')
+                    .shadowRoot.querySelector('[data-g9-action="search"]').click()""")
+                expect(page.locator(".g9-search-dialog")).to_be_visible()
+                page.keyboard.press("Escape")
+
+                # Reverse loading order: when shared nav exists first, search
+                # must discover its shadow-root control and skip the fallback.
+                page.goto(lesson,wait_until="domcontentloaded")
+                page.evaluate("""() => new Promise((resolve,reject) => {
+                    const script=document.createElement('script');
+                    script.src='/site-nav.js';script.dataset.grade9Nav='common-r1';
+                    script.onload=resolve;script.onerror=reject;
+                    document.head.appendChild(script);
+                })""")
+                page.wait_for_function("window.Grade9Search?.initialized === true")
+                expect(page.locator("#grade9-universal-nav")).to_have_count(1)
+                expect(page.locator(".g9-search-global-entry")).to_have_count(0)
+                assert page.evaluate("""() => document.querySelector('#grade9-universal-nav')
+                    .shadowRoot.querySelectorAll('[data-g9-action="search"]').length===1""")
+                page.keyboard.press("Control+k")
+                expect(page.locator(".g9-search-dialog")).to_be_visible()
+                page.keyboard.press("Escape")
                 context.close()
             browser.close()
         print("NSEJS search: all subjects, nested page paths, exact results and scope PASS")

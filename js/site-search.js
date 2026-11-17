@@ -717,7 +717,11 @@
   function bindTriggers() {
     mountDialog();
     const selector = '[data-g9-action="search"], .g9-search-trigger, .g9-search-btn';
-    if (!document.querySelector(selector)) {
+    // The common Grade9 header uses a shadow root. document.querySelector
+    // cannot see its Search action; do not mistake that for a missing launcher.
+    const commonNav = document.getElementById('grade9-universal-nav');
+    const commonSearch = commonNav?.shadowRoot?.querySelector('[data-g9-action="search"]');
+    if (!document.querySelector(selector) && !commonSearch) {
       const btn = document.createElement('button');
       btn.type = 'button'; btn.dataset.g9Action = 'search'; btn.dataset.searchScope = 'nsejs';
       btn.className = 'g9-search-global-entry'; btn.textContent = 'Search NSEJS Junior Science';
