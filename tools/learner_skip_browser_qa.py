@@ -109,6 +109,68 @@ def inspect(page, base: str, route: str, subject: str):
             assert field.get_attribute("data-g9-skip-status") is None, route
     return dict(subject=subject, route=route, **info)
 
+
+def inspect_question_types(page, base: str):
+    """Check four response types and safe progression without an attempt."""
+    page.goto(base + "/nsejs/index.html", wait_until="domcontentloaded")
+    page.set_content("""<!doctype html><html lang="en"><head><meta charset="utf-8">
+    </head><body><main>
+      <label for="reason">Reason</label><textarea id="reason" required></textarea>
+      <label for="numeric">Numerical answer</label><input id="numeric" type="number" required>
+      <label for="choice">Required model selection</label><select id="choice" required
+        data-question-select><option value="">Choose</option><option value="A">A</option></select>
+      <fieldset id="radio-group"><legend>Which reasoning is valid?</legend>
+        <label><input type="radio" name="reason-choice" value="A">A</label>
+        <label><input type="radio" name="reason-choice" value="B">B</label>
+      </fieldset>
+      <label for="task-select">Another task</label>
+      <select id="task-select"><option value="t1">First</option>
+        <option value="t2">Next</option></select>
+      <button type="button" id="commit" disabled>Protected first attempt</button>
+      <section data-role="model-host" hidden>Protected model</section>
+    </main><script src="/nsejs/js/skip-mandatory-response.js"></script></body></html>""",
+        wait_until="load")
+    page.wait_for_function("window.Grade9Skip?.version === 'r3'")
+    for field_id in ("reason", "numeric", "choice", "radio-group"):
+        field=page.locator("#"+field_id)
+        field.wait_for(state="visible")
+        page.wait_for_function(
+            "(id)=>document.querySelector('#'+id)?.dataset.g9SkipInline === 'r3'",arg=field_id)
+        controls=field.locator("xpath=following-sibling::*[contains(@class,'g9-skip-inline')][1]")
+        assert controls.is_visible(), "Inline Skip missing for "+field_id
+    assert page.locator(".g9-skip-inline").count()==4, "Expected four question Skip controls"
+    before=page.evaluate("JSON.stringify({...localStorage})")
+    page.locator("#reason + .g9-skip-inline .g9-skip-inline-button").click()
+    assert page.locator("#reason").get_attribute("data-g9-skip-status")=="SKIPPED_UNASSESSED"
+    page.locator("#reason + .g9-skip-inline .g9-skip-inline-advance").click()
+    assert page.locator("#numeric").evaluate("(e)=>document.activeElement===e")
+    page.locator("#numeric + .g9-skip-inline .g9-skip-inline-button").click()
+    page.locator("#numeric + .g9-skip-inline .g9-skip-inline-advance").click()
+    assert page.locator("#choice").evaluate("(e)=>document.activeElement===e")
+    page.locator("#choice + .g9-skip-inline .g9-skip-inline-button").click()
+    page.locator("#choice + .g9-skip-inline .g9-skip-inline-advance").click()
+    assert page.locator("#radio-group").evaluate("(e)=>document.activeElement===e")
+    page.evaluate("""() => {
+        window.__questionChanges=[];
+        document.querySelector('#task-select').addEventListener('change',
+          (e)=>window.__questionChanges.push(e.target.value));
+    }""")
+    page.locator("#radio-group + .g9-skip-inline .g9-skip-inline-button").click()
+    assert page.locator('input[name="reason-choice"]:checked').count()==0
+    page.locator("#radio-group + .g9-skip-inline .g9-skip-inline-advance").click()
+    assert page.locator("#task-select").input_value()=="t2"
+    assert page.evaluate("window.__questionChanges")==["t2"]
+    assert page.locator('[data-role="model-host"]').is_hidden()
+    assert page.locator("#commit").is_disabled()
+    assert page.evaluate("JSON.stringify({...localStorage})")==before, "Skip altered protected storage"
+    page.evaluate("""() => document.querySelector('main')
+      .insertAdjacentHTML('beforeend','<label for="late">Later question</label><textarea id="late"></textarea>')""")
+    page.wait_for_function("""() => document.querySelector('#late')
+      ?.dataset.g9SkipInline === 'r3'""")
+    assert page.locator("#late + .g9-skip-inline").is_visible(), "Dynamic question not enhanced"
+    return True
+
+
 def main():
     server = ThreadingHTTPServer(
         ("127.0.0.1", 0), partial(Quiet, directory=str(ROOT))
@@ -131,12 +193,17 @@ def main():
                                                 **inspect(page, base, route, subject)))
                         finally:
                             page.close()
+                page=ctx.new_page()
+                try:
+                    assert inspect_question_types(page,base)
+                finally:
+                    page.close()
                 ctx.close()
             browser.close()
     finally:
         server.shutdown()
     assert len(results) == 28, results
-    print("SKIP_REAL_CHROMIUM_PASS_R3: 28 subject-route/orientation visits; per-question inline and no-credit behavior")
+    print("SKIP_REAL_CHROMIUM_PASS_R3: 28 subject-route/orientation visits + two four-question synthetic progressions; all no-credit")
     print(json.dumps({"checked":len(results),"routes":results}, indent=2))
 
 
