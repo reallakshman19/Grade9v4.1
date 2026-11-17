@@ -83,8 +83,9 @@ def test_resume_is_same_site_lesson_only_and_does_not_touch_attempts():
     assert "firstAttempt" not in resume and "saveAttempt" not in resume
     for subject in SUBJECTS:
         page=read(f"nsejs/{subject}/index.html")
-        selector=("g9-primary-study-routes" if subject=="physics"
-                  else subject+"-primary-routes")
+        selector={"physics":"g9-primary-study-routes",
+                  "chemistry":"chem-primary-routes",
+                  "biology":"biology-primary-routes"}[subject]
         assert f'nav class="{selector}"' in page
 
 
@@ -101,5 +102,5 @@ def test_real_chromium_regressions_cover_three_banks_and_negative_controls():
         assert f'"{subject}":' in code
     for phrase in ("failure_is_visible","resume_only_safe_lesson_urls",
                    "hidden_term","Return to all topics","qbLoadNotice",
-                   "to_have_count(0)","role","g9-protected-attempt:fixture"):
+                   "count()==0","role","g9-protected-attempt:fixture"):
         assert phrase in code
