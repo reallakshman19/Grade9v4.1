@@ -1,0 +1,163 @@
+{
+  "schema": "g9v41-r01-cold-boundary-after-first-seal/v1",
+  "notice": "WITHHOLD_FROM_REVIEWER_UNTIL_FIRST_PASS_SEALED",
+  "source_authenticity": "HOLD",
+  "task_count": 6,
+  "tasks": [
+    {
+      "id": "PH03-P01",
+      "task_revision": "ph03-core1ab-r4-20261117",
+      "boundary_prompt": "Now the instruments read TOTAL kinetic energy 9 J, while TOTAL momentum is still zero and cart A is unchanged. Is there any finite positive mass for B consistent with BOTH measurements? Record B's required momentum.",
+      "boundary_fields": [
+        {
+          "id": "feasible",
+          "label": "Both measurements physically feasible?",
+          "type": "choice",
+          "options": [
+            {
+              "value": "no",
+              "text": "No"
+            },
+            {
+              "value": "yes",
+              "text": "Yes"
+            }
+          ]
+        },
+        {
+          "id": "hiddenP",
+          "label": "Required momentum of B",
+          "type": "number",
+          "unit": "kg·m/s"
+        }
+      ]
+    },
+    {
+      "id": "PH03-P04",
+      "task_revision": "ph03-core1ab-r4-20261117",
+      "boundary_prompt": "Suppose the sensor of A fails and no individual velocity is measured. The total outside impulse and internal contact impulses remain unchanged. Are the two individual final velocities uniquely determined? State total pair momentum.",
+      "boundary_fields": [
+        {
+          "id": "unique",
+          "label": "Individual velocities uniquely determined?",
+          "type": "choice",
+          "options": [
+            {
+              "value": "no",
+              "text": "No"
+            },
+            {
+              "value": "yes",
+              "text": "Yes"
+            }
+          ]
+        },
+        {
+          "id": "totalP",
+          "label": "Final pair momentum",
+          "type": "number",
+          "unit": "kg·m/s"
+        }
+      ]
+    },
+    {
+      "id": "PH03-P05",
+      "task_revision": "ph03-core1ab-r4-20261117",
+      "boundary_prompt": "Change the instrument: the load's final speed is measured as +4 m/s in the LAB frame, NOT +5 m/s relative to the platform. The initial pair is unchanged at +1 m/s. Determine the platform lab velocity and load's actual relative departure speed.",
+      "boundary_fields": [
+        {
+          "id": "platformV",
+          "label": "New platform velocity LAB",
+          "type": "number",
+          "unit": "m/s"
+        },
+        {
+          "id": "relativeSpeed",
+          "label": "Ejection speed relative to platform",
+          "type": "number",
+          "unit": "m/s"
+        }
+      ]
+    },
+    {
+      "id": "PH03-P06",
+      "task_revision": "ph03-core1ab-r4-20261117",
+      "boundary_prompt": "Now a different sensor reports cart A's final velocity to be −1 m/s with all initial conditions unchanged. From momentum and relative separation infer e and decide if the reported result is passive-contact admissible.",
+      "boundary_fields": [
+        {
+          "id": "restitution",
+          "label": "New inferred restitution coefficient e",
+          "type": "number",
+          "unit": "dimensionless"
+        },
+        {
+          "id": "admissible",
+          "label": "Passive collision admissible?",
+          "type": "choice",
+          "options": [
+            {
+              "value": "no",
+              "text": "No"
+            },
+            {
+              "value": "yes",
+              "text": "Yes"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "PH03-P07",
+      "task_revision": "ph03-core1ab-r4-20261117",
+      "boundary_prompt": "Change ONLY friction to μ=0.30 while preserving first-joined speed and the 0.75 m distance to C. Does a second collision occur? Give the assembly's stopping distance.",
+      "boundary_fields": [
+        {
+          "id": "reach",
+          "label": "Does C get hit?",
+          "type": "choice",
+          "options": [
+            {
+              "value": "no",
+              "text": "No"
+            },
+            {
+              "value": "yes",
+              "text": "Yes"
+            }
+          ]
+        },
+        {
+          "id": "stopDistance",
+          "label": "Stopping distance",
+          "type": "number",
+          "unit": "m"
+        }
+      ]
+    },
+    {
+      "id": "PH06-U08",
+      "task_revision": "r2-20261115",
+      "boundary_prompt": "Instead of adding 0.80 kg, remove 1.90 kg from the initial float (assume enough removable ballast). Find the new equilibrium and decide whether it reaches the interface. Give the bottom depth and justify the correct regime.",
+      "boundary_fields": [
+        {
+          "id": "regime",
+          "label": "Changed immersion regime",
+          "type": "select",
+          "options": [
+            "Upper liquid only",
+            "Partly emerged, crosses interface",
+            "Fully submerged, crosses interface",
+            "Entirely lower liquid",
+            "No equilibrium"
+          ]
+        },
+        {
+          "id": "bottom",
+          "label": "Bottom depth (cm)",
+          "type": "number"
+        }
+      ]
+    }
+  ]
+}
