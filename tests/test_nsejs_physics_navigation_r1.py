@@ -37,9 +37,25 @@ def test_chapter_catalog_is_real_and_single_entry():
     assert home.count('class="g9-chapter-card"') == 12
     assert home.count('aria-disabled="true"') >= 1
     assert home.count('href="learn/chapter.html?ph=') == 11
-    assert 'id="g9-explore-bank"' in home and 'learner-home.js' in home
-    assert 'id="topicWorkspace"' in home and 'id="questions"' in home
-    assert 'core2-physics-reader.js' in home
+    assert 'id="g9-explore-bank" class="g9-bank-archive" open' in home
+    assert 'Physics Question Bank · 109 candidate questions' in home
+    assert 'class="g9-primary-study-link g9-bank-entry-link"' in home
+    assert 'href="index.html?topic=optics#topicWorkspace"' in home
+    assert 'id="qbFilters"' in home and 'id="topicWorkspace"' in home and 'id="questions"' in home
+    assert 'learner-home.js' in home and 'core2-physics-reader.js' in home
+    # The sitewide header must lead to a selected, visible bank topic, not a
+    # hidden workspace or the archived question-bank redirect.
+    site_nav=(ROOT/"site-nav.js").read_text(encoding="utf-8")
+    assert '["Physics Question Bank","nsejs/physics/index.html?topic=optics#topicWorkspace"]' in site_nav
+    assert 'window.location.href = "question-bank.html?topic="' not in home
+    corpus=json.loads((ROOT/"nsejs/data/physics-core2-candidates.v1.json").read_text(encoding="utf-8"))
+    authored=json.loads((ROOT/"nsejs/data/physics-authored-practice-r1.json").read_text(encoding="utf-8"))
+    assert len(corpus["questions"]) == 50
+    assert len(authored["questions"]) == 59
+    assert sum(1 for q in corpus["questions"] if q["topic"]=="OPTICS")==10
+    assert sum(1 for q in authored["questions"] if q["topic"]=="FLUIDS_AND_SOUND")==2
+    assert corpus["source_claims_status"]=="HOLD"
+    assert authored["academic_release"]=="HOLD"
 
 def test_every_published_route_exists_and_has_canonical_bar():
     expected = set()
