@@ -7,6 +7,7 @@ on:
       - 'nsejs/physics/core1/PH06/**'
       - 'nsejs/physics/curriculum/topics/PH06/**'
       - 'tests/test_ph06_golden_r1.py'
+      - 'tests/test_ph06_skip_lazy_r3.py'
       - 'tools/ph06_golden_browser_qa.py'
       - 'tools/ph06_golden_evidence.py'
       - '.github/workflows/ph06-golden-r1.yml'
@@ -28,7 +29,7 @@ jobs:
       - run: |
           mkdir -p artifacts/ph06-golden
           set -o pipefail
-          python -m pytest -q -s tests/test_ph06_golden_r1.py | tee artifacts/ph06-golden/science-tests.txt
+          python -m pytest -q -s tests/test_ph06_golden_r1.py tests/test_ph06_skip_lazy_r3.py | tee artifacts/ph06-golden/science-tests.txt
       - run: |
           set -o pipefail
           python tools/ph06_golden_browser_qa.py | tee artifacts/ph06-golden/browser-tests.txt
