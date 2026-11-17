@@ -20,7 +20,7 @@ const digest=async(algorithm,bytes)=>hex(await crypto.subtle.digest(algorithm,by
 const encoder=new TextEncoder(),decoder=new TextDecoder("utf-8",{fatal:true});
 const parse=bytes=>JSON.parse(decoder.decode(bytes));
 const blobSha=async bytes=>{const header=encoder.encode("blob "+bytes.byteLength+"\0"),merged=new Uint8Array(header.length+bytes.byteLength);merged.set(header);merged.set(new Uint8Array(bytes),header.length);return digest("SHA-1",merged)};
-let content,firstImage,promptImage,postCache=null,solutionImage=null,revision,storeKey,exposureKey,rec,revisionSafe=false;
+let content,firstImage,promptImage,postCache=null,solutionImage=null,revision,storeKey,exposureKey,rec,revisionSafe=false,exitCheck=null;
 const fail=err=>{mount.innerHTML='<article class="hold"><h1>Learning path on HOLD</h1><p>'+escapeHtml(err.message||err)+'</p><p>No answers or mastery were released. You can return to the '+link(chapter,"chapter overview")+'.</p></article>'};
 const link=(href,label,cls="")=>'<a'+(cls?' class="'+escapeHtml(cls)+'"':"")+' href="'+escapeHtml(href)+'">'+escapeHtml(label)+'</a>';
 const figure=(image,caption)=>'<figure><img src="'+escapeHtml(image.url)+'" width="940" height="345" alt="'+escapeHtml(image.alt)+'"><figcaption>'+escapeHtml(caption)+'</figcaption></figure>';
@@ -96,6 +96,7 @@ function renderLearn(){
  figure(firstImage,"Author-created worked-model diagram. This is NOT a reconstruction of any NSEJS source figure.")+examples+
  '<section><h2>Common wrong route</h2><p><strong>Temptation:</strong> '+escapeHtml(content.trap.wrong)+'</p><p><strong>Repair:</strong> '+escapeHtml(content.trap.repair)+'</p></section>'+
  modelHTML()+'<section><h2>Conditions and validity boundaries</h2>'+htmlList(content.assumptions)+'</section>'+
+ '<section class="core1a-exit"><h2>Independent synthesis check</h2><p>'+escapeHtml(exitCheck.question)+'</p><p class="mini">Think through the mechanism before revealing the explanation. This is optional Core1A study, not a graded Core1B attempt or an exam question.</p><details><summary>Compare the reasoning</summary><p>'+escapeHtml(exitCheck.answer)+'</p><p><strong>Independent check:</strong> '+escapeHtml(exitCheck.check)+'</p></details></section>'+
  '<p class="actions">'+link(canonical("practice"),"Try a fresh changed problem","primary")+link(sourceUrl,"See related source status")+'</p></article>';
  $("model-slider").oninput=()=>{const v=Number($("model-slider").value),m=safeModel(content.model.kind,v);$("model-output").textContent=m.label+" · "+m.value;$("model-context").textContent=m.explain};$("model-slider").dispatchEvent(new Event("input"));
 }
@@ -185,7 +186,7 @@ async function initialize(){
  revision=await digest("SHA-256",encoder.encode(JSON.stringify([decoder.decode(bytes),firstImage.sha,promptImage?.sha||"",content.postBlobSha1,content.solutionBlobSha1||""])));
  storeKey="G9V41:PH03:R3:"+unit+":"+revision;exposureKey="G9V41:PH03:R3:EXPOSE:"+unit+":"+content.revision;
  revisionSafe=true;
- if(mode==="learn"){await expose();renderLearn()}else await renderPractice();
+ if(mode==="learn"){const exitPacket=parse(await readUrl("exit-checks.v1.json"));if(exitPacket.schema!=="g9-ph03-core1a-exit/v1"||exitPacket.academic!=="HOLD"||exitPacket.source_role!=="AUTHORED_TEACHING_NOT_EXAM")throw Error("Invalid Core1A exit packet");exitCheck=exitPacket.units?.[unit];if(!exitCheck||![exitCheck.question,exitCheck.answer,exitCheck.check].every(x=>typeof x==="string"&&x.trim()))throw Error("Missing Core1A independent synthesis");await expose();renderLearn()}else await renderPractice();
  window.addEventListener("storage",ev=>{if(mode!=="practice"||!revisionSafe)return;if(ev.key===storeKey||ev.key===null){try{const fresh=readRecord();if(JSON.stringify(fresh)!==JSON.stringify(rec))renderPractice().catch(fail)}catch(err){fail(err)}}});
  }catch(err){fail(err)}
 }
