@@ -25,6 +25,12 @@ def test_all_subjects_have_visible_verification_failure_and_loading_states():
         assert 'retry.addEventListener("click", () => location.reload())' in code
         assert "No answer" in code or "No unverified questions" in code
         assert "answerBox.hidden = true" in code
+        if subject in ("chemistry","biology"):
+            assert 'data.total_questions !== rows.length' in code
+            assert 'new Set(rows.map(q => q?.id)).size !== rows.length' in code
+            assert 'data.source_claims_status !== "DOWNLOADED_AND_AUTHORED_CANDIDATES"' in code
+            assert 'String(data.qrt_adjudication).includes("HOLD")' in code
+            assert 'Candidate registry incomplete or status unqualified; fail closed' in code
 
 
 def test_question_search_excludes_postcommit_only_keys_steps_and_crux():
